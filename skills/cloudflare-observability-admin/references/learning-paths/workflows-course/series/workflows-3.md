@@ -5,15 +5,15 @@ title: Use cron triggers to develop time-aware applications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use cron triggers to develop time-aware applications
+# Use cron triggers to develop time-aware applications
 
-Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with `step.sleep` allows developers to build sophisticated, time-aware applications.
 
@@ -140,23 +140,23 @@ npx wrangler workflows instances describe puntificator latest
 
 This command will show details about the most recent run of the specified workflow, including its start time, end time, duration, state, and the state of each individual step within the workflow. You can observe steps like `create-new-pun-based-on-trends`, `judge-pun`, `save-pun`, `publish`, and `wait-for-publish` (which shows a 'Sleeping' state).
 
-### [ Watch Episode 1: Understand Cloudflare Workflows ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/)
+### [Watch Episode 1: Understand Cloudflare Workflows](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-1/)
 
- In this episode, we introduce Cloudflare Workflows, which provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background.
+In this episode, we introduce Cloudflare Workflows, which provides durable execution capabilities, allowing developers to create reliable, repeatable workflows that run in the background.
 
-### [ Watch Episode 2: Monitor and batch your website data ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/)
+### [Watch Episode 2: Monitor and batch your website data](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-2/)
 
- In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution.
+In this episode, we describe how Workflows can be used to process batches of data, ensuring each item in the batch goes through a defined process with reliable execution.
 
-### [ Watch Episode 3: Use cron triggers to develop time-aware applications ](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/)
+### [Watch Episode 3: Use cron triggers to develop time-aware applications](https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/)
 
- In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
+In this episode, we review Workflows ability to explicitly schedule tasks using cron triggers and pause execution with \`step.sleep\` allows developers to build sophisticated, time-aware applications.
 
 Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/#page","headline":"Use cron triggers to develop time-aware applications · Cloudflare Learning Paths","description":"Cloudflare Workflows provide a powerful way to manage asynchronous, durable processes. The ability to explicitly schedule tasks using scheduled handlers and pause execution with step.sleep allows developers to build sophisticated, time-aware applications.","url":"https://developers.cloudflare.com/learning-paths/workflows-course/series/workflows-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

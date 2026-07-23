@@ -4,15 +4,15 @@ title: Feedback reports
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Feedback reports
+# Feedback reports
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When Cloudflare detects that a challenge has failed or the user cannot be verified on a page with Turnstile, the user will encounter an [error](https://developers.cloudflare.com/turnstile/concepts/widget/#error-states) on the widget and may be asked to send feedback on the issue that they have encountered by choosing one of the options listed.
 
@@ -43,7 +43,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/#page","headline":"Feedback reports · Cloudflare Turnstile docs","description":"Submit Turnstile feedback reports for false positive challenges.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/feedback-reports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

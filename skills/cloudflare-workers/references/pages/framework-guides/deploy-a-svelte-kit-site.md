@@ -4,15 +4,15 @@ title: SvelteKit
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  SvelteKit
+# SvelteKit
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 SvelteKit is the official framework for building modern web applications with [Svelte ↗](https://svelte.dev), an increasingly popular open-source tool for creating user interfaces. Unlike most frameworks, SvelteKit uses Svelte, a compiler that transforms your component code into efficient JavaScript, enabling SvelteKit to deliver fast, reactive applications that update the DOM surgically as the application state changes.
 
@@ -24,7 +24,7 @@ Use the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare)
 
 To use `create-cloudflare` to create a new SvelteKit project, run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-svelte-app --framework=svelte --platform=pages
@@ -151,17 +151,17 @@ If you use [create-cloudflare(C3) ↗](https://www.npmjs.com/package/create-clou
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Build settings** section, select _SvelteKit_ as your **Framework preset**. Your selection will provide the following information:
 
-| Configuration option | Value                  |  | Production branch | main |
-| -------------------- | ---------------------- |  | ----------------- | ---- |
-| Build command        | npm run build          |  |                   |      |
-| Build directory      | .svelte-kit/cloudflare |  |                   |      |
+| Configuration option | Value                  | |  Production branch | main |
+| -------------------- | ---------------------- | -------------------- | ---- |
+| Build command        | npm run build          |                      |      |
+| Build directory      | .svelte-kit/cloudflare |                      |      |
 
 Optionally, you can customize the **Project name** field. It defaults to the GitHub repository's name, but it does not need to match. The **Project name** value is assigned as your `*.pages.dev` subdomain.
 
@@ -205,7 +205,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/#page","headline":"SvelteKit · Cloudflare Pages docs","description":"Learn how to create and deploy a SvelteKit application to Cloudflare Pages using the create-cloudflare CLI","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

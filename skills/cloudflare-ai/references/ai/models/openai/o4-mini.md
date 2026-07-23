@@ -4,7 +4,7 @@ title: o4-mini
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  o4-mini
+# o4-mini
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/o4-mini/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/o4-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/o4-mini `
+`openai/o4-mini`
 
 * Third-party
 * Zero data retention
 
 OpenAI's fast, lightweight reasoning model optimized for multi-step problem solving at lower cost.
 
-| Model Info                                                                  |                                                                                                                   |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                    |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                            |
-| More information                                                            | [link ↗](https://openai.com/)                                                                                     |
-| Zero data retention                                                         | Yes                                                                                                               |
-| Request formats                                                             | Responses, Chat Completions                                                                                       |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o4-mini) |
+| Model Info                                                                 |                                                                                                                  |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                   |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
+| More information                                                           | [link ↗](https://openai.com/)                                                                                    |
+| Zero data retention                                                        | Yes                                                                                                              |
+| Request formats                                                            | Responses, Chat Completions                                                                                      |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o4-mini) |
 
 ## Usage
 
@@ -121,7 +121,7 @@ Here are the three (classical) laws of thermodynamics:
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -256,7 +256,7 @@ That’s all you need to read JSON files in Python!
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -422,7 +422,7 @@ Enjoy your trip! Let me know if you need more detail on any stop or lodging sugg
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -501,7 +501,7 @@ Heat prickled her neck. No burglar would leave such a thing behind. She reached 
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -9580,7 +9580,7 @@ Key points to remember:
 ]
 ```
 
-**Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
+**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
 
 ```ts
 const response = await env.AI.run(
@@ -10001,9 +10001,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/o4-mini/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -10011,7 +10011,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/o4-mini/#page","headline":"o4-mini (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's fast, lightweight reasoning model optimized for multi-step problem solving at lower cost.","url":"https://developers.cloudflare.com/ai/models/openai/o4-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

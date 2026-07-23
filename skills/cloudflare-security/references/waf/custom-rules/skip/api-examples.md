@@ -4,15 +4,15 @@ title: API examples
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  API examples
+# API examples
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to configure custom rules via API.
 
@@ -144,7 +144,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/#page","headline":"API examples of custom rules with the Skip action · Cloudflare Web Application Firewall (WAF) docs","description":"API examples for configuring custom rules with the Skip action.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/api-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

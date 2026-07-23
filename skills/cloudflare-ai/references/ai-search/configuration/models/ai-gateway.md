@@ -4,15 +4,15 @@ title: AI Gateway
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI Gateway
+# AI Gateway
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every AI Search instance is connected to a Cloudflare [AI Gateway](https://developers.cloudflare.com/ai-gateway/). The model calls that AI Search makes for embedding, query rewriting, reranking, and response generation run through this gateway. By configuring the connected gateway, you can observe and control those model calls.
 
@@ -54,7 +54,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/#page","headline":"AI Gateway · Cloudflare AI Search docs","description":"Observe and control the AI models your AI Search instance uses through the connected AI Gateway.","url":"https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

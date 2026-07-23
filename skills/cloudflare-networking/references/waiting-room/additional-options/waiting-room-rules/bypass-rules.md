@@ -4,15 +4,15 @@ title: Waiting Room Bypass Rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Waiting Room Bypass Rules
+# Waiting Room Bypass Rules
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Waiting Room Bypass Rule is a type of Waiting Room Rule built on Cloudflare’s Ruleset Engine and managed via the Waiting Room API. A Waiting Room Bypass Rule allows you to indicate specific traffic or areas of your site or application that you do not want a waiting room to apply to. Each bypass rule is created and managed at the individual waiting room level for precise control over your waiting room traffic.
 
@@ -48,7 +48,7 @@ Example condition: `ends_with(http.request.uri.path, ".js")`
 To create a new bypass rule:
 
 1. In the Cloudflare dashboard, go to the **Waiting Room** page.
-[ Go to **Waiting Room** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
+[Go to **Waiting Room** ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/waiting-rooms)
 2. Expand a waiting room and select **Manage rules**.
 3. Select **Create new bypass rule**.
 4. Enter a descriptive name for the rule in **Rule name**.
@@ -132,7 +132,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/#page","headline":"Waiting Room Bypass Rules · Cloudflare Waiting Room docs","description":"Create rules to bypass the waiting room for specific traffic.","url":"https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/bypass-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

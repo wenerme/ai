@@ -4,15 +4,15 @@ title: Build configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build configuration
+# Build configuration
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/build-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/build-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You may tell Cloudflare Pages how your site needs to be built as well as where its output files will be located.
 
@@ -73,7 +73,7 @@ If you are not using a preset, use `exit 0` as your **Build command**.
 If your project makes use of environment variables to build your site, you can provide custom environment variables:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Select **Settings** \> **Environment variables**.
 
@@ -93,7 +93,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-configuration/#page","headline":"Build configuration · Cloudflare Pages docs","description":"Set build commands, output directories, and framework presets for Cloudflare Pages projects.","url":"https://developers.cloudflare.com/pages/configuration/build-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Troubleshoot managed rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshoot managed rules
+# Troubleshoot managed rules
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, WAF's managed rulesets are compatible with most websites and web applications. However, false positives and false negatives may occur:
 
@@ -26,7 +26,7 @@ You can use [Security Events](https://developers.cloudflare.com/waf/analytics/se
 If you encounter a false positive caused by a managed rule, do one of the following:
 
 * **Add an exception**: [Exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) allow you to skip the execution of WAF managed rulesets or some of their rules for certain requests.
-* **Adjust the OWASP managed ruleset**: A request blocked by the rule with ID ...843b323c  and description `949110: Inbound Anomaly Score Exceeded` refers to the [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/). To resolve the issue, [configure the OWASP managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/).
+* **Adjust the OWASP managed ruleset**: A request blocked by the rule with ID ...843b323c and description `949110: Inbound Anomaly Score Exceeded` refers to the [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/). To resolve the issue, [configure the OWASP managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/).
 * **Disable the corresponding managed rule(s)**: Create an override to disable specific rules. This may avoid false positives, but you will also reduce the overall site security. Refer to the [dashboard instructions](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset) on configuring a managed ruleset, or to the [API instructions](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) on creating an override.
 
 Note
@@ -54,7 +54,7 @@ Use [Security Events](https://developers.cloudflare.com/waf/analytics/security-e
 * Have you enabled any necessary managed rules that are not enabled by default?
 Not all rules of WAF managed rulesets are enabled by default, so you should review individual managed rules.
 
-  * For example, Cloudflare allows requests with empty user agents by default. To block requests with an empty user agent, enable the rule with ID ...0a6dbbd3  in the Cloudflare Managed Ruleset.
+  * For example, Cloudflare allows requests with empty user agents by default. To block requests with an empty user agent, enable the rule with ID ...0a6dbbd3 in the Cloudflare Managed Ruleset.
   * Another example: If you want to block unmitigated SQL injection (SQLi) attacks, make sure the relevant managed rules tagged with `sqli` are enabled in the Cloudflare Managed Ruleset.
 For instructions, refer to [Configure a managed ruleset](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset).
 * Is the attack traffic matching a custom rule [skipping all Managed Rules](https://developers.cloudflare.com/waf/custom-rules/skip/)?
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/#page","headline":"Troubleshoot managed rules · Cloudflare Web Application Firewall (WAF) docs","description":"Troubleshoot WAF managed rules false positives and configuration issues.","url":"https://developers.cloudflare.com/waf/managed-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}

@@ -4,15 +4,15 @@ title: Context Enricher
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Context Enricher
+# Context Enricher
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/advanced/context-enricher/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/advanced/context-enricher/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Zaraz Context Enricher is a tool to modify or enrich [the context](https://developers.cloudflare.com/zaraz/reference/context/) that is being used across Zaraz using a Cloudflare Worker. The Context Enricher allows you access to the client and system variables.
 
@@ -23,7 +23,7 @@ To use a Context Enricher, you first need to create a new Cloudflare Worker. You
 To create a new Worker in the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Give a name to your Worker and select **Deploy**.
 4. Select **Edit code**.
@@ -53,7 +53,7 @@ Keep reading for more complete examples of different use cases or refer to [Zara
 Now that your Worker is published, you can select it in your Zaraz settings:
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/settings)
 2. Select your Context Enricher Worker.
 3. Save your settings.
 
@@ -141,7 +141,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/advanced/context-enricher/#page","headline":"Context Enricher · Cloudflare Zaraz docs","description":"Enrich event context with server-side data using Workers.","url":"https://developers.cloudflare.com/zaraz/advanced/context-enricher/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

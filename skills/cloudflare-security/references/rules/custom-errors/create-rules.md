@@ -4,22 +4,22 @@ title: Create custom error rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create custom error rules
+# Create custom error rules
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/custom-errors/create-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/custom-errors/create-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## In the dashboard
 
 ### Create a custom error rule
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **Custom Error Rule**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **If incoming requests match**, select one of the following options:
@@ -161,7 +161,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/custom-errors/create-rules/#page","headline":"Create custom error rules · Cloudflare Rules docs","description":"Create custom error rules in the dashboard or via the API.","url":"https://developers.cloudflare.com/rules/custom-errors/create-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

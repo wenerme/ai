@@ -4,15 +4,15 @@ title: TypeScript
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  TypeScript
+# TypeScript
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/languages/typescript/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/languages/typescript/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 TypeScript is a first-class language on Cloudflare Workers. All APIs provided in Workers are fully typed, and type definitions are generated directly from [workerd ↗](https://github.com/cloudflare/workerd), the open-source Workers runtime.
 
@@ -39,7 +39,7 @@ For example, the runtime will only allow you to use the [AsyncLocalStorage ↗](
 
 To ensure that your type definitions always match your Worker's configuration, you can dynamically generate types by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -81,7 +81,7 @@ There are no plans to stop publishing the `@cloudflare/workers-types` package, w
 
 #### 1\. Uninstall `@cloudflare/workers-types`
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm uninstall @cloudflare/workers-types
@@ -101,7 +101,7 @@ bun remove @cloudflare/workers-types
 
 #### 2\. Generate runtime types using Wrangler
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -139,7 +139,7 @@ Note that if you have specified a custom path for the runtime types file, you sh
 
 If you are using the `nodejs_compat` compatibility flag, you should also install `@types/node`.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @types/node
@@ -239,7 +239,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/languages/typescript/#page","headline":"Write Cloudflare Workers in TypeScript · Cloudflare Workers docs","description":"Use TypeScript with fully typed APIs to build Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/languages/typescript/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

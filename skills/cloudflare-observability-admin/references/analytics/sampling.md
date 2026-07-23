@@ -4,15 +4,15 @@ title: Understanding sampling in Cloudflare Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Understanding sampling in Cloudflare Analytics
+# Understanding sampling in Cloudflare Analytics
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/sampling/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/sampling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Sampling ↗](https://en.wikipedia.org/wiki/Sampling%5F%28statistics%29) is a technique used in analytics to analyze a subset of data rather than processing every individual data point. In Cloudflare Analytics, sampling ensures efficient performance and scalability while maintaining high accuracy and reliability. This document provides a comprehensive overview of how sampling works, why it is used, and its impact on analytics across different Cloudflare tools.
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/sampling/#page","headline":"Understanding sampling in Cloudflare Analytics · Cloudflare Analytics docs","description":"Understand how Cloudflare uses sampling for analytics.","url":"https://developers.cloudflare.com/analytics/sampling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

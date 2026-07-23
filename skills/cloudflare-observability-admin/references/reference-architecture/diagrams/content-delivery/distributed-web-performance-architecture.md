@@ -4,15 +4,15 @@ title: Designing a distributed web performance architecture
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Designing a distributed web performance architecture
+# Designing a distributed web performance architecture
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -173,7 +173,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/#page","headline":"Designing a distributed web performance architecture · Cloudflare Reference Architecture docs","description":"A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

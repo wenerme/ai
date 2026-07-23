@@ -4,15 +4,15 @@ title: Rate limiting best practices
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Rate limiting best practices
+# Rate limiting best practices
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections cover typical rate limiting configurations for common use cases. You can combine the provided example rules and adjust them to your own scenario.
 
@@ -480,7 +480,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/#page","headline":"Rate limiting best practices · Cloudflare Web Application Firewall (WAF) docs","description":"Typical rate limiting configurations for login protection, API abuse, and more.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL","Account takeover","Authentication","Scraping"]}

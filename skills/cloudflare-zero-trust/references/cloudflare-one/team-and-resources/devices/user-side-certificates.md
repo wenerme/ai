@@ -4,15 +4,15 @@ title: User-side certificates
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  User-side certificates
+# User-side certificates
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Advanced security features such as [HTTPS traffic inspection](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/), [Data Loss Prevention](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/), [anti-virus scanning](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/antivirus-scanning/), [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/), and [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) require users to install and trust a root certificate on their device. You can either install the certificate provided by Cloudflare (default option), or generate your own custom certificate and upload it to Cloudflare.
 
@@ -115,7 +115,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#page","headline":"User-side certificates · Cloudflare One docs","description":"Set up User-side certificates for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}

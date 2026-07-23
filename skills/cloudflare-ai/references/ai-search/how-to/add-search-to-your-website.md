@@ -4,15 +4,15 @@ title: Add search to your website
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Add search to your website
+# Add search to your website
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial creates an AI Search instance that indexes your website, then adds a working search bar, chat bubble, and search modal to your site's frontend. It uses the [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/), pre-built web components that connect to your instance's public endpoint, so you add search with only a few lines of frontend code.
 
@@ -35,7 +35,7 @@ This tutorial adds search to an existing React app. If you are starting a new pr
 
 Create an instance with the [Wrangler CLI](https://developers.cloudflare.com/ai-search/wrangler-commands/). To index a website you own, connect it as a data source so AI Search crawls and indexes it automatically:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler ai-search create my-search --type web-crawler --source <YOUR_DOMAIN>
@@ -53,7 +53,7 @@ Replace `<YOUR_DOMAIN>` with a domain [onboarded to your Cloudflare account](htt
 
 Check indexing progress:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler ai-search stats my-search
@@ -69,7 +69,7 @@ pnpm wrangler ai-search stats my-search
 
 Once indexing completes, you can test a query from the command line:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler ai-search search my-search --query 'What is this site about?'
@@ -88,7 +88,7 @@ pnpm wrangler ai-search search my-search --query 'What is this site about?'
 The UI snippets connect to your instance through its public endpoint.
 
 1. Go to **AI Search** in the Cloudflare dashboard.
-[ Go to **AI Search** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+[Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your `my-search` instance.
 3. Go to **Settings** \> **Public Endpoint**.
 4. Turn on **Enable Public Endpoint**.
@@ -98,7 +98,7 @@ The UI snippets connect to your instance through its public endpoint.
 
 In your website's project, install the [AI Search UI snippet library](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/):
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/ai-search-snippet
@@ -194,7 +194,7 @@ The public endpoint uses CORS to control which sites can call it. Add the origin
 
 Start your development server:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run dev
@@ -216,17 +216,17 @@ The snippets work anywhere your site is served. When you deploy your site to its
 
 ## Next steps
 
-### [ UI snippets ](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/)
+### [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/)
 
- All snippet components, attributes, and CSS theming options.
+All snippet components, attributes, and CSS theming options.
 
-### [ Wrangler commands ](https://developers.cloudflare.com/ai-search/wrangler-commands/)
+### [Wrangler commands](https://developers.cloudflare.com/ai-search/wrangler-commands/)
 
- Manage AI Search instances from the command line.
+Manage AI Search instances from the command line.
 
-### [ Public endpoint settings ](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)
+### [Public endpoint settings](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)
 
- Rate limiting, CORS, and tool description for the public endpoint.
+Rate limiting, CORS, and tool description for the public endpoint.
 
 Was this helpful?
 
@@ -234,7 +234,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/#page","headline":"Add search to your website · Cloudflare AI Search docs","description":"Create an AI Search instance that indexes your website, then add a search bar, chat bubble, and search modal to your React site with the UI snippet components.","url":"https://developers.cloudflare.com/ai-search/how-to/add-search-to-your-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

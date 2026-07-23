@@ -4,15 +4,15 @@ title: Vite Environments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Vite Environments
+# Vite Environments
 
-Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Vite Environment API ↗](https://vite.dev/guide/api-environment), released in Vite 6, is the key feature that enables the Cloudflare Vite plugin to integrate Vite directly with the Workers runtime. It is not necessary to understand all the intricacies of the Environment API as an end user, but it is useful to have a high-level understanding.
 
@@ -35,7 +35,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./src/index.ts"
 }
 ```
@@ -44,7 +44,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./src/index.ts"
 ```
 
@@ -90,7 +90,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/#page","headline":"Vite Environments · Cloudflare Workers docs","description":"Vite environments and the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

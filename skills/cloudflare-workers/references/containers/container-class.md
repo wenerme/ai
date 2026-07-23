@@ -4,21 +4,21 @@ title: Container Interface
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Container Interface
+# Container Interface
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/container-class/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/container-class/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Container class ↗](https://github.com/cloudflare/containers) from [@cloudflare/containers ↗](https://www.npmjs.com/package/@cloudflare/containers) is the most common way to interact with container instances from a Worker.
 
 **`Container` extends [DurableObject](https://developers.cloudflare.com/durable-objects/api/base/).** The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM. Because your subclass is a Durable Object, you have access to the full Durable Object API — including [this.ctx.storage](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) for persistent SQLite-backed storage and [this.ctx.id](https://developers.cloudflare.com/durable-objects/api/id/) for the unique instance identifier. Use Durable Object storage to persist state that should survive container restarts, such as configuration, user data, or task results.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/containers
@@ -1109,7 +1109,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/container-class/#page","headline":"Container Interface · Cloudflare Containers docs","description":"API reference for the Container interface and utility functions","url":"https://developers.cloudflare.com/containers/container-class/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

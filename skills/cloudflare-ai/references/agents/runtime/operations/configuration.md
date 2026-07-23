@@ -4,15 +4,15 @@ title: Configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration
+# Configuration
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/operations/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers everything you need to configure agents for local development and production deployment, including Wrangler configuration file setup, type generation, environment variables, and the Cloudflare dashboard.
 
@@ -42,7 +42,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 	"name": "my-agent-app",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// Static assets (optional)
@@ -94,7 +94,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 name = "my-agent-app"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -667,7 +667,7 @@ When you deploy, Cloudflare automatically creates:
 
 Log in to the Cloudflare dashboard, then go to Durable Objects.
 
-[ Go to **Durable Objects** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
+[Go to **Durable Objects** ↗](https://dash.cloudflare.com/?to=/:account/workers/durable-objects)
 
 Here you can:
 
@@ -782,7 +782,7 @@ Define environments in the Wrangler configuration file:
 
 	// Base configuration (shared)
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
@@ -813,7 +813,7 @@ Define environments in the Wrangler configuration file:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -1059,17 +1059,17 @@ Consider converting to the declarative [exports](https://developers.cloudflare.c
 
 ## Next steps
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
-### [ Routing ](https://developers.cloudflare.com/agents/runtime/communication/routing/)
+### [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/)
 
- Route requests to your agent instances.
+Route requests to your agent instances.
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Background processing with delayed and cron-based tasks.
+Background processing with delayed and cron-based tasks.
 
 Was this helpful?
 
@@ -1077,7 +1077,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

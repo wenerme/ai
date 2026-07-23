@@ -4,15 +4,15 @@ title: Project Cybersafe Schools and CIPA
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Project Cybersafe Schools and CIPA
+# Project Cybersafe Schools and CIPA
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/cipa-overview/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/cybersafe/concepts/cipa-overview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Project Cybersafe Schools (PCS) grants eligible schools free access to Cloudflare’s Email security and Gateway products.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/cybersafe/concepts/cipa-overview/#page","headline":"Project Cybersafe Schools and CIPA · Cloudflare Learning Paths","description":"Learn about project cybersafe schools and cipa in this guide.","url":"https://developers.cloudflare.com/learning-paths/cybersafe/concepts/cipa-overview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

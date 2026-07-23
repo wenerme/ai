@@ -4,15 +4,15 @@ title: Configure auto-moves
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure auto-moves
+# Configure auto-moves
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/configure-auto-moves/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/configure-auto-moves/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To configure auto-move events:
 
@@ -35,7 +35,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/configure-auto-moves/#page","headline":"Configure auto-moves · Cloudflare Learning Paths","description":"Automate moving suspicious emails to folders.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/enable-auto-moves/configure-auto-moves/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

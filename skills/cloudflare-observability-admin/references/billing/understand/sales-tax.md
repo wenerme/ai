@@ -4,15 +4,15 @@ title: Sales tax
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sales tax
+# Sales tax
 
-Last updated May 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/understand/sales-tax/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/sales-tax/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To adhere to tax laws in specific geographies, Cloudflare collects sales tax on sales of our services based on your billing address.
 
@@ -109,7 +109,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/understand/sales-tax/#page","headline":"Sales tax · Cloudflare Billing docs","description":"Understand Cloudflare sales tax by region.","url":"https://developers.cloudflare.com/billing/understand/sales-tax/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

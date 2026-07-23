@@ -4,17 +4,17 @@ title: CASB
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  CASB
+# CASB
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/changelog/casb/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/changelog/casb/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/casb.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/casb.xml)
 
 ## 2026-05-19
 
@@ -220,7 +220,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/casb/#page","headline":"CASB Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare CASB.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/casb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

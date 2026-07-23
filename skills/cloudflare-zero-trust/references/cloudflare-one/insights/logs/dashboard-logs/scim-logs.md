@@ -4,15 +4,15 @@ title: SCIM provisioning logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  SCIM provisioning logs
+# SCIM provisioning logs
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 SCIM (System for Cross-domain Identity Management) activity logs allow administrators to audit how [SCIM provisioning](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/scim/) events in an identity provider (such as create, update, and delete) affect a user's identity and group membership in Zero Trust. You can compare your Zero Trust SCIM logs with your identity provider's SCIM logs to track how identity data is shared between the two services and pinpoint the source of any provisioning errors.
 
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/#page","headline":"SCIM provisioning logs · Cloudflare One docs","description":"Reference information for SCIM provisioning logs in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/scim-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SCIM"]}

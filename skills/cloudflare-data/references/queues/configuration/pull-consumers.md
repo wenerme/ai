@@ -4,15 +4,15 @@ title: Pull consumers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pull consumers
+# Pull consumers
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/configuration/pull-consumers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/configuration/pull-consumers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A pull-based consumer allows you to pull from a queue over HTTP from any environment and/or programming language outside of Cloudflare Workers. A pull-based consumer can be useful when your message consumption rate is limited by upstream infrastructure or long-running tasks.
 
@@ -342,7 +342,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/configuration/pull-consumers/#page","headline":"Cloudflare Queues - Pull consumers · Cloudflare Queues docs","description":"Pull messages from a Cloudflare Queue over HTTP from any environment or language.","url":"https://developers.cloudflare.com/queues/configuration/pull-consumers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

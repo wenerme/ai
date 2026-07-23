@@ -4,7 +4,7 @@ title: Grok 4.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
-#  Grok 4.5
+# Grok 4.5
 
- Text Generation • xAI
+Text Generation • xAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` xai/grok-4.5 `
+`xai/grok-4.5`
 
 * Third-party
 
 xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).
 
-| Model Info                                                                  |                                                                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 500,000 tokens                                                                                                  |
-| Terms and License                                                           | [link ↗](https://x.ai/legal/terms-of-service-enterprise)                                                        |
-| More information                                                            | [link ↗](https://docs.x.ai/developers/models/grok-4.5)                                                          |
-| Request formats                                                             | Chat Completions                                                                                                |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.5) |
+| Model Info                                                                 |                                                                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 500,000 tokens                                                                                                 |
+| Terms and License                                                          | [link ↗](https://x.ai/legal/terms-of-service-enterprise)                                                       |
+| More information                                                           | [link ↗](https://docs.x.ai/developers/models/grok-4.5)                                                         |
+| Request formats                                                            | Chat Completions                                                                                               |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.5) |
 
 ## Usage
 
@@ -125,7 +125,7 @@ These laws form the foundation of classical thermodynamics and constrain all mac
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -241,7 +241,7 @@ except json.JSONDecodeError as e:
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -369,7 +369,7 @@ Most people planning a fun road trip prefer the **coastal route** for the views 
 }
 ```
 
-**Coding with Low Reasoning Effort**  — Setting a lower reasoning effort for a fast, low-latency response
+**Coding with Low Reasoning Effort** — Setting a lower reasoning effort for a fast, low-latency response
 
 ```ts
 const response = await env.AI.run(
@@ -470,7 +470,7 @@ function median(a) {
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -9567,7 +9567,7 @@ This pattern (base case + recursive case that shrinks the problem) is the essenc
 ]
 ```
 
-**Image Understanding**  — Analyze an image supplied alongside a text prompt
+**Image Understanding** — Analyze an image supplied alongside a text prompt
 
 ```ts
 const response = await env.AI.run(
@@ -9666,7 +9666,7 @@ A smiling young woman with dark hair pulled back, wearing a blue knit sweater an
 }
 ```
 
-**Function Calling**  — Force the model to return a typed function call
+**Function Calling** — Force the model to return a typed function call
 
 ```ts
 const response = await env.AI.run(
@@ -9801,7 +9801,7 @@ I'll check the current temperature in San Francisco for you.
 }
 ```
 
-**Structured Output**  — Constrain the response to a JSON schema
+**Structured Output** — Constrain the response to a JSON schema
 
 ```ts
 const response = await env.AI.run(
@@ -10046,9 +10046,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -10056,7 +10056,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.5/#page","headline":"Grok 4.5 (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

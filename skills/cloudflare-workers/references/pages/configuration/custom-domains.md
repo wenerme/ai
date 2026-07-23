@@ -4,15 +4,15 @@ title: Custom domains
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Custom domains
+# Custom domains
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/custom-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When deploying your Pages project, you may wish to point custom domains (or subdomains) to your site.
 
@@ -21,7 +21,7 @@ When deploying your Pages project, you may wish to point custom domains (or subd
 To add a custom domain:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project > **Custom domains**.
 3. Select **Set up a domain**.
 4. Provide the domain that you would like to serve your Cloudflare Pages site on and select **Continue**.
@@ -62,12 +62,12 @@ To ensure a custom domain is added successfully, you must go through the [Add a 
 To detach a custom domain from your Pages project, you must modify your zone's DNS records.
 
 1. Go to the **DNS Records** page for your website in the Cloudflare dashboard.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Locate your Pages project's CNAME record.
 3. Select **Edit**.
 4. Select **Delete**.
 5. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 6. Select your Pages project.
 7. Go to **Custom domains**.
 8. Select the **three dot icon** next to your custom domain > **Remove domain**.
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/custom-domains/#page","headline":"Custom domains · Cloudflare Pages docs","description":"Add custom domains and subdomains to your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

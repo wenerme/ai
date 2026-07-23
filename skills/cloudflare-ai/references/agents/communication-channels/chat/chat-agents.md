@@ -4,15 +4,15 @@ title: Chat agents
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Chat agents
+# Chat agents
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI-powered chat interfaces with `AIChatAgent` and `useAgentChat`. Messages are automatically persisted to SQLite, streams resume on disconnect, and tool calls work across server and client.
 
@@ -2333,25 +2333,25 @@ If you are upgrading from an earlier version, replace deprecated calls with thei
 
 ## Next steps
 
-### [ Client SDK ](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
+### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
 
- useAgent hook and AgentClient class.
+useAgent hook and AgentClient class.
 
-### [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
+### [Human-in-the-loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
 
- Approval flows and manual intervention patterns.
+Approval flows and manual intervention patterns.
 
-### [ Build a chat agent ](https://developers.cloudflare.com/agents/examples/chat-agent/)
+### [Build a chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/)
 
- Step-by-step tutorial for building your first chat agent.
+Step-by-step tutorial for building your first chat agent.
 
-### [ Durable execution ](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
+### [Durable execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
 
- runFiber(), stash(), and crash recovery for long-running work.
+runFiber(), stash(), and crash recovery for long-running work.
 
-### [ Long-running agents ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/)
+### [Long-running agents](https://developers.cloudflare.com/agents/concepts/agentic-patterns/long-running-agents/)
 
- Lifecycle, recovery patterns, and provider-specific strategies.
+Lifecycle, recovery patterns, and provider-specific strategies.
 
 Was this helpful?
 
@@ -2359,7 +2359,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

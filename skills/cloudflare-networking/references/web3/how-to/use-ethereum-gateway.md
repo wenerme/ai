@@ -4,15 +4,15 @@ title: Use Ethereum gateway
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Ethereum gateway
+# Use Ethereum gateway
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once you have an Ethereum gateway — meaning that you [create a new gateway](https://developers.cloudflare.com/web3/how-to/manage-gateways/#create-a-gateway) with a `target` of **Ethereum** — you can interact with [different Ethereum networks](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-networks/) by specifying the correct JSON blob for your query.
 
@@ -136,7 +136,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/#page","headline":"Use Ethereum gateway · Cloudflare Web3 docs","description":"Send JSON-RPC requests through the Cloudflare Ethereum Gateway.","url":"https://developers.cloudflare.com/web3/how-to/use-ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}

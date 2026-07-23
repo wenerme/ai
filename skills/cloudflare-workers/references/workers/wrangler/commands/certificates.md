@@ -4,15 +4,15 @@ title: Certificates
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Certificates
+# Certificates
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/commands/certificates/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use these commands to manage certificates for mTLS connections.
 
@@ -30,7 +30,7 @@ These certificates can be used in [mtls\_certificate bindings](https://developer
 
 Upload an mTLS certificate
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler mtls-certificate upload
@@ -44,32 +44,32 @@ yarn wrangler mtls-certificate upload
 pnpm wrangler mtls-certificate upload
 ```
 
-* `--cert` ` string ` required
+* `--cert` `string` required
 The path to a certificate file (.pem) containing a chain of certificates to upload
-* `--key` ` string ` required
+* `--key` `string` required
 The path to a file containing the private key for your leaf certificate
-* `--name` ` string `
+* `--name` `string`
 The name for the certificate
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `upload` command to upload an mTLS certificate.
@@ -111,7 +111,7 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 List uploaded mTLS certificates
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler mtls-certificate list
@@ -127,23 +127,23 @@ pnpm wrangler mtls-certificate list
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `list` command to upload an mTLS certificate.
@@ -169,7 +169,7 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler mtls-certificate delete
@@ -183,30 +183,30 @@ yarn wrangler mtls-certificate delete
 pnpm wrangler mtls-certificate delete
 ```
 
-* `--id` ` string `
+* `--id` `string`
 The id of the mTLS certificate to delete
-* `--name` ` string `
+* `--name` `string`
 The name of the mTLS certificate record to delete
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `delete` command to delete an mTLS certificate.
@@ -234,7 +234,7 @@ These certificates can be used in Hyperdrive configurations, enabling them to pr
 
 Upload an mTLS certificate
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler cert upload mtls-certificate
@@ -248,32 +248,32 @@ yarn wrangler cert upload mtls-certificate
 pnpm wrangler cert upload mtls-certificate
 ```
 
-* `--cert` ` string ` required
+* `--cert` `string` required
 The path to a certificate file (.pem) containing a chain of certificates to upload
-* `--key` ` string ` required
+* `--key` `string` required
 The path to a file containing the private key for your leaf certificate
-* `--name` ` string `
+* `--name` `string`
 The name for the certificate
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `upload` command to upload an mTLS certificate.
@@ -296,7 +296,7 @@ Note that the certificate and private keys must be in separate (typically `.pem`
 
 Upload a CA certificate chain
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler cert upload certificate-authority
@@ -310,30 +310,30 @@ yarn wrangler cert upload certificate-authority
 pnpm wrangler cert upload certificate-authority
 ```
 
-* `--name` ` string `
+* `--name` `string`
 The name for the certificate
-* `--ca-cert` ` string ` required
+* `--ca-cert` `string` required
 The path to a certificate file (.pem) containing a chain of CA certificates to upload
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `upload` command to upload an CA certificate.
@@ -354,7 +354,7 @@ Expires: 1/01/2025
 
 List uploaded mTLS certificates
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler cert list
@@ -370,23 +370,23 @@ pnpm wrangler cert list
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `list` command to upload an mTLS or CA certificate.
@@ -412,7 +412,7 @@ Expires: 1/01/2025
 
 Delete an mTLS certificate
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler cert delete
@@ -426,30 +426,30 @@ yarn wrangler cert delete
 pnpm wrangler cert delete
 ```
 
-* `--id` ` string `
+* `--id` `string`
 The id of the mTLS certificate to delete
-* `--name` ` string `
+* `--name` `string`
 The name of the mTLS certificate record to delete
 
 Global flags
 
-* `--v` ` boolean ` alias: --version
+* `--v` `boolean` alias: --version
 Show version number
-* `--cwd` ` string `
+* `--cwd` `string`
 Run as if Wrangler was started in the specified directory instead of the current working directory
-* `--config` ` string ` alias: --c
+* `--config` `string` alias: --c
 Path to Wrangler configuration file
-* `--env` ` string ` alias: --e
+* `--env` `string` alias: --e
 Environment to use for operations, and for selecting .env and .dev.vars files
-* `--env-file` ` string `
+* `--env-file` `string`
 Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-* `--experimental-provision` ` boolean ` aliases: --x-provision default: true
+* `--experimental-provision` `boolean` aliases: --x-provisiondefault: true
 Experimental: Enable automatic resource provisioning
-* `--experimental-auto-create` ` boolean ` alias: --x-auto-create default: true
+* `--experimental-auto-create` `boolean` alias: --x-auto-createdefault: true
 Automatically provision draft bindings with new resources
-* `--install-skills` ` boolean ` default: false
+* `--install-skills` `boolean` default: false
 Install Cloudflare skills for detected AI coding agents before running the command
-* `--profile` ` string `
+* `--profile` `string`
 Use a specific auth profile
 
 The following is an example of using the `delete` command to delete an mTLS or CA certificate.
@@ -471,7 +471,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/#page","headline":"Certificates · Cloudflare Workers docs","description":"Wrangler commands for managing mTLS and CA certificates, for use standalone or with Hyperdrive.","url":"https://developers.cloudflare.com/workers/wrangler/commands/certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

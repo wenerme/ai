@@ -4,15 +4,15 @@ title: Furukawa Electric FITELnet
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Furukawa Electric FITELnet
+# Furukawa Electric FITELnet
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial describes how to configure the Furukawa Electric's FITELnet F220 and F70 devices to connect to Cloudflare WAN (formerly Magic WAN) via IPsec (Internet Protocol Security) tunnels. The use cases described in this tutorial are for both east-west (branch to branch) and north-south (Internet-bound).
 
@@ -285,7 +285,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/#page","headline":"Furukawa Electric FITELnet · Cloudflare WAN docs","description":"Connect Furukawa Electric FITELnet to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/fitelnet/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

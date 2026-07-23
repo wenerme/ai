@@ -4,15 +4,15 @@ title: Set up rewrite rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up rewrite rules
+# Set up rewrite rules
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use Transform Rules to rewrite URLs for every image that you transform through Images.
 
@@ -25,7 +25,7 @@ This page covers examples for the following scenarios:
 To create a rule:
 
 1. In the Cloudflare dashboard, go to the **Rules Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** next to **URL Rewrite Rules**.
 
 ## Before you start
@@ -118,7 +118,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/#page","headline":"Serve images from custom paths · Cloudflare Images docs","description":"Use Transform Rules to rewrite URLs for Cloudflare Images transformations and serve images from custom paths.","url":"https://developers.cloudflare.com/images/optimization/transformations/rewrite-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

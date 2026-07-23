@@ -4,15 +4,15 @@ title: Environments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Environments
+# Environments
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/reference/environments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/reference/environments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Environments provide isolated spaces where your code runs with specific dependencies and configurations. This can be useful for a number of reasons, such as compatibility testing or version management. Using different environments can help with code consistency, testing, and production segregation, which reduces the risk of errors when deploying code.
 
@@ -124,7 +124,7 @@ KV-backed Durable Objects support remote development using the dashboard playgro
 To start remote development:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select an existing Worker.
 3. Select the **Edit code** icon located on the upper-right of the screen.
 
@@ -138,7 +138,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/reference/environments/#page","headline":"Environments · Cloudflare Durable Objects docs","description":"Configure Durable Object bindings across Wrangler environments for staging, production, and custom deployments.","url":"https://developers.cloudflare.com/durable-objects/reference/environments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

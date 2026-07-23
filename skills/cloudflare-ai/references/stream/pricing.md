@@ -4,15 +4,15 @@ title: Pricing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pricing
+# Pricing
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Media Transformations is now GA:
 
@@ -33,7 +33,7 @@ Ingress (sending your content to us) and encoding are always free. Bandwidth is 
 
 Storage is a prepaid pricing dimension purchased in increments of $5 per 1,000 minutes stored, regardless of file size. You can check how much storage you have and how much you have used on the **Stream** page of the Cloudflare dashboard.
 
-[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 
 Storage is consumed by:
 
@@ -61,7 +61,7 @@ Enterprise customers _may_ continue to upload new content beyond their contracte
 
 Delivery is a post-paid, usage-based pricing dimension billed at $1 per 1,000 minutes delivered. You can check how much delivery you have used on the **Billing** page or the Stream **Analytics** page of the Cloudflare dashboard.
 
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/analytics)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/stream/analytics)
 
 Delivery is counted for the following uses:
 
@@ -128,7 +128,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/pricing/#page","headline":"Pricing · Cloudflare Stream docs","description":"Cloudflare Stream pricing for minutes of video stored and minutes of video delivered.","url":"https://developers.cloudflare.com/stream/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

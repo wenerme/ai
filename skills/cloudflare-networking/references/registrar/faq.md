@@ -4,15 +4,15 @@ title: FAQ
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  FAQ
+# FAQ
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) to explore more resources.
 
@@ -67,7 +67,7 @@ Once you initiate a domain transfer, your previous registrar has five days to re
 
 To see the progress of your transfer, go to the **Transfer domains** page in the Cloudflare dashboard to see a list of domain transfers that are in progress.
 
-[ Go to **Transfer domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
+[Go to **Transfer domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
 
 To accelerate the process, be sure to check with your old registrar how you can approve the transfer out.
 
@@ -231,7 +231,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/faq/#page","headline":"FAQ · Cloudflare Registrar docs","description":"Answers to common questions.","url":"https://developers.cloudflare.com/registrar/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

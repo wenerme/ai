@@ -4,15 +4,15 @@ title: Validation backoff schedule
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Validation backoff schedule
+# Validation backoff schedule
 
-Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Domain control validation (DCV) has to happen before a certificate authority (CA) will issue a certificate for a domain. If DCV fails during issuance or renewal, Cloudflare automatically retries it on a schedule.
 
@@ -191,7 +191,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/#page","headline":"Validation backoff schedule · Cloudflare SSL/TLS docs","description":"Consider what happens if a domain control validation (DCV) fails and what schedule Cloudflare follows for new attempts and backoff.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

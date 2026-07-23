@@ -4,19 +4,19 @@ title: Client-side security
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Client-side security
+# Client-side security
 
-Last updated Jul 14, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Ensures the safety and privacy of your website visitors' browsing environment.
 
- Available on all plans
+Available on all plans
 
 Websites load third-party scripts for analytics, ads, chat widgets, and payment forms. If an attacker compromises one of these scripts, they can steal visitor data directly from the browser, an attack known as a [client-side supply chain attack ↗](https://www.cloudflare.com/learning/security/what-is-a-supply-chain-attack/). Client-side security (formerly Page Shield) gives you visibility into these resources and alerts you when something changes or looks malicious.
 
@@ -32,37 +32,37 @@ Learn how to [get started](https://developers.cloudflare.com/client-side-securit
 
 Displays information about client-side resources loaded in your domain's pages.
 
- Monitor client-side resources
+Monitor client-side resources
 
 [Page attribution](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details)
 
 Find in which page a resource first appeared, and view a list of the latest occurrences of the resource in your pages.
 
- Find resource occurrences
+Find resource occurrences
 
 [Malicious script detection](https://developers.cloudflare.com/client-side-security/detection/review-malicious-scripts/)
 
 Detects malicious scripts in your pages using threat intelligence and machine learning.
 
- Review malicious scripts
+Review malicious scripts
 
 [Code change detection](https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/)
 
 Detects any changes in the scripts loaded in your pages.
 
- Review changed scripts
+Review changed scripts
 
 [Alerts](https://developers.cloudflare.com/client-side-security/alerts/)
 
 Receive notifications about newly detected scripts, scripts loaded from unknown domains, new scripts considered malicious, or code changes in your existing scripts.
 
- Use Alerts
+Use Alerts
 
 [Content security rules](https://developers.cloudflare.com/client-side-security/rules/)
 
 Content security rules define allowed resources on your websites. Use content security rules to enforce an allowlist of resources, effectively blocking resources not included in your rules.
 
- Use Content security rules
+Use Content security rules
 
 ## Availability
 
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/client-side-security/#page","headline":"Overview · Client-side security docs","description":"Cloudflare's client-side security is a comprehensive client-side security and privacy solution that allows you to ensure the safety of your website visitors' browsing environment.","url":"https://developers.cloudflare.com/client-side-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

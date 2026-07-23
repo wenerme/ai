@@ -4,15 +4,15 @@ title: CORS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  CORS
+# CORS
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cross-Origin Resource Sharing ([CORS ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) is a mechanism that uses HTTP headers to grant a web application running on one origin permission to reach selected resources in a different origin. The web application executes a cross-origin HTTP request when it requests a resource that has a different origin from its own, including domain, protocol, or port.
 
@@ -134,7 +134,7 @@ Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/acc
 
 Open a terminal and run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- authentication-worker
@@ -216,7 +216,7 @@ npx wrangler deploy
 ### 4\. Configure the Worker
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your newly created Worker.
 3. In the **Triggers** tab, go to **Routes** and add `example.com/api/*`. The Worker is placed on a subpath of `example.com` to avoid making a cross-origin request.
 4. In the **Settings** tab, select **Variables**.
@@ -253,7 +253,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/#page","headline":"CORS · Cloudflare One docs","description":"CORS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS"]}

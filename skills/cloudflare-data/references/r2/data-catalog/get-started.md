@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/data-catalog/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
@@ -47,7 +47,7 @@ npx wrangler r2 bucket catalog enable r2-data-catalog-tutorial
 When you run this command, take note of the **Warehouse** and **Catalog URI**. You will need these later.
 
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
-[ Go to **R2 Data Catalog** ↗ ](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
+[Go to **R2 Data Catalog** ↗](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
 2. Select **Create catalog**.
 3. Enter the bucket name `r2-data-catalog-tutorial`. Since this bucket does not exist yet, the wizard will create it for you. Optionally choose a location hint.
 4. Enter the bucket name `r2-data-catalog-tutorial`. The wizard creates the bucket automatically if it does not already exist. Optionally choose a location hint.
@@ -59,7 +59,7 @@ When you run this command, take note of the **Warehouse** and **Catalog URI**. Y
 Iceberg clients (including [PyIceberg ↗](https://py.iceberg.apache.org/)) must authenticate to the catalog with an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) that has both R2 and catalog permissions.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Manage API tokens**.
 3. Select **Create API token**.
 4. Select the **R2 Token** text to edit your API token name.
@@ -200,13 +200,13 @@ In the Python notebook above, you:
 
 ## Learn more
 
-### [ Managing catalogs ](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
+### [Managing catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
 
- Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
+Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
 
-### [ Connect to Iceberg engines ](https://developers.cloudflare.com/r2/data-catalog/config-examples/)
+### [Connect to Iceberg engines](https://developers.cloudflare.com/r2/data-catalog/config-examples/)
 
- Find detailed setup instructions for Apache Spark and other common query engines.
+Find detailed setup instructions for Apache Spark and other common query engines.
 
 Was this helpful?
 
@@ -214,7 +214,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/get-started/#page","headline":"Getting started · Cloudflare R2 docs","description":"Learn how to enable the R2 Data Catalog on your bucket, load sample data, and run your first query.","url":"https://developers.cloudflare.com/r2/data-catalog/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

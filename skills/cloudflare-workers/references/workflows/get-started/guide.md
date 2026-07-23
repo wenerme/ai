@@ -4,15 +4,15 @@ title: Build your first Workflow
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build your first Workflow
+# Build your first Workflow
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/get-started/guide/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/get-started/guide/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workflows allow you to build durable, multi-step applications using the Workers platform. A Workflow can automatically retry, persist state, run for hours or days, and coordinate between third-party APIs.
 
@@ -50,7 +50,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 ## 1\. Create a new Worker project
 
 1. Open a terminal and run the `create cloudflare` (C3) CLI tool to create your Worker project:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- my-workflow
 ```
@@ -129,7 +129,7 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 	"name": "my-workflow",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"observability": {
 		"enabled": true
 	},
@@ -147,7 +147,7 @@ For more guidance on how to define your Workflow logic, refer to [Rules of Workf
 name = "my-workflow"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 [observability]
 enabled = true
 [[workflows]]
@@ -163,7 +163,7 @@ If you want the same Workflow to run automatically on a recurring interval, add 
   "name": "my-workflow",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "workflows": [
     {
       "name": "my-workflow",
@@ -179,7 +179,7 @@ If you want the same Workflow to run automatically on a recurring interval, add 
 name = "my-workflow"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 [[workflows]]
 name = "my-workflow"
 binding = "MY_WORKFLOW"
@@ -258,21 +258,21 @@ The output of `instances describe` shows:
 
 ## Learn more
 
-### [ Events and parameters ](https://developers.cloudflare.com/workflows/build/events-and-parameters/)
+### [Events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/)
 
- Pass data to Workflows and pause for external events with waitForEvent.
+Pass data to Workflows and pause for external events with waitForEvent.
 
-### [ Sleeping and retrying ](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/)
+### [Sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/)
 
- Configure retry behavior and sleep patterns.
+Configure retry behavior and sleep patterns.
 
-### [ Workers API ](https://developers.cloudflare.com/workflows/build/workers-api/)
+### [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/)
 
- Explore the full Workflows API for programmatic control.
+Explore the full Workflows API for programmatic control.
 
-### [ Rules of Workflows ](https://developers.cloudflare.com/workflows/build/rules-of-workflows/)
+### [Rules of Workflows](https://developers.cloudflare.com/workflows/build/rules-of-workflows/)
 
- Understand the programming model and best practices.
+Understand the programming model and best practices.
 
 Was this helpful?
 
@@ -280,7 +280,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/guide/#page","headline":"Build your first Workflow · Cloudflare Workflows docs","description":"Create and deploy your first Cloudflare Workflow with durable, multi-step execution on the Workers platform.","url":"https://developers.cloudflare.com/workflows/get-started/guide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

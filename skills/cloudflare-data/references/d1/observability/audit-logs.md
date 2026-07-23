@@ -4,15 +4,15 @@ title: Audit Logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Audit Logs
+# Audit Logs
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/observability/audit-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/observability/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/) provide a comprehensive summary of changes made within your Cloudflare account, including those made to D1 databases. This functionality is available on all plan types, free of charge, and is always enabled.
 
@@ -20,7 +20,7 @@ Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://deve
 
 To view audit logs for your D1 databases, go to the **Audit Logs** page.
 
-[ Go to **Audit logs** ↗ ](https://dash.cloudflare.com/?to=/:account/audit-log)
+[Go to **Audit logs** ↗](https://dash.cloudflare.com/?to=/:account/audit-log)
 
 For more information on how to access and use audit logs, refer to [Review audit logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/audit-logs/#page","headline":"Audit Logs · Cloudflare D1 docs","description":"Review audit log entries for configuration changes made to your D1 databases.","url":"https://developers.cloudflare.com/d1/observability/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Digital experience
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Digital experience
+# Digital experience
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/dex/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Digital Experience Monitoring (DEX) provides visibility into device, network, and application performance across your Zero Trust organization.
 
@@ -57,15 +57,15 @@ For help resolving common issues with Digital Experience Monitoring, refer to [T
 
 Review all available documentation for DEX capabilities.
 
-* [ Device monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/)
-* [ Synthetic tests ](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/)
-* [ Rules ](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/)
-* [ Diagnostics ](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/)
-* [ Notifications ](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/)
-* [ IP visibility ](https://developers.cloudflare.com/cloudflare-one/insights/dex/ip-visibility/)
-* [ DEX MCP server ](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/)
-* [ Troubleshoot Digital Experience Monitoring ](https://developers.cloudflare.com/cloudflare-one/insights/dex/troubleshooting/)
-* [ MCP server ](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis)
+* [Device monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/)
+* [Synthetic tests](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/)
+* [Rules](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/)
+* [Diagnostics](https://developers.cloudflare.com/cloudflare-one/insights/dex/diagnostics/)
+* [Notifications](https://developers.cloudflare.com/cloudflare-one/insights/dex/notifications/)
+* [IP visibility](https://developers.cloudflare.com/cloudflare-one/insights/dex/ip-visibility/)
+* [DEX MCP server](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/)
+* [Troubleshoot Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/troubleshooting/)
+* [MCP server](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dex-analysis)
 
 Was this helpful?
 
@@ -73,7 +73,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/#page","headline":"Digital experience · Cloudflare One docs","description":"Digital experience resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Manage IRR entries
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage IRR entries
+# Manage IRR entries
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You must keep your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) entries up to date so that it is public information that Cloudflare has permission to advertise your prefix or prefixes, and to ensure that your traffic can be properly routed on the Internet.
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/#page","headline":"Manage IRR entries · Cloudflare BYOIP docs","description":"Create and maintain IRR entries for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/concepts/irr-entries/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

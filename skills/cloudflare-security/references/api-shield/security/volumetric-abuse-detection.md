@@ -4,15 +4,15 @@ title: Volumetric Abuse Detection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Volumetric Abuse Detection
+# Volumetric Abuse Detection
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Volumetric Abuse Detection generates per-endpoint, per-session rate limit recommendations that adjust automatically as your traffic patterns change.
 
@@ -131,7 +131,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#page","headline":"Volumetric Abuse Detection · Cloudflare API Shield docs","description":"Set up adaptive, per-session rate limiting for API endpoints with Volumetric Abuse Detection.","url":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,23 +4,23 @@ title: SaaS platforms
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  SaaS platforms
+# SaaS platforms
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/saas/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build multi-tenant platforms with custom domains, isolated compute, and per-customer configuration. Cloudflare SSL for SaaS provisions and renews SSL certificates for every customer hostname. Workers for Platforms runs customer code in isolated V8 environments. D1, KV, and R2 provide per-tenant data storage. Workers Analytics Engine and Logpush track usage for billing and compliance.
 
-* [ Customer domains with SSL for SaaS ](https://developers.cloudflare.com/use-cases/saas/custom-domains/)
-* [ Enable customer code deployment ](https://developers.cloudflare.com/use-cases/saas/code-deployment/)
-* [ Store and isolate customer data ](https://developers.cloudflare.com/use-cases/saas/data-isolation/)
-* [ Protect your platform ](https://developers.cloudflare.com/use-cases/saas/protect-platform/)
-* [ Observe customer usage and billing ](https://developers.cloudflare.com/use-cases/saas/usage-analytics/)
+* [Customer domains with SSL for SaaS](https://developers.cloudflare.com/use-cases/saas/custom-domains/)
+* [Enable customer code deployment](https://developers.cloudflare.com/use-cases/saas/code-deployment/)
+* [Store and isolate customer data](https://developers.cloudflare.com/use-cases/saas/data-isolation/)
+* [Protect your platform](https://developers.cloudflare.com/use-cases/saas/protect-platform/)
+* [Observe customer usage and billing](https://developers.cloudflare.com/use-cases/saas/usage-analytics/)
 
 ## Architecture patterns
 
@@ -69,15 +69,15 @@ Combine custom domains, tenant compute, and isolated storage:
 
 ## Related resources
 
-### [ SSL for SaaS documentation ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)
+### [SSL for SaaS documentation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)
 
 Complete documentation for managing custom hostnames and certificates.
 
-### [ Workers for Platforms ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)
+### [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/)
 
 Let customers deploy their own code on your platform.
 
-### [ SaaS case studies ](https://www.cloudflare.com/case-studies/)
+### [SaaS case studies](https://www.cloudflare.com/case-studies/)
 
 Explore how SaaS companies build on Cloudflare.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/saas/#page","headline":"SaaS platforms · Use cases · Cloudflare use cases","description":"Build multi-tenant SaaS platforms with Cloudflare SSL for SaaS, Workers for Platforms, and per-tenant storage.","url":"https://developers.cloudflare.com/use-cases/saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

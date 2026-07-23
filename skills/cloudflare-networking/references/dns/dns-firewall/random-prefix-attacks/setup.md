@@ -4,15 +4,15 @@ title: Setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Setup
+# Setup
 
-Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In order to enable automatic mitigation of [random prefix attacks](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/):
 
@@ -20,7 +20,7 @@ In order to enable automatic mitigation of [random prefix attacks](https://devel
 2. Enable attack mitigation on your DNS Firewall cluster.
 
   1. In the Cloudflare dashboard, go to the **DNS Firewall Clusters** page.
-  [ Go to **Clusters** ↗ ](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
+  [Go to **Clusters** ↗](https://dash.cloudflare.com/?to=/:account/dns-firewall/clusters)
   2. Select the cluster you want to update, then select **Edit**.
   3. Turn on **Attack mitigation** and choose whether Cloudflare should only mitigate attacks when the upstream is unhealthy.
   4. Select **Save**.
@@ -52,7 +52,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/setup/#page","headline":"Protect against random prefix attacks · Cloudflare DNS docs","description":"Enable automatic mitigation of random prefix attacks in the Cloudflare dashboard or via the API.","url":"https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: whisper-large-v3-turbo
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  whisper-large-v3-turbo
+# whisper-large-v3-turbo
 
- Automatic Speech Recognition • OpenAI
+Automatic Speech Recognition • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-large-v3-turbo/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-large-v3-turbo/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/openai/whisper-large-v3-turbo `
+`@cf/openai/whisper-large-v3-turbo`
 
 * Cloudflare-hosted
 * Batch
@@ -102,9 +102,9 @@ vtt
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-large-v3-turbo/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-large-v3-turbo/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-large-v3-turbo/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/openai/whisper-large-v3-turbo/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-large-v3-turbo/#page","headline":"whisper-large-v3-turbo (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"Whisper is a pre-trained model for automatic speech recognition (ASR) and speech translation.","url":"https://developers.cloudflare.com/ai/models/%40cf/openai/whisper-large-v3-turbo/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

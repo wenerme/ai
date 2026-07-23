@@ -4,15 +4,15 @@ title: Environment variables and secrets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Environment variables and secrets
+# Environment variables and secrets
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/environment-variables/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -71,7 +71,7 @@ SECRET_TOKEN="my-local-secret-token"
 3. Run your `dev` command
 
 **Wrangler**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler dev
 ```
@@ -83,7 +83,7 @@ pnpm wrangler dev
 ```
 
 **Vite plugin**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx vite dev
 ```
@@ -108,7 +108,7 @@ SECRET_TOKEN="staging-token"
 3. Specify the environment when running the `dev` command:
 
 **Wrangler**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npx wrangler dev --env staging
 ```
@@ -120,7 +120,7 @@ pnpm wrangler dev --env staging
 ```
 
 **Vite plugin**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 CLOUDFLARE_ENV=staging npx vite dev
 ```
@@ -145,7 +145,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/environment-variables/#page","headline":"Environment variables and secrets · Cloudflare Workers docs","description":"Configuring environment variables and secrets for local development","url":"https://developers.cloudflare.com/workers/local-development/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

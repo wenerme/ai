@@ -4,15 +4,15 @@ title: Attack coverage
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Attack coverage
+# Attack coverage
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [DDoS Attack Protection managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/) provide protection against a variety of DDoS attacks across L3/4 (layers 3/4) and L7 of the OSI model. Cloudflare constantly updates these managed rulesets to improve the attack coverage, increase the mitigation consistency, cover new and emerging threats, and ensure cost-efficient mitigations.
 
@@ -41,7 +41,7 @@ The following table includes a sample of covered attack vectors:
 
 The Network-layer DDoS Attack Protection managed ruleset provides protection against some types of DNS attacks.
 
-Magic Transit customers have access to [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/)  Beta . Other customers might consider the following options:
+Magic Transit customers have access to [Advanced DNS Protection](https://developers.cloudflare.com/ddos-protection/advanced-ddos-systems/overview/advanced-dns-protection/) Beta. Other customers might consider the following options:
 
 * Use Cloudflare as your authoritative DNS provider ([primary DNS](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [secondary DNS](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/)).
 * If you are running your own nameservers, use [DNS Firewall](https://developers.cloudflare.com/dns/dns-firewall/) to get additional protection against DNS attacks like random prefix attacks.
@@ -58,7 +58,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/about/attack-coverage/#page","headline":"DDoS attack coverage · Cloudflare DDoS Protection docs","description":"DDoS attack types covered by Cloudflare managed rulesets at layers 3, 4, and 7.","url":"https://developers.cloudflare.com/ddos-protection/about/attack-coverage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

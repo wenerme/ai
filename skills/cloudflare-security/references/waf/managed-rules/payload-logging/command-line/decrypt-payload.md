@@ -4,15 +4,15 @@ title: Decrypt the payload content
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Decrypt the payload content
+# Decrypt the payload content
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the `matched-data-cli` tool to decrypt a payload in the command line.
 
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/#page","headline":"Decrypt the payload content in the command line · Cloudflare Web Application Firewall (WAF) docs","description":"Decrypt matched rule payloads using the command-line tool.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/command-line/decrypt-payload/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI","Logging"]}

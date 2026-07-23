@@ -4,15 +4,15 @@ title: Workers Binding API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers Binding API
+# Workers Binding API
 
-Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC bindings provide APIs for accessing private services from your Worker. Both [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) and [VPC Networks](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/) expose a `fetch()` method for HTTP traffic. VPC Networks also expose a `connect()` method for raw TCP connections. The difference between binding types is in routing scope, not in API surface.
 
@@ -200,7 +200,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/api/#page","headline":"Workers Binding API · Cloudflare Workers VPC","description":"API reference for VPC Service and VPC Network bindings in Workers.","url":"https://developers.cloudflare.com/workers-vpc/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

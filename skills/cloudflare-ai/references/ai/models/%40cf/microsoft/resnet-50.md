@@ -4,7 +4,7 @@ title: resnet-50
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Microsoft logo](https://developers.cloudflare.com/_astro/microsoft.LujcDJ--.svg)
 
-#  resnet-50
+# resnet-50
 
- Image Classification • Microsoft
+Image Classification • Microsoft
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/microsoft/resnet-50/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/microsoft/resnet-50/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/microsoft/resnet-50 `
+`@cf/microsoft/resnet-50`
 
 * Cloudflare-hosted
 
@@ -55,9 +55,9 @@ items
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/microsoft/resnet-50/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -65,7 +65,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/microsoft/resnet-50/#page","headline":"resnet-50 (Microsoft) · Cloudflare AI docs · Cloudflare AI docs","description":"50 layers deep image classification CNN trained on more than 1M images from ImageNet","url":"https://developers.cloudflare.com/ai/models/%40cf/microsoft/resnet-50/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

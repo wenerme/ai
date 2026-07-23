@@ -1,16 +1,18 @@
 ---
-title: Transform videos
 description: Optimize and manipulate videos stored outside Cloudflare Stream with Media Transformations.
-image: https://developers.cloudflare.com/dev-products-preview.png
+title: Transform videos
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
 # Transform videos
+
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/transform-videos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Media Transformations is now GA:
 
@@ -29,7 +31,7 @@ Cloudflare will automatically cache every transformed video or image on our glob
 To enable transformations on your zone:
 
 1. In the Cloudflare dashboard, go to the **Transformations** page.
-[ Go to **Transformations** ](https://dash.cloudflare.com/?to=/:account/stream/video-transformations)
+[Go to **Transformations** ↗](https://dash.cloudflare.com/?to=/:account/stream/video-transformations)
 2. Locate the specific zone where you want to enable transformations.
 3. Select **Enable** for the zone.
 
@@ -156,7 +158,14 @@ After November 1st, 2025, Media Transformations and Image Transformations will u
 * Each unique transformation, as determined by input and unique combination of flags, is only billed once per calendar month.
 * All Media and Image Transformations cost $0.50 per 1,000 monthly unique transformation operations, with a free monthly allocation of 5,000.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/#page","headline":"Transform videos · Cloudflare Stream docs","description":"Optimize and manipulate videos stored outside Cloudflare Stream with Media Transformations.","url":"https://developers.cloudflare.com/stream/transform-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/dev-products-preview.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/stream/","name":"Stream"}},{"@type":"ListItem","position":3,"item":{"@id":"/stream/transform-videos/","name":"Transform videos"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/#page","headline":"Transform videos · Cloudflare Stream docs","description":"Optimize and manipulate videos stored outside Cloudflare Stream with Media Transformations.","url":"https://developers.cloudflare.com/stream/transform-videos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

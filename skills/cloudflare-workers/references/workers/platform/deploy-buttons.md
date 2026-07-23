@@ -4,15 +4,15 @@ title: Deploy to Cloudflare buttons
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy to Cloudflare buttons
+# Deploy to Cloudflare buttons
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/deploy-buttons/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/deploy-buttons/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you're building a Workers application and would like to share it with other developers, you can embed a Deploy to Cloudflare button in your README, blog post, or documentation to enable others to quickly deploy your application on their own Cloudflare account. Deploy to Cloudflare buttons eliminate the need for complex setup, allowing developers to get started with your public GitHub or GitLab repository in just a few clicks.
 
@@ -67,7 +67,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
   "name": "my-worker",
   "main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
   "vars": {
     "API_HOST": "https://example.com",
   },
@@ -78,7 +78,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [vars]
 API_HOST = "https://example.com"
@@ -97,7 +97,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
   "name": "my-worker",
   "main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"secrets_store_secrets": [
 		{
 			"binding": "API_KEY",
@@ -112,7 +112,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[secrets_store_secrets]]
 binding = "API_KEY"
@@ -174,8 +174,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons · Cloudflare Workers docs","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons · Cloudflare Workers docs","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

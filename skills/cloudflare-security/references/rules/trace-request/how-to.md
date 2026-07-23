@@ -4,15 +4,15 @@ title: Use Cloudflare Trace
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Cloudflare Trace
+# Use Cloudflare Trace
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/trace-request/how-to/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/trace-request/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Use Trace in the dashboard
 
@@ -24,7 +24,7 @@ Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://deve
 ### 2\. Build a trace
 
 1. In the Cloudflare dashboard, go to the **Trace** page.
-[ Go to **Trace** ↗ ](https://dash.cloudflare.com/?to=/:account/trace)
+[Go to **Trace** ↗](https://dash.cloudflare.com/?to=/:account/trace)
 2. Enter a URL to trace. The URL must include a hostname that belongs to your account.
 3. Select an HTTP method. If you select _POST_, _PUT_, or _PATCH_, you should enter a value in **Request Body**.
 4. (Optional) Define any custom request properties to simulate the conditions of a specific HTTP/S request. You can customize the following request properties:
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/trace-request/how-to/#page","headline":"How to - Cloudflare Trace · Cloudflare Rules docs","description":"Learn how to use Cloudflare Trace in the dashboard and with the API.","url":"https://developers.cloudflare.com/rules/trace-request/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

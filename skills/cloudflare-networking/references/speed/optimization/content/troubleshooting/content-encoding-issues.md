@@ -4,15 +4,15 @@ title: Content encoding issues
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Content encoding issues
+# Content encoding issues
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you are noticing any encoding errors with your HTML pages, we recommend verifying that the impacted pages are explicitly setting the correct charset in the `Content-Type` header from your origin for all text/html pages, for example `Content-Type: text/html; charset=utf-8`. This is particularly important if you are not using [UTF-8 encoding standard ↗](https://en.wikipedia.org/wiki/UTF-8) for characters. Alternatively you can set the correct charset within the HTML.
 
@@ -34,7 +34,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/#page","headline":"Content encoding issues · Cloudflare Speed docs","description":"Fix content encoding mismatches with compression settings.","url":"https://developers.cloudflare.com/speed/optimization/content/troubleshooting/content-encoding-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}

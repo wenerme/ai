@@ -4,15 +4,15 @@ title: Browser integration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Browser integration
+# Browser integration
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/browser/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/browser/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `@cloudflare/codemode/browser` when your browser owns the tools that the model must orchestrate. For example, these tools might read page state, access browser APIs, or update data held by your application.
 
@@ -26,7 +26,7 @@ This integration does not give an agent control of a remote browser. To inspect 
 
 Install the package in your client application:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/codemode
@@ -298,7 +298,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/browser/#page","headline":"Browser integration · Cloudflare Agents docs","description":"Run model-generated code against browser-owned tools with the Code Mode iframe executor and an Agent chat UI.","url":"https://developers.cloudflare.com/agents/tools/codemode/browser/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

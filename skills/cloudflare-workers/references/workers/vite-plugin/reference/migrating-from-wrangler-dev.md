@@ -4,15 +4,15 @@ title: Migrating from wrangler dev
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrating from wrangler dev
+# Migrating from wrangler dev
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In most cases, migrating from [wrangler dev](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) is straightforward and you can follow the instructions in [Get started](https://developers.cloudflare.com/workers/vite-plugin/get-started/). There are a few key differences to highlight:
 
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/#page","headline":"Migrating from wrangler dev · Cloudflare Workers docs","description":"Migrating from wrangler dev to the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/migrating-from-wrangler-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

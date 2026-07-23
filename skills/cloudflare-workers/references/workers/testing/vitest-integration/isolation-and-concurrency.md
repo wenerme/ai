@@ -4,15 +4,15 @@ title: Isolation and concurrency
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Isolation and concurrency
+# Isolation and concurrency
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.
 
@@ -53,7 +53,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 { "name": "test",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21"
+	"compatibility_date": "2026-07-22"
 	# no nodejs_compat flags here
 }
 ```
@@ -62,7 +62,7 @@ The Wrangler configuration file does not specify either `nodejs_compat` or `node
 name = "test"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 In our `src/index.ts` file, we use the `process` object, which is a Node.js global, unavailable in the Workerd runtime:
@@ -105,7 +105,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/#page","headline":"Isolation and concurrency · Cloudflare Workers docs","description":"Review how the Workers Vitest integration runs your tests, how it isolates tests from each other, and how it imports modules.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

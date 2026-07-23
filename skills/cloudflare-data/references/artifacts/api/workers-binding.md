@@ -4,15 +4,15 @@ title: Workers binding
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers binding
+# Workers binding
 
-Last updated Jun 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/api/workers-binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/api/workers-binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Artifacts Workers binding to create, import, inspect, fork, and delete repos directly from your Worker. The Artifacts binding returns repo handles that allow repo-scoped operations such as token management and forking.
 
@@ -61,11 +61,11 @@ Use namespace methods on `env.ARTIFACTS` to create, list, inspect, import, or de
 
 ### `create(name, opts?)`
 
-* `name` ` RepoName `required
-* `opts.readOnly` ` boolean `optional
-* `opts.description` ` string `optional
-* `opts.setDefaultBranch` ` string `optional
-* Returns ` Promise<ArtifactsCreateRepoResult> `
+* `name` `RepoName`required
+* `opts.readOnly` `boolean`optional
+* `opts.description` `string`optional
+* `opts.setDefaultBranch` `string`optional
+* Returns `Promise<ArtifactsCreateRepoResult>`
 
 `create()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save these values if you need them later.
 
@@ -105,8 +105,8 @@ async function createRepo(artifacts: Artifacts) {
 
 ### `get(name)`
 
-* `name` ` RepoName `required
-* Returns ` Promise<ArtifactsRepo> `
+* `name` `RepoName`required
+* Returns `Promise<ArtifactsRepo>`
 * Throws if the repo does not exist or is not ready yet.
 
 `get()` returns a handle to an existing repo. Use the handle to call async methods on the repo, such as `createToken()`, `listTokens()`, `revokeToken()`, and `fork()`.
@@ -129,9 +129,9 @@ async function getRepoHandle(artifacts: Artifacts) {
 
 ### `list(opts?)`
 
-* `opts.limit` ` number `optional
-* `opts.cursor` ` Cursor `optional
-* Returns ` Promise<ArtifactsRepoListResult> `
+* `opts.limit` `number`optional
+* `opts.cursor` `Cursor`optional
+* Returns `Promise<ArtifactsRepoListResult>`
 
 ```js
 async function listRepos(artifacts) {
@@ -167,13 +167,13 @@ Each listed repo includes a `status` value of `ready`, `importing`, or `forking`
 
 Import a repository from an external git remote.
 
-* `params.source.url` ` string `required — HTTPS URL of the source repository.
-* `params.source.branch` ` string `optional — Branch to import (defaults to the remote's default branch).
-* `params.source.depth` ` number `optional — Shallow clone depth.
-* `params.target.name` ` RepoName `required — Name for the imported repo.
-* `params.target.opts.description` ` string `optional
-* `params.target.opts.readOnly` ` boolean `optional
-* Returns ` Promise<ArtifactsCreateRepoResult> `
+* `params.source.url` `string`required — HTTPS URL of the source repository.
+* `params.source.branch` `string`optional — Branch to import (defaults to the remote's default branch).
+* `params.source.depth` `number`optional — Shallow clone depth.
+* `params.target.name` `RepoName`required — Name for the imported repo.
+* `params.target.opts.description` `string`optional
+* `params.target.opts.readOnly` `boolean`optional
+* Returns `Promise<ArtifactsCreateRepoResult>`
 
 `import()` returns repo metadata including `name`, `remote`, `defaultBranch`, and an initial token. Save the `remote` and `name` values if you need them later.
 
@@ -219,8 +219,8 @@ async function importFromGitHub(artifacts: Artifacts) {
 
 ### `delete(name)`
 
-* `name` ` RepoName `required
-* Returns ` Promise<boolean> `
+* `name` `RepoName`required
+* Returns `Promise<boolean>`
 
 ```js
 async function deleteRepo(artifacts) {
@@ -240,9 +240,9 @@ Call `await artifacts.get(name)` to get a repo handle. Use the handle to call as
 
 ### `createToken(scope?, ttl?)`
 
-* `scope` ` "read" | "write" `optional (default: "write")
-* `ttl` ` number `optional (seconds)
-* Returns ` Promise<ArtifactsCreateTokenResult> `
+* `scope` `"read" | "write"`optional (default: "write")
+* `ttl` `number`optional (seconds)
+* Returns `Promise<ArtifactsCreateTokenResult>`
 
 ```js
 async function mintReadToken(artifacts) {
@@ -262,7 +262,7 @@ Unlike `create()` and `import()`, `repo.createToken()` returns a structured resu
 
 ### `listTokens()`
 
-* Returns ` Promise<ArtifactsTokenListResult> `
+* Returns `Promise<ArtifactsTokenListResult>`
 
 ```js
 async function listRepoTokens(artifacts) {
@@ -288,8 +288,8 @@ async function listRepoTokens(artifacts: Artifacts) {
 
 ### `revokeToken(tokenOrId)`
 
-* `tokenOrId` ` string `required
-* Returns ` Promise<boolean> `
+* `tokenOrId` `string`required
+* Returns `Promise<boolean>`
 
 ```js
 async function revokeToken(artifacts, tokenOrId) {
@@ -307,11 +307,11 @@ async function revokeToken(artifacts: Artifacts, tokenOrId: string) {
 
 ### `fork(name, opts?)`
 
-* `name` ` RepoName `required
-* `opts.description` ` string `optional
-* `opts.readOnly` ` boolean `optional
-* `opts.defaultBranchOnly` ` boolean `optional
-* Returns ` Promise<ArtifactsCreateRepoResult> `
+* `name` `RepoName`required
+* `opts.description` `string`optional
+* `opts.readOnly` `boolean`optional
+* `opts.defaultBranchOnly` `boolean`optional
+* Returns `Promise<ArtifactsCreateRepoResult>`
 
 `fork()` returns metadata for the new repo. Save the `remote` and `name` values if you need them later.
 
@@ -343,10 +343,10 @@ async function forkRepo(artifacts: Artifacts) {
 
 ### `log(opts?)`
 
-* `opts.ref` ` string `optional — Branch, tag, or commit hash.
-* `opts.limit` ` number `optional
-* `opts.offset` ` number `optional
-* Returns ` Promise<ArtifactsLogResult> `
+* `opts.ref` `string`optional — Branch, tag, or commit hash.
+* `opts.limit` `number`optional
+* `opts.offset` `number`optional
+* Returns `Promise<ArtifactsLogResult>`
 
 ```js
 async function readCommitHistory(artifacts) {
@@ -366,8 +366,8 @@ async function readCommitHistory(artifacts: Artifacts) {
 
 ### `readCommit(hash)`
 
-* `hash` ` string `required — Commit SHA-1 hash.
-* Returns ` Promise<ArtifactsCommit> `
+* `hash` `string`required — Commit SHA-1 hash.
+* Returns `Promise<ArtifactsCommit>`
 
 ```js
 async function readCommit(artifacts, hash) {
@@ -385,8 +385,8 @@ async function readCommit(artifacts: Artifacts, hash: string) {
 
 ### `readTree(hash)`
 
-* `hash` ` string `required — Tree SHA-1 hash.
-* Returns ` Promise<ArtifactsTree> `
+* `hash` `string`required — Tree SHA-1 hash.
+* Returns `Promise<ArtifactsTree>`
 
 ```js
 async function readTree(artifacts, hash) {
@@ -474,17 +474,17 @@ Run `npx wrangler types` in your own project and treat the generated `worker-con
 
 ## Next steps
 
-### [ REST API ](https://developers.cloudflare.com/artifacts/api/rest-api/)
+### [REST API](https://developers.cloudflare.com/artifacts/api/rest-api/)
 
- Compare the binding methods with the underlying HTTP routes.
+Compare the binding methods with the underlying HTTP routes.
 
-### [ Get started with Workers ](https://developers.cloudflare.com/artifacts/get-started/workers/)
+### [Get started with Workers](https://developers.cloudflare.com/artifacts/get-started/workers/)
 
- Use the binding in a full Worker project from local development through deploy.
+Use the binding in a full Worker project from local development through deploy.
 
-### [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/)
+### [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/)
 
- Use repo remotes and tokens with standard git-over-HTTPS clients.
+Use repo remotes and tokens with standard git-over-HTTPS clients.
 
 Was this helpful?
 
@@ -492,7 +492,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/workers-binding/#page","headline":"Workers binding · Artifacts · Cloudflare Artifacts docs","description":"Call Artifacts from a Worker binding.","url":"https://developers.cloudflare.com/artifacts/api/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

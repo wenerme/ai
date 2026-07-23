@@ -4,15 +4,15 @@ title: Schedule tasks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Schedule tasks
+# Schedule tasks
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Schedule tasks to run in the future — whether that is seconds from now, at a specific date/time, or on a recurring cron schedule. Scheduled tasks survive agent restarts and are persisted to SQLite.
 
@@ -1244,21 +1244,21 @@ dispose2(); // Now the agent can go idle
 
 ## Next steps
 
-### [ Push notifications ](https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/)
+### [Push notifications](https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/)
 
- Send browser push notifications using scheduling and web-push.
+Send browser push notifications using scheduling and web-push.
 
-### [ Queue tasks ](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)
+### [Queue tasks](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)
 
- Immediate background task processing.
+Immediate background task processing.
 
-### [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
- Durable multi-step background processing.
+Durable multi-step background processing.
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
 Was this helpful?
 
@@ -1266,7 +1266,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/#page","headline":"Schedule tasks · Cloudflare Agents docs","description":"Schedule delayed, date-based, cron, and interval tasks on Agents with persistent SQLite-backed execution.","url":"https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

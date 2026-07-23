@@ -4,7 +4,7 @@ title: mistral-7b-instruct-v0.2-lora
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,32 +12,32 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)
 
-#  mistral-7b-instruct-v0.2-lora
+# mistral-7b-instruct-v0.2-lora
 
- Beta
+Beta
 
- Text Generation • MistralAI
+Text Generation • MistralAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/mistral/mistral-7b-instruct-v0.2-lora `
+`@cf/mistral/mistral-7b-instruct-v0.2-lora`
 
 * Cloudflare-hosted
 * LoRA
 
 The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2.
 
-| Model Info                                                                  |               |
-| --------------------------------------------------------------------------- | ------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 15,000 tokens |
-| LoRA                                                                        | Yes           |
-| Beta                                                                        | Yes           |
+| Model Info                                                                 |               |
+| -------------------------------------------------------------------------- | ------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 15,000 tokens |
+| LoRA                                                                       | Yes           |
+| Beta                                                                       | Yes           |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/mistral/mistral-7b-instruct-v0.2-lora)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/mistral/mistral-7b-instruct-v0.2-lora)
 
 ## Usage
 
@@ -126,7 +126,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -186,7 +186,7 @@ presence\_penalty
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -200,7 +200,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -212,13 +212,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -226,7 +226,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/#page","headline":"mistral-7b-instruct-v0.2-lora (MistralAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2.","url":"https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2-lora/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

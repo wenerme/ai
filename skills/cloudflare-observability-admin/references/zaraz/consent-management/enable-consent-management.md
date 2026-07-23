@@ -4,18 +4,18 @@ title: Enable Consent Management
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Consent Management
+# Enable Consent Management
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/consent-management/enable-consent-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/consent-management/enable-consent-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 1. In the Cloudflare dashboard, go to the **Consent** page.
-[ Go to **Consent** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/consent)
+[Go to **Consent** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/consent)
 2. Turn on **Enable Consent Management**.
 3. In **Consent modal text** fill in any legal information required in your country. Use HTML code to format your information as you would in any other HTML editor.
 4. Under **Purposes**, select **Add new Purpose**. Give your new purpose a name and a description. Purposes are the reasons for using third-party tools in your website.
@@ -29,7 +29,7 @@ Your Consent Management platform is ready. Your website should now display a mod
 In your Zaraz consent settings, you can add your consent modal text and purposes in various languages.
 
 1. In the Cloudflare dashboard, go to the **Consent** page.
-[ Go to **Consent** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/consent)
+[Go to **Consent** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/consent)
 2. Select a default language of your choice. The default setting is English.
 3. In **Consent modal text** and **Purposes**, you can select different languages and add translations.
 
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/consent-management/enable-consent-management/#page","headline":"Enable the Consent Management platform (CMP) · Cloudflare Zaraz docs","description":"Enable and configure Zaraz Consent Management.","url":"https://developers.cloudflare.com/zaraz/consent-management/enable-consent-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

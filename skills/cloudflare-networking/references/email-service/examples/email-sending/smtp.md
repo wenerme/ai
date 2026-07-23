@@ -4,17 +4,17 @@ title: Send email over SMTP
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Send email over SMTP
+# Send email over SMTP
 
 Send transactional emails over Cloudflare Email Service SMTP using curl, Nodemailer, Python smtplib, or PHPMailer.
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-sending/smtp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send transactional emails over Cloudflare Email Service [authenticated SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) (`smtp.mx.cloudflare.net:465`) from any SMTP-capable language or client.
 
@@ -209,7 +209,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/#page","headline":"Send email over SMTP · Cloudflare Email Service docs","description":"Send transactional emails through Cloudflare Email Service authenticated SMTP from curl, Node.js, Python, or PHP.","url":"https://developers.cloudflare.com/email-service/examples/email-sending/smtp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

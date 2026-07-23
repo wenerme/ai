@@ -4,15 +4,15 @@ title: Synthetic tests
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Synthetic tests
+# Synthetic tests
 
-Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With Digital Experience Monitoring (DEX), you can test if your devices can connect to a private or public endpoint through the Cloudflare One Client. Tests allow you to monitor availability for a given application and investigate performance issues reported by your end users.
 
@@ -20,9 +20,9 @@ DEX tests will only run when the Cloudflare One Client is turned on, whereas [fl
 
 To control which users or groups run a test, use [DEX rules](https://developers.cloudflare.com/cloudflare-one/insights/dex/rules/).
 
-* [ HTTP test ](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/)
-* [ Traceroute test ](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/)
-* [ View test results ](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/)
+* [HTTP test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/http/)
+* [Traceroute test](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/)
+* [View test results](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/view-results/)
 
 ## Export DEX application test logs
 
@@ -34,7 +34,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/#page","headline":"Synthetic tests · Cloudflare One docs","description":"Synthetic tests resources and guides for Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

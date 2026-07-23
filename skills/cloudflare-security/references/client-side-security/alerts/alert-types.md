@@ -4,15 +4,15 @@ title: Alert types
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Alert types
+# Alert types
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/alerts/alert-types/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/alerts/alert-types/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure alerts for resources detected in your domain. Refer to [Alerts](https://developers.cloudflare.com/client-side-security/alerts/) for more information.
 
@@ -192,7 +192,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/alerts/alert-types/#page","headline":"Alert types · Client-side security docs","description":"Available alert types for client-side resource detection, including new and malicious scripts.","url":"https://developers.cloudflare.com/client-side-security/alerts/alert-types/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Bot Detection Alerts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bot Detection Alerts
+# Bot Detection Alerts
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/reference/alerts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bot alerts inform you when Cloudflare detects spikes in your traffic with any of the following characteristics:
 
@@ -75,7 +75,7 @@ Alerts with grouping could cause potential noise if you set them up for a high-t
 To receive Bot alerts, you must [configure a notification](https://developers.cloudflare.com/notifications/get-started/). Notifications help you stay up to date with your Cloudflare account through email, PagerDuty, or webhooks, depending on your Cloudflare plan.
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Select **Bot Management** from the Product list.
 4. Choose one of the available bot detection alerts (depending on whether you want to set up custom filters and/or grouping):
@@ -127,7 +127,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/alerts/#page","headline":"Bot Detection Alerts · Cloudflare bot solutions docs","description":"Set up notifications for spikes in bot traffic on your domain.","url":"https://developers.cloudflare.com/bots/reference/alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

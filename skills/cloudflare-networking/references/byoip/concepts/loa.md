@@ -4,15 +4,15 @@ title: Letter of Agency
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Letter of Agency
+# Letter of Agency
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/concepts/loa/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/concepts/loa/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Letter of Agency (LOA), sometimes referred to as a Letter of Authorization, is a document that authorizes Cloudflare to announce your IP prefixes on your behalf. Cloudflare's transit providers — the upstream networks that Cloudflare peers with to exchange routing information — require an LOA before they will accept the routes Cloudflare advertises for you.
 
@@ -75,7 +75,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/loa/#page","headline":"Letter of Agency (LOA) · Cloudflare BYOIP docs","description":"Letter of Agency requirements for onboarding IP prefixes to Cloudflare.","url":"https://developers.cloudflare.com/byoip/concepts/loa/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

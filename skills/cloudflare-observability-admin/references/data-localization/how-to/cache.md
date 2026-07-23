@@ -4,15 +4,15 @@ title: Cache
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cache
+# Cache
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/how-to/cache/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/cache/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections describe how to configure Cache with Regional Services and Customer Metadata Boundary to control where cached content is stored and served from.
 
@@ -21,7 +21,7 @@ The following sections describe how to configure Cache with Regional Services an
 To configure Regional Services for hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and ensure that [eligible assets](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/) are cached only in-region, follow these steps for the dashboard or API configuration:
 
 1. In the Cloudflare dashboard, go to the **Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Follow these steps to [create a DNS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 3. From the **Region** dropdown, select the region you would like to use on your domain.
 4. Select **Save**.
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/cache/#page","headline":"Cache · Cloudflare Data Localization Suite docs","description":"Configure Cache with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}

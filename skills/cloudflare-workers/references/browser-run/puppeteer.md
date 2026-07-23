@@ -4,15 +4,15 @@ title: Puppeteer
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Puppeteer
+# Puppeteer
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/puppeteer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Puppeteer ↗](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
 
@@ -22,7 +22,7 @@ The Workers team forked a version of Puppeteer and patched it to connect to the 
 
 Our version is open sourced and can be found in [Cloudflare's fork of Puppeteer ↗](https://github.com/cloudflare/puppeteer). The npm can be installed from [npmjs ↗](https://www.npmjs.com/) as [@cloudflare/puppeteer ↗](https://www.npmjs.com/package/@cloudflare/puppeteer):
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D @cloudflare/puppeteer
@@ -234,7 +234,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer · Cloudflare Browser Run docs","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,19 +4,19 @@ title: React Router (formerly Remix)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  React Router (formerly Remix)
+# React Router (formerly Remix)
 
-Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Start from CLI**: Scaffold a full-stack app with [React Router v8 ↗](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-react-router-app --framework=react-router
@@ -42,7 +42,7 @@ Already have a React Router project?
 
 Run `wrangler deploy` in a project without a Wrangler configuration file and Wrangler will automatically detect React Router, generate the necessary configuration, and deploy your project.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -58,27 +58,27 @@ pnpm wrangler deploy
 
 Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
 
-React Router Detected
+React RouterDetected
 
 Generated configuration
 
 wrangler.jsonc
 
-main: build/server/index.js
+main:build/server/index.js
 
 wrangler.jsonc
 
-assets: directory: build/client
+assets:directory: build/client
 
 wrangler.jsonc
 
-compatibility\_flags: nodejs\_compat
+compatibility\_flags:nodejs\_compat
 
 wrangler.jsonc
 
-observability: enabled: true
+observability:enabled: true
 
-Workers Deployed
+WorkersDeployed
 
 Wrangler handles configuration automatically
 
@@ -89,7 +89,7 @@ Wrangler handles configuration automatically
 ## Creating a full-stack React Router app
 
 1. **Create a new project with the create-cloudflare CLI (C3)**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- my-react-router-app --framework=react-router
 ```
@@ -124,7 +124,7 @@ Below is a simplified file tree of the project.
   * If you want to add [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to resources on Cloudflare's developer platform, you configure them here.
 2. **Develop locally**
 After creating your project, run the following command in your project directory to start a local development server.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -139,7 +139,7 @@ This project uses React Router in combination with the [Cloudflare Vite plugin](
 3. **Deploy your project**
 Your project can be deployed to a `*.workers.dev` subdomain or a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your own machine or from any CI/CD system, including Cloudflare's own [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/).
 The following command will build and deploy your project. If you are using CI, ensure you update your ["deploy command"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration appropriately.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run deploy
 ```
@@ -247,9 +247,9 @@ export async function action({ context }: Route.ActionArgs) {
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-### [ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+### [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
 
- Access to compute, storage, AI and more.
+Access to compute, storage, AI and more.
 
 Was this helpful?
 
@@ -257,7 +257,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/#page","headline":"React Router (formerly Remix) · Cloudflare Workers docs","description":"Create a React Router application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}

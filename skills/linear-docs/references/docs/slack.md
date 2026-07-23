@@ -125,7 +125,7 @@ Project and initiative Slack channel notifications post updates to a specific Sl
 
 ### Personal notifications
 
-Set up personal Slack notifications from [_Settings > Personal > Notifications_](https://linear.app/knq/settings/account/notifications). Authenticate to Slack and then choose which notifications to receive.
+Set up personal Slack notifications from [_Settings > Personal > Notifications_](https://linear.app/settings/account/notifications). Authenticate to Slack and then choose which notifications to receive.
 
 Personal Slack notifications can send the same updates you normally receive in Inbox, email, or desktop push notifications. These notifications are sent in a direct message from the Linear app in Slack.
 

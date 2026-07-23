@@ -4,15 +4,15 @@ title: Enable DMARC Management
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dmarc-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable DMARC Management
+# Enable DMARC Management
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dmarc-management/enable/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dmarc-management/enable/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You need to enable DMARC Management to allow Cloudflare to process DMARC reports on your behalf. DMARC Management only works with apex domains (for example, `example.com`, not `blog.example.com`) and not domains in [subdomain setups](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
@@ -37,7 +37,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dmarc-management/enable/#page","headline":"Enable DMARC Management · Cloudflare DMARC Management docs","description":"Allow Cloudflare to process DMARC reports for your apex domain.","url":"https://developers.cloudflare.com/dmarc-management/enable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}

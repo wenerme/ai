@@ -4,15 +4,15 @@ title: Set up address maps
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up address maps
+# Set up address maps
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/address-maps/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/address-maps/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the sections below to learn how to set up address maps.
 
@@ -25,7 +25,7 @@ There is **no expected downtime** when setting up or updating your address maps.
 If you are using BYOIP, refer to the following steps. If you have [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/), Cloudflare creates an address map during the static IP onboarding process, meaning you may only [edit](#manage-address-maps) the Cloudflare-created map.
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
-[ Go to **Address maps** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
+[Go to **Address maps** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
 2. Select **Create an address map**.
 3. Choose the scope of the address map.
 4. Add the zones and IP addresses that you want to map.
@@ -69,7 +69,7 @@ A zone membership will take priority over an account membership.
 ## Manage address maps
 
 1. In the Cloudflare dashboard, go to the **Address Maps** page.
-[ Go to **Address maps** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
+[Go to **Address maps** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/proxy-ips)
 2. Go to your address map and select **Review**.
 3. Edit your address map.
 4. Review the information and select **Save**.
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/address-maps/setup/#page","headline":"Set up address maps · Cloudflare BYOIP docs","description":"Create and configure address maps for your IP prefixes.","url":"https://developers.cloudflare.com/byoip/address-maps/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}

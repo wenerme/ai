@@ -4,15 +4,15 @@ title: Troubleshooting a slow website
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting a slow website
+# Troubleshooting a slow website
 
-Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/troubleshooting/slow-website/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/troubleshooting/slow-website/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you identify and resolve performance issues affecting your website. It starts with basic diagnostics and progresses to advanced troubleshooting techniques.
 
@@ -79,7 +79,7 @@ RUM is particularly important as these metrics are captured from your actual vis
 ### Run a speed test
 
 1. Go to the Cloudflare dashboard.
-[ Go to **Observatory** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed)
+[Go to **Observatory** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed)
 2. Select **Observatory**.
 3. Enter the URL you want to test and select **Run test**.
 
@@ -141,7 +141,7 @@ If your website is slow, the issue may be at your origin server. Use Origin Anal
 In the Cloudflare dashboard:
 
 1. Go to **Speed** \> **Origin Analytics**.
-[ Go to **Origin Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/origin-analytics)
+[Go to **Origin Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/origin-analytics)
 2. Review the **Origin Response Time** metrics.
 3. Look for patterns in slow responses (specific paths, times of day, or geographic regions).
 
@@ -265,7 +265,7 @@ For a complete list, refer to [Cloudflare cache responses](https://developers.cl
 ### Use Cache Analytics
 
 1. Go to the Cloudflare dashboard.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching)
 2. Review the **Cache Performance** section.
 3. Filter by **Cache status equals MISS** or **DYNAMIC** to identify uncached content.
 
@@ -458,7 +458,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/#page","headline":"Troubleshooting a slow website · Cloudflare Speed docs","description":"Identify and resolve performance issues affecting your website.","url":"https://developers.cloudflare.com/speed/troubleshooting/slow-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

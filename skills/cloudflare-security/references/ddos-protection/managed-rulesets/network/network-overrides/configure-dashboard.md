@@ -4,15 +4,15 @@ title: Configure in the dashboard
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure in the dashboard
+# Configure in the dashboard
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure the Network-layer DDoS Attack Protection managed ruleset by defining [overrides](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/) in the Cloudflare dashboard. DDoS overrides allow you to customize the **action** and **sensitivity** of one or more rules in the managed ruleset.
 
@@ -23,7 +23,7 @@ For more information on the available parameters and allowed values, refer to [R
 ## Create a DDoS override
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to **Network-layer DDoS Protection**.
 3. Select **Deploy a DDoS override**.
 4. In **Set scope**, specify if you wish to apply the override to all incoming packets or to a subset of the packets.
@@ -50,7 +50,7 @@ Notes
 ### Delete a DDoS override
 
 1. In the Cloudflare dashboard, go to the **L3/4 DDoS protection** page.
-[ Go to **DDoS Managed Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
+[Go to **DDoS Managed Rules** ↗](https://dash.cloudflare.com/?to=/:account/network-security/ddos)
 2. Go to the **Network-layer DDoS Protection** tab.
 3. Select the override.
 4. Select **Delete deployment**.
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-dashboard/#page","headline":"Configure Network-layer DDoS Attack Protection in the dashboard · Cloudflare DDoS Protection docs","description":"Create Network-layer DDoS Attack Protection overrides in the dashboard.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/configure-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

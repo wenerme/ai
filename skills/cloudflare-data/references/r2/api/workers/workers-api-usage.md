@@ -4,15 +4,15 @@ title: Use R2 from Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use R2 from Workers
+# Use R2 from Workers
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Create a new application with C3
 
@@ -20,7 +20,7 @@ C3 (`create-cloudflare-cli`) is a command-line tool designed to help you set up 
 
 To get started, open a terminal window and run:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- r2-worker
@@ -413,7 +413,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/#page","headline":"Use R2 from Workers · Cloudflare R2 docs","description":"Bind an R2 bucket to a Worker and perform read, write, and list operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

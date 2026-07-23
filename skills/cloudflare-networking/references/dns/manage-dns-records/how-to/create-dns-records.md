@@ -4,15 +4,15 @@ title: Manage DNS records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage DNS records
+# Manage DNS records
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the sections below for step-by-step instructions on managing DNS records at Cloudflare.
 
@@ -31,7 +31,7 @@ If your domain is added to Cloudflare by a hosting partner, manage your DNS reco
 To create a DNS record in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Choose a record [**Type**](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/).
 4. Complete the required fields, which vary per record. Particularly important fields (for some records) include:
@@ -51,7 +51,7 @@ For specific API examples, refer to [DNS record types](https://developers.cloudf
 To edit DNS records in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. On a specific record, select **Edit**.
 3. Make any necessary changes.
 4. Select **Save**.
@@ -63,7 +63,7 @@ To update part of a record with the API, use a [PATCH request](https://developer
 To delete DNS records in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. On a specific record, select **Edit**.
 3. Select **Delete**.
 4. Select **Delete** again to confirm.
@@ -94,15 +94,15 @@ The address `192.0.2.0` comes from an IPv4 range reserved for documentation ([RF
 
 ## Further guidance
 
-* [ Manage DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)
-* [ Create zone apex record ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
-* [ Create subdomain records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
-* [ Set up email records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-* [ Import and export records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/)
-* [ Batch record changes ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/)
-* [ Dynamically update DNS records ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/)
-* [ Round-robin DNS ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/)
-* [ Delegate subdomains ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/)
+* [Manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/)
+* [Create zone apex record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/)
+* [Create subdomain records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-subdomain/)
+* [Set up email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
+* [Import and export records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/)
+* [Batch record changes](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/)
+* [Dynamically update DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/managing-dynamic-ip-addresses/)
+* [Round-robin DNS](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/)
+* [Delegate subdomains](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/)
 
 Was this helpful?
 
@@ -110,7 +110,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#page","headline":"Manage DNS records · Cloudflare DNS docs","description":"Create, edit, and delete DNS records for your zone.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

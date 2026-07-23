@@ -4,15 +4,15 @@ title: Glossary
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Glossary
+# Glossary
 
-Last updated Jun 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/glossary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/glossary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides a list of terms and concepts to help you understand Radar and the information shown.
 
@@ -312,7 +312,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/glossary/#page","headline":"Glossary · Cloudflare Radar docs","description":"Definitions of key terms and concepts used across Cloudflare Radar, including traffic types, attack categories, and ranking methodologies.","url":"https://developers.cloudflare.com/radar/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

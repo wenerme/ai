@@ -4,15 +4,15 @@ title: Infrastructure as Code (IaC)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Infrastructure as Code (IaC)
+# Infrastructure as Code (IaC)
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/infrastructure-as-code/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 While [Wrangler](https://developers.cloudflare.com/workers/wrangler/configuration) makes it easy to upload and manage Workers, there are times when you need a more programmatic approach. This could involve using Infrastructure as Code (IaC) tools or interacting directly with the [Workers API](https://developers.cloudflare.com/api/resources/workers/). Examples include build and deploy scripts, CI/CD pipelines, custom developer tools, and automated testing.
 
@@ -1086,7 +1086,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/#page","headline":"Infrastructure as Code (IaC) · Cloudflare Workers docs","description":"Deploy and manage Cloudflare Workers using Terraform, Pulumi, and the Cloudflare API SDKs.","url":"https://developers.cloudflare.com/workers/platform/infrastructure-as-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

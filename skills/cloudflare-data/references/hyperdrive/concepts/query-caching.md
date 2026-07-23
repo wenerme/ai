@@ -4,15 +4,15 @@ title: Query caching
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Query caching
+# Query caching
 
-Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive automatically caches cacheable read queries that your Worker sends to your database when query caching is turned on. This reduces database load and avoids a network round trip to your database for popular queries. Query caching is enabled by default.
 
@@ -218,7 +218,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/#page","headline":"Query caching · Cloudflare Hyperdrive docs","description":"Hyperdrive automatically caches read queries to reduce database load and improve performance.","url":"https://developers.cloudflare.com/hyperdrive/concepts/query-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

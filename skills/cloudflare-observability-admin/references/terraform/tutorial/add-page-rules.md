@@ -4,15 +4,15 @@ title: 5 – Add exceptions with Page Rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  5 – Add exceptions with Page Rules
+# 5 – Add exceptions with Page Rules
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/add-page-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/add-page-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the [Configure HTTPS settings](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/) tutorial, you configured zone settings that apply to all incoming requests for `example.com`. In this tutorial, you will add an exception to these settings using [Page Rules](https://developers.cloudflare.com/rules/page-rules/).
 
@@ -113,7 +113,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/add-page-rules/#page","headline":"Add exceptions with Page Rules · Cloudflare Terraform docs","description":"Page Rules let you override zone settings for specific URL patterns. Redirects old URLs with a 301 permanent redirect.","url":"https://developers.cloudflare.com/terraform/tutorial/add-page-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Log mode versus production mode
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Log mode versus production mode
+# Log mode versus production mode
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Security for Apps can operate in two distinct modes. Understanding the trade-offs between them helps you choose the right approach for your stage of deployment.
 
@@ -62,7 +62,7 @@ In log mode:
 ### Enable log mode
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Under **AI Security for Apps**, find the **Managed Ruleset** section.
 3. Enable the **AI Security Log Mode Ruleset**.
 4. Set the action to _Log_.
@@ -93,7 +93,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	}'
 ```
 
-The ID of the AI Security Log Mode Ruleset is ...d385e336 .
+The ID of the AI Security Log Mode Ruleset is ...d385e336.
 
 To set individual rule actions to `log`, override the rules within the managed ruleset using `action_parameters.overrides`. For more information, refer to [Override a managed ruleset](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/override-managed-ruleset/).
 
@@ -119,7 +119,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/#page","headline":"Log mode versus production mode · Cloudflare Web Application Firewall (WAF) docs","description":"Differences between log mode and production mode for AI security detections.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/log-mode-vs-production-mode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

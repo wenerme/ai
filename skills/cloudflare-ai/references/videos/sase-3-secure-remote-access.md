@@ -4,7 +4,7 @@ title: SASE - Secure remote access to your critical infrastructure
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn how Cloudflare's SASE platform can provide highly secure access to your critical infrastructure by leveraging a modern ZTNA service to implement Zero Trust principles Applications, databases and their servers are running in a variety of locations from on-premises data centers to cloud hyperscalers, making the need to secure administrative access more important than ever.
 
@@ -12,22 +12,22 @@ Chapters
 
 * ![Introduction to SASE and Securing Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction to SASE and Securing Access to Critical Infrastructure**  0s
+**Introduction to SASE and Securing Access to Critical Infrastructure**0s
 * ![Connecting and Securing Private Servers with Cloudflare Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=50s)
 
- **Connecting and Securing Private Servers with Cloudflare Tunnels**  50s
+**Connecting and Securing Private Servers with Cloudflare Tunnels**50s
 * ![Using Internal DNS to Securely Resolve Private Network Resources](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=132s)
 
- **Using Internal DNS to Securely Resolve Private Network Resources**  02m12s
+**Using Internal DNS to Securely Resolve Private Network Resources**02m12s
 * ![Connecting User Devices Securely with Cloudflare's Device Agent](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=181s)
 
- **Connecting User Devices Securely with Cloudflare's Device Agent**  03m01s
+**Connecting User Devices Securely with Cloudflare's Device Agent**03m01s
 * ![Enforcing Access Control with Identity, Network and Device Based Security Policies](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=228s)
 
- **Enforcing Access Control with Identity, Network and Device Based Security Policies**  03m48s
+**Enforcing Access Control with Identity, Network and Device Based Security Policies**03m48s
 * ![Auditing and Logging Access to Critical Infrastructure](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/f13b085ed4d28a9dbb8faf19ae986125/thumbnails/thumbnail.jpg?fit=crop&time=303s)
 
- **Auditing and Logging Access to Critical Infrastructure**  05m03s
+**Auditing and Logging Access to Critical Infrastructure**05m03s
 
 Transcript
 

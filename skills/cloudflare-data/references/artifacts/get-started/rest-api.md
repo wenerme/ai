@@ -4,15 +4,15 @@ title: REST API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  REST API
+# REST API
 
-Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/get-started/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/get-started/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create an Artifacts repo with the REST API, then use a regular Git client to push and pull content.
 
@@ -181,17 +181,17 @@ git clone "$ARTIFACTS_AUTH_REMOTE" artifacts-clone
 
 ## Next steps
 
-### [ REST API reference ](https://developers.cloudflare.com/artifacts/api/rest-api/)
+### [REST API reference](https://developers.cloudflare.com/artifacts/api/rest-api/)
 
- Review every repo and token endpoint with request and response examples.
+Review every repo and token endpoint with request and response examples.
 
-### [ Git client example ](https://developers.cloudflare.com/artifacts/examples/git-client/)
+### [Git client example](https://developers.cloudflare.com/artifacts/examples/git-client/)
 
- Use repo discovery and token minting with a standard Git client flow.
+Use repo discovery and token minting with a standard Git client flow.
 
-### [ Best practices ](https://developers.cloudflare.com/artifacts/concepts/best-practices/)
+### [Best practices](https://developers.cloudflare.com/artifacts/concepts/best-practices/)
 
- Use repo isolation, least-privilege tokens, and namespace separation effectively.
+Use repo isolation, least-privilege tokens, and namespace separation effectively.
 
 Was this helpful?
 
@@ -199,7 +199,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/rest-api/#page","headline":"Get started - REST API · Cloudflare Artifacts docs","description":"Create an Artifacts repo over HTTP.","url":"https://developers.cloudflare.com/artifacts/get-started/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Network policies
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network policies
+# Network policies
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -91,7 +91,7 @@ Policies with Allow actions allow network traffic to reach certain IPs or ports.
 | Destination IP | in       | 92.100.02.102  | And   | Allow  |
 | Email          | in       | \*@example.com |       |        |
 
-### Audit SSH  Deprecated
+### Audit SSH Deprecated
 
 API value: `audit_ssh`
 
@@ -554,7 +554,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#page","headline":"Network policies · Cloudflare One docs","description":"Configure Network policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}

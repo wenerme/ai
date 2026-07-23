@@ -4,15 +4,15 @@ title: Direct Upload
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Direct Upload
+# Direct Upload
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/get-started/direct-upload/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/get-started/direct-upload/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Direct Upload enables you to upload your prebuilt assets to Pages and deploy them to the Cloudflare global network. You should choose Direct Upload over Git integration if you want to [integrate your own build platform](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/) or upload from your local computer.
 
@@ -121,7 +121,7 @@ For step-by-step directions on how to use Wrangler and continuous integration to
 To deploy with drag and drop:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Get started** \> **Drag and drop your files**.
 3. Enter your project name in the provided field and drag and drop your assets.
 4. Select **Deploy site**.
@@ -167,7 +167,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/get-started/direct-upload/#page","headline":"Direct Upload · Cloudflare Pages docs","description":"Upload your prebuilt assets to Pages and deploy them via the Wrangler CLI or the Cloudflare dashboard.","url":"https://developers.cloudflare.com/pages/get-started/direct-upload/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

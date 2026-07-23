@@ -4,15 +4,15 @@ title: Monitoring API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Monitoring API
+# Monitoring API
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The **Zaraz Monitoring API** allows users to retrieve detailed data on Zaraz events through the **GraphQL Analytics API**. Using this API, you can monitor events, pageviews, triggers, actions, and server-side request statuses, including any errors and successes. The data available through the API mirrors what is shown on the Zaraz Monitoring page in the dashboard, but with the API, you can query it programmatically to create alerts and notifications for unexpected deviations.
 
@@ -203,7 +203,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/#page","headline":"Monitoring API · Cloudflare Zaraz docs","description":"Query Zaraz monitoring data with the GraphQL API.","url":"https://developers.cloudflare.com/zaraz/monitoring/monitoring-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

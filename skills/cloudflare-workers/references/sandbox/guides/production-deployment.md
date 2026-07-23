@@ -4,15 +4,15 @@ title: Deploy to production
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy to production
+# Deploy to production
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/production-deployment/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/production-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Only required for preview URLs
 
@@ -63,7 +63,7 @@ Add a wildcard route to your Wrangler configuration:
 	"name": "my-sandbox-app",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"routes": [
 		{
 			"pattern": "*.yourdomain.com/*",
@@ -78,7 +78,7 @@ Add a wildcard route to your Wrangler configuration:
 name = "my-sandbox-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[routes]]
 pattern = "*.yourdomain.com/*"
@@ -136,7 +136,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/production-deployment/#page","headline":"Deploy to production · Cloudflare Sandbox SDK docs","description":"Set up custom domains for preview URLs in production.","url":"https://developers.cloudflare.com/sandbox/guides/production-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

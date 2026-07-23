@@ -4,15 +4,15 @@ title: Date and Time functions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Date and Time functions
+# Date and Time functions
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## formatDateTime
 
@@ -49,7 +49,7 @@ now()
 
 Returns the current time as a DateTime.
 
-## today  New
+## today New
 
 Usage:
 
@@ -87,7 +87,7 @@ toDateTime('1981-04-12 12:00:04') -- string with datetime in 'YYYY-MM-DD hh:mm:s
 toDateTime('2022-12-01 16:17:00', 'America/New_York')
 ```
 
-## toYear  New
+## toYear New
 
 Usage:
 
@@ -104,7 +104,7 @@ Examples:
 toYear(toDateTime('2025-10-27 00:00:00'))
 ```
 
-## toMonth  New
+## toMonth New
 
 Usage:
 
@@ -121,7 +121,7 @@ Examples:
 toMonth(toDateTime('2025-10-27 00:00:00'))
 ```
 
-## toDayOfWeek  New
+## toDayOfWeek New
 
 Usage:
 
@@ -146,7 +146,7 @@ toDayOfWeek(toDateTime('2025-10-28 00:00:00'))
 toDayOfWeek(toDateTime('2025-11-02 00:00:00'))
 ```
 
-## toDayOfMonth  New
+## toDayOfMonth New
 
 Usage:
 
@@ -163,7 +163,7 @@ Examples:
 toDayOfMonth(toDateTime('2025-10-27 00:00:00'))
 ```
 
-## toHour  New
+## toHour New
 
 Usage:
 
@@ -180,7 +180,7 @@ Examples:
 toHour(toDateTime('2025-10-27 09:11:13'))
 ```
 
-## toMinute  New
+## toMinute New
 
 Usage:
 
@@ -197,7 +197,7 @@ Examples:
 toMinute(toDateTime('2025-10-27 09:11:13'))
 ```
 
-## toSecond  New
+## toSecond New
 
 Usage:
 
@@ -259,7 +259,7 @@ GROUP BY hour
 ORDER BY hour ASC
 ```
 
-## toStartOfYear  New
+## toStartOfYear New
 
 Usage:
 
@@ -276,7 +276,7 @@ Examples:
 toStartOfYear(toDateTime('2025-10-27 00:00:00'))
 ```
 
-## toStartOfMonth  New
+## toStartOfMonth New
 
 Usage:
 
@@ -293,7 +293,7 @@ Examples:
 toStartOfMonth(toDateTime('2025-10-27 00:00:00'))
 ```
 
-## toStartOfWeek  New
+## toStartOfWeek New
 
 Usage:
 
@@ -315,7 +315,7 @@ toStartOfWeek(toDateTime('2025-10-27 00:00:00'))
 toStartOfWeek(toDateTime('2025-10-29 00:00:00'))
 ```
 
-## toStartOfDay  New
+## toStartOfDay New
 
 Usage:
 
@@ -332,7 +332,7 @@ Examples:
 toStartOfDay(toDateTime('2025-10-27 00:00:00'))
 ```
 
-## toStartOfHour  New
+## toStartOfHour New
 
 Usage:
 
@@ -349,7 +349,7 @@ Examples:
 toStartOfHour(toDateTime('2025-10-27 16:55:25'))
 ```
 
-## toStartOfFifteenMinutes  New
+## toStartOfFifteenMinutes New
 
 Usage:
 
@@ -366,7 +366,7 @@ Examples:
 toStartOfFifteenMinutes(toDateTime('2025-10-27 16:55:25'))
 ```
 
-## toStartOfTenMinutes  New
+## toStartOfTenMinutes New
 
 Usage:
 
@@ -383,7 +383,7 @@ Examples:
 toStartOfTenMinutes(toDateTime('2025-10-27 16:55:25'))
 ```
 
-## toStartOfFiveMinutes  New
+## toStartOfFiveMinutes New
 
 Usage:
 
@@ -400,7 +400,7 @@ Examples:
 toStartOfFiveMinutes(toDateTime('2025-10-27 16:55:25'))
 ```
 
-## toStartOfMinute  New
+## toStartOfMinute New
 
 Usage:
 
@@ -417,7 +417,7 @@ Examples:
 toStartOfMinute(toDateTime('2025-10-27 16:55:25'))
 ```
 
-## toYYYYMM  New
+## toYYYYMM New
 
 Usage:
 
@@ -440,7 +440,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/#page","headline":"SQL Reference · Cloudflare Analytics docs","description":"Date and time SQL functions for Analytics Engine.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/date-time-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

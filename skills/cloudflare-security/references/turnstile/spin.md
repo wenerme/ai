@@ -4,15 +4,15 @@ title: Turnstile Spin
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Turnstile Spin
+# Turnstile Spin
 
-Last updated Jul 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/spin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/spin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile Spin is a setup flow for Cloudflare Turnstile. It creates the widget for you, then hands your AI coding agent the materials (sitekey, secret, and a curated prompt) to embed the widget on the right forms and wire canonical server-side siteverify into your existing backend. Spin runs three ways:
 
@@ -25,7 +25,7 @@ All three paths produce the same widget. The only difference is where the create
 ## Set up from the dashboard
 
 1. Go to the Turnstile dashboard.
-[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Set up with Spin** in the page header.
 3. Enter the domains your Turnstile widget should accept tokens from. The first chip is pre-filled from your account's first active Cloudflare zone. Add more domains, or remove the pre-filled one and type any domain (Turnstile does not require a Cloudflare-managed zone). `localhost` and `127.0.0.1` are added automatically for local development.
 4. Select **Set up**. Spin creates the widget and returns to a success card.
@@ -237,7 +237,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/spin/#page","headline":"Turnstile Spin · Cloudflare Turnstile docs","description":"Set up Turnstile end-to-end (widget + canonical server-side siteverify) from the Cloudflare dashboard or your AI coding agent.","url":"https://developers.cloudflare.com/turnstile/spin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

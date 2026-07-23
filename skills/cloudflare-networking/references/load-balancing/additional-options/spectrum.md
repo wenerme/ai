@@ -4,15 +4,15 @@ title: Spectrum
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Spectrum
+# Spectrum
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/spectrum/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure [Spectrum](https://developers.cloudflare.com/spectrum/) with Load Balancing to bring resiliency to your TCP or UDP based applications.
 
@@ -27,7 +27,7 @@ The exact settings will vary depending on your use case. Refer to the following 
 ### 1\. Configure your load balancer
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page.
-[ Go to **Load Balancing** ↗ ](https://dash.cloudflare.com/?to=/:account/load-balancing)
+[Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select an account where the Load Balancing add-on is [enabled](https://developers.cloudflare.com/load-balancing/get-started/enable-load-balancing/).
 3. Go to **Load Balancing** and select **Create load balancer**.
 4. On the **Load Balancer Setup**, select **Public load balancer**
@@ -58,7 +58,7 @@ The exact settings will vary depending on your use case. Refer to the following 
 ### 2\. Configure your Spectrum application
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Select **Create an Application**. If this is your first time using Spectrum, the **Create an Application** modal appears.
 3. Select your **[Application Type](https://developers.cloudflare.com/spectrum/reference/configuration-options/#application-type)**.
 4. Under **Domain**, enter the domain that will use Spectrum.
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/additional-options/spectrum/#page","headline":"Add load balancing to Spectrum applications · Cloudflare Load Balancing docs","description":"Use Load Balancing with Spectrum for TCP and UDP traffic.","url":"https://developers.cloudflare.com/load-balancing/additional-options/spectrum/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

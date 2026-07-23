@@ -4,15 +4,15 @@ title: Delegate subdomains
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Delegate subdomains
+# Delegate subdomains
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Subdomain delegation allows different individuals, teams, or organizations to manage different subdomains of a site.
 
@@ -41,7 +41,7 @@ To delegate a subdomain such as `blog.example.com`, tell DNS resolvers where to 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
 2. Select the domain that contains the subdomain to be delegated.
 3. Go to the **DNS Records** page.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 4. Create `NS` records for the subdomain. For example:
 
   * `blog.example.com NS ns1.externalhost.com`
@@ -91,7 +91,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/#page","headline":"Delegate subdomains · Cloudflare DNS docs","description":"Delegate subdomains to external DNS providers.","url":"https://developers.cloudflare.com/dns/manage-dns-records/how-to/subdomains-outside-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

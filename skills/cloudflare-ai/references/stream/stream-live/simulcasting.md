@@ -4,15 +4,15 @@ title: Simulcast (restream) videos
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Simulcast (restream) videos
+# Simulcast (restream) videos
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/simulcasting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/simulcasting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Simulcasting lets you forward your live stream to third-party platforms such as Twitch, YouTube, Facebook, Twitter, and more. You can simulcast to up to 50 concurrent destinations from each live input. To begin simulcasting, select an input and add one or more Outputs.
 
@@ -45,7 +45,7 @@ https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/live_inputs/<I
 You can enable and disable individual live outputs with either:
 
 * The **Live inputs** page of the Cloudflare dashboard.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 * [The API](https://developers.cloudflare.com/api/resources/stream/subresources/live%5Finputs/subresources/outputs/methods/update/)
 
 This allows you to:
@@ -61,7 +61,7 @@ By default, all live outputs are enabled.
 ### Enable outputs from the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Live inputs** page.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 2. Select an input from the list.
 3. Under **Outputs** \> **Enabled**, set the toggle to enabled or disabled.
 
@@ -82,7 +82,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/simulcasting/#page","headline":"Simulcast (restream) videos · Cloudflare Stream docs","description":"Forward Cloudflare Stream live broadcasts to third-party platforms like YouTube, Twitch, and Facebook.","url":"https://developers.cloudflare.com/stream/stream-live/simulcasting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

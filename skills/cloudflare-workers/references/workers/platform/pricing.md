@@ -4,15 +4,15 @@ title: Pricing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pricing
+# Pricing
 
-Last updated Jul 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/platform/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, users have access to the Workers Free plan. The Workers Free plan includes limited usage of Workers, Pages Functions, Workers KV and Hyperdrive. Read more about the [Free plan limits](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits).
 
@@ -127,13 +127,13 @@ Users on the Workers Paid plan have access to the Standard usage model. However,
 To change your default account-wide usage model:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Find **Usage Model** on the right-side menu > **Change**.
 
 Usage models may be changed at the individual Worker level:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker > **Settings** \> **Usage Model**.
 
 Existing Workers will not be impacted when changing the default usage model. You may change the usage model for individual Workers without affecting your account-wide default usage model.
@@ -469,7 +469,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing · Cloudflare Workers docs","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

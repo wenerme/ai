@@ -4,15 +4,15 @@ title: JSON objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  JSON objects
+# JSON objects
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page describes the JSON objects used in API requests creating or updating rulesets and their rules via Rulesets API, as well as the objects returned by the API.
 
@@ -47,31 +47,31 @@ For details on the properties of rules items in the `rules` array, refer to the 
 
 The ruleset object has the following properties:
 
-* `id` ` String `
+* `id` `String`
 
   * A 32-character UUIDv4 string that represents the unique Cloudflare-generated identifier for a given version of a ruleset.
   * Unique, read-only.
-* `name` ` String `
+* `name` `String`
 
   * A human-readable name for the ruleset.
   * The name is immutable. You cannot change the name over the lifetime of the ruleset.
-* `description` ` String `
+* `description` `String`
 
   * Optional description for the ruleset.
   * You can change the description over the lifetime of the ruleset.
-* `kind` ` String `
+* `kind` `String`
 
   * The kind of ruleset the JSON object represents.
   * One of `root`, `zone`, `managed`, `custom`.
   * `kind` is immutable.
-* `version` ` Integer `
+* `version` `Integer`
 
   * The version of the ruleset.
   * Read-only value starting at `1` and incremented by `1` each time the ruleset is modified.
-* `rules` ` Array<Rule> `
+* `rules` `Array<Rule>`
 
   * A list of rules to include in the ruleset. Refer to [Rule object structure and properties](#rule-object-structure-and-properties) for details.
-* `last_updated` ` Timestamp `
+* `last_updated` `Timestamp`
 
   * The time (UTC) when the ruleset was last updated in ISO 8601 format: `YYYY-MM-DDThh:mm:ss.TZD`.
   * Read-only.
@@ -99,43 +99,43 @@ A fully populated rule JSON object has the following structure:
 
 The JSON object properties for a rule are defined as follows:
 
-* `id` ` String `
+* `id` `String`
 
   * A 32-character UUIDv4 string that represents the unique Cloudflare-generated identifier for a given version of a rule.
   * Unique, read-only.
-* `version` ` Integer `
+* `version` `Integer`
 
   * The version of the rule.
   * Read-only value starting at `1` and incremented by `1` each time the rule is modified.
   * Changing the order of a rule in a ruleset does not change its version.
-* `ref` ` String `
+* `ref` `String`
 
   * A user-defined external identifier that must be unique for each rule in a ruleset.
   * Use this field in your Terraform configuration to prevent Terraform from recreating the rule on changes. Refer to [How to keep the same rule ID between modifications](https://developers.cloudflare.com/terraform/troubleshooting/rule-id-changes/#how-to-keep-the-same-rule-id-between-modifications) for more information.
-* `description` ` String `
+* `description` `String`
 
   * A descriptive name of the rule.
-* `action` ` String `
+* `action` `String`
 
   * Defines what happens when there is a match for the rule expression.
   * The available [actions](https://developers.cloudflare.com/ruleset-engine/rules-language/actions/) depend on the [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) where the rule's ruleset is executed.
-* `action_parameters` ` Object `
+* `action_parameters` `Object`
 
   * One or more parameters configuring the rule action.
   * The exact properties vary according to the action. Refer to each Cloudflare product's API instructions for more information.
-* `categories` ` Array<String> `
+* `categories` `Array<String>`
 
   * Tags associated with the current rule. You can define overrides that affect rules with a given tag.
   * Read-only. Only available in [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) and [DDoS managed rulesets](https://developers.cloudflare.com/ddos-protection/managed-rulesets/).
-* `expression` ` String `
+* `expression` `String`
 
   * Criteria defining when there is a match for the current rule.
   * The fields and functions you can use in a rule expression depend on the phase where the rule's ruleset is executed.
-* `last_updated` ` Timestamp `
+* `last_updated` `Timestamp`
 
   * The time (UTC) when the rule was last updated in ISO 8601 format: `YYYY-MM-DDThh:mm:ss.TZD`.
   * Read-only.
-* `enabled` ` Boolean `
+* `enabled` `Boolean`
 
   * When set to `true`, the current rule is enabled.
 
@@ -145,7 +145,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#page","headline":"JSON objects · Cloudflare Ruleset Engine docs","description":"JSON object structure for rulesets and rules in API requests.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}

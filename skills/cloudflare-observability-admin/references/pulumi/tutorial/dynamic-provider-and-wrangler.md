@@ -4,15 +4,15 @@ title: Create different resources using Pulumi and Wrangler
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pulumi/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create different resources using Pulumi and Wrangler
+# Create different resources using Pulumi and Wrangler
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example creates a zone and other resources using two different strategies:
 
@@ -350,7 +350,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/#page","headline":"Create different resources using Pulumi and Wrangler · Pulumi docs","description":"Pulumi and Wrangler can be used to create different types of resources.","url":"https://developers.cloudflare.com/pulumi/tutorial/dynamic-provider-and-wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

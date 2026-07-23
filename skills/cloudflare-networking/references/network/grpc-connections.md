@@ -4,15 +4,15 @@ title: gRPC connections
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  gRPC connections
+# gRPC connections
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network/grpc-connections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network/grpc-connections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers support for gRPC to protect your APIs on any [proxied gRPC endpoints](https://developers.cloudflare.com/dns/proxy-status/). The gRPC protocol helps build efficient APIs with smaller payloads for reduced bandwidth usage, decreased latency, and faster implementations.
 
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/grpc-connections/#page","headline":"gRPC connections · Cloudflare Network settings docs","description":"Protect gRPC APIs on proxied endpoints with Cloudflare.","url":"https://developers.cloudflare.com/network/grpc-connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -3,7 +3,7 @@ title: Videos
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 [**Application Security - Dashboard walkthrough**In this video, learn how to navigate the Cloudflare Application Security dashboard and how to use each page to monitor, investigate, and manage security protections.](https://developers.cloudflare.com/videos/app-sec-dashboard/)
 

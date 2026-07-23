@@ -4,15 +4,15 @@ title: Activate the Cloudflare WordPress plugin
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/automatic-platform-optimization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Activate the Cloudflare WordPress plugin
+# Activate the Cloudflare WordPress plugin
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you [change your nameservers](https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/), activate the Cloudflare WordPress plugin.
 
@@ -41,7 +41,7 @@ The Cloudflare APO WordPress plugin does not support multisite WordPress install
 ## Purchase APO
 
 1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
 3. For **Automatic Platform Optimization for WordPress**, select **Purchase**.
 4. Enter your payment information and select **Confirm payment**.
@@ -63,7 +63,7 @@ To create the connection between WordPress and Cloudflare, you will create an AP
 ## Create the API token from Cloudflare
 
 1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Locate **WordPress** from the list and select **Use template**.
 4. Select **Continue to summary** at the bottom of the page.
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/#page","headline":"Activate the Cloudflare WordPress plugin · Cloudflare Automatic Platform Optimization docs","description":"The easiest way to begin using APO is directly from Cloudflare's WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}

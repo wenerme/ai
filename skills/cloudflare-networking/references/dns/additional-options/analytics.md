@@ -4,15 +4,15 @@ title: Analytics and logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Analytics and logs
+# Analytics and logs
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/additional-options/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/additional-options/analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you use Cloudflare DNS, you can access data about DNS queries through a variety of sources.
 
@@ -40,7 +40,7 @@ When using GraphQL, you also have the option to get data for DNS queries across 
 
 For a quick summary, view your DNS analytics on the dashboard:
 
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/analytics)
 
 The DNS analytics dashboard contains [four main panels](#panels). The filters and time frame that you specify at the top of the page apply to all of them.
 
@@ -135,7 +135,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/analytics/#page","headline":"Analytics and logs · Cloudflare DNS docs","description":"View DNS query analytics and configure Logpush for DNS logs.","url":"https://developers.cloudflare.com/dns/additional-options/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics","GraphQL"]}

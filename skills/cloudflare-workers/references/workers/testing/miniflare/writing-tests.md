@@ -4,15 +4,15 @@ title: Writing tests
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Writing tests
+# Writing tests
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,7 +22,7 @@ This guide will show you how to set up [Miniflare](https://developers.cloudflare
 
 To use Miniflare, make sure you've installed the latest version of Miniflare v3:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D miniflare@latest
@@ -201,8 +201,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/#page","headline":"Writing tests · Cloudflare Workers docs","description":"Write integration tests against Workers using Miniflare.","url":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/#page","headline":"Writing tests · Cloudflare Workers docs","description":"Write integration tests against Workers using Miniflare.","url":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -4,15 +4,15 @@ title: Global read replication
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Global read replication
+# Global read replication
 
-Last updated Apr 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/best-practices/read-replication/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/best-practices/read-replication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 read replication can lower latency for read queries and scale read throughput by adding read-only database copies, called read replicas, across regions globally closer to clients.
 
@@ -149,7 +149,7 @@ D1 read replication achieves this by attaching a bookmark to each query within a
 Read replication can be enabled at the database level in the Cloudflare dashboard. Check **Settings** for your D1 database to view if read replication is enabled.
 
 1. In the Cloudflare dashboard, go to the **D1** page.
-[ Go to **D1 SQL database** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/d1)
+[Go to **D1 SQL database** ↗](https://dash.cloudflare.com/?to=/:account/workers/d1)
 2. Select an existing database > **Settings** \> **Enable Read Replication**.
 
 ### Start a session without constraints
@@ -399,7 +399,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/best-practices/read-replication/#page","headline":"Global read replication · Cloudflare D1 docs","description":"Reduce read latency and scale throughput by replicating D1 databases across regions globally.","url":"https://developers.cloudflare.com/d1/best-practices/read-replication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

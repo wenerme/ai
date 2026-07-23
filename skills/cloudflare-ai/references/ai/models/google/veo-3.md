@@ -4,7 +4,7 @@ title: Veo 3
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Veo 3
+# Veo 3
 
- Text-to-Video • Google
+Text-to-Video • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/veo-3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/veo-3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/veo-3 `
+`google/veo-3`
 
 * Third-party
 * Zero data retention
 
 Google's video generation model capable of producing high-quality videos with optional audio from text prompts.
 
-| Model Info          |                                                                                                                 |
-| ------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                |
-| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                             |
-| Zero data retention | Yes                                                                                                             |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3) |
+| Model Info          |                                                                                                                |
+| ------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                               |
+| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                            |
+| Zero data retention | Yes                                                                                                            |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3) |
 
 ## Usage
 
@@ -78,7 +78,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Cinematic Scene**  — Widescreen cinematic video in 1080p
+**Cinematic Scene** — Widescreen cinematic video in 1080p
 
 ```ts
 const response = await env.AI.run(
@@ -123,7 +123,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Vertical Video**  — Portrait orientation for social media
+**Vertical Video** — Portrait orientation for social media
 
 ```ts
 const response = await env.AI.run(
@@ -167,7 +167,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Short Format**  — Short video for social media posts
+**Short Format** — Short video for social media posts
 
 ```ts
 const response = await env.AI.run(
@@ -211,7 +211,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Silent Video**  — Video without audio generation
+**Silent Video** — Video without audio generation
 
 ```ts
 const response = await env.AI.run(
@@ -287,9 +287,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -297,7 +297,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3/#page","headline":"Veo 3 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's video generation model capable of producing high-quality videos with optional audio from text prompts.","url":"https://developers.cloudflare.com/ai/models/google/veo-3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Deploy rulesets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy rulesets
+# Deploy rulesets
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to deploy a ruleset. To deploy a ruleset, add a rule with `"action": "execute"` to a [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset), specifying the ruleset ID to execute as an action parameter. Use a separate rule for each ruleset you want to deploy.
 
@@ -30,7 +30,7 @@ To apply a rule to every request in a phase at the zone level, set the rule expr
 
 ## Example
 
-The following example deploys the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) (with ID ...376e9aee ) to the `http_request_firewall_managed` phase of a given zone (`$ZONE_ID`) by adding a rule that executes the managed ruleset.
+The following example deploys the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) (with ID ...376e9aee) to the `http_request_firewall_managed` phase of a given zone (`$ZONE_ID`) by adding a rule that executes the managed ruleset.
 
 Required API token permissions
 
@@ -130,7 +130,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/#page","headline":"Deploy rulesets · Cloudflare Ruleset Engine docs","description":"Deploy rulesets to a phase entry point using the API.","url":"https://developers.cloudflare.com/ruleset-engine/basic-operations/deploy-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

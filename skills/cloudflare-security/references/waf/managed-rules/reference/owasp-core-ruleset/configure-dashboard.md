@@ -4,15 +4,15 @@ title: Configure in the dashboard
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure in the dashboard
+# Configure in the dashboard
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the [OWASP ModSecurity Core Rule Set ↗](https://owasp.org/www-project-modsecurity-core-rule-set/) (CRS). It is designed to work as a single entity to calculate a [threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score) and execute an action based on that score.
 
@@ -23,7 +23,7 @@ Learn more about the [concepts](https://developers.cloudflare.com/waf/managed-ru
 ## Deploy the Cloudflare OWASP Core Ruleset
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Web application exploits**.
 3. Turn on **OWASP core ruleset**.
 4. Review the deployment settings. Edit the scope, if necessary, to apply the ruleset to a subset of the incoming requests, or configure any custom settings (also known as overrides).
@@ -65,7 +65,7 @@ You can configure (or override) the following Cloudflare OWASP Core Ruleset sett
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure it in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Managed rules**.
 3. Search for **Cloudflare OWASP Core Ruleset**. Look for a rule with an _Execute_ action.
 4. Select the rule name (containing the name of the managed ruleset) to open the deployment configuration page.
@@ -102,7 +102,7 @@ Setting the rule status for specific tags affects all current and future rules w
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure rules with specific tags in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Managed rules**.
 3. Search for **Cloudflare OWASP Core Ruleset**. Look for a rule with an _Execute_ action.
 4. Select the rule name (containing the name of the managed ruleset), and then select **Browse rules**.
@@ -146,7 +146,7 @@ You can configure (or override) the following setting in the dashboard for the s
 Once you have [deployed the Cloudflare OWASP Core Ruleset](#deploy-in-the-dashboard), do the following to configure individual ruleset rules in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Managed rules**.
 3. Search for **Cloudflare OWASP Core Ruleset**. Look for a rule with an _Execute_ action.
 4. Select the rule name (containing the name of the managed ruleset), and then select **Browse rules**.
@@ -177,7 +177,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/#page","headline":"Configure the OWASP ruleset in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Configure the OWASP Core Ruleset in the dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/configure-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

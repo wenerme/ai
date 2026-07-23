@@ -4,15 +4,15 @@ title: Rate limiting parameters
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Rate limiting parameters
+# Rate limiting parameters
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The available rate limiting rule parameters are described in the following sections.
 
@@ -22,14 +22,14 @@ For more information on the current rule configuration restrictions, refer to [C
 
 ### When incoming requests match
 
-* Data type: ` String `
+* Data type: `String`
 * Field name in the API: `expression` (rule field)
 
 Defines the criteria for the rate limiting rule to match a request.
 
 ### Also apply rate limiting to cached assets
 
-* Data type: ` Boolean `
+* Data type: `Boolean`
 * Field name in the API: `requests_to_origin` (optional, with the opposite meaning of the Cloudflare dashboard option)
 
 If this parameter is disabled (or when the `requests_to_origin` API field is set to `true`), only the requests going to the origin (that is, requests that are not cached) will be considered when determining the request rate.
@@ -40,7 +40,7 @@ Depending on your [Cloudflare plan](https://developers.cloudflare.com/waf/rate-l
 
 ### With the same characteristics
 
-* Data type: ` Array<String> `
+* Data type: `Array<String>`
 * Field name in the API: `characteristics`
 
 Set of parameters defining how Cloudflare tracks the request rate for the rule.
@@ -77,7 +77,7 @@ For important details about these characteristics, refer to [Notes about rate li
 
 ### Increment counter when
 
-* Data type: ` String `
+* Data type: `String`
 * Field name in the API: `counting_expression` (optional)
 
 Only available in the Cloudflare dashboard when you enable **Use custom counting expression**.
@@ -105,14 +105,14 @@ The rate limiting counting can be:
 
 ### When rate exceeds > Requests
 
-* Data type: ` Integer `
+* Data type: `Integer`
 * Field name in the API: `requests_per_period`
 
 The number of requests over the period of time that will trigger the rule. Applies to request-based rate limiting.
 
 ### When rate exceeds > Period
 
-* Data type: ` Integer `
+* Data type: `Integer`
 * Field name in the API: `period`
 
 The period of time to consider (in seconds) when evaluating the request rate. The available values [vary according to your Cloudflare plan](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability).
@@ -121,21 +121,21 @@ The available API values are: `10`, `60` (one minute), `120` (two minutes), `300
 
 ### When rate exceeds > Score per period
 
-* Data type: ` Integer `
+* Data type: `Integer`
 * Field name in the API: `score_per_period`
 
 Maximum score per period. When this value is exceeded, the rule action will execute. Applies to [complexity-based rate limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/#complexity-based-rate-limiting).
 
 ### When rate exceeds > Response header name
 
-* Data type: ` String `
+* Data type: `String`
 * Field name in the API: `score_response_header_name`
 
 Name of HTTP header in the response, set by the origin server, with the score for the current request. Applies to [complexity-based rate limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/#complexity-based-rate-limiting).
 
 ### Then take action
 
-* Data type: ` String `
+* Data type: `String`
 * Field name in the API: `action` (rule field)
 
 Action to perform when the rate specified in the rule is reached.
@@ -150,7 +150,7 @@ If you select the _Block_ action, you can define a custom response using the fol
 
 #### With response type (for _Block_ action)
 
-* Data type: ` String `
+* Data type: `String`
 * Field name in the API: `response` \> `content_type` (optional)
 
 Defines the content type of a custom response when blocking a request due to rate limiting. Only available when you set the [rule action](#then-take-action) to _Block_.
@@ -159,7 +159,7 @@ Available API values: `application/json`, `text/html`, `text/xml`, or `text/plai
 
 #### With response code (for _Block_ action)
 
-* Data type: ` Integer `
+* Data type: `Integer`
 * Field name in the API: `response` \> `status_code` (optional)
 
 Defines the HTTP status code returned to the visitor when blocking the request due to rate limiting. Only available when you set the [rule action](#then-take-action) to _Block_.
@@ -168,7 +168,7 @@ You must enter a value between `400` and `499`. The default value is `429` (`Too
 
 #### Response body (for _Block_ action)
 
-* Data type: ` String `
+* Data type: `String`
 * Field name in the API: `response` \> `content` (optional)
 
 Defines the body of the returned HTTP response when the request is blocked due to rate limiting. Only available when you set the [rule action](#then-take-action) to _Block_.
@@ -177,7 +177,7 @@ The maximum field size is 30 KB.
 
 ### For duration
 
-* Data type: ` Integer `
+* Data type: `Integer`
 * Field name in the API: `mitigation_timeout`
 
 Once the rate is reached, the rate limiting rule applies the rule action to further requests for the period of time defined in this field (in seconds).
@@ -195,7 +195,7 @@ Notes for API users
 
 ### With the following behavior
 
-* Data type: ` Integer `
+* Data type: `Integer`
 * Field name in the API: `mitigation_timeout`
 
 Defines the exact behavior of the selected action.
@@ -274,7 +274,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters · Cloudflare Web Application Firewall (WAF) docs","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

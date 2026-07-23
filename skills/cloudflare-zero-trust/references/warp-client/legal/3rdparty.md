@@ -4,15 +4,15 @@ title: Third party licenses
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Third party licenses
+# Third party licenses
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/warp-client/legal/3rdparty/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/warp-client/legal/3rdparty/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Following is the third party license information for our desktop applications. License information for our iOS and Android clients can be found in-app.
 
@@ -3454,7 +3454,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/legal/3rdparty/#page","headline":"Third party licenses · Cloudflare WARP client docs","description":"Third-party licenses used in the WARP client.","url":"https://developers.cloudflare.com/warp-client/legal/3rdparty/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Client sessions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Client sessions
+# Client sessions
 
-Last updated Jun 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Client sessions control how often users must re-authenticate with your identity provider (IdP) while using the Cloudflare One Client (formerly WARP). Unlike legacy VPNs, which enforce a single global session timeout, Cloudflare One allows you to set session timeouts per application or per policy. You can configure session timeouts for your [Access applications](#configure-warp-sessions-in-access) or as part of your [Gateway policies](#configure-warp-sessions-in-gateway).
 
@@ -73,7 +73,7 @@ Enforce a global timeout
 
 To enforce a global reauthentication event, set each of your Network or HTTP policies to the same device client session duration.
 
-## Configure client sessions in Access  Beta
+## Configure client sessions in Access Beta
 
 You can allow users to log in to Access applications using their device client session. **Authenticate with Cloudflare One Client** is only supported for Access applications protected by Allow or Block policies.
 
@@ -124,7 +124,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#page","headline":"Client sessions · Cloudflare One docs","description":"Client sessions in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID"]}

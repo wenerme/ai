@@ -4,17 +4,17 @@ title: Env Vars and Secrets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Env Vars and Secrets
+# Env Vars and Secrets
 
 Pass in environment variables and secrets to your container
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Environment variables can be passed into a Container using the `envVars` field in the [Container](https://developers.cloudflare.com/containers/container-class/) class, or by setting manually when the Container starts.
 
@@ -35,7 +35,7 @@ In practice, you may just use one of the methods for storing secrets and data, b
 
 First, let's create the `"WORKER_SECRET"` secret in Worker Secrets:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secret put WORKER_SECRET
@@ -51,7 +51,7 @@ pnpm wrangler secret put WORKER_SECRET
 
 Then, let's create a store called "demo" in the Secret Store, and add the `"SECRET_STORE_SECRET"` secret to it:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store store create demo --remote
@@ -65,7 +65,7 @@ yarn wrangler secrets-store store create demo --remote
 pnpm wrangler secrets-store store create demo --remote
 ```
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler secrets-store secret create demo --name SECRET_STORE_SECRET --scopes workers --remote
@@ -81,7 +81,7 @@ pnpm wrangler secrets-store secret create demo --name SECRET_STORE_SECRET --scop
 
 Next, let's create a KV namespace called `DEMO_KV` and add a key-value pair:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler kv namespace create DEMO_KV
@@ -95,7 +95,7 @@ yarn wrangler kv namespace create DEMO_KV
 pnpm wrangler kv namespace create DEMO_KV
 ```
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler kv key put --binding DEMO_KV KV_VALUE 'Hello from KV!'
@@ -303,7 +303,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/#page","headline":"Env Vars and Secrets · Cloudflare Containers docs","description":"Pass in environment variables and secrets to your container","url":"https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

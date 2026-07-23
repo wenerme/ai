@@ -4,15 +4,15 @@ title: D1 Database
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  D1 Database
+# D1 Database
 
-Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/worker-api/d1-database/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/worker-api/d1-database/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To interact with your D1 database from your Worker, you need to access it through the environment bindings provided to the Worker (`env`).
 
@@ -51,12 +51,12 @@ stmt = self.env.DB.prepare("SELECT * FROM Customers WHERE CompanyName = ?").bind
 
 #### Parameters
 
-* `query`: ` String `Required
+* `query`: `String`Required
   * The SQL query you wish to execute on the database.
 
 #### Return values
 
-* `D1PreparedStatement`: ` Object `
+* `D1PreparedStatement`: `Object`
   * An object which only contains methods. Refer to [Prepared statement methods](https://developers.cloudflare.com/d1/worker-api/prepared-statements/).
 
 #### Guidance
@@ -113,12 +113,12 @@ batch_result = await self.env.DB.batch([
 
 #### Parameters
 
-* `statements`: ` Array `
+* `statements`: `Array`
   * An array of [D1PreparedStatement](#prepare)s.
 
 #### Return values
 
-* `results`: ` Array `
+* `results`: `Array`
   * An array of `D1Result` objects containing the results of the [D1Database::prepare](#prepare) statements. Each object is in the array position corresponding to the array position of the initial [D1Database::prepare](#prepare) statement within the `statements`.
   * Refer to [D1Result](https://developers.cloudflare.com/d1/worker-api/return-object/#d1result) for more information about this object.
 
@@ -253,12 +253,12 @@ return_value = await self.env.DB.exec('SELECT * FROM Customers WHERE CompanyName
 
 #### Parameters
 
-* `query`: ` String `Required
+* `query`: `String`Required
   * The SQL query statement without parameter binding.
 
 #### Return values
 
-* `D1ExecResult`: ` Object `
+* `D1ExecResult`: `Object`
   * The `count` property contains the number of executed queries.
   * The `duration` property contains the duration of operation in milliseconds.
     * Refer to [D1ExecResult](https://developers.cloudflare.com/d1/worker-api/return-object/#d1execresult) for more information.
@@ -338,24 +338,24 @@ session = self.env.DB.withSession("<parameter>")
 
 #### Parameters
 
-* `first-primary`: ` String `Optional
+* `first-primary`: `String`Optional
 
   * Directs the first query in the Session (whether read or write) to the primary database instance. Use this option if you need to start the Session with the most up-to-date data from the primary database instance.
   * Subsequent queries in the Session may use read replicas.
   * Subsequent queries in the Session have sequential consistency.
-* `first-unconstrained`: ` String `Optional
+* `first-unconstrained`: `String`Optional
 
   * Directs the first query in the Session (whether read or write) to any database instance. Use this option if you do not need to start the Session with the most up-to-date data, and wish to prioritize minimizing query latency from the very start of the Session.
   * Subsequent queries in the Session have sequential consistency.
   * This is the default behavior when no parameter is provided.
-* `bookmark`: ` String `Optional
+* `bookmark`: `String`Optional
 
   * A [bookmark](https://developers.cloudflare.com/d1/reference/time-travel/#bookmarks) from a previous D1 Session. This allows you to start a new Session from at least the provided `bookmark`.
   * Subsequent queries in the Session have sequential consistency.
 
 #### Return values
 
-* `D1DatabaseSession`: ` Object `
+* `D1DatabaseSession`: `Object`
   * An object which contains the methods [prepare()](https://developers.cloudflare.com/d1/worker-api/d1-database#prepare) and [batch()](https://developers.cloudflare.com/d1/worker-api/d1-database#batch) similar to `D1Database`, along with the additional [getBookmark](https://developers.cloudflare.com/d1/worker-api/d1-database#getbookmark) method.
 
 #### Guidance
@@ -393,7 +393,7 @@ bookmark = session.getBookmark()
 
 #### Return values
 
-* `bookmark`: ` String | null `
+* `bookmark`: `String | null`
   * A [bookmark](https://developers.cloudflare.com/d1/reference/time-travel/#bookmarks) which identifies the latest version of the database seen by the last query executed within the Session.
   * Returns `null` if no query is executed within a Session.
 
@@ -411,7 +411,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/worker-api/d1-database/#page","headline":"D1 Database · Cloudflare D1 docs","description":"Use the D1Database binding to prepare statements, execute queries, batch operations, and dump a D1 database from a Worker.","url":"https://developers.cloudflare.com/d1/worker-api/d1-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

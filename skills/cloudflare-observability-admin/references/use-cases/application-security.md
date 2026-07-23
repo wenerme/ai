@@ -4,23 +4,23 @@ title: Application security
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Application security
+# Application security
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/application-security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/application-security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Protect your website or application from attacks, bots, and abuse. Cloudflare's application security (also known as Web Application Firewall or WAF) blocks SQL injection, XSS, and OWASP Top 10 vulnerabilities. DDoS Protection mitigates volumetric and application-layer attacks automatically. Bot Security uses machine learning to score every request. API Shield validates API traffic against your OpenAPI specification. Client-side security monitors third-party scripts for malicious behavior.
 
-* [ Block application attacks ](https://developers.cloudflare.com/use-cases/application-security/block-attacks/)
-* [ Mitigate DDoS attacks ](https://developers.cloudflare.com/use-cases/application-security/ddos/)
-* [ Stop malicious bots ](https://developers.cloudflare.com/use-cases/application-security/bots/)
-* [ Protect against client-side threats ](https://developers.cloudflare.com/use-cases/application-security/client-side/)
-* [ Secure API endpoints ](https://developers.cloudflare.com/use-cases/application-security/api-endpoints/)
+* [Block application attacks](https://developers.cloudflare.com/use-cases/application-security/block-attacks/)
+* [Mitigate DDoS attacks](https://developers.cloudflare.com/use-cases/application-security/ddos/)
+* [Stop malicious bots](https://developers.cloudflare.com/use-cases/application-security/bots/)
+* [Protect against client-side threats](https://developers.cloudflare.com/use-cases/application-security/client-side/)
+* [Secure API endpoints](https://developers.cloudflare.com/use-cases/application-security/api-endpoints/)
 
 ## Architecture patterns
 
@@ -60,15 +60,15 @@ Protect visitors from threats that execute in the browser:
 
 ## Related resources
 
-### [ Security best practices ](https://developers.cloudflare.com/learning-paths/application-security/)
+### [Security best practices](https://developers.cloudflare.com/learning-paths/application-security/)
 
 Structured learning path for application security.
 
-### [ Security Analytics ](https://developers.cloudflare.com/waf/analytics/)
+### [Security Analytics](https://developers.cloudflare.com/waf/analytics/)
 
 Analyze security events and fine-tune your configuration.
 
-### [ Security case studies ](https://www.cloudflare.com/case-studies/)
+### [Security case studies](https://www.cloudflare.com/case-studies/)
 
 Explore how companies secure their applications with Cloudflare.
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/application-security/#page","headline":"Application security · Use cases · Cloudflare use cases","description":"Protect web applications and APIs with Cloudflare Application security (WAF), DDoS protection, bot security, API Shield, and client-side security.","url":"https://developers.cloudflare.com/use-cases/application-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

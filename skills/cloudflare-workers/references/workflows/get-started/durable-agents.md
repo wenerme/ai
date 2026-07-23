@@ -4,15 +4,15 @@ title: Build a Durable AI Agent
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a Durable AI Agent
+# Build a Durable AI Agent
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/get-started/durable-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will build an AI agent that researches GitHub repositories. Give it a task like "Compare open-source LLM projects" and it will:
 
@@ -58,7 +58,7 @@ You will also need an [Anthropic API key ↗](https://platform.claude.com/settin
 ## 1\. Create a new Worker project
 
 1. Create a new Worker project by running the following command:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- durable-ai-agent
 ```
@@ -404,7 +404,7 @@ export class ResearchAgent extends Agent<Env, State> {
 	"name": "durable-ai-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"observability": {
 		"enabled": true
 	},
@@ -436,7 +436,7 @@ export class ResearchAgent extends Agent<Env, State> {
 name = "durable-ai-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 [observability]
 enabled = true
 [[durable_objects.bindings]]
@@ -564,7 +564,7 @@ npx wrangler workflows instances describe research-workflow latest
 ```
 This shows every step the agent took, including LLM calls, tool executions, timing, and any retries.
 You can also view this in the Cloudflare dashboard under **research-workflow**.
-[ Go to **Workflows** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/workflows)
+[Go to **Workflows** ↗](https://dash.cloudflare.com/?to=/:account/workers/workflows)
 
 ## Real-time client integration
 
@@ -609,25 +609,25 @@ Agent class names are automatically converted to kebab-case for URLs (`ResearchA
 
 ## Learn more
 
-### [ Agents SDK Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Agents SDK Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
- Complete API reference for AgentWorkflow, lifecycle callbacks, and bidirectional communication.
+Complete API reference for AgentWorkflow, lifecycle callbacks, and bidirectional communication.
 
-### [ Events and parameters ](https://developers.cloudflare.com/workflows/build/events-and-parameters/)
+### [Events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/)
 
- Pass data to Workflows and pause for external events with waitForEvent.
+Pass data to Workflows and pause for external events with waitForEvent.
 
-### [ Sleeping and retrying ](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/)
+### [Sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/)
 
- Configure retry behavior and sleep patterns.
+Configure retry behavior and sleep patterns.
 
-### [ Workers API ](https://developers.cloudflare.com/workflows/build/workers-api/)
+### [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/)
 
- Explore the full Workflows API for programmatic control.
+Explore the full Workflows API for programmatic control.
 
-### [ Agents SDK ](https://developers.cloudflare.com/agents/)
+### [Agents SDK](https://developers.cloudflare.com/agents/)
 
- For interactive agents with real-time chat and WebSocket connections.
+For interactive agents with real-time chat and WebSocket connections.
 
 Was this helpful?
 
@@ -635,7 +635,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/get-started/durable-agents/#page","headline":"Build a Durable AI Agent · Cloudflare Workflows docs","description":"Build a durable AI agent using Cloudflare Workflows that researches GitHub repositories with automatic retries.","url":"https://developers.cloudflare.com/workflows/get-started/durable-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

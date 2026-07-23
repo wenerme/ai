@@ -4,7 +4,7 @@ title: Gemini 3.5 Flash
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Gemini 3.5 Flash
+# Gemini 3.5 Flash
 
- Text Generation • Google
+Text Generation • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/gemini-3.5-flash `
+`google/gemini-3.5-flash`
 
 * Third-party
 
 Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.
 
-| Model Info                                                                  |                                                                                                                            |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,048,576 tokens                                                                                                           |
-| Terms and License                                                           | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                           |
-| More information                                                            | [link ↗](https://deepmind.google/technologies/gemini/)                                                                     |
-| Request formats                                                             | Chat Completions                                                                                                           |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash) |
+| Model Info                                                                 |                                                                                                                           |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,048,576 tokens                                                                                                          |
+| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
+| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
+| Request formats                                                            | Chat Completions                                                                                                          |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash) |
 
 ## Usage
 
@@ -149,7 +149,7 @@ Physicists often summarize the laws of thermodynamics as a game you cannot win:
 
 ## Examples
 
-**With System Instruction**  — Using a system instruction to set context
+**With System Instruction** — Using a system instruction to set context
 
 ```ts
 const response = await env.AI.run(
@@ -292,7 +292,7 @@ print(df.head())
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -442,7 +442,7 @@ Here are the best places to stop along the two scenic routes:
 }
 ```
 
-**Creative Writing**  — Higher temperature for creative output
+**Creative Writing** — Higher temperature for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -545,7 +545,7 @@ From the depths of the dead man's molar, a microscopic music box was playing a t
 }
 ```
 
-**Image Understanding**  — Sending an image with a text prompt for visual understanding
+**Image Understanding** — Sending an image with a text prompt for visual understanding
 
 ```ts
 const response = await env.AI.run(
@@ -780,9 +780,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -790,7 +790,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/#page","headline":"Gemini 3.5 Flash (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, superior search, and grounding capabilities.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.5-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

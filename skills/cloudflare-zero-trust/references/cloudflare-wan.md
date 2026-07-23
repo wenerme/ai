@@ -4,19 +4,19 @@ title: Cloudflare WAN
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare WAN
+# Cloudflare WAN
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect and secure your entire corporate network through Cloudflare, replacing MPLS circuits and hub-and-spoke routing with cloud-native networking.
 
- Enterprise-only
+Enterprise-only
 
 Cloudflare WAN (formerly Magic WAN) connects your data centers, offices, and cloud resources through Cloudflare's global network. Instead of backhauling traffic through a central data center or maintaining dedicated MPLS circuits at every site, your traffic routes through the nearest Cloudflare data center where security policies apply inline.
 
@@ -51,43 +51,43 @@ For more information about Cloudflare One, refer to the [Cloudflare One document
 
 Use Cloudflare One Appliance to automatically connect and steer any IP traffic.
 
- Use Cloudflare One Appliance
+Use Cloudflare One Appliance
 
 [Connect your network manually](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/)
 
 Set up Cloudflare WAN with your existing routers and firewalls. If you do not have Cloudflare One Appliance, start here to configure IPsec or GRE tunnels from a third-party device.
 
- Use a third-party device
+Use a third-party device
 
 [Automatic cloud on-ramps](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/)
 
- Automate resource discovery, and reduce management burden when connecting to your public cloud.
+Automate resource discovery, and reduce management burden when connecting to your public cloud.
 
- Automate your cloud on-ramps
+Automate your cloud on-ramps
 
 [Zero Trust integration](https://developers.cloudflare.com/cloudflare-wan/zero-trust/)
 
 Learn how you can use Cloudflare WAN with other Cloudflare Zero Trust products.
 
- Integrate with other Zero Trust products
+Integrate with other Zero Trust products
 
 [BGP peering (beta)](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-bgp-routes)
 
 Use Border Gateway Protocol (BGP) peering between your networks and Cloudflare to automatically announce and withdraw routes as your network changes, rather than managing static routes manually.
 
- Use BGP peering (beta)
+Use BGP peering (beta)
 
 [WAN transformation](https://developers.cloudflare.com/cloudflare-wan/wan-transformation/)
 
 Replace MPLS circuits and hub-and-spoke routing with cloud-native networking. Compare WAN approaches and plan an incremental migration.
 
- Plan your migration
+Plan your migration
 
 [Virtual networks](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/)
 
- Understand how virtual networks provide routing isolation within your Cloudflare account, keeping traffic separated between environments, partners, or applications.
+Understand how virtual networks provide routing isolation within your Cloudflare account, keeping traffic separated between environments, partners, or applications.
 
- Learn about virtual networks
+Learn about virtual networks
 
 ---
 
@@ -95,7 +95,7 @@ Replace MPLS circuits and hub-and-spoke routing with cloud-native networking. Co
 
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)
 
- Cloudflare One is the full SASE platform. It extends Cloudflare WAN with identity-based access controls, secure web gateway policies, and user-level security for remote and hybrid workers.
+Cloudflare One is the full SASE platform. It extends Cloudflare WAN with identity-based access controls, secure web gateway policies, and user-level security for remote and hybrid workers.
 
 [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/)
 
@@ -103,7 +103,7 @@ Cloudflare Network Firewall is a firewall-as-a-service (FWaaS) that filters traf
 
 [Multi-Cloud Networking](https://developers.cloudflare.com/multi-cloud-networking/)
 
- Simplify and automate cloud resource discovery, and reduce your management burden when connecting to your public cloud.
+Simplify and automate cloud resource discovery, and reduce your management burden when connecting to your public cloud.
 
 [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 
@@ -117,7 +117,7 @@ Cloudflare Load Balancing distributes traffic across your endpoints, which reduc
 
 ## More resources
 
-### [ Reference Architecture ](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
+### [Reference Architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
 
 Explore the architecture of Cloudflare One as a SASE platform, including how Cloudflare WAN handles connectivity, routing, and security.
 
@@ -127,7 +127,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-wan/#page","headline":"Overview · Cloudflare WAN docs","description":"Connect and secure your network locations with Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

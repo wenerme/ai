@@ -4,15 +4,15 @@ title: Session management (HTTP)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Session management (HTTP)
+# Session management (HTTP)
 
-Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/cdp/session-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/cdp/session-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the HTTP API to manage browser sessions and tabs without using WebSocket connections. This is useful for session lifecycle operations like creating sessions, listing tabs, and cleaning up resources.
 
@@ -128,7 +128,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/session-management/#page","headline":"Session management (HTTP) · Cloudflare Browser Run docs","description":"Manage browser sessions and tabs using HTTP endpoints, including creating sessions, listing targets, and opening the Chrome DevTools UI.","url":"https://developers.cloudflare.com/browser-run/cdp/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

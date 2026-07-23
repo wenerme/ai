@@ -4,15 +4,15 @@ title: Gridsome
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Gridsome
+# Gridsome
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-a-gridsome-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-gridsome-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Gridsome ↗](https://gridsome.org) is a Vue.js powered Jamstack framework for building static generated websites and applications that are fast by default. In this guide, you will create a new Gridsome project and deploy it using Cloudflare Pages. You will use the [@gridsome/cli ↗](https://github.com/gridsome/gridsome/tree/master/packages/cli), a command line tool for creating new Gridsome projects.
 
@@ -60,17 +60,17 @@ To deploy your site to Pages:
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Build settings** section, select _Gridsome_ as your **Framework preset**. Your selection will provide the following information:
 
-| Configuration option | Value              |  | Production branch | main |
-| -------------------- | ------------------ |  | ----------------- | ---- |
-| Build command        | npx gridsome build |  |                   |      |
-| Build directory      | dist               |  |                   |      |
+| Configuration option | Value              | |  Production branch | main |
+| -------------------- | ------------------ | -------------------- | ---- |
+| Build command        | npx gridsome build |                      |      |
+| Build directory      | dist               |                      |      |
 
 After configuring your site, you can begin your first deploy. You should see Cloudflare Pages installing `vuepress`, your project dependencies, and building your site, before deploying it.
 
@@ -90,7 +90,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-gridsome-site/#page","headline":"Gridsome · Cloudflare Pages docs","description":"Deploy a Gridsome site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-gridsome-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

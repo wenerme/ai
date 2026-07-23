@@ -4,15 +4,15 @@ title: Cloudflare for SaaS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare for SaaS
+# Cloudflare for SaaS
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections describe how to configure Cloudflare for SaaS with Regional Services and Customer Metadata Boundary to control where your custom hostnames are processed and where logs are stored.
 
@@ -21,7 +21,7 @@ The following sections describe how to configure Cloudflare for SaaS with Region
 To configure Regional Services for both hostnames [proxied](https://developers.cloudflare.com/dns/proxy-status/) (meaning traffic routes through Cloudflare) through Cloudflare and the fallback origin, follow these steps for the dashboard or API configuration:
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Follow these steps to [configure Cloudflare for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/).
 
 1. Set the [fallback record](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/subresources/fallback%5Forigin/methods/update/).
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/#page","headline":"Cloudflare for SaaS · Cloudflare Data Localization Suite docs","description":"Configure Cloudflare for SaaS with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/cloudflare-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

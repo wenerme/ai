@@ -4,7 +4,7 @@ title: granite-4.0-h-micro
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![IBM logo](https://developers.cloudflare.com/_astro/ibm.CNSuznmO.svg)
 
-#  granite-4.0-h-micro
+# granite-4.0-h-micro
 
- Text Generation • IBM
+Text Generation • IBM
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/ibm-granite/granite-4.0-h-micro `
+`@cf/ibm-granite/granite-4.0-h-micro`
 
 * Cloudflare-hosted
 * Function calling
@@ -27,7 +27,7 @@ Granite 4.0 instruct models deliver strong performance across benchmarks, achiev
 
 | Model Info                                                                           |                                                      |
 | ------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/)          | 131,000 tokens                                       |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 131,000 tokens                                       |
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                  |
 | Unit Pricing                                                                         | $0.017 per M input tokens, $0.11 per M output tokens |
 
@@ -35,7 +35,7 @@ Granite 4.0 instruct models deliver strong performance across benchmarks, achiev
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/ibm-granite/granite-4.0-h-micro)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/ibm-granite/granite-4.0-h-micro)
 
 ## Usage
 
@@ -124,7 +124,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -184,7 +184,7 @@ presence\_penalty
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -198,7 +198,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -210,13 +210,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -224,7 +224,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/#page","headline":"granite-4.0-h-micro (IBM) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Granite 4.0 instruct models deliver strong performance across benchmarks, achieving industry-leading results in key agentic tasks like instruction following and function calling. These efficiencies make the models well-suited for a wide range of use cases like retrieval-augmented generation (RAG), multi-agent workflows, and edge deployments.","url":"https://developers.cloudflare.com/workers-ai/models/granite-4.0-h-micro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

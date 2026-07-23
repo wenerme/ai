@@ -4,7 +4,7 @@ title: Claude Sonnet 4.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
-#  Claude Sonnet 4.5
+# Claude Sonnet 4.5
 
- Text Generation • Anthropic
+Text Generation • Anthropic
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` anthropic/claude-sonnet-4.5 `
+`anthropic/claude-sonnet-4.5`
 
 * Third-party
 * Zero data retention
 
 Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.
 
-| Model Info                                                                  |                                                                                                                                |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                 |
-| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                     |
-| More information                                                            | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                              |
-| Zero data retention                                                         | Yes                                                                                                                            |
-| Request formats                                                             | Anthropic Messages                                                                                                             |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
+| Model Info                                                                 |                                                                                                                               |
+| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                |
+| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
+| More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                           |
+| Request formats                                                            | Anthropic Messages                                                                                                            |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
 
 ## Usage
 
@@ -106,7 +106,7 @@ As temperature approaches absolute zero (0 Kelvin or -273.15°C), the entropy of
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -229,7 +229,7 @@ print(data)
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -326,7 +326,7 @@ What interests you most - beaches, nature, food, or historic sites? I can refine
 }
 ```
 
-**Creative Writing**  — Higher temperature for creative output
+**Creative Writing** — Higher temperature for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -403,7 +403,7 @@ Then it started to hum.
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -643,7 +643,7 @@ Think of Russian nesting dolls:
 ]
 ```
 
-**Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
+**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
 ```ts
 const response = await env.AI.run(
@@ -924,9 +924,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -934,7 +934,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/#page","headline":"Claude Sonnet 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

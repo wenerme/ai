@@ -4,15 +4,15 @@ title: HTTP requests
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  HTTP requests
+# HTTP requests
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/http-requests/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/http-requests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 While in [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) we can inspect bytes and packets reaching Cloudflare's edge routers, in HTTP requests we are a layer above in the [OSI model ↗](https://en.wikipedia.org/wiki/OSI%5Fmodel). HTTP requests examines complete HTTP requests from end users that reach websites served by Cloudflare's [CDN ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).
 
@@ -208,7 +208,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/http-requests/#page","headline":"HTTP requests · Cloudflare Radar docs","description":"Analyze HTTP request data in Cloudflare Radar by device type, IP version, bot class, and top locations using timeseries, summary, and top endpoints.","url":"https://developers.cloudflare.com/radar/investigate/http-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

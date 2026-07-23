@@ -4,15 +4,15 @@ title: Create Custom Recording App Using Recording SDKs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create Custom Recording App Using Recording SDKs
+# Create Custom Recording App Using Recording SDKs
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid ↗](https://docs.realtime.cloudflare.com/react-ui-kit/components/rtk-grid).
 
@@ -138,7 +138,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/#page","headline":"Create Custom Recording App Using Recording SDKs · Cloudflare Realtime docs","description":"Learn how to create a recording app using RealtimeKit's SDKs. Follow our guide for effective app creation and integration.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

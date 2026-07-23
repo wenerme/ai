@@ -4,15 +4,15 @@ title: Use MCP tools with Code Mode
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use MCP tools with Code Mode
+# Use MCP tools with Code Mode
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/mcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/mcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `McpConnector` to expose tools from an existing Model Context Protocol (MCP) client connection inside the Code Mode sandbox. The connector works with the durable runtime, including discovery, approvals, and execution history.
 
@@ -27,7 +27,7 @@ You need:
 
 1. **Install Code Mode**
 If your project does not already include Code Mode, install `@cloudflare/codemode`:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @cloudflare/codemode
 ```
@@ -168,6 +168,22 @@ export class Chat extends Agent<Env> {
 }
 ```
 Await `codemodeRuntime()`, then pass `runtime.tool()` to your model as the `codemode` tool. Await the helper again before calling approval, rejection, rollback, or snippet methods. This ensures MCP connections have finished restoring after hibernation.
+If the runtime belongs to a `Think` agent, keep MCP tools out of the direct model tool set:
+```js
+import { Think } from "@cloudflare/think";
+export class Chat extends Think {
+	includeMcpTools = false;
+	waitForMcpConnections = true;
+}
+```
+```ts
+import { Think } from "@cloudflare/think";
+export class Chat extends Think<Env> {
+    includeMcpTools = false;
+    waitForMcpConnections = true;
+}
+```
+`includeMcpTools = false` skips Think's automatic `getAITools()` call. The MCP connection remains available to `McpConnector`.
 4. **Let the model discover and call tools**
 Tell the model to use `codemode.search()` and `codemode.describe()` before calling unfamiliar methods. Model-generated sandbox code can then discover and call the generated methods:
 ```js
@@ -218,14 +234,16 @@ const codemode = createCodeTool({
 
 This approach exposes the MCP tools under the default `codemode` namespace. It does not use the connector runtime's durable pause, approval, and resume flow. Use `McpConnector` when tools can cause side effects or when the model needs on-demand discovery.
 
+`getAITools()` converts MCP input and output schemas for use by the AI SDK. The Agents SDK reuses those converted schemas while each live connection keeps the same current catalog. Use `this.mcp.listTools()` instead when you only need to inspect the raw MCP catalog.
+
 Was this helpful?
 
 YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/mcp/#page","headline":"Use MCP tools with Code Mode · Cloudflare Agents docs","description":"Expose tools from an existing MCP connection to models through a durable Code Mode runtime.","url":"https://developers.cloudflare.com/agents/tools/codemode/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/mcp/#page","headline":"Use MCP tools with Code Mode · Cloudflare Agents docs","description":"Expose tools from an existing MCP connection to models through a durable Code Mode runtime.","url":"https://developers.cloudflare.com/agents/tools/codemode/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

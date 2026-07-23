@@ -4,15 +4,15 @@ title: Migrating a Jekyll-based site from GitHub Pages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrating a Jekyll-based site from GitHub Pages
+# Migrating a Jekyll-based site from GitHub Pages
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to migrate an existing [GitHub Pages site using Jekyll ↗](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) to Cloudflare Pages. Jekyll is one of the most popular static site generators used with GitHub Pages, and migrating your GitHub Pages site to Cloudflare Pages will take a few short steps.
 
@@ -109,7 +109,7 @@ If you are configuring your Cloudflare Pages site for the first time, refer to t
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Pages** \> **Import an existing Git repository**.
 3. Select the new GitHub repository that you created and, in the **Set up builds and deployments** section, provide the following information:
 
@@ -147,7 +147,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/#page","headline":"Migrating a Jekyll-based site from GitHub Pages · Cloudflare Pages docs","description":"Learn how to migrate a Jekyll-based site from GitHub Pages to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Ruby"]}

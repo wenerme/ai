@@ -4,15 +4,15 @@ title: Web Assets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Web Assets
+# Web Assets
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/web-assets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web Assets automatically discovers operations in web applications proxied through Cloudflare. Operation context helps you define security protections against application-specific functionalities.
 
@@ -20,7 +20,7 @@ For example, discovering operations that receive LLM prompts so [AI Security for
 
 To access Web Assets in the Cloudflare dashboard, go to the **Web Assets** page.
 
-[ Go to **Web assets** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 
 ## Definition of an operation
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/#page","headline":"Web Assets · Security dashboard docs","description":"Discover operations in applications proxied through Cloudflare and use that context to protect important traffic.","url":"https://developers.cloudflare.com/security/web-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

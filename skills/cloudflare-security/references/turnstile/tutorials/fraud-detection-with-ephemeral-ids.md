@@ -4,15 +4,15 @@ title: Fraud detection with Ephemeral IDs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Fraud detection with Ephemeral IDs
+# Fraud detection with Ephemeral IDs
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Ephemeral IDs](https://developers.cloudflare.com/turnstile/additional-configuration/ephemeral-id/) let you detect fraud patterns that evade traditional IP-based detection. This tutorial will show you how to log Ephemeral IDs, detect suspicious patterns, and block bad actors.
 
@@ -248,7 +248,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/#page","headline":"Fraud detection with Ephemeral IDs · Cloudflare Turnstile docs","description":"Learn how to implement fraud detection using Turnstile's Ephemeral IDs to identify and block bad actors who rotate IP addresses.","url":"https://developers.cloudflare.com/turnstile/tutorials/fraud-detection-with-ephemeral-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Node.js","SQL","Account takeover"]}

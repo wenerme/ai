@@ -4,7 +4,7 @@ title: Grok 4.3
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
-#  Grok 4.3
+# Grok 4.3
 
- Text Generation • xAI
+Text Generation • xAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-4.3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-4.3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` xai/grok-4.3 `
+`xai/grok-4.3`
 
 * Third-party
 
 xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool calling with minimal hallucinations. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (none, low, medium, high).
 
-| Model Info                                                                  |                                                                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                |
-| Terms and License                                                           | [link ↗](https://x.ai/legal/terms-of-service)                                                                   |
-| More information                                                            | [link ↗](https://docs.x.ai/docs/models/grok-4.3)                                                                |
-| Request formats                                                             | Chat Completions                                                                                                |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.3) |
+| Model Info                                                                 |                                                                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                               |
+| Terms and License                                                          | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
+| More information                                                           | [link ↗](https://docs.x.ai/docs/models/grok-4.3)                                                               |
+| Request formats                                                            | Chat Completions                                                                                               |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.3) |
 
 ## Usage
 
@@ -127,7 +127,7 @@ These laws apply to macroscopic systems and form the foundation of classical the
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -247,7 +247,7 @@ This is the recommended approach for most use cases.
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -358,7 +358,7 @@ Here are some excellent stops along the scenic Pacific Coast Highway (Hwy 1) rou
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -438,7 +438,7 @@ Detective Mara Ellison crouched in the rain-slicked alley behind the shuttered t
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -7762,9 +7762,9 @@ system\_fingerprint
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-4.3/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -7772,7 +7772,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-4.3/#page","headline":"Grok 4.3 (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool calling with minimal hallucinations. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (none, low, medium, high).","url":"https://developers.cloudflare.com/ai/models/xai/grok-4.3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

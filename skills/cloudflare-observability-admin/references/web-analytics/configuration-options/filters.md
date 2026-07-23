@@ -4,20 +4,20 @@ title: Filters
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web-analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Filters
+# Filters
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web-analytics/configuration-options/filters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web-analytics/configuration-options/filters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To filter the data shown on Web Analytics:
 
 1. In the Cloudflare dashboard, go to the **Web Analytics** page.
-[ Go to **Web analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/web-analytics)
+[Go to **Web analytics** ↗](https://dash.cloudflare.com/?to=/:account/web-analytics)
 2. Select the website you want to check.
 3. Select **Add filter**.
 4. In the **New filter** box, choose your criteria from the dropdown. Refer to the [Dimensions](https://developers.cloudflare.com/web-analytics/data-metrics/dimensions/) page for a list of available filters and their descriptions.
@@ -35,7 +35,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/configuration-options/filters/#page","headline":"Filters · Cloudflare Web Analytics docs","description":"Learn how to use filters in Cloudflare Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/configuration-options/filters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

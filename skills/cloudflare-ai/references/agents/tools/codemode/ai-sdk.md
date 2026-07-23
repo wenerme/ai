@@ -4,15 +4,15 @@ title: AI SDK integration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI SDK integration
+# AI SDK integration
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `@cloudflare/codemode/ai` entry point converts AI SDK tools into one Code Mode tool. The model writes JavaScript that calls your tools, and an executor runs that code in an isolated sandbox.
 
@@ -28,7 +28,7 @@ Choose between two integration patterns:
 `createCodeTool()` accepts an AI SDK `ToolSet` or an array of tool providers. It also requires an executor. It returns a standard AI SDK tool for use with `streamText()` or `generateText()`.
 
 1. Install Code Mode, the AI SDK, and Zod:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @cloudflare/codemode agents ai zod
 ```
@@ -46,7 +46,7 @@ bun add @cloudflare/codemode agents ai zod
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -59,7 +59,7 @@ bun add @cloudflare/codemode agents ai zod
 ```
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
@@ -165,7 +165,7 @@ A tool provider groups tools under one sandbox namespace. Pass the tool set dire
 
 Use `aiTools()` when combining AI SDK tools with providers from other packages. The following optional workspace example also requires `@cloudflare/shell`:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/shell
@@ -367,7 +367,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/#page","headline":"AI SDK integration · Cloudflare Agents docs","description":"Use AI SDK tools with Code Mode through createCodeTool(), namespaced providers, or ToolSetConnector for durable execution.","url":"https://developers.cloudflare.com/agents/tools/codemode/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

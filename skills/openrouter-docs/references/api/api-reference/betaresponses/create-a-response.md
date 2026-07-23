@@ -526,6 +526,13 @@ components:
         route:
           $ref: '#/components/schemas/DeprecatedRoute'
         safety_identifier:
+          description: >-
+            Recommended per-end-user identifier for abuse isolation. Use a
+            stable ID, hash, or pseudonym. When a provider requires a user
+            identity, OpenRouter folds it into the hashed identity sent upstream
+            and never forwards it raw. If omitted, requests use an account-level
+            identity, so provider policy blocks can affect the whole account.
+          example: user-123
           type:
             - string
             - 'null'
@@ -1251,6 +1258,7 @@ components:
         cost_quality_tradeoff: 7
         enabled: true
         id: auto-router
+        pin_model: false
       properties:
         allowed_models:
           description: >-
@@ -1284,6 +1292,12 @@ components:
           enum:
             - auto-router
           type: string
+        pin_model:
+          description: >-
+            When true, reuses the model from the most recent assistant message's
+            `model` attribute for subsequent turns. Defaults to false.
+          example: false
+          type: boolean
       required:
         - id
       type: object
@@ -1469,7 +1483,7 @@ components:
       example:
         enabled: true
         id: pareto-router
-        min_coding_score: 0.8
+        max_price: 5
         price_source: prompt
       properties:
         enabled:
@@ -1481,13 +1495,27 @@ components:
           enum:
             - pareto-router
           type: string
+        max_price:
+          description: >-
+            Maximum input price in USD per million tokens. When set,
+            quality-tier selection (min_coding_score) is bypassed: the router
+            computes the Pareto frontier over the top coding models and routes
+            to the best-scoring frontier model priced at or below this cap,
+            falling back through cheaper frontier models, then non-frontier
+            models. Enforced against the price source given by price_source.
+            Returns 404 when no candidate satisfies the cap.
+          example: 5
+          format: double
+          minimum: 0
+          type: number
         min_coding_score:
           description: >-
             Minimum coding quality score between 0 and 1. Maps to internal
             quality tiers: >= 0.66 → high (top coding models), >= 0.33 → medium
             (strong modern flagships), < 0.33 → low (capable coders above the
             median). Omit to default to the highest tier (equivalent to >=
-            0.66).
+            0.66). Not used when max_price is set (price-based selection takes
+            over).
           example: 0.8
           format: double
           maximum: 1
@@ -1495,11 +1523,11 @@ components:
           type: number
         price_source:
           description: >-
-            Price source for the Pareto frontier cost axis. "prompt" uses
-            catalog list price (endpoint.pricing.prompt). "weighted_avg" uses
-            traffic-weighted effective input price from ClickHouse, falling back
-            to prompt price for models without traffic data. Defaults to
-            "prompt".
+            Price source for the Pareto frontier cost axis and for enforcing
+            max_price. "prompt" uses catalog list price
+            (endpoint.pricing.prompt). "weighted_avg" uses traffic-weighted
+            effective input price from ClickHouse, falling back to prompt price
+            for models without traffic data. Defaults to "prompt".
           enum:
             - prompt
             - weighted_avg
@@ -4099,7 +4127,12 @@ components:
     OutputImageGenerationCallItem:
       allOf:
         - $ref: '#/components/schemas/OutputItemImageGenerationCall'
-        - properties: {}
+        - properties:
+            prompt:
+              description: >-
+                The prompt (possibly rewritten) that the image was generated
+                from.
+              type: string
           type: object
       example:
         id: img-abc123
@@ -4321,6 +4354,9 @@ components:
         imageB64:
           type: string
         imageUrl:
+          type: string
+        prompt:
+          description: The prompt (possibly rewritten) that the image was generated from.
           type: string
         result:
           description: >-

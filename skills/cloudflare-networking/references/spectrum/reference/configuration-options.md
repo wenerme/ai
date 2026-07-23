@@ -4,15 +4,15 @@ title: Configuration options
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration options
+# Configuration options
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/reference/configuration-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/reference/configuration-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spectrum is a global TCP and UDP proxy running on Cloudflare's edge nodes. It does not terminate the connection in the application-layer sense. However, at Layer 4, Spectrum does terminate the TCP and UDP sockets in both directions. The L4 payloads of TCP segments and UDP datagrams are passed back and forth as-is, without modifications.
 
@@ -209,7 +209,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/configuration-options/#page","headline":"Configuration options · Cloudflare Spectrum docs","description":"Configurable options for Spectrum applications, including edge and origin ports and protocols.","url":"https://developers.cloudflare.com/spectrum/reference/configuration-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

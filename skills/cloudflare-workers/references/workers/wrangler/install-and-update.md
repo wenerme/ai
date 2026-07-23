@@ -4,15 +4,15 @@ title: Install/Update Wrangler
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Install/Update Wrangler
+# Install/Update Wrangler
 
-Last updated Jul 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/install-and-update/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler is a command-line tool for building with Cloudflare developer products.
 
@@ -30,7 +30,7 @@ Wrangler is installed locally into each of your projects. This allows you and yo
 
 To install Wrangler within your Worker project, run:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D wrangler@latest
@@ -68,7 +68,7 @@ npx wrangler -v
 
 To update the version of Wrangler used in your project, run:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D wrangler@latest
@@ -97,7 +97,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/install-and-update/#page","headline":"Install/Update Wrangler · Cloudflare Workers docs","description":"Get started by installing Wrangler, and update to newer versions by following this guide.","url":"https://developers.cloudflare.com/workers/wrangler/install-and-update/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

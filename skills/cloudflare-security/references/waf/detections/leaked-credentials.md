@@ -4,15 +4,15 @@ title: Leaked credentials detection
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Leaked credentials detection
+# Leaked credentials detection
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/leaked-credentials/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The leaked credentials [traffic detection](https://developers.cloudflare.com/waf/detections/) scans incoming requests for credentials (usernames and passwords) previously leaked from [data breaches ↗](https://www.cloudflare.com/learning/security/what-is-a-data-breach/).
 
@@ -117,13 +117,13 @@ For instructions on configuring a custom detection location, refer to [Get start
 
 The following fields indicate the type of leaked credential match Cloudflare detected. Use these fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to act on requests containing compromised credentials.
 
-| Field                                                                                                                                                                                                                                        | Description                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Password Leaked [cf.waf.credential\_check.password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.password%5Fleaked/)  Boolean                                          | Indicates whether the password detected in the request was previously leaked.  Available on all plans.                                                     |
-| User and Password Leaked [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/)  Boolean | Indicates whether the username-password pair detected in the request were previously leaked.  Requires a Pro plan or above.                                |
-| Username Leaked [cf.waf.credential\_check.username\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fleaked/)  Boolean                                          | Indicates whether the username detected in the request was previously leaked.  Requires an Enterprise plan.                                                |
-| Similar Password Leaked [cf.waf.credential\_check.username\_password\_similar](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fpassword%5Fsimilar/)  Boolean           | Indicates whether a similar version of the username and password credentials detected in the request were previously leaked.  Requires an Enterprise plan. |
-| Authentication detected [cf.waf.auth\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.auth%5Fdetected/)  Boolean                                                                           | Indicates whether Cloudflare detected authentication credentials in the request.  Requires an Enterprise plan.                                             |
+| Field                                                                                                                                                                                                                                       | Description                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Password Leaked [cf.waf.credential\_check.password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.password%5Fleaked/) Boolean                                          | Indicates whether the password detected in the request was previously leaked.  Available on all plans.                                                     |
+| User and Password Leaked [cf.waf.credential\_check.username\_and\_password\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fand%5Fpassword%5Fleaked/) Boolean | Indicates whether the username-password pair detected in the request were previously leaked.  Requires a Pro plan or above.                                |
+| Username Leaked [cf.waf.credential\_check.username\_leaked](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fleaked/) Boolean                                          | Indicates whether the username detected in the request was previously leaked.  Requires an Enterprise plan.                                                |
+| Similar Password Leaked [cf.waf.credential\_check.username\_password\_similar](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential%5Fcheck.username%5Fpassword%5Fsimilar/) Boolean           | Indicates whether a similar version of the username and password credentials detected in the request were previously leaked.  Requires an Enterprise plan. |
+| Authentication detected [cf.waf.auth\_detected](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.auth%5Fdetected/) Boolean                                                                           | Indicates whether Cloudflare detected authentication credentials in the request.  Requires an Enterprise plan.                                             |
 
 Was this helpful?
 
@@ -131,7 +131,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/#page","headline":"Leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Scan incoming requests for usernames and passwords exposed in known data breaches.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","Account takeover"]}

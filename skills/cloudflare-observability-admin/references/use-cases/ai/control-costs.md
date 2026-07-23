@@ -4,15 +4,15 @@ title: Control costs and improve quality
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Control costs and improve quality
+# Control costs and improve quality
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/ai/control-costs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/ai/control-costs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI inference costs can grow unpredictably as your application scales, especially when using multiple providers. Cloudflare AI Gateway caches identical queries to avoid redundant inference calls, applies rate limits per user or API key, and provides unified analytics across all providers.
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/ai/control-costs/#page","headline":"Control costs and improve quality · Cloudflare use cases","description":"Reduce AI inference costs and improve reliability with response caching, rate limiting, and unified provider analytics.","url":"https://developers.cloudflare.com/use-cases/ai/control-costs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

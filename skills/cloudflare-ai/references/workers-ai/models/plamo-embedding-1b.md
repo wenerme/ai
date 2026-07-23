@@ -6,21 +6,21 @@ title: plamo-embedding-1b
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
- p
+p
 
-#  plamo-embedding-1b
+# plamo-embedding-1b
 
- Text Embeddings • pfnet
+Text Embeddings • pfnet
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/pfnet/plamo-embedding-1b `
+`@cf/pfnet/plamo-embedding-1b`
 
 * Cloudflare-hosted
 
@@ -94,7 +94,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -112,9 +112,9 @@ OpenAI compatible endpoints
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -122,7 +122,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/#page","headline":"plamo-embedding-1b (pfnet) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"PLaMo-Embedding-1B is a Japanese text embedding model developed by Preferred Networks, Inc.\n\nIt can convert Japanese text input into numerical vectors and can be used for a wide range of applications, including information retrieval, text classification, and clustering.","url":"https://developers.cloudflare.com/workers-ai/models/plamo-embedding-1b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

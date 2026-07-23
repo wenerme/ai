@@ -4,15 +4,15 @@ title: Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Analytics
+# Analytics
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare visualizes the metadata collected by our products in the Cloudflare dashboard. Refer to [Types of analytics](https://developers.cloudflare.com/analytics/types-of-analytics/) for more information about the various types of analytics and where they exist in the dashboard.
 
@@ -24,25 +24,25 @@ Cloudflare visualizes the metadata collected by our products in the Cloudflare d
 
 Send unlimited-cardinality data from your Worker to a time-series database. Query it with SQL.
 
- Use Workers Analytics Engine
+Use Workers Analytics Engine
 
 [Account and zone analytics](https://developers.cloudflare.com/analytics/account-and-zone-analytics/)
 
 Provides details about the requests and traffic related to your Cloudflare accounts and zones.
 
- Use Account and zone analytics
+Use Account and zone analytics
 
 [Cloudflare Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/)
 
 Provides near real-time visibility into network and transport-layer traffic patterns and DDoS attacks.
 
- Use Cloudflare Network Analytics
+Use Cloudflare Network Analytics
 
 [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/)
 
 Provides all of your performance, security, and reliability data from one endpoint. Select exactly what you need, from one metric for a domain to multiple metrics aggregated for your account.
 
- Use GraphQL Analytics API
+Use GraphQL Analytics API
 
 ---
 
@@ -62,7 +62,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/#page","headline":"Analytics · Cloudflare Analytics docs","description":"Access metadata and insights across Cloudflare products.","url":"https://developers.cloudflare.com/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

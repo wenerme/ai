@@ -4,17 +4,17 @@ title: Fan out a stream to multiple Iceberg tables
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Fan out a stream to multiple Iceberg tables
+# Fan out a stream to multiple Iceberg tables
 
 Consume the Bluesky Jetstream firehose in a Durable Object, ingest it into a single Pipelines stream, and use one pipeline with multiple SQL statements to route events into separate R2 Data Catalog tables by type.
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this example, you will consume the public [Bluesky Jetstream ↗](https://github.com/bluesky-social/jetstream) firehose, a live WebSocket stream of every post, like, repost, follow, and block on the network, and land it in [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/) as queryable Apache Iceberg tables.
 
@@ -45,7 +45,7 @@ You will also need an [R2 API token](https://developers.cloudflare.com/r2/api/to
 
 Create a new Worker project by running the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- bluesky-pipeline
@@ -75,7 +75,7 @@ cd bluesky-pipeline
 
 The `pipelines` commands used later require Wrangler v4 or later. If your project was scaffolded with an older version, update it now:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D wrangler@latest
@@ -122,7 +122,7 @@ Your sinks write to Iceberg tables in [R2 Data Catalog](https://developers.cloud
 
 Create an R2 bucket named `bluesky-pipeline`:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler r2 bucket create bluesky-pipeline
@@ -138,7 +138,7 @@ pnpm wrangler r2 bucket create bluesky-pipeline
 
 Enable R2 Data Catalog on the bucket:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler r2 bucket catalog enable bluesky-pipeline
@@ -158,7 +158,7 @@ When you run this command, note the **Warehouse name**. You will need it to quer
 
 First, create the stream from your schema file:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler pipelines streams create bsky_events_stream --schema-file schema.json
@@ -216,7 +216,7 @@ INSERT INTO bsky_block_sink
 
 Create the pipeline from the file:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler pipelines create bsky_pipeline --sql-file fanout.sql
@@ -242,7 +242,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "name": "bluesky-pipeline",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -277,7 +277,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
 name = "bluesky-pipeline"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[pipelines]]
 binding = "BSKY_STREAM"
@@ -601,7 +601,7 @@ export default {
 
 Generate types for your bindings:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -619,7 +619,7 @@ pnpm wrangler types
 
 Deploy the Worker:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -647,7 +647,7 @@ The command returns:
 
 Tail the logs to watch it work:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler tail
@@ -693,7 +693,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/#page","headline":"Fan out a stream to multiple Iceberg tables · Cloudflare Pipelines Docs","description":"Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.","url":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}

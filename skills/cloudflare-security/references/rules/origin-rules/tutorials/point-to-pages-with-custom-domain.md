@@ -4,15 +4,15 @@ title: Point to Pages with a custom domain
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Point to Pages with a custom domain
+# Point to Pages with a custom domain
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will instruct you how to configure an origin rule and a DNS record to point to a Pages deployment with a custom domain.
 
@@ -31,7 +31,7 @@ When configuring your Pages custom domain, use a custom domain that you do not p
 To add the custom domain to your Pages deployment:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Custom domains**.
 4. Select **Set up a custom domain**.
@@ -98,7 +98,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/#page","headline":"Point to Pages with a custom domain · Cloudflare Rules docs","description":"This tutorial will instruct you how to configure an origin rule and a DNS record to point to a Pages deployment with a custom domain.","url":"https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-pages-with-custom-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

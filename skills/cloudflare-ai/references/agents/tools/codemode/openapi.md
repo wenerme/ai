@@ -4,15 +4,15 @@ title: Use an OpenAPI service with Code Mode
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use an OpenAPI service with Code Mode
+# Use an OpenAPI service with Code Mode
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/openapi/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/openapi/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `OpenApiConnector` to expose an OpenAPI service inside a durable Code Mode runtime. The connector derives one sandbox method for each operation in the OpenAPI document.
 
@@ -312,7 +312,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/openapi/#page","headline":"Use an OpenAPI service with Code Mode · Cloudflare Agents docs","description":"Turn OpenAPI operations into typed Code Mode connector methods while keeping authentication in the host Worker.","url":"https://developers.cloudflare.com/agents/tools/codemode/openapi/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

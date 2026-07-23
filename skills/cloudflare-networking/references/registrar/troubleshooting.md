@@ -4,15 +4,15 @@ title: Troubleshoot failed domain transfers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshoot failed domain transfers
+# Troubleshoot failed domain transfers
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you start the transfer process to Cloudflare Registrar, your previous registrar has five days to release the domain after a successful transfer request. If your transfer has not been completed within that time frame, something has likely gone wrong.
 
@@ -142,7 +142,7 @@ Note
 This solution does not apply to `.uk` domains.
 
 1. In the Cloudflare dashboard, go to the **Manage Domains** page.
-[ Go to **Manage domains** ↗ ](https://dash.cloudflare.com/?to=/:account/registrar/domains)
+[Go to **Manage domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/domains)
 2. Find the correct domain and select **Manage**.
 3. Select **Cancel Transfer and Retry**. After you initiate the retry, you must re-enter your auth code and confirm your WHOIS information.
 
@@ -152,7 +152,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/troubleshooting/#page","headline":"Troubleshoot failed domain transfers · Cloudflare Registrar docs","description":"Fix common domain transfer issues.","url":"https://developers.cloudflare.com/registrar/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

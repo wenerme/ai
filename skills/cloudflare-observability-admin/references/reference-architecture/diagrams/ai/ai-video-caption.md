@@ -4,15 +4,15 @@ title: Automatic captioning for video uploads
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Automatic captioning for video uploads
+# Automatic captioning for video uploads
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-video-caption/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-video-caption/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -22,7 +22,7 @@ The process begins with capturing the audio from the video source, which is then
 
 ## Automatic captioning on upload
 
-![Figure 1: Automatic captioning on upload](https://developers.cloudflare.com/_astro/ai-auto-caption-architecture-diagram.CyBpgQKS_1MIa7Q.svg "Figure 1:  Automatic captioning on upload")
+![Figure 1: Automatic captioning on upload](https://developers.cloudflare.com/_astro/ai-auto-caption-architecture-diagram.CyBpgQKS_ZAHNWj.svg "Figure 1:  Automatic captioning on upload")
 
 Figure 1: Automatic captioning on upload
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-video-caption/#page","headline":"Automatic captioning for video uploads · Cloudflare Reference Architecture docs","description":"By integrating automatic speech recognition technology into video platforms, content creators, publishers, and distributors can reach a broader audience, including individuals with hearing impairments or those who prefer to consume content in different languages.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-video-caption/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

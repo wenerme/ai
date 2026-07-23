@@ -4,7 +4,7 @@ title: llama-3.1-8b-instruct
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,31 +12,31 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg)
 
-#  llama-3.1-8b-instruct
+# llama-3.1-8b-instruct
 
- Text Generation • Meta
+Text Generation • Meta
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/meta/llama-3.1-8b-instruct `
+`@cf/meta/llama-3.1-8b-instruct`
 
 * Cloudflare-hosted
 * Deprecated
 
 The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks.
 
-| Model Info                                                                  |                                                                                          |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Deprecated                                                                  | 5/30/2026                                                                                |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 7,968 tokens                                                                             |
-| Terms and License                                                           | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
-| Unit Pricing                                                                | $0.28 per M input tokens, $0.83 per M output tokens                                      |
+| Model Info                                                                 |                                                                                          |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Deprecated                                                                 | 5/30/2026                                                                                |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 7,968 tokens                                                                             |
+| Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
+| Unit Pricing                                                               | $0.28 per M input tokens, $0.83 per M output tokens                                      |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.1-8b-instruct)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.1-8b-instruct)
 
 ## Usage
 
@@ -125,7 +125,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -185,7 +185,7 @@ presence\_penalty
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -199,7 +199,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -211,13 +211,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/sync-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/sync-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/streaming-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/meta/llama-3.1-8b-instruct/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -225,7 +225,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct/#page","headline":"llama-3.1-8b-instruct (Meta) · Cloudflare AI docs · Cloudflare AI docs","description":"The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks.","url":"https://developers.cloudflare.com/ai/models/%40cf/meta/llama-3.1-8b-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

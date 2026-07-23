@@ -4,15 +4,15 @@ title: Always Online
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Always Online
+# Always Online
 
-Last updated May 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/always-online/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/always-online/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare’s Always Online feature is now integrated with the [Internet Archive ↗](https://archive.org/) so that visitors can access a portion of your website even when your origin server is unreachable and a Cloudflare-cached version is unavailable. When your origin is unreachable, Always Online checks Cloudflare’s cache for a stale or expired version of your website. If a version does not exist, Cloudflare goes to the Internet Archive to fetch and serve static portions of your website.
 
@@ -46,7 +46,7 @@ Visitors who interact with dynamic parts of a website, such as a shopping cart o
 Here is how to enable Always Online in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Configuration** page.
-[ Go to **Configuration** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
+[Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
 2. Choose the domain that will use Always Online with Internet Archive integration.
 3. Under **Always Online**, set the toggle to **On**.
 
@@ -62,7 +62,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/always-online/#page","headline":"Always Online · Cloudflare Cache (CDN) docs","description":"Serve cached pages when your origin server is unavailable.","url":"https://developers.cloudflare.com/cache/how-to/always-online/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

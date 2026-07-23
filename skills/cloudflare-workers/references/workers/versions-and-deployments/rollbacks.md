@@ -4,15 +4,15 @@ title: Rollbacks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Rollbacks
+# Rollbacks
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can roll back to a previously deployed [version](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker using [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#rollback) or the Cloudflare dashboard. Rolling back to a previous version of your Worker will immediately create a new [deployment](https://developers.cloudflare.com/workers/versions-and-deployments/#deployments) with the version specified and become the active deployment across all your deployed routes and domains.
 
@@ -30,7 +30,7 @@ To roll back to a specified version of your Worker via Wrangler, use the [wrangl
 To roll back to a specified version of your Worker via the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker > **Deployments**.
 3. Select the three dot icon on the right of the version you would like to roll back to and select **Rollback**.
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/#page","headline":"Rollbacks · Cloudflare Workers docs","description":"Revert to an older version of your Worker.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Deploy an existing project
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Deploy an existing project
+# Deploy an existing project
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler can automatically detect your framework and configure your project for Cloudflare Workers. This allows you to deploy existing projects with a single command, without manually setting up configuration files or installing adapters.
 
@@ -67,7 +67,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 	"name": "my-project",
 	"main": "dist/_worker.js/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"binding": "ASSETS",
@@ -84,7 +84,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 name = "my-project"
 main = "dist/_worker.js/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -137,7 +137,7 @@ _routes.json
 
 To deploy an existing project, run [wrangler deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) in your project directory:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -157,7 +157,7 @@ Wrangler will detect your framework, show the configuration it will apply, and p
 
 To configure your project without deploying, use [wrangler setup](https://developers.cloudflare.com/workers/wrangler/commands/general/#setup):
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler setup
@@ -177,7 +177,7 @@ This is useful when you want to review the generated configuration before deploy
 
 To see what changes would be made without actually modifying any files:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler setup --dry-run
@@ -197,7 +197,7 @@ This outputs a summary of the configuration that would be generated.
 
 To skip the confirmation prompts, use the [\--yes flag](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy):
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy --yes
@@ -264,7 +264,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/#page","headline":"Deploy an existing project · Cloudflare Workers docs","description":"Learn how Wrangler automatically detects and configures your project for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

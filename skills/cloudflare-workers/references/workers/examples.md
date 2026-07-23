@@ -4,15 +4,15 @@ title: Examples
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Examples
+# Examples
 
-Last updated May 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Explore the following examples for Workers.
 
@@ -118,7 +118,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/examples/#page","headline":"Examples · Cloudflare Workers docs","description":"Browse code examples and starter templates for Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

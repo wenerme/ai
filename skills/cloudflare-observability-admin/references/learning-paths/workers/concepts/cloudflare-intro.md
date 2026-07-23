@@ -4,15 +4,15 @@ title: Introduction to Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Introduction to Cloudflare
+# Introduction to Cloudflare
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare ↗](https://www.cloudflare.com/learning/what-is-cloudflare/) is a global network of [servers ↗](https://www.cloudflare.com/learning/cdn/glossary/edge-server/). It is one of the largest [networks ↗](https://www.cloudflare.com/network/) on the Internet.
 
@@ -44,7 +44,7 @@ And more depending on your use case.
 
 When you add your application to Cloudflare, Cloudflare's global network of servers will sit in between requests to your application and your application's [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
-![Cloudflare sits in between requests and your origin server.](https://developers.cloudflare.com/_astro/website-with-cloudflare.D3VGvGsa_Z19Ojss.svg)
+![Cloudflare sits in between requests and your origin server.](https://developers.cloudflare.com/_astro/website-with-cloudflare.D3VGvGsa_Z1Lp4Et.svg)
 
 After you add your application to [Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), you can:
 
@@ -72,7 +72,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/#page","headline":"Introduction to Cloudflare · Cloudflare Learning Paths","description":"Learn about Cloudflare's network and products.","url":"https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

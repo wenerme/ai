@@ -4,15 +4,15 @@ title: Push notifications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Push notifications
+# Push notifications
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Send browser push notifications from your agent — even when the user has closed the tab. By combining the agent's persistent state (for storing push subscriptions), scheduling (for timed delivery), and the [Web Push API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Push%5FAPI), you can reach users who are completely offline.
 
@@ -565,17 +565,17 @@ try {
 
 ## Next steps
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Learn about scheduling and keepAlive for long-running operations.
+Learn about scheduling and keepAlive for long-running operations.
 
-### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Manage agent state for storing subscriptions.
+Manage agent state for storing subscriptions.
 
-### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
- Expose agent methods as RPC endpoints.
+Expose agent methods as RPC endpoints.
 
 Was this helpful?
 
@@ -583,7 +583,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/#page","headline":"Push notifications · Cloudflare Agents docs","description":"Send browser push notifications from a Cloudflare Agent, even when the user has closed the tab.","url":"https://developers.cloudflare.com/agents/communication-channels/webhooks/push-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

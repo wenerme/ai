@@ -4,15 +4,15 @@ title: Add to existing project
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Add to existing project
+# Add to existing project
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows how to add agents to an existing Cloudflare Workers project. If you are starting fresh, refer to [Building a chat agent](https://developers.cloudflare.com/agents/examples/chat-agent/) instead.
 
@@ -23,7 +23,7 @@ This guide shows how to add agents to an existing Cloudflare Workers project. If
 
 ## 1\. Install the package
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i agents
@@ -45,7 +45,7 @@ For React applications, no additional packages are needed — React bindings are
 
 For Hono applications:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i agents hono-agents
@@ -120,7 +120,7 @@ Add the Durable Object binding and migration:
 	"name": "my-existing-project",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"durable_objects": {
@@ -145,7 +145,7 @@ Add the Durable Object binding and migration:
 name = "my-existing-project"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -857,29 +857,29 @@ Now that you have a working agent, explore these topics:
 
 ### Explore more
 
-### [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [State management](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Deep dive into setState(), initialState, and onStateChanged().
+Deep dive into setState(), initialState, and onStateChanged().
 
-### [ Client SDK ](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
+### [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/)
 
- Full useAgent and AgentClient API reference.
+Full useAgent and AgentClient API reference.
 
-### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
- Expose methods to clients with @callable().
+Expose methods to clients with @callable().
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Run tasks on a delay, schedule, or cron.
+Run tasks on a delay, schedule, or cron.
 
-### [ Agent class internals ](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/)
+### [Agent class internals](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/)
 
- Full lifecycle and methods reference.
+Full lifecycle and methods reference.
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
 Was this helpful?
 
@@ -887,7 +887,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/#page","headline":"Add to existing project · Cloudflare Agents docs","description":"Add the Agents SDK to an existing Cloudflare Workers project with state management and real-time connections.","url":"https://developers.cloudflare.com/agents/getting-started/add-to-existing-project/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

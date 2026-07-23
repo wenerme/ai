@@ -4,15 +4,15 @@ title: Securing data at rest
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Securing data at rest
+# Securing data at rest
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -28,7 +28,7 @@ Cloudflare's API-driven [Cloud Access Security Broker](https://developers.cloudf
 
 When Cloudflare CASB is combined with Cloudflare's [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) service, which inspects all the traffic going to and from a SaaS application, customers can achieve comprehensive visibility into both data in transit and data at rest for SaaS applications.
 
-![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/_astro/securing-data-at-rest-fig1.BdIkDfSv_ZG4jIx.svg "Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.")
+![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/_astro/securing-data-at-rest-fig1.BdIkDfSv_Z1r67Rd.svg "Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.")
 
 Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.
 
@@ -58,7 +58,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/#page","headline":"Securing data at rest · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare's API-driven Cloud Access Security Broker (CASB) works and secures data at rest.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/security/securing-data-at-rest/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

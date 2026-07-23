@@ -4,19 +4,19 @@ title: Web3
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Web3
+# Web3
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Develop Web3 applications without having to worry about running infrastructure
 
- Add-on feature
+Add-on feature
 
 Web3 (also called the distributed web) refers to a set of technologies for hosting content and applications on decentralized networks — where data is stored across many computers rather than on a single server. These networks use consensus protocols to agree on the state of shared data without relying on a central authority.
 
@@ -30,19 +30,19 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 [IPFS Gateway](https://developers.cloudflare.com/web3/ipfs-gateway/)
 
- Paid add-on
+Paid add-on
 
 Provides a read-only, HTTP-accessible interface to the [Interplanetary File System (IPFS)](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/).
 
- Use IPFS Gateway
+Use IPFS Gateway
 
 [Ethereum Gateway](https://developers.cloudflare.com/web3/ethereum-gateway/)
 
- Paid add-on
+Paid add-on
 
 Gives you read and write access to the [Ethereum network](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/) without installing any software on your computer.
 
- Use Ethereum Gateway
+Use Ethereum Gateway
 
 ---
 
@@ -60,11 +60,11 @@ Cloudflare's Web3 gateways provide HTTP-accessible interfaces to Web3 networks. 
 
 ## More resources
 
-### [ Plans ](https://www.cloudflare.com/plans/#overview)
+### [Plans](https://www.cloudflare.com/plans/#overview)
 
 Compare available Cloudflare plans
 
-### [ Pricing ](https://dash.cloudflare.com/?to=/:account/:zone/web3/)
+### [Pricing](https://dash.cloudflare.com/?to=/:account/:zone/web3/)
 
 Explore pricing options for Web3 Gateways in the dashboard
 
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web3/#page","headline":"Overview · Cloudflare Web3 docs","description":"Cloudflare offers gateways to various networks to help Web3 developers do what they do best, develop applications without having to worry about running infrastructure.","url":"https://developers.cloudflare.com/web3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

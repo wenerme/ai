@@ -4,15 +4,15 @@ title: SCIM provisioning
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  SCIM provisioning
+# SCIM provisioning
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports bulk provisioning of users into the Cloudflare dashboard by using the System for Cross-domain Identity Management (SCIM) protocol. This allows you to connect an external identity provider (IdP) to Cloudflare, quickly onboard and manage user permissions. Currently, SCIM provisioning has been integrated with Okta, Microsoft Entra, and Authentik.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/#page","headline":"SCIM provisioning · Cloudflare Fundamentals docs","description":"Provision users and groups into your Cloudflare account using the SCIM protocol with Okta, Microsoft Entra, or Authentik.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

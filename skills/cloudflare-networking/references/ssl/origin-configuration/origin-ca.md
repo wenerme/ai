@@ -4,15 +4,15 @@ title: Cloudflare origin CA
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare origin CA
+# Cloudflare origin CA
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your origin only receives traffic from proxied records, use Cloudflare origin CA certificates to encrypt traffic between Cloudflare and your origin web server and reduce bandwidth consumption. Once deployed, these certificates are compatible with [Strict SSL mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/).
 
@@ -45,7 +45,7 @@ Cloudflare does not currently send expiration notifications for origin CA certif
 To create an Origin CA certificate in the dashboard:
 
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. On the **Origin Certificates** tab, select **Create Certificate**.
 3. Choose either:
 
@@ -96,7 +96,7 @@ After you have installed the Origin CA certificate on your origin web server, up
 If all your origin hosts are protected by Origin CA certificates or publicly trusted certificates:
 
 1. Go to the **SSL/TLS** overview page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. For **SSL/TLS encryption mode**, select **Full (strict)**.
 
 If you have origin hosts that are not protected by certificates, set the **SSL/TLS encryption** mode for a specific application to **Full (strict)** by using a [Page Rule](https://developers.cloudflare.com/rules/page-rules/).
@@ -114,7 +114,7 @@ To prevent visitors from seeing warnings about an insecure certificate, you may 
 To revoke a certificate:
 
 1. Go to the **Origin Server** page.
-[ Go to **Origin Server** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
+[Go to **Origin Server** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/origin)
 2. On the **Origin Certificates** tab, choose a certificate.
 3. Select **Revoke**.
 
@@ -154,7 +154,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/#page","headline":"Cloudflare origin CA · Cloudflare SSL/TLS docs","description":"Encrypt traffic between Cloudflare and your origin web server and reduce origin bandwidth consumption.","url":"https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Create a rule via API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a rule via API
+# Create a rule via API
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/) to create a Cache Response Rule via API. To configure the Cloudflare API, refer to the [API documentation](https://developers.cloudflare.com/fundamentals/api/get-started/).
 
@@ -244,7 +244,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/#page","headline":"Create a Cache Response Rule via API · Cloudflare Cache (CDN) docs","description":"Create cache response rules using the Rulesets API.","url":"https://developers.cloudflare.com/cache/how-to/cache-response-rules/create-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Verify email address
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Verify email address
+# Verify email address
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For security reasons, Cloudflare attempts to verify the email address associated with your account. You cannot perform certain tasks within the Cloudflare dashboard -- for example, [adding a new member](https://developers.cloudflare.com/fundamentals/manage-members/manage/#add-account-members), [changing your email address](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#change-email-address) or [updating your communication preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#notifications) \-- without verifying your email.
 
@@ -35,7 +35,7 @@ If someone else used your email to sign up for a Cloudflare account, you can rem
 If you cannot find your verification email or your email has expired, request another verification email:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **My Profile**.
 3. For **Email Address**, select **Send verification email** (if this option is not available, your email has already been verified).
 
@@ -46,7 +46,7 @@ If you experience issues with your verification link, you might have already ver
 To check your verification:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **My Profile**.
 3. For **Email Address**, your email address will have `(verified)` added after it.
 
@@ -60,7 +60,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/#page","headline":"Verify email address · Cloudflare Fundamentals docs","description":"Confirm the email address on your Cloudflare account to unlock dashboard features like adding members and updating preferences.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

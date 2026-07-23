@@ -4,15 +4,15 @@ title: Using Agents with Workflows
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Using Agents with Workflows
+# Using Agents with Workflows
 
-Last updated Jul 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## What are Workflows?
 
@@ -212,17 +212,17 @@ A Workflow updates Agent state at key milestones using `step.updateAgentState()`
 
 ## Related resources
 
-### [ Run Workflows API ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Run Workflows API](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
- Implementation details for agent workflows.
+Implementation details for agent workflows.
 
-### [ Cloudflare Workflows ](https://developers.cloudflare.com/workflows/)
+### [Cloudflare Workflows](https://developers.cloudflare.com/workflows/)
 
- Workflow fundamentals and documentation.
+Workflow fundamentals and documentation.
 
-### [ Human-in-the-loop ](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
+### [Human-in-the-loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
 
- Approval flows and manual intervention.
+Approval flows and manual intervention.
 
 Was this helpful?
 
@@ -230,7 +230,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/workflows/#page","headline":"Using Agents with Workflows · Cloudflare Agents docs","description":"Integrate Cloudflare Workflows with Agents for durable, multi-step background processing with automatic retries.","url":"https://developers.cloudflare.com/agents/concepts/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

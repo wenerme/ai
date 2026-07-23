@@ -4,15 +4,15 @@ title: Call sequence
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Call sequence
+# Call sequence
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/firewall/api/call-sequence/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/api/call-sequence/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The API call examples in this site illustrate the **recommended sequence** of calling the two APIs (the [Cloudflare Filters API](https://developers.cloudflare.com/firewall/api/cf-filters/) and the [Firewall Rules API](https://developers.cloudflare.com/firewall/api/cf-firewall-rules/)).
 
@@ -91,7 +91,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/call-sequence/#page","headline":"Call sequence · Cloudflare Firewall Rules (deprecated) docs","description":"Recommended API call sequence for firewall rules.","url":"https://developers.cloudflare.com/firewall/api/call-sequence/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

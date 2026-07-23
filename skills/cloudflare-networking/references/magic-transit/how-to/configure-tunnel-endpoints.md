@@ -4,15 +4,15 @@ title: Configure tunnel endpoints
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure tunnel endpoints
+# Configure tunnel endpoints
 
-Last updated May 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** \> [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
 
@@ -72,7 +72,7 @@ Caution
 Cloudflare Network Firewall rules apply to Internet Control Message Protocol (ICMP) traffic. If you enable Cloudflare Network Firewall, ensure your rules allow ICMP traffic sourced from Cloudflare public IPs. Otherwise, health checks will fail. Refer to [Cloudflare Network Firewall rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/#cloudflare-network-firewall-rules-and-magic-transit-endpoint-health-checks) for more information.
 
 1. Go to **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. From the **IPsec/GRE tunnels** tab, select **Create a tunnel**.
 2. On the **Add tunnels** page, choose either a **GRE tunnel** or **IPsec tunnel**.
 1. In **Name**, give your tunnel a descriptive name. This name must be unique, cannot contain spaces or special characters, and cannot be shared with other tunnels.
@@ -135,7 +135,7 @@ IPsec tunnels will not function without a pre-shared key (PSK).
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 GRE tunnel
 
@@ -417,7 +417,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/#page","headline":"Configure tunnel endpoints · Cloudflare Magic Transit docs","description":"Learn how to configure IPsec or GRE tunnels for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec","ICMP"]}

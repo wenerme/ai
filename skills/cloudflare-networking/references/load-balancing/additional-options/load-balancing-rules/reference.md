@@ -4,15 +4,15 @@ title: Supported fields and operators
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Supported fields and operators
+# Supported fields and operators
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The fields that are supported by load balancing rules depend on whether Cloudflare proxies the traffic going through your load balancer or not.
 
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/#page","headline":"Supported fields and operators · Cloudflare Load Balancing docs","description":"Fields and operators for load balancing rule expressions.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

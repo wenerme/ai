@@ -4,22 +4,22 @@ title: Create a response header transform rule in the dashboard
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a response header transform rule in the dashboard
+# Create a response header transform rule in the dashboard
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/transform/response-header-modification/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/transform/response-header-modification/create-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the [Rules examples gallery](https://developers.cloudflare.com/rules/transform/examples/?operation=Response+modification) for examples of rule definitions.
 
 To create a rule:
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **Response Header Transform Rule**.
 3. (Optional) Select one of the rule templates that address common use cases. Then, review and adjust the proposed rule configuration.
 4. Enter a descriptive name for the rule in **Rule name**.
@@ -47,7 +47,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/response-header-modification/create-dashboard/#page","headline":"Create a response header transform rule in the dashboard · Cloudflare Rules docs","description":"Create response header modification rules in the dashboard.","url":"https://developers.cloudflare.com/rules/transform/response-header-modification/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Response modification"]}

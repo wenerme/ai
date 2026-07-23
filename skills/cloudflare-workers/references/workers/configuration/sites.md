@@ -4,15 +4,15 @@ title: Workers Sites
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers Sites
+# Workers Sites
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/sites/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/sites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use Workers Static Assets Instead
 
@@ -28,7 +28,7 @@ To deploy with Workers Sites, select from one of these three approaches dependin
 
 If you are ready to start a brand new project, this quick start guide will help you set up the infrastructure to deploy a HTML website to Workers.
 
-[ Start from scratch ](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch/)
+[Start from scratch](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch/)
 
 ---
 
@@ -36,7 +36,7 @@ If you are ready to start a brand new project, this quick start guide will help 
 
 If you have an existing project or static assets that you want to deploy with Workers, this quick start guide will help you install Wrangler and configure Workers Sites for your project.
 
-[ Start from an existing static site ](https://developers.cloudflare.com/workers/configuration/sites/start-from-existing/)
+[Start from an existing static site](https://developers.cloudflare.com/workers/configuration/sites/start-from-existing/)
 
 ---
 
@@ -44,7 +44,7 @@ If you have an existing project or static assets that you want to deploy with Wo
 
 If you already have a Worker deployed to Cloudflare, this quick start guide will show you how to configure the existing codebase to use Workers Sites.
 
-[ Start from an existing Worker ](https://developers.cloudflare.com/workers/configuration/sites/start-from-worker/)
+[Start from an existing Worker](https://developers.cloudflare.com/workers/configuration/sites/start-from-worker/)
 
 Note
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/static-assets/#page","headline":"Workers Sites · Cloudflare Workers docs","description":"Use Workers Static Assets to host full-stack applications instead of Workers Sites. Do not use Workers Sites for new projects.","url":"https://developers.cloudflare.com/workers/static-assets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

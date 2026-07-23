@@ -4,15 +4,15 @@ title: Vike
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Vike
+# Vike
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy your [Vike ↗](https://vike.dev) app to Cloudflare using the Vike extension [vike-photon ↗](https://vike.dev/vike-photon).
 
@@ -22,7 +22,7 @@ Already have a Vike project?
 
 Run `wrangler deploy` in a project without a Wrangler configuration file and Wrangler will automatically detect Vike, generate the necessary configuration, and deploy your project.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -38,27 +38,27 @@ pnpm wrangler deploy
 
 Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
 
-Vike Detected
+VikeDetected
 
 Generated configuration
 
 wrangler.jsonc
 
-main: dist/server/index.js
+main:dist/server/index.js
 
 wrangler.jsonc
 
-assets: directory: dist/client
+assets:directory: dist/client
 
 wrangler.jsonc
 
-compatibility\_flags: nodejs\_compat
+compatibility\_flags:nodejs\_compat
 
 wrangler.jsonc
 
-observability: enabled: true
+observability:enabled: true
 
-Workers Deployed
+WorkersDeployed
 
 Wrangler handles configuration automatically
 
@@ -72,7 +72,7 @@ Use [vike.dev/new ↗](https://vike.dev/new) to scaffold a new Vike app that use
 
 ## Add to existing app
 
-1. npm  yarn  pnpm  bun
+1. npmyarnpnpmbun
 ```
 npm i wrangler vike-photon @photonjs/cloudflare
 ```
@@ -131,7 +131,7 @@ env.LOG_LEVEL
 
 > Example of using Cloudflare D1:
 >
-> npm  yarn  pnpm
+> npmyarnpnpm
 >
 > ```
 > npm create vike@latest -- --react --hono --drizzle --cloudflare
@@ -151,7 +151,7 @@ env.LOG_LEVEL
 
 If you use TypeScript, run [wrangler types](https://developers.cloudflare.com/workers/wrangler/commands/general/#types) whenever you change your Cloudflare configuration to update the `worker-configuration.d.ts` file.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -193,8 +193,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/#page","headline":"Vike · Cloudflare Workers docs","description":"Create a Vike application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/#page","headline":"Vike · Cloudflare Workers docs","description":"Create a Vike application and deploy it to Cloudflare Workers","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}
 ```

@@ -4,15 +4,15 @@ title: How Hyperdrive works
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How Hyperdrive works
+# How Hyperdrive works
 
-Last updated Jul 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connecting to traditional centralized databases from Cloudflare's global network which consists of over [300 data center locations ↗](https://www.cloudflare.com/network/) presents a few challenges as queries can originate from any of these locations.
 
@@ -32,7 +32,7 @@ Hyperdrive accelerates database queries by:
 
 This ensures you have optimal performance when connecting to your database from Workers (whether your queries are cached or not).
 
-![Hyperdrive connection](https://developers.cloudflare.com/_astro/hyperdrive-comparison.BMT25nFH_ZcBb7n.svg)
+![Hyperdrive connection](https://developers.cloudflare.com/_astro/hyperdrive-comparison.BMT25nFH_Z7pmqL.svg)
 
 ### 1\. Edge connection setup
 
@@ -106,7 +106,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/#page","headline":"How Hyperdrive works · Cloudflare Hyperdrive docs","description":"Hyperdrive accelerates database queries through edge connection setup, connection pooling, and query caching.","url":"https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

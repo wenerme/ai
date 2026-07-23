@@ -4,15 +4,15 @@ title: Create a tunnel (dashboard)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a tunnel (dashboard)
+# Create a tunnel (dashboard)
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Follow this step-by-step guide to create your first [remotely-managed tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/tunnel-useful-terms/#remotely-managed-tunnel).
 
@@ -23,7 +23,7 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 ## 1\. Create a tunnel
 
 1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
 4. Select **Create Tunnel**.
@@ -43,7 +43,7 @@ Before you publish an application through your tunnel, you must [add a website t
 After creating your tunnel, add a published application route:
 
 1. Go to **Networking** \> **Tunnels**, then select your tunnel.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. On the **Routes** tab, select **Add route**, then select **Published application**.
 3. Enter a subdomain and select a **Domain** from the drop-down menu. Specify any subdomain or path information.
 Note
@@ -58,7 +58,7 @@ Anyone on the Internet can now access the application at the specified hostname.
 To connect a private network through your tunnel, add a CIDR route:
 
 1. Go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create route**, then choose **Tunnel CIDR**.
 3. Select the tunnel you just created.
 4. In **Network**, enter the private IP address or CIDR range of your service (for example, `10.0.0.1` or `10.0.0.0/24`).
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/#page","headline":"Create a tunnel (dashboard) · Cloudflare One docs","description":"Create a tunnel (dashboard) in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

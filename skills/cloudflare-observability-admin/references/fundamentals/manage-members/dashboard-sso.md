@@ -4,15 +4,15 @@ title: Set up dashboard SSO
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up dashboard SSO
+# Set up dashboard SSO
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers single sign-on (SSO) for all customers who log in with a custom email domain. By creating a Cloudflare SSO connector, you can enforce SSO to the Cloudflare dashboard with the identity provider (IdP) of your choice. SSO will be enforced for every user in your email domain.
 
@@ -46,7 +46,7 @@ Caution
 You must create an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the role `SSO Connector Edit` and store it securely. This acts as a backup plan, allowing you to disable SSO via the API if you are accidentally locked out, such as due to changes in your IdP configuration later.
 
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
-[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
+[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 1. If step 1 was successful, a button to add a new SSO domain will be present. Select the button to begin the process of adding a new SSO domain.
 ![Screenshot of the SSO connector create modal](https://developers.cloudflare.com/_astro/create_modal.UuyGmCgI_ZLWxQJ.webp)
 1. Enter your email domain and select **Create** to move to the verification step.
@@ -267,7 +267,7 @@ Caution
 Before disabling SSO, make sure you have access to your Cloudflare user email. This will allow you to reset your password in case you get logged out of the Cloudflare dashboard.
 
 1. Navigate to the **Members** page.
-[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
+[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 1. Go to **Settings**.
 2. Select the actions menu for the SSO connector in the list and select **Disable**.
 3. Type the domain of the connector and click confirm to complete the disable action.
@@ -330,7 +330,7 @@ Users can now log in using their Cloudflare account email and password. If a use
 Cloudflare does not allow you to change your team name while a SSO connector is created. To change your team name, you must disable and delete your SSO connector(s).
 
 1. Navigate to the **Members** page.
-[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
+[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 1. Go to **Settings**.
 2. Disable all SSO connectors.
 3. Delete all SSO connectors.
@@ -369,7 +369,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO · Cloudflare Fundamentals docs","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}

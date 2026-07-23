@@ -4,15 +4,15 @@ title: Global Acceleration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/china-network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Global Acceleration
+# Global Acceleration
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/china-network/concepts/global-acceleration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/china-network/concepts/global-acceleration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,19 +24,19 @@ Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=17s)
 
- **Introduction**  17s
+**Introduction**17s
 * ![Dynamic content outside of Mainland China](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=38s)
 
- **Dynamic content outside of Mainland China**  38s
+**Dynamic content outside of Mainland China**38s
 * ![Access to global services](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=103s)
 
- **Access to global services**  1m43s
+**Access to global services**1m43s
 * ![Private network connectivity](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=174s)
 
- **Private network connectivity**  2m54s
+**Private network connectivity**2m54s
 * ![Summary](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/18457868eb13222051618b0d138e0225/thumbnails/thumbnail.jpg?fit=crop&time=223s)
 
- **Summary**  3m43s
+**Summary**3m43s
 
 Global Acceleration can support the following scenarios:
 
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/china-network/concepts/global-acceleration/#page","headline":"Global Acceleration · Cloudflare China Network docs","description":"Simplify global asset deployment in China with connectivity from CMI, CBC Tech, and JD Cloud.","url":"https://developers.cloudflare.com/china-network/concepts/global-acceleration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

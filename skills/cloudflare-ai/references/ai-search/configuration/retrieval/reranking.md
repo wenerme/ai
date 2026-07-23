@@ -4,15 +4,15 @@ title: Reranking
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Reranking
+# Reranking
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Reranking can help improve the quality of AI Search results by reordering retrieved documents based on semantic relevance to the user's query. It applies a secondary model after retrieval to rerank the top results before they are returned.
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/#page","headline":"Reranking · Cloudflare AI Search docs","description":"Enable reranking in AI Search to reorder retrieved results by semantic relevance.","url":"https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

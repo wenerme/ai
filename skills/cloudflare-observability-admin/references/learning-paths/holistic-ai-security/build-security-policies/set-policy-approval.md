@@ -4,15 +4,15 @@ title: Set policy based on approval status
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set policy based on approval status
+# Set policy based on approval status
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you use specific AI tools within your organization, you may want to create policies to explicitly allow the usage of those tools while continuing to evaluate additional usage within your organization.
 
@@ -143,7 +143,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/#page","headline":"Set policy based on approval status · Cloudflare Learning Paths","description":"Create Gateway policies for AI tool governance.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/set-policy-approval/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

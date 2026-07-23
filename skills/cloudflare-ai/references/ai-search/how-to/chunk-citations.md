@@ -4,15 +4,15 @@ title: Show source citations in responses
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Show source citations in responses
+# Show source citations in responses
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/chunk-citations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/chunk-citations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [AI Search](https://developers.cloudflare.com/ai-search/) returns the source chunks it uses to generate an answer. Use those chunks to show citations, references, or source links in your application.
 
@@ -43,7 +43,7 @@ The `score` field indicates how relevant the chunk was to the query. The `chunks
 
 Create a Worker project for the citation examples:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- ai-search-citations
@@ -75,7 +75,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
   "name": "ai-search-citations",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "ai_search_namespaces": [
     {
       "binding": "AI_SEARCH",
@@ -89,7 +89,7 @@ Add an AI Search namespace binding to your Wrangler configuration:
 name = "ai-search-citations"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[ai_search_namespaces]]
 binding = "AI_SEARCH"
@@ -585,7 +585,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/#page","headline":"Show source citations in responses · Cloudflare AI Search docs","description":"Display source citations alongside AI-generated answers.","url":"https://developers.cloudflare.com/ai-search/how-to/chunk-citations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: mistral-7b-instruct-v0.2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![MistralAI logo](https://developers.cloudflare.com/_astro/mistralai.Bn9UMUMu.svg)
 
-#  mistral-7b-instruct-v0.2
+# mistral-7b-instruct-v0.2
 
- Beta
+Beta
 
- Text Generation • MistralAI
+Text Generation • MistralAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @hf/mistral/mistral-7b-instruct-v0.2 `
+`@hf/mistral/mistral-7b-instruct-v0.2`
 
 * Cloudflare-hosted
 * LoRA
@@ -28,19 +28,19 @@ Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/worker
 
 The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2\. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.
 
-| Model Info                                                                  |                                                                     |
-| --------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Deprecated                                                                  | 5/30/2026                                                           |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 3,072 tokens                                                        |
-| More information                                                            | [link ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) |
-| LoRA                                                                        | Yes                                                                 |
-| Beta                                                                        | Yes                                                                 |
+| Model Info                                                                 |                                                                     |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Deprecated                                                                 | 5/30/2026                                                           |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 3,072 tokens                                                        |
+| More information                                                           | [link ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) |
+| LoRA                                                                       | Yes                                                                 |
+| Beta                                                                       | Yes                                                                 |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@hf/mistral/mistral-7b-instruct-v0.2)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@hf/mistral/mistral-7b-instruct-v0.2)
 
 ## Usage
 
@@ -129,7 +129,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -189,7 +189,7 @@ presence\_penalty
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -203,7 +203,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -215,13 +215,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -229,7 +229,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/#page","headline":"mistral-7b-instruct-v0.2 (MistralAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.","url":"https://developers.cloudflare.com/workers-ai/models/mistral-7b-instruct-v0.2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

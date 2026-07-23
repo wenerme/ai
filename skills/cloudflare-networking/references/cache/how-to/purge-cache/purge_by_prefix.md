@@ -4,15 +4,15 @@ title: ​Purge cache by prefix (URL)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  ​Purge cache by prefix (URL)
+# ​Purge cache by prefix (URL)
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can instantly purge their cache by URL prefix or path separators in their URL. For an example URL like `https://www.example.com/foo/bar/baz/qux.jpg`, valid purge requests include:
 
@@ -28,7 +28,7 @@ Purging by prefix is useful in different scenarios, such as:
 * Increasing control over cached objects in a path.
 * Simplifying the number of purge calls sent.
 1. In the Cloudflare dashboard, go to the **Configuration** page.
-[ Go to **Configuration** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
+[Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
 2. Under **Purge Cache**, select **Custom Purge**. The **Custom Purge** window appears.
 3. Under **Purge by**, select **Prefix**.
 4. Follow the syntax instructions.
@@ -88,7 +88,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/#page","headline":"​Purge cache by prefix (URL) · Cloudflare Cache (CDN) docs","description":"Purge cached resources by URL prefix.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge_by_prefix/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

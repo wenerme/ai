@@ -4,15 +4,15 @@ title: Troubleshooting
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting
+# Troubleshooting
 
-Last updated Jun 19, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your certificate is stuck in **Pending Validation** or failing to issue, the certificate authority (CA) may be unable to complete [domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/). This page helps you identify and resolve common DCV issues.
 
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/#page","headline":"Troubleshooting Domain Control Validation · Cloudflare SSL/TLS docs","description":"Resolve domain control validation failures.","url":"https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

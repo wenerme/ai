@@ -4,21 +4,21 @@ title: indictrans2-en-indic-1B
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
- a
+a
 
-#  indictrans2-en-indic-1B
+# indictrans2-en-indic-1B
 
- Translation • ai4bharat
+Translation • ai4bharat
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/ai4bharat/indictrans2-en-indic-1B `
+`@cf/ai4bharat/indictrans2-en-indic-1B`
 
 * Cloudflare-hosted
 
@@ -97,9 +97,9 @@ target\_language
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/ai4bharat/indictrans2-en-indic-1B/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -107,7 +107,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/#page","headline":"indictrans2-en-indic-1B (ai4bharat) · Cloudflare AI docs · Cloudflare AI docs","description":"IndicTrans2 is the first open-source transformer-based multilingual NMT model that supports high-quality translations across all the 22 scheduled Indic languages","url":"https://developers.cloudflare.com/ai/models/%40cf/ai4bharat/indictrans2-en-indic-1B/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

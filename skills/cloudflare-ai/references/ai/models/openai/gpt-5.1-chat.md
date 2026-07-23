@@ -4,7 +4,7 @@ title: GPT-5.1 Chat
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT-5.1 Chat
+# GPT-5.1 Chat
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-5.1-chat `
+`openai/gpt-5.1-chat`
 
 * Third-party
 
 GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.
 
-| Model Info                                                                  |                                                                                                                        |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                         |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information                                                            | [link ↗](https://openai.com/)                                                                                          |
-| Request formats                                                             | Chat Completions                                                                                                       |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1-chat) |
+| Model Info                                                                 |                                                                                                                       |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                        |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
+| More information                                                           | [link ↗](https://openai.com/)                                                                                         |
+| Request formats                                                            | Chat Completions                                                                                                      |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.1-chat) |
 
 ## Usage
 
@@ -113,7 +113,7 @@ If you want, I can also include the "zeroth" law for completeness.
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -203,7 +203,7 @@ Notes:
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -317,7 +317,7 @@ If you tell me your preferred pace, interests (food, nature, beaches, wineries, 
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -396,7 +396,7 @@ She crouched beside the body, careful not to disturb the latticework of vines th
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -3504,9 +3504,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -3514,7 +3514,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/#page","headline":"GPT-5.1 Chat (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

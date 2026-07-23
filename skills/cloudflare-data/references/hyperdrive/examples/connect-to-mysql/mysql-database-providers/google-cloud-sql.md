@@ -4,17 +4,17 @@ title: Google Cloud SQL
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Google Cloud SQL
+# Google Cloud SQL
 
 Connect Hyperdrive to a Google Cloud SQL database instance.
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/google-cloud-sql/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/google-cloud-sql/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example shows you how to connect Hyperdrive to a Google Cloud SQL MySQL database instance.
 
@@ -86,7 +86,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -105,7 +105,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -117,7 +117,7 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i mysql2@>3.13.0
@@ -148,7 +148,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -161,7 +161,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -222,7 +222,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/google-cloud-sql/#page","headline":"Google Cloud SQL · Cloudflare Hyperdrive docs","description":"Connect Hyperdrive to a Google Cloud SQL database instance.","url":"https://developers.cloudflare.com/hyperdrive/examples/connect-to-mysql/mysql-database-providers/google-cloud-sql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

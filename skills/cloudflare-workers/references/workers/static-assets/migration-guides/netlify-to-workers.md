@@ -4,15 +4,15 @@ title: Migrate from Netlify to Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrate from Netlify to Workers
+# Migrate from Netlify to Workers
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to migrate your Netlify application to Cloudflare Workers.
 
@@ -42,7 +42,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 {
 	"name": "<your-project-name>",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "<your-build-directory>",
 	},
@@ -52,7 +52,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "<your-build-directory>"
@@ -64,7 +64,7 @@ For a **Single Page Application**, you will need to add the following to your Wr
 {
 	"name": "<your-project-name>",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "<your-build-directory>",
 		"not_found_handling": "single-page-application",
@@ -75,7 +75,7 @@ For a **Single Page Application**, you will need to add the following to your Wr
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "<your-build-directory>"
@@ -110,7 +110,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/#page","headline":"Migrate from Netlify to Workers · Cloudflare Workers docs","description":"Migrate your Netlify application to Cloudflare Workers. You should already have an existing project deployed on Netlified that you would like to host on Workers.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

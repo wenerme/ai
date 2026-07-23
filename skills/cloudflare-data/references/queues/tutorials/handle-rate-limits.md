@@ -4,17 +4,17 @@ title: Handle rate limits of external APIs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/queues/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Handle rate limits of external APIs
+# Handle rate limits of external APIs
 
 Example of how to use Queues to handle rate limits of external APIs.
 
-Last updated Feb 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to use Queues to handle rate limits of external APIs by building an application that sends email notifications using [Resend ↗](https://www.resend.com/). However, you can use this pattern to handle rate limits of any external API.
 
@@ -39,14 +39,14 @@ Before you can use Queues, you must enable it via [the Cloudflare dashboard ↗]
 To enable Queues:
 
 1. In the Cloudflare dashboard, go to the **Queues** page.
-[ Go to **Queues** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/queues)
+[Go to **Queues** ↗](https://dash.cloudflare.com/?to=/:account/workers/queues)
 2. Select **Enable Queues**.
 
 ## 1\. Create a new Workers application
 
 To get started, create a Worker application using the [create-cloudflare CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- resend-rate-limit-queue
@@ -134,7 +134,7 @@ Your final Wrangler file should look similar to the example below.
 	"name": "resend-rate-limit-queue",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -162,7 +162,7 @@ Your final Wrangler file should look similar to the example below.
 name = "resend-rate-limit-queue"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.producers]]
@@ -293,7 +293,7 @@ interface Env {
 
 Lastly, install the [resend package ↗](https://www.npmjs.com/package/resend) using the following command:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i resend
@@ -473,7 +473,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/#page","headline":"Cloudflare Queues - Queues & Rate Limits · Cloudflare Queues docs","description":"Example of how to use Queues to handle rate limits of external APIs.","url":"https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}

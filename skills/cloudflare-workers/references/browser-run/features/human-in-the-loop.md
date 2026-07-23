@@ -4,15 +4,15 @@ title: Human in the Loop
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Human in the Loop
+# Human in the Loop
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Some browser automation workflows require manual intervention. A login page may need multi-factor authentication, a form may require sensitive credentials you do not want to pass to an automation script, or a task may be too complex to fully automate. Human in the Loop lets a human step into a live browser session through [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) to handle what automation cannot, then hand control back to the script.
 
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/#page","headline":"Human in the Loop · Cloudflare Browser Run docs","description":"Temporarily hand off browser control to a human operator for authentication, sensitive actions, or tasks that are difficult to fully automate.","url":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: Claude Opus 4.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)
 
-#  Claude Opus 4.5
+# Claude Opus 4.5
 
- Text Generation • Anthropic
+Text Generation • Anthropic
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` anthropic/claude-opus-4.5 `
+`anthropic/claude-opus-4.5`
 
 * Third-party
 * Zero data retention
 
 Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.
 
-| Model Info                                                                  |                                                                                                                              |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                               |
-| Terms and License                                                           | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
-| More information                                                            | [link ↗](https://www.anthropic.com/claude/opus)                                                                              |
-| Zero data retention                                                         | Yes                                                                                                                          |
-| Request formats                                                             | Anthropic Messages                                                                                                           |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
+| Model Info                                                                 |                                                                                                                             |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                              |
+| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
+| More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
+| Zero data retention                                                        | Yes                                                                                                                         |
+| Request formats                                                            | Anthropic Messages                                                                                                          |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
 
 ## Usage
 
@@ -100,7 +100,7 @@ There's also sometimes a **Zeroth Law** mentioned, which states that if two syst
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -219,7 +219,7 @@ The result is typically a Python dictionary or list that you can work with norma
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -315,7 +315,7 @@ How much time do you have for the trip? That'll help me narrow down recommendati
 }
 ```
 
-**Creative Writing**  — Higher temperature for creative output
+**Creative Writing** — Higher temperature for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -394,7 +394,7 @@ And below it, in handwriting that definitely wasn't the victim's: *You're early.
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -632,7 +632,7 @@ Think of Russian nesting dolls 🪆 — you keep opening smaller dolls until you
 ]
 ```
 
-**Web Search**  — Letting Claude use Anthropic's server-side web search tool to answer with current information
+**Web Search** — Letting Claude use Anthropic's server-side web search tool to answer with current information
 
 ```ts
 const response = await env.AI.run(
@@ -946,9 +946,9 @@ stop\_reason
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -956,7 +956,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/#page","headline":"Claude Opus 4.5 (Anthropic) · Cloudflare AI docs · Cloudflare AI docs","description":"Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.","url":"https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: gRPC
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  gRPC
+# gRPC
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/grpc/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/grpc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 gRPC is a Remote Procedure Call (RPC) framework that allows client applications to call methods on a remote server as if they were running on the same local machine. You can connect gRPC servers and clients to Cloudflare's global network, making it easier to build applications that use services across different data centers and environments.
 
@@ -38,10 +38,10 @@ Server started, listening on 50051
 To establish a secure, outbound-only connection to Cloudflare:
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. [Create a new tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) or edit an existing `cloudflared` tunnel.
 1. In the Cloudflare dashboard, go to **Networking** \> **Routes**.
-[ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+[Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
 2. Select **Create route** \> **Tunnel CIDR**. Select the tunnel you just created, enter the private IP or CIDR address of your server, and select **Create route**.
 
 ## 3\. Route private network IPs through the Cloudflare One Client
@@ -132,7 +132,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/grpc/#page","headline":"gRPC · Cloudflare One docs","description":"gRPC in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/grpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}

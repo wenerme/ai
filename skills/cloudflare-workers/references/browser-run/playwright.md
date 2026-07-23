@@ -4,15 +4,15 @@ title: Playwright
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Playwright
+# Playwright
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/playwright/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Playwright ↗](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
@@ -20,7 +20,7 @@ The Workers team forked a [version of Playwright ↗](https://github.com/cloudfl
 
 Our version is open sourced and can be found in [Cloudflare's fork of Playwright ↗](https://github.com/cloudflare/playwright). The npm package can be installed from [npmjs ↗](https://www.npmjs.com/) as [@cloudflare/playwright ↗](https://www.npmjs.com/package/@cloudflare/playwright):
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D @cloudflare/playwright
@@ -64,7 +64,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -79,7 +79,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 upload_source_maps = true
 
 [browser]
@@ -88,7 +88,7 @@ binding = "MYBROWSER"
 
 Install the npm package:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D @cloudflare/playwright
@@ -249,7 +249,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 	"main": "src/index.ts",
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -267,7 +267,7 @@ name = "storage-state-examples"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [browser]
 binding = "MYBROWSER"
@@ -468,7 +468,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/#page","headline":"Playwright · Cloudflare Browser Run docs","description":"Learn how to use Playwright with Cloudflare Workers for browser automation. Access Playwright API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: Manage account members
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn how to define the roles and permission scope for members associated with an account.
 

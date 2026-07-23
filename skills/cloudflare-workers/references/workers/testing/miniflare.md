@@ -4,15 +4,15 @@ title: Miniflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Miniflare
+# Miniflare
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
@@ -23,7 +23,7 @@ This documentation describes the Miniflare API, which is only relevant for advan
 * 🎉 **Fun:** develop Workers easily with detailed logging, file watching and pretty error pages supporting source maps.
 * 🔋 **Full-featured:** supports most Workers features, including KV, Durable Objects, WebSockets, modules and more.
 * ⚡ **Fully-local:** test and develop Workers without an Internet connection. Reload code on change quickly.
-[ Get Started ](https://developers.cloudflare.com/workers/testing/miniflare/get-started)[ GitHub ](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare)[ NPM ](https://npmjs.com/package/miniflare)
+[Get Started](https://developers.cloudflare.com/workers/testing/miniflare/get-started)[GitHub](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare)[NPM](https://npmjs.com/package/miniflare)
 
 ---
 
@@ -31,12 +31,12 @@ These docs primarily cover Miniflare specific things. For more information on ru
 
 If you find something that doesn't behave as it does in the production Workers environment (and this difference isn't documented), or something's wrong in these docs, please [open a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
-* [ Get Started ](https://developers.cloudflare.com/workers/testing/miniflare/get-started/) :  Install and configure the Miniflare API to dispatch events and test Cloudflare Workers locally.
-* [ Writing tests ](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/) :  Write integration tests against Workers using Miniflare.
-* [ Core ](https://developers.cloudflare.com/workers/testing/miniflare/core/) :  Core Miniflare features for testing Cloudflare Workers, including fetch events and compatibility settings.
-* [ Developing ](https://developers.cloudflare.com/workers/testing/miniflare/developing/) :  Development tools for Miniflare, including debugger support and live reload for Cloudflare Workers.
-* [ Migrations ](https://developers.cloudflare.com/workers/testing/miniflare/migrations/) :  Review migration guides for specific versions of Miniflare.
-* [ Storage ](https://developers.cloudflare.com/workers/testing/miniflare/storage/) :  Configure and manage local storage simulators in Miniflare for Workers bindings like KV, R2, and D1\.
+* [Get Started](https://developers.cloudflare.com/workers/testing/miniflare/get-started/): Install and configure the Miniflare API to dispatch events and test Cloudflare Workers locally.
+* [Writing tests](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/): Write integration tests against Workers using Miniflare.
+* [Core](https://developers.cloudflare.com/workers/testing/miniflare/core/): Core Miniflare features for testing Cloudflare Workers, including fetch events and compatibility settings.
+* [Developing](https://developers.cloudflare.com/workers/testing/miniflare/developing/): Development tools for Miniflare, including debugger support and live reload for Cloudflare Workers.
+* [Migrations](https://developers.cloudflare.com/workers/testing/miniflare/migrations/): Review migration guides for specific versions of Miniflare.
+* [Storage](https://developers.cloudflare.com/workers/testing/miniflare/storage/): Configure and manage local storage simulators in Miniflare for Workers bindings like KV, R2, and D1.
 
 Was this helpful?
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/testing/miniflare/#page","headline":"Miniflare · Cloudflare Workers docs","description":"Simulate and test Cloudflare Workers locally with Miniflare, a fully-local development simulator.","url":"https://developers.cloudflare.com/workers/testing/miniflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,17 +4,17 @@ title: Query D1 from Python Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Query D1 from Python Workers
+# Query D1 from Python Workers
 
 Learn how to query D1 from a Python Worker
 
-Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Workers platform supports [multiple languages](https://developers.cloudflare.com/workers/languages/), including TypeScript, JavaScript, Rust and Python. This guide shows you how to query a D1 database from [Python](https://developers.cloudflare.com/workers/languages/python/) and deploy your application globally.
 
@@ -69,7 +69,7 @@ In your Wrangler file, create a new `[[d1_databases]]` configuration block and s
 		"python_workers"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"d1_databases": [
 		{
 			"binding": "DB", // This will be how you refer to your database in your Worker
@@ -86,7 +86,7 @@ name = "python-and-d1"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[d1_databases]]
 binding = "DB"
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/#page","headline":"Query D1 from Python Workers · Cloudflare D1 docs","description":"Learn how to query D1 from a Python Worker","url":"https://developers.cloudflare.com/d1/examples/query-d1-from-python-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python"]}

@@ -4,36 +4,36 @@ title: gemma-sea-lion-v4-27b-it
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
- a
+a
 
-#  gemma-sea-lion-v4-27b-it
+# gemma-sea-lion-v4-27b-it
 
- Text Generation • aisingapore
+Text Generation • aisingapore
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/aisingapore/gemma-sea-lion-v4-27b-it `
+`@cf/aisingapore/gemma-sea-lion-v4-27b-it`
 
 * Cloudflare-hosted
 
 SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.
 
-| Model Info                                                                  |                                                     |
-| --------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                      |
-| Unit Pricing                                                                | $0.35 per M input tokens, $0.56 per M output tokens |
+| Model Info                                                                 |                                                     |
+| -------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                      |
+| Unit Pricing                                                               | $0.35 per M input tokens, $0.56 per M output tokens |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/aisingapore/gemma-sea-lion-v4-27b-it)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/aisingapore/gemma-sea-lion-v4-27b-it)
 
 ## Usage
 
@@ -122,11 +122,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 prompt
 
@@ -208,7 +208,7 @@ prompt\_logprobs{}
 
 `object`Log probabilities for the prompt (if requested)
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 prompt
 
@@ -274,7 +274,7 @@ format
 
 `binary`
 
-Batch  — Send multiple requests in a single API call
+Batch — Send multiple requests in a single API call
 
 ▶requests\[\]
 
@@ -310,17 +310,17 @@ prompt\_logprobs{}
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/streaming-output.json "Download")
+StreamingOutput
 
-Batch Input [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-input.json "Download")
+BatchInput
 
-Batch Output [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/batch-output.json "Download")
+BatchOutput
 
 Was this helpful?
 
@@ -328,7 +328,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/#page","headline":"gemma-sea-lion-v4-27b-it (aisingapore) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.","url":"https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

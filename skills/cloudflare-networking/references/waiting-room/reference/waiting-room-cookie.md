@@ -4,15 +4,15 @@ title: Cookies
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cookies
+# Cookies
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A waiting room only uses the `__cfwaitingroom` cookie when a visitor requests access to a host and path combination with an enabled and associated waiting room. When the waiting room is suspended, traffic goes to the origin and the `__cfwaitingroom` cookie is not created. The `__cfwaitingroom` cookie is encrypted to prevent modification by users. You may append a [custom suffix](#customize-cookie-name) to your waiting room cookie to customize the name of your waiting room cookie.
 
@@ -59,7 +59,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/#page","headline":"Cookies · Cloudflare Waiting Room docs","description":"How Waiting Room cookies track visitor sessions.","url":"https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}

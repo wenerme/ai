@@ -4,15 +4,15 @@ title: Build image
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build image
+# Build image
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/build-image/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/build-image/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages' build environment has broad support for a variety of languages, such as Ruby, Node.js, Python, PHP, and Go.
 
@@ -24,32 +24,32 @@ In the following tables, review the preinstalled versions for languages and tool
 
 ### Languages and runtime
 
-| Tool        | Default version | Supported versions | Environment variable | File                         |  | **Go** | 1.24.3 | Any version | GO\_VERSION |  |
-| ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |  | ------ | ------ | ----------- | ----------- |  |
-| **Node.js** | 22.16.0         | Any version        | NODE\_VERSION        | .nvmrc, .node-version        |  |        |        |             |             |  |
-| **Bun**     | 1.2.15          | Any version        | BUN\_VERSION         |                              |  |        |        |             |             |  |
-| **Python**  | 3.13.3          | Any version        | PYTHON\_VERSION      | .python-version, runtime.txt |  |        |        |             |             |  |
-| **Ruby**    | 3.4.4           | Any version        | RUBY\_VERSION        | .ruby-version                |  |        |        |             |             |  |
+| Tool        | Default version | Supported versions | Environment variable | File                         | |  **Go** | 1.24.3 | Any version | GO\_VERSION |  |
+| ----------- | --------------- | ------------------ | -------------------- | ---------------------------- | --------- | ------ | ----------- | ----------- |  |
+| **Node.js** | 22.16.0         | Any version        | NODE\_VERSION        | .nvmrc, .node-version        |           |        |             |             |  |
+| **Bun**     | 1.2.15          | Any version        | BUN\_VERSION         |                              |           |        |             |             |  |
+| **Python**  | 3.13.3          | Any version        | PYTHON\_VERSION      | .python-version, runtime.txt |           |        |             |             |  |
+| **Ruby**    | 3.4.4           | Any version        | RUBY\_VERSION        | .ruby-version                |           |        |             |             |  |
 
-| Tool        | Default version | Supported versions | Environment variable | File                         |  | **Go** | 1.21.0 | Any version | GO\_VERSION |  |
-| ----------- | --------------- | ------------------ | -------------------- | ---------------------------- |  | ------ | ------ | ----------- | ----------- |  |
-| **Node.js** | 18.17.1         | Any version        | NODE\_VERSION        | .nvmrc, .node-version        |  |        |        |             |             |  |
-| **Bun**     | 1.1.33          | Any version        | BUN\_VERSION         |                              |  |        |        |             |             |  |
-| **Python**  | 3.11.5          | Any version        | PYTHON\_VERSION      | .python-version, runtime.txt |  |        |        |             |             |  |
-| **Ruby**    | 3.2.2           | Any version        | RUBY\_VERSION        | .ruby-version                |  |        |        |             |             |  |
+| Tool        | Default version | Supported versions | Environment variable | File                         | |  **Go** | 1.21.0 | Any version | GO\_VERSION |  |
+| ----------- | --------------- | ------------------ | -------------------- | ---------------------------- | --------- | ------ | ----------- | ----------- |  |
+| **Node.js** | 18.17.1         | Any version        | NODE\_VERSION        | .nvmrc, .node-version        |           |        |             |             |  |
+| **Bun**     | 1.1.33          | Any version        | BUN\_VERSION         |                              |           |        |             |             |  |
+| **Python**  | 3.11.5          | Any version        | PYTHON\_VERSION      | .python-version, runtime.txt |           |        |             |             |  |
+| **Ruby**    | 3.2.2           | Any version        | RUBY\_VERSION        | .ruby-version                |           |        |             |             |  |
 
-| Tool        | Default version | Supported versions                  | Environment variable | File                  |  | **Clojure** |  |  |  |  |
-| ----------- | --------------- | ----------------------------------- | -------------------- | --------------------- |  | ----------- |  |  |  |  |
-| **Elixir**  | 1.7             | 1.7 only                            |                      |                       |  |             |  |  |  |  |
-| **Erlang**  | 21              | 21 only                             |                      |                       |  |             |  |  |  |  |
-| **Go**      | 1.14.4          | Any version                         | GO\_VERSION          |                       |  |             |  |  |  |  |
-| **Java**    | 8               | 8 only                              |                      |                       |  |             |  |  |  |  |
-| **Node.js** | 12.18.0         | Any version                         | NODE\_VERSION        | .nvmrc, .node-version |  |             |  |  |  |  |
-| **PHP**     | 5.6             | 5.6, 7.2, 7.4 only                  | PHP\_VERSION         |                       |  |             |  |  |  |  |
-| **Python**  | 2.7             | 2.7, 3.5, 3.7 only                  | PYTHON\_VERSION      | runtime.txt, Pipfile  |  |             |  |  |  |  |
-| **Ruby**    | 2.7.1           | Any version between 2.6.2 and 2.7.5 | RUBY\_VERSION        | .ruby-version         |  |             |  |  |  |  |
-| **Swift**   | 5.2.5           | Any 5.x version                     | SWIFT\_VERSION       | .swift-version        |  |             |  |  |  |  |
-| **.NET**    | 3.1.302         |                                     |                      |                       |  |             |  |  |  |  |
+| Tool        | Default version | Supported versions                  | Environment variable | File                  | |  **Clojure** |  |  |  |  |
+| ----------- | --------------- | ----------------------------------- | -------------------- | --------------------- | -------------- |  |  |  |  |
+| **Elixir**  | 1.7             | 1.7 only                            |                      |                       |                |  |  |  |  |
+| **Erlang**  | 21              | 21 only                             |                      |                       |                |  |  |  |  |
+| **Go**      | 1.14.4          | Any version                         | GO\_VERSION          |                       |                |  |  |  |  |
+| **Java**    | 8               | 8 only                              |                      |                       |                |  |  |  |  |
+| **Node.js** | 12.18.0         | Any version                         | NODE\_VERSION        | .nvmrc, .node-version |                |  |  |  |  |
+| **PHP**     | 5.6             | 5.6, 7.2, 7.4 only                  | PHP\_VERSION         |                       |                |  |  |  |  |
+| **Python**  | 2.7             | 2.7, 3.5, 3.7 only                  | PYTHON\_VERSION      | runtime.txt, Pipfile  |                |  |  |  |  |
+| **Ruby**    | 2.7.1           | Any version between 2.6.2 and 2.7.5 | RUBY\_VERSION        | .ruby-version         |                |  |  |  |  |
+| **Swift**   | 5.2.5           | Any 5.x version                     | SWIFT\_VERSION       | .swift-version        |                |  |  |  |  |
+| **.NET**    | 3.1.302         |                                     |                      |                       |                |  |  |  |  |
 
 Any version
 
@@ -57,52 +57,52 @@ Under Supported versions, "Any version" refers to support for all versions of th
 
 ### Tools
 
-| Tool                   | Default version | Supported versions               | Environment variable          |  | **Bundler** | 2.6.9 | Corresponds with Ruby version |  |
-| ---------------------- | --------------- | -------------------------------- | ----------------------------- |  | ----------- | ----- | ----------------------------- |  |
-| **Embedded Dart Sass** | 1.62.1          | Up to 1.62.1                     | EMBEDDED\_DART\_SASS\_VERSION |  |             |       |                               |  |
-| **gem**                | 3.6.9           | Corresponds with Ruby version    |                               |  |             |       |                               |  |
-| **Hugo**               | 0.147.7         | Any version                      | HUGO\_VERSION                 |  |             |       |                               |  |
-| **npm**                | 10.9.2          | Corresponds with Node.js version |                               |  |             |       |                               |  |
-| **pip**                | 25.1.1          | Corresponds with Python version  |                               |  |             |       |                               |  |
-| **pipx**               | 1.7.1           |                                  |                               |  |             |       |                               |  |
-| **pnpm**               | 10.11.1         | Any version                      | PNPM\_VERSION                 |  |             |       |                               |  |
-| **Poetry**             | 2.1.3           |                                  |                               |  |             |       |                               |  |
-| **Yarn**               | 4.9.1           | Any version                      | YARN\_VERSION                 |  |             |       |                               |  |
-| **Zola**               | 0.22.1          | Any version                      | ZOLA\_VERSION                 |  |             |       |                               |  |
+| Tool                   | Default version | Supported versions               | Environment variable          | |  **Bundler** | 2.6.9 | Corresponds with Ruby version |  |
+| ---------------------- | --------------- | -------------------------------- | ----------------------------- | -------------- | ----- | ----------------------------- |  |
+| **Embedded Dart Sass** | 1.62.1          | Up to 1.62.1                     | EMBEDDED\_DART\_SASS\_VERSION |                |       |                               |  |
+| **gem**                | 3.6.9           | Corresponds with Ruby version    |                               |                |       |                               |  |
+| **Hugo**               | 0.147.7         | Any version                      | HUGO\_VERSION                 |                |       |                               |  |
+| **npm**                | 10.9.2          | Corresponds with Node.js version |                               |                |       |                               |  |
+| **pip**                | 25.1.1          | Corresponds with Python version  |                               |                |       |                               |  |
+| **pipx**               | 1.7.1           |                                  |                               |                |       |                               |  |
+| **pnpm**               | 10.11.1         | Any version                      | PNPM\_VERSION                 |                |       |                               |  |
+| **Poetry**             | 2.1.3           |                                  |                               |                |       |                               |  |
+| **Yarn**               | 4.9.1           | Any version                      | YARN\_VERSION                 |                |       |                               |  |
+| **Zola**               | 0.22.1          | Any version                      | ZOLA\_VERSION                 |                |       |                               |  |
 
-| Tool                   | Default version | Supported versions               | Environment variable          |  | **Bundler** | 2.4.10 | Corresponds with Ruby version |  |
-| ---------------------- | --------------- | -------------------------------- | ----------------------------- |  | ----------- | ------ | ----------------------------- |  |
-| **Embedded Dart Sass** | 1.62.1          | Up to 1.62.1                     | EMBEDDED\_DART\_SASS\_VERSION |  |             |        |                               |  |
-| **gem**                | 3.4.10          | Corresponds with Ruby version    |                               |  |             |        |                               |  |
-| **Hugo**               | 0.118.2         | Any version                      | HUGO\_VERSION                 |  |             |        |                               |  |
-| **npm**                | 9.6.7           | Corresponds with Node.js version |                               |  |             |        |                               |  |
-| **pip**                | 23.2.1          | Corresponds with Python version  |                               |  |             |        |                               |  |
-| **pipx**               | 1.2.0           |                                  |                               |  |             |        |                               |  |
-| **pnpm**               | 8.7.1           | Any version                      | PNPM\_VERSION                 |  |             |        |                               |  |
-| **Poetry**             | 1.6.1           |                                  |                               |  |             |        |                               |  |
-| **Yarn**               | 3.6.3           | Any version                      | YARN\_VERSION                 |  |             |        |                               |  |
-| **Zola**               | 0.22.1          | Any version                      | ZOLA\_VERSION                 |  |             |        |                               |  |
+| Tool                   | Default version | Supported versions               | Environment variable          | |  **Bundler** | 2.4.10 | Corresponds with Ruby version |  |
+| ---------------------- | --------------- | -------------------------------- | ----------------------------- | -------------- | ------ | ----------------------------- |  |
+| **Embedded Dart Sass** | 1.62.1          | Up to 1.62.1                     | EMBEDDED\_DART\_SASS\_VERSION |                |        |                               |  |
+| **gem**                | 3.4.10          | Corresponds with Ruby version    |                               |                |        |                               |  |
+| **Hugo**               | 0.118.2         | Any version                      | HUGO\_VERSION                 |                |        |                               |  |
+| **npm**                | 9.6.7           | Corresponds with Node.js version |                               |                |        |                               |  |
+| **pip**                | 23.2.1          | Corresponds with Python version  |                               |                |        |                               |  |
+| **pipx**               | 1.2.0           |                                  |                               |                |        |                               |  |
+| **pnpm**               | 8.7.1           | Any version                      | PNPM\_VERSION                 |                |        |                               |  |
+| **Poetry**             | 1.6.1           |                                  |                               |                |        |                               |  |
+| **Yarn**               | 3.6.3           | Any version                      | YARN\_VERSION                 |                |        |                               |  |
+| **Zola**               | 0.22.1          | Any version                      | ZOLA\_VERSION                 |                |        |                               |  |
 
-| Tool            | Default version                  | Supported versions                | Environment variable |  | **Boot** | 2.5.2 | 2.5.2 |  |
-| --------------- | -------------------------------- | --------------------------------- | -------------------- |  | -------- | ----- | ----- |  |
-| **Bower**       |                                  |                                   |                      |  |          |       |       |  |
-| **Cask**        |                                  |                                   |                      |  |          |       |       |  |
-| **Composer**    |                                  |                                   |                      |  |          |       |       |  |
-| **Doxygen**     | 1.8.6                            |                                   |                      |  |          |       |       |  |
-| **Emacs**       | 25                               |                                   |                      |  |          |       |       |  |
-| **Gutenberg**   | (requires environment variable)  | Any version                       | GUTENBERG\_VERSION   |  |          |       |       |  |
-| **Hugo**        | 0.54.0                           | Any version                       | HUGO\_VERSION        |  |          |       |       |  |
-| **GNU Make**    | 3.8.1                            |                                   |                      |  |          |       |       |  |
-| **ImageMagick** | 6.7.7                            |                                   |                      |  |          |       |       |  |
-| **jq**          | 1.5                              |                                   |                      |  |          |       |       |  |
-| **Leiningen**   |                                  |                                   |                      |  |          |       |       |  |
-| **OptiPNG**     | 0.6.4                            |                                   |                      |  |          |       |       |  |
-| **npm**         | Corresponds with Node.js version | Any version                       | NPM\_VERSION         |  |          |       |       |  |
-| **pip**         | Corresponds with Python version  |                                   |                      |  |          |       |       |  |
-| **Pipenv**      | Latest version                   |                                   |                      |  |          |       |       |  |
-| **sqlite3**     | 3.11.0                           |                                   |                      |  |          |       |       |  |
-| **Yarn**        | 1.22.4                           | Any version from 0.2.0 to 1.22.19 | YARN\_VERSION        |  |          |       |       |  |
-| **Zola**        | (requires environment variable)  | Any version from 0.5.0 and up     | ZOLA\_VERSION        |  |          |       |       |  |
+| Tool            | Default version                  | Supported versions                | Environment variable | |  **Boot** | 2.5.2 | 2.5.2 |  |
+| --------------- | -------------------------------- | --------------------------------- | -------------------- | ----------- | ----- | ----- |  |
+| **Bower**       |                                  |                                   |                      |             |       |       |  |
+| **Cask**        |                                  |                                   |                      |             |       |       |  |
+| **Composer**    |                                  |                                   |                      |             |       |       |  |
+| **Doxygen**     | 1.8.6                            |                                   |                      |             |       |       |  |
+| **Emacs**       | 25                               |                                   |                      |             |       |       |  |
+| **Gutenberg**   | (requires environment variable)  | Any version                       | GUTENBERG\_VERSION   |             |       |       |  |
+| **Hugo**        | 0.54.0                           | Any version                       | HUGO\_VERSION        |             |       |       |  |
+| **GNU Make**    | 3.8.1                            |                                   |                      |             |       |       |  |
+| **ImageMagick** | 6.7.7                            |                                   |                      |             |       |       |  |
+| **jq**          | 1.5                              |                                   |                      |             |       |       |  |
+| **Leiningen**   |                                  |                                   |                      |             |       |       |  |
+| **OptiPNG**     | 0.6.4                            |                                   |                      |             |       |       |  |
+| **npm**         | Corresponds with Node.js version | Any version                       | NPM\_VERSION         |             |       |       |  |
+| **pip**         | Corresponds with Python version  |                                   |                      |             |       |       |  |
+| **Pipenv**      | Latest version                   |                                   |                      |             |       |       |  |
+| **sqlite3**     | 3.11.0                           |                                   |                      |             |       |       |  |
+| **Yarn**        | 1.22.4                           | Any version from 0.2.0 to 1.22.19 | YARN\_VERSION        |             |       |       |  |
+| **Zola**        | (requires environment variable)  | Any version from 0.5.0 and up     | ZOLA\_VERSION        |             |       |       |  |
 
 Any version
 
@@ -155,7 +155,7 @@ The v3 build system updates the default tools, libraries and languages to their 
 To migrate to this new version, configure your Pages project settings in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Deployments** \> **All deployments** \> and select the latest version.
 
@@ -229,7 +229,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-image/#page","headline":"Build image · Cloudflare Pages docs","description":"Review supported languages, tools, and environment variables in the Cloudflare Pages build image.","url":"https://developers.cloudflare.com/pages/configuration/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

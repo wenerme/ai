@@ -4,19 +4,19 @@ title: Cloudflare API Shield
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare API Shield
+# Cloudflare API Shield
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Identify and address your API vulnerabilities.
 
- Enterprise-only paid add-on
+Enterprise-only paid add-on
 
 Note
 
@@ -41,13 +41,13 @@ Refer to the [Get started](https://developers.cloudflare.com/api-shield/get-star
 
 Secure your APIs using API Shield's security features.
 
- Use Security features
+Use Security features
 
 [Management, monitoring, and more](https://developers.cloudflare.com/api-shield/management-and-monitoring/)
 
 Monitor the health of your API endpoints.
 
- Use Management, monitoring, and more
+Use Management, monitoring, and more
 
 ## Availability
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/api-shield/#page","headline":"Overview · Cloudflare API Shield docs","description":"Identify and address API vulnerabilities with discovery, schema validation, and abuse detection.","url":"https://developers.cloudflare.com/api-shield/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

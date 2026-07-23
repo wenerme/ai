@@ -4,15 +4,15 @@ title: Adding local data
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Adding local data
+# Adding local data
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/local-development/local-data/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/local-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Whether you are using Wrangler or the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), your workflow for **accessing** data during local development remains the same. However, you can only [populate local resources with data](https://developers.cloudflare.com/workers/local-development/local-data/#populating-local-resources-with-data) via the Wrangler CLI.
 
@@ -32,7 +32,7 @@ Since version 3.60.0, Wrangler supports the `kv ...` syntax. If you are using ve
 
 #### [Add a single key-value pair](https://developers.cloudflare.com/workers/wrangler/commands/kv/#kv-key)
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler kv key put <KEY> <VALUE> --binding=<BINDING> --local
@@ -48,7 +48,7 @@ pnpm wrangler kv key put <KEY> <VALUE> --binding=<BINDING> --local
 
 #### [Bulk upload](https://developers.cloudflare.com/workers/wrangler/commands/kv/#kv-bulk)
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler kv bulk put <FILENAME.json> --binding=<BINDING> --local
@@ -66,7 +66,7 @@ pnpm wrangler kv bulk put <FILENAME.json> --binding=<BINDING> --local
 
 #### [Upload a file](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-object)
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler r2 object put <BUCKET>/<KEY> --file=<PATH_TO_FILE> --local
@@ -86,7 +86,7 @@ You may also include [other metadata](https://developers.cloudflare.com/workers/
 
 #### [Execute a SQL statement](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-execute)
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler d1 execute <DATABASE_NAME> --command="<SQL_QUERY>" --local
@@ -102,7 +102,7 @@ pnpm wrangler d1 execute <DATABASE_NAME> --command="<SQL_QUERY>" --local
 
 #### [Execute a SQL file](https://developers.cloudflare.com/workers/wrangler/commands/d1/#d1-execute)
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler d1 execute <DATABASE_NAME> --file=./schema.sql --local
@@ -136,7 +136,7 @@ If you prefer to specify a different directory for local storage, you can do so 
 
 Use the [\--persist-to](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) flag with `wrangler dev`. You need to specify this flag every time you run the `dev` command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler dev --persist-to <DIRECTORY>
@@ -160,7 +160,7 @@ If you run `wrangler dev --persist-to <DIRECTORY>` to specify a custom location 
 
 For example, to create a KV key named `test` with a value of `12345` in a local KV namespace, run:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler kv key put test 12345 --binding MY_KV_NAMESPACE --local --persist-to worker-local
@@ -209,7 +209,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/local-data/#page","headline":"Adding local data · Cloudflare Workers docs","description":"Populating local resources with data","url":"https://developers.cloudflare.com/workers/local-development/local-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: Veo 3.1 Fast
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Veo 3.1 Fast
+# Veo 3.1 Fast
 
- Text-to-Video • Google
+Text-to-Video • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/veo-3.1-fast `
+`google/veo-3.1-fast`
 
 * Third-party
 * Zero data retention
 
 A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output.
 
-| Model Info          |                                                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                       |
-| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                                    |
-| Zero data retention | Yes                                                                                                                    |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1-fast) |
+| Model Info          |                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                      |
+| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                                   |
+| Zero data retention | Yes                                                                                                                   |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1-fast) |
 
 ## Usage
 
@@ -78,7 +78,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Social Content**  — Quick vertical video for social media
+**Social Content** — Quick vertical video for social media
 
 ```ts
 const response = await env.AI.run(
@@ -122,7 +122,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Motion Graphics**  — Quick animated graphics
+**Motion Graphics** — Quick animated graphics
 
 ```ts
 const response = await env.AI.run(
@@ -166,7 +166,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Ambient Scene**  — Relaxing background video
+**Ambient Scene** — Relaxing background video
 
 ```ts
 const response = await env.AI.run(
@@ -242,9 +242,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -252,7 +252,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/#page","headline":"Veo 3.1 Fast (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"A faster version of Veo 3.1 optimized for lower latency while maintaining high-quality video and audio output.","url":"https://developers.cloudflare.com/ai/models/google/veo-3.1-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

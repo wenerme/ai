@@ -4,15 +4,15 @@ title: Build an API for your front end using Pages Functions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build an API for your front end using Pages Functions
+# Build an API for your front end using Pages Functions
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build a full-stack Pages application. Your application will contain:
 
@@ -44,7 +44,7 @@ To set up your React project:
 
 1. Install the [React Router ↗](https://reactrouter.com/en/main/start/tutorial) in the root of your `blog-frontend` directory.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i react-router-dom@6
@@ -265,7 +265,7 @@ git push -u origin main
 Deploy your application to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Pages** \> **Import an existing Git repository**.
 3. Select the new GitHub repository that you created and, in the **Set up builds and deployments** section, provide the following information:
 
@@ -289,7 +289,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/#page","headline":"Build an API for your front end using Pages Functions · Cloudflare Pages docs","description":"This tutorial builds a full-stack Pages application using the React framework.","url":"https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

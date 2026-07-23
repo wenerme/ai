@@ -4,19 +4,19 @@ title: Next.js
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Next.js
+# Next.js
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Start from CLI** \- scaffold a Next.js project on Workers.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-next-app --framework=next
@@ -65,7 +65,7 @@ Most Next.js features are supported by the Cloudflare OpenNext adapter:
 ## Deploy a new Next.js project on Workers
 
 1. **Create a new project with the create-cloudflare CLI (C3).**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- my-next-app --framework=next
 ```
@@ -79,7 +79,7 @@ What's happening behind the scenes?
 When you run this command, C3 creates a new project directory, initiates [Next.js's official setup tool ↗](https://nextjs.org/docs/app/api-reference/cli/create-next-app), and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.
 2. **Develop locally.**
 After creating your project, run the following command in your project directory to start a local development server. The command uses the Next.js development server. It offers the best developer experience by quickly reloading your app every time the source code is updated.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -90,7 +90,7 @@ yarn run dev
 pnpm run dev
 ```
 3. **Test and preview your site with the Cloudflare adapter.**
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run preview
 ```
@@ -104,7 +104,7 @@ What's the difference between dev and preview?
 The command used in the previous step uses the Next.js development server, which runs in Node.js. However, your deployed application will run on Cloudflare Workers, which uses the `workerd` runtime. Therefore when running integration tests and previewing your application, you should use the preview command, which is more accurate to production, as it executes your application in the `workerd` runtime using `wrangler dev`.
 4. **Deploy your project.**
 You can deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run deploy
 ```
@@ -125,7 +125,7 @@ Automatic configuration
 
 Run `wrangler deploy` in a project without a Wrangler configuration file and Wrangler will automatically detect Next.js, generate the necessary configuration, and deploy your project.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -141,31 +141,31 @@ pnpm wrangler deploy
 
 Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
 
-Next.js Detected
+Next.jsDetected
 
 Generated configuration
 
 wrangler.jsonc
 
-main: .open-next/worker.js
+main:.open-next/worker.js
 
 wrangler.jsonc
 
-assets: directory: .open-next/assets
+assets:directory: .open-next/assets
 
 wrangler.jsonc
 
-compatibility\_flags: nodejs\_compat
+compatibility\_flags:nodejs\_compat
 
 wrangler.jsonc
 
-observability: enabled: true
+observability:enabled: true
 
 package.json
 
-adapter: @opennextjs/cloudflare
+adapter:@opennextjs/cloudflare
 
-Workers Deployed
+WorkersDeployed
 
 Wrangler handles configuration automatically
 
@@ -174,7 +174,7 @@ Wrangler handles configuration automatically
 If you prefer to configure your project manually, follow the steps below.
 
 1. **Install [@opennextjs/cloudflare ↗](https://www.npmjs.com/package/@opennextjs/cloudflare)**
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @opennextjs/cloudflare@latest
 ```
@@ -188,7 +188,7 @@ pnpm add @opennextjs/cloudflare@latest
 bun add @opennextjs/cloudflare@latest
 ```
 2. **Install [wrangler CLI ↗](https://developers.cloudflare.com/workers/wrangler) as a devDependency**
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i -D wrangler@latest
 ```
@@ -209,7 +209,7 @@ In your project root, create a [Wrangler configuration file](https://developers.
 	"main": ".open-next/worker.js",
 	"name": "my-app",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -224,7 +224,7 @@ In your project root, create a [Wrangler configuration file](https://developers.
 main = ".open-next/worker.js"
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 [assets]
 directory = ".open-next/assets"
@@ -254,7 +254,7 @@ Usage
   * `cf-typegen`: Generates a `cloudflare-env.d.ts` file at the root of your project containing the types for the env.
 6. **Develop locally.**
 After creating your project, run the following command in your project directory to start a local development server. The command uses the Next.js development server. It offers the best developer experience by quickly reloading your app after your source code is updated.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -266,7 +266,7 @@ pnpm run dev
 ```
 7. **Test your site with the Cloudflare adapter.**
 The command used in the previous step uses the Next.js development server to offer a great developer experience. However your application will run on Cloudflare Workers so you want to run your integration tests and verify that your application works correctly in this environment.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run preview
 ```
@@ -278,7 +278,7 @@ pnpm run preview
 ```
 8. **Deploy your project.**
 You can deploy your project to a [\*.workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) or a [custom domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) from your local machine or any CI/CD system (including [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/#workers-builds)). Use the following command to build and deploy. If you're using a CI service, be sure to update your "deploy command" accordingly.
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run deploy
 ```
@@ -299,7 +299,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/#page","headline":"Next.js · Cloudflare Workers docs","description":"Create an Next.js application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}

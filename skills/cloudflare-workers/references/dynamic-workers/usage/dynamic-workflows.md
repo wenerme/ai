@@ -4,15 +4,15 @@ title: Dynamic Workflows
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dynamic-workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Dynamic Workflows
+# Dynamic Workflows
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can run a Workflow inside a Dynamic Worker to get durable execution for code that is loaded at runtime. Each step in the Workflow survives failures, can sleep for hours or days, can wait for external events, and resumes exactly where it left off — even if the isolate is recycled between steps.
 
@@ -53,7 +53,7 @@ The library provides two functions that handle the wiring between the Worker Loa
 
 The library handles the wiring between the Worker Loader and the Workflows engine, so you do not have to manually tag requests, parse payloads, or write your own `WorkflowEntrypoint` subclass.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/dynamic-workflows
@@ -84,7 +84,7 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
   "name": "my-worker-loader",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "worker_loaders": [
     {
       "binding": "LOADER"
@@ -104,7 +104,7 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
 name = "my-worker-loader"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[worker_loaders]]
 binding = "LOADER"
@@ -301,8 +301,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/#page","headline":"Dynamic Workflows · Cloudflare Dynamic Workers docs","description":"Run different Workflow logic for each user or tenant by combining Workflows with Dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/#page","headline":"Dynamic Workflows · Cloudflare Dynamic Workers docs","description":"Run different Workflow logic for each user or tenant by combining Workflows with Dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

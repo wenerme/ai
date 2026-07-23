@@ -4,15 +4,15 @@ title: WebMCP
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WebMCP
+# WebMCP
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/features/webmcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/webmcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [WebMCP ↗](https://developer.chrome.com/blog/webmcp-epp) (Web Model Context Protocol) is a browser API that lets websites expose structured tools for AI agents to discover and execute directly. Instead of slow screenshot-analyze-click loops, agents can call website functions like `searchFlights()` or `bookTicket()` with typed parameters, making browser automation faster, more reliable, and less fragile.
 
@@ -238,7 +238,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/webmcp/#page","headline":"WebMCP · Cloudflare Browser Run docs","description":"Use WebMCP to let AI agents discover and execute structured tools exposed by websites, replacing fragile screenshot-analyze-click loops with direct function calls.","url":"https://developers.cloudflare.com/browser-run/features/webmcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,19 +4,19 @@ title: Cloudflare Workflows
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Workflows
+# Cloudflare Workflows
 
-Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build durable multi-step applications on Cloudflare Workers with Workflows.
 
- Available on Free and Paid plans
+Available on Free and Paid plans
 
 With Workflows, you can build applications that chain together multiple steps, automatically retry failed tasks, and persist state for minutes, hours, or even weeks - with no infrastructure to manage.
 
@@ -62,7 +62,7 @@ export class ImageProcessingWorkflow extends WorkflowEntrypoint {
 }
 ```
 
-[ Get started ](https://developers.cloudflare.com/workflows/get-started/guide/)[ Browse the examples ](https://developers.cloudflare.com/workflows/examples/)
+[Get started](https://developers.cloudflare.com/workflows/get-started/guide/)[Browse the examples](https://developers.cloudflare.com/workflows/examples/)
 
 ---
 
@@ -72,25 +72,25 @@ export class ImageProcessingWorkflow extends WorkflowEntrypoint {
 
 Break complex operations into durable steps with automatic retries and error handling.
 
- Learn about steps
+Learn about steps
 
 [Sleep and scheduling](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/)
 
 Pause workflows for seconds, hours, or days with `step.sleep()` and `step.sleepUntil()`.
 
- Add delays
+Add delays
 
 [Wait for external events](https://developers.cloudflare.com/workflows/build/events-and-parameters/)
 
 Wait for webhooks, user input, or external system responses before continuing execution.
 
- Handle events
+Handle events
 
 [Workflow lifecycle management](https://developers.cloudflare.com/workflows/build/trigger-workflows/)
 
 Trigger, pause, resume, and terminate workflow instances programmatically or via API.
 
- Manage instances
+Manage instances
 
 ---
 
@@ -108,23 +108,23 @@ Deploy dynamic front-end applications in record time.
 
 ## More resources
 
-### [ Pricing ](https://developers.cloudflare.com/workflows/reference/pricing/)
+### [Pricing](https://developers.cloudflare.com/workflows/reference/pricing/)
 
 Learn more about how Workflows is priced.
 
-### [ Limits ](https://developers.cloudflare.com/workflows/reference/limits/)
+### [Limits](https://developers.cloudflare.com/workflows/reference/limits/)
 
 Learn more about Workflow limits, and how to work within them.
 
-### [ Storage options ](https://developers.cloudflare.com/workers/platform/storage-options/)
+### [Storage options](https://developers.cloudflare.com/workers/platform/storage-options/)
 
 Learn more about the storage and database options you can build on with Workers.
 
-### [ Developer Discord ](https://discord.cloudflare.com)
+### [Developer Discord](https://discord.cloudflare.com)
 
 Connect with the Workers community on Discord to ask questions, show what you are building, and discuss the platform with other developers.
 
-### [ @CloudflareDev ](https://x.com/cloudflaredev)
+### [@CloudflareDev](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Developer Platform.
 
@@ -134,7 +134,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workflows/#page","headline":"Overview · Cloudflare Workflows docs","description":"Build durable, multi-step applications on Cloudflare Workers that automatically retry and persist state.","url":"https://developers.cloudflare.com/workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

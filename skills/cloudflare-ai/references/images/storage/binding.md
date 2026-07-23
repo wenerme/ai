@@ -4,15 +4,15 @@ title: Manage hosted images with Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage hosted images with Workers
+# Manage hosted images with Workers
 
-Last updated Jun 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/storage/binding/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/binding/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Images](https://developers.cloudflare.com/images/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -53,12 +53,12 @@ Uploads a new image to your account. You can pass image bytes as a stream or an 
 
 Accepts the following options as an `ImageUploadOptions` object:
 
-* `id` ` string ` — A custom ID to assign to the image. If omitted, Cloudflare generates a UUID. Refer to [Upload to a custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
-* `filename` ` string ` — The filename to associate with the image.
-* `requireSignedURLs` ` boolean ` — Sets whether the image should require a signed URL to view. Defaults to `false`.
-* `metadata` ` Record<string, unknown> ` — Arbitrary metadata to store alongside the image.
-* `creator` ` string ` — A user-defined identifier for the image creator.
-* `encoding` ` 'base64' ` — Set to `base64` if the provided bytes are base64-encoded. The binding will decode them before upload.
+* `id` `string` — A custom ID to assign to the image. If omitted, Cloudflare generates a UUID. Refer to [Upload to a custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
+* `filename` `string` — The filename to associate with the image.
+* `requireSignedURLs` `boolean` — Sets whether the image should require a signed URL to view. Defaults to `false`.
+* `metadata` `Record<string, unknown>` — Arbitrary metadata to store alongside the image.
+* `creator` `string` — A user-defined identifier for the image creator.
+* `encoding` `'base64'` — Set to `base64` if the provided bytes are base64-encoded. The binding will decode them before upload.
 
 ### `.list(options)`
 
@@ -66,10 +66,10 @@ Lists images in your account with pagination. Returns [ImageList](#imagelist).
 
 Accepts the following options as an `ImageListOptions` object:
 
-* `limit` ` number ` — The maximum number of images to return in a page.
-* `cursor` ` string ` — The continuation token returned by the previous `list()` call. Omit on the first page.
-* `sortOrder` ` 'asc' | 'desc' ` — The order to sort results in by `uploaded` timestamp. Defaults to `asc`.
-* `creator` ` string ` — Filter results to images uploaded with this creator identifier.
+* `limit` `number` — The maximum number of images to return in a page.
+* `cursor` `string` — The continuation token returned by the previous `list()` call. Omit on the first page.
+* `sortOrder` `'asc' | 'desc'` — The order to sort results in by `uploaded` timestamp. Defaults to `asc`.
+* `creator` `string` — Filter results to images uploaded with this creator identifier.
 
 ### `.image(imageId)`
 
@@ -91,9 +91,9 @@ Updates the metadata or access controls for an image. All fields are optional; o
 
 Accepts the following options as an `ImageUpdateOptions` object:
 
-* `requireSignedURLs` ` boolean ` — Whether signed URLs should be required to view the image. Cannot be set to `true` on an image that was uploaded with a [custom ID](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
-* `metadata` ` Record<string, unknown> ` — Replacement metadata for the image. This replaces the existing metadata rather than merging into it.
-* `creator` ` string ` — A user-defined identifier for the image creator.
+* `requireSignedURLs` `boolean` — Whether signed URLs should be required to view the image. Cannot be set to `true` on an image that was uploaded with a [custom ID](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/).
+* `metadata` `Record<string, unknown>` — Replacement metadata for the image. This replaces the existing metadata rather than merging into it.
+* `creator` `string` — A user-defined identifier for the image creator.
 
 ### `.image(imageId).delete()`
 
@@ -365,41 +365,41 @@ export default {
 
 Returned by operations that retrieve, create, or update an image.
 
-* `id` ` string `
+* `id` `string`
   * The unique identifier for the image.
-* `filename` ` string `optional
+* `filename` `string`optional
   * The original filename supplied at upload time.
-* `uploaded` ` string `optional
+* `uploaded` `string`optional
   * The date and time the image was uploaded, as an ISO 8601 string.
-* `requireSignedURLs` ` boolean `
+* `requireSignedURLs` `boolean`
   * Whether signed URLs are required to access this image. Refer to [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/).
-* `meta` ` Record<string, unknown> `optional
+* `meta` `Record<string, unknown>`optional
   * User-supplied metadata associated with the image.
-* `variants` ` Array<string> `
+* `variants` `Array<string>`
   * Fully-formed URLs for each variant configured on your account. Refer to [Create variants](https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/).
-* `draft` ` boolean `optional
+* `draft` `boolean`optional
   * Whether the image is in a draft state (no bytes uploaded yet). Drafts are typically only seen on accounts using [Direct Creator Uploads](https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/).
-* `creator` ` string `optional
+* `creator` `string`optional
   * A user-defined identifier for the image creator.
 
 ### ImageList
 
 Returned by [list()](#listoptions).
 
-* `images` ` Array<ImageMetadata> `
+* `images` `Array<ImageMetadata>`
   * The images in this page of results.
-* `cursor` ` string `optional
+* `cursor` `string`optional
   * A continuation token to pass to the next `list()` call. Only present when there are more results.
-* `listComplete` ` boolean `
+* `listComplete` `boolean`
   * `true` when there are no further pages, `false` otherwise.
 
 ## Error handling
 
 Methods that fail throw an `ImagesError` — `.upload()`, `.list()`, `.update()` — with the following properties:
 
-* `code` ` number `
+* `code` `number`
   * A numeric error code that identifies the failure mode.
-* `message` ` string `
+* `message` `string`
   * A human-readable description of the error.
 
 Methods that fetch a single image — [.details()](#imageimageiddetails), [.bytes()](#imageimageidbytes), and [.delete()](#imageimageiddelete) — return `null` or `false` for "not found" rather than throwing.
@@ -424,7 +424,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/binding/#page","headline":"Manage hosted images with Workers · Cloudflare Images docs","description":"Use the Images binding to upload, list, retrieve, update, and delete hosted images from a Worker.","url":"https://developers.cloudflare.com/images/storage/binding/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

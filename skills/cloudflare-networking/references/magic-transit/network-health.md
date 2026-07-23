@@ -4,15 +4,15 @@ title: Network health
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network health
+# Network health
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/network-health/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/network-health/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Magic Transit uses health check probes to determine the status of tunnels. Cloudflare uses this information to steer traffic through the best available route and warn you about potential issues with a tunnel. Service-level indicators (SLIs) and service-level objectives (SLOs) combine to determine when Cloudflare sends you tunnel health alerts. Refer to [How Cloudflare calculates tunnel health alerts](https://developers.cloudflare.com/magic-transit/reference/how-cloudflare-calculates-tunnel-health-alerts/) for more information about SLIs and SLOs.
 
@@ -33,11 +33,11 @@ Magic Transit customers with [Customer Metadata Boundary](https://developers.clo
 
 Refer to the following pages for details on how to use the various network health checks available.
 
-* [ Run endpoint health checks (beta) ](https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/)
-* [ Check tunnel health in the dashboard ](https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/)
-* [ Update tunnel health checks frequency ](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/)
-* [ Configure tunnel health alerts ](https://developers.cloudflare.com/magic-transit/network-health/configure-tunnel-health-alerts/)
-* [ How Cloudflare calculates tunnel health alerts ](https://developers.cloudflare.com/magic-transit/reference/how-cloudflare-calculates-tunnel-health-alerts/)
+* [Run endpoint health checks (beta)](https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/)
+* [Check tunnel health in the dashboard](https://developers.cloudflare.com/magic-transit/network-health/check-tunnel-health-dashboard/)
+* [Update tunnel health checks frequency](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/)
+* [Configure tunnel health alerts](https://developers.cloudflare.com/magic-transit/network-health/configure-tunnel-health-alerts/)
+* [How Cloudflare calculates tunnel health alerts](https://developers.cloudflare.com/magic-transit/reference/how-cloudflare-calculates-tunnel-health-alerts/)
 
 Was this helpful?
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/magic-transit/network-health/#page","headline":"Network health · Cloudflare Magic Transit docs","description":"Monitor Magic Transit tunnel and endpoint health.","url":"https://developers.cloudflare.com/magic-transit/network-health/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

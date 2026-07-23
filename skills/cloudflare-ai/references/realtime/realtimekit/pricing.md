@@ -4,19 +4,23 @@ title: Pricing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pricing
+# Pricing
 
-Last updated Jun 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare RealtimeKit is currently in Beta and is available at no cost during this period.
 
 When RealtimeKit reaches general availability (GA), usage will be charged according to the pricing model below:
+
+Note
+
+To estimate your RealtimeKit costs, refer to the [RealtimeKit pricing calculator ↗](https://realtime.cloudflare.com/#pricing-calculator).
 
 | Feature                                               | Price                                 |
 | ----------------------------------------------------- | ------------------------------------- |
@@ -35,8 +39,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/pricing/#page","headline":"Pricing · Cloudflare Realtime docs","description":"RealtimeKit pricing for audio, video, recording, and transcription features.","url":"https://developers.cloudflare.com/realtime/realtimekit/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/pricing/#page","headline":"Pricing · Cloudflare Realtime docs","description":"RealtimeKit pricing for audio, video, recording, and transcription features.","url":"https://developers.cloudflare.com/realtime/realtimekit/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

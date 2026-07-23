@@ -4,15 +4,15 @@ title: Metadata filtering
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Metadata filtering
+# Metadata filtering
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/reference/metadata-filtering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/reference/metadata-filtering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In addition to providing an input vector to your query, you can also filter by [vector metadata](https://developers.cloudflare.com/vectorize/best-practices/insert-vectors/#metadata) associated with every vector. Query results will only include vectors that match the `filter` criteria, meaning that `filter` is applied first, and the `topK` results are taken from the filtered set.
 
@@ -284,7 +284,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/reference/metadata-filtering/#page","headline":"Metadata filtering · Cloudflare Vectorize docs","description":"Filter Vectorize query results by vector metadata using supported operators and indexes.","url":"https://developers.cloudflare.com/vectorize/reference/metadata-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

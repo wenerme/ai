@@ -4,15 +4,15 @@ title: Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Objects
+# Objects
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Objects are individual files or data that you store in an R2 bucket. Each object is identified by its key, a string like `images/photo.png`.
 
@@ -24,9 +24,9 @@ The R2 dashboard groups objects that share a common prefix into folders when the
 
 ## Manage objects
 
-* [ Upload objects ](https://developers.cloudflare.com/r2/objects/upload-objects/)
-* [ Download objects ](https://developers.cloudflare.com/r2/objects/download-objects/)
-* [ Delete objects ](https://developers.cloudflare.com/r2/objects/delete-objects/)
+* [Upload objects](https://developers.cloudflare.com/r2/objects/upload-objects/)
+* [Download objects](https://developers.cloudflare.com/r2/objects/download-objects/)
+* [Delete objects](https://developers.cloudflare.com/r2/objects/delete-objects/)
 
 ## Other resources
 
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/objects/#page","headline":"Objects · Cloudflare R2 docs","description":"Manage objects stored in Cloudflare R2 buckets.","url":"https://developers.cloudflare.com/r2/objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

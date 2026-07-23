@@ -4,15 +4,15 @@ title: Limitations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Limitations
+# Limitations
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/limitations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the scenarios where Workers Caching does not apply, followed by notes on how it relates to other caches you may already be using.
 
@@ -134,7 +134,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/limitations/#page","headline":"Limitations · Cloudflare Workers docs","description":"Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.","url":"https://developers.cloudflare.com/workers/cache/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

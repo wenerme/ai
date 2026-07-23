@@ -4,15 +4,15 @@ title: Mathematical functions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Mathematical functions
+# Mathematical functions
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/mathematical-functions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/mathematical-functions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## intDiv
 
@@ -24,7 +24,7 @@ intDiv(a, b)
 
 Divide `a` by `b`, rounding the answer down to the nearest whole number.
 
-## log  New
+## log New
 
 Usage:
 
@@ -41,7 +41,7 @@ Examples:
 log(double1)
 ```
 
-## pow  New
+## pow New
 
 Usage:
 
@@ -58,7 +58,7 @@ Examples:
 pow(double1, 2)
 ```
 
-## round  New
+## round New
 
 Usage:
 
@@ -77,7 +77,7 @@ round(5.5)
 round(3.14, 1)
 ```
 
-## floor  New
+## floor New
 
 Usage:
 
@@ -96,7 +96,7 @@ floor(5.5)
 floor(3.14, 1)
 ```
 
-## ceil  New
+## ceil New
 
 Usage:
 
@@ -121,7 +121,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/mathematical-functions/#page","headline":"SQL Reference · Cloudflare Analytics docs","description":"Mathematical SQL functions for Analytics Engine.","url":"https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/mathematical-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Configure IPv6 (beta)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure IPv6 (beta)
+# Configure IPv6 (beta)
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/how-to/ipv6/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/ipv6/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 IPv6 (beta) for Magic Transit allows customers with existing IPv4 tunnels to enable and test IPv6 functionality with minimal configuration changes. This beta provides an opportunity to evaluate IPv6 addressing, routing, and security within Magic Transit while maintaining the existing IPv4 setup.
 
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/#page","headline":"Configure IPv6 (beta) · Cloudflare Magic Transit docs","description":"Configure IPv6 support for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}

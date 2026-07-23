@@ -4,15 +4,15 @@ title: Configure GraphQL malicious query protection via the API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure GraphQL malicious query protection via the API
+# Configure GraphQL malicious query protection via the API
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/graphql-protection/api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/graphql-protection/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/getting-started/) to gather data about your GraphQL API’s current usage and configure Cloudflare’s GraphQL malicious query protection to log or block malicious queries.
 
@@ -165,7 +165,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/#page","headline":"Configure GraphQL malicious query protection · Cloudflare API Shield docs","description":"Use the GraphQL API to configure query size and depth limits for your API.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}

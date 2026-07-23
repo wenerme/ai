@@ -4,15 +4,15 @@ title: Detect MCP traffic in Gateway logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Detect MCP traffic in Gateway logs
+# Detect MCP traffic in Gateway logs
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Organizations may lack visibility into Model Context Protocol (MCP) traffic, which can allow employees to connect to remote MCP servers outside of IT oversight. These connections risk the exfiltration of sensitive internal data and credentials, tool injection attacks or software supply chain risks.
 
@@ -528,7 +528,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/#page","headline":"Detect MCP traffic in Gateway logs · Cloudflare One docs","description":"Scan Gateway logs for unauthorized MCP traffic.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP","Logging","TypeScript","GraphQL"]}

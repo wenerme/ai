@@ -4,15 +4,15 @@ title: Connect to a private database using Tunnel
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect to a private database using Tunnel
+# Connect to a private database using Tunnel
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hyperdrive can securely connect to your private databases using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
@@ -53,7 +53,7 @@ If your organization also uses [Super Bot Fight Mode](https://developers.cloudfl
 First, create a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) in your private network to establish a secure connection between your network and Cloudflare. Your network must be configured such that the tunnel has permissions to egress to the Cloudflare network and access the database within your network.
 
 1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
 4. Select **Create Tunnel**.
@@ -226,7 +226,7 @@ Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query 
 
 Install the `node-postgres` driver:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i pg@>8.16.3
@@ -250,7 +250,7 @@ The minimum version of `node-postgres` required for Hyperdrive is `8.16.3`.
 
 If using TypeScript, install the types package:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D @types/pg
@@ -277,7 +277,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -290,7 +290,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -347,7 +347,7 @@ Use [mysql2 ↗](https://github.com/sidorares/node-mysql2) to send a test query 
 
 Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i mysql2@>3.13.0
@@ -378,7 +378,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -391,7 +391,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -460,7 +460,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#page","headline":"Connect to a private database using Tunnel · Cloudflare Hyperdrive docs","description":"Securely connect Hyperdrive to private databases using Cloudflare Tunnel and Access.","url":"https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

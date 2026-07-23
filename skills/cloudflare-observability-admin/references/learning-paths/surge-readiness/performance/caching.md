@@ -4,15 +4,15 @@ title: Caching
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Caching
+# Caching
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/surge-readiness/performance/caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Optimize caching
 
@@ -21,7 +21,7 @@ By default, Cloudflare [caches static content](https://developers.cloudflare.com
 ### Cache more requests
 
 1. In the Cloudflare dashboard, go to the **Caching** \> **Cache Rules** page.
-[ Go to **Cache Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+[Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select **Create rule**.
 3. For When incoming requests match, enter either your entire website or a specific path on your application, based on the Hostname or URI Path. Refer to the [available fields](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#fields).
 4. For Cache eligibility, define how these requests should be cached and for how long. Refer to the available [cache eligibility settings](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#eligible-for-cache-settings).
@@ -84,7 +84,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/surge-readiness/performance/caching/#page","headline":"Caching · Cloudflare Learning Paths","description":"Optimize caching for surge readiness.","url":"https://developers.cloudflare.com/learning-paths/surge-readiness/performance/caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

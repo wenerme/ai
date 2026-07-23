@@ -4,15 +4,15 @@ title: Sub-agent RPC and programmatic turns
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sub-agent RPC and programmatic turns
+# Sub-agent RPC and programmatic turns
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/sub-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think works as both a top-level agent and a sub-agent. When used as a sub-agent, the `chat()` method runs a full turn and streams events via a callback.
 
@@ -375,7 +375,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/#page","headline":"Sub-agent RPC and programmatic turns · Cloudflare Agents docs","description":"Stream Think turns through a child agent with chat(), and trigger turns programmatically with saveMessages(), continueLastTurn(), and abort.","url":"https://developers.cloudflare.com/agents/harnesses/think/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: 1 –  Initialize Terraform
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  1 – Initialize Terraform
+# 1 – Initialize Terraform
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial shows you how to get started with Terraform. You just signed up your domain (`example.com`) on Cloudflare to manage everything in Terraform and now you will create a DNS record pointing `www.example.com` to a web server at `203.0.113.10`.
 
@@ -190,7 +190,7 @@ terraform show
 
 You can also check the Cloudflare dashboard and go to the **DNS** \> **Records** page.
 
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 
 Was this helpful?
 
@@ -198,7 +198,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/#page","headline":"Introduction to Terraform init · Cloudflare Terraform docs","description":"This tutorial shows you how to get started with Terraform. You will create a DNS record pointing www.example.com to a web server at 203.0.113.10.","url":"https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

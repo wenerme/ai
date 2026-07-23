@@ -4,7 +4,7 @@ title: Review your DNS records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Learn the basics about DNS records and how to review them in Cloudflare.
 

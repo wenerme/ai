@@ -4,15 +4,15 @@ title: Percentage rollouts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Percentage rollouts
+# Percentage rollouts
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Percentage rollouts let you gradually release a feature to a fraction of your users. Any [targeting rule](https://developers.cloudflare.com/flagship/targeting/) can include a rollout percentage between 0 and 100.
 
@@ -215,7 +215,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/#page","headline":"Percentage rollouts · Cloudflare Flagship docs","description":"Gradually release features to a fraction of users with Flagship percentage rollouts and consistent hashing for sticky bucketing.","url":"https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

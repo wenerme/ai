@@ -4,15 +4,15 @@ title: Watch a live stream
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Watch a live stream
+# Watch a live stream
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/watch-live-stream/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a [Live Input](https://developers.cloudflare.com/stream/stream-live/start-stream-live/) begins receiving a broadcast, a new video is automatically created if the input's `mode` property is set to `automatic`.
 
@@ -55,7 +55,7 @@ You can also retrieve the embed code or manifest URLs from Dash or the API.
 To get the Stream built-in player embed code or HLS Manifest URL for a custom player:
 
 1. In the Cloudflare dashboard, go to the **Live inputs** page.
-[ Go to **Live inputs** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/inputs)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
 2. Select a live input from the list.
 3. Locate the **Embed** and **HLS Manifest URL** beneath the video.
 4. Determine which option to use and then select **Click to copy** beneath your choice.
@@ -186,7 +186,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/watch-live-stream/#page","headline":"Watch a live stream · Cloudflare Stream docs","description":"Play Cloudflare Stream live video using the Stream Player or custom HLS and DASH players.","url":"https://developers.cloudflare.com/stream/stream-live/watch-live-stream/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

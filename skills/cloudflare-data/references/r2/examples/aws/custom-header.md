@@ -4,15 +4,15 @@ title: Configure custom headers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure custom headers
+# Configure custom headers
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/aws/custom-header/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/aws/custom-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Some of R2's [extensions](https://developers.cloudflare.com/r2/api/s3/extensions/) require setting a specific header when using them in the S3 compatible API. For some functionality you may want to set a request header on an entire category of requests. Other times you may want to configure a different header for each individual request. This page contains some examples on how to do so with `boto3` and with `aws-sdk-js-v3`.
 
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/custom-header/#page","headline":"Configure custom headers · Cloudflare R2 docs","description":"Set custom request headers for R2 S3 API extensions using boto3 or aws-sdk-js-v3.","url":"https://developers.cloudflare.com/r2/examples/aws/custom-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

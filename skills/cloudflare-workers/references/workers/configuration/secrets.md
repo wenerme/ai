@@ -4,15 +4,15 @@ title: Secrets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Secrets
+# Secrets
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/secrets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/secrets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -166,7 +166,7 @@ npx wrangler versions secret put <KEY>
 To add a secret via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker > **Settings**.
 3. Under **Variables and Secrets**, select **Add**.
 4. Select the type **Secret**, input a **Variable name**, and input its **Value**. This secret will be made available to your Worker but the value will be hidden in Wrangler and the dashboard.
@@ -210,7 +210,7 @@ npx wrangler versions secret delete <KEY>
 To delete a secret from your Worker project via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker > **Settings**.
 3. Under **Variables and Secrets**, select **Edit**.
 4. In the **Edit** drawer, select **X** next to the secret you want to delete.
@@ -237,7 +237,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/secrets/#page","headline":"Secrets · Cloudflare Workers docs","description":"Store sensitive information, like API keys and auth tokens, in your Worker.","url":"https://developers.cloudflare.com/workers/configuration/secrets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

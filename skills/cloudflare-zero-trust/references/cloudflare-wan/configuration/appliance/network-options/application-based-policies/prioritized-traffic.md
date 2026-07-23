@@ -4,15 +4,15 @@ title: Prioritized traffic
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Prioritized traffic
+# Prioritized traffic
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Prioritized traffic allows you to define which applications Cloudflare One Appliance (formerly Magic WAN Connector) should process first. Applications not in the list will be queued behind prioritized traffic.
 
@@ -20,7 +20,7 @@ Similarly to breakout traffic, prioritized traffic also works via DNS requests i
 
 Caution
 
- Prioritized traffic will not work for applications that use DNS-over-HTTPS.
+Prioritized traffic will not work for applications that use DNS-over-HTTPS.
 
 ## Add an application to your account
 
@@ -67,7 +67,7 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select the Cloudflare One Appliance you want to configure > **Edit**.
 2. Select **Traffic Steering**.
@@ -79,7 +79,7 @@ The traffic for the application you chose is now processed first by Connector.
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 1. Send a `GET` [request](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/apps/methods/list/) to list the applications associated with an account.
 Required API token permissions
@@ -139,7 +139,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 ### Delete an application from Cloudflare One Appliance
 
 1. Go to the **Connectors** page.
-[ Go to **Connectors** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
+[Go to **Connectors** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections)
 1. Go to the **Appliances** tab > **Profiles**.
 1. Select the Appliance you want to configure > **Edit**.
 2. Select **Traffic Steering**.
@@ -148,7 +148,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 You need to delete Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
@@ -202,7 +202,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/#page","headline":"Prioritized traffic · Cloudflare WAN docs","description":"Prioritized traffic allows you to define which applications are processed first by Cloudflare One Appliance.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/application-based-policies/prioritized-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

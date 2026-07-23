@@ -1,16 +1,18 @@
 ---
-title: Cloudflare Snippets
 description: Run lightweight JavaScript at the edge to modify requests and responses.
-image: https://developers.cloudflare.com/core-services-preview.png
+title: Cloudflare Snippets
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
 # Cloudflare Snippets
+
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/snippets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Snippets allow you to run short pieces of JavaScript code on Cloudflare's network to customize how requests and responses are handled for your website or application. With Snippets, you can modify HTTP response headers, implement JWT validation, perform complex redirects, and more.
 
@@ -38,7 +40,7 @@ If you have used the Cloudflare API to create a code snippet that is not associa
 Cloudflare provides you with rules templates for common use cases.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Templates**, and then select one of the available templates.
 
 You can also refer to the [Examples gallery](https://developers.cloudflare.com/rules/examples/) in the developer docs.
@@ -65,7 +67,7 @@ Cloudflare Snippets are designed for fast, lightweight logic that runs on the Cl
 | Maximum memory             | 2 MB      |
 | Maximum total package size | 32 KB     |
 
-Need guidance on choosing between Snippets and Workers?
+### Need guidance on choosing between Snippets and Workers?
 
 Explore our [detailed guide](https://developers.cloudflare.com/rules/snippets/when-to-use/) for best practices, real-world use cases, and example implementations.
 
@@ -92,11 +94,18 @@ For example, if multiple rules with the _Redirect_ action match, Cloudflare will
 
 Refer to the [Phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) for the product execution order.
 
-Warning
+Caution
 
 Using Cloudflare challenges along with Rules features may cause challenge loops. Refer to [Rules troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/) for more information.
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/#page","headline":"Cloudflare Snippets · Cloudflare Rules docs","description":"Run lightweight JavaScript at the edge to modify requests and responses.","url":"https://developers.cloudflare.com/rules/snippets/","inLanguage":"en","image":"https://developers.cloudflare.com/core-services-preview.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Request modification","Response modification","Middleware"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/rules/","name":"Rules"}},{"@type":"ListItem","position":3,"item":{"@id":"/rules/snippets/","name":"Cloudflare Snippets"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/#page","headline":"Cloudflare Snippets · Cloudflare Rules docs","description":"Run lightweight JavaScript at the edge to modify requests and responses.","url":"https://developers.cloudflare.com/rules/snippets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Request modification","Response modification","Middleware"]}
 ```

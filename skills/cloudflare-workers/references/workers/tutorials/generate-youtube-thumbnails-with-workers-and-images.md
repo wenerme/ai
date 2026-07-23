@@ -4,15 +4,15 @@ title: Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
+# Generate YouTube thumbnails with Workers and Cloudflare Image Resizing
 
-Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers and Cloudflare Image Resizing. You may want to generate a custom YouTube thumbnail to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.
 
@@ -43,7 +43,7 @@ Cloudflare Images allows you to store, resize, optimize and deliver images in a 
 To upload an image using the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Transformations** page.
-[ Go to **Transformations** ↗ ](https://dash.cloudflare.com/?to=/:account/images/transformations)
+[Go to **Transformations** ↗](https://dash.cloudflare.com/?to=/:account/images/transformations)
 2. Use **Quick Upload** to either drag and drop an image or click to browse and choose a file from your local files.
 3. After the image is uploaded, view it using the generated URL.
 
@@ -362,7 +362,7 @@ A `.workers.dev` domain will be generated for your Worker after running `wrangle
 
 Create a Worker to serve the image you uploaded to Images by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- thumbnail-image
@@ -574,7 +574,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/#page","headline":"Generate YouTube thumbnails with Workers and Cloudflare Image Resizing · Cloudflare Workers docs","description":"This tutorial explains how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers. You may want to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.","url":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Rust"]}

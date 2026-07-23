@@ -4,15 +4,15 @@ title: Supported API methods
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Supported API methods
+# Supported API methods
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The full list of API methods that are supported by an Ethereum Gateway is given below. The gateway returns a `403` if a method is specified that is not supported.
 
@@ -166,7 +166,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/#page","headline":"Supported API methods - Ethereum Gateway · Cloudflare Web3 docs","description":"Ethereum JSON-RPC methods supported by the Cloudflare gateway.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}

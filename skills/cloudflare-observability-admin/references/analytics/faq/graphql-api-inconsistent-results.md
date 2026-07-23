@@ -4,15 +4,15 @@ title: GraphQL API inconsistent results
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  GraphQL API inconsistent results
+# GraphQL API inconsistent results
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you run the same GraphQL Analytics API query multiple times and receive slightly different results, this is caused by Adaptive Bit Rate (ABR) sampling. ABR dynamically adjusts data resolution based on query complexity and timing, which can result in slight variations between query runs.
 
@@ -130,7 +130,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/#page","headline":"GraphQL API inconsistent results · Cloudflare Analytics docs","description":"Understand why GraphQL API results may vary slightly.","url":"https://developers.cloudflare.com/analytics/faq/graphql-api-inconsistent-results/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

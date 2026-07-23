@@ -4,15 +4,15 @@ title: Build a QR code generator
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a QR code generator
+# Build a QR code generator
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will build and publish a Worker application that generates QR codes.
 
@@ -26,7 +26,7 @@ All of the tutorials assume you have already completed the [Get started guide](h
 
 First, use the [create-cloudflare CLI](https://developers.cloudflare.com/pages/get-started/c3) to create a new Cloudflare Workers project. To do this, open a terminal window and run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- qr-code-generator
@@ -136,7 +136,7 @@ export default {
 
 All projects deployed to Cloudflare Workers support npm packages. This support makes it easy to rapidly build out functionality in your Workers. The ['qrcode-svg' ↗](https://github.com/papnkukn/qrcode-svg) package is a great way to take text and encode it into a QR code. In the command line, install and save 'qrcode-svg' to your project’s 'package.json':
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i qrcode-svg
@@ -300,7 +300,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/#page","headline":"Build a QR code generator · Cloudflare Workers docs","description":"This tutorial shows you how to build and publish a Worker application that generates QR codes. The final version of the codebase is available on GitHub.","url":"https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

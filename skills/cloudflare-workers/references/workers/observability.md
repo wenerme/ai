@@ -4,15 +4,15 @@ title: Observability
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Observability
+# Observability
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers provides comprehensive observability tools to help you understand how your applications are performing, diagnose issues, and gain insights into request flows. Whether you want to use Cloudflare's native observability platform or export telemetry data to your existing monitoring stack, Workers has you covered.
 
@@ -20,21 +20,21 @@ Cloudflare Workers provides comprehensive observability tools to help you unders
 
 Logs are essential for troubleshooting and understanding your application's behavior. Cloudflare offers several ways to access and manage your Worker logs.
 
-### [ Workers Logs ](https://developers.cloudflare.com/workers/observability/logs/workers-logs/)
+### [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/)
 
- Automatically collect, store, filter, and analyze logs in the Cloudflare dashboard.
+Automatically collect, store, filter, and analyze logs in the Cloudflare dashboard.
 
-### [ Real-time logs ](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/)
+### [Real-time logs](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/)
 
- Access log events in near real-time for immediate feedback during development and deployments.
+Access log events in near real-time for immediate feedback during development and deployments.
 
-### [ Tail Workers ](https://developers.cloudflare.com/workers/observability/logs/tail-workers/)
+### [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/)
 
- Apply custom filtering, sampling, and transformation logic to your telemetry data.
+Apply custom filtering, sampling, and transformation logic to your telemetry data.
 
-### [ Workers Logpush ](https://developers.cloudflare.com/workers/observability/logs/logpush/)
+### [Workers Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/)
 
- Send Workers Trace Event Logs to supported destinations like R2, S3, or logging providers.
+Send Workers Trace Event Logs to supported destinations like R2, S3, or logging providers.
 
 ## Traces
 
@@ -54,27 +54,27 @@ The [Query Builder](https://developers.cloudflare.com/workers/observability/quer
 
 ## Debugging
 
-### [ Errors and exceptions ](https://developers.cloudflare.com/workers/observability/errors/)
+### [Errors and exceptions](https://developers.cloudflare.com/workers/observability/errors/)
 
- Understand Workers error codes and debug common issues.
+Understand Workers error codes and debug common issues.
 
-### [ Source maps and stack traces ](https://developers.cloudflare.com/workers/observability/source-maps/)
+### [Source maps and stack traces](https://developers.cloudflare.com/workers/observability/source-maps/)
 
- Get readable stack traces that map back to your original source code.
+Get readable stack traces that map back to your original source code.
 
-### [ DevTools ](https://developers.cloudflare.com/workers/observability/dev-tools/)
+### [DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/)
 
- Use Chrome DevTools for breakpoints, CPU profiling, and memory debugging during local development.
+Use Chrome DevTools for breakpoints, CPU profiling, and memory debugging during local development.
 
 ## Additional resources
 
-### [ MCP server ](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability)
+### [MCP server](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability)
 
- Query Workers observability data using the Model Context Protocol.
+Query Workers observability data using the Model Context Protocol.
 
-### [ Third-party integrations ](https://developers.cloudflare.com/workers/observability/third-party-integrations/)
+### [Third-party integrations](https://developers.cloudflare.com/workers/observability/third-party-integrations/)
 
- Integrate Workers with third-party observability platforms.
+Integrate Workers with third-party observability platforms.
 
 Was this helpful?
 
@@ -82,7 +82,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/#page","headline":"Observability · Cloudflare Workers docs","description":"Understand how your Worker projects are performing via logs, traces, metrics, and other data sources.","url":"https://developers.cloudflare.com/workers/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

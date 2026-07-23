@@ -4,15 +4,15 @@ title: Web Bot Auth
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Web Bot Auth
+# Web Bot Auth
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web Bot Auth is an authentication method that leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. Web Bot Auth is used as a verification method for [verified bots and agents](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
 
@@ -275,7 +275,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/#page","headline":"Web Bot Auth · Cloudflare bot solutions docs","description":"Verify bot identity using cryptographic HTTP message signatures.","url":"https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}

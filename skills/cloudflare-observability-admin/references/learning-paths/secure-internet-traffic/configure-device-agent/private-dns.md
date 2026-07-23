@@ -4,15 +4,15 @@ title: Resolve private DNS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Resolve private DNS
+# Resolve private DNS
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/private-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/private-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, all DNS requests on the user device are resolved by Cloudflare's [public DNS resolver](https://developers.cloudflare.com/1.1.1.1/) except for common top level domains used for local resolution (such as `localhost`). To allow users to connect to internal server names or domains that do not resolve on the public Internet, you have two options:
 
@@ -207,7 +207,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/private-dns/#page","headline":"Resolve private DNS · Cloudflare Learning Paths","description":"Set up private DNS resolution.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/configure-device-agent/private-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

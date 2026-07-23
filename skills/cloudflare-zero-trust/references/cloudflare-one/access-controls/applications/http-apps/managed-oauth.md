@@ -4,15 +4,15 @@ title: Managed OAuth
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Managed OAuth
+# Managed OAuth
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you protect an application with Cloudflare Access, by default non-browser clients — such as CLIs, AI agents, SDKs, and scripts — cannot complete the browser-based login redirect. They receive a `302` redirect with no usable token or authorization endpoint.
 
@@ -259,7 +259,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/#page","headline":"Managed OAuth · Cloudflare One docs","description":"Allow non-browser clients to authenticate with Access-protected applications using a standard OAuth 2.0 flow.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication","REST API"]}

@@ -4,15 +4,15 @@ title: Serve images from custom domains
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Serve images from custom domains
+# Serve images from custom domains
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Image delivery is supported from all customer domains under the same Cloudflare account. To serve images through custom domains, an image URL should be adjusted to the following format:
 
@@ -47,7 +47,7 @@ This example lets you rewrite a request from `example.com/images` to `example.co
 To create a rule:
 
 1. In the Cloudflare dashboard, go to the **Rules Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Next to **URL Rewrite Rules**, select **Create rule**.
 3. Under **If incoming requests match**, select **Wildcard pattern** and enter the following **Request URL** (update with your own domain):
 ```txt
@@ -70,7 +70,7 @@ This example lets you rewrite a request from `example.com/images/some-image-id/w
 To create a rule:
 
 1. In the Cloudflare dashboard, go to the **Rules Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Next to **URL Rewrite Rules**, select **Create rule**.
 3. Under **If incoming requests match**, select **Custom filter expression** and then select **Edit expression**.
 4. In the text field, enter `(http.request.uri.path matches "^/images/.*$")`.
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/#page","headline":"Serve images from custom domains · Cloudflare Images docs","description":"Deliver Cloudflare Images through your own custom domain using the cdn-cgi image delivery path.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

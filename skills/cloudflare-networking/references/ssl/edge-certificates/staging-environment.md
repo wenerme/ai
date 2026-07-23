@@ -4,15 +4,15 @@ title: Staging environment
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Staging environment
+# Staging environment
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use your certificate staging environment to test new custom (modern) certificates before pushing them to your production environment. This process helps you solve potential certificate problems **before** there's an incident, such as when:
 
@@ -35,7 +35,7 @@ Use your certificate staging environment to test new custom (modern) certificate
 To upload custom (modern) certificates to your staging environment:
 
 1. In the Cloudflare dashboard, go to the **Staging Certificates** page.
-[ Go to **Staging Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/staging-certificates)
+[Go to **Staging Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/staging-certificates)
 2. Select **Upload Custom Staging Certificate**.
 3. Upload your custom (modern) certificate ([detailed instructions](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/)).
 4. Your certificate will appear in the dashboard with a status of **Staging Deployment**. If you refresh the page, its status should go to **Staging Active**.
@@ -59,7 +59,7 @@ You should confirm whether:
 Assuming there are no issues, push your custom (modern) certificate to your production environment:
 
 1. In the Cloudflare dashboard, go to the **Staging Certificates** page.
-[ Go to **Staging Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/staging-certificates)
+[Go to **Staging Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/staging-certificates)
 2. Select a custom certificate.
 3. Select **Push to Production**.
 
@@ -70,7 +70,7 @@ If there were issues with your certificate, you can keep it in your staging envi
 If you roll out a custom (modern) certificate to production and encounter issues, you can deactivate that certificate to delete the certificate from the edge and then push the certificate back to your staging environment for additional testing:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select a custom certificate.
 3. Select **Deactivate**.
 4. Select **Push to Staging**.
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/#page","headline":"Staging environment · Cloudflare SSL/TLS docs","description":"Test certificate changes in a staging environment before production.","url":"https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

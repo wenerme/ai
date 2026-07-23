@@ -4,15 +4,15 @@ title: Enforce DNS-only
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enforce DNS-only
+# Enforce DNS-only
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The enforce DNS-only setting is an account-level break-glass mechanism that allows you to bypass Cloudflare's reverse proxy for all zones in your account in a single action. When enabled, Cloudflare responds to DNS queries with the underlying record content — origin IP addresses for proxied `A` and `AAAA` records, and CNAME targets for proxied `CNAME` records — instead of Cloudflare's anycast IP addresses, effectively setting all [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/) to DNS-only without modifying the records themselves.
 
@@ -150,7 +150,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/#page","headline":"Enforce DNS-only · Cloudflare DNS docs","description":"Bypass Cloudflare's reverse proxy for all zones at once.","url":"https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

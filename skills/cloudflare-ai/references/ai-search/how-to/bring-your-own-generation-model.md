@@ -4,15 +4,15 @@ title: Bring your own generation model
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bring your own generation model
+# Bring your own generation model
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, AI Search uses a Workers AI model to generate responses. To use a model outside of Workers AI, use AI Search for `search` and pass the retrieved content to a different model for generation. This guide uses an OpenAI model.
 
@@ -40,7 +40,7 @@ Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](htt
 
 Create a new project named `byo-model` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- byo-model
@@ -72,7 +72,7 @@ cd byo-model
 
 Install the [AI SDK ↗](https://sdk.vercel.ai/) and its OpenAI provider:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i ai @ai-sdk/openai
@@ -238,13 +238,13 @@ npx wrangler deploy
 
 ## Next steps
 
-### [ Models ](https://developers.cloudflare.com/ai-search/configuration/models/)
+### [Models](https://developers.cloudflare.com/ai-search/configuration/models/)
 
- Use third-party models natively through AI Gateway.
+Use third-party models natively through AI Gateway.
 
-### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+### [Search Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
- Full reference for searching and chatting from a Worker.
+Full reference for searching and chatting from a Worker.
 
 Was this helpful?
 
@@ -252,7 +252,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/#page","headline":"Bring your own generation model · Cloudflare AI Search docs","description":"Use AI Search for retrieval while generating responses with an external model like OpenAI.","url":"https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

@@ -4,15 +4,15 @@ title: Limits
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Limits
+# Limits
 
-Last updated Jun 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects are a special kind of Worker, so [Workers Limits](https://developers.cloudflare.com/workers/platform/limits/) apply according to your Workers plan. In addition, Durable Objects have specific limits as listed in this page.
 
@@ -178,7 +178,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/limits/#page","headline":"Limits · Cloudflare Durable Objects docs","description":"Account, storage, CPU, and SQL limits for Durable Objects on Free and Workers Paid plans.","url":"https://developers.cloudflare.com/durable-objects/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

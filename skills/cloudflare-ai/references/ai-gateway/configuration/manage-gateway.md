@@ -4,15 +4,15 @@ title: Manage gateways
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage gateways
+# Manage gateways
 
-Last updated May 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You have several different options for managing an AI Gateway.
 
@@ -43,7 +43,7 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 ### Create a gateway manually
 
-[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** \> **AI Gateway**.
 3. Select **Create Gateway**.
@@ -115,7 +115,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

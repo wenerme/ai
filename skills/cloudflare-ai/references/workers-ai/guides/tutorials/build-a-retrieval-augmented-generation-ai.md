@@ -4,15 +4,15 @@ title: Build a Retrieval Augmented Generation (RAG) AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build a Retrieval Augmented Generation (RAG) AI
+# Build a Retrieval Augmented Generation (RAG) AI
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through setting up and deploying your first application with Cloudflare AI. You will build a fully-featured AI-powered application, using tools like Workers AI, Vectorize, D1, and Cloudflare Workers.
 
@@ -37,7 +37,7 @@ C3 (`create-cloudflare-cli`) is a command-line tool designed to help you setup a
 
 Open a terminal window and run C3 to create your Worker project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- rag-ai-tutorial
@@ -272,7 +272,7 @@ env.RAG_WORKFLOW.create({ params: { text } });
 
 To expand on your Workers function in order to handle multiple routes, we will add `hono`, a routing library for Workers. This will allow us to create a new route for adding notes to our database. Install `hono` using `npm`:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i hono
@@ -451,7 +451,7 @@ If you are working with larger documents, you have the option to use Anthropic's
 
 To begin, install the `@anthropic-ai/sdk` package:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @anthropic-ai/sdk
@@ -555,7 +555,7 @@ For large pieces of text, it is recommended to split the text into smaller chunk
 
 To implement this, we'll add a new NPM package to our project, \`@langchain/textsplitters':
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @langchain/textsplitters
@@ -683,7 +683,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/#page","headline":"Build a Retrieval Augmented Generation (RAG) AI · Cloudflare Workers AI docs","description":"Build your first AI app with Cloudflare AI. This guide uses Workers AI, Vectorize, D1, and Cloudflare Workers.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","JavaScript"]}

@@ -4,15 +4,15 @@ title: MCP
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  MCP
+# MCP
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/mcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/mcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/) as clients. Connect an agent to external MCP servers, discover the tools those servers expose, and pass those tools into model calls.
 
@@ -111,21 +111,21 @@ await this.addMcpServer("internal", this.env.MCP_SERVER_URL, {
 
 ## Related resources
 
-### [ McpClient API ](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
+### [McpClient API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 
- Connect Agents to external MCP servers and use their tools, resources, and prompts.
+Connect Agents to external MCP servers and use their tools, resources, and prompts.
 
-### [ Connect to an MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
+### [Connect to an MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
 
- Create an Agent that connects to an external MCP server and uses its tools.
+Create an Agent that connects to an external MCP server and uses its tools.
 
-### [ Use MCP tools with Code Mode ](https://developers.cloudflare.com/agents/tools/codemode/mcp/)
+### [Use MCP tools with Code Mode](https://developers.cloudflare.com/agents/tools/codemode/mcp/)
 
- Use progressive discovery, code-based composition, and durable approvals with MCP tools.
+Use progressive discovery, code-based composition, and durable approvals with MCP tools.
 
-### [ Model Context Protocol specification ](https://modelcontextprotocol.io/)
+### [Model Context Protocol specification](https://modelcontextprotocol.io/)
 
- Learn about the open protocol for connecting AI applications to external tools and data.
+Learn about the open protocol for connecting AI applications to external tools and data.
 
 Was this helpful?
 
@@ -133,7 +133,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/mcp/#page","headline":"MCP · Cloudflare Agents docs","description":"Connect agents to external Model Context Protocol servers and use their tools in model calls.","url":"https://developers.cloudflare.com/agents/tools/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

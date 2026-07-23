@@ -4,15 +4,15 @@ title: getCurrentAgent()
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  getCurrentAgent()
+# getCurrentAgent()
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `getCurrentAgent()` function allows you to access the current agent context from anywhere in your code, including external utility functions and libraries. This is useful when you need agent information in functions that do not have direct access to `this`.
 
@@ -441,17 +441,17 @@ const { agent } = getCurrentAgent<MyAgent>();
 
 ## Next steps
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
-### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
- Expose methods to clients via RPC.
+Expose methods to clients via RPC.
 
-### [ State management ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [State management](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Manage and sync agent state.
+Manage and sync agent state.
 
 Was this helpful?
 
@@ -459,7 +459,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/#page","headline":"getCurrentAgent() · Cloudflare Agents docs","description":"Access the current Agent context from external utility functions using getCurrentAgent() in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: What is clientless access?
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  What is clientless access?
+# What is clientless access?
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Clientless access is a deployment option of a [Zero Trust Network Access (ZTNA) ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) service that provides secure access to internal applications without requiring end users to install any software. Users access corporate resources like intranet web apps, SSH terminals, and Windows servers through RDP from their web browser. Clientless access is commonly used to provide internal, [least-privilege access ↗](https://www.cloudflare.com/learning/access-management/principle-of-least-privilege/) to users on unmanaged devices. Users may include third-party contractors, suppliers, and partners, or employees using personal mobile phones as part of an organization's bring-your-own-device (BYOD) policy.
 
@@ -46,7 +46,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/#page","headline":"What is clientless access? · Cloudflare Learning Paths","description":"Understand secure browser-based access without software.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

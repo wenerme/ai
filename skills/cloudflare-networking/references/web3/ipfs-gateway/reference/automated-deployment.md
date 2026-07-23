@@ -4,15 +4,15 @@ title: Automated deployments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/web3/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Automated deployments
+# Automated deployments
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Static sites are easy to deploy automatically. The code of the site is usually kept in a Git repository and deployed by pushing the latest commit to a repository that's connected to a Continuous Integration service like [Travis CI ↗](https://travis-ci.org/), or by pushing to a repository directly on the server and activating a post-receive hook. Either way, the production version of the site is built and then copied into the serving path of an Apache or NGINX instance.
 
@@ -28,7 +28,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/#page","headline":"Automated deployments · Cloudflare Web3 docs","description":"Automate IPFS content deployment with CI/CD pipelines.","url":"https://developers.cloudflare.com/web3/ipfs-gateway/reference/automated-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

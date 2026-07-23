@@ -4,15 +4,15 @@ title: Events and parameters
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workflows/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Events and parameters
+# Events and parameters
 
-Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workflows/build/events-and-parameters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/events-and-parameters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a Workflow is triggered, it can receive an optional event. This event can include data that your Workflow can act on, including request details, user data fetched from your database (such as D1 or KV) or from a webhook, or messages from a Queue consumer.
 
@@ -323,7 +323,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/events-and-parameters/#page","headline":"Events and parameters · Cloudflare Workflows docs","description":"Pass data to Workflows using events and parameters, including request details, database records, and webhook payloads.","url":"https://developers.cloudflare.com/workflows/build/events-and-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

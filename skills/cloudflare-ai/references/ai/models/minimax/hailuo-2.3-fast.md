@@ -4,7 +4,7 @@ title: MiniMax Hailuo 2.3 Fast
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![MiniMax logo](https://developers.cloudflare.com/_astro/minimax.DPZX-zZI.svg)
 
-#  MiniMax Hailuo 2.3 Fast
+# MiniMax Hailuo 2.3 Fast
 
- Text-to-Video • MiniMax
+Text-to-Video • MiniMax
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` minimax/hailuo-2.3-fast `
+`minimax/hailuo-2.3-fast`
 
 * Third-party
 * Zero data retention
 
 A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.
 
-| Model Info          |                                                                                                                            |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://hailuoai.com/terms)                                                                                       |
-| More information    | [link ↗](https://hailuoai.com/)                                                                                            |
-| Zero data retention | Yes                                                                                                                        |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
+| Model Info          |                                                                                                                           |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://hailuoai.com/terms)                                                                                      |
+| More information    | [link ↗](https://hailuoai.com/)                                                                                           |
+| Zero data retention | Yes                                                                                                                       |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
 
 ## Usage
 
@@ -83,7 +83,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Resolution I2V**  — Animate a photo in 1080P
+**High Resolution I2V** — Animate a photo in 1080P
 
 ```ts
 const response = await env.AI.run(
@@ -132,7 +132,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Fast Processing**  — Quick I2V with fast pretreatment enabled
+**Fast Processing** — Quick I2V with fast pretreatment enabled
 
 ```ts
 const response = await env.AI.run(
@@ -221,9 +221,9 @@ status
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -231,7 +231,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/#page","headline":"MiniMax Hailuo 2.3 Fast (MiniMax) · Cloudflare AI docs · Cloudflare AI docs","description":"A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual consistency, and stylization while enabling faster iteration.","url":"https://developers.cloudflare.com/ai/models/minimax/hailuo-2.3-fast/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

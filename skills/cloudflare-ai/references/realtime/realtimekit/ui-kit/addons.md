@@ -4,15 +4,15 @@ title: UI Kit Addons
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  UI Kit Addons
+# UI Kit Addons
 
-Last updated May 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A collection of UI Kit addons that extend RealtimeKit's prebuilt UI Kit capabilities with additional interactive components and controls for enhanced meeting experiences.
 
@@ -71,7 +71,7 @@ Customize the meeting control bar:
 
 ## Installation
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/realtimekit-ui-addons
@@ -89,7 +89,7 @@ pnpm add @cloudflare/realtimekit-ui-addons
 bun add @cloudflare/realtimekit-ui-addons
 ```
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/realtimekit-ui-addons
@@ -107,7 +107,7 @@ pnpm add @cloudflare/realtimekit-ui-addons
 bun add @cloudflare/realtimekit-ui-addons
 ```
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/realtimekit-ui-addons
@@ -775,7 +775,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/#page","headline":"UI Kit Addons · Cloudflare Realtime docs","description":"Extend RealtimeKit UI Kit with addon components for host controls, reactions, and more.","url":"https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

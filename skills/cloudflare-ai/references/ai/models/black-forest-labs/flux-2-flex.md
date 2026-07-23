@@ -4,7 +4,7 @@ title: FLUX.2 [flex]
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
-#  FLUX.2 \[flex\]
+# FLUX.2 \[flex\]
 
- Text-to-Image • Black Forest Labs
+Text-to-Image • Black Forest Labs
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` black-forest-labs/flux-2-flex `
+`black-forest-labs/flux-2-flex`
 
 * Third-party
 
 FLUX.2 \[flex\] is Black Forest Labs' fine-grained control variant of FLUX.2 — exposes tunable inference steps, guidance, and prompt upsampling for typography-heavy and production workflows.
 
-| Model Info        |                                                                                                                                  |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/)                                                                           |
-| More information  | [link ↗](https://blackforestlabs.ai/)                                                                                            |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-flex) |
+| Model Info        |                                                                                                                                 |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/)                                                                          |
+| More information  | [link ↗](https://blackforestlabs.ai/)                                                                                           |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-flex) |
 
 ## Usage
 
@@ -71,7 +71,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**High Detail Generation**  — Crank steps and guidance for maximum detail when latency is not the priority
+**High Detail Generation** — Crank steps and guidance for maximum detail when latency is not the priority
 
 ```ts
 const response = await env.AI.run(
@@ -113,7 +113,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Fast Draft**  — Fast draft with prompt upsampling disabled — preserves the literal prompt
+**Fast Draft** — Fast draft with prompt upsampling disabled — preserves the literal prompt
 
 ```ts
 const response = await env.AI.run(
@@ -199,9 +199,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -209,7 +209,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/#page","headline":"FLUX.2 [flex] (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[flex] is Black Forest Labs' fine-grained control variant of FLUX.2 — exposes tunable inference steps, guidance, and prompt upsampling for typography-heavy and production workflows.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-flex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

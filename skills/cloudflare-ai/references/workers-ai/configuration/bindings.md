@@ -4,15 +4,15 @@ title: Workers Bindings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers Bindings
+# Workers Bindings
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/configuration/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/configuration/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Workers
 
@@ -55,13 +55,13 @@ const answer = await env.AI.run('@cf/meta/llama-3.1-8b-instruct', {
 
 **Parameters**
 
-* `model` ` string `required
+* `model` `string`required
 
   * The model to run.
 
 **Supported options**
 
-  * `stream` ` boolean `optional
+  * `stream` `boolean`optional
     * Returns a stream of results as they are available.
 
 ```javascript
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/configuration/bindings/#page","headline":"Workers Bindings · Cloudflare Workers AI docs","description":"Create an AI binding to connect your Cloudflare Worker to Workers AI.","url":"https://developers.cloudflare.com/workers-ai/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

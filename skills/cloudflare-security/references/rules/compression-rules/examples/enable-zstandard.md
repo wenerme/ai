@@ -4,17 +4,17 @@ title: Enable Zstandard compression for default content types
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Zstandard compression for default content types
+# Enable Zstandard compression for default content types
 
 Create a compression rule to turn on Zstandard compression for response content types where Cloudflare applies compression by default.
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/compression-rules/examples/enable-zstandard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/compression-rules/examples/enable-zstandard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following example rule will turn on Zstandard compression for response content types where [Cloudflare applies compression by default](https://developers.cloudflare.com/speed/optimization/content/compression/). If the client does not support Zstandard compression, it will use Brotli or Gzip compression as a fallback.
 
@@ -91,7 +91,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/compression-rules/examples/enable-zstandard/#page","headline":"Enable Zstandard compression for default content types · Cloudflare Rules docs","description":"Create a compression rule to turn on Zstandard compression for response content types where Cloudflare applies compression by default.","url":"https://developers.cloudflare.com/rules/compression-rules/examples/enable-zstandard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

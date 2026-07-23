@@ -4,20 +4,20 @@ title: Configure a Cloud Connector rule in the dashboard
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure a Cloud Connector rule in the dashboard
+# Configure a Cloud Connector rule in the dashboard
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/create-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/create-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To configure a Cloud Connector rule in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Cloud Connector** page.
-[ Go to **Cloud Connector** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
+[Go to **Cloud Connector** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
 2. Select your [cloud provider](https://developers.cloudflare.com/rules/cloud-connector/providers/) (Cloudflare R2 or an external provider).
 3. If you selected Cloudflare R2 in the previous step, select your bucket and your custom domain, and select **Next**.
 If you selected a different storage provider, enter the bucket URL and select **Next**.
@@ -40,7 +40,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/create-dashboard/#page","headline":"Configure a Cloud Connector rule in the dashboard · Cloudflare Rules docs","description":"Create Cloud Connector rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/cloud-connector/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

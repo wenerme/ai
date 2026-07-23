@@ -4,15 +4,15 @@ title: Alarms
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Alarms
+# Alarms
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/api/alarms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/api/alarms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -83,14 +83,14 @@ export class AgentServer extends DurableObject {
 
 ### `getAlarm`
 
-* `getAlarm()`: ` number | null `
+* `getAlarm()`: `number | null`
 
   * If there is an alarm set, then return the currently set alarm time as the number of milliseconds elapsed since the UNIX epoch. Otherwise, return `null`.
   * If `getAlarm` is called while an [alarm](https://developers.cloudflare.com/durable-objects/api/alarms/#alarm) is already running, it returns `null` unless `setAlarm` has also been called since the alarm handler started running.
 
 ### `setAlarm`
 
-* ``  setAlarm(scheduledTimeMs ` number `)  ``: ` void `
+* ``  setAlarm(scheduledTimeMs `number`)  ``: `void`
 
   * Set the time for the alarm to run. Specify the time as the number of milliseconds elapsed since the UNIX epoch.
   * If you call `setAlarm` when there is already one scheduled, it will override the existing alarm.
@@ -103,7 +103,7 @@ This is due to the fact that, if the Durable Object wakes up after being inactiv
 
 ### `deleteAlarm`
 
-* `deleteAlarm()`: ` void `
+* `deleteAlarm()`: `void`
 
   * Unset the alarm if there is a currently set alarm.
   * Calling `deleteAlarm()` inside the `alarm()` handler may prevent retries on a best-effort basis, but is not guaranteed.
@@ -112,13 +112,13 @@ This is due to the fact that, if the Durable Object wakes up after being inactiv
 
 ### `alarm`
 
-* `` alarm(alarmInfo ` Object `) ``: ` void `
+* `` alarm(alarmInfo `Object`) ``: `void`
 
   * Called by the system when a scheduled alarm time is reached.
   * The optional parameter `alarmInfo` object has two properties:
 
-    * `retryCount` ` number `: The number of times this alarm event has been retried.
-    * `isRetry` ` boolean `: A boolean value to indicate if the alarm has been retried. This value is `true` if this alarm event is a retry.
+    * `retryCount` `number`: The number of times this alarm event has been retried.
+    * `isRetry` `boolean`: A boolean value to indicate if the alarm has been retried. This value is `true` if this alarm event is a retry.
   * Only one instance of `alarm()` will ever run at a given time per Durable Object instance.
   * The `alarm()` handler has guaranteed at-least-once execution and will be retried upon failure using exponential backoff, starting at 2 second delays for up to 6 retries. This only applies to the most recent `setAlarm()` call. Retries will be performed if the method fails with an uncaught exception.
   * This method can be `async`.
@@ -228,7 +228,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/alarms/#page","headline":"Alarms · Cloudflare Durable Objects docs","description":"Schedule future wake-ups for Durable Objects using the Alarms API with guaranteed at-least-once execution.","url":"https://developers.cloudflare.com/durable-objects/api/alarms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

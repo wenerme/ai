@@ -4,15 +4,15 @@ title: API token templates
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  API token templates
+# API token templates
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/reference/template/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/template/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below is a table of the currently available API token templates and the default [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) they grant. You can start creating a token with one of these templates and modify the permissions and resources from there.
 
@@ -52,7 +52,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/template/#page","headline":"API token templates · Cloudflare Fundamentals docs","description":"Explore Cloudflare's API token templates to efficiently manage permissions. Start with a template and customize token permissions and resources as needed.","url":"https://developers.cloudflare.com/fundamentals/api/reference/template/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

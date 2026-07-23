@@ -4,15 +4,15 @@ title: Origin Rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Origin Rules
+# Origin Rules
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Origin Rules allow you to change the origin server that Cloudflare sends a request to, or modify how the request reaches that server. This is useful when you need to route specific requests to a different backend, such as a third-party service or a server on a non-standard port. You can perform the following overrides:
 
@@ -35,7 +35,7 @@ Origin Rules require that you [proxy the DNS records](https://developers.cloudfl
 Cloudflare provides you with rules templates for common use cases.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Templates**, and then select one of the available templates.
 
 You can also refer to the [Examples gallery](https://developers.cloudflare.com/rules/examples/) in the developer docs.
@@ -94,7 +94,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/#page","headline":"Origin Rules · Cloudflare Rules docs","description":"Override the origin server, host header, SNI, and DNS resolution for matching requests.","url":"https://developers.cloudflare.com/rules/origin-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

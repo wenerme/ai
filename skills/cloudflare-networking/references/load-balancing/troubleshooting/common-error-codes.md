@@ -4,15 +4,15 @@ title: Common error codes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/load-balancing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Common error codes
+# Common error codes
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Load Balancing API adds global health to each pool and endpoint. It also gives you a view into what our network sees at a wider level. Cloudflare uses a quorum system to determine pool and endpoint health status. The quorum is taken from PoPs responsible for running health monitor requests in a region, and the majority result is used.
 
@@ -313,7 +313,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/#page","headline":"Common error codes · Cloudflare Load Balancing docs","description":"Common Load Balancing error codes and resolutions.","url":"https://developers.cloudflare.com/load-balancing/troubleshooting/common-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

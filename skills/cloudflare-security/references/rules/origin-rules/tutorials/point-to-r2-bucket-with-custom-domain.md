@@ -4,15 +4,15 @@ title: Point to R2 bucket with a custom domain
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Point to R2 bucket with a custom domain
+# Point to R2 bucket with a custom domain
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will instruct you how to configure an origin rule and a DNS record to point to an R2 bucket configured with a custom domain.
 
@@ -27,7 +27,7 @@ When configuring your R2 bucket's custom domain, use a custom domain that you do
 ## 1\. Configure custom domain in your Pages project
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select your bucket.
 3. On the bucket page, select **Settings**.
 4. Under **Public access** \> **Custom Domains**, select **Connect Domain**.
@@ -70,7 +70,7 @@ In our example, the URL that website visitors will access starts with `/images`.
 Use a URL rewrite to remove the `/images` segment from the URL path. Cloudflare provides a rule template in the dashboard called **Rewrite Path for Object Storage Bucket** that you can use to configure the required rewrite.
 
 1. In the Cloudflare dashboard, go to the Rules **Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview)
 2. Select **Create rule** \> **URL Rewrite Rule**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. In **If incoming requests match**, select **Wildcard pattern**.
@@ -102,7 +102,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/#page","headline":"Point to R2 bucket with a custom domain · Cloudflare Rules docs","description":"This tutorial will instruct you how to configure an origin rule and a DNS record to point to an R2 bucket configured with a custom domain.","url":"https://developers.cloudflare.com/rules/origin-rules/tutorials/point-to-r2-bucket-with-custom-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

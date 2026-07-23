@@ -4,18 +4,18 @@ title: Create a rate limiting rule in the dashboard
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a rate limiting rule in the dashboard
+# Create a rate limiting rule in the dashboard
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Rate limiting rules**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 3. Enter a descriptive name for the rule in **Rule name**.
 ![The Create rate limiting rule page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-create.qwL_1SJt_Z1hMrFF.webp)
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/#page","headline":"Create a rate limiting rule in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create a rate limiting rule for your zone in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/create-zone-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: GPT-4.1
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT-4.1
+# GPT-4.1
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4.1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-4.1 `
+`openai/gpt-4.1`
 
 * Third-party
 * Zero data retention
 
 OpenAI's flagship GPT model for complex tasks with a million-token context window.
 
-| Model Info                                                                  |                                                                                                                   |
-| --------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,047,576 tokens                                                                                                  |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                            |
-| More information                                                            | [link ↗](https://openai.com/index/gpt-4-1/)                                                                       |
-| Zero data retention                                                         | Yes                                                                                                               |
-| Request formats                                                             | Responses, Chat Completions                                                                                       |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1) |
+| Model Info                                                                 |                                                                                                                  |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,047,576 tokens                                                                                                 |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
+| More information                                                           | [link ↗](https://openai.com/index/gpt-4-1/)                                                                      |
+| Zero data retention                                                        | Yes                                                                                                              |
+| Request formats                                                            | Responses, Chat Completions                                                                                      |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1) |
 
 ## Usage
 
@@ -141,7 +141,7 @@ Certainly! The **three laws of thermodynamics** are fundamental principles descr
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -266,7 +266,7 @@ print(data["age"])   # Output: 30
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -395,7 +395,7 @@ With a bit more info, I can tailor a perfect list for you!
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -475,7 +475,7 @@ Lila lifted it with gloved fingers, turning it over as she studied its glossy sh
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -9418,7 +9418,7 @@ Recursion is when a function calls itself, and the problem gets divided into sma
 ]
 ```
 
-**Web Search**  — Letting the model use OpenAI's built-in web search tool to answer with current information
+**Web Search** — Letting the model use OpenAI's built-in web search tool to answer with current information
 
 ```ts
 const response = await env.AI.run(
@@ -9744,9 +9744,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -9754,7 +9754,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-4.1/#page","headline":"GPT-4.1 (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's flagship GPT model for complex tasks with a million-token context window.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-4.1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

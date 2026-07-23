@@ -4,15 +4,15 @@ title: Indexing error codes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Indexing error codes
+# Indexing error codes
 
-Last updated Jul 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After AI Search accepts an upload, sync, or crawl request, it processes your content in the background so it can be searched. When processing fails, AI Search records one of the error codes on this page. Some errors affect a single item; others pause the whole instance.
 
@@ -148,7 +148,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/#page","headline":"Indexing error codes · Cloudflare AI Search docs","description":"Resolve asynchronous indexing, sync, and crawl error codes.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

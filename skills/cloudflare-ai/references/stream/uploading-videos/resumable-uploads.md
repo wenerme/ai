@@ -4,15 +4,15 @@ title: Resumable and large files (tus)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Resumable and large files (tus)
+# Resumable and large files (tus)
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you need to upload a video that is over 200 MB, you must use the [tus protocol ↗](https://tus.io/). Even if the video is under 200 MB, if your connection is potentially unreliable, Cloudflare recommends using the tus protocol because it is resumable. A resumable upload ensures that the upload can be interrupted and resumed without uploading the previous data again.
 
@@ -115,7 +115,7 @@ Refer to [go-tus ↗](https://github.com/eventials/go-tus) for functionality suc
 
 Before you begin, install the tus-js-client.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i tus-js-client
@@ -238,7 +238,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/#page","headline":"Resumable and large files (tus) · Cloudflare Stream docs","description":"Upload large or resumable video files to Cloudflare Stream using the tus protocol.","url":"https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

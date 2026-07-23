@@ -4,19 +4,19 @@ title: Cloudflare DNS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare DNS
+# Cloudflare DNS
 
-Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Leverage Cloudflare's global network to deliver excellent performance and reliability to your domain.
 
- Available on all plans
+Available on all plans
 
 Cloudflare DNS is a fast, resilient, and easy-to-manage authoritative DNS service. It delivers excellent performance and reliability to your domain while also protecting your business from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and [route leaks and hijacking ↗](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/). To know where to begin, refer to [Get started](https://developers.cloudflare.com/dns/get-started/).
 
@@ -30,7 +30,7 @@ Enterprise customers can also use Cloudflare DNS for their private network with 
 
 DNS records make resources available on your domain, and allow you to configure services such as email.
 
- Use DNS records
+Use DNS records
 
 [DNSSEC](https://developers.cloudflare.com/dns/dnssec/)
 
@@ -38,13 +38,13 @@ DNS Security Extensions (DNSSEC) adds cryptographic signatures to your DNS recor
 
 Cloudflare also supports [Multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/).
 
- Use DNSSEC
+Use DNSSEC
 
 [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/)
 
 CNAME flattening delivers better performance and allows you to add a CNAME record at your apex domain (`example.com`). Paid accounts can choose to flatten all CNAME records on their domain.
 
- Use CNAME flattening
+Use CNAME flattening
 
 
 Refer to [DNS features and availability](https://developers.cloudflare.com/dns/reference/all-features/) for a complete list of features and their availability according to different Cloudflare plans.
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/#page","headline":"Cloudflare DNS · Cloudflare DNS docs","description":"Manage DNS records, nameservers, and DNSSEC with Cloudflare DNS.","url":"https://developers.cloudflare.com/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

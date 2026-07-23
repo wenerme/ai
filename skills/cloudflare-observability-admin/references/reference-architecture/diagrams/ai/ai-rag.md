@@ -4,15 +4,15 @@ title: Retrieval Augmented Generation (RAG)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Retrieval Augmented Generation (RAG)
+# Retrieval Augmented Generation (RAG)
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Retrieval-Augmented Generation (RAG) is an innovative approach in natural language processing that integrates retrieval mechanisms with generative models to enhance text generation.
 
@@ -28,7 +28,7 @@ Looking for a managed option?
 
 ## Knowledge Seeding
 
-![Figure 1: Knowledge seeding](https://developers.cloudflare.com/_astro/rag-architecture-seeding.BVBY5k5z_1MIa7Q.svg "Figure 1: Knowledge seeding")
+![Figure 1: Knowledge seeding](https://developers.cloudflare.com/_astro/rag-architecture-seeding.BVBY5k5z_ZAHNWj.svg "Figure 1: Knowledge seeding")
 
 Figure 1: Knowledge seeding
 
@@ -42,7 +42,7 @@ Figure 1: Knowledge seeding
 
 ## Knowledge Queries
 
-![Figure 2: Knowledge queries](https://developers.cloudflare.com/_astro/rag-architecture-query.CtBKQkxk_1MIa7Q.svg "Figure 2: Knowledge queries")
+![Figure 2: Knowledge queries](https://developers.cloudflare.com/_astro/rag-architecture-query.CtBKQkxk_ZAHNWj.svg "Figure 2: Knowledge queries")
 
 Figure 2: Knowledge queries
 
@@ -65,7 +65,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/#page","headline":"Retrieval Augmented Generation (RAG) · Cloudflare Reference Architecture docs","description":"RAG combines retrieval with generative models for better text. It uses external knowledge to create factual, relevant responses, improving coherence and accuracy in NLP tasks like chatbots.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

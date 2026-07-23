@@ -4,15 +4,15 @@ title: Workers Cache
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers Cache
+# Workers Cache
 
-Last updated Jul 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/cache/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/cache/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Cache lets Cloudflare return cached HTTP responses from your Worker without executing your Worker code. When an incoming request matches a cached response, Cloudflare serves the response directly from its edge cache — reducing latency and Workers CPU usage.
 
@@ -126,7 +126,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "name": "my-worker",
  "main": "src/index.ts",
  // Set this to today's date
- "compatibility_date": "2026-07-21",
+ "compatibility_date": "2026-07-22",
  "cache": {
   "enabled": true,
  },
@@ -137,7 +137,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -315,7 +315,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -328,7 +328,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [cache]
 enabled = true
@@ -504,12 +504,12 @@ For an example, refer to [Pricing example: Worker with caching](https://develope
 
 ## Next steps
 
-* [ Configuration ](https://developers.cloudflare.com/workers/cache/configuration/)
-* [ Cache keys ](https://developers.cloudflare.com/workers/cache/cache-keys/)
-* [ Purging the cache ](https://developers.cloudflare.com/workers/cache/purge/)
-* [ Examples ](https://developers.cloudflare.com/workers/cache/examples/)
-* [ Debugging ](https://developers.cloudflare.com/workers/cache/debugging/)
-* [ Limitations ](https://developers.cloudflare.com/workers/cache/limitations/)
+* [Configuration](https://developers.cloudflare.com/workers/cache/configuration/)
+* [Cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/)
+* [Purging the cache](https://developers.cloudflare.com/workers/cache/purge/)
+* [Examples](https://developers.cloudflare.com/workers/cache/examples/)
+* [Debugging](https://developers.cloudflare.com/workers/cache/debugging/)
+* [Limitations](https://developers.cloudflare.com/workers/cache/limitations/)
 
 Was this helpful?
 
@@ -517,7 +517,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache · Cloudflare Workers docs","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

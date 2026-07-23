@@ -4,15 +4,15 @@ title: Trino
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Trino
+# Trino
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-catalog/config-examples/trino/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/data-catalog/config-examples/trino/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below is an example of using [Trino ↗](https://trino.io/) to connect to R2 Data Catalog. For more information on connecting to R2 Data Catalog with Trino, refer to [Trino documentation ↗](https://trino.io/docs/current/connector/iceberg.html).
 
@@ -106,7 +106,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/config-examples/trino/#page","headline":"Trino · Cloudflare R2 docs","description":"Connect Trino to R2 Data Catalog using the Iceberg REST catalog connector.","url":"https://developers.cloudflare.com/r2/data-catalog/config-examples/trino/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

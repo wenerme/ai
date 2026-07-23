@@ -4,15 +4,15 @@ title: Build an AI coding agent with OpenAI Agents SDK
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build an AI coding agent with OpenAI Agents SDK
+# Build an AI coding agent with OpenAI Agents SDK
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [OpenAI Agents SDK ↗](https://openai.github.io/openai-agents-python/) is a lightweight Python framework for building multi-agent workflows. A Cloudflare Sandbox integration is provided out of the box and ensures that the SDK includes a first-class Cloudflare backend that gives your agents isolated containers for running code, installing packages, and managing files.
 
@@ -247,7 +247,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/openai-agents/#page","headline":"Build an AI coding agent with OpenAI Agents SDK · Cloudflare Sandbox SDK docs","description":"Use the OpenAI Agents SDK with Cloudflare Sandbox to build a Python agent that writes, tests, and delivers code in an isolated environment.","url":"https://developers.cloudflare.com/sandbox/tutorials/openai-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Python","OpenAI"]}

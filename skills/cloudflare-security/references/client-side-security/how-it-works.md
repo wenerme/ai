@@ -4,15 +4,15 @@ title: How client-side security works
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How client-side security works
+# How client-side security works
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/how-it-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/how-it-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's client-side security helps manage client-side resources (which include scripts and their connections) loaded by your website visitors, and provides visibility on the [cookies ↗](https://www.cloudflare.com/learning/privacy/what-are-cookies/) recently detected in HTTP traffic. Client-side security can trigger alert notifications when resources change or are considered malicious.
 
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/how-it-works/#page","headline":"How client-side security works · Client-side security docs","description":"Cloudflare's client-side security tracks resources (such as scripts) loaded by your website visitors and provides alerts when it detects new, changed, or malicious resources.","url":"https://developers.cloudflare.com/client-side-security/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","CSP"]}

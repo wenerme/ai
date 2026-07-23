@@ -4,11 +4,11 @@ title: cf.tls_client_auth.cert_chain_rfc9440
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  cf.tls\_client\_auth.cert\_chain\_rfc9440
+# cf.tls\_client\_auth.cert\_chain\_rfc9440
 
-`cf.tls_client_auth.cert_chain_rfc9440` ` String `
+`cf.tls_client_auth.cert_chain_rfc9440` `String`
 
 The mTLS client certificate chain (excluding the leaf certificate) encoded as a structured field list per [RFC 9440](https://datatracker.ietf.org/doc/html/rfc9440).
 
@@ -34,7 +34,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_chain_rfc9440/#page","headline":"cf.tls_client_auth.cert_chain_rfc9440 · Cloudflare Ruleset Engine docs","description":"The mTLS client certificate chain (excluding the leaf certificate) encoded as a structured field list per RFC 9440.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_chain_rfc9440/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

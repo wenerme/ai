@@ -4,15 +4,15 @@ title: Manage accounts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage accounts
+# Manage accounts
 
-Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tenant/how-to/manage-accounts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/how-to/manage-accounts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Each customer or team that uses Cloudflare should have their own account. This ensures proper security and access of resources. Each account acts as a container of zones and other resources. Depending on your needs, you may even provision multiple accounts for a single customer or team.
 
@@ -245,7 +245,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/#page","headline":"Manage accounts · Cloudflare Tenant docs","description":"Create, update, and delete customer accounts using the Cloudflare Tenant API or dashboard.","url":"https://developers.cloudflare.com/tenant/how-to/manage-accounts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests. In this example, each container runs a small webserver written in Go.
 
@@ -32,7 +32,7 @@ You can check that Docker is running properly by running the `docker info` comma
 
 Run the following command to create and deploy a new Worker with a container, from the starter template:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- --template=cloudflare/templates/containers-template
@@ -48,7 +48,7 @@ pnpm create cloudflare@latest --template=cloudflare/templates/containers-templat
 
 When you want to deploy a code change to either the Worker or Container code, you can run the following command using [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/):
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -78,7 +78,7 @@ After you deploy your Worker for the first time, you will need to wait several m
 
 After deploying, run the following command to show a list of containers in your Cloudflare account, and their deployment status:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler containers list
@@ -94,7 +94,7 @@ pnpm wrangler containers list
 
 And see images deployed to the Cloudflare Registry with the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler containers images list
@@ -287,7 +287,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Getting started · Cloudflare Containers docs","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Ingesting BigQuery Data into Workers AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Ingesting BigQuery Data into Workers AI
+# Ingesting BigQuery Data into Workers AI
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs. This will allow you to enhance data with AI-generated responses, such as detecting the sentiment score of some text or generating tags for an article. This document describes a simple way to get started if you are looking to give Workers AI a try and see how the [new and different AI models](https://developers.cloudflare.com/workers-ai/models/) would perform with your data hosted in BigQuery.
 
@@ -20,7 +20,7 @@ You can connect a Cloudflare Worker to get data from Google BigQuery and pass it
 
 This version of the integration is aimed at workflows that require interaction with users to fetch data or generate ad-hoc reports.
 
-![Figure 1: Ingesting Google BigQuery Data into Workers AI \(user-based\)](https://developers.cloudflare.com/_astro/user-based-architecture.C4nsq5nK_ZsDllv.svg "Figure 1: Ingesting Google BigQuery Data into Workers AI (user-based)")
+![Figure 1: Ingesting Google BigQuery Data into Workers AI \(user-based\)](https://developers.cloudflare.com/_astro/user-based-architecture.C4nsq5nK_W5AkU.svg "Figure 1: Ingesting Google BigQuery Data into Workers AI (user-based)")
 
 Figure 1: Ingesting Google BigQuery Data into Workers AI (user-based)
 
@@ -34,7 +34,7 @@ Figure 1: Ingesting Google BigQuery Data into Workers AI (user-based)
 
 For periodic or longer workflows, you may opt for a batch approach. This diagram also explores more products where you can use the data ingested from BigQuery. It relies on [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/), which are built into the Developer Platform and available for free when using Workers to schedule initialization of workloads.
 
-![Figure 2: Ingesting Google BigQuery Data into Workers AI \(cron-triggered\)](https://developers.cloudflare.com/_astro/scheduled-based-architecture.DkGnVQUK_RrEDE.svg "Figure 2: Ingesting Google BigQuery Data into Workers AI (cron-triggered)")
+![Figure 2: Ingesting Google BigQuery Data into Workers AI \(cron-triggered\)](https://developers.cloudflare.com/_astro/scheduled-based-architecture.DkGnVQUK_Z1wByXx.svg "Figure 2: Ingesting Google BigQuery Data into Workers AI (cron-triggered)")
 
 Figure 2: Ingesting Google BigQuery Data into Workers AI (cron-triggered)
 
@@ -72,7 +72,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/#page","headline":"Ingesting BigQuery Data into Workers AI · Cloudflare Reference Architecture docs","description":"You can connect a Cloudflare Worker to get data from Google BigQuery and pass it to Workers AI, to run AI Models, powered by serverless GPUs.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/bigquery-workers-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

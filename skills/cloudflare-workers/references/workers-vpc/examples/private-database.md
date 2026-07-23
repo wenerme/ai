@@ -4,15 +4,15 @@ title: Connect to a private database
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect to a private database
+# Connect to a private database
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/examples/private-database/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/private-database/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example demonstrates how to query a private PostgreSQL database from a Worker using [Workers VPC](https://developers.cloudflare.com/workers-vpc/) and [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.
 
@@ -130,7 +130,7 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Install the `node-postgres` driver:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i pg@>8.16.3
@@ -154,7 +154,7 @@ The minimum version of `node-postgres` required for Hyperdrive is `8.16.3`.
 
 If using TypeScript, install the types package:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D @types/pg
@@ -181,7 +181,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -194,7 +194,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -268,7 +268,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/private-database/#page","headline":"Connect to a private database · Cloudflare Workers VPC","description":"This example demonstrates how to query a private PostgreSQL database from a Worker using Workers VPC and Hyperdrive. The Worker connects to a database that is not exposed to the public Internet, with Hyperdrive providing connection pooling and query acceleration.","url":"https://developers.cloudflare.com/workers-vpc/examples/private-database/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

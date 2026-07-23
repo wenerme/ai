@@ -4,15 +4,15 @@ title: HTTP policies
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  HTTP policies
+# HTTP policies
 
-Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -106,6 +106,12 @@ The **Untrusted certificate action** determines how to handle insecure requests.
 | Error        | Display Gateway error page. Matches the default behavior when no action is configured.                                                                                                                                                                                                    |
 | Block        | Display [block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/) as set in the Cloudflare dashboard.                                                                                                                           |
 | Pass through | Bypass insecure connection warnings and seamlessly connect to the upstream. For more information on what statuses are bypassed, refer to [Troubleshooting Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/#error-526-invalid-ssl-certificate). |
+
+#### Custom headers
+
+Allow policies can modify HTTP request headers before forwarding traffic to the destination. You can add, overwrite, or delete headers, and use dynamic variables to inject identity, device, and network context into header values.
+
+For more information, refer to [Custom headers](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/).
 
 ### Block
 
@@ -973,8 +979,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#page","headline":"HTTP policies · Cloudflare One docs","description":"Configure HTTP policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#page","headline":"HTTP policies · Cloudflare One docs","description":"Configure HTTP policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","SAML"]}
 ```

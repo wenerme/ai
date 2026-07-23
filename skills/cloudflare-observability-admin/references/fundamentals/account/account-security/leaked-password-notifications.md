@@ -4,15 +4,15 @@ title: Leaked Password Notifications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Leaked Password Notifications
+# Leaked Password Notifications
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare automatically checks if your password has been compromised when you log in to the Cloudflare dashboard. Every time you log in to your account, we will securely verify through threat intelligence sources to confirm if your password has been leaked in a past data breach.
 
@@ -40,7 +40,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/#page","headline":"Leaked Password Notifications · Cloudflare Fundamentals docs","description":"Cloudflare checks your password against known data breaches at login and prompts you to reset it if a match is found.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/leaked-password-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

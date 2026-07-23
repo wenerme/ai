@@ -4,17 +4,17 @@ title: Privacy Pass Protocol
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Privacy Pass Protocol
+# Privacy Pass Protocol
 
-Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Privacy Pass splits responsibility across four roles so that no single party knows everything about user's identity and activity. This page explains the information flow of the protocol. For who operates each role and the privacy properties this design provides, see [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/).
+Privacy Pass splits responsibility across four roles so that no single party knows everything about user's identity and activity. This page explains the information flow of the protocol. For who operates each role and the privacy properties this design provides, refer to [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/).
 
 ---
 
@@ -89,8 +89,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/#page","headline":"Privacy Pass Protocol · Cloudflare Privacy Pass docs","description":"The Privacy Pass roles, the issuance and redemption flow.","url":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/#page","headline":"Privacy Pass Protocol · Cloudflare Privacy Pass docs","description":"The Privacy Pass roles, the issuance and redemption flow.","url":"https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

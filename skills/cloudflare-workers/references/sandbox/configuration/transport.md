@@ -4,15 +4,15 @@ title: Transport modes
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Transport modes
+# Transport modes
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/configuration/transport/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/transport/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure how the Sandbox SDK communicates with containers using transport modes.
 
@@ -84,7 +84,7 @@ Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 	"name": "my-sandbox-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"vars": {
 		"SANDBOX_TRANSPORT": "rpc"
 	},
@@ -109,7 +109,7 @@ Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [vars]
 SANDBOX_TRANSPORT = "rpc"
@@ -246,7 +246,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

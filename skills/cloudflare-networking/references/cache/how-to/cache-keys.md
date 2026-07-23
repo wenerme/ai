@@ -4,15 +4,15 @@ title: Cache keys
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cache keys
+# Cache keys
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cache/how-to/cache-keys/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Cache Key is an identifier that Cloudflare uses for a file in our cache, and the Cache Key Template defines the identifier for a given HTTP request.
 
@@ -31,7 +31,7 @@ A default cache key includes:
 Custom cache keys let you precisely set the cacheability setting for any resource. They provide the benefit of more control, though they may reduce your cache hit rate and result in cache sharding:
 
 1. In the Cloudflare dashboard, go to the **Cache Rules** page.
-[ Go to **Cache Rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
+[Go to **Cache Rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules)
 2. Select **Create rule**.
 3. Under **When incoming requests match**, define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-builder).
 4. Under **Then**, in the **Cache eligibility** section, select **Eligible for cache**.
@@ -179,7 +179,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-keys/#page","headline":"Cache Keys · Cloudflare Cache (CDN) docs","description":"Customize cache keys to control how Cloudflare stores cached resources.","url":"https://developers.cloudflare.com/cache/how-to/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS","Geolocation","Headers","Cookies"]}

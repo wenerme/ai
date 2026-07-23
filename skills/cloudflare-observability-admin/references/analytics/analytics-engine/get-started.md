@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/analytics-engine/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Name your dataset and add it to your Worker
 
@@ -133,15 +133,15 @@ Refer to [Querying Workers Analytics Engine from Grafana](https://developers.clo
 
 ## Further reading
 
-* [ Get started ](https://developers.cloudflare.com/analytics/analytics-engine/get-started/)
-* [ Examples ](https://developers.cloudflare.com/analytics/analytics-engine/recipes/)
-* [ SQL API ](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/)
-* [ SQL Reference ](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/)
-* [ Querying from Grafana ](https://developers.cloudflare.com/analytics/analytics-engine/grafana/)
-* [ Querying from a Worker ](https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/)
-* [ Sampling with WAE ](https://developers.cloudflare.com/analytics/analytics-engine/sampling/)
-* [ Pricing ](https://developers.cloudflare.com/analytics/analytics-engine/pricing/)
-* [ Limits ](https://developers.cloudflare.com/analytics/analytics-engine/limits/)
+* [Get started](https://developers.cloudflare.com/analytics/analytics-engine/get-started/)
+* [Examples](https://developers.cloudflare.com/analytics/analytics-engine/recipes/)
+* [SQL API](https://developers.cloudflare.com/analytics/analytics-engine/sql-api/)
+* [SQL Reference](https://developers.cloudflare.com/analytics/analytics-engine/sql-reference/)
+* [Querying from Grafana](https://developers.cloudflare.com/analytics/analytics-engine/grafana/)
+* [Querying from a Worker](https://developers.cloudflare.com/analytics/analytics-engine/worker-querying/)
+* [Sampling with WAE](https://developers.cloudflare.com/analytics/analytics-engine/sampling/)
+* [Pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/)
+* [Limits](https://developers.cloudflare.com/analytics/analytics-engine/limits/)
 
 Was this helpful?
 
@@ -149,7 +149,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/get-started/#page","headline":"Get started with Workers Analytics Engine · Cloudflare Analytics docs","description":"Set up and access Network Analytics.","url":"https://developers.cloudflare.com/analytics/analytics-engine/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

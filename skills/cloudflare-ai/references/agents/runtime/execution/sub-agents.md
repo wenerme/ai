@@ -4,15 +4,15 @@ title: Sub-agents
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sub-agents
+# Sub-agents
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spawn child agents as co-located Durable Objects with their own isolated SQLite storage. The parent gets a typed RPC stub for calling methods on the child — every public method on the child class is callable as a remote procedure call with Promise-wrapped return types.
 
@@ -66,7 +66,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -91,7 +91,7 @@ Both classes must be exported from the worker entry point. No separate Durable O
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]
@@ -689,9 +689,9 @@ For sub-agent workflow origins, `AgentWorkflow.agent` is RPC-only. Use it to cal
 
 ## Example
 
-### [ Multi-session chat example ](https://github.com/cloudflare/agents/tree/main/examples/multi-ai-chat)
+### [Multi-session chat example](https://github.com/cloudflare/agents/tree/main/examples/multi-ai-chat)
 
- Build an inbox where each chat is an AIChatAgent sub-agent with isolated state and direct client routing.
+Build an inbox where each chat is an AIChatAgent sub-agent with isolated state and direct client routing.
 
 ## Related
 
@@ -707,7 +707,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/#page","headline":"Sub-agents · Cloudflare Agents docs","description":"Spawn child agents with isolated storage and typed RPC using subAgent(), abortSubAgent(), and deleteSubAgent().","url":"https://developers.cloudflare.com/agents/runtime/execution/sub-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

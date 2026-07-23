@@ -4,15 +4,15 @@ title: Log Output Options
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Log Output Options
+# Log Output Options
 
-Last updated Jun 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Jobs in Logpush now have a new key, **output\_options**, which replaces **logpull\_options** and allows for more flexible formatting. You can modify **output\_options** via the API.
 
@@ -286,7 +286,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/#page","headline":"Log Output Options · Cloudflare Logs docs","description":"Customize Logpush log output format and fields.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

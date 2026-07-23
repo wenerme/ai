@@ -4,15 +4,15 @@ title: Optimizing device roaming experience with geolocated IPs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Optimizing device roaming experience with geolocated IPs
+# Optimizing device roaming experience with geolocated IPs
 
-Last updated Feb 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -22,7 +22,7 @@ APN traffic, typically managed by a third party provider such as a telecommunica
 
 In this document, we'll discuss how Cloudflare can be used to solve this problem and will use the example of a service provider using private mobile networks (APNs) to connect devices roaming across multiple countries through regional Internet breakouts. This use case is relevant to global enterprises with regional offices, transportation fleets with connected vehicles, or any organization needing to maintain consistent, secure, and region-specific connectivity for roaming devices.
 
-![Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.](https://developers.cloudflare.com/_astro/figure1.CJM1DAO-_Z1g51kL.svg "Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.")
+![Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.](https://developers.cloudflare.com/_astro/figure1.CJM1DAO-_ZRsTOH.svg "Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.")
 
 Figure 1: Showing how Internet breakouts can present an egress IP that doesn't match the country the device is in.
 
@@ -37,7 +37,7 @@ The architecture diagram below provides a visual representation of this solution
 
 This diagram is intended for network engineers, IT architects, and decision-makers looking to improve service relevance and performance for end-users. Key use cases include multinational corporations aiming to provide faster, region-specific Internet access and services in users' native languages, ensuring a superior user experience across diverse geographical locations.
 
-![Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.](https://developers.cloudflare.com/_astro/figure2.7C-teMEC_Z2qI5pf.svg "Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.")
+![Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.](https://developers.cloudflare.com/_astro/figure2.7C-teMEC_1VK4vL.svg "Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.")
 
 Figure 2: Using Cloudflare you can ensure the egress IP as seen by Internet sites matches the country the device is roaming in.
 
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/#page","headline":"Optimizing device roaming experience with geolocated IPs · Cloudflare Reference Architecture docs","description":"Cloudflare can use private mobile networks (APNs) to connect devices roaming across multiple countries through regional Internet breakouts.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/optimizing-roaming-experience-with-geolocated-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

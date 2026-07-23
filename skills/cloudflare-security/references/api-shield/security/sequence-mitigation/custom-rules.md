@@ -4,15 +4,15 @@ title: Sequence mitigation custom rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sequence mitigation custom rules
+# Sequence mitigation custom rules
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API Shield sequence custom rules use the configured API Shield session identifier to track the order of requests a user has made and the time between requests, and makes them available via [Cloudflare Rules](https://developers.cloudflare.com/rules). This allows you to write rules that match valid or invalid sequences.
 
@@ -47,7 +47,7 @@ These sequence fields are available in:
 ## Build a sequence custom rule
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**.
 4. Under **When incoming requests match**, use the **Field** drop-down list to filter by **Sequences** and select from:
@@ -128,7 +128,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/#page","headline":"Sequence mitigation custom rules · Cloudflare API Shield docs","description":"Write custom rules that match valid or invalid API request sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

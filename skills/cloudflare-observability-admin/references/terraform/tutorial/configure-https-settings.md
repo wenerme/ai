@@ -4,15 +4,15 @@ title: 3 – Configure HTTPS settings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  3 – Configure HTTPS settings
+# 3 – Configure HTTPS settings
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After setting up basic DNS records, you can configure zone settings using Terraform. This tutorial shows how to enable [TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/), [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/), and [Strict SSL mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) using the updated v5 provider.
 
@@ -135,7 +135,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/#page","headline":"Configure HTTPS settings · Cloudflare Terraform docs","description":"This tutorial shows how to enable TLS 1.3, Automatic HTTPS Rewrites, and Strict SSL mode using the updated v5 provider.","url":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

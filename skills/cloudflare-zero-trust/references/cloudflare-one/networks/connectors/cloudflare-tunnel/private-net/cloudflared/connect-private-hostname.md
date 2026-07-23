@@ -4,15 +4,15 @@ title: Connect a private hostname
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect a private hostname
+# Connect a private hostname
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Instead of managing static IP lists and routes, you can connect users to private HTTP and non-HTTP applications using their hostnames (for example, `wiki.internal.local`). Private hostname routes are especially useful when the application has an unknown or ephemeral IP, which often occurs when infrastructure is provisioned by a third-party cloud provider.
 
@@ -127,7 +127,7 @@ Cloudflare WAN
 ### 1\. Connect the application to Cloudflare
 
 1. Log in to the Cloudflare dashboard and go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create a tunnel**.
 3. Enter a name for your tunnel. We suggest choosing a name that reflects the type of resources you want to connect through this tunnel (for example, `enterprise-VPC-01`).
 4. Select **Create Tunnel**.
@@ -164,7 +164,7 @@ If you need `cloudflared` to use a specific internal DNS server that is differen
 1. To create an IP/CIDR route for the DNS server:
 
   1. Go to **Networking** \> **Routes**.
-  [ Go to **Routes** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+  [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
   2. Select **Add CIDR route**.
   3. Enter the private IP address of your internal DNS resolver.
   4. Select the Cloudflare Tunnel that connects to the network where this DNS server resides.
@@ -292,7 +292,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/#page","headline":"Connect a private hostname · Cloudflare One docs","description":"Connect a private hostname in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

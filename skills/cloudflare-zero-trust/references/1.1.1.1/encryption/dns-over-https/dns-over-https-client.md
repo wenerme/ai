@@ -4,15 +4,15 @@ title: Connect to 1.1.1.1 using DoH clients
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect to 1.1.1.1 using DoH clients
+# Connect to 1.1.1.1 using DoH clients
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A DoH client is a software that runs on your device and sends DNS queries to a resolver like 1.1.1.1 over an encrypted HTTPS connection. Once configured, the client handles DNS resolution for your device or network.
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/#page","headline":"Connect to 1.1.1.1 using DoH clients | Cloudflare Docs","description":"Learn how to connect to Cloudflare's 1.1.1.1 using DNS over HTTPS (DoH) clients.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Define your company's AI risk tolerance and strategy
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Define your company's AI risk tolerance and strategy
+# Define your company's AI risk tolerance and strategy
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you can secure AI, you need to understand your organization's goals and concerns for your users and data. This first step is crucial for anyone new to AI security because it helps you align on your overall risk tolerance for generative AI.
 
@@ -30,7 +30,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/#page","headline":"Define your company's AI risk tolerance and strategy · Cloudflare Learning Paths","description":"Set AI security goals and risk boundaries.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/get-started/define-ai-risk-tolerance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

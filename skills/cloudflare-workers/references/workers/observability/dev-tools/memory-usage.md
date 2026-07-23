@@ -4,15 +4,15 @@ title: Profiling Memory
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Profiling Memory
+# Profiling Memory
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Understanding Worker memory usage can help you optimize performance, avoid Out of Memory (OOM) errors when hitting [Worker memory limits](https://developers.cloudflare.com/workers/platform/limits/#memory), and fix memory leaks.
 
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/#page","headline":"Profiling Memory · Cloudflare Workers docs","description":"Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

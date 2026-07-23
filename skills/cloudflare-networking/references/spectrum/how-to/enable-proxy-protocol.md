@@ -4,15 +4,15 @@ title: Enable Proxy protocol
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/spectrum/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Proxy protocol
+# Enable Proxy protocol
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Because Cloudflare intercepts packets before forwarding them to your server, if you were to look up the client IP, you would see Cloudflare's IP rather than the true client IP.
 
@@ -25,7 +25,7 @@ This feature requires an Enterprise plan. If you would like to upgrade, contact 
 ## Enable Proxy Protocol v1 for TCP
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Locate the application that will use the PROXY protocol and select **Configure**.
 3. From the dropdown, select **PROXY Protocol v1**.
 
@@ -54,7 +54,7 @@ PROXY TCP6 2001:db8:: 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff 42300 443\r\n
 ## Enable Proxy Protocol v2 for TCP/UDP
 
 1. In the Cloudflare dashboard, go to the **Spectrum** page.
-[ Go to **Spectrum** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
+[Go to **Spectrum** ↗](https://dash.cloudflare.com/?to=/:account/:zone/spectrum)
 2. Locate the application that will use the PROXY protocol and select **Configure**.
 3. From the dropdown, select **PROXY Protocol v2**.
 
@@ -138,7 +138,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/#page","headline":"Enable Proxy protocol · Cloudflare Spectrum docs","description":"Pass client IP information to your origin using Proxy protocol v1 or Simple Proxy Protocol.","url":"https://developers.cloudflare.com/spectrum/how-to/enable-proxy-protocol/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

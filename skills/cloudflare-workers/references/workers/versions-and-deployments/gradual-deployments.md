@@ -4,15 +4,15 @@ title: Gradual deployments
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Gradual deployments
+# Gradual deployments
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gradual deployments let you incrementally deploy new [versions](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker by splitting traffic across versions. Instead of shifting all traffic to a new version at once, you can route a percentage of requests to the new version while the rest continue to be handled by the previous version.
 
@@ -38,7 +38,7 @@ Minimum required Wrangler version: 3.40.0\. Versions before 3.73.0 require you t
 
 Create a new `"Hello World"` Worker using the [create-cloudflare CLI (C3)](https://developers.cloudflare.com/pages/get-started/c3/) and deploy it.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- <NAME> -- --type=hello-world
@@ -58,7 +58,7 @@ Answer `yes` or `no` to using TypeScript. Answer `yes` to deploying your applica
 
 Edit the Worker code by changing the `Response` content and upload the Worker using the [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload) command.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler versions upload
@@ -78,7 +78,7 @@ This will create a new version of the Worker that is not automatically deployed.
 
 Use the [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy) command to create a new deployment that splits traffic between two versions. Follow the interactive prompts to select your desired percentages for each version.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler versions deploy
@@ -111,7 +111,7 @@ You can also target a specific version using [version overrides](https://develop
 
 Run `wrangler versions deploy` again and follow the interactive prompts. Select the new version and set it to 100%.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler versions deploy
@@ -128,7 +128,7 @@ pnpm wrangler versions deploy
 ### Via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** \> **Hello World** template > deploy your Worker.
 3. Once the Worker is deployed, go to the online code editor through **Edit code**. Edit the Worker code (change the `Response` content).
 4. To save changes without deploying, select the **down arrow** next to **Deploy** \> **Save**. This will create a new version of your Worker.
@@ -205,7 +205,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#page","headline":"Gradual deployments · Cloudflare Workers docs","description":"Incrementally deploy code changes to your Workers with gradual deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

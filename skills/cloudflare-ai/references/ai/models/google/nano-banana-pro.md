@@ -4,7 +4,7 @@ title: Nano Banana Pro
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Nano Banana Pro
+# Nano Banana Pro
 
- Text-to-Image • Google
+Text-to-Image • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/nano-banana-pro `
+`google/nano-banana-pro`
 
 * Third-party
 * Zero data retention
 
 Google's higher-quality image generation model with improved detail and prompt adherence.
 
-| Model Info          |                                                                                                                           |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
-| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                    |
-| Zero data retention | Yes                                                                                                                       |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
+| Model Info          |                                                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                         |
+| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                   |
+| Zero data retention | Yes                                                                                                                      |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
 
 ## Usage
 
@@ -77,7 +77,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Fantasy Illustration**  — Epic fantasy scene
+**Fantasy Illustration** — Epic fantasy scene
 
 ```ts
 const response = await env.AI.run(
@@ -120,7 +120,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Architectural Visualization**  — Modern architecture render
+**Architectural Visualization** — Modern architecture render
 
 ```ts
 const response = await env.AI.run(
@@ -165,7 +165,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Character Design**  — Game character concept art
+**Character Design** — Game character concept art
 
 ```ts
 const response = await env.AI.run(
@@ -234,9 +234,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -244,7 +244,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana-pro/#page","headline":"Nano Banana Pro (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's higher-quality image generation model with improved detail and prompt adherence.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana-pro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: DNS filtering solution for Internet service providers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  DNS filtering solution for Internet service providers
+# DNS filtering solution for Internet service providers
 
-Last updated Nov 21, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Nov 21, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -28,7 +28,7 @@ Furthermore, this solution opens up opportunities for developing additional serv
 
 Providing DNS security to the service providers' end customers with Cloudflare is straightforward. Service providers simply forward their public DNS requests to their Cloudflare tenant, and Cloudflare will filter DNS queries in accordance with the configured DNS filtering policies.
 
-![Figure 1: The service provider subscribers send DNS queries to the service provider DNS server, which will forward them to Cloudflare Gateway to apply DNS filtering policies.](https://developers.cloudflare.com/_astro/gateway-dns-for-isp-image-01.CA9DVOGS_jcv6x.svg)
+![Figure 1: The service provider subscribers send DNS queries to the service provider DNS server, which will forward them to Cloudflare Gateway to apply DNS filtering policies.](https://developers.cloudflare.com/_astro/gateway-dns-for-isp-image-01.CA9DVOGS_iEanD.svg)
 
 Cloudflare Gateway, like all Cloudflare services, utilizes [anycast technology ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), ensuring that all service provider DNS queries are directed to the nearest Cloudflare point of presence.
 
@@ -40,13 +40,13 @@ If stable and defined source IPv4 addresses cannot be assigned to the on-premise
 
 DNS filtering is then enforced through DNS policies set up by the service provider to detect domains linked to [security risks](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#security-categories). Cloudflare continuously updates the list of risky domains using [its extensive threat intelligence ↗](https://www.cloudflare.com/en-gb/security/). When a DNS query matches a flagged domain, the corresponding action specified in the DNS policy is executed. This action can be a '[Block](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#block),' where Gateway responds with `0.0.0.0` for IPv4 queries or `::` for IPv6 queries, or displays a [custom block page hosted by Cloudflare](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/). Alternatively, an `[Override](/cloudflare-one/traffic-policies/dns-policies/#override)` action or [block page URL redirect](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#redirect-to-a-block-page) can redirect the DNS query to a block page hosted by the service provider.
 
-![Figure 2: A DNS policy to prevent users from navigating to malicious domains. The action is to override and redirect the DNS query to a block page hosted by the service provider.](https://developers.cloudflare.com/_astro/gateway-dns-for-isp-image-02.BLGXVL4a_Z1Mnjow.svg)
+![Figure 2: A DNS policy to prevent users from navigating to malicious domains. The action is to override and redirect the DNS query to a block page hosted by the service provider.](https://developers.cloudflare.com/_astro/gateway-dns-for-isp-image-02.BLGXVL4a_Z1bjDW8.svg)
 
 To achieve more precise control over which domains are allowed or blocked, the service provider can configure additional Allowed Domain and Blocked Domains policies. By setting these policies with [lower precedence](https://developers.cloudflare.com/cloudflare-one/traffic-policies/order-of-enforcement/#order-of-precedence) than the Security Risks policy, the service provider can override the Security Risks policy for specific domains.
 
 To streamline the management of allowed and blocked domains, use [lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/). Lists are easily updated through the dashboard or via [APIs](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/gateway/subresources/lists/methods/update/), making policy adjustments more efficient.
 
-![Figure 3: DNS policies are applied according to their order of precedence. In this example, the 'Allow List Policy' and 'Block List Policy' will be considered before the 'Security List' policy.](https://developers.cloudflare.com/_astro/gateway-dns-for-isp-image-03.Dy2ZZQ-9_Z7o2FY.svg)
+![Figure 3: DNS policies are applied according to their order of precedence. In this example, the 'Allow List Policy' and 'Block List Policy' will be considered before the 'Security List' policy.](https://developers.cloudflare.com/_astro/gateway-dns-for-isp-image-03.Dy2ZZQ-9_Z2bkT85.svg)
 
 Additionally, all DNS queries forwarded to Cloudflare Gateway are logged and can be exported to external systems using [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/#page","headline":"DNS filtering solution for Internet service providers · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare Gateway as a DNS filtering solution for Internet service providers.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/gateway-dns-for-isp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-11-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

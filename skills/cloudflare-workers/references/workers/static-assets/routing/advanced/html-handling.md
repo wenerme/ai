@@ -4,15 +4,15 @@ title: HTML handling
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  HTML handling
+# HTML handling
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Forcing or dropping trailing slashes on request paths (for example, `example.com/page/` vs. `example.com/page`) is often something that developers wish to control for cosmetic reasons. Additionally, it can impact SEO because search engines often treat URLs with and without trailing slashes as different, separate pages. This distinction can lead to duplicate content issues, indexing problems, and overall confusion about the correct canonical version of a page.
 
@@ -33,7 +33,7 @@ This will usually give you the desired behavior automatically: individual files 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "auto-trailing-slash"
@@ -44,7 +44,7 @@ This will usually give you the desired behavior automatically: individual files 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist/"
@@ -74,7 +74,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "force-trailing-slash"
@@ -85,7 +85,7 @@ Alternatively, you can force trailing slashes (`force-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist/"
@@ -115,7 +115,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "drop-trailing-slash"
@@ -126,7 +126,7 @@ Or you can drop trailing slashes (`drop-trailing-slash`).
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist/"
@@ -156,7 +156,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist/",
 		"html_handling": "none"
@@ -167,7 +167,7 @@ Alternatively, if you have bespoke needs, you can disable the built-in HTML hand
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist/"
@@ -195,7 +195,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/#page","headline":"HTML handling · Cloudflare Workers docs","description":"How to configure a HTML handling and trailing slashes for the static assets of your Worker.","url":"https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

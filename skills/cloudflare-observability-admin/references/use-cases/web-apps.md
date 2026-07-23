@@ -4,24 +4,24 @@ title: Web sites and web apps
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Web sites and web apps
+# Web sites and web apps
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/web-apps/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build and deploy full-stack web applications globally with serverless compute, storage, and instant deployments. Cloudflare Workers runs your frontend and backend logic at the edge. D1 provides a serverless SQL database. KV stores key-value data globally. R2 provides S3-compatible object storage with zero egress fees. Durable Objects coordinates real-time state. Queues handles background processing.
 
-* [ Deploy frontend applications ](https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/)
-* [ Build serverless backends ](https://developers.cloudflare.com/use-cases/web-apps/serverless-backends/)
-* [ Store application data ](https://developers.cloudflare.com/use-cases/web-apps/store-data/)
-* [ Add real-time features ](https://developers.cloudflare.com/use-cases/web-apps/real-time/)
-* [ Optimize performance ](https://developers.cloudflare.com/use-cases/web-apps/performance/)
-* [ Secure your application ](https://developers.cloudflare.com/use-cases/web-apps/security/)
+* [Deploy frontend applications](https://developers.cloudflare.com/use-cases/web-apps/deploy-frontend/)
+* [Build serverless backends](https://developers.cloudflare.com/use-cases/web-apps/serverless-backends/)
+* [Store application data](https://developers.cloudflare.com/use-cases/web-apps/store-data/)
+* [Add real-time features](https://developers.cloudflare.com/use-cases/web-apps/real-time/)
+* [Optimize performance](https://developers.cloudflare.com/use-cases/web-apps/performance/)
+* [Secure your application](https://developers.cloudflare.com/use-cases/web-apps/security/)
 
 ## Architecture patterns
 
@@ -70,11 +70,11 @@ Add interactivity to static content:
 
 ## Related resources
 
-### [ Workers documentation ](https://developers.cloudflare.com/workers/)
+### [Workers documentation](https://developers.cloudflare.com/workers/)
 
 Complete documentation for building and deploying applications on Cloudflare.
 
-### [ Developer platform tutorials ](https://developers.cloudflare.com/workers/tutorials/)
+### [Developer platform tutorials](https://developers.cloudflare.com/workers/tutorials/)
 
 Step-by-step guides for building on Cloudflare.
 
@@ -84,7 +84,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/web-apps/#page","headline":"Web sites and web apps · Use cases · Cloudflare use cases","description":"Build and deploy full-stack web applications on Cloudflare with Workers, D1, KV, R2, Durable Objects, and Queues.","url":"https://developers.cloudflare.com/use-cases/web-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

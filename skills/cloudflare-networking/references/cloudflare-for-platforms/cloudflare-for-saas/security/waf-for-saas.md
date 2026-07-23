@@ -4,15 +4,15 @@ title: WAF for SaaS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WAF for SaaS
+# WAF for SaaS
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/) allows you to create additional security measures through Cloudflare. As a SaaS provider, you can link custom rules, rate limiting rules, and managed rules to your custom hostnames. This provides more control to keep your domains safe from malicious traffic.
 
@@ -146,7 +146,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 To build rules through the dashboard:
 
 1. In the Cloudflare dashboard, go to the **WAF** page.
-[ Go to **WAF** ↗ ](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Follow the instructions on the dashboard specific to custom rules, rate limiting rules, or managed rules, depending on your security goal.
 3. Once the rule is active, you should see it under the applicable tab (custom rules, rate limiting, or managed rules).
 Caution
@@ -158,7 +158,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/#page","headline":"WAF for SaaS · Cloudflare for Platforms docs","description":"Apply custom rules, rate limiting, and managed rulesets per custom hostname.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

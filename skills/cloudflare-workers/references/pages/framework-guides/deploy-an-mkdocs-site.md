@@ -4,15 +4,15 @@ title: MkDocs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  MkDocs
+# MkDocs
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [MkDocs ↗](https://www.mkdocs.org/) is a modern documentation platform where teams can document products, internal knowledge bases and APIs.
 
@@ -66,17 +66,17 @@ You have successfully created a GitHub repository and pushed your MkDocs project
 To deploy your site to Pages:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application**.
 3. Select the **Pages** tab.
 4. Select **Import an existing Git repository**.
 5. Select the new GitHub repository that you created and then select **Begin setup**.
 6. In the **Set up builds and deployments** section, provide the following information:
 
-| Configuration option | Value        |  | Production branch | main |
-| -------------------- | ------------ |  | ----------------- | ---- |
-| Build command        | mkdocs build |  |                   |      |
-| Build directory      | site         |  |                   |      |
+| Configuration option | Value        | |  Production branch | main |
+| -------------------- | ------------ | -------------------- | ---- |
+| Build command        | mkdocs build |                      |      |
+| Build directory      | site         |                      |      |
 
 1. Go to **Environment variables (advanced)** \> **Add variable** \> and add the variable `PYTHON_VERSION` with a value of `3.7`.
 
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/#page","headline":"MkDocs · Cloudflare Pages docs","description":"Deploy an MkDocs documentation site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-an-mkdocs-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

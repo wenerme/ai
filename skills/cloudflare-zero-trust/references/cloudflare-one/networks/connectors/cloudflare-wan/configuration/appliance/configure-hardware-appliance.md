@@ -4,15 +4,15 @@ title: Configure hardware Connector
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure hardware Connector
+# Configure hardware Connector
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this page you will find instructions on how to configure Cloudflare One Appliance. This guide provides a step-by-step guide for Cloudflare One Appliance initial setup. You can either return here after setting up your Cloudflare One Appliance, or refer to the [Maintenance](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/) section where you will find instructions on how to update your settings.
 
@@ -123,7 +123,7 @@ This is not the same as a high availability (HA) configuration. HA configuration
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/wans/methods/create/) to create a WAN.
 
@@ -165,7 +165,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/sites/{sit
 
 Note
 
- You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
+You will need your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) and [API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) to use the API.
 
 Make a `POST` request [using the API](https://developers.cloudflare.com/api/resources/magic%5Ftransit/subresources/sites/subresources/lans/methods/create/) to create a LAN.
 
@@ -274,7 +274,7 @@ When Cloudflare One Appliance is first activated, you need to have Internet conn
 
 Caution
 
- Remember that if you chose the DHCP method you have to connect Cloudflare One Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Appliance will not work.
+Remember that if you chose the DHCP method you have to connect Cloudflare One Appliance through a route that supports DHCP for its first connection to the Internet. Otherwise, Cloudflare One Appliance will not work.
 
 When you are ready to connect your Cloudflare One Appliance to the Cloudflare network:
 
@@ -293,7 +293,7 @@ After activating your device, you can use it in a network configuration with the
 
 Caution
 
- Make sure you complete the setup workflow and activate your Cloudflare One Appliance before changing the WAN settings to a static IP.
+Make sure you complete the setup workflow and activate your Cloudflare One Appliance before changing the WAN settings to a static IP.
 
 1. Connect Cloudflare One Appliance to a DHCP port with access to the Internet.
 2. [Create a new profile](#create-a-new-profile) in the dashboard.
@@ -314,7 +314,7 @@ The following is a detailed description of how to use the serial port to configu
 
 Note
 
- The `reset device` option in your Cloudflare One Appliance clears most of the configuration that is locally cached, resets the password to the default, and reboots.
+The `reset device` option in your Cloudflare One Appliance clears most of the configuration that is locally cached, resets the password to the default, and reboots.
 
 ### Equipment required
 
@@ -388,7 +388,7 @@ The `reset device` option in your Cloudflare One Appliance clears most of the co
 
 Note
 
- The main reason to use the bootstrapper is if every network your Cloudflare One Appliance device is plugged into is either static, behind a VLAN, or both. If you find yourself here and configuring a network with DHCP and no VLAN, you are probably not in the right place. See the section on configuring your Cloudflare One Appliance[via the dashboard](#set-up-cloudflare-dashboard).
+The main reason to use the bootstrapper is if every network your Cloudflare One Appliance device is plugged into is either static, behind a VLAN, or both. If you find yourself here and configuring a network with DHCP and no VLAN, you are probably not in the right place. See the section on configuring your Cloudflare One Appliance [via the dashboard](#set-up-cloudflare-dashboard).
 
 1. Enter the IP address you would like the appliance to have in CIDR form (for example, `10.0.0.2/24`).
 2. Enter the IP address of the Internet gateway (this must be in the same subnet as the previous IP address you entered and must not be the same address).
@@ -460,7 +460,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#page","headline":"Configure hardware Connector · Cloudflare One docs","description":"Configure hardware Connector in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

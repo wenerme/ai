@@ -4,15 +4,15 @@ title: Total threats stopped
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Total threats stopped
+# Total threats stopped
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/account-and-zone-analytics/total-threats-stopped/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/total-threats-stopped/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Total Threats Stopped measures the number of 'suspicious' and 'bad' requests that were aimed at your site. Requests receive these labels as they enter Cloudflare's network:
 
@@ -28,7 +28,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/total-threats-stopped/#page","headline":"Total threats stopped · Cloudflare Analytics docs","description":"Understand how total threat counts are calculated.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/total-threats-stopped/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

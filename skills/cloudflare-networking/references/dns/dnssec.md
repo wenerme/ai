@@ -4,15 +4,15 @@ title: DNSSEC
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  DNSSEC
+# DNSSEC
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/dnssec/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/dnssec/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 DNS Security Extensions (DNSSEC) adds an extra layer of authentication to DNS, ensuring requests are not routed to a spoofed domain.
 
@@ -70,7 +70,7 @@ When you enable DNSSEC, Cloudflare signs your zone, publishes your public signin
 ### 1\. Activate DNSSEC in Cloudflare
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. For **DNSSEC**, click **Enable DNSSEC**.
 3. In the dialog, you have access to several necessary values to help you create a **DS** record at your registrar. Once you close the dialog, you can access this information by clicking **DS record** on the **DNSSEC** card.
 
@@ -166,7 +166,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/#page","headline":"DNSSEC · Cloudflare DNS docs","description":"Protect your domain from DNS spoofing with DNSSEC.","url":"https://developers.cloudflare.com/dns/dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

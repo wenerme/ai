@@ -4,15 +4,15 @@ title: WebSockets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WebSockets
+# WebSockets
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/websockets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/websockets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents support WebSocket connections for real-time, bi-directional communication. This page covers server-side WebSocket handling. For client-side connection, refer to the [Client SDK](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/).
 
@@ -817,17 +817,17 @@ Refer to [Client SDK](https://developers.cloudflare.com/agents/communication-cha
 
 ## Next steps
 
-### [ State synchronization ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [State synchronization](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- Sync state between agents and clients.
+Sync state between agents and clients.
 
-### [ Callable methods ](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
+### [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)
 
- RPC over WebSockets for method calls.
+RPC over WebSockets for method calls.
 
-### [ Cross-domain authentication ](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/)
+### [Cross-domain authentication](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/)
 
- Secure WebSocket connections across domains.
+Secure WebSocket connections across domains.
 
 Was this helpful?
 
@@ -835,7 +835,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/websockets/#page","headline":"WebSockets · Cloudflare Agents docs","description":"Handle real-time WebSocket connections, messages, broadcasts, and lifecycle hooks in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/communication/websockets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

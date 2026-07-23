@@ -4,7 +4,7 @@ title: qwen3-embedding-0.6b
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Qwen logo](https://developers.cloudflare.com/_astro/qwen.CVqFFn5h.svg)
 
-#  qwen3-embedding-0.6b
+# qwen3-embedding-0.6b
 
- Text Embeddings • Qwen
+Text Embeddings • Qwen
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/qwen/qwen3-embedding-0.6b `
+`@cf/qwen/qwen3-embedding-0.6b`
 
 * Cloudflare-hosted
 
 The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.
 
-| Model Info                                                                  |                           |
-| --------------------------------------------------------------------------- | ------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens              |
-| Unit Pricing                                                                | $0.012 per M input tokens |
+| Model Info                                                                 |                           |
+| -------------------------------------------------------------------------- | ------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens              |
+| Unit Pricing                                                               | $0.012 per M input tokens |
 
 ## Usage
 
@@ -93,7 +93,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -123,9 +123,9 @@ instruction
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -133,7 +133,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/#page","headline":"qwen3-embedding-0.6b (Qwen) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.","url":"https://developers.cloudflare.com/workers-ai/models/qwen3-embedding-0.6b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

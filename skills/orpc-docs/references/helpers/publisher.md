@@ -1,6 +1,6 @@
 # Publisher Helpers
 
-Publisher helpers provide a unified way to publish and subscribe to events across different storage backends in oRPC applications. They support both static and dynamic event names, along with optional replay of missed events for subscribers.
+Publisher helpers provide a unified way to publish and subscribe to events across different storage backends in oRPC applications. They support both static and dynamic event names, along with optional resume support so subscribers can catch up on missed events.
 
 ## Installation
 
@@ -63,7 +63,7 @@ const publisher = new MemoryPublisher<Record<string, { message: string }>>()
 
 ## Adapters
 
-| Name                | Replay Support | Adapter for                                                                      |
+| Name                | Resume Support | Adapter for                                                                      |
 | ------------------- | -------------- | -------------------------------------------------------------------------------- |
 | `MemoryPublisher`   | ✅             | In-memory storage                                                                |
 | `RedisPublisher`    | ✅             | [Redis](https://github.com/redis/redis)                                          |
@@ -75,9 +75,9 @@ const publisher = new MemoryPublisher<Record<string, { message: string }>>()
 import { MemoryPublisher } from '@orpc/publisher/memory'
 
 const publisher = new MemoryPublisher<Events>({
-  replay: {
+  resume: {
     /**
-     * Whether event replay support is enabled.
+     * Whether event resume support is enabled.
      *
      * When enabled, published events are temporarily stored so new
      * subscribers can resume from a previous position using `lastEventId`.
@@ -87,7 +87,7 @@ const publisher = new MemoryPublisher<Events>({
     enabled: false,
 
     /**
-     * How long (in seconds) to retain events for replay.
+     * How long (in seconds) to retain events for resume.
      *
      * Expired events are cleaned up lazily for performance reasons, so
      * some events may remain available slightly longer than this period.
@@ -133,9 +133,9 @@ const publisher = new RedisPublisher<Events>(client, {
    */
   serializer: undefined,
 
-  replay: {
+  resume: {
     /**
-     * Whether event replay support is enabled.
+     * Whether event resume support is enabled.
      *
      * When enabled, published events are temporarily stored so new
      * subscribers can resume from a previous position using `lastEventId`.
@@ -145,7 +145,7 @@ const publisher = new RedisPublisher<Events>(client, {
     enabled: false,
 
     /**
-     * How long (in seconds) to retain events for replay.
+     * How long (in seconds) to retain events for resume.
      *
      * Expired events are cleaned up lazily for performance reasons, so
      * some events may remain available slightly longer than this period.
@@ -178,9 +178,9 @@ const publisher = new UpstashPublisher<Events>(redis, {
    */
   serializer: undefined,
 
-  replay: {
+  resume: {
     /**
-     * Whether event replay support is enabled.
+     * Whether event resume support is enabled.
      *
      * When enabled, published events are temporarily stored so new
      * subscribers can resume from a previous position using `lastEventId`.
@@ -190,7 +190,7 @@ const publisher = new UpstashPublisher<Events>(redis, {
     enabled: false,
 
     /**
-     * How long (in seconds) to retain events for replay.
+     * How long (in seconds) to retain events for resume.
      *
      * Expired events are cleaned up lazily for performance reasons, so
      * some events may remain available slightly longer than this period.
@@ -230,9 +230,9 @@ const publisher = new BunRedisPublisher<Events>(redis, {
    */
   serializer: undefined,
 
-  replay: {
+  resume: {
     /**
-     * Whether event replay support is enabled.
+     * Whether event resume support is enabled.
      *
      * When enabled, published events are temporarily stored so new
      * subscribers can resume from a previous position using `lastEventId`.
@@ -242,7 +242,7 @@ const publisher = new BunRedisPublisher<Events>(redis, {
     enabled: false,
 
     /**
-     * How long (in seconds) to retain events for replay.
+     * How long (in seconds) to retain events for resume.
      *
      * Expired events are cleaned up lazily for performance reasons, so
      * some events may remain available slightly longer than this period.
@@ -260,9 +260,9 @@ import { DurablePublisher, DurablePublisherObject } from '@orpc/cloudflare'
 export class PublisherDO extends DurablePublisherObject {
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env, {
-      replay: {
+      resume: {
         /**
-         * Whether event replay support is enabled.
+         * Whether event resume support is enabled.
          *
          * When enabled, published events are temporarily stored so new
          * subscribers can resume from a previous position using `lastEventId`.
@@ -272,7 +272,7 @@ export class PublisherDO extends DurablePublisherObject {
         enabled: false,
 
         /**
-         * How long (in seconds) to retain events for replay.
+         * How long (in seconds) to retain events for resume.
          *
          * Expired events are cleaned up lazily for performance reasons, so
          * some events may remain available slightly longer than this period.
@@ -332,25 +332,25 @@ export default {
 }
 ```
 
-## Replay Missing Events
+## Resume Missing Events
 
-Some adapters can replay events missed while a subscriber is offline. This feature is usually disabled by default, but you can enable it when creating the publisher. When enabled, the publisher automatically manages event ids and attempts to replay events since the last event id provided by the subscriber.
+Some adapters can resume events missed while a subscriber is offline. This feature is usually disabled by default, but you can enable it when creating the publisher. When enabled, the publisher automatically manages event ids and attempts to deliver events since the last event id provided by the subscriber.
 
 ```ts
 const publisher = new MemoryPublisher({
-  replay: {
-    enabled: true, // Enable replaying missed events
+  resume: {
+    enabled: true, // Enable resuming missed events
     seconds: 60 * 5, // TTL in seconds
   }
 })
 
 const iterator = publisher.subscribe('something-updated', {
   signal,
-  lastEventId, // The publisher will attempt to replay missed events since this event id
+  lastEventId, // The publisher will attempt to deliver missed events since this event id
 })
 ```
 
-> **warning**: When replay is enabled, the publisher manages event ids automatically. This means:
+> **warning**: When resume is enabled, the publisher manages event ids automatically. This means:
 
 - Any event id provided during publishing is ignored
 - When subscribing, you must preserve and forward the event id when yielding custom payloads

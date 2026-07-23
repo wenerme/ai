@@ -4,7 +4,7 @@ title: SSL/TLS concepts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 In this video, learn the key concepts relevant to Cloudflare SSL/TLS.
 

@@ -4,15 +4,15 @@ title: On-demand Object Storage Data Migration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  On-demand Object Storage Data Migration
+# On-demand Object Storage Data Migration
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -30,7 +30,7 @@ Here's how Sippy works: it will first attempt to retrieve an object from R2 stor
 
 ## On-demand Object Storage Data Migration with Sippy
 
-![Figure 1: R2 On-demand Object Storage Data Migration with Sippy](https://developers.cloudflare.com/_astro/sippy-migration-diagram.CTGKS9AD_Z206LEl.svg "Figure 1: On-demand Object Storage Data Migration with Sippy")
+![Figure 1: R2 On-demand Object Storage Data Migration with Sippy](https://developers.cloudflare.com/_astro/sippy-migration-diagram.CTGKS9AD_1ScsMw.svg "Figure 1: On-demand Object Storage Data Migration with Sippy")
 
 Figure 1: On-demand Object Storage Data Migration with Sippy
 
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/#page","headline":"On-demand Object Storage Data Migration · Cloudflare Reference Architecture docs","description":"Use Cloudflare migration tools to migrate data between cloud object storage providers.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

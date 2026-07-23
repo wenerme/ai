@@ -4,15 +4,15 @@ title: Set up a primary zone (Full setup)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up a primary zone (Full setup)
+# Set up a primary zone (Full setup)
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare DNS offers a few different [setup options](https://developers.cloudflare.com/dns/zone-setups/). A primary setup (also known as full) is the most common and the only one available for Free or Pro plans. For details, refer to [About](https://developers.cloudflare.com/dns/zone-setups/full-setup/). For more introductory context, refer to [Concepts](https://developers.cloudflare.com/dns/concepts/).
 
@@ -26,7 +26,7 @@ Make sure that you:
 ## 1\. Add your domain to Cloudflare
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-[ Go to **Domains** ↗ ](https://dash.cloudflare.com/?to=/:account/domains/overview)
+[Go to **Domains** ↗](https://dash.cloudflare.com/?to=/:account/domains/overview)
 2. Select **Onboard a domain**.
 3. Enter your apex domain (for example, `example.com`) and choose how you would like to add your DNS records.
 4. Select **Continue** and choose a [plan ↗](https://www.cloudflare.com/plans/#compare-features).
@@ -117,7 +117,7 @@ If your domain is particularly sensitive to downtime, review our suggestions to 
 
 Your assigned nameservers are displayed as part of the onboarding flow. If you need to find them once again, go the zone **Overview** page.
 
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
 
 Required API token permissions
 
@@ -305,7 +305,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#page","headline":"Change your nameservers (Full setup) · Cloudflare DNS docs","description":"If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

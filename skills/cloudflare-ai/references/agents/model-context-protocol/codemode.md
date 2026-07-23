@@ -4,15 +4,15 @@ title: Code Mode MCP server patterns
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Code Mode MCP server patterns
+# Code Mode MCP server patterns
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/codemode/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/codemode/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Code Mode MCP server lets any Model Context Protocol (MCP) client use model-written code without providing its own sandbox. The MCP server exposes code execution as its tool interface and runs generated JavaScript in an isolated Worker.
 
@@ -104,13 +104,13 @@ Code execution does not replace authorization. Enforce permissions and any requi
 
 Use `codeMcpServer()` when an existing MCP server already defines the operations and schemas the model needs. Use `openApiMcpServer()` when a large OpenAPI catalog needs progressive discovery and a fixed model-context footprint.
 
-### [ Build a single-tool server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/)
+### [Build a single-tool server](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-mcp-server/)
 
- Wrap an existing MCP server with one code tool.
+Wrap an existing MCP server with one code tool.
 
-### [ Build a search and execute server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/)
+### [Build a search and execute server](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/)
 
- Publish a large OpenAPI service through progressive discovery.
+Publish a large OpenAPI service through progressive discovery.
 
 Was this helpful?
 
@@ -118,7 +118,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/codemode/#page","headline":"Code Mode MCP server patterns · Cloudflare Agents docs","description":"Understand single-code-tool and search-and-execute patterns for exposing tools and large APIs through MCP.","url":"https://developers.cloudflare.com/agents/model-context-protocol/codemode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}

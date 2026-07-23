@@ -4,7 +4,7 @@ title: aura-1
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)
 
-#  aura-1
+# aura-1
 
- Text-to-Speech • Deepgram
+Text-to-Speech • Deepgram
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/aura-1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/aura-1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/deepgram/aura-1 `
+`@cf/deepgram/aura-1`
 
 * Cloudflare-hosted
 * Batch
@@ -85,13 +85,13 @@ bit\_rate
 
 `number`The bitrate of the audio in bits per second. Choose from predefined ranges or specific values based on the encoding type.
 
- The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema).
+The binding returns a `ReadableStream` with the audio in MPEG format (check the model's output schema).
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/aura-1/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -99,7 +99,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/aura-1/#page","headline":"aura-1 (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Aura is a context-aware text-to-speech (TTS) model that applies natural pacing, expressiveness, and fillers based on the context of the provided text. The quality of your text input directly impacts the naturalness of the audio output.","url":"https://developers.cloudflare.com/workers-ai/models/aura-1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

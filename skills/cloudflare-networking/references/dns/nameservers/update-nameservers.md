@@ -4,15 +4,15 @@ title: Update nameservers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Update nameservers
+# Update nameservers
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/nameservers/update-nameservers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/nameservers/update-nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To use Cloudflare DNS as an authoritative DNS provider - be it in a [primary (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) or [secondary](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/) setup -, your domain nameservers must point to nameservers that you get from your Cloudflare account. Updating your nameservers is required to activate your domain on Cloudflare and use most of our [application services](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/).
 
@@ -110,14 +110,14 @@ Some providers act as registrars but do not expose nameserver settings. If you c
 
 This page covers specific workflows that customers who do not use Cloudflare Registrar[1](#user-content-fn-1) might have to follow to update their domain nameservers. For complete tutorials, refer to the pages below. Full setup is the most common option, and the only one available for customers on the Free or Pro plans.
 
-* [ Primary setup (Full) ](https://developers.cloudflare.com/dns/zone-setups/full-setup/)
-* [ CNAME setup (Partial) ](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
-* [ DNS Zone transfers ](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/)
-* [ Subdomain setup ](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/)
-* [ Reference ](https://developers.cloudflare.com/dns/zone-setups/reference/)
-* [ Troubleshooting ](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/)
-* [ DNS setup conversions ](https://developers.cloudflare.com/dns/zone-setups/conversions/)
-* [ Zone removal ](https://developers.cloudflare.com/dns/zone-setups/removal/)
+* [Primary setup (Full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/)
+* [CNAME setup (Partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
+* [DNS Zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/)
+* [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/)
+* [Reference](https://developers.cloudflare.com/dns/zone-setups/reference/)
+* [Troubleshooting](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/)
+* [DNS setup conversions](https://developers.cloudflare.com/dns/zone-setups/conversions/)
+* [Zone removal](https://developers.cloudflare.com/dns/zone-setups/removal/)
 
 ## Footnotes
 
@@ -129,7 +129,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/nameservers/update-nameservers/#page","headline":"Update nameservers · Cloudflare DNS docs","description":"Update your domain registrar to use Cloudflare nameservers.","url":"https://developers.cloudflare.com/dns/nameservers/update-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

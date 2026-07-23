@@ -4,15 +4,15 @@ title: Node.js compatibility
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Node.js compatibility
+# Node.js compatibility
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/nodejs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/nodejs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you write a Worker, you may need to import packages from [npm ↗](https://www.npmjs.com/). Many npm packages rely on APIs from the [Node.js runtime ↗](https://nodejs.org/en/about), and will not work unless these Node.js APIs are available.
 
@@ -29,14 +29,14 @@ To enable built-in Node.js APIs and add polyfills, add the `nodejs_compat` compa
 {
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 ## Supported Node.js APIs
@@ -141,7 +141,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/#page","headline":"Node.js compatibility · Cloudflare Workers docs","description":"Node.js APIs available in Cloudflare Workers","url":"https://developers.cloudflare.com/workers/runtime-apis/nodejs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

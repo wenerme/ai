@@ -4,15 +4,15 @@ title: Lists
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Lists
+# Lists
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/lists/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/lists/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Lists allow you to group items such as IP addresses, hostnames, or autonomous system numbers (ASNs), and reference them by name in Cloudflare [rule expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). Instead of adding each item individually to every rule that needs it, you define the group once and reuse it across rules and zones.
 
@@ -131,7 +131,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waf/tools/lists/#page","headline":"Lists · Cloudflare Web Application Firewall (WAF) docs","description":"Use lists to reference groups of items in rule expressions.","url":"https://developers.cloudflare.com/waf/tools/lists/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

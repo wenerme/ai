@@ -4,15 +4,15 @@ title: Backup and restore
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Backup and restore
+# Backup and restore
 
-Last updated Jun 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/guides/backup-restore/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/backup-restore/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create point-in-time snapshots of sandbox directories and restore them using copy-on-write overlays. Backups are stored in an R2 bucket and use squashfs compression.
 
@@ -30,7 +30,7 @@ npx wrangler r2 bucket create my-backup-bucket
 	"name": "my-sandbox-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"containers": [
 		{
@@ -68,7 +68,7 @@ npx wrangler r2 bucket create my-backup-bucket
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 [[containers]]
 class_name = "Sandbox"
@@ -715,7 +715,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/backup-restore/#page","headline":"Backup and restore · Cloudflare Sandbox SDK docs","description":"Create point-in-time backups and restore sandbox directories.","url":"https://developers.cloudflare.com/sandbox/guides/backup-restore/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

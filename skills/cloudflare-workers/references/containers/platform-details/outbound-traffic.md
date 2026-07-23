@@ -4,15 +4,15 @@ title: Handle outbound traffic
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Handle outbound traffic
+# Handle outbound traffic
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/platform-details/outbound-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Outbound handlers let you intercept and modify HTTP traffic from a container with trusted code.
 
@@ -407,7 +407,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/#page","headline":"Handle outbound traffic · Cloudflare Containers docs","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/platform-details/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

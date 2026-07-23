@@ -4,15 +4,15 @@ title: WebAssembly (Wasm)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WebAssembly (Wasm)
+# WebAssembly (Wasm)
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/runtime-apis/webassembly/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/webassembly/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [WebAssembly ↗](https://webassembly.org/) (abbreviated Wasm) allows you to compile languages like [Rust](https://developers.cloudflare.com/workers/languages/rust/), Go, or C to a binary format that can run in a wide variety of environments, including [web browsers ↗](https://developer.mozilla.org/en-US/docs/WebAssembly#browser%5Fcompatibility), Cloudflare Workers, and other WebAssembly runtimes.
 
@@ -25,7 +25,7 @@ Note
 
 Most programming languages can be compiled to Wasm, although support varies across languages and compilers. Guides are available for the following languages:
 
-* [ Wasm in JavaScript ](https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/)
+* [Wasm in JavaScript](https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/)
 
 ## Supported proposals
 
@@ -60,7 +60,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/#page","headline":"WebAssembly (Wasm) · Cloudflare Workers docs","description":"Execute code written in a language other than JavaScript or write an entire Cloudflare Worker in Rust.","url":"https://developers.cloudflare.com/workers/runtime-apis/webassembly/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

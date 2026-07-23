@@ -4,15 +4,15 @@ title: Programmatic configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Programmatic configuration
+# Programmatic configuration
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Wrangler configuration file is optional when using the Cloudflare Vite plugin. Without one, the plugin uses default values. You can customize Worker configuration programmatically with the `config` option. This is useful when the Cloudflare plugin runs inside another plugin or framework.
 
@@ -206,7 +206,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/#page","headline":"Programmatic configuration · Cloudflare Workers docs","description":"Configure Workers programmatically using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/reference/programmatic-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

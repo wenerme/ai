@@ -4,15 +4,15 @@ title: Available configurations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Available configurations
+# Available configurations
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/version-management/reference/available-configurations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/version-management/reference/available-configurations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you use Version Management, you can edit various configurations, such as [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [Cache](https://developers.cloudflare.com/cache/).
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/reference/available-configurations/#page","headline":"Available configurations · Cloudflare Version Management docs","description":"View which zone configurations support versioning.","url":"https://developers.cloudflare.com/version-management/reference/available-configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

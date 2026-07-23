@@ -4,19 +4,19 @@ title: Sandbox SDK
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sandbox SDK
+# Sandbox SDK
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build secure, isolated code execution environments
 
- Available on Workers Paid plan
+Available on Workers Paid plan
 
 The Sandbox SDK enables you to run untrusted code securely in isolated environments. Built on [Containers](https://developers.cloudflare.com/containers/), Sandbox SDK provides a simple API for executing commands, managing files, running background processes, and exposing services — all from your [Workers](https://developers.cloudflare.com/workers/) applications.
 
@@ -173,7 +173,7 @@ export default {
 
 Connect to WebSocket servers running in sandboxes. Learn more: [WebSocket Connections](https://developers.cloudflare.com/sandbox/guides/websocket-connections/).
 
-[ Get started ](https://developers.cloudflare.com/sandbox/get-started/)[ API Reference ](https://developers.cloudflare.com/sandbox/api/)
+[Get started](https://developers.cloudflare.com/sandbox/get-started/)[API Reference](https://developers.cloudflare.com/sandbox/api/)
 
 ---
 
@@ -183,49 +183,49 @@ Connect to WebSocket servers running in sandboxes. Learn more: [WebSocket Connec
 
 Run shell commands, Python scripts, Node.js applications, and more with streaming output support and automatic timeout handling.
 
- Learn about command execution
+Learn about command execution
 
 [Manage files and processes](https://developers.cloudflare.com/sandbox/guides/manage-files/)
 
 Read, write, and manipulate files in the sandbox filesystem. Run background processes, monitor output, and manage long-running operations.
 
- Learn about file operations
+Learn about file operations
 
 [Expose services with preview URLs](https://developers.cloudflare.com/sandbox/guides/expose-services/)
 
 Expose HTTP services running in your sandbox with automatically generated preview URLs, perfect for interactive development environments and application hosting.
 
- Learn about preview URLs
+Learn about preview URLs
 
 [Execute code directly](https://developers.cloudflare.com/sandbox/guides/code-execution/)
 
 Execute Python and JavaScript code with rich outputs including charts, tables, and images. Maintain persistent state between executions for AI-generated code and interactive workflows.
 
- Learn about code execution
+Learn about code execution
 
 [Build interactive terminals](https://developers.cloudflare.com/sandbox/guides/browser-terminals/)
 
 Create browser-based terminal interfaces that connect directly to sandbox shells via WebSocket. Build collaborative terminals, interactive development environments, and real-time shell access with automatic reconnection.
 
- Learn about terminal UIs
+Learn about terminal UIs
 
 [Persistent storage with object storage](https://developers.cloudflare.com/sandbox/guides/mount-buckets/)
 
 Mount S3-compatible object storage (R2, S3, GCS, and more) as local filesystems. Access buckets using standard file operations with data that persists across sandbox lifecycles. Production deployment required.
 
- Learn about bucket mounting
+Learn about bucket mounting
 
 [Watch files for real-time changes](https://developers.cloudflare.com/sandbox/guides/file-watching/)
 
 Monitor files and directories for changes using native filesystem events. Perfect for building hot reloading development servers, build automation systems, and configuration monitoring tools.
 
- Learn about file watching
+Learn about file watching
 
 [Proxy external API requests securely](https://developers.cloudflare.com/sandbox/guides/proxy-requests/)
 
 Keep credentials in your Worker while allowing sandboxes to access external APIs. A Worker proxy validates short-lived JWT tokens from the sandbox and injects real credentials at request time.
 
- Learn about request proxying
+Learn about request proxying
 
 ---
 
@@ -269,39 +269,39 @@ Stateful coordination layer that enables Sandbox to maintain persistent environm
 
 ## More resources
 
-### [ Tutorials ](https://developers.cloudflare.com/sandbox/tutorials/)
+### [Tutorials](https://developers.cloudflare.com/sandbox/tutorials/)
 
 Explore complete examples including AI code execution, data analysis, and interactive environments.
 
-### [ How-to Guides ](https://developers.cloudflare.com/sandbox/guides/)
+### [How-to Guides](https://developers.cloudflare.com/sandbox/guides/)
 
 Learn how to solve specific problems and implement features with the Sandbox SDK.
 
-### [ API reference ](https://developers.cloudflare.com/sandbox/api/)
+### [API reference](https://developers.cloudflare.com/sandbox/api/)
 
 Explore the complete API documentation for the Sandbox SDK.
 
-### [ Concepts ](https://developers.cloudflare.com/sandbox/concepts/)
+### [Concepts](https://developers.cloudflare.com/sandbox/concepts/)
 
 Learn about the key concepts and architecture of the Sandbox SDK.
 
-### [ Configuration ](https://developers.cloudflare.com/sandbox/configuration/)
+### [Configuration](https://developers.cloudflare.com/sandbox/configuration/)
 
 Learn about the configuration options for the Sandbox SDK.
 
-### [ GitHub Repository ](https://github.com/cloudflare/sandbox-sdk)
+### [GitHub Repository](https://github.com/cloudflare/sandbox-sdk)
 
 View the SDK source code, report issues, and contribute to the project.
 
-### [ Pricing ](https://developers.cloudflare.com/sandbox/platform/pricing/)
+### [Pricing](https://developers.cloudflare.com/sandbox/platform/pricing/)
 
 Understand Sandbox pricing based on the underlying Containers platform.
 
-### [ Limits ](https://developers.cloudflare.com/sandbox/platform/limits/)
+### [Limits](https://developers.cloudflare.com/sandbox/platform/limits/)
 
 Learn about resource limits, quotas, and best practices for working within them.
 
-### [ Discord Community ](https://discord.cloudflare.com)
+### [Discord Community](https://discord.cloudflare.com)
 
 Connect with the community on Discord. Ask questions, share what you're building, and get help from other developers.
 
@@ -311,7 +311,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Overview · Cloudflare Sandbox SDK docs","description":"Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

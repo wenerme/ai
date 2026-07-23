@@ -4,15 +4,15 @@ title: Composable AI architecture
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Composable AI architecture
+# Composable AI architecture
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -30,7 +30,7 @@ Cloudflare's AI platform has been designed with these principles in mind. The ar
 
 ## Composable AI infrastructure
 
-![Figure 1: Composable AI architecture](https://developers.cloudflare.com/_astro/ai-composable.CBIbt7we_Z1j2Kgc.svg "Figure 1: Composable AI architecture")
+![Figure 1: Composable AI architecture](https://developers.cloudflare.com/_astro/ai-composable.CBIbt7we_1YDW9i.svg "Figure 1: Composable AI architecture")
 
 Figure 1: Composable AI architecture
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/#page","headline":"Composable AI architecture · Cloudflare Reference Architecture docs","description":"The architecture diagram illustrates how AI applications can be built end-to-end on Cloudflare, or single services can be integrated with external infrastructure and services.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-composable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

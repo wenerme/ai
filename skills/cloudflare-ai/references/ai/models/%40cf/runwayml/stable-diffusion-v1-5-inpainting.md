@@ -4,7 +4,7 @@ title: stable-diffusion-v1-5-inpainting
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)
 
-#  stable-diffusion-v1-5-inpainting
+# stable-diffusion-v1-5-inpainting
 
- Beta
+Beta
 
- Text-to-Image • RunwayML
+Text-to-Image • RunwayML
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-inpainting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-inpainting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/runwayml/stable-diffusion-v1-5-inpainting `
+`@cf/runwayml/stable-diffusion-v1-5-inpainting`
 
 * Cloudflare-hosted
 
@@ -79,13 +79,13 @@ seed
 
 `integer`Random seed for reproducibility of the image generation
 
- The binding returns a `ReadableStream` with the output (check the model's output schema).
+The binding returns a `ReadableStream` with the output (check the model's output schema).
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/runwayml/stable-diffusion-v1-5-inpainting/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/runwayml/stable-diffusion-v1-5-inpainting/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/runwayml/stable-diffusion-v1-5-inpainting/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/runwayml/stable-diffusion-v1-5-inpainting/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -93,7 +93,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-inpainting/#page","headline":"stable-diffusion-v1-5-inpainting (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"Stable Diffusion Inpainting is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, with the extra capability of inpainting the pictures by using a mask.","url":"https://developers.cloudflare.com/ai/models/%40cf/runwayml/stable-diffusion-v1-5-inpainting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: SCIM v1 to v2 Migration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  SCIM v1 to v2 Migration
+# SCIM v1 to v2 Migration
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's first iteration of SCIM integration introduced a concept called _Virtual Groups_, typically identified by the pattern `CF-<accountID>-<Role Name>` in your IdP. Virtual Groups were an early implementation of group-based access control: they acted as placeholders created automatically by SCIM to map IdP groups to account memberships.
 
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/#page","headline":"SCIM v1 to v2 Migration · Cloudflare Fundamentals docs","description":"Migrate from SCIM v1 Virtual Groups to Cloudflare's GA SCIM User Groups","url":"https://developers.cloudflare.com/fundamentals/reference/migration-guides/scim-virtual-groups-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Override examples
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ddos-protection/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Override examples
+# Override examples
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-examples/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Use cases
 
@@ -35,7 +35,7 @@ If you recognize that the traffic flagged by the adaptive rule based on UDP and 
 To avoid disruptions during initial deployment, you can create a _Log_ only – _Essentially Off_ ruleset override that allows all traffic while logging detection results. This lets you safely observe and analyze DDoS activity before enabling enforcement.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Go to the **DDoS protection** tab.
 3. On **HTTP DDoS attack protection**, select **Create override**.
 4. Set the **Scope** to _Apply to all incoming requests_.
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-examples/#page","headline":"Override examples for Network-layer DDoS Attack Protection · Cloudflare DDoS Protection docs","description":"Example override configurations for Network-layer DDoS Attack Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/network-overrides/override-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

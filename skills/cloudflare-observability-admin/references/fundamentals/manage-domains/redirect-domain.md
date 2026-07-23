@@ -4,15 +4,15 @@ title: Redirect one domain to another
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Redirect one domain to another
+# Redirect one domain to another
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you have an alias domain that only forwards traffic to another domain (that is, the domain does not have an associated origin server of its own), you can set up redirects directly within Cloudflare.
 
@@ -59,7 +59,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/#page","headline":"Redirect one domain to another · Cloudflare Fundamentals docs","description":"Set up domain redirects in Cloudflare to forward traffic from an alias domain to your primary domain using DNS records and redirect rules.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/redirect-domain/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

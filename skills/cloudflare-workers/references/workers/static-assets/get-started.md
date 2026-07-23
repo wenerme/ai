@@ -4,15 +4,15 @@ title: Get Started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get Started
+# Get Started
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For most front-end applications, you'll want to use a framework. Workers supports number of popular [frameworks](https://developers.cloudflare.com/workers/framework-guides/) that come with ready-to-use components, a pre-defined and structured architecture, and community support. View [framework specific guides](https://developers.cloudflare.com/workers/framework-guides/) to get started using a framework.
 
@@ -34,7 +34,7 @@ This guide will instruct you through setting up and deploying a static site on W
 
 [C3 (create-cloudflare-cli) ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare. Open a terminal window and run C3 to create your Worker project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-static-site
@@ -96,7 +96,7 @@ When building a full-stack application, you can use any [Workers bindings](https
 
 Open a terminal window and run C3 to create your Worker project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-dynamic-site
@@ -161,7 +161,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/get-started/#page","headline":"Get Started · Cloudflare Workers docs","description":"Run front-end websites — static or dynamic — directly on Cloudflare's global network.","url":"https://developers.cloudflare.com/workers/static-assets/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

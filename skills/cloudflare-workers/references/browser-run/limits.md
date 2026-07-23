@@ -4,15 +4,15 @@ title: Limits
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Limits
+# Limits
 
-Last updated May 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Browser Run limits are based on your [Cloudflare Workers plan](https://developers.cloudflare.com/workers/platform/pricing/).
 
@@ -24,7 +24,7 @@ Need higher limits?
 
 If you are on a Workers Free plan and you want to increase your limits, upgrade to a Workers Paid plan in the **Workers plans** page of the Cloudflare dashboard:
 
-[ Go to **Workers plans** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/plans)
+[Go to **Workers plans** ↗](https://dash.cloudflare.com/?to=/:account/workers/plans)
 
 | Feature                                                                         | Limit                              |
 | ------------------------------------------------------------------------------- | ---------------------------------- |
@@ -94,7 +94,7 @@ To minimize usage:
 
 You can monitor your usage and view session close reasons in the Cloudflare dashboard on the **Browser Run** page:
 
-[ Go to **Browser Run** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+[Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 
 Refer to [Browser close reasons](https://developers.cloudflare.com/browser-run/reference/browser-close-reasons/) for more information.
 
@@ -158,7 +158,7 @@ This `Error processing the request: Unable to create new browser: code: 429: mes
 
 You can [increase your limits](#workers-paid) by upgrading to a Workers Paid plan on the **Workers plans** page of the Cloudflare dashboard:
 
-[ Go to **Workers plans** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/plans)
+[Go to **Workers plans** ↗](https://dash.cloudflare.com/?to=/:account/workers/plans)
 
 If you recently upgraded but still encounter the 10-minute per day limit, redeploy your Worker to ensure your usage is correctly associated with the new plan.
 
@@ -174,7 +174,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/limits/#page","headline":"Limits · Cloudflare Browser Run docs","description":"Learn about the limits associated with Browser Run.","url":"https://developers.cloudflare.com/browser-run/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

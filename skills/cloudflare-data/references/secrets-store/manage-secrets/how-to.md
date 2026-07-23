@@ -4,15 +4,15 @@ title: How to
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How to
+# How to
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the sections below to learn about common actions you might want to take when managing your data in Secrets Store.
 
@@ -25,7 +25,7 @@ You must have a [Super Administrator or Secrets Store Admin role](https://develo
 ## Create a secret
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Select **Create secret**.
 3. Fill in the required fields. Note that, once the secret is saved, the secret value will no longer be available for viewing.
 4. (Optional) Select **Add additional secret** to create more than one secret at a time.
@@ -70,7 +70,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/st
 Duplicate a secret to keep the same secret value but change name, scope, or comments.
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Search for the secret you would like to duplicate within the existing secrets list.
 3. Select the three dots next to the secret and choose **Duplicate**.
 4. Edit the **Secret name**, **Permission scope**, or **Comment**, according to your needs.
@@ -102,7 +102,7 @@ This action will cause the replacement in all services using the secret.
 You can also edit the secret **Permission scope** and **Comment**.
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Search for the secret you would like to edit within the existing secrets list.
 3. Select the three dots next to the secret and choose **Edit**.
 4. Edit the available fields according to your needs and select **Save** to confirm.
@@ -128,7 +128,7 @@ Caution
 Before deleting a secret, make sure it is not deployed in your [Workers applications ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/) or [AI gateways ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway).
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Search for the secret you would like to delete within the existing secrets list.
 3. Select the three dots next to the secret and choose **Delete**.
 4. Type in the secret name and select **Delete** to confirm.
@@ -153,7 +153,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/#page","headline":"How to · Cloudflare Secrets Store docs","description":"Create, update, duplicate, and delete secrets using the dashboard, API, or Wrangler.","url":"https://developers.cloudflare.com/secrets-store/manage-secrets/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

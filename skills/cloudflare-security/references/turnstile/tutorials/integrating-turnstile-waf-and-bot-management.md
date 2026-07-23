@@ -4,15 +4,15 @@ title: Integrate Turnstile, WAF, &amp; Bot Management
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Integrate Turnstile, WAF, & Bot Management
+# Integrate Turnstile, WAF, & Bot Management
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will guide you on how to integrate Cloudflare Turnstile, [Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), and [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) into an existing authentication system. This combination creates a robust defense against various threats, including automated attacks and malicious login attempts.
 
@@ -42,7 +42,7 @@ If your site is on Cloudflare's network and subscribed to an Enterprise plan, yo
 ### Issue challenges for potential bot traffic
 
 1. In the Cloudflare dashboard, go to the **WAF** page.
-[ Go to **WAF** ↗ ](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Create a new custom WAF rule by selecting **Edit expression**:
 
   * Field: "Bot Score"
@@ -57,7 +57,7 @@ This configuration challenges requests with a low bot score, leveraging network 
 Turnstile can be used on any site, regardless of whether it is on Cloudflare's network:
 
 1. In the Cloudflare dashboard, go to the **Turnstile** page.
-[ Go to **Turnstile** ↗ ](https://dash.cloudflare.com/?to=/:account/turnstile)
+[Go to **Turnstile** ↗](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Select **Add widget** and fill out the necessary information.
 3. Add your domain to the Turnstile configuration.
 4. Select **Create**.
@@ -191,7 +191,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/#page","headline":"Integrate Turnstile, WAF, & Bot Management · Cloudflare Turnstile docs","description":"This tutorial will guide you on how to integrate Cloudflare Turnstile, Web Application Firewall (WAF), and Bot Management. This combination creates a robust defense against various threats, including automated attacks and malicious login attempts.","url":"https://developers.cloudflare.com/turnstile/tutorials/integrating-turnstile-waf-and-bot-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Authentication"]}

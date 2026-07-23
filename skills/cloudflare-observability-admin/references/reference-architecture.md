@@ -4,38 +4,38 @@ title: Reference Architectures
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Reference Architectures
+# Reference Architectures
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-![Hero image](https://developers.cloudflare.com/_astro/reference-architecture-hero.Eeeva8Wz_1QTsOE.svg)
+![Hero image](https://developers.cloudflare.com/_astro/reference-architecture-hero.Eeeva8Wz_IVzlC.svg)
 
 All the documents in this section are designed to help you understand how Cloudflare and its products are designed and architected. These documents describe how you can leverage our platform to create solutions based on your business needs.
 
 No matter if you know Cloudflare well, or if you are just starting out. These documents help you understand how our connectivity cloud is architected and how the services can be integrated with your own infrastructure. Read [How to use](https://developers.cloudflare.com/reference-architecture/how-to-use/) to understand how the documentation is structured, and either navigate by type from the menu or [find by solution](https://developers.cloudflare.com/reference-architecture/by-solution/) area.
 
-* [ How to use ](https://developers.cloudflare.com/reference-architecture/how-to-use/)
-* [ Find by solution ](https://developers.cloudflare.com/reference-architecture/by-solution/)
-* [ Reference Architectures ](https://developers.cloudflare.com/reference-architecture/architectures/)
-* [ Reference Architecture Diagrams ](https://developers.cloudflare.com/reference-architecture/diagrams/)
-* [ Design Guides ](https://developers.cloudflare.com/reference-architecture/design-guides/)
-* [ Implementation Guides ](https://developers.cloudflare.com/reference-architecture/implementation-guides/)
+* [How to use](https://developers.cloudflare.com/reference-architecture/how-to-use/)
+* [Find by solution](https://developers.cloudflare.com/reference-architecture/by-solution/)
+* [Reference Architectures](https://developers.cloudflare.com/reference-architecture/architectures/)
+* [Reference Architecture Diagrams](https://developers.cloudflare.com/reference-architecture/diagrams/)
+* [Design Guides](https://developers.cloudflare.com/reference-architecture/design-guides/)
+* [Implementation Guides](https://developers.cloudflare.com/reference-architecture/implementation-guides/)
 
 ---
 
 ## More resources
 
-### [ Cloudflare blog ](https://blog.cloudflare.com/)
+### [Cloudflare blog](https://blog.cloudflare.com/)
 
 Read articles and announcements about the latest Cloudflare products and features.
 
-### [ Learning Paths ](https://developers.cloudflare.com/learning-paths/)
+### [Learning Paths](https://developers.cloudflare.com/learning-paths/)
 
 Module-based guidance on Cloudflare product workflows.
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/#page","headline":"Reference Architectures · Cloudflare Reference Architecture docs","description":"Understand how Cloudflare products integrate with your infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

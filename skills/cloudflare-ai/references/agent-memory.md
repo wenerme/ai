@@ -4,15 +4,15 @@ title: Agent Memory
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agent-memory/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Agent Memory
+# Agent Memory
 
-Last updated Jun 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agent-memory/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agent-memory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Persistent, scoped memory for agents that need to remember users, organizations, and domain-specific context across conversations.
 
@@ -31,7 +31,7 @@ Use Agent Memory to remember user preferences, company operating rules, support 
 * Automatic extraction of facts, events, instructions, and tasks from conversations
 * APIs to add, list, recall, and delete memories
 * Profile summaries for observing what Agent Memory remembers
-[ Get started ](https://developers.cloudflare.com/agent-memory/get-started/)[ Learn how it works ](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
+[Get started](https://developers.cloudflare.com/agent-memory/get-started/)[Learn how it works](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
 
 ---
 
@@ -41,19 +41,19 @@ Use Agent Memory to remember user preferences, company operating rules, support 
 
 Store memories in isolated profiles for users, agents, teams, tenants, or application entities. Use namespaces to separate applications, environments, or memory layers.
 
- Learn about profiles
+Learn about profiles
 
 [Automatic memory extraction](https://developers.cloudflare.com/agent-memory/api/workers-api/#ingest-conversations)
 
 Ingest conversations to extract memories automatically, or explicitly add important information when your agent already knows what should be remembered.
 
- Review the API
+Review the API
 
 [Recall memories across agent executions](https://developers.cloudflare.com/agent-memory/api/workers-api/#recall-memories)
 
 Retrieve relevant memory when an agent needs durable context that is not present in the current prompt, conversation, or execution.
 
- Recall memories
+Recall memories
 
 ---
 
@@ -71,23 +71,23 @@ Build AI-powered agents with persistent state, tool use, and real-time communica
 
 ## More resources
 
-### [ Get started ](https://developers.cloudflare.com/agent-memory/get-started/)
+### [Get started](https://developers.cloudflare.com/agent-memory/get-started/)
 
 Add durable memory recall and ingestion to an agent.
 
-### [ How Agent Memory works ](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
+### [How Agent Memory works](https://developers.cloudflare.com/agent-memory/concepts/how-agent-memory-works/)
 
 Learn how Agent Memory extracts, classifies, and retrieves knowledge from conversations.
 
-### [ Workers API ](https://developers.cloudflare.com/agent-memory/api/workers-api/)
+### [Workers API](https://developers.cloudflare.com/agent-memory/api/workers-api/)
 
 Use Agent Memory from a Worker through an `agent_memory` binding.
 
-### [ HTTP API ](https://developers.cloudflare.com/agent-memory/api/http-api/)
+### [HTTP API](https://developers.cloudflare.com/agent-memory/api/http-api/)
 
 Use Agent Memory from services that call the Cloudflare API directly.
 
-### [ Limits ](https://developers.cloudflare.com/agent-memory/platform/limits/)
+### [Limits](https://developers.cloudflare.com/agent-memory/platform/limits/)
 
 Review validation limits and constraints for Agent Memory.
 
@@ -97,7 +97,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agent-memory/#page","headline":"Cloudflare Agent Memory docs · Cloudflare Agent Memory docs","description":"Persistent, scoped memory for agents that need to remember users, organizations, and domain-specific context across conversations.","url":"https://developers.cloudflare.com/agent-memory/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

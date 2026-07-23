@@ -4,15 +4,15 @@ title: Talk to your knowledge base
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Talk to your knowledge base
+# Talk to your knowledge base
 
-Last updated Jul 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial builds a voice agent that you can talk to and that answers out loud from your [AI Search](https://developers.cloudflare.com/ai-search/) knowledge base. It uses the [Cloudflare Agents](https://developers.cloudflare.com/agents/) [@cloudflare/voice](https://developers.cloudflare.com/agents/communication-channels/voice/) package for the speech pipeline, and AI Search as the agent's knowledge base, exposed as a retrieval tool the agent's model calls.
 
@@ -24,17 +24,17 @@ The `@cloudflare/voice` package adds a full voice pipeline to a Cloudflare Agent
 
 The one method you write is `onTurn()`, which receives the user's transcript and returns the text to speak. This is where AI Search fits in: you run a language model and give it AI Search as a retrieval tool. The model decides when to search your knowledge base, grounds its reply in the results it gets back, and returns the answer text, which the pipeline speaks.
 
-Browser Mic
+BrowserMic
 
-[ Workers AI Speech-to-text ](https://developers.cloudflare.com/workers-ai/)
+[Workers AISpeech-to-text](https://developers.cloudflare.com/workers-ai/)
 
-Cloudflare Agents onTurn(transcript)
+Cloudflare AgentsonTurn(transcript)
 
-tool [ AI Search retrieval ](https://developers.cloudflare.com/ai-search/)
+tool[AI Searchretrieval](https://developers.cloudflare.com/ai-search/)
 
-[ Workers AI Text-to-speech ](https://developers.cloudflare.com/workers-ai/)
+[Workers AIText-to-speech](https://developers.cloudflare.com/workers-ai/)
 
-Browser Speaker
+BrowserSpeaker
 
 Note
 
@@ -62,7 +62,7 @@ cd voice-knowledge-base
 
 Install the voice package:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @cloudflare/voice
@@ -91,7 +91,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
 	"name": "voice-knowledge-base",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -125,7 +125,7 @@ Add an [AI Search binding](https://developers.cloudflare.com/ai-search/api/searc
 name = "voice-knowledge-base"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -152,7 +152,7 @@ The AI Search binding requires a `compatibility_date` of `2026-03-27` or later.
 
 Regenerate your binding types so `env.AI` and `env.AI_SEARCH` are typed:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -400,7 +400,7 @@ The hook handles the microphone and playback, so there is no push-to-talk button
 
 Start a local development server:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run dev
@@ -420,7 +420,7 @@ Open the app in your browser, select **Start call** and allow microphone access,
 
 Deploy your agent to make it available on the Internet:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -440,21 +440,21 @@ This tutorial builds a single-user voice agent. If you instead need several peop
 
 ## Next steps
 
-### [ Voice agents API reference ](https://developers.cloudflare.com/agents/communication-channels/voice/)
+### [Voice agents API reference](https://developers.cloudflare.com/agents/communication-channels/voice/)
 
- The @cloudflare/voice pipeline, providers, and onTurn contract.
+The @cloudflare/voice pipeline, providers, and onTurn contract.
 
-### [ Voice agent example ](https://developers.cloudflare.com/agents/examples/voice-agent/)
+### [Voice agent example](https://developers.cloudflare.com/agents/examples/voice-agent/)
 
- A full walkthrough of the voice agent and its browser client.
+A full walkthrough of the voice agent and its browser client.
 
-### [ Search Workers binding ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
+### [Search Workers binding](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 
- Full reference for chatCompletions() and search() from a Worker.
+Full reference for chatCompletions() and search() from a Worker.
 
-### [ Bring your own generation model ](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/)
+### [Bring your own generation model](https://developers.cloudflare.com/ai-search/how-to/bring-your-own-generation-model/)
 
- Use a third-party model for generation while AI Search handles retrieval.
+Use a third-party model for generation while AI Search handles retrieval.
 
 Was this helpful?
 
@@ -462,7 +462,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/#page","headline":"Talk to your knowledge base · Cloudflare AI Search docs","description":"Build a voice agent that lets users speak to an AI Search knowledge base and hear spoken answers, using the Cloudflare Agents voice pipeline.","url":"https://developers.cloudflare.com/ai-search/how-to/talk-to-your-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

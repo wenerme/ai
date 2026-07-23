@@ -4,15 +4,15 @@ title: ERR_SSL_VERSION_OR_CIPHER_MISMATCH
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  ERR\_SSL\_VERSION\_OR\_CIPHER\_MISMATCH
+# ERR\_SSL\_VERSION\_OR\_CIPHER\_MISMATCH
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you [add a new domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, your visitors' browsers might display one of the following errors:
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/#page","headline":"Fix VERSION_OR_CIPHER_MISMATCH · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_VERSION\\_OR\\_CIPHER\\_MISMATCH when using Cloudflare SSL/TLS.","url":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Public LoRA adapters
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Public LoRA adapters
+# Public LoRA adapters
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare offers a few public LoRA adapters that can immediately be used for fine-tuned inference. You can try them out immediately via our [playground ↗](https://playground.ai.cloudflare.com).
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/#page","headline":"Public LoRA adapters · Cloudflare Workers AI docs","description":"Cloudflare offers a few public LoRA adapters that are immediately ready for use.","url":"https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

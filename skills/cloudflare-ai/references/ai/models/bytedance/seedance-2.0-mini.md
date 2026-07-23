@@ -4,7 +4,7 @@ title: Seedance 2.0 Mini
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)
 
-#  Seedance 2.0 Mini
+# Seedance 2.0 Mini
 
- Text-to-Video • ByteDance
+Text-to-Video • ByteDance
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` bytedance/seedance-2.0-mini `
+`bytedance/seedance-2.0-mini`
 
 * Third-party
 
 ByteDance's compact, cost-efficient video generation model from the Seedance 2.0 family. Supports text-to-video, image-to-video, reference video, and reference audio for background music. Ideal for high-volume workloads where speed and cost matter.
 
-| Model Info       |                                                                                                                                |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| More information | [link ↗](https://seed.bytedance.com/en/seedance)                                                                               |
-| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0-mini) |
+| Model Info       |                                                                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedance)                                                                              |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0-mini) |
 
 ## Usage
 
@@ -74,7 +74,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Image to Video**  — Generate video from a reference image
+**Image to Video** — Generate video from a reference image
 
 ```ts
 const response = await env.AI.run(
@@ -118,7 +118,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Portrait Video with Audio**  — Vertical video for social media
+**Portrait Video with Audio** — Vertical video for social media
 
 ```ts
 const response = await env.AI.run(
@@ -226,9 +226,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -236,7 +236,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/#page","headline":"Seedance 2.0 Mini (ByteDance) · Cloudflare AI docs · Cloudflare AI docs","description":"ByteDance's compact, cost-efficient video generation model from the Seedance 2.0 family. Supports text-to-video, image-to-video, reference video, and reference audio for background music. Ideal for high-volume workloads where speed and cost matter.","url":"https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

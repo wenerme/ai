@@ -4,15 +4,15 @@ title: Rules of Durable Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Rules of Durable Objects
+# Rules of Durable Objects
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects provide a powerful primitive for building stateful, coordinated applications. Each Durable Object is a single-threaded, globally-unique instance with its own persistent storage. Understanding how to design around these properties is essential for building effective applications.
 
@@ -2559,7 +2559,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/#page","headline":"Rules of Durable Objects · Cloudflare Durable Objects docs","description":"Design guidelines for building correct and effective Durable Objects applications, covering when and how to use them.","url":"https://developers.cloudflare.com/durable-objects/best-practices/rules-of-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Targeting rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/flagship/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Targeting rules
+# Targeting rules
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/flagship/targeting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/flagship/targeting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Targeting rules let you serve different flag values to different users based on their attributes. Each flag can have zero or more rules.
 
@@ -56,8 +56,8 @@ Use the smallest set of context attributes necessary to express the rule. This k
 
 ## Learn more
 
-* [ Operators ](https://developers.cloudflare.com/flagship/targeting/operators/)
-* [ Percentage rollouts ](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/)
+* [Operators](https://developers.cloudflare.com/flagship/targeting/operators/)
+* [Percentage rollouts](https://developers.cloudflare.com/flagship/targeting/percentage-rollouts/)
 
 Was this helpful?
 
@@ -65,7 +65,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/flagship/targeting/#page","headline":"Targeting rules · Cloudflare Flagship docs","description":"Serve different Flagship flag values to different users based on attributes, conditions, and logical grouping.","url":"https://developers.cloudflare.com/flagship/targeting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

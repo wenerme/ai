@@ -4,15 +4,15 @@ title: Service tokens
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Service tokens
+# Service tokens
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can provide automated systems with service tokens to authenticate against your Cloudflare One policies. Cloudflare Access will generate service tokens that consist of a Client ID and a Client Secret. Automated systems or applications can then use these values to reach an application protected by Access.
 
@@ -292,7 +292,7 @@ Extend the expiration date of the service token. For more details, refer to [Ren
 
 To configure a service token expiration alert:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com), go to the **Notifications** page. [ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com), go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Select _Expiring Access Service Token_.
 4. Enter a name for your alert and an optional description.
@@ -307,7 +307,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens · Cloudflare One docs","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}

@@ -4,15 +4,15 @@ title: How AI Search works
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-search/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How AI Search works
+# How AI Search works
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search is a managed search service. Connect a website, an R2 bucket, or upload your own documents, and AI Search indexes your content for natural language queries.
 
@@ -25,21 +25,21 @@ AI Search consists of two core processes:
 
 Indexing begins automatically when you connect a data source or upload files through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/).
 
-[ Your content e.g. PDF, image ](https://developers.cloudflare.com/ai-search/configuration/data-source/)
+[Your contente.g. PDF, image](https://developers.cloudflare.com/ai-search/configuration/data-source/)
 
 source
 
-[ Data source Optional R2 bucket ](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/) [ Data source · Browser Run Optional Website ](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
+[Data sourceOptionalR2 bucket](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/)[Data source · Browser RunOptionalWebsite](https://developers.cloudflare.com/ai-search/configuration/data-source/website/)
 
-[ AI Search · R2 Built-in storage ](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/)
+[AI Search · R2Built-in storage](https://developers.cloudflare.com/ai-search/configuration/data-source/built-in-storage/)
 
-[ Workers AI · toMarkdown() Parsing ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) [ AI Search Chunking ](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/)
+[Workers AI · toMarkdown()Parsing](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/)[AI SearchChunking](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/)
 
 index & store
 
-[ AI Gateway / Workers AI Optional Embedding ](https://developers.cloudflare.com/ai-search/configuration/models/) [ AI Search · Vectorize Optional Vector index ](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+[AI Gateway / Workers AIOptionalEmbedding](https://developers.cloudflare.com/ai-search/configuration/models/)[AI Search · VectorizeOptionalVector index](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
 
-[ AI Search Optional Keyword tokenizer ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) [ AI Search Optional Inverted index ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
+[AI SearchOptionalKeyword tokenizer](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)[AI SearchOptionalInverted index](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
 
 Here is what happens during indexing:
 
@@ -58,17 +58,17 @@ Once indexing is complete, AI Search is ready to respond to end-user queries in 
 
 Your query
 
-[ AI Gateway / Workers AI Optional Query rewriting ](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)
+[AI Gateway / Workers AIOptionalQuery rewriting](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)
 
 hybrid search
 
-[ AI Gateway / Workers AI Optional Query embedding ](https://developers.cloudflare.com/ai-search/configuration/models/) [ AI Search · Vectorize Optional Vector retrieval ](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
+[AI Gateway / Workers AIOptionalQuery embedding](https://developers.cloudflare.com/ai-search/configuration/models/)[AI Search · VectorizeOptionalVector retrieval](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/)
 
-[ AI Search Optional Query tokenization ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) [ AI Search · BM25 Optional Keyword retrieval ](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
+[AI SearchOptionalQuery tokenization](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)[AI Search · BM25OptionalKeyword retrieval](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/)
 
-[ AI Search Optional Fusion ](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
+[AI SearchOptionalFusion](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
 
-[ AI Gateway / Workers AI Optional Reranking ](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/) [ AI Search · R2 Chunk content retrieval ](https://developers.cloudflare.com/ai-search/api/search/rest-api/) [ Search result ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#search) [ AI Gateway / Workers AI Optional Response generation ](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/) [ Chat Completions result ](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#chatcompletions)
+[AI Gateway / Workers AIOptionalReranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)[AI Search · R2Chunk content retrieval](https://developers.cloudflare.com/ai-search/api/search/rest-api/)[Search result](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#search)[AI Gateway / Workers AIOptionalResponse generation](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)[Chat Completions result](https://developers.cloudflare.com/ai-search/api/search/workers-binding/#chatcompletions)
 
 Here is how the querying pipeline works:
 
@@ -102,7 +102,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/#page","headline":"How AI Search works · Cloudflare AI Search docs","description":"Understand how AI Search indexes your content and retrieves results using vector and keyword search.","url":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

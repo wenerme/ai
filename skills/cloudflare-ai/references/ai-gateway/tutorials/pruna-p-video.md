@@ -4,15 +4,15 @@ title: Use Pruna P-video through AI Gateway
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Pruna P-video through AI Gateway
+# Use Pruna P-video through AI Gateway
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/prunaai/p-video) model on [Replicate](https://developers.cloudflare.com/ai-gateway/usage/providers/replicate/) through AI Gateway.
 
@@ -30,7 +30,7 @@ This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/
 
 ## 2\. Create an AI Gateway
 
-[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** \> **AI Gateway**.
 3. Select **Create Gateway**.
@@ -156,7 +156,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/#page","headline":"Use Pruna P-video through AI Gateway · Cloudflare AI Gateway docs","description":"Learn how to call prunaai/p-video on Replicate through AI Gateway","url":"https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

@@ -4,15 +4,15 @@ title: Configure with Terraform
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure with Terraform
+# Configure with Terraform
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC Services can be managed as infrastructure using the [cloudflare\_connectivity\_directory\_service ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity%5Fdirectory%5Fservice) resource in the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/).
 
@@ -278,7 +278,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/#page","headline":"Configure with Terraform · Cloudflare Workers VPC","description":"Learn how to manage VPC Services using the Cloudflare Terraform provider.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

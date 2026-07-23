@@ -4,15 +4,15 @@ title: Monitor the Auditor
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/key-transparency/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Monitor the Auditor
+# Monitor the Auditor
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/key-transparency/monitor-the-auditor/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/key-transparency/monitor-the-auditor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Key Transparency Auditor validates Log audit proofs and provides a signature for them. The Log can then distribute these signatures to its end-users, and provides users with confidence that keys have not been tampered with.
 
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/#page","headline":"Monitor the Auditor · Cloudflare Key Transparency Auditor docs","description":"Verify Key Transparency audit proofs locally using the Plexi CLI tool.","url":"https://developers.cloudflare.com/key-transparency/monitor-the-auditor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}

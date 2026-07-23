@@ -4,15 +4,15 @@ title: Use Direct Upload with continuous integration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Direct Upload with continuous integration
+# Use Direct Upload with continuous integration
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Pages supports directly uploading prebuilt assets, allowing you to use custom build steps for your applications and deploy to Pages with [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/). This guide will teach you how to deploy your application to Pages, using continuous integration.
 
@@ -32,7 +32,7 @@ $ CLOUDFLARE_ACCOUNT_ID=<ACCOUNT_ID> npx wrangler pages deploy <DIRECTORY> --pro
 To generate an API token:
 
 1. In the Cloudflare dashboard, go to the **API Tokens** page.
-[ Go to **Account API tokens** ↗ ](https://dash.cloudflare.com/?to=/:account/api-tokens)
+[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Under **Custom Token**, select **Get started**.
 4. Name your API Token in the **Token name** field.
@@ -46,7 +46,7 @@ Now that you have created your API token, you can use it to push your project fr
 
 To find your account ID, go to the **Zone Overview** page in the Cloudflare dashboard.
 
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
 
 Find your account ID in the **API** section on the right-hand side menu.
 
@@ -204,7 +204,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/#page","headline":"Use Direct Upload with continuous integration · Cloudflare Pages docs","description":"Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.","url":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: Life of a Request: The First Hop - Into the Smart Network
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Imagine your request is a letter you are trying to send to a friend across the country. Instead of going through the slow, traditional postal service, Cloudflare acts as a hyper-efficient courier company with a fleet of delivery hubs all over the world.
 

@@ -14,6 +14,26 @@ To create a document in a project, click + in the Resources section, then select
 
 Projects use the same Markdown editor as issues. In documents, you can type in plain text, use code snippets, format with headers and reference issues and projects. You can also create documents in issues themselves.
 
+## Edit documents
+
+Edit documents by clicking anywhere in the editor. We'll show when the document was last edited and by whom. Linear offers collaborative editing, so you'll see input cursors if another user is editing or viewing the text. All changes are saved and synced to everyone in realtime.
+
+When editing by prompting Linear Agent to make changes, text written by the agent is highlighted separately, so it’s easy to review. Linear can work in tables and existing formatting so you can prompt the agent to make changes without breaking existing conventions. Prompt Linear to make a change by pressing  ⌘/Ctrl + J and describing the edit, or by selecting text and pressing the _Add to chat_ button.
+
+## Version history
+
+Every document (and project description) has version history, so you can see or revert to earlier document versions when needed. Open history through the display options menu. Agent edits and changes made by loops also create version history checkpoints.
+
+## Editor slash commands
+
+Type `/` to see additional formatting options in documents (and issues.) Using this menu you can create formatting types including:
+
+* Headers (H1, H2, H3)
+* Lists (bulleted, numbered, checklists)
+* Codeblocks
+* Dividers
+* Blockquotes
+
 ## Create document templates
 
 You can create document templates to write documents faster and guide creators to share information effectively. These templates can be selected when creating a new document inside a project or issue.
@@ -24,10 +44,7 @@ To edit, duplicate or delete a template, go to the same page where you created t
 
 ## Document subscriptions
 
-You can subscribe to notifications for specific documents by clicking the bell icon in the upper right of the document. Selecting yourself or another team member for notification.
-
-> [!NOTE]
-> This will also subscribe you to notifications in the description section of a project overview.
+You can subscribe to notifications for specific documents by clicking the bell icon in the upper right of the document. Selecting yourself or another team member for notification. This will also subscribe you to notifications in the description section of a project overview.
 
 The creator of a document will be automatically subscribed to the changes in the document.
 
@@ -48,27 +65,11 @@ Notification types include document changes, comments, and replies. You do not g
 
 Select text and press the comment button, or use `Cmd Opt M` to leave a comment. Subscribed or mentioned members will receive notifications about comments and replies.
 
-Reply to comments, or resolve them with a single click.
-
-![Reply or resolve comments](https://webassets.linear.app/images/ornj730p/production/2082fe6a903a9ad0350a87ea5c67120ff75ec239-612x284.png?q=95&auto=format&dpr=2)
+Reply to comments, or resolve them by clicking the check icon.
 
 To view resolved comments, click “Show resolved comments” in the top-right corner of the document.
 
 ![Icon for show resolved comments](https://webassets.linear.app/images/ornj730p/production/1dc3fe1a2a5e52ee72262fc4930fe59f4cd41c05-480x176.png?q=95&auto=format&dpr=2)
-
-## Collaborative editing
-
-Edit documents by clicking anywhere in the editor to begin. We'll show when the document was last edited and by whom. Linear offers collaborative editing, so you'll see input cursors if another user is editing or viewing the text. All changes are instantly saved and synced to everyone in realtime. You can restore documents to a previously saved version in the `…` menu at the top and choosing _"Revert document content"_.
-
-## Editor slash commands
-
-Type `/` to see additional formatting options in documents (and issues.) Using this menu you can create formatting types including:
-
-* Headers (H1, H2, H3)
-* Lists (bulleted, numbered, checklists)
-* Codeblocks
-* Dividers
-* Blockquotes
 
 ## Open documents
 

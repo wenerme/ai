@@ -4,15 +4,15 @@ title: Handle form submissions with Airtable
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Handle form submissions with Airtable
+# Handle form submissions with Airtable
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Airtable ↗](https://airtable.com) to persist form submissions from a front-end user interface. Airtable is a free-to-use spreadsheet solution that has an approachable API for developers. Workers will handle incoming form submissions and use Airtable's [REST API ↗](https://airtable.com/api) to asynchronously persist the data in an Airtable base (Airtable's term for a spreadsheet) for later reference.
 
@@ -85,7 +85,7 @@ To handle the form submission, create and deploy a Worker that parses the incomi
 
 Create a new `airtable-form-handler` Worker project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- airtable-form-handler
@@ -259,7 +259,7 @@ Add a `vars` table at the end of your Wrangler file:
 	"name": "workers-airtable-form",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"vars": {
 		"AIRTABLE_BASE_ID": "exampleBaseId",
 		"AIRTABLE_TABLE_NAME": "Form Submissions"
@@ -272,7 +272,7 @@ Add a `vars` table at the end of your Wrangler file:
 name = "workers-airtable-form"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [vars]
 AIRTABLE_BASE_ID = "exampleBaseId"
@@ -318,7 +318,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/#page","headline":"Handle form submissions with Airtable · Cloudflare Workers docs","description":"Use Cloudflare Workers and Airtable to persist form submissions from a front-end user interface. Workers will handle incoming form submissions and use Airtables REST API to asynchronously persist the data in an Airtable base.","url":"https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Forms","JavaScript"]}

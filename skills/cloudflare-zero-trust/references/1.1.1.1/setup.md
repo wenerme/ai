@@ -1,16 +1,18 @@
 ---
-title: Set up
 description: Learn how to set up Cloudflare's 1.1.1.1 DNS resolver for enhanced security and privacy. Protect against malware and adult content with easy configuration.
-image: https://developers.cloudflare.com/cf-twitter-card.png
+title: Set up
+image: https://developers.cloudflare.com/og-docs.png
 ---
+
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-[Skip to content](#%5Ftop)
-
 # Set up
+
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, your devices use a [DNS server ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) provided by your Internet service provider (ISP). You can change this to use 1.1.1.1 instead, which gives you faster and more private DNS resolution. Some [ISPs and network equipment providers](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/) already partner with Cloudflare to offer this.
 
@@ -18,15 +20,15 @@ If your provider does not use Cloudflare, follow the instructions for your devic
 
 Device or router specific guides
 
-* [ Android ](https://developers.cloudflare.com/1.1.1.1/setup/android/)
-* [ Azure ](https://developers.cloudflare.com/1.1.1.1/setup/azure/)
-* [ Gaming consoles ](https://developers.cloudflare.com/1.1.1.1/setup/gaming-consoles/)
-* [ Google Cloud ](https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/)
-* [ iOS ](https://developers.cloudflare.com/1.1.1.1/setup/ios/)
-* [ Linux ](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
-* [ macOS ](https://developers.cloudflare.com/1.1.1.1/setup/macos/)
-* [ Router ](https://developers.cloudflare.com/1.1.1.1/setup/router/)
-* [ Windows ](https://developers.cloudflare.com/1.1.1.1/setup/windows/)
+* [Android](https://developers.cloudflare.com/1.1.1.1/setup/android/)
+* [Azure](https://developers.cloudflare.com/1.1.1.1/setup/azure/)
+* [Gaming consoles](https://developers.cloudflare.com/1.1.1.1/setup/gaming-consoles/)
+* [Google Cloud](https://developers.cloudflare.com/1.1.1.1/setup/google-cloud/)
+* [iOS](https://developers.cloudflare.com/1.1.1.1/setup/ios/)
+* [Linux](https://developers.cloudflare.com/1.1.1.1/setup/linux/)
+* [macOS](https://developers.cloudflare.com/1.1.1.1/setup/macos/)
+* [Router](https://developers.cloudflare.com/1.1.1.1/setup/router/)
+* [Windows](https://developers.cloudflare.com/1.1.1.1/setup/windows/)
 
 You can also set up [1.1.1.1 for Families](#1111-for-families) for additional protection against malware and adult content on your home network. 1.1.1.1 for Families uses the same [privacy commitments](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/) as the standard 1.1.1.1 resolver.
 
@@ -105,7 +107,14 @@ Block malware and adult content
 family.cloudflare-dns.com
 ```
 
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/#page","headline":"Set up Cloudflare 1.1.1.1 resolver","description":"Learn how to set up Cloudflare's 1.1.1.1 DNS resolver for enhanced security and privacy. Protect against malware and adult content with easy configuration.","url":"https://developers.cloudflare.com/1.1.1.1/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/cf-twitter-card.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Phishing"]}
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"item":{"@id":"/directory/","name":"Directory"}},{"@type":"ListItem","position":2,"item":{"@id":"/1.1.1.1/","name":"1.1.1.1 (DNS Resolver)"}},{"@type":"ListItem","position":3,"item":{"@id":"/1.1.1.1/setup/","name":"Set up"}}]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/setup/#page","headline":"Set up Cloudflare 1.1.1.1 resolver","description":"Learn how to set up Cloudflare's 1.1.1.1 DNS resolver for enhanced security and privacy. Protect against malware and adult content with easy configuration.","url":"https://developers.cloudflare.com/1.1.1.1/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Phishing"]}
 ```

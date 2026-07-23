@@ -323,7 +323,7 @@ function extractCitations(text, { families = ["cite"] } = {}) {
     .join("|");
 
   const tokenRe = new RegExp(
-    `${CITATION_START}(?<family>${familyPattern})${CITATION_DELIMITER}(?<body>[\\s\\S]*?)${CITATION_STOP}`,
+    `\uE200(?<family>${familyPattern})\uE202(?<body>[\\s\\S]*?)\uE201`,
     "g"
   );
 

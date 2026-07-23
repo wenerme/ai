@@ -4,15 +4,15 @@ title: 2023-02-01 - Updates to security fields
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  2023-02-01 - Updates to security fields
+# 2023-02-01 - Updates to security fields
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare will deploy some updates to security-related fields in Cloudflare Logs. These updates will affect the following datasets:
 
@@ -126,7 +126,7 @@ After updating Logpush jobs, you may need to update external filters or reports 
 ### Update Logpush job in the dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
-[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select **Edit** next to the Logpush job you wish to edit.
 3. Under **Select data fields**, update the fields in your job. The new security log fields are available under **General**.
 4. Select **Save changes**.
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/#page","headline":"2023-02-01 - Updates to security fields · Cloudflare Logs docs","description":"Review updates to security fields in log datasets.","url":"https://developers.cloudflare.com/logs/reference/change-notices/2023-02-01-security-fields-updates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

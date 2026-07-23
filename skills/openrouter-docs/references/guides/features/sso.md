@@ -86,6 +86,19 @@ Connections are labeled **Self-serve connection** when created through the Secur
 
 With an SSO connection in place, you can also sync groups from your identity provider and map them to OpenRouter workspaces, so workspace access is provisioned automatically. See [SCIM Group Mappings](/docs/guides/features/scim-mappings).
 
+## User Deactivation and Deletion
+
+With SCIM provisioning connected, your identity provider is the source of truth for user lifecycle. When a user is deactivated or deleted in your identity provider, the change syncs to OpenRouter automatically:
+
+* Their membership in your organization is deactivated, and they can no longer sign in through the connection
+* API keys they created in your organization are deactivated across all of the organization's workspaces
+
+Deactivation is scoped to your organization: the member's personal OpenRouter account, personal API keys, and memberships in other organizations are not affected. If the user's OpenRouter account itself is deleted, all of their access ends — including their personal account and personal keys.
+
+<Warning>
+  Deactivated keys are **not** automatically re-enabled if the user is later reactivated in your identity provider. An organization admin must re-enable the keys manually.
+</Warning>
+
 ## Frequently Asked Questions
 
 <AccordionGroup>

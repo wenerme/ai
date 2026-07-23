@@ -4,17 +4,17 @@ title: Perform mobile redirects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Perform mobile redirects
+# Perform mobile redirects
 
 Create a redirect rule to redirect visitors using mobile devices to a different hostname.
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples will redirect visitors using mobile devices — based on the request user agent string — to a different hostname.
 
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/#page","headline":"Perform mobile redirects · Cloudflare Rules docs","description":"Create a redirect rule to redirect visitors using mobile devices to a different hostname.","url":"https://developers.cloudflare.com/rules/url-forwarding/examples/perform-mobile-redirects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Redirects"]}

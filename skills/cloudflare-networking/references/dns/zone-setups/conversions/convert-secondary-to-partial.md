@@ -4,15 +4,15 @@ title: Convert secondary setup to partial setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Convert secondary setup to partial setup
+# Convert secondary setup to partial setup
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-secondary-to-partial/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-secondary-to-partial/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you initially set up [incoming zone transfers (Cloudflare as secondary)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/), you can later convert your zone to use a CNAME setup (partial).
 
@@ -29,7 +29,7 @@ Follow the steps below to achieve this conversion.
 ## 1\. Stop transferring the zone
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Under **DNS Zone Transfers**, and select **Manage linked peers**.
 3. Unlink the peer and select **Save**.
 
@@ -75,7 +75,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-secondary-to-partial/#page","headline":"Convert secondary setup to partial setup · Cloudflare DNS docs","description":"If you initially set up incoming zone transfers (Cloudflare as secondary), you can later convert your zone to use a partial setup.","url":"https://developers.cloudflare.com/dns/zone-setups/conversions/convert-secondary-to-partial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

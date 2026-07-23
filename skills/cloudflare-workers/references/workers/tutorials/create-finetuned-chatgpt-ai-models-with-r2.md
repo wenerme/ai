@@ -4,15 +4,15 @@ title: Create a fine-tuned OpenAI model with R2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a fine-tuned OpenAI model with R2
+# Create a fine-tuned OpenAI model with R2
 
-Last updated Mar 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will use the [OpenAI ↗](https://openai.com) API and [Cloudflare R2](https://developers.cloudflare.com/r2) to create a [fine-tuned model ↗](https://platform.openai.com/docs/guides/fine-tuning).
 
@@ -39,7 +39,7 @@ Before you start, make sure you have:
 
 First, use the `c3` CLI to create a new Cloudflare Workers project.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- finetune-chatgpt-model
@@ -116,7 +116,7 @@ bucket_name = "<YOUR_BUCKET_NAME>"
 
 You will use [Hono ↗](https://hono.dev/), a lightweight framework for building Cloudflare Workers applications. Hono provides an interface for defining routes and middleware functions. Inside your project directory, run the following command to install Hono:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i hono
@@ -136,7 +136,7 @@ bun add hono
 
 You also need to install the [OpenAI Node API library ↗](https://www.npmjs.com/package/openai). This library provides convenient access to the OpenAI REST API in a Node.js project. To install the library, execute the following command:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i openai
@@ -334,7 +334,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/#page","headline":"Create a fine-tuned OpenAI model with R2 · Cloudflare Workers docs","description":"In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.","url":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","TypeScript"]}

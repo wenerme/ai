@@ -4,15 +4,15 @@ title: Configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration
+# Configuration
 
-Last updated Jun 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think is configured by overriding methods and properties on your `Think` subclass. Most agents only override `getModel()`.
 
@@ -33,6 +33,7 @@ Think is configured by overriding methods and properties on your `Think` subclas
 | getSkillScriptRunner()   | null                           | Enable the optional run\_skill\_script tool                                                                                                                                                                                                                                                                  |
 | workspaceBash            | true                           | Include or configure the default workspace bash tool — refer to [Tools](https://developers.cloudflare.com/agents/harnesses/think/tools/)                                                                                                                                                                     |
 | messageConcurrency       | "queue"                        | How overlapping submits behave — refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/#message-concurrency)                                                                                                                                                         |
+| includeMcpTools          | true                           | Convert connected MCP tools to AI SDK tools and add them to model turns. Refer to [MCP tools](https://developers.cloudflare.com/agents/harnesses/think/tools/#mcp-tools)                                                                                                                                     |
 | waitForMcpConnections    | false                          | Wait for MCP servers before inference                                                                                                                                                                                                                                                                        |
 | chatRecovery             | true                           | Wrap WebSocket, sub-agent, programmatic, and continuation turns in runFiber for durable execution. Set to a configuration object with maxAttempts, stableTimeoutMs, terminalMessage, and onExhausted to tune bounded recovery                                                                                |
 | chatStreamStallTimeoutMs | 0 (off)                        | Opt-in inactivity watchdog: abort a turn whose model stream produces no chunk for this long (measures the gap between chunks, including tool execution). With chatRecovery on, a stall routes into bounded recovery                                                                                          |
@@ -202,8 +203,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configuration overrides, dynamic runtime configuration, Session integration, and package exports for the Think chat agent framework.","url":"https://developers.cloudflare.com/agents/harnesses/think/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

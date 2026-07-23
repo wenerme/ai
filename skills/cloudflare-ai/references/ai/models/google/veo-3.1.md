@@ -4,7 +4,7 @@ title: Veo 3.1
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Veo 3.1
+# Veo 3.1
 
- Text-to-Video • Google
+Text-to-Video • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/veo-3.1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/veo-3.1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/veo-3.1 `
+`google/veo-3.1`
 
 * Third-party
 * Zero data retention
 
 Google's latest video generation model with improved quality, motion, and audio generation.
 
-| Model Info          |                                                                                                                   |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                  |
-| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                               |
-| Zero data retention | Yes                                                                                                               |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1) |
+| Model Info          |                                                                                                                  |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                 |
+| More information    | [link ↗](https://deepmind.google/technologies/veo/)                                                              |
+| Zero data retention | Yes                                                                                                              |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1) |
 
 ## Usage
 
@@ -79,7 +79,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Urban Time-lapse**  — City life time-lapse video
+**Urban Time-lapse** — City life time-lapse video
 
 ```ts
 const response = await env.AI.run(
@@ -124,7 +124,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Abstract Art**  — Abstract motion graphics
+**Abstract Art** — Abstract motion graphics
 
 ```ts
 const response = await env.AI.run(
@@ -169,7 +169,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Food Video**  — Appetizing food footage
+**Food Video** — Appetizing food footage
 
 ```ts
 const response = await env.AI.run(
@@ -245,9 +245,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/veo-3.1/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -255,7 +255,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/veo-3.1/#page","headline":"Veo 3.1 (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's latest video generation model with improved quality, motion, and audio generation.","url":"https://developers.cloudflare.com/ai/models/google/veo-3.1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -1,11 +1,11 @@
 ---
 title: "OpenCode Go | Models"
-description: "Use OpenCode Go models with Mastra. 15 models available."
+description: "Use OpenCode Go models with Mastra. 16 models available."
 ---
 
 # [OpenCode Go logo]OpenCode Go
 
-Access 15 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 16 OpenCode Go models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Go documentation](https://opencode.ai/docs/zen).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 500000,
     "inputCost": 2,
     "outputCost": 6
+  },
+  {
+    "model": "opencode-go/hy3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 64000,
+    "inputCost": 0.14,
+    "outputCost": 0.58
   },
   {
     "model": "opencode-go/kimi-k2.6",

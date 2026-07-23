@@ -4,15 +4,15 @@ title: Page Rules migration guide
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Page Rules migration guide
+# Page Rules migration guide
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/reference/page-rules-migration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/reference/page-rules-migration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare is continuously improving its platform to deliver more powerful and scalable tools for managing your configurations. To help you take full advantage of these improvements, we recommend using [modern Rules features](https://developers.cloudflare.com/rules/) for new implementations. These products address the limitations of Page Rules while providing greater flexibility, scalability, and ease of use.
 
@@ -1109,7 +1109,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide · Cloudflare Rules docs","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

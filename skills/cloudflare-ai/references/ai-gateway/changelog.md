@@ -4,17 +4,17 @@ title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Changelog
+# Changelog
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
 ## 2026-06-12
 
@@ -34,7 +34,7 @@ For more information, refer to [Logging](https://developers.cloudflare.com/ai-ga
 
 AI Gateway now supports spend limits — cost-based budgets that track cumulative dollar spend and block requests when the budget is exceeded. Unlike rate limiting, which caps the number of requests, spend limits track actual cost based on token usage and model pricing.
 
-You can scope limits by model, provider, or custom metadata dimensions. For example, give each user a `200/day budget, cap total gateway spend at `10,000/day, or limit a specific model to $50/day per user. Each rule uses a configurable time window with fixed or sliding enforcement.
+You can scope limits by model, provider, or custom metadata dimensions. For example, give each user a $200/day budget, cap total gateway spend at $10,000/day, or limit a specific model to $50/day per user. Each rule uses a configurable time window with fixed or sliding enforcement.
 
 Spend limits work with both [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) and [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) requests for models with known pricing.
 
@@ -420,7 +420,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ai-gateway/changelog/#page","headline":"Changelog · Cloudflare AI Gateway docs","description":"Track the latest updates, new features, and fixes for AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

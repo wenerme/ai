@@ -4,15 +4,15 @@ title: Bind to Workers API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bind to Workers API
+# Bind to Workers API
 
-Last updated Jun 10, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/transform-videos/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/transform-videos/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Media Transformations](https://developers.cloudflare.com/stream/transform-videos/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -351,7 +351,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"Bind the Media Transformations API to a Cloudflare Worker to transform videos programmatically.","url":"https://developers.cloudflare.com/stream/transform-videos/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

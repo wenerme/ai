@@ -4,21 +4,21 @@ title: How Workers for Platforms works
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  How Workers for Platforms works
+# How Workers for Platforms works
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Architecture
 
 If you are familiar with [Workers](https://developers.cloudflare.com/workers/), Workers for Platforms introduces four key components: dispatch namespaces, dynamic dispatch Workers, user Workers, and optionally outbound Workers.
 
-![Workers for Platforms architecture](https://developers.cloudflare.com/_astro/programmable-platforms-1.BCCEhzLr_2d88FE.svg)
+![Workers for Platforms architecture](https://developers.cloudflare.com/_astro/programmable-platforms-1.BCCEhzLr_Z29LwvW.svg)
 
 ### Dispatch namespace
 
@@ -62,7 +62,7 @@ export default {
 
 User Workers contain code written by your customers. Your customer sends their code to your platform, and then you make an API request to deploy a user Worker on their behalf. User Workers are deployed to a dispatch namespace and invoked by your dynamic dispatch Worker. You can provide user Workers with [bindings](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/) to access KV, D1, R2, and other Cloudflare resources.
 
-![Deployment and management flow](https://developers.cloudflare.com/_astro/programmable-platforms-6.BfYznbr5_2d88FE.svg)
+![Deployment and management flow](https://developers.cloudflare.com/_astro/programmable-platforms-6.BfYznbr5_Z29LwvW.svg)
 
 ### Outbound Worker (optional)
 
@@ -71,7 +71,7 @@ An [outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/
 * **Control egress** \- Block or allow external API calls from customer code
 * **Log requests** \- Track what external services customers are calling
 * **Modify requests** \- Add authentication headers or transform requests before they leave your platform
-![Outbound Worker egress control pattern](https://developers.cloudflare.com/_astro/programmable-platforms-3.C-LkeZtS_Z19nioR.svg)
+![Outbound Worker egress control pattern](https://developers.cloudflare.com/_astro/programmable-platforms-3.C-LkeZtS_Z1H5TbM.svg)
 
 ### Request lifecycle
 
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#page","headline":"How Workers for Platforms works · Cloudflare for Platforms docs","description":"Understand the architecture of Workers for Platforms, including dispatch namespaces, dynamic dispatch Workers, user Workers, and outbound Workers.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

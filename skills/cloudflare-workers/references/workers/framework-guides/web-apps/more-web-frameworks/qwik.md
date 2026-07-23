@@ -4,15 +4,15 @@ title: Qwik
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Qwik
+# Qwik
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a new [Qwik ↗](https://qwik.dev/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
 
@@ -22,7 +22,7 @@ Use the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare)
 
 To use `create-cloudflare` to create a new Qwik project with Workers Assets, run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-qwik-app --framework=qwik
@@ -46,7 +46,7 @@ cd my-qwik-app
 
 After you have created your project, run the following command in the project directory to start a local server. This will allow you to preview your project locally during development.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run dev
@@ -66,7 +66,7 @@ Your project can be deployed to a `*.workers.dev` subdomain or a [Custom Domain]
 
 The following command will build and deploy your project. If you're using CI, ensure you update your ["deploy command"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration appropriately.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run deploy
@@ -88,9 +88,9 @@ Your Qwik application can be fully integrated with the Cloudflare Developer Plat
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-### [ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+### [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
 
- Access to compute, storage, AI and more.
+Access to compute, storage, AI and more.
 
 Was this helpful?
 
@@ -98,7 +98,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/#page","headline":"Qwik · Cloudflare Workers docs","description":"Create a Qwik application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack"]}

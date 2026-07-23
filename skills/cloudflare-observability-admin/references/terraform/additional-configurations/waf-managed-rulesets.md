@@ -4,15 +4,15 @@ title: WAF Managed Rules configuration using Terraform
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/terraform/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WAF Managed Rules configuration using Terraform
+# WAF Managed Rules configuration using Terraform
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides examples of deploying and configuring [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) in your zone or account using Terraform. It covers the following configurations:
 
@@ -218,7 +218,7 @@ resource "cloudflare_ruleset" "account_level_managed_waf" {
 
 The following example adds two [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) for the Cloudflare Managed Ruleset:
 
-* The first rule will skip the execution of the entire Cloudflare Managed Ruleset (with ID ...376e9aee ) for specific URLs, according to the rule expression.
+* The first rule will skip the execution of the entire Cloudflare Managed Ruleset (with ID ...376e9aee) for specific URLs, according to the rule expression.
 * The second rule will skip the execution of two rules belonging to the Cloudflare Managed Ruleset for specific URLs, according to the rule expression.
 
 Add the two exceptions to the `cloudflare_ruleset` resource before the rule that deploys the Cloudflare Managed Ruleset:
@@ -447,8 +447,8 @@ Building upon the rule that deploys the Cloudflare Managed Ruleset, the followin
 The OWASP managed ruleset supports the following configurations:
 
 * Enable all the rules up to a specific paranoia level by creating tag overrides that disable all the rules associated with higher paranoia levels.
-* Set the action to perform when the calculated threat score is greater than the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c  ), and including the `action` property.
-* Set the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c  ), and including the `score_threshold` property.
+* Set the action to perform when the calculated threat score is greater than the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c), and including the `action` property.
+* Set the score threshold by creating a rule override for the last rule in the Cloudflare OWASP Core Ruleset (rule with ID ...843b323c), and including the `score_threshold` property.
 
 For more information on the available configuration values, refer to the [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) page in the WAF documentation.
 
@@ -537,7 +537,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/#page","headline":"WAF Managed Rules configuration using Terraform · Cloudflare Terraform docs","description":"Deploy and configure Cloudflare WAF Managed Rules at the zone or account level using Terraform.","url":"https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

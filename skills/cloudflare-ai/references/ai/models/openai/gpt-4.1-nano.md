@@ -4,7 +4,7 @@ title: GPT-4.1 nano
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT-4.1 nano
+# GPT-4.1 nano
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-4.1-nano `
+`openai/gpt-4.1-nano`
 
 * Third-party
 * Zero data retention
 
 GPT-4.1 Nano is OpenAI’s smallest and cheapest GPT-4.1 variant, optimized for high-throughput, low-latency tasks.
 
-| Model Info                                                                  |                                                                                                                        |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                       |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information                                                            | [link ↗](https://openai.com/)                                                                                          |
-| Zero data retention                                                         | Yes                                                                                                                    |
-| Request formats                                                             | Responses, Chat Completions                                                                                            |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-nano) |
+| Model Info                                                                 |                                                                                                                       |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                      |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                |
+| More information                                                           | [link ↗](https://openai.com/)                                                                                         |
+| Zero data retention                                                        | Yes                                                                                                                   |
+| Request formats                                                            | Responses, Chat Completions                                                                                           |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-nano) |
 
 ## Usage
 
@@ -120,7 +120,7 @@ These laws form the foundation of thermodynamics and are essential in understand
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -225,7 +225,7 @@ Would you like an example with error handling or working with JSON data in a str
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -347,7 +347,7 @@ Would you like a suggested itinerary or specific activity recommendations at any
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -425,7 +425,7 @@ Detective Mara Collins cautiously stepped into the dimly lit workshop, the scent
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -7460,9 +7460,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -7470,7 +7470,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/#page","headline":"GPT-4.1 nano (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-4.1 Nano is OpenAI’s smallest and cheapest GPT-4.1 variant, optimized for high-throughput, low-latency tasks.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-4.1-nano/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

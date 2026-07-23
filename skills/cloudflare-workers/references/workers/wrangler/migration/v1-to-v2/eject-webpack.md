@@ -4,15 +4,15 @@ title: 1. Migrate webpack projects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  1\. Migrate webpack projects
+# 1\. Migrate webpack projects
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide describes the steps to migrate a webpack project from Wrangler v1 to Wrangler v2\. After completing this guide, [update your Wrangler version](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/update-v1-to-v2/).
 
@@ -53,7 +53,7 @@ Wrangler v2 drops support for project types, including `type = webpack` and conf
 
 To do that, you will need to add it as a dependency:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D webpack@^4.46.0 webpack-cli wranglerjs-compat-webpack-plugin
@@ -163,7 +163,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/#page","headline":"1. Migrate webpack projects · Cloudflare Workers docs","description":"Migrate webpack-based Workers projects from Wrangler v1 to v2 by ejecting your bundler configuration.","url":"https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,22 +4,22 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Turn on the detection
 
 On Free plans, the leaked credentials detection is enabled by default, and no action is required. On paid plans, you can turn on the detection in the Cloudflare dashboard, via API, or using Terraform.
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Turn on **Leaked credential detection**.
 
@@ -129,7 +129,7 @@ Only available for Enterprise customers.
 To check for leaked credentials in a way that is not covered by the default configuration, add a [custom detection location](https://developers.cloudflare.com/waf/detections/leaked-credentials/#custom-detection-locations).
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Under **Leaked credential detection** \> **Configurations**, select the edit icon.
 4. Select **Add custom username and password location**.
@@ -230,7 +230,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#page","headline":"Get started with leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Enable leaked credentials detection and configure custom or managed detections.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover","Authentication"]}

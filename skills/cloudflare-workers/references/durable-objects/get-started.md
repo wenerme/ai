@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jul 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
@@ -48,7 +48,7 @@ You will access your Durable Object from a [Worker](https://developers.cloudflar
 
 To create a Worker project, run:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- durable-object-starter
@@ -325,7 +325,7 @@ npx wrangler deploy
 
 Once deployed, you should be able to see your newly created Durable Object Worker on the Cloudflare dashboard.
 
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 
 Preview your Durable Object Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.
 
@@ -425,7 +425,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/get-started/#page","headline":"Getting started · Cloudflare Durable Objects docs","description":"Create and deploy your first Durable Object with SQLite storage and a companion Worker.","url":"https://developers.cloudflare.com/durable-objects/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

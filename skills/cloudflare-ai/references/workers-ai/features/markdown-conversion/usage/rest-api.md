@@ -4,15 +4,15 @@ title: REST API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  REST API
+# REST API
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can also use the Markdown Conversion REST API to convert your documents into Markdown.
 
@@ -39,11 +39,11 @@ You can get your `ACCOUNT_ID` by going to [Workers & Pages on the dashboard](htt
 
 ### Parameters
 
-`files` ` File[] `required
+`files` `File[]`required
 
 The files you want to convert.
 
-`conversionOptions` ` ConversionOptions `optional
+`conversionOptions` `ConversionOptions`optional
 
 Options that allow you to control how your files are converted. Refer to [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/) for further details.
 
@@ -110,7 +110,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/rest-api/#page","headline":"REST API · Cloudflare Workers AI docs","description":"Convert documents to Markdown using the Workers AI REST API endpoint.","url":"https://developers.cloudflare.com/workers-ai/features/markdown-conversion/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

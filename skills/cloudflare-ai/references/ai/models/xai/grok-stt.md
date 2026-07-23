@@ -4,7 +4,7 @@ title: Grok STT
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)
 
-#  Grok STT
+# Grok STT
 
- Automatic Speech Recognition • xAI
+Automatic Speech Recognition • xAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/xai/grok-stt/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/xai/grok-stt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` xai/grok-stt `
+`xai/grok-stt`
 
 * Third-party
 
 xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.
 
-| Model Info        |                                                                                                                 |
-| ----------------- | --------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                   |
-| More information  | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/speech-to-text)                                  |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-stt) |
+| Model Info        |                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------- |
+| Terms and License | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
+| More information  | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/speech-to-text)                                 |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-stt) |
 
 ## Usage
 
@@ -102,7 +102,7 @@ How old is the Brooklyn Bridge?
 
 ## Examples
 
-**With Language and Formatting**  — Enable Inverse Text Normalization so spoken numbers become digits
+**With Language and Formatting** — Enable Inverse Text Normalization so spoken numbers become digits
 
 ```ts
 const response = await env.AI.run(
@@ -178,7 +178,7 @@ How old is the Brooklyn Bridge?
 }
 ```
 
-**Speaker Diarization with Key Terms**  — Identify speakers and bias transcription toward proper nouns
+**Speaker Diarization with Key Terms** — Identify speakers and bias transcription toward proper nouns
 
 ```ts
 const response = await env.AI.run(
@@ -265,7 +265,7 @@ How old is the Brooklyn Bridge?
 }
 ```
 
-**Filler Words Preserved**  — Keep filler words (uh, um, er) in the transcript instead of removing them
+**Filler Words Preserved** — Keep filler words (uh, um, er) in the transcript instead of removing them
 
 ```ts
 const response = await env.AI.run(
@@ -341,7 +341,7 @@ How old is the Brooklyn Bridge?
 }
 ```
 
-**Data URI Upload**  — Pass the audio file directly as a base64 data URI (mutually exclusive with \`url\`)
+**Data URI Upload** — Pass the audio file directly as a base64 data URI (mutually exclusive with \`url\`)
 
 ```ts
 const response = await env.AI.run(
@@ -449,9 +449,9 @@ duration
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/xai/grok-stt/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -459,7 +459,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/xai/grok-stt/#page","headline":"Grok STT (xAI) · Cloudflare AI docs · Cloudflare AI docs","description":"xAI's Grok speech-to-text model. Transcribes audio files into text across 25 languages with word-level timestamps, multichannel transcription, speaker diarization, and key-term biasing.","url":"https://developers.cloudflare.com/ai/models/xai/grok-stt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

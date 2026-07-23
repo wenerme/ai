@@ -4,15 +4,15 @@ title: Migrate from Pages to Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrate from Pages to Workers
+# Migrate from Pages to Workers
 
-Last updated Jul 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy full-stack applications, including front-end static assets and back-end APIs, as well as server-side rendered pages (SSR), with [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/).
 
@@ -61,7 +61,7 @@ Now, with **Cloudflare Workers**:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -71,7 +71,7 @@ Now, with **Cloudflare Workers**:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist/client/"
@@ -93,7 +93,7 @@ For a Single Page Application (SPA):
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "single-page-application"
@@ -104,7 +104,7 @@ For a Single Page Application (SPA):
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist/client/"
@@ -117,7 +117,7 @@ For custom 404 pages:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "404-page"
@@ -128,7 +128,7 @@ For custom 404 pages:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [assets]
 directory = "./dist/client/"
@@ -165,7 +165,7 @@ Then, update your configuration file's `main` field to point to the location of 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory
 	"assets": {
 		"directory": "./dist/client/"
@@ -176,7 +176,7 @@ Then, update your configuration file's `main` field to point to the location of 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./dist/client/_worker.js"
 
 [assets]
@@ -187,7 +187,7 @@ directory = "./dist/client/"
 
 If you use **Pages Functions with a [folder of functions/](https://developers.cloudflare.com/pages/functions/)**, you must first compile these functions into a single Worker script with the [wrangler pages functions build](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-functions-build) command.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler pages functions build --outdir=./dist/worker/
@@ -209,7 +209,7 @@ Once the Worker script has been compiled, you can update your configuration file
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/"
@@ -220,7 +220,7 @@ Once the Worker script has been compiled, you can update your configuration file
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -237,7 +237,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/",
@@ -249,7 +249,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -285,7 +285,7 @@ export default class extends WorkerEntrypoint {
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/"
@@ -296,7 +296,7 @@ export default class extends WorkerEntrypoint {
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./worker/index.ts"
 
 [assets]
@@ -311,7 +311,7 @@ Pages automatically provided [an ASSETS binding](https://developers.cloudflare.c
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/",
@@ -323,7 +323,7 @@ Pages automatically provided [an ASSETS binding](https://developers.cloudflare.c
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./worker/index.ts"
 
 [assets]
@@ -339,7 +339,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "./worker/index.ts",
 	"placement": {
@@ -355,7 +355,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 main = "./worker/index.ts"
 
@@ -398,7 +398,7 @@ To get a similar experience in Workers, you must:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/"
@@ -409,7 +409,7 @@ To get a similar experience in Workers, you must:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./worker/index.ts"
 preview_urls = true
 [assets]
@@ -435,7 +435,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"main": "./worker/index.ts",
 	"workers_dev": true
 }
@@ -444,7 +444,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 main = "./worker/index.ts"
 workers_dev = true
 ```
@@ -461,7 +461,7 @@ Unlike Pages, Workers does not support any domain whose nameservers are not mana
 
 Once you have validated the behavior of Worker, and are satisfied with the development workflows, and have migrated all of your production traffic, you can delete your Pages project in the Cloudflare dashboard or with Wrangler:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler pages project delete
@@ -573,7 +573,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#page","headline":"Migrate from Pages to Workers · Cloudflare Workers docs","description":"A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Privacy
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/warp-client/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Privacy
+# Privacy
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/warp-client/privacy/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/warp-client/privacy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The WARP Client application uses a VPN profile and/or service that enables us to intercept and secure your DNS queries and to transmit data from your device through the Cloudflare network, depending on the services you have enabled. We only collect limited DNS query and traffic data (excluding payload) that is sent to our network when you have the app enabled on your device. All information is handled in accordance with our [Privacy Policy ↗](https://www.cloudflare.com/application/privacypolicy/).
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/privacy/#page","headline":"Privacy · Cloudflare WARP client docs","description":"Privacy commitments for the Cloudflare WARP client.","url":"https://developers.cloudflare.com/warp-client/privacy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}

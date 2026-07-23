@@ -4,15 +4,15 @@ title: Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers
+# Workers
 
-Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/get-started/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/get-started/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create an Artifacts repo from a Worker and use a standard Git client to push and pull content.
 
@@ -40,7 +40,7 @@ You also need:
 ## 1\. Create a Worker project
 
 1. Create a new Worker project with C3:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- artifacts-worker
 ```
@@ -72,7 +72,7 @@ Open your Wrangler config file and add the Artifacts binding:
   "name": "artifacts-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "artifacts": [
     {
       "binding": "ARTIFACTS",
@@ -86,7 +86,7 @@ Open your Wrangler config file and add the Artifacts binding:
 name = "artifacts-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[artifacts]]
 binding = "ARTIFACTS"
@@ -98,7 +98,7 @@ This exposes Artifacts as `env.ARTIFACTS` inside your Worker.
 
 If you are using TypeScript, regenerate your local binding types:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler types
@@ -188,7 +188,7 @@ For the demo, the Worker returns the initial write token. In production, mint sh
 
 Start local development:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler dev
@@ -295,7 +295,7 @@ cd artifacts-worker
 
 Deploy the Worker so you can create repos without running `wrangler dev`:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -313,17 +313,17 @@ Wrangler prints your `workers.dev` URL. Use the same `curl` request against that
 
 ## Next steps
 
-### [ Workers binding reference ](https://developers.cloudflare.com/artifacts/api/workers-binding/)
+### [Workers binding reference](https://developers.cloudflare.com/artifacts/api/workers-binding/)
 
- Review the binding surface, return types, and method-by-method examples.
+Review the binding surface, return types, and method-by-method examples.
 
-### [ Best practices ](https://developers.cloudflare.com/artifacts/concepts/best-practices/)
+### [Best practices](https://developers.cloudflare.com/artifacts/concepts/best-practices/)
 
- Use repo isolation, least-privilege tokens, and namespace separation effectively.
+Use repo isolation, least-privilege tokens, and namespace separation effectively.
 
-### [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/)
+### [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/)
 
- Use standard git-over-HTTPS remotes with either URL-based auth or \`http.extraHeader\`.
+Use standard git-over-HTTPS remotes with either URL-based auth or \`http.extraHeader\`.
 
 Was this helpful?
 
@@ -331,7 +331,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/get-started/workers/#page","headline":"Get started - Workers · Cloudflare Artifacts docs","description":"Create an Artifacts repo from a Worker.","url":"https://developers.cloudflare.com/artifacts/get-started/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

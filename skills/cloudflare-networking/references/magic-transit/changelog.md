@@ -4,17 +4,17 @@ title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Changelog
+# Changelog
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/changelog/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[ Subscribe to RSS ](https://developers.cloudflare.com/changelog/rss/magic-transit.xml)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/magic-transit.xml)
 
 ## 2026-05-18
 
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/magic-transit/changelog/#page","headline":"Changelog · Cloudflare Magic Transit docs","description":"Review recent changes to Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

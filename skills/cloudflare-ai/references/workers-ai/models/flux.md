@@ -4,7 +4,7 @@ title: flux
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)
 
-#  flux
+# flux
 
- Automatic Speech Recognition • Deepgram
+Automatic Speech Recognition • Deepgram
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/flux/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/flux/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/deepgram/flux `
+`@cf/deepgram/flux`
 
 * Cloudflare-hosted
 * Partner
@@ -105,9 +105,9 @@ end\_of\_turn\_confidence
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/flux/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -115,7 +115,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/flux/#page","headline":"flux (Deepgram) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Flux is the first conversational speech recognition model built specifically for voice agents.","url":"https://developers.cloudflare.com/workers-ai/models/flux/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

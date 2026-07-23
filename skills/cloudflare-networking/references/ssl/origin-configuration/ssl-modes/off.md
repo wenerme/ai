@@ -4,15 +4,15 @@ title: Off (no encryption)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Off (no encryption)
+# Off (no encryption)
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Setting your encryption mode to **Off (not recommended)** redirects any HTTPS request to plaintext HTTP.
 
@@ -30,7 +30,7 @@ Cloudflare does not recommend setting your encryption mode to **Off**.
 To change your encryption mode in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Choose an encryption mode.
 
 To adjust your encryption mode with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ssl` as the setting name in the URI path, and the `value` parameter set to your desired setting (`off`, `flexible`, `full`, `strict`, or `origin_pull`).
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/#page","headline":"Off - SSL/TLS encryption modes · Cloudflare SSL/TLS docs","description":"No encryption is used for traffic between visitors and Cloudflare or between Cloudflare and origins. Everything is cleartext HTTP.","url":"https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/off/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

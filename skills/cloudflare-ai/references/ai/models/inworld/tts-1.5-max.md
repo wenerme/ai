@@ -4,7 +4,7 @@ title: Inworld TTS 1.5 Max
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Inworld logo](https://developers.cloudflare.com/_astro/inworld.BDwMAXI2.svg)
 
-#  Inworld TTS 1.5 Max
+# Inworld TTS 1.5 Max
 
- Text-to-Speech • Inworld
+Text-to-Speech • Inworld
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` inworld/tts-1.5-max `
+`inworld/tts-1.5-max`
 
 * Third-party
 * Zero data retention
 
 Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.
 
-| Model Info          |                                                                                                                        |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://inworld.ai/terms)                                                                                     |
-| More information    | [link ↗](https://inworld.ai/)                                                                                          |
-| Zero data retention | Yes                                                                                                                    |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-max) |
+| Model Info          |                                                                                                                       |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://inworld.ai/terms)                                                                                    |
+| More information    | [link ↗](https://inworld.ai/)                                                                                         |
+| Zero data retention | Yes                                                                                                                   |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-max) |
 
 ## Usage
 
@@ -78,7 +78,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Slow Narration**  — Slower speech for narration
+**Slow Narration** — Slower speech for narration
 
 ```ts
 const response = await env.AI.run(
@@ -124,7 +124,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Quality Audio**  — Higher sample rate for studio quality
+**High Quality Audio** — Higher sample rate for studio quality
 
 ```ts
 const response = await env.AI.run(
@@ -170,7 +170,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Text Normalization**  — Expand numbers and abbreviations before synthesis
+**With Text Normalization** — Expand numbers and abbreviations before synthesis
 
 ```ts
 const response = await env.AI.run(
@@ -260,9 +260,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -270,7 +270,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/#page","headline":"Inworld TTS 1.5 Max (Inworld) · Cloudflare AI docs · Cloudflare AI docs","description":"Highest-quality text-to-speech with under 200ms latency, emotion control, and 15-language support.","url":"https://developers.cloudflare.com/ai/models/inworld/tts-1.5-max/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

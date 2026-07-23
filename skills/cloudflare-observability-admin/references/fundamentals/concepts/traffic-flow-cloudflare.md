@@ -4,15 +4,15 @@ title: Traffic flow through Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Traffic flow through Cloudflare
+# Traffic flow through Cloudflare
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Internet traffic is made up of people, services, and agents requesting online resources from wherever they are hosted. Your resources may be publicly available, like a website or application that anyone on the Internet can access. Or your resources may be privately available, like an internal app or network that only your employees and partners should be able to access.
 
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/#page","headline":"Traffic flow through Cloudflare · Cloudflare Fundamentals docs","description":"Understand how public and private traffic on-ramps to and off-ramps from Cloudflare's global network for security and performance.","url":"https://developers.cloudflare.com/fundamentals/concepts/traffic-flow-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

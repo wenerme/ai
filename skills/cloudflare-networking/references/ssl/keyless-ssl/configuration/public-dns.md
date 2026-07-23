@@ -4,15 +4,15 @@ title: Public DNS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Public DNS
+# Public DNS
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you cannot use a [Cloudflare Tunnel setup](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/), you can also create a public DNS record for your key server.
 
@@ -64,7 +64,7 @@ You will have to upload each certificate used with Keyless SSL.
 To create a Keyless certificate in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select **Upload Keyless SSL Certificate**.
 3. Fill in the upload modal with the certificate and other details and select **Add**.
 
@@ -217,7 +217,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/#page","headline":"Public DNS setup - Keyless SSL · Cloudflare SSL/TLS docs","description":"Deploy Keyless SSL with public DNS resolution.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}

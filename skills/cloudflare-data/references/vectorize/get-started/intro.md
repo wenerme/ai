@@ -4,15 +4,15 @@ title: Introduction to Vectorize
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/vectorize/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Introduction to Vectorize
+# Introduction to Vectorize
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/vectorize/get-started/intro/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/get-started/intro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Vectorize is now Generally Available
 
@@ -48,7 +48,7 @@ You will create a new project that will contain a Worker, which will act as the 
 
 Create a new project named `vectorize-tutorial` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- vectorize-tutorial
@@ -544,7 +544,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/get-started/intro/#page","headline":"Introduction to Vectorize · Cloudflare Vectorize docs","description":"Create your first Vectorize index, connect a Worker, and run a similarity search.","url":"https://developers.cloudflare.com/vectorize/get-started/intro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

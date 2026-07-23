@@ -4,15 +4,15 @@ title: Retries
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Retries
+# Retries
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/retries/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/retries/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Retry failed operations with exponential backoff and jitter. The Agents SDK provides built-in retry support for scheduled tasks, queued tasks, and a general-purpose `this.retry()` method for your own code.
 
@@ -710,17 +710,17 @@ class MyAgent extends Agent {
 
 ## Next steps
 
-### [ Schedule tasks ](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
+### [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)
 
- Schedule tasks for future execution.
+Schedule tasks for future execution.
 
-### [ Queue tasks ](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)
+### [Queue tasks](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)
 
- Background task queue for immediate processing.
+Background task queue for immediate processing.
 
-### [ Run Workflows ](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
+### [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)
 
- Durable multi-step processing with automatic retries.
+Durable multi-step processing with automatic retries.
 
 Was this helpful?
 
@@ -728,7 +728,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/retries/#page","headline":"Retries · Cloudflare Agents docs","description":"Retry failed operations with exponential backoff and jitter using the built-in retry system in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/execution/retries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

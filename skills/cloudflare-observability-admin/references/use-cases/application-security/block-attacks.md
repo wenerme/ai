@@ -4,15 +4,15 @@ title: Block application attacks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Block application attacks
+# Block application attacks
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/application-security/block-attacks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/application-security/block-attacks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web applications face constant threats from SQL injection, Cross-Site Scripting (XSS), and other Open Web Application Security Project (OWASP) Top 10 vulnerabilities. Cloudflare WAF managed rulesets block these attacks automatically, and rate limiting prevents brute force abuse.
 
@@ -46,7 +46,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/application-security/block-attacks/#page","headline":"Block application attacks · Cloudflare use cases","description":"Protect against SQL injection, XSS, and other OWASP Top 10 vulnerabilities.","url":"https://developers.cloudflare.com/use-cases/application-security/block-attacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

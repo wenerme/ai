@@ -4,15 +4,15 @@ title: Enable S3-compatible endpoints
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable S3-compatible endpoints
+# Enable S3-compatible endpoints
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Logpush supports pushing logs to S3-compatible destinations via the Cloudflare dashboard or via API, including:
 
@@ -30,8 +30,8 @@ For more information about Logpush and the current production APIs, refer to [Cl
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 1. In **Select a destination**, choose **S3-Compatible**.
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/#page","headline":"Enable Logpush to S3-compatible endpoints · Cloudflare Logs docs","description":"Push Cloudflare logs to S3-compatible storage.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

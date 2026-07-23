@@ -4,15 +4,15 @@ title: Accelerate connections
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Accelerate connections
+# Accelerate connections
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/performance/connections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/performance/connections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network congestion and suboptimal routing between your origin and visitors add latency. Cloudflare Argo Smart Routing uses real-time network telemetry to route requests through the fastest paths, while Early Hints preloads assets before the full HTML response arrives.
 
@@ -49,7 +49,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/performance/connections/#page","headline":"Accelerate connections · Cloudflare use cases","description":"Reduce latency with Argo Smart Routing, HTTP/3, and Early Hints asset preloading.","url":"https://developers.cloudflare.com/use-cases/performance/connections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

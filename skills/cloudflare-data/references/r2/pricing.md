@@ -4,15 +4,15 @@ title: Pricing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pricing
+# Pricing
 
-Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 charges based on the total volume of data stored, along with two classes of operations on that data:
 
@@ -180,7 +180,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 pricing for storage, Class A and Class B operations, and free tier details.","url":"https://developers.cloudflare.com/r2/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

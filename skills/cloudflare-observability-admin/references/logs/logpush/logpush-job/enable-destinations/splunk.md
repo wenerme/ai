@@ -4,23 +4,23 @@ title: Enable Splunk
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Splunk
+# Enable Splunk
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [HTTP Event Collector (HEC) ↗](https://dev.splunk.com/enterprise/docs/devtools/httpeventcollector/) is a reliable method to receive data from Splunk Enterprise or Splunk Cloud Platform. Cloudflare Logpush supports pushing logs directly to Splunk HEC via the Cloudflare dashboard or API.
 
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or or domain (also known as zone) level.
-For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
-For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Depending on your choice, you have access to [account-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/) and [zone-scoped datasets](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/), respectively.
 3. Select **Create a Logpush job**.
 1. In **Select a destination**, choose **Splunk**.
@@ -155,7 +155,7 @@ Refer to the [Logpush FAQ](https://developers.cloudflare.com/logs/faq/logpush/) 
 If your logpush destination hostname is proxied through Cloudflare, and you have the Cloudflare Web Application Firewall (WAF) turned on, you may be challenged or blocked when Cloudflare makes a request to Splunk HTTP Event Collector (HEC). To make sure this does not happen, you have to create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/) that allows Cloudflare to bypass the HEC endpoint.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule (for example, `Splunk`).
 4. Under **When incoming requests match**, use the **Field**, **Operator**, and **Value** dropdowns to create a rule. After finishing each row, select **And** to create the next row of rules. Refer to the table below for the values you should input:
@@ -254,7 +254,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/#page","headline":"Enable Logpush to Splunk · Cloudflare Logs docs","description":"Push Cloudflare logs to Splunk via HEC.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

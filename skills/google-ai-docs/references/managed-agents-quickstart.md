@@ -128,6 +128,8 @@ For long-running tasks, you can stream the response to see the agent work in rea
 
     for event in stream:
         print(event)
+        if event.event_type == "step.stop" and event.usage:
+            print(event.usage)
 
 ### JavaScript
 
@@ -144,6 +146,9 @@ For long-running tasks, you can stream the response to see the agent work in rea
 
     for await (const event of stream) {
         console.log(event);
+        if (event.event_type === "step.stop" && event.usage) {
+            console.log(event.usage);
+        }
     }
 
 ### REST
@@ -158,7 +163,9 @@ For long-running tasks, you can stream the response to see the agent work in rea
         "stream": true
     }'
 
-Streaming returns an iterable of step deltas, which are incremental text, reasoning tokens, and tool call updates. Learn more about how to stream responses in the [Streaming guide](https://ai.google.dev/gemini-api/docs/streaming).
+Streaming returns step deltas with incremental updates. When a step completes,
+the `step.stop` event includes accumulated usage stats. Learn more in the
+[Streaming guide](https://ai.google.dev/gemini-api/docs/streaming).
 
 ## Download files from the environment
 

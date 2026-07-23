@@ -4,15 +4,15 @@ title: Keyless delegation
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Keyless delegation
+# Keyless delegation
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/keyless-ssl/reference/keyless-delegation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/reference/keyless-delegation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Keyless Delegation is Cloudflare's implementation of the emerging delegated credentials standard ([RFC 9345 ↗](https://www.rfc-editor.org/rfc/rfc9345.html)). When you upload a certificate for use with Keyless that has the special extension permitting the use of delegated credentials, Cloudflare will automatically produce a delegated credential and use it at the edge with clients that support this feature. The handshakes will complete without the extra latency induced by reaching back to the Keyless Server, and there are [additional advantages to flexibility in algorithm choice ↗](https://blog.cloudflare.com/keyless-delegation/).
 
@@ -28,7 +28,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/keyless-delegation/#page","headline":"Keyless delegation · Cloudflare SSL/TLS docs","description":"Delegate certificate signing to downstream key servers.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/reference/keyless-delegation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}

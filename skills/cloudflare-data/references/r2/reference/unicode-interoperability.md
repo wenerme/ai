@@ -4,15 +4,15 @@ title: Unicode interoperability
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Unicode interoperability
+# Unicode interoperability
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/reference/unicode-interoperability/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/reference/unicode-interoperability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 is built on top of Workers and supports Unicode natively. One nuance of Unicode that is often overlooked is the issue of [filename interoperability ↗](https://en.wikipedia.org/wiki/Filename#Encoding%5Findication%5Finteroperability) due to [Unicode equivalence ↗](https://en.wikipedia.org/wiki/Unicode%5Fequivalence).
 
@@ -34,7 +34,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/reference/unicode-interoperability/#page","headline":"Unicode interoperability · Cloudflare R2 docs","description":"R2 NFC-normalizes object key names by default to ensure cross-platform Unicode consistency.","url":"https://developers.cloudflare.com/r2/reference/unicode-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

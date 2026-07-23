@@ -4,15 +4,15 @@ title: What are agents?
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  What are agents?
+# What are agents?
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/what-are-agents/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/what-are-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An agent is an AI system that can autonomously execute tasks by making decisions about tool usage and process flow. Unlike traditional automation that follows predefined paths, agents can dynamically adapt their approach based on context and intermediate results. Agents are also distinct from co-pilots (such as traditional chat applications) in that they can fully automate a task, as opposed to simply augmenting and extending human input.
 
@@ -34,7 +34,7 @@ A traditional automation system follows a predetermined sequence:
 * Calls predefined API endpoints in a fixed order
 * Returns results based on hardcoded criteria
 * Cannot adapt if unexpected situations arise
-![Traditional workflow automation diagram](https://developers.cloudflare.com/_astro/workflow-automation.D1rsykgR_Z1dw1Js.svg)
+![Traditional workflow automation diagram](https://developers.cloudflare.com/_astro/workflow-automation.D1rsykgR_Z2iYQux.svg)
 
 ### AI Co-pilot
 
@@ -44,7 +44,7 @@ A co-pilot acts as an intelligent assistant that:
 * Can understand and respond to natural language queries
 * Offers guidance and suggestions
 * Requires human decision-making and action for execution
-![A co-pilot diagram](https://developers.cloudflare.com/_astro/co-pilot.BZ_kRuK6_Z2sKyKr.svg)
+![A co-pilot diagram](https://developers.cloudflare.com/_astro/co-pilot.BZ_kRuK6_1vWJip.svg)
 
 ### Agent
 
@@ -54,7 +54,7 @@ An agent combines AI's ability to make judgments and call the relevant tools to 
 * Dynamic prioritization of constraints
 * Ability to recover from failures
 * Adaptive decision-making based on intermediate results
-![An agent diagram](https://developers.cloudflare.com/_astro/agent-workflow.5VDKtHdO_Z1Hdwi1.svg)
+![An agent diagram](https://developers.cloudflare.com/_astro/agent-workflow.5VDKtHdO_13FaoI.svg)
 
 An agent can dynamically generate an itinerary and execute on booking reservations, similarly to what you would expect from a travel agent.
 
@@ -87,17 +87,17 @@ The Cloudflare Agents SDK provides the infrastructure for building production ag
 
 ## Next steps
 
-### [ Quick start ](https://developers.cloudflare.com/agents/getting-started/quick-start/)
+### [Quick start](https://developers.cloudflare.com/agents/getting-started/quick-start/)
 
- Build your first agent in 10 minutes.
+Build your first agent in 10 minutes.
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
-### [ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)
+### [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)
 
- Integrate OpenAI, Anthropic, and other providers.
+Integrate OpenAI, Anthropic, and other providers.
 
 Was this helpful?
 
@@ -105,7 +105,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/what-are-agents/#page","headline":"What are agents? · Cloudflare Agents docs","description":"Understand what Agents are, how they differ from workflows and co-pilots, and when to use them.","url":"https://developers.cloudflare.com/agents/concepts/what-are-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","LLM"]}

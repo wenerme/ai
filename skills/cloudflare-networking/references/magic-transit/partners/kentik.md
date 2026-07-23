@@ -4,15 +4,15 @@ title: Kentik
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Kentik
+# Kentik
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/partners/kentik/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/partners/kentik/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Kentik is a network observability company that helps detect attacks on your network and triggers Cloudflare's Magic Transit to begin advertisement. Together, Kentik and Magic Transit On Demand work to create a fully Software-as-a-Service (SaaS)-based, Distributed Denial of Service ([DDoS](https://developers.cloudflare.com/ddos-protection/)) protection solution to help you mitigate attacks and protect your network automatically.
 
@@ -42,7 +42,7 @@ For additional information about Kentik and Magic Transit, refer to [Kentik's Ma
 ## Access Cloudflare account
 
 1. Go to the **Address space** page.
-[ Go to **Address space** ↗ ](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
+[Go to **Address space** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space)
 2. Select the **BYOIP addresses** tab.
 3. In this example scenario, the prefix Cloudflare protects displays a **Withdrawn** status.
 After a DDoS attack occurs, the status changes to **Advertised**, which indicates Cloudflare protects the network.
@@ -53,7 +53,7 @@ For a detailed view of actions taken and attack types, use the **Network Analyti
 
 Go to the **Network Analytics** page.
 
-[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 
 Was this helpful?
 
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/partners/kentik/#page","headline":"Kentik · Cloudflare Magic Transit docs","description":"Kentik is a network observability company that helps detect attacks on your network and triggers Cloudflare's Magic Transit to begin advertisement. The example scenario includes two mitigations, one which pulls the advertisement from the router and a second mitigation that makes an API call to Cloudflare.","url":"https://developers.cloudflare.com/magic-transit/partners/kentik/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration"]}

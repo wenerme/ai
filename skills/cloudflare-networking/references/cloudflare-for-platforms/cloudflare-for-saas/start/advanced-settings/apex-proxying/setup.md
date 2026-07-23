@@ -4,15 +4,15 @@ title: Setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Setup
+# Setup
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To set up Cloudflare for SaaS for [apex proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/) \- as opposed to the [normal setup](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/) \- perform the following steps.
 
@@ -65,7 +65,7 @@ To create your fallback origin:
 1. Designate that record as your fallback origin.
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. For **Fallback Origin**, enter the hostname for your fallback origin.
 3. Select **Add Fallback Origin**.
 
@@ -109,7 +109,7 @@ Do not configure a custom hostname which matches the zone name. For example, if 
 To create a custom hostname:
 
 1. In the Cloudflare dashboard, go to the **Custom Hostnames** page.
-[ Go to **Custom Hostnames** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
+[Go to **Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames)
 2. Select **Add Custom Hostname**.
 3. Add your customer's hostname `app.customer.com` and set the relevant options, including:
 
@@ -208,7 +208,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/#page","headline":"Set up apex proxying · Cloudflare for Platforms docs","description":"Configure Cloudflare for SaaS to support apex domain custom hostnames.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

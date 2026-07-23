@@ -4,15 +4,15 @@ title: Managed rulesets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-for-platforms/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Managed rulesets
+# Managed rulesets
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/managed-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/managed-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you are interested in [WAF for SaaS](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/) but unsure of where to start, Cloudflare recommends using WAF Managed Rules. The Cloudflare security team creates and manages a variety of rules designed to detect common attack vectors and protect applications from vulnerabilities. These rules are offered in [managed rulesets](https://developers.cloudflare.com/waf/managed-rules/), like Cloudflare Managed and OWASP, which can be deployed with different settings and sensitivity levels.
 
@@ -46,7 +46,7 @@ Note
 Account-level WAF requires an Enterprise plan with a paid add-on.
 
 1. In the Cloudflare dashboard, go to the **WAF** page.
-[ Go to **WAF** ↗ ](https://dash.cloudflare.com/?to=/:account/application-security/waf)
+[Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Managed rulesets** tab.
 3. Select **Deploy** \> **Deploy managed ruleset**.
 4. Next to **Cloudflare Managed Ruleset**, choose **Select ruleset**.
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/managed-rulesets/#page","headline":"Managed rulesets per custom hostname · Cloudflare for Platforms docs","description":"Deploy WAF managed rulesets per custom hostname using WAF for SaaS.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/waf-for-saas/managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

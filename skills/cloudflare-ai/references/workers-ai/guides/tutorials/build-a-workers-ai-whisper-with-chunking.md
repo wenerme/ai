@@ -4,15 +4,15 @@ title: Whisper-large-v3-turbo with Cloudflare Workers AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Whisper-large-v3-turbo with Cloudflare Workers AI
+# Whisper-large-v3-turbo with Cloudflare Workers AI
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial you will learn how to:
 
@@ -33,7 +33,7 @@ You will create a new Worker project using the `create-cloudflare` CLI (C3). [C3
 
 Create a new project named `whisper-tutorial` by running:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- whisper-tutorial
@@ -99,14 +99,14 @@ In your wrangler file, add or update the following settings to enable Node.js AP
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21"
+	"compatibility_date": "2026-07-22"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 ```
 
 ## 4\. Handle large audio files with chunking
@@ -267,7 +267,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/#page","headline":"Whisper-large-v3-turbo with Cloudflare Workers AI · Cloudflare Workers AI docs","description":"Learn how to transcribe large audio files using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

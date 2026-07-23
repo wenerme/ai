@@ -4,22 +4,22 @@ title: Cloudflare WAN
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare WAN
+# Cloudflare WAN
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Explore resources to help you resolve issues with Cloudflare WAN (formerly Magic WAN) connectivity, routing, and tunnel health.
 
-* [ IPsec ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/ipsec/)
-* [ Tunnel health ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/tunnel-health/)
-* [ Connectivity ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/connectivity/)
-* [ Routing and BGP ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/)
+* [IPsec](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/ipsec/)
+* [Tunnel health](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/tunnel-health/)
+* [Connectivity](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/connectivity/)
+* [Routing and BGP](https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/routing-bgp/)
 
 Was this helpful?
 
@@ -27,7 +27,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/#page","headline":"Cloudflare WAN · Cloudflare One docs","description":"Cloudflare WAN resources and guides for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/wan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

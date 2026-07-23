@@ -4,15 +4,15 @@ title: Troubleshoot Rate Limiting (previous version)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshoot Rate Limiting (previous version)
+# Troubleshoot Rate Limiting (previous version)
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A few common rate limiting configuration issues prevent proper request matches:
 
@@ -39,7 +39,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting/#page","headline":"Troubleshoot Rate Limiting (previous version) · Cloudflare Web Application Firewall (WAF) docs","description":"Troubleshoot issues with the previous version of Rate Limiting.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

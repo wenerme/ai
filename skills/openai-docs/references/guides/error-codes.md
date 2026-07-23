@@ -1,6 +1,6 @@
 # Error codes
 
-This guide includes an overview on error codes you might see from both the [API](https://developers.openai.com/api/docs/introduction) and our [official Python library](https://developers.openai.com/api/docs/libraries#python-library). Each error code mentioned in the overview has a dedicated section with further guidance.
+This guide includes an overview on error codes you might see from both the [API](https://developers.openai.com/api/docs/introduction) and our [official Python library](https://developers.openai.com/api/docs/libraries#install-an-official-sdk). Each error code mentioned in the overview has a dedicated section with further guidance.
 
 ## API errors
 
@@ -86,17 +86,13 @@ To resolve this error, please follow these steps:
 
 429 - You exceeded your current quota, please check your plan and billing details
 
-This error message indicates that you hit your monthly [usage limit](https://platform.openai.com/settings/organization/limits) for the API, or for prepaid credits customers that you've consumed all your credits. You can view your maximum usage limit on the [limits page](https://platform.openai.com/settings/organization/limits). This could happen for several reasons, such as:
+This error message indicates that the organization exhausted its prepaid credits, reached its OpenAI-approved monthly [usage limit](https://platform.openai.com/settings/organization/limits), or reached an enforced organization or project [spend limit](https://developers.openai.com/api/docs/guides/spend-limits).
 
-- You are using a high-volume or complex service that consumes a lot of credits or tokens.
-- Your monthly budget is set too low for your organization’s usage.
-- Your monthly budget is set too low for your project's usage.
+To resolve this error:
 
-To resolve this error, please follow these steps:
-
-- Check your [current usage](https://platform.openai.com/settings/organization/usage) of your account, and compare that to your account's [limits](https://platform.openai.com/settings/organization/limits).
-- If you are on a free plan, consider [upgrading to a paid plan](https://platform.openai.com/settings/organization/billing) to get higher limits.
-- Reach out to your organization owner to increase the budgets for your project.
+- Compare [current usage](https://platform.openai.com/settings/organization/usage) with the organization's approved usage limit and applicable organization or project spend limits.
+- [Buy more credits](https://platform.openai.com/settings/organization/billing) or request a higher approved usage limit when needed.
+- Raise or remove the applicable hard spend limit if API traffic should resume before the monthly reset.
 
 503 - The engine is currently overloaded, please try again later
 
@@ -231,7 +227,7 @@ client = OpenAI()
 try:
   #Make your OpenAI API request here
   response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input="Hello world"
   )
 except openai.APIError as e:

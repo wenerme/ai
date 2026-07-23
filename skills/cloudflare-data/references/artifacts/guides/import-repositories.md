@@ -4,15 +4,15 @@ title: Import repositories
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Import repositories
+# Import repositories
 
-Last updated Apr 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/guides/import-repositories/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/guides/import-repositories/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Import an existing repository when you already have a baseline outside Artifacts and want to start using it as an Artifacts repo.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/import-repositories/#page","headline":"Import repositories · Cloudflare Artifacts docs","description":"Import existing Git repos into Artifacts.","url":"https://developers.cloudflare.com/artifacts/guides/import-repositories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

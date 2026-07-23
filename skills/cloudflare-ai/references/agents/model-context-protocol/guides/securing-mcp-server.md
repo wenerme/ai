@@ -4,15 +4,15 @@ title: Securing MCP servers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Securing MCP servers
+# Securing MCP servers
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 MCP servers, like any web application, need to be secured so they can be used by trusted users without abuse. The MCP specification uses OAuth 2.1 for authentication between MCP clients and servers.
 
@@ -410,17 +410,17 @@ When reading the cookie, verify the HMAC signature before trusting the data. If 
 
 ## Next steps
 
-### [ MCP authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
+### [MCP authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
 
- OAuth and authentication for MCP servers.
+OAuth and authentication for MCP servers.
 
-### [ Build a remote MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
+### [Build a remote MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
 
- Deploy MCP servers on Cloudflare.
+Deploy MCP servers on Cloudflare.
 
-### [ MCP security best practices ](https://modelcontextprotocol.io/specification/draft/basic/security%5Fbest%5Fpractices)
+### [MCP security best practices](https://modelcontextprotocol.io/specification/draft/basic/security%5Fbest%5Fpractices)
 
- Official MCP specification security guide.
+Official MCP specification security guide.
 
 Was this helpful?
 
@@ -428,7 +428,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/#page","headline":"Securing MCP servers · Cloudflare Agents docs","description":"Secure your MCP servers with OAuth 2.1, token validation, and scope-based access control on Cloudflare.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

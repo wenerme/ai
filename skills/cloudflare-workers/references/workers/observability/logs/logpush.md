@@ -4,15 +4,15 @@ title: Workers Logpush
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers Logpush
+# Workers Logpush
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/observability/logs/logpush/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/logs/logpush/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports the ability to send [Workers Trace Event Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers%5Ftrace%5Fevents/) to a [supported destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/). Worker’s Trace Events Logpush includes metadata about requests and responses, unstructured `console.log()` messages and any uncaught exceptions. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/workers/platform/pricing/#workers-trace-events-logpush).
 
@@ -29,7 +29,7 @@ Minimum required Wrangler version: 2.2.0\. Check your version by running `wrangl
 To configure a Logpush job, verify that your Cloudflare account role can use Logpush. To check your role:
 
 1. In the Cloudflare dashboard, go to the **Members** page.
-[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
+[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 2. Check your account permissions. Roles with Logpush configuration access are different than Workers permissions. Super Administrators, Administrators, and the Log Share roles have full access to Logpush.
 
 Alternatively, create a new [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) scoped at the Account level with Logs Edit permissions.
@@ -41,7 +41,7 @@ Alternatively, create a new [API token](https://developers.cloudflare.com/fundam
 To create a Logpush job in the Cloudflare dashboard:
 
 1. In the Cloudflare dashboard, go to the **Logpush** page.
-[ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
+[Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
 2. Select **Create a Logpush job**.
 3. Select a destination and configure it, if needed.
 4. Select **Workers trace events** as the data set > **Next**.
@@ -124,7 +124,7 @@ curl --request PUT \
 To enable Logpush logging via the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Worker.
 3. Go to **Settings** \> **Observability**.
 4. For **Logpush**, select **Enable** (this is only available if you have already [created a logpush job](https://developers.cloudflare.com/workers/observability/logs/logpush/#create-a-logpush-job)).
@@ -210,7 +210,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/logpush/#page","headline":"Workers Logpush · Cloudflare Workers docs","description":"Send Workers Trace Event Logs to a supported third party, such as a storage or logging provider.","url":"https://developers.cloudflare.com/workers/observability/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

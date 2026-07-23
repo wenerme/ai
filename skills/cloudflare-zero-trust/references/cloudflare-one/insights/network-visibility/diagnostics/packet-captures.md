@@ -4,15 +4,15 @@ title: Packet captures
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Packet captures
+# Packet captures
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Packet captures record network traffic flowing through Cloudflare's network so you can analyze individual packets for troubleshooting or security investigations. The output is contained within one or more files in PCAP format, which you can open in tools like [Wireshark ↗](https://www.wireshark.org/).
 
@@ -45,7 +45,7 @@ For help determining which data center to select for a packet capture, go to [ht
 * `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes (1 GB).
 
 1. In the Cloudflare dashboard, go to the **Network health** page.
-[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 2. Go to the **Diagnostics** tab.
 3. In **Network packet captures**, select **Start a capture**.
 4. Choose the type of capture you want to perform, and select **Next**.
@@ -237,7 +237,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 ## List packet captures
 
 1. In the Cloudflare dashboard, go to the **Network health** page.
-[ Go to **Network health** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
+[Go to **Network health** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health)
 2. Go to the **Diagnostics** tab.
 
 The list of packet captures associated with your account displays under **Network packet captures**.
@@ -278,7 +278,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/#page","headline":"Packet captures · Cloudflare One docs","description":"Request, monitor, and download packet captures to diagnose network issues.","url":"https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}

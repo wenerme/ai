@@ -4,15 +4,15 @@ title: Enable Amazon Kinesis
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Amazon Kinesis
+# Enable Amazon Kinesis
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/kinesis/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/kinesis/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logpush supports [Amazon Kinesis ↗](https://aws.amazon.com/kinesis/) as a destination for all datasets. Each Kinesis record that Logpush sends will contain a batch of GZIP-compressed data in newline-delimited JSON format (by default), or in the format specified in the [output\_options](https://developers.cloudflare.com/logs/logpush/logpush-job/log-output-options/) parameter when the job was created.
 
@@ -104,7 +104,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/kinesis/#page","headline":"Enable Amazon Kinesis · Cloudflare Logs docs","description":"Learn about enable amazon kinesis in Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/kinesis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

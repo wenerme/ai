@@ -4,15 +4,15 @@ title: Conversation state and memory
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Conversation state and memory
+# Conversation state and memory
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents need memory to be useful over time. Without it, every conversation starts from zero. The agent forgets who the user is, what it learned, and what it was doing. Memory is what turns a stateless LLM call into a persistent, context-aware agent.
 
@@ -711,17 +711,17 @@ const truncated = truncateOlderMessages(history);
 
 ## Related
 
-### [ Session API reference ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)
+### [Session API reference](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)
 
- Full API reference for Session, covering messages, context blocks, compaction, search, tools, and custom providers.
+Full API reference for Session, covering messages, context blocks, compaction, search, tools, and custom providers.
 
-### [ Store and sync state ](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
+### [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)
 
- setState() for simpler key-value persistence and real-time sync.
+setState() for simpler key-value persistence and real-time sync.
 
-### [ Think ](https://developers.cloudflare.com/agents/harnesses/think/)
+### [Think](https://developers.cloudflare.com/agents/harnesses/think/)
 
- Opinionated chat agent with built-in Session integration via configureSession().
+Opinionated chat agent with built-in Session integration via configureSession().
 
 Was this helpful?
 
@@ -729,7 +729,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/#page","headline":"Conversation state and memory · Cloudflare Agents docs","description":"How agents store and recall information, including read-only context, writable short-form memory, searchable knowledge, and on-demand skills.","url":"https://developers.cloudflare.com/agents/concepts/conversation-state-and-memory/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

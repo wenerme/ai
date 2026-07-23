@@ -4,15 +4,15 @@ title: Protect ISP and telecommunications networks from DDoS attacks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Protect ISP and telecommunications networks from DDoS attacks
+# Protect ISP and telecommunications networks from DDoS attacks
 
-Last updated Feb 18, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Feb 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -26,7 +26,7 @@ Cloudflare is well known for its DDoS mitigation services protecting public webs
 
 There are two main steps to deploying this solution. Firstly, setting up Cloudflare to [monitor ↗](https://blog.cloudflare.com/flow-based-monitoring-for-magic-transit) and detect DDoS attacks on the network. Then, when a DDoS event is observed, reroute traffic through Cloudflare where DDoS mitigation takes place.
 
-![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/_astro/protecting-sp-networks-from-ddos-fig1.BXZ5xvR3_Z13kPfb.svg)
+![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/_astro/protecting-sp-networks-from-ddos-fig1.BXZ5xvR3_21dWEi.svg)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -36,7 +36,7 @@ The first step is to gain visibility into the attacks taking place against the s
 2. Service provider network devices send all traffic flow data (Netflow, IPFIX or sFlow) to the [Network Flow](https://developers.cloudflare.com/network-flow/) (formerly Magic Network Monitoring) service. Cloudflare analyses this flow data to detect DDoS attacks.
 3. Cloudflare recommends, when possible, to connect to the Cloudflare network by setting up redundant [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/) (CNI) at our [Interconnection facilities ↗](https://www.peeringdb.com/net/4224), this allows adherence to the 1500 Bytes maximum transmission unit (MTU) for routed user traffic. Alternatively you can connect to the Cloudflare network using [Generic Routing Encapsulation (GRE) tunnels](https://developers.cloudflare.com/magic-transit/reference/gre-ipsec-tunnels/) over the Internet.
 4. In peacetime, traffic flows as usual between the ISP network and their upstream transit and peer networks, bypassing the Cloudflare network.
-![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/_astro/protecting-sp-networks-from-ddos-fig2.mhCca2XR_ZUkAfy.svg)
+![Figure 1: Overall solution of user access controls to, and the discovery of, sensitive data.](https://developers.cloudflare.com/_astro/protecting-sp-networks-from-ddos-fig2.mhCca2XR_29ecDU.svg)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -60,7 +60,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/#page","headline":"Protect ISP and telecommunications networks from DDoS attacks · Cloudflare Reference Architecture docs","description":"Learn how Internet service providers (ISPs) and telecommunications companies (such as T-Mobile or British Telecom) can protect themselves from DDoS attacks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protecting-sp-networks-from-ddos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

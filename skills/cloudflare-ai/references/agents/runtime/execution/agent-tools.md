@@ -4,15 +4,15 @@ title: Agents as tools
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Agents as tools
+# Agents as tools
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents as tools let one chat agent dispatch another chat-capable sub-agent as part of its work. The child is a real sub-agent with its own Durable Object storage, messages, tools, resumable stream, and drill-in URL. The parent keeps a small run registry so clients can render the child timeline, replay it after refresh, and clean it up later.
 
@@ -683,19 +683,19 @@ Raw `diagnostics_channel` subscribers should use the channel name `agents:agent_
 
 ## Example
 
-### [ Agents as tools example ](https://github.com/cloudflare/agents/tree/main/examples/agents-as-tools)
+### [Agents as tools example](https://github.com/cloudflare/agents/tree/main/examples/agents-as-tools)
 
- Run chat-capable sub-agents as retained tools, stream their timelines inline, and drill into child agents.
+Run chat-capable sub-agents as retained tools, stream their timelines inline, and drill into child agents.
 
 ## Related
 
-### [ Sub-agents ](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)
+### [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)
 
- Spawn child agents with isolated storage, typed RPC, and nested client routing.
+Spawn child agents with isolated storage, typed RPC, and nested client routing.
 
-### [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
+### [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
 
- Build AI chat interfaces with AIChatAgent and useAgentChat.
+Build AI chat interfaces with AIChatAgent and useAgentChat.
 
 Was this helpful?
 
@@ -703,7 +703,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/#page","headline":"Agents as tools · Cloudflare Agents docs","description":"Run Think and AIChatAgent sub-agents as retained, streaming tools from a parent agent.","url":"https://developers.cloudflare.com/agents/runtime/execution/agent-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

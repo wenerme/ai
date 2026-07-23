@@ -4,15 +4,15 @@ title: View and submit reports
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  View and submit reports
+# View and submit reports
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Submit reports
 
@@ -22,7 +22,7 @@ Cloudflare offers three ways for you to submit an abuse report:
 
 * Public form: Refer to [Submit an Abuse Report ↗](https://abuse.cloudflare.com/) to learn more.
 * The Cloudflare dashboard, on the **Abuse reports** page.
-[ Go to **Abuse reports** ↗ ](https://dash.cloudflare.com/?to=/:account/abuse-reports)
+[Go to **Abuse reports** ↗](https://dash.cloudflare.com/?to=/:account/abuse-reports)
 Optionally, filter the reports based on date, report status, report type, and domain.
 * The Cloudflare API: Use the [Abuse Reports API](https://developers.cloudflare.com/api/resources/abuse%5Freports/) to submit an abuse report.
 
@@ -31,7 +31,7 @@ Optionally, filter the reports based on date, report status, report type, and do
 Users with Admin, Super Admin, or Trust & Safety roles can view any abuse reports submitted and accepted against the content associated with their account.
 
 1. In the Cloudflare dashboard, go to the **Abuse reports** page.
-[ Go to **Abuse reports** ↗ ](https://dash.cloudflare.com/?to=/:account/abuse-reports)
+[Go to **Abuse reports** ↗](https://dash.cloudflare.com/?to=/:account/abuse-reports)
 2. Optionally, filter the reports based on date, report status, report type, and domain.
 
 If there was a mitigation against your website due to the abuse allegation, you may have the opportunity to request a review on that mitigation. Cloudflare will then review your request and potentially remove the mitigation.
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/#page","headline":"View and submit reports · Cloudflare Fundamentals docs","description":"Submit abuse reports to Cloudflare via the dashboard, public form, or API, and view reports filed against your account.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/submit-report/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

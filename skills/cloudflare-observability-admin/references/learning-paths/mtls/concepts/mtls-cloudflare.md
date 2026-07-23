@@ -4,15 +4,15 @@ title: Use mTLS with Cloudflare protected resources
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use mTLS with Cloudflare protected resources
+# Use mTLS with Cloudflare protected resources
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this implementation guide we will be focusing on the L7 / Application Layer security for HTTP/S requests targeting [proxied](https://developers.cloudflare.com/dns/proxy-status/) hostnames, including the [first connection](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) between client and Cloudflare.
 
@@ -37,7 +37,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/#page","headline":"Use mTLS with Cloudflare protected resources · Cloudflare Learning Paths","description":"Learn about use mtls with cloudflare protected resources in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/concepts/mtls-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

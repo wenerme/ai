@@ -4,15 +4,15 @@ title: Use your own player
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use your own player
+# Use your own player
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Stream is compatible with all video players that support HLS and DASH, which are standard formats for streaming media with broad support across all web browsers, mobile operating systems and media streaming devices.
 
@@ -40,7 +40,7 @@ https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8
 https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.mpd
 ```
 
-#### LL-HLS playback  Beta
+#### LL-HLS playback Beta
 
 If a Live Input is enabled for the Low-Latency HLS beta, add the query string `?protocol=llhls` to the HLS manifest URL to test the low latency manifest in a custom player. Refer to [Start a Live Stream](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#use-the-api) to enable this option.
 
@@ -51,7 +51,7 @@ https://customer-<CODE>.cloudflarestream.com/<UID>/manifest/video.m3u8?protocol=
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **Stream** page.
-[ Go to **Videos** ↗ ](https://dash.cloudflare.com/?to=/:account/stream/videos)
+[Go to **Videos** ↗](https://dash.cloudflare.com/?to=/:account/stream/videos)
 2. From the list of videos, locate your video and select it.
 3. From the **Settings** tab, locate the **HLS Manifest URL** and **Dash Manifest URL**.
 4. Select **Click to copy** under the option you want to use.
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/#page","headline":"Use your own player · Cloudflare Stream docs","description":"Play Cloudflare Stream videos with any HLS/DASH-compatible player on web, iOS, or Android.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

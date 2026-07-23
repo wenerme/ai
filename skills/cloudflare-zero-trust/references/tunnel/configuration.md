@@ -4,15 +4,15 @@ title: Configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration
+# Configuration
 
-Last updated May 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/configuration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page covers the most common configuration options for `cloudflared` tunnels, including high availability, firewall rules, and runtime parameters.
 
@@ -45,7 +45,7 @@ graph LR
 To deploy a replica for a remotely-managed tunnel:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select your tunnel.
 3. Select **Add a replica**.
 4. Select the operating system of the host where you want to deploy a replica.
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/configuration/#page","headline":"Configuration · Cloudflare Docs","description":"Configure tunnel ingress rules, origins, and protocol settings.","url":"https://developers.cloudflare.com/tunnel/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum","QUIC"]}

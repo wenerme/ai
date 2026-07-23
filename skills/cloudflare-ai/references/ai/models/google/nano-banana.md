@@ -4,7 +4,7 @@ title: Nano Banana
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Nano Banana
+# Nano Banana
 
- Text-to-Image • Google
+Text-to-Image • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/nano-banana/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/nano-banana/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/nano-banana `
+`google/nano-banana`
 
 * Third-party
 * Zero data retention
 
 Google's fast image generation model producing high-quality images from text prompts.
 
-| Model Info          |                                                                                                                       |
-| ------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                      |
-| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                |
-| Zero data retention | Yes                                                                                                                   |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
+| Model Info          |                                                                                                                      |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                     |
+| More information    | [link ↗](https://deepmind.google/technologies/imagen/)                                                               |
+| Zero data retention | Yes                                                                                                                  |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
 
 ## Usage
 
@@ -75,7 +75,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Vintage Tokyo Poster**  — Retro travel poster style illustration
+**Vintage Tokyo Poster** — Retro travel poster style illustration
 
 ```ts
 const response = await env.AI.run(
@@ -116,7 +116,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Dewdrops Macro**  — Photorealistic macro photography
+**Dewdrops Macro** — Photorealistic macro photography
 
 ```ts
 const response = await env.AI.run(
@@ -157,7 +157,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Pixel Art Marketplace**  — Isometric pixel art scene
+**Pixel Art Marketplace** — Isometric pixel art scene
 
 ```ts
 const response = await env.AI.run(
@@ -198,7 +198,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**High Resolution Landscape**  — Generate a high-resolution 4K landscape image
+**High Resolution Landscape** — Generate a high-resolution 4K landscape image
 
 ```ts
 const response = await env.AI.run(
@@ -271,9 +271,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/nano-banana/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -281,7 +281,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/nano-banana/#page","headline":"Nano Banana (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Google's fast image generation model producing high-quality images from text prompts.","url":"https://developers.cloudflare.com/ai/models/google/nano-banana/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

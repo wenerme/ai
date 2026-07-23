@@ -4,15 +4,15 @@ title: Customer Metadata Boundary
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Customer Metadata Boundary
+# Customer Metadata Boundary
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/metadata-boundary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 As part of the Data Localization Suite, the Customer Metadata Boundary (CMB) ensures that Customer Logs stay in the region you select.
 
@@ -54,7 +54,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/#page","headline":"Customer Metadata Boundary · Cloudflare Data Localization Suite docs","description":"Restrict where customer traffic metadata and logs are stored by region.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance","Privacy"]}

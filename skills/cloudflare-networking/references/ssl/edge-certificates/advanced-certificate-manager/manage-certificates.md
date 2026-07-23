@@ -4,15 +4,15 @@ title: Manage advanced certificates
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage advanced certificates
+# Manage advanced certificates
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Create a certificate
 
@@ -23,7 +23,7 @@ Once you order a certificate, you can review the [certificate's status](https://
 To create a new advanced certificate in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select **Order Advanced Certificate**.
 3. If Cloudflare does not have your billing information, you will need to enter that information.
 4. Enter the following information:
@@ -50,7 +50,7 @@ The available options for **Validation method** and **Certificate Validity Perio
 To delete an advanced certificate in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page.
-[ Go to **Edge Certificates** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
+[Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. Select a certificate.
 3. Select **Delete Certificate**.
 
@@ -119,7 +119,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#page","headline":"Manage advanced certificates · Cloudflare SSL/TLS docs","description":"Learn how to create, delete and perform other operations to manage your Cloudflare Advanced SSL certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

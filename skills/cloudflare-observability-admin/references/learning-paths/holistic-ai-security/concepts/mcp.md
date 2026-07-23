@@ -4,15 +4,15 @@ title: What is Model Context Protocol (MCP)?
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  What is Model Context Protocol (MCP)?
+# What is Model Context Protocol (MCP)?
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/mcp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/mcp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Model Context Protocol (MCP) ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) is a standardized way for AI agents to get the information and tools they need to operate. Similar to how an API works, it is a protocol that allows AI programs to connect to external sources of information and take actions in the real world, going beyond the limits of their original training data.
 
@@ -30,7 +30,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/mcp/#page","headline":"What is Model Context Protocol (MCP)? · Cloudflare Learning Paths","description":"Learn how MCP connects AI agents to data.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/concepts/mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

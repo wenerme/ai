@@ -4,15 +4,15 @@ title: Ownership challenge FAQ
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Ownership challenge FAQ
+# Ownership challenge FAQ
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The ownership challenge is a one-time verification that proves you have read access to a destination bucket before Cloudflare pushes logs to it. This mechanism prevents you from accidentally configuring a Logpush job that pushes data to a bucket you do not control.
 
@@ -101,7 +101,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/#page","headline":"Logpush ownership challenge · Cloudflare Logs docs","description":"Understand the Logpush destination ownership challenge.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/logpush-ownership-challenge/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

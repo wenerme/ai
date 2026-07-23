@@ -4,15 +4,15 @@ title: FAQ
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  FAQ
+# FAQ
 
-Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/faq/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions about Browser Run (formerly Browser Rendering).
 
@@ -163,7 +163,7 @@ You must be on an Enterprise plan to allowlist Browser Run on your own website b
 Browser Run uses different [bot detection IDs](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) depending on the method. Use the ID that matches the method you want to allowlist.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page of your account and domain.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**.
 3. Enter a descriptive name for the rule in **Rule name**, such as `Allow Browser Run`.
 4. Under **When incoming requests match**, use the **Field** dropdown to choose _Bot Detection ID_. For **Operator**, select _equals_. For **Value**, enter the [bot detection ID](https://developers.cloudflare.com/browser-run/reference/automatic-request-headers/#bot-detection) for the method you want to allowlist.
@@ -253,7 +253,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/faq/#page","headline":"Frequently asked questions about Cloudflare Browser Run · Cloudflare Browser Run docs","description":"Find answers to frequently asked questions about Browser Run, including errors, troubleshooting, and session management.","url":"https://developers.cloudflare.com/browser-run/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

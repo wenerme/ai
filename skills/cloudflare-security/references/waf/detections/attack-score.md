@@ -4,15 +4,15 @@ title: WAF attack score
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  WAF attack score
+# WAF attack score
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/attack-score/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/attack-score/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The attack score [traffic detection](https://developers.cloudflare.com/waf/concepts/#detection-versus-mitigation) classifies each request using a machine learning algorithm, assigning a score from 1 to 99 based on the likelihood that the request is malicious. This detection complements [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 
@@ -30,13 +30,13 @@ The full feature is available to Enterprise customers. Business plans only have 
 
 The Cloudflare WAF provides the following attack score fields:
 
-| Field                                                                                                                                                     | Description                                                                                                                                                                        | Required plan     |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
-| WAF Attack Score [cf.waf.score](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score/)  Number                   | A global score from 1–99 that combines the score of each WAF attack vector into a single score.                                                                                    | Enterprise        |
-| WAF SQLi Attack Score [cf.waf.score.sqli](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.sqli/)  Number    | A score from 1–99 classifying the [SQL injection ↗](https://www.cloudflare.com/learning/security/threats/sql-injection/) (SQLi) attack vector.                                     | Enterprise        |
-| WAF XSS Attack Score [cf.waf.score.xss](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.xss/)  Number       | A score from 1–99 classifying the [cross-site scripting ↗](https://www.cloudflare.com/learning/security/threats/cross-site-scripting/) (XSS) attack vector.                        | Enterprise        |
-| WAF RCE Attack Score [cf.waf.score.rce](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.rce/)  Number       | A score from 1–99 classifying the command injection or [remote code execution ↗](https://www.cloudflare.com/learning/security/what-is-remote-code-execution/) (RCE) attack vector. | Enterprise        |
-| WAF Attack Score Class [cf.waf.score.class](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.class/)  String | The attack score class of the current request, based on the WAF attack score.  Possible values: attack, likely\_attack, likely\_clean, and clean.                                  | Business or above |
+| Field                                                                                                                                                    | Description                                                                                                                                                                        | Required plan     |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- |
+| WAF Attack Score [cf.waf.score](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score/) Number                   | A global score from 1–99 that combines the score of each WAF attack vector into a single score.                                                                                    | Enterprise        |
+| WAF SQLi Attack Score [cf.waf.score.sqli](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.sqli/) Number    | A score from 1–99 classifying the [SQL injection ↗](https://www.cloudflare.com/learning/security/threats/sql-injection/) (SQLi) attack vector.                                     | Enterprise        |
+| WAF XSS Attack Score [cf.waf.score.xss](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.xss/) Number       | A score from 1–99 classifying the [cross-site scripting ↗](https://www.cloudflare.com/learning/security/threats/cross-site-scripting/) (XSS) attack vector.                        | Enterprise        |
+| WAF RCE Attack Score [cf.waf.score.rce](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.rce/) Number       | A score from 1–99 classifying the command injection or [remote code execution ↗](https://www.cloudflare.com/learning/security/what-is-remote-code-execution/) (RCE) attack vector. | Enterprise        |
+| WAF Attack Score Class [cf.waf.score.class](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.score.class/) String | The attack score class of the current request, based on the WAF attack score.  Possible values: attack, likely\_attack, likely\_clean, and clean.                                  | Business or above |
 
 You can use these fields in expressions of [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/). Numeric score fields range from `1` to `99`:
 
@@ -113,7 +113,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/attack-score/#page","headline":"WAF attack score · Cloudflare Web Application Firewall (WAF) docs","description":"Machine learning scores that classify each request for attack likelihood.","url":"https://developers.cloudflare.com/waf/detections/attack-score/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

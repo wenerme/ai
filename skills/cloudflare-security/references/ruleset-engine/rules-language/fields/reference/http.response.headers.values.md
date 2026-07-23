@@ -4,11 +4,11 @@ title: http.response.headers.values
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  http.response.headers.values
+# http.response.headers.values
 
-`http.response.headers.values` ` Array<String> `
+`http.response.headers.values` `Array<String>`
 
 The values of the headers in the HTTP response.
 
@@ -49,7 +49,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.response.headers.values/#page","headline":"http.response.headers.values · Cloudflare Ruleset Engine docs","description":"The values of the headers in the HTTP response.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.response.headers.values/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

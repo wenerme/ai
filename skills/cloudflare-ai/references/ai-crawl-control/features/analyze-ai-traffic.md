@@ -4,15 +4,15 @@ title: Analyze AI traffic
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-crawl-control/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Analyze AI traffic
+# Analyze AI traffic
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Crawl Control metrics provide you with insight on how AI crawlers are interacting with your website ([Cloudflare zone](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones)).
 
@@ -20,7 +20,7 @@ To view AI Crawl Control metrics:
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**.
-[ Go to **AI Crawl Control** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/ai)
+[Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 
 You can find meaningful information across the **Overview**, **Crawlers**, and **Metrics** tabs.
 
@@ -199,7 +199,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/#page","headline":"Analyze AI traffic · Cloudflare AI Crawl Control docs","description":"View metrics on AI crawler interactions with your site.","url":"https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

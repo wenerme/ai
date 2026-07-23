@@ -4,15 +4,15 @@ title: Threshold billing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/billing/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Threshold billing
+# Threshold billing
 
-Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/billing/threshold-billing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/threshold-billing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Threshold billing is an automatic payment collection mechanism for Cloudflare's usage-based products. When your combined usage charges across all usage-based products reach a certain level during a billing cycle, Cloudflare generates a mid-cycle invoice and charges your payment method on file.
 
@@ -57,7 +57,7 @@ If the payment for a threshold invoice fails:
 1. **Automatic retries** \- Cloudflare will automatically retry the payment over a 5-day period.
 2. **Email notification** \- You will receive an email notifying you of the failed payment with a link to pay the invoice or update your payment method.
 3. **Manual payment** \- You can pay the invoice directly at any time during the retry period through your Cloudflare dashboard.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 4. **After retries exhausted** \- If all payment retries fail, the invoice is marked as uncollectable and your account may be restricted.
 
 To avoid service interruption, ensure your payment method on file is current and has sufficient funds.
@@ -68,7 +68,7 @@ All threshold invoices appear in your billing history alongside your regular inv
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 2. Go to **Manage Account** \> **Billing**.
-[ Go to **Billing** ↗ ](https://dash.cloudflare.com/?to=/:account/billing)
+[Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Invoices** to view your invoice history.
 
 Threshold invoices are labeled to distinguish them from regular end-of-cycle invoices.
@@ -105,7 +105,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/threshold-billing/#page","headline":"Threshold billing · Cloudflare Billing docs","description":"Understand threshold-based billing for Cloudflare services.","url":"https://developers.cloudflare.com/billing/threshold-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

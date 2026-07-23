@@ -4,15 +4,15 @@ title: Create account
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create account
+# Create account
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/create-account/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/create-account/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To create a Cloudflare account:
 
@@ -31,7 +31,7 @@ You may want to customize the name of this account, either to help specify its p
 To change your account name:
 
 1. In the Cloudflare dashboard, go to the **Configurations** page.
-[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. For **Account Name**, select **Change Name**.
 3. Enter a new account name.
 4. Select **Save**.
@@ -70,7 +70,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/create-account/#page","headline":"Create account · Cloudflare Fundamentals docs","description":"Learn how to create a new Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/create-account/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Configure DNS zone defaults
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configure DNS zone defaults
+# Configure DNS zone defaults
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 While there are default values for DNS settings that Cloudflare applies to all new zones, Enterprise accounts have the option to configure their own DNS zone defaults according to their preference.
 
@@ -25,7 +25,7 @@ Any of the values specified as default can later be adjusted within each zone, o
 ## Steps
 
 1. In the Cloudflare dashboard, go to the account **Settings** page.
-[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **DNS Settings**. If these options are not displayed on your Cloudflare dashboard, you may need to reach out to your account team to have them added.
 3. For **DNS zone defaults**, select **Configure defaults**.
 
@@ -52,7 +52,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/#page","headline":"Configure DNS zone defaults · Cloudflare DNS docs","description":"Set default DNS settings applied to new zones in your account.","url":"https://developers.cloudflare.com/dns/additional-options/dns-zone-defaults/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

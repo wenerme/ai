@@ -4,15 +4,15 @@ title: Create your OAuth client
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create your OAuth client
+# Create your OAuth client
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ To create an OAuth client, you must have one of these roles for the associated a
 8. Select **Create client**.
 9. Save your **Client ID** and **Client Secret** in a secure location.
 
-[ Go to **OAuth clients** ↗ ](https://dash.cloudflare.com/?to=/:account/oauth-clients)
+[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
 
 To create OAuth clients with the Cloudflare API, create an API token with the `OAuth Clients Write` permission.
 
@@ -133,7 +133,7 @@ Setting a client's visibility to public is permanent. You cannot change the visi
 2. Open the action menu for your client.
 3. Select **Change Visibility**.
 
-[ Go to **OAuth clients** ↗ ](https://dash.cloudflare.com/?to=/:account/oauth-clients)
+[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
 
 ```bash
 curl -X PATCH "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/oauth_clients/$CLIENT_ID" \
@@ -177,7 +177,7 @@ Each client can have two secrets. This lets you create a new secret, update your
 4. Save the new secret in a secure location.
 5. After your client uses the new secret, delete the old secret.
 
-[ Go to **OAuth clients** ↗ ](https://dash.cloudflare.com/?to=/:account/oauth-clients)
+[Go to **OAuth clients** ↗](https://dash.cloudflare.com/?to=/:account/oauth-clients)
 
 To check whether a client is in the middle of a secret rotation, look for `has_rotated_secret` in the `GET` response. If the value is `true`, delete the old secret before you create another secret.
 
@@ -203,7 +203,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/#page","headline":"Create your OAuth client · Cloudflare Fundamentals docs","description":"Create an OAuth client that can access Cloudflare API resources on behalf of users.","url":"https://developers.cloudflare.com/fundamentals/oauth/create-an-oauth-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

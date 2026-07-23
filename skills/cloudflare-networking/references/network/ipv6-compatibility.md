@@ -4,15 +4,15 @@ title: IPv6 compatibility
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  IPv6 compatibility
+# IPv6 compatibility
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network/ipv6-compatibility/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network/ipv6-compatibility/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare enables IPv6 on all domains without requiring additional configuration or hardware (as long as your host provides IPv6 support).
 
@@ -48,7 +48,7 @@ To allow IPv6-only clients to connect to IPv4-only origin web servers, keep IPv6
 To turn off IPv6 compatibility in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Network** page.
-[ Go to **Network** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/network)
+[Go to **Network** ↗](https://dash.cloudflare.com/?to=/:account/:zone/network)
 2. Turn off **IPv6 Compatibility**.
 
 To turn off IPv6 compatibility using the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `ipv6` as the setting name in the URI path, and the `value` parameter set to `"off"`.
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/ipv6-compatibility/#page","headline":"IPv6 compatibility · Cloudflare Network settings docs","description":"Configure IPv6 compatibility for your Cloudflare domain.","url":"https://developers.cloudflare.com/network/ipv6-compatibility/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}

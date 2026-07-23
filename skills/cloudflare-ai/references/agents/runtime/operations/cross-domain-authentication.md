@@ -4,15 +4,15 @@ title: Cross-domain authentication
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cross-domain authentication
+# Cross-domain authentication
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When your Agents are deployed, to keep things secure, send a token from the client, then verify it on the server. This guide covers authentication patterns for WebSocket connections to agents.
 
@@ -437,21 +437,21 @@ export class SecureAgent extends Agent {
 
 ## Next steps
 
-### [ Routing ](https://developers.cloudflare.com/agents/runtime/communication/routing/)
+### [Routing](https://developers.cloudflare.com/agents/runtime/communication/routing/)
 
- Routing and authentication hooks.
+Routing and authentication hooks.
 
-### [ WebSockets ](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
+### [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)
 
- Real-time bidirectional communication.
+Real-time bidirectional communication.
 
-### [ GitHub OAuth agent example ](https://github.com/cloudflare/agents/tree/main/examples/auth-agent)
+### [GitHub OAuth agent example](https://github.com/cloudflare/agents/tree/main/examples/auth-agent)
 
- Protect an app built with Agents using GitHub OAuth, HTTP-only cookies, and server-owned Durable Object routing.
+Protect an app built with Agents using GitHub OAuth, HTTP-only cookies, and server-owned Durable Object routing.
 
-### [ Agents API ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents API](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Complete API reference for the Agents SDK.
+Complete API reference for the Agents SDK.
 
 Was this helpful?
 
@@ -459,7 +459,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

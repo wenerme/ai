@@ -4,15 +4,15 @@ title: About drand
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/randomness-beacon/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  About drand
+# About drand
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/randomness-beacon/about/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/randomness-beacon/about/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The drand project aims to address the current lack of services providing distributed public randomness. Distributed to increase the resilience and trustworthiness, drand provides a standalone randomness-as-a-service network that is application agnostic. This is similar to how NTP networks serve timing information across the globe.
 
@@ -26,7 +26,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/randomness-beacon/about/#page","headline":"About drand · Cloudflare Randomness Beacon docs","description":"Learn about the drand randomness-as-a-service project.","url":"https://developers.cloudflare.com/randomness-beacon/about/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: Understand how Cloudflare works
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Learn how Cloudflare makes the Internet safer, faster, and more reliable for everyone through the connectivity cloud.
 

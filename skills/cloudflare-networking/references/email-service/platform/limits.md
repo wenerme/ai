@@ -4,17 +4,17 @@ title: Limits
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Limits
+# Limits
 
 Email sending quotas, rate limits, and how to request higher limits for production use
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/platform/limits/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Email Service has the following limits to ensure optimal performance and prevent abuse. These limits apply to emails sent via the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/), the [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), and [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/) unless noted otherwise.
 
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/platform/limits/#page","headline":"Limits · Cloudflare Email Service docs","description":"Email Service sending quotas, rate limits, message size limits, and compliance requirements.","url":"https://developers.cloudflare.com/email-service/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

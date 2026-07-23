@@ -4,15 +4,15 @@ title: Authentication
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Authentication
+# Authentication
 
-Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/api/tokens/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can generate an API token to serve as the Access Key for usage with existing S3-compatible SDKs or XML APIs.
 
@@ -25,7 +25,7 @@ You must purchase R2 before you can generate an API token.
 To create an API token:
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Under the **Account Details** section, select **Manage** next to **API Tokens**.
 3. Choose to create either:
 
@@ -156,7 +156,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

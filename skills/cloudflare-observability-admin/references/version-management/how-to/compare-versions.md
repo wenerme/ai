@@ -4,15 +4,15 @@ title: Compare versions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/version-management/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Compare versions
+# Compare versions
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/version-management/how-to/compare-versions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/version-management/how-to/compare-versions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Quickly view differences between versions to make sure your configurations are correct before [promoting a version](https://developers.cloudflare.com/version-management/how-to/environments/#change-environment-version) to a new environment.
 
@@ -21,7 +21,7 @@ A common use case would be to compare the versions in staging and production to 
 To compare versions:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and zone.
 3. Go to **Version Management** \> **Comparisons**.
 4. Select two different versions.
@@ -39,7 +39,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/how-to/compare-versions/#page","headline":"Compare versions · Cloudflare Version Management docs","description":"View differences between configuration versions.","url":"https://developers.cloudflare.com/version-management/how-to/compare-versions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

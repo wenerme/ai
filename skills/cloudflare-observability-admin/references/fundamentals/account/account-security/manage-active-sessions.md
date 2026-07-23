@@ -4,15 +4,15 @@ title: Manage active sessions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage active sessions
+# Manage active sessions
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the Cloudflare dashboard, you can view a list of active sessions associated with your email address.
 
@@ -31,7 +31,7 @@ Some customers can also enforce single-sign on (SSO) by [adding a Dashboard SSO 
 To view the active sessions associated with your email address:
 
 1. In the Cloudflare dashboard, go to the **Account home** page.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **My Profile** \> **Sessions**.
 
 ## Revoke active sessions
@@ -41,7 +41,7 @@ When there is more than one active session associated with your email account, y
 To revoke a session:
 
 1. Log in to the Cloudflare dashboard.
-[ Go to **Account home** ↗ ](https://dash.cloudflare.com/?to=/:account/home)
+[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **My Profile** \> **Sessions**.
 3. On a specific section, click **Revoke**.
 4. You will be prompted to enter your password before revoking the session.
@@ -52,7 +52,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/#page","headline":"Manage active sessions · Cloudflare Fundamentals docs","description":"View and revoke active login sessions associated with your Cloudflare account to maintain account security.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/manage-active-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

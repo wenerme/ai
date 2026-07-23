@@ -4,15 +4,15 @@ title: Manage internal zones
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage internal zones
+# Manage internal zones
 
-Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to the following sections to learn how to manage your [internal DNS zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/).
 
@@ -31,7 +31,7 @@ When setting up internal zones, observe the following conditions:
 ## Create an internal zone
 
 1. In the Cloudflare dashboard, go to the **Internal DNS** page.
-[ Go to **Internal DNS** ↗ ](https://dash.cloudflare.com/?to=/:account/internal-dns)
+[Go to **Internal DNS** ↗](https://dash.cloudflare.com/?to=/:account/internal-dns)
 2. Select **Create an internal zone**.
 3. Give your internal zone a name.
 1. Add DNS records to your internal zone using your preferred option:
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/#page","headline":"Manage internal zones · Cloudflare DNS docs","description":"Understand how to set up and manage internal DNS zones with Cloudflare. Explore configuration conditions, zone creation, and available API endpoints.","url":"https://developers.cloudflare.com/dns/internal-dns/internal-zones/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

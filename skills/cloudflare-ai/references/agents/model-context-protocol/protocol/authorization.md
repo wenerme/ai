@@ -4,15 +4,15 @@ title: Authorization
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Authorization
+# Authorization
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When building a [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io) server, you need both a way to allow users to login (authentication) and allow them to grant the MCP client access to resources on their account (authorization).
 
@@ -267,13 +267,13 @@ Checking inside the handler returns an error message to the LLM, which can expla
 
 ## Next steps
 
-### [ Workers OAuth Provider ](https://github.com/cloudflare/workers-oauth-provider)
+### [Workers OAuth Provider](https://github.com/cloudflare/workers-oauth-provider)
 
- OAuth provider library for Workers.
+OAuth provider library for Workers.
 
-### [ MCP portals ](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/)
+### [MCP portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/)
 
- Set up MCP portals to provide governance and security.
+Set up MCP portals to provide governance and security.
 
 Was this helpful?
 
@@ -281,7 +281,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/#page","headline":"Authorization · Cloudflare Agents docs","description":"Add OAuth 2.1 authorization to your MCP server using Cloudflare Access, third-party providers, or your own identity system.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

@@ -4,17 +4,17 @@ title: Use Workers KV from Durable Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Workers KV from Durable Objects
+# Use Workers KV from Durable Objects
 
 Read and write to/from Workers KV within a Durable Object
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following Worker script shows you how to configure a Durable Object to read from and/or write to a [Workers KV namespace](https://developers.cloudflare.com/kv/concepts/how-kv-works/). This is useful when using a Durable Object to coordinate between multiple clients, and allows you to serialize writes to KV and/or broadcast a single read from KV to hundreds or thousands of clients connected to a single Durable Object [using WebSockets](https://developers.cloudflare.com/durable-objects/best-practices/websockets/).
 
@@ -166,7 +166,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/#page","headline":"Durable Objects - Use KV within Durable Objects · Cloudflare Durable Objects docs","description":"Read and write to/from KV within a Durable Object","url":"https://developers.cloudflare.com/durable-objects/examples/use-kv-from-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

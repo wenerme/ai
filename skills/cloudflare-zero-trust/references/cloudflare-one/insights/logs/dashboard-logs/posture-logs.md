@@ -4,15 +4,15 @@ title: Posture logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Posture logs
+# Posture logs
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Posture logs show the results of [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) — security requirements such as OS version, disk encryption, or endpoint protection status — reported by the Cloudflare One Client. Use these logs to identify which devices are passing or failing your organization's posture requirements and to troubleshoot individual check results.
 
@@ -57,7 +57,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/#page","headline":"Posture logs · Cloudflare One docs","description":"Monitor the results of device posture checks performed on your users' devices.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/posture-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

@@ -4,7 +4,7 @@ title: Recraft V4
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Recraft logo](https://developers.cloudflare.com/_astro/recraft.BhhnJczi.svg)
 
-#  Recraft V4
+# Recraft V4
 
- Text-to-Image • Recraft
+Text-to-Image • Recraft
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/recraft/recraftv4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/recraft/recraftv4/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` recraft/recraftv4 `
+`recraft/recraftv4`
 
 * Third-party
 * Zero data retention
 
 Recraft V4 generates art-directed images with strong composition, accurate text rendering, and design taste built in. Fast and cost-efficient at standard resolution.
 
-| Model Info          |                                                                                                                      |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                               |
-| More information    | [link ↗](https://www.recraft.ai/)                                                                                    |
-| Zero data retention | Yes                                                                                                                  |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4) |
+| Model Info          |                                                                                                                     |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.recraft.ai/terms)                                                                              |
+| More information    | [link ↗](https://www.recraft.ai/)                                                                                   |
+| Zero data retention | Yes                                                                                                                 |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4) |
 
 ## Usage
 
@@ -70,7 +70,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Scene Composition**  — Generate a complex compositional scene
+**Scene Composition** — Generate a complex compositional scene
 
 ```ts
 const response = await env.AI.run(
@@ -108,7 +108,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Custom Size**  — Specify output dimensions
+**Custom Size** — Specify output dimensions
 
 ```ts
 const response = await env.AI.run(
@@ -148,7 +148,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**With Color Controls**  — Guide generation with specific brand colors
+**With Color Controls** — Guide generation with specific brand colors
 
 ```ts
 const response = await env.AI.run(
@@ -205,7 +205,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Background Color**  — Set a specific background color
+**Background Color** — Set a specific background color
 
 ```ts
 const response = await env.AI.run(
@@ -283,9 +283,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/recraft/recraftv4/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -293,7 +293,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/recraft/recraftv4/#page","headline":"Recraft V4 (Recraft) · Cloudflare AI docs · Cloudflare AI docs","description":"Recraft V4 generates art-directed images with strong composition, accurate text rendering, and design taste built in. Fast and cost-efficient at standard resolution.","url":"https://developers.cloudflare.com/ai/models/recraft/recraftv4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

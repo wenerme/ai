@@ -4,15 +4,15 @@ title: Update cloudflared
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Update cloudflared
+# Update cloudflared
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Updates will cause `cloudflared` to restart which will impact traffic currently being served. You can perform zero-downtime upgrades by using Cloudflare's [Load Balancer product](#update-with-cloudflare-load-balancer) or by using [multiple cloudflared instances](#update-with-multiple-cloudflared-instances).
 
@@ -94,7 +94,7 @@ sudo systemctl restart cloudflared.service
 **If you created a remotely-managed tunnel using the dashboard:**
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select your tunnel to open its detail page.
 3. On the **Overview** tab, copy the Docker installation command. The copied command will contain your token.
 4. Paste this command into a terminal window.
@@ -176,7 +176,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/#page","headline":"Update cloudflared · Cloudflare Docs","description":"Update cloudflared to the latest version.","url":"https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Docker"]}

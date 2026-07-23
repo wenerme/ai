@@ -4,15 +4,15 @@ title: Add a site
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Add a site
+# Add a site
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/add-site/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/add-site/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In clientless access deployments, users connect to internal applications via public hostnames. You will need to own a domain, add it to Cloudflare, and configure Cloudflare as the [authoritative DNS provider](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#34-update-your-registrar) for that domain. Enterprise customers who cannot change their authoritative DNS provider have the option to configure a [CNAME setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/).
 
@@ -83,7 +83,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/add-site/#page","headline":"Add a site · Cloudflare Learning Paths","description":"Add your domain to Cloudflare DNS.","url":"https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/add-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

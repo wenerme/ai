@@ -4,11 +4,11 @@ title: cf.tls_client_auth.cert_verified
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  cf.tls\_client\_auth.cert\_verified
+# cf.tls\_client\_auth.cert\_verified
 
-`cf.tls_client_auth.cert_verified` ` Boolean `
+`cf.tls_client_auth.cert_verified` `Boolean`
 
 Returns `true` when an mTLS client presents a valid client certificate.
 
@@ -24,7 +24,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_verified/#page","headline":"cf.tls_client_auth.cert_verified · Cloudflare Ruleset Engine docs","description":"Returns true when an mTLS client presents a valid client certificate.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_verified/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

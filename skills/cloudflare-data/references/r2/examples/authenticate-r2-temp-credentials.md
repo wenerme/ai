@@ -4,15 +4,15 @@ title: Authenticate against R2 with temporary credentials
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Authenticate against R2 with temporary credentials
+# Authenticate against R2 with temporary credentials
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following examples show how to generate R2 [temporary credentials](https://developers.cloudflare.com/r2/api/s3/temporary-credentials/) via both the Temporary Credentials API and local client-side signing, and how to use the resulting credentials with an S3 client.
 
@@ -58,7 +58,7 @@ The response wraps the credentials in a `result` object:
 
 This example uses [jose ↗](https://www.npmjs.com/package/jose) to sign the JWT and [aws4fetch ↗](https://www.npmjs.com/package/aws4fetch) to issue signed requests.
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i jose aws4fetch
@@ -215,7 +215,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/#page","headline":"Authenticate against R2 with temporary credentials · Cloudflare R2 docs","description":"Authenticate against R2 with temporary credentials.","url":"https://developers.cloudflare.com/r2/examples/authenticate-r2-temp-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,17 +4,17 @@ title: Use RpcTarget class to handle Durable Object metadata
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use RpcTarget class to handle Durable Object metadata
+# Use RpcTarget class to handle Durable Object metadata
 
 Access the name from within a Durable Object using RpcTarget.
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When working with Durable Objects, you will need to access the name that was used to create the Durable Object via `idFromName()`. This name is typically a meaningful identifier that represents what the Durable Object is responsible for (like a user ID, room name, or resource identifier).
 
@@ -277,7 +277,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/#page","headline":"Use RpcTarget class to handle Durable Object metadata · Cloudflare Durable Objects docs","description":"Access the name from within a Durable Object using RpcTarget.","url":"https://developers.cloudflare.com/durable-objects/examples/reference-do-name-using-init/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

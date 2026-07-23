@@ -4,7 +4,7 @@ title: RunwayML Aleph 2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)
 
-#  RunwayML Aleph 2
+# RunwayML Aleph 2
 
- Text-to-Video • RunwayML
+Text-to-Video • RunwayML
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` runwayml/aleph-2 `
+`runwayml/aleph-2`
 
 * Third-party
 
 RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.
 
-| Model Info        |                                                                                                                     |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://runwayml.com/terms-of-use)                                                                         |
-| More information  | [link ↗](https://runwayml.com/)                                                                                     |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/aleph-2) |
+| Model Info        |                                                                                                                    |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Terms and License | [link ↗](https://runwayml.com/terms-of-use)                                                                        |
+| More information  | [link ↗](https://runwayml.com/)                                                                                    |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/aleph-2) |
 
 ## Usage
 
@@ -70,7 +70,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Keyframe-Guided Edit**  — Edit a video using a reference image anchored to the first frame of the output
+**Keyframe-Guided Edit** — Edit a video using a reference image anchored to the first frame of the output
 
 ```ts
 const response = await env.AI.run(
@@ -120,7 +120,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Timed Keyframe Edit**  — Place a guidance image at a specific timestamp within the input video using keyframes\[\].seconds
+**Timed Keyframe Edit** — Place a guidance image at a specific timestamp within the input video using keyframes\[\].seconds
 
 ```ts
 const response = await env.AI.run(
@@ -170,7 +170,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Content Moderation Override**  — Edit a video featuring public figures with relaxed content moderation
+**Content Moderation Override** — Edit a video featuring public figures with relaxed content moderation
 
 ```ts
 const response = await env.AI.run(
@@ -250,9 +250,9 @@ video
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -260,7 +260,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/runwayml/aleph-2/#page","headline":"RunwayML Aleph 2 (RunwayML) · Cloudflare AI docs · Cloudflare AI docs","description":"RunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.","url":"https://developers.cloudflare.com/ai/models/runwayml/aleph-2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

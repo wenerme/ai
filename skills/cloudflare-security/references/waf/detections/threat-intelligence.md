@@ -4,15 +4,15 @@ title: Threat intelligence
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Threat intelligence
+# Threat intelligence
 
-Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/threat-intelligence/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/threat-intelligence/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The threat intelligence detection matches incoming requests against indicators in the [Cloudforce One](https://developers.cloudflare.com/security-center/cloudforce-one/) threat intelligence database. The detection matches on client IP address. If the IP was involved in threat activity in the past seven days, Cloudflare populates [threat intelligence fields](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/) you can use in WAF rule expressions.
 
@@ -54,7 +54,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/#page","headline":"Threat intelligence · Cloudflare Web Application Firewall (WAF) docs","description":"Match incoming requests against Cloudforce One threat intelligence in WAF rules.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}

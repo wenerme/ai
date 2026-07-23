@@ -4,15 +4,15 @@ title: Upstash
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Upstash
+# Upstash
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Upstash ↗](https://upstash.com/) is a serverless database with Redis\* and Kafka API. Upstash also offers QStash, a task queue/scheduler designed for the serverless.
 
@@ -54,7 +54,7 @@ npx wrangler secret put UPSTASH_REDIS_REST_TOKEN
 # When prompted, paste your Upstash Redis REST token
 ```
 4. In your Worker, install the `@upstash/redis`, a HTTP client to connect to your database and start manipulating data:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @upstash/redis
 ```
@@ -103,7 +103,7 @@ npx wrangler secret put QSTASH_TOKEN
 # When prompted, paste your QStash token
 ```
 3. In your Worker, install the `@upstash/qstash`, a HTTP client to connect to your database QStash endpoint:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @upstash/qstash
 ```
@@ -126,7 +126,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/#page","headline":"Upstash · Cloudflare Workers docs","description":"Connect Cloudflare Workers to Upstash for serverless Redis and Kafka integrations.","url":"https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

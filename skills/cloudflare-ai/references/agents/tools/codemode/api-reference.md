@@ -4,15 +4,15 @@ title: Code Mode API reference
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Code Mode API reference
+# Code Mode API reference
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/api-reference/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/api-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Code Mode publishes six package entry points. Import framework-specific APIs from their matching entry point:
 
@@ -57,6 +57,9 @@ interface CodemodeRuntimeHandle {
 	tool(
 		options?: CodemodeRuntimeToolOptions,
 	): Tool<ProxyToolInput, ProxyToolOutput>;
+	execute(input: ProxyToolInput): Promise<ProxyToolOutput>;
+	search(query: string): Promise<SearchOutput>;
+	describe(target: string): Promise<DescribeOutput>;
 	approve(options: CodemodeApproveOptions): Promise<ProxyToolOutput>;
 	reject(options: CodemodeRejectOptions): Promise<boolean>;
 	rollback(options: CodemodeRollbackOptions): Promise<void>;
@@ -76,6 +79,9 @@ The handle methods have these effects:
 | Method                       | Effect                                                                                                                                                                               |
 | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | tool(options?)               | Returns the AI SDK tool given to the model. description replaces the default description. connectorHints adds a one-line hint for each connector when using the default description. |
+| execute({ code })            | Runs code directly without adapting the runtime to an AI SDK tool. The result can complete, pause for approval, or return an error status.                                           |
+| search(query)                | Searches connector methods and saved snippets without running sandbox code.                                                                                                          |
+| describe(target)             | Returns on-demand TypeScript documentation for a connector, method, or saved snippet.                                                                                                |
 | approve({ executionId })     | Resumes a paused execution through replay. The result can complete, pause again, or return an error status. It does not revive a non-paused execution.                               |
 | reject({ seq, executionId }) | Rejects one pending action and terminates the execution. Returns false if the action is no longer pending. It does not roll back earlier actions.                                    |
 | rollback({ executionId })    | Calls available revert functions in reverse call order. Missing connectors and methods without revert remain applied. It attempts later reverts after a failure.                     |
@@ -236,6 +242,7 @@ type SearchResult = {
 	connector: string;
 	method: string;
 	description?: string;
+	requiresApproval?: boolean;
 	kind: "method" | "snippet";
 	score: number;
 };
@@ -249,10 +256,13 @@ type SearchOutput = {
 type DescribeOutput = {
 	path: string;
 	description?: string;
+	requiresApproval?: boolean;
 	types: string;
 	kind: "connector" | "method" | "snippet";
 };
 ```
+
+`requiresApproval` is `true` when a connector method pauses before execution. It is omitted for methods that do not require approval and for snippets.
 
 ### Snippet types
 
@@ -863,8 +873,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/#page","headline":"Code Mode API reference · Cloudflare Agents docs","description":"Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.","url":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/#page","headline":"Code Mode API reference · Cloudflare Agents docs","description":"Reference the public classes, functions, options, runtime methods, connector hooks, and result types exported by Code Mode.","url":"https://developers.cloudflare.com/agents/tools/codemode/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

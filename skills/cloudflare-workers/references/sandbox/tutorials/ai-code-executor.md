@@ -4,15 +4,15 @@ title: Build an AI code executor
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build an AI code executor
+# Build an AI code executor
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build an AI-powered code execution system using Sandbox SDK and Claude. Turn natural language questions into Python code, execute it securely, and return results.
 
@@ -40,7 +40,7 @@ You'll also need:
 
 Create a new Sandbox SDK project:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- ai-code-executor --template=cloudflare/sandbox-sdk/examples/minimal
@@ -62,7 +62,7 @@ cd ai-code-executor
 
 Install the Anthropic SDK:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @anthropic-ai/sdk
@@ -287,7 +287,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/#page","headline":"Build an AI code executor · Cloudflare Sandbox SDK docs","description":"Use Claude to generate Python code from natural language and execute it securely in sandboxes.","url":"https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

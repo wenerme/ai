@@ -4,15 +4,15 @@ title: Bind to Workers API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/stream/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bind to Workers API
+# Bind to Workers API
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/stream/manage-video-library/bindings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/manage-video-library/bindings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) connects your [Worker](https://developers.cloudflare.com/workers/) to external resources on the Developer Platform, like [Stream](https://developers.cloudflare.com/stream/), [R2 buckets](https://developers.cloudflare.com/r2/buckets/), or [KV namespaces](https://developers.cloudflare.com/kv/concepts/kv-namespaces/).
 
@@ -509,85 +509,85 @@ export default {
 
 `StreamVideo` is returned by operations that retrieve or create a video. It contains the full metadata for a video.
 
-* `id` ` string `
+* `id` `string`
 
   * The unique identifier for the video.
-* `creator` ` string | null `
+* `creator` `string | null`
 
   * A user-defined identifier for the media creator.
-* `thumbnail` ` string `
+* `thumbnail` `string`
 
   * The thumbnail URL for the video.
-* `thumbnailTimestampPct` ` number `
+* `thumbnailTimestampPct` `number`
 
   * The thumbnail timestamp percentage.
-* `readyToStream` ` boolean `
+* `readyToStream` `boolean`
 
   * Indicates whether the video is ready to stream.
-* `readyToStreamAt` ` string | null `
+* `readyToStreamAt` `string | null`
 
   * The date and time the video became ready to stream.
-* `status` ` StreamVideoStatus `
+* `status` `StreamVideoStatus`
 
   * Processing status information. Refer to [StreamVideoStatus](#streamvideostatus).
-* `meta` ` Record<string, string> `
+* `meta` `Record<string, string>`
 
   * A user modifiable key-value store.
-* `created` ` string `
+* `created` `string`
 
   * The date and time the video was created.
-* `modified` ` string `
+* `modified` `string`
 
   * The date and time the video was last modified.
-* `scheduledDeletion` ` string | null `
+* `scheduledDeletion` `string | null`
 
   * The date and time at which the video will be deleted.
-* `size` ` number `
+* `size` `number`
 
   * The size of the video in bytes.
-* `preview` ` string `optional
+* `preview` `string`optional
 
   * The preview URL for the video.
-* `allowedOrigins` ` Array<string> `
+* `allowedOrigins` `Array<string>`
 
   * Origins allowed to display the video.
-* `requireSignedURLs` ` boolean | null `
+* `requireSignedURLs` `boolean | null`
 
   * Indicates whether signed URLs are required.
-* `uploaded` ` string | null `
+* `uploaded` `string | null`
 
   * The date and time the video was uploaded.
-* `uploadExpiry` ` string | null `
+* `uploadExpiry` `string | null`
 
   * The date and time when the upload URL expires.
-* `maxSizeBytes` ` number | null `
+* `maxSizeBytes` `number | null`
 
   * The maximum size in bytes for direct uploads.
-* `maxDurationSeconds` ` number | null `
+* `maxDurationSeconds` `number | null`
 
   * The maximum duration in seconds for direct uploads.
-* `duration` ` number `
+* `duration` `number`
 
   * The video duration in seconds. `-1` indicates unknown.
-* `input` ` StreamVideoInput `
+* `input` `StreamVideoInput`
 
   * Input metadata for the original upload. Refer to [StreamVideoInput](#streamvideoinput).
-* `hlsPlaybackUrl` ` string `
+* `hlsPlaybackUrl` `string`
 
   * The HLS playback URL for the video.
-* `dashPlaybackUrl` ` string `
+* `dashPlaybackUrl` `string`
 
   * The DASH playback URL for the video.
-* `watermark` ` StreamWatermark | null `
+* `watermark` `StreamWatermark | null`
 
   * The watermark applied to the video, if any. Refer to [StreamWatermark](#streamwatermark).
-* `liveInputId` ` string | null `optional
+* `liveInputId` `string | null`optional
 
   * The live input ID associated with the video, if any.
-* `clippedFromId` ` string | null `
+* `clippedFromId` `string | null`
 
   * The source video ID if this is a clip.
-* `publicDetails` ` StreamPublicDetails | null `
+* `publicDetails` `StreamPublicDetails | null`
 
   * Public details associated with the video. Refer to [StreamPublicDetails](#streampublicdetails).
 
@@ -595,19 +595,19 @@ export default {
 
 Processing status information for a video.
 
-* `state` ` string `
+* `state` `string`
 
   * The current processing state.
-* `step` ` string `optional
+* `step` `string`optional
 
   * The current processing step.
-* `pctComplete` ` string `optional
+* `pctComplete` `string`optional
 
   * The percent complete as a string.
-* `errorReasonCode` ` string `
+* `errorReasonCode` `string`
 
   * An error reason code, if applicable.
-* `errorReasonText` ` string `
+* `errorReasonText` `string`
 
   * An error reason text, if applicable.
 
@@ -615,10 +615,10 @@ Processing status information for a video.
 
 Input metadata for the original upload.
 
-* `width` ` number `
+* `width` `number`
 
   * The input width in pixels.
-* `height` ` number `
+* `height` `number`
 
   * The input height in pixels.
 
@@ -626,16 +626,16 @@ Input metadata for the original upload.
 
 Public details associated with a video.
 
-* `title` ` string | null `
+* `title` `string | null`
 
   * The public title for the video.
-* `share_link` ` string | null `
+* `share_link` `string | null`
 
   * The public share link.
-* `channel_link` ` string | null `
+* `channel_link` `string | null`
 
   * The public channel link.
-* `logo` ` string | null `
+* `logo` `string | null`
 
   * The public logo URL.
 
@@ -643,16 +643,16 @@ Public details associated with a video.
 
 Returned by `createDirectUpload()`. Contains the upload URL and video identifier for a direct upload.
 
-* `uploadURL` ` string `
+* `uploadURL` `string`
 
   * The URL an unauthenticated upload can use for a single multipart request.
-* `id` ` string `
+* `id` `string`
 
   * A Cloudflare-generated unique identifier for a media item.
-* `watermark` ` StreamWatermark | null `
+* `watermark` `StreamWatermark | null`
 
   * The watermark profile applied to the upload. Refer to [StreamWatermark](#streamwatermark).
-* `scheduledDeletion` ` string | null `
+* `scheduledDeletion` `string | null`
 
   * The scheduled deletion time, if any.
 
@@ -660,16 +660,16 @@ Returned by `createDirectUpload()`. Contains the upload URL and video identifier
 
 Represents a caption or subtitle track for a video.
 
-* `generated` ` boolean `optional
+* `generated` `boolean`optional
 
   * Whether the caption was generated via AI.
-* `label` ` string `
+* `label` `string`
 
   * The language label displayed in the native language to users.
-* `language` ` string `
+* `language` `string`
 
   * The language tag in BCP 47 format.
-* `status` ` 'ready' | 'inprogress' | 'error' `optional
+* `status` `'ready' | 'inprogress' | 'error'`optional
 
   * The status of a generated caption.
 
@@ -677,10 +677,10 @@ Represents a caption or subtitle track for a video.
 
 An object with download type keys. Each key is optional and only present if that download type has been created.
 
-* `default` ` StreamDownload `optional
+* `default` `StreamDownload`optional
 
   * The default video download. Only present if this download type has been created. Refer to [StreamDownload](#streamdownload).
-* `audio` ` StreamDownload `optional
+* `audio` `StreamDownload`optional
 
   * The audio-only download. Only present if this download type has been created. Refer to [StreamDownload](#streamdownload).
 
@@ -688,13 +688,13 @@ An object with download type keys. Each key is optional and only present if that
 
 Represents a generated download for a video.
 
-* `percentComplete` ` number `
+* `percentComplete` `number`
 
   * Indicates the progress as a percentage between 0 and 100.
-* `status` ` StreamDownloadStatus `
+* `status` `StreamDownloadStatus`
 
   * The status of a generated download.
-* `url` ` string `optional
+* `url` `string`optional
 
   * The URL to access the generated download.
 
@@ -702,37 +702,37 @@ Represents a generated download for a video.
 
 Represents a watermark profile.
 
-* `id` ` string `
+* `id` `string`
 
   * The unique identifier for a watermark profile.
-* `name` ` string `
+* `name` `string`
 
   * A short description of the watermark profile.
-* `opacity` ` number `
+* `opacity` `number`
 
   * The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
-* `padding` ` number `
+* `padding` `number`
 
   * The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length.
-* `scale` ` number `
+* `scale` `number`
 
   * The size of the image relative to the overall size of the video. `0.0` indicates no scaling, and `1.0` fills the entire video.
-* `position` ` StreamWatermarkPosition `
+* `position` `StreamWatermarkPosition`
 
   * The location of the image. Refer to [StreamWatermarkPosition](#streamwatermarkposition).
-* `size` ` number `
+* `size` `number`
 
   * The size of the image in bytes.
-* `height` ` number `
+* `height` `number`
 
   * The height of the image in pixels.
-* `width` ` number `
+* `width` `number`
 
   * The width of the image in pixels.
-* `created` ` string `
+* `created` `string`
 
   * The date and time a watermark profile was created.
-* `downloadedFrom` ` string | null `
+* `downloadedFrom` `string | null`
 
   * The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is `null`.
 
@@ -740,7 +740,7 @@ Represents a watermark profile.
 
 The position of a watermark on a video.
 
-` 'upperRight' | 'upperLeft' | 'lowerLeft' | 'lowerRight' | 'center' `
+`'upperRight' | 'upperLeft' | 'lowerLeft' | 'lowerRight' | 'center'`
 * `upperRight` — Top-right corner of the video.
 * `upperLeft` — Top-left corner of the video.
 * `lowerLeft` — Bottom-left corner of the video.
@@ -751,7 +751,7 @@ The position of a watermark on a video.
 
 The status of a generated download.
 
-` 'ready' | 'inprogress' | 'error' `
+`'ready' | 'inprogress' | 'error'`
 * `ready` — The download is ready.
 * `inprogress` — The download is being generated.
 * `error` — An error occurred during generation.
@@ -760,7 +760,7 @@ The status of a generated download.
 
 The type of download to generate.
 
-` 'default' | 'audio' `
+`'default' | 'audio'`
 * `default` — A video download.
 * `audio` — An audio-only download.
 
@@ -768,25 +768,25 @@ The type of download to generate.
 
 Parameters for uploading a video from a URL.
 
-* `allowedOrigins` ` Array<string> `optional
+* `allowedOrigins` `Array<string>`optional
 
   * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
-* `creator` ` string `optional
+* `creator` `string`optional
 
   * A user-defined identifier for the media creator.
-* `meta` ` Record<string, string> `optional
+* `meta` `Record<string, string>`optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `requireSignedURLs` ` boolean `optional
+* `requireSignedURLs` `boolean`optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `scheduledDeletion` ` string | null `optional
+* `scheduledDeletion` `string | null`optional
 
   * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
-* `thumbnailTimestampPct` ` number `optional
+* `thumbnailTimestampPct` `number`optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video.
-* `watermarkId` ` string `optional
+* `watermarkId` `string`optional
 
   * The identifier for the watermark profile.
 
@@ -794,31 +794,31 @@ Parameters for uploading a video from a URL.
 
 Parameters for creating a direct upload.
 
-* `maxDurationSeconds` ` number `
+* `maxDurationSeconds` `number`
 
   * The maximum duration in seconds for a video upload.
-* `expiry` ` string `optional
+* `expiry` `string`optional
 
   * The date and time after upload when videos will not be accepted.
-* `creator` ` string `optional
+* `creator` `string`optional
 
   * A user-defined identifier for the media creator.
-* `meta` ` Record<string, string> `optional
+* `meta` `Record<string, string>`optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `allowedOrigins` ` Array<string> `optional
+* `allowedOrigins` `Array<string>`optional
 
   * Lists the origins allowed to display the video.
-* `requireSignedURLs` ` boolean `optional
+* `requireSignedURLs` `boolean`optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `thumbnailTimestampPct` ` number `optional
+* `thumbnailTimestampPct` `number`optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration.
-* `scheduledDeletion` ` string | null `optional
+* `scheduledDeletion` `string | null`optional
 
   * The date and time at which the video will be deleted. Include `null` to remove a scheduled deletion.
-* `watermark` ` StreamDirectUploadWatermark `optional
+* `watermark` `StreamDirectUploadWatermark`optional
 
   * The watermark profile to apply. Refer to [StreamDirectUploadWatermark](#streamdirectuploadwatermark).
 
@@ -826,7 +826,7 @@ Parameters for creating a direct upload.
 
 Watermark configuration for a direct upload.
 
-* `id` ` string `
+* `id` `string`
 
   * The unique identifier for the watermark profile.
 
@@ -834,25 +834,25 @@ Watermark configuration for a direct upload.
 
 Parameters for updating a video.
 
-* `allowedOrigins` ` Array<string> `optional
+* `allowedOrigins` `Array<string>`optional
 
   * Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin.
-* `creator` ` string `optional
+* `creator` `string`optional
 
   * A user-defined identifier for the media creator.
-* `maxDurationSeconds` ` number `optional
+* `maxDurationSeconds` `number`optional
 
   * The maximum duration in seconds for a video upload. Can be set for a video that is not yet uploaded to limit its duration. Uploads that exceed the specified duration will fail during processing. A value of `-1` means the value is unknown.
-* `meta` ` Record<string, string> `optional
+* `meta` `Record<string, string>`optional
 
   * A user modifiable key-value store used to reference other systems of record for managing videos.
-* `requireSignedURLs` ` boolean `optional
+* `requireSignedURLs` `boolean`optional
 
   * Indicates whether the video can be accessed using the ID. When set to `true`, a signed token must be generated with a signing key to view the video.
-* `scheduledDeletion` ` string | null `optional
+* `scheduledDeletion` `string | null`optional
 
   * Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time.
-* `thumbnailTimestampPct` ` number `optional
+* `thumbnailTimestampPct` `number`optional
 
   * The timestamp for a thumbnail image calculated as a percentage value of the video's duration. To convert from a second-wise timestamp to a percentage, divide the desired timestamp by the total duration of the video. If this value is not set, the default thumbnail image is taken from 0s of the video.
 
@@ -860,19 +860,19 @@ Parameters for updating a video.
 
 Parameters for listing videos.
 
-* `limit` ` number `optional
+* `limit` `number`optional
 
   * The maximum number of videos to return.
-* `before` ` string `optional
+* `before` `string`optional
 
   * Return videos created before this timestamp (RFC3339/RFC3339Nano).
-* `beforeComp` ` StreamPaginationComparison `optional
+* `beforeComp` `StreamPaginationComparison`optional
 
   * Comparison operator for the `before` field. Defaults to `lt`. Refer to [StreamPaginationComparison](#streampaginationcomparison).
-* `after` ` string `optional
+* `after` `string`optional
 
   * Return videos created after this timestamp (RFC3339/RFC3339Nano).
-* `afterComp` ` StreamPaginationComparison `optional
+* `afterComp` `StreamPaginationComparison`optional
 
   * Comparison operator for the `after` field. Defaults to `gte`. Refer to [StreamPaginationComparison](#streampaginationcomparison).
 
@@ -880,7 +880,7 @@ Parameters for listing videos.
 
 Comparison operators for pagination queries.
 
-` 'eq' | 'gt' | 'gte' | 'lt' | 'lte' `
+`'eq' | 'gt' | 'gte' | 'lt' | 'lte'`
 * `eq` — Equal to
 * `gt` — Greater than
 * `gte` — Greater than or equal to
@@ -891,19 +891,19 @@ Comparison operators for pagination queries.
 
 Parameters for creating a watermark profile.
 
-* `name` ` string `optional
+* `name` `string`optional
 
   * A short description of the watermark profile.
-* `opacity` ` number `optional
+* `opacity` `number`optional
 
   * The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque.
-* `padding` ` number `optional
+* `padding` `number`optional
 
   * The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length.
-* `scale` ` number `optional
+* `scale` `number`optional
 
   * The size of the image relative to the overall size of the video. `0.0` indicates no scaling, and `1.0` fills the entire video.
-* `position` ` StreamWatermarkPosition `optional
+* `position` `StreamWatermarkPosition`optional
 
   * The location of the image. Refer to [StreamWatermarkPosition](#streamwatermarkposition).
 
@@ -973,7 +973,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/manage-video-library/bindings/#page","headline":"Bind to Workers API · Cloudflare Stream docs","description":"A binding connects your Worker to external resources on the Developer Platform, like Stream, R2 buckets, or KV namespaces.","url":"https://developers.cloudflare.com/stream/manage-video-library/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

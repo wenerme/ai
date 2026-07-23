@@ -4,15 +4,15 @@ title: Update or deploy a ruleset
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Update or deploy a ruleset
+# Update or deploy a ruleset
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use one of the following API endpoints to update a ruleset:
 
@@ -269,7 +269,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/#page","headline":"Update or deploy a ruleset · Cloudflare Ruleset Engine docs","description":"Update an existing ruleset or deploy it to a phase using the API.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/update/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

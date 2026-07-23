@@ -4,15 +4,15 @@ title: Lifecycle hooks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Lifecycle hooks
+# Lifecycle hooks
 
-Last updated Jun 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think owns the `streamText` call and provides hooks at each stage of the chat turn. Hooks fire on every turn regardless of entry path — WebSocket chat, sub-agent `chat()`, `saveMessages()`, durable `submitMessages()` execution, `continueLastTurn()`, and auto-continuation after tool results.
 
@@ -381,7 +381,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/#page","headline":"Lifecycle hooks · Cloudflare Agents docs","description":"Hooks at each stage of a Think chat turn — beforeTurn, beforeStep, beforeToolCall, afterToolCall, onStepFinish, onChunk, onChatResponse, and onChatError.","url":"https://developers.cloudflare.com/agents/harnesses/think/lifecycle-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

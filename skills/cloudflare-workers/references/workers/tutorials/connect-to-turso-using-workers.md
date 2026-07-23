@@ -4,15 +4,15 @@ title: Connect to and query your Turso database using Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect to and query your Turso database using Workers
+# Connect to and query your Turso database using Workers
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and [Turso ↗](https://chiselstrike.com/), an edge-hosted distributed database based on libSQL. By using Workers and Turso, you can create applications that are close to your end users without having to maintain or operate infrastructure in tens or hundreds of regions.
 
@@ -107,7 +107,7 @@ The Workers command-line interface, [Wrangler](https://developers.cloudflare.com
 
 To create a new Workers project (named `worker-turso-ts`), run the following:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- worker-turso-ts
@@ -213,7 +213,7 @@ Select `<Enter>` on your keyboard to save the token as a secret. Both `LIBSQL_DB
 
 Install the Turso client library and a router:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @libsql/client itty-router
@@ -436,7 +436,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/#page","headline":"Connect to and query your Turso database using Workers · Cloudflare Workers docs","description":"This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}

@@ -45,6 +45,15 @@ When defined, Vitest will run all matched files with `import.meta.vitest` inside
 
 Include the `samples` array of per-iteration timings on every benchmark result. Disabled by default to reduce memory usage; enable when a custom reporter or API consumer needs the raw samples.
 
+## benchmark.provider
+
+- **Type:** `string`
+- **Default:** `undefined` (uses the built-in provider)
+
+The benchmark provider that executes registered benchmarks and returns their results. Set this to a module path whose default export implements `BenchmarkProvider`. Relative paths are resolved from the project root.
+
+See the [Custom Benchmark Provider](/guide/advanced/benchmark-provider) guide for setup instructions and the provider API.
+
 ## benchmark.suppressExportGetterWarnings
 
 - **Type:** `boolean`

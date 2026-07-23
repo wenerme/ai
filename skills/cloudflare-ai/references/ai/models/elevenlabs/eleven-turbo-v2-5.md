@@ -4,7 +4,7 @@ title: Eleven Turbo v2.5
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)
 
-#  Eleven Turbo v2.5
+# Eleven Turbo v2.5
 
- Text-to-Speech • ElevenLabs
+Text-to-Speech • ElevenLabs
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` elevenlabs/eleven-turbo-v2-5 `
+`elevenlabs/eleven-turbo-v2-5`
 
 * Third-party
 
 ElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages.
 
-| Model Info        |                                                                                                                                 |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License | [link ↗](https://elevenlabs.io/terms)                                                                                           |
-| More information  | [link ↗](https://elevenlabs.io/docs/api-reference/text-to-speech/convert)                                                       |
-| Pricing           | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/elevenlabs/eleven-turbo-v2-5) |
+| Model Info        |                                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Terms and License | [link ↗](https://elevenlabs.io/terms)                                                                                          |
+| More information  | [link ↗](https://elevenlabs.io/docs/api-reference/text-to-speech/convert)                                                      |
+| Pricing           | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/elevenlabs/eleven-turbo-v2-5) |
 
 ## Usage
 
@@ -114,9 +114,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -124,7 +124,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/#page","headline":"Eleven Turbo v2.5 (ElevenLabs) · Cloudflare AI docs · Cloudflare AI docs","description":"ElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages.","url":"https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

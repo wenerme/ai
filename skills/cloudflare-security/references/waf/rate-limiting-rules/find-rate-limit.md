@@ -4,15 +4,15 @@ title: Find appropriate rate limit
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Find appropriate rate limit
+# Find appropriate rate limit
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The **Request rate analysis** tab in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) displays data on the request rate for traffic matching the selected filters and time period. Use this tab to determine the most appropriate rate limit for incoming traffic matching the applied filters.
 
@@ -45,7 +45,7 @@ For more information on how Cloudflare calculates the request rate of incoming t
 ### 1\. Define the scope
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. In the **Traffic analysis** tab, select a specific time period:
 
   * To look at the regular rate distribution, specify a period with non-peak traffic.
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/#page","headline":"Find an appropriate rate limit · Cloudflare Web Application Firewall (WAF) docs","description":"Use Security Analytics request rate data to determine an appropriate rate limit.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

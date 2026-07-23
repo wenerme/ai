@@ -4,15 +4,15 @@ title: Protect access to Amazon S3 buckets with Cloudflare Zero Trust
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Protect access to Amazon S3 buckets with Cloudflare Zero Trust
+# Protect access to Amazon S3 buckets with Cloudflare Zero Trust
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet. You can combine Cloudflare Access and AWS VPC endpoints. Enterprise may also use Cloudflare Gateway egress policies with dedicated egress IPs.
 
@@ -99,7 +99,7 @@ A bucket website endpoint will be available at `http://<your-S3-bucket01>.s3-web
 ### 4\. Add a published application to the Cloudflare Tunnel
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select your tunnel, then go to the **Routes** tab.
 3. Select **Add route**, then select **Published application**.
 4. Enter a subdomain your organization will use to access the S3 bucket. For example, `s3-bucket.<your-domain>.com`.
@@ -198,7 +198,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/#page","headline":"Protect access to Amazon S3 buckets with Cloudflare Zero Trust · Cloudflare One docs","description":"This tutorial demonstrates how to secure access to Amazon S3 buckets with Cloudflare Zero Trust so that data in these buckets is not publicly exposed on the Internet.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/s3-buckets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["S3"]}

@@ -4,15 +4,15 @@ title: Move a Cloudflare Registrar domain registration between accounts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/registrar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Move a Cloudflare Registrar domain registration between accounts
+# Move a Cloudflare Registrar domain registration between accounts
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports the move (transfer) of domain registrations between Cloudflare accounts when the source and target account both confirm the move. The move will result in the loss of all configurations and settings for the domain in the source account.
 
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/#page","headline":"Move a Cloudflare Registrar domain registration between accounts · Cloudflare Registrar docs","description":"Transfer domain registration between Cloudflare accounts.","url":"https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

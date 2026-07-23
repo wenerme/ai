@@ -4,7 +4,7 @@ title: melotts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![MyShell logo](https://developers.cloudflare.com/_astro/myshell.BpTDMxd2.svg)
 
-#  melotts
+# melotts
 
- Text-to-Speech • MyShell
+Text-to-Speech • MyShell
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/melotts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/melotts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/myshell-ai/melotts `
+`@cf/myshell-ai/melotts`
 
 * Cloudflare-hosted
 
@@ -50,9 +50,9 @@ The generated audio in MP3 format
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/melotts/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -60,7 +60,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/melotts/#page","headline":"melotts (MyShell) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"MeloTTS is a high-quality multi-lingual text-to-speech library by MyShell.ai.","url":"https://developers.cloudflare.com/workers-ai/models/melotts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

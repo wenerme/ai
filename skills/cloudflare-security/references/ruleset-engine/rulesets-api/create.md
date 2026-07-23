@@ -4,15 +4,15 @@ title: Create a ruleset
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Create a ruleset
+# Create a ruleset
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Creates a ruleset of a given kind in the specified phase. Allows you to create phase entry point rulesets.
 
@@ -27,22 +27,22 @@ Use one of the following API endpoints:
 
 A `POST` request to create a ruleset supports the following parameters in the request body:
 
-* `name` ` String `
+* `name` `String`
   * A human-readable name for the ruleset.
   * The name is immutable. You cannot change it over the lifetime of the ruleset.
-* `description` ` String `Optional
+* `description` `String`Optional
   * Optional description for the ruleset.
   * You can change the description over the lifetime of the ruleset.
-* `kind` ` String `
+* `kind` `String`
   * The kind of ruleset the JSON object represents.
   * Allowed values:
     * `custom`: Creates a custom ruleset
     * `root`: Creates a phase [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) at the account level
     * `zone`: Creates a phase entry point ruleset at the zone level
-* `phase` ` String `
+* `phase` `String`
   * The name of the [phase](https://developers.cloudflare.com/ruleset-engine/about/phases/) where the ruleset will be created.
   * Check the [phases list](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) or the specific Cloudflare product documentation for more information on the phases where you can create rulesets for that product.
-* `rules` ` Array<Rule> `Optional
+* `rules` `Array<Rule>`Optional
   * A list of [rules](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/#rule-object-structure-and-properties) to include in the ruleset.
 
 For additional details on these parameters, refer to [JSON objects](https://developers.cloudflare.com/ruleset-engine/rulesets-api/json-object/).
@@ -270,7 +270,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/#page","headline":"Create a ruleset · Cloudflare Ruleset Engine docs","description":"Create a new ruleset using the Rulesets API.","url":"https://developers.cloudflare.com/ruleset-engine/rulesets-api/create/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

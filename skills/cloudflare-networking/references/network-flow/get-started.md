@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Network Flow (formerly Magic Network Monitoring) includes an onboarding workflow that guides you step-by-step through the product configuration process. If you are unable to complete the configuration in one session, you can exit the workflow and resume it at any time.
 
@@ -38,7 +38,7 @@ Refer to [Supported routers](https://developers.cloudflare.com/network-flow/rout
 Register your router so that Cloudflare knows which IP address to expect flow data from and can associate it with your account.
 
 1. Go to the **Network flow** page.
-[ Go to **Network flow** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
 1. In **Network flow**, select **Configure Network flow**.
 2. Select the **Configure routers** tab.
 3. (Optional) Under **IP Address**, enter your router's public IP address.
@@ -74,7 +74,7 @@ This will only be visible during the onboarding process. When you are finished o
 
 Create rules to analyze data for a specific set of destinations or to implement thresholds. Refer to [Rules](https://developers.cloudflare.com/network-flow/rules/) for more information.
 
-## VPC flow log guide  Beta
+## VPC flow log guide Beta
 
 ### 1\. Verify cloud flow log capabilities
 
@@ -105,7 +105,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/mnm/vpc-flows/to
 After setting up AWS Firehose to send VPC flow logs to Network Flow, you can confirm that Cloudflare is receiving the logs as expected by searching for your cloud traffic data in the analytics page of the Network Flow dashboard.
 
 1. Go to the **Network flow** page.
-[ Go to **Network flow** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
+[Go to **Network flow** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/flow-analytics)
 1. The default view will be the analytics dashboard for Network Flow.
 
 Was this helpful?
@@ -114,7 +114,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/get-started/#page","headline":"Get started · Cloudflare Network Flow docs","description":"Set up Network Flow to monitor network traffic patterns.","url":"https://developers.cloudflare.com/network-flow/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["NetFlow","AWS"]}

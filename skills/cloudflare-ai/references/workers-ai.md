@@ -4,19 +4,19 @@ title: Cloudflare Workers AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Workers AI
+# Cloudflare Workers AI
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Run machine learning models, powered by serverless GPUs, on Cloudflare's global network.
 
- Available on Free and Paid plans
+Available on Free and Paid plans
 
 Workers AI allows you to run AI models in a serverless way, without having to worry about scaling, maintaining, or paying for unused infrastructure. You can invoke models running on GPUs on Cloudflare's network from your own code — from [Workers](https://developers.cloudflare.com/workers/), [Pages](https://developers.cloudflare.com/pages/), or anywhere via [the Cloudflare API](https://developers.cloudflare.com/api/resources/ai/methods/run/).
 
@@ -26,7 +26,7 @@ Workers AI gives you access to:
 * Serverless, **pay-for-what-you-use** [pricing model](https://developers.cloudflare.com/workers-ai/platform/pricing/)
 * All as part of a **fully-featured developer platform**, including [AI Gateway](https://developers.cloudflare.com/ai-gateway/), [Vectorize](https://developers.cloudflare.com/vectorize/), [Workers](https://developers.cloudflare.com/workers/) and more...
 
-[ Get started ](https://developers.cloudflare.com/workers-ai/get-started)[ Watch a Workers AI demo ](https://youtu.be/cK%5FleoJsBWY?si=4u6BIy%5FuBOZf9Ve8)
+[Get started](https://developers.cloudflare.com/workers-ai/get-started)[Watch a Workers AI demo](https://youtu.be/cK%5FleoJsBWY?si=4u6BIy%5FuBOZf9Ve8)
 
 Custom requirements
 
@@ -44,7 +44,7 @@ To report bugs or give feedback, go to the [#workers-ai Discord channel ↗](htt
 
 Workers AI comes with a curated set of popular open-source models that enable you to do tasks such as image classification, text generation, object detection and more.
 
- Browse models
+Browse models
 
 ---
 
@@ -86,31 +86,31 @@ Create a global, low-latency, key-value data storage.
 
 ## More resources
 
-### [ Get started ](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/)
+### [Get started](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/)
 
 Build and deploy your first Workers AI application.
 
-### [ Plans ](https://developers.cloudflare.com/workers-ai/platform/pricing/)
+### [Plans](https://developers.cloudflare.com/workers-ai/platform/pricing/)
 
 Learn about Free and Paid plans.
 
-### [ Limits ](https://developers.cloudflare.com/workers-ai/platform/limits/)
+### [Limits](https://developers.cloudflare.com/workers-ai/platform/limits/)
 
 Learn about Workers AI limits.
 
-### [ Use cases ](https://developers.cloudflare.com/use-cases/ai/)
+### [Use cases](https://developers.cloudflare.com/use-cases/ai/)
 
 Learn how you can build and deploy ambitious AI applications to Cloudflare's global network.
 
-### [ Storage options ](https://developers.cloudflare.com/workers/platform/storage-options/)
+### [Storage options](https://developers.cloudflare.com/workers/platform/storage-options/)
 
 Learn which storage option is best for your project.
 
-### [ Developer Discord ](https://discord.cloudflare.com)
+### [Developer Discord](https://discord.cloudflare.com)
 
 Connect with the Workers community on Discord to ask questions, share what you are building, and discuss the platform with other developers.
 
-### [ @CloudflareDev ](https://x.com/cloudflaredev)
+### [@CloudflareDev](https://x.com/cloudflaredev)
 
 Follow @CloudflareDev on Twitter to learn about product announcements, and what is new in Cloudflare Workers.
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers-ai/#page","headline":"Overview · Cloudflare Workers AI docs","description":"Run machine learning models, powered by serverless GPUs, on Cloudflare's global network.","url":"https://developers.cloudflare.com/workers-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

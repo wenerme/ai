@@ -4,15 +4,15 @@ title: Implement Turnstile with Google Firebase
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/turnstile/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Implement Turnstile with Google Firebase
+# Implement Turnstile with Google Firebase
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/turnstile/extensions/google-firebase/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/turnstile/extensions/google-firebase/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Turnstile is [available as an extension ↗](https://extensions.dev/extensions/cloudflare/cloudflare-turnstile-app-check-provider) with [Google's Firebase ↗](https://firebase.google.com/) platform as an [App Check ↗](https://firebase.google.com/docs/app-check) provider. You can leverage Cloudflare Turnstile's bot detection and challenge capabilities to ensure that requests to your Firebase backend services are verified and only authentic human visitors can interact with your application.
 
@@ -128,7 +128,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/#page","headline":"Implement Turnstile with Google Firebase · Cloudflare Turnstile docs","description":"Integrate Turnstile with Google Firebase for server-side validation.","url":"https://developers.cloudflare.com/turnstile/extensions/google-firebase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google","Integration"]}

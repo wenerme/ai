@@ -4,15 +4,15 @@ title: Secure your application
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Secure your application
+# Secure your application
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/web-apps/security/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/web-apps/security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Web applications face threats at every layer: unencrypted traffic, injection attacks, DDoS floods, credential stuffing bots, and malicious third-party scripts. Cloudflare provides defense in depth from automatic SSL/TLS encryption through application security, DDoS protection, bot scoring, and client-side script monitoring.
 
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/web-apps/security/#page","headline":"Secure your application · Cloudflare use cases","description":"Protect your web application from attacks, bots, and abuse.","url":"https://developers.cloudflare.com/use-cases/web-apps/security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

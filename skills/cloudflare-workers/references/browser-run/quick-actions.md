@@ -4,15 +4,15 @@ title: Quick Actions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Quick Actions
+# Quick Actions
 
-Last updated Jul 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/quick-actions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Quick Actions provide simple interfaces for common browser tasks like capturing screenshots, extracting HTML content, generating PDFs, and more. You can use Quick Actions in two ways:
 
@@ -21,17 +21,17 @@ Quick Actions provide simple interfaces for common browser tasks like capturing 
 
 The following are the available options:
 
-* [ /content - Fetch HTML ](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
-* [ /screenshot - Capture screenshot ](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
-* [ /pdf - Render PDF ](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
-* [ /markdown - Extract Markdown from a webpage ](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
-* [ /snapshot - Capture multiple page formats ](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
-* [ /accessibilityTree - Capture accessibility tree ](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/)
-* [ /scrape - Scrape HTML elements ](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
-* [ /json - Capture structured data using AI ](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
-* [ /links - Retrieve links from a webpage ](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
-* [ /crawl - Crawl web content ](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
-* [ Reference ](https://developers.cloudflare.com/api/resources/browser%5Frendering/)
+* [/content - Fetch HTML](https://developers.cloudflare.com/browser-run/quick-actions/content-endpoint/)
+* [/screenshot - Capture screenshot](https://developers.cloudflare.com/browser-run/quick-actions/screenshot-endpoint/)
+* [/pdf - Render PDF](https://developers.cloudflare.com/browser-run/quick-actions/pdf-endpoint/)
+* [/markdown - Extract Markdown from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/)
+* [/snapshot - Capture multiple page formats](https://developers.cloudflare.com/browser-run/quick-actions/snapshot/)
+* [/accessibilityTree - Capture accessibility tree](https://developers.cloudflare.com/browser-run/quick-actions/accessibility-tree-endpoint/)
+* [/scrape - Scrape HTML elements](https://developers.cloudflare.com/browser-run/quick-actions/scrape-endpoint/)
+* [/json - Capture structured data using AI](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/)
+* [/links - Retrieve links from a webpage](https://developers.cloudflare.com/browser-run/quick-actions/links-endpoint/)
+* [/crawl - Crawl web content](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/)
+* [Reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/)
 
 [/crawl](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) is available via the REST API only.
 
@@ -78,7 +78,7 @@ Note
 
 You can monitor Browser Run (formerly Browser Rendering) usage in two ways:
 
-* In the Cloudflare dashboard, go to the **Browser Run** page to view aggregate metrics, including total Quick Actions requests and total browser hours used. [ Go to **Browser Run** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
+* In the Cloudflare dashboard, go to the **Browser Run** page to view aggregate metrics, including total Quick Actions requests and total browser hours used. [Go to **Browser Run** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run)
 * `X-Browser-Ms-Used` header: Returned in every Quick Actions response, reporting browser time used for that request (in milliseconds).
 
 Was this helpful?
@@ -87,7 +87,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/browser-run/quick-actions/#page","headline":"Quick Actions · Cloudflare Browser Run docs","description":"Use Browser Run Quick Actions HTTP endpoints to capture screenshots, extract HTML, generate PDFs, and perform other common browser tasks.","url":"https://developers.cloudflare.com/browser-run/quick-actions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

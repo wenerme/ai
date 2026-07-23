@@ -4,15 +4,15 @@ title: McpAgent
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  McpAgent
+# McpAgent
 
-Last updated Jul 13, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp/index.ts#L32-L620), from the Agents SDK:
 
@@ -524,25 +524,25 @@ For more human-in-the-loop patterns, refer to [Human-in-the-loop patterns](https
 
 ## Next steps
 
-### [ Build a Remote MCP server ](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
+### [Build a Remote MCP server](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/)
 
- Get started with MCP servers on Cloudflare.
+Get started with MCP servers on Cloudflare.
 
-### [ MCP Tools ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
+### [MCP Tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/)
 
- Design and add tools to your MCP server.
+Design and add tools to your MCP server.
 
-### [ Authorization ](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
+### [Authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/)
 
- Set up OAuth authentication.
+Set up OAuth authentication.
 
-### [ Securing MCP servers ](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/)
+### [Securing MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/guides/securing-mcp-server/)
 
- Security best practices for production.
+Security best practices for production.
 
-### [ createMcpHandler ](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/)
+### [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/)
 
- Build stateless MCP servers.
+Build stateless MCP servers.
 
 Was this helpful?
 
@@ -550,7 +550,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

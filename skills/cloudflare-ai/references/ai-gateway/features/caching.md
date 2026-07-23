@@ -4,15 +4,15 @@ title: Caching
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Caching
+# Caching
 
-Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway can cache responses from your AI model providers, serving them directly from Cloudflare's cache for identical requests.
 
@@ -166,7 +166,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/caching/#page","headline":"Caching · Cloudflare AI Gateway docs","description":"Override caching settings on a per-request basis.","url":"https://developers.cloudflare.com/ai-gateway/features/caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

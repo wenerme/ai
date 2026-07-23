@@ -4,15 +4,15 @@ title: Set up Evaluations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up Evaluations
+# Set up Evaluations
 
-Last updated May 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide walks you through the process of setting up an evaluation in AI Gateway. These steps are done in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
 
@@ -86,7 +86,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluations/#page","headline":"Set up Evaluations · Cloudflare AI Gateway docs","description":"Create datasets, select evaluators, and run evaluations for your AI Gateway logs.","url":"https://developers.cloudflare.com/ai-gateway/evaluations/set-up-evaluations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

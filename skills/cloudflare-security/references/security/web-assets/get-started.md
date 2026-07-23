@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/web-assets/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/web-assets/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You do not need to complete a fixed setup flow before discovered operations can be used for protection. Use this page to choose the capability that matches your task.
 
@@ -42,7 +42,7 @@ For more information, refer to [Label operations](https://developers.cloudflare.
 
 Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to review traffic matched to individual operations or labels.
 
-[ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 
 For individual operations, use the operation ID or operation details to review matched traffic and logs. For labeled traffic, filter by managed labels such as `cf-llm` or `cf-log-in`.
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/web-assets/get-started/#page","headline":"Get started · Security dashboard docs","description":"Use Web Assets to review operations, labels, matched traffic, learned schemas, and risks.","url":"https://developers.cloudflare.com/security/web-assets/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

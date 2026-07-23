@@ -4,15 +4,15 @@ title: Preset
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Preset
+# Preset
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Preset is a **re-usable configuration** that defines a participant’s experience in a Meeting. It determines:
 
@@ -63,7 +63,7 @@ Users can request to join the stage, host can add/remove users from the stage at
 You can control which plugins a participant is allowed to view, open, or close.
 * **Waiting Room:** A waiting room allows participants to join a meeting before they’re admitted, giving hosts control over who enters and when. It helps manage access, reduce interruptions, and ensure the meeting starts smoothly.
 Hosts can admit or remove participants at any time, and you can configure who should bypass the waiting room automatically. Read more about waiting rooms in [Meetings](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting#waiting-room).
-* **Connected Meetings:**  Beta  Connected Meetings let you meeting spaces linked to a main meeting, enabling smaller group discussions or parallel sessions. Participants can be given permission to move between meetings or return to the parent meeting. Hosts can create, update, or delete these connected spaces.
+* **Connected Meetings:** Beta Connected Meetings let you meeting spaces linked to a main meeting, enabling smaller group discussions or parallel sessions. Participants can be given permission to move between meetings or return to the parent meeting. Hosts can create, update, or delete these connected spaces.
 Read more about connected meetings in [Meetings](https://developers.cloudflare.com/realtime/realtimekit/concepts/meeting#connected-meetings).
 * **Miscellaneous:** Miscellaneous permissions let you fine-tune additional aspects of the participant experience that don’t fall under specific categories.
 These options control capabilities like - editing names, viewing the participant list, syncing tab views, enabling transcriptions, and other supplementary features that enhance how users interact within the meeting.
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/#page","headline":"Preset · Cloudflare Realtime docs","description":"Configure participant roles, permissions, and meeting experience with RealtimeKit presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

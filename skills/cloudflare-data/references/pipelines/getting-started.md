@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jun 26, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/getting-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/getting-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
@@ -35,7 +35,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 Pipelines must authenticate to R2 Data Catalog with an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) that has catalog and R2 permissions.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Manage API tokens**.
 3. Select **Create Account API token**.
 4. Give your API token a name.
@@ -133,13 +133,13 @@ npx wrangler pipelines setup --name ecommerce
 ```
 
 1. In the Cloudflare dashboard, go to **R2 object storage**.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket** and enter the bucket name: `pipelines-tutorial`.
 3. Select **Create bucket**.
 4. Select the bucket, switch to the **Settings** tab, scroll down to **R2 Data Catalog**, and select **Enable**.
 5. Once enabled, note the **Catalog URI** and **Warehouse name**.
 6. Go to **Pipelines** \> **Pipelines**.
-[ Go to **Pipelines** ↗ ](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+[Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
 7. Select **Create Pipeline**.
 8. **Connect to a Stream**:
 
@@ -273,21 +273,21 @@ You can also query this table with any engine that supports Apache Iceberg. To l
 
 ## Learn more
 
-### [ Streams ](https://developers.cloudflare.com/pipelines/streams/)
+### [Streams](https://developers.cloudflare.com/pipelines/streams/)
 
- Learn about configuring streams for data ingestion.
+Learn about configuring streams for data ingestion.
 
-### [ Pipelines ](https://developers.cloudflare.com/pipelines/pipelines/)
+### [Pipelines](https://developers.cloudflare.com/pipelines/pipelines/)
 
- Understand SQL transformations and pipeline configuration.
+Understand SQL transformations and pipeline configuration.
 
-### [ Sinks ](https://developers.cloudflare.com/pipelines/sinks/)
+### [Sinks](https://developers.cloudflare.com/pipelines/sinks/)
 
- Configure data destinations and output formats.
+Configure data destinations and output formats.
 
-### [ Examples ](https://developers.cloudflare.com/pipelines/examples/)
+### [Examples](https://developers.cloudflare.com/pipelines/examples/)
 
- Browse end-to-end examples that show how to build with Pipelines.
+Browse end-to-end examples that show how to build with Pipelines.
 
 Was this helpful?
 
@@ -295,7 +295,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/getting-started/#page","headline":"Getting started · Cloudflare Pipelines Docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/pipelines/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

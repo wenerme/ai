@@ -4,15 +4,15 @@ title: Limitations
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Limitations
+# Limitations
 
-Last updated May 4, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/limitations/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are some caveats and limitations when deploying Data Localization Suite features.
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/limitations/#page","headline":"Limitations · Cloudflare Data Localization Suite docs","description":"Caveats and limitations when deploying Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Troubleshooting Cloudflare origin CA
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting Cloudflare origin CA
+# Troubleshooting Cloudflare origin CA
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the following common issues and troubleshooting steps when using [Cloudflare origin CA](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/).
 
@@ -66,7 +66,7 @@ This is a known issue where, whilst being created on the Cloudflare dashboard, O
 
 Make sure that the user creating the certificate has access to the API. You can check in the account **Members** page.
 
-[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
+[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 * The default setting for the account is specified in the card **Enable API Access**.
 * Specific user API Access (which can override the default setting) is presented after selecting the user in the list of members.
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/troubleshooting/#page","headline":"Troubleshooting Cloudflare origin CA · Cloudflare SSL/TLS docs","description":"Troubleshoot issues like NET::ERR\\_CERT\\_AUTHORITY\\_INVALID when using Cloudflare origin CA.","url":"https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

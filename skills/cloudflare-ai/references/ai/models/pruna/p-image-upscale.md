@@ -4,7 +4,7 @@ title: P-Image-Upscale
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,22 +12,22 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Pruna AI logo](https://developers.cloudflare.com/_astro/prunaai.BVOvqoaI.svg)
 
-#  P-Image-Upscale
+# P-Image-Upscale
 
- Image-to-Image • Pruna AI
+Image-to-Image • Pruna AI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` pruna/p-image-upscale `
+`pruna/p-image-upscale`
 
 * Third-party
 
 Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 megapixels with optional detail and realism enhancement for sharper, cleaner results.
 
-| Model Info       |                                                                                                                          |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                    |
-| Pricing          | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image-upscale) |
+| Model Info       |                                                                                                                         |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart)                                                                   |
+| Pricing          | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image-upscale) |
 
 ## Usage
 
@@ -109,9 +109,9 @@ image
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -119,7 +119,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/#page","headline":"P-Image-Upscale (Pruna AI) · Cloudflare AI docs · Cloudflare AI docs","description":"Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 megapixels with optional detail and realism enhancement for sharper, cleaner results.","url":"https://developers.cloudflare.com/ai/models/pruna/p-image-upscale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

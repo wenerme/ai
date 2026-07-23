@@ -4,15 +4,15 @@ title: Build an API to access D1 using a proxy Worker
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build an API to access D1 using a proxy Worker
+# Build an API to access D1 using a proxy Worker
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to create an API that allows you to securely run queries against a D1 database.
 
@@ -41,7 +41,7 @@ Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](http
 Create a new Worker to create and deploy your API.
 
 1. Create a Worker named `d1-http` by running:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm create cloudflare@latest -- d1-http
 ```
@@ -68,7 +68,7 @@ cd d1-http
 In this tutorial, you will use [Hono ↗](https://github.com/honojs/hono), an Express.js-style framework, to build the API.
 
 1. To use Hono in this project, install it using `npm`:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i hono
 ```
@@ -146,7 +146,7 @@ This adds the following endpoints:
   * POST `/api/exec`
   * POST `/api/batch`
 2. Start the development server by running the following command:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -324,7 +324,7 @@ In the above code, the endpoints are updated to receive `query` and `params`. Th
 Now that the API can query the database, you can test it locally.
 
 1. Start the development server by executing the following command:
- npm  yarn  pnpm
+npmyarnpnpm
 ```
 npm run dev
 ```
@@ -421,7 +421,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/#page","headline":"Build an API to access D1 using a proxy Worker · Cloudflare D1 docs","description":"This tutorial shows how to create an API that allows you to securely run queries against a D1 database. The API can be used to customize access controls and/or limit what tables can be queried.","url":"https://developers.cloudflare.com/d1/tutorials/build-an-api-to-access-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Hono","TypeScript","SQL"]}

@@ -4,15 +4,15 @@ title: Monitoring
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Monitoring
+# Monitoring
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/monitoring/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/monitoring/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monitor tunnel health and resolve issues.
 
@@ -20,7 +20,7 @@ Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monito
 
 You can check your tunnel connection status in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) by going to **Networking** \> **Tunnels**, or by running `cloudflared tunnel list`.
 
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
 | Status       | Meaning                                                                                                                                                                                                                                                                                                                                                               | Recommended Action                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -357,7 +357,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/monitoring/#page","headline":"Monitoring · Cloudflare Docs","description":"Monitor tunnel health, connectors, and connection status.","url":"https://developers.cloudflare.com/tunnel/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

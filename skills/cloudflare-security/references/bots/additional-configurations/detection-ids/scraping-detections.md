@@ -4,15 +4,15 @@ title: Scraping detections
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Scraping detections
+# Scraping detections
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Scraping behavioral detection IDs allow you to better protect your website from volumetric scraping attacks by identifying anomalous behavior. The detection IDs below are specifically designed to catch suspicious scraping activity at the zone level.
 
@@ -28,7 +28,7 @@ Cloudflare's [Managed Challenge](https://developers.cloudflare.com/cloudflare-ch
 To access scraping detections:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Create rule** and choose **Custom rule**.
 3. Fill out the form using **Bot Detection IDs** along with other necessary information.
 4. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.
@@ -58,7 +58,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/#page","headline":"Scraping detections · Cloudflare bot solutions docs","description":"Detection IDs for identifying volumetric scraping attacks by ASN and fingerprint.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/scraping-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Scraping"]}

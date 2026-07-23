@@ -4,15 +4,15 @@ title: Build security policies for general AI use
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build security policies for general AI use
+# Build security policies for general AI use
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once your monitoring tools have given you a clear picture of AI usage in your organization, you can begin building security policies to meet your objectives. The Gateway policy builder offers extensive options for both application categorization and function granularity to help you create policies that achieve your goals.
 
@@ -24,7 +24,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/#page","headline":"Build security policies for general AI use · Cloudflare Learning Paths","description":"Monitor and secure generative AI usage.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/build-security-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

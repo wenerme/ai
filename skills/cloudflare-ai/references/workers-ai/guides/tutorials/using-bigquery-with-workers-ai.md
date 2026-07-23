@@ -4,15 +4,15 @@ title: Using BigQuery with Workers AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Using BigQuery with Workers AI
+# Using BigQuery with Workers AI
 
-Last updated Jan 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The easiest way to get started with [Workers AI](https://developers.cloudflare.com/workers-ai/) is to try it out in the [Multi-modal Playground ↗](https://multi-modal.ai.cloudflare.com/) and the [LLM playground ↗](https://playground.ai.cloudflare.com/). If you decide that you want to integrate your code with Workers AI, you may then decide to use its [REST API endpoints](https://developers.cloudflare.com/workers-ai/get-started/rest-api/) or a [Worker binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
 
@@ -691,7 +691,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/#page","headline":"Using BigQuery with Workers AI · Cloudflare Workers AI docs","description":"Learn how to ingest data stored outside of Cloudflare as an input to Workers AI models.","url":"https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","JavaScript"]}

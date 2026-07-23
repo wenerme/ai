@@ -4,22 +4,22 @@ title: Enable Sourcing Kit
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/images/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Sourcing Kit
+# Enable Sourcing Kit
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enabling Sourcing Kit will set it up with the necessary information to start importing images from your Amazon S3 account.
 
 ## Create your first import job
 
 1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[ Go to **Hosted images** ↗ ](https://dash.cloudflare.com/?to=/:account/images/hosted)
+[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select **Sourcing Kit**.
 3. Select **Import images** to create an import job.
 4. In **Source name** give your source an appropriate name.
@@ -40,7 +40,7 @@ Sourcing Kit will warn you when you are about to reach the limit for your plan s
 ## Define a new source
 
 1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[ Go to **Hosted images** ↗ ](https://dash.cloudflare.com/?to=/:account/images/hosted)
+[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select **Sourcing Kit**.
 3. Select **Import images** \> **Define a new source**.
 
@@ -51,7 +51,7 @@ Repeat steps 4-11 in [Create your first import job](#create-your-first-import-jo
 You can have many import jobs from the same or different sources. If you select an existing source to create a new import job, you will not need to enter your credentials again.
 
 1. In the Cloudflare dashboard, go to the **Hosted Images** page.
-[ Go to **Hosted images** ↗ ](https://dash.cloudflare.com/?to=/:account/images/hosted)
+[Go to **Hosted images** ↗](https://dash.cloudflare.com/?to=/:account/images/hosted)
 2. Select **Sourcing Kit**.
 3. Select **Import images**.
 4. Choose from one of the sources already configured.
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/#page","headline":"Enable Sourcing Kit · Cloudflare Images docs","description":"Set up Sourcing Kit to create import jobs and start importing images from Amazon S3 into Cloudflare Images.","url":"https://developers.cloudflare.com/images/storage/upload-images/sourcing-kit/enable/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Nuxt
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Nuxt
+# Nuxt
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will create a new [Nuxt ↗](https://nuxt.com/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
 
@@ -20,7 +20,7 @@ Already have a Nuxt project?
 
 Run `wrangler deploy` in a project without a Wrangler configuration file and Wrangler will automatically detect Nuxt, generate the necessary configuration, and deploy your project.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx wrangler deploy
@@ -36,31 +36,31 @@ pnpm wrangler deploy
 
 Learn more about [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/).
 
-Nuxt Detected
+NuxtDetected
 
 Generated configuration
 
 wrangler.jsonc
 
-main: .output/server/index.mjs
+main:.output/server/index.mjs
 
 wrangler.jsonc
 
-assets: directory: .output/public
+assets:directory: .output/public
 
 wrangler.jsonc
 
-compatibility\_flags: nodejs\_compat
+compatibility\_flags:nodejs\_compat
 
 wrangler.jsonc
 
-observability: enabled: true
+observability:enabled: true
 
 nuxt.config.ts
 
-preset: cloudflare
+preset:cloudflare
 
-Workers Deployed
+WorkersDeployed
 
 Wrangler handles configuration automatically
 
@@ -70,7 +70,7 @@ Use the [create-cloudflare ↗](https://www.npmjs.com/package/create-cloudflare)
 
 To use `create-cloudflare` to create a new Nuxt project with Workers Assets, run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- my-nuxt-app --framework=nuxt
@@ -94,7 +94,7 @@ cd my-nuxt-app
 
 After you have created your project, run the following command in the project directory to start a local server. This will allow you to preview your project locally during development.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run dev
@@ -114,7 +114,7 @@ Your project can be deployed to a `*.workers.dev` subdomain or a [Custom Domain]
 
 The following command will build and deploy your project. If you're using CI, ensure you update your ["deploy command"](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-settings) configuration appropriately.
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm run deploy
@@ -136,9 +136,9 @@ Your Nuxt application can be fully integrated with the Cloudflare Developer Plat
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 
-### [ Bindings ](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+### [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
 
- Access to compute, storage, AI and more.
+Access to compute, storage, AI and more.
 
 Was this helpful?
 
@@ -146,7 +146,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/#page","headline":"Nuxt · Cloudflare Workers docs","description":"Create a Nuxt application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/nuxt/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["full-stack","Nuxt"]}

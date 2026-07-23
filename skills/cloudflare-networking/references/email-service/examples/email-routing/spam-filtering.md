@@ -4,17 +4,17 @@ title: Spam filtering
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Spam filtering
+# Spam filtering
 
 Implement intelligent spam detection with keyword analysis, domain reputation, and machine learning techniques
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build spam filtering systems with keyword matching, domain validation, and intelligent detection methods for effective email security.
 
@@ -176,7 +176,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/#page","headline":"Spam filtering · Cloudflare Email Service docs","description":"Build spam detection for Email Service with keyword analysis, domain reputation checks, and AI-based filtering.","url":"https://developers.cloudflare.com/email-service/examples/email-routing/spam-filtering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

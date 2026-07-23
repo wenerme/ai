@@ -4,15 +4,15 @@ title: Compose a query in GraphiQL
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Compose a query in GraphiQL
+# Compose a query in GraphiQL
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Many clients might need help using [the semantics](https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/) of GraphQL and exploring the possibilities of Cloudflare GraphQL API.
 
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/#page","headline":"Compose a query in GraphiQL · Cloudflare Analytics docs","description":"Learn how to use a GraphiQL client to compose and execute a GraphQL query. This guide covers setting up a query, selecting the dataset, and configuring parameters and fields.","url":"https://developers.cloudflare.com/analytics/graphql-api/getting-started/compose-graphql-query/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

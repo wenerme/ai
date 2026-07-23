@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/byoip/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/byoip/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/byoip/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To use your own IP addresses with Cloudflare, please check with your account team to confirm your contract covers this functionality. You will need to configure settings specific to the services you want to use, as well as meet some standard requirements for all BYOIP customers.
 
@@ -310,7 +310,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/get-started/#page","headline":"Get started · Cloudflare BYOIP docs","description":"Onboard your IP prefixes to Cloudflare with BYOIP.","url":"https://developers.cloudflare.com/byoip/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}

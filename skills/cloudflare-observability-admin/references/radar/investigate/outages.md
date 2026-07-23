@@ -4,15 +4,15 @@ title: Outages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/radar/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Outages
+# Outages
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/radar/investigate/outages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/radar/investigate/outages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Radar Outage Center (CROC) ↗](https://radar.cloudflare.com/outage-center) provides data on outages occurring around the world.
 
@@ -88,7 +88,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/investigate/outages/#page","headline":"Outages · Cloudflare Radar docs","description":"Query the Cloudflare Radar Outage Center API for Internet outage data, including location, cause, scope, and duration.","url":"https://developers.cloudflare.com/radar/investigate/outages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

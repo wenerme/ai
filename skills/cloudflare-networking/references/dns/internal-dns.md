@@ -4,19 +4,19 @@ title: Internal DNS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Internal DNS
+# Internal DNS
 
-Last updated Jul 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/internal-dns/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/internal-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Simplify private network management with Cloudflare DNS for your internal resources.
 
- Enterprise-only
+Enterprise-only
 
 Manage DNS records that should only be accessible within your private network. Internal DNS [zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/) and [views](https://developers.cloudflare.com/dns/internal-dns/dns-views/) pair up with [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/) so that you can control how a DNS query should be responded to according to query context, such as query source IP.
 
@@ -90,11 +90,11 @@ In this example, a query for `ghi.example.local` routed to view ID 111 would go 
 
 ## Resources
 
-* [ Get started ](https://developers.cloudflare.com/dns/internal-dns/get-started/)
-* [ Internal zones ](https://developers.cloudflare.com/dns/internal-dns/internal-zones/)
-* [ Manage DNS views ](https://developers.cloudflare.com/dns/internal-dns/dns-views/)
-* [ Connect to Gateway resolver ](https://developers.cloudflare.com/dns/internal-dns/connectivity/)
-* [ Analytics and logs ](https://developers.cloudflare.com/dns/internal-dns/analytics/)
+* [Get started](https://developers.cloudflare.com/dns/internal-dns/get-started/)
+* [Internal zones](https://developers.cloudflare.com/dns/internal-dns/internal-zones/)
+* [Manage DNS views](https://developers.cloudflare.com/dns/internal-dns/dns-views/)
+* [Connect to Gateway resolver](https://developers.cloudflare.com/dns/internal-dns/connectivity/)
+* [Analytics and logs](https://developers.cloudflare.com/dns/internal-dns/analytics/)
 
 ## Related products
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/internal-dns/#page","headline":"Internal DNS · Cloudflare DNS docs","description":"Resolve private hostnames within your network with Internal DNS.","url":"https://developers.cloudflare.com/dns/internal-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

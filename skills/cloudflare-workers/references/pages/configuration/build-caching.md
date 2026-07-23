@@ -4,15 +4,15 @@ title: Build caching
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Build caching
+# Build caching
 
-Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/build-caching/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/build-caching/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Improve Pages build times by caching dependencies and build output between builds with a project-wide shared cache.
 
@@ -76,7 +76,7 @@ The following limits are imposed for build caching:
 To enable build caching :
 
 1. Go to the **Workers & Pages** in the Cloudflare dashboard.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Find your Pages project.
 3. Go to **Settings** \> **Build** \> **Build cache**.
 4. Select **Enable** to turn on build caching.
@@ -86,7 +86,7 @@ To enable build caching :
 The build cache can be cleared for a project if needed, such as when debugging build issues. To clear the build cache:
 
 1. Go to the **Workers & Pages** in the Cloudflare dashboard.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Find your Pages project.
 3. Go to **Settings** \> **Build** \> **Build cache**.
 4. Select **Clear Cache** to clear the build cache.
@@ -97,7 +97,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/build-caching/#page","headline":"Build caching · Cloudflare Pages docs","description":"Speed up Cloudflare Pages builds by caching dependencies and build output between deployments.","url":"https://developers.cloudflare.com/pages/configuration/build-caching/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

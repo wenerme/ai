@@ -4,15 +4,15 @@ title: Troubleshoot protocol issues
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshoot protocol issues
+# Troubleshoot protocol issues
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers common HTTP/2 and HTTP/3 issues, including origin incompatibility, multiplexing errors, and browser errors, with steps to diagnose and resolve them.
 
@@ -83,7 +83,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/#page","headline":"Troubleshoot protocol issues · Cloudflare Speed docs","description":"Resolve common HTTP/2 and HTTP/3 connection issues.","url":"https://developers.cloudflare.com/speed/optimization/protocol/troubleshooting/protocol-troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}

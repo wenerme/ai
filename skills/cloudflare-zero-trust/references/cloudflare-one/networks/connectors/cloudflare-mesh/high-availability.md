@@ -4,15 +4,15 @@ title: High availability
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  High availability
+# High availability
 
-Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 For production deployments, you can run multiple replicas of a Mesh node in active-passive mode. All replicas share the same node identity and advertise the same [routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/). If the active replica goes down, Cloudflare automatically promotes a standby replica.
 
@@ -47,7 +47,7 @@ flowchart LR
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select **Add a node**.
 3. Follow the setup wizard. The node is created with HA enabled automatically.
 4. Copy the install commands and run them on your Linux host.
@@ -71,7 +71,7 @@ The response includes a `token` field. Use this token to register replicas.
 To add a replica to an existing high-availability node, install the Cloudflare One Client on a new Linux host and register it using the same node token.
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select your Mesh node.
 3. Select **Add a replica**.
 4. A dialog shows the install commands and the node's token.
@@ -147,7 +147,7 @@ The new replica will be in standby mode until the active replica disconnects.
 ## View replicas
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select an HA-enabled node. HA nodes display an **HA** badge in the overview table.
 3. The node detail page shows a tab for each replica. Each tab displays:
 
@@ -204,7 +204,7 @@ The response includes each replica with its `ha_status` (`active` or `passive`),
 In addition to automatic failover when the active replica disconnects, you can manually promote a passive replica to active.
 
 1. In the Cloudflare dashboard, go to **Networking** \> **Mesh**.
-[ Go to **Mesh** ↗ ](https://dash.cloudflare.com/?to=/:account/mesh)
+[Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
 2. Select an HA-enabled node.
 3. Select the tab for the passive replica you want to promote.
 4. Select **Promote to active**.
@@ -250,7 +250,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/#page","headline":"High availability for Cloudflare Mesh nodes · Cloudflare One docs","description":"High availability for Cloudflare Mesh nodes.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

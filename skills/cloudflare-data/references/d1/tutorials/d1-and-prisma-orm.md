@@ -4,15 +4,15 @@ title: Query D1 using Prisma ORM
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/d1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Query D1 using Prisma ORM
+# Query D1 using Prisma ORM
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## What is Prisma ORM?
 
@@ -64,7 +64,7 @@ To set up Prisma ORM, go into your project directory, and install the Prisma CLI
 cd prisma-d1-example
 ```
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D prisma
@@ -84,7 +84,7 @@ bun add -d prisma
 
 Next, install the Prisma Client package and the driver adapter for D1:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i @prisma/client @prisma/adapter-d1
@@ -104,7 +104,7 @@ bun add @prisma/client @prisma/adapter-d1
 
 Finally, bootstrap the files required by Prisma ORM using the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx prisma init --datasource-provider sqlite
@@ -174,7 +174,7 @@ Copy the last part of the command output and paste it into your Wrangler file. I
 	"name": "prisma-d1-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -196,7 +196,7 @@ Copy the last part of the command output and paste it into your Wrangler file. I
 name = "prisma-d1-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [observability]
@@ -417,7 +417,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/#page","headline":"Query D1 using Prisma ORM · Cloudflare D1 docs","description":"This tutorial shows you how to set up and deploy a Cloudflare Worker that is accessing a D1 database from scratch.","url":"https://developers.cloudflare.com/d1/tutorials/d1-and-prisma-orm/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}

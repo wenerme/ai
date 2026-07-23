@@ -4,17 +4,17 @@ title: Email headers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/email-service/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Email headers
+# Email headers
 
 Which email headers you can set, which are auto-generated, and how they are validated
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/email-service/reference/headers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/email-service/reference/headers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When sending emails with Cloudflare Email Service, you can set custom headers using the `headers` field in the [Workers API](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/) or [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/). The Email Service uses a **allowlist-based approach** — only explicitly approved headers are accepted. Any header not on the allowlist (and not an `X-` prefixed custom header) is rejected at API time with a clear error.
 
@@ -187,7 +187,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/reference/headers/#page","headline":"Email headers · Cloudflare Email Service docs","description":"Allowed, platform-controlled, and custom email headers for Email Service with validation rules.","url":"https://developers.cloudflare.com/email-service/reference/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

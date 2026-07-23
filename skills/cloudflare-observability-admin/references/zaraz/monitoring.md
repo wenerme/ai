@@ -4,15 +4,15 @@ title: Monitoring
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/zaraz/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Monitoring
+# Monitoring
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/zaraz/monitoring/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/zaraz/monitoring/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zaraz Monitoring shows you different metrics regarding Zaraz. This helps you to detect issues when they occur. For example, if a third-party analytics provider stops collecting data, you can use the information presented by Zaraz Monitoring to find where in the workflow the problem occurred.
 
@@ -21,7 +21,7 @@ You can also check activity data in the **Activity last 24hr** section, when you
 To use Zaraz Monitoring:
 
 1. In the Cloudflare dashboard, go to the **Monitoring** page.
-[ Go to **Monitoring** ↗ ](https://dash.cloudflare.com/?to=/:account/tag-management/monitoring)
+[Go to **Monitoring** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/monitoring)
 2. Select one of the options (Loads, Events, Triggers, Actions). Zaraz Monitoring will show you how the traffic for that section evolved for the time period selected.
 
 ## Zaraz Monitoring options
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/monitoring/#page","headline":"Monitoring · Cloudflare Zaraz docs","description":"Monitor Zaraz tool loading and event delivery.","url":"https://developers.cloudflare.com/zaraz/monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,7 +4,7 @@ title: llama-guard-3-8b
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,30 +12,30 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg)
 
-#  llama-guard-3-8b
+# llama-guard-3-8b
 
- Text Generation • Meta
+Text Generation • Meta
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/meta/llama-guard-3-8b `
+`@cf/meta/llama-guard-3-8b`
 
 * Cloudflare-hosted
 * LoRA
 
 Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety classification. Similar to previous versions, it can be used to classify content in both LLM inputs (prompt classification) and in LLM responses (response classification). It acts as an LLM – it generates text in its output that indicates whether a given prompt or response is safe or unsafe, and if unsafe, it also lists the content categories violated.
 
-| Model Info                                                                  |                                                     |
-| --------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 131,072 tokens                                      |
-| LoRA                                                                        | Yes                                                 |
-| Unit Pricing                                                                | $0.48 per M input tokens, $0.03 per M output tokens |
+| Model Info                                                                 |                                                     |
+| -------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 131,072 tokens                                      |
+| LoRA                                                                       | Yes                                                 |
+| Unit Pricing                                                               | $0.48 per M input tokens, $0.03 per M output tokens |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-guard-3-8b)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-guard-3-8b)
 
 ## Usage
 
@@ -124,7 +124,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -154,9 +154,9 @@ temperature
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -164,7 +164,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/#page","headline":"llama-guard-3-8b (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Llama Guard 3 is a Llama-3.1-8B pretrained model, fine-tuned for content safety classification. Similar to previous versions, it can be used to classify content in both LLM inputs (prompt classification) and in LLM responses (response classification). It acts as an LLM – it generates text in its output that indicates whether a given prompt or response is safe or unsafe, and if unsafe, it also lists the content categories violated.","url":"https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

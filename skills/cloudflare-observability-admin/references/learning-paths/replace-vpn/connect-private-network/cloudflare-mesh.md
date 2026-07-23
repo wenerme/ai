@@ -4,15 +4,15 @@ title: Connect with Cloudflare Mesh
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/learning-paths/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connect with Cloudflare Mesh
+# Connect with Cloudflare Mesh
 
-Last updated Apr 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflare-mesh/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflare-mesh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) (formerly WARP Connector) connects your private networks to Cloudflare using the Cloudflare One Client (`warp-cli`) running in headless mode on a Linux server. Every enrolled device and node receives a private Mesh IP and can communicate with any other participant over TCP, UDP, or ICMP.
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflare-mesh/#page","headline":"Connect with Cloudflare Mesh · Cloudflare Learning Paths","description":"Connect your network using Cloudflare Mesh.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/connect-private-network/cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

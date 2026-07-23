@@ -4,15 +4,15 @@ title: Enable Managed Rulesets
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Managed Rulesets
+# Enable Managed Rulesets
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With [managed rulesets](https://developers.cloudflare.com/ruleset-engine/managed-rulesets/), you can quickly deploy rules maintained by Cloudflare, and you can use Cloudflare Network Firewall (formerly Magic Firewall) to control which rules are enabled.
 
@@ -182,7 +182,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/#page","headline":"Enable Managed Rulesets · Cloudflare Network Firewall docs","description":"Enable managed rulesets for the Network Firewall.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

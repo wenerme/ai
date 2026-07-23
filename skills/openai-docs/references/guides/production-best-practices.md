@@ -36,9 +36,9 @@ Owners:
 
 ### Managing billing limits
 
-Once you’ve entered your billing information, you will have an approved usage limit of $100 per month, which is set by OpenAI. Your quota limit will automatically increase as your usage on your platform increases and you move from one [usage tier](https://developers.openai.com/api/docs/guides/rate-limits#usage-tiers) to another. You can review your current usage limit in the [limits](https://platform.openai.com/settings/organization/limits) page in your account settings.
+Once you’ve entered your billing information, OpenAI sets an approved usage limit for your organization. Your quota limit will automatically increase as your usage on your platform increases and you move from one [usage tier](https://developers.openai.com/api/docs/guides/rate-limits#usage-tiers) to another. You can review your current usage limit in the [limits](https://platform.openai.com/settings/organization/limits) page in your account settings.
 
-If you’d like to be notified when your usage exceeds a certain dollar amount, you can set a notification threshold through the [usage limits](https://platform.openai.com/settings/organization/limits) page.
+Set spend alerts on the [limits](https://platform.openai.com/settings/organization/limits) page to send notifications when usage exceeds a certain dollar amount. To enforce a monthly cap, set a hard spend limit. Hard spend limits stop affected API traffic when tracked spend reaches the limit, so review the [spend limits guide](https://developers.openai.com/api/docs/guides/spend-limits) before enabling one in production.
 
 ### API keys
 

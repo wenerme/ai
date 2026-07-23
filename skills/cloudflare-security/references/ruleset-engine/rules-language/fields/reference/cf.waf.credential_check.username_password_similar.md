@@ -4,11 +4,11 @@ title: cf.waf.credential_check.username_password_similar
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  cf.waf.credential\_check.username\_password\_similar
+# cf.waf.credential\_check.username\_password\_similar
 
-`cf.waf.credential_check.username_password_similar` ` Boolean `
+`cf.waf.credential_check.username_password_similar` `Boolean`
 
 Indicates whether a similar version of the username and password credentials detected in the request were previously leaked.
 
@@ -21,7 +21,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_password_similar/#page","headline":"cf.waf.credential_check.username_password_similar · Cloudflare Ruleset Engine docs","description":"Indicates whether a similar version of the username and password credentials detected in the request were previously leaked.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.waf.credential_check.username_password_similar/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Durable Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Durable Objects
+# Durable Objects
 
-Last updated Jan 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jan 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 * [Durable Objects Reference](https://developers.cloudflare.com/durable-objects/api/)
 * [Using Durable Objects](https://developers.cloudflare.com/durable-objects/)
@@ -105,7 +105,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects/#page","headline":"Durable Objects · Cloudflare Workers docs","description":"Specify Durable Objects to add to your environment as follows:","url":"https://developers.cloudflare.com/workers/testing/miniflare/storage/durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

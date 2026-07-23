@@ -4,22 +4,22 @@ title: Send EU visitors to a Google Cloud Storage bucket
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Send EU visitors to a Google Cloud Storage bucket
+# Send EU visitors to a Google Cloud Storage bucket
 
 Route all traffic from EU visitors to a Google Cloud Storage bucket using Cloud Connector.
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/examples/send-eu-visitors-to-gcs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/examples/send-eu-visitors-to-gcs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To route requests from visitors in the European Union to a Google Cloud Storage bucket:
 
 1. In the Cloudflare dashboard, go to the **Cloud Connector** page.
-[ Go to **Cloud Connector** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
+[Go to **Cloud Connector** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
 2. Select **Google Cloud Storage** as your [cloud provider](https://developers.cloudflare.com/rules/cloud-connector/providers/).
 3. Enter the bucket URL. You can structure the URL in two ways:
 
@@ -40,7 +40,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/send-eu-visitors-to-gcs/#page","headline":"Send EU visitors to a Google Cloud Storage bucket · Cloudflare Rules docs","description":"Route all traffic from EU visitors to a Google Cloud Storage bucket using Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/send-eu-visitors-to-gcs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GCP","Geolocation"]}

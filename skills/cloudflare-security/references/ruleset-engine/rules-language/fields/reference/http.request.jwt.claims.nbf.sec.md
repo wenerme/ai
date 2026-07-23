@@ -4,11 +4,11 @@ title: http.request.jwt.claims.nbf.sec
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  http.request.jwt.claims.nbf.sec
+# http.request.jwt.claims.nbf.sec
 
-`http.request.jwt.claims.nbf.sec` ` Map<Array<Integer>> `
+`http.request.jwt.claims.nbf.sec` `Map<Array<Integer>>`
 
 The `nbf` (not before) claim identifies the time (number of seconds) before which the JWT must not be accepted for processing.
 
@@ -26,7 +26,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.jwt.claims.nbf.sec/#page","headline":"http.request.jwt.claims.nbf.sec · Cloudflare Ruleset Engine docs","description":"The nbf (not before) claim identifies the time (number of seconds) before which the JWT must not be accepted for processing.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.jwt.claims.nbf.sec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

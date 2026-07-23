@@ -4,15 +4,15 @@ title: Content-based asset creation
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Content-based asset creation
+# Content-based asset creation
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-asset-creation/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-asset-creation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Combining text-generation models with text-to-image models can lead to powerful AI systems capable of generating visual content based on input prompts. This integration can be achieved through a collaborative framework where a text-generation model generates prompts for the text-to-image model based on input text.
 
@@ -27,7 +27,7 @@ Example uses of such compositions of AI models can be employed to generation vis
 
 ## Asset generation
 
-![Figure 1:Content-based asset generation](https://developers.cloudflare.com/_astro/ai-asset-generation.BN6tfVXY_1MIa7Q.svg "Figure 1: Content-based asset generation")
+![Figure 1:Content-based asset generation](https://developers.cloudflare.com/_astro/ai-asset-generation.BN6tfVXY_ZAHNWj.svg "Figure 1: Content-based asset generation")
 
 Figure 1: Content-based asset generation
 
@@ -49,7 +49,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-asset-creation/#page","headline":"Content-based asset creation · Cloudflare Reference Architecture docs","description":"AI systems combine text-generation and text-to-image models to create visual content from text. They generate prompts, moderate content, and produce images for various applications.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-asset-creation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

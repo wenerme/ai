@@ -4,15 +4,15 @@ title: Interactive Recordings with Timed Metadata
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/realtime/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Interactive Recordings with Timed Metadata
+# Interactive Recordings with Timed Metadata
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 RealtimeKit's interactive recording feature allows you to add timed metadata to your video stream. Timed metadata serves as cue points for clients to display information and trigger time-aligned actions. The metadata is available to clients in the form of [ID3 ↗](https://en.wikipedia.org/wiki/ID3) tags on the playback timeline.
 
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/#page","headline":"Interactive Recordings with Timed Metadata · Cloudflare Realtime docs","description":"Learn how to enable interactive recording with RealtimeKit's capabilities. Follow our guide for effective configuration and management.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

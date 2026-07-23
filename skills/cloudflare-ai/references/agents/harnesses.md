@@ -4,15 +4,15 @@ title: Harnesses
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Harnesses
+# Harnesses
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A harness is the loop that makes an agent behave like an agent instead of a single model call.
 
@@ -37,9 +37,9 @@ Use Project Think when you want an opinionated chat-agent harness with defaults 
 
 ## Current harnesses
 
-### [ Project Think ](https://developers.cloudflare.com/agents/harnesses/think/)
+### [Project Think](https://developers.cloudflare.com/agents/harnesses/think/)
 
- An opinionated chat agent harness with built-in tools, persistent memory, lifecycle hooks, streaming, and sub-agent RPC.
+An opinionated chat agent harness with built-in tools, persistent memory, lifecycle hooks, streaming, and sub-agent RPC.
 
 ## What a harness usually owns
 
@@ -54,17 +54,17 @@ A harness usually owns:
 
 ## Related resources
 
-### [ Agents SDK runtime ](https://developers.cloudflare.com/agents/runtime/agents-api/)
+### [Agents SDK runtime](https://developers.cloudflare.com/agents/runtime/agents-api/)
 
- Build your own harness directly on the Agent class.
+Build your own harness directly on the Agent class.
 
-### [ Sessions ](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)
+### [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)
 
- Store conversation context and memory across turns.
+Store conversation context and memory across turns.
 
-### [ Durable execution with fibers ](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
+### [Durable execution with fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)
 
- Recover long-running agent work after Durable Object eviction.
+Recover long-running agent work after Durable Object eviction.
 
 Was this helpful?
 
@@ -72,7 +72,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/#page","headline":"Harnesses · Cloudflare Agents docs","description":"Understand agent harnesses — the loop that controls planning, tool use, and response flow.","url":"https://developers.cloudflare.com/agents/harnesses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

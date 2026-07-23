@@ -4,15 +4,15 @@ title: Enable Cloudflare Pipelines
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/logs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Enable Cloudflare Pipelines
+# Enable Cloudflare Pipelines
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Pipelines](https://developers.cloudflare.com/pipelines/) ingests events, transforms them with [SQL](https://developers.cloudflare.com/pipelines/sql-reference/), and delivers them to [R2](https://developers.cloudflare.com/r2/) as [Iceberg](https://developers.cloudflare.com/r2/data-catalog/) tables or as Parquet and JSON files. Logpush can write data to Pipelines as a native destination.
 
@@ -30,8 +30,8 @@ For a full list of fields available in each dataset, refer to [Datasets](https:/
 ## Manage via the Cloudflare dashboard
 
 1. In the Cloudflare dashboard, go to the **Logpush** page at the account or domain (also known as zone) level.
-  * For account: [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/logs)
-  * For domain (also known as zone): [ Go to **Logpush** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
+  * For account: [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/logs)
+  * For domain (also known as zone): [Go to **Logpush** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/logs)
 2. Select **Create a Logpush job**.
 3. Select **Pipelines** as the destination.
 4. In the **Dataset** step, select the dataset from the dropdown.
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/#page","headline":"Enable Cloudflare Pipelines · Cloudflare Logs docs","description":"Push Cloudflare logs to Cloudflare Pipelines.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

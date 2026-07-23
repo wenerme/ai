@@ -4,15 +4,15 @@ title: SFP+ port information
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-wan/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  SFP+ port information
+# SFP+ port information
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The hardware version of Cloudflare One Appliance (formerly Magic WAN Connector) includes two [SFP+ ports ↗](https://en.wikipedia.org/wiki/Small%5FForm-factor%5FPluggable) that support 10G throughput. These ports can be configured as either a WAN or a LAN port, like all of the 1G RJ45 ports in the machine. Because a 10G WAN uplink will often be bottlenecked by IPsec tunnel speeds, the SFP+ ports are most useful for configuring high speed LANs, and for using fiber connections.
 
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/#page","headline":"SFP+ port information · Cloudflare WAN docs","description":"SFP+ port specifications for the hardware Appliance.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

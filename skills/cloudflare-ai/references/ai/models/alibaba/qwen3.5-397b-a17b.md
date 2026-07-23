@@ -4,7 +4,7 @@ title: Qwen 3.5 397B A17B
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,26 +12,26 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Alibaba logo](https://developers.cloudflare.com/_astro/alibaba.C3THgr9s.svg)
 
-#  Qwen 3.5 397B A17B
+# Qwen 3.5 397B A17B
 
- Text Generation • Alibaba
+Text Generation • Alibaba
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` alibaba/qwen3.5-397b-a17b `
+`alibaba/qwen3.5-397b-a17b`
 
 * Third-party
 * Zero data retention
 
 Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.
 
-| Model Info          |                                                                                                                              |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                         |
-| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                                       |
-| Zero data retention | Yes                                                                                                                          |
-| Request formats     | Chat Completions, Responses                                                                                                  |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.5-397b-a17b) |
+| Model Info          |                                                                                                                             |
+| ------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://www.alibabacloud.com/help/en/legal)                                                                        |
+| More information    | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen)                                                      |
+| Zero data retention | Yes                                                                                                                         |
+| Request formats     | Chat Completions, Responses                                                                                                 |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.5-397b-a17b) |
 
 ## Usage
 
@@ -127,7 +127,7 @@ Physicist C.P. Snow famously summarized the laws using a gambling analogy:
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -306,7 +306,7 @@ This covers the most common scenarios for reading JSON in Python. Let me know if
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -431,7 +431,7 @@ Do you think you'll prefer the scenic route or the faster one? I can help you pl
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -524,7 +524,7 @@ He glanced at the sealed windows, then back at the die. It was warm. Not body he
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -4349,7 +4349,7 @@ Think of recursion like Russian nesting dolls – you keep opening smaller dolls
 ]
 ```
 
-**Web Search**  — Letting Qwen use DashScope's built-in web search via enable\_search
+**Web Search** — Letting Qwen use DashScope's built-in web search via enable\_search
 
 ```ts
 const response = await env.AI.run(
@@ -4589,9 +4589,9 @@ status
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -4599,7 +4599,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/#page","headline":"Qwen 3.5 397B A17B (Alibaba) · Cloudflare AI docs · Cloudflare AI docs","description":"Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active parameters, offering strong reasoning capabilities with efficient inference.","url":"https://developers.cloudflare.com/ai/models/alibaba/qwen3.5-397b-a17b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

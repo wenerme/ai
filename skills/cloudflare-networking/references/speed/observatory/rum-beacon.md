@@ -4,15 +4,15 @@ title: RUM beacon for Web Analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/speed/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  RUM beacon for Web Analytics
+# RUM beacon for Web Analytics
 
-Last updated Jun 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/speed/observatory/rum-beacon/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/speed/observatory/rum-beacon/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The RUM beacon is a JavaScript snippet that runs when a Cloudflare customer enables RUM through [Web Analytics](https://developers.cloudflare.com/web-analytics/) or [Observatory](https://developers.cloudflare.com/speed/observatory/). This script runs in users' browsers when they visit the customer's site, and its purpose is to collect performance-related data, for example, page load time, and send it to Cloudflare's systems for processing. This [data](https://developers.cloudflare.com/web-analytics/data-metrics/) is then presented to the customer, providing valuable insights into the website's performance and usage.
 
@@ -72,7 +72,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/speed/observatory/rum-beacon/#page","headline":"RUM beacon for Web Analytics · Cloudflare Speed docs","description":"Collect real user performance metrics with the RUM beacon.","url":"https://developers.cloudflare.com/speed/observatory/rum-beacon/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}

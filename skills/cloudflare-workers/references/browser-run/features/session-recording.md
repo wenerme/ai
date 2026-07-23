@@ -4,17 +4,17 @@ title: Session recording
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Session recording
+# Session recording
 
-Last updated Jun 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/features/session-recording/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
- Beta
+Beta
 
 When browser automation fails or behaves unexpectedly, it can be difficult to understand what happened. Session recording captures DOM changes, mouse and keyboard events, and page navigation as structured JSON events — not a video — so it is lightweight and easy to inspect. Recordings are powered by [rrweb ↗](https://github.com/rrweb-io/rrweb) and are opt-in per session.
 
@@ -110,7 +110,7 @@ After a session closes, its recording is available in the Cloudflare dashboard u
 
 If a session opened multiple tabs, the recording viewer shows a tab selector dropdown in the top-right corner of the replay area. Use it to switch between the recorded tabs and view the activity for each one individually.
 
-[ Go to **Browser Run Runs** ↗ ](https://dash.cloudflare.com/?to=/:account/workers/browser-run/runs)
+[Go to **Browser Run Runs** ↗](https://dash.cloudflare.com/?to=/:account/workers/browser-run/runs)
 
 ## Retrieve a recording via API
 
@@ -167,7 +167,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/session-recording/#page","headline":"Session recording · Cloudflare Browser Run docs","description":"Record and replay Browser Run sessions to visually debug browser automation scripts.","url":"https://developers.cloudflare.com/browser-run/features/session-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

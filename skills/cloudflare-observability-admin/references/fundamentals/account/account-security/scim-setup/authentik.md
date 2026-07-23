@@ -4,15 +4,15 @@ title: Provision with Authentik
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Provision with Authentik
+# Provision with Authentik
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/authentik/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/authentik/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -63,7 +63,7 @@ To verify the integration:
 After users and groups are synchronized, you can assign [policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) to user groups:
 
 1. In the Cloudflare dashboard, go to **Manage Account** \> **Members** \> **User Groups**.
-[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
+[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 1. Select the group you want to configure.
 2. Assign the appropriate policies to define the [roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/) for group members.
 
@@ -73,7 +73,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/authentik/#page","headline":"Provision with Authentik · Cloudflare Fundamentals docs","description":"Configure Authentik as a SCIM identity provider to provision users and groups into your Cloudflare account.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/scim-setup/authentik/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

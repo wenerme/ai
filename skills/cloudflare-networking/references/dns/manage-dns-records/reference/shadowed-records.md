@@ -4,15 +4,15 @@ title: Shadowed records
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Shadowed records
+# Shadowed records
 
-Last updated Jul 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you add an `NS` record to your zone, you create a **subdomain delegation**: you delegate authority for that subdomain (and everything below it) to another set of nameservers. Any record you keep at or below that delegation point is **shadowed**. It stays stored in your zone, but the delegation places authority for that name with the delegated nameservers, so the record is not part of the authoritative data your zone is meant to serve.
 
@@ -213,7 +213,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/#page","headline":"Shadowed records · Cloudflare DNS docs","description":"DNS records at or below a subdomain delegation point, where authority belongs to the delegated nameservers rather than your zone.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

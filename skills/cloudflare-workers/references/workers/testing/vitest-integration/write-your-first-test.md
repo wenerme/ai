@@ -4,15 +4,15 @@ title: Write your first test
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Write your first test
+# Write your first test
 
-Last updated May 27, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through getting started with the `@cloudflare/vitest-pool-workers` package. For more complex examples of testing using `@cloudflare/vitest-pool-workers`, refer to [Recipes](https://developers.cloudflare.com/workers/testing/vitest-integration/recipes/).
 
@@ -23,7 +23,7 @@ First, make sure that:
 * Your [compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates/) is set to `2022-10-31` or later.
 * Your Worker using the ES modules format (if not, refer to the [migrate to the ES modules format](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) guide).
 * Vitest and `@cloudflare/vitest-pool-workers` are installed in your project as dev dependencies
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
 ```
@@ -235,7 +235,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/#page","headline":"Write your first test · Cloudflare Workers docs","description":"Write tests against Workers using Vitest","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

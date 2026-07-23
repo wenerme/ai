@@ -4,15 +4,15 @@ title: Threat intelligence fields
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Threat intelligence fields
+# Threat intelligence fields
 
-Last updated Jun 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The threat intelligence detection populates the following fields when the client IP address is found in the threat intelligence database. If the IP address is not found, the fields are empty.
 
@@ -22,13 +22,13 @@ Note
 
 These five fields are available in rule expressions. Security Analytics logs only the dataset and threat event identifiers for each match. You can view the threat event details — including attacker names, industries, and countries — directly in [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/).
 
-| Field                                                             | Description                                                                                                         |
-| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Threat intelligence datasets cf.intel.ip.datasets  Array<String>  | Dataset that flagged the IP address. Values: ddos, waf.                                                             |
-| Target industries cf.intel.ip.target\_industries  Array<String>   | Industries this IP address has targeted. Refer to [target industries](#target-industries) for valid values.         |
-| Attacker names cf.intel.ip.attacker\_names  Array<String>         | Threat actor names associated with this IP address (for example, CONVOLUTEDKRILL).                                  |
-| Attacker countries cf.intel.ip.attacker\_countries  Array<String> | Source countries of the threat activity, as [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) codes. |
-| Target countries cf.intel.ip.target\_countries  Array<String>     | Countries this IP address has targeted, as [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) codes.  |
+| Field                                                            | Description                                                                                                         |
+| ---------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Threat intelligence datasets cf.intel.ip.datasets Array<String>  | Dataset that flagged the IP address. Values: ddos, waf.                                                             |
+| Target industries cf.intel.ip.target\_industries Array<String>   | Industries this IP address has targeted. Refer to [target industries](#target-industries) for valid values.         |
+| Attacker names cf.intel.ip.attacker\_names Array<String>         | Threat actor names associated with this IP address (for example, CONVOLUTEDKRILL).                                  |
+| Attacker countries cf.intel.ip.attacker\_countries Array<String> | Source countries of the threat activity, as [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) codes. |
+| Target countries cf.intel.ip.target\_countries Array<String>     | Countries this IP address has targeted, as [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) codes.  |
 
 ## Case sensitivity
 
@@ -65,7 +65,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/#page","headline":"Threat intelligence fields · Cloudflare Web Application Firewall (WAF) docs","description":"Fields available for threat intelligence detection in rule expressions.","url":"https://developers.cloudflare.com/waf/detections/threat-intelligence/fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Threat Intelligence"]}

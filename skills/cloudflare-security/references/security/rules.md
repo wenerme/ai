@@ -4,21 +4,21 @@ title: Security rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Security rules
+# Security rules
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security/rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security/rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security rules perform security-related actions on incoming requests that match specified filters. Rules are evaluated and executed in order, from first to last.
 
 To access security rules in the new security dashboard, go to the **Security rules** page.
 
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 
 ## Security rules
 
@@ -27,7 +27,7 @@ The **Security rules** tab includes a list of different types of rules configure
 To create a security rule:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Select **Templates**, and then select a template from the list. You can customize the default configuration of the template before deploying the new rule. Refer to the resources listed in the next step.
 3. Select **Create rule** \> select the type of rule you want to create. Refer to the following resources about each rule type:
 
@@ -73,7 +73,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security/rules/#page","headline":"Security rules · Security dashboard docs","description":"Security rules perform security actions on incoming requests that match specified filters.","url":"https://developers.cloudflare.com/security/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

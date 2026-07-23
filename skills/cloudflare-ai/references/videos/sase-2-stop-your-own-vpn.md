@@ -4,7 +4,7 @@ title: SASE - Stop hosting your VPN service
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 Cloudflare's SASE platform can replace your traditional, expensive VPN appliances, which deliver poor performance for users and create more security risks than solve them. Cloudflare's Zero Trust Network Access (ZTNA) service is a more secure, highly scalable cloud solution. In this video, we look at how easily you can deploy Cloudflare to secure access to internal resources.
 
@@ -12,22 +12,22 @@ Chapters
 
 * ![Introduction to Corporate Network Security and Access Challenges](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction to Corporate Network Security and Access Challenges**  0s
+**Introduction to Corporate Network Security and Access Challenges**0s
 * ![Cloudflare's SASE Approach to Securing Internal Applications](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=75s)
 
- **Cloudflare's SASE Approach to Securing Internal Applications**  01m15s
+**Cloudflare's SASE Approach to Securing Internal Applications**01m15s
 * ![Connecting Internal Applications to Cloudflare with Secure Tunnels](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=114s)
 
- **Connecting Internal Applications to Cloudflare with Secure Tunnels**  01m54s
+**Connecting Internal Applications to Cloudflare with Secure Tunnels**01m54s
 * ![Implementing Identity-Based, Clientless Access Control Access Control](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=162s)
 
- **Implementing Identity-Based, Clientless Access Control Access Control**  02m42s
+**Implementing Identity-Based, Clientless Access Control Access Control**02m42s
 * ![Leveraging Anycast Networking for Faster and More Secure Application Access](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=336s)
 
- **Leveraging Anycast Networking for Faster and More Secure Application Access**  05m36s
+**Leveraging Anycast Networking for Faster and More Secure Application Access**05m36s
 * ![Enhancing Security with Micro-Segmentation and Cloudflare's Global Network](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/0410c73fe3fdd36142ec08bac77e8f97/thumbnails/thumbnail.jpg?fit=crop&time=419s)
 
- **Enhancing Security with Micro-Segmentation and Cloudflare's Global Network**  06m59s
+**Enhancing Security with Micro-Segmentation and Cloudflare's Global Network**06m59s
 
 Transcript
 

@@ -4,15 +4,15 @@ title: Migration guides
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/migration-guides/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migration guides
+# Migration guides
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/migration-guides/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/migration-guides/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Content designed to help you migrate from another provider to Cloudflare.
 
@@ -22,15 +22,15 @@ This section is still in work. Expect more guides soon.
 
 ## More resources
 
-### [ Reference architectures ](https://developers.cloudflare.com/reference-architecture/)
+### [Reference architectures](https://developers.cloudflare.com/reference-architecture/)
 
 High-level overviews of Cloudflare's network and platform.
 
-### [ Cloudflare blog ](https://blog.cloudflare.com/)
+### [Cloudflare blog](https://blog.cloudflare.com/)
 
 Read articles and announcements about the latest Cloudflare products and features.
 
-### [ Learning Paths ](https://developers.cloudflare.com/learning-paths/)
+### [Learning Paths](https://developers.cloudflare.com/learning-paths/)
 
 Module-based guidance on Cloudflare product workflows.
 
@@ -40,7 +40,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/migration-guides/#page","headline":"Migration guides · Cloudflare Migration Guides","description":"Migrate from another provider to Cloudflare.","url":"https://developers.cloudflare.com/migration-guides/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

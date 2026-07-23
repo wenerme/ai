@@ -4,15 +4,15 @@ title: Pricing
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2-sql/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pricing
+# Pricing
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2-sql/platform/pricing/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 SQL charges based on a single dimension:
 
@@ -24,10 +24,10 @@ All included usage is on a monthly basis.
 
 ## R2 SQL pricing
 
-|              | Pricing                 |
-| ------------ | ----------------------- |
-| Included     | 10 GB / month           |
-| Data scanned | 0.0025 / GB (2.50 / TB) |
+|              | Pricing                   |
+| ------------ | ------------------------- |
+| Included     | 10 GB / month             |
+| Data scanned | $0.0025 / GB ($2.50 / TB) |
 
 ### What counts as data scanned
 
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/platform/pricing/#page","headline":"R2 SQL - Pricing · R2 SQL docs","description":"R2 SQL pricing based on data scanned, with included usage details and billing examples.","url":"https://developers.cloudflare.com/r2-sql/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

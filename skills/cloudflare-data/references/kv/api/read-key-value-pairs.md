@@ -4,15 +4,15 @@ title: Read key-value pairs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/kv/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Read key-value pairs
+# Read key-value pairs
 
-Last updated Jun 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/kv/api/read-key-value-pairs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/api/read-key-value-pairs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To get the value for a given key, call the `get()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
@@ -344,7 +344,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/#page","headline":"Read key-value pairs · Cloudflare Workers KV docs","description":"Retrieve values from a Workers KV namespace using the get() method, with support for types, caching, and metadata.","url":"https://developers.cloudflare.com/kv/api/read-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

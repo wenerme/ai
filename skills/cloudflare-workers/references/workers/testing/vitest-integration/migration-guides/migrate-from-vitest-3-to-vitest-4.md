@@ -4,15 +4,15 @@ title: Migrate from Vitest 3 to Vitest 4
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Migrate from Vitest 3 to Vitest 4
+# Migrate from Vitest 3 to Vitest 4
 
-Last updated Jun 25, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/vitest-pool-workers` v0.13.0 adds support for [Vitest 4 ↗](https://vitest.dev/blog/vitest-4). v0.12.x is the last version to support Vitest 3.x. It continues to work if you are not ready to migrate.
 
@@ -31,7 +31,7 @@ This guide covers migrating an existing project from v0.12.x to v0.13.x.
 
 Install Vitest 4 and the latest version of `@cloudflare/vitest-pool-workers`:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i -D vitest@^4.1.0 @cloudflare/vitest-pool-workers
@@ -55,7 +55,7 @@ bun add -d vitest@^4.1.0 @cloudflare/vitest-pool-workers
 
 A codemod updates your `vitest.config.ts` to the new plugin API automatically. After installing the package, run:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx jscodeshift -t node_modules/@cloudflare/vitest-pool-workers/dist/codemods/vitest-v3-to-v4.mjs vitest.config.ts
@@ -71,7 +71,7 @@ pnpm jscodeshift -t node_modules/@cloudflare/vitest-pool-workers/dist/codemods/v
 
 To run the codemod without installing the package first, point it at the published version:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npx jscodeshift -t https://unpkg.com/@cloudflare/vitest-pool-workers/dist/codemods/vitest-v3-to-v4.mjs --parser=ts vitest.config.ts
@@ -181,7 +181,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/#page","headline":"Migrate from Vitest 3 to Vitest 4 · Cloudflare Workers docs","description":"Migrate the Workers Vitest integration from v0.12.x (Vitest 3) to v0.13.x (Vitest 4), covering configuration and test file changes.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

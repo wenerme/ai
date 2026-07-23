@@ -4,21 +4,21 @@ title: Gateway activity logs
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Gateway activity logs
+# Gateway activity logs
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway activity logs record the DNS queries, Network packets, and HTTP requests inspected by Gateway. You can also download encrypted [SSH command logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/ssh-command-logs/) for sessions proxied by Gateway.
 
 Enterprise users can generate more detailed logs with [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
-* [ Manage PII ](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/manage-pii/)
+* [Manage PII](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/manage-pii/)
 
 Private source IP substitution
 
@@ -323,7 +323,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#page","headline":"Gateway activity logs · Cloudflare One docs","description":"Review DNS queries, network traffic, and HTTP requests inspected by Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

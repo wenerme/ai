@@ -4,15 +4,15 @@ title: Stagehand
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Stagehand
+# Stagehand
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/stagehand/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/stagehand/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Stagehand ↗](https://www.stagehand.dev/) is an open-source, AI-powered browser automation library. Stagehand lets you combine code with natural-language instructions powered by AI, eliminating the need to dictate exact steps or specify selectors. With Stagehand, your agents are more resilient to website changes and easier to maintain, helping you build more reliably and flexibly.
 
@@ -66,7 +66,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"observability": {
 		"enabled": true
 	},
@@ -84,7 +84,7 @@ name = "stagehand-example"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [observability]
 enabled = true
@@ -219,7 +219,7 @@ npm run deploy
 
 To use AI Gateway with a third-party model, first create a gateway in the **AI Gateway** page of the Cloudflare dashboard.
 
-[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
 In this example, we've named the gateway `stagehand-example-gateway`.
 
@@ -264,7 +264,7 @@ const stagehand = new Stagehand({
 
 To use AI Gateway with a third-party model, first create a gateway in the **AI Gateway** page of the Cloudflare dashboard.
 
-[ Go to **AI Gateway** ↗ ](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+[Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
 In this example, we are using [OpenAI with AI Gateway](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/). Make sure to add the `baseURL` as shown below, with your own Account ID and Gateway ID.
 
@@ -294,7 +294,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/stagehand/#page","headline":"Stagehand · Cloudflare Browser Run docs","description":"Deploy a Stagehand server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/stagehand/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

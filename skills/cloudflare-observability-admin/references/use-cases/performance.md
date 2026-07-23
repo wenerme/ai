@@ -4,24 +4,24 @@ title: Performance
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Performance
+# Performance
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/performance/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/performance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Accelerate websites and applications with Cloudflare CDN (Content Delivery Network) caching, image optimization, smart routing, load balancing, and web analytics.
 
-* [ Cache content globally ](https://developers.cloudflare.com/use-cases/performance/caching/)
-* [ Optimize images ](https://developers.cloudflare.com/use-cases/performance/image-optimization/)
-* [ Accelerate connections ](https://developers.cloudflare.com/use-cases/performance/connections/)
-* [ Optimize web assets ](https://developers.cloudflare.com/use-cases/performance/web-assets/)
-* [ Balance traffic across origins ](https://developers.cloudflare.com/use-cases/performance/load-balancing/)
-* [ Monitor performance ](https://developers.cloudflare.com/use-cases/performance/monitoring/)
+* [Cache content globally](https://developers.cloudflare.com/use-cases/performance/caching/)
+* [Optimize images](https://developers.cloudflare.com/use-cases/performance/image-optimization/)
+* [Accelerate connections](https://developers.cloudflare.com/use-cases/performance/connections/)
+* [Optimize web assets](https://developers.cloudflare.com/use-cases/performance/web-assets/)
+* [Balance traffic across origins](https://developers.cloudflare.com/use-cases/performance/load-balancing/)
+* [Monitor performance](https://developers.cloudflare.com/use-cases/performance/monitoring/)
 
 ## Prerequisites
 
@@ -33,15 +33,15 @@ Accelerate websites and applications with Cloudflare CDN (Content Delivery Netwo
 
 ## Related resources
 
-### [ Performance best practices ](https://developers.cloudflare.com/learning-paths/optimize-site-speed/)
+### [Performance best practices](https://developers.cloudflare.com/learning-paths/optimize-site-speed/)
 
 Structured learning path for site optimization.
 
-### [ Cache Analytics ](https://developers.cloudflare.com/cache/performance-review/cache-analytics/)
+### [Cache Analytics](https://developers.cloudflare.com/cache/performance-review/cache-analytics/)
 
 Analyze cache hit rates and optimize caching.
 
-### [ Performance case studies ](https://www.cloudflare.com/case-studies/)
+### [Performance case studies](https://www.cloudflare.com/case-studies/)
 
 Explore how companies accelerate their applications with Cloudflare.
 
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/use-cases/performance/#page","headline":"Performance · Use cases · Cloudflare use cases","description":"Accelerate websites and applications with Cloudflare CDN caching, image optimization, smart routing, load balancing, and web analytics.","url":"https://developers.cloudflare.com/use-cases/performance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

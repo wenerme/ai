@@ -4,15 +4,15 @@ title: Available Notifications
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/notifications/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Available Notifications
+# Available Notifications
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/notifications/notification-available/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/notifications/notification-available/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available Notifications depend on your Cloudflare plan. Cloudflare offers a variety of Notifications for our products and services, such as [Billing](https://developers.cloudflare.com/billing/), [Denial of Service protection](https://developers.cloudflare.com/ddos-protection/), [Magic Transit](https://developers.cloudflare.com/magic-transit/), and [SSL/TLS](https://developers.cloudflare.com/ssl/).
 
@@ -1375,7 +1375,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/notification-available/#page","headline":"Available Notifications · Cloudflare Notifications docs","description":"Browse available notification types by product.","url":"https://developers.cloudflare.com/notifications/notification-available/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

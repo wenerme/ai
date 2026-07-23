@@ -4,15 +4,15 @@ title: Observe traffic patterns and analytics
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/use-cases/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Observe traffic patterns and analytics
+# Observe traffic patterns and analytics
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/use-cases/e-commerce/analytics/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/e-commerce/analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Understanding how shoppers experience your store — page load times, security events, and traffic patterns — requires analytics that do not slow down your site. Cloudflare Web Analytics collects real user metrics without cookies, Security Analytics shows WAF and bot activity, and Logpush exports logs for compliance.
 
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/e-commerce/analytics/#page","headline":"Observe traffic patterns and analytics · Cloudflare use cases","description":"Understand your traffic, identify issues, and optimize your store with Cloudflare analytics.","url":"https://developers.cloudflare.com/use-cases/e-commerce/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

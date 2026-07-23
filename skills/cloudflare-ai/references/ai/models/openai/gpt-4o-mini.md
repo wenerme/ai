@@ -4,7 +4,7 @@ title: GPT-4o mini
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,27 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  GPT-4o mini
+# GPT-4o mini
 
- Text Generation • OpenAI
+Text Generation • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/gpt-4o-mini `
+`openai/gpt-4o-mini`
 
 * Third-party
 * Zero data retention
 
 GPT-4o Mini is the lightweight, low-cost variant of GPT-4o, well suited to high-volume tasks with multimodal inputs.
 
-| Model Info                                                                  |                                                                                                                       |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                        |
-| Terms and License                                                           | [link ↗](https://openai.com/policies/)                                                                                |
-| More information                                                            | [link ↗](https://openai.com/)                                                                                         |
-| Zero data retention                                                         | Yes                                                                                                                   |
-| Request formats                                                             | Responses, Chat Completions                                                                                           |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-mini) |
+| Model Info                                                                 |                                                                                                                      |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                       |
+| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                               |
+| More information                                                           | [link ↗](https://openai.com/)                                                                                        |
+| Zero data retention                                                        | Yes                                                                                                                  |
+| Request formats                                                            | Responses, Chat Completions                                                                                          |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-mini) |
 
 ## Usage
 
@@ -119,7 +119,7 @@ These laws are foundational to the study of physics and chemistry, affecting var
 
 ## Examples
 
-**With System Message**  — Using a system message to set context
+**With System Message** — Using a system message to set context
 
 ```ts
 const response = await env.AI.run(
@@ -243,7 +243,7 @@ This method is simple and efficient for reading JSON data in Python.
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a conversation with context
+**Multi-turn Conversation** — Continuing a conversation with context
 
 ```ts
 const response = await env.AI.run(
@@ -383,7 +383,7 @@ Hope this helps you plan an amazing road trip! Let me know if you need more info
 }
 ```
 
-**Creative Writing**  — Longer completion for creative output
+**Creative Writing** — Longer completion for creative output
 
 ```ts
 const response = await env.AI.run(
@@ -467,7 +467,7 @@ Iris felt the weight of the key shift in her hand, a sense of urgency rising wit
 }
 ```
 
-**Streaming Response**  — Enable streaming for real-time output
+**Streaming Response** — Enable streaming for real-time output
 
 ```ts
 const response = await env.AI.run(
@@ -10476,9 +10476,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -10486,7 +10486,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/#page","headline":"GPT-4o mini (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"GPT-4o Mini is the lightweight, low-cost variant of GPT-4o, well suited to high-volume tasks with multimodal inputs.","url":"https://developers.cloudflare.com/ai/models/openai/gpt-4o-mini/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

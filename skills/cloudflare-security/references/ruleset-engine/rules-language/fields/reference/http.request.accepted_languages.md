@@ -4,11 +4,11 @@ title: http.request.accepted_languages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  http.request.accepted\_languages
+# http.request.accepted\_languages
 
-`http.request.accepted_languages` ` Array<String> `
+`http.request.accepted_languages` `Array<String>`
 
 List of language tags provided in the [Accept-Language](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Language) HTTP request header.
 
@@ -41,7 +41,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.accepted_languages/#page","headline":"http.request.accepted_languages · Cloudflare Ruleset Engine docs","description":"List of language tags provided in the Accept-Language HTTP request header.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/http.request.accepted_languages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

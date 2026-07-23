@@ -4,7 +4,7 @@ title: llama-3.2-11b-vision-instruct
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Meta logo](https://developers.cloudflare.com/_astro/meta.BR4nfp35.svg)
 
-#  llama-3.2-11b-vision-instruct
+# llama-3.2-11b-vision-instruct
 
- Text Generation • Meta
+Text Generation • Meta
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/meta/llama-3.2-11b-vision-instruct `
+`@cf/meta/llama-3.2-11b-vision-instruct`
 
 * Cloudflare-hosted
 * LoRA
@@ -28,7 +28,7 @@ Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/worker
 
 Note
 
-To use Llama 3.2 11b Vision Instruct, you need to agree to the [Meta License ](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) and [Acceptable Use Policy ](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/USE%5FPOLICY.md). To do so, please send an initial request to `@cf/meta/llama-3.2-11b-vision-instruct` with `"prompt" : "agree"`. After that, you'll be able to use the model as normal.
+To use Llama 3.2 11b Vision Instruct, you need to agree to the [Meta License](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) and [Acceptable Use Policy](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/USE%5FPOLICY.md). To do so, please send an initial request to`@cf/meta/llama-3.2-11b-vision-instruct` with`"prompt" : "agree"`. After that, you'll be able to use the model as normal.
 
 ```sh
 curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/meta/llama-3.2-11b-vision-instruct \
@@ -37,19 +37,19 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
    -d '{ "prompt": "agree"}'
 ```
 
-| Model Info                                                                  |                                                                                          |
-| --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                           |
-| Terms and License                                                           | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) |
-| Vision                                                                      | Yes                                                                                      |
-| LoRA                                                                        | Yes                                                                                      |
-| Unit Pricing                                                                | $0.049 per M input tokens, $0.68 per M output tokens                                     |
+| Model Info                                                                 |                                                                                          |
+| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                           |
+| Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) |
+| Vision                                                                     | Yes                                                                                      |
+| LoRA                                                                       | Yes                                                                                      |
+| Unit Pricing                                                               | $0.049 per M input tokens, $0.68 per M output tokens                                     |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.2-11b-vision-instruct)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/meta/llama-3.2-11b-vision-instruct)
 
 ## Usage
 
@@ -138,7 +138,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -198,7 +198,7 @@ lora
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -208,7 +208,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -224,13 +224,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -238,7 +238,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/#page","headline":"llama-3.2-11b-vision-instruct (Meta) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"The Llama 3.2-Vision instruction-tuned models are optimized for visual recognition, image reasoning, captioning, and answering general questions about an image.","url":"https://developers.cloudflare.com/workers-ai/models/llama-3.2-11b-vision-instruct/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

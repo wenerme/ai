@@ -4,15 +4,15 @@ title: Connection lifecycle
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/hyperdrive/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Connection lifecycle
+# Connection lifecycle
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Understanding how connections work between Workers, Hyperdrive, and your origin database is essential for building efficient applications with Hyperdrive.
 
@@ -22,7 +22,7 @@ By maintaining a connection pool to your database within Cloudflare's network, H
 
 When you use a database client in a Cloudflare Worker, the connection lifecycle works differently than in traditional server environments. Here's what happens:
 
-![Hyperdrive connection](https://developers.cloudflare.com/_astro/hyperdrive-connection-lifecycle.B2jgT_oK_bR8HS.svg)
+![Hyperdrive connection](https://developers.cloudflare.com/_astro/hyperdrive-connection-lifecycle.B2jgT_oK_ZFUUBE.svg)
 
 Without Hyperdrive, every Worker invocation would need to establish a new connection directly to your origin database. This connection setup process requires multiple roundtrips across the Internet to complete the TCP handshake, TLS negotiation, and database authentication — that's 7x round trips and added latency before your query can even execute.
 
@@ -158,7 +158,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/#page","headline":"Connection lifecycle · Cloudflare Hyperdrive docs","description":"Understand how connections are managed between Workers, Hyperdrive, and your origin database.","url":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

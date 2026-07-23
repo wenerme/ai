@@ -4,15 +4,15 @@ title: sFlow configuration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-flow/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  sFlow configuration
+# sFlow configuration
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-flow/routers/sflow-config/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-flow/routers/sflow-config/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure your router to export sFlow data to Cloudflare's network for analysis in Network Flow (formerly Magic Network Monitoring). sFlow is a network monitoring protocol that samples network traffic to provide visibility into your network's performance and traffic patterns.
 
@@ -62,7 +62,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-flow/routers/sflow-config/#page","headline":"sFlow configuration · Cloudflare Network Flow docs","description":"A step-by-step configuration guide for exporting sFlow data to Cloudflare's network.","url":"https://developers.cloudflare.com/network-flow/routers/sflow-config/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["UDP"]}

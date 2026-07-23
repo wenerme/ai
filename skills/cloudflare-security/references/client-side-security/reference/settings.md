@@ -4,15 +4,15 @@ title: Configuration settings
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/client-side-security/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Configuration settings
+# Configuration settings
 
-Last updated Apr 15, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/client-side-security/reference/settings/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/reference/settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Reporting endpoint
 
@@ -46,7 +46,7 @@ Only available to customers with Client-Side Security Advanced.
 To configure the CSP reporting endpoint:
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Under **Continuous script monitoring** \> **Configurations**, select the edit icon next to **Reporting endpoint**.
 4. Select **Cloudflare-owned endpoint** or **Same hostname**.
@@ -66,7 +66,7 @@ By default, client-side security only checks the domain against malicious threat
 ### Configure the connection target details to use
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Under **Continuous script monitoring** \> **Configurations**, select the edit icon next to **Data processing**.
 4. Select **Log host only** to analyze only the hostname or **Log full URI** to use the full URI.
@@ -84,7 +84,7 @@ When you turn off client-side security's resource monitoring, you lose visibilit
 To turn off client-side resource monitoring:
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Client-side abuse**.
 3. Next to **Continuous script monitoring**, set the toggle to **Off**.
 
@@ -95,7 +95,7 @@ To turn off client-side resource monitoring:
 Turning off client-side security's resource monitoring does not turn off [content security rules](https://developers.cloudflare.com/client-side-security/rules/) (previously known as policies). To turn off content security rules:
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
-[ Go to **Security rules** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
+[Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Content security rules**.
 3. For each rule, select the three dots next to it > **Disable**.
 
@@ -108,7 +108,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/reference/settings/#page","headline":"Configuration settings · Client-side security docs","description":"Configure client-side security monitoring, logging, and connection tracking settings.","url":"https://developers.cloudflare.com/client-side-security/reference/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

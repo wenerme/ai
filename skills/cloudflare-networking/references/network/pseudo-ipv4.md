@@ -4,15 +4,15 @@ title: Pseudo IPv4
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Pseudo IPv4
+# Pseudo IPv4
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network/pseudo-ipv4/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network/pseudo-ipv4/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare customers can use **Pseudo IPv4** if their origin web server only understands IPv4 formatted IP addresses (meaning it would not support Cloudflare's default [IPv6 compatibility](https://developers.cloudflare.com/network/ipv6-compatibility/)).
 
@@ -57,7 +57,7 @@ To configure **Pseudo IPv4**:
 To change the **Pseudo IPv4** setting in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Network** page.
-[ Go to **Network** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/network)
+[Go to **Network** ↗](https://dash.cloudflare.com/?to=/:account/:zone/network)
 2. For **Pseudo IPv4**, choose your desired setting.
 
 To change **Pseudo IPv4** with the API, send a [PATCH](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `pseudo_ipv4` as the setting name in the URI path, and the `value` parameter set to your desired value: `"off"`, `"add_header"`, or `"overwrite_header"`.
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network/pseudo-ipv4/#page","headline":"Pseudo IPv4 · Cloudflare Network settings docs","description":"Map IPv6 addresses to IPv4 for legacy origin servers.","url":"https://developers.cloudflare.com/network/pseudo-ipv4/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Useful commands
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Useful commands
+# Useful commands
 
-Last updated Jul 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the most commonly used commands for managing local tunnels.
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/#page","headline":"Useful commands · Cloudflare Docs","description":"Common cloudflared commands for managing tunnels.","url":"https://developers.cloudflare.com/tunnel/advanced/local-management/tunnel-useful-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}

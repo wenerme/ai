@@ -4,15 +4,15 @@ title: Antivirus
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Antivirus
+# Antivirus
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Antivirus device posture attribute checks if any antivirus software is installed and active on a device. The Cloudflare One Client queries the [Windows Security Center API ↗](https://learn.microsoft.com/en-us/windows/win32/api/iwscapi/ne-iwscapi-wsc%5Fsecurity%5Fproduct%5Fstate) to determine the state of registered security products. For the posture check to pass, Windows Security Center must report that a security product is turned on and up to date.
 
@@ -63,7 +63,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/#page","headline":"Antivirus · Cloudflare One docs","description":"Antivirus in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/antivirus/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}

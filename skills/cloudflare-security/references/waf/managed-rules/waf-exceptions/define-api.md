@@ -4,15 +4,15 @@ title: Add an exception via API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Add an exception via API
+# Add an exception via API
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To add a managed rules exception using the API, create a rule with `skip` action in a [phase entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) of the `http_request_firewall_managed` phase. You can define exceptions at the account level and at the zone level. Exceptions are also called skip rules.
 
@@ -125,7 +125,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	"messages": []
 }
 ```
-Identify the rule deploying the Cloudflare Managed Ruleset by searching for an `execute` rule with `action_parameters` \> `id` equal to ...376e9aee  (the managed ruleset ID).
+Identify the rule deploying the Cloudflare Managed Ruleset by searching for an `execute` rule with `action_parameters` \> `id` equal to ...376e9aee (the managed ruleset ID).
 Note
 To get the IDs of existing WAF managed rulesets, refer to [Available managed rulesets](https://developers.cloudflare.com/waf/managed-rules/#available-managed-rulesets) or use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation.
 Save the following IDs for the next step:
@@ -158,7 +158,7 @@ For more information on skipping one or more managed rulesets via API, refer to 
 
 The following example adds a rule that skips a particular rule of the [Cloudflare Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) for requests matching the `dev.example.com` hostname.
 
-1. Invoke the [Get a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) operation to obtain a list of rules in the Cloudflare Managed Ruleset (ruleset ID ...376e9aee  ).
+1. Invoke the [Get a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/) operation to obtain a list of rules in the Cloudflare Managed Ruleset (ruleset ID ...376e9aee).
 You can get the managed ruleset details using the account-level endpoint ([Get an account ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/)) or the zone-level endpoint ([Get a zone ruleset](https://developers.cloudflare.com/api/resources/rulesets/methods/get/)).
 Note
 To get the IDs of existing WAF managed rulesets, refer to [Available managed rulesets](https://developers.cloudflare.com/waf/managed-rules/#available-managed-rulesets) or use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation.
@@ -198,7 +198,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/efb7b8c949ac4
 	"messages": []
 }
 ```
-Take note of the ID of the rule you want to skip ( ...0e48a85d  in this example).
+Take note of the ID of the rule you want to skip (...0e48a85d in this example).
 2. Invoke the [Get a zone entry point ruleset](https://developers.cloudflare.com/api/resources/rulesets/subresources/phases/methods/get/) operation to obtain the current configuration of the [entry point ruleset](https://developers.cloudflare.com/ruleset-engine/about/rulesets/#entry-point-ruleset) of the `http_request_firewall_managed` phase.
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_request_firewall_managed/entrypoint" \
@@ -239,7 +239,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/phases/http_r
 	"messages": []
 }
 ```
-Identify the rule deploying the Cloudflare Managed Ruleset by searching for an `execute` rule with `action_parameters` \> `id` equal to ...376e9aee  (the managed ruleset ID).
+Identify the rule deploying the Cloudflare Managed Ruleset by searching for an `execute` rule with `action_parameters` \> `id` equal to ...376e9aee (the managed ruleset ID).
 Note
 To get the IDs of existing WAF managed rulesets, refer to [Available managed rulesets](https://developers.cloudflare.com/waf/managed-rules/#available-managed-rulesets) or use the [List account rulesets](https://developers.cloudflare.com/api/resources/rulesets/methods/list/) operation.
 Save the following IDs for the next step:
@@ -248,8 +248,8 @@ Save the following IDs for the next step:
   * The ID of the `execute` rule deploying the Cloudflare Managed Ruleset (`1bdb49371c1f46958fc8b985efcb79e7` in this example)
 You will also use the following IDs:
 
-  * The ID of the Cloudflare Managed Ruleset ( ...376e9aee  )
-  * The ID of the rule to skip ( ...0e48a85d  in this example)
+  * The ID of the Cloudflare Managed Ruleset (...376e9aee)
+  * The ID of the rule to skip (...0e48a85d in this example)
 3. Invoke the [Create a zone ruleset rule](https://developers.cloudflare.com/api/resources/rulesets/subresources/rules/methods/create/) operation (a `POST` request) to add an exception (or skip rule) immediately before the `execute` rule deploying the Cloudflare Managed Ruleset, since a skip rule applies only to rules listed after it.
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/rulesets/$ENTRY_POINT_RULESET_ID/rules" \
@@ -282,7 +282,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/#page","headline":"Add an exception via API · Cloudflare Web Application Firewall (WAF) docs","description":"Create WAF exceptions using the Rulesets API.","url":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

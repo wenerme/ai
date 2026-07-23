@@ -4,15 +4,15 @@ title: Sandbox
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sandbox
+# Sandbox
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/sandbox/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agents can use [Sandbox](https://developers.cloudflare.com/sandbox/) to run code in isolated container environments. Use Sandbox when an agent needs a real filesystem, shell commands, language runtimes, package installation, or long-lived project state that should not run inside the agent's own Worker isolate.
 
@@ -144,17 +144,17 @@ For long-running sandbox work, pair Sandbox with [durable execution with fibers]
 
 ## Related resources
 
-### [ Sandbox SDK ](https://developers.cloudflare.com/sandbox/)
+### [Sandbox SDK](https://developers.cloudflare.com/sandbox/)
 
- Full Sandbox documentation for commands, files, sessions, and deployment.
+Full Sandbox documentation for commands, files, sessions, and deployment.
 
-### [ Execute commands ](https://developers.cloudflare.com/sandbox/guides/execute-commands/)
+### [Execute commands](https://developers.cloudflare.com/sandbox/guides/execute-commands/)
 
- Run shell commands in a sandbox environment.
+Run shell commands in a sandbox environment.
 
-### [ Manage files ](https://developers.cloudflare.com/sandbox/guides/manage-files/)
+### [Manage files](https://developers.cloudflare.com/sandbox/guides/manage-files/)
 
- Read, write, upload, and download sandbox files.
+Read, write, upload, and download sandbox files.
 
 Was this helpful?
 
@@ -162,7 +162,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/sandbox/#page","headline":"Sandbox · Cloudflare Agents docs","description":"Give agents isolated Linux environments for running code, managing files, and executing commands.","url":"https://developers.cloudflare.com/agents/tools/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

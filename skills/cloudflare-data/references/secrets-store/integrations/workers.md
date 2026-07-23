@@ -4,15 +4,15 @@ title: Workers integration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/secrets-store/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Workers integration
+# Workers integration
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/secrets-store/integrations/workers/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/secrets-store/integrations/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cloudflare Secrets Store](https://developers.cloudflare.com/secrets-store/) is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.
 
@@ -60,7 +60,7 @@ npx wrangler secrets-store secret create <STORE_ID> --name MY_SECRET_NAME --scop
 ```
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page.
-[ Go to **Secrets Store** ↗ ](https://dash.cloudflare.com/?to=/:account/secrets-store)
+[Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Select **Create secret**.
 3. Fill in the required fields, choosing _Workers_ as the **Permission scope**. Once the secret is saved, the secret value will no longer be available for viewing.
 4. (Optional) Select **Add additional secret** to create more than one secret at a time.
@@ -143,7 +143,7 @@ secret_name = "<MY_SECRET_NAME>"
 ### Via Dashboard
 
 1. In the Cloudflare dashboard, go to **Workers & Pages**.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select a Workers application.
 3. Go to **Settings** \> **Bindings** and select **Add**.
 4. On the **Add a resource binding** side panel, choose **Secrets Store**.
@@ -195,7 +195,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/secrets-store/integrations/workers/#page","headline":"Workers integration · Cloudflare Secrets Store docs","description":"Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.","url":"https://developers.cloudflare.com/secrets-store/integrations/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Chat SDK
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Chat SDK
+# Chat SDK
 
-Last updated Jun 9, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `agents/chat-sdk` when you run the [Chat SDK ↗](https://chat-sdk.dev/) inside an Agent. The first integration helper is a Chat SDK `StateAdapter` that stores state in Agents sub-agents.
 
@@ -22,7 +22,7 @@ The adapter stores Chat SDK subscriptions, locks, queues, dedupe keys, thread st
 
 Install both packages in the Worker that hosts your messenger ingress:
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i agents chat
@@ -108,7 +108,7 @@ Add the parent Agent to your Durable Object migration:
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -133,7 +133,7 @@ Add the parent Agent to your Durable Object migration:
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]
@@ -291,9 +291,9 @@ Physical cleanup is lazy. `ChatSdkStateAgent` schedules one cleanup callback for
 
 ## Example
 
-### [ Chat SDK messenger example ](https://github.com/cloudflare/agents/tree/main/examples/chat-sdk-messenger)
+### [Chat SDK messenger example](https://github.com/cloudflare/agents/tree/main/examples/chat-sdk-messenger)
 
- Build a Telegram messenger bot with Chat SDK state in sub-agents, burst/debounce concurrency, and Think-backed AI replies running in managed fibers.
+Build a Telegram messenger bot with Chat SDK state in sub-agents, burst/debounce concurrency, and Think-backed AI replies running in managed fibers.
 
 Was this helpful?
 
@@ -301,7 +301,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK · Cloudflare Agents docs","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

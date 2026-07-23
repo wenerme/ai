@@ -4,21 +4,21 @@ title: Monitoring and alerts
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/network-interconnect/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Monitoring and alerts
+# Monitoring and alerts
 
-Last updated Jul 2, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Monitoring
 
 The Cloudflare dashboard shows a list of all previously created interconnects, as well as useful information such as IP addresses, speed, type of interconnect, and status. In the Cloudflare dashboard, go to **Interconnects**.
 
-[ Go to **Interconnects** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
+[Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
 
 The Status column displays three statuses:
 
@@ -47,7 +47,7 @@ You can configure notifications for upcoming CNI maintenance events using the No
 ### Enable CNI Connection Maintenance Alert
 
 1. In the Cloudflare dashboard, go to the **Notifications** page.
-[ Go to **Notifications** ↗ ](https://dash.cloudflare.com/?to=/:account/notifications)
+[Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. From the product drop-down menu, select _Cloudflare Network Interconnect_.
 4. Select **Connection Maintenance Alert**.
@@ -60,7 +60,7 @@ You can configure notifications for upcoming CNI maintenance events using the No
 First, identify the PoP code for your CNI circuit:
 
 1. In the Cloudflare dashboard, go to **Interconnects**.
-[ Go to **Interconnects** ↗ ](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
+[Go to **Interconnects** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/connections/cni-tunnels)
 2. Select the CNI you want to enable notifications for.
 3. In the menu that appears, note the Data Center code (for example, `gru-b`).
 
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/#page","headline":"Monitoring and alerts · Cloudflare Network Interconnect docs","description":"Monitor CNI status and configure maintenance alerts","url":"https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

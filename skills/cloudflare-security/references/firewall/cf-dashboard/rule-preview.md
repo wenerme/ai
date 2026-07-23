@@ -4,15 +4,15 @@ title: Preview rules
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Preview rules
+# Preview rules
 
-Last updated Apr 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The expression of a firewall rule can become quite complex. In this situation, you should test your firewall rule before deploying it to ensure that the rule will behave as expected.
 
@@ -50,7 +50,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/#page","headline":"Preview firewall rules · Cloudflare Firewall Rules (deprecated) docs","description":"Test firewall rule impact before deployment.","url":"https://developers.cloudflare.com/firewall/cf-dashboard/rule-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

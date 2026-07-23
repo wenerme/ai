@@ -4,15 +4,15 @@ title: Custom Domains
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Custom Domains
+# Custom Domains
 
-Last updated Jun 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -46,7 +46,7 @@ You cannot create a Custom Domain on a hostname with an existing CNAME DNS recor
 To set up a Custom Domain in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. In **Overview**, select your Worker.
 3. Go to **Settings** \> **Domains & Routes** \> **Add** \> **Custom Domain**.
 4. Enter the domain you want to configure for your Worker.
@@ -192,7 +192,7 @@ If you are currently invoking a Worker using a [route](https://developers.cloudf
 To migrate the route `example.com/*`:
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page for your domain.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
 3. Go to **Account Home** \> **Workers & Pages**.
 4. In **Overview**, select your Worker > **Settings** \> **Domains & Routes**.
@@ -204,7 +204,7 @@ To migrate the route `example.com/*`:
 To migrate the route `example.com/*` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
 1. In the Cloudflare dashboard, go to the **DNS Records** page for your domain.
-[ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Delete the CNAME record for `example.com`.
 3. Add the following to your Wrangler file:
 ```jsonc
@@ -230,7 +230,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains · Cloudflare Workers docs","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

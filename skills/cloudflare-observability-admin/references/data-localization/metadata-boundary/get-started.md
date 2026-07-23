@@ -4,15 +4,15 @@ title: Get started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/data-localization/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Get started
+# Get started
 
-Last updated Jul 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can configure the Customer Metadata Boundary to select the region where your logs and analytics are stored. This setting controls where Cloudflare stores traffic metadata that could identify your end users. You can configure it via API or the dashboard.
 
@@ -23,7 +23,7 @@ Currently, this can only be applied at the account-level. If you only want the M
 To configure Customer Metadata Boundary in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
-[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. In **Customer Metadata Boundary**, select the region you want to use: `eu` or `us`. Selecting `Global` applies no metadata boundary — the default — meaning Customer Logs may be stored in Cloudflare's core data centers globally.
 
 ## Configure Customer Metadata Boundary via API
@@ -91,7 +91,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/control/cmb
 To view or change your Customer Metadata Boundary setting:
 
 1. In the Cloudflare dashboard, go to the **Settings** page.
-[ Go to **Configurations** ↗ ](https://dash.cloudflare.com/?to=/:account/configurations)
+[Go to **Configurations** ↗](https://dash.cloudflare.com/?to=/:account/configurations)
 2. Go to **Preferences**.
 3. Locate the **Customer Metadata Boundary** section.
 
@@ -101,7 +101,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/#page","headline":"Get started · Cloudflare Data Localization Suite docs","description":"Configure Customer Metadata Boundary to select the region for your logs and analytics.","url":"https://developers.cloudflare.com/data-localization/metadata-boundary/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}

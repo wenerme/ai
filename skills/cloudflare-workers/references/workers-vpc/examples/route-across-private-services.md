@@ -4,15 +4,15 @@ title: Route to private services from Workers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-vpc/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Route to private services from Workers
+# Route to private services from Workers
 
-Last updated Apr 22, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to use Workers VPC to create a centralized gateway that routes requests based on URL paths, provides authentication and rate limiting, and load balances across internal services.
 
@@ -52,7 +52,7 @@ Update your Wrangler configuration file:
 	"name": "api-gateway",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"vpc_services": [
 		{
 			"binding": "USER_SERVICE",
@@ -71,7 +71,7 @@ Update your Wrangler configuration file:
 name = "api-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[vpc_services]]
 binding = "USER_SERVICE"
@@ -134,7 +134,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/#page","headline":"Route to private services from Workers · Cloudflare Workers VPC","description":"Build a Worker gateway that routes and load balances across multiple private VPC Services.","url":"https://developers.cloudflare.com/workers-vpc/examples/route-across-private-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,17 +4,17 @@ title: Voice agent
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Voice agent
+# Voice agent
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/examples/voice-agent/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/examples/voice-agent/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Build a voice agent that listens to users, thinks with an LLM, and speaks back — all in real-time over WebSocket.  Beta
+Build a voice agent that listens to users, thinks with an LLM, and speaks back — all in real-time over WebSocket. Beta
 
 By the end of this guide you will have:
 
@@ -48,7 +48,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 {
 	"name": "voice-agent",
 	// Set this to today's date
-	"compatibility_date": "2026-07-21",
+	"compatibility_date": "2026-07-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "src/server.ts",
 	"ai": {
@@ -74,7 +74,7 @@ Update `wrangler.jsonc` to include a Workers AI binding and a Durable Object for
 ```toml
 name = "voice-agent"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 main = "src/server.ts"
 
@@ -389,17 +389,17 @@ export class MyVoiceAgent extends VoiceAgent<Env> {
 
 ## Next steps
 
-### [ Voice agents API reference ](https://developers.cloudflare.com/agents/communication-channels/voice/)
+### [Voice agents API reference](https://developers.cloudflare.com/agents/communication-channels/voice/)
 
- Full reference for withVoice, withVoiceInput, React hooks, VoiceClient, and all providers.
+Full reference for withVoice, withVoiceInput, React hooks, VoiceClient, and all providers.
 
-### [ Chat agents ](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
+### [Chat agents](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/)
 
- Build text-based AI chat with AIChatAgent and useAgentChat.
+Build text-based AI chat with AIChatAgent and useAgentChat.
 
-### [ Using AI models ](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)
+### [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)
 
- Use Workers AI, OpenAI, Anthropic, Gemini, or any provider with your agents.
+Use Workers AI, OpenAI, Anthropic, Gemini, or any provider with your agents.
 
 Was this helpful?
 
@@ -407,7 +407,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/examples/voice-agent/#page","headline":"Voice agent · Cloudflare Agents docs","description":"Build a real-time voice agent with speech-to-text, LLM processing, and text-to-speech on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/examples/voice-agent/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

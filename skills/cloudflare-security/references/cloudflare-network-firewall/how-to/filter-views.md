@@ -4,15 +4,15 @@ title: Filter different views
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-network-firewall/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Filter different views
+# Filter different views
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can utilize different [Log filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) to only view specific data from Cloudflare Network Firewall (formerly Magic Firewall).
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/#page","headline":"Filter different views · Cloudflare Network Firewall docs","description":"Filter analytics views in the Network Firewall dashboard.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/how-to/filter-views/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

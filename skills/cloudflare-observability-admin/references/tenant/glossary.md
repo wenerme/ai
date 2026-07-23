@@ -4,15 +4,15 @@ title: Glossary
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tenant/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Glossary
+# Glossary
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tenant/glossary/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tenant/glossary/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following terms are used throughout the Tenant API docs. For more details on how these concepts interact with each other, refer to [Tenant structure](https://developers.cloudflare.com/tenant/structure/).
 
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/glossary/#page","headline":"Glossary · Cloudflare Tenant docs","description":"Key terms and definitions used throughout the Cloudflare Tenant API documentation.","url":"https://developers.cloudflare.com/tenant/glossary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

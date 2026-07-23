@@ -4,26 +4,26 @@ title: Access controls
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Access controls
+# Access controls
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/access-controls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how to secure your self-hosted and SaaS applications with Zero Trust policies.
 
-* [ Applications ](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/)
-* [ Policies ](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
-* [ AI controls ](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/)
-* [ Service credentials ](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/)
-* [ Access settings ](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/)
-* [ Authenticate coding agents ](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/)
-* [ Event subscriptions ](https://developers.cloudflare.com/cloudflare-one/access-controls/event-subscriptions/)
-* [ Troubleshoot Access ](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/)
+* [Applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/)
+* [Policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/)
+* [AI controls](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/)
+* [Service credentials](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/)
+* [Access settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/)
+* [Authenticate coding agents](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/)
+* [Event subscriptions](https://developers.cloudflare.com/cloudflare-one/access-controls/event-subscriptions/)
+* [Troubleshoot Access](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/)
 
 ## Troubleshooting
 
@@ -37,7 +37,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/#page","headline":"Access controls · Cloudflare One docs","description":"Access controls resources and guides for Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

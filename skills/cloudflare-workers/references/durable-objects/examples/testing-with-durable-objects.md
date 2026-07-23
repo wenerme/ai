@@ -4,17 +4,17 @@ title: Testing Durable Objects
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/durable-objects/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Testing Durable Objects
+# Testing Durable Objects
 
 Write tests for Durable Objects using the Workers Vitest integration.
 
-Last updated Jun 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [@cloudflare/vitest-pool-workers ↗](https://www.npmjs.com/package/@cloudflare/vitest-pool-workers) package to write tests for your Durable Objects. This integration runs your tests inside the Workers runtime, giving you direct access to Durable Object bindings and APIs.
 
@@ -212,7 +212,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
   "name": "counter-worker",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "durable_objects": {
     "bindings": [
       { "name": "COUNTER", "class_name": "Counter" }
@@ -228,7 +228,7 @@ Make sure your Wrangler configuration includes the Durable Object binding and SQ
 name = "counter-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 
 [[durable_objects.bindings]]
 name = "COUNTER"
@@ -1087,7 +1087,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/#page","headline":"Testing Durable Objects · Cloudflare Durable Objects docs","description":"Write tests for Durable Objects using the Workers Vitest integration.","url":"https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

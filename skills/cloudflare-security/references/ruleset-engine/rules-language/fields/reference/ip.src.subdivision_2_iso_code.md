@@ -4,11 +4,11 @@ title: ip.src.subdivision_2_iso_code
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
-#  ip.src.subdivision\_2\_iso\_code
+# ip.src.subdivision\_2\_iso\_code
 
-`ip.src.subdivision_2_iso_code` ` String `
+`ip.src.subdivision_2_iso_code` `String`
 
 The ISO 3166-2 code for the second-level region associated with the IP address.
 
@@ -36,7 +36,7 @@ Was this helpful?
 
 YesNo
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.subdivision_2_iso_code/#page","headline":"ip.src.subdivision_2_iso_code · Cloudflare Ruleset Engine docs","description":"The ISO 3166-2 code for the second-level region associated with the IP address.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ip.src.subdivision_2_iso_code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

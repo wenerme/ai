@@ -4,15 +4,15 @@ title: Securely access and upload assets with Cloudflare R2
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Securely access and upload assets with Cloudflare R2
+# Securely access and upload assets with Cloudflare R2
 
-Last updated Mar 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial explains how to create a TypeScript-based Cloudflare Workers project that can securely access files from and upload files to a [Cloudflare R2](https://developers.cloudflare.com/r2/) bucket. Cloudflare R2 allows developers to store large amounts of unstructured data without the costly egress bandwidth fees associated with typical cloud storage services.
 
@@ -28,7 +28,7 @@ To continue:
 
 First, use the [create-cloudflare CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker. To do this, open a terminal window and run the following command:
 
- npm  yarn  pnpm
+npmyarnpnpm
 
 ```
 npm create cloudflare@latest -- upload-r2-assets
@@ -198,7 +198,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/#page","headline":"Securely access and upload assets with Cloudflare R2 · Cloudflare Workers docs","description":"This tutorial explains how to create a TypeScript-based Cloudflare Workers project that can securely access files from and upload files to a CloudFlare R2 bucket.","url":"https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}

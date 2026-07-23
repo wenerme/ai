@@ -4,15 +4,15 @@ title: Super Slurper
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Super Slurper
+# Super Slurper
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/data-migration/super-slurper/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/data-migration/super-slurper/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Super Slurper allows you to quickly and easily copy objects from other cloud providers to an R2 bucket of your choice.
 
@@ -31,7 +31,7 @@ For migration use cases that do not meet the above criteria, we recommend using 
 ## Use Super Slurper to migrate data to R2
 
 1. In the Cloudflare dashboard, go to the **R2 data migration** page.
-[ Go to **Data migration** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/slurper)
+[Go to **Data migration** ↗](https://dash.cloudflare.com/?to=/:account/r2/slurper)
 2. Select **Migrate files**.
 3. Select the source cloud storage provider that you will be migrating data from.
 4. Enter your source bucket name and associated credentials and select **Next**.
@@ -153,7 +153,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-migration/super-slurper/#page","headline":"Super Slurper · Cloudflare R2 docs","description":"Copy objects from other cloud providers to R2 in a one-off bulk migration job.","url":"https://developers.cloudflare.com/r2/data-migration/super-slurper/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

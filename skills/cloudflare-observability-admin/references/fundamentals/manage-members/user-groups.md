@@ -4,15 +4,15 @@ title: User Groups
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  User Groups
+# User Groups
 
-Last updated Apr 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/user-groups/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 User Groups are a collection of [account members](https://developers.cloudflare.com/fundamentals/manage-members/) that are treated equally from an access control perspective. User Groups can be assigned permission policies, with individual members in the group receiving all permissions of the roles assigned to the User Group. If users also have individually assigned permissions, then their effective permissions are the union of all of their individual permissions, plus the permissions for all of the User Groups they are a member of.
 
@@ -28,7 +28,7 @@ Cloudflare is actively working on improving this experience to make inherited an
 ## Create a User Group manually
 
 1. In the Cloudflare dashboard, go to the **Members** page.
-[ Go to **Members** ↗ ](https://dash.cloudflare.com/?to=/:account/members)
+[Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 2. Select the **Groups** tab.
 3. Select **Create a Group** and enter a name and description for your new group.
 4. Select **Create group** to confirm your changes. The **Group members** tab displays.
@@ -281,7 +281,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/#page","headline":"User Groups · Cloudflare Fundamentals docs","description":"Create and manage Cloudflare User Groups to assign shared permission policies to multiple account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/user-groups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

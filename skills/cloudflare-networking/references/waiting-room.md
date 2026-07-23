@@ -4,19 +4,19 @@ title: Cloudflare Waiting Room
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waiting-room/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare Waiting Room
+# Cloudflare Waiting Room
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waiting-room/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waiting-room/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A virtual waiting room to manage peak traffic.
 
- Business and above
+Business and above
 
 Cloudflare Waiting Room allows you to route excess users of your website to a customized waiting room, helping preserve customer experience and protect origin servers from being overwhelmed with requests.
 
@@ -42,25 +42,25 @@ Waiting Room also benefits your visitors by:
 
 Customize the behavior of a waiting room for a specific period of time.
 
- Use Scheduled Event
+Use Scheduled Event
 
 [Waiting Room Rules](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/)
 
 Create rules to indicate specific traffic or areas of your site or application that you do not want a waiting room to apply to.
 
- Use Waiting Room Rules
+Use Waiting Room Rules
 
 [Waiting Room Analytics](https://developers.cloudflare.com/waiting-room/waiting-room-analytics/)
 
 Get insights into the traffic going through your waiting room.
 
- Use Waiting Room Analytics
+Use Waiting Room Analytics
 
 [Additional hostname and path coverage](https://developers.cloudflare.com/waiting-room/how-to/place-waiting-room/)
 
 Apply a single waiting room to multiple hostnames and paths within the same zone.
 
- Use Additional hostname and path coverage
+Use Additional hostname and path coverage
 
 ---
 
@@ -105,7 +105,7 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 ## More resources
 
-### [ Pricing ](https://www.cloudflare.com/plans/)
+### [Pricing](https://www.cloudflare.com/plans/)
 
 Explore pricing options for Waiting Room.
 
@@ -115,7 +115,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/waiting-room/#page","headline":"Cloudflare Waiting Room · Cloudflare Waiting Room docs","description":"Queue visitors in a virtual waiting room during traffic surges.","url":"https://developers.cloudflare.com/waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

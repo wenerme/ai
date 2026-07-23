@@ -4,15 +4,15 @@ title: Data Loss Prevention (DLP)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ai-gateway/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Data Loss Prevention (DLP)
+# Data Loss Prevention (DLP)
 
-Last updated Jun 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai-gateway/features/dlp/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dlp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Data Loss Prevention (DLP) for AI Gateway helps protect your organization from inadvertent exposure of sensitive data through AI interactions. By integrating with Cloudflare's proven DLP technology, AI Gateway can scan both incoming prompts and outgoing AI responses for sensitive information, ensuring your AI applications maintain security and compliance standards.
 
@@ -111,7 +111,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/#page","headline":"Data Loss Prevention (DLP) · Cloudflare AI Gateway docs","description":"Protect sensitive data in AI Gateway prompts and responses using Cloudflare DLP detection engines.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

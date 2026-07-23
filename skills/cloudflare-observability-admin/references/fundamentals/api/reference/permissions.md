@@ -4,15 +4,15 @@ title: API token permissions
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/fundamentals/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  API token permissions
+# API token permissions
 
-Last updated Jun 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/fundamentals/api/reference/permissions/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/permissions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Permissions are segmented into three categories based on resource:
 
@@ -570,7 +570,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions · Cloudflare Fundamentals docs","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Git integration
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pages/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Git integration
+# Git integration
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pages/configuration/git-integration/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pages/configuration/git-integration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can connect each Cloudflare Pages project to a [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration) or [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration) repository, and Cloudflare will automatically deploy your code every time you push a change to a branch.
 
@@ -61,7 +61,7 @@ This can be useful for managing repository access or troubleshooting installatio
 If you are using a Git-integrated project and do not want to trigger deployments every time you push a commit, you can use [branch control](https://developers.cloudflare.com/pages/configuration/branch-build-controls/) to disable/pause builds:
 
 1. Go to **Workers & Pages** in the Cloudflare dashboard.
-[ Go to **Workers & Pages** ↗ ](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Navigate to **Build** \> edit **Branch control** \> turn off **Enable automatic production branch deployments**.
 4. You can also change your Preview branch to **None (Disable automatic branch deployments)** to pause automatic preview deployments.
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/#page","headline":"Git integration · Cloudflare Pages docs","description":"Connect a GitHub or GitLab repository to Cloudflare Pages for automatic build and deploy on push.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

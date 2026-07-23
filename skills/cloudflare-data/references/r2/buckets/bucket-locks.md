@@ -4,15 +4,15 @@ title: Bucket locks
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/r2/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bucket locks
+# Bucket locks
 
-Last updated Apr 30, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/r2/buckets/bucket-locks/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/bucket-locks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Bucket locks prevent the deletion and overwriting of objects in an R2 bucket for a specified period — or indefinitely. When enabled, bucket locks enforce retention policies on your objects, helping protect them from accidental or premature deletions.
 
@@ -26,7 +26,7 @@ Before getting started, you will need:
 ### Enable bucket lock via dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you would like to add bucket lock rule to.
 3. Switch to the **Settings** tab, then scroll down to the **Bucket lock rules** card.
 4. Select **Add rule** and enter the rule name, prefix, and retention period.
@@ -98,7 +98,7 @@ If your bucket is setup with [jurisdictional restrictions](https://developers.cl
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you would like to add bucket lock rule to.
 3. Switch to the **Settings** tab, then scroll down to the **Bucket lock rules** card.
 
@@ -119,7 +119,7 @@ For more information on required parameters and examples of how to get bucket lo
 ### Dashboard
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page.
-[ Go to **Overview** ↗ ](https://dash.cloudflare.com/?to=/:account/r2/overview)
+[Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select the bucket you would like to add bucket lock rule to.
 3. Switch to the **Settings** tab, then scroll down to the **Bucket lock rules** card.
 4. Locate the rule you want to remove, select the `...` icon next to it, and then select **Delete**.
@@ -159,7 +159,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/bucket-locks/#page","headline":"Bucket locks · Cloudflare R2 docs","description":"Prevent deletion and overwriting of R2 objects by enabling bucket lock retention policies.","url":"https://developers.cloudflare.com/r2/buckets/bucket-locks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

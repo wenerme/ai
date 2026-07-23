@@ -4,15 +4,15 @@ title: Terraform
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/pipelines/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Terraform
+# Terraform
 
-Last updated May 1, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/pipelines/reference/terraform/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/reference/terraform/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example shows how to configure [Pipelines](https://developers.cloudflare.com/pipelines/) and [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/) with Terraform using the [Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (v5.19.0+).
 
@@ -279,7 +279,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/reference/terraform/#page","headline":"Terraform · Cloudflare Pipelines Docs","description":"Configure Pipelines and R2 Data Catalog with Terraform using the Cloudflare provider.","url":"https://developers.cloudflare.com/pipelines/reference/terraform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}

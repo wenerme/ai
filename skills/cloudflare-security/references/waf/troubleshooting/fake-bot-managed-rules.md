@@ -4,15 +4,15 @@ title: Fake bot detection blocking legitimate requests
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Fake bot detection blocking legitimate requests
+# Fake bot detection blocking legitimate requests
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/troubleshooting/fake-bot-managed-rules/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/fake-bot-managed-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Managed Ruleset includes rules that detect requests impersonating well-known bots such as Googlebot and Bingbot. These rules compare the request's `User-Agent` header against known bot patterns and then verify the source using methods like reverse DNS lookup or IP validation. If the `User-Agent` matches a known bot but the source cannot be verified, the rule flags the request as a fake bot.
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/troubleshooting/fake-bot-managed-rules/#page","headline":"Fake bot detection blocking legitimate requests · Cloudflare Web Application Firewall (WAF) docs","description":"WAF managed rules that detect fake bots may block legitimate services that share infrastructure with known bots.","url":"https://developers.cloudflare.com/waf/troubleshooting/fake-bot-managed-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}

@@ -4,15 +4,15 @@ title: Setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/smart-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Setup
+# Setup
 
-Last updated May 7, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use the [Edit Zone Settings API endpoint](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) to set up Dedicated CDN Egress IPs (formerly known as Aegis). If you are not familiar with how Cloudflare API works, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/api/).
 
@@ -99,7 +99,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/#page","headline":"Set up Dedicated CDN Egress IPs · Cloudflare Smart Shield docs","description":"Configure Dedicated CDN Egress IPs using the Cloudflare API.","url":"https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}

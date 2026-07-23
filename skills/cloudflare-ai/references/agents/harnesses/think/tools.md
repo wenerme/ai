@@ -4,15 +4,15 @@ title: Tools
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Tools
+# Tools
 
-Last updated Jun 20, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/harnesses/think/tools/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think provides built-in workspace file tools on every turn, plus integration points for custom tools, code execution, and dynamic extensions.
 
@@ -25,7 +25,7 @@ On every turn, Think merges tools from multiple sources. Later sources override 
 3. **Extension tools** — tools from loaded extensions (prefixed by extension name)
 4. **Session tools** — `set_context`, `load_context`, `search_context` (from `configureSession`)
 5. **Skill tools** — `activate_skill`, `read_skill_resource`, `run_skill_script` (from `getSkills()`, refer to [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/))
-6. **MCP tools** — from connected MCP servers
+6. **MCP tools** — from connected MCP servers when `includeMcpTools` is `true`
 7. **Client tools** — from the browser (refer to [Client tools](https://developers.cloudflare.com/agents/harnesses/think/client-tools/))
 
 Tools belong to the agent running the turn. For parent-child orchestration, use [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/) instead of passing one-off tools through `chat()`.
@@ -238,7 +238,7 @@ beforeTurn(ctx: TurnContext) {
 
 ## MCP tools
 
-Think inherits MCP client support from the `Agent` base class. MCP tools from connected servers are automatically merged into every turn.
+Think inherits MCP client support from the `Agent` base class. By default, Think converts tools from connected MCP servers to AI SDK tools and adds them to every turn.
 
 Set `waitForMcpConnections` to ensure MCP servers are connected before inference runs:
 
@@ -263,6 +263,34 @@ export class MyAgent extends Think<Env> {
 	}
 }
 ```
+
+If you expose MCP tools through Code Mode or another mechanism outside Think's automatic tool set, turn off direct AI SDK tool exposure:
+
+```js
+export class MyAgent extends Think {
+	includeMcpTools = false;
+	waitForMcpConnections = true;
+
+	getModel() {
+		/* ... */
+	}
+}
+```
+
+```ts
+export class MyAgent extends Think<Env> {
+	includeMcpTools = false;
+	waitForMcpConnections = true;
+
+	getModel() {
+		/* ... */
+	}
+}
+```
+
+`includeMcpTools` controls only the automatic model tool merge. MCP connections still register, restore, discover, and wait. Raw catalog access, direct calls, Code Mode connectors, and explicit `this.mcp.getAITools()` calls continue to work.
+
+Use this property instead of removing MCP tool names through `activeTools` in `beforeTurn`. Think converts MCP schemas before it calls `beforeTurn`, so `activeTools` cannot avoid that conversion. To configure a connector runtime, refer to [Use MCP tools with Code Mode](https://developers.cloudflare.com/agents/tools/codemode/mcp/).
 
 Add MCP servers programmatically or via `@callable` methods:
 
@@ -822,8 +850,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Built-in workspace tools (including bash), custom tools, approvals, MCP tools, code execution, browser tools, and extensions for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

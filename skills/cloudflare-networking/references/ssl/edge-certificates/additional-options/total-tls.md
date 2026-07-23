@@ -4,15 +4,15 @@ title: Total TLS
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/ssl/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Total TLS
+# Total TLS
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Total TLS allows Cloudflare to issue individual certificates for your proxied hostnames. These certificates will protect proxied hostnames not covered by [Universal certificates](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/).
 
@@ -24,8 +24,8 @@ When issued, these certificates will have a type of **Advanced - Total TLS**, an
 
 ## Reference
 
-* [ Enable ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/enable/)
-* [ Error messages ](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/)
+* [Enable](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/enable/)
+* [Error messages](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/error-messages/)
 
 ## Availability
 
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/#page","headline":"Total TLS · Cloudflare SSL/TLS docs","description":"Issue individual certificates for every proxied subdomain.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/total-tls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

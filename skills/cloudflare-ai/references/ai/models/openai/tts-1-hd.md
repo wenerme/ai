@@ -4,7 +4,7 @@ title: TTS-1 HD
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)
 
-#  TTS-1 HD
+# TTS-1 HD
 
- Text-to-Speech • OpenAI
+Text-to-Speech • OpenAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` openai/tts-1-hd `
+`openai/tts-1-hd`
 
 * Third-party
 * Zero data retention
 
 OpenAI's high-definition text-to-speech model producing higher quality audio output.
 
-| Model Info          |                                                                                                                    |
-| ------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Terms and License   | [link ↗](https://openai.com/policies/)                                                                             |
-| More information    | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                                   |
-| Zero data retention | Yes                                                                                                                |
-| Pricing             | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1-hd) |
+| Model Info          |                                                                                                                   |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Terms and License   | [link ↗](https://openai.com/policies/)                                                                            |
+| More information    | [link ↗](https://platform.openai.com/docs/guides/text-to-speech)                                                  |
+| Zero data retention | Yes                                                                                                               |
+| Pricing             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1-hd) |
 
 ## Usage
 
@@ -76,7 +76,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 ## Examples
 
-**Storytelling**  — HD narration with the Fable voice
+**Storytelling** — HD narration with the Fable voice
 
 ```ts
 const response = await env.AI.run(
@@ -118,7 +118,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Podcast Style**  — Conversational podcast narration
+**Podcast Style** — Conversational podcast narration
 
 ```ts
 const response = await env.AI.run(
@@ -160,7 +160,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
-**Shimmer Voice**  — Bright and expressive voice
+**Shimmer Voice** — Bright and expressive voice
 
 ```ts
 const response = await env.AI.run(
@@ -226,9 +226,9 @@ audio
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/openai/tts-1-hd/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -236,7 +236,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/#page","headline":"TTS-1 HD (OpenAI) · Cloudflare AI docs · Cloudflare AI docs","description":"OpenAI's high-definition text-to-speech model producing higher quality audio output.","url":"https://developers.cloudflare.com/ai/models/openai/tts-1-hd/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Open Port Scanning
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/security-center/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Open Port Scanning
+# Open Port Scanning
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/security-center/cloudforce-one/open-port-scanning/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/security-center/cloudforce-one/open-port-scanning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Open Port Scanning allows [Magic Transit](https://developers.cloudflare.com/magic-transit/) and [Bring your Own IPs](https://developers.cloudflare.com/byoip/) users to efficiently monitor IP ranges for security vulnerabilities. This API enables users to scan their designated IP ranges, detect any open ports, and receive daily notifications regarding newly opened ports.
 
@@ -195,7 +195,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/security-center/cloudforce-one/open-port-scanning/#page","headline":"Open Port Scanning · Cloudflare Security Center docs","description":"Scan your IP ranges for open ports and receive daily notifications about changes.","url":"https://developers.cloudflare.com/security-center/cloudforce-one/open-port-scanning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

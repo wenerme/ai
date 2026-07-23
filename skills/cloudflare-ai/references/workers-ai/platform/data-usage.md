@@ -4,15 +4,15 @@ title: Data usage
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers-ai/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Data usage
+# Data usage
 
-Last updated Apr 21, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/platform/data-usage/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/platform/data-usage/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare processes certain customer data in order to provide the Workers AI service, subject to our [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/) and [Self-Serve Subscription Agreement ↗](https://www.cloudflare.com/terms/) or [Enterprise Subscription Agreement ↗](https://www.cloudflare.com/enterpriseterms/) (as applicable).
 
@@ -33,7 +33,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/data-usage/#page","headline":"Your Data and Workers AI · Cloudflare Workers AI docs","description":"How Cloudflare handles your data, inputs, and outputs when using Workers AI.","url":"https://developers.cloudflare.com/workers-ai/platform/data-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

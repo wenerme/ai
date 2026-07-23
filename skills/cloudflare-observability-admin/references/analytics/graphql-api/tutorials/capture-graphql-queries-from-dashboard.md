@@ -4,20 +4,20 @@ title: Capture GraphQL queries with Chrome DevTools
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/analytics/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Capture GraphQL queries with Chrome DevTools
+# Capture GraphQL queries with Chrome DevTools
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Using [Chrome DevTools ↗](https://developer.chrome.com/docs/devtools), you can capture the queries running behind the Cloudflare Dashboard analytics. In this example, we will focus on the Network Analytics dataset, but the same process can be applied to any other analytics available in your dashboard.
 
 1. In the Cloudflare dashboard, go to the **Network Analytics** page or any other analytics dashboard you are interested in seeing the GraphQL queries in.
-[ Go to **Network analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
+[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 ![Analytics tab](https://developers.cloudflare.com/_astro/analytics-tab.sJIMwybT_2gjMTY.webp)
 1. Open the [Chrome Developer Tools ↗](https://developer.chrome.com/docs/devtools) and select **Inspect**.
 ![Chrome developer tools](https://developers.cloudflare.com/_astro/chrome-developer-tools.D4a36rnA_1DYD77.webp)
@@ -37,7 +37,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/#page","headline":"Capture GraphQL queries with Chrome DevTools · Cloudflare Analytics docs","description":"Capture dashboard GraphQL queries using Chrome DevTools.","url":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: REST API
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/artifacts/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  REST API
+# REST API
 
-Last updated Jun 11, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/artifacts/api/rest-api/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/api/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Artifacts REST API to manage repos, remotes, forks, imports, and tokens from external systems.
 
@@ -183,10 +183,10 @@ Route: `POST /artifacts/namespaces/:namespace/repos`
 
 Request body:
 
-* `name` ` RepoName `required
-* `description` ` string `optional
-* `default_branch` ` BranchName `optional
-* `read_only` ` boolean `optional
+* `name` `RepoName`required
+* `description` `string`optional
+* `default_branch` `BranchName`optional
+* `read_only` `boolean`optional
 
 Response type:
 
@@ -246,11 +246,11 @@ Route: `GET /artifacts/namespaces/:namespace/repos?limit=&cursor=&search=&sort=&
 
 Query parameters:
 
-* `limit` ` number `optional (default: 50, max: 200)
-* `cursor` ` Cursor `optional
-* `search` ` string `optional
-* `sort` ` "created_at" | "updated_at" | "last_push_at" | "name" `optional (default: "created\_at")
-* `direction` ` "asc" | "desc" `optional (default: "desc")
+* `limit` `number`optional (default: 50, max: 200)
+* `cursor` `Cursor`optional
+* `search` `string`optional
+* `sort` `"created_at" | "updated_at" | "last_push_at" | "name"`optional (default: "created\_at")
+* `direction` `"asc" | "desc"`optional (default: "desc")
 
 Response type:
 
@@ -371,10 +371,10 @@ Route: `POST /artifacts/namespaces/:namespace/repos/:name/fork`
 
 Request body:
 
-* `name` ` RepoName `required
-* `description` ` string `optional
-* `read_only` ` boolean `optional
-* `default_branch_only` ` boolean `optional
+* `name` `RepoName`required
+* `description` `string`optional
+* `read_only` `boolean`optional
+* `default_branch_only` `boolean`optional
 
 Response type:
 
@@ -428,10 +428,10 @@ Route: `POST /artifacts/namespaces/:namespace/repos/:name/import`
 
 Request body:
 
-* `url` ` string `required
-* `branch` ` string `optional
-* `depth` ` number `optional
-* `read_only` ` boolean `optional
+* `url` `string`required
+* `branch` `string`optional
+* `depth` `number`optional
+* `read_only` `boolean`optional
 
 Response type:
 
@@ -551,9 +551,9 @@ Route: `GET /artifacts/namespaces/:namespace/repos/:name/tokens?state=&per_page=
 
 Query parameters:
 
-* `state` ` "active" | "expired" | "revoked" | "all" `optional (default: "active")
-* `per_page` ` number `optional (default: 30, max: 100)
-* `page` ` number `optional (default: 1)
+* `state` `"active" | "expired" | "revoked" | "all"`optional (default: "active")
+* `per_page` `number`optional (default: 30, max: 100)
+* `page` `number`optional (default: 1)
 
 Response type:
 
@@ -602,9 +602,9 @@ Route: `POST /artifacts/namespaces/:namespace/tokens`
 
 Request body:
 
-* `repo` ` RepoName `required
-* `scope` ` "read" | "write" `optional (default: "write")
-* `ttl` ` number `optional — Token time-to-live in seconds. Minimum 60 (1 minute), maximum 31,536,000 (1 year). Defaults to 86,400 (24 hours).
+* `repo` `RepoName`required
+* `scope` `"read" | "write"`optional (default: "write")
+* `ttl` `number`optional — Token time-to-live in seconds. Minimum 60 (1 minute), maximum 31,536,000 (1 year). Defaults to 86,400 (24 hours).
 
 Response type:
 
@@ -697,13 +697,13 @@ export interface ApiError {
 
 ## Next steps
 
-### [ Workers binding ](https://developers.cloudflare.com/artifacts/api/workers-binding/)
+### [Workers binding](https://developers.cloudflare.com/artifacts/api/workers-binding/)
 
- Call the same Artifacts operations from a Worker through the Artifacts binding.
+Call the same Artifacts operations from a Worker through the Artifacts binding.
 
-### [ Git protocol ](https://developers.cloudflare.com/artifacts/api/git-protocol/)
+### [Git protocol](https://developers.cloudflare.com/artifacts/api/git-protocol/)
 
- Use repo remotes and tokens with standard git-over-HTTPS tooling.
+Use repo remotes and tokens with standard git-over-HTTPS tooling.
 
 Was this helpful?
 
@@ -711,7 +711,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/rest-api/#page","headline":"REST API · Artifacts · Cloudflare Artifacts docs","description":"Manage Artifacts repos and tokens over HTTP.","url":"https://developers.cloudflare.com/artifacts/api/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

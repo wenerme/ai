@@ -4,7 +4,7 @@ title: Gemini 3.6 Flash
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)
 
-#  Gemini 3.6 Flash
+# Gemini 3.6 Flash
 
- Text Generation • Google
+Text Generation • Google
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` google/gemini-3.6-flash `
+`google/gemini-3.6-flash`
 
 * Third-party
 
 Gemini 3.6 Flash provides sustained frontier-level intelligence optimized for real-world tasks at a higher speed and lower cost, excelling at code generation, agentic execution, and spatial reasoning.
 
-| Model Info                                                                  |                                                                                                                            |
-| --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,048,576 tokens                                                                                                           |
-| Terms and License                                                           | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                           |
-| More information                                                            | [link ↗](https://deepmind.google/technologies/gemini/)                                                                     |
-| Request formats                                                             | Chat Completions                                                                                                           |
-| Pricing                                                                     | [View pricing in the Cloudflare dashboard  ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.6-flash) |
+| Model Info                                                                 |                                                                                                                           |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,048,576 tokens                                                                                                          |
+| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
+| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
+| Request formats                                                            | Chat Completions                                                                                                          |
+| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.6-flash) |
 
 ## Usage
 
@@ -154,7 +154,7 @@ A famous, humorous way to remember these laws is:
 
 ## Examples
 
-**With System Instruction**  — Using a system instruction to set an agentic coding persona
+**With System Instruction** — Using a system instruction to set an agentic coding persona
 
 ```ts
 const response = await env.AI.run(
@@ -314,7 +314,7 @@ def merge_sorted_lists_heapq(list1: list, list2: list) -> list:
 }
 ```
 
-**Multi-turn Conversation**  — Continuing a multi-step coding conversation, typical of an agentic loop
+**Multi-turn Conversation** — Continuing a multi-step coding conversation, typical of an agentic loop
 
 ```ts
 const response = await env.AI.run(
@@ -502,7 +502,7 @@ console.log(fib(40)); // 102334155
 }
 ```
 
-**Spatial Reasoning**  — Higher thinking budget for a spatial reasoning task
+**Spatial Reasoning** — Higher thinking budget for a spatial reasoning task
 
 ```ts
 const response = await env.AI.run(
@@ -726,9 +726,9 @@ model
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -736,7 +736,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/#page","headline":"Gemini 3.6 Flash (Google) · Cloudflare AI docs · Cloudflare AI docs","description":"Gemini 3.6 Flash provides sustained frontier-level intelligence optimized for real-world tasks at a higher speed and lower cost, excelling at code generation, agentic execution, and spatial reasoning.","url":"https://developers.cloudflare.com/ai/models/google/gemini-3.6-flash/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Manage tags
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/resource-tagging/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Manage tags
+# Manage tags
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 All tag operations use the Tagging API. Authentication requires an [account API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/) or user API token with appropriate permissions.
 
@@ -136,7 +136,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/#page","headline":"Manage tags · Cloudflare Resource Tagging docs","description":"Create, update, and delete tags on Cloudflare resources.","url":"https://developers.cloudflare.com/resource-tagging/how-to/manage-tags/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

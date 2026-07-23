@@ -4,7 +4,7 @@ title: qwq-32b
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Qwen logo](https://developers.cloudflare.com/_astro/qwen.CVqFFn5h.svg)
 
-#  qwq-32b
+# qwq-32b
 
- Text Generation • Qwen
+Text Generation • Qwen
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/qwq-32b/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/qwen/qwq-32b `
+`@cf/qwen/qwq-32b`
 
 * Cloudflare-hosted
 * LoRA
@@ -26,18 +26,18 @@ Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/worker
 
 QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.
 
-| Model Info                                                                  |                                                     |
-| --------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window [ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 24,000 tokens                                       |
-| Reasoning                                                                   | Yes                                                 |
-| LoRA                                                                        | Yes                                                 |
-| Unit Pricing                                                                | $0.66 per M input tokens, $1.00 per M output tokens |
+| Model Info                                                                 |                                                     |
+| -------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 24,000 tokens                                       |
+| Reasoning                                                                  | Yes                                                 |
+| LoRA                                                                       | Yes                                                 |
+| Unit Pricing                                                               | $0.66 per M input tokens, $1.00 per M output tokens |
 
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
 
-[ Launch the LLM Playground ](https://playground.ai.cloudflare.com/?model=@cf/qwen/qwq-32b)
+[Launch the LLM Playground](https://playground.ai.cloudflare.com/?model=@cf/qwen/qwq-32b)
 
 ## Usage
 
@@ -126,7 +126,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 OpenAI compatible endpoints
 
- Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations ](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
+Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completions` and `/v1/embeddings`. For more details, refer to [Configurations](https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/).
 
 ## Parameters
 
@@ -182,7 +182,7 @@ presence\_penalty
 
 ### Output
 
-Synchronous  — Send a request and receive a complete response
+Synchronous — Send a request and receive a complete response
 
 response
 
@@ -196,7 +196,7 @@ response
 
 `array`An array of tool calls requests made during the response generation
 
-Streaming  — Send a request with \`stream: true\` and receive server-sent events
+Streaming — Send a request with \`stream: true\` and receive server-sent events
 
 type
 
@@ -212,13 +212,13 @@ format
 
 ## API Schemas (Raw)
 
-Synchronous Input [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-input.json "Download")
+SynchronousInput
 
-Synchronous Output [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/sync-output.json "Download")
+SynchronousOutput
 
-Streaming Input [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-input.json "Download")
+StreamingInput
 
-Streaming Output [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/qwq-32b/streaming-output.json "Download")
+StreamingOutput
 
 Was this helpful?
 
@@ -226,7 +226,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/qwq-32b/#page","headline":"qwq-32b (Qwen) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.","url":"https://developers.cloudflare.com/workers-ai/models/qwq-32b/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

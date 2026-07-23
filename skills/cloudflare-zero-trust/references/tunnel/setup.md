@@ -4,15 +4,15 @@ title: Setup
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/tunnel/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Setup
+# Setup
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/tunnel/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a Cloudflare Tunnel and publish your first application in under 5 minutes.
 
@@ -31,7 +31,7 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 To create a new Cloudflare Tunnel:
 
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels**.
-[ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create Tunnel**.
 3. Enter a name for your tunnel (for example, `production-web` or `staging-api`).
 4. Select **Create Tunnel**.
@@ -68,7 +68,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel" \
 
 To make an application accessible from the Internet, add a published application route to your tunnel. The tunnel route maps a public hostname to a local service.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel. [ Go to **Tunnels** ↗ ](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** \> **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Under **Routes**, select **Add route**.
 3. Select **Published application**.
 4. Under **Hostname**, enter a subdomain and select a domain from the drop-down menu.
@@ -179,7 +179,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/setup/#page","headline":"Set up Cloudflare Tunnel · Cloudflare Docs","description":"Create your first Cloudflare Tunnel and publish an application in under 5 minutes.","url":"https://developers.cloudflare.com/tunnel/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

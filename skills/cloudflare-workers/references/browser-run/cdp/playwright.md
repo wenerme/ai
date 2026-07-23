@@ -4,15 +4,15 @@ title: Using with Playwright (CDP)
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/browser-run/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Using with Playwright (CDP)
+# Using with Playwright (CDP)
 
-Last updated May 28, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/browser-run/cdp/playwright/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/cdp/playwright/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use [Playwright ↗](https://playwright.dev/) to connect to Browser Run sessions from any Node.js environment and automate browser tasks programmatically via CDP. This is useful for scripts running on your local machine, CI/CD pipelines, or external servers.
 
@@ -28,7 +28,7 @@ Before you begin, [create a custom API Token](https://developers.cloudflare.com/
 
 Install the `playwright-core` package (the version without bundled browsers):
 
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 
 ```
 npm i playwright-core
@@ -116,7 +116,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/playwright/#page","headline":"Using with Playwright (CDP) · Cloudflare Browser Run docs","description":"Connect Playwright to Browser Run sessions from any Node.js environment to automate browser tasks using the Chrome DevTools Protocol.","url":"https://developers.cloudflare.com/browser-run/cdp/playwright/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

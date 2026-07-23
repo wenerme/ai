@@ -4,15 +4,15 @@ title: JA3/JA4 fingerprint
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  JA3/JA4 fingerprint
+# JA3/JA4 fingerprint
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [**JA3** ↗](https://github.com/salesforce/ja3) and [**JA4** ↗](https://github.com/FoxIO-LLC/ja4) **fingerprints** identify TLS clients based on how they initiate connections. Each client type (browser, bot, or application) has distinct connection characteristics, so the resulting fingerprint acts as a stable identifier across different destination IPs, ports, and certificates.
 
@@ -129,7 +129,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/#page","headline":"JA3/JA4 fingerprint · Cloudflare bot solutions docs","description":"Profile SSL/TLS clients across requests using JA3 and JA4 fingerprints.","url":"https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

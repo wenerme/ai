@@ -4,30 +4,30 @@ title: Microsoft 365
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Microsoft 365
+# Microsoft 365
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Microsoft 365 (M365) integration detects a variety of data loss prevention, account misconfiguration, and user security risks in an integrated Microsoft 365 account that could leave you and your organization vulnerable.
 
 This integration covers the following Microsoft 365 products:
 
-* [ Admin Center ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center/)
-* [ OneDrive ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive/)
-* [ Outlook ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook/)
-* [ SharePoint ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint/)
-* [ Microsoft 365 Copilot ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot/)
-* [ Admin Center (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center-fedramp/)
-* [ OneDrive (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive-fedramp/)
-* [ Outlook (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/)
-* [ SharePoint (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint-fedramp/)
-* [ Microsoft 365 Copilot (FedRAMP) ](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot-fedramp/)
+* [Admin Center](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center/)
+* [OneDrive](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive/)
+* [Outlook](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook/)
+* [SharePoint](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint/)
+* [Microsoft 365 Copilot](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot/)
+* [Admin Center (FedRAMP)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/admin-center-fedramp/)
+* [OneDrive (FedRAMP)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/onedrive-fedramp/)
+* [Outlook (FedRAMP)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/outlook-fedramp/)
+* [SharePoint (FedRAMP)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/sharepoint-fedramp/)
+* [Microsoft 365 Copilot (FedRAMP)](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/m365-copilot-fedramp/)
 
 ## Integration prerequisites
 
@@ -207,7 +207,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/#page","headline":"Microsoft 365 · Cloudflare One docs","description":"Reference information for Microsoft 365 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}

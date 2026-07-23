@@ -4,15 +4,15 @@ title: Set up advanced nameservers
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Set up advanced nameservers
+# Set up advanced nameservers
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/foundation-dns/setup/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/foundation-dns/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Advanced nameservers included with [Foundation DNS](https://developers.cloudflare.com/dns/foundation-dns/) are an opt-in configuration.
 
@@ -65,7 +65,7 @@ To enable advanced nameservers on an existing zone:
 1. Opt for advanced nameservers on your zone:
 
   1. In the Cloudflare dashboard, go to the **DNS Records** page.
-  [ Go to **Records** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+  [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
   2. In the **Cloudflare nameservers** card, enable **Advanced nameservers**.
   3. After you refresh the page, the card will display the values for your advanced nameservers `NS` records.
 Use the [Update DNS Settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/methods/edit/) endpoint to send a PATCH request like the following:
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/foundation-dns/setup/#page","headline":"Set up advanced nameservers · Cloudflare DNS docs","description":"Set up advanced nameservers for your Foundation DNS zone.","url":"https://developers.cloudflare.com/dns/foundation-dns/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

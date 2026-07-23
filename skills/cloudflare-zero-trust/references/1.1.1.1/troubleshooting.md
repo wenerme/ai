@@ -4,15 +4,15 @@ title: Troubleshooting
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/1.1.1.1/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Troubleshooting
+# Troubleshooting
 
-Last updated May 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/1.1.1.1/troubleshooting/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common issues with Cloudflare's DNS Resolver. Before proceeding with manual troubleshooting steps, [verify your connection](https://developers.cloudflare.com/1.1.1.1/check/) to automatically gather relevant information.
 
@@ -157,7 +157,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/#page","headline":"Troubleshooting DNS Resolver","description":"Learn how to diagnose and report issues with Cloudflare's DNS Resolver","url":"https://developers.cloudflare.com/1.1.1.1/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","CLI"]}

@@ -4,23 +4,23 @@ title: llava-1.5-7b-hf
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
- l
+l
 
-#  llava-1.5-7b-hf
+# llava-1.5-7b-hf
 
- Beta
+Beta
 
- Image-to-Text • llava-hf
+Image-to-Text • llava-hf
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/llava-hf/llava-1.5-7b-hf `
+`@cf/llava-hf/llava-1.5-7b-hf`
 
 * Cloudflare-hosted
 
@@ -48,9 +48,9 @@ description
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/ai/models/@cf/llava-hf/llava-1.5-7b-hf/schema-input.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/llava-hf/llava-1.5-7b-hf/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/ai/models/@cf/llava-hf/llava-1.5-7b-hf/schema-output.json "Open") [ ](https://developers.cloudflare.com/ai/models/@cf/llava-hf/llava-1.5-7b-hf/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -58,7 +58,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/#page","headline":"llava-1.5-7b-hf (llava-hf) · Cloudflare AI docs · Cloudflare AI docs","description":"LLaVA is an open-source chatbot trained by fine-tuning LLaMA/Vicuna on GPT-generated multimodal instruction-following data. It is an auto-regressive language model, based on the transformer architecture.","url":"https://developers.cloudflare.com/ai/models/%40cf/llava-hf/llava-1.5-7b-hf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

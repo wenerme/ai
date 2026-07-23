@@ -4,15 +4,15 @@ title: Bandwidth measurement
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/magic-transit/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Bandwidth measurement
+# Bandwidth measurement
 
-Last updated Jun 8, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare measures Magic Transit usage based on the 95th percentile of clean bandwidth for your network. "Clean bandwidth" refers to the egress traffic Cloudflare routes to your network after applying all Distributed Denial of Service ([DDoS](https://developers.cloudflare.com/ddos-protection/)) mitigation and firewall functions. The usage measurement explicitly excludes attack traffic we block at our global network.
 
@@ -35,7 +35,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/#page","headline":"Bandwidth measurement · Cloudflare Magic Transit docs","description":"How Cloudflare measures Magic Transit tunnel bandwidth.","url":"https://developers.cloudflare.com/magic-transit/reference/bandwidth-measurement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

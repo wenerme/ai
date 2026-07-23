@@ -4,15 +4,15 @@ title: Sample terms
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/bots/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Sample terms
+# Sample terms
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/bots/reference/sample-terms/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/reference/sample-terms/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare recommends that customers consider updating their Terms of Service to address bots specifically related to Artificial Intelligence (AI) training and data scraping. The text below provides an informational example of the kind of language that could be added to a website's terms of use.
 
@@ -32,7 +32,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/reference/sample-terms/#page","headline":"Sample terms · Cloudflare bot solutions docs","description":"Example Terms of Service language for restricting AI bots and data scraping.","url":"https://developers.cloudflare.com/bots/reference/sample-terms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

@@ -6,7 +6,7 @@ title: bge-reranker-base
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![BAAI logo](https://developers.cloudflare.com/_astro/baai.mOtdbKlV.svg)
 
-#  bge-reranker-base
+# bge-reranker-base
 
- Text Classification • BAAI
+Text Classification • BAAI
 
-Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-` @cf/baai/bge-reranker-base `
+`@cf/baai/bge-reranker-base`
 
 * Cloudflare-hosted
 
@@ -109,9 +109,9 @@ top\_k
 
 ## API Schemas (Raw)
 
-Input [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-input.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-input.json "Download")
+Input
 
-Output [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Open") [ ](https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/schema-output.json "Download")
+Output
 
 Was this helpful?
 
@@ -119,7 +119,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/#page","headline":"bge-reranker-base (BAAI) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"Different from embedding model, reranker uses question and document as input and directly output similarity instead of embedding. You can get a relevance score by inputting query and passage to the reranker. And the score can be mapped to a float value in \\[0,1] by sigmoid function.","url":"https://developers.cloudflare.com/workers-ai/models/bge-reranker-base/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

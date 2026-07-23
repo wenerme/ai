@@ -4,15 +4,15 @@ title: Getting started
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/privacy-pass/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Getting started
+# Getting started
 
-Last updated Jul 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/privacy-pass/getting-started/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/privacy-pass/getting-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are two self-serve ways to see Privacy Pass in action:
 
@@ -73,12 +73,6 @@ npm ci
 
 The publicly-verifiable example ([pub\_verif.example.ts ↗](https://github.com/cloudflare/privacypass-ts/blob/main/examples/pub%5Fverif.example.ts)) only exports its functions, so add a small runner that calls just that one. Create `examples/run-pub-verif.ts`:
 
-```js
-import { publicVerifiableTokensPSS } from "./pub_verif.example.js";
-
-await publicVerifiableTokensPSS();
-```
-
 ```ts
 import { publicVerifiableTokensPSS } from "./pub_verif.example.js";
 
@@ -104,28 +98,32 @@ Public-Verifiable tokens
 
 ### How the example maps to the four roles
 
-The example creates an Issuer, a Client, and an Origin in a single process (the Issuer key pair is generated up front in `setup()` with `Issuer.generateKey`), then runs them through the protocol. The code annotations in the diagram sit at the point in the flow where each step happens:
+The example creates an Issuer, a Client, and an Origin in a single process (the Issuer key pair is generated up front in `setup()` with `Issuer.generateKey`), then runs them through the protocol.
+
+The example follows the flow described in the diagram, and only exercises the Origin, Client, and Issuer. The Attester is stubbed and left out of the diagram since no real attestation runs here.
 
 ```txt
-// +--------+            +--------+         +----------+ +--------+
-// | Origin |            | Client |         | Attester | | Issuer |
-// +---+----+            +---+----+         +----+-----+ +---+----+
-//     |                     |                   |           |
-//     |<----- Request ------+                   |           |
+ ┌────────┐              ┌────────┐                ┌────────┐
+ │ Origin │              │ Client │                │ Issuer │
+ └────────┘              └────────┘                └────────┘
+      │                       │                         │
+      │<────── Request ───────│                         │
+      │─── TokenChallenge ───>│                         │
+      │                       │                         │
+      │                       │───── TokenRequest ─────>│
+      │                       │<──── TokenResponse ─────│
+      │                       │                         │
+      │<─── Request+Token ────│                         │
+```
+
+Each call in the example maps to one step in that flow:
+
+```ts
 const redemptionContext = crypto.getRandomValues(new Uint8Array(32));
 const tokChl = origin.createTokenChallenge(issuer.name, redemptionContext);  // Origin issues a token challenge
-//     +-- TokenChallenge -->|                   |           |
-//     |                     |<== Attestation ==>|           |   // stubbed: no real Attester runs
-//     |                     |                   |           |
-const tokReq = await client.createTokenRequest(tokChl, pkIssuer);            // Client blinds the request
-//     |                     +--------- TokenRequest ------->|
-//     |                     |                   |           |
+const tokReq = await client.createTokenRequest(tokChl, pkIssuer);            // Client sends blinded request
 const tokRes = await issuer.issue(tokReq);                                   // Issuer signs the blinded request
-//     |                     |<-------- TokenResponse -------+
-//     |                     |                   |           |
-const token = await client.finalize(tokRes);                                 // Client unblinds to recover the token
-//     |<-- Request+Token ---+                   |           |
-//     |                     |                   |           |
+const token = await client.finalize(tokRes);                                 // Client finalizes token and resends request with it
 const isValid = await origin.verify(token, issuer.publicKey);                // Origin verifies against the issuer key
 ```
 
@@ -147,8 +145,8 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/getting-started/#page","headline":"Getting started · Cloudflare Privacy Pass docs","description":"Two self-serve ways to see Privacy Pass work — get a real token with the demo tool, and run the issuance and redemption flow locally.","url":"https://developers.cloudflare.com/privacy-pass/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/privacy-pass/getting-started/#page","headline":"Getting started · Cloudflare Privacy Pass docs","description":"Two self-serve ways to see Privacy Pass work — get a real token with the demo tool, and run the issuance and redemption flow locally.","url":"https://developers.cloudflare.com/privacy-pass/getting-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

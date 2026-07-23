@@ -4,22 +4,22 @@ title: View the payload content in the dashboard
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  View the payload content in the dashboard
+# View the payload content in the dashboard
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 View the content of the matched rule payload in the dashboard by entering your private key.
 
 1. Open [Security Events](https://developers.cloudflare.com/waf/analytics/security-events/):
 
   1. In the Cloudflare dashboard, go to the **Analytics** page.
-  [ Go to **Analytics** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+  [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
   2. Select the **Events** tab.
 
   * In the Cloudflare dashboard, go to **Security** \> **Events**.
@@ -40,7 +40,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/#page","headline":"View the payload content in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"View matched payload content in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/managed-rules/payload-logging/view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

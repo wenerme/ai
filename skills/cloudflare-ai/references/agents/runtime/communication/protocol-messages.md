@@ -4,15 +4,15 @@ title: Protocol messages
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Protocol messages
+# Protocol messages
 
-Last updated Jun 3, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a WebSocket client connects to an Agent, the framework automatically sends several JSON text frames — identity, state, and MCP server lists. You can suppress these per-connection protocol messages for clients that cannot handle them.
 
@@ -258,7 +258,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/#page","headline":"Protocol messages · Cloudflare Agents docs","description":"Control the identity, state, and MCP protocol messages sent to WebSocket clients on Agent connect.","url":"https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

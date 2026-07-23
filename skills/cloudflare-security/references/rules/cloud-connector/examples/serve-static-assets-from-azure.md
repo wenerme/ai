@@ -4,22 +4,22 @@ title: Serve /static-assets from Azure Blob Storage
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Serve /static-assets from Azure Blob Storage
+# Serve /static-assets from Azure Blob Storage
 
 Route requests with a URI path starting with `/static-assets` to an Azure Blob Storage container using Cloud Connector.
 
-Last updated May 5, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To serve static assets from an Azure Blob Storage container:
 
 1. In the Cloudflare dashboard, go to the **Cloud Connector** page.
-[ Go to **Cloud Connector** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
+[Go to **Cloud Connector** ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/cloud-connector)
 2. Select **Microsoft Azure** as your [cloud provider](https://developers.cloudflare.com/rules/cloud-connector/providers/).
 3. Enter the bucket URL. Use the following URL structure:
 
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/#page","headline":"Serve /static-assets from Azure Blob Storage · Cloudflare Rules docs","description":"Route requests with a URI path starting with /static-assets to an Azure Blob Storage container using Cloud Connector.","url":"https://developers.cloudflare.com/rules/cloud-connector/examples/serve-static-assets-from-azure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Azure"]}

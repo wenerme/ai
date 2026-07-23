@@ -4,15 +4,15 @@ title: Proxy traffic
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/dns/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Proxy traffic
+# Proxy traffic
 
-Last updated May 12, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated May 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you set up [incoming zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) on a secondary zone, you cannot enable the proxy on any transferred DNS records by default.
 
@@ -35,7 +35,7 @@ If you use Secondary DNS override and keep other nameservers at your registrar, 
 ## Set up Secondary DNS override
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page.
-[ Go to **Settings** ↗ ](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
+[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Enable **Secondary DNS override**.
 3. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, for specific A, AAAA, or CNAME records, select the grey cloud icon to set their **Proxy status** to **Proxied**.
 
@@ -83,7 +83,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/#page","headline":"Proxy traffic with Secondary DNS override · Cloudflare DNS docs","description":"Proxy traffic through Cloudflare on secondary zones.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Lists API endpoints
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/waf/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Lists API endpoints
+# Lists API endpoints
 
-Last updated Apr 16, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To invoke a [Lists API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/) operation, append the endpoint to the Cloudflare API base URL:
 
@@ -125,7 +125,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/#page","headline":"Lists API endpoints · Cloudflare Web Application Firewall (WAF) docs","description":"API endpoints for managing lists and list items.","url":"https://developers.cloudflare.com/waf/tools/lists/lists-api/endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

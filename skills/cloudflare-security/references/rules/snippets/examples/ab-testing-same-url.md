@@ -4,17 +4,17 @@ title: A/B testing with same-URL direct access
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/rules/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  A/B testing with same-URL direct access
+# A/B testing with same-URL direct access
 
 Set up an A/B test by controlling what response is served based on cookies.
 
-Last updated Oct 13, 2025 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/rules/snippets/examples/ab-testing-same-url/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 13, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/rules/snippets/examples/ab-testing-same-url/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This version passes through requests for `/test/*` and `/control/*` URI paths to the origin server, bypassing random assignment.
 
@@ -63,7 +63,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/examples/ab-testing-same-url/#page","headline":"A/B testing with same-URL direct access · Cloudflare Rules docs","description":"Set up an A/B test by controlling what response is served based on cookies.","url":"https://developers.cloudflare.com/rules/snippets/examples/ab-testing-same-url/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["A/B testing","Cookies","URL rewrite"]}

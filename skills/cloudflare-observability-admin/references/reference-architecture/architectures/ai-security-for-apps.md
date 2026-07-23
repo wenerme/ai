@@ -4,15 +4,15 @@ title: AI Security for Apps Reference Architecture
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/reference-architecture/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  AI Security for Apps Reference Architecture
+# AI Security for Apps Reference Architecture
 
-Last updated Mar 6, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Mar 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Abstract
 
@@ -243,7 +243,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/#page","headline":"AI Security for Apps Reference Architecture · Cloudflare Reference Architecture docs","description":"This article highlights how Cloudflare's AI Security for Apps complements Cloudflare WAF by providing an AI protection layer for detecting and mitigating threats to AI-powered applications.","url":"https://developers.cloudflare.com/reference-architecture/architectures/ai-security-for-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

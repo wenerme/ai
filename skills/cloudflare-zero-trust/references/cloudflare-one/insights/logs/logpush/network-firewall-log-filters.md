@@ -4,15 +4,15 @@ title: Network Firewall log filters
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Network Firewall log filters
+# Network Firewall log filters
 
-Last updated Apr 29, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can apply [Log filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) to your Logpush job to export only specific Cloudflare Network Firewall events. The examples below show common filter configurations using the Logpush API. Each filter uses a JSON structure with `where` clauses containing `key` (the log field to filter on), `operator` (the comparison, such as `eq` for equals or `!eq` for not equals), and `value` (the value to match).
 
@@ -209,7 +209,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/#page","headline":"Network Firewall log filters · Cloudflare One docs","description":"Network Firewall log filters in Zero Trust analytics.","url":"https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/network-firewall-log-filters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

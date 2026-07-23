@@ -4,15 +4,15 @@ title: Log Search
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/log-explorer/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Log Search
+# Log Search
 
-Last updated Apr 23, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/log-explorer/log-search/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/log-explorer/log-search/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Log Explorer enables you to store and explore your Cloudflare logs directly within the Cloudflare dashboard or API, giving you visibility into your logs without the need to forward them to third-party services. Logs are stored on Cloudflare's global network using the R2 object storage platform and can be queried via the dashboard or SQL API.
 
@@ -40,7 +40,7 @@ The key difference is that Log Explorer shows actual traffic, while Trace shows 
 You can filter and view your logs via the Cloudflare dashboard or the API.
 
 1. In the Cloudflare dashboard, go to the **Log Explorer** \> **Log Search** page.
-[ Go to **Log search** ↗ ](https://dash.cloudflare.com/?to=/:account/log-explorer/log-search)
+[Go to **Log search** ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/log-search)
 2. Select the **Dataset** you want to use and in **Columns** select the dataset fields. If you selected a zone scoped dataset, select the zone you would like to use.
 3. Enter a **Limit**. A limit is the maximum number of results to return, for example, 50.
 4. Select the **Time period** from which you want to query, for example, the previous 12 hours.
@@ -145,7 +145,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/log-search/#page","headline":"Log Search · Cloudflare Log Explorer docs","description":"Search and explore stored logs via dashboard or API.","url":"https://developers.cloudflare.com/log-explorer/log-search/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

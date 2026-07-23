@@ -4,15 +4,15 @@ title: Use Code Mode with TanStack AI
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/agents/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Use Code Mode with TanStack AI
+# Use Code Mode with TanStack AI
 
-Last updated Jun 24, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the `@cloudflare/codemode/tanstack-ai` entry point to give `chat()` one Code Mode tool. The model can then write JavaScript that calls your TanStack AI server tools.
 
@@ -23,7 +23,7 @@ You need an existing Workers project and a configured TanStack AI model adapter.
 ## Add Code Mode
 
 1. Install Code Mode, TanStack AI, the OpenAI adapter, and Zod:
- npm  yarn  pnpm  bun
+npmyarnpnpmbun
 ```
 npm i @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
 ```
@@ -43,7 +43,7 @@ bun add @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
   "name": "tanstack-codemode",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-21",
+  "compatibility_date": "2026-07-22",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -58,7 +58,7 @@ bun add @cloudflare/codemode @tanstack/ai @tanstack/ai-openai zod
 name = "tanstack-codemode"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-21"
+compatibility_date = "2026-07-22"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
@@ -243,7 +243,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/#page","headline":"Use Code Mode with TanStack AI · Cloudflare Agents docs","description":"Use @cloudflare/codemode/tanstack-ai to expose namespaced TanStack AI server tools through chat().","url":"https://developers.cloudflare.com/agents/tools/codemode/tanstack-ai/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -4,15 +4,15 @@ title: Cloudflare One Client
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
-[Skip to content ](#main-content)
+[Skip to content](#main-content)
 
 > Documentation Index
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-#  Cloudflare One Client
+# Cloudflare One Client
 
-Last updated Apr 17, 2026 | Copy as Markdown | [ View as Markdown ](https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/index.md) | [ Agent setup ](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide helps you diagnose and resolve common issues with the Cloudflare One Client (formerly WARP). It covers how to troubleshoot the Cloudflare One Client on desktop operating systems, including Windows, macOS, and Linux.
 
@@ -70,22 +70,22 @@ Chapters
 
 * ![Introduction and WARP GUI Basics](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction and WARP GUI Basics**  0s
+**Introduction and WARP GUI Basics**0s
 * ![Consumer vs. Corporate WARP](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=57s)
 
- **Consumer vs. Corporate WARP**  57s
+**Consumer vs. Corporate WARP**57s
 * ![Device Profiles Explained](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=95s)
 
- **Device Profiles Explained**  1m35s
+**Device Profiles Explained**1m35s
 * ![WARP Operating Modes](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=132s)
 
- **WARP Operating Modes**  2m12s
+**WARP Operating Modes**2m12s
 * ![Split Tunneling](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=224s)
 
- **Split Tunneling**  3m44s
+**Split Tunneling**3m44s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/31178cc41d0ec56d42ef892160589635/thumbnails/thumbnail.jpg?fit=crop&time=296s)
 
- **Conclusion**  4m56s
+**Conclusion**4m56s
 
 #### Client architecture
 
@@ -252,28 +252,28 @@ Chapters
 
 * ![Introduction](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=0s)
 
- **Introduction**  0s
+**Introduction**0s
 * ![What are warp-diag files?](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=44s)
 
- **What are warp-diag files?**  44s
+**What are warp-diag files?**44s
 * ![How to download and navigate warp-diag files](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=76s)
 
- **How to download and navigate warp-diag files**  1m16s
+**How to download and navigate warp-diag files**1m16s
 * ![warp-status.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=126s)
 
- **warp-status.txt**  2m06s
+**warp-status.txt**2m06s
 * ![warp-settings.txt](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=149s)
 
- **warp-settings.txt**  2m29s
+**warp-settings.txt**2m29s
 * ![daemon.log](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=217s)
 
- **daemon.log**  3m37s
+**daemon.log**3m37s
 * ![Addition tips](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=487s)
 
- **Addition tips**  8m07s
+**Addition tips**8m07s
 * ![Conclusion](https://customer-1mwganm1ma0xgnmj.cloudflarestream.com/c29964ab3dcf7c3432ebb2b4e93c3aca/thumbnails/thumbnail.jpg?fit=crop&time=523s)
 
- **Conclusion**  8m43s
+**Conclusion**8m43s
 
 ### Check client status
 
@@ -632,7 +632,7 @@ Karen was on a train on July 17, 2025, at approximately 1:00 PM Central Time. Sh
 
 For more information, refer to the full Cloudflare One Client documentation.
 
-[ Cloudflare One Client troubleshooting ❯ ](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/)
+[Cloudflare One Client troubleshooting ❯](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/)
 
 Was this helpful?
 
@@ -640,7 +640,7 @@ YesNo
 
 ## On this page
 
-[ ![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg) Docs ](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/#page","headline":"Cloudflare One Client · Cloudflare One docs","description":"Cloudflare One Client for Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/warp-client/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
