@@ -1,11 +1,11 @@
 ---
 title: "ClinePass | Models"
-description: "Use ClinePass models with Mastra. 10 models available."
+description: "Use ClinePass models with Mastra. 11 models available."
 ---
 
 # [ClinePass logo]ClinePass
 
-Access 10 ClinePass models through Mastra's model router. Authentication is handled automatically using the `CLINE_API_KEY` environment variable.
+Access 11 ClinePass models through Mastra's model router. Authentication is handled automatically using the `CLINE_API_KEY` environment variable.
 
 Learn more in the [ClinePass documentation](https://docs.cline.bot/getting-started/clinepass).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.95,
     "outputCost": 4
+  },
+  {
+    "model": "cline-pass/cline-pass/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "cline-pass/cline-pass/mimo-v2.5",

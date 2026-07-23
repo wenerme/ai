@@ -7,7 +7,7 @@ keywords: Ultralytics, YOLO, YOLO26, YOLO11, object detection, image segmentatio
 
 <div align="center">
 
-<a href="https://platform.ultralytics.com/ultralytics/yolo26?utm_source=docs&utm_medium=referral&utm_campaign=platform_launch&utm_content=banner&utm_term=ultralytics_docs" target="_blank">[Ultralytics YOLO banner]</a>
+<a href="https://www.ultralytics.com/events/yolovision?utm_source=docs&utm_medium=referral&utm_campaign=yolovision26&utm_content=banner" target="_blank">[Ultralytics YOLO banner]</a>
 
 </div>
 

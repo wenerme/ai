@@ -43,7 +43,7 @@ glab alias set mrv 'mr view'
 glab mrv -w 123
 
 # Define an alias with a positional placeholder
-glab alias set createissue 'glab create issue --title "$1"'
+glab alias set createissue 'issue create --title "$1"'
 # Run the alias with an argument and an extra flag
 glab createissue "My Issue" --description "Something is broken."
 
