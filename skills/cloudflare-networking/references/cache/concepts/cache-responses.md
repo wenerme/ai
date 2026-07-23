@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare cache responses
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/concepts/cache-responses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/concepts/cache-responses/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `CF-Cache-Status` header output indicates whether a resource is cached or not. To investigate cache responses returned by this header, use services like [Redbot ↗](https://redbot.org/), [webpagetest.org ↗](http://www.webpagetest.org/), or a visual tool like [Cloudflare Optics plugin ↗](https://chromewebstore.google.com/detail/cloudflare-optics/mdjgbjnbdnhneejmmaabmccfehigbjbe).
 
@@ -51,7 +51,17 @@ The resource was served from Cloudflare's cache but was expired. Cloudflare coul
 
 ## BYPASS
 
-The origin web server instructed Cloudflare to bypass cache via a `Cache-Control` header set to `no-cache`, `private`, or `max-age=0` even though Cloudflare originally preferred to cache the asset. BYPASS is returned when enabling [Origin Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/). Cloudflare also sets BYPASS when your origin web server sends cookies in the response header. If the Request to your origin web server includes an `Authorization` header, in some cases the response will also be BYPASS. Refer to [Conditions](https://developers.cloudflare.com/cache/concepts/cache-control/#conditions) in the Origin Cache-Control behavior section for more details.
+Cloudflare considered the asset eligible for cache at request time — either because it matches the [default cached file extensions](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions), or because a [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) enabled caching for it — but the origin response was ultimately not cacheable.
+
+Common reasons the origin response is treated as not cacheable include:
+
+* The origin web server returned a `Cache-Control` header set to `no-cache`, `no-store`, or `private`. Origin `Cache-Control` directives are only honored when [Origin Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) is enabled, and specific directives may result in a different cache status (for example, `max-age=0` with Origin Cache Control enabled caches and revalidates). Refer to [Conditions](https://developers.cloudflare.com/cache/concepts/cache-control/#conditions) for the full behavior.
+* The origin web server returned a `Set-Cookie` header.
+* The request to the origin web server included an `Authorization` header (in some cases).
+
+Note
+
+If you configured a [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) with **Eligible for cache** set to _Yes_ (for example, on HTML content) and the origin returns a non-cacheable `Cache-Control` directive, the response is returned with `CF-Cache-Status: BYPASS` — not `DYNAMIC`. `DYNAMIC` is only returned when Cloudflare determines the asset is not eligible for cache at request time.
 
 ## REVALIDATED
 
@@ -65,7 +75,14 @@ The resource was expired but served from Cloudflare's cache while the origin upd
 
 ## DYNAMIC
 
-Cloudflare does not consider the asset eligible to cache and your Cloudflare settings do not explicitly instruct Cloudflare to cache the asset. Instead, the asset was requested from the origin web server. Use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to implement custom caching options.
+Cloudflare determined at request time that the asset is not eligible for cache, so the request went to the origin web server without a cache lookup.
+
+This typically happens when:
+
+* The requested asset is not one of the [default cached file extensions](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions) (for example, HTML or JSON) and no rule instructs Cloudflare to cache it.
+* A [Cache Rule](https://developers.cloudflare.com/cache/how-to/cache-rules/) with the **Bypass cache** setting matches the request. The legacy `Cache Level: Bypass` option in [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/) or [Page Rules](https://developers.cloudflare.com/rules/page-rules/) behaves the same way.
+
+Use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to change what content Cloudflare caches. Once the request is treated as eligible for cache, the `CF-Cache-Status` header will reflect the response-time cache decision (`HIT`, `MISS`, `EXPIRED`, `REVALIDATED`, `BYPASS`, and so on) — refer to [BYPASS](#bypass) for the case where the origin response is ultimately not cacheable.
 
 Was this helpful?
 
@@ -76,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-responses/#page","headline":"Cloudflare cache responses · Cloudflare Cache (CDN) docs","description":"Cache status headers returned by Cloudflare in HTTP responses.","url":"https://developers.cloudflare.com/cache/concepts/cache-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/cache-responses/#page","headline":"Cloudflare cache responses · Cloudflare Cache (CDN) docs","description":"Cache status headers returned by Cloudflare in HTTP responses.","url":"https://developers.cloudflare.com/cache/concepts/cache-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
