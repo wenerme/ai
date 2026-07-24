@@ -37,7 +37,7 @@ Admins can add new email, edit, or delete a custom intake email. Members can cha
 
 1. Go to Settings → Asks.
 2. Click the + icon for **Add Asks intake email**.
-3. Select the Linear team and, optionally, the issue template that should apply to incoming emails.
+3. Select the Linear team and, optionally, the issue template that should apply to incoming emails. Please note only Standard templates can be selected, Form templates are not compatible Email Asks.
 4. Copy the unique forwarding email created by Linear.
 5. Configure email forwarding so emails sent to your custom email address are forwarded to the unique Linear email address.
 6. _(Optional)_ If you want your replies to appear from your custom email address, configure outbound forwarding using the provided DNS records

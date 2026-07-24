@@ -47,7 +47,7 @@ Latest release
 
 This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
 
-Previous version history (13)
+Previous version history (12)
 
 Windows 2026.6.850.0
 
@@ -413,34 +413,6 @@ This release contains minor fixes and improvements.
   * The custom DNS server address on the primary network adapter is changed while WARP is connected.
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
-Windows 2025.5.943.0
-
-**Version:** Windows2025.5.943.0**Date:** 2025-07-23**Size:** 130 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.5.943.0)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* WARP proxy mode now uses the operating system's DNS settings. Changes made to system DNS settings while in proxy mode require the client to be turned off then back on to take effect.
-* Changes to the [SCCM VPN boundary support](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#sccm-vpn-boundary-support) feature to no longer restart the SMS Agent Host (`ccmexec.exe`) service.
-* Fixed an issue affecting clients in Split Tunnel Include mode, where access to split-tunneled traffic was blocked after reconnecting the client.
-
-**Known issues**
-
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
-
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [Download latest stable release](https://downloads.cloudflareclient.com/v1/download/macos/ga)
@@ -467,7 +439,7 @@ Latest release
 
 This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
 
-Previous version history (11)
+Previous version history (10)
 
 macOS 2026.6.822.0
 
@@ -699,27 +671,6 @@ This release contains minor fixes and improvements.
 * macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
 * Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
 
-macOS 2025.5.943.0
-
-**Version:** macOS2025.5.943.0**Date:** 2025-07-23**Size:** 96.7 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.5.943.0)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* WARP proxy mode now uses the operating system's DNS settings. Changes made to system DNS settings while in proxy mode require the client to be turned off then back on to take effect.
-* Fixed an issue affecting clients in Split Tunnel Include mode, where access to split-tunneled traffic was blocked after reconnecting the client.
-* For macOS deployments, the WARP client can now be managed using an `mdm.xml` file placed in `/Library/Application Support/Cloudflare/mdm.xml`. This new configuration option offers an alternative to the still supported method of deploying a managed plist through an MDM solution.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
 ## Linux
 
 [Package repository](https://pkg.cloudflareclient.com/)
@@ -749,7 +700,7 @@ AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64
 
 This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
 
-Previous version history (12)
+Previous version history (11)
 
 Linux 2026.6.836.0
 
@@ -1020,27 +971,6 @@ This release contains minor fixes and improvements.
 * Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
 * Improvement for faster client connectivity on high-latency captive portal networks.
 * Fixed an issue where recursive CNAME records could cause intermittent WARP connectivity issues.
-
-**Known issues**
-
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-Linux 2025.5.943.0
-
-**Version:** Linux2025.5.943.0**Date:** 2025-07-23**Size:** 44.3 MB
-
-buster-armbuster-intelCentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
-
-[Download](https://downloads.cloudflareclient.com/v1/download/buster-arm/version/2025.5.943.0)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* WARP proxy mode now uses the operating system's DNS settings. Changes made to system DNS settings while in proxy mode require the client to be turned off then back on to take effect.
-* Fixed an issue affecting clients in Split Tunnel Include mode, where access to split-tunneled traffic was blocked after reconnecting the client.
 
 **Known issues**
 

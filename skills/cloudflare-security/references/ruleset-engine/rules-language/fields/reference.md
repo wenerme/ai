@@ -1,4 +1,5 @@
 ---
+description: Complete reference of all fields available in rule expressions.
 title: Fields reference
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -20,5 +21,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/#page","headline":"Fields reference · Cloudflare Ruleset Engine docs","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/#page","headline":"Fields reference · Cloudflare Ruleset Engine docs","description":"Complete reference of all fields available in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
