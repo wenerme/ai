@@ -82,7 +82,6 @@ Server tools are specialized tools operated by OpenRouter that any model can cal
 | [**Web Fetch**](/docs/guides/features/server-tools/web-fetch)               | `openrouter:web_fetch`                   | Fetch and extract content from URLs                             |
 | [**Apply Patch**](/docs/guides/features/server-tools/apply-patch)           | `openrouter:apply_patch`                 | Propose file edits via V4A diff patches (Responses API only)    |
 | [**Shell**](/docs/guides/features/server-tools/shell)                       | `openrouter:shell`                       | Run commands in a hosted, sandboxed shell (Responses API only)  |
-| [**Files**](/docs/guides/features/server-tools/files)                       | `openrouter:files`                       | Read, write, edit, and list workspace files via the Files API   |
 | [**Fusion**](/docs/guides/features/server-tools/fusion)                     | `openrouter:fusion`                      | Run a panel of models and a judge for multi-model analysis      |
 | [**Advisor**](/docs/guides/features/server-tools/advisor)                   | `openrouter:advisor`                     | Consult a stronger model for guidance mid-generation            |
 | [**Subagent**](/docs/guides/features/server-tools/subagent)                 | `openrouter:subagent`                    | Delegate self-contained tasks to a smaller, faster worker model |
@@ -259,7 +258,6 @@ Server tool usage is tracked in the response `usage` object:
 * [Web Fetch](/docs/guides/features/server-tools/web-fetch) — Fetch and extract content from URLs
 * [Apply Patch](/docs/guides/features/server-tools/apply-patch) — Propose file edits via V4A diffs
 * [Shell](/docs/guides/features/server-tools/shell) — Run commands in a hosted, sandboxed shell
-* [Files](/docs/guides/features/server-tools/files) — Read, write, edit, and list workspace files
 * [Fusion](/docs/guides/features/server-tools/fusion) — Run a panel of models and a judge for multi-model analysis
 * [Advisor](/docs/guides/features/server-tools/advisor) — Consult a stronger model for guidance mid-generation
 * [Subagent](/docs/guides/features/server-tools/subagent) — Delegate self-contained tasks to a smaller, faster worker model

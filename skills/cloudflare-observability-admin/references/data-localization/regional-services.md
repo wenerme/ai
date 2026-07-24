@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Regional Services
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Regional Services gives you the ability to accommodate regional restrictions by choosing which subset of data centers decrypt and service HTTPS traffic.
 
@@ -31,6 +31,8 @@ Regional Services ensures that all of the following application-layer services (
 * Detecting and blocking suspicious activity with Bot Management.
 * Running Cloudflare Workers scripts.
 * Load Balancing traffic to the best origin servers (or other endpoints).
+
+Regional Services is a compliance solution, not a performance optimization. Within the configured region, Cloudflare routes requests to the most performant in-region data center — using a scoring system that considers available connections, latency, and load — which is not necessarily the closest one. Refer to [Geographic traffic routing](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/geographic-traffic-routing/) for more details. For geographically large regions, requests may be processed at a data center farther than the closest in-region option.
 
 ## Request flow example
 
@@ -58,6 +60,12 @@ sequenceDiagram
     Note right of CloudflarePoPDUB: TLS encryption
     CloudflarePoPDUB->>User in US: Forwards response with content
 
+
+## Egress behavior and ingress IPs
+
+Regional Services controls where traffic is ingested and processed (decrypted), not where it exits to your origin. Egress IPs to your origin are site-local IPs from the in-region data center where the request was processed. If you need guaranteed egress IP geolocation or origin allowlisting, use [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) in addition to Regional Services.
+
+For Regional Hostnames using Cloudflare shared ingress IPs, third-party IP geolocation providers may return a location that does not match your configured region (often the United States). This is a limitation of shared IP addressing and does not affect where your traffic is actually decrypted and processed.
 
 ## Ways to use Regional Services
 
@@ -102,6 +110,10 @@ Setting up Regional Services follows the same path regardless of which option yo
   * [Regionalized IP Bindings](https://developers.cloudflare.com/data-localization/regional-services/ip-bindings/)
 4. **Verify regionalization.** Confirm that traffic is processed in your configured region. Refer to [Verify Regional Services behavior](https://developers.cloudflare.com/data-localization/how-to/#verify-regional-services-behavior).
 
+## Availability and SLA
+
+For availability and Service Level Agreements (SLAs), refer to your Cloudflare Enterprise contract. For Regional Services configurations restricted to a single country (except the US), Cloudflare's SLA includes specific exclusions: because traffic cannot fail over to data centers outside that country, there is no automatic failover if in-country capacity is unavailable. Multi-country regions (for example, the European Union) generally maintain the standard SLA.
+
 ## Additional information
 
 For more details about the products that are compatible with Regional Services, refer to the [Cloudflare product compatibility](https://developers.cloudflare.com/data-localization/compatibility/) page. If you have purchased these products as part of your Enterprise subscription plan, Cloudflare will only terminate TLS connections for these products in the geographic region you have configured for Regional Services.
@@ -115,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/#page","headline":"Regional Services · Cloudflare Data Localization Suite docs","description":"Choose which data centers decrypt and service HTTPS traffic for your hostnames.","url":"https://developers.cloudflare.com/data-localization/regional-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/#page","headline":"Regional Services · Cloudflare Data Localization Suite docs","description":"Choose which data centers decrypt and service HTTPS traffic for your hostnames.","url":"https://developers.cloudflare.com/data-localization/regional-services/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

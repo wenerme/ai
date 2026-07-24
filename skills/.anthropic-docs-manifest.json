@@ -38,8 +38,8 @@
   "anthropic-docs/build-with-claude/refusals-and-fallback.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/refusals-and-fallback",
     "skill": "anthropic-docs",
-    "size": 47794,
-    "updatedAt": "2026-07-23T12:01:38.908Z"
+    "size": 48059,
+    "updatedAt": "2026-07-24T03:31:20.188Z"
   },
   "anthropic-docs/build-with-claude/fallback-credit.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/fallback-credit",
@@ -68,8 +68,8 @@
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
     "skill": "anthropic-docs",
-    "size": 105098,
-    "updatedAt": "2026-07-23T12:01:40.646Z"
+    "size": 109913,
+    "updatedAt": "2026-07-24T03:31:21.789Z"
   },
   "anthropic-docs/build-with-claude/citations.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
@@ -656,8 +656,8 @@
   "anthropic-docs/manage-claude/user-management.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/user-management",
     "skill": "anthropic-docs",
-    "size": 33871,
-    "updatedAt": "2026-07-15T03:19:04.533Z"
+    "size": 34710,
+    "updatedAt": "2026-07-24T03:31:52.796Z"
   },
   "anthropic-docs/manage-claude/workspaces.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/workspaces",

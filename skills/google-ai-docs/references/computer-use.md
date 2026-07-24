@@ -11,8 +11,7 @@ and keyboard inputs. Similar to function calling, you will need to implement the
 client-side execution environment to receive and execute the Computer Use
 actions.
 
-Gemini 3.5 Flash is the recommended model for Computer Use, and introduces
-several new capabilities:
+For the list of supported models, see [Model versions](https://ai.google.dev/gemini-api/docs/computer-use#model-versions). The Gemini 3.x models support several advanced capabilities:
 
 - **Multi-environment support:** build agents for [browser, mobile, and desktop](https://ai.google.dev/gemini-api/docs/computer-use#supported-environments) environments.
 - **Streamlined actions with intents:** actions include an `intent` field that explains the model's reasoning behind each step.
@@ -72,7 +71,7 @@ will do at each step:
    - Your application sends an API request containing the Computer Use tool, your configuration settings (like the target environment), the user's prompt, and a screenshot of the current screen.
 2. [**Receive the model response**](https://ai.google.dev/gemini-api/docs/computer-use#model-response)
    - The model analyzes the screen and the prompt, returning a response which includes a suggested `function_call` representing a UI action (such as a click, scroll, or keystroke).
-   - For **Gemini 3.5 Flash** , the response also includes a reasoning `intent` explaining why the model chose that action.
+   - For **Gemini 3.x models** , the response also includes a reasoning `intent` explaining why the model chose that action.
    - The response may also include a `safety_decision` from an internal safety system that classifies the action as regular/allowed, `require_confirmation` (requiring user approval), or blocked.
 3. [**Execute the received action**](https://ai.google.dev/gemini-api/docs/computer-use#execute-actions)
    - If the action is allowed (or the user confirms it), your client-side code parses the `function_call`, scales the normalized coordinates to match your viewport, and executes the action in your target environment using automation tools (such as Playwright). If the action is blocked, your client should halt the execution or handle the interruption.
@@ -131,7 +130,7 @@ Then, initialize a Playwright browser instance to use for execution:
 
 Initialize the client library and configure the Computer Use tool. Note that there is no need to specify the display size when issuing a request; the model predicts pixel coordinates scaled to the height and width of the screen.
 
-### Gemini 3.5 Flash (Recommended)
+### Gemini 3.x
 
 ### Python
 
@@ -247,11 +246,11 @@ Use curl to send a request:
 
 ### 2. Receive the model response
 
-The response model suggests a function call. For **Gemini 3.5 Flash**, the
+The response model suggests a function call. For **Gemini 3.x models**, the
 response contains a tailored reasoning intent alongside coordinates. The
 following shows examples of both responses:
 
-### Gemini 3.5 Flash
+### Gemini 3.x
 
     {
       "steps": [
@@ -297,7 +296,7 @@ following shows examples of both responses:
 
 Your application must parse the response coordinates, execute the action, and scale them from the normalized 1000x1000 coordinates.
 
-The code below handles both legacy tool commands (`click_at`, `type_text_at`) and Gemini 3.5 Flash streamlined commands (`click`, `type`).
+The code below handles both legacy tool commands (`click_at`, `type_text_at`) and modern streamlined commands (`click`, `type`).
 
 ### Python
 
@@ -719,9 +718,9 @@ model responses and your function responses to the history at each step.
         await browser.close();
     }
 
-## Supported environments (Gemini 3.5 Flash)
+## Supported environments (Gemini 3.x)
 
-Gemini 3.5 Flash supports three environments specified in the `computer_use`
+Gemini 3.x models support three environments specified in the `computer_use`
 configurations:
 
 ### Browser environment (`ENVIRONMENT_BROWSER`)
@@ -816,7 +815,7 @@ For legacy models (`gemini-2.5-computer-use-preview-10-2025`), the following act
 
 You can extend the functionality of the model by including custom user-defined functions. For example, in human-in-the-loop (HITL) scenarios you can exclude default predefined actions and register custom actions.
 
-#### Gemini 3.5 Flash Custom Tooling
+#### Gemini 3.x Custom Tooling
 
 ### Python
 
@@ -968,15 +967,15 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
 
     console.log(interaction);
 
-## Managing thinking levels (Gemini 3.5 Flash)
+## Managing thinking levels (Gemini 3.x)
 
 For computer use agents, you can configure different thinking levels to balance action quality and execution speed. Lower thinking levels generally achieve a good balance for standard automation tasks.
 
 ## Safety and security
 
-### Configuring safety policies (Gemini 3.5 Flash)
+### Configuring safety policies (Gemini 3.x)
 
-The Gemini 3.5 Flash model includes a built-in safety service categories that automatically determine if user confirmation is required.
+Gemini 3.x models include built-in safety service categories that automatically determine if user confirmation is required.
 
 | Safety policy category | Description |
 |---|---|
@@ -1035,7 +1034,7 @@ You can override select policies by passing overrides:
         ]
     });
 
-### Prompt injection detection (Gemini 3.5 Flash)
+### Prompt injection detection (Gemini 3.x)
 
 Opt-in safety mechanism that scans screenshot pixels for hidden adversarial prompt instructions (e.g. "Ignore previous commands") and blocks execution when detected.
 
@@ -1332,7 +1331,7 @@ data and systems:
 You can use Computer Use with the following models:
 
 - [**Gemini 3.6 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) (`gemini-3.6-flash`): The recommended model for computer use, featuring streamlined actions with intents, support for browser, mobile, and desktop environments, configurable safety policies, and prompt injection detection.
-- [**Gemini 3.5 Flash-Lite**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite): A low-latency, cost-effective model supporting computer use.
+- [**Gemini 3.5 Flash-Lite**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) (`gemini-3.5-flash-lite`): A low-latency, cost-effective model supporting computer use.
 - [**Gemini 3.5 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) (`gemini-3.5-flash`): Previous stable model supporting computer use.
 - [**Gemini 3 Flash Preview**](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) (`gemini-3-flash-preview`): Preview model supporting computer use.
 - [**Gemini 2.5 (Legacy Preview)**](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025) (`gemini-2.5-computer-use-preview-10-2025`): Legacy preview model optimized for browser-based computer use.

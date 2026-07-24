@@ -320,8 +320,8 @@
   "google-ai-docs/computer-use.md": {
     "url": "https://ai.google.dev/gemini-api/docs/computer-use",
     "skill": "google-ai-docs",
-    "size": 59203,
-    "updatedAt": "2026-07-22T03:56:59.579Z"
+    "size": 59236,
+    "updatedAt": "2026-07-24T03:52:06.054Z"
   },
   "google-ai-docs/custom-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/custom-agents",
@@ -338,8 +338,8 @@
   "google-ai-docs/antigravity-agent.md": {
     "url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
     "skill": "google-ai-docs",
-    "size": 46445,
-    "updatedAt": "2026-07-22T03:57:01.166Z"
+    "size": 46773,
+    "updatedAt": "2026-07-24T03:52:07.541Z"
   },
   "google-ai-docs/aistudio-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/aistudio-agents",

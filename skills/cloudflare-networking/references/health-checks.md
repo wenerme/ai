@@ -12,7 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Health Checks
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/health-checks/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+---
 
 Smart Shield
 
@@ -56,6 +58,8 @@ Cloudflare Load Balancing distributes traffic across your [endpoints](https://de
 | Number of checks | 0    | 10  | 50       | 1,000      |
 | Analytics        | No   | Yes | Yes      | Yes        |
 
+---
+
 Was this helpful?
 
 YesNo
@@ -65,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/health-checks/#page","headline":"Health Checks · Cloudflare Health Checks docs","description":"Monitor origin server availability and get notified of status changes.","url":"https://developers.cloudflare.com/health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/health-checks/#page","headline":"Health Checks · Cloudflare Health Checks docs","description":"Monitor origin server availability and get notified of status changes.","url":"https://developers.cloudflare.com/health-checks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -949,6 +949,8 @@ const longRunningTool = tool({
 
 ## Next Steps
 
+* **[Lifecycle Hooks](/docs/agent-sdk/call-model/lifecycle-hooks)** - Observe or
+  control tool execution, approvals, prompts, and sessions
 * **[Tool Approval & State](/docs/agent-sdk/call-model/tool-approval-state)** - Human-in-the-loop approval and conversation persistence
 * **[nextTurnParams](/docs/agent-sdk/call-model/next-turn-params)** - Tool-driven context injection
 * **[Stop Conditions](/docs/agent-sdk/call-model/stop-conditions)** - Advanced execution control

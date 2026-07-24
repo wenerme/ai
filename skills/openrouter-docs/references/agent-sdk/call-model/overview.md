@@ -140,6 +140,8 @@ Explore the guides to learn more about specific features:
   methods and patterns
 * **[Tools](/docs/agent-sdk/call-model/tools)** - Creating typed tools
   with Zod schemas and multi-turn orchestration
+* **[Lifecycle Hooks](/docs/agent-sdk/call-model/lifecycle-hooks)** - Observe and
+  control tools, prompts, approvals, sessions, and model calls
 * **[nextTurnParams](/docs/agent-sdk/call-model/next-turn-params)** -
   Tool-driven context injection for skills and plugins
 * **[Message Formats](/docs/agent-sdk/call-model/message-formats)** -

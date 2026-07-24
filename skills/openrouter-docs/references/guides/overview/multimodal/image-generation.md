@@ -114,7 +114,7 @@ curl "https://openrouter.ai/api/v1/models?output_modalities=image"
 
 ### On the Models Page
 
-Visit the [Models page](/docs/models) and filter by output modalities to find models with image generation capabilities.
+Visit the [Models page](https://openrouter.ai/models?output_modalities=image) and filter by output modalities to find models with image generation capabilities.
 
 ## API Usage
 

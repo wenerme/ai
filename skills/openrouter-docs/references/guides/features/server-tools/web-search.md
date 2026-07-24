@@ -167,6 +167,7 @@ The web search tool accepts optional `parameters` to customize search behavior:
 | --------------------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `engine`              | string    | `auto`  | Search engine to use: `auto`, `native`, `exa`, `firecrawl`, `parallel`, or `perplexity`                                                                                                                                                                                                                                                                                                                                                                                                                |
 | `max_results`         | integer   | 5       | Maximum results per search call (1–25; 1–20 for Perplexity). Applies to Exa, Firecrawl, Parallel, and Perplexity engines; ignored with native provider search                                                                                                                                                                                                                                                                                                                                          |
+| `max_uses`            | integer   | —       | Maximum number of searches the model may perform in a single request. Once reached, further search calls return an error result instead of executing. With native provider search, forwarded only to Anthropic (as `max_uses`); other native search providers ignore it                                                                                                                                                                                                                                |
 | `max_total_results`   | integer   | —       | Maximum total results across all search calls in a single request. Useful for controlling cost and context size in agentic loops                                                                                                                                                                                                                                                                                                                                                                       |
 | `search_context_size` | string    | —       | How much context to retrieve: `low`, `medium`, or `high`. For Exa, pins a fixed per-result character cap (5K/15K/30K); when omitted, Exa picks adaptively (\~2-4K per result). For Parallel, controls total characters across all results (defaults to `medium`). For Perplexity, maps directly to the Search API's native `search_context_size` parameter. Ignored with native provider search and Firecrawl. Overridden by `max_characters` when both are set                                        |
 | `max_characters`      | integer   | —       | Exact maximum characters of content per result (1–100,000). Applies to Exa, Parallel, and Perplexity engines; ignored with native provider search and Firecrawl. For Exa, caps highlight content per result. For Parallel, caps excerpt content per result (default 1,500 when omitted). For Perplexity, converted to a token budget via `max_tokens_per_page` and trimmed to the exact character cap. When both `max_characters` and `search_context_size` are set, `max_characters` takes precedence |
@@ -335,7 +336,20 @@ Once the limit is reached, subsequent search calls return a message telling the 
 
 ## Limiting the Number of Searches
 
-Each search the model performs consumes one step of the request's server-tool budget. Set the top-level `max_tool_calls` request field (a sibling of `messages` and `tools`, not a tool parameter) to bound how many searches the model may run:
+To hard-cap how many searches the model may perform in a single request, set `max_uses` in the tool's `parameters` (parity with Anthropic's native web search `max_uses`):
+
+```json lines theme={null}
+{
+  "type": "openrouter:web_search",
+  "parameters": {
+    "max_uses": 3
+  }
+}
+```
+
+Once the limit is reached, subsequent search calls return a message telling the model the limit was hit instead of performing another search. With native provider search, the value is forwarded only to Anthropic (as its native `max_uses`); other native search providers have no equivalent parameter and ignore it.
+
+Each search also consumes one step of the request's overall server-tool budget, shared across all server tools. Set the top-level `max_tool_calls` request field (a sibling of `messages` and `tools`, not a tool parameter) to bound that budget:
 
 ```json lines theme={null}
 {

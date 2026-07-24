@@ -225,7 +225,7 @@ OpenRouter allows you to specify some optional headers to identify your app and 
 
   If the `model` parameter is omitted, the user or payer's default is used.
   Otherwise, remember to select a value for `model` from the [supported
-  models](/docs/guides/overview/models) or [API](/docs/api/v1/models), and include the organization
+  models](/docs/guides/overview/models) or [API](/docs/api/api-reference/models/list-all-models-and-their-properties), and include the organization
   prefix. OpenRouter will select the least expensive and best GPUs available to
   serve the request, and fall back to other providers or GPUs if it receives a
   5xx response code or if you are rate-limited.

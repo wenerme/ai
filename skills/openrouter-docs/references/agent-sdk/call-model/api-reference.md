@@ -48,6 +48,10 @@ Creates a response using the OpenResponses API with multiple consumption pattern
 | `sessionId`          | `string`                                   | No       | Session identifier                                                                                                                                                                                                                                                                            |
 | `store`              | `boolean`                                  | No       | Store request data                                                                                                                                                                                                                                                                            |
 | `context`            | `ContextInput<ToolContextMap>`             | No       | Tool context keyed by tool name                                                                                                                                                                                                                                                               |
+| `hooks`              | `InlineHookConfig \| HooksManager`         | No       | Agent lifecycle hooks                                                                                                                                                                                                                                                                         |
+
+See [Lifecycle Hooks](/docs/agent-sdk/call-model/lifecycle-hooks) for hook payloads,
+results, and manager APIs.
 
 \*Either `model` or `models` is required.
 
@@ -605,6 +609,13 @@ export {
   ToolContextStore,
 } from '@openrouter/agent';
 
+// Lifecycle hooks
+export {
+  HooksManager,
+  HookName,
+  isAsyncOutput,
+} from '@openrouter/agent';
+
 // Types
 export type {
   CallModelInput,
@@ -625,5 +636,32 @@ export type {
   InferToolInput,
   InferToolOutput,
   InferToolEvent,
+  InlineHookConfig,
+  HookEntry,
+  HookHandler,
+  HookReturn,
+  HooksManagerOptions,
+  HookDefinition,
+  HookRegistry,
+  ToolMatcher,
+  EmitResult,
+  BuiltInHookDefinitions,
+  LifecycleHookContext,
+  AsyncOutput,
+  PreToolUsePayload,
+  PreToolUseResult,
+  PostToolUsePayload,
+  PostToolUseFailurePayload,
+  UserPromptSubmitPayload,
+  UserPromptSubmitResult,
+  PermissionRequestPayload,
+  PermissionRequestResult,
+  StopPayload,
+  StopResult,
+  SessionStartPayload,
+  SessionEndPayload,
+  PostModelCallPayload,
+  ModelCallUsage,
+  SessionUsageTotals,
 } from '@openrouter/agent';
 ```

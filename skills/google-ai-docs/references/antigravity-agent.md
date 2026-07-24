@@ -61,9 +61,11 @@ By default, the agent has access to `code_execution`, `google_search`, and `url_
 | Code Execution | `code_execution` | Run shell commands (bash, Python, Node) with stdout/stderr capture. |
 | Google Search | `google_search` | Search the public web. |
 | URL Context | `url_context` | Fetch and read web pages. |
-| Filesystem | *(enabled via `environment`)* | Read, write, edit, search, and list files in the sandbox. No separate tool type; enabled automatically when `environment` is set. |
+| Filesystem | *(enabled via `environment`)* | Read, write, edit, search, and list files in the sandbox. The system enables these tools automatically when you set the `environment`. |
 | Custom Functions | `function` | Define custom functions that the agent can request to execute. See [Function calling](https://ai.google.dev/gemini-api/docs/antigravity-agent#function-calling). |
 | Remote MCP Server | `mcp_server` | Register external Model Context Protocol (MCP) servers as tools. See [MCP servers](https://ai.google.dev/gemini-api/docs/antigravity-agent#mcp-servers). |
+
+You can intercept and validate `code_execution` and `filesystem` tool execution right inside the remote sandbox using synchronous [Hooks](https://ai.google.dev/gemini-api/docs/agent-hooks).
 
 To limit the agent to specific tools, pass only the ones you need:
 
@@ -1215,5 +1217,6 @@ Costs vary based on task complexity. The agent autonomously determines how many 
 - [Quickstart](https://ai.google.dev/gemini-api/docs/managed-agents-quickstart): multi-turn conversations and streaming.
 - [Building Custom Agents](https://ai.google.dev/gemini-api/docs/custom-agents): custom instructions, skills, and saving agents.
 - [Environments](https://ai.google.dev/gemini-api/docs/agent-environment): sandbox configuration, sources, networking.
+- [Hooks](https://ai.google.dev/gemini-api/docs/agent-hooks): enforce security gates and side-effect validation inside the sandbox.
 - [Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research): long-form research tasks.
 - [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview): the underlying API.

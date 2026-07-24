@@ -168,7 +168,7 @@ If a project spans multiple teams:
 Integrations enabled for the workspace will be accessible to guest users, which could potentially allow them to access Linear data from teams outside those they're invited to join. To prevent data leakage:
 
 * For Linear-built integrations (GitHub, GitLab, Figma, Sentry, Intercom, Zapier, Airbyte): Ensure guest users don't have access to your accounts on those services
-* For integrations requiring email authentication (Slack, Discord, Front, Zendesk): These should automatically limit access to only issues and data in invited teams
+* For integrations requiring email authentication (Slack, Discord, Front, Zendesk): These should automatically limit access to only issues and data in invited teams — though Slack link previews (unfurls) follow the channel's visibility and the workspace Unfurls setting, not the viewer's role.
 * For third-party integrations: review access individually or contact the integration provider in the [Integrations directory](https://linear.app/integrations).
 
 ## FAQ

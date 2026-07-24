@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Perform planned maintenance
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you change application settings or add new assets, you will likely want to make these changes on one endpoint at a time. Going endpoint by endpoint reduces the risk of changes and ensures a more consistent user experience.
 
@@ -23,6 +23,12 @@ To direct traffic away from your endpoint immediately, [adjust settings on the p
 Note
 
 If you want to divert traffic from an endpoint to prevent it from becoming unhealthy, use [Load Shedding](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/) instead.
+
+Existing connections are not terminated
+
+When an endpoint becomes unhealthy, Cloudflare Load Balancing stops routing **new** requests to it. However, existing connections (including long-lived WebSocket connections) are **not** terminated — they remain open until they close naturally.
+
+If you need graceful connection draining, use [endpoint drain](#gradual-rotation) to proactively take endpoints out of rotation before maintenance, rather than relying on health check failures alone.
 
 ## Before you begin
 
@@ -73,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/#page","headline":"Perform planned maintenance · Cloudflare Load Balancing docs","description":"When you change application settings or add new assets, you will likely want to make these changes on one endpoint at a time. Going endpoint by endpoint reduces the risk of changes and ensures a more consistent user experience.","url":"https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/#page","headline":"Perform planned maintenance · Cloudflare Load Balancing docs","description":"When you change application settings or add new assets, you will likely want to make these changes on one endpoint at a time. Going endpoint by endpoint reduces the risk of changes and ensures a more consistent user experience.","url":"https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

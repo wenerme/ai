@@ -5244,6 +5244,10 @@ as input for the model's response.
   - `context: optional "auto" or "current_turn" or "all_turns"`
 
     Controls which reasoning items are rendered back to the model on later turns.
+    If omitted or set to `auto`, the model determines the context mode. The
+    `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+    `current_turn`.
+
     When returned on a response, this is the effective reasoning context mode
     used for the response.
 
@@ -5465,7 +5469,8 @@ as input for the model's response.
 
     Constrains the verbosity of the model's response. Lower values will result in
     more concise responses, while higher values will result in more verbose responses.
-    Currently supported values are `low`, `medium`, and `high`.
+    Currently supported values are `low`, `medium`, and `high`. The default is
+    `medium`.
 
     - `"low"`
 
@@ -6704,7 +6709,7 @@ as input for the model's response.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" or "rate_limit_exceeded" or "invalid_prompt" or 16 more`
+    - `code: "server_error" or "rate_limit_exceeded" or "invalid_prompt" or 17 more`
 
       The error code for the response.
 
@@ -6713,6 +6718,8 @@ as input for the model's response.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"data_residency_mismatch"`
 
       - `"bio_policy"`
 
@@ -17146,6 +17153,10 @@ as input for the model's response.
     - `context: optional "auto" or "current_turn" or "all_turns"`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -17353,7 +17364,8 @@ as input for the model's response.
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 
@@ -17678,7 +17690,8 @@ curl https://api.openai.com/v1/responses \
   "usage": {
     "input_tokens": 36,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 87,
     "output_tokens_details": {
@@ -17763,7 +17776,8 @@ curl https://api.openai.com/v1/responses \
   "usage": {
     "input_tokens": 328,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 52,
     "output_tokens_details": {
@@ -17854,7 +17868,8 @@ curl https://api.openai.com/v1/responses \
   "usage": {
     "input_tokens": 8438,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 398,
     "output_tokens_details": {
@@ -17969,7 +17984,8 @@ curl https://api.openai.com/v1/responses \
   "usage": {
     "input_tokens": 328,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 356,
     "output_tokens_details": {
@@ -18119,7 +18135,8 @@ curl https://api.openai.com/v1/responses \
   "usage": {
     "input_tokens": 18307,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 348,
     "output_tokens_details": {
@@ -18358,7 +18375,8 @@ curl https://api.openai.com/v1/responses \
   "usage": {
     "input_tokens": 81,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 1035,
     "output_tokens_details": {

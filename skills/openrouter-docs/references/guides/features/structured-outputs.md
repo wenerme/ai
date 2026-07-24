@@ -111,13 +111,16 @@ Structured outputs are supported by select models.
 
 You can find a list of models that support structured outputs on the [models page](https://openrouter.ai/models?order=newest\&supported_parameters=structured_outputs).
 
-* OpenAI models (GPT-4o and later versions) [Docs](https://platform.openai.com/docs/guides/structured-outputs)
-* Google Gemini models [Docs](https://ai.google.dev/gemini-api/docs/structured-output)
-* Anthropic models (Sonnet 4.5, Opus 4.1+) [Docs](https://docs.claude.com/en/docs/build-with-claude/structured-outputs)
-* Most open-source models
-* All Fireworks provided models [Docs](https://docs.fireworks.ai/structured-responses/structured-response-formatting#structured-response-modes)
+Support is determined per endpoint, not just per model: the same model may be served by multiple providers, and only some of those providers may support structured outputs. Endpoint support can also change over time. To see which providers support structured outputs for a specific model, check the `structured_outputs` parameter in the Providers section of the model's page.
 
-To ensure your chosen model supports structured outputs:
+For details on each provider's implementation, see their documentation, for example:
+
+* [OpenAI](https://platform.openai.com/docs/guides/structured-outputs)
+* [Google Gemini](https://ai.google.dev/gemini-api/docs/structured-output)
+* [Anthropic](https://docs.claude.com/en/docs/build-with-claude/structured-outputs)
+* [Fireworks](https://docs.fireworks.ai/structured-responses/structured-response-formatting#structured-response-modes)
+
+To ensure your request is only routed to endpoints that support structured outputs:
 
 1. Check the model's supported parameters on the [models page](https://openrouter.ai/models)
 2. Set `require_parameters: true` in your provider preferences (see [Provider Routing](/docs/guides/routing/provider-selection))
@@ -127,7 +130,7 @@ To ensure your chosen model supports structured outputs:
 
 1. **Include descriptions**: Add clear descriptions to your schema properties to guide the model
 
-2. **Use strict mode**: Always set `strict: true` to ensure the model follows your schema exactly
+2. **Use strict mode**: Set `strict: true` so that providers with a native strict mode enforce your schema exactly. Enforcement varies by provider: some guarantee schema-conforming output, while others translate your schema into their own structured-output format or treat it as a strong hint, so exact compliance is not guaranteed on every endpoint. Strict modes may also restrict which JSON Schema features you can use — see the provider's documentation for details
 
 ## Example Implementation
 

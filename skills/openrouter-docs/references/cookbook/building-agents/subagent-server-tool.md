@@ -77,10 +77,10 @@ You need:
 * Node.js 20 or newer
 * An OpenRouter API key in `OPENROUTER_API_KEY`
 * A workflow that already calls OpenRouter (Chat Completions, Responses, or Agent SDK)
-* An orchestrator model that supports tool calling (e.g. `~anthropic/claude-opus-latest`). Check the model's capabilities on the [model page](/docs/models) before choosing.
-* A cheaper worker model for subtasks (e.g. `~anthropic/claude-haiku-latest`). Browse [model pricing](/docs/models) to find the cheapest model that meets your quality bar.
+* An orchestrator model that supports tool calling (e.g. `~anthropic/claude-opus-latest`). Check the model's capabilities on the [model page](https://openrouter.ai/models) before choosing.
+* A cheaper worker model for subtasks (e.g. `~anthropic/claude-haiku-latest`). Browse [model pricing](https://openrouter.ai/models) to find the cheapest model that meets your quality bar.
 
-Tilde-latest aliases like `~anthropic/claude-haiku-latest` auto-resolve to the newest version in that model family. Find available aliases on each model's page at [/models](/docs/models). You can also use exact slugs (e.g. `anthropic/claude-haiku-4.5`) when you need to pin a specific version.
+Tilde-latest aliases like `~anthropic/claude-haiku-latest` auto-resolve to the newest version in that model family. Find available aliases on each model's page at [/models](https://openrouter.ai/models). You can also use exact slugs (e.g. `anthropic/claude-haiku-4.5`) when you need to pin a specific version.
 
 If you're starting a new TypeScript agent, use the [Agent SDK `callModel` API](/docs/sdks/typescript/call-model/overview) for the orchestrator loop. The samples below use Chat Completions so the server-tool request shape is visible, but the delegation pattern works the same way inside an Agent SDK workflow.
 
@@ -482,5 +482,5 @@ const logDelegation = (response, context) => {
 * Give the worker [Web Search](/docs/guides/features/server-tools/web-search) when subtasks need current data.
 * Add [Response Caching](/docs/guides/features/response-caching) for repeated orchestrator prefixes across similar tasks.
 * Use [Fusion](/docs/guides/features/server-tools/fusion) when subtasks need multi-model deliberation instead of single-worker execution.
-* Browse the [Model list](/docs/models) to compare worker model pricing and find the cheapest model that meets your subtask quality bar.
+* Browse the [Model list](https://openrouter.ai/models) to compare worker model pricing and find the cheapest model that meets your subtask quality bar.
 * Add [Structured Outputs](/docs/structured-outputs) to the orchestrator request when you need the final answer in a specific JSON schema.

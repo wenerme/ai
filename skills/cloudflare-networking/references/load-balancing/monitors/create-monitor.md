@@ -12,13 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage monitors
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a [pool](https://developers.cloudflare.com/load-balancing/pools/).
 
 When a pool [becomes unhealthy](https://developers.cloudflare.com/load-balancing/understand-basics/health-details/), your load balancer takes that pool out of the endpoint rotation.
 
 For more details about monitors, refer to [Monitors](https://developers.cloudflare.com/load-balancing/monitors/).
+
+---
+
+## Retry timing
+
+When a health check times out, Cloudflare sends retries immediately — they do not wait for the next interval. The `retries` setting defines the number of additional attempts after the initial check. For example, with five retries:
+
+* Total attempts: 1 (initial) + 5 (retries) = **6**
+* With a 20 s timeout: Cloudflare marks the endpoint unhealthy after approximately 120 s (6 × 20 s)
+* The configured interval (for example, 60 s) only applies between **successful** probe cycles, not between retries
 
 ---
 
@@ -217,5 +227,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#page","headline":"Manage monitors · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain monitors for your load balancer.","url":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/#page","headline":"Manage monitors · Cloudflare Load Balancing docs","description":"Learn how to set up and maintain monitors for your load balancer.","url":"https://developers.cloudflare.com/load-balancing/monitors/create-monitor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

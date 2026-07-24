@@ -24,6 +24,12 @@ When editing by prompting Linear Agent to make changes, text written by the agen
 
 Every document (and project description) has version history, so you can see or revert to earlier document versions when needed. Open history through the display options menu. Agent edits and changes made by loops also create version history checkpoints.
 
+## Show author names
+
+You can show who (or what Loop) wrote text in a document by pressing searching for show author names in the  `⌘` + `K` menu, or through document display options. If you’re not seeing the option to enable them, you may need to increase the width of your Linear window.
+
+![author names shown on a weekly meeting agenda](https://webassets.linear.app/images/ornj730p/production/58eba5cb1658d2247af3b68184e3e6dbfadef8df-1024x502.png?q=95&auto=format&dpr=2)
+
 ## Editor slash commands
 
 Type `/` to see additional formatting options in documents (and issues.) Using this menu you can create formatting types including:
