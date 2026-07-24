@@ -26,7 +26,7 @@ To create and manage guardrails for your account or organization:
 
 Each guardrail can include any combination of:
 
-* **Budget limit** - Spending cap in USD that resets daily, weekly, or monthly. Requests are rejected when the limit is reached.
+* **Budget limit** - Spending cap in USD that resets daily, weekly, or monthly. Requests are rejected when the limit is reached. By default only OpenRouter credit spend counts toward the limit; enable **Include BYOK spend** (`include_byok_in_budgets`) to also count [BYOK](/docs/guides/overview/auth/byok) inference spend.
 * **Model allowlist** - Restrict to specific models. Leave empty to allow all.
 * **Provider allowlist** - Restrict to specific providers. Leave empty to allow all.
 * **Zero Data Retention** - Enforce ZDR per model group (Anthropic, OpenAI, Google, xAI, and non-frontier). See [Zero Data Retention](/docs/guides/features/zdr#per-model-group-zdr-enforcement) for details.
@@ -66,6 +66,8 @@ When viewing a guardrail, you can see an eligibility preview that shows which pr
 ## Budget Enforcement
 
 Guardrail budgets are enforced per-user and per-key, not shared across all users with that guardrail. When an API key makes a request, its usage counts toward both the key's budget and the owning member's budget.
+
+By default, only OpenRouter credit spend counts toward a guardrail's budget. Set `include_byok_in_budgets` to `true` (or toggle **Include BYOK spend** in the dashboard) to also count [BYOK](/docs/guides/overview/auth/byok) inference spend — the amount OpenRouter would have charged had the request not used your own provider key — toward the same limit.
 
 **Example 1: Member guardrail with \$50/day limit**
 
@@ -214,6 +216,7 @@ curl -X PATCH https://openrouter.ai/api/v1/guardrails/GUARDRAIL_ID \
     "allowed_providers": ["openai", "anthropic"],
     "limit_usd": 100,
     "reset_interval": "monthly",
+    "include_byok_in_budgets": true,
     "enforce_zdr_anthropic": true,
     "enforce_zdr_openai": true
   }'

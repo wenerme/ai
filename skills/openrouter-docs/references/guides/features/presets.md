@@ -6,7 +6,7 @@
 
 > Manage your LLM configurations
 
-[Presets](/docs/guides/features/presets) allow you to separate your LLM configuration from your code. Create and manage presets through the OpenRouter web application to control provider routing, model selection, system prompts, and other parameters, then reference them in OpenRouter API requests.
+[Presets](https://openrouter.ai/settings/presets) allow you to separate your LLM configuration from your code. Create and manage presets through the OpenRouter web application to control provider routing, model selection, system prompts, and other parameters, then reference them in OpenRouter API requests.
 
 ## What are Presets?
 
@@ -26,7 +26,7 @@ Each preset can manage:
 
 ## Quick Start
 
-1. [Create a preset](/docs/guides/features/presets). For example, select a model and restrict provider routing to just a few providers.
+1. [Create a preset](https://openrouter.ai/settings/presets/new). For example, select a model and restrict provider routing to just a few providers.
    <Frame>
      <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/preset-example.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=b87ed014781f965aa751327dc0dc4a65" alt="Creating a new preset" width="2172" height="1608" data-path="assets/preset-example.png" />
    </Frame>

@@ -858,7 +858,7 @@ chunk objects if the request is streamed.
       whether they appear in the text so far, increasing the model's likelihood
       to talk about new topics.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -997,7 +997,7 @@ chunk objects if the request is streamed.
 
           - `"json_object"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -1303,7 +1303,8 @@ chunk objects if the request is streamed.
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 

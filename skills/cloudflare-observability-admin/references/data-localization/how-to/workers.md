@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To ensure that your Cloudflare Workers code runs only within a specific geographic region, configure Regional Services on the Workers custom domain. This restricts where TLS termination (traffic decryption) and code execution occur.
 
@@ -30,7 +30,9 @@ To configure Regional Services for hostnames [proxied](https://developers.cloudf
 
 Regional Services only applies to the custom domain configured for a Workers project. Therefore, it will run only in-region Cloudflare locations.
 
-Regional Services does not apply to [subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests) (secondary HTTP requests that Workers make to other services).
+Regional Services restricts where Workers are executed (where requests are processed). However, Workers code and secrets are deployed globally to all Cloudflare data centers. Regional Services does not prevent the code itself from being present outside the configured region — only its execution is regionalized.
+
+Requests reaching your regionalized hostname from another zone or domain are regionalized according to your hostname's Regional Services configuration, regardless of the originating zone. Regional Services does not extend to outgoing [subrequests](https://developers.cloudflare.com/workers/platform/limits/#subrequests) from Workers to other services — refer to [Limitations](https://developers.cloudflare.com/data-localization/limitations/#regional-services) for details.
 
 Regional Services does not apply to other Worker triggers, like [Queues](https://developers.cloudflare.com/queues/) or [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/).
 
@@ -57,5 +59,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/workers/#page","headline":"Workers · Cloudflare Data Localization Suite docs","description":"Configure Workers with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/workers/#page","headline":"Workers · Cloudflare Data Localization Suite docs","description":"Configure Workers with Regional Services and Customer Metadata Boundary.","url":"https://developers.cloudflare.com/data-localization/how-to/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

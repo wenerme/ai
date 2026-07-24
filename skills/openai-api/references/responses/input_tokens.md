@@ -4110,6 +4110,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
   - `context: optional "auto" or "current_turn" or "all_turns"`
 
     Controls which reasoning items are rendered back to the model on later turns.
+    If omitted or set to `auto`, the model determines the context mode. The
+    `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+    `current_turn`.
+
     When returned on a response, this is the effective reasoning context mode
     used for the response.
 
@@ -4274,7 +4278,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
     Constrains the verbosity of the model's response. Lower values will result in
     more concise responses, while higher values will result in more verbose responses.
-    Currently supported values are `low`, `medium`, and `high`.
+    Currently supported values are `low`, `medium`, and `high`. The default is
+    `medium`.
 
     - `"low"`
 

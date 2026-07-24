@@ -2553,7 +2553,11 @@ Creates an API key for a service account in the project.
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `service_account_id: string`
+
+  The ID of the service account.
 
 ### Body Parameters
 
@@ -2569,9 +2573,15 @@ Creates an API key for a service account in the project.
 
 - `id: string`
 
+  The identifier of the API key.
+
 - `created_at: number`
 
+  The Unix timestamp (in seconds) when the API key was created.
+
 - `name: string`
+
+  The name of the API key.
 
 - `object: "organization.project.service_account.api_key"`
 
@@ -2580,6 +2590,8 @@ Creates an API key for a service account in the project.
   - `"organization.project.service_account.api_key"`
 
 - `value: string`
+
+  The unredacted API key value.
 
 ### Example
 
@@ -2633,9 +2645,15 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
   - `id: string`
 
+    The identifier of the API key.
+
   - `created_at: number`
 
+    The Unix timestamp (in seconds) when the API key was created.
+
   - `name: string`
+
+    The name of the API key.
 
   - `object: "organization.project.service_account.api_key"`
 
@@ -2644,6 +2662,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
     - `"organization.project.service_account.api_key"`
 
   - `value: string`
+
+    The unredacted API key value.
 
 # API Keys
 
@@ -6094,6 +6114,395 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/data_reten
     - `"enhanced_zero_data_retention"`
 
     - `"enhanced_modified_abuse_monitoring"`
+
+# Spend Limit
+
+## Retrieve project spend limit
+
+**get** `/organization/projects/{project_id}/spend_limit`
+
+Get a project's hard spend limit.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Returns
+
+- `ProjectSpendLimit object { currency, enforcement, interval, 2 more }`
+
+  Represents a hard spend limit configured at the project level.
+
+  - `currency: string or "USD"`
+
+    The currency for the threshold amount. Currently, only `USD` is supported.
+
+    - `string`
+
+    - `"USD"`
+
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
+      - `"USD"`
+
+  - `enforcement: object { status }`
+
+    The current enforcement state of the hard spend limit.
+
+    - `status: string or "inactive" or "enforcing"`
+
+      Whether the hard spend limit is currently enforcing.
+
+      - `string`
+
+      - `"inactive" or "enforcing"`
+
+        Whether the hard spend limit is currently enforcing.
+
+        - `"inactive"`
+
+        - `"enforcing"`
+
+  - `interval: string or "month"`
+
+    The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
+
+    - `string`
+
+    - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
+
+      - `"month"`
+
+  - `object: "project.spend_limit"`
+
+    The object type, which is always `project.spend_limit`.
+
+    - `"project.spend_limit"`
+
+  - `threshold_amount: number`
+
+    The hard spend limit amount, in cents.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "currency": "USD",
+  "enforcement": {
+    "status": "inactive"
+  },
+  "interval": "month",
+  "object": "project.spend_limit",
+  "threshold_amount": 0
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/spend_limit \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "project.spend_limit",
+    "threshold_amount": 10000,
+    "currency": "USD",
+    "interval": "month",
+    "enforcement": {
+        "status": "enforcing"
+    }
+}
+```
+
+## Update project spend limit
+
+**post** `/organization/projects/{project_id}/spend_limit`
+
+Create or replace a project's hard spend limit.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Body Parameters
+
+- `currency: "USD"`
+
+  The currency for the threshold amount. Currently, only `USD` is supported.
+
+  - `"USD"`
+
+- `interval: "month"`
+
+  The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
+
+  - `"month"`
+
+- `threshold_amount: number`
+
+  The hard spend limit amount, in cents.
+
+### Returns
+
+- `ProjectSpendLimit object { currency, enforcement, interval, 2 more }`
+
+  Represents a hard spend limit configured at the project level.
+
+  - `currency: string or "USD"`
+
+    The currency for the threshold amount. Currently, only `USD` is supported.
+
+    - `string`
+
+    - `"USD"`
+
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
+      - `"USD"`
+
+  - `enforcement: object { status }`
+
+    The current enforcement state of the hard spend limit.
+
+    - `status: string or "inactive" or "enforcing"`
+
+      Whether the hard spend limit is currently enforcing.
+
+      - `string`
+
+      - `"inactive" or "enforcing"`
+
+        Whether the hard spend limit is currently enforcing.
+
+        - `"inactive"`
+
+        - `"enforcing"`
+
+  - `interval: string or "month"`
+
+    The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
+
+    - `string`
+
+    - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
+
+      - `"month"`
+
+  - `object: "project.spend_limit"`
+
+    The object type, which is always `project.spend_limit`.
+
+    - `"project.spend_limit"`
+
+  - `threshold_amount: number`
+
+    The hard spend limit amount, in cents.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "currency": "USD",
+          "interval": "month",
+          "threshold_amount": 1
+        }'
+```
+
+#### Response
+
+```json
+{
+  "currency": "USD",
+  "enforcement": {
+    "status": "inactive"
+  },
+  "interval": "month",
+  "object": "project.spend_limit",
+  "threshold_amount": 0
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limit \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "threshold_amount": 10000,
+      "currency": "USD",
+      "interval": "month"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "project.spend_limit",
+    "threshold_amount": 10000,
+    "currency": "USD",
+    "interval": "month",
+    "enforcement": {
+        "status": "enforcing"
+    }
+}
+```
+
+## Delete project spend limit
+
+**delete** `/organization/projects/{project_id}/spend_limit`
+
+Delete a project's hard spend limit.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Returns
+
+- `ProjectSpendLimitDeleted object { deleted, object }`
+
+  Confirmation payload returned after deleting a project hard spend limit.
+
+  - `deleted: boolean`
+
+    Whether the hard spend limit was deleted.
+
+  - `object: "project.spend_limit.deleted"`
+
+    The object type, which is always `project.spend_limit.deleted`.
+
+    - `"project.spend_limit.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/spend_limit \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "project.spend_limit.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/spend_limit \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "project.spend_limit.deleted",
+    "deleted": true
+}
+```
+
+## Domain Types
+
+### Project Spend Limit
+
+- `ProjectSpendLimit object { currency, enforcement, interval, 2 more }`
+
+  Represents a hard spend limit configured at the project level.
+
+  - `currency: string or "USD"`
+
+    The currency for the threshold amount. Currently, only `USD` is supported.
+
+    - `string`
+
+    - `"USD"`
+
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
+      - `"USD"`
+
+  - `enforcement: object { status }`
+
+    The current enforcement state of the hard spend limit.
+
+    - `status: string or "inactive" or "enforcing"`
+
+      Whether the hard spend limit is currently enforcing.
+
+      - `string`
+
+      - `"inactive" or "enforcing"`
+
+        Whether the hard spend limit is currently enforcing.
+
+        - `"inactive"`
+
+        - `"enforcing"`
+
+  - `interval: string or "month"`
+
+    The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
+
+    - `string`
+
+    - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
+
+      - `"month"`
+
+  - `object: "project.spend_limit"`
+
+    The object type, which is always `project.spend_limit`.
+
+    - `"project.spend_limit"`
+
+  - `threshold_amount: number`
+
+    The hard spend limit amount, in cents.
+
+### Project Spend Limit Deleted
+
+- `ProjectSpendLimitDeleted object { deleted, object }`
+
+  Confirmation payload returned after deleting a project hard spend limit.
+
+  - `deleted: boolean`
+
+    Whether the hard spend limit was deleted.
+
+  - `object: "project.spend_limit.deleted"`
+
+    The object type, which is always `project.spend_limit.deleted`.
+
+    - `"project.spend_limit.deleted"`
 
 # Spend Alerts
 

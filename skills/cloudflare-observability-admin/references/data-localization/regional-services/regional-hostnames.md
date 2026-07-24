@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Regional Hostnames
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -43,7 +43,7 @@ Refer to the table on [Available regions and product support](https://developers
 
 You can also use Regional Services via API.
 
-Currently, only SuperAdmins and Admin roles can edit DLS configurations. Use the Zone-level **DNS: Read/Write** API permission for the `/addressing/` endpoint to read or write Regional Services configurations.
+Users with the Super Administrator, Administrator, or Domain Administrator roles can edit Regional Services configurations. The Domain Administrator Read Only role does not currently include read access to Regional Services configurations. Use the **DNS: Read/Write** API permission for the `/addressing/` endpoints to read or write Regional Services configurations.
 
 These are some examples of API requests.
 
@@ -233,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#page","headline":"Regional Hostnames · Cloudflare Data Localization Suite docs","description":"Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.","url":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/#page","headline":"Regional Hostnames · Cloudflare Data Localization Suite docs","description":"Regionalize proxied hostnames by assigning a region through the dashboard or Regional Hostnames API.","url":"https://developers.cloudflare.com/data-localization/regional-services/regional-hostnames/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Terraform"]}
 ```

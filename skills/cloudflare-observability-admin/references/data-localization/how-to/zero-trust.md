@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zero Trust
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/zero-trust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/how-to/zero-trust/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections describe how to configure Zero Trust products with the Data Localization Suite, including which features support Regional Services and Customer Metadata Boundary.
 
@@ -23,6 +23,8 @@ Regional Services can be used with Gateway in all [supported regions](https://de
 ### Egress policies
 
 Enterprise customers can purchase a [dedicated egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) (IPv4 and IPv6) or range of IPs geolocated to one or more Cloudflare network locations. This allows your egress traffic to geolocate to the city selected in your [egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/).
+
+Zero Trust [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) control the IPs used by WARP and Gateway traffic when it leaves Cloudflare toward the Internet. They are different from [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/), which control the IPs used by the Cloudflare CDN when connecting to your origin server. For guaranteed egress IP geolocation from the Cloudflare CDN to your origin, refer to the [Cache](https://developers.cloudflare.com/data-localization/how-to/cache/#egress-to-origin) guide.
 
 ### HTTP policies
 
@@ -67,7 +69,9 @@ To ensure that all reverse proxy requests for applications protected by Cloudfla
 
 ## Cloudflare Tunnel
 
-You can [configure Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) to only connect to data centers within the United States, regardless of where the software was deployed.
+The [\--region parameter](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#region) in `cloudflared` controls where the tunnel connector establishes its connection to Cloudflare. This setting is separate from Regional Services, which controls where user traffic is decrypted and processed.
+
+For public hostnames served through a tunnel, Regional Services is configured at the DNS record level. The tunnel connector region and the Regional Services region operate independently.
 
 ## Cloudflare One Client settings
 
@@ -92,5 +96,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/#page","headline":"Zero Trust · Cloudflare Data Localization Suite docs","description":"Use Zero Trust products with the Data Localization Suite, including Gateway and CASB.","url":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/#page","headline":"Zero Trust · Cloudflare Data Localization Suite docs","description":"Use Zero Trust products with the Data Localization Suite, including Gateway and CASB.","url":"https://developers.cloudflare.com/data-localization/how-to/zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SSH"]}
 ```

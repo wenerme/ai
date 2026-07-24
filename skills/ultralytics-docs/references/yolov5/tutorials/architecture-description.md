@@ -33,7 +33,7 @@ SPP vs SPPF speed profiling example (click to open)
 import time
 
 import torch
-import torch.nn as nn
+from torch import nn
 
 class SPP(nn.Module):
     def __init__(self):

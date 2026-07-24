@@ -59,7 +59,7 @@ Click **Developer > Configure Third-Party Inference…** in the menu bar.
 
 ### Step 3: Enter Gateway Credentials
 
-Set the backend to **Gateway (Anthropic-compatible)** and enter your OpenRouter credentials:
+Set the connection to **Gateway** and enter your OpenRouter credentials:
 
 | Field                   | Value                                         |
 | ----------------------- | --------------------------------------------- |
@@ -70,6 +70,10 @@ Set the backend to **Gateway (Anthropic-compatible)** and enter your OpenRouter 
 <Frame>
   <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-gateway-credentials.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=cdec4906d217428012c38a98fee8f18a" alt="Claude Desktop third-party inference configuration panel showing Gateway selected with OpenRouter credentials" width="1897" height="1136" data-path="assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-gateway-credentials.png" />
 </Frame>
+
+<Warning>
+  Newer builds of Claude Desktop add optional **Sign-in session lifetime** and **Gateway SSO IdP (OIDC)** fields (Client ID, Issuer URL, Authorization URL) to this panel. OpenRouter authenticates the gateway with a static API key, not an OIDC sign-in flow, so **leave the OIDC IdP fields blank** and authenticate with your OpenRouter API key as shown above. The OIDC option is only for gateways that act as (or sit behind) their own OAuth authorization server.
+</Warning>
 
 Click **Apply locally** to save your settings.
 

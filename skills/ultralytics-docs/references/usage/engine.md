@@ -54,7 +54,6 @@ from ultralytics.models.yolo.detect import DetectionTrainer
 class CustomTrainer(DetectionTrainer):
     def get_model(self, cfg=None, weights=None, verbose=True):
         """Loads a custom detection model given configuration and weight files."""
-        ...
 
 trainer = CustomTrainer(overrides={...})
 trainer.train()
@@ -69,7 +68,6 @@ from ultralytics.nn.tasks import DetectionModel
 class MyCustomModel(DetectionModel):
     def init_criterion(self):
         """Initializes the loss function and adds a callback for uploading the model to Google Drive every 10 epochs."""
-        ...
 
 class CustomTrainer(DetectionTrainer):
     def get_model(self, cfg=None, weights=None, verbose=True):
@@ -105,7 +103,6 @@ from ultralytics.models.yolo.detect import DetectionTrainer
 class MyCustomTrainer(DetectionTrainer):
     def get_model(self, cfg=None, weights=None, verbose=True):
         """Custom code implementation."""
-        ...
 
 # Initialize YOLO model
 model = YOLO("yolo26n.pt")
@@ -128,7 +125,6 @@ from ultralytics.models.yolo.detect import DetectionTrainer
 class CustomTrainer(DetectionTrainer):
     def get_model(self, cfg=None, weights=None, verbose=True):
         """Loads a custom detection model given configuration and weight files."""
-        ...
 
 trainer = CustomTrainer(overrides={...})
 trainer.train()
@@ -191,7 +187,6 @@ from ultralytics.models.yolo.detect import DetectionTrainer
 class CustomDetectionTrainer(DetectionTrainer):
     def get_model(self, cfg=None, weights=None, verbose=True):
         """Loads a custom detection model."""
-        ...
 
 trainer = CustomDetectionTrainer(overrides={...})
 trainer.train()

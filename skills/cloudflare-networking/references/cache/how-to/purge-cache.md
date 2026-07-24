@@ -16,7 +16,7 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Cloudflare's Instant Purge ensures that updates to your content are reflected immediately. Multiple options are available for purging content, with single-file cache purging (purge by URL) being the recommended method. However, the following additional options are also available:
 
-* [​Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)
+* [Purge by single-file](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/)
 * [​Purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)
 * [Purge cache by cache-tags](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)
 * [​Purge cache by hostname](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/)

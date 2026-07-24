@@ -16,6 +16,51 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/rules.xml)
 
+## 2026-07-16
+
+
+**Bot management fields and ASN support in Cache Rules**
+
+#### Bot management fields and ASN support in Cache Rules
+
+Cache Rules now supports bot management fields and the `ip.src.asnum` field in expression filters. You can now build cache policies that differentiate between automated and human traffic, or segment caching behavior by autonomous system number (ASN).
+
+This allows you to apply different caching strategies for verified bots, high-risk traffic, or specific network operators without affecting legitimate user requests. For example, you can set shorter cache TTLs for suspected bot traffic or bypass cache entirely for requests from specific ASNs.
+
+#### New fields
+
+The following fields are now available in Cache Rules expressions:
+
+| Field                                   | Type    | Description                                                                                                       |
+| --------------------------------------- | ------- | ----------------------------------------------------------------------------------------------------------------- |
+| cf.bot\_management.score                | Number  | Bot score from 1 to 99, where a lower value indicates a higher likelihood that the request originates from a bot. |
+| cf.bot\_management.ja3\_hash            | String  | JA3 fingerprint of the request, which helps identify the client making the connection.                            |
+| cf.bot\_management.ja4                  | String  | JA4 fingerprint of the request, which provides a more detailed client identification than JA3.                    |
+| cf.bot\_management.verified\_bot        | Boolean | Whether the request originates from a verified bot, such as a search engine crawler.                              |
+| cf.bot\_management.static\_resource     | Boolean | Whether the request is for a static resource and therefore exempt from bot detection.                             |
+| cf.bot\_management.js\_detection.passed | Boolean | Whether the browser passed JavaScript detection when the feature is enabled.                                      |
+| cf.bot\_management.attack\_score        | Number  | Classifies the request by attack score, from 1 (likely automated) to 99 (likely human).                           |
+| cf.bot\_management.api\_score           | Number  | Classifies the request by API score, from 1 (likely automated) to 99 (likely human).                              |
+| cf.bot\_management.bot\_tags\["<TAG>"\] | Boolean | Whether the bot traffic matches the specified tag, such as google or bing.                                        |
+| cf.bot\_management.corporate\_proxy     | Boolean | Whether the request originates from a known corporate proxy.                                                      |
+| ip.src.asnum                            | Number  | The autonomous system number (ASN) of the incoming request's IP address.                                          |
+
+Note
+
+Bot management fields require a Bot Management subscription. `ip.src.asnum` is available on all plans.
+
+#### Example
+
+Cache Rules expressions support combining these fields with other criteria. The following example sets a shorter cache TTL for API requests that originate from a high-risk bot or an unexpected ASN:
+
+```txt
+(http.request.uri.path contains "/api/" and cf.bot_management.score lt 30)
+or
+(http.request.uri.path contains "/api/" and not ip.src.asnum in {12345 67890})
+```
+
+To learn more, refer to the [Cache Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-rules/) and the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/).
+
 ## 2026-04-01
 
 

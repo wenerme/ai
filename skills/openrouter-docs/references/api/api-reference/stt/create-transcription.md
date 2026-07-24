@@ -943,6 +943,9 @@ components:
         sakana:
           additionalProperties: {}
           type: object
+        sakana-ai:
+          additionalProperties: {}
+          type: object
         sambanova:
           additionalProperties: {}
           type: object
@@ -1003,6 +1006,9 @@ components:
         wandb:
           additionalProperties: {}
           type: object
+        wandb-legacy:
+          additionalProperties: {}
+          type: object
         xai:
           additionalProperties: {}
           type: object
@@ -1031,6 +1037,7 @@ components:
         id: 0
         no_speech_prob: 0.01
         seek: 0
+        speaker: 0
         start: 0
         temperature: 0
         text: Hello there.
@@ -1062,6 +1069,12 @@ components:
           type: number
         seek:
           description: Seek offset of the segment
+          example: 0
+          type: integer
+        speaker:
+          description: >-
+            Speaker index for the segment, present when the provider returns
+            diarization data
           example: 0
           type: integer
         start:
@@ -1126,6 +1139,7 @@ components:
         timestamps
       example:
         end: 0.4
+        speaker: 0
         start: 0
         word: Hello
       properties:
@@ -1134,6 +1148,12 @@ components:
           example: 0.4
           format: double
           type: number
+        speaker:
+          description: >-
+            Speaker index for the word, present when the provider returns
+            diarization data
+          example: 0
+          type: integer
         start:
           description: Word start time in seconds
           example: 0

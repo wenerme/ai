@@ -94,7 +94,7 @@ Retrieves a model response with the given ID.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
       The error code for the response.
 
@@ -103,6 +103,8 @@ Retrieves a model response with the given ID.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"data_residency_mismatch"`
 
       - `"bio_policy"`
 
@@ -5383,7 +5385,7 @@ Retrieves a model response with the given ID.
 
       Optional version of the prompt template.
 
-  - `prompt_cache_key?: string`
+  - `prompt_cache_key?: string | null`
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -5434,6 +5436,10 @@ Retrieves a model response with the given ID.
     - `context?: "auto" | "current_turn" | "all_turns" | null`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -5509,7 +5515,7 @@ Retrieves a model response with the given ID.
 
       - `"detailed"`
 
-  - `safety_identifier?: string`
+  - `safety_identifier?: string | null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -5637,7 +5643,8 @@ Retrieves a model response with the given ID.
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 
@@ -5955,7 +5962,8 @@ console.log(response);
   "usage": {
     "input_tokens": 32,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 18,
     "output_tokens_details": {

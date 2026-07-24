@@ -4217,7 +4217,7 @@ as input for the model's response.
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Body param: Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -4268,6 +4268,10 @@ as input for the model's response.
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -4343,7 +4347,7 @@ as input for the model's response.
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       Body param: A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -4487,7 +4491,8 @@ as input for the model's response.
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -4827,7 +4832,7 @@ as input for the model's response.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
       The error code for the response.
 
@@ -4836,6 +4841,8 @@ as input for the model's response.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"data_residency_mismatch"`
 
       - `"bio_policy"`
 
@@ -10884,7 +10891,7 @@ as input for the model's response.
 
       Optional version of the prompt template.
 
-  - `prompt_cache_key?: string`
+  - `prompt_cache_key?: string | null`
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -10935,6 +10942,10 @@ as input for the model's response.
     - `context?: "auto" | "current_turn" | "all_turns" | null`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -11010,7 +11021,7 @@ as input for the model's response.
 
       - `"detailed"`
 
-  - `safety_identifier?: string`
+  - `safety_identifier?: string | null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -11138,7 +11149,8 @@ as input for the model's response.
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 
@@ -11464,7 +11476,8 @@ console.log(response);
   "usage": {
     "input_tokens": 36,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 87,
     "output_tokens_details": {
@@ -11553,7 +11566,8 @@ console.log(response);
   "usage": {
     "input_tokens": 328,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 52,
     "output_tokens_details": {
@@ -11647,7 +11661,8 @@ console.log(response);
   "usage": {
     "input_tokens": 8438,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 398,
     "output_tokens_details": {
@@ -11765,7 +11780,8 @@ console.log(response);
   "usage": {
     "input_tokens": 328,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 356,
     "output_tokens_details": {
@@ -11918,7 +11934,8 @@ console.log(response);
   "usage": {
     "input_tokens": 18307,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 348,
     "output_tokens_details": {
@@ -12166,7 +12183,8 @@ console.log(response);
   "usage": {
     "input_tokens": 81,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 1035,
     "output_tokens_details": {
@@ -12281,7 +12299,7 @@ Retrieves a model response with the given ID.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
       The error code for the response.
 
@@ -12290,6 +12308,8 @@ Retrieves a model response with the given ID.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"data_residency_mismatch"`
 
       - `"bio_policy"`
 
@@ -18338,7 +18358,7 @@ Retrieves a model response with the given ID.
 
       Optional version of the prompt template.
 
-  - `prompt_cache_key?: string`
+  - `prompt_cache_key?: string | null`
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -18389,6 +18409,10 @@ Retrieves a model response with the given ID.
     - `context?: "auto" | "current_turn" | "all_turns" | null`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -18464,7 +18488,7 @@ Retrieves a model response with the given ID.
 
       - `"detailed"`
 
-  - `safety_identifier?: string`
+  - `safety_identifier?: string | null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -18592,7 +18616,8 @@ Retrieves a model response with the given ID.
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 
@@ -18913,7 +18938,8 @@ console.log(response);
   "usage": {
     "input_tokens": 32,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 18,
     "output_tokens_details": {
@@ -19016,7 +19042,7 @@ the `background` parameter set to `true` can be cancelled.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
       The error code for the response.
 
@@ -19025,6 +19051,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"data_residency_mismatch"`
 
       - `"bio_policy"`
 
@@ -25073,7 +25101,7 @@ the `background` parameter set to `true` can be cancelled.
 
       Optional version of the prompt template.
 
-  - `prompt_cache_key?: string`
+  - `prompt_cache_key?: string | null`
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -25124,6 +25152,10 @@ the `background` parameter set to `true` can be cancelled.
     - `context?: "auto" | "current_turn" | "all_turns" | null`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -25199,7 +25231,7 @@ the `background` parameter set to `true` can be cancelled.
 
       - `"detailed"`
 
-  - `safety_identifier?: string`
+  - `safety_identifier?: string | null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -25327,7 +25359,8 @@ the `background` parameter set to `true` can be cancelled.
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 
@@ -33475,7 +33508,8 @@ console.log(compactedResponse);
   "usage": {
     "input_tokens": 139,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 438,
     "output_tokens_details": {
@@ -38626,7 +38660,7 @@ console.log(compactedResponse);
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+    - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
       The error code for the response.
 
@@ -38635,6 +38669,8 @@ console.log(compactedResponse);
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"data_residency_mismatch"`
 
       - `"bio_policy"`
 
@@ -44683,7 +44719,7 @@ console.log(compactedResponse);
 
       Optional version of the prompt template.
 
-  - `prompt_cache_key?: string`
+  - `prompt_cache_key?: string | null`
 
     Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -44734,6 +44770,10 @@ console.log(compactedResponse);
     - `context?: "auto" | "current_turn" | "all_turns" | null`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -44809,7 +44849,7 @@ console.log(compactedResponse);
 
       - `"detailed"`
 
-  - `safety_identifier?: string`
+  - `safety_identifier?: string | null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -44937,7 +44977,8 @@ console.log(compactedResponse);
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 
@@ -45621,7 +45662,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
         The error code for the response.
 
@@ -45630,6 +45671,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"data_residency_mismatch"`
 
         - `"bio_policy"`
 
@@ -51678,7 +51721,7 @@ console.log(compactedResponse);
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -51729,6 +51772,10 @@ console.log(compactedResponse);
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -51804,7 +51851,7 @@ console.log(compactedResponse);
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -51932,7 +51979,8 @@ console.log(compactedResponse);
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -53131,7 +53179,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
         The error code for the response.
 
@@ -53140,6 +53188,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"data_residency_mismatch"`
 
         - `"bio_policy"`
 
@@ -59188,7 +59238,7 @@ console.log(compactedResponse);
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -59239,6 +59289,10 @@ console.log(compactedResponse);
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -59314,7 +59368,7 @@ console.log(compactedResponse);
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -59442,7 +59496,8 @@ console.log(compactedResponse);
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -59892,7 +59947,7 @@ console.log(compactedResponse);
 
   An error object returned when the model fails to generate a Response.
 
-  - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+  - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
     The error code for the response.
 
@@ -59901,6 +59956,8 @@ console.log(compactedResponse);
     - `"rate_limit_exceeded"`
 
     - `"invalid_prompt"`
+
+    - `"data_residency_mismatch"`
 
     - `"bio_policy"`
 
@@ -59996,7 +60053,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
         The error code for the response.
 
@@ -60005,6 +60062,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"data_residency_mismatch"`
 
         - `"bio_policy"`
 
@@ -66053,7 +66112,7 @@ console.log(compactedResponse);
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -66104,6 +66163,10 @@ console.log(compactedResponse);
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -66179,7 +66242,7 @@ console.log(compactedResponse);
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -66307,7 +66370,8 @@ console.log(compactedResponse);
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -67789,7 +67853,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
         The error code for the response.
 
@@ -67798,6 +67862,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"data_residency_mismatch"`
 
         - `"bio_policy"`
 
@@ -73846,7 +73912,7 @@ console.log(compactedResponse);
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -73897,6 +73963,10 @@ console.log(compactedResponse);
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -73972,7 +74042,7 @@ console.log(compactedResponse);
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -74100,7 +74170,8 @@ console.log(compactedResponse);
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -74244,7 +74315,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
         The error code for the response.
 
@@ -74253,6 +74324,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"data_residency_mismatch"`
 
         - `"bio_policy"`
 
@@ -80301,7 +80374,7 @@ console.log(compactedResponse);
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -80352,6 +80425,10 @@ console.log(compactedResponse);
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -80427,7 +80504,7 @@ console.log(compactedResponse);
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -80555,7 +80632,8 @@ console.log(compactedResponse);
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -111667,7 +111745,7 @@ console.log(compactedResponse);
 
       An error object returned when the model fails to generate a Response.
 
-      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+      - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
         The error code for the response.
 
@@ -111676,6 +111754,8 @@ console.log(compactedResponse);
         - `"rate_limit_exceeded"`
 
         - `"invalid_prompt"`
+
+        - `"data_residency_mismatch"`
 
         - `"bio_policy"`
 
@@ -117724,7 +117804,7 @@ console.log(compactedResponse);
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -117775,6 +117855,10 @@ console.log(compactedResponse);
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -117850,7 +117934,7 @@ console.log(compactedResponse);
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -117978,7 +118062,8 @@ console.log(compactedResponse);
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -118787,7 +118872,7 @@ console.log(compactedResponse);
 
         An error object returned when the model fails to generate a Response.
 
-        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
           The error code for the response.
 
@@ -118796,6 +118881,8 @@ console.log(compactedResponse);
           - `"rate_limit_exceeded"`
 
           - `"invalid_prompt"`
+
+          - `"data_residency_mismatch"`
 
           - `"bio_policy"`
 
@@ -124844,7 +124931,7 @@ console.log(compactedResponse);
 
           Optional version of the prompt template.
 
-      - `prompt_cache_key?: string`
+      - `prompt_cache_key?: string | null`
 
         Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -124895,6 +124982,10 @@ console.log(compactedResponse);
         - `context?: "auto" | "current_turn" | "all_turns" | null`
 
           Controls which reasoning items are rendered back to the model on later turns.
+          If omitted or set to `auto`, the model determines the context mode. The
+          `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+          `current_turn`.
+
           When returned on a response, this is the effective reasoning context mode
           used for the response.
 
@@ -124970,7 +125061,7 @@ console.log(compactedResponse);
 
           - `"detailed"`
 
-      - `safety_identifier?: string`
+      - `safety_identifier?: string | null`
 
         A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
         The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -125098,7 +125189,8 @@ console.log(compactedResponse);
 
           Constrains the verbosity of the model's response. Lower values will result in
           more concise responses, while higher values will result in more verbose responses.
-          Currently supported values are `low`, `medium`, and `high`.
+          Currently supported values are `low`, `medium`, and `high`. The default is
+          `medium`.
 
           - `"low"`
 
@@ -126922,7 +127014,8 @@ console.log(compactedResponse);
 
     Constrains the verbosity of the model's response. Lower values will result in
     more concise responses, while higher values will result in more verbose responses.
-    Currently supported values are `low`, `medium`, and `high`.
+    Currently supported values are `low`, `medium`, and `high`. The default is
+    `medium`.
 
     - `"low"`
 
@@ -133707,7 +133800,7 @@ console.log(compactedResponse);
 
         Optional version of the prompt template.
 
-    - `prompt_cache_key?: string`
+    - `prompt_cache_key?: string | null`
 
       Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -133758,6 +133851,10 @@ console.log(compactedResponse);
       - `context?: "auto" | "current_turn" | "all_turns" | null`
 
         Controls which reasoning items are rendered back to the model on later turns.
+        If omitted or set to `auto`, the model determines the context mode. The
+        `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+        `current_turn`.
+
         When returned on a response, this is the effective reasoning context mode
         used for the response.
 
@@ -133833,7 +133930,7 @@ console.log(compactedResponse);
 
         - `"detailed"`
 
-    - `safety_identifier?: string`
+    - `safety_identifier?: string | null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -133975,7 +134072,8 @@ console.log(compactedResponse);
 
         Constrains the verbosity of the model's response. Lower values will result in
         more concise responses, while higher values will result in more verbose responses.
-        Currently supported values are `low`, `medium`, and `high`.
+        Currently supported values are `low`, `medium`, and `high`. The default is
+        `medium`.
 
         - `"low"`
 
@@ -134712,7 +134810,7 @@ console.log(compactedResponse);
 
         An error object returned when the model fails to generate a Response.
 
-        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 16 more`
+        - `code: "server_error" | "rate_limit_exceeded" | "invalid_prompt" | 17 more`
 
           The error code for the response.
 
@@ -134721,6 +134819,8 @@ console.log(compactedResponse);
           - `"rate_limit_exceeded"`
 
           - `"invalid_prompt"`
+
+          - `"data_residency_mismatch"`
 
           - `"bio_policy"`
 
@@ -140769,7 +140869,7 @@ console.log(compactedResponse);
 
           Optional version of the prompt template.
 
-      - `prompt_cache_key?: string`
+      - `prompt_cache_key?: string | null`
 
         Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](https://platform.openai.com/docs/guides/prompt-caching).
 
@@ -140820,6 +140920,10 @@ console.log(compactedResponse);
         - `context?: "auto" | "current_turn" | "all_turns" | null`
 
           Controls which reasoning items are rendered back to the model on later turns.
+          If omitted or set to `auto`, the model determines the context mode. The
+          `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+          `current_turn`.
+
           When returned on a response, this is the effective reasoning context mode
           used for the response.
 
@@ -140895,7 +140999,7 @@ console.log(compactedResponse);
 
           - `"detailed"`
 
-      - `safety_identifier?: string`
+      - `safety_identifier?: string | null`
 
         A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
         The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices#safety-identifiers).
@@ -141023,7 +141127,8 @@ console.log(compactedResponse);
 
           Constrains the verbosity of the model's response. Lower values will result in
           more concise responses, while higher values will result in more verbose responses.
-          Currently supported values are `low`, `medium`, and `high`.
+          Currently supported values are `low`, `medium`, and `high`. The default is
+          `medium`.
 
           - `"low"`
 
@@ -155500,6 +155605,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
     - `context?: "auto" | "current_turn" | "all_turns" | null`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -155660,7 +155769,8 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 

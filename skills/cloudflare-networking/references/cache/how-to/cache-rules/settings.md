@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Available settings
 
-Last updated Jun 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These are the settings that you can configure when creating a cache rule.
 
@@ -38,7 +38,9 @@ If you select the [Edit expression](https://developers.cloudflare.com/ruleset-en
 
 Note
 
-[Single file purge](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/) is not compatible if you add other [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) than those listed, such as `ip.*` fields.
+[Single-file purge](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/) may not work as expected if your Cache Rule sets a [custom cache key](https://developers.cloudflare.com/cache/how-to/cache-keys/) (because the dashboard cannot send the headers or cookies that are part of the key), or if your rule expression matches only `GET` requests (because purge requests use a different HTTP method internally).
+
+For more information and alternatives, refer to [Purge by single-file limitations](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/#limitations-and-alternatives).
 
 ## Operators
 
@@ -473,5 +475,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#page","headline":"Cache Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#page","headline":"Cache Rules settings · Cloudflare Cache (CDN) docs","description":"Available settings for Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

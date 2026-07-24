@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitors
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/monitors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A monitor issues health monitor requests at regular intervals to evaluate the health of each endpoint within a [pool](https://developers.cloudflare.com/load-balancing/pools/).
 
@@ -84,6 +84,14 @@ The same problem can occur when setting low values for a monitor's **Interval**.
 
 ---
 
+## IPv4 and IPv6 probe behavior
+
+Health monitor probes use IPv4 by default. IPv6 probes are only sent if the endpoint address has no `A` records (only `AAAA`). Each endpoint receives one probe per interval — Cloudflare does not probe both IPv4 and IPv6 for the same endpoint.
+
+To enforce probing over IPv6, set the endpoint address to either a raw IPv6 address or a hostname that only has `AAAA` records.
+
+---
+
 ## Host header prioritization
 
 The host headers used on health monitor requests can be configured either [on the monitor itself](https://developers.cloudflare.com/load-balancing/monitors/create-monitor/) or on the [endpoints within a pool](https://developers.cloudflare.com/load-balancing/pools/create-pool/).
@@ -131,5 +139,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/#page","headline":"Monitors · Cloudflare Load Balancing docs","description":"Health monitors that check origin server availability.","url":"https://developers.cloudflare.com/load-balancing/monitors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/monitors/#page","headline":"Monitors · Cloudflare Load Balancing docs","description":"Health monitors that check origin server availability.","url":"https://developers.cloudflare.com/load-balancing/monitors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

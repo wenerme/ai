@@ -502,7 +502,11 @@ Creates an API key for a service account in the project.
 
 - `project_id: str`
 
+  The ID of the project.
+
 - `service_account_id: str`
+
+  The ID of the service account.
 
 - `name: Optional[str]`
 
@@ -518,9 +522,15 @@ Creates an API key for a service account in the project.
 
   - `id: str`
 
+    The identifier of the API key.
+
   - `created_at: int`
 
+    The Unix timestamp (in seconds) when the API key was created.
+
   - `name: str`
+
+    The name of the API key.
 
   - `object: Literal["organization.project.service_account.api_key"]`
 
@@ -529,6 +539,8 @@ Creates an API key for a service account in the project.
     - `"organization.project.service_account.api_key"`
 
   - `value: str`
+
+    The unredacted API key value.
 
 ### Example
 
@@ -566,9 +578,15 @@ print(api_key.id)
 
   - `id: str`
 
+    The identifier of the API key.
+
   - `created_at: int`
 
+    The Unix timestamp (in seconds) when the API key was created.
+
   - `name: str`
+
+    The name of the API key.
 
   - `object: Literal["organization.project.service_account.api_key"]`
 
@@ -577,3 +595,5 @@ print(api_key.id)
     - `"organization.project.service_account.api_key"`
 
   - `value: str`
+
+    The unredacted API key value.

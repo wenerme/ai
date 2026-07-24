@@ -1678,6 +1678,9 @@ components:
         sakana:
           additionalProperties: {}
           type: object
+        sakana-ai:
+          additionalProperties: {}
+          type: object
         sambanova:
           additionalProperties: {}
           type: object
@@ -1736,6 +1739,9 @@ components:
           additionalProperties: {}
           type: object
         wandb:
+          additionalProperties: {}
+          type: object
+        wandb-legacy:
           additionalProperties: {}
           type: object
         xai:

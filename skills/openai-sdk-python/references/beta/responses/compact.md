@@ -7865,7 +7865,8 @@ print(compacted_response)
   "usage": {
     "input_tokens": 139,
     "input_tokens_details": {
-      "cached_tokens": 0
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
     },
     "output_tokens": 438,
     "output_tokens_details": {

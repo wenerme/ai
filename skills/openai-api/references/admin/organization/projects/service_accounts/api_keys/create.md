@@ -8,7 +8,11 @@ Creates an API key for a service account in the project.
 
 - `project_id: string`
 
+  The ID of the project.
+
 - `service_account_id: string`
+
+  The ID of the service account.
 
 ### Body Parameters
 
@@ -24,9 +28,15 @@ Creates an API key for a service account in the project.
 
 - `id: string`
 
+  The identifier of the API key.
+
 - `created_at: number`
 
+  The Unix timestamp (in seconds) when the API key was created.
+
 - `name: string`
+
+  The name of the API key.
 
 - `object: "organization.project.service_account.api_key"`
 
@@ -35,6 +45,8 @@ Creates an API key for a service account in the project.
   - `"organization.project.service_account.api_key"`
 
 - `value: string`
+
+  The unredacted API key value.
 
 ### Example
 

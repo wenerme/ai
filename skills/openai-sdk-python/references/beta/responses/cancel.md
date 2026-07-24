@@ -32,7 +32,7 @@ the `background` parameter set to `true` can be cancelled.
 
     An error object returned when the model fails to generate a Response.
 
-    - `code: Literal["server_error", "rate_limit_exceeded", "invalid_prompt", 16 more]`
+    - `code: Literal["server_error", "rate_limit_exceeded", "invalid_prompt", 17 more]`
 
       The error code for the response.
 
@@ -41,6 +41,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"rate_limit_exceeded"`
 
       - `"invalid_prompt"`
+
+      - `"data_residency_mismatch"`
 
       - `"bio_policy"`
 
@@ -6173,6 +6175,10 @@ the `background` parameter set to `true` can be cancelled.
     - `context: Optional[Literal["auto", "current_turn", "all_turns"]]`
 
       Controls which reasoning items are rendered back to the model on later turns.
+      If omitted or set to `auto`, the model determines the context mode. The
+      `gpt-5.6` model family defaults to `all_turns`; earlier models default to
+      `current_turn`.
+
       When returned on a response, this is the effective reasoning context mode
       used for the response.
 
@@ -6380,7 +6386,8 @@ the `background` parameter set to `true` can be cancelled.
 
       Constrains the verbosity of the model's response. Lower values will result in
       more concise responses, while higher values will result in more verbose responses.
-      Currently supported values are `low`, `medium`, and `high`.
+      Currently supported values are `low`, `medium`, and `high`. The default is
+      `medium`.
 
       - `"low"`
 

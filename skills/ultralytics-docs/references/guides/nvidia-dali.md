@@ -118,9 +118,8 @@ This version exactly replicates the default Ultralytics preprocessing with cente
 !!! example "DALI pipeline with centered padding (recommended)"
 
     ```python
-    import nvidia.dali as dali
-    import nvidia.dali.fn as fn
-    import nvidia.dali.types as types
+    from nvidia import dali
+    from nvidia.dali import fn, types
 
     @dali.pipeline_def(batch_size=8, num_threads=4, device_id=0)
     def yolo_dali_pipeline_centered(image_dir, target_size=640):
@@ -244,9 +243,8 @@ For real-time video processing, use `fn.external_source` to feed frames from any
     === "Pipeline Definition"
 
         ```python
-        import nvidia.dali as dali
-        import nvidia.dali.fn as fn
-        import nvidia.dali.types as types
+        from nvidia import dali
+        from nvidia.dali import fn, types
 
         @dali.pipeline_def(batch_size=1, num_threads=4, device_id=0)
         def yolo_video_pipeline(target_size=640):
@@ -341,9 +339,8 @@ Serialize the DALI pipeline for the Triton DALI backend:
 !!! example "Serialize DALI pipeline for Triton"
 
     ```python
-    import nvidia.dali as dali
-    import nvidia.dali.fn as fn
-    import nvidia.dali.types as types
+    from nvidia import dali
+    from nvidia.dali import fn, types
 
     @dali.pipeline_def(batch_size=8, num_threads=4, device_id=0)
     def triton_dali_pipeline():

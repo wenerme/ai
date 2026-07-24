@@ -1,6 +1,6 @@
 ---
 description: Purge a single cached file by URL.
-title: ​Purge by single-file
+title: Purge by single-file
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -10,31 +10,15 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/cache/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# ​Purge by single-file
+# Purge by single-file
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With purge by single-file, cached resources are instantly removed from the stored assets in your Content Delivery Network (CDN) across all data centers. New requests for the purged asset receive the latest version from your origin web server and add it back to your CDN cache within the specific Cloudflare data center that served the request.
 
 For information on single-file purge rate limits, refer to the [limits](https://developers.cloudflare.com/cache/how-to/purge-cache/#single-file-purge-limits) section.
 
-A single-file purge performed through your Cloudflare dashboard does not clear objects that contain any of the following:
-
-* [Custom cache keys](https://developers.cloudflare.com/cache/how-to/cache-keys/)
-* [Origin header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin)
-* Any of these request headers:
-  * `X-Forwarded-Host`
-  * `X-Host`
-  * `X-Forwarded-Scheme`
-  * `X-Original-URL`
-  * `X-Rewrite-URL`
-  * `Forwarded`
-
-You can purge objects with these characteristics using an API call to ([purge files by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/)). In the data/header section of the API call, you must include all headers and cache keys contained in the cached resource, along with their matching values.
-
-Caution
-
-Always use UTF-8 encoded URLs for single-file cache purges. Wildcards are not supported on single file purge, and you must use purge by hostname, prefix, or implement cache tags as an alternative solution.
+## How to purge a single file
 
 1. In the Cloudflare dashboard, go to the **Configuration** page.
 [Go to **Configuration** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/configuration)
@@ -45,15 +29,61 @@ Always use UTF-8 encoded URLs for single-file cache purges. Wildcards are not su
 6. Review your entries.
 7. Select **Purge**.
 
+## Limitations and alternatives
+
+Single-file purge works for most resources, but there are situations where it cannot clear cached content. This section explains when single-file purge does not work and what to use instead.
+
+### Custom cache keys
+
+If you use [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) to set a [custom cache key](https://developers.cloudflare.com/cache/how-to/cache-keys/) that includes headers, cookies, or other request properties, single-file purge via the dashboard will not invalidate the cached resource. This is because the dashboard cannot send those values in a purge request. Custom cache keys that only change how the query string is handled (for example, ignoring the query string) generally work with dashboard single-file purge.
+
+**What to do instead:**
+
+* **Use the API** to [purge files by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/#purge-cached-content-by-url), including all headers and cookies that are part of your custom cache key. If any header or cookie is missing from the purge request, Cloudflare treats it as an empty value in the cache key.
+* **Use purge by prefix** ([purge by prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/)) to clear all resources under a URL path.
+* **Use purge by tag** ([purge by tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/)) if your resources are tagged.
+* **Use purge everything** ([purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/)) to clear all cached resources for the zone.
+
+### Cache Rules that match on request properties
+
+Single-file purge may also not work as expected if your Cache Rules match only on `GET` requests, or match on properties that are not present during a purge. For example, a Cache Rule with the expression `(http.host eq "example.com" and http.request.method eq "GET")` will not match during a single-file purge.
+
+**What to do instead:**
+
+Update your Cache Rule expression to also match on the `PURGE` method, for example `(http.host eq "example.com" and (http.request.method eq "GET" or http.request.method eq "PURGE"))`. This allows the rule to apply to both client requests and purge requests.
+
+For rules that match on fields which cannot be evaluated during purge (such as `cf.bot_management.score`), use [purge by prefix](https://developers.cloudflare.com/cache/how-to/purge-cache/purge%5Fby%5Fprefix/), [purge by tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/), or [purge everything](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-everything/).
+
+### Resources with special headers
+
+A single-file purge performed through your Cloudflare dashboard does not clear objects that contain any of the following:
+
+* [Origin header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin)
+* Any of these request headers:
+  * `X-Forwarded-Host`
+  * `X-Host`
+  * `X-Forwarded-Scheme`
+  * `X-Original-URL`
+  * `X-Rewrite-URL`
+  * `Forwarded`
+
+You can purge objects with these characteristics using an API call to [purge files by URL](https://developers.cloudflare.com/api/resources/cache/methods/purge/). In the `headers` object of the request body, include the header values that match those used in the cached resource's cache key.
+
+## Additional notes
+
+Caution
+
+Always use UTF-8 encoded URLs for single-file cache purges. Wildcards are not supported on single file purge, and you must use purge by hostname, prefix, or implement cache tags as an alternative solution.
+
+Caution
+
+If you have a [Transform Rule](https://developers.cloudflare.com/rules/transform/) in place that is modifying part of a URL path, you must use the non-transform (end user) URL when performing single file purge so that purge can take effect.
+
 Note
 
 For information on how to use single-file purge to purge assets cached by a Workers fetch, refer to [Single file purge assets cached by a Worker](https://developers.cloudflare.com/workers/reference/how-the-cache-works/#single-file-purge-assets-cached-by-a-worker).
 
 For information on how to purge assets cached by [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) operations, refer to [Purge assets stored with the Cache API](https://developers.cloudflare.com/workers/reference/how-the-cache-works/#purge-assets-stored-with-the-cache-api).
-
-Caution
-
-If you have a [Transform Rule](https://developers.cloudflare.com/rules/transform/) in place that is modifying part of a URL path, you must use the non-transform (end user) URL when performing single file purge so that purge can take effect.
 
 ## Resulting cache status
 
@@ -68,5 +98,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/#page","headline":"​Purge by single-file · Cloudflare Cache (CDN) docs","description":"Purge a single cached file by URL.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/#page","headline":"Purge by single-file · Cloudflare Cache (CDN) docs","description":"Purge a single cached file by URL.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

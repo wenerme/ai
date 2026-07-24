@@ -231,6 +231,7 @@ paths:
               - runway
               - sail-research
               - sakana
+              - sakana-ai
               - sambanova
               - seed
               - siliconflow
@@ -245,6 +246,7 @@ paths:
               - venice
               - wafer
               - wandb
+              - wandb-legacy
               - xai
               - xiaomi
               - z-ai
@@ -644,6 +646,7 @@ components:
         - runway
         - sail-research
         - sakana
+        - sakana-ai
         - sambanova
         - seed
         - siliconflow
@@ -658,6 +661,7 @@ components:
         - venice
         - wafer
         - wandb
+        - wandb-legacy
         - xai
         - xiaomi
         - z-ai

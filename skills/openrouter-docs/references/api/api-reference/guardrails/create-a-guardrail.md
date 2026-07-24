@@ -146,6 +146,7 @@ paths:
                   id: 550e8400-e29b-41d4-a716-446655440000
                   ignored_models: null
                   ignored_providers: null
+                  include_byok_in_budgets: false
                   limit_usd: 50
                   name: My New Guardrail
                   reset_interval: monthly
@@ -347,6 +348,13 @@ components:
           type:
             - array
             - 'null'
+        include_byok_in_budgets:
+          description: >-
+            Whether BYOK (bring-your-own-key) inference spend counts toward this
+            guardrail's limit_usd, in addition to OpenRouter credit spend.
+            Defaults to false.
+          example: false
+          type: boolean
         limit_usd:
           description: Spending limit in USD
           example: 50
@@ -396,6 +404,7 @@ components:
           id: 550e8400-e29b-41d4-a716-446655440000
           ignored_models: null
           ignored_providers: null
+          include_byok_in_budgets: false
           limit_usd: 50
           name: My New Guardrail
           reset_interval: monthly
@@ -579,6 +588,7 @@ components:
         id: 550e8400-e29b-41d4-a716-446655440000
         ignored_models: null
         ignored_providers: null
+        include_byok_in_budgets: false
         limit_usd: 100
         name: Production Guardrail
         reset_interval: monthly
@@ -716,6 +726,12 @@ components:
           type:
             - array
             - 'null'
+        include_byok_in_budgets:
+          description: >-
+            Whether BYOK (bring-your-own-key) inference spend counts toward this
+            guardrail's limit_usd, in addition to OpenRouter credit spend.
+          example: false
+          type: boolean
         limit_usd:
           description: Spending limit in USD
           example: 100
@@ -742,6 +758,7 @@ components:
       required:
         - id
         - name
+        - include_byok_in_budgets
         - created_at
         - workspace_id
       type: object

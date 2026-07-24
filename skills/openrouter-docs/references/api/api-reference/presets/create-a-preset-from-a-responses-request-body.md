@@ -1670,6 +1670,16 @@ components:
             of 20; values above 20 are clamped.
           example: 5
           type: integer
+        max_uses:
+          description: >-
+            Maximum number of web searches the model may perform in a single
+            request. Once reached, further search calls return an error result
+            instead of executing. Applies to the Exa, Firecrawl, Parallel, and
+            Perplexity engines. With native provider search, forwarded only to
+            Anthropic (as `max_uses`); other native search providers have no
+            equivalent parameter and ignore it.
+          example: 3
+          type: integer
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -1697,6 +1707,16 @@ components:
             ignored with native provider search. Perplexity supports a maximum
             of 20; values above 20 are clamped.
           example: 5
+          type: integer
+        max_uses:
+          description: >-
+            Maximum number of web searches the model may perform in a single
+            request. Once reached, further search calls return an error result
+            instead of executing. Applies to the Exa, Firecrawl, Parallel, and
+            Perplexity engines. With native provider search, forwarded only to
+            Anthropic (as `max_uses`); other native search providers have no
+            equivalent parameter and ignore it.
+          example: 3
           type: integer
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
@@ -1730,6 +1750,16 @@ components:
             of 20; values above 20 are clamped.
           example: 5
           type: integer
+        max_uses:
+          description: >-
+            Maximum number of web searches the model may perform in a single
+            request. Once reached, further search calls return an error result
+            instead of executing. Applies to the Exa, Firecrawl, Parallel, and
+            Perplexity engines. With native provider search, forwarded only to
+            Anthropic (as `max_uses`); other native search providers have no
+            equivalent parameter and ignore it.
+          example: 3
+          type: integer
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -1761,6 +1791,16 @@ components:
             ignored with native provider search. Perplexity supports a maximum
             of 20; values above 20 are clamped.
           example: 5
+          type: integer
+        max_uses:
+          description: >-
+            Maximum number of web searches the model may perform in a single
+            request. Once reached, further search calls return an error result
+            instead of executing. Applies to the Exa, Firecrawl, Parallel, and
+            Perplexity engines. With native provider search, forwarded only to
+            Anthropic (as `max_uses`); other native search providers have no
+            equivalent parameter and ignore it.
+          example: 3
           type: integer
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
@@ -5343,6 +5383,16 @@ components:
             returning new results. Useful for controlling cost and context size
             in agentic loops. Defaults to 50 when not specified.
           example: 50
+          type: integer
+        max_uses:
+          description: >-
+            Maximum number of web searches the model may perform in a single
+            request. Once reached, further search calls return an error result
+            instead of executing. Applies to the Exa, Firecrawl, Parallel, and
+            Perplexity engines. With native provider search, forwarded only to
+            Anthropic (as `max_uses`); other native search providers have no
+            equivalent parameter and ignore it.
+          example: 3
           type: integer
         search_context_size:
           $ref: '#/components/schemas/SearchQualityLevel'
