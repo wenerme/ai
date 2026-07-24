@@ -1,11 +1,11 @@
 ---
 title: "xAI | Models"
-description: "Use xAI models with Mastra. 9 models available."
+description: "Use xAI models with Mastra. 10 models available."
 ---
 
 # [xAI logo]xAI
 
-Access 9 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
+Access 10 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
 
 Learn more in the [xAI documentation](https://docs.x.ai/docs/models).
 
@@ -144,6 +144,18 @@ for await (const chunk of stream) {
     "maxOutput": null,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "xai/grok-imagine-video-1.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 1024,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
   }
 ]}
 />
@@ -175,7 +187,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "xai/grok-imagine-video"
+      ? "xai/grok-imagine-video-1.5"
       : "xai/grok-4.20-0309-non-reasoning";
   }
 });

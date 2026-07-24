@@ -551,6 +551,10 @@ relation to port exhaustion.
 - `MAX_FILE_SIZE`: **1048576**: Maximum size in bytes of files to be indexed.
 - `STARTUP_TIMEOUT`: **30s**: If the indexer takes longer than this timeout to start - fail. (This timeout will be added to the hammer time above for child processes - as bleve will not start until the previous parent is shutdown.) Set to -1 to never timeout.
 
+## Redis (`redis`)
+
+- `CONN_STR`: **_empty_**: Shared default Redis connection string. When a redis-backed subsystem (`[cache]`, `[session]`, `[queue]`, `[global_lock]`) is configured to use Redis but its own connection string is empty, it falls back to this value. A subsystem's own connection string always takes precedence, so different subsystems can still use different Redis instances.
+
 ## Queue (`queue` and `queue.*`)
 
 Configuration at `[queue]` will set defaults for queues with overrides for individual queues at `[queue.*]`. (However see below.)
@@ -559,7 +563,7 @@ Configuration at `[queue]` will set defaults for queues with overrides for indiv
 - `DATADIR`: **queues/common**: Base DataDir for storing level queues. `DATADIR` for individual queues can be set in `queue.name` sections. Relative paths will be made absolute against `{APP_DATA_PATH}`.
 - `LENGTH`: **100000**: Maximal queue size before channel queues block
 - `BATCH_LENGTH`: **20**: Batch data before passing to the handler
-- `CONN_STR`: **redis://127.0.0.1:6379/0**: Connection string for the redis queue type. Several redis connections schemes are supported. To see all available `uri.Scheme` types, see [here](https://github.com/go-gitea/gitea/blob/main/modules/nosql/manager_redis.go#L98-L123). For example, if you're running a Redis cluster, use `redis+cluster://127.0.0.1:6379/0`. Options can be set using query params. Similarly, LevelDB options can also be set using: **leveldb://relative/path?option=value** or **leveldb:///absolute/path?option=value**, and will override `DATADIR`
+- `CONN_STR`: **redis://127.0.0.1:6379/0**: Connection string for the redis queue type. If left empty while `TYPE` is `redis`, it falls back to [redis/CONN_STR](#redis-redis) when that is set. Several redis connections schemes are supported. To see all available `uri.Scheme` types, see [here](https://github.com/go-gitea/gitea/blob/main/modules/nosql/manager_redis.go#L98-L123). For example, if you're running a Redis cluster, use `redis+cluster://127.0.0.1:6379/0`. Options can be set using query params. Similarly, LevelDB options can also be set using: **leveldb://relative/path?option=value** or **leveldb:///absolute/path?option=value**, and will override `DATADIR`
 - `QUEUE_NAME`: **_queue**: The suffix for default redis and disk queue name. Individual queues will default to **`name`**`QUEUE_NAME` but can be overridden in the specific `queue.name` section.
 - `SET_NAME`: **_unique**: The suffix that will be added to the default redis and disk queue `set` name for unique queues. Individual queues will default to **`name`**`QUEUE_NAME`_`SET_NAME`_ but can be overridden in the specific `queue.name` section.
 - `MAX_WORKERS`: **(dynamic)**: Maximum number of worker go-routines for the queue. Default value is "CpuNum/2" clipped to between 1 and 10.
@@ -899,7 +903,7 @@ In-Reply-To =
 
 - `ADAPTER`: **memory**: Cache engine adapter, either `memory`, `redis`, `twoqueue` or `memcache`. (`twoqueue` represents a size limited LRU cache.)
 - `INTERVAL`: **60**: Garbage Collection interval (sec), for memory and twoqueue cache only.
-- `HOST`: **_empty_**: Connection string for `redis` and `memcache`. For `twoqueue` sets configuration for the queue.
+- `HOST`: **_empty_**: Connection string for `redis` and `memcache`. For `twoqueue` sets configuration for the queue. If left empty while `ADAPTER` is `redis`, it falls back to [redis/CONN_STR](#redis-redis) when that is set.
   - Redis: `redis://:macaron@127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` (See [queue/CONN_STR](#queue-queue-and-queue) for information on additional supported connection types)
     - For a Redis cluster: `redis+cluster://:macaron@127.0.0.1:6379/0?pool_size=100&idle_timeout=180s`
     - For a Redis sentinel: `redis+sentinel://:macaron@sentinel0:26379,sentinel1:26379,sentinel2:26379/0?pool_size=100&idle_timeout=180s&master_name=mymaster`
@@ -915,7 +919,7 @@ In-Reply-To =
 ## Session (`session`)
 
 - `PROVIDER`: **memory**: Session engine provider \[memory, file, redis, db, mysql, couchbase, memcache, postgres\]. Setting `db` will reuse the configuration in `[database]`
-- `PROVIDER_CONFIG`: **data/sessions**: For file, the root path; for db, empty (database config will be used); for others, the connection string. Relative paths will be made absolute against _`AppWorkPath`_.
+- `PROVIDER_CONFIG`: **data/sessions**: For file, the root path; for db, empty (database config will be used); for others, the connection string. Relative paths will be made absolute against _`AppWorkPath`_. For the `redis` provider, if left empty it falls back to [redis/CONN_STR](#redis-redis) when that is set.
 - `COOKIE_SECURE`:**_empty_**: `true` or `false`. Enable this to force using HTTPS for all session access. If not set, it defaults to `true` if the ROOT_URL is an HTTPS URL.
 - `COOKIE_NAME`: **i\_like\_gitea**: The name of the cookie used for the session ID.
 - `GC_INTERVAL_TIME`: **86400**: GC interval in seconds.

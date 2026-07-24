@@ -19,9 +19,6 @@ K3s contains a CLI tool `secrets-encrypt`, which enables automatic control over 
 
 ### Encryption Key Rotation
 
-> **info**: Version Gate
-Available as of the September 2024 releases: v1.30.5+k3s1, v1.31.1+k3s1
-
 To rotate secrets encryption keys on a single-server cluster:
 
 1. Start the K3s server with the flag `--secrets-encryption`
