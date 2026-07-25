@@ -102,8 +102,6 @@ health check manually to get this information and a few more details.
 
 #### Health check Rake task
 
-- The use of a custom NTP server was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/105514) in GitLab 15.7.
-
 This Rake task can be run on a **Rails** node in the primary or secondary
 Geo sites:
 
@@ -410,14 +408,7 @@ The Ruby gem which performs the check is hard coded with `pool.ntp.org` as its r
 
   This issue occurs when the hostname `pool.ntp.org` resolves to a server which does not provide a time service.
 
-In this case, in GitLab 15.7 and later, [specify a custom NTP server using environment variables](#health-check-rake-task).
-
-In GitLab 15.6 and earlier, use one of the following workarounds:
-
-- Add entries in `/etc/hosts` for `pool.ntp.org` to direct the request to valid local time servers.
-  This fixes the long timeout and the timeout error.
-- Direct the check to any valid IP address. This resolves the timeout issue, but the check fails
-  with the `No route to host` error, as noted previously.
+In this case, [specify a custom NTP server using environment variables](#health-check-rake-task).
 
 [Cloud native GitLab deployments](https://docs.gitlab.com/charts/advanced/geo/#set-the-geo-primary-site)
 generate an error because containers in Kubernetes do not have access to the host clock:
@@ -701,7 +692,7 @@ significantly faster, and secondary site status should update correctly.
 
 ### Verification failed with: `Verification timed out after (...)`
 
-From GitLab 16.11, Geo may create duplicate `JobArtifactRegistry` entries for the same `artifact_id`, which can lead to synchronization
+Geo may create duplicate `JobArtifactRegistry` entries for the same `artifact_id`, which can lead to synchronization
 failures between primary and secondary sites. This issue may also impact `UploadRegistry` and `PackageFileRegistry` entries.
 
 To determine if you might be experiencing this issue and remove the duplicate entries:

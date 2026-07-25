@@ -10,8 +10,6 @@ code are saved in projects, and most features are in the scope of projects.
 
 ## Project overview
 
-- Project creation date [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/19452) in GitLab 16.10.
-
 When you select a project, the **Project overview** page shows the project contents:
 
 - Files in the repository
@@ -177,9 +175,6 @@ GitLab removes project activity events older than three years from the events ta
 
 ## Filter projects by language
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385465) in GitLab 15.9 [with a feature flag](../../administration/feature_flags/_index.md) named `project_language_search`. Enabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/110956) in GitLab 15.9. Feature flag `project_language_search` removed.
-
 You can filter projects by the programming language they use. To do this:
 
 1. In the top bar, select **Search or go to**.
@@ -201,8 +196,6 @@ To star a project:
 1. In the upper-right corner of the page, select **Star**.
 
 ## Leave a project
-
-- The button to leave a project [moved](https://gitlab.com/gitlab-org/gitlab/-/issues/431539) to the Actions menu in GitLab 16.7.
 
 When you leave a project:
 
@@ -348,7 +341,6 @@ You can also [delete projects using the Rails console](troubleshooting.md#delete
 
 ## Delete a project immediately
 
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/389557) in GitLab 16.0. Premium and Ultimate only.
 - [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 If you do not want to wait for the configured retention period to delete a project,

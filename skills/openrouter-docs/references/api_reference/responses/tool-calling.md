@@ -4,15 +4,9 @@
 
 # Tool Calling
 
-> Function calling and tool integration with the Responses API Beta
+> Function calling and tool integration with the Responses API
 
-<Warning>
-  **Beta API**
-
-  This API is in **beta stage** and may have breaking changes.
-</Warning>
-
-The Responses API Beta supports comprehensive tool calling capabilities, allowing models to call functions, execute tools in parallel, and handle complex multi-step workflows.
+The Responses API supports comprehensive tool calling capabilities, allowing models to call functions, execute tools in parallel, and handle complex multi-step workflows.
 
 ## Basic Tool Definition
 

@@ -31,8 +31,6 @@ For a video explanation, see [DORA metrics: User analytics](https://www.youtube.
 
 ## Deployment frequency
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/394712) fix for the frequency calculation formula for `all` and `monthly` intervals in GitLab 16.0.
-
 Deployment frequency is the frequency of successful deployments to production over the given date range (hourly, daily, weekly, monthly, or yearly).
 
 Software leaders can use the deployment frequency metric to understand how often the team successfully deploys software to production, and how quickly the teams can respond to customers' requests or new market opportunities.
@@ -98,8 +96,6 @@ The first step is to benchmark the CI/CD pipelines' efficiency between groups an
 - Improving the performance of your pipelines.
 
 ## Time to restore service
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/356959) in GitLab 15.1.
 
 Time to restore service is the amount of time it takes an organization to recover from a failure in production.
 
@@ -245,8 +241,8 @@ The following table provides an overview of the DORA metrics' availability in pr
 | `deployment_frequency`    | Group             | Unit in deployment count. Aggregation method is average.  |
 | `lead_time_for_changes`   | Project           | Unit in seconds. Aggregation method is median. |
 | `lead_time_for_changes`   | Group             | Unit in seconds. Aggregation method is median. |
-| `time_to_restore_service` | Project and group | Unit in days. Aggregation method is median. (Available in UI chart in GitLab 15.1 and later) |
-| `change_failure_rate`     | Project and group | Percentage of deployments. (Available in UI chart in GitLab 15.2 and later) |
+| `time_to_restore_service` | Project and group | Unit in days. Aggregation method is median. |
+| `change_failure_rate`     | Project and group | Percentage of deployments. |
 
 ## Data aggregation
 

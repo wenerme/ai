@@ -4,15 +4,9 @@
 
 # Reasoning
 
-> Advanced reasoning capabilities with the Responses API Beta
+> Advanced reasoning capabilities with the Responses API
 
-<Warning>
-  **Beta API**
-
-  This API is in **beta stage** and may have breaking changes.
-</Warning>
-
-The Responses API Beta supports advanced reasoning capabilities, allowing models to show their internal reasoning process with configurable effort levels.
+The Responses API supports advanced reasoning capabilities, allowing models to show their internal reasoning process with configurable effort levels.
 
 ## Reasoning Configuration
 

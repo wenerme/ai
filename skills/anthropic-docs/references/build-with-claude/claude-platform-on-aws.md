@@ -305,14 +305,14 @@ Anthropic's [client SDKs](/docs/en/cli-sdks-libraries/overview) support Claude P
 
   <Tab title="Java">
     ```kotlin Gradle
-    implementation("com.anthropic:anthropic-java-aws:2.48.0")
+    implementation("com.anthropic:anthropic-java-aws:2.52.0")
     ```
 
     ```xml Maven
     <dependency>
       <groupId>com.anthropic</groupId>
       <artifactId>anthropic-java-aws</artifactId>
-      <version>2.48.0</version>
+      <version>2.52.0</version>
     </dependency>
     ```
   </Tab>
@@ -582,7 +582,7 @@ Claude Platform on AWS supports the following inference geographies:
 Set the inference geography per request with the `inference_geo` parameter:
 
 <Note>
-  The `inference_geo` parameter is supported on Claude Opus 4.6, Claude Sonnet 4.6, and later models. Requests with `inference_geo` on Claude Opus 4.5, Claude Sonnet 4.5, or Claude Haiku 4.5 return a 400 error. See [Data residency](/docs/en/manage-claude/data-residency) for model availability details.
+  The `inference_geo` parameter is supported on Claude 4.6 and later models. Requests with `inference_geo` on Claude Opus 4.5, Claude Sonnet 4.5, or Claude Haiku 4.5 return a 400 error. See [Data residency](/docs/en/manage-claude/data-residency) for model availability details.
 </Note>
 
 <CodeGroup>

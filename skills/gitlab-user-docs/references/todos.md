@@ -44,7 +44,6 @@ To sort the To-Do List:
 ## Actions that create to-do items
 
 - Multiple to-do items [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/28355) in GitLab 13.8 [with a feature flag](../administration/feature_flags/_index.md) named `multiple_todos`. Disabled by default.
-- Member access request notifications [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/374725) in GitLab 15.8.
 - Multiple to-do items [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/28355) in GitLab 16.2.
 - Multiple to-do items [enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/28355) in GitLab 17.8. Feature flag `multiple_todos` enabled by default.
 
@@ -79,8 +78,6 @@ The only exception: If your notification setting is set to **Custom** and **Merg
 selected, you get a to-do item when you are eligible to approve a merge request.
 
 ## Create a to-do item
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/390549) in objectives, key results, and tasks in GitLab 16.0.
 
 You can manually add an item to your To-Do List.
 

@@ -560,12 +560,12 @@ and as follows.
 
 ### `sidekiq.log`
 
-- The default log format for Helm chart installations [changed from `text` to `json`](https://gitlab.com/gitlab-org/charts/gitlab/-/merge_requests/3169) in GitLab 16.0 and later.
-
 This log is located:
 
 - In the `/var/log/gitlab/sidekiq/current` file on Linux package installations.
 - In the `/home/git/gitlab/log/sidekiq.log` file on self-compiled installations.
+
+The default log format for GitLab Helm chart installations is `json`.
 
 GitLab uses background jobs for processing tasks which can take a long
 time. All information about processing these jobs are written to this
@@ -789,8 +789,6 @@ are recorded in this file. For example:
 
 ## `ci_resource_groups_json.log`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/384180) in GitLab 15.9.
-
 This log is located:
 
 - In the `/var/log/gitlab/gitlab-rails/ci_resource_groups_json.log` file on Linux package installations.
@@ -858,8 +856,6 @@ GraphQL queries are recorded in the file. For example:
 
 ## `clickhouse.log`
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/133371) in GitLab 16.5.
-
 This log is located:
 
 - In the `/var/log/gitlab/gitlab-rails/clickhouse.log` file on Linux package installations.
@@ -890,8 +886,6 @@ Its name and path are configurable, so the name and path may not match this one
 documented previously.
 
 ## `web_hooks.log`
-
-- Introduced in GitLab 16.3.
 
 This log is located:
 
@@ -955,8 +949,6 @@ This log is located:
 
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/110980) in GitLab 15.9.
 
 This file logs information related to [exact code search](../../user/search/exact_code_search.md).
 
@@ -1139,8 +1131,6 @@ can be used.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120506) in GitLab 16.0.
-
 The `llm.log` file logs information related to
 [AI features](../../user/gitlab_duo/_index.md). Logging includes information about AI events.
 
@@ -1188,8 +1178,6 @@ The log file is located at:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120506) in GitLab 16.9.
-
 The `epic_work_item_sync.log` file logs information related to syncing and migrating epics as work items.
 
 This log is located:
@@ -1202,8 +1190,6 @@ This log is located:
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Dedicated
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137812) in GitLab 16.7.
 
 The `secret_push_protection.log` file logs information related to [secret push protection](../../user/application_security/secret_detection/secret_push_protection/_index.md) feature.
 

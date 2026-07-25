@@ -23,8 +23,6 @@ For a video overview, see [Design Management](https://www.youtube.com/watch?v=CC
 
 ## Prerequisites
 
-- **Relative path** field [renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128416) from **Gitaly relative path** in GitLab 16.3.
-
 - [Git Large File Storage (LFS)](../../../topics/git/lfs/_index.md) must be enabled:
   - On GitLab.com, LFS is already enabled.
   - On GitLab Self-Managed instances, a GitLab administrator must
@@ -102,8 +100,6 @@ To move around the image while zoomed in, drag the image.
 
 ## Add a design to an issue
 
-- Edit descriptions [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/388449) in GitLab 16.1.
-- Minimum role to add a design to an issue [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147053) from Developer to Reporter in GitLab 16.11.
 - Minimum role to add a design to an issue [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) from Reporter to Planner in GitLab 17.7.
 
 Prerequisites:
@@ -139,7 +135,6 @@ To add a design to an issue:
 
 ## Add a new version of a design
 
-- Minimum role to add a new version of a design [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147053) from Developer to Reporter in GitLab 16.11.
 - Minimum role to add a new version of a design [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) from Reporter to Planner in GitLab 17.7.
 
 As discussion on a design continues, you might want to upload a new version of a design.
@@ -161,7 +156,6 @@ When designs are skipped, a warning message is displayed.
 
 ## Archive a design
 
-- Minimum role to archive a design [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147053) from Developer to Reporter in GitLab 16.11.
 - Minimum role to archive a design [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) from Reporter to Planner in GitLab 17.7.
 
 You can archive individual designs or select a few of them to archive at once.
@@ -197,14 +191,11 @@ To archive multiple designs at once:
 
 ### Replicate design management data
 
-Design Management data [can be replicated](../../../administration/geo/replication/datatypes.md#replicated-data-types)
-and in GitLab 16.1 and later it can be [verified by Geo as well](https://gitlab.com/gitlab-org/gitlab/-/issues/355660).
+Design management data can be [replicated](../../../administration/geo/replication/datatypes.md#replicated-data-types)
+and verified by Geo.
+For more information, see [issue 355660](https://gitlab.com/gitlab-org/gitlab/-/issues/355660).
 
 ## Markdown and rich text editors for descriptions
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/388449) in GitLab 16.1 [with a feature flag](../../../administration/feature_flags/_index.md) named `content_editor_on_issues`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/375172) in GitLab 16.2.
-- Feature flag `content_editor_on_issues` removed in GitLab 16.5.
 
 You can use the Markdown and rich text editor in design descriptions.
 It's the same editor you use for comments across GitLab.

@@ -121,8 +121,6 @@ curl --request GET \
 
 ## Create a group access token
 
-- The `expires_at` attribute default was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120213) in GitLab 16.0.
-
 Creates a group access token for a specified group.
 
 Prerequisites:
@@ -170,9 +168,6 @@ curl --request POST \
 ```
 
 ## Rotate a group access token
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/403042) in GitLab 16.0
-- `expires_at` attribute [added](https://gitlab.com/gitlab-org/gitlab/-/issues/416795) in GitLab 16.6.
 
 Rotates a specified group access token. This immediately revokes the previous token and creates a
 new token. Generally, this endpoint rotates a specific group access token by authenticating with a

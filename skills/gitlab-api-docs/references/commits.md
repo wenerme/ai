@@ -45,7 +45,7 @@ GET /projects/:id/repository/commits
 | `follow`       | boolean        | No       | If `true`, follows file renames when filtering commits by `path`, and returns commits for the file even if it was renamed. If `false`, returns only commits where the file existed at its current path. Used only when `path` specifies a single file. Defaults to `true`. |
 | `order`        | string         | No       | List commits in order. Possible values: `default`, [`topo`](https://git-scm.com/docs/git-log#Documentation/git-log.txt---topo-order). Defaults to `default`, the commits are shown in reverse chronological order. |
 | `path`         | string         | No       | The file path. |
-| `ref_name`     | string         | No       | The name of a repository branch, tag or revision range, or if not given the default branch. |
+| `ref_name`     | string         | No       | The name of a repository branch, tag, or revision range, or if not given the default branch. |
 | `since`        | string         | No       | Only commits after or on this date are returned in ISO 8601 format `YYYY-MM-DDTHH:MM:SSZ`. |
 | `trailers`     | boolean        | No       | If `true`, parses and includes [Git trailers](https://git-scm.com/docs/git-interpret-trailers) for every commit. |
 | `until`        | string         | No       | Only commits before or on this date are returned in ISO 8601 format `YYYY-MM-DDTHH:MM:SSZ`. |
@@ -422,8 +422,6 @@ Example response:
 
 ## Get commit sequence
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438151) in GitLab 16.9.
-
 Get the sequence number of a commit in a project by following the parent links from the given commit.
 
 This API provides essentially the same features as the `git rev-list --count` command for a given commit SHA.
@@ -660,7 +658,7 @@ Parameters:
 |-----------|----------------|----------|-------------|
 | `id`      | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
 | `sha`     | string         | Yes      | The commit hash or name of a repository branch or tag. |
-| `unidiff` | boolean        | No       | If `true`, presents diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is `false`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/130610) in GitLab 16.5. |
+| `unidiff` | boolean        | No       | If `true`, presents diffs in the [unified diff](https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html) format. Default is `false`. |
 
 > [!note]
 > This endpoint is subject to [diff limits](../administration/diff_limits.md). When a commit

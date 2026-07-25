@@ -1,11 +1,11 @@
 ---
 title: "Baseten | Models"
-description: "Use Baseten models with Mastra. 12 models available."
+description: "Use Baseten models with Mastra. 13 models available."
 ---
 
 # [Baseten logo]Baseten
 
-Access 12 Baseten models through Mastra's model router. Authentication is handled automatically using the `BASETEN_API_KEY` environment variable.
+Access 13 Baseten models through Mastra's model router. Authentication is handled automatically using the `BASETEN_API_KEY` environment variable.
 
 Learn more in the [Baseten documentation](https://docs.baseten.co).
 
@@ -182,6 +182,18 @@ for await (const chunk of stream) {
     "maxOutput": 524288,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "baseten/zai-org/GLM-5.2-Fast",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 524288,
+    "inputCost": 2.1,
+    "outputCost": 6.6
   }
 ]}
 />
@@ -214,7 +226,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "baseten/zai-org/GLM-5.2"
+      ? "baseten/zai-org/GLM-5.2-Fast"
       : "baseten/deepseek-ai/DeepSeek-V4-Pro";
   }
 });

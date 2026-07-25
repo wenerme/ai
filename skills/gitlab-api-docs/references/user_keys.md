@@ -142,8 +142,6 @@ Example response:
 
 ## Add an SSH key
 
-- The `usage_type` parameter was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/105551) in GitLab 15.7.
-
 Adds an SSH key for your user account.
 
 Prerequisites:
@@ -161,7 +159,7 @@ Supported attributes:
 | `title`      | string | yes      | Title for key |
 | `key`        | string | yes      | Public key value |
 | `expires_at` | string | no       | Expiration date of the key in ISO format (`YYYY-MM-DD`). |
-| `usage_type` | string | no       | Usage scope for the key. Possible values: `auth`, `signing` or `auth_and_signing`. Default value: `auth_and_signing` |
+| `usage_type` | string | no       | Usage scope for the key. Possible values: `auth`, `signing`, or `auth_and_signing`. Default value: `auth_and_signing` |
 
 Returns either:
 
@@ -194,8 +192,6 @@ Example response:
 
 ## Add an SSH key for a user
 
-- The `usage_type` parameter was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/105551) in GitLab 15.7.
-
 Adds an SSH key for a specified user account.
 
 > [!note]
@@ -217,7 +213,7 @@ Supported attributes:
 | `title`      | string  | yes      | Title for key |
 | `key`        | string  | yes      | Public key value  |
 | `expires_at` | string  | no       | Expiration date of the key in ISO format (`YYYY-MM-DD`). |
-| `usage_type` | string  | no       | Usage scope for the key. Possible values: `auth`, `signing` or `auth_and_signing`. Default value: `auth_and_signing` |
+| `usage_type` | string  | no       | Usage scope for the key. Possible values: `auth`, `signing`, or `auth_and_signing`. Default value: `auth_and_signing` |
 
 Returns either:
 

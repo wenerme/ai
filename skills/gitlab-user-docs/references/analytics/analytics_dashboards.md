@@ -49,10 +49,6 @@ To view a list of dashboards for a project:
 
 ## View group dashboards
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/390542) in GitLab 16.2 [with a feature flag](../../administration/feature_flags/_index.md) named `group_analytics_dashboards`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/416970) in GitLab 16.8.
-- Feature flag `group_analytics_dashboards` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/439718) in GitLab 16.11.
-
 Prerequisites:
 
 - You must have the Reporter, Developer, Maintainer, or Owner role for the group.

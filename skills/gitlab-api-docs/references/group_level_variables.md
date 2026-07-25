@@ -3,8 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Introduced [`filter`](https://gitlab.com/gitlab-org/gitlab/-/issues/340185) in GitLab 16.9.
-
 Use this API to interact with [CI/CD variables](../ci/variables/_index.md#for-a-group) for a group.
 
 Prerequisites:
@@ -58,8 +56,6 @@ curl --request GET \
 ```
 
 ## Retrieve details of a group variable
-
-- The `filter` parameter was [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/340185) in GitLab 16.9.
 
 Retrieves details of a specified group variable. If there are multiple variables with the same key,
 use `filter` to select the correct `environment_scope`.
@@ -152,8 +148,6 @@ curl --request POST \
 
 ## Update a group variable
 
-- The `filter` parameter was [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/340185) in GitLab 16.9.
-
 Updates the specified group variable. If there are multiple variables with the same key,
 use `filter` to select the correct `environment_scope`.
 
@@ -171,7 +165,7 @@ PUT /groups/:id/variables/:key
 | `id`                | integer or string | Yes      | ID of a group or [URL-encoded path](rest/_index.md#namespaced-paths) of the group. |
 | `key`               | string            | Yes      | Key of a variable. |
 | `value`             | string            | Yes      | Value of a variable. |
-| `description`       | string            | No       | Description of the variable. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/409641) in GitLab 16.2. Default: `null`. |
+| `description`       | string            | No       | Description of the variable. Default: `null`. |
 | `environment_scope` | string            | No       | [Environment scope](../ci/environments/_index.md#limit-the-environment-scope-of-a-cicd-variable) of a variable. Premium and Ultimate only. |
 | `filter`            | hash              | No       | Filters results when multiple variables share the same key. Possible values: `[environment_scope]`. Premium and Ultimate only. |
 | `masked`            | boolean           | No       | If `true`, indicates the variable is masked. |
@@ -214,8 +208,6 @@ curl --request PUT \
 ```
 
 ## Delete a group variable
-
-- The `filter` parameter was [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/340185) in GitLab 16.9.
 
 Deletes the specified group variable. If there are multiple variables with the same key,
 use `filter` to select the correct `environment_scope`.

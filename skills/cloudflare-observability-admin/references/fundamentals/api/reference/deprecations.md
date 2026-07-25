@@ -22,6 +22,21 @@ Subscribe to all API deprecation posts via [RSS](https://developers.cloudflare.c
 
 [Subscribe to RSS](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
 
+## 2026-07-22
+
+**Account name 65-character limit**
+
+Enforcement date: September 27, 2026
+
+Account names will be limited to a maximum of 65 characters across all account creation and update APIs. This limit applies to all accounts, including organization accounts. Currently, the account update API (`PUT /accounts/{account_id}`) already enforces this limit, while the account create API (`POST /accounts`) silently truncates names up to 120 bytes. This mismatch can result in accounts that are created successfully but cannot later be renamed. After September 27, 2026, the create API will reject names longer than 65 characters with an HTTP `400` error.
+
+Affected APIs:
+
+* `POST /accounts` — Create account
+* `PUT /accounts/{account_id}` — Update account (already enforced)
+
+After the enforcement date, integrations that create accounts with names longer than 65 characters must truncate or shorten the name before sending the request to ensure uninterrupted service.
+
 ## 2026-07-21
 
 **Account Roles API**

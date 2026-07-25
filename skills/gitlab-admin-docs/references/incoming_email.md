@@ -67,7 +67,6 @@ this method only supports replies, and not the other features of incoming email.
 
 ## Accepted headers
 
-- Accepting `Cc` headers [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/348572) in GitLab 16.5.
 - Accepting `X-Original-To` headers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/149874) in GitLab 17.0.
 - Accepting `X-Forwarded-To` headers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/168716) in GitLab 17.6.
 - Accepting `X-Delivered-To` headers [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/170221) in GitLab 17.6.
@@ -86,7 +85,7 @@ Email is processed correctly when a configured email address is present in one o
 
 The `References` header is also accepted, however it is used specifically to relate email responses to existing discussion threads. It is not used for creating issues by email.
 
-In GitLab 14.6 and later, [Service Desk](../user/project/service_desk/_index.md)
+[Service Desk](../user/project/service_desk/_index.md)
 also checks accepted headers.
 
 Usually, the `To` field contains the email address of the primary receiver.
@@ -829,8 +828,6 @@ This example for Linux package installations assumes you're using the following 
 
 ##### Configure Microsoft Graph
 
-- Alternative Azure deployments [introduced](https://gitlab.com/gitlab-org/omnibus-gitlab/-/merge_requests/5978) in GitLab 14.9.
-
 ```ruby
 gitlab_rails['incoming_email_enabled'] = true
 
@@ -872,8 +869,6 @@ gitlab_rails['incoming_email_inbox_options'] = {
 The Microsoft Graph API is not yet supported in self-compiled installations. See [issue 326169](https://gitlab.com/gitlab-org/gitlab/-/issues/326169) for more details.
 
 ### Use encrypted credentials
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/108279) in GitLab 15.9.
 
 Instead of having the incoming email credentials stored in plaintext in the configuration files, you can optionally
 use an encrypted file for the incoming email credentials.
@@ -995,32 +990,6 @@ Use a Kubernetes secret to store the incoming email password. For more informati
    ```
 
 ## Troubleshooting
-
-### Email ingestion doesn't work in 16.6.0
-
-In GitLab 16.6, a regression prevents `mail_room` (email ingestion) from starting.
-Service Desk and other reply-by-email features don't work.
-This issue was fixed in 16.6.1. See [issue 432257](https://gitlab.com/gitlab-org/gitlab/-/issues/432257) for details.
-
-The workaround is to run the following commands in your GitLab installation
-to patch the affected files:
-
-### Linux package (Omnibus)
-
-```shell
-curl --output /tmp/mailroom.patch --url "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137279.diff"
-patch -p1 -d /opt/gitlab/embedded/service/gitlab-rails < /tmp/mailroom.patch
-gitlab-ctl restart mailroom
-```
-
-### Docker
-
-```shell
-curl --output /tmp/mailroom.patch --url "https://gitlab.com/gitlab-org/gitlab/-/merge_requests/137279.diff"
-cd /opt/gitlab/embedded/service/gitlab-rails
-patch -p1 < /tmp/mailroom.patch
-gitlab-ctl restart mailroom
-```
 
 ### Incoming emails are rejected by providers with email address limit
 

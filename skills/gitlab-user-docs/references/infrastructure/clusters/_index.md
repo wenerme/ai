@@ -40,8 +40,8 @@ for updates.
 
 If you need more time to migrate to the GitLab agent for Kubernetes, you can
 [enable the feature flag](../../../administration/feature_flags/_index.md)
-named `certificate_based_clusters`, which was
-[introduced in GitLab 15.0](../../../update/deprecations.md#gitlab-self-managed-certificate-based-integration-with-kubernetes).
+named `certificate_based_clusters`. For more information, see the
+[deprecation notice](../../../update/deprecations.md#gitlab-self-managed-certificate-based-integration-with-kubernetes).
 This feature flag re-enables the certificate-based Kubernetes integration.
 
 ## Deprecated features

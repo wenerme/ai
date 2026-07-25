@@ -238,6 +238,63 @@ If the GitLab Duo CLI runs in the Anthropic Sandbox Runtime (SRT), runner `envir
 
 The `GIT_SSL_CAINFO` variable addresses Git operations that occur before the GitLab Duo CLI starts. For GitLab Duo CLI certificate configuration, see [certificate errors](../gitlab_duo_cli/use.md#certificate-errors).
 
+## Connection fails with WebSocket error `1006` or `404`
+
+The GitLab Duo CLI, the GitLab Language Server, and IDE clients (GitLab for VS Code, the GitLab Duo plugin for JetBrains IDEs, and GitLab for Visual Studio)
+connect to the GitLab Duo Agent Platform over a WebSocket connection.
+When this connection fails, the client logs one of the following errors:
+
+- `1006`: The WebSocket closed abnormally, without a close handshake.
+- `404`: The client cannot reach the following WebSocket endpoints:
+  - For GitLab Duo Non-Agentic: `/-/cable`.
+  - For GitLab Duo Agent Platform: `wss://\<instance\>/api/v4/ai/duo_workflows/ws`.
+
+These errors usually occur when a custom Certificate Authority (CA), an HTTP proxy, a TLS-inspection proxy,
+or a mutual TLS (mTLS) proxy on your network interferes with the connection.
+To resolve this issue, work through the following causes.
+
+### Custom CA certificate
+
+If your network uses a custom or self-signed CA certificate, the client cannot verify the connection to your GitLab instance.
+Configure the certificate for your client:
+
+- For the GitLab Duo CLI, set the `NODE_EXTRA_CA_CERTS` environment variable to the path of your CA certificate.
+- For IDE clients, the GitLab Language Server manages the certificate.
+  For JetBrains IDEs, see [certificate errors](../../editor_extensions/jetbrains_ide/jetbrains_troubleshooting.md#certificate-errors).
+  For VS Code, see [errors with custom certificates](../../editor_extensions/visual_studio_code/troubleshooting.md#errors-with-custom-certificates).
+
+### HTTP proxy
+
+If your network requires an HTTP proxy, configure the proxy for your client:
+
+- For the GitLab Duo CLI, set the `HTTP_PROXY`, `HTTPS_PROXY`, and `NO_PROXY` environment variables.
+- For IDE clients, [configure the Language Server to use a proxy](../../editor_extensions/language_server/_index.md#configure-the-language-server-to-use-a-proxy).
+
+### WebSocket traffic blocked
+
+If you see a `404` error, or `HTTP/1.1` responses instead of `/-/cable` WebSocket endpoints in your logs,
+your GitLab instance might block inbound WebSocket connections.
+Ask your administrator to [allow WebSocket traffic to your GitLab instance](../../administration/gitlab_duo/configure/_index.md#allow-inbound-connections-from-clients-to-the-gitlab-instance).
+
+### mTLS or TLS-inspection proxy
+
+If your network routes traffic through a TLS-inspection (SSL-interception) proxy,
+configure both of the following:
+
+- Set the `HTTPS_PROXY` environment variable to your proxy URL.
+- Add the proxy's [CA certificate](#custom-ca-certificate).
+
+The GitLab Duo CLI, the GitLab Duo plugin for JetBrains IDEs, and GitLab for Visual Studio
+have two known issues:
+
+- If the proxy URL uses `https://`, the WebSocket connection fails.
+  Use an `http://` proxy URL if possible.
+- These clients cannot present a client certificate for mTLS.
+
+For more information, see
+[issue 2527](https://gitlab.com/gitlab-org/editor-extensions/gitlab-lsp/-/work_items/2527).
+GitLab for VS Code is not affected.
+
 ## Troubleshooting in your IDE
 
 If you encounter an issue while working with the GitLab Duo Agent Platform in your IDE, start by

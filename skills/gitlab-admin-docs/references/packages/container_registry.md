@@ -385,7 +385,7 @@ The following table lists active container registry feature flags:
 | `REGISTRY_FF_ONGOING_RENAME_CHECK` | Check Redis for projects undergoing rename operations. | 16.2 | Disabled | |
 | `REGISTRY_FF_DYNAMIC_MEDIA_TYPES` | Allow creation of new media types during runtime. | 17.1 | Disabled | |
 | `REGISTRY_FF_BBM` | Control asynchronous batched background migration processes. | 17.2 | Disabled | |
-| `REGISTRY_FF_ENFORCE_LOCKFILES` | Enable lockfile checking for database or legacy metadata storage. | [Introduced](https://gitlab.com/gitlab-org/container-registry/-/issues/1335) in GitLab 17.6. | [Enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/container-registry/-/work_items/1786) in GitLab 18.9. |[Removed](https://gitlab.com/gitlab-org/container-registry/-/issues/1439) in GitLab 18.10. |
+| `REGISTRY_FF_ENFORCE_LOCKFILES` | Enable lockfile checking for database or legacy metadata storage. | [Introduced](https://gitlab.com/gitlab-org/container-registry/-/issues/1335) in GitLab 17.6. | [Enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/container-registry/-/work_items/1786) in GitLab 18.9. | [Removed](https://gitlab.com/gitlab-org/container-registry/-/issues/1439) in GitLab 18.10. |
 
 To configure container registry feature flags,
 follow the instructions for your platform.
@@ -959,8 +959,7 @@ project, you can [disable it from your project's settings](../../user/project/se
 ## Use an external container registry with GitLab as an auth endpoint
 
 > [!warning]
-> Using third-party container registries in GitLab was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/376217)
-> in GitLab 15.8 and support ended in GitLab 16.0.
+> Using third-party container registries in GitLab is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/376217) and no longer supported.
 > If you need to use third-party container registries instead of the GitLab container registry,
 > tell us about your use cases in [feedback issue 958](https://gitlab.com/gitlab-org/container-registry/-/issues/958).
 
@@ -1652,10 +1651,9 @@ The following steps describe the communication flow:
 
 ## Migrate from a third-party registry
 
-Using external container registries in GitLab was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/376217)
-in GitLab 15.8 and the end of support occurred in GitLab 16.0. See the [deprecation notice](../../update/deprecations.md#use-of-third-party-container-registries-is-deprecated) for more details.
+Using external container registries in GitLab is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/376217) and no longer supported.
 
-The integration is not disabled in GitLab 16.0, but support for debugging and fixing issues
+The integration is not disabled, but support for debugging and fixing issues
 is no longer provided. Additionally, the integration is no longer being developed or
 enhanced with new features. Third-party registry functionality might be completely removed
 after the new GitLab container registry version is available for GitLab Self-Managed (see epic [5521](https://gitlab.com/groups/gitlab-org/-/epics/5521)). Only the GitLab container registry is planned to be supported.

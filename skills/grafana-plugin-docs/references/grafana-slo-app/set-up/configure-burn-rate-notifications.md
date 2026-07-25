@@ -20,6 +20,10 @@ By default, Grafana SLO uses the `grafana_slo_severity` label to differentiate:
 - **Fast-burn alerts** use `grafana_slo_severity="critical"`.
 - **Slow-burn alerts** use `grafana_slo_severity="warning"`.
 
+> Note
+>
+> On the [SLO edit page](/docs/grafana-cloud/alerting-and-irm/slo/create/#add-slo-alert-rules-and-assistant-investigations), you can also configure notification settings for burn-rate alerts, such as custom labels and annotations, as well as enabling **Assistant investigations** when the alert fires.
+
 ## Burn-rate alerts
 
 Burn-rate (SLO) alerts are based on the [error budget burn rate metric](/docs/grafana-cloud/alerting-and-irm/slo/introduction/#burn-rate), which measures how quickly a service consumes its error budget:

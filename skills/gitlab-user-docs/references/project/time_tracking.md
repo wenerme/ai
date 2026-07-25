@@ -88,7 +88,6 @@ Prerequisites:
 
 #### Using the user interface
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/101563) in GitLab 15.7.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150564) in GitLab 17.0. When you don't specify when time was spent, current time is used.
 
 To add a time entry using the user interface:
@@ -211,8 +210,6 @@ days from the total time spent. You can't go below 0 minutes of time spent,
 so if you remove more time than already entered, GitLab ignores the subtraction.
 
 ### Delete time spent
-
-- Delete button [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/356796) in GitLab 15.1.
 
 A timelog is a single entry of time spent, either positive or negative.
 

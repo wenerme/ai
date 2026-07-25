@@ -784,7 +784,7 @@ GET /groups/:id/runners?tag_list=tag1,tag2
 | Attribute        | Type         | Required | Description |
 |------------------|--------------|----------|-------------|
 | `id`             | integer      | yes      | The ID of the group |
-| `type`           | string       | no       | The type of runners to return, one of: `instance_type`, `group_type`, `project_type`. The `project_type` value is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/351466) and is scheduled for removal in GitLab 15.0 |
+| `type`           | string       | no       | The type of runners to return, one of: `instance_type`, `group_type`, `project_type`. The `project_type` value is [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/351466) and is scheduled for removal in a future version of the REST API |
 | `status`         | string       | no       | The status of runners to return, one of: `online`, `offline`, `stale`, or `never_contacted`.Other possible values are the deprecated `active` and `paused`.Requesting `offline` runners might also return `stale` runners because `stale` is included in `offline`. |
 | `paused`         | boolean      | no       | Whether to include only runners that are accepting or ignoring new jobs |
 | `tag_list`       | string array | no       | A list of runner tags |

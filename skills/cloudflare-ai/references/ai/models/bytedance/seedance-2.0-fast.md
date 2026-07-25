@@ -115,6 +115,54 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }
 ```
 
+**Virtual Avatar Reference** — Use a virtual character avatar from the trusted asset library
+
+```ts
+const response = await env.AI.run(
+  'bytedance/seedance-2.0-fast',
+  {
+    image: 'https://ark-doc.tos-ap-southeast-1.bytepluses.com/doc_image/r2v_tea_pic1.jpg',
+    prompt: 'The scene gently animates with subtle motion',
+    aspect_ratio: '16:9',
+    duration: 5,
+    resolution: '720p',
+    use_virtual_avatar: true,
+    generate_audio: false,
+  },
+)
+console.log(response)
+```
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+  "model": "bytedance/seedance-2.0-fast",
+  "input": {
+    "image": "https://ark-doc.tos-ap-southeast-1.bytepluses.com/doc_image/r2v_tea_pic1.jpg",
+    "prompt": "The scene gently animates with subtle motion",
+    "aspect_ratio": "16:9",
+    "duration": 5,
+    "resolution": "720p",
+    "use_virtual_avatar": true,
+    "generate_audio": false
+  }
+}'
+```
+
+```json
+{
+  "state": "Completed",
+  "result": {
+    "video": "https://examples.aig.cloudflare.com/bytedance/seedance-2.0-fast/virtual-avatar-reference.mp4"
+  },
+  "gatewayMetadata": {
+    "keySource": "Unified"
+  }
+}
+```
+
 ## Parameters
 
 prompt
@@ -168,6 +216,10 @@ watermark
 seed
 
 `integer`minimum: \-9007199254740991maximum: 9007199254740991Random seed for reproducible generation
+
+use\_virtual\_avatar
+
+`boolean`requireddefault: falseRoute image reference inputs (image, reference\_images, last\_frame\_image) through ByteDance's trusted virtual avatar asset library before generation. Intended for AI-generated/virtual character avatars that would otherwise be blocked by face or deepfake detection
 
 video
 

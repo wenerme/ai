@@ -60,8 +60,6 @@ automatically approved in a background job.
 
 ## Confirm user email
 
-- Soft email confirmation [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107302/diffs) from a feature flag to an application setting in GitLab 15.9.
-
 You can send confirmation emails upon account creation and require that users confirm
 their email address before they are allowed to sign in.
 

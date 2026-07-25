@@ -37,8 +37,6 @@ To change the navigation theme:
 
 ## Change the syntax highlighting theme
 
-- Changing the default syntax highlighting theme for authenticated and unauthenticated users [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/25129) in GitLab 15.1.
-
 Syntax highlighting is a feature in code editors and IDEs. The highlighter assigns a color to each type of code, such as strings and comments.
 
 To change the syntax highlighting theme:
@@ -369,8 +367,6 @@ To use exact times on the GitLab UI:
 
 ### Customize time format
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/15206) in GitLab 16.6.
-
 You can customize the format used to display times of activities on your group and project overview pages and user
 profiles. You can display times as:
 
@@ -389,8 +385,6 @@ To customize the time format:
 
 ## User identities in CI job JSON web tokens
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/387537) in GitLab 16.0.
-
 CI/CD jobs generate JSON web tokens, which can include a list of your external identities.
 Instead of making separate API calls to get individual accounts, you can find your user identities in a single authentication token.
 
@@ -398,8 +392,6 @@ External identities are not included by default.
 To enable including external identities, see [Token payload](../../ci/secrets/id_token_authentication.md#token-payload).
 
 ## Control follower engagement
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/325558) in GitLab 16.0.
 
 Turn off the ability to follow or be followed by other GitLab users. By default, your user profile, including your name and profile photo, is public in the **Following** tabs of other users. When you deactivate this setting:
 

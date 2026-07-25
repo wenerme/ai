@@ -209,8 +209,6 @@ The assignee is changed without having to refresh the page.
 
 - Tier: Premium, Ultimate
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/79940) in GitLab 14.9 [with a feature flag](../../../administration/feature_flags/_index.md) named `epic_color_highlight`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/365336) in GitLab 16.11. Feature flag `epic_color_highlight` removed.
 - Customizable color [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/394864) in GitLab 17.5.
 
 You can set a color for an epic to categorize and prioritize tasks visually.
@@ -251,7 +249,6 @@ The epic's color is updated.
 
 ## Delete an epic
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/452189) in GitLab 16.11. In GitLab 16.10 and earlier, if you delete an epic, all its child epics and their descendants are deleted as well. If needed, you can [remove child epics](../../work_items/child_items.md#remove-a-child-epic-from-a-parent-epic) from the parent epic before you delete it.
 - [Allowed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) Planner role to delete an epic in GitLab 17.7.
 
 Prerequisites:

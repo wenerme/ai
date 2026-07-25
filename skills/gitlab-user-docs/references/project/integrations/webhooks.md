@@ -73,7 +73,6 @@ Use these features to set up webhooks that meet your specific requirements.
 
 ### Create a webhook
 
-- **Name** and **Description** [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/141977) in GitLab 16.9.
 - **Signing token** text box [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/19367) in GitLab 19.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.
 - Feature flag `webhook_signing_token` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/596374) in GitLab 19.1.
 
@@ -323,8 +322,6 @@ For example, to exclude the `main` branch, use:
 ### Configure webhooks to support mutual TLS
 
 - Offering: GitLab Self-Managed
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/27450) in GitLab 16.9.
 
 Configure webhooks to support mutual TLS by setting a global client certificate in PEM format.
 
@@ -582,7 +579,6 @@ The webhook is re-enabled if the test request returns a response code in the `2x
 
 ### Delivery headers
 
-- `X-Gitlab-Webhook-UUID` header [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/230830) in GitLab 16.2.
 - `Idempotency-Key` header [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/388692) in GitLab 17.4.
 - `webhook-id` and `webhook-timestamp` headers [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/19367) in GitLab 19.0.
 - `webhook-signature` header [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/19367) in GitLab 19.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `webhook_signing_token`. Enabled by default.

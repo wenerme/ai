@@ -250,9 +250,6 @@ To remove a user from a GitLab.com subscription, see
 
 ### Automatically deactivate dormant users
 
-- Customizable time period [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/336747) in GitLab 15.4
-- The lower limit for inactive period set to 90 days [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/100793) in GitLab 15.5
-
 Administrators can enable automatic deactivation of users who either:
 
 - Were created more than a week ago and have not signed in.
@@ -281,9 +278,6 @@ You can disable [user deactivation emails](settings/email.md#user-deactivation-e
 
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352514) in GitLab 16.1 [with a feature flag](feature_flags/_index.md) named `delete_unconfirmed_users_setting`. Disabled by default.
-- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124982) in GitLab 16.2.
 
 Prerequisites:
 
@@ -333,8 +327,6 @@ The user's state is set to active and they consume a
 ## Ban and unban users
 
 - Hiding merge requests of banned users [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/107836) in GitLab 15.8 [with a feature flag](feature_flags/_index.md) named `hide_merge_requests_from_banned_users`. Disabled by default.
-- Hiding comments of banned users [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/112973) in GitLab 15.11 [with a feature flag](feature_flags/_index.md) named `hidden_notes`. Disabled by default.
-- Hiding projects of banned users [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/121488) in GitLab 16.2 [with a feature flag](feature_flags/_index.md) named `hide_projects_of_banned_users`. Disabled by default.
 - Hiding merge requests of banned users [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/188770) in GitLab 18.0. Feature flag `hide_merge_requests_from_banned_users` removed.
 
 GitLab administrators can ban and unban users.
@@ -390,7 +382,6 @@ To delete a user:
 
 ## Trust and untrust users
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132402) in GitLab 16.5.
 - Filter users by state [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/238183) in GitLab 17.0.
 
 By default, users are not trusted and are blocked from creating issues, notes, and snippets considered to be spam. When you trust a user, they can create issues, notes, and snippets without being blocked.

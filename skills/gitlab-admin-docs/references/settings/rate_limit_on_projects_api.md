@@ -10,7 +10,6 @@ Set rate limits on Projects API endpoints.
 
 ## Configure Projects API rate limits
 
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120445) in GitLab 16.0. Feature flag `rate_limit_for_unauthenticated_projects_api_access` removed.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/421909) rate limit for the group and projects API in GitLab 17.1 with a [flag](../feature_flags/_index.md) named `rate_limit_groups_and_projects_api`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/461316) in GitLab 18.1. Feature flag `rate_limit_groups_and_projects_api` removed.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245318) a rate limit on creating projects in GitLab 19.3 with a [flag](../feature_flags/_index.md) named `namespace_create_rate_limit`. Disabled by default.
@@ -51,8 +50,6 @@ exceed a rate of 400 requests per minute are blocked. Access to the endpoint is 
 For more information about project API endpoints, see the [projects API](../../api/projects.md#list-all-projects).
 
 ## Configure rate limits on deleting project members
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/420321) in GitLab 16.9.
 
 Configure the rate limit for each project and user for requests to the
 [delete members endpoint](../../api/project_members.md#remove-a-direct-member-of-a-project).

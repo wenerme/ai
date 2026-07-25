@@ -45478,6 +45478,7 @@ Fields:
 | <a id="mergerequest-automergeenabled"></a>`autoMergeEnabled` | [`Boolean!`](#boolean) | Indicates if auto merge is enabled for the merge request. |
 | <a id="mergerequest-automergestrategy"></a>`autoMergeStrategy` | [`String`](#string) | Selected auto merge strategy. |
 | <a id="mergerequest-availableautomergestrategies"></a>`availableAutoMergeStrategies` | [`[String!]`](#string) | Array of available auto merge strategies. |
+| <a id="mergerequest-availablequickactions"></a>`availableQuickActions` | [`[QuickActionCommand!]`](#quickactioncommand) | Quick actions available to the current user on the merge request. |
 | <a id="mergerequest-awardemoji"></a>`awardEmoji` | [`AwardEmojiConnection`](#awardemojiconnection) | List of emoji reactions associated with the merge request. (see [Connections](#connections)) |
 | <a id="mergerequest-blockingmergerequests"></a>`blockingMergeRequests`  | [`BlockingMergeRequests`](#blockingmergerequests) | Introduced in GitLab 16.5. Status: Experiment. Merge requests that block another merge request from merging. |
 | <a id="mergerequest-changerequesters"></a>`changeRequesters` | [`UserCoreConnection`](#usercoreconnection) | Users that have requested changes to the merge request. (see [Connections](#connections)) |
@@ -50750,21 +50751,6 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="pipelinesaggregationscope-aggregated-orderby"></a>`orderBy` | [`[AggregationOrder!]`](#aggregationorder) | Sorting order list for the aggregated data. |
 
-### `PoliciesSyncUpdated`
-
-Security policy state synchronization update. Returns `null` if the `security_policy_sync_propagation_tracking` feature flag is disabled.
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="policiessyncupdated-failedprojects"></a>`failedProjects` | [`[String!]`](#string) | IDs of failed projects. |
-| <a id="policiessyncupdated-inprogress"></a>`inProgress` | [`Boolean`](#boolean) | Whether security policies are currently being synchronized. |
-| <a id="policiessyncupdated-mergerequestsprogress"></a>`mergeRequestsProgress` | [`Float`](#float) | Percentage of merge requests synced. |
-| <a id="policiessyncupdated-mergerequeststotal"></a>`mergeRequestsTotal` | [`Int`](#int) | Total number of merge requests synced. |
-| <a id="policiessyncupdated-projectsprogress"></a>`projectsProgress` | [`Float`](#float) | Percentage of projects synced. |
-| <a id="policiessyncupdated-projectstotal"></a>`projectsTotal` | [`Int`](#int) | Total number of projects synced. |
-
 ### `PolicyAnyMergeRequestViolation`
 
 Represents policy violation for `any_merge_request` report_type.
@@ -54817,6 +54803,21 @@ Fields:
 | <a id="queueinghistorytimeseries-p95"></a>`p95` | [`Duration`](#duration) | 95th percentile. 95% of the durations are lower than this value. |
 | <a id="queueinghistorytimeseries-p99"></a>`p99` | [`Duration`](#duration) | 99th percentile. 99% of the durations are lower than this value. |
 | <a id="queueinghistorytimeseries-time"></a>`time` | [`Time!`](#time) | Start of the time interval. |
+
+### `QuickActionCommand`
+
+A quick action available to the current user on a noteable.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="quickactioncommand-aliases"></a>`aliases` | [`[String!]!`](#string) | Aliases that also invoke the command. |
+| <a id="quickactioncommand-description"></a>`description` | [`String`](#string) | Description of what the command does. |
+| <a id="quickactioncommand-icon"></a>`icon` | [`String`](#string) | Name of the icon associated with the command. |
+| <a id="quickactioncommand-name"></a>`name` | [`String!`](#string) | Primary name of the command, rendered as `/name`. |
+| <a id="quickactioncommand-params"></a>`params` | [`[String!]!`](#string) | Parameter hints shown after the command. |
+| <a id="quickactioncommand-warning"></a>`warning` | [`String`](#string) | Warning about side effects of running the command. |
 
 ### `QuickActionsStatus`
 

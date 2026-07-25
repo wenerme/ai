@@ -5,10 +5,6 @@ Use a direct connection to migrate GitLab data.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/339941) in GitLab 15.6.
-- New application setting `bulk_import_enabled` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/383268) in GitLab 15.8. `bulk_import` feature flag removed.
-- `bulk_import_projects` feature flag [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/339941) in GitLab 15.10.
-
 You can migrate GitLab groups:
 
 - From GitLab Self-Managed and GitLab Dedicated to GitLab.com
@@ -61,11 +57,6 @@ transfer, you must use the [API](../../../api/bulk_imports.md#start-a-group-or-p
 ## Known issues
 
 - Because of [issue 406685](https://gitlab.com/gitlab-org/gitlab/-/issues/406685), files with a filename longer than 255 characters are not migrated.
-- In GitLab 16.1 and earlier, you should not use direct transfer with
-  [scheduled scan execution policies](../../application_security/policies/scan_execution_policies.md).
-- In GitLab 16.9 and earlier, because of [issue 438422](https://gitlab.com/gitlab-org/gitlab/-/issues/438422), you might see the
-  `DiffNote::NoteDiffFileCreationError` error. When this error occurs, the diff of a note on a merge request's diff
-  is missing, but the note and the merge request are still imported.
 - When mapped from the source instance, shared members are mapped as direct members on the destination unless those
   memberships already exist on the destination. This means that importing a top-level group on the source instance to a
   top-level group on the destination instance always maps to direct members in projects, even though the source top-level

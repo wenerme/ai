@@ -175,6 +175,82 @@ curl --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/13083/repository/blobs/79f7bbd25901e8334750839545a9bd021f0e4c83/raw"
 ```
 
+## Retrieve multiple blobs in a single request
+
+- Status: Beta
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/234457) in GitLab 19.3 [with a feature flag](../administration/feature_flags/_index.md) named `repository_blobs_batch_api`. Disabled by default. This feature is in [beta](../policy/development_stages_support.md).
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag.
+> For more information, see the history.
+> This feature is available for testing, but not ready for production use.
+
+Retrieves the contents of up to 20 files in a single request. Each requested file
+resolves against a branch, tag, or commit. Blob content is Base64 encoded.
+
+This endpoint requires authentication. Unauthenticated requests are rejected with
+[`401 Unauthorized`](rest/troubleshooting.md#status-codes). If the feature flag is
+disabled, the endpoint returns `404 Not Found`.
+
+This endpoint is rate limited per user and project. The default is 5 requests per
+minute, configurable with the `project_repositories_blobs_batch_limit`
+[application setting](settings.md).
+
+Each blob is truncated to the first 1 MB of content. When a blob is truncated, the
+`truncated` field is `true` and `size` reports the full blob size in bytes. Files that
+do not exist at the requested reference are omitted from the response.
+
+```plaintext
+POST /projects/:id/repository/blobs/batch
+```
+
+Supported attributes:
+
+| Attribute      | Type              | Required | Description |
+|----------------|-------------------|----------|-------------|
+| `id`           | integer or string | Yes      | ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the project. |
+| `files`        | array             | Yes      | Array of file objects to retrieve. Maximum 20. |
+| `files[].path` | string            | Yes      | Path of the file in the repository. |
+| `files[].ref`  | string            | No       | Branch, tag, or commit. Defaults to the default branch. |
+
+If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and an array
+with the following response attributes for each resolved file:
+
+| Attribute   | Type    | Description |
+|-------------|---------|-------------|
+| `content`   | string  | Base64 encoded blob content. |
+| `encoding`  | string  | Encoding used for the blob content. |
+| `path`      | string  | Path of the file in the repository. |
+| `ref`       | string  | Reference the file was resolved against. |
+| `size`      | integer | Full size of the blob in bytes. |
+| `truncated` | boolean | Whether `content` is truncated to the first 1 MB of the blob. |
+
+Example request:
+
+```shell
+curl --request POST \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --header "Content-Type: application/json" \
+  --data '{"files": [{"path": "README.md"}, {"path": "config/database.yml", "ref": "main"}]}' \
+  --url "https://gitlab.example.com/api/v4/projects/13083/repository/blobs/batch"
+```
+
+Example response:
+
+```json
+[
+  {
+    "path": "README.md",
+    "ref": "main",
+    "size": 1476,
+    "truncated": false,
+    "encoding": "base64",
+    "content": "VGhpcyBpcyBhIGJpbmFyeSBmaWxl"
+  }
+]
+```
+
 ## Retrieve file archive from a repository
 
 Retrieves the file archive of the specified repository. This endpoint can be accessed without

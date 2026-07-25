@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Post-quantum between Cloudflare and origin servers
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page covers post-quantum cryptography on the TLS connection between Cloudflare's edge and your origin server. Cloudflare supports both [post-quantum key agreement](#post-quantum-key-agreement) (X25519MLKEM768) and [post-quantum signatures](#post-quantum-signatures) (ML-DSA via Authenticated Origin Pulls and Custom Origin Trust Store) on this connection.
 
@@ -28,49 +28,26 @@ This poses a question of how the origin servers - as well as other middleboxes (
 
 ### ClientHello from Cloudflare
 
-To reduce the risk of any issues when connecting to servers that are not ready for hybrid key agreements, Cloudflare leverages HelloRetryRequest. This means that, instead of sending [X25519MLKEM768](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement) immediately as a keyshare [1](#user-content-fn-1), Cloudflare will by default only advertise support for it.
+Cloudflare uses [automatic key exchange](https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/) to learn which key agreements a zone's origin servers prefer. Cloudflare applies one preference across the zone. When the selected preference is [X25519MLKEM768](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement), Cloudflare sends that key share in the initial `ClientHello` to allow for faster connection establishment.
 
-If the origin supports post-quantum hybrid key agreement, it can use HelloRetryRequest to request it from Cloudflare.
+Cloudflare continues to advertise other allowed key agreements. If an origin requires another key share, it can use a [HelloRetryRequest ↗](https://www.rfc-editor.org/rfc/rfc8446.html#section-4.1.4) to request one. The retry adds one network round trip but does not break the connection.
 
 ### Set up
 
 #### Cloudflare zone settings
 
-The method described above is the one Cloudflare uses to support post-quantum to all outbound connections. However, if your origin server supports PQC and prefers it, you can use the [API](https://developers.cloudflare.com/api/resources/origin%5Fpost%5Fquantum%5Fencryption/methods/update/) to adjust your Cloudflare zone settings and avoid the extra round trip.
+[Automatic key exchange](https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/) is on for all existing zones and on by default for new zones. When an origin supports both classical and post-quantum options, Cloudflare prefers post-quantum key agreement.
 
-It is also possible to opt out of PQC using the same API endpoint.
+Use **Automatic key exchange** to control scanning and preferred key share selection. Compliance requirements apply only to TLS 1.3 connections.
 
-Note
-
-This setting affects all outbound connections from the zone you specify in the API call, including `fetch()` requests made by [Workers](https://developers.cloudflare.com/workers/) on your zone.
-
-Required API token permissions
-
-At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
-* `Zone Settings Write`
-* `Zone Write`
-
-```bash
-curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cache/origin_post_quantum_encryption" \
-	--request PUT \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"value": "<YOUR_CHOSEN_SETTING>"
-	}'
-```
-
-The possible values are:
-
-* `supported` (most compatible): Advertise support for post-quantum key agreement, but send a classical keyshare in the first ClientHello.
-* `preferred` (most performant): Send a post-quantum keyshare in the first ClientHello. Cloudflare continues to advertise support for classical keyshares as well.
-* `off`: Do not send nor advertise support for post-quantum key agreement to the origin.
+The [Origin Post-Quantum Encryption API](https://developers.cloudflare.com/api/resources/origin%5Fpost%5Fquantum%5Fencryption/methods/update/) remains available. Requests to this API are no-ops and do not change a zone's post-quantum key agreement behavior. Cloudflare plans to deprecate this API, but a deprecation date has not been established.
 
 #### Origin server
 
 To make sure that your origin server prefers the post-quantum key agreement, use the `bssl` tool of [BoringSSL ↗](https://github.com/google/boringssl):
 
 ```bash
-$ bssl client -connect (your server):443 -curves X25519MLKEM768
+bssl client -connect <YOUR_ORIGIN>:443 -curves X25519MLKEM768
 ```
 
 Verify that the `ECDHE curve` in the handshake output indicates `X25519MLKEM768`.
@@ -88,7 +65,7 @@ Both can be used independently or together. Using them together lets you establi
 
 * A TLS library on your origin that supports ML-DSA — for example, [OpenSSL ↗](https://www.openssl.org/) 3.5.0 or later. Refer to [PQC support](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-support/) for additional options.
 * [OpenSSL ↗](https://www.openssl.org/) 3.5.0 or later on your workstation to generate certificates.
-* An origin server that negotiates TLS 1.3\. ML-DSA signatures are not available in TLS 1.2 or earlier.
+* An origin server that negotiates TLS 1.3 for ML-DSA signatures.
 
 Note
 
@@ -188,10 +165,6 @@ Presenting an ML-DSA certificate on the authenticating side is not enough on its
 * **Custom Origin Trust Store (COTS):** Upload only ML-DSA certificate authorities. If you leave classical CAs in the trust store alongside the ML-DSA CA, Cloudflare will still accept an origin certificate that chains to a classical CA, leaving the connection open to downgrade. Uploading a COTS CA already replaces the default publicly trusted CAs for the zone (see the caution above), so make sure every CA you upload is post-quantum.
 * **Authenticated Origin Pulls (AOP):** Configure your origin server to require the ML-DSA client certificate and to reject classical client certificates. Cloudflare presenting an ML-DSA certificate only helps if the origin refuses to authenticate connections that use a classical certificate.
 
-## Footnotes
-
-1. When, to remove a round trip, a client makes a guess of what the server supports. [↩](#user-content-fnref-1)
-
 Was this helpful?
 
 YesNo
@@ -201,5 +174,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#page","headline":"Post-quantum between Cloudflare and origin servers · Cloudflare SSL/TLS docs","description":"Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/#page","headline":"Post-quantum between Cloudflare and origin servers · Cloudflare SSL/TLS docs","description":"Learn about post-quantum cryptography in connections from Cloudflare to your origin servers.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-to-origin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}
 ```

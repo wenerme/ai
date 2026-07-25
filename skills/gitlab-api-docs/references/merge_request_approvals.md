@@ -5,8 +5,6 @@ Documentation for the REST API for merge request approvals in GitLab.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Endpoint `/approvals` [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/353097) in GitLab 16.0.
-
 Use this API to manage [merge request approvals](../user/project/merge_requests/approvals/_index.md).
 
 All endpoints require authentication.

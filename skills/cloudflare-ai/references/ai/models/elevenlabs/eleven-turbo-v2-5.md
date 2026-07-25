@@ -110,7 +110,7 @@ apply\_text\_normalization
 
 audio
 
-`string`URL to the generated audio file.
+`string`Base64-encoded data URI for the generated audio file.
 
 ## API Schemas (Raw)
 

@@ -10,11 +10,7 @@ Use this API to interact with the Google Cloud integration. For more information
 
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/141870) in GitLab 16.10. This feature is an [experiment](../policy/development_stages_support.md).
-
 ### Workload identity federation creation script
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/141870) in GitLab 16.10.
 
 Users with the Maintainer or Owner role for the project can use the following endpoint to
 query a shell script that creates and configures the workload identity
@@ -44,8 +40,6 @@ curl --request GET \
 ```
 
 ### Script to set up a Google Cloud integration
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144787) in GitLab 16.10.
 
 Users with the Maintainer or Owner role for the project can use the following endpoint to
 query a shell script to set up a Google Cloud integration:
@@ -80,8 +74,6 @@ curl --request GET \
 ```
 
 ### Script to configure a Google Cloud project for runner provisioning
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/145525) in GitLab 16.10.
 
 Users with the Maintainer or Owner role for the project can use the following endpoint to
 query a shell script to configure a Google Cloud project for runner provisioning and execution:

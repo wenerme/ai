@@ -72,7 +72,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
   * The custom DNS server address on the primary network adapter is changed while the client is connected.
   To work around this issue, please reconnect the client by selecting "disconnect" and then "connect" in the client user interface.
 
-Previous version history (6)
+Previous version history (5)
 
 Windows 2026.3.566.1
 
@@ -228,35 +228,6 @@ This release contains minor fixes and improvements including enhancements to [Pr
   * The custom DNS server address on the primary network adapter is changed while WARP is connected.
 To work around this issue, reconnect the WARP client by toggling off and back on.
 
-Windows 2025.6.824.1
-
-**Version:** Windows2025.6.824.1**Date:** 2025-07-24**Size:** 134 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.824.1)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* Improvements to better manage multi-user pre-login registrations.
-* Fixed an issue preventing devices from reaching split-tunneled traffic even when WARP was disconnected.
-* Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
-* Improvement to managed network detection checks for faster switching between managed networks.
-
-**Known issues**
-
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
-
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
 ## macOS
 
 [Download latest beta release](https://downloads.cloudflareclient.com/v1/download/macos/beta)
@@ -304,7 +275,7 @@ This release also introduces multiple fixes and improvements including:
 
 * Registration may hang at "Checking your organization configuration" due to IPC errors. A system reboot should resolve the error, allowing registration to proceed.
 
-Previous version history (7)
+Previous version history (6)
 
 macOS 2026.5.1155.1
 
@@ -431,27 +402,6 @@ This release contains minor fixes and improvements including enhancements to [Pr
 * Improvements to maintain Global WARP Override settings when switching between organization configurations.
 * The [MASQUE protocol](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol) is now the default protocol for all new WARP device profiles.
 * Improvement to limit idle connections in DoH mode to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-macOS 2025.6.824.1
-
-**Version:** macOS2025.6.824.1**Date:** 2025-07-24**Size:** 107 MB
-
-[Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.6.824.1)
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* Fixed an issue preventing devices from reaching split-tunneled traffic even when WARP was disconnected.
-* Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
-* Improvement to managed network detection checks for faster switching between managed networks.
 
 **Known issues**
 

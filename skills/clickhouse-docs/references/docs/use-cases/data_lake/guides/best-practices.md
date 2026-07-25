@@ -1,5 +1,5 @@
 ---
-title: 'Data lake best practices'
+title: 'Data lakes best practices'
 description: 'Production guidance for querying open table formats in ClickHouse: integration patterns, performance tuning, catalog setup, and debugging.'
 keywords: ['data lake', 'lakehouse', 'Iceberg', 'Delta Lake', 'DataLakeCatalog', 'partition pruning', 'metadata cache', 'Delta Kernel', 'change data feed', 'Parquet']
 doc_type: 'guide'

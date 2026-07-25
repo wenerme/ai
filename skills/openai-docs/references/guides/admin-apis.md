@@ -1,8 +1,8 @@
 # Admin APIs
 
-Admin APIs let you automate organization management workflows such as user invitations, audit log review, project administration, API key management, spend alerts, data retention, and rate limit operations. Use them for back-office automation, security workflows, and operational tooling that should run outside the dashboard.
+Admin APIs let you automate organization management workflows such as user invitations, audit log review, project administration, API key management, spend limits and alerts, data retention, and rate limit operations. Use them for back-office automation, security workflows, and operational tooling that should run outside the dashboard.
 
-For endpoint details, see the [Administration API reference](https://developers.openai.com/api/reference/administration/overview), including [Admin API keys](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys), [Invites](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/invites), [Users](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/users), [Projects](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects), and [Audit logs](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs).
+For endpoint details, see the [Administration API reference](https://developers.openai.com/api/reference/administration/overview), including [Admin API keys](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys), [Invites](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/invites), [Users](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/users), [Projects](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/projects), [Spend limits](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/spend_limit), and [Audit logs](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs).
 
 ## Use an Admin API key with the SDK
 
@@ -148,6 +148,23 @@ ProjectModelPermissions modelPermissions =
 System.out.println(modelPermissions.mode());
 ```
 
+
+## Set an organization spend limit
+
+Use the [Spend Limits endpoint](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/spend_limit) to create or replace your organization's monthly hard spend limit. Set `threshold_amount` in cents. The following example sets a $100 monthly limit:
+
+```bash
+curl -X POST https://api.openai.com/v1/organization/spend_limit \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "threshold_amount": 10000,
+    "currency": "USD",
+    "interval": "month"
+  }'
+```
+
+When tracked spend reaches a hard limit, affected API requests return a `429` error. For details, see the [spend limits guide](https://developers.openai.com/api/docs/guides/spend-limits).
 
 ## Manage spend limit alerts
 

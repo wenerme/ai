@@ -144,7 +144,7 @@ When rendered, the example looks similar to:
 ## Checkboxes
 
 `[ ]`, `[X]`, and `[-]` after a list marker render as checkbox input elements.
-`[-]` renders as an intermediate (indeterminate) checkbox:
+`[-]` (partially checked) renders as an indeterminate checkbox:
 
 ```org
 - [-] Prepare release
@@ -199,18 +199,18 @@ When rendered, the example looks similar to:
 You can create links in multiple ways:
 
 ```org
-- [[https://example.com][This line shows an inline-style link]]
-- [[permissions.md][This line shows a link to a file in the same directory]]
-- [[../_index.md][This line shows a relative link to a file one directory higher]]
-- [[#headings][This line links to a heading on the same page, using a `#` and the heading anchor]]
+- This line shows an [[https://example.com][inline-style link]]
+- This line shows a [[./permissions.md][link to a file in the same directory]]
+- This line shows a [[../_index.md][relative link to a file one directory higher]]
+- This line links to a [[#headings][heading on the same page, using a `#` and the heading anchor]]
 ```
 
 When rendered, the example looks similar to:
 
-> - [This line shows an inline-style link](https://example.com)
-> - [This line shows a link to a file in the same directory](permissions.md)
-> - [This line shows a relative link to a file one directory higher](../_index.md)
-> - [This line links to a heading on the same page, using a `#` and the heading anchor](#headings)
+> - This line shows an [inline-style link](https://example.com)
+> - This line shows a [link to a file in the same directory](permissions.md)
+> - This line shows a [relative link to a file one directory higher](../_index.md)
+> - This line links to a [heading on the same page, using a `#` and the heading anchor](#headings)
 
 ### URL auto-linking
 

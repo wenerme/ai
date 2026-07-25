@@ -3,10 +3,6 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/215888) in GitLab 14.0. [Deployed behind the `group_level_protected_environments` flag](../administration/feature_flags/_index.md), disabled by default.
-- [Feature flag `group_level_protected_environments`](https://gitlab.com/gitlab-org/gitlab/-/issues/331085) removed in GitLab 14.3.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/331085) in GitLab 14.3.
-
 Use this API to interact with [group-level protected environments](../ci/environments/protected_environments.md#group-level-protected-environments).
 
 > [!note]
@@ -72,7 +68,7 @@ GET /groups/:id/protected_environments/:name
 | Attribute | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
 | `id` | integer or string | yes | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group maintained by the authenticated user. |
-| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`.|
+| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`. |
 
 ```shell
 curl --request GET \
@@ -109,7 +105,7 @@ POST /groups/:id/protected_environments
 | Attribute | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
 | `id`      | integer or string | yes | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group maintained by the authenticated user. |
-| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`.|
+| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`. |
 | `deploy_access_levels`          | array          | yes | Array of access levels allowed to deploy, with each described by a hash. Possible values: `user_id`, `group_id` or `access_level`. They take the form of `{user_id: integer}`, `{group_id: integer}` or `{access_level: integer}`. |
 | `approval_rules`                | array          | no  | Array of access levels allowed to approve, with each described by a hash. Possible values: `user_id`, `group_id` or `access_level`. They take the form of `{user_id: integer}`, `{group_id: integer}` or `{access_level: integer}`. You can also specify the number of required approvals from the specified entity with `required_approvals` field. See [Multiple approval rules](../ci/environments/deployment_approvals.md#add-multiple-approval-rules) for more information. |
 
@@ -165,8 +161,6 @@ to `production` only after the QA group `"group_id": 134` and security group
 
 ## Update a protected environment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/351854) in GitLab 15.4.
-
 Updates a single environment.
 
 ```plaintext
@@ -176,7 +170,7 @@ PUT /groups/:id/protected_environments/:name
 | Attribute | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
 | `id`      | integer or string | yes | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group maintained by the authenticated user. |
-| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`.|
+| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`. |
 | `deploy_access_levels`          | array          | no | Array of access levels allowed to deploy, with each described by a hash. Possible values: `user_id`, `group_id` or `access_level`. They take the form of `{user_id: integer}`, `{group_id: integer}` or `{access_level: integer}`. |
 | `required_approval_count` | integer        | no       | The number of approvals required to deploy to this environment. |
 | `approval_rules`                | array          | no  | Array of access levels allowed to approve, with each described by a hash. Possible values: `user_id`, `group_id`, or `access_level`. They take the form of `{user_id: integer}`, `{group_id: integer}`, or `{access_level: integer}`. You can also specify the number of required approvals from the specified entity with `required_approvals` field. See [Multiple approval rules](../ci/environments/deployment_approvals.md#add-multiple-approval-rules) for more information. |
@@ -352,7 +346,7 @@ DELETE /groups/:id/protected_environments/:name
 | Attribute | Type | Required | Description |
 | --------- | ---- | -------- | ----------- |
 | `id` | integer or string | yes | The ID or [URL-encoded path](rest/_index.md#namespaced-paths) of the group maintained by the authenticated user. |
-| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`.|
+| `name`    | string | yes    | The [deployment tier](../ci/environments/_index.md#deployment-tier-of-environments) of the protected environment. Possible values: `production`, `staging`, `testing`, `development`, or `other`. |
 
 ```shell
 curl --request DELETE \

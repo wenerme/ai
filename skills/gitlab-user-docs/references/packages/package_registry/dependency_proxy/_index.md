@@ -4,9 +4,6 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/3610) in GitLab 16.6 [with a feature flag](../../../../administration/feature_flags/_index.md) named `packages_dependency_proxy_maven`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/415218) in GitLab 16.8. Feature flag `packages_dependency_proxy_maven` removed.
-
 > [!warning]
 > The dependency proxy is in [beta](../../../../policy/development_stages_support.md#beta). Review the documentation carefully before you use this feature.
 

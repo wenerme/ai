@@ -183,12 +183,12 @@ Claude Code is optimized for Anthropic models and may not work correctly with ot
 
 ## Fast Mode
 
-Anthropic's fast mode provides up to 2.5x faster output at premium pricing. **Fast mode is only available on Claude Opus 4.6, Claude Opus 4.7, and Claude Opus 4.8** — no other Anthropic models support it.
+Anthropic's fast mode provides up to 2.5x faster output at premium pricing. **Fast mode is only available on Claude Opus 4.6, Claude Opus 4.7, Claude Opus 4.8, and Claude Opus 5** — no other Anthropic models support it.
 
 For each supported Opus version, there are two equivalent ways to request fast mode on OpenRouter:
 
-1. Send `speed: "fast"` with [`anthropic/claude-opus-4.8`](https://openrouter.ai/anthropic/claude-opus-4.8), [`anthropic/claude-opus-4.7`](https://openrouter.ai/anthropic/claude-opus-4.7), or [`anthropic/claude-opus-4.6`](https://openrouter.ai/anthropic/claude-opus-4.6) — OpenRouter reroutes the request to the matching `*-fast` model (for example, `anthropic/claude-opus-4.6` → [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast)).
-2. Call the `*-fast` model directly — [`anthropic/claude-opus-4.8-fast`](https://openrouter.ai/anthropic/claude-opus-4.8-fast), [`anthropic/claude-opus-4.7-fast`](https://openrouter.ai/anthropic/claude-opus-4.7-fast), or [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast).
+1. Send `speed: "fast"` with [`anthropic/claude-opus-5`](https://openrouter.ai/anthropic/claude-opus-5), [`anthropic/claude-opus-4.8`](https://openrouter.ai/anthropic/claude-opus-4.8), [`anthropic/claude-opus-4.7`](https://openrouter.ai/anthropic/claude-opus-4.7), or [`anthropic/claude-opus-4.6`](https://openrouter.ai/anthropic/claude-opus-4.6) — OpenRouter reroutes the request to the matching `*-fast` model (for example, `anthropic/claude-opus-5` → [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)).
+2. Call the `*-fast` model directly — [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast), [`anthropic/claude-opus-4.8-fast`](https://openrouter.ai/anthropic/claude-opus-4.8-fast), [`anthropic/claude-opus-4.7-fast`](https://openrouter.ai/anthropic/claude-opus-4.7-fast), or [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast).
 
 Both options route through the Anthropic first-party provider, and the required beta header is injected automatically.
 

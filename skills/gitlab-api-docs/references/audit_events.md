@@ -5,8 +5,6 @@ REST API to retrieve GitLab audit events for instances, groups, and projects.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Author Email added to the response body](https://gitlab.com/gitlab-org/gitlab/-/issues/386322) in GitLab 15.9.
-
 ## Instance audit events
 
 - Tier: Premium, Ultimate
@@ -17,9 +15,6 @@ Use this API to retrieve [instance audit events](../administration/compliance/au
 To retrieve audit events using the API, you must [authenticate yourself](rest/authentication.md) as an Administrator.
 
 ### List all instance audit events
-
-- Support for keyset pagination [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/367528) in GitLab 15.11.
-- Entity type `Gitlab::Audit::InstanceScope` for instance audit events [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/418185) in GitLab 16.2.
 
 Lists all available instance audit events, limited to a maximum of 30 days for each query.
 
@@ -176,8 +171,6 @@ Example response:
 
 ## Group audit events
 
-- Support for keyset pagination [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/333968) in GitLab 15.2.
-
 Use this API to retrieve [group audit events](../user/compliance/audit_events.md#group-audit-events).
 
 A user with:
@@ -194,8 +187,6 @@ This endpoint supports both offset-based and [keyset-based](rest/_index.md#keyse
 pagination is recommended when requesting consecutive pages of results.
 
 ### List all group audit events
-
-- Support for keyset pagination [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/333968) in GitLab 15.2.
 
 Lists all audit events for a specified group.
 
@@ -310,8 +301,6 @@ A user with a Maintainer role (or above) can retrieve project audit events of al
 A user with a Developer role is limited to project audit events based on their individual actions.
 
 ### List all project audit events
-
-- Support for keyset pagination [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/367528) in GitLab 15.10.
 
 Lists all audit events for a specified project.
 

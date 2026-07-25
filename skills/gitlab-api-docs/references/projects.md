@@ -254,6 +254,7 @@ following response attributes:
 | `auto_devops_enabled` | boolean | Whether Auto DevOps is enabled for the project. Only visible if you have administrator access or the Owner role for the project. |
 | `auto_devops_deploy_strategy` | string | Deployment strategy for Auto DevOps. Only visible if you have administrator access or the Owner role for the project. |
 | `ci_push_repository_for_job_token_allowed` | boolean | Whether pushing to the repository is allowed using a job token. |
+| `cicd_catalog_enabled` | boolean | Whether the project is published to the [CI/CD Catalog](../ci/components/_index.md#cicd-catalog). [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463043) in GitLab 19.3. |
 | `runners_token` | string | Token for registering runners with the project. Only visible if you have administrator access or the Owner role for the project. |
 | `ci_config_path` | string | Path to the CI/CD configuration file. |
 | `public_jobs` | boolean | Whether job logs are publicly accessible. |
@@ -453,6 +454,7 @@ Example response:
   "ci_pipeline_variables_minimum_override_role": "maintainer",
   "ci_push_repository_for_job_token_allowed": false,
   "ci_display_pipeline_variables": false,
+  "cicd_catalog_enabled": false,
   "protect_merge_request_pipelines": true,
   "public_jobs": true,
   "shared_with_groups": [
@@ -2133,6 +2135,7 @@ Supported general project attributes:
 | `build_git_strategy`                               | string  | No                             | The Git strategy. Defaults to `fetch`. |
 | `build_timeout`                                    | integer | No                             | The maximum amount of time, in seconds, that a job can run. |
 | `ci_config_path`                                   | string  | No                             | The path to CI configuration file. |
+| `cicd_catalog_enabled`                             | boolean | No                             | Set whether the project is published to the [CI/CD Catalog](../ci/components/_index.md#cicd-catalog). Requires the Owner role for the project. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463043) in GitLab 19.3. |
 | `container_expiration_policy_attributes`           | hash    | No                             | Update the image cleanup policy for this project. Accepts: `cadence` (string), `keep_n` (integer), `older_than` (string), `name_regex` (string), `name_regex_delete` (string), `name_regex_keep` (string), `enabled` (boolean). See the [container registry](../user/packages/container_registry/reduce_container_registry_storage.md#use-the-cleanup-policy-api) documentation for more information on `cadence`, `keep_n`, and `older_than` values. |
 | `container_registry_enabled`                       | boolean | No                             | _(Deprecated)_ Enable container registry for this project. Use `container_registry_access_level` instead. |
 | `default_branch`                                   | string  | No                             | The [default branch](../user/project/repository/branches/default.md) name. Accepts a branch name (for example, `main`) or a fully qualified reference (for example, `refs/heads/main`). If a fully qualified reference is provided, the API strips the `refs/heads/` prefix. Requires `initialize_with_readme` to be `true`. |
@@ -2233,6 +2236,7 @@ Supported general project attributes:
 | `build_git_strategy`                               | string  | No       | The Git strategy. Defaults to `fetch`. |
 | `build_timeout`                                    | integer | No       | The maximum amount of time, in seconds, that a job can run. |
 | `ci_config_path`                                   | string  | No       | The path to CI configuration file. |
+| `cicd_catalog_enabled`                             | boolean | No       | Set whether the project is published to the [CI/CD Catalog](../ci/components/_index.md#cicd-catalog). Requires the Owner role for the project. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463043) in GitLab 19.3. |
 | `container_registry_enabled`                       | boolean | No       | _(Deprecated)_ Enable container registry for this project. Use `container_registry_access_level` instead. |
 | `default_branch`                                   | string  | No       | The [default branch](../user/project/repository/branches/default.md) name. Requires `initialize_with_readme` to be `true`. |
 | `description`                                      | string  | No       | Short project description. |
@@ -2333,6 +2337,7 @@ Supported general project attributes:
 | `ci_restrict_pipeline_cancellation_role`           | string            | No       | Set the [role required to cancel a pipeline or job](../ci/pipelines/settings.md#restrict-roles-that-can-cancel-pipelines-or-jobs). One of `developer`, `maintainer`, or `no_one`. Premium and Ultimate only. |
 | `ci_pipeline_variables_minimum_override_role`      | string            | No       | You can specify which role can override variables. One of `owner`, `maintainer`, `developer`, or `no_one_allowed`. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/440338) in GitLab 17.1. In GitLab 17.1 to 17.7, `restrict_user_defined_variables` must be enabled. |
 | `ci_push_repository_for_job_token_allowed`         | boolean           | No       | Enable or disable the ability to push to the project repository using job token. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/389060) in GitLab 17.2. |
+| `cicd_catalog_enabled`                             | boolean           | No       | Set whether the project is published to the [CI/CD Catalog](../ci/components/_index.md#cicd-catalog). Requires the Owner role for the project. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463043) in GitLab 19.3. |
 | `container_expiration_policy_attributes`           | hash              | No       | Update the image cleanup policy for this project. Accepts: `cadence` (string), `keep_n` (integer), `older_than` (string), `name_regex` (string), `name_regex_delete` (string), `name_regex_keep` (string), `enabled` (boolean). |
 | `container_registry_enabled`                       | boolean           | No       | _(Deprecated)_ Enable container registry for this project. Use `container_registry_access_level` instead. |
 | `default_branch`                                   | string            | No       | The [default branch](../user/project/repository/branches/default.md) name. |
@@ -2621,6 +2626,7 @@ Example response:
   "ci_pipeline_variables_minimum_override_role": "maintainer",
   "ci_push_repository_for_job_token_allowed": false,
   "ci_display_pipeline_variables": false,
+  "cicd_catalog_enabled": false,
   "protect_merge_request_pipelines": true,
   "public_jobs": true,
   "shared_with_groups": [],
@@ -2774,6 +2780,7 @@ Example response:
   "ci_pipeline_variables_minimum_override_role": "maintainer",
   "ci_push_repository_for_job_token_allowed": false,
   "ci_display_pipeline_variables": false,
+  "cicd_catalog_enabled": false,
   "protect_merge_request_pipelines": true,
   "public_jobs": true,
   "shared_with_groups": [],

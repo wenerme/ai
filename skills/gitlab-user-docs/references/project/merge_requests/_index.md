@@ -5,9 +5,6 @@ Create merge requests to review code changes, manage discussions, and merge bran
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Sidebar actions menu [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/373757) to also move actions on issues, incidents, and epics in GitLab 16.0.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/127001) in GitLab 16.9. Feature flag `moved_mr_sidebar` removed.
-
 Merge requests provide a central location for your team to review code, have discussions,
 and track code changes.
 To help describe why a change was made, link a merge request to an issue and
@@ -110,7 +107,6 @@ To view the open merge requests for a file:
 
 ## Filter the list of merge requests
 
-- Filter by `source branch` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/134555) in GitLab 16.6.
 - Filter by `merged by` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140002) in GitLab 16.9. Available only when the feature flag `mr_merge_user_filter` is enabled.
 - Filter by `merged by` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/142666) in GitLab 17.0. Feature flag `mr_merge_user_filter` removed.
 - Filter by `merged before` and `merged after` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209458) in GitLab 18.6.
@@ -246,6 +242,7 @@ To delete the source branch for a merge request:
 - When you close a merge request without merging, by selecting **Delete source branch**.
 
 An administrator can make this option the default in the project's settings.
+For merge requests from forks, GitLab reads the **Delete source branch** default from the fork, not the target project.
 
 The user who sets auto-merge or merges the merge request performs the branch deletion.
 If that user lacks the correct role, such as in a forked project, the source branch deletion fails.
@@ -311,11 +308,6 @@ For a web developer who writes a webpage for your company's website:
 1. Your production team cherry-picks the merge commit into production.
 
 ## Filter activity in a merge request
-
-- Feature flag `mr_activity_filters` [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/387070) in GitLab 16.0.
-- [Enabled on GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/126998) in GitLab 16.3 by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132355) in GitLab 16.5. Feature flag `mr_activity_filters` removed.
-- Filter for bot comments [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128473) in GitLab 16.9.
 
 To understand the history of a merge request, filter its activity feed to show you
 only the items that are relevant to you.

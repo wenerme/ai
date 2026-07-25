@@ -299,10 +299,6 @@ You can find a link to the commit that resolved the vulnerability at the top or 
 
 ## Vulnerability dismissal reasons
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/4942) in GitLab 15.11 [with a feature flag](../../../administration/feature_flags/_index.md) named `dismissal_reason`.
-- [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/393005) in GitLab 16.0.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124397) in GitLab 16.2. Feature flag `dismissal_reason` removed.
-
 When you dismiss a vulnerability you must choose one of the following reasons:
 
 - **Acceptable risk**: The vulnerability is known, and has not been remediated or mitigated, but is

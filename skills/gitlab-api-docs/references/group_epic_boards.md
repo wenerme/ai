@@ -3,8 +3,6 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385903) in GitLab 15.9.
-
 Use this API to manage [group epic boards](../user/group/epics/epic_boards.md). Every request to this API must be authenticated.
 
 If a user is not a member of a group and the group is private, a `GET`
@@ -181,8 +179,6 @@ Example response:
 
 ## List group epic board lists
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385904) in GitLab 15.9.
-
 Lists all group epic board lists for a specified board. Does not include `open` and `closed` lists.
 
 ```plaintext
@@ -240,8 +236,6 @@ Example response:
 ```
 
 ## Retrieve a group epic board list
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385904) in GitLab 15.9.
 
 Retrieves a specified group epic board list.
 

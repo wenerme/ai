@@ -282,8 +282,6 @@ These shortcuts are available when viewing [epics](group/epics/_index.md):
 
 ## Disable keyboard shortcuts
 
-- [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/202494) from the shortcuts page to user preferences in GitLab 16.4.
-
 To disable keyboard shortcuts:
 
 1. In the upper-right corner, select your avatar.
@@ -292,8 +290,6 @@ To disable keyboard shortcuts:
 1. Select **Save changes**.
 
 ## Enable keyboard shortcuts
-
-- [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/202494) from the shortcuts page to user preferences in GitLab 16.4.
 
 To enable keyboard shortcuts:
 

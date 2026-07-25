@@ -139,8 +139,6 @@ To enable email OTP for your account:
 
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/15760) in GitLab 15.10.
-
 You can use Cisco Duo as an OTP provider in GitLab.
 
 DUO® is a registered trademark of Cisco Systems, Inc., and/or its affiliates in the United States and certain other countries.

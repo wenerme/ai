@@ -25,8 +25,6 @@ You can manage your branches:
 
 ## View branch rules
 
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123368) in GitLab 16.1. Feature flag `branch_rules` removed.
-
 The branch rules overview page shows all branches with any configured protections,
 and their protection methods:
 

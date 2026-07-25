@@ -147,7 +147,6 @@ ls *export.tar.gz
 
 ## Import a project from a local archive
 
-- Requirement for Maintainer role instead of Developer role introduced in GitLab 16.0.
 - `namespace_id` and `namespace_path` attributes [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/511053) in GitLab 18.7.
 
 Imports a project from a local archive.
@@ -377,7 +376,7 @@ Status can be one of:
 - `finished`
 
 If the status is `failed`, it includes the import error message under `import_error`.
-If the status is `failed`, `started` or `finished`, the `failed_relations` array might
+If the status is `failed`, `started`, or `finished`, the `failed_relations` array might
 be populated with any occurrences of relations that failed to import due to either:
 
 - Unrecoverable errors.

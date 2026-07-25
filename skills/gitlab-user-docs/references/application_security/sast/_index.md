@@ -104,8 +104,6 @@ configuration file.
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Removed](https://gitlab.com/gitlab-org/gitlab/-/issues/410013) individual SAST analyzers configuration options from the UI in GitLab 16.2.
-
 You can enable and configure SAST by using the UI, either with the default settings or with
 customizations. The method you can use depends on your GitLab license tier.
 
@@ -295,10 +293,6 @@ For SAST results in a merge request, see [merge request reports](../../project/m
 
 - Tier: Ultimate
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10959) in GitLab 16.6 with a [flag](../../../administration/feature_flags/_index.md) named `sast_reports_in_inline_diff`. Disabled by default.
-- Enabled by default in GitLab 16.8.
-- [Feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/issues/410191) in GitLab 16.9.
-
 SAST results display in the merge request **Changes** view. Lines containing SAST
 issues are marked by a symbol beside the gutter. Select the symbol to see the list of issues, then select an issue to see its details.
 
@@ -471,10 +465,6 @@ Support for more languages and analyzers is tracked in [epic 5144](https://gitla
 For more information, see the confidential project `https://gitlab.com/gitlab-org/security-products/post-analyzers/tracking-calculator`. The content of this project is available only to GitLab team members.
 
 ## Automatic vulnerability resolution
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/368284) in GitLab 15.9 [with a project flag](../../../administration/feature_flags/_index.md) named `sec_mark_dropped_findings_as_resolved`.
-- Enabled by default in GitLab 15.10.
-- [Feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/issues/375128) in GitLab 16.2.
 
 To help you focus on the vulnerabilities that are still relevant, GitLab SAST automatically [resolves](../vulnerabilities/_index.md#vulnerability-status-values) vulnerabilities when:
 

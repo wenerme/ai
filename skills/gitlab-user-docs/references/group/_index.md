@@ -223,8 +223,6 @@ To edit group details:
 
 ## Leave a group
 
-- The button to leave a group [moved](https://gitlab.com/gitlab-org/gitlab/-/issues/431539) to the Actions menu in GitLab 16.7.
-
 When you leave a group:
 
 - You are no longer a member of the group, its subgroups, and projects, and cannot contribute.
@@ -238,7 +236,6 @@ To leave a group:
 
 ## Schedule a group for deletion
 
-- [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/389557) in GitLab 16.0. Premium and Ultimate only.
 - [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 By default, when you delete a group for the first time, it enters a pending deletion state.
@@ -276,7 +273,6 @@ the deletion job instead restores the group, and the group is no longer schedule
 
 ## Delete a group immediately
 
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/389557) in GitLab 16.0. Premium and Ultimate only.
 - [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 If you don't want to wait, you can delete a group immediately.
@@ -411,7 +407,6 @@ You can sort members by **Account**, **Access granted**, **Role**, or **Last sig
 
 ## Add users to a group
 
-- Expiring access email notification [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/12704) in GitLab 16.2.
 - Access expiration date for direct members of subgroups and projects [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/471051) in GitLab 17.4.
 
 You can give a user access to all projects in a group.

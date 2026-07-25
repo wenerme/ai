@@ -4,9 +4,6 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/390769) in GitLab 16.1, with [flags](../../../administration/feature_flags/_index.md) named `environment_settings_to_graphql`, `kas_user_access`, `kas_user_access_project`, and `expose_authorized_cluster_agents`. This feature is in [beta](../../../policy/development_stages_support.md#beta).
-- Feature flag `environment_settings_to_graphql` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124177) in GitLab 16.2.
-- Feature flags `kas_user_access`, `kas_user_access_project`, and `expose_authorized_cluster_agents` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/125835) in GitLab 16.2.
 - The [limit of agent connection sharing was raised](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/149844) from 100 to 500 in GitLab 17.0
 - The `user_access` parameter `access_as` [was made optional](https://gitlab.com/gitlab-org/cluster-integration/gitlab-agent/-/merge_requests/2749) in GitLab 18.3. Defaults to agent impersonation.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/557818) to allow the authorization of projects and groups that belong to different top-level groups in GitLab 18.4.
@@ -148,8 +145,6 @@ subjects:
 ```
 
 ## Access a cluster with the Kubernetes API
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/131144) in GitLab 16.4.
 
 You can configure an agent to allow GitLab users to access a cluster with the Kubernetes API.
 

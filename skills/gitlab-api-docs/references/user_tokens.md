@@ -7,8 +7,6 @@ Use this API to interact with personal access tokens and impersonation tokens. F
 
 ## Create a personal access token for a user
 
-- The `expires_at` attribute default was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120213) in GitLab 16.0.
-
 Creates a personal access token for a specified user.
 
 Token values are included with the response, but cannot be retrieved later.
@@ -61,8 +59,6 @@ Example response:
 ```
 
 ## Create a personal access token
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/131923) in GitLab 16.5.
 
 Creates a personal access token for your account. For security purposes, the token:
 

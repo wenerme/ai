@@ -30,9 +30,6 @@ To view insights for a project or group:
 
 ### Drill down on charts
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/372215/) in GitLab 16.7.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/436704) to extend support to all `issuables` charts in GitLab 16.9.
-
 You can drill down into the data of all charts whose `query.data_source` is `issuables`.
 
 To view a drill-down report of the data for a specific priority or severity in a month:
@@ -159,7 +156,7 @@ The following table lists the chart parameters:
 |:---------------------------------------------------|:------------|
 | [`title`](#title)                                  | The title of the chart. This displays on the Insights page. |
 | [`description`](#description)                      | A description for the individual chart. This displays above the relevant chart. |
-| [`type`](#type)                                    | The type of chart: `bar`, `line` or `stacked-bar`. |
+| [`type`](#type)                                    | The type of chart: `bar`, `line`, or `stacked-bar`. |
 | [`query`](#query)                                  | A hash that defines the data source and filtering conditions for the chart. |
 
 #### `title`

@@ -109,8 +109,6 @@ Example response:
 
 ### Within a group
 
-- [Removed](https://gitlab.com/gitlab-org/gitlab/-/issues/336912) the `tags` and `tag_count` attributes in GitLab 15.0.
-
 Lists all registry repositories for a specified group.
 
 Responses are [paginated](rest/_index.md#pagination) and return 20 results by default.
@@ -222,7 +220,8 @@ curl --request DELETE \
 
 ### Within a project
 
-- Keyset pagination [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/432470) in GitLab 16.10 for GitLab.com only.
+> [!note]
+> Keyset pagination is available for GitLab.com only.
 
 Lists all tags for a specified registry repository.
 

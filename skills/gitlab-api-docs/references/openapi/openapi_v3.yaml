@@ -13,7 +13,7 @@ info:
   title: GitLab REST API
   description: GitLab REST API used to interact with a GitLab installation.
   termsOfService: https://handbook.gitlab.com/handbook/legal/api-terms/
-  version: v4
+  version: 19.3.0-pre
   license:
     name: CC BY-SA 4.0
     url: https://gitlab.com/gitlab-org/gitlab/-/blob/master/LICENSE
@@ -2839,8 +2839,8 @@ paths:
       tags:
       - SAML group links
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -4418,8 +4418,8 @@ paths:
       tags:
       - Vulnerabilities
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -6115,8 +6115,8 @@ paths:
       tags:
       - Hooks
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -6557,8 +6557,8 @@ paths:
       tags:
       - Provider identities
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -6679,8 +6679,8 @@ paths:
       tags:
       - Provider identities
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -8707,8 +8707,8 @@ paths:
       tags:
       - Epics
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -9696,8 +9696,8 @@ paths:
       tags:
       - Epics
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -11575,8 +11575,8 @@ paths:
       tags:
       - Runner controllers
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -12580,8 +12580,8 @@ paths:
       tags:
       - Boards
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -12881,8 +12881,8 @@ paths:
       tags:
       - MLOps
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -13739,7 +13739,26 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/RequestBody_9b75155e0ec6"
-  "/api/v4/vscode/settings_sync(/{settings_context_hash})/v1/manifest":
+  "/api/v4/vscode/settings_sync/v1/manifest":
+    get:
+      operationId: getApiV4VscodeSettingsSyncV1Manifest
+      summary: Get the settings manifest for Settings Sync
+      tags:
+      - VSCode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeManifest"
+        '401':
+          description: 401 Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
+  "/api/v4/vscode/settings_sync/{settings_context_hash}/v1/manifest":
     get:
       operationId: getApiV4VscodeSettingsSyncSettingsContextHashV1Manifest
       summary: Get the settings manifest for Settings Sync
@@ -13760,15 +13779,14 @@ paths:
           description: Bad Request
       parameters:
       - name: settings_context_hash
-        required: false
+        required: true
         description: The settings context hash
         schema:
           type: string
-          nullable: true
-        in: query
-  "/api/v4/vscode/settings_sync(/{settings_context_hash})/v1/resource/{resource_name}/{id}":
+        in: path
+  "/api/v4/vscode/settings_sync/v1/resource/{resource_name}/{id}":
     get:
-      operationId: getApiV4VscodeSettingsSyncSettingsContextHashV1ResourceResourceNameId
+      operationId: getApiV4VscodeSettingsSyncV1ResourceResourceNameId
       summary: Get a specific setting resource
       tags:
       - VSCode
@@ -13788,13 +13806,6 @@ paths:
         '404':
           description: Not Found
       parameters:
-      - name: settings_context_hash
-        required: false
-        description: The settings context hash
-        schema:
-          type: string
-          nullable: true
-        in: query
       - name: resource_name
         required: true
         description: Name of the resource such as settings
@@ -13817,7 +13828,124 @@ paths:
         schema:
           type: string
         in: path
-  "/api/v4/vscode/settings_sync(/{settings_context_hash})/v1/resource/{resource_name}":
+  "/api/v4/vscode/settings_sync/{settings_context_hash}/v1/resource/{resource_name}/{id}":
+    get:
+      operationId: getApiV4VscodeSettingsSyncSettingsContextHashV1ResourceResourceNameId
+      summary: Get a specific setting resource
+      tags:
+      - VSCode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeSetting"
+        '204':
+          description: No content
+        '400':
+          description: 400 bad request
+        '401':
+          description: 401 Unauthorized
+        '404':
+          description: Not Found
+      parameters:
+      - name: settings_context_hash
+        required: true
+        description: The settings context hash
+        schema:
+          type: string
+        in: path
+      - name: resource_name
+        required: true
+        description: Name of the resource such as settings
+        schema:
+          type: string
+          enum:
+          - settings
+          - extensions
+          - globalState
+          - machines
+          - keybindings
+          - snippets
+          - tasks
+          - profiles
+          minLength: 1
+        in: path
+      - name: id
+        required: true
+        description: ID of the resource to retrieve
+        schema:
+          type: string
+        in: path
+  "/api/v4/vscode/settings_sync/v1/resource/{resource_name}":
+    get:
+      operationId: getApiV4VscodeSettingsSyncV1ResourceResourceName
+      summary: Get a list of references to one or more vscode setting resources
+      tags:
+      - VSCode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIVsCodeSettingsEntitiesVsCodeSettingReference"
+        '400':
+          description: 400 bad request
+        '401':
+          description: 401 Unauthorized
+        '404':
+          description: Not Found
+      parameters:
+      - name: resource_name
+        required: true
+        description: Name of the resource such as settings
+        schema:
+          type: string
+          enum:
+          - settings
+          - extensions
+          - globalState
+          - machines
+          - keybindings
+          - snippets
+          - tasks
+          - profiles
+          minLength: 1
+        in: path
+    post:
+      operationId: postApiV4VscodeSettingsSyncV1ResourceResourceName
+      summary: Creates or updates a specific setting
+      tags:
+      - VSCode
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad request
+        '401':
+          description: 401 Unauthorized
+        '404':
+          description: Not Found
+      parameters:
+      - name: resource_name
+        required: true
+        description: Name of the resource such as settings
+        schema:
+          type: string
+          enum:
+          - settings
+          - extensions
+          - globalState
+          - machines
+          - keybindings
+          - snippets
+          - tasks
+          - profiles
+          minLength: 1
+        in: path
+  "/api/v4/vscode/settings_sync/{settings_context_hash}/v1/resource/{resource_name}":
     get:
       operationId: getApiV4VscodeSettingsSyncSettingsContextHashV1ResourceResourceName
       summary: Get a list of references to one or more vscode setting resources
@@ -13838,12 +13966,11 @@ paths:
           description: Not Found
       parameters:
       - name: settings_context_hash
-        required: false
+        required: true
         description: The settings context hash
         schema:
           type: string
-          nullable: true
-        in: query
+        in: path
       - name: resource_name
         required: true
         description: Name of the resource such as settings
@@ -13875,6 +14002,12 @@ paths:
         '404':
           description: Not Found
       parameters:
+      - name: settings_context_hash
+        required: true
+        description: The settings context hash
+        schema:
+          type: string
+        in: path
       - name: resource_name
         required: true
         description: Name of the resource such as settings
@@ -13891,11 +14024,22 @@ paths:
           - profiles
           minLength: 1
         in: path
-      - name: settings_context_hash
-        required: true
-        schema: {}
-        in: path
-  "/api/v4/vscode/settings_sync(/{settings_context_hash})/v1/collection":
+  "/api/v4/vscode/settings_sync/v1/collection":
+    delete:
+      operationId: deleteApiV4VscodeSettingsSyncV1Collection
+      summary: Deletes all user vscode setting resources
+      tags:
+      - VSCode
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: 401 Unauthorized
+        '404':
+          description: Not Found
+        '400':
+          description: Bad Request
+  "/api/v4/vscode/settings_sync/{settings_context_hash}/v1/collection":
     delete:
       operationId: deleteApiV4VscodeSettingsSyncSettingsContextHashV1Collection
       summary: Deletes all user vscode setting resources
@@ -13912,12 +14056,11 @@ paths:
           description: Bad Request
       parameters:
       - name: settings_context_hash
-        required: false
+        required: true
         description: The settings context hash
         schema:
           type: string
-          nullable: true
-        in: query
+        in: path
   "/api/v4/users/{id}/custom_attributes":
     get:
       operationId: getApiV4UsersIdCustomAttributes
@@ -14414,8 +14557,8 @@ paths:
       tags:
       - Users
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -14635,8 +14778,8 @@ paths:
       tags:
       - Users
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -14814,8 +14957,8 @@ paths:
       tags:
       - Keys
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -15082,8 +15225,8 @@ paths:
       tags:
       - Users
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -15645,8 +15788,8 @@ paths:
       tags:
       - Keys
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -17336,7 +17479,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_224978a87e6f"
+              "$ref": "#/components/schemas/RequestBody_e7d6020c5ece"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -19405,8 +19548,8 @@ paths:
       tags:
       - Notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -19639,8 +19782,8 @@ paths:
       tags:
       - Notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -19873,8 +20016,8 @@ paths:
       tags:
       - Notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -20107,8 +20250,8 @@ paths:
       tags:
       - Notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -20341,8 +20484,8 @@ paths:
       tags:
       - Notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -20575,8 +20718,8 @@ paths:
       tags:
       - Notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -20809,8 +20952,8 @@ paths:
       tags:
       - Notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -21861,8 +22004,8 @@ paths:
       tags:
       - Labels
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -21924,9 +22067,11 @@ paths:
         in: path
       - name: name
         required: true
-        description: The name of a label
+        description: The ID or name of a label
         schema:
-          type: string
+          oneOf:
+          - type: string
+          - type: integer
         in: path
       - name: include_ancestor_groups
         required: false
@@ -21982,8 +22127,8 @@ paths:
       tags:
       - Labels
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -22233,8 +22378,8 @@ paths:
       tags:
       - Labels
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -22284,9 +22429,11 @@ paths:
         in: path
       - name: name
         required: true
-        description: The name of a label
+        description: The ID or name of a label
         schema:
-          type: string
+          oneOf:
+          - type: string
+          - type: integer
         in: path
       - name: include_ancestor_groups
         required: false
@@ -22356,8 +22503,8 @@ paths:
       tags:
       - Labels
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -22553,8 +22700,8 @@ paths:
       tags:
       - Boards
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -22925,8 +23072,8 @@ paths:
       tags:
       - Discussions
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -23261,8 +23408,8 @@ paths:
       tags:
       - Discussions
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -23639,8 +23786,8 @@ paths:
       tags:
       - Discussions
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -23975,8 +24122,8 @@ paths:
       tags:
       - Discussions
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -24353,8 +24500,8 @@ paths:
       tags:
       - Discussions
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -24543,8 +24690,8 @@ paths:
       tags:
       - Boards
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -24748,8 +24895,8 @@ paths:
       tags:
       - Boards
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -27051,8 +27198,8 @@ paths:
       tags:
       - Hooks
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -27505,8 +27652,8 @@ paths:
       tags:
       - Snippets
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -29505,6 +29652,46 @@ paths:
         - feature
         style: form
         explode: false
+  "/api/v4/projects/{id}/repository/blobs/batch":
+    post:
+      operationId: postApiV4ProjectsIdRepositoryBlobsBatch
+      summary: Get contents of multiple files in a single request
+      description: Each blob is truncated to the first 1 MB; the `truncated` field
+        indicates when this happens.
+      tags:
+      - Repositories
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesBatchBlob"
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/RequestBody_d0e25dbef307"
+      x-gitlab-lifecycle: beta
   "/api/v4/projects/{id}/repository/changelog":
     get:
       operationId: getApiV4ProjectsIdRepositoryChangelog
@@ -30063,8 +30250,8 @@ paths:
       tags:
       - Releases
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -30394,8 +30581,8 @@ paths:
       tags:
       - Releases
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -32159,7 +32346,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_3b7de9f4db35"
+              "$ref": "#/components/schemas/RequestBody_cf91a0e3de5e"
   "/api/v4/projects/user/{user_id}":
     post:
       operationId: postApiV4ProjectsUserUserId
@@ -32193,7 +32380,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_2861e6bcd64d"
+              "$ref": "#/components/schemas/RequestBody_151cb880b5fa"
   "/api/v4/projects/{id}/share_locations":
     get:
       operationId: getApiV4ProjectsIdShareLocations
@@ -32241,7 +32428,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesProjectWithAccess"
+                "$ref": "#/components/schemas/APIEntitiesProjectsWithAccessAndCatalogSetting"
         '404':
           description: Not Found
         '400':
@@ -32297,7 +32484,7 @@ paths:
           content:
             application/json:
               schema:
-                "$ref": "#/components/schemas/APIEntitiesProject"
+                "$ref": "#/components/schemas/APIEntitiesProjectsWithCatalogSetting"
         '400':
           description: Bad request
         '403':
@@ -32318,7 +32505,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_c759bc073ec5"
+              "$ref": "#/components/schemas/RequestBody_2913c4f9f47a"
     delete:
       operationId: deleteApiV4ProjectsId
       summary: Delete a project
@@ -34884,7 +35071,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_62cfdeef4f25"
+              "$ref": "#/components/schemas/RequestBody_1c830d224756"
   "/api/v4/projects/{id}/import":
     get:
       operationId: getApiV4ProjectsIdImport
@@ -34991,7 +35178,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_4e27310e47b5"
+              "$ref": "#/components/schemas/RequestBody_87fdf22dd64e"
   "/api/v4/projects/import-relation/authorize":
     post:
       operationId: postApiV4ProjectsImportRelationAuthorize
@@ -35104,7 +35291,7 @@ paths:
         content:
           multipart/form-data:
             schema:
-              "$ref": "#/components/schemas/RequestBody_22adef8ecfea"
+              "$ref": "#/components/schemas/RequestBody_f3a212c3c4f4"
   "/api/v4/projects/{id}/hooks/{hook_id}/url_variables/{key}":
     put:
       operationId: putApiV4ProjectsIdHooksHookIdUrlVariablesKey
@@ -35418,8 +35605,8 @@ paths:
       tags:
       - Hooks
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -37074,8 +37261,8 @@ paths:
       tags:
       - Clusters
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -42830,8 +43017,8 @@ paths:
       tags:
       - Members
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -46962,8 +47149,8 @@ paths:
       tags:
       - Metric images
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -47123,8 +47310,8 @@ paths:
       tags:
       - Issues
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -47520,8 +47707,8 @@ paths:
       tags:
       - Jira forge subscriptions
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -54621,8 +54808,8 @@ paths:
       tags:
       - CI variables
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -55650,8 +55837,8 @@ paths:
       tags:
       - Clusters
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -56091,8 +56278,8 @@ paths:
       tags:
       - Freeze periods
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -56955,8 +57142,8 @@ paths:
       tags:
       - Feature flags
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -57344,8 +57531,8 @@ paths:
       tags:
       - Error tracking
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -57534,8 +57721,8 @@ paths:
       tags:
       - Environments
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -57607,8 +57794,8 @@ paths:
       tags:
       - Environments
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -57896,8 +58083,8 @@ paths:
       tags:
       - Draft notes
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -65057,8 +65244,8 @@ paths:
       tags:
       - CI variables
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -65097,7 +65284,49 @@ paths:
           type: string
           nullable: true
         in: query
-  "/api/v4/projects/{id}/(ref/{ref}/)trigger/pipeline":
+  "/api/v4/projects/{id}/trigger/pipeline":
+    post:
+      operationId: postApiV4ProjectsIdTriggerPipeline
+      summary: Trigger a pipeline with a token
+      description: Triggers a pipeline with a token. With a CI/CD job token, the triggered
+        pipeline is a multi-project pipeline. The job that authenticates the request
+        becomes associated with the upstream pipeline, which is visible on the pipeline
+        graph. If you use a trigger token in a job, the job is not associated with
+        the upstream pipeline.
+      tags:
+      - CI triggers
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesCiPipeline"
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      parameters:
+      - name: id
+        required: true
+        description: The ID or URL-encoded path of the project
+        schema:
+          oneOf:
+          - type: string
+          - type: integer
+        in: path
+        example: 18
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/RequestBody_2e490b211a2c"
+  "/api/v4/projects/{id}/ref/{ref}/trigger/pipeline":
     post:
       operationId: postApiV4ProjectsIdRefRefTriggerPipeline
       summary: Trigger a pipeline with a token
@@ -67365,8 +67594,8 @@ paths:
       tags:
       - Runners
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -67772,8 +68001,8 @@ paths:
       - Runners
       - Projects
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -74426,8 +74655,8 @@ paths:
       tags:
       - Clusters
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -74629,8 +74858,8 @@ paths:
       tags:
       - CI variables
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -74764,8 +74993,8 @@ paths:
       tags:
       - Broadcast messages
       responses:
-        '204':
-          description: No Content
+        '200':
+          description: OK
           content:
             application/json:
               schema:
@@ -75504,10 +75733,42 @@ components:
       properties:
         plan:
           type: object
+          properties:
+            code:
+              type: string
+            name:
+              type: string
+            trial:
+              type: boolean
+            auto_renew:
+              type: boolean
+            upgradable:
+              type: boolean
+            exclude_guests:
+              type: boolean
         usage:
           type: object
+          properties:
+            seats_in_subscription:
+              type: integer
+            seats_in_use:
+              type: integer
+            max_seats_used:
+              type: integer
+            seats_owed:
+              type: integer
         billing:
           type: object
+          properties:
+            subscription_start_date:
+              type: string
+              format: date
+            subscription_end_date:
+              type: string
+              format: date
+            trial_ends_on:
+              type: string
+              format: date
     APIEntitiesCiMinutesAdditionalPack:
       type: object
       properties:
@@ -76373,7 +76634,26 @@ components:
         custom_attributes:
           "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         statistics:
-          type: string
+          type: object
+          properties:
+            storage_size:
+              type: string
+            repository_size:
+              type: string
+            wiki_size:
+              type: string
+            lfs_objects_size:
+              type: string
+            job_artifacts_size:
+              type: string
+            pipeline_artifacts_size:
+              type: string
+            packages_size:
+              type: string
+            snippets_size:
+              type: string
+            uploads_size:
+              type: string
         marked_for_deletion_on:
           type: string
         root_storage_statistics:
@@ -76489,6 +76769,11 @@ components:
           format: date-time
         _links:
           type: object
+          properties:
+            self:
+              type: string
+            download:
+              type: string
     APIEntitiesVulnerabilityArchiveExport:
       type: object
       properties:
@@ -76513,6 +76798,11 @@ components:
           format: date-time
         _links:
           type: object
+          properties:
+            self:
+              type: string
+            download:
+              type: string
     APIEntitiesIssuableTimeStats:
       type: object
       properties:
@@ -76941,11 +77231,23 @@ components:
         author:
           "$ref": "#/components/schemas/UserEntity"
         comment_details:
-          type: string
+          type: object
+          properties:
+            comment:
+              type: string
+            comment_timestamp:
+              type: string
+            comment_author:
+              "$ref": "#/components/schemas/UserEntity"
         finding_uuid:
           type: string
         pipeline:
-          type: string
+          type: object
+          properties:
+            id:
+              type: string
+            path:
+              type: string
         issue_iid:
           type: string
         issue_url:
@@ -77061,6 +77363,28 @@ components:
           "$ref": "#/components/schemas/VulnerabilitiesMergeRequestLinkEntityAuthorEntity"
         created_at:
           type: string
+    VulnerabilitiesRequestEntity:
+      type: object
+      properties:
+        headers:
+          type: string
+        method:
+          type: string
+        url:
+          type: string
+        body:
+          type: string
+    VulnerabilitiesResponseEntity:
+      type: object
+      properties:
+        headers:
+          type: string
+        reason_phrase:
+          type: string
+        status_code:
+          type: string
+        body:
+          type: string
     VulnerabilitiesFindingEntity:
       type: object
       properties:
@@ -77106,7 +77430,29 @@ components:
           "$ref": "#/components/schemas/VulnerabilitiesExternalIssueLinkEntity"
         merge_request_links:
           "$ref": "#/components/schemas/VulnerabilitiesMergeRequestLinkEntity"
-        metadata:
+        description:
+          type: string
+        description_html:
+          type: string
+        links:
+          type: string
+        location:
+          type: string
+        remediations:
+          type: string
+        solution:
+          type: string
+        evidence:
+          type: string
+        request:
+          "$ref": "#/components/schemas/VulnerabilitiesRequestEntity"
+        response:
+          "$ref": "#/components/schemas/VulnerabilitiesResponseEntity"
+        evidence_source:
+          type: string
+        supporting_messages:
+          type: string
+        assets:
           type: string
         details:
           type: string
@@ -77117,7 +77463,10 @@ components:
         blob_path:
           type: string
         found_by_pipeline:
-          type: string
+          type: object
+          properties:
+            iid:
+              type: string
         ai_resolution_enabled:
           type: string
         matches_auto_dismiss_policy:
@@ -78017,7 +78366,7 @@ components:
       type: object
       properties:
         success:
-          type: boolean
+          type: object
     APIEntitiesGitlabLicense:
       type: object
       properties:
@@ -78118,6 +78467,13 @@ components:
           type: string
         _links:
           type: object
+          properties:
+            self:
+              type: string
+            status:
+              type: string
+            repair:
+              type: string
     APIEntitiesNamespaceBasic:
       type: object
       properties:
@@ -79364,7 +79720,12 @@ components:
         storage_shards_match:
           type: string
         _links:
-          type: string
+          type: object
+          properties:
+            self:
+              type: string
+            site:
+              type: string
     APIEntitiesGeoNode:
       type: object
       properties:
@@ -79411,6 +79772,13 @@ components:
           type: string
         _links:
           type: object
+          properties:
+            self:
+              type: string
+            status:
+              type: string
+            repair:
+              type: string
     APIEntitiesGeoNodeStatus:
       type: object
       properties:
@@ -80623,7 +80991,12 @@ components:
         storage_shards_match:
           type: string
         _links:
-          type: string
+          type: object
+          properties:
+            self:
+              type: string
+            node:
+              type: string
     APIEntitiesFeatureDefinition:
       type: object
       properties:
@@ -80821,6 +81194,19 @@ components:
           example: true
         _links:
           type: object
+          properties:
+            self:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7/epics/5
+            epic_issues:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7/epics/5/issues
+            group:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7
+            parent:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7/epics/4
         related_epic_link_id:
           type: integer
           format: int64
@@ -80968,6 +81354,19 @@ components:
           example: true
         _links:
           type: object
+          properties:
+            self:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7/epics/5
+            epic_issues:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7/epics/5/issues
+            group:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7
+            parent:
+              type: string
+              example: http://gitlab.example.com/api/v4/groups/7/epics/4
     APIEntitiesRelatedEpicLink:
       type: object
       properties:
@@ -81173,6 +81572,22 @@ components:
           example: 2 of 4 tasks completed
         _links:
           type: object
+          properties:
+            self:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2
+            notes:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/notes
+            award_emoji:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/award_emoji
+            project:
+              type: string
+              example: http://example.com/api/v4/projects/1
+            closed_as_duplicate_of:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/75
         references:
           "$ref": "#/components/schemas/APIEntitiesIssuableReferences"
         severity:
@@ -81371,7 +81786,26 @@ components:
           type: string
           example: "/assets/ci_favicons/favicon_status_success.png"
         action:
-          type: string
+          type: object
+          properties:
+            icon:
+              type: string
+              example: cancel
+            title:
+              type: string
+              example: Cancel
+            path:
+              type: string
+              example: "/namespace1/project1/-/jobs/2/cancel"
+            method:
+              type: string
+              example: post
+            button_title:
+              type: string
+              example: Cancel this job
+            confirmation_message:
+              type: string
+              example: Are you sure?
     APIEntitiesCiPipeline:
       type: object
       properties:
@@ -81642,6 +82076,9 @@ components:
           type: boolean
         user:
           type: object
+          properties:
+            can_merge:
+              type: boolean
     APIEntitiesMergeRequestsStatusCheckResponse:
       type: object
       properties:
@@ -81916,25 +82353,19 @@ components:
           example: 123
         checksum_information:
           type: object
-          example:
+          properties:
             checksum:
               type: string
-              example: abc
             last_checksum:
-              type: dateTime
-              example: '2025-01-31T15:10:45.080Z'
+              type: string
             checksum_state:
               type: string
-              example: pending
             checksum_retry_count:
-              type: integer
-              example: 100
+              type: string
             checksum_retry_at:
-              type: dateTime
-              example: '2025-01-31T15:10:45.080Z'
+              type: string
             checksum_failure:
               type: string
-              example: failed
     APIEntitiesAdminSecurityPolicySetting:
       type: object
       properties:
@@ -82358,24 +82789,6 @@ components:
           example: active
         user_id:
           type: string
-    APIEntitiesMlMlflowRun:
-      type: object
-      properties:
-        info:
-          "$ref": "#/components/schemas/APIEntitiesMlMlflowRunInfo"
-        data:
-          type: object
-    APIEntitiesMlMlflowUpdateRun:
-      type: object
-      properties:
-        run_info:
-          "$ref": "#/components/schemas/APIEntitiesMlMlflowRunInfo"
-    APIEntitiesMlMlflowGetDownload:
-      type: object
-      properties:
-        artifact_uri:
-          type: string
-          description: Download URI for MLflow artifact
     APIEntitiesMlMlflowMetric:
       type: object
       properties:
@@ -82388,6 +82801,37 @@ components:
           description: Unix timestamp in milliseconds
         step:
           type: integer
+    APIEntitiesMlMlflowRun:
+      type: object
+      properties:
+        info:
+          "$ref": "#/components/schemas/APIEntitiesMlMlflowRunInfo"
+        data:
+          type: object
+          properties:
+            metrics:
+              type: array
+              items:
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowMetric"
+            params:
+              type: array
+              items:
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowKeyValue"
+            tags:
+              type: array
+              items:
+                "$ref": "#/components/schemas/APIEntitiesMlMlflowKeyValue"
+    APIEntitiesMlMlflowUpdateRun:
+      type: object
+      properties:
+        run_info:
+          "$ref": "#/components/schemas/APIEntitiesMlMlflowRunInfo"
+    APIEntitiesMlMlflowGetDownload:
+      type: object
+      properties:
+        artifact_uri:
+          type: string
+          description: Download URI for MLflow artifact
     APIEntitiesMlMlflowGetMetricHistory:
       type: object
       properties:
@@ -83273,6 +83717,22 @@ components:
           example: 2 of 4 tasks completed
         _links:
           type: object
+          properties:
+            self:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2
+            notes:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/notes
+            award_emoji:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/award_emoji
+            project:
+              type: string
+              example: http://example.com/api/v4/projects/1
+            closed_as_duplicate_of:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/75
         references:
           "$ref": "#/components/schemas/APIEntitiesIssuableReferences"
         severity:
@@ -84192,6 +84652,8 @@ components:
           type: string
         project_invited_groups_api_limit:
           type: string
+        project_repositories_blobs_batch_limit:
+          type: string
         projects_api_limit:
           type: string
         project_members_api_limit:
@@ -85080,6 +85542,13 @@ components:
           example: main
         link:
           type: object
+          properties:
+            url:
+              type: string
+              example: uploads/6a061c4cf9f1c28cb22c384b4b8d4e3c/dk.png
+            markdown:
+              type: string
+              example: "![dk](uploads/6a061c4cf9f1c28cb22c384b4b8d4e3c/dk.png)"
     APIEntitiesCiRunnerRegistrationDetails:
       type: object
       properties:
@@ -85983,6 +86452,27 @@ components:
         deletions:
           type: integer
           example: 5
+    APIEntitiesBatchBlob:
+      type: object
+      properties:
+        path:
+          type: string
+          example: app/models/user.rb
+        ref:
+          type: string
+          example: main
+        size:
+          type: integer
+          example: 1476
+        truncated:
+          type: boolean
+          example: false
+        encoding:
+          type: string
+          example: base64
+        content:
+          type: string
+          example: VGhpcyBpcyBhIGZpbGU=
     APIEntitiesChangelog:
       type: object
       properties:
@@ -86093,6 +86583,22 @@ components:
           type: string
         issue_stats:
           type: object
+          properties:
+            total:
+              type: integer
+              example: 10
+            closed:
+              type: integer
+              example: 5
+    APIEntitiesReleasesSource:
+      type: object
+      properties:
+        format:
+          type: string
+          example: zip
+        url:
+          type: string
+          example: https://gitlab.example.com/root/app/-/archive/v1.0/app-v1.0.zip
     APIEntitiesReleasesEvidence:
       type: object
       properties:
@@ -86143,11 +86649,34 @@ components:
           type: string
           example: "/root/app/-/tags/v1.0"
         assets:
-          type: string
+          type: object
+          properties:
+            count:
+              type: integer
+              example: 2
+            sources:
+              "$ref": "#/components/schemas/APIEntitiesReleasesSource"
+            links:
+              "$ref": "#/components/schemas/APIEntitiesReleasesLink"
         evidences:
           "$ref": "#/components/schemas/APIEntitiesReleasesEvidence"
         _links:
-          type: string
+          type: object
+          properties:
+            closed_issues_url:
+              type: string
+            closed_merge_requests_url:
+              type: string
+            edit_url:
+              type: string
+            merged_merge_requests_url:
+              type: string
+            opened_issues_url:
+              type: string
+            opened_merge_requests_url:
+              type: string
+            self:
+              type: string
     APIEntitiesProtectedTag:
       type: object
       properties:
@@ -86299,6 +86828,31 @@ components:
           example: registry.gitlab.example.com/gitlab/gitlab-client
         _links:
           type: object
+          properties:
+            self:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4
+            issues:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/issues
+            merge_requests:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/merge_requests
+            repo_branches:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/repository/branches
+            labels:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/labels
+            events:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/events
+            members:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/members
+            cluster_agents:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/cluster_agents
         marked_for_deletion_at:
           type: string
           format: date-time
@@ -86625,7 +87179,21 @@ components:
         merge_request_title_regex_description:
           type: string
           example: This requires the title to include a Jira label
-    APIEntitiesProjectWithAccess:
+    APIEntitiesProjectAccess:
+      type: object
+      properties:
+        access_level:
+          type: string
+        notification_level:
+          type: string
+    APIEntitiesGroupAccess:
+      type: object
+      properties:
+        access_level:
+          type: string
+        notification_level:
+          type: string
+    APIEntitiesProjectsWithAccessAndCatalogSetting:
       type: object
       properties:
         id:
@@ -86713,6 +87281,31 @@ components:
           example: registry.gitlab.example.com/gitlab/gitlab-client
         _links:
           type: object
+          properties:
+            self:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4
+            issues:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/issues
+            merge_requests:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/merge_requests
+            repo_branches:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/repository/branches
+            labels:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/labels
+            events:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/events
+            members:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/members
+            cluster_agents:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/cluster_agents
         marked_for_deletion_at:
           type: string
           format: date-time
@@ -87041,6 +87634,454 @@ components:
           example: This requires the title to include a Jira label
         permissions:
           type: object
+          properties:
+            project_access:
+              "$ref": "#/components/schemas/APIEntitiesProjectAccess"
+            group_access:
+              "$ref": "#/components/schemas/APIEntitiesGroupAccess"
+        cicd_catalog_enabled:
+          type: boolean
+    APIEntitiesProjectsWithCatalogSetting:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        description:
+          type: string
+          example: desc
+        name:
+          type: string
+          example: project1
+        name_with_namespace:
+          type: string
+          example: John Doe / project1
+        path:
+          type: string
+          example: project1
+        path_with_namespace:
+          type: string
+          example: namespace1/project1
+        created_at:
+          type: string
+          format: date-time
+          example: '2020-05-07T04:27:17.016Z'
+        default_branch:
+          type: string
+          example: main
+        tag_list:
+          type: array
+          example:
+          - tag
+          items:
+            type: string
+        topics:
+          type: array
+          example:
+          - topic
+          items:
+            type: string
+        ssh_url_to_repo:
+          type: string
+          example: git@gitlab.example.com:gitlab/gitlab.git
+        http_url_to_repo:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab.git
+        web_url:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab
+        readme_url:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab/blob/master/README.md
+        forks_count:
+          type: integer
+          example: 1
+        license_url:
+          type: string
+          example: https://gitlab.example.com/gitlab/gitlab/blob/master/LICENCE
+        license:
+          "$ref": "#/components/schemas/APIEntitiesLicenseBasic"
+        avatar_url:
+          type: string
+          example: http://example.com/uploads/project/avatar/3/uploads/avatar.png
+        star_count:
+          type: integer
+          example: 1
+        last_activity_at:
+          type: string
+          format: date-time
+          example: '2013-09-30T13:46:02Z'
+        visibility:
+          type: string
+          example: public
+        namespace:
+          "$ref": "#/components/schemas/APIEntitiesNamespaceBasic"
+        custom_attributes:
+          "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        repository_storage:
+          type: string
+          example: default
+        forked_from_project:
+          "$ref": "#/components/schemas/APIEntitiesBasicProjectDetails"
+        container_registry_image_prefix:
+          type: string
+          example: registry.gitlab.example.com/gitlab/gitlab-client
+        _links:
+          type: object
+          properties:
+            self:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4
+            issues:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/issues
+            merge_requests:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/merge_requests
+            repo_branches:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/repository/branches
+            labels:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/labels
+            events:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/events
+            members:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/members
+            cluster_agents:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/4/cluster_agents
+        marked_for_deletion_at:
+          type: string
+          format: date-time
+          example: '2020-05-07T04:27:17.016Z'
+        marked_for_deletion_on:
+          type: string
+          format: date-time
+          example: '2020-05-07T04:27:17.016Z'
+        packages_enabled:
+          type: boolean
+        empty_repo:
+          type: boolean
+        archived:
+          type: boolean
+        owner:
+          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+        resolve_outdated_diff_discussions:
+          type: boolean
+        container_expiration_policy:
+          "$ref": "#/components/schemas/APIEntitiesContainerExpirationPolicy"
+        repository_object_format:
+          type: string
+          example: sha1
+        issues_enabled:
+          type: boolean
+        merge_requests_enabled:
+          type: boolean
+        wiki_enabled:
+          type: boolean
+        jobs_enabled:
+          type: boolean
+        snippets_enabled:
+          type: boolean
+        container_registry_enabled:
+          type: boolean
+        service_desk_enabled:
+          type: boolean
+        service_desk_address:
+          type: string
+          example: address@example.com
+        can_create_merge_request_in:
+          type: boolean
+        issues_access_level:
+          type: string
+          example: enabled
+        repository_access_level:
+          type: string
+          example: enabled
+        merge_requests_access_level:
+          type: string
+          example: enabled
+        forking_access_level:
+          type: string
+          example: enabled
+        wiki_access_level:
+          type: string
+          example: enabled
+        builds_access_level:
+          type: string
+          example: enabled
+        snippets_access_level:
+          type: string
+          example: enabled
+        pages_access_level:
+          type: string
+          example: enabled
+        analytics_access_level:
+          type: string
+          example: enabled
+        container_registry_access_level:
+          type: string
+          example: enabled
+        security_and_compliance_access_level:
+          type: string
+          example: enabled
+        releases_access_level:
+          type: string
+          example: enabled
+        environments_access_level:
+          type: string
+          example: enabled
+        feature_flags_access_level:
+          type: string
+          example: enabled
+        infrastructure_access_level:
+          type: string
+          example: enabled
+        monitor_access_level:
+          type: string
+          example: enabled
+        model_experiments_access_level:
+          type: string
+          example: enabled
+        model_registry_access_level:
+          type: string
+          example: enabled
+        package_registry_access_level:
+          type: string
+          example: enabled
+        emails_disabled:
+          type: boolean
+        emails_enabled:
+          type: boolean
+        show_diff_preview_in_email:
+          type: boolean
+        shared_runners_enabled:
+          type: boolean
+        lfs_enabled:
+          type: boolean
+        creator_id:
+          type: integer
+          format: int64
+          example: 1
+        mr_default_target_self:
+          type: boolean
+        import_url:
+          type: string
+          example: https://gitlab.com/gitlab/gitlab.git
+        import_type:
+          type: string
+          example: git
+        import_status:
+          type: string
+          example: none
+        import_error:
+          type: string
+          example: Import error
+        open_issues_count:
+          type: integer
+          example: 1
+        description_html:
+          type: string
+        updated_at:
+          type: string
+          format: date-time
+          example: '2020-05-07T04:27:17.016Z'
+        ci_default_git_depth:
+          type: integer
+          example: 20
+        ci_delete_pipelines_in_seconds:
+          type: integer
+          example: 86400
+        ci_forward_deployment_enabled:
+          type: boolean
+        ci_forward_deployment_rollback_allowed:
+          type: boolean
+        ci_job_token_scope_enabled:
+          type: boolean
+        ci_separated_caches:
+          type: boolean
+        ci_allow_fork_pipelines_to_run_in_parent_project:
+          type: boolean
+        ci_id_token_sub_claim_components:
+          type: array
+          items:
+            type: string
+        build_git_strategy:
+          type: string
+          example: fetch
+        keep_latest_artifact:
+          type: boolean
+        restrict_user_defined_variables:
+          type: boolean
+        ci_pipeline_variables_minimum_override_role:
+          type: string
+        runner_token_expiration_interval:
+          type: integer
+          example: 3600
+        group_runners_enabled:
+          type: boolean
+        resource_group_default_process_mode:
+          type: string
+          example: unordered
+        auto_cancel_pending_pipelines:
+          type: string
+          example: enabled
+        build_timeout:
+          type: integer
+          example: 3600
+        auto_devops_enabled:
+          type: boolean
+        auto_devops_deploy_strategy:
+          type: string
+          example: continuous
+        ci_push_repository_for_job_token_allowed:
+          type: boolean
+        protect_merge_request_pipelines:
+          type: boolean
+        ci_display_pipeline_variables:
+          type: boolean
+        runners_token:
+          type: string
+          example: b8547b1dc37721d05889db52fa2f02
+        ci_config_path:
+          type: string
+          example: ''
+        public_jobs:
+          type: boolean
+        shared_with_groups:
+          type: array
+          items:
+            type: object
+        only_allow_merge_if_pipeline_succeeds:
+          type: boolean
+        allow_merge_on_skipped_pipeline:
+          type: boolean
+        request_access_enabled:
+          type: boolean
+        only_allow_merge_if_all_discussions_are_resolved:
+          type: boolean
+        remove_source_branch_after_merge:
+          type: boolean
+        printing_merge_request_link_enabled:
+          type: boolean
+        merge_method:
+          type: string
+          example: merge
+        squash_option:
+          type: string
+          example: default_off
+        enforce_auth_checks_on_uploads:
+          type: boolean
+        suggestion_commit_message:
+          type: string
+          example: Suggestion message
+        merge_commit_template:
+          type: string
+          example: "%(title)"
+        squash_commit_template:
+          type: string
+          example: "%(source_branch)"
+        mr_default_title_template:
+          type: string
+          example: "%(source_branch)"
+        issue_branch_template:
+          type: string
+          example: "%(title)"
+        statistics:
+          "$ref": "#/components/schemas/APIEntitiesProjectStatistics"
+        warn_about_potentially_unwanted_characters:
+          type: boolean
+        autoclose_referenced_issues:
+          type: boolean
+        max_artifacts_size:
+          type: integer
+        approvals_before_merge:
+          type: string
+        mirror:
+          type: string
+        mirror_user_id:
+          type: string
+        mirror_trigger_builds:
+          type: string
+        only_mirror_protected_branches:
+          type: string
+        mirror_overwrites_diverged_branches:
+          type: string
+        external_authorization_classification_label:
+          type: string
+        requirements_enabled:
+          type: string
+        requirements_access_level:
+          type: string
+        security_and_compliance_enabled:
+          type: string
+        secret_push_protection_enabled:
+          type: boolean
+        pre_receive_secret_detection_enabled:
+          type: boolean
+        compliance_frameworks:
+          type: string
+        issues_template:
+          type: string
+        merge_requests_template:
+          type: string
+        ci_restrict_pipeline_cancellation_role:
+          type: string
+        merge_pipelines_enabled:
+          type: string
+        merge_trains_enabled:
+          type: string
+        merge_trains_skip_train_allowed:
+          type: string
+        merge_train_enforcement:
+          type: string
+        max_pipelines_per_merge_train:
+          type: string
+        only_allow_merge_if_all_status_checks_passed:
+          type: string
+        allow_pipeline_trigger_approve_deployment:
+          type: boolean
+        prevent_merge_without_jira_issue:
+          type: string
+        auto_duo_code_review_enabled:
+          type: string
+        reviewer_assignment_strategy:
+          type: string
+          example: code_owners
+        duo_remote_flows_enabled:
+          type: string
+        duo_foundational_flows_enabled:
+          type: string
+        duo_sast_fp_detection_enabled:
+          type: string
+        duo_secret_detection_fp_enabled:
+          type: string
+        duo_dependency_bump_breaking_changes_enabled:
+          type: string
+        duo_sast_vr_workflow_enabled:
+          type: string
+        web_based_commit_signing_enabled:
+          type: string
+        spp_repository_pipeline_access:
+          type: boolean
+          description: The spp_repository_pipeline_access setting is only visible
+            if the security_orchestration_policies feature is available.
+        security_policy_pipeline_must_succeed:
+          type: boolean
+          description: Require all security policy pipelines to succeed before merge
+            requests can be merged.
+        merge_request_title_regex:
+          type: string
+          example: "/Title of merge request/"
+        merge_request_title_regex_description:
+          type: string
+          example: This requires the title to include a Jira label
+        cicd_catalog_enabled:
+          type: boolean
     APIEntitiesProjectGroupLink:
       type: object
       properties:
@@ -87104,11 +88145,29 @@ components:
           type: string
           format: date-time
           example: '2012-10-12T17:04:47Z'
+    APIEntitiesProjectDailyFetches:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 3
+        date:
+          type: string
+          format: date
+          example: '2022-01-01'
     APIEntitiesProjectDailyStatistics:
       type: object
       properties:
         fetches:
           type: object
+          properties:
+            total:
+              type: integer
+              example: 3
+            days:
+              type: array
+              items:
+                "$ref": "#/components/schemas/APIEntitiesProjectDailyFetches"
     APIEntitiesProjectSnippet:
       type: object
       properties:
@@ -87267,7 +88326,12 @@ components:
           type: string
           example: default
         _links:
-          type: string
+          type: object
+          properties:
+            web_path:
+              type: string
+            delete_api_path:
+              type: string
         created_at:
           type: string
           format: date-time
@@ -87530,6 +88594,13 @@ components:
           example: finished
         _links:
           type: object
+          properties:
+            api_url:
+              type: string
+              example: https://gitlab.example.com/api/v4/projects/1/export/download
+            web_url:
+              type: string
+              example: https://gitlab.example.com/gitlab-org/gitlab-test/download_export
     APIEntitiesBulkImportsExportBatchStatus:
       type: object
       properties:
@@ -88309,6 +89380,18 @@ components:
           example: c401a659d0c
         kas:
           type: object
+          properties:
+            enabled:
+              type: boolean
+            externalUrl:
+              type: string
+              example: grpc://gitlab.example.com:8150
+            externalK8sProxyUrl:
+              type: string
+              example: https://gitlab.example.com:8150/k8s-proxy
+            version:
+              type: string
+              example: 15.0.0
         enterprise:
           type: boolean
     APIEntitiesMergeRequestDiff:
@@ -88732,6 +89815,9 @@ components:
           type: boolean
         user:
           type: object
+          properties:
+            can_merge:
+              type: boolean
         changes:
           type: array
           items:
@@ -88818,7 +89904,14 @@ components:
         expires_at:
           type: string
         access_level:
-          type: string
+          type: object
+          properties:
+            string_value:
+              type: string
+            integer_value:
+              type: string
+            custom_role:
+              type: string
     APIEntitiesProjectUpload:
       type: object
       properties:
@@ -89101,6 +90194,22 @@ components:
           example: 2 of 4 tasks completed
         _links:
           type: object
+          properties:
+            self:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2
+            notes:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/notes
+            award_emoji:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/2/award_emoji
+            project:
+              type: string
+              example: http://example.com/api/v4/projects/1
+            closed_as_duplicate_of:
+              type: string
+              example: http://example.com/api/v4/projects/1/issues/75
         references:
           "$ref": "#/components/schemas/APIEntitiesIssuableReferences"
         severity:
@@ -89900,7 +91009,11 @@ components:
           type: string
           example: https://example.com/foo/bar/-/jobs/1
         project:
-          type: string
+          type: object
+          properties:
+            ci_job_token_scope_enabled:
+              type: string
+              example: false
         artifacts_file:
           "$ref": "#/components/schemas/APIEntitiesCiJobArtifactFile"
         artifacts:
@@ -90796,7 +91909,11 @@ components:
           type: string
           example: https://example.com/foo/bar/-/jobs/1
         project:
-          type: string
+          type: object
+          properties:
+            ci_job_token_scope_enabled:
+              type: string
+              example: false
         downstream_pipeline:
           "$ref": "#/components/schemas/APIEntitiesCiPipelineBasic"
     TestCaseEntity:
@@ -91427,7 +92544,11 @@ components:
           type: string
           example: https://example.com/foo/bar/-/jobs/1
         project:
-          type: string
+          type: object
+          properties:
+            ci_job_token_scope_enabled:
+              type: string
+              example: false
     APIEntitiesAiSettings:
       type: object
       properties:
@@ -91550,7 +92671,26 @@ components:
         custom_attributes:
           "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
         statistics:
-          type: string
+          type: object
+          properties:
+            storage_size:
+              type: string
+            repository_size:
+              type: string
+            wiki_size:
+              type: string
+            lfs_objects_size:
+              type: string
+            job_artifacts_size:
+              type: string
+            pipeline_artifacts_size:
+              type: string
+            packages_size:
+              type: string
+            snippets_size:
+              type: string
+            uploads_size:
+              type: string
         marked_for_deletion_on:
           type: string
         root_storage_statistics:
@@ -97425,7 +98565,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_224978a87e6f:
+    RequestBody_e7d6020c5ece:
       type: object
       properties:
         admin_mode:
@@ -99356,6 +100496,9 @@ components:
           type: string
           nullable: true
         project_invited_groups_api_limit:
+          type: string
+          nullable: true
+        project_repositories_blobs_batch_limit:
           type: string
           nullable: true
         projects_api_limit:
@@ -101582,6 +102725,30 @@ components:
       required:
       - name
       - scopes
+    RequestBody_d0e25dbef307:
+      type: object
+      properties:
+        files:
+          type: array
+          description: Array of file objects to retrieve (max 20)
+          items:
+            type: object
+            properties:
+              path:
+                type: string
+                description: The file path
+                example: app/models/user.rb
+                nullable: true
+              ref:
+                type: string
+                description: The branch, tag, or commit. Defaults to the default branch
+                example: main
+                nullable: true
+            required:
+            - path
+          nullable: true
+      required:
+      - files
     RequestBody_ae26a1e02190:
       type: object
       properties:
@@ -101986,7 +103153,7 @@ components:
           nullable: true
       required:
       - name
-    RequestBody_3b7de9f4db35:
+    RequestBody_cf91a0e3de5e:
       type: object
       properties:
         name:
@@ -102439,6 +103606,10 @@ components:
             Maximum 100 characters.
           nullable: true
           maxLength: 100
+        cicd_catalog_enabled:
+          type: boolean
+          description: Set whether the project is a CI/CD catalog project
+          nullable: true
         only_allow_merge_if_all_status_checks_passed:
           type: boolean
           description: Blocks merge requests from merging unless all status checks
@@ -102548,7 +103719,7 @@ components:
           type: integer
           description: Project ID of template from which to create project
           nullable: true
-    RequestBody_2861e6bcd64d:
+    RequestBody_151cb880b5fa:
       type: object
       properties:
         name:
@@ -103001,6 +104172,10 @@ components:
             Maximum 100 characters.
           nullable: true
           maxLength: 100
+        cicd_catalog_enabled:
+          type: boolean
+          description: Set whether the project is a CI/CD catalog project
+          nullable: true
         only_allow_merge_if_all_status_checks_passed:
           type: boolean
           description: Blocks merge requests from merging unless all status checks
@@ -103112,7 +104287,7 @@ components:
           nullable: true
       required:
       - name
-    RequestBody_c759bc073ec5:
+    RequestBody_2913c4f9f47a:
       type: object
       properties:
         name:
@@ -103565,6 +104740,10 @@ components:
             Maximum 100 characters.
           nullable: true
           maxLength: 100
+        cicd_catalog_enabled:
+          type: boolean
+          description: Set whether the project is a CI/CD catalog project
+          nullable: true
         only_allow_merge_if_all_status_checks_passed:
           type: boolean
           description: Blocks merge requests from merging unless all status checks
@@ -104127,7 +105306,7 @@ components:
           nullable: true
       required:
       - target_group_id
-    RequestBody_62cfdeef4f25:
+    RequestBody_1c830d224756:
       type: object
       properties:
         path:
@@ -104612,6 +105791,10 @@ components:
                 Maximum 100 characters.
               nullable: true
               maxLength: 100
+            cicd_catalog_enabled:
+              type: boolean
+              description: Set whether the project is a CI/CD catalog project
+              nullable: true
             only_allow_merge_if_all_status_checks_passed:
               type: boolean
               description: Blocks merge requests from merging unless all status checks
@@ -104749,7 +105932,7 @@ components:
           nullable: true
       required:
       - import_url
-    RequestBody_4e27310e47b5:
+    RequestBody_87fdf22dd64e:
       type: object
       properties:
         url:
@@ -105233,6 +106416,10 @@ components:
                 Maximum 100 characters.
               nullable: true
               maxLength: 100
+            cicd_catalog_enabled:
+              type: boolean
+              description: Set whether the project is a CI/CD catalog project
+              nullable: true
             only_allow_merge_if_all_status_checks_passed:
               type: boolean
               description: Blocks merge requests from merging unless all status checks
@@ -105374,7 +106561,7 @@ components:
       - path
       - file
       - relation
-    RequestBody_22adef8ecfea:
+    RequestBody_f3a212c3c4f4:
       type: object
       properties:
         region:
@@ -105874,6 +107061,10 @@ components:
                 Maximum 100 characters.
               nullable: true
               maxLength: 100
+            cicd_catalog_enabled:
+              type: boolean
+              description: Set whether the project is a CI/CD catalog project
+              nullable: true
             only_allow_merge_if_all_status_checks_passed:
               type: boolean
               description: Blocks merge requests from merging unless all status checks

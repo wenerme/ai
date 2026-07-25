@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare One Client with firewall
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If your organization uses a firewall or other policies to restrict or intercept Internet traffic, you may need to exempt the following IP addresses and domains to allow the Cloudflare One Client (formerly WARP) to connect.
 
@@ -164,12 +164,13 @@ The Cloudflare One Client attempts to synchronize the exact time by NTP (`UDP 12
 
 If your organization does not currently allow inbound/outbound communication over the IP addresses, ports, and domains described above, you must manually add an exception. The rule at a minimum needs to be scoped to the following process based on your platform:
 
-* Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\warp-svc.exe`
-* macOS: You must explicitly allow both the core networking daemon and GUI component as shown in the following instructions.
+* Windows: `C:\Program Files\Cloudflare\Cloudflare WARP\warp-svc.exe`, `C:\Program Files\Cloudflare\Cloudflare WARP\warp-updater.exe`, and `C:\Program Files\Cloudflare\Cloudflare WARP\warp-updater-armed.exe`
+* macOS: You must explicitly allow the core networking daemon, updater, and GUI component as shown in the following instructions.
 
   1. Core networking daemon: `/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP`
   This binary does not have a Bundle ID and must be allowed via full path.
-  2. GUI component, choose one of the following three identifiers depending on your MDM or firewall vendor's preferred format:
+  2. Updater: `/Applications/Cloudflare WARP.app/Contents/Resources/warp-updater`
+  3. GUI component, choose one of the following three identifiers depending on your MDM or firewall vendor's preferred format:
   `/Applications/Cloudflare WARP.app` (Path)
   `/Applications/Cloudflare WARP.app/Contents/MacOS/Cloudflare WARP` (Path)
   `com.cloudflare.1dot1dot1dot1.macos` (Bundle ID)
@@ -181,7 +182,7 @@ To allow the Cloudflare One Client to function on macOS Sequoia versions 15.0 th
   * **Block all incoming connections**
   * **Automatically allow built-in software to receive incoming connections**
   * **Automatically allow downloaded signed software to receive incoming connections**
-  1. Add the [WARP daemon and GUI processes](#required-scopes) to the firewall exceptions list and set them to _Allow incoming connections_.
+  1. Add the [WARP daemon, updater, and GUI processes](#required-scopes) to the firewall exceptions list and set them to _Allow incoming connections_.
   2. Restrict the other allow exceptions to only the processes you want receiving traffic.
   3. (Optional) Do not grant users administrative privileges, otherwise they will be able to modify firewall settings and exceptions.
 
@@ -219,5 +220,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#page","headline":"Cloudflare One Client with firewall · Cloudflare One docs","description":"Reference information for Cloudflare One Client with firewall in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#page","headline":"Cloudflare One Client with firewall · Cloudflare One docs","description":"Reference information for Cloudflare One Client with firewall in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Wireguard","MASQUE"]}
 ```

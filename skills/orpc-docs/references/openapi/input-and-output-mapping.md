@@ -224,7 +224,7 @@ Supported body hints:
 
 ## Metadata Merging
 
-When `openapi` is applied multiple times, `paramsStyles` and `queryStyles` are spreading-merged, while `inputStructure`, `outputStructure`, `responseBodyHint`, and `requestBodyHint` are overridden by the most recent call. For full merge behavior, see the [source code](https://github.com/orpc/orpc/blob/main/packages/openapi/src/meta.ts).
+When `openapi` is applied multiple times, `paramsStyles` and `queryStyles` are merged per parameter, and the most recent style defined for a parameter wins. `inputStructure`, `outputStructure`, `responseBodyHint`, and `requestBodyHint` are overridden by the most recent call. For the full merge behavior of every field, see [Metadata Merging](/docs/openapi/specification#metadata-merging).
 
 ```ts
 const router = os

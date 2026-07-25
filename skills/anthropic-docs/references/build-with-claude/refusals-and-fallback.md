@@ -1,12 +1,12 @@
 # Refusals and fallback
 
-How Claude Fable 5 returns classifier refusals and how to retry refused requests on a fallback model.
+How Claude Fable 5 and Claude Opus 5 return classifier refusals and how to retry refused requests on a fallback model.
 
 ---
 
-Claude Fable 5 includes safety classifiers that can decline a request. When that happens, you receive a normal response, not an error, with `stop_reason: "refusal"`. You can usually still get an answer by sending the same request to another Claude model. This page shows you how to recognize a refusal and how to set up that retry.
+Claude Fable 5 and Claude Opus 5 include safety classifiers that can decline a request. When that happens, you receive a normal response, not an error, with `stop_reason: "refusal"`. You can usually still get an answer by sending the same request to another Claude model. This page shows you how to recognize a refusal and how to set up that retry.
 
-Read this page when you build on Claude Fable 5 and want declined requests to fall through to another model automatically. It also applies when you have just seen `"refusal"` in a response and want to know what to do next.
+Read this page when you build on Claude Fable 5 or Claude Opus 5 and want declined requests to fall through to another model automatically. It also applies when you have just seen `"refusal"` in a response and want to know what to do next.
 
 Related pages:
 
@@ -15,19 +15,19 @@ Related pages:
 * [SDK middleware](/docs/en/cli-sdks-libraries/middleware): the SDK helper that wraps all of this.
 * [Fallback and billing cookbook](https://platform.claude.com/cookbook/fable-5-fallback-billing-guide): a worked end-to-end example.
 
-The simplest setup: name a fallback model on the request, and the API handles the retry.
+The simplest setup, in beta on the Claude API: set `fallbacks` to `"default"`, and the API retries a declined request on the fallback model Anthropic recommends for its refusal category. For categories with no recommended fallback, the refusal stands.
 
 <CodeGroup>
   ```bash cURL
   curl --fail-with-body -sS https://api.anthropic.com/v1/messages \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2023-06-01" \
-    -H "anthropic-beta: server-side-fallback-2026-06-01" \
+    -H "anthropic-beta: server-side-fallback-2026-07-01" \
     -H "content-type: application/json" \
     -d '{
       "model": "claude-fable-5",
       "max_tokens": 1024,
-      "fallbacks": [{"model": "claude-opus-4-8"}],
+      "fallbacks": "default",
       "messages": [{"role": "user", "content": "Hello, Claude"}]
     }' | jq -r '.model'
   ```
@@ -37,8 +37,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
     --model claude-fable-5 \
     --max-tokens 1024 \
     --message '{"role":"user","content":"Hello, Claude"}' \
-    --fallback '[{"model":"claude-opus-4-8"}]' \
-    --beta server-side-fallback-2026-06-01 \
+    --fallbacks default \
+    --beta server-side-fallback-2026-07-01 \
     --transform model --raw-output
   ```
 
@@ -49,8 +49,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
       model="claude-fable-5",
       max_tokens=1024,
       messages=[{"role": "user", "content": "Hello, Claude"}],
-      fallbacks=[{"model": "claude-opus-4-8"}],
-      betas=["server-side-fallback-2026-06-01"],
+      fallbacks="default",
+      betas=["server-side-fallback-2026-07-01"],
   )
   print(response.model)
   ```
@@ -62,8 +62,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
     model: "claude-fable-5",
     max_tokens: 1024,
     messages: [{ role: "user", content: "Hello, Claude" }],
-    fallbacks: [{ model: "claude-opus-4-8" }],
-    betas: ["server-side-fallback-2026-06-01"]
+    fallbacks: "default",
+    betas: ["server-side-fallback-2026-07-01"]
   });
   console.log(response.model);
   ```
@@ -77,8 +77,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
           Model = Messages::Model.ClaudeFable5,
           MaxTokens = 1024,
           Messages = [new() { Content = "Hello, Claude", Role = Role.User }],
-          Fallbacks = [new(Messages::Model.ClaudeOpus4_8)],
-          Betas = [AnthropicBeta.ServerSideFallback2026_06_01],
+          Fallbacks = new Default(),
+          Betas = [AnthropicBeta.ServerSideFallback2026_07_01],
       }
   );
 
@@ -94,8 +94,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
   	Messages: []anthropic.BetaMessageParam{
   		anthropic.NewBetaUserMessage(anthropic.NewBetaTextBlock("Hello, Claude")),
   	},
-  	Fallbacks: []anthropic.BetaFallbackParam{{Model: anthropic.ModelClaudeOpus4_8}},
-  	Betas:     []anthropic.AnthropicBeta{anthropic.AnthropicBetaServerSideFallback2026_06_01},
+  	Fallbacks: anthropic.BetaFallbacksParamOfDefault(),
+  	Betas:     []anthropic.AnthropicBeta{anthropic.AnthropicBetaServerSideFallback2026_07_01},
   })
   if err != nil {
   	panic(err)
@@ -111,8 +111,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
       .model(Model.CLAUDE_FABLE_5)
       .maxTokens(1024L)
       .addUserMessage("Hello, Claude")
-      .addFallback(BetaFallbackParam.builder().model(Model.CLAUDE_OPUS_4_8).build())
-      .addBeta(AnthropicBeta.SERVER_SIDE_FALLBACK_2026_06_01)
+      .fallbacksDefault()
+      .addBeta(AnthropicBeta.SERVER_SIDE_FALLBACK_2026_07_01)
       .build());
 
   IO.println(response.model().asString());
@@ -125,8 +125,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
       model: 'claude-fable-5',
       maxTokens: 1024,
       messages: [['role' => 'user', 'content' => 'Hello, Claude']],
-      fallbacks: [['model' => 'claude-opus-4-8']],
-      betas: ['server-side-fallback-2026-06-01'],
+      fallbacks: 'default',
+      betas: ['server-side-fallback-2026-07-01'],
   );
 
   echo $response->model, PHP_EOL;
@@ -139,8 +139,8 @@ The simplest setup: name a fallback model on the request, and the API handles th
     model: "claude-fable-5",
     max_tokens: 1024,
     messages: [{role: "user", content: "Hello, Claude"}],
-    fallbacks: [{model: "claude-opus-4-8"}],
-    betas: ["server-side-fallback-2026-06-01"]
+    fallbacks: :default,
+    betas: ["server-side-fallback-2026-07-01"]
   )
 
   puts response.model
@@ -185,50 +185,50 @@ The `stop_details` object explains the decline:
 | `"cyber"`                | The request could enable cyber harm, such as malware or exploit development. Benign cybersecurity work can also trigger this category.                                                                                                    |
 | `"bio"`                  | The request could enable biological harm, such as dangerous lab methods. Beneficial life sciences work can also trigger this category.                                                                                                    |
 | `"frontier_llm"`         | The request could assist the development of competing AI models, which is restricted under [Anthropic's commercial terms](https://www.anthropic.com/legal/commercial-terms). Benign machine learning work can also trigger this category. |
-| `"reasoning_extraction"` | The request asks the model to reproduce its internal reasoning in the response text. To get reasoning in a structured form instead, use [adaptive thinking](/docs/en/build-with-claude/thinking-steering-and-cost).                       |
+| `"reasoning_extraction"` | The request asks the model to reproduce its internal reasoning in the response text. To get reasoning in a structured form instead, use [adaptive thinking](/docs/en/build-with-claude/thinking).                                         |
 | `"general_harms"`        | The request could be related to an area that was determined as harmful. Benign work might sometimes trigger this category.                                                                                                                |
 
 A refusal can arrive before any output, or mid-stream after partial output. In either case, treat any partial output as incomplete and discard it.
 
 <Note>
-  **How refusals are billed:** You are not billed for a refusal that arrives before any output. `content` is empty, token counts appear in `usage` but are not charged, and the request does not count against rate limits. A mid-stream refusal bills the input tokens and the output already streamed at normal rates.
+  **How refusals are billed:** You are not billed for a refusal that arrives before any output. `content` is empty, and token counts appear in `usage` but are not charged. The request still counts against your rate limits. A mid-stream refusal bills the input tokens and the output already streamed at normal rates.
 </Note>
 
 ## Picking a fallback approach
 
 There are three ways to retry a refused request on another model. The right one depends on where you are running and how much control you need.
 
-| Your situation                                       | Use                                                                             | Why                                                         |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Claude API or Claude Platform on AWS, simplest setup | [Server-side fallback](#server-side-fallback)                                   | One request, one response. The API handles the retry.       |
-| Any platform, using an Anthropic SDK                 | [The SDK middleware](#client-side-fallback)                                     | Configure once on the client. Retries happen automatically. |
-| Raw HTTP or custom retry logic                       | Manual retry with [fallback credit](/docs/en/build-with-claude/fallback-credit) | Full control. Fallback credit keeps the cost down.          |
+| Your situation                       | Use                                                                             | Why                                                         |
+| ------------------------------------ | ------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Claude API, simplest setup           | [Server-side fallback](#server-side-fallback)                                   | One request, one response. The API handles the retry.       |
+| Any platform, using an Anthropic SDK | [The SDK middleware](#client-side-fallback)                                     | Configure once on the client. Retries happen automatically. |
+| Raw HTTP or custom retry logic       | Manual retry with [fallback credit](/docs/en/build-with-claude/fallback-credit) | Full control. Fallback credit keeps the cost down.          |
 
 Server-side fallback and the SDK middleware apply fallback credit for you. You only need the [Fallback credit](/docs/en/build-with-claude/fallback-credit) page when you build the retry yourself.
 
 ## Server-side fallback
 
-Server-side fallback retries a refused request inside a single API call. You name up to three fallback models, and when Claude Fable 5 declines, the API runs the next model in the chain on the same request. You get back one response that names the model that answered, so your user gets an answer in one round trip.
+Server-side fallback retries a refused request inside a single API call. In the default mode, when the primary model declines and the refusal category has a recommended fallback, the API runs the same request on the model Anthropic recommends for that category. You can instead name up to three fallback models of your own (below). Either way, you get back one response that names the model that answered, so your user gets an answer in one round trip.
 
 <Note>
-  Server-side fallback is in beta on the Claude API and Claude Platform on AWS. The `fallbacks` parameter is rejected on the [Message Batches API](/docs/en/build-with-claude/batch-processing) and is not available on Amazon Bedrock, Google Cloud, or Microsoft Foundry. On those platforms, use [client-side fallback with the SDK middleware](#client-side-fallback) instead.
+  Server-side fallback is in beta on the Claude API. The `fallbacks` parameter is not supported on the [Message Batches API](/docs/en/build-with-claude/batch-processing) (a batch item that includes it comes back as an errored result) and is not available on Amazon Bedrock, Google Cloud, or Microsoft Foundry. On those platforms, use [client-side fallback with the SDK middleware](#client-side-fallback) instead.
 </Note>
 
 ### Making the request
 
-Name the fallback models in the `fallbacks` parameter and send the `server-side-fallback-2026-06-01` beta header.
+Set the `fallbacks` parameter to the string `"default"` and send the `server-side-fallback-2026-07-01` beta header. The API then applies the requested model's server-defined default routing, which selects a recommended fallback model based on the refusal category the classifier reports, so refused requests are served without you maintaining a model list as recommendations change.
 
 <CodeGroup>
   ```bash cURL
   curl --fail-with-body -sS https://api.anthropic.com/v1/messages \
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2023-06-01" \
-    -H "anthropic-beta: server-side-fallback-2026-06-01" \
+    -H "anthropic-beta: server-side-fallback-2026-07-01" \
     -H "content-type: application/json" \
     -d '{
       "model": "claude-fable-5",
       "max_tokens": 1024,
-      "fallbacks": [{"model": "claude-opus-4-8"}],
+      "fallbacks": "default",
       "messages": [{"role": "user", "content": "Hello, Claude"}]
     }' |
     jq -c '{
@@ -248,8 +248,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
     --model claude-fable-5 \
     --max-tokens 1024 \
     --message '{"role":"user","content":"Hello, Claude"}' \
-    --fallback '[{"model":"claude-opus-4-8"}]' \
-    --beta server-side-fallback-2026-06-01 \
+    --fallbacks default \
+    --beta server-side-fallback-2026-07-01 \
     --format json |
     jq -c '{
       stop_reason,
@@ -270,8 +270,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
       model="claude-fable-5",
       max_tokens=1024,
       messages=[{"role": "user", "content": "Hello, Claude"}],
-      fallbacks=[{"model": "claude-opus-4-8"}],
-      betas=["server-side-fallback-2026-06-01"],
+      fallbacks="default",
+      betas=["server-side-fallback-2026-07-01"],
   )
 
   # A fallback_message entry in usage.iterations means a fallback model ran;
@@ -300,8 +300,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
     model: "claude-fable-5",
     max_tokens: 1024,
     messages: [{ role: "user", content: "Hello, Claude" }],
-    fallbacks: [{ model: "claude-opus-4-8" }],
-    betas: ["server-side-fallback-2026-06-01"]
+    fallbacks: "default",
+    betas: ["server-side-fallback-2026-07-01"]
   });
 
   // A fallback_message entry in usage.iterations means a fallback model ran;
@@ -332,8 +332,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
           [
               new() { Content = "Hello, Claude", Role = Role.User },
           ],
-          Fallbacks = [new(Messages::Model.ClaudeOpus4_8)],
-          Betas = [AnthropicBeta.ServerSideFallback2026_06_01],
+          Fallbacks = new Default(),
+          Betas = [AnthropicBeta.ServerSideFallback2026_07_01],
       }
   );
 
@@ -366,10 +366,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
   	Messages: []anthropic.BetaMessageParam{
   		anthropic.NewBetaUserMessage(anthropic.NewBetaTextBlock("Hello, Claude")),
   	},
-  	Fallbacks: []anthropic.BetaFallbackParam{
-  		{Model: anthropic.ModelClaudeOpus4_8},
-  	},
-  	Betas: []anthropic.AnthropicBeta{anthropic.AnthropicBetaServerSideFallback2026_06_01},
+  	Fallbacks: anthropic.BetaFallbacksParamOfDefault(),
+  	Betas:     []anthropic.AnthropicBeta{anthropic.AnthropicBetaServerSideFallback2026_07_01},
   })
   if err != nil {
   	panic(err)
@@ -405,10 +403,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
           .model(Model.CLAUDE_FABLE_5)
           .maxTokens(1024L)
           .addUserMessage("Hello, Claude")
-          .addFallback(BetaFallbackParam.builder()
-              .model(Model.CLAUDE_OPUS_4_8)
-              .build())
-          .addBeta(AnthropicBeta.SERVER_SIDE_FALLBACK_2026_06_01)
+          .fallbacksDefault()
+          .addBeta(AnthropicBeta.SERVER_SIDE_FALLBACK_2026_07_01)
           .build()
   );
 
@@ -435,8 +431,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
       maxTokens: 1024,
       messages: [['role' => 'user', 'content' => 'Hello, Claude']],
       model: 'claude-fable-5',
-      fallbacks: [['model' => 'claude-opus-4-8']],
-      betas: ['server-side-fallback-2026-06-01'],
+      fallbacks: 'default',
+      betas: ['server-side-fallback-2026-07-01'],
   );
 
   // A fallback_message entry in usage.iterations means a fallback model ran;
@@ -459,8 +455,8 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
     model: "claude-fable-5",
     max_tokens: 1024,
     messages: [{role: "user", content: "Hello, Claude"}],
-    fallbacks: [{model: "claude-opus-4-8"}],
-    betas: ["server-side-fallback-2026-06-01"]
+    fallbacks: :default,
+    betas: ["server-side-fallback-2026-07-01"]
   )
 
   # A fallback_message entry in usage.iterations means a fallback model ran;
@@ -475,17 +471,165 @@ Name the fallback models in the `fallbacks` parameter and send the `server-side-
   ```
 </CodeGroup>
 
+Anthropic sets safeguards for each model individually and for each policy category, in line with the model's capability: depending on the category, a flagged request may fall back to a less capable model or be declined. The `"default"` mode encodes these per-model, per-category recommendations for you, so a refused request is retried on the model Anthropic recommends for that category. Fallbacks are visible either way: the response names the model that served it, and the `fallback` content block marks the handoff.
+
+The routing is applied server-side and is not published per model on the [Models API](/docs/en/api/models/list). To see which model served a refused request, check the response's top-level `model` field and look for a `fallback_message` entry in `usage.iterations`, as this page's samples do.
+
+Only a safety classifier decline triggers the fallback. A rate limit, overload, or server error on the requested model is returned to you as-is.
+
+<Note>
+  The beta header must carry exactly the date `2026-07-01`, which supports both `"default"` and the explicit-list form below, or `2026-06-01`, which accepts only the explicit-list form. Under any other `server-side-fallback-*` value, the `fallbacks` parameter is rejected with a 400 error. If you built against an earlier preview of this feature, update the beta header and the request and response shapes together to the ones on this page.
+</Note>
+
+### Naming your own fallback models
+
+Instead of default routing, you can set `fallbacks` to a list of up to three models. When the requested model declines, the API runs the next model in the chain on the same request. Use this form when you want to control exactly which models serve refused requests, such as pinning a model your application has qualified.
+
+<CodeGroup>
+  ```bash cURL
+  curl --fail-with-body -sS https://api.anthropic.com/v1/messages \
+    -H "x-api-key: $ANTHROPIC_API_KEY" \
+    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-beta: server-side-fallback-2026-07-01" \
+    -H "content-type: application/json" \
+    -d '{
+      "model": "claude-fable-5",
+      "max_tokens": 1024,
+      "fallbacks": [{"model": "claude-opus-4-8"}],
+      "messages": [{"role": "user", "content": "Hello, Claude"}]
+    }' | jq -r '.model'
+  ```
+
+  ```bash CLI
+  ant beta:messages create \
+    --model claude-fable-5 \
+    --max-tokens 1024 \
+    --message '{"role":"user","content":"Hello, Claude"}' \
+    --fallbacks '[{"model":"claude-opus-4-8"}]' \
+    --beta server-side-fallback-2026-07-01 \
+    --transform model --raw-output
+  ```
+
+  ```python Python
+  client = Anthropic()
+
+  response = client.beta.messages.create(
+      model="claude-fable-5",
+      max_tokens=1024,
+      messages=[{"role": "user", "content": "Hello, Claude"}],
+      fallbacks=[{"model": "claude-opus-4-8"}],
+      betas=["server-side-fallback-2026-07-01"],
+  )
+  print(response.model)
+  ```
+
+  ```typescript TypeScript
+  const client = new Anthropic();
+
+  const response = await client.beta.messages.create({
+    model: "claude-fable-5",
+    max_tokens: 1024,
+    messages: [{ role: "user", content: "Hello, Claude" }],
+    fallbacks: [{ model: "claude-opus-4-8" }],
+    betas: ["server-side-fallback-2026-07-01"]
+  });
+  console.log(response.model);
+  ```
+
+  ```csharp C#
+  AnthropicClient client = new();
+
+  BetaMessage response = await client.Beta.Messages.Create(
+      new()
+      {
+          Model = Messages::Model.ClaudeFable5,
+          MaxTokens = 1024,
+          Messages = [new() { Content = "Hello, Claude", Role = Role.User }],
+          Fallbacks = new([new(Messages::Model.ClaudeOpus4_8)]),
+          Betas = [AnthropicBeta.ServerSideFallback2026_07_01],
+      }
+  );
+
+  Console.WriteLine(response.Model.Raw());
+  ```
+
+  ```go Go
+  client := anthropic.NewClient()
+
+  response, err := client.Beta.Messages.New(context.Background(), anthropic.BetaMessageNewParams{
+  	Model:     anthropic.ModelClaudeFable5,
+  	MaxTokens: 1024,
+  	Messages: []anthropic.BetaMessageParam{
+  		anthropic.NewBetaUserMessage(anthropic.NewBetaTextBlock("Hello, Claude")),
+  	},
+  	Fallbacks: anthropic.BetaFallbacksParamUnion{
+  		OfBetaFallbackArray: []anthropic.BetaFallbackParam{{Model: anthropic.ModelClaudeOpus4_8}},
+  	},
+  	Betas: []anthropic.AnthropicBeta{anthropic.AnthropicBetaServerSideFallback2026_07_01},
+  })
+  if err != nil {
+  	panic(err)
+  }
+
+  fmt.Println(response.Model)
+  ```
+
+  ```java Java
+  AnthropicClient client = AnthropicOkHttpClient.fromEnv();
+
+  BetaMessage response = client.beta().messages().create(MessageCreateParams.builder()
+      .model(Model.CLAUDE_FABLE_5)
+      .maxTokens(1024L)
+      .addUserMessage("Hello, Claude")
+      .fallbacksOfFallbackParams(List.of(BetaFallbackParam.builder()
+          .model(Model.CLAUDE_OPUS_4_8)
+          .build()))
+      .addBeta(AnthropicBeta.SERVER_SIDE_FALLBACK_2026_07_01)
+      .build());
+
+  IO.println(response.model().asString());
+  ```
+
+  ```php PHP
+  $client = new Client();
+
+  $response = $client->beta->messages->create(
+      model: 'claude-fable-5',
+      maxTokens: 1024,
+      messages: [['role' => 'user', 'content' => 'Hello, Claude']],
+      fallbacks: [['model' => 'claude-opus-4-8']],
+      betas: ['server-side-fallback-2026-07-01'],
+  );
+
+  echo $response->model, PHP_EOL;
+  ```
+
+  ```ruby Ruby
+  client = Anthropic::Client.new
+
+  response = client.beta.messages.create(
+    model: "claude-fable-5",
+    max_tokens: 1024,
+    messages: [{role: "user", content: "Hello, Claude"}],
+    fallbacks: [{model: "claude-opus-4-8"}],
+    betas: ["server-side-fallback-2026-07-01"]
+  )
+
+  puts response.model
+  ```
+</CodeGroup>
+
 A few rules apply to the `fallbacks` list:
 
 * Entries are tried in order. Each must be distinct from the other entries and from the requested model.
 * Each entry must be one of the requested model's permitted targets. With the beta header set, that list is published as `allowed_fallback_models` on the model's entry in the [Models API](/docs/en/api/models/list).
-* Each entry names a `model` and can override `max_tokens` and `thinking` for that attempt only.
+* Each entry names a `model` and can override `max_tokens`, `thinking`, `output_config`, and `speed` for that attempt only.
 * The request must be valid as a direct request to every model named. If a fallback model does not support a feature the request uses, the API rejects the request up front.
-* Only a safety classifier decline triggers the fallback. A rate limit, overload, or server error on the requested model is returned to you as-is.
+* As with the default mode, only a safety classifier decline triggers the fallback. A rate limit, overload, or server error on the requested model is returned to you as-is.
 
-<Note>
-  The beta header must carry exactly the date `2026-06-01`. Under any other `server-side-fallback-*` value, the `fallbacks` parameter is rejected with a 400 error. If you built against an earlier preview of this feature, update the beta header and the request and response shapes together to the ones on this page.
-</Note>
+The explicit-list form also works under the `server-side-fallback-2026-06-01` beta header; the `"default"` mode does not.
+
+The response has the same shape in both modes: the model that served the turn appears in the top-level `model` field, a `fallback` content block marks the handoff, and `usage.iterations` records each attempt.
 
 ### What the response contains
 
@@ -498,7 +642,7 @@ The response looks like any other message, with two additions:
   * `from.model` echoes the model string you sent when the declining hop is the requested model.
   * `to.model` is always the resolved ID of the model that continues.
 
-On a refusal before any output, the `fallback` block is the first content block:
+On a refusal before any output, the `fallback` block is the first content block. For example, when default routing selects Claude Opus 4.8 for the refusal's category:
 
 ```json
 {
@@ -582,7 +726,7 @@ On a streaming request, the retry happens on the same stream, and nothing you ha
 On a non-streaming request, a mid-output decline behaves differently: the response omits the declined model's partial output, and the fallback model answers from scratch. The result looks like a decline before any output, with the `fallback` block first. The declined attempt and its output tokens still appear in `usage.iterations`.
 
 <Note>
-  **Declines after server tools run:** when a decline fires after server tools (for example, web search or code execution) have already executed within a request, the API returns the refusal instead of advancing to a fallback model. If the `fallback-credit-2026-06-01` header is also set, that refusal carries a credit token redeemable by continuing the partial response, so the completed tool work is not lost. This applies only to server tools iterating within a single request. Conversations that use client-side tools fall back normally.
+  **Declines during tool use:** completed tool work does not block fallback. When a decline fires after server tools (for example, web search or code execution) have finished executing within a request, the fallback attempt proceeds: the completed tool results carry over, and the fallback model can keep invoking server tools. The one case that does not retry is a streaming decline that fires while a tool-use block of any type (a client tool, a server tool, or an MCP tool call) is still open on the stream: that refusal is returned directly, and if the `fallback-credit-2026-07-01` header is set it still carries a credit token redeemable by continuing the partial response. Non-streaming requests are unaffected; the API clears the partial work and retries before responding.
 </Note>
 
 <Accordion title="Sticky routing">
@@ -596,11 +740,11 @@ On a non-streaming request, a mid-output decline behaves differently: the respon
 
   A sticky-served turn carries no `fallback` content block, because no model declined that turn. Identify it by the `fallback_message` entry in `usage.iterations`, the absence of a `message` entry for the requested model, and the response's `model` field.
 
-  In the current release, sticky routing applies only to non-streaming requests. A streaming request that falls back still records the decision for later non-streaming turns.
+  Sticky routing applies to both streaming and non-streaming requests. On a streaming request, the routing decision is made before the stream opens, so the `message_start` event's `model` field already carries the fallback model's ID.
 </Accordion>
 
 <Accordion title="How server-side fallback is billed">
-  You pay for the model that actually serves the request. An attempt that declined before producing output costs nothing and consumes no rate limits.
+  You pay for the model that actually serves the request. An attempt that declined before producing output is not billed: its tokens are reported on its `usage.iterations` entry but not charged. Declined attempts still count against rate limits (see below).
 
   Each attempt is billed separately, at the rates of the model that ran it. The `usage.iterations` array is the per-attempt record of what you are billed. The top-level `usage` counts describe only the attempt that produced the returned message; tokens from different models are never summed into one field.
 
@@ -611,7 +755,7 @@ On a non-streaming request, a mid-output decline behaves differently: the respon
 
 ## Client-side fallback with the SDK middleware
 
-Every Anthropic SDK includes a refusal-fallback middleware. You configure it once on the client with your list of fallback models. Calls through `client.beta.messages` then retry refused requests automatically, on any platform. The middleware also sends the `fallback-credit-2026-06-01` beta header on every request it handles, so retries are repriced without per-request setup.
+Every Anthropic SDK includes a refusal-fallback middleware. You configure it once on the client with your list of fallback models. Calls through `client.beta.messages` then retry refused requests automatically, on any platform. The middleware also sends the `fallback-credit-2026-07-01` beta header on every request it handles, so retries are repriced without per-request setup.
 
 ### Setting it up
 
@@ -962,8 +1106,8 @@ Pass the middleware to the client constructor, and share one `BetaFallbackState`
 ### How it behaves
 
 * Retries walk your fallback list in order. A fallback model that itself refuses passes the request to the next entry.
-* The original refusal response is returned only when every model in the list has declined. The middleware does not raise an error for it.
-* [Thinking blocks from Claude Fable 5](/docs/en/build-with-claude/thinking#thinking-output-on-claude-fable-5-and-claude-mythos-5) are handled for you: the middleware strips them from the retry and manages them in conversation history on later requests.
+* When every model in the list has declined, the middleware returns the final refusal (the last model's refusal response) rather than raising an error.
+* [Thinking blocks from Claude Fable 5](/docs/en/build-with-claude/thinking#thinking-output-on-claude-fable-5-and-claude-mythos-5) pass through unchanged: each retry re-sends your original request body, and the only blocks the middleware removes from conversation history on later requests are the `fallback` boundary blocks it added itself.
 * Responses served through the middleware include a `fallback` content block at each model boundary, the same as server-side fallback responses. The middleware manages those blocks for you on later requests.
 * The model that accepted is recorded in `BetaFallbackState`, so follow-up requests that share the state stay pinned to it rather than re-asking a model that refused.
 
@@ -996,7 +1140,7 @@ Pass the middleware to the client constructor, and share one `BetaFallbackState`
 
 ## Refusals in Message Batches
 
-A refused request in a [Message Batch](/docs/en/build-with-claude/batch-processing) comes back as `result.type: "succeeded"` with `stop_reason: "refusal"`. The `stop_details` field may be `null` on batch results, so detect refusals by checking `stop_reason` directly.
+A refused request in a [Message Batch](/docs/en/build-with-claude/batch-processing) comes back as `result.type: "succeeded"` with `stop_reason: "refusal"`. Batch results carry the same `stop_details` object as synchronous responses, so you can detect refusals through either `stop_reason` or `stop_details.type`. One difference: batch refusals don't mint fallback credits, so `stop_details` on a batch result never includes a `fallback_credit_token`.
 
 Server-side fallback is not available for batches (a batch request that includes `fallbacks` produces a per-item errored result). To retry refused batch items:
 
@@ -1012,7 +1156,7 @@ Server-side fallback is not available for batches (a batch request that includes
 * **Give sub-agent calls their own fallback.** The `fallbacks` parameter does not propagate into model calls made from inside tool execution.
 * **Make fallback a property of the request, not of ambient state.** A shared flag, cached config value, or global toggle can drift out of sync and silently leave a request unprotected. When you cannot confirm fallback is active, configure it rather than assume it is on.
 * **Instrument refusals as their own signal.** A refusal is an HTTP 200, so monitoring built on error rates or 5xx responses never sees it. Emit one event per refusal and one per fallback-served response (the `fallback_message` entry in `usage.iterations` marks the latter), then alert on the gap between the two counts.
-* **Branch on `stop_reason`, not on `stop_details` or `content`.** `stop_details` is informational and can be `null` on a refusal. Check for `stop_reason` equal to `"refusal"` directly.
+* **Branch on `stop_reason` or `stop_details.type`, not on `content` or the inner `stop_details` fields.** The `stop_details` object is always present on a refusal, but its `category` and `explanation` fields can be `null`. Check for `stop_reason` equal to `"refusal"` directly.
 
 ## Next steps
 

@@ -86,8 +86,8 @@ tags:
     name: Workspaces
   - description: beta.Analytics endpoints
     name: beta.Analytics
-  - description: beta.responses endpoints
-    name: beta.responses
+  - description: responses endpoints
+    name: responses
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -2925,6 +2925,7 @@ components:
         - Modular
         - Moonshot AI
         - Morph
+        - VoyageAI by MongoDB
         - NCompass
         - Nebius
         - Nex AGI
