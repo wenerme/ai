@@ -223,6 +223,10 @@ ws.send(JSON.stringify(event));
 ```
 
 ```python
+import os
+
+connector_authorization = os.environ["OPENAI_CONNECTOR_AUTHORIZATION"]
+
 event = {
     "type": "session.update",
     "session": {
@@ -234,7 +238,7 @@ event = {
                 "type": "mcp",
                 "server_label": "google_calendar",
                 "connector_id": "connector_googlecalendar",
-                "authorization": "<google-oauth-access-token>",
+                "authorization": connector_authorization,
                 "allowed_tools": ["search_events", "read_event"],
                 "require_approval": "never",
             }

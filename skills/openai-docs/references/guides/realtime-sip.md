@@ -211,13 +211,9 @@ import threading
 import websockets
 
 app = Flask(__name__)
-client = OpenAI(
-    webhook_secret=os.environ["OPENAI_WEBHOOK_SECRET"]
-)
+client = OpenAI(webhook_secret=os.environ["OPENAI_WEBHOOK_SECRET"])
 
-AUTH_HEADER = {
-    "Authorization": "Bearer " + os.getenv("OPENAI_API_KEY")
-}
+AUTH_HEADER = {"Authorization": "Bearer " + os.environ["OPENAI_API_KEY"]}
 
 call_accept = {
     "type": "realtime",
@@ -228,9 +224,7 @@ call_accept = {
 response_create = {
     "type": "response.create",
     "response": {
-        "instructions": (
-            "Say to the user 'Thank you for calling, how can I help you'"
-        )
+        "instructions": ("Say to the user 'Thank you for calling, how can I help you'")
     },
 }
 
@@ -264,9 +258,7 @@ def webhook():
                 json=call_accept,
             )
             threading.Thread(
-                target=lambda: asyncio.run(
-                    websocket_task(event.data.call_id)
-                ),
+                target=lambda: asyncio.run(websocket_task(event.data.call_id)),
                 daemon=True,
             ).start()
             return Response(status=200)

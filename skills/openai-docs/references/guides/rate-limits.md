@@ -108,19 +108,24 @@ Using the Tenacity library
 
 ```python
 from openai import OpenAI
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_random_exponential,
+)  # for exponential backoff
+
 client = OpenAI()
 
-from tenacity import (
-retry,
-stop_after_attempt,
-wait_random_exponential,
-) # for exponential backoff
 
 @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
 def completion_with_backoff(**kwargs):
-return client.completions.create(**kwargs)
+    return client.completions.create(**kwargs)
 
-completion_with_backoff(model="gpt-3.5-turbo-instruct", prompt="Once upon a time,")
+
+completion_with_backoff(
+    model="gpt-3.5-turbo-instruct",
+    prompt="Once upon a time,",
+)
 ```
 
 
@@ -137,13 +142,19 @@ Using the Tenacity library
 import backoff
 import openai
 from openai import OpenAI
+
 client = OpenAI()
+
 
 @backoff.on_exception(backoff.expo, openai.RateLimitError)
 def completions_with_backoff(**kwargs):
-return client.completions.create(**kwargs)
+    return client.completions.create(**kwargs)
 
-completions_with_backoff(model="gpt-3.5-turbo-instruct", prompt="Once upon a time,")
+
+completions_with_backoff(
+    model="gpt-3.5-turbo-instruct",
+    prompt="Once upon a time,",
+)
 ```
 
 
@@ -161,19 +172,21 @@ import time
 
 import openai
 from openai import OpenAI
+
 client = OpenAI()
 
 # define a retry decorator
 
+
 def retry_with_exponential_backoff(
-func,
-initial_delay: float = 1,
-exponential_base: float = 2,
-jitter: bool = True,
-max_retries: int = 10,
-errors: tuple = (openai.RateLimitError,),
+    func,
+    initial_delay: float = 1,
+    exponential_base: float = 2,
+    jitter: bool = True,
+    max_retries: int = 10,
+    errors: tuple = (openai.RateLimitError,),
 ):
-"""Retry a function with exponential backoff."""
+    """Retry a function with exponential backoff."""
 
     def wrapper(*args, **kwargs):
         # Initialize variables
@@ -186,7 +199,7 @@ errors: tuple = (openai.RateLimitError,),
                 return func(*args, **kwargs)
 
             # Retry on specific errors
-            except errors as e:
+            except errors:
                 # Increment retries
                 num_retries += 1
 
@@ -203,14 +216,15 @@ errors: tuple = (openai.RateLimitError,),
                 time.sleep(delay)
 
             # Raise exceptions for any errors not specified
-            except Exception as e:
-                raise e
+            except Exception:
+                raise
 
     return wrapper
 
+
 @retry_with_exponential_backoff
 def completions_with_backoff(**kwargs):
-return client.completions.create(**kwargs)
+    return client.completions.create(**kwargs)
 ```
 
 Again, OpenAI makes no guarantees on the security or efficiency of this solution but it can be a good starting place for your own solution.

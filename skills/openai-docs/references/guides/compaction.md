@@ -118,11 +118,11 @@ call as-is.
 
 ```python
 # Full window collected from prior turns
-long_input_items_array = [...]
+long_input_items_array = [{"role": "user", "content": "Plan a trip to Kyoto."}]
 
 # 1) Compact the current window
 compacted = client.responses.compact(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=long_input_items_array,
 )
 
@@ -137,7 +137,7 @@ next_input = [
 ]
 
 next_response = client.responses.create(
-    model="gpt-5.5",
+    model="gpt-5.6",
     input=next_input,
     store=False,  # Keep the flow ZDR-friendly
 )

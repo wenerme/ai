@@ -110,10 +110,6 @@ console.log(response.output_text);
 ```
 
 ```python
-from openai import OpenAI
-
-client = OpenAI()
-
 response = client.responses.create(
     model="gpt-5.6",
     tools=[
@@ -123,7 +119,11 @@ response = client.responses.create(
                 "type": "container_auto",
                 "skills": [
                     {"type": "skill_reference", "skill_id": "<skill_id>"},
-                    {"type": "skill_reference", "skill_id": "<skill_id>", "version": 2},
+                    {
+                        "type": "skill_reference",
+                        "skill_id": "<skill_id>",
+                        "version": 2,
+                    },
                 ],
             },
         }
@@ -205,10 +205,6 @@ console.log(response.output_text);
 ```
 
 ```python
-from openai import OpenAI
-
-client = OpenAI()
-
 response = client.responses.create(
     model="gpt-5.6",
     tools=[

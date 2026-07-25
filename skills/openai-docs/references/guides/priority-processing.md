@@ -45,7 +45,7 @@ client = OpenAI()
 response = client.responses.create(
     model="gpt-5.6",
     input="What does 'fit check for my napalm era' mean?",
-    service_tier="priority"
+    service_tier="priority",
 )
 print(response)
 ```

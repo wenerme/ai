@@ -58,10 +58,11 @@ from urllib.parse import urlparse
 import os
 
 # Regex pattern to match a URL
-HTTP_URL_PATTERN = r'^http[s]*://.+'
+HTTP_URL_PATTERN = r"^http[s]*://.+"
 
-domain = "openai.com" # <- put your domain to be crawled
-full_url = "https://openai.com/" # <- put your domain to be crawled with https or http
+domain = "openai.com"  # <- put your domain to be crawled
+full_url = "https://openai.com/"  # <- put your domain to be crawled with https or http
+
 
 # Create a class to parse the HTML and get the hyperlinks
 class HyperlinkParser(HTMLParser):
@@ -85,20 +86,17 @@ The next function takes a URL as an argument, opens the URL, and reads the HTML 
 ```python
 # Function to get the hyperlinks from a URL
 def get_hyperlinks(url):
-
     # Try to open the URL and read the HTML
     try:
-        # Open the URL and read the HTML
-        with urllib.request.urlopen(url) as response:
-
+        with urllib.request.urlopen(url, timeout=30) as response:
             # If the response is not HTML, return an empty list
-            if not response.info().get('Content-Type').startswith("text/html"):
+            if not response.info().get("Content-Type", "").startswith("text/html"):
                 return []
 
             # Decode the HTML
-            html = response.read().decode('utf-8')
-    except Exception as e:
-        print(e)
+            html = response.read().decode("utf-8")
+    except Exception as error:
+        print(error)
         return []
 
     # Create the HTML Parser and then Parse the HTML to get hyperlinks
@@ -158,34 +156,41 @@ def crawl(url):
 
     # Create a directory to store the text files
     if not os.path.exists("text/"):
-            os.mkdir("text/")
+        os.mkdir("text/")
 
-    if not os.path.exists("text/"+local_domain+"/"):
-            os.mkdir("text/" + local_domain + "/")
+    if not os.path.exists("text/" + local_domain + "/"):
+        os.mkdir("text/" + local_domain + "/")
 
     # Create a directory to store the csv files
     if not os.path.exists("processed"):
-            os.mkdir("processed")
+        os.mkdir("processed")
 
     # While the queue is not empty, continue crawling
     while queue:
-
         # Get the next URL from the queue
         url = queue.pop()
-        print(url) # for debugging and to see the progress
+        print(url)  # for debugging and to see the progress
 
         # Save text from the url to a <url>.txt file
-        with open('text/'+local_domain+'/'+url[8:].replace("/", "_") + ".txt", "w", encoding="UTF-8") as f:
-
+        page_name = (local_domain + urlparse(url).path).replace("/", "_")
+        with open(
+            "text/" + local_domain + "/" + page_name + ".txt",
+            "w",
+            encoding="UTF-8",
+        ) as f:
             # Get the text from the URL using BeautifulSoup
-            soup = BeautifulSoup(requests.get(url).text, "html.parser")
+            response = requests.get(url, timeout=10)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "html.parser")
 
             # Get the text but remove the tags
             text = soup.get_text()
 
             # If the crawler gets to a page that requires JavaScript, it will stop the crawl
-            if ("You need to enable JavaScript to run this app." in text):
-                print("Unable to parse page " + url + " due to JavaScript being required")
+            if "You need to enable JavaScript to run this app." in text:
+                print(
+                    "Unable to parse page " + url + " due to JavaScript being required"
+                )
 
             # Otherwise, write the text to the file in the text directory
             f.write(text)
@@ -195,6 +200,7 @@ def crawl(url):
             if link not in seen:
                 queue.append(link)
                 seen.add(link)
+
 
 crawl(full_url)
 ```
@@ -224,10 +230,10 @@ The last line of the above example runs the crawler which goes through all the a
 
 ```python
 def remove_newlines(serie):
-    serie = serie.str.replace('\n', ' ')
-    serie = serie.str.replace('\\n', ' ')
-    serie = serie.str.replace('  ', ' ')
-    serie = serie.str.replace('  ', ' ')
+    serie = serie.str.replace("\n", " ")
+    serie = serie.str.replace("\\n", " ")
+    serie = serie.str.replace("  ", " ")
+    serie = serie.str.replace("  ", " ")
     return serie
 ```
 
@@ -243,24 +249,35 @@ Extra spacing and new lines can clutter the text and complicate the embeddings
 import pandas as pd
 
 # Create a list to store the text files
-texts=[]
+texts = []
 
 # Get all the text files in the text directory
 for file in os.listdir("text/" + domain + "/"):
-
     # Open the file and read the text
     with open("text/" + domain + "/" + file, "r", encoding="UTF-8") as f:
         text = f.read()
 
-        # Omit the first 11 lines and the last 4 lines, then replace -, _, and #update with spaces.
-        texts.append((file[11:-4].replace('-',' ').replace('_', ' ').replace('#update',''), text))
+        page_name = Path(file).stem
+        domain_prefix = f"{domain}_"
+        if page_name.startswith(domain_prefix):
+            page_name = page_name[len(domain_prefix) :]
+        elif page_name == domain:
+            page_name = "index"
+
+        # Replace -, _, and #update with spaces.
+        texts.append(
+            (
+                page_name.replace("-", " ").replace("_", " ").replace("#update", ""),
+                text,
+            )
+        )
 
 # Create a dataframe from the list of texts
-df = pd.DataFrame(texts, columns = ['fname', 'text'])
+df = pd.DataFrame(texts, columns=["fname", "text"])
 
 # Set the text column to be the raw text with the newlines removed
-df['text'] = df.fname + ". " + remove_newlines(df.text)
-df.to_csv('processed/scraped.csv')
+df["text"] = df.fname + ". " + remove_newlines(df.text)
+df.to_csv("processed/scraped.csv")
 df.head()
 ```
 
@@ -277,11 +294,11 @@ import tiktoken
 # Load the cl100k_base tokenizer which is designed to work with the ada-002 model
 tokenizer = tiktoken.get_encoding("cl100k_base")
 
-df = pd.read_csv('processed/scraped.csv', index_col=0)
-df.columns = ['title', 'text']
+df = pd.read_csv("processed/scraped.csv", index_col=0)
+df.columns = ["title", "text"]
 
 # Tokenize the text and save the number of tokens to a new column
-df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
+df["n_tokens"] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 
 # Visualize the distribution of the number of tokens per row using a histogram
 df.n_tokens.hist()
@@ -303,11 +320,12 @@ The newest embeddings model can handle inputs with up to 8191 input tokens so mo
 ```python
 max_tokens = 500
 
+
 # Function to split the text into chunks of a maximum number of tokens
-def split_into_many(text, max_tokens = max_tokens):
+def split_into_many(text, max_tokens=max_tokens):
 
     # Split the text into sentences
-    sentences = text.split('. ')
+    sentences = text.split(". ")
 
     # Get the number of tokens for each sentence
     n_tokens = [len(tokenizer.encode(" " + sentence)) for sentence in sentences]
@@ -318,7 +336,6 @@ def split_into_many(text, max_tokens = max_tokens):
 
     # Loop through the sentences and tokens joined together in a tuple
     for sentence, token in zip(sentences, n_tokens):
-
         # If the number of tokens so far plus the number of tokens in the current sentence is greater
         # than the max number of tokens, then add the chunk to the list of chunks and reset
         # the chunk and tokens so far
@@ -343,26 +360,25 @@ shortened = []
 
 # Loop through the dataframe
 for row in df.iterrows():
-
     # If the text is None, go to the next row
-    if row[1]['text'] is None:
+    if row[1]["text"] is None:
         continue
 
     # If the number of tokens is greater than the max number of tokens, split the text into chunks
-    if row[1]['n_tokens'] > max_tokens:
-        shortened += split_into_many(row[1]['text'])
+    if row[1]["n_tokens"] > max_tokens:
+        shortened += split_into_many(row[1]["text"])
 
     # Otherwise, add the text to the list of shortened texts
     else:
-        shortened.append( row[1]['text'] )
+        shortened.append(row[1]["text"])
 ```
 
 
 Visualizing the updated histogram again can help to confirm if the rows were successfully split into shortened sections.
 
 ```python
-df = pd.DataFrame(shortened, columns = ['text'])
-df['n_tokens'] = df.text.apply(lambda x: len(tokenizer.encode(x)))
+df = pd.DataFrame(shortened, columns=["text"])
+df["n_tokens"] = df.text.apply(lambda x: len(tokenizer.encode(x)))
 df.n_tokens.hist()
 ```
 
@@ -382,13 +398,15 @@ The content is now broken down into smaller chunks and a simple request can be s
 ```python
 from openai import OpenAI
 
-client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY"),
+client = OpenAI()
+
+df["embeddings"] = df.text.apply(
+    lambda x: client.embeddings.create(
+        input=x, model="text-embedding-3-small"
+    ).data[0].embedding
 )
 
-df['embeddings'] = df.text.apply(lambda x: client.embeddings.create(input=x, engine='text-embedding-ada-002')['data'][0]['embedding'])
-
-df.to_csv('processed/embeddings.csv')
+df.to_csv("processed/embeddings.csv")
 df.head()
 ```
 
@@ -418,10 +436,9 @@ Turning the embeddings into a NumPy array is the first step, which will provide 
 
 ```python
 import numpy as np
-from openai.embeddings_utils import distances_from_embeddings
 
-df=pd.read_csv('processed/embeddings.csv', index_col=0)
-df['embeddings'] = df['embeddings'].apply(eval).apply(np.array)
+df = pd.read_csv("processed/embeddings.csv", index_col=0)
+df["embeddings"] = df["embeddings"].apply(eval).apply(np.array)
 
 df.head()
 ```
@@ -430,28 +447,30 @@ df.head()
 The question needs to be converted to an embedding with a simple function, now that the data is ready. This is important because the search with embeddings compares the vector of numbers (which was the conversion of the raw text) using cosine distance. The vectors are likely related and might be the answer to the question if they are close in cosine distance. The OpenAI python package has a built in `distances_from_embeddings` function which is useful here.
 
 ```python
-def create_context(
-    question, df, max_len=1800, size="ada"
-):
+def create_context(question, df, max_len=1800, size="ada"):
     """
     Create a context for a question by finding the most similar context from the dataframe
     """
 
     # Get the embeddings for the question
-    q_embeddings = client.embeddings.create(input=question, engine='text-embedding-ada-002')['data'][0]['embedding']
+    q_embeddings = (
+        client.embeddings.create(input=question, model="text-embedding-3-small")
+        .data[0]
+        .embedding
+    )
 
     # Get the distances from the embeddings
-    df['distances'] = distances_from_embeddings(q_embeddings, df['embeddings'].values, distance_metric='cosine')
-
+    df["distances"] = distances_from_embeddings(
+        q_embeddings, df["embeddings"].values, distance_metric="cosine"
+    )
 
     returns = []
     cur_len = 0
 
     # Sort by distance and add the text to the context until the context is too long
-    for i, row in df.sort_values('distances', ascending=True).iterrows():
-
+    for _, row in df.sort_values("distances", ascending=True).iterrows():
         # Add the length of the text to the current length
-        cur_len += row['n_tokens'] + 4
+        cur_len += row["n_tokens"] + 4
 
         # If the context is too long, break
         if cur_len > max_len:
@@ -482,7 +501,7 @@ def answer_question(
     size="ada",
     debug=False,
     max_tokens=150,
-    stop_sequence=None
+    stop_sequence=None,
 ):
     """
     Answer a question based on the most similar context from the dataframe texts
@@ -502,7 +521,12 @@ def answer_question(
         # Create a completion using the question and context
         response = client.completions.create(
             model=model,
-            prompt=f"Answer the question based on the context below, and if the question can't be answered based on the context, say \"I don't know\"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:",
+            prompt=(
+                "Answer the question based on the context below, and if the "
+                "question can't be answered based on the context, say "
+                '"I don\'t know"'
+                f"\n\nContext: {context}\n\n---\n\nQuestion: {question}\nAnswer:"
+            ),
             temperature=0,
             max_tokens=max_tokens,
             top_p=1,
@@ -511,8 +535,8 @@ def answer_question(
             stop=stop_sequence,
         )
         return response.choices[0].text.strip()
-    except Exception as e:
-        print(e)
+    except Exception as error:
+        print(error)
         return ""
 ```
 

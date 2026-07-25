@@ -342,8 +342,7 @@ if video.status == "failed":
     message = getattr(
         getattr(video, "error", None), "message", "Video generation failed"
     )
-    print(message)
-    return
+    raise RuntimeError(message)
 
 print("Video generation completed:", video)
 print("Downloading video content...")

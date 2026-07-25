@@ -35,16 +35,16 @@ TOKEN=$(curl -sS -G -H "Metadata: true" \
   --data-urlencode "api-version=2018-02-01" \
   --data-urlencode "resource=${APPLICATION_ID_URI}" \
   | jq -r .access_token)
+export TOKEN
 ```
 
 If the resource has multiple user-assigned managed identities, add the `client_id`, `object_id`, or `msi_res_id` query parameter for the managed identity you want to use. Microsoft documents the IMDS token request parameters in [Use managed identities on a virtual machine to acquire access token](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-to-use-vm-token).
 
 ### Verify the token
 
-Before configuring workload identity federation, decode a sample token locally and inspect its claims:
+Before configuring workload identity federation, export the Microsoft Entra token as `TOKEN`, then run this script locally to inspect its claims:
 
-```bash
-TOKEN="$TOKEN" python3 - <<'PY'
+```python
 import base64
 import json
 import os
@@ -52,8 +52,8 @@ import os
 payload = os.environ["TOKEN"].split(".")[1]
 payload += "=" * (-len(payload) % 4)
 print(json.dumps(json.loads(base64.urlsafe_b64decode(payload)), indent=2))
-PY
 ```
+
 
 This command decodes the JWT payload without verifying the token signature. Use a local decoder for production tokens, and avoid pasting production tokens into third-party tools.
 
@@ -222,6 +222,7 @@ def azure_managed_identity_token_provider(resource: str) -> SubjectTokenProvider
         return token
 
     return {"token_type": "jwt", "get_token": get_token}
+
 
 client = OpenAI(
     workload_identity={
@@ -619,12 +620,16 @@ spec:
 
 ### Verify the token
 
-Before configuring workload identity federation, decode a sample projected service account token locally and inspect its claims. From a running pod with the projected token mounted:
+Before configuring workload identity federation, decode a sample projected service account token locally and inspect its claims. From a running pod with the projected token mounted, retrieve the token and export it as `TOKEN`:
 
 ```bash
 TOKEN=$(kubectl exec -n default openai-wif-app -- cat /var/run/secrets/tokens/token)
+export TOKEN
+```
 
-TOKEN="$TOKEN" python3 - <<'PY'
+Then run this script:
+
+```python
 import base64
 import json
 import os
@@ -632,8 +637,8 @@ import os
 payload = os.environ["TOKEN"].split(".")[1]
 payload += "=" * (-len(payload) % 4)
 print(json.dumps(json.loads(base64.urlsafe_b64decode(payload)), indent=2))
-PY
 ```
+
 
 This command decodes the JWT payload without verifying the token signature. Use a local decoder for production tokens, and avoid pasting production tokens into third-party tools.
 

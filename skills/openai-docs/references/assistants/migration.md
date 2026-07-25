@@ -94,7 +94,7 @@ Responses are designed to be used alone, but you can also use them with prompt a
   client:load
   snippets={[
     {
-      language: "python",
+      language: "json",
       code: `
 {
   "id": "run_FKIpcs5ECSwuCmehBqsqkORj",
@@ -144,7 +144,7 @@ Responses are designed to be used alone, but you can also use them with prompt a
       title: "Run object",
     },
     {
-      language: "python",
+      language: "json",
       code: `
 {
   "id": "resp_687a7b53036c819baad6012d58b39bcb074adcd9e24850fc",
@@ -237,14 +237,22 @@ Reusable prompt objects are also being deprecated. If you use this migration
 
 ### 2. Move new user chats over to conversations and responses
 
-We will not provide an automated tool for migrating Threads to Conversations. Instead, we recommend migrating new user threads onto conversations and backfilling old ones as necessary.
+We will not provide an automated tool for migrating Threads to Conversations. Instead, we recommend migrating new user threads onto conversations and migrating older ones as necessary.
 
 Here's an example for how you might backfill a thread:
 
 ```python
-thread_id = "thread_EIpHrTAVe0OzoLQg3TXfvrkG"
+import os
 
-for page in openai.beta.threads.messages.list(thread_id=thread_id, order="asc").iter_pages():
+from openai import OpenAI
+
+openai = OpenAI()
+messages = []
+thread_id = os.environ["OPENAI_THREAD_ID"]
+
+for page in openai.beta.threads.messages.list(
+    thread_id=thread_id, order="asc"
+).iter_pages():
     messages += page.data
 
 items = []
@@ -256,9 +264,11 @@ for m in messages:
         match content.type:
             case "text":
                 item_content_type = "input_text" if m.role == "user" else "output_text"
-                item_content += [{"type": item_content_type, "text": content.text.value}]
+                item_content += [
+                    {"type": item_content_type, "text": content.text.value}
+                ]
             case "image_url":
-                item_content + [
+                item_content += [
                     {
                         "type": "input_image",
                         "image_url": content.image_url.url,
@@ -276,7 +286,7 @@ conversation = openai.conversations.create(items=items)
 
 ## Comparing full examples
 
-Here’s a few simple examples of integrations using both the Assistants API and the Responses API so you can see how they compare.
+Here are a few examples of integrations using both the Assistants API and the Responses API so you can see how they compare.
 
 ### User chat app
 
@@ -285,28 +295,40 @@ Here’s a few simple examples of integrations using both the Assistants API and
 <div data-content-switcher-pane data-value="assistants">
     <div class="hidden">Assistants API</div>
     ```python
-thread = openai.threads.create()
+threads_by_session: dict[str, str] = {}
 
-    @app.post("/messages")
-    async def message(message: Message):
-        openai.beta.threads.messages.create(
-            role="user",
-            content=message.content
+
+@app.post("/messages")
+async def message(message: Message):
+    thread_id = threads_by_session.get(message.session_id)
+    if thread_id is None:
+        thread_id = openai.beta.threads.create().id
+        threads_by_session[message.session_id] = thread_id
+
+    openai.beta.threads.messages.create(
+        thread_id=thread_id,
+        role="user",
+        content=message.content,
+    )
+
+    run = openai.beta.threads.runs.create(
+        assistant_id=os.environ["OPENAI_ASSISTANT_ID"],
+        thread_id=thread_id,
+    )
+    while run.status in ("queued", "in_progress"):
+        await asyncio.sleep(1)
+        run = openai.beta.threads.runs.retrieve(
+            thread_id=thread_id,
+            run_id=run.id,
         )
 
-        run = openai.beta.threads.runs.create(
-            assistant_id=os.getenv("ASSISTANT_ID"),
-            thread_id=thread.id
-        )
-        while run.status in ("queued", "in_progress"):
-            await asyncio.sleep(1)
-            run = openai.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run.id)
+    messages = openai.beta.threads.messages.list(
+        order="desc",
+        limit=1,
+        thread_id=thread_id,
+    )
 
-        messages = openai.beta.threads.messages.list(
-            order="desc", limit=1, thread_id=thread.id
-        )
-
-        return { "content": messages[-1].content }
+    return {"content": messages.data[0].content}
 ```
 
 
@@ -314,16 +336,23 @@ thread = openai.threads.create()
   <div data-content-switcher-pane data-value="responses" hidden>
     <div class="hidden">Responses API</div>
     ```python
-conversation = openai.conversations.create()
+conversations_by_session: dict[str, str] = {}
 
-    @app.post("/messages")
-    async def message(message: Message):
-        response = openai.responses.create(
-            prompt={ "id": os.getenv("PROMPT_ID") },
-            input=[{ "role": "user", "content": message.content }]
-        )
 
-        return { "content": response.output_text }
+@app.post("/messages")
+async def message(message: Message):
+    conversation_id = conversations_by_session.get(message.session_id)
+    if conversation_id is None:
+        conversation_id = openai.conversations.create().id
+        conversations_by_session[message.session_id] = conversation_id
+
+    response = openai.responses.create(
+        prompt={"id": os.environ["OPENAI_PROMPT_ID"]},
+        input=[{"role": "user", "content": message.content}],
+        conversation=conversation_id,
+    )
+
+    return {"content": response.output_text}
 ```
 
 

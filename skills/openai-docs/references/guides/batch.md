@@ -29,7 +29,7 @@ Batches start with a `.jsonl` file where each line contains the details of an in
 - `/v1/chat/completions` ([Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat))
 - `/v1/embeddings` ([Embeddings API](https://developers.openai.com/api/docs/api-reference/embeddings))
 - `/v1/completions` ([Completions API](https://developers.openai.com/api/docs/api-reference/completions))
-- `/v1/moderations` ([Moderations guide](https://developers.openai.com/api/docs/guides/moderation))
+- `/v1/moderations` ([Moderation guide](https://developers.openai.com/api/docs/guides/moderation))
 - `/v1/images/generations` ([Images API](https://developers.openai.com/api/docs/api-reference/images))
 - `/v1/images/edits` ([Images API](https://developers.openai.com/api/docs/api-reference/images))
 - `/v1/videos` ([Video generation guide](https://developers.openai.com/api/docs/guides/video-generation))
@@ -52,7 +52,7 @@ When targeting `/v1/moderations`, include an `input` field in every request body
 {"custom_id": "request-2", "method": "POST", "url": "/v1/chat/completions", "body": {"model": "gpt-3.5-turbo-0125", "messages": [{"role": "system", "content": "You are an unhelpful assistant."},{"role": "user", "content": "Hello world!"}],"max_tokens": 1000}}
 ```
 
-#### Moderations input examples
+#### Moderation input examples
 
 Text-only request:
 
@@ -68,7 +68,7 @@ Text-only request:
 }
 ```
 
-Multimodal request:
+Request with text and image input:
 
 ```jsonl
 {
@@ -118,11 +118,11 @@ console.log(file);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 batch_input_file = client.files.create(
-    file=open("batchinput.jsonl", "rb"),
-    purpose="batch"
+    file=open("batchinput.jsonl", "rb"), purpose="batch"
 )
 
 print(batch_input_file)
@@ -162,18 +162,13 @@ console.log(batch);
 ```
 
 ```python
-from openai import OpenAI
-client = OpenAI()
-
-batch_input_file_id = batch_input_file.id
-client.batches.create(
-    input_file_id=batch_input_file_id,
+batch = client.batches.create(
+    input_file_id=batch_input_file.id,
     endpoint="/v1/chat/completions",
     completion_window="24h",
-    metadata={
-        "description": "nightly eval job"
-    }
+    metadata={"description": "nightly eval job"},
 )
+print(batch)
 ```
 
 ```bash
@@ -197,7 +192,7 @@ openai batches create \
 
 This request will return a [Batch object](https://developers.openai.com/api/docs/api-reference/batch/object) with metadata about your batch:
 
-```python
+```json
 {
   "id": "batch_abc123",
   "object": "batch",
@@ -238,10 +233,7 @@ console.log(batch);
 ```
 
 ```python
-from openai import OpenAI
-client = OpenAI()
-
-batch = client.batches.retrieve("batch_abc123")
+batch = client.batches.retrieve(batch.id)
 print(batch)
 ```
 
@@ -287,10 +279,14 @@ console.log(fileContents);
 ```
 
 ```python
+import os
+
 from openai import OpenAI
+
+output_file_id = os.environ["OPENAI_BATCH_OUTPUT_FILE_ID"]
 client = OpenAI()
 
-file_response = client.files.content("file-xyz123")
+file_response = client.files.content(output_file_id)
 print(file_response.text)
 ```
 
@@ -337,10 +333,14 @@ console.log(batch);
 ```
 
 ```python
+import os
+
 from openai import OpenAI
+
+batch_id = os.environ["OPENAI_BATCH_ID"]
 client = OpenAI()
 
-client.batches.cancel("batch_abc123")
+client.batches.cancel(batch_id)
 ```
 
 ```bash
@@ -375,6 +375,7 @@ for await (const batch of list) {
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 client.batches.list(limit=10)
@@ -401,10 +402,10 @@ The Batch API is widely available across most of our models, but not all. Please
 Batch API rate limits are separate from existing per-model rate limits. The Batch API has three types of rate limits:
 
 1. **Per-batch limits:** A single batch may include up to 50,000 requests, and a batch input file can be up to 200 MB in size. Note that `/v1/embeddings` batches are also restricted to a maximum of 50,000 embedding inputs across all requests in the batch.
-2. **Enqueued prompt tokens per model:** Each model has a maximum number of enqueued prompt tokens allowed for batch processing. You can find these limits on the [Platform Settings page](https://platform.openai.com/settings/organization/limits).
+2. **Queued prompt tokens per model:** Each model has a maximum number of prompt tokens that can be queued for batch processing. You can find these limits on the [Platform Settings page](https://platform.openai.com/settings/organization/limits).
 3. **Batch creation rate limit:** You can create up to 2,000 batches per hour. If you need to submit more requests, increase the number of requests per batch.
 
-There are no limits for output tokens for the Batch API today. Because Batch API rate limits are a new, separate pool, **using the Batch API will not consume tokens from your standard per-model rate limits**, thereby offering you a convenient way to increase the number of requests and processed tokens you can use when querying our API.
+The Batch API currently has no output-token limit. Because Batch API rate limits are a new, separate pool, **using the Batch API will not consume tokens from your standard per-model rate limits**, thereby offering you a convenient way to increase the number of requests and processed tokens you can use when querying our API.
 
 ## Batch expiration
 

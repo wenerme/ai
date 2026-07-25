@@ -31,8 +31,7 @@ from openai import OpenAI
 client = OpenAI()
 
 response = client.responses.input_tokens.count(
-    model="gpt-5.6",
-    input="Tell me a joke."
+    model="gpt-5.6", input="Tell me a joke."
 )
 print(response.input_tokens)
 ```
@@ -207,7 +206,10 @@ response = client.responses.input_tokens.count(
         {
             "role": "user",
             "content": [
-                {"type": "input_image", "image_url": "https://example.com/chart.png"},
+                {
+                    "type": "input_image",
+                    "image_url": "https://example.com/chart.png",
+                },
                 {"type": "input_text", "text": "Summarize this chart."},
             ],
         }

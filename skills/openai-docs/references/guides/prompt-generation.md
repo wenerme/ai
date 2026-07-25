@@ -25,7 +25,7 @@ We use specific meta-prompts for different output types, like audio, to ensure t
     <div class="hidden">Text-out</div>
     Text meta-prompt
 
-```python
+````python
 from openai import OpenAI
 
 client = OpenAI()
@@ -76,6 +76,7 @@ The final prompt you output should adhere to the following structure below. Do n
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]
 """.strip()
 
+
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
         model="gpt-5.6",
@@ -92,7 +93,7 @@ def generate_prompt(task_or_prompt: str):
     )
 
     return completion.choices[0].message.content
-```
+````
 
   </div>
   <div data-content-switcher-pane data-value="audio-out" hidden>
@@ -141,6 +142,7 @@ The final prompt you output should adhere to the following structure below. Do n
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]
 """.strip()
 
+
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
         model="gpt-5.6",
@@ -173,7 +175,7 @@ To edit prompts, we use a slightly modified meta-prompt. While direct edits are 
     <div class="hidden">Text-out</div>
     Text meta-prompt for edits
 
-```python
+````python
 from openai import OpenAI
 
 client = OpenAI()
@@ -184,10 +186,10 @@ Given a current prompt and a change description, produce a detailed system promp
 Your final output will be the full corrected prompt verbatim. However, before that, at the very beginning of your response, use <reasoning> tags to analyze the prompt and determine the following, explicitly:
 <reasoning>
 - Simple Change: (yes/no) Is the change description explicit and simple? (If so, skip the rest of these questions.)
-- Reasoning: (yes/no) Does the current prompt use reasoning, analysis, or chain of thought? 
+- Reasoning: (yes/no) Does the current prompt use reasoning, analysis, or chain of thought?
     - Identify: (max 10 words) if so, which section(s) utilize reasoning?
     - Conclusion: (yes/no) is the chain of thought used to determine a conclusion?
-    - Ordering: (before/after) is the chain of though located before or after 
+    - Ordering: (before/after) is the chain of though located before or after
 - Structure: (yes/no) does the input prompt have a well defined structure
 - Examples: (yes/no) does the input prompt have few-shot examples
     - Representative: (1-5) if present, how representative are the examples?
@@ -198,7 +200,7 @@ Your final output will be the full corrected prompt verbatim. However, before th
 - Prioritization: (list) what 1-3 categories are the MOST important to address.
 - Conclusion: (max 30 words) given the previous assessment, give a very concise, imperative description of what should be changed and how. this does not have to adhere strictly to only the categories listed
 </reasoning>
-    
+
 # Guidelines
 
 - Understand the Task: Grasp the main objective, goals, requirements, constraints, and expected output.
@@ -243,6 +245,7 @@ The final prompt you output should adhere to the following structure below. Do n
 [NOTE: you must start with a <reasoning> section. the immediate next token you produce should be <reasoning>]
 """.strip()
 
+
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
         model="gpt-5.6",
@@ -259,7 +262,7 @@ def generate_prompt(task_or_prompt: str):
     )
 
     return completion.choices[0].message.content
-```
+````
 
   </div>
   <div data-content-switcher-pane data-value="audio-out" hidden>
@@ -277,10 +280,10 @@ Given a current prompt and a change description, produce a detailed system promp
 Your final output will be the full corrected prompt verbatim. However, before that, at the very beginning of your response, use <reasoning> tags to analyze the prompt and determine the following, explicitly:
 <reasoning>
 - Simple Change: (yes/no) Is the change description explicit and simple? (If so, skip the rest of these questions.)
-- Reasoning: (yes/no) Does the current prompt use reasoning, analysis, or chain of thought? 
+- Reasoning: (yes/no) Does the current prompt use reasoning, analysis, or chain of thought?
     - Identify: (max 10 words) if so, which section(s) utilize reasoning?
     - Conclusion: (yes/no) is the chain of thought used to determine a conclusion?
-    - Ordering: (before/after) is the chain of though located before or after 
+    - Ordering: (before/after) is the chain of though located before or after
 - Structure: (yes/no) does the input prompt have a well defined structure
 - Examples: (yes/no) does the input prompt have few-shot examples
     - Representative: (1-5) if present, how representative are the examples?
@@ -326,6 +329,7 @@ The final prompt you output should adhere to the following structure below. Do n
 [optional: edge cases, details, and an area to call or repeat out specific important considerations]
 [NOTE: you must start with a <reasoning> section. the immediate next token you produce should be <reasoning>]
 """.strip()
+
 
 def generate_prompt(task_or_prompt: str):
     completion = client.chat.completions.create(
@@ -414,133 +418,70 @@ import json
 client = OpenAI()
 
 META_SCHEMA = {
-  "name": "metaschema",
-  "schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "type": "string",
-        "description": "The name of the schema"
-      },
-      "type": {
-        "type": "string",
-        "enum": [
-          "object",
-          "array",
-          "string",
-          "number",
-          "boolean",
-          "null"
-        ]
-      },
-      "properties": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/$defs/schema_definition"
-        }
-      },
-      "items": {
-        "anyOf": [
-          {
-            "$ref": "#/$defs/schema_definition"
-          },
-          {
-            "type": "array",
-            "items": {
-              "$ref": "#/$defs/schema_definition"
-            }
-          }
-        ]
-      },
-      "required": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": {
-        "type": "boolean"
-      }
-    },
-    "required": [
-      "type"
-    ],
-    "additionalProperties": False,
-    "if": {
-      "properties": {
-        "type": {
-          "const": "object"
-        }
-      }
-    },
-    "then": {
-      "required": [
-        "properties"
-      ]
-    },
-    "$defs": {
-      "schema_definition": {
+    "name": "metaschema",
+    "schema": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "object",
-              "array",
-              "string",
-              "number",
-              "boolean",
-              "null"
-            ]
-          },
-          "properties": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/$defs/schema_definition"
-            }
-          },
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/$defs/schema_definition"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/$defs/schema_definition"
-                }
-              }
-            ]
-          },
-          "required": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "type"
-        ],
-        "additionalProperties": False,
-        "if": {
-          "properties": {
+            "name": {"type": "string", "description": "The name of the schema"},
             "type": {
-              "const": "object"
-            }
-          }
+                "type": "string",
+                "enum": ["object", "array", "string", "number", "boolean", "null"],
+            },
+            "properties": {
+                "type": "object",
+                "additionalProperties": {"$ref": "#/$defs/schema_definition"},
+            },
+            "items": {
+                "anyOf": [
+                    {"$ref": "#/$defs/schema_definition"},
+                    {"type": "array", "items": {"$ref": "#/$defs/schema_definition"}},
+                ]
+            },
+            "required": {"type": "array", "items": {"type": "string"}},
+            "additionalProperties": {"type": "boolean"},
         },
-        "then": {
-          "required": [
-            "properties"
-          ]
-        }
-      }
-    }
-  }
+        "required": ["type"],
+        "additionalProperties": False,
+        "if": {"properties": {"type": {"const": "object"}}},
+        "then": {"required": ["properties"]},
+        "$defs": {
+            "schema_definition": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "object",
+                            "array",
+                            "string",
+                            "number",
+                            "boolean",
+                            "null",
+                        ],
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {"$ref": "#/$defs/schema_definition"},
+                    },
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/$defs/schema_definition"},
+                            {
+                                "type": "array",
+                                "items": {"$ref": "#/$defs/schema_definition"},
+                            },
+                        ]
+                    },
+                    "required": {"type": "array", "items": {"type": "string"}},
+                    "additionalProperties": {"type": "boolean"},
+                },
+                "required": ["type"],
+                "additionalProperties": False,
+                "if": {"properties": {"type": {"const": "object"}}},
+                "then": {"required": ["properties"]},
+            }
+        },
+    },
 }
 
 META_PROMPT = """
@@ -709,6 +650,7 @@ Output: {
 }
 """.strip()
 
+
 def generate_schema(description: str):
     completion = client.chat.completions.create(
         model="gpt-5.6-terra",
@@ -740,92 +682,60 @@ import json
 client = OpenAI()
 
 META_SCHEMA = {
-  "name": "function-metaschema",
-  "schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "type": "string",
-        "description": "The name of the function"
-      },
-      "description": {
-        "type": "string",
-        "description": "A description of what the function does"
-      },
-      "parameters": {
-        "$ref": "#/$defs/schema_definition",
-        "description": "A JSON schema that defines the function's parameters"
-      }
-    },
-    "required": [
-      "name",
-      "description",
-      "parameters"
-    ],
-    "additionalProperties": False,
-    "$defs": {
-      "schema_definition": {
+    "name": "function-metaschema",
+    "schema": {
         "type": "object",
         "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "object",
-              "array",
-              "string",
-              "number",
-              "boolean",
-              "null"
-            ]
-          },
-          "properties": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/$defs/schema_definition"
-            }
-          },
-          "items": {
-            "anyOf": [
-              {
-                "$ref": "#/$defs/schema_definition"
-              },
-              {
-                "type": "array",
-                "items": {
-                  "$ref": "#/$defs/schema_definition"
-                }
-              }
-            ]
-          },
-          "required": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "additionalProperties": {
-            "type": "boolean"
-          }
+            "name": {"type": "string", "description": "The name of the function"},
+            "description": {
+                "type": "string",
+                "description": "A description of what the function does",
+            },
+            "parameters": {
+                "$ref": "#/$defs/schema_definition",
+                "description": "A JSON schema that defines the function's parameters",
+            },
         },
-        "required": [
-          "type"
-        ],
+        "required": ["name", "description", "parameters"],
         "additionalProperties": False,
-        "if": {
-          "properties": {
-            "type": {
-              "const": "object"
+        "$defs": {
+            "schema_definition": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "object",
+                            "array",
+                            "string",
+                            "number",
+                            "boolean",
+                            "null",
+                        ],
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {"$ref": "#/$defs/schema_definition"},
+                    },
+                    "items": {
+                        "anyOf": [
+                            {"$ref": "#/$defs/schema_definition"},
+                            {
+                                "type": "array",
+                                "items": {"$ref": "#/$defs/schema_definition"},
+                            },
+                        ]
+                    },
+                    "required": {"type": "array", "items": {"type": "string"}},
+                    "additionalProperties": {"type": "boolean"},
+                },
+                "required": ["type"],
+                "additionalProperties": False,
+                "if": {"properties": {"type": {"const": "object"}}},
+                "then": {"required": ["properties"]},
             }
-          }
         },
-        "then": {
-          "required": [
-            "properties"
-          ]
-        }
-      }
-    }
-  }
+    },
 }
 
 META_PROMPT = """
@@ -954,6 +864,7 @@ Output: {
     }
 }
 """.strip()
+
 
 def generate_function_schema(description: str):
     completion = client.chat.completions.create(

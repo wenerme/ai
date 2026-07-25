@@ -521,9 +521,7 @@ def process_tool_call(name: str, arguments: str) -> str:
 
 def run_multi_agent(connection):
     previous_response_id: str | None = None
-    pending_input: list[dict[str, object]] = [
-        {"role": "user", "content": input()}
-    ]
+    pending_input: list[dict[str, object]] = [{"role": "user", "content": input()}]
 
     while pending_input:
         request = {
@@ -583,9 +581,7 @@ def run_multi_agent(connection):
                 if event.error.code != "response_already_completed":
                     raise RuntimeError(event.error)
 
-                next_input.extend(
-                    item.model_dump(mode="json") for item in event.input
-                )
+                next_input.extend(item.model_dump(mode="json") for item in event.input)
 
             elif event_type == "response.completed":
                 completed_response = event.response

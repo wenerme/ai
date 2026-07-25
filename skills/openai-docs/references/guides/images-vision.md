@@ -59,7 +59,7 @@ if (imageData.length > 0) {
 from openai import OpenAI
 import base64
 
-client = OpenAI() 
+client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
@@ -160,16 +160,18 @@ client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
-    input=[{
-        "role": "user",
-        "content": [
-            {"type": "input_text", "text": "what's in this image?"},
-            {
-                "type": "input_image",
-                "image_url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
-            },
-        ],
-    }],
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "input_text", "text": "what's in this image?"},
+                {
+                    "type": "input_image",
+                    "image_url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
+                },
+            ],
+        }
+    ],
 )
 
 print(response.output_text)
@@ -269,6 +271,7 @@ from openai import OpenAI
 
 client = OpenAI()
 
+
 # Function to encode the image
 def encode_image(image_path):
     with open(image_path, "rb") as image_file:
@@ -288,7 +291,7 @@ response = client.responses.create(
         {
             "role": "user",
             "content": [
-                { "type": "input_text", "text": "what's in this image?" },
+                {"type": "input_text", "text": "what's in this image?"},
                 {
                     "type": "input_image",
                     "image_url": f"data:image/jpeg;base64,{base64_image}",
@@ -384,30 +387,34 @@ from openai import OpenAI
 
 client = OpenAI()
 
+
 # Function to create a file with the Files API
 def create_file(file_path):
-  with open(file_path, "rb") as file_content:
-    result = client.files.create(
-        file=file_content,
-        purpose="vision",
-    )
-    return result.id
+    with open(file_path, "rb") as file_content:
+        result = client.files.create(
+            file=file_content,
+            purpose="vision",
+        )
+        return result.id
+
 
 # Getting the file ID
 file_id = create_file("path_to_your_image.jpg")
 
 response = client.responses.create(
     model="gpt-5.6",
-    input=[{
-        "role": "user",
-        "content": [
-            {"type": "input_text", "text": "what's in this image?"},
-            {
-                "type": "input_image",
-                "file_id": file_id,
-            },
-        ],
-    }],
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "input_text", "text": "what's in this image?"},
+                {
+                    "type": "input_image",
+                    "file_id": file_id,
+                },
+            ],
+        }
+    ],
 )
 
 print(response.output_text)

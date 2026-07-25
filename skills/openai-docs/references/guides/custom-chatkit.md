@@ -27,43 +27,37 @@ pip install openai-chatkit
 ### 2. Implement a server class
 
 `ChatKitServer` drives the conversation. Override `respond` to stream events whenever a
-user message or client tool output arrives. Helpers like `stream_agent_response` make it
-simple to connect to the Agents SDK.
+user message or client tool output arrives. Helpers like `stream_agent_response` connect
+the server to the Agents SDK.
 
 ```python
-class MyChatKitServer(ChatKitServer):
-    def __init__(self, data_store: Store, file_store: FileStore | None = None):
-        super().__init__(data_store, file_store)
-
-    assistant_agent = Agent[AgentContext](
-        model="gpt-5.5",
-        name="Assistant",
-        instructions="You are a helpful assistant",
-    )
-
+class MyChatKitServer(ChatKitServer[RequestContext]):
     async def respond(
         self,
         thread: ThreadMetadata,
-        input: UserMessageItem | ClientToolCallOutputItem,
-        context: Any,
+        input: UserMessageItem | ClientToolCallOutputItem | None,
+        context: RequestContext,
     ) -> AsyncIterator[Event]:
+        items_page = await self.store.load_thread_items(
+            thread.id,
+            after=None,
+            limit=20,
+            order="desc",
+            context=context,
+        )
+        input_items = await simple_to_agent_input(list(reversed(items_page.data)))
         agent_context = AgentContext(
             thread=thread,
             store=self.store,
             request_context=context,
         )
         result = Runner.run_streamed(
-            self.assistant_agent,
-            await to_input_item(input, self.to_message_content),
+            assistant_agent,
+            input_items,
             context=agent_context,
         )
         async for event in stream_agent_response(agent_context, result):
             yield event
-
-    async def to_message_content(
-        self, input: FilePart | ImagePart
-    ) -> ResponseInputContentParam:
-        raise NotImplementedError()
 ```
 
 
@@ -73,10 +67,13 @@ Use your framework of choice to forward HTTP requests to the server instance. Fo
 example, with FastAPI:
 
 ```python
+from fastapi import FastAPI, Request, Response
+from fastapi.responses import StreamingResponse
+
 app = FastAPI()
-data_store = SQLiteStore()
-file_store = DiskFileStore(data_store)
-server = MyChatKitServer(data_store, file_store)
+data_store = MemoryStore()
+server = MyChatKitServer(data_store)
+
 
 @app.post("/chatkit")
 async def chatkit_endpoint(request: Request):
@@ -90,9 +87,9 @@ async def chatkit_endpoint(request: Request):
 ### 4. Establish data store contract
 
 Implement `chatkit.store.Store` to persist threads, messages, and files using your
-preferred database. The default example uses SQLite for local development. Consider
-storing the models as JSON blobs so library updates can evolve the schema without
-migrations.
+preferred database. For local development, you can use an in-memory `Store`
+implementation. For production, use durable storage and consider storing the models as
+JSON blobs so library updates can evolve the schema without migrations.
 
 ### 5. Provide file store contract
 
@@ -114,8 +111,9 @@ async def add_to_todo_list(ctx: RunContextWrapper[AgentContext], item: str) -> N
         arguments={"item": item},
     )
 
+
 assistant_agent = Agent[AgentContext](
-    model="gpt-5.5",
+    model="gpt-5.6",
     name="Assistant",
     instructions="You are a helpful assistant",
     tools=[add_to_todo_list],
@@ -150,19 +148,23 @@ immediately or stream updates as they arrive.
 async def respond(
     self,
     thread: ThreadMetadata,
-    input: UserMessageItem | ClientToolCallOutputItem,
-    context: Any,
+    input: UserMessageItem | ClientToolCallOutputItem | None,
+    context: RequestContext,
 ) -> AsyncIterator[Event]:
     widget = Card(
-        children=[Text(
-            id="description",
-            value="Generated summary",
-        )]
+        children=[
+            Text(
+                id="description",
+                value="Generated summary",
+            )
+        ]
     )
     async for event in stream_widget(
         thread,
         widget,
-        generate_id=lambda item_type: self.store.generate_item_id(item_type, thread, context),
+        generate_id=lambda item_type: self.store.generate_item_id(
+            item_type, thread, context
+        ),
     ):
         yield event
 ```
@@ -214,15 +216,15 @@ type Events = {
 
 ### Options reference
 
-| Option          | Type                       | Description                                                  | Default        |
-| --------------- | -------------------------- | ------------------------------------------------------------ | -------------- |
-| `apiURL`        | `string`                   | Endpoint that implements the ChatKit server protocol.        | _required_     |
-| `fetch`         | `typeof fetch`             | Override fetch calls (for custom headers or auth).           | `window.fetch` |
-| `theme`         | `"light" \| "dark"`        | UI theme.                                                    | `"light"`      |
-| `initialThread` | `string \| null`           | Thread to open on mount; `null` shows the new thread view.   | `null`         |
-| `clientTools`   | `Record<string, Function>` | Client-executed tools exposed to the model.                  |                |
-| `header`        | `object \| boolean`        | Header configuration or `false` to hide the header.          | `true`         |
-| `newThreadView` | `object`                   | Customize greeting text and starter prompts.                 |                |
-| `messages`      | `object`                   | Configure message affordances (feedback, annotations, etc.). |                |
-| `composer`      | `object`                   | Control attachments, entity tags, and placeholder text.      |                |
-| `entities`      | `object`                   | Callbacks for entity lookup, click handling, and previews.   |                |
+| Option          | Type                       | Description                                                | Default        |
+| --------------- | -------------------------- | ---------------------------------------------------------- | -------------- |
+| `apiURL`        | `string`                   | Endpoint that implements the ChatKit server protocol.      | _required_     |
+| `fetch`         | `typeof fetch`             | Override fetch calls (for custom headers or auth).         | `window.fetch` |
+| `theme`         | `"light" \| "dark"`        | UI theme.                                                  | `"light"`      |
+| `initialThread` | `string \| null`           | Thread to open on mount; `null` shows the new thread view. | `null`         |
+| `clientTools`   | `Record<string, Function>` | Client-executed tools exposed to the model.                |                |
+| `header`        | `object \| boolean`        | Header configuration or `false` to hide the header.        | `true`         |
+| `newThreadView` | `object`                   | Customize greeting text and starter prompts.               |                |
+| `messages`      | `object`                   | Configure message features (feedback, annotations, etc.).  |                |
+| `composer`      | `object`                   | Control attachments, entity tags, and placeholder text.    |                |
+| `entities`      | `object`                   | Callbacks for entity lookup, click handling, and previews. |                |

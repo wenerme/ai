@@ -204,7 +204,7 @@ CITATION_DELIMITER = "\ue202"
 CITATION_STOP = "\ue201"
 
 SOURCE_ID_RE = re.compile(r"^[A-Za-z0-9_-]+$")
-LINE_LOCATOR_RE = re.compile(r"^L\\d+(?:-L\\d+)?$")
+LINE_LOCATOR_RE = re.compile(r"^L\d+(?:-L\d+)?$")
 
 
 class Citation(TypedDict):

@@ -142,6 +142,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -160,7 +161,7 @@ response = client.responses.create(
                 },
             ],
         },
-    ]
+    ],
 )
 
 print(response.output_text)
@@ -291,12 +292,10 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
-file = client.files.create(
-    file=open("draconomicon.pdf", "rb"),
-    purpose="user_data"
-)
+file = client.files.create(file=open("draconomicon.pdf", "rb"), purpose="user_data")
 
 response = client.responses.create(
     model="gpt-5.6",
@@ -312,9 +311,9 @@ response = client.responses.create(
                     "type": "input_text",
                     "text": "What is the first dragon in the book?",
                 },
-            ]
+            ],
         }
-    ]
+    ],
 )
 
 print(response.output_text)
@@ -438,6 +437,7 @@ console.log(response.output_text);
 ```python
 import base64
 from openai import OpenAI
+
 client = OpenAI()
 
 with open("draconomicon.pdf", "rb") as f:
@@ -462,7 +462,7 @@ response = client.responses.create(
                 },
             ],
         },
-    ]
+    ],
 )
 
 print(response.output_text)

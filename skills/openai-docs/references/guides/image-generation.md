@@ -91,17 +91,15 @@ fs.writeFileSync("otter.png", image_bytes);
 ```python
 from openai import OpenAI
 import base64
+
 client = OpenAI()
 
 prompt = """
-A children's book drawing of a veterinarian using a stethoscope to 
+A children's book drawing of a veterinarian using a stethoscope to
 listen to the heartbeat of a baby otter.
 """
 
-result = client.images.generate(
-    model="gpt-image-2",
-    prompt=prompt
-)
+result = client.images.generate(model="gpt-image-2", prompt=prompt)
 
 image_base64 = result.data[0].b64_json
 image_bytes = base64.b64decode(image_base64)
@@ -161,7 +159,7 @@ if (imageData.length > 0) {
 from openai import OpenAI
 import base64
 
-client = OpenAI() 
+client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
@@ -175,7 +173,7 @@ image_data = [
     for output in response.output
     if output.type == "image_generation_call"
 ]
-    
+
 if image_data:
     image_base64 = image_data[0]
     with open("otter.png", "wb") as f:
@@ -222,7 +220,7 @@ if (imageData.length > 0) {
 from openai import OpenAI
 import base64
 
-client = OpenAI() 
+client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
@@ -236,7 +234,7 @@ image_data = [
     for output in response.output
     if output.type == "image_generation_call"
 ]
-    
+
 if image_data:
     image_base64 = image_data[0]
     with open("otter.png", "wb") as f:
@@ -412,9 +410,7 @@ response = openai.responses.create(
 )
 
 image_generation_calls = [
-    output
-    for output in response.output
-    if output.type == "image_generation_call"
+    output for output in response.output if output.type == "image_generation_call"
 ]
 
 image_data = [output.result for output in image_generation_calls]
@@ -552,10 +548,12 @@ import base64
 
 client = OpenAI()
 
+
 def save_base64_image(filename, image_base64):
     image_bytes = base64.b64decode(image_base64)
     with open(filename, "wb") as f:
         f.write(image_bytes)
+
 
 stream = client.responses.create(
     model="gpt-5.6",
@@ -693,11 +691,12 @@ In this example, we'll use 4 input images to generate a new image of a gift bask
 ```python
 import base64
 from openai import OpenAI
+
 client = OpenAI()
 
 prompt = """
-Generate a photorealistic image of a gift basket on a white background 
-labeled 'Relax & Unwind' with a ribbon and handwriting-like font, 
+Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
 containing all the items in the reference pictures.
 """
 
@@ -709,7 +708,7 @@ result = client.images.edit(
         open("incense-kit.png", "rb"),
         open("soap.png", "rb"),
     ],
-    prompt=prompt
+    prompt=prompt,
 )
 
 image_base64 = result.data[0].b64_json
@@ -812,10 +811,12 @@ import base64
 
 client = OpenAI()
 
+
 def create_file(file_path):
     with open(file_path, "rb") as file_content:
         result = client.files.create(file=file_content, purpose="vision")
     return result.id
+
 
 fileId = create_file("sunlit_lounge.png")
 maskId = create_file("mask.png")
@@ -833,7 +834,7 @@ response = client.responses.create(
                 {
                     "type": "input_image",
                     "file_id": fileId,
-                }
+                },
             ],
         },
     ],
@@ -843,7 +844,7 @@ response = client.responses.create(
             "quality": "high",
             "input_image_mask": {
                 "file_id": maskId,
-            }
+            },
         },
     ],
 )
@@ -931,7 +932,7 @@ result = client.images.edit(
     model="gpt-image-2",
     image=open("sunlit_lounge.png", "rb"),
     mask=open("mask.png", "rb"),
-    prompt="A sunlit indoor lounge area with a pool containing a flamingo"
+    prompt="A sunlit indoor lounge area with a pool containing a flamingo",
 )
 
 image_base64 = result.data[0].b64_json

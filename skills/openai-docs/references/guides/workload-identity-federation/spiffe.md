@@ -63,26 +63,27 @@ If OpenAI can't reach your issuer discovery endpoint, use uploaded JWKS mode ins
 To inspect a JWT-SVID from a workload that can call the SPIFFE Workload API, request one for the same audience you will configure in OpenAI. Run this command in the same workload context as the application, because Workload API authorization depends on the identity of the calling process.
 
 ```bash
-spire-agent api fetch jwt \
+TOKEN=$(spire-agent api fetch jwt \
   -socketPath /run/spire/sockets/agent.sock \
-  -audience "https://api.openai.com/v1"
+  -audience "https://api.openai.com/v1" | sed -n '2p')
+export TOKEN
 ```
 
 If your workload has more than one SPIFFE ID, request the specific identity:
 
 ```bash
-spire-agent api fetch jwt \
+TOKEN=$(spire-agent api fetch jwt \
   -socketPath /run/spire/sockets/agent.sock \
   -spiffeID "spiffe://example.org/ns/production/sa/openai-wif" \
-  -audience "https://api.openai.com/v1"
+  -audience "https://api.openai.com/v1" | sed -n '2p')
+export TOKEN
 ```
 
 ## Verify the token
 
-Before configuring workload identity federation, decode a sample JWT-SVID locally and inspect its header and claims:
+Before configuring workload identity federation, export the JWT-SVID as `TOKEN`, then run this script locally to inspect its header and claims:
 
-```bash
-TOKEN="$SPIFFE_JWT_SVID" python3 - <<'PY'
+```python
 import base64
 import json
 import os
@@ -91,16 +92,18 @@ parts = os.environ["TOKEN"].split(".")
 if len(parts) != 3:
     raise ValueError("Expected a compact JWT with three segments")
 
+
 def decode(segment):
     segment += "=" * (-len(segment) % 4)
     return json.loads(base64.urlsafe_b64decode(segment))
+
 
 print("Header:")
 print(json.dumps(decode(parts[0]), indent=2))
 print("\nPayload:")
 print(json.dumps(decode(parts[1]), indent=2))
-PY
 ```
+
 
 This command decodes the JWT without verifying the token signature. Use a local decoder for production tokens, and avoid pasting production tokens into third-party tools.
 

@@ -82,7 +82,10 @@ while True:
         item_type = getattr(item, "type", None)
         if item_type == "local_shell_call":
             shell_calls.append(item)
-        elif item_type == "tool_call" and getattr(item, "tool_name", None) == "local_shell":
+        elif (
+            item_type == "tool_call"
+            and getattr(item, "tool_name", None) == "local_shell"
+        ):
             shell_calls.append(item)
     if not shell_calls:
         # No more commands — the assistant is done.

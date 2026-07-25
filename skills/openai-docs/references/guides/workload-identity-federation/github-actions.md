@@ -24,6 +24,7 @@ ENCODED_AUDIENCE=$(jq -rn --arg audience "$AUDIENCE" '$audience | @uri')
 
 TOKEN=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
   "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=${ENCODED_AUDIENCE}" | jq -r .value)
+export TOKEN
 ```
 
 Important GitHub OIDC claims include:
@@ -43,10 +44,9 @@ For the full claim list and subject formats, see GitHub's [OpenID Connect refere
 
 ## Verify the token
 
-Before configuring workload identity federation, decode a sample GitHub OIDC token in the workflow runner and inspect its claims. After requesting the token in a workflow step:
+Before configuring workload identity federation, export the GitHub OIDC token as `TOKEN`, then run this script in the workflow runner to inspect its claims:
 
-```bash
-TOKEN="$TOKEN" python3 - <<'PY'
+```python
 import base64
 import json
 import os
@@ -54,8 +54,8 @@ import os
 payload = os.environ["TOKEN"].split(".")[1]
 payload += "=" * (-len(payload) % 4)
 print(json.dumps(json.loads(base64.urlsafe_b64decode(payload)), indent=2))
-PY
 ```
+
 
 This command decodes the JWT payload without verifying the token signature. Use a local decoder for production tokens, and avoid pasting production tokens into third-party tools. Never log the raw GitHub OIDC token or the exchanged OpenAI access token.
 

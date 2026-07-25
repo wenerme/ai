@@ -22,6 +22,7 @@ from flask import Flask, request, Response
 app = Flask(__name__)
 client = OpenAI(webhook_secret=os.environ["OPENAI_WEBHOOK_SECRET"])
 
+
 @app.route("/webhook", methods=["POST"])
 def webhook():
     try:
@@ -37,6 +38,7 @@ def webhook():
     except InvalidWebhookSignatureError as e:
         print("Invalid signature", e)
         return Response("Invalid signature", status=400)
+
 
 if __name__ == "__main__":
     app.run(port=8000)
@@ -121,9 +123,9 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.6",
-  input="Write a very long novel about otters in space.",
-  background=True,
+    model="gpt-5.6",
+    input="Write a very long novel about otters in space.",
+    background=True,
 )
 
 print(resp.status)
@@ -199,11 +201,20 @@ The simplest way to verify webhook signatures is by using the `unwrap()` method 
 Signature verification with the OpenAI SDK
 
 ```python
+import os
+
+from flask import request
+from openai import OpenAI
+
 client = OpenAI()
 webhook_secret = os.environ["OPENAI_WEBHOOK_SECRET"]
 
 # will raise if the signature is invalid
-event = client.webhooks.unwrap(request.data, request.headers, secret=webhook_secret)
+event = client.webhooks.unwrap(
+    request.data,
+    request.headers,
+    secret=webhook_secret,
+)
 ```
 
 ```javascript

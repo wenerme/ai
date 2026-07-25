@@ -82,7 +82,7 @@ export default User;
 """
 
 refactor_prompt = """
-Replace the "username" property with an "email" property. Respond only 
+Replace the "username" property with an "email" property. Respond only
 with code, and with no markdown formatting.
 """
 
@@ -91,19 +91,10 @@ client = OpenAI()
 completion = client.chat.completions.create(
     model="gpt-4.1",
     messages=[
-        {
-            "role": "user",
-            "content": refactor_prompt
-        },
-        {
-            "role": "user",
-            "content": code
-        }
+        {"role": "user", "content": refactor_prompt},
+        {"role": "user", "content": code},
     ],
-    prediction={
-        "type": "content",
-        "content": code
-    }
+    prediction={"type": "content", "content": code},
 )
 
 print(completion)
@@ -231,7 +222,7 @@ export default User;
 """
 
 refactor_prompt = """
-Replace the "username" property with an "email" property. Respond only 
+Replace the "username" property with an "email" property. Respond only
 with code, and with no markdown formatting.
 """
 
@@ -240,20 +231,11 @@ client = OpenAI()
 stream = client.chat.completions.create(
     model="gpt-4.1",
     messages=[
-        {
-            "role": "user",
-            "content": refactor_prompt
-        },
-        {
-            "role": "user",
-            "content": code
-        }
+        {"role": "user", "content": refactor_prompt},
+        {"role": "user", "content": code},
     ],
-    prediction={
-        "type": "content",
-        "content": code
-    },
-    stream=True
+    prediction={"type": "content", "content": code},
+    stream=True,
 )
 
 for chunk in stream:

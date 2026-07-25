@@ -22,11 +22,12 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
-    input="Write a one-sentence bedtime story about a unicorn."
+    input="Write a one-sentence bedtime story about a unicorn.",
 )
 
 print(response.output_text)
@@ -218,6 +219,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -271,21 +273,16 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     reasoning={"effort": "low"},
     input=[
-        {
-            "role": "developer",
-            "content": "Talk like a pirate."
-        },
-        {
-            "role": "user",
-            "content": "Are semicolons optional in JavaScript?"
-        }
-    ]
+        {"role": "developer", "content": "Talk like a pirate."},
+        {"role": "user", "content": "Are semicolons optional in JavaScript?"},
+    ],
 )
 
 print(response.output_text)
@@ -422,6 +419,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 with open("prompt.txt", "r", encoding="utf-8") as f:

@@ -30,13 +30,16 @@ const response = await client.responses.create({
 ```
 
 ```python
+import os
+
 from openai import OpenAI
 
 client = OpenAI()
+prompt_id = os.environ["OPENAI_PROMPT_ID"]
 
 response = client.responses.create(
     prompt={
-        "prompt_id": "pmpt_123",
+        "prompt_id": prompt_id,
         "version": "1",
         "variables": {
             "customer_name": "Acme",
@@ -189,6 +192,7 @@ from openai import OpenAI
 
 client = OpenAI()
 
+
 def build_support_prompt(customer_name, issue):
     return [
         {
@@ -200,6 +204,7 @@ def build_support_prompt(customer_name, issue):
             "content": f"Customer name: {customer_name}. Issue: {issue}. Write a response to the customer.",
         },
     ]
+
 
 response = client.responses.create(
     model="gpt-5.6",

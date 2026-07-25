@@ -1,17 +1,17 @@
 # Advanced usage
 
-OpenAI's text generation models (often called generative pre-trained transformers or large language models) have been trained to understand natural language, code, and images. The models provide text outputs in response to their inputs. The text inputs to these models are also referred to as "prompts". Designing a prompt is essentially how you “program” a large language model model, usually by providing instructions or some examples of how to successfully complete a task.
+OpenAI's text generation models (often called generative pre-trained transformers or large language models) have been trained to understand natural language, code, and images. The models provide text outputs in response to their inputs. The text inputs to these models are also referred to as "prompts." Designing a prompt is essentially how you “program” a large language model, usually by providing instructions or some examples of how to successfully complete a task.
 
 ## Reproducible outputs
 
-Chat Completions are non-deterministic by default (which means model outputs may differ from request to request). That being said, we offer some control towards deterministic outputs by giving you access to the [seed](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-seed) parameter and the [system_fingerprint](https://developers.openai.com/api/docs/api-reference/completions/object#completions/object-system_fingerprint) response field.
+Chat Completions are non-deterministic by default (which means model outputs may differ from request to request). That being said, we offer some control towards deterministic outputs by giving you access to the [`seed`](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-seed) parameter and the [`system_fingerprint`](https://developers.openai.com/api/docs/api-reference/completions/object#completions/object-system_fingerprint) response field.
 
 To receive (mostly) deterministic outputs across API calls, you can:
 
 - Set the [seed](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-seed) parameter to any integer of your choice and use the same value across requests you'd like deterministic outputs for.
 - Ensure all other parameters (like `prompt` or `temperature`) are the exact same across requests.
 
-Sometimes, determinism may be impacted due to necessary changes OpenAI makes to model configurations on our end. To help you keep track of these changes, we expose the [system_fingerprint](https://developers.openai.com/api/docs/api-reference/chat/object#chat/object-system_fingerprint) field. If this value is different, you may see different outputs due to changes we've made on our systems.
+Sometimes, determinism may be impacted due to necessary changes OpenAI makes to model configurations on our end. To help you keep track of these changes, we expose the [`system_fingerprint`](https://developers.openai.com/api/docs/api-reference/chat/object#chat/object-system_fingerprint) field. If this value is different, you may see different outputs due to changes we've made on our systems.
 
 <a
   href="https://cookbook.openai.com/examples/reproducible_outputs_with_the_seed_parameter"
@@ -29,7 +29,7 @@ Sometimes, determinism may be impacted due to necessary changes OpenAI makes to 
 
 ## Managing tokens
 
-Language models read and write text in chunks called tokens. In English, a token can be as short as one character or as long as one word (e.g., `a` or ` apple`), and in some languages tokens can be even shorter than one character or even longer than one word.
+Language models read and write text in chunks called tokens. In English, a token can be as short as one character or as long as one word (for example, `a` or ` apple`), and in some languages tokens can be even shorter than one character or even longer than one word.
 
 As a rough rule of thumb, 1 token is approximately 4 characters or 0.75 words for English text.
 
@@ -53,7 +53,7 @@ The total number of tokens in an API call affects:
 
 Both input and output tokens count toward these quantities. For example, if your API call used 10 tokens in the message input and you received 20 tokens in the message output, you would be billed for 30 tokens. Note however that for some models the price per token is different for tokens in the input vs. the output (see the [pricing](https://openai.com/api/pricing) page for more information).
 
-To see how many tokens are used by an API call, check the `usage` field in the API response (e.g., `response['usage']['total_tokens']`).
+To see how many tokens are used by an API call, check the `usage` field in the API response (for example, `response['usage']['total_tokens']`).
 
 Chat models like `gpt-3.5-turbo` and `gpt-4-turbo-preview` use tokens in the same way as the models available in the completions API, but because of their message-based formatting, it's more difficult to count how many tokens will be used by a conversation.
 
@@ -65,23 +65,26 @@ The exact way that messages are converted into tokens may change from model to m
 
 ```python
 def num_tokens_from_messages(messages, model="gpt-3.5-turbo-0613"):
-  """Returns the number of tokens used by a list of messages."""
-  try:
-      encoding = tiktoken.encoding_for_model(model)
-  except KeyError:
-      encoding = tiktoken.get_encoding("cl100k_base")
-  if model == "gpt-3.5-turbo-0613":  # note: future models may deviate from this
-      num_tokens = 0
-      for message in messages:
-          num_tokens += 4  # every message follows <im_start>{role/name}\n{content}<im_end>\n
-          for key, value in message.items():
-              num_tokens += len(encoding.encode(value))
-              if key == "name":  # if there's a name, the role is omitted
-                  num_tokens += -1  # role is always required and always 1 token
-      num_tokens += 2  # every reply is primed with <im_start>assistant
-      return num_tokens
-  else:
-      raise NotImplementedError(f"""num_tokens_from_messages() is not presently implemented for model {model}.""")
+    """Returns the number of tokens used by a list of messages."""
+    try:
+        encoding = tiktoken.encoding_for_model(model)
+    except KeyError:
+        encoding = tiktoken.get_encoding("cl100k_base")
+    if model == "gpt-3.5-turbo-0613":  # note: future models may deviate from this
+        num_tokens = 0
+        for message in messages:
+            num_tokens += (
+                4  # every message follows <im_start>{role/name}\n{content}<im_end>\n
+            )
+            for key, value in message.items():
+                num_tokens += len(encoding.encode(value))
+                if key == "name":  # if there's a name, the role is omitted
+                    num_tokens += -1  # role is always required and always 1 token
+        num_tokens += 2  # every reply is primed with <im_start>assistant
+        return num_tokens
+    raise ValueError(
+        f"num_tokens_from_messages() only supports gpt-3.5-turbo-0613, not {model}."
+    )
 ```
 
 
@@ -89,12 +92,34 @@ Next, create a message and pass it to the function defined above to see the toke
 
 ```python
 messages = [
-  {"role": "system", "content": "You are a helpful, pattern-following assistant that translates corporate jargon into plain English."},
-  {"role": "system", "name":"example_user", "content": "New synergies will help drive top-line growth."},
-  {"role": "system", "name": "example_assistant", "content": "Things working well together will increase revenue."},
-  {"role": "system", "name":"example_user", "content": "Let's circle back when we have more bandwidth to touch base on opportunities for increased leverage."},
-  {"role": "system", "name": "example_assistant", "content": "Let's talk later when we're less busy about how to do better."},
-  {"role": "user", "content": "This late pivot means we don't have time to boil the ocean for the client deliverable."},
+    {
+        "role": "system",
+        "content": "You are a helpful, pattern-following assistant that translates corporate jargon into plain English.",
+    },
+    {
+        "role": "system",
+        "name": "example_user",
+        "content": "New synergies will help drive top-line growth.",
+    },
+    {
+        "role": "system",
+        "name": "example_assistant",
+        "content": "Things working well together will increase revenue.",
+    },
+    {
+        "role": "system",
+        "name": "example_user",
+        "content": "Let's circle back when we have more bandwidth to touch base on opportunities for increased leverage.",
+    },
+    {
+        "role": "system",
+        "name": "example_assistant",
+        "content": "Let's talk later when we're less busy about how to do better.",
+    },
+    {
+        "role": "user",
+        "content": "This late pivot means we don't have time to boil the ocean for the client deliverable.",
+    },
 ]
 
 model = "gpt-3.5-turbo-0613"
@@ -109,15 +134,16 @@ To confirm the number generated by our function above is the same as what the AP
 ```python
 # example token count from the OpenAI API
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.chat.completions.create(
-  model=model,
-  messages=messages,
-  temperature=0,
+    model=model,
+    messages=messages,
+    temperature=0,
 )
 
-print(f'{response.usage.prompt_tokens} prompt tokens used.')
+print(f"{response.usage.prompt_tokens} prompt tokens used.")
 ```
 
 
@@ -126,9 +152,9 @@ To see how many tokens are in a text string without making an API call, use Open
 
 Each message passed to the API consumes the number of tokens in the content, role, and other fields, plus a few extra for behind-the-scenes formatting. This may change slightly in the future.
 
-If a conversation has too many tokens to fit within a model’s maximum limit (e.g., more than 4097 tokens for `gpt-3.5-turbo` or more than 128k tokens for `gpt-4o`), you will have to truncate, omit, or otherwise shrink your text until it fits. Beware that if a message is removed from the messages input, the model will lose all knowledge of it.
+If a conversation has too many tokens to fit within a model’s maximum limit (for example, more than 4097 tokens for `gpt-3.5-turbo` or more than 128k tokens for `gpt-4o`), you will have to truncate, omit, or otherwise shrink your text until it fits. Beware that if a message is removed from the messages input, the model will lose all knowledge of it.
 
-Note that very long conversations are more likely to receive incomplete replies. For example, a `gpt-3.5-turbo` conversation that is 4090 tokens long will have its reply cut off after just 6 tokens.
+Note that long conversations are more likely to receive incomplete replies. For example, a `gpt-3.5-turbo` conversation that is 4090 tokens long will have its reply cut off after just 6 tokens.
 
 ## Parameter details
 
@@ -141,8 +167,9 @@ The frequency and presence penalties found in the [Chat Completions API](https:/
 They work by directly modifying the logits (un-normalized log-probabilities) with an additive contribution.
 
 ```python
-mu[j] -> mu[j] - c[j] * alpha_frequency - float(c[j] > 0) * alpha_presence
+mu[j] = mu[j] - c[j] * alpha_frequency - float(c[j] > 0) * alpha_presence
 ```
+
 
 Where:
 
@@ -160,7 +187,7 @@ Reasonable values for the penalty coefficients are around 0.1 to 1 if the aim is
 
 ### Token log probabilities
 
-The [logprobs](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-logprobs) parameter found in the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create) and [Legacy Completions API](https://developers.openai.com/api/docs/api-reference/completions), when requested, provides the log probabilities of each output token, and a limited number of the most likely tokens at each token position alongside their log probabilities. This can be useful in some cases to assess the confidence of the model in its output, or to examine alternative responses the model might have given.
+The [`logprobs`](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-logprobs) parameter found in the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create) and [Legacy Completions API](https://developers.openai.com/api/docs/api-reference/completions), when requested, provides the log probabilities of each output token, and a limited number of the most likely tokens at each token position alongside their log probabilities. This can be useful in some cases to assess the confidence of the model in its output, or to examine alternative responses the model might have given.
 
 ### Other parameters
 

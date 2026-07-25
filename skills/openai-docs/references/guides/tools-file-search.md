@@ -23,35 +23,38 @@ Follow these steps to create a vector store and upload a file to it. You can use
 Upload a file
 
 ```python
-import requests
 from io import BytesIO
+
+import requests
 from openai import OpenAI
 
 client = OpenAI()
 
+
 def create_file(client, file_path):
-    if file_path.startswith("http://") or file_path.startswith("https://"):
-        # Download the file content from the URL
-        response = requests.get(file_path)
+    if file_path.startswith(("http://", "https://")):
+        response = requests.get(file_path, timeout=30)
+        response.raise_for_status()
         file_content = BytesIO(response.content)
-        file_name = file_path.split("/")[-1]
-        file_tuple = (file_name, file_content)
+        file_name = file_path.rsplit("/", 1)[-1]
         result = client.files.create(
-            file=file_tuple,
-            purpose="assistants"
+            file=(file_name, file_content),
+            purpose="assistants",
         )
     else:
-        # Handle local file path
         with open(file_path, "rb") as file_content:
             result = client.files.create(
                 file=file_content,
-                purpose="assistants"
+                purpose="assistants",
             )
-    print(result.id)
     return result.id
 
-# Replace with your own file path or URL
-file_id = create_file(client, "https://cdn.openai.com/API/docs/deep_research_blog.pdf")
+
+file_id = create_file(
+    client,
+    "https://cdn.openai.com/API/docs/deep_research_blog.pdf",
+)
+print(file_id)
 ```
 
 ```javascript
@@ -97,9 +100,7 @@ console.log(fileId);
 Create a vector store
 
 ```python
-vector_store = client.vector_stores.create(
-    name="knowledge_base"
-)
+vector_store = client.vector_stores.create(name="knowledge_base")
 print(vector_store.id)
 ```
 
@@ -118,7 +119,7 @@ Add a file to a vector store
 ```python
 result = client.vector_stores.files.create(
     vector_store_id=vector_store.id,
-    file_id=file_id
+    file_id=file_id,
 )
 print(result)
 ```
@@ -137,9 +138,7 @@ Run this code until the file is ready to be used (i.e., when the status is `comp
 Check status
 
 ```python
-result = client.vector_stores.files.list(
-    vector_store_id=vector_store.id
-)
+result = client.vector_stores.files.list(vector_store_id=vector_store.id)
 print(result)
 ```
 
@@ -155,15 +154,13 @@ File search tool
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     input="What is deep research by OpenAI?",
-    tools=[{
-        "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
-    }]
+    tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
 )
 print(response)
 ```
@@ -294,13 +291,15 @@ Limit the number of results
 response = client.responses.create(
     model="gpt-5.6",
     input="What is deep research by OpenAI?",
-    tools=[{
-        "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"],
-        // highlight-start
-        "max_num_results": 2
-        // highlight-end
-    }]
+    tools=[
+        {
+            "type": "file_search",
+            "vector_store_ids": ["<vector_store_id>"],
+            # highlight-start
+            "max_num_results": 2,
+            # highlight-end
+        }
+    ],
 )
 print(response)
 ```
@@ -335,13 +334,15 @@ Include search results
 response = client.responses.create(
     model="gpt-5.6",
     input="What is deep research by OpenAI?",
-    tools=[{
-        "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
-    }],
-    // highlight-start
-    include=["file_search_call.results"]
-    // highlight-end
+    tools=[
+        {
+            "type": "file_search",
+            "vector_store_ids": ["<vector_store_id>"],
+        }
+    ],
+    # highlight-start
+    include=["file_search_call.results"],
+    # highlight-end
 )
 print(response)
 ```
@@ -377,17 +378,19 @@ Metadata filtering
 response = client.responses.create(
     model="gpt-5.6",
     input="What is deep research by OpenAI?",
-    tools=[{
-        "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"],
-        // highlight-start
-        "filters": {
-            "type": "in",
-            "key": "category",
-            "value": ["blog", "announcement"]
+    tools=[
+        {
+            "type": "file_search",
+            "vector_store_ids": ["<vector_store_id>"],
+            # highlight-start
+            "filters": {
+                "type": "in",
+                "key": "category",
+                "value": ["blog", "announcement"],
+            },
+            # highlight-end
         }
-        // highlight-end
-    }]
+    ],
 )
 print(response)
 ```

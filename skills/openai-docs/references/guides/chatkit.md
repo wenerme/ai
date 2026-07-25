@@ -39,34 +39,81 @@ The chat embedded in your frontend will point to the workflow you select.
 
 ### 2. Set up ChatKit in your product
 
-To set up ChatKit, you'll create a ChatKit session and create a backend endpoint, pass in your workflow ID, exchange the client secret, add a script to embed ChatKit on your site.
+To set up ChatKit, you'll create a ChatKit session and a server endpoint, pass in your workflow ID, exchange the client secret, and add a script to embed ChatKit on your site.
 
-**Important Security Note:** When creating a ChatKit session, you must pass in a `user` parameter, which should be unique for each individual end user. It is your backend's responsibility
-to authenticate your application's users and pass a unique identifier for them in this parameter.
+**Important Security Note:** When creating a ChatKit session, you must pass in a `user` parameter, which should be unique for each individual end user. Your server must
+authenticate your application's users and pass a unique identifier for them in this parameter.
 
 1. On your server, generate a client token.
 
-   This snippet spins up a FastAPI service whose sole job is to create a new ChatKit session via the [OpenAI Python SDK](https://github.com/openai/chatkit-python) and hand back the session's client secret:
+   This snippet spins up a FastAPI service whose sole job is to create a new ChatKit session through the OpenAI API and hand back the session's client secret:
 
    server.py
 
 ```python
-from fastapi import FastAPI
-from pydantic import BaseModel
-from openai import OpenAI
+import hmac
+import json
 import os
+from typing import Annotated
+
+import requests
+from fastapi import Depends, FastAPI, HTTPException
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from pydantic import BaseModel
+
+
+api_key = os.environ["OPENAI_API_KEY"]
+workflow_id = os.environ["OPENAI_CHATKIT_WORKFLOW_ID"]
+authenticated_users: dict[str, str] = json.loads(
+    os.environ["CHATKIT_AUTHENTICATED_USERS"]
+)
+bearer_auth = HTTPBearer(auto_error=False)
+
+
+def get_authenticated_user_id(
+    credentials: Annotated[
+        HTTPAuthorizationCredentials | None,
+        Depends(bearer_auth),
+    ],
+) -> str:
+    if credentials is not None:
+        for token, user_id in authenticated_users.items():
+            if hmac.compare_digest(credentials.credentials, token):
+                return user_id
+    raise HTTPException(status_code=401, detail="Invalid authentication token")
+
+
+class ChatKitSession(BaseModel):
+    client_secret: str
+
 
 app = FastAPI()
-openai = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
 
 @app.post("/api/chatkit/session")
-def create_chatkit_session():
-    session = openai.chatkit.sessions.create({
-      # ...
-    })
-    return { client_secret: session.client_secret }
+def create_chatkit_session(
+    user_id: Annotated[str, Depends(get_authenticated_user_id)],
+):
+    response = requests.post(
+        "https://api.openai.com/v1/chatkit/sessions",
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "OpenAI-Beta": "chatkit_beta=v1",
+        },
+        json={
+            "workflow": {"id": workflow_id},
+            "user": user_id,
+        },
+        timeout=30,
+    )
+    response.raise_for_status()
+    session = ChatKitSession.model_validate(response.json())
+    return {"client_secret": session.client_secret}
 ```
 
+
+   Before starting the service, set `OPENAI_API_KEY`, `OPENAI_CHATKIT_WORKFLOW_ID`, and `CHATKIT_AUTHENTICATED_USERS`. The last value is a JSON map from your application's bearer tokens to stable user IDs. In production, replace this environment-backed map with your application's authentication or session lookup.
 
 2. In your server-side code, pass in your workflow ID and secret key to the session endpoint.
 
@@ -134,24 +181,26 @@ async
 ```
 
 
-5. Render ChatKit in your UI. This code fetches the client secret from your server and mounts a live chat widget connected to your workflow.
+5. Render ChatKit in your UI. Pass the React `MyChat` component a `getAppAuthToken` function that returns the current user's bearer token. If you use the JavaScript tab, make the same function available in the snippet's scope. This code sends that credential to your server, fetches the client secret, and mounts a live chat widget connected to your workflow.
 
    Your frontend code
 
 ```react
 import { ChatKit, useChatKit } from '@openai/chatkit-react';
 
-   export function MyChat() {
+   export function MyChat({ getAppAuthToken }) {
      const { control } = useChatKit({
        api: {
          async getClientSecret(existing) {
            if (existing) {
              // implement session refresh
-           }
+            }
 
+           const appAuthToken = await getAppAuthToken();
            const res = await fetch('/api/chatkit/session', {
              method: 'POST',
              headers: {
+               'Authorization': 'Bearer ' + appAuthToken,
                'Content-Type': 'application/json',
              },
            });
@@ -177,19 +226,18 @@ if (
 
 chatkit.setOptions({
   api: {
-    async getClientSecret(currentClientSecret) {
-      if (!currentClientSecret) {
-        const res = await fetch("/api/chatkit/start", { method: "POST" });
-        const { client_secret } = await res.json();
-        return client_secret;
-      }
-      const res = await fetch("/api/chatkit/refresh", {
+    async getClientSecret() {
+      const appAuthToken = await getAppAuthToken();
+      const res = await fetch("/api/chatkit/session", {
         method: "POST",
-        body: JSON.stringify({ currentClientSecret }),
         headers: {
+          Authorization: `Bearer ${appAuthToken}`,
           "Content-Type": "application/json",
         },
       });
+      if (!res.ok) {
+        throw new Error(`ChatKit session request failed: ${res.status}`);
+      }
       const { client_secret } = await res.json();
       return client_secret;
     },

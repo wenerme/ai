@@ -51,7 +51,7 @@ import os
 import json
 import websocket
 
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
 url = "wss://api.openai.com/v1/realtime?model=gpt-realtime-2.1"
 headers = [

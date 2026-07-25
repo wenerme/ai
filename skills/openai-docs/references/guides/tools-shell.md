@@ -208,10 +208,6 @@ console.log(response.output_text);
 ```
 
 ```python
-from openai import OpenAI
-
-client = OpenAI()
-
 response = client.responses.create(
     model="gpt-5.6",
     tools=[
@@ -219,7 +215,7 @@ response = client.responses.create(
             "type": "shell",
             "environment": {
                 "type": "container_reference",
-                "container_id": "cntr_08f3d96c87a585390069118b594f7481a088b16cda7d9415fe",
+                "container_id": container.id,
             },
         }
     ],
@@ -275,15 +271,24 @@ console.log(container.id);
 ```
 
 ```python
+import os
 from openai import OpenAI
 
 client = OpenAI()
+skill_id = os.environ["OPENAI_SKILL_ID"]
 
 container = client.containers.create(
     name="skill-container",
     skills=[
-        {"type": "skill_reference", "skill_id": "skill_4db6f1a2c9e73508b41f9da06e2c7b5f"},
-        {"type": "skill_reference", "skill_id": "openai-spreadsheets", "version": "latest"},
+        {
+            "type": "skill_reference",
+            "skill_id": skill_id,
+        },
+        {
+            "type": "skill_reference",
+            "skill_id": "openai-spreadsheets",
+            "version": "latest",
+        },
     ],
 )
 
@@ -377,7 +382,11 @@ response = client.responses.create(
                 "type": "container_auto",
                 "network_policy": {
                     "type": "allowlist",
-                    "allowed_domains": ["pypi.org", "files.pythonhosted.org", "github.com"],
+                    "allowed_domains": [
+                        "pypi.org",
+                        "files.pythonhosted.org",
+                        "github.com",
+                    ],
                 },
             },
         }
@@ -625,11 +634,13 @@ console.log(deleted);
 ```
 
 ```python
+import os
 from openai import OpenAI
 
 client = OpenAI()
+container_id = os.environ["OPENAI_CONTAINER_ID"]
 
-deleted = client.containers.delete("container_id")
+deleted = client.containers.delete(container_id)
 
 print(deleted)
 ```
@@ -931,6 +942,7 @@ class CmdResult:
     stderr: str
     exit_code: int | None
     timed_out: bool
+
 
 class ShellExecutor:
     def __init__(self, default_timeout: float = 60):
