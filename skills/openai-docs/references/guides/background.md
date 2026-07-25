@@ -40,9 +40,9 @@ from openai import OpenAI
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.6",
-  input="Write a very long novel about otters in space.",
-  background=True,
+    model="gpt-5.6",
+    input="Write a very long novel about otters in space.",
+    background=True,
 )
 
 print(resp.status)
@@ -87,15 +87,15 @@ from time import sleep
 client = OpenAI()
 
 resp = client.responses.create(
-  model="gpt-5.6",
-  input="Write a very long novel about otters in space.",
-  background=True,
+    model="gpt-5.6",
+    input="Write a very long novel about otters in space.",
+    background=True,
 )
 
 while resp.status in {"queued", "in_progress"}:
-  print(f"Current status: {resp.status}")
-  sleep(2)
-  resp = client.responses.retrieve(resp.id)
+    print(f"Current status: {resp.status}")
+    sleep(2)
+    resp = client.responses.retrieve(resp.id)
 
 print(f"Final status: {resp.status}\nOutput:\n{resp.output_text}")
 ```
@@ -123,10 +123,14 @@ console.log(resp.status);
 ```
 
 ```python
+import os
+
 from openai import OpenAI
+
+response_id = os.environ["OPENAI_RESPONSE_ID"]
 client = OpenAI()
 
-resp = client.responses.cancel("resp_123")
+resp = client.responses.cancel(response_id)
 
 print(resp.status)
 ```
@@ -190,16 +194,16 @@ client = OpenAI()
 
 # Fire off an async response but also start streaming immediately
 stream = client.responses.create(
-  model="gpt-5.6",
-  input="Write a very long novel about otters in space.",
-  background=True,
-  stream=True,
+    model="gpt-5.6",
+    input="Write a very long novel about otters in space.",
+    background=True,
+    stream=True,
 )
 
 cursor = None
 for event in stream:
-  print(event)
-  cursor = event.sequence_number
+    print(event)
+    cursor = event.sequence_number
 
 # If your connection drops, the response continues running and you can reconnect:
 # SDK support for resuming the stream is coming soon.

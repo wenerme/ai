@@ -18,10 +18,10 @@ from openai import OpenAI
 client = OpenAI()
 
 assistant = client.beta.assistants.create(
-name="Financial Analyst Assistant",
-instructions="You are an expert financial analyst. Use you knowledge base to answer questions about audited financial statements.",
-model="gpt-4o",
-tools=[{"type": "file_search"}],
+    name="Financial Analyst Assistant",
+    instructions="You are an expert financial analyst. Use you knowledge base to answer questions about audited financial statements.",
+    model="gpt-4o",
+    tools=[{"type": "file_search"}],
 )
 ```
 
@@ -78,7 +78,7 @@ file_streams = [open(path, "rb") for path in file_paths]
 # and poll the status of the file batch for completion.
 
 file_batch = client.vector_stores.file_batches.upload_and_poll(
-vector_store_id=vector_store.id, files=file_streams
+    vector_store_id=vector_store.id, files=file_streams
 )
 
 # You can print the status and the file counts of the batch to see the result of this operation.
@@ -107,8 +107,8 @@ To make the files accessible to your assistant, update the assistant’s `tool_r
 
 ```python
 assistant = client.beta.assistants.update(
-  assistant_id=assistant.id,
-  tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
+    assistant_id=assistant.id,
+    tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
 )
 ```
 
@@ -128,21 +128,21 @@ In this example, the user attached a copy of Apple’s latest 10-K filing.
 ```python
 # Upload the user provided file to OpenAI
 message_file = client.files.create(
-  file=open("edgar/aapl-10k.pdf", "rb"), purpose="assistants"
+    file=open("edgar/aapl-10k.pdf", "rb"), purpose="assistants"
 )
 
 # Create a thread and attach the file to the message
 
 thread = client.beta.threads.create(
-messages=[
-{
-"role": "user",
-"content": "How many shares of AAPL were outstanding at the end of of October 2023?", # Attach the new file to the message.
-"attachments": [
-{ "file_id": message_file.id, "tools": [{"type": "file_search"}] }
-],
-}
-]
+    messages=[
+        {
+            "role": "user",
+            "content": "How many shares of AAPL were outstanding at the end of of October 2023?",  # Attach the new file to the message.
+            "attachments": [
+                {"file_id": message_file.id, "tools": [{"type": "file_search"}]}
+            ],
+        }
+    ]
 )
 
 # The thread now has a vector store with that file in its tool resources.
@@ -191,9 +191,9 @@ from openai import AssistantEventHandler, OpenAI
 client = OpenAI()
 
 class EventHandler(AssistantEventHandler):
-@override
-def on_text_created(self, text) -> None:
-print(f"\nassistant > ", end="", flush=True)
+    @override
+    def on_text_created(self, text) -> None:
+        print("\nassistant > ", end="", flush=True)
 
     @override
     def on_tool_call_created(self, tool_call):
@@ -223,12 +223,12 @@ print(f"\nassistant > ", end="", flush=True)
 # and stream the response.
 
 with client.beta.threads.runs.stream(
-thread_id=thread.id,
-assistant_id=assistant.id,
-instructions="Please address the user as Jane Doe. The user has a premium account.",
-event_handler=EventHandler(),
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+    instructions="Please address the user as Jane Doe. The user has a premium account.",
+    event_handler=EventHandler(),
 ) as stream:
-stream.until_done()
+    stream.until_done()
 ```
 
 ```javascript
@@ -268,19 +268,24 @@ const citations: string[] = [];
 # the run until it's in a terminal state.
 
 run = client.beta.threads.runs.create_and_poll(
-thread_id=thread.id, assistant_id=assistant.id
+    thread_id=thread.id,
+    assistant_id=assistant.id,
 )
 
-messages = list(client.beta.threads.messages.list(thread_id=thread.id, run_id=run.id))
+messages = list(
+    client.beta.threads.messages.list(thread_id=thread.id, run_id=run.id)
+)
 
 message_content = messages[0].content[0].text
 annotations = message_content.annotations
 citations = []
 for index, annotation in enumerate(annotations):
-message_content.value = message_content.value.replace(annotation.text, f"[{index}]")
-if file_citation := getattr(annotation, "file_citation", None):
-cited_file = client.files.retrieve(file_citation.file_id)
-citations.append(f"[{index}] {cited_file.filename}")
+    message_content.value = message_content.value.replace(
+        annotation.text, f"[{index}]"
+    )
+    if file_citation := getattr(annotation, "file_citation", None):
+        cited_file = client.files.retrieve(file_citation.file_id)
+        citations.append(f"[{index}] {cited_file.filename}")
 
 print(message_content.value)
 print("\n".join(citations))
@@ -364,8 +369,14 @@ You can create a vector store and add files to it in a single API call:
 
 ```python
 vector_store = client.vector_stores.create(
-  name="Product Documentation",
-  file_ids=['file_1', 'file_2', 'file_3', 'file_4', 'file_5']
+    name="Product Documentation",
+    file_ids=[
+        "file_1",
+        "file_2",
+        "file_3",
+        "file_4",
+        "file_5",
+    ],
 )
 ```
 
@@ -385,8 +396,7 @@ Adding files is rate limited per vector store ID. Requests to `/vector_stores/{v
 
 ```python
 file = client.vector_stores.files.create_and_poll(
-  vector_store_id="vs_abc123",
-  file_id="file-abc123"
+    vector_store_id="vs_abc123", file_id="file-abc123"
 )
 ```
 
@@ -406,21 +416,18 @@ For high-throughput ingestion into one vector store, prefer file batches wheneve
 
 ```python
 batch = client.vector_stores.file_batches.create_and_poll(
-  vector_store_id="vs_abc123",
-  files=[
-    {
-      "file_id": "file_1",
-      "attributes": {"category": "finance"}
-    },
-    {
-      "file_id": "file_2",
-      "chunking_strategy": {
-        "type": "static",
-        "max_chunk_size_tokens": 1000,
-        "chunk_overlap_tokens": 200
-      }
-    }
-  ]
+    vector_store_id="vs_abc123",
+    files=[
+        {"file_id": "file_1", "attributes": {"category": "finance"}},
+        {
+            "file_id": "file_2",
+            "chunking_strategy": {
+                "type": "static",
+                "max_chunk_size_tokens": 1000,
+                "chunk_overlap_tokens": 200,
+            },
+        },
+    ],
 )
 ```
 
@@ -462,23 +469,15 @@ You can attach vector stores to your Assistant or Thread using the `tool_resourc
 
 ```python
 assistant = client.beta.assistants.create(
-  instructions="You are a helpful product support assistant and you answer questions based on the files provided to you.",
-  model="gpt-4o",
-  tools=[{"type": "file_search"}],
-  tool_resources={
-    "file_search": {
-      "vector_store_ids": ["vs_1"]
-    }
-  }
+    instructions="You are a helpful product support assistant and you answer questions based on the files provided to you.",
+    model="gpt-4o",
+    tools=[{"type": "file_search"}],
+    tool_resources={"file_search": {"vector_store_ids": ["vs_1"]}},
 )
 
 thread = client.beta.threads.create(
-messages=[ { "role": "user", "content": "How do I cancel my subscription?"} ],
-tool_resources={
-"file_search": {
-"vector_store_ids": ["vs_2"]
-}
-}
+    messages=[{"role": "user", "content": "How do I cancel my subscription?"}],
+    tool_resources={"file_search": {"vector_store_ids": ["vs_2"]}},
 )
 ```
 
@@ -550,13 +549,14 @@ Include file search results in response when creating a run
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 run_step = client.beta.threads.runs.steps.retrieve(
-thread_id="thread_abc123",
-run_id="run_abc123",
-step_id="step_abc123",
-include=["step_details.tool_calls[*].file_search.results[*].content"]
+    thread_id="thread_abc123",
+    run_id="run_abc123",
+    step_id="step_abc123",
+    include=["step_details.tool_calls[*].file_search.results[*].content"],
 )
 
 print(run_step)
@@ -564,6 +564,7 @@ print(run_step)
 
 ```javascript
 import OpenAI from "openai";
+
 const openai = new OpenAI();
 
 const runStep = await openai.beta.threads.runs.steps.retrieve(
@@ -610,13 +611,16 @@ You first GB is free and beyond that, usage is billed at $0.10/GB/day of vector 
 In order to help you manage the costs associated with these `vector_store` objects, we have added support for expiration policies in the `vector_store` object. You can set these policies when creating or updating the `vector_store` object.
 
 ```python
-vector_store = client.vector_stores.create_and_poll(
-  name="Product Documentation",
-  file_ids=['file_1', 'file_2', 'file_3', 'file_4', 'file_5'],
-  expires_after={
-    "anchor": "last_active_at",
-    "days": 7
-  }
+vector_store = client.vector_stores.create(
+    name="Product Documentation",
+    file_ids=[
+        "file_1",
+        "file_2",
+        "file_3",
+        "file_4",
+        "file_5",
+    ],
+    expires_after={"anchor": "last_active_at", "days": 7},
 )
 ```
 
@@ -643,20 +647,21 @@ all_files = list(client.vector_stores.files.list("vs_expired"))
 
 vector_store = client.vector_stores.create(name="rag-store")
 client.beta.threads.update(
-"thread_abc123",
-tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
+    "thread_abc123",
+    tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
 )
 
 for file_batch in chunked(all_files, 100):
-client.vector_stores.file_batches.create_and_poll(
-vector_store_id=vector_store.id, file_ids=[file.id for file in file_batch]
-)
+    client.vector_stores.file_batches.create_and_poll(
+        vector_store_id=vector_store.id,
+        file_ids=[file.id for file in file_batch],
+    )
 ```
 
 ```javascript
 const fileIds = [];
 for await (const file of openai.vectorStores.files.list(
-"vs_toWTk90YblRLCkbE2xSVoJlF",
+"vs_expired",
 )) {
 fileIds.push(file.id);
 }
@@ -664,7 +669,7 @@ fileIds.push(file.id);
 const vectorStore = await openai.vectorStores.create({
 name: "rag-store",
 });
-await openai.beta.threads.update("thread_abcd", {
+await openai.beta.threads.update("thread_abc123", {
 tool_resources: { file_search: { vector_store_ids: [vectorStore.id] } },
 });
 

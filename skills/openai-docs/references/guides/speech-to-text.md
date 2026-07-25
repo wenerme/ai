@@ -16,7 +16,7 @@ All endpoints can be used to:
 - Transcribe audio into whatever language the audio is in.
 - Translate and transcribe the audio into English.
 
-File uploads are currently limited to 25 MB, and the following input file types are supported: `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `wav`, and `webm`. Known speaker reference clips for diarization accept the same formats when provided as data URLs.
+File uploads are currently limited to 25 MB, and the following input file types are supported: `mp3`, `mp4`, `mpeg`, `mpga`, `m4a`, `wav`, and `webm`. Known speaker reference clips for speaker identification accept the same formats when provided as data URLs.
 
 Use this guide for file uploads and bounded audio requests. If your
   application needs live transcript deltas from a microphone, call, or media
@@ -53,11 +53,10 @@ console.log(transcription.text);
 from openai import OpenAI
 
 client = OpenAI()
-audio_file= open("/path/to/file/audio.mp3", "rb")
+audio_file = open("audio.wav", "rb")
 
 transcription = client.audio.transcriptions.create(
-    model="gpt-4o-transcribe", 
-    file=audio_file
+    model="gpt-4o-transcribe", file=audio_file
 )
 
 print(transcription.text)
@@ -81,7 +80,7 @@ curl --request POST \
 ```
 
 
-By default, the response type will be json with the raw text included.
+By default, the response type will be JSON with the raw text included.
 
 ```example-content
 {
@@ -113,12 +112,10 @@ console.log(transcription);
 from openai import OpenAI
 
 client = OpenAI()
-audio_file = open("/path/to/file/speech.mp3", "rb")
+audio_file = open("speech.wav", "rb")
 
 transcription = client.audio.transcriptions.create(
-    model="gpt-4o-transcribe", 
-    file=audio_file, 
-    response_format="text"
+    model="gpt-4o-transcribe", file=audio_file, response_format="text"
 )
 
 print(transcription.text)
@@ -143,7 +140,7 @@ The [API Reference](https://developers.openai.com/api/docs/api-reference/audio) 
   30 seconds (`"auto"` is recommended) and does not support prompts, logprobs,
   or `timestamp_granularities[]`.
 
-### Speaker diarization
+### Identify speakers
 
 `gpt-4o-transcribe-diarize` produces speaker-aware transcripts. Request the `diarized_json` response format to receive an array of segments with `speaker`, `start`, and `end` metadata. Set `chunking_strategy` (either `"auto"` or a Voice Activity Detection configuration) so that the service can split the audio into segments; this is required when the input is longer than 30 seconds.
 
@@ -187,9 +184,11 @@ from openai import OpenAI
 
 client = OpenAI()
 
+
 def to_data_url(path: str) -> str:
     with open(path, "rb") as fh:
         return "data:audio/wav;base64," + base64.b64encode(fh.read()).decode("utf-8")
+
 
 with open("meeting.wav", "rb") as audio_file:
     transcript = client.audio.transcriptions.create(
@@ -221,7 +220,7 @@ curl --request POST \
 ```
 
 
-When `stream=true`, diarized responses emit `transcript.text.segment` events whenever a segment completes. `transcript.text.delta` events include a `segment_id` field, but diarized deltas do not stream partial speaker assignments until each segment is finalized.
+When `stream=true`, responses from the speaker-aware model emit `transcript.text.segment` events whenever a segment completes. `transcript.text.delta` events include a `segment_id` field, but these deltas do not stream partial speaker assignments until each segment is finalized.
 
 `gpt-4o-transcribe-diarize` is currently available via
   `/v1/audio/transcriptions` only and is not yet supported in the Realtime API.
@@ -250,10 +249,10 @@ console.log(translation.text);
 from openai import OpenAI
 
 client = OpenAI()
-audio_file = open("/path/to/file/german.mp3", "rb")
+audio_file = open("german.wav", "rb")
 
 translation = client.audio.translations.create(
-    model="whisper-1", 
+    model="whisper-1",
     file=audio_file,
 )
 
@@ -286,11 +285,11 @@ Afrikaans, Arabic, Armenian, Azerbaijani, Belarusian, Bosnian, Bulgarian, Catala
 
 While the underlying model was trained on 98 languages, we only list the languages that exceeded \<50% [word error rate](https://en.wikipedia.org/wiki/Word_error_rate) (WER) which is an industry standard benchmark for speech to text model accuracy. The model will return results for languages not listed above but the quality will be low.
 
-We support some ISO 639-1 and 639-3 language codes for GPT-4o based models. For language codes we don’t have, try prompting for specific languages (i.e., “Output in English”).
+We support some ISO 639-1 and 639-3 language codes for GPT-4o based models. For language codes we don’t have, try prompting for specific languages (that is, “Output in English”).
 
 ## Timestamps
 
-By default, the Transcriptions API will output a transcript of the provided audio in text. The [`timestamp_granularities[]` parameter](/api/docs/api-reference/audio/createTranscription#audio-createtranscription-timestamp_granularities) enables a more structured and timestamped json output format, with timestamps at the segment, word level, or both. This enables word-level precision for transcripts and video edits, which allows for the removal of specific frames tied to individual words.
+By default, the Transcriptions API will output a transcript of the provided audio in text. The [`timestamp_granularities[]` parameter](/api/docs/api-reference/audio/createTranscription#audio-createtranscription-timestamp_granularities) enables a more structured and timestamped JSON output format, with timestamps at the segment, word level, or both. This enables word-level precision for transcripts and video edits, which allows for the removal of specific frames tied to individual words.
 
 Timestamp options
 
@@ -314,13 +313,13 @@ console.log(transcription.words);
 from openai import OpenAI
 
 client = OpenAI()
-audio_file = open("/path/to/file/speech.mp3", "rb")
+audio_file = open("speech.wav", "rb")
 
 transcription = client.audio.transcriptions.create(
-  file=audio_file,
-  model="whisper-1",
-  response_format="verbose_json",
-  timestamp_granularities=["word"]
+    file=audio_file,
+    model="whisper-1",
+    response_format="verbose_json",
+    timestamp_granularities=["word"],
 )
 
 print(transcription.words)
@@ -348,15 +347,16 @@ One way to handle this is to use the [PyDub open source Python package](https://
 ```python
 from pydub import AudioSegment
 
-song = AudioSegment.from_mp3("good_morning.mp3")
+song = AudioSegment.from_wav("good_morning.wav")
 
 # PyDub handles time in milliseconds
 ten_minutes = 10 * 60 * 1000
 
 first_10_minutes = song[:ten_minutes]
 
-first_10_minutes.export("good_morning_10.mp3", format="mp3")
+first_10_minutes.export("good_morning_10.wav", format="wav")
 ```
+
 
 _OpenAI makes no guarantees about the usability or security of 3rd party software like PyDub._
 
@@ -387,13 +387,13 @@ console.log(transcription);
 from openai import OpenAI
 
 client = OpenAI()
-audio_file = open("/path/to/file/speech.mp3", "rb")
+audio_file = open("speech.wav", "rb")
 
 transcription = client.audio.transcriptions.create(
-  model="gpt-4o-transcribe", 
-  file=audio_file, 
-  response_format="text",
-  prompt="The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI."
+    model="gpt-4o-transcribe",
+    file=audio_file,
+    response_format="text",
+    prompt="The following conversation is a lecture about the recent developments around OpenAI, GPT-4.5 and the future of AI.",
 )
 
 print(transcription.text)
@@ -414,10 +414,10 @@ For `gpt-4o-transcribe` and `gpt-4o-mini-transcribe`, you can use the `prompt` p
 
 Here are some examples of how prompting can help in different scenarios:
 
-1.  Prompts can help correct specific words or acronyms that the model misrecognizes in the audio. For example, the following prompt improves the transcription of the words DALL·E and GPT-3, which were previously written as "GDP 3" and "DALI": "The transcript is about OpenAI which makes technology like DALL·E, GPT-3, and ChatGPT with the hope of one day building an AGI system that benefits all of humanity."
-2.  To preserve the context of a file that was split into segments, prompt the model with the transcript of the preceding segment. The model uses relevant information from the previous audio, improving transcription accuracy. The `whisper-1` model only considers the final 224 tokens of the prompt and ignores anything earlier. For multilingual inputs, Whisper uses a custom tokenizer. For English-only inputs, it uses the standard GPT-2 tokenizer. Find both tokenizers in the open source [Whisper Python package](https://github.com/openai/whisper/blob/main/whisper/tokenizer.py#L361).
-3.  Sometimes the model skips punctuation in the transcript. To prevent this, use a simple prompt that includes punctuation: "Hello, welcome to my lecture."
-4.  The model may also leave out common filler words in the audio. If you want to keep the filler words in your transcript, use a prompt that contains them: "Umm, let me think like, hmm... Okay, here's what I'm, like, thinking."
+1.  Prompts can help correct specific words or acronyms that the model transcribes incorrectly. For example, the following prompt improves the transcription of the words DALL·E and GPT-3, which were previously written as "GDP 3" and "DALI": "The transcript is about OpenAI which makes technology like DALL·E, GPT-3, and ChatGPT with the hope of one day building an AGI system that benefits all of humanity."
+2.  To preserve the context of a file that was split into segments, prompt the model with the transcript of the preceding segment. The model uses relevant information from the previous audio, improving transcription accuracy. The `whisper-1` model only considers the final 224 tokens of the prompt and ignores anything earlier. For multilingual inputs, Whisper uses a custom tokenizer. For English-only inputs, it uses the standard GPT-2 tokenizer. Find both implementations in the open source [Whisper Python package](https://github.com/openai/whisper/blob/main/whisper/tokenizer.py#L361).
+3.  Sometimes the model skips punctuation in the transcript. To prevent this, use a short prompt that includes punctuation: "Hello, welcome to my lecture."
+4.  The model may also leave out common filler words in the audio. If you want to keep the filler words in your transcript, use a prompt that contains them: "Um, let me think like, hmm… Okay, here's what I'm, like, thinking."
 5.  Some languages can be written in different ways, such as simplified or traditional Chinese. The model might not always use the writing style that you want for your transcript by default. You can improve this by using a prompt in your preferred writing style.
 
 For `whisper-1`, the model tries to match the style of the prompt, so it's more likely to use capitalization and punctuation if the prompt does too. However, the current prompting system is more limited than our other language models and provides limited control over the generated text.
@@ -430,7 +430,7 @@ Streaming transcriptions
 
 
 
-There are two ways you can stream your transcription depending on your use case and whether you are trying to transcribe an already completed audio recording or handle an ongoing stream of audio and use OpenAI for turn detection.
+You can stream a transcription in two ways, depending on whether you want to transcribe a completed audio recording or handle an ongoing audio stream with OpenAI turn detection.
 
 ### Streaming the transcription of a completed audio recording
 
@@ -464,20 +464,20 @@ for await (const event of stream) {
 from openai import OpenAI
 
 client = OpenAI()
-audio_file = open("/path/to/file/speech.mp3", "rb")
+audio_file = open("speech.wav", "rb")
 
 stream = client.audio.transcriptions.create(
-  model="gpt-4o-mini-transcribe", 
-  file=audio_file, 
-  response_format="text",
-  # highlight-start
-  stream=True
-  # highlight-end
+    model="gpt-4o-mini-transcribe",
+    file=audio_file,
+    response_format="text",
+    # highlight-start
+    stream=True,
+    # highlight-end
 )
 
 # highlight-start
 for event in stream:
-  print(event)
+    print(event)
 # highlight-end
 ```
 
@@ -536,13 +536,13 @@ console.log(transcription);
 from openai import OpenAI
 
 client = OpenAI()
-audio_file = open("/path/to/file/speech.mp3", "rb")
+audio_file = open("speech.wav", "rb")
 
 transcription = client.audio.transcriptions.create(
-  model="whisper-1", 
-  file=audio_file, 
-  response_format="text",
-  prompt="ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T."
+    model="whisper-1",
+    file=audio_file,
+    response_format="text",
+    prompt="ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
 )
 
 print(transcription.text)
@@ -602,34 +602,29 @@ console.log(completion.choices[0].message.content);
 
 ```python
 system_prompt = """
-You are a helpful assistant for the company ZyntriQix. Your task is to correct 
-any spelling discrepancies in the transcribed text. Make sure that the names of 
-the following products are spelled correctly: ZyntriQix, Digique Plus, 
-CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal 
-Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary 
-punctuation such as periods, commas, and capitalization, and use only the 
+You are a helpful assistant for the company ZyntriQix. Your task is to correct
+any spelling discrepancies in the transcribed text. Make sure that the names of
+the following products are spelled correctly: ZyntriQix, Digique Plus,
+CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal
+Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary
+punctuation such as periods, commas, and capitalization, and use only the
 context provided.
 """
 
+
 def generate_corrected_transcript(temperature, system_prompt, audio_file):
-  response = client.chat.completions.create(
-      model="gpt-4.1",
-      temperature=temperature,
-      messages=[
-          {
-              "role": "system",
-              "content": system_prompt
-          },
-          {
-              "role": "user",
-              "content": transcribe(audio_file, "")
-          }
-      ]
-  )
-  return completion.choices[0].message.content
-corrected_text = generate_corrected_transcript(
-  0, system_prompt, fake_company_filepath
-)
+    response = client.chat.completions.create(
+        model="gpt-4.1",
+        temperature=temperature,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": transcribe(audio_file, "")},
+        ],
+    )
+    return response.choices[0].message.content
+
+
+corrected_text = generate_corrected_transcript(0, system_prompt, fake_company_filepath)
 ```
 
 

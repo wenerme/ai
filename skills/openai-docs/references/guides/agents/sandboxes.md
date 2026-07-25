@@ -226,7 +226,8 @@ from agents.sandbox.entries import GitRepo
 agent = SandboxAgent(
     name="Tax prep assistant",
     instructions="Use the mounted skill before preparing the return.",
-    capabilities=Capabilities.default() + [
+    capabilities=Capabilities.default()
+    + [
         Skills(from_=GitRepo(repo="owner/tax-prep-skills", ref="main")),
     ],
 )
@@ -409,7 +410,10 @@ from agents import Runner
 from agents.run import RunConfig
 from agents.sandbox import SandboxRunConfig
 from agents.sandbox.config import DEFAULT_PYTHON_SANDBOX_IMAGE
-from agents.sandbox.sandboxes.docker import DockerSandboxClient, DockerSandboxClientOptions
+from agents.sandbox.sandboxes.docker import (
+    DockerSandboxClient,
+    DockerSandboxClientOptions,
+)
 
 docker_run_config = RunConfig(
     sandbox=SandboxRunConfig(

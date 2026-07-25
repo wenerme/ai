@@ -1,6 +1,6 @@
 # Retrieval
 
-The **Retrieval API** allows you to perform [**semantic search**](#semantic-search) over your data, which is a technique that surfaces semantically similar results — even when they match few or no keywords. Retrieval is useful on its own, but is especially powerful when combined with our models to synthesize responses.
+The **Retrieval API** allows you to perform [**semantic search**](#semantic-search) over your data, which is a technique that surfaces semantically similar results—even when they match few or no keywords. Retrieval is useful on its own, but is especially powerful when combined with our models to synthesize responses.
 
 ![Retrieval depiction](https://cdn.openai.com/API/docs/images/retrieval-depiction.png)
 
@@ -16,6 +16,7 @@ Create vector store with files
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 vector_store = client.vector_stores.create(        # Create vector store
@@ -83,9 +84,9 @@ For example, let's look at potential results for `"When did we go to the moon?"`
 | The first man on the moon was Neil Armstrong.     | 27%                | 43%                 |
 | When I ate the moon cake, it was delicious.       | 40%                | 28%                 |
 
-_([Jaccard](https://en.wikipedia.org/wiki/Jaccard_index) used for keyword, [cosine](https://en.wikipedia.org/wiki/Cosine_similarity) with `text-embedding-3-small` used for semantic.)_
+_(Keyword similarity uses [intersection over union](https://en.wikipedia.org/wiki/Jaccard_index); semantic similarity uses [cosine similarity](https://en.wikipedia.org/wiki/Cosine_similarity) with `text-embedding-3-small`.)_
 
-Notice how the most relevant result contains none of the words in the search query. This flexibility makes semantic search a very powerful technique for querying knowledge bases of any size.
+Notice how the most relevant result contains none of the words in the search query. This flexibility makes semantic search a powerful technique for querying knowledge bases of any size.
 
 Semantic search is powered by [vector stores](#vector-stores), which we cover in detail later in the guide. This section will focus on the mechanics of semantic search.
 
@@ -158,7 +159,7 @@ Results
 ```
 
 
-A response will contain 10 results maximum by default, but you can set up to 50 using the `max_num_results` param.
+A response will contain 10 results maximum by default, but you can set up to 50 using the `max_num_results` parameter.
 
 ### Query rewriting
 
@@ -432,7 +433,7 @@ await client.vector_stores.list();
 
 ### Vector store file operations
 
-Some operations, like `create` for `vector_store.file`, are asynchronous and may take time to complete — use our helper functions, like `create_and_poll` to block until it is. Otherwise, you may check the status. Removing files from a vector store is eventually consistent, and search results may still include content from a removed file for a short period.
+Some operations, like `create` for `vector_store.file`, are asynchronous and may take time to complete—use our helper functions, like `create_and_poll` to block until it is. Otherwise, you may check the status. Removing files from a vector store is eventually consistent, and search results may still include content from a removed file for a short period.
 
 Adding files is rate limited per vector store ID. Requests to [`/vector_stores/{vector_store_id}/files`](https://developers.openai.com/api/docs/api-reference/vector-stores/createFile) and [`/vector_stores/{vector_store_id}/file_batches`](https://developers.openai.com/api/docs/api-reference/vector-stores/createBatch) share a per-vector-store limit of 300 requests per minute.
 
@@ -644,16 +645,17 @@ await client.vector_stores.file_batches.cancel({
   </div>
   <div data-content-switcher-pane data-value="list" hidden>
     <div class="hidden">List</div>
-    Batch list operation
+    List files in a batch
 
 ```python
-client.vector_stores.file_batches.list(
+client.vector_stores.file_batches.list_files(
+    "vsfb_123",
     vector_store_id="vs_123"
 )
 ```
 
 ```javascript
-await client.vector_stores.file_batches.list({
+await client.vectorStores.fileBatches.listFiles("vsfb_123", {
     vector_store_id: "vs_123"
 });
 ```
@@ -731,7 +733,7 @@ The maximum file size is 512 MB. Each file should contain no more than 5,000,000
 
 By default, `max_chunk_size_tokens` is set to `800` and `chunk_overlap_tokens` is set to `400`, meaning every file is indexed by being split up into 800-token chunks, with 400-token overlap between consecutive chunks.
 
-You can adjust this by setting [`chunking_strategy`](https://developers.openai.com/api/docs/api-reference/vector-stores-files/createFile#vector-stores-files-createfile-chunking_strategy) when adding files to the vector store. There are certain limitations to `chunking_strategy`:
+You can adjust this by setting [`chunking_strategy`](https://developers.openai.com/api/docs/api-reference/vector-stores-files/createFile#vector-stores-files-createfile-chunking_strategy) when adding files to the vector store. The strategy has certain limitations:
 
 - `max_chunk_size_tokens` must be between 100 and 4096 inclusive.
 - `chunk_overlap_tokens` must be non-negative and should not exceed `max_chunk_size_tokens / 2`.
@@ -788,6 +790,7 @@ results = client.vector_stores.search(
 
 ```javascript
 import OpenAI from "openai";
+
 const client = new OpenAI();
 
 const userQuery = "What is the return policy?";
@@ -804,19 +807,19 @@ Synthesize a response based on results
 ```python
 formatted_results = format_results(results.data)
 
-'\n'.join('\n'.join(c.text) for c in result.content for result in results.data)
+"\n".join("\n".join(c.text for c in result.content) for result in results.data)
 
 completion = client.chat.completions.create(
     model="gpt-5.6",
     messages=[
         {
             "role": "developer",
-            "content": "Produce a concise answer to the query based on the provided sources."
+            "content": "Produce a concise answer to the query based on the provided sources.",
         },
         {
             "role": "user",
-            "content": f"Sources: {formatted_results}\n\nQuery: '{user_query}'"
-        }
+            "content": f"Sources: {formatted_results}\n\nQuery: '{user_query}'",
+        },
     ],
 )
 
@@ -857,9 +860,11 @@ Sample result formatting function
 
 ```python
 def format_results(results):
-    formatted_results = ''
+    formatted_results = ""
     for result in results.data:
-        formatted_result = f"<result file_id='{result.file_id}' file_name='{result.file_name}'>"
+        formatted_result = (
+            f"<result file_id='{result.file_id}' file_name='{result.file_name}'>"
+        )
         for part in result.content:
             formatted_result += f"<content>{part.text}</content>"
         formatted_results += formatted_result + "</result>"

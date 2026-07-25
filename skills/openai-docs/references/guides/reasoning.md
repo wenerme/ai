@@ -45,19 +45,14 @@ from openai import OpenAI
 client = OpenAI()
 
 prompt = """
-Write a bash script that takes a matrix represented as a string with 
+Write a bash script that takes a matrix represented as a string with
 format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
     model="gpt-5.6",
     reasoning={"effort": "low"},
-    input=[
-        {
-            "role": "user", 
-            "content": prompt
-        }
-    ]
+    input=[{"role": "user", "content": prompt}],
 )
 
 print(response.output_text)
@@ -217,27 +212,25 @@ from openai import OpenAI
 client = OpenAI()
 
 prompt = """
-Write a bash script that takes a matrix represented as a string with 
+Write a bash script that takes a matrix represented as a string with
 format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
 """
 
 response = client.responses.create(
     model="gpt-5.6",
     reasoning={"effort": "medium"},
-    input=[
-        {
-            "role": "user", 
-            "content": prompt
-        }
-    ],
+    input=[{"role": "user", "content": prompt}],
     max_output_tokens=300,
 )
 
-if response.status == "incomplete" and response.incomplete_details.reason == "max_output_tokens":
+if (
+    response.status == "incomplete"
+    and response.incomplete_details.reason == "max_output_tokens"
+):
     print("Ran out of tokens")
     if response.output_text:
         print("Partial output:", response.output_text)
-    else: 
+    else:
         print("Ran out of tokens during reasoning")
 ```
 
@@ -303,15 +296,16 @@ console.log(second.output_text);
 from openai import OpenAI
 
 client = OpenAI()
+model = "gpt-5.6"
 
 first = client.responses.create(
-    model="YOUR_MODEL_ID",
+    model=model,
     input="Inspect this repository and identify the likely bug.",
     reasoning={"context": "current_turn"},
 )
 
 second = client.responses.create(
-    model="YOUR_MODEL_ID",
+    model=model,
     previous_response_id=first.id,
     input="Now patch the bug and explain the change.",
     reasoning={"context": "all_turns"},
@@ -390,6 +384,7 @@ console.log(second.output_text);
 from openai import OpenAI
 
 client = OpenAI()
+model = "gpt-5.6"
 
 history = [
     {
@@ -399,7 +394,7 @@ history = [
 ]
 
 first = client.responses.create(
-    model="YOUR_MODEL_ID",
+    model=model,
     store=False,
     input=history,
     reasoning={"context": "current_turn"},
@@ -415,7 +410,7 @@ history.append(
 )
 
 second = client.responses.create(
-    model="YOUR_MODEL_ID",
+    model=model,
     store=False,
     input=history,
     reasoning={"context": "all_turns"},
@@ -455,15 +450,13 @@ console.log(response.output);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     input="What is the capital of France?",
-    reasoning={
-        "effort": "low",
-        "summary": "auto"
-    }
+    reasoning={"effort": "low", "summary": "auto"},
 )
 
 print(response.output)

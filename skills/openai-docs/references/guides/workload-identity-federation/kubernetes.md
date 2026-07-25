@@ -55,12 +55,16 @@ spec:
 
 ## Verify the token
 
-Before configuring workload identity federation, decode a sample projected service account token locally and inspect its claims. From a running pod with the projected token mounted:
+Before configuring workload identity federation, decode a sample projected service account token locally and inspect its claims. From a running pod with the projected token mounted, retrieve the token and export it as `TOKEN`:
 
 ```bash
 TOKEN=$(kubectl exec -n default openai-wif-app -- cat /var/run/secrets/tokens/token)
+export TOKEN
+```
 
-TOKEN="$TOKEN" python3 - <<'PY'
+Then run this script:
+
+```python
 import base64
 import json
 import os
@@ -68,8 +72,8 @@ import os
 payload = os.environ["TOKEN"].split(".")[1]
 payload += "=" * (-len(payload) % 4)
 print(json.dumps(json.loads(base64.urlsafe_b64decode(payload)), indent=2))
-PY
 ```
+
 
 This command decodes the JWT payload without verifying the token signature. Use a local decoder for production tokens, and avoid pasting production tokens into third-party tools.
 

@@ -16,9 +16,9 @@ Pass `code_interpreter` in the `tools` parameter of the Assistant object to enab
 
 ```python
 assistant = client.beta.assistants.create(
-  instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-  model="gpt-4o",
-  tools=[{"type": "code_interpreter"}]
+    instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+    model="gpt-4o",
+    tools=[{"type": "code_interpreter"}],
 )
 ```
 
@@ -53,21 +53,14 @@ Files that are passed at the Assistant level are accessible by all Runs with thi
 
 ```python
 # Upload a file with an "assistants" purpose
-file = client.files.create(
-  file=open("mydata.csv", "rb"),
-  purpose='assistants'
-)
+file = client.files.create(file=open("mydata.csv", "rb"), purpose="assistants")
 
 # Create an assistant using the file ID
 assistant = client.beta.assistants.create(
-  instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-  model="gpt-4o",
-  tools=[{"type": "code_interpreter"}],
-  tool_resources={
-    "code_interpreter": {
-      "file_ids": [file.id]
-    }
-  }
+    instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+    model="gpt-4o",
+    tools=[{"type": "code_interpreter"}],
+    tool_resources={"code_interpreter": {"file_ids": [file.id]}},
 )
 ```
 
@@ -120,18 +113,15 @@ Files can also be passed at the Thread level. These files are only accessible in
 
 ```python
 thread = client.beta.threads.create(
-  messages=[
-    {
-      "role": "user",
-      "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
-      "attachments": [
+    messages=[
         {
-          "file_id": file.id,
-          "tools": [{"type": "code_interpreter"}]
+            "role": "user",
+            "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
+            "attachments": [
+                {"file_id": file.id, "tools": [{"type": "code_interpreter"}]}
+            ],
         }
-      ]
-    }
-  ]
+    ]
 )
 ```
 
@@ -203,11 +193,14 @@ When Code Interpreter generates an image, you can look up and download this file
 The file content can then be downloaded by passing the file ID to the Files API:
 
 ```python
+import os
+
 from openai import OpenAI
 
+file_id = os.environ["OPENAI_FILE_ID"]
 client = OpenAI()
 
-image_data = client.files.content("file-abc123")
+image_data = client.files.content(file_id)
 image_data_bytes = image_data.read()
 
 with open("./my-image.png", "wb") as file:
@@ -275,9 +268,14 @@ When Code Interpreter references a file path (e.g., ”Download this csv file”
 By listing the steps of a Run that called Code Interpreter, you can inspect the code `input` and `outputs` logs of Code Interpreter:
 
 ```python
+import os
+
+thread_id = os.environ["OPENAI_THREAD_ID"]
+run_id = os.environ["OPENAI_RUN_ID"]
+
 run_steps = client.beta.threads.runs.steps.list(
-  thread_id=thread.id,
-  run_id=run.id
+    thread_id=thread_id,
+    run_id=run_id,
 )
 ```
 

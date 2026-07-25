@@ -9,14 +9,15 @@ Actions are a way for the ChatKit SDK frontend to trigger a streaming response w
 Actions can be triggered by attaching an `ActionConfig` to any widget node that supports it. For example, you can respond to click events on Buttons. When a user clicks on this button, the action will be sent to your server where you can update the widget, run inference, stream new thread items, etc.
 
 ```python
-Button(
+button = Button(
     label="Example",
     onClickAction=ActionConfig(
-      type="example",
-      payload={"id": 123},
-    )
+        type="example",
+        payload={"id": 123},
+    ),
 )
 ```
+
 
 Actions can also be sent imperatively by your frontend with `sendAction()`. This is probably most useful when you need ChatKit to respond to interaction happening outside ChatKit, but it can also be used to chain actions when you need to respond on both the client and the server (more on that below).
 
@@ -34,7 +35,7 @@ await chatKit.sendAction({
 By default, actions are sent to your server. You can handle actions on your server by implementing the `action` method on `ChatKitServer`.
 
 ```python
-class MyChatKitServer(ChatKitServer[RequestContext])
+class MyChatKitServer(ChatKitServer[RequestContext]):
     async def action(
         self,
         thread: ThreadMetadata,
@@ -43,44 +44,40 @@ class MyChatKitServer(ChatKitServer[RequestContext])
         context: RequestContext,
     ) -> AsyncIterator[Event]:
         if action.type == "example":
-          await do_thing(action.payload['id'])
+            await do_thing(action.payload["id"])
 
-          # often you'll want to add a HiddenContextItem so the model
-          # can see that the user did something
-          await self.store.add_thread_item(
-              thread.id,
-              HiddenContextItem(
-                  id="item_123",
-                  created_at=datetime.now(),
-                  content=(
-                      "<USER_ACTION>The user did a thing</USER_ACTION>"
-                  ),
-              ),
-              context,
-          )
+            # Often you'll want to add a HiddenContextItem so the model
+            # can see that the user did something.
+            await self.store.add_thread_item(
+                thread.id,
+                HiddenContextItem(
+                    id="item_123",
+                    created_at=datetime.now(),
+                    content="<USER_ACTION>The user did a thing</USER_ACTION>",
+                ),
+                context,
+            )
 
-          # then you might want to run inference to stream a response
-          # back to the user.
-          async for e in self.generate(context, thread):
-              yield e
+            # Then you might want to run inference to stream a response
+            # back to the user.
+            async for event in self.generate(context, thread):
+                yield event
 ```
 
-**NOTE:** As with any client/server interaction, actions and their payloads are sent by the client and should be treated as untrusted data.
+
+Treat actions and their payloads as untrusted data because the client sends them to your server.
 
 ### Client
 
-Sometimes you’ll want to handle actions in your client integration. To do that you need to specify that the action should be sent to your client-side action handler by adding `handler="client` to the `ActionConfig`.
+Sometimes you’ll want to handle actions in your client integration. To do that you need to specify that the action should be sent to your client-side action handler by adding `handler="client"` to the `ActionConfig`.
 
 ```python
-Button(
+button = Button(
     label="Example",
-    onClickAction=ActionConfig(
-      type="example",
-      payload={"id": 123},
-      handler="client"
-    )
+    onClickAction=ActionConfig(type="example", payload={"id": 123}, handler="client"),
 )
 ```
+
 
 Then, when the action is triggered, it will then be passed to a callback that you provide when instantiating ChatKit.
 
@@ -106,37 +103,39 @@ chatKit.setOptions({
 
 ## Strongly typed actions
 
-By default `Action` and `ActionConfig` are not strongly typed. However, we do expose a `create` helper on `Action` making it easy to generate `ActionConfig`s from a set of strongly-typed actions.
+By default `Action` and `ActionConfig` are not strongly typed. However, we do expose a `create` helper on `Action` that generates `ActionConfig`s from a set of strongly-typed actions.
 
 ```python
-
-class ExamplePayload(BaseModel)
+class ExamplePayload(BaseModel):
     id: int
+
 
 ExampleAction = Action[Literal["example"], ExamplePayload]
 OtherAction = Action[Literal["other"], None]
 
 AppAction = Annotated[
-  ExampleAction
-  | OtherAction,
-  Field(discriminator="type"),
+    ExampleAction | OtherAction,
+    Field(discriminator="type"),
 ]
 
 ActionAdapter: TypeAdapter[AppAction] = TypeAdapter(AppAction)
 
-def parse_app_action(action: Action[str, Any]): AppAction
-  return ActionAdapter.model_validate(action)
+
+def parse_app_action(action: Action[str, Any]) -> AppAction:
+    return ActionAdapter.validate_python(action)
+
 
 # Usage in a widget
 # Action provides a create helper which makes it easy to generate
 # ActionConfigs from strongly typed actions.
-Button(
+button = Button(
     label="Example",
-    onClickAction=ExampleAction.create(ExamplePayload(id=123))
+    onClickAction=ExampleAction.create(ExamplePayload(id=123)),
 )
 
+
 # usage in action handler
-class MyChatKitServer(ChatKitServer[RequestContext])
+class MyChatKitServer(ChatKitServer[RequestContext]):
     async def action(
         self,
         thread: ThreadMetadata,
@@ -146,9 +145,18 @@ class MyChatKitServer(ChatKitServer[RequestContext])
     ) -> AsyncIterator[Event]:
         # add custom error handling if needed
         app_action = parse_app_action(action)
-        if (app_action.type == "example"):
+        if app_action.type == "example":
             await do_thing(app_action.payload.id)
+            yield ThreadItemDoneEvent(
+                item=AssistantMessageItem(
+                    id=self.store.generate_item_id("message", thread, context),
+                    thread_id=thread.id,
+                    created_at=datetime.now(),
+                    content=[AssistantMessageContent(text="Action complete.")],
+                )
+            )
 ```
+
 
 ## Use widgets and actions to create custom forms
 
@@ -160,33 +168,31 @@ Form values are keyed in the `payload` by their `name` e.g.
 - `Select(name="todo.title")` → `action.payload.todo.title`
 
 ```python
-Form(
-	direction="col",
-	validation="native"
-  onSubmitAction=ActionConfig(
-	  type="update_todo",
-	  payload={"id": todo.id}
-  ),
-  children=[
-    Title(value="Edit Todo"),
-
-    Text(value="Title", color="secondary", size="sm"),
-    Text(
-      value=todo.title,
-      editable=EditableProps(name="title", required=True),
-    )
-
-    Text(value="Description", color="secondary", size="sm"),
-    Text(
-      value=todo.description,
-      editable=EditableProps(name="description"),
+form = Form(
+    direction="col",
+    validation="native",
+    onSubmitAction=ActionConfig(
+        type="update_todo",
+        payload={"id": todo.id},
     ),
-
-    Button(label="Save", type="submit")
-  ]
+    children=[
+        Title(value="Edit Todo"),
+        Text(value="Title", color="secondary", size="sm"),
+        Text(
+            value=todo.title,
+            editable=EditableProps(name="title", required=True),
+        ),
+        Text(value="Description", color="secondary", size="sm"),
+        Text(
+            value=todo.description,
+            editable=EditableProps(name="description"),
+        ),
+        Button(label="Save", submit=True),
+    ],
 )
 
-class MyChatKitServer(ChatKitServer[RequestContext])
+
+class MyChatKitServer(ChatKitServer[RequestContext]):
     async def action(
         self,
         thread: ThreadMetadata,
@@ -194,16 +200,24 @@ class MyChatKitServer(ChatKitServer[RequestContext])
         sender: WidgetItem | None,
         context: RequestContext,
     ) -> AsyncIterator[Event]:
-        if (action.type == "update_todo"):
-          id = action.payload['id']
-          # Any action that originates from within the Form will
-          # include title and description
-          title = action.payload['title']
-          description = action.payload['description']
+        if action.type == "update_todo":
+            todo_id = action.payload["id"]
+            # Any action that originates from within the Form will
+            # include title and description.
+            title = action.payload["title"]
+            description = action.payload["description"]
 
-	        # ...
-
+            await update_todo(todo_id, title, description)
+            yield ThreadItemDoneEvent(
+                item=AssistantMessageItem(
+                    id=self.store.generate_item_id("message", thread, context),
+                    thread_id=thread.id,
+                    created_at=datetime.now(),
+                    content=[AssistantMessageContent(text="Todo updated.")],
+                )
+            )
 ```
+
 
 ### Validation
 
@@ -224,14 +238,15 @@ If there is a naming collision with some other existing pre-defined key on your 
 Use `ActionConfig.loadingBehavior` to control how actions trigger different loading states in a widget.
 
 ```python
-Button(
-    label="This make take a while...",
+button = Button(
+    label="This may take a while...",
     onClickAction=ActionConfig(
-      type="long_running_action_that_should_block_other_ui_interactions",
-      loadingBehavior="container"
-    )
+        type="long_running_action_that_should_block_other_ui_interactions",
+        loadingBehavior="container",
+    ),
 )
 ```
+
 
 | Value       | Behavior                                                                                                                        |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------- |

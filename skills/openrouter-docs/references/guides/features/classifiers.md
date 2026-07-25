@@ -4,9 +4,9 @@
 
 # Custom Classifiers
 
-> Automatically categorize every LLM generation in your workspace
+> Automatically categorize LLM generations in your workspace
 
-Custom classifiers let you define a structured taxonomy and use a model of your choosing (OpenRouter will recommend fast, inexpensive models during classifier setup) to tag and classify your prompts. The classifier model runs asynchronously after each request completes (zero added latency), tagging generations with dimensions like department, task type, complexity, or anything you can think of. The tags show up in your [activity logs](https://openrouter.ai/logs) so you can understand how AI is being used across your organization, and will soon appear in roll-up reporting in the activity explorer.
+Custom classifiers let you define a structured taxonomy and use a model of your choosing (OpenRouter will recommend fast, inexpensive models during classifier setup) to tag and classify your prompts. The classifier model runs asynchronously after each request completes (zero added latency), tagging generations with dimensions like department, task type, complexity, or anything you can think of. Tags appear in your [logs](https://openrouter.ai/logs), and roll-up reporting is available in your [activity](https://openrouter.ai/activity/explore) view. Together, these help you understand how AI is being used across your organization.
 
 ## Getting Started
 

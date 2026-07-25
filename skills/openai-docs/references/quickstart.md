@@ -215,6 +215,7 @@ YAML
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -229,11 +230,11 @@ response = client.responses.create(
                 },
                 {
                     "type": "input_image",
-                    "image_url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg"
-                }
-            ]
+                    "image_url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
+                },
+            ],
         }
-    ]
+    ],
 )
 
 print(response.output_text)
@@ -339,6 +340,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -357,7 +359,7 @@ response = client.responses.create(
                 },
             ],
         },
-    ]
+    ],
 )
 
 print(response.output_text)
@@ -480,12 +482,10 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
-file = client.files.create(
-    file=open("draconomicon.pdf", "rb"),
-    purpose="user_data"
-)
+file = client.files.create(file=open("draconomicon.pdf", "rb"), purpose="user_data")
 
 response = client.responses.create(
     model="gpt-5.6",
@@ -501,9 +501,9 @@ response = client.responses.create(
                     "type": "input_text",
                     "text": "What is the first dragon in the book?",
                 },
-            ]
+            ],
         }
-    ]
+    ],
 )
 
 print(response.output_text)
@@ -600,12 +600,13 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     tools=[{"type": "web_search"}],
-    input="What was a positive news story from today?"
+    input="What was a positive news story from today?",
 )
 
 print(response.output_text)
@@ -672,15 +673,13 @@ puts(response.output_text)
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     input="What is deep research by OpenAI?",
-    tools=[{
-        "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
-    }]
+    tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
 )
 print(response)
 ```
@@ -766,16 +765,14 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-    tools=[{
-        "type": "code_interpreter",
-        "container": {"type": "auto"}
-    }],
-    input="I need to solve the equation 3x + 11 = 14. Can you help me?"
+    tools=[{"type": "code_interpreter", "container": {"type": "auto"}}],
+    input="I need to solve the equation 3x + 11 = 14. Can you help me?",
 )
 
 print(response.output_text)
@@ -1160,6 +1157,7 @@ for await (const event of stream) {
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 stream = client.responses.create(

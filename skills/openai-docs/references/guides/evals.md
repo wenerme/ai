@@ -76,6 +76,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 instructions = """
@@ -172,6 +173,7 @@ console.log(evalObj);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 eval_obj = client.evals.create(
@@ -317,12 +319,10 @@ console.log(file);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
-file = client.files.create(
-    file=open("tickets.jsonl", "rb"),
-    purpose="evals"
-)
+file = client.files.create(file=open("tickets.jsonl", "rb"), purpose="evals")
 
 print(file)
 ```
@@ -403,6 +403,7 @@ console.log(run);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 run = client.evals.runs.create(
@@ -414,7 +415,10 @@ run = client.evals.runs.create(
         "input_messages": {
             "type": "template",
             "template": [
-                {"role": "developer", "content": "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of 'Hardware', 'Software', or 'Other'. Respond with only one of those words."},
+                {
+                    "role": "developer",
+                    "content": "You are an expert in categorizing IT support tickets. Given the support ticket below, categorize the request into one of 'Hardware', 'Software', or 'Other'. Respond with only one of those words.",
+                },
                 {"role": "user", "content": "{{ item.ticket_text }}"},
             ],
         },
@@ -515,7 +519,7 @@ console.log(run);
 from openai import OpenAI
 client = OpenAI()
 
-run = client.evals.runs.retrieve("YOUR_EVAL_ID", "YOUR_RUN_ID")
+run = client.evals.runs.retrieve("YOUR_RUN_ID", eval_id="YOUR_EVAL_ID")
 print(run)
 ```
 

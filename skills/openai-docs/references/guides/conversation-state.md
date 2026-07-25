@@ -109,12 +109,7 @@ from openai import OpenAI
 
 client = OpenAI()
 
-history = [
-    {
-        "role": "user",
-        "content": "tell me a joke"
-    }
-]
+history = [{"role": "user", "content": "tell me a joke"}]
 
 response = client.responses.create(
     model="gpt-5.6",
@@ -127,7 +122,7 @@ print(response.output_text)
 # Add all response output items, including encrypted reasoning items, to the conversation
 history += response.output
 
-history.append({ "role": "user", "content": "tell me another" })
+history.append({"role": "user", "content": "tell me another"})
 
 second_response = client.responses.create(
     model="gpt-5.6",
@@ -167,9 +162,9 @@ In a multi-turn interaction, you can pass the `conversation` into subsequent res
 
 ```python
 response = openai.responses.create(
-  model="gpt-5.6",
-  input=[{"role": "user", "content": "What are the 5 Ds of dodgeball?"}],
-  conversation="conv_689667905b048191b4740501625afd940c7533ace33a2dab"
+    model="gpt-5.6",
+    input=[{"role": "user", "content": "What are the 5 Ds of dodgeball?"}],
+    conversation=conversation.id,
 )
 ```
 
@@ -205,6 +200,7 @@ console.log(secondResponse.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -252,6 +248,7 @@ console.log(secondResponse.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(

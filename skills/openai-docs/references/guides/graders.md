@@ -17,7 +17,7 @@ Graders are specified in JSON format, and there are several types:
 - [Score model grader](#score-model-graders)
 - [Python code execution](#python-graders)
 
-In reinforcement fine-tuning, you can nest and combine graders by using [multigraders](#multigraders).
+In reinforcement fine-tuning, you can nest and combine graders by using [`multigrader` objects](#combined-graders).
 
 Use this guide to learn about each grader type and see starter examples. To build a grader and get started with reinforcement fine-tuning, see the [RFT guide](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning). Or to get started with evals, see the [Evals guide](https://developers.openai.com/api/docs/guides/evals).
 
@@ -25,7 +25,7 @@ Use this guide to learn about each grader type and see starter examples. To buil
 
 The inputs to certain graders use a templating syntax to grade multiple examples with the same configuration. Any string with `{{ }}` double curly braces will be substituted with the variable value.
 
-Each input inside the `{{}}` must include a _namespace_ and a _variable_ with the following format `{{ namespace.variable }}`. The only supported namespaces are `item` and `sample`.
+Each input inside the `{{}}` must include a _namespace_ and a _variable_ with the following format `{{ namespace.variable }}`. The only supported namespace values are `item` and `sample`.
 
 All nested variables can be accessed with JSON path like syntax.
 
@@ -86,9 +86,9 @@ This is a `multi` grader that combined two simple `string_check` graders, the fi
 
 The `arguments` grader is prone to under-rewarding the model if the function arguments are subtly incorrect, like if `1` is submitted instead of the floating point `1.0`, or if a state name is given as an abbreviation instead of spelling it out. To avoid this, you can use a `text_similarity` grader instead of a `string_check` grader, or a `score_model` grader to have a LLM check for semantic similarity.
 
-## String check grader
+## String check graders
 
-Use these simple string operations to return a 0 or 1. String check graders are good for scoring straightforward pass or fail answers—for example, the correct name of a city, a yes or no answer, or an answer containing or starting with the correct information.
+Use these basic string operations to return a 0 or 1. String check graders are good for scoring straightforward pass or fail answers—for example, the correct name of a city, a yes or no answer, or an answer containing or starting with the correct information.
 
 ```json
 {
@@ -107,7 +107,7 @@ Operations supported for string-check-grader are:
 - `like`: Returns 1 if the input contains the reference (case-sensitive), 0 otherwise
 - `ilike`: Returns 1 if the input contains the reference (not case-sensitive), 0 otherwise
 
-## Text similarity grader
+## Text similarity graders
 
 Use text similarity graders when to evaluate how close the model-generated output is to the reference, scored with various evaluation frameworks.
 
@@ -182,28 +182,28 @@ import requests
 api_key = os.environ["OPENAI_API_KEY"]
 headers = {"Authorization": f"Bearer {api_key}"}
 
-# define a dummy grader for illustration purposes
+# Define a score-model grader.
 grader = {
-   "type": "score_model",
-   "name": "my_score_model",
-   "input": [
+    "type": "score_model",
+    "name": "my_score_model",
+    "input": [
         {
             "role": "system",
-            "content": "You are an expert grader. If the reference and model answer are exact matches, output a score of 1. If they are somewhat similar in meaning, output a score in 0.5. Otherwise, give a score of 0."
+            "content": "You are an expert grader. If the reference and model answer are exact matches, output a score of 1. If they are somewhat similar in meaning, output a score in 0.5. Otherwise, give a score of 0.",
         },
         {
             "role": "user",
-            "content": "Reference: {{ item.reference_answer }}. Model answer: {{ sample.output_text }}"
-        }
-   ],
-   "pass_threshold": 0.5,
-   "model": "o4-mini-2025-04-16",
-   "range": [0, 1],
-   "sampling_params": {
-       "max_completions_tokens": 32768,
-       "top_p": 1,
-       "reasoning_effort": "medium"
-   },
+            "content": "Reference: {{ item.reference_answer }}. Model answer: {{ sample.output_text }}",
+        },
+    ],
+    "pass_threshold": 0.5,
+    "model": "o4-mini-2025-04-16",
+    "range": [0, 1],
+    "sampling_params": {
+        "max_completions_tokens": 32768,
+        "top_p": 1,
+        "reasoning_effort": "medium",
+    },
 }
 
 # validate the grader
@@ -211,22 +211,16 @@ payload = {"grader": grader}
 response = requests.post(
     "https://api.openai.com/v1/fine_tuning/alpha/graders/validate",
     json=payload,
-    headers=headers
+    headers=headers,
 )
 print("validate response:", response.text)
 
 # run the grader with a test reference and sample
-payload = {
-  "grader": grader,
-  "item": {
-     "reference_answer": 1.0
-  },
-  "model_sample": "0.9"
-}
+payload = {"grader": grader, "item": {"reference_answer": 1.0}, "model_sample": "0.9"}
 response = requests.post(
     "https://api.openai.com/v1/fine_tuning/alpha/graders/run",
     json=payload,
-    headers=headers
+    headers=headers,
 )
 print("run response:", response.text)
 ```
@@ -252,7 +246,7 @@ Where each reasoning step is of the form
 }
 ```
 
-This format queries the model not just for the numeric `result` (the reward value for the query), but also provides the model some space to think through the reasoning behind the score. When you are writing your grader prompt, it may be useful to refer to these two fields by name explicitly (e.g. "include reasoning about the type of chemical bonds present in the molecule in the conclusion of your reasoning step", or "return a value of -1.0 in the `result` field if the inputs do not satisfy condition X").
+This format queries the model not just for the numeric `result` (the reward value for the query), but also provides the model some space to think through the reasoning behind the score. When you are writing your grader prompt, it may be useful to refer to these two fields by name explicitly (for example, “include reasoning about the type of chemical bonds present in the molecule in the conclusion of your reasoning step,” or “return a value of −1.0 in the `result` field if the inputs do not satisfy condition X”).
 
 ### Model grader constraints
 
@@ -312,10 +306,12 @@ The python source code must contain a grade function that takes in exactly two a
 ```python
 from typing import Any
 
+
 def grade(sample: dict[str, Any], item: dict[str, Any]) -> float:
     # your logic here
     return 1.0
 ```
+
 
 The first argument supplied to the grading function will be a dictionary populated with the model’s output during training for you to grade. `output_json` will only be populated if the output uses `response_format`.
 
@@ -357,34 +353,29 @@ def grade(sample, item) -> float:
     return fuzz.WRatio(output_text, reference_answer, processor=utils.default_process) / 100.0
 """
 
-# define a dummy grader for illustration purposes
-grader = {
-    "type": "python",
-    "source": grading_function
-}
+# Define a Python grader.
+grader = {"type": "python", "source": grading_function}
 
 # validate the grader
 payload = {"grader": grader}
 response = requests.post(
     "https://api.openai.com/v1/fine_tuning/alpha/graders/validate",
     json=payload,
-    headers=headers
+    headers=headers,
 )
 print("validate request_id:", response.headers["x-request-id"])
 print("validate response:", response.text)
 
 # run the grader with a test reference and sample
 payload = {
-  "grader": grader,
-  "item": {
-     "reference_answer": "fuzzy wuzzy had no hair"
-  },
-  "model_sample": "fuzzy wuzzy was a bear"
+    "grader": grader,
+    "item": {"reference_answer": "fuzzy wuzzy had no hair"},
+    "model_sample": "fuzzy wuzzy was a bear",
 }
 response = requests.post(
     "https://api.openai.com/v1/fine_tuning/alpha/graders/run",
     json=payload,
-    headers=headers
+    headers=headers,
 )
 print("run request_id:", response.headers["x-request-id"])
 print("run response:", response.text)
@@ -399,11 +390,9 @@ import importlib
 import inspect
 
 grader_module = importlib.import_module("grader")
-grader = {
-    "type": "python",
-    "source": inspect.getsource(grader_module)
-}
+grader = {"type": "python", "source": inspect.getsource(grader_module)}
 ```
+
 
 This will automatically use the entire source code of your `grader.py` file as the grader which can be helpful for longer graders.
 
@@ -435,7 +424,7 @@ scikit-bio==0.6.3
 ast-grep-py==0.36.2
 ```
 
-Additionally the following nltk corpora are available:
+Additionally, the following NLTK corpora are available:
 
 ```
 punkt
@@ -445,11 +434,11 @@ omw-1.4
 names
 ```
 
-## Multigraders
+## Combined graders
 
 > Currently, this grader is only used for Reinforcement fine-tuning
 
-A `multigrader` object combines the output of multiple graders to produce a single score. Multigraders work by computing grades over the fields of other grader objects and turning those sub-grades into an overall grade. This is useful when a correct answer depends on multiple things being true—for example, that the text is similar _and_ that the answer contains a specific string.
+A `multigrader` object combines the output of multiple graders to produce a single score. Combined graders compute grades over the fields of other grader objects and turn those sub-grades into an overall grade. This is useful when a correct answer depends on multiple things being true—for example, that the text is similar _and_ that the answer contains a specific string.
 
 As an example, say you wanted the model to output JSON with the following two fields:
 
@@ -490,7 +479,7 @@ You can do this by combining multiple graders into an object grader, and then de
 
 In this example, it’s important for the model to get the email exactly right (`string_check` returns either 0 or 1) but we tolerate some misspellings on the name (`text_similarity` returns range from 0 to 1). Samples that get the email wrong will score between 0-0.5, and samples that get the email right will score between 0.5-1.0.
 
-You cannot create a multigrader with a nested multigrader inside.
+You cannot nest one `multigrader` inside another.
 
 The calculate output field will have the keys of the input `graders` as possible variables and the following features are supported:
 

@@ -37,12 +37,13 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     tools=[{"type": "web_search"}],
-    input="What was a positive news story from today?"
+    input="What was a positive news story from today?",
 )
 
 print(response.output_text)
@@ -178,14 +179,17 @@ Set search context size
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
-    tools=[{
-        "type": "web_search",
-        "search_context_size": "low",
-    }],
+    tools=[
+        {
+            "type": "web_search",
+            "search_context_size": "low",
+        }
+    ],
     input="What movie won best picture in 2025?",
 )
 
@@ -312,6 +316,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -417,6 +422,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -518,6 +524,7 @@ console.log(response.output);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -587,19 +594,22 @@ Customizing user location
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
-    tools=[{
-        "type": "web_search",
-        "user_location": {
-            "type": "approximate",
-            "country": "GB",
-            "city": "London",
-            "region": "London",
+    tools=[
+        {
+            "type": "web_search",
+            "user_location": {
+                "type": "approximate",
+                "country": "GB",
+                "city": "London",
+                "region": "London",
+            },
         }
-    }],
+    ],
     input="What are the best restaurants near me?",
 )
 
@@ -720,6 +730,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 resp = client.responses.create(

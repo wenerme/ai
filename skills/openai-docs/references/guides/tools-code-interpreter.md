@@ -65,7 +65,7 @@ resp = client.responses.create(
     tools=[
         {
             "type": "code_interpreter",
-            "container": {"type": "auto", "memory_limit": "4g"}
+            "container": {"type": "auto", "memory_limit": "4g"},
         }
     ],
     instructions=instructions,
@@ -118,18 +118,16 @@ curl https://api.openai.com/v1/responses \
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 container = client.containers.create(name="test-container", memory_limit="4g")
 
 response = client.responses.create(
     model="gpt-5.6",
-    tools=[{
-        "type": "code_interpreter",
-        "container": container.id
-    }],
+    tools=[{"type": "code_interpreter", "container": container.id}],
     tool_choice="required",
-    input="use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result"
+    input="use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result",
 )
 
 print(response.output_text)

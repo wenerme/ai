@@ -128,19 +128,13 @@ const response = await client.responses.create({
 
 ```python
 context = [
-  { "role": "system", "content": "You are a helpful assistant." },
-  { "role": "user", "content": "Hello!" }
+    {"role": "system", "content": "You are a helpful assistant."},
+    {"role": "user", "content": "Hello!"},
 ]
 
-completion = client.chat.completions.create(
-  model="gpt-5.6",
-  messages=context
-)
+completion = client.chat.completions.create(model="gpt-5.6", messages=context)
 
-response = client.responses.create(
-  model="gpt-5.6",
-  input=context
-)
+response = client.responses.create(model="gpt-5.6", input=context)
 ```
 
 
@@ -168,14 +162,15 @@ console.log(completion.choices[0].message.content);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 completion = client.chat.completions.create(
     model="gpt-5.6",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Hello!"}
-    ]
+        {"role": "user", "content": "Hello!"},
+    ],
 )
 print(completion.choices[0].message.content)
 ```
@@ -216,12 +211,11 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
-    model="gpt-5.6",
-    instructions="You are a helpful assistant.",
-    input="Hello!"
+    model="gpt-5.6", instructions="You are a helpful assistant.", input="Hello!"
 )
 print(response.output_text)
 ```
@@ -297,7 +291,7 @@ const res2 = await client.chat.completions.create({
 ```python
 messages = [
     {"role": "system", "content": "You are a helpful assistant."},
-    {"role": "user", "content": "What is the capital of France?"}
+    {"role": "user", "content": "What is the capital of France?"},
 ]
 res1 = client.chat.completions.create(model="gpt-5.6", messages=messages)
 
@@ -316,9 +310,7 @@ res2 = client.chat.completions.create(model="gpt-5.6", messages=messages)
     Multi-turn conversation
 
 ```python
-context = [
-    { "role": "user", "content": "What is the capital of France?" }
-]
+context = [{"role": "user", "content": "What is the capital of France?"}]
 res1 = client.responses.create(
     model="gpt-5.6",
     input=context,
@@ -328,9 +320,7 @@ res1 = client.responses.create(
 context += res1.output
 
 # Add the next user message
-context += [
-    { "role": "user", "content": "And its population?" }
-]
+context += [{"role": "user", "content": "And its population?"}]
 
 res2 = client.responses.create(
     model="gpt-5.6",
@@ -380,16 +370,14 @@ const res2 = await client.responses.create({
 
 ```python
 res1 = client.responses.create(
-    model="gpt-5.6",
-    input="What is the capital of France?",
-    store=True
+    model="gpt-5.6", input="What is the capital of France?", store=True
 )
 
 res2 = client.responses.create(
     model="gpt-5.6",
     input="And its population?",
     previous_response_id=res1.id,
-    store=True
+    store=True,
 )
 ```
 
@@ -482,43 +470,34 @@ curl https://api.openai.com/v1/chat/completions \
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.chat.completions.create(
-  model="gpt-5.6",
-  messages=[
-    {
-      "role": "user",
-      "content": "Jane, 54 years old",
-    }
-  ],
-  response_format={
-    "type": "json_schema",
-    "json_schema": {
-      "name": "person",
-      "strict": True,
-      "schema": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "minLength": 1
-          },
-          "age": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 130
-          }
+    model="gpt-5.6",
+    messages=[
+        {
+            "role": "user",
+            "content": "Jane, 54 years old",
+        }
+    ],
+    response_format={
+        "type": "json_schema",
+        "json_schema": {
+            "name": "person",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string", "minLength": 1},
+                    "age": {"type": "number", "minimum": 0, "maximum": 130},
+                },
+                "required": ["name", "age"],
+                "additionalProperties": False,
+            },
         },
-        "required": [
-          "name",
-          "age"
-        ],
-        "additionalProperties": False
-      }
-    }
-  },
-  reasoning_effort="medium"
+    },
+    reasoning_effort="medium",
 )
 ```
 
@@ -601,34 +580,24 @@ curl https://api.openai.com/v1/responses \
 
 ```python
 response = client.responses.create(
-  model="gpt-5.6",
-  input="Jane, 54 years old", 
-  text={
-    "format": {
-      "type": "json_schema",
-      "name": "person",
-      "strict": True,
-      "schema": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "minLength": 1
-          },
-          "age": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 130
-          }
-        },
-        "required": [
-          "name",
-          "age"
-        ],
-        "additionalProperties": False
-      }
-    }
-  }
+    model="gpt-5.6",
+    input="Jane, 54 years old",
+    text={
+        "format": {
+            "type": "json_schema",
+            "name": "person",
+            "strict": True,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "name": {"type": "string", "minLength": 1},
+                    "age": {"type": "number", "minimum": 0, "maximum": 130},
+                },
+                "required": ["name", "age"],
+                "additionalProperties": False,
+            },
+        }
+    },
 )
 ```
 
@@ -721,15 +690,17 @@ const completion = await client.chat.completions.create({
 ```python
 import requests
 
+
 def web_search(query):
     r = requests.get(f"https://api.example.com/search?q={query}")
     return r.json().get("results", [])
+
 
 completion = client.chat.completions.create(
     model="gpt-5.6",
     messages=[
         {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Who is the current president of France?"}
+        {"role": "user", "content": "Who is the current president of France?"},
     ],
     functions=[
         {
@@ -738,10 +709,10 @@ completion = client.chat.completions.create(
             "parameters": {
                 "type": "object",
                 "properties": {"query": {"type": "string"}},
-                "required": ["query"]
-            }
+                "required": ["query"],
+            },
         }
-    ]
+    ],
 )
 ```
 
@@ -772,7 +743,7 @@ console.log(answer.output_text);
 answer = client.responses.create(
     model="gpt-5.6",
     input="Who is the current president of France?",
-    tools=[{"type": "web_search"}]
+    tools=[{"type": "web_search"}],
 )
 
 print(answer.output_text)

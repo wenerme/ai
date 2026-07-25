@@ -71,6 +71,7 @@ const fineTune = await openai.fineTuning.jobs.create({
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 client.fine_tuning.jobs.create(

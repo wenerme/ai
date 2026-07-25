@@ -12,7 +12,13 @@ Kick off a deep research task
 
 ```python
 from openai import OpenAI
+
 client = OpenAI(timeout=3600)
+
+vector_store_ids = [
+    "<vector_store_id>",
+    "<vector_store_id_2>",
+]
 
 input_text = """
 Research the economic impact of semaglutide on global healthcare systems.
@@ -35,15 +41,9 @@ response = client.responses.create(
         {"type": "web_search_preview"},
         {
             "type": "file_search",
-            "vector_store_ids": [
-                "vs_68870b8868b88191894165101435eef6",
-                "vs_12345abcde6789fghijk101112131415"
-            ]
+            "vector_store_ids": vector_store_ids,
         },
-        {
-            "type": "code_interpreter",
-            "container": {"type": "auto"}
-        },
+        {"type": "code_interpreter", "container": {"type": "auto"}},
     ],
 )
 
@@ -187,6 +187,7 @@ Asking clarifying questions using a faster, smaller model
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 instructions = """
@@ -201,12 +202,12 @@ GUIDELINES:
 IMPORTANT: Do NOT conduct any research yourself, just gather information that will be given to a researcher to conduct the research task.
 """
 
-input_text = "Research surfboards for me. I'm interested in ...";
+input_text = "Research surfboards for me. I'm interested in ..."
 
 response = client.responses.create(
-  model="gpt-5.6",
-  input=input_text,
-  instructions=instructions,
+    model="gpt-5.6",
+    input=input_text,
+    instructions=instructions,
 )
 
 print(response.output_text)
@@ -255,6 +256,7 @@ Enrich a user prompt using a faster, smaller model
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 instructions = """

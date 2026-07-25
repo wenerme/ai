@@ -21,8 +21,7 @@ For example, to create an Assistant that can create data visualization based on 
 
 ```python
 file = client.files.create(
-  file=open("revenue-forecast.csv", "rb"),
-  purpose='assistants'
+    file=open("revenue-forecast.csv", "rb"), purpose="assistants"
 )
 ```
 
@@ -45,15 +44,11 @@ Then, create the Assistant with the `code_interpreter` tool enabled and provide 
 
 ```python
 assistant = client.beta.assistants.create(
-  name="Data visualizer",
-  description="You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
-  model="gpt-4o",
-  tools=[{"type": "code_interpreter"}],
-  tool_resources={
-    "code_interpreter": {
-      "file_ids": [file.id]
-    }
-  }
+    name="Data visualizer",
+    description="You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
+    model="gpt-4o",
+    tools=[{"type": "code_interpreter"}],
+    tool_resources={"code_interpreter": {"file_ids": [file.id]}},
 )
 ```
 
@@ -102,18 +97,15 @@ You can create a Thread with an initial list of Messages like this:
 
 ```python
 thread = client.beta.threads.create(
-  messages=[
-    {
-      "role": "user",
-      "content": "Create 3 data visualizations based on the trends in this file.",
-      "attachments": [
+    messages=[
         {
-          "file_id": file.id,
-          "tools": [{"type": "code_interpreter"}]
+            "role": "user",
+            "content": "Create 3 data visualizations based on the trends in this file.",
+            "attachments": [
+                {"file_id": file.id, "tools": [{"type": "code_interpreter"}]}
+            ],
         }
-      ]
-    }
-  ]
+    ]
 )
 ```
 
@@ -165,35 +157,32 @@ Message content can contain either external image URLs or File IDs uploaded via 
 Tools cannot access image content unless specified. To pass image files to Code Interpreter, add the file ID in the message `attachments` list to allow the tool to read and analyze the input. Image URLs cannot be downloaded in Code Interpreter today.
 
 ```python
-file = client.files.create(
-  file=open("myimage.png", "rb"),
-  purpose="vision"
-)
+file = client.files.create(file=open("myimage.png", "rb"), purpose="vision")
 thread = client.beta.threads.create(
-  messages=[
-    {
-      "role": "user",
-      "content": [
+    messages=[
         {
-          "type": "text",
-          "text": "What is the difference between these images?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {"url": "https://example.com/image.png"}
-        },
-        {
-          "type": "image_file",
-          "image_file": {"file_id": file.id}
-        },
-      ],
-    }
-  ]
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "What is the difference between these images?",
+                },
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://openai-documentation.vercel.app/images/cat_and_otter.png"
+                    },
+                },
+                {"type": "image_file", "image_file": {"file_id": file.id}},
+            ],
+        }
+    ]
 )
 ```
 
 ```javascript
 import fs from "fs";
+
 const file = await openai.files.create({
   file: fs.createReadStream("myimage.png"),
   purpose: "vision",
@@ -209,7 +198,7 @@ const thread = await openai.beta.threads.create({
         },
         {
           "type": "image_url",
-          "image_url": {"url": "https://example.com/image.png"}
+          "image_url": {"url": "https://openai-documentation.vercel.app/images/cat_and_otter.png"}
         },
         {
           "type": "image_file",
@@ -245,7 +234,7 @@ curl https://api.openai.com/v1/threads \
 },
 {
 "type": "image_url",
-"image_url": {"url": "https://example.com/image.png"}
+"image_url": {"url": "https://openai-documentation.vercel.app/images/cat_and_otter.png"}
 },
 {
 "type": "image_file",
@@ -267,24 +256,21 @@ By controlling the `detail` parameter, which has three options, `low`, `high`, o
 
 ```python
 thread = client.beta.threads.create(
-  messages=[
-    {
-      "role": "user",
-      "content": [
+    messages=[
         {
-          "type": "text",
-          "text": "What is this an image of?"
-        },
-        {
-          "type": "image_url",
-          "image_url": {
-            "url": "https://example.com/image.png",
-            "detail": "high"
-          }
-        },
-      ],
-    }
-  ]
+            "role": "user",
+            "content": [
+                {"type": "text", "text": "What is this an image of?"},
+                {
+                    "type": "image_url",
+                    "image_url": {
+                        "url": "https://openai-documentation.vercel.app/images/cat_and_otter.png",
+                        "detail": "high",
+                    },
+                },
+            ],
+        }
+    ]
 )
 ```
 
@@ -301,7 +287,7 @@ const thread = await openai.beta.threads.create({
           {
             "type": "image_url",
             "image_url": {
-              "url": "https://example.com/image.png",
+              "url": "https://openai-documentation.vercel.app/images/cat_and_otter.png",
               "detail": "high"
             }
           },
@@ -328,7 +314,7 @@ curl https://api.openai.com/v1/threads \
           {
             "type": "image_url",
             "image_url": {
-              "url": "https://example.com/image.png",
+              "url": "https://openai-documentation.vercel.app/images/cat_and_otter.png",
               "detail": "high"
             }
           },
@@ -373,10 +359,18 @@ There are two types of Annotations:
 When annotations are present in the Message object, you'll see illegible model-generated substrings in the text that you should replace with the annotations. These strings may look something like `【13†source】` or `sandbox:/mnt/data/file.csv`. Here’s an example python code snippet that replaces these strings with the annotations.
 
 ```python
+import os
+from pathlib import Path
+
+thread_id = os.environ["OPENAI_THREAD_ID"]
+message_id = os.environ["OPENAI_MESSAGE_ID"]
+downloads = Path("downloads")
+downloads.mkdir(exist_ok=True)
+
 # Retrieve the message object
 message = client.beta.threads.messages.retrieve(
-  thread_id="...",
-  message_id="..."
+    thread_id=thread_id,
+    message_id=message_id,
 )
 
 # Extract the message content
@@ -387,21 +381,26 @@ citations = []
 
 # Iterate over the annotations and add footnotes
 
-for index, annotation in enumerate(annotations): # Replace the text with a footnote
-message_content.value = message_content.value.replace(annotation.text, f' [{index}]')
+for index, annotation in enumerate(annotations):
+    # Replace the text with a footnote.
+    message_content.value = message_content.value.replace(
+        annotation.text, f" [{index}]"
+    )
 
     # Gather citations based on annotation attributes
-    if (file_citation := getattr(annotation, 'file_citation', None)):
+    if file_citation := getattr(annotation, "file_citation", None):
         cited_file = client.files.retrieve(file_citation.file_id)
-        citations.append(f'[{index}] {file_citation.quote} from {cited_file.filename}')
-    elif (file_path := getattr(annotation, 'file_path', None)):
+        citations.append(f"[{index}] {file_citation.quote} from {cited_file.filename}")
+    elif file_path := getattr(annotation, "file_path", None):
         cited_file = client.files.retrieve(file_path.file_id)
-        citations.append(f'[{index}] Click <here> to download {cited_file.filename}')
-        # Note: File download functionality not implemented above for brevity
+        file_content = client.files.content(file_path.file_id)
+        output_path = downloads / Path(cited_file.filename).name
+        output_path.write_bytes(file_content.read())
+        citations.append(f"[{index}] Downloaded {output_path}")
 
 # Add footnotes to the end of the message before displaying to user
 
-message_content.value += '\n' + '\n'.join(citations)
+message_content.value += "\n" + "\n".join(citations)
 ```
 
 
@@ -411,8 +410,8 @@ When you have all the context you need from your user in the Thread, you can run
 
 ```python
 run = client.beta.threads.runs.create(
-  thread_id=thread.id,
-  assistant_id=assistant.id
+    thread_id=thread.id,
+    assistant_id=assistant.id,
 )
 ```
 
@@ -438,11 +437,11 @@ By default, a Run will use the `model` and `tools` configuration specified in As
 
 ```python
 run = client.beta.threads.runs.create(
-  thread_id=thread.id,
-  assistant_id=assistant.id,
-  model="gpt-4o",
-  instructions="New instructions that override the Assistant instructions",
-  tools=[{"type": "code_interpreter"}, {"type": "file_search"}]
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+    model="gpt-4o",
+    instructions="New instructions that override the Assistant instructions",
+    tools=[{"type": "code_interpreter"}, {"type": "file_search"}],
 )
 ```
 

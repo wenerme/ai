@@ -193,9 +193,8 @@ async def main() -> None:
     )
 
     async for event in stream.stream_events():
-        if (
-            event.type == "raw_response_event"
-            and isinstance(event.data, ResponseTextDeltaEvent)
+        if event.type == "raw_response_event" and isinstance(
+            event.data, ResponseTextDeltaEvent
         ):
             print(event.data.delta, end="", flush=True)
 

@@ -83,8 +83,7 @@ response = client.responses.create(
 # - update lib/fib.py
 # - update run.py
 patch_calls = [
-    item for item in response.output
-    if item["type"] == "apply_patch_call"
+    item.model_dump() for item in response.output if item.type == "apply_patch_call"
 ]
 ```
 
@@ -127,12 +126,14 @@ for call in patch_calls:
     op = call["operation"]
     success, maybe_log_output = apply_operation(op)
 
-    results.append({
-        "type": "apply_patch_call_output",
-        "call_id": call["call_id"],
-        "status": "completed" if success else "failed",
-        "output": maybe_log_output,
-    })
+    results.append(
+        {
+            "type": "apply_patch_call_output",
+            "call_id": call["call_id"],
+            "status": "completed" if success else "failed",
+            "output": maybe_log_output,
+        }
+    )
 
 followup = client.responses.create(
     model="gpt-5.6",

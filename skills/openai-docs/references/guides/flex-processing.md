@@ -35,6 +35,7 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI(
     # increase default timeout to 15 minutes (from 10 minutes)
     timeout=900.0

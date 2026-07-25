@@ -23,12 +23,13 @@ console.log(response.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     tools=[{"type": "web_search"}],
-    input="What was a positive news story from today?"
+    input="What was a positive news story from today?",
 )
 
 print(response.output_text)
@@ -95,15 +96,13 @@ puts(response.output_text)
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
     model="gpt-5.6",
     input="What is deep research by OpenAI?",
-    tools=[{
-        "type": "file_search",
-        "vector_store_ids": ["<vector_store_id>"]
-    }]
+    tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
 )
 print(response)
 ```

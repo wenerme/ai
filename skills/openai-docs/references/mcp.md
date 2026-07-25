@@ -200,16 +200,17 @@ class FetchOutput(BaseModel):
     url: str
     metadata: dict[str, Any] | None = None
 
+
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # OpenAI configuration
-OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
-VECTOR_STORE_ID = os.environ.get("VECTOR_STORE_ID", "")
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
+VECTOR_STORE_ID = os.environ["VECTOR_STORE_ID"]
 
 # Initialize OpenAI client
-openai_client = OpenAI()
+openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
 server_instructions = """
 This MCP server provides search and document retrieval capabilities
@@ -223,8 +224,7 @@ def create_server():
     """Create and configure the MCP server with search and fetch tools."""
 
     # Initialize the FastMCP server
-    mcp = FastMCP(name="Sample MCP Server",
-                  instructions=server_instructions)
+    mcp = FastMCP(name="Sample MCP Server", instructions=server_instructions)
 
     @mcp.tool(output_schema=SearchOutput.model_json_schema())
     async def search(query: str) -> SearchOutput:
@@ -247,23 +247,23 @@ def create_server():
 
         if not openai_client:
             logger.error("OpenAI client not initialized - API key missing")
-            raise ValueError(
-                "OpenAI API key is required for vector store search")
+            raise ValueError("OpenAI API key is required for vector store search")
 
         # Search the vector store using OpenAI API
         logger.info(f"Searching {VECTOR_STORE_ID} for query: '{query}'")
 
         response = openai_client.vector_stores.search(
-            vector_store_id=VECTOR_STORE_ID, query=query)
+            vector_store_id=VECTOR_STORE_ID, query=query
+        )
 
         results = []
 
         # Process the vector store search results
-        if hasattr(response, 'data') and response.data:
+        if hasattr(response, "data") and response.data:
             for i, item in enumerate(response.data):
                 # Extract file_id, filename, and content
-                item_id = getattr(item, 'file_id', f"vs_{i}")
-                item_filename = getattr(item, 'filename', f"Document {i+1}")
+                item_id = getattr(item, "file_id", f"vs_{i}")
+                item_filename = getattr(item, "filename", f"Document {i + 1}")
 
                 result = SearchResult(
                     id=item_id,
@@ -301,32 +301,35 @@ def create_server():
         if not openai_client:
             logger.error("OpenAI client not initialized - API key missing")
             raise ValueError(
-                "OpenAI API key is required for vector store file retrieval")
+                "OpenAI API key is required for vector store file retrieval"
+            )
 
         logger.info(f"Fetching content from vector store for file ID: {id}")
 
         # Fetch file content from vector store
         content_response = openai_client.vector_stores.files.content(
-            vector_store_id=VECTOR_STORE_ID, file_id=id)
+            vector_store_id=VECTOR_STORE_ID, file_id=id
+        )
 
         # Get file metadata
         file_info = openai_client.vector_stores.files.retrieve(
-            vector_store_id=VECTOR_STORE_ID, file_id=id)
+            vector_store_id=VECTOR_STORE_ID, file_id=id
+        )
 
         # Extract content from paginated response
         file_content = ""
-        if hasattr(content_response, 'data') and content_response.data:
+        if hasattr(content_response, "data") and content_response.data:
             # Combine all content chunks from FileContentResponse objects
             content_parts = []
             for content_item in content_response.data:
-                if hasattr(content_item, 'text'):
+                if hasattr(content_item, "text"):
                     content_parts.append(content_item.text)
             file_content = "\n".join(content_parts)
         else:
             file_content = "No content available"
 
         # Use filename as title and create proper URL for citations
-        filename = getattr(file_info, 'filename', f"Document {id}")
+        filename = getattr(file_info, "filename", f"Document {id}")
 
         result = FetchOutput(
             id=id,
@@ -336,7 +339,7 @@ def create_server():
         )
 
         # Add metadata if available from file info
-        if hasattr(file_info, 'attributes') and file_info.attributes:
+        if hasattr(file_info, "attributes") and file_info.attributes:
             result.metadata = dict(file_info.attributes)
 
         logger.info(f"Fetched vector store file: {id}")
@@ -347,13 +350,6 @@ def create_server():
 
 def main():
     """Main function to start the MCP server."""
-    # Verify OpenAI client is initialized
-    if not openai_client:
-        logger.error(
-            "OpenAI API key not found. Please set OPENAI_API_KEY environment variable."
-        )
-        raise ValueError("OpenAI API key is required")
-
     logger.info(f"Using vector store: {VECTOR_STORE_ID}")
 
     # Create the MCP server
@@ -365,7 +361,13 @@ def main():
 
     try:
         # Use FastMCP's built-in run method with SSE transport
-        server.run(transport="sse", host="0.0.0.0", port=8000)
+        port = int(os.environ.get("OPENAI_EXAMPLE_PORT", "8000"))
+        server.run(
+            transport="sse",
+            host="0.0.0.0",
+            port=port,
+            uvicorn_config={"loop": "asyncio"},
+        )
     except KeyboardInterrupt:
         logger.info("Server stopped by user")
     except Exception as e:

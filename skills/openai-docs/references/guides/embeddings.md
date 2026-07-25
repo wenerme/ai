@@ -36,11 +36,11 @@ console.log(embedding);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.embeddings.create(
-    input="Your text string goes here",
-    model="text-embedding-3-small"
+    input="Your text string goes here", model="text-embedding-3-small"
 )
 
 print(response.data[0].embedding)
@@ -117,14 +117,19 @@ Below, we combine the review summary and review text into a single combined text
 
 <span>Get_embeddings_from_dataset.ipynb</span> ```python
 from openai import OpenAI
+
 client = OpenAI()
+
 
 def get_embedding(text, model="text-embedding-3-small"):
     text = text.replace("\n", " ")
-    return client.embeddings.create(input = [text], model=model).data[0].embedding
+    return client.embeddings.create(input=[text], model=model).data[0].embedding
 
-df['ada_embedding'] = df.combined.apply(lambda x: get_embedding(x, model='text-embedding-3-small'))
-df.to_csv('output/embedded_1k_reviews.csv', index=False)
+
+df["ada_embedding"] = df.combined.apply(
+    lambda x: get_embedding(x, model="text-embedding-3-small")
+)
+df.to_csv("output/embedded_1k_reviews.csv", index=False)
 ```
 
 
@@ -133,8 +138,8 @@ To load the data from a saved file, you can run the following:
 ```python
 import pandas as pd
 
-df = pd.read_csv('output/embedded_1k_reviews.csv')
-df['ada_embedding'] = df.ada_embedding.apply(eval).apply(np.array)
+df = pd.read_csv("output/embedded_1k_reviews.csv")
+df["ada_embedding"] = df.ada_embedding.apply(eval).apply(np.array)
 ```
 
 
@@ -151,6 +156,7 @@ from openai import OpenAI
 import numpy as np
 
 client = OpenAI()
+
 
 def normalize_l2(x):
     x = np.array(x)
@@ -198,8 +204,11 @@ Question: Which athletes won the gold medal in curling at the 2022 Winter Olympi
 
 response = client.chat.completions.create(
     messages=[
-        {'role': 'system', 'content': 'You answer questions about the 2022 Winter Olympics.'},
-        {'role': 'user', 'content': query},
+        {
+            "role": "system",
+            "content": "You answer questions about the 2022 Winter Olympics.",
+        },
+        {"role": "user", "content": query},
     ],
     model=GPT_MODEL,
     temperature=0,
@@ -219,15 +228,16 @@ Text search using embeddings
 To retrieve the most relevant documents we use the cosine similarity between the embedding vectors of the query and each document, and return the highest scored documents.
 
 ```python
-from openai.embeddings_utils import get_embedding, cosine_similarity
-
 def search_reviews(df, product_description, n=3, pprint=True):
-    embedding = get_embedding(product_description, model='text-embedding-3-small')
-    df['similarities'] = df.ada_embedding.apply(lambda x: cosine_similarity(x, embedding))
-    res = df.sort_values('similarities', ascending=False).head(n)
+    embedding = get_embedding(product_description, model="text-embedding-3-small")
+    df["similarities"] = df.ada_embedding.apply(
+        lambda x: cosine_similarity(x, embedding)
+    )
+    res = df.sort_values("similarities", ascending=False).head(n)
     return res
 
-res = search_reviews(df, 'delicious beans', n=3)
+
+res = search_reviews(df, "delicious beans", n=3)
 ```
 
 
@@ -243,18 +253,22 @@ Code search works similarly to embedding-based text search. We provide a method 
 To perform a code search, we embed the query in natural language using the same model. Then we calculate cosine similarity between the resulting query embedding and each of the function embeddings. The highest cosine similarity results are most relevant.
 
 ```python
-from openai.embeddings_utils import get_embedding, cosine_similarity
+df["code_embedding"] = df["code"].apply(
+    lambda x: get_embedding(x, model="text-embedding-3-small")
+)
 
-df['code_embedding'] = df['code'].apply(lambda x: get_embedding(x, model='text-embedding-3-small'))
 
 def search_functions(df, code_query, n=3, pprint=True, n_lines=7):
-    embedding = get_embedding(code_query, model='text-embedding-3-small')
-    df['similarities'] = df.code_embedding.apply(lambda x: cosine_similarity(x, embedding))
+    embedding = get_embedding(code_query, model="text-embedding-3-small")
+    df["similarities"] = df.code_embedding.apply(
+        lambda x: cosine_similarity(x, embedding)
+    )
 
-    res = df.sort_values('similarities', ascending=False).head(n)
+    res = df.sort_values("similarities", ascending=False).head(n)
     return res
 
-res = search_functions(df, 'Completions API tests', n=3)
+
+res = search_functions(df, "Completions API tests", n=3)
 ```
 
 
@@ -284,10 +298,14 @@ def recommendations_from_strings(
     query_embedding = embeddings[index_of_source_string]
 
     # get distances between the source embedding and other embeddings (function from embeddings_utils.py)
-    distances = distances_from_embeddings(query_embedding, embeddings, distance_metric="cosine")
+    distances = distances_from_embeddings(
+        query_embedding, embeddings, distance_metric="cosine"
+    )
 
     # get indices of nearest neighbors (function from embeddings_utils.py)
-    indices_of_nearest_neighbors = indices_of_nearest_neighbors_from_distances(distances)
+    indices_of_nearest_neighbors = indices_of_nearest_neighbors_from_distances(
+        distances
+    )
     return indices_of_nearest_neighbors
 ```
 
@@ -312,21 +330,24 @@ We color the individual reviews based on the star rating which the reviewer has 
 The visualization seems to have produced roughly 3 clusters, one of which has mostly negative reviews.
 
 ```python
+import numpy as np
 import pandas as pd
 from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 import matplotlib
 
-df = pd.read_csv('output/embedded_1k_reviews.csv')
-matrix = df.ada_embedding.apply(eval).to_list()
+df = pd.read_csv("output/embedded_1k_reviews.csv")
+matrix = np.array(df.ada_embedding.apply(eval).to_list())
 
 # Create a t-SNE model and transform the data
-tsne = TSNE(n_components=2, perplexity=15, random_state=42, init='random', learning_rate=200)
+tsne = TSNE(
+    n_components=2, perplexity=15, random_state=42, init="random", learning_rate=200
+)
 vis_dims = tsne.fit_transform(matrix)
 
-colors = ["red", "darkorange", "gold", "turquiose", "darkgreen"]
-x = [x for x,y in vis_dims]
-y = [y for x,y in vis_dims]
+colors = ["red", "darkorange", "gold", "turquoise", "darkgreen"]
+x = [x for x, y in vis_dims]
+y = [y for x, y in vis_dims]
 color_indices = df.Score.values - 1
 
 colormap = matplotlib.colors.ListedColormap(colors)
@@ -352,10 +373,7 @@ This code splits the data into a training set and a testing set, which will be u
 from sklearn.model_selection import train_test_split
 
 X_train, X_test, y_train, y_test = train_test_split(
-    list(df.ada_embedding.values),
-    df.Score,
-    test_size = 0.2,
-    random_state=42
+    list(df.ada_embedding.values), df.Score, test_size=0.2, random_state=42
 )
 ```
 
@@ -406,18 +424,24 @@ Zero-shot classification
 We can use embeddings for zero shot classification without any labeled training data. For each class, we embed the class name or a short description of the class. To classify some new text in a zero-shot manner, we compare its embedding to all class embeddings and predict the class with the highest similarity.
 
 ```python
-from openai.embeddings_utils import cosine_similarity, get_embedding
+df = df[df.Score != 3]
+df["sentiment"] = df.Score.replace(
+    {1: "negative", 2: "negative", 4: "positive", 5: "positive"}
+)
 
-df= df[df.Score!=3]
-df['sentiment'] = df.Score.replace({1:'negative', 2:'negative', 4:'positive', 5:'positive'})
-
-labels = ['negative', 'positive']
+labels = ["negative", "positive"]
 label_embeddings = [get_embedding(label, model=model) for label in labels]
 
-def label_score(review_embedding, label_embeddings):
-    return cosine_similarity(review_embedding, label_embeddings[1]) - cosine_similarity(review_embedding, label_embeddings[0])
 
-prediction = 'positive' if label_score('Sample Review', label_embeddings) > 0 else 'negative'
+def label_score(review_embedding, label_embeddings):
+    return cosine_similarity(review_embedding, label_embeddings[1]) - cosine_similarity(
+        review_embedding, label_embeddings[0]
+    )
+
+
+prediction = (
+    "positive" if label_score(get_embedding("Sample Review", model=model), label_embeddings) > 0 else "negative"
+)
 ```
 
 
@@ -433,8 +457,8 @@ We can obtain a user embedding by averaging over all of their reviews. Similarly
 We evaluate the usefulness of these embeddings on a separate test set, where we plot similarity of the user and product embedding as a function of the rating. Interestingly, based on this approach, even before the user receives the product we can predict better than random whether they would like the product.
 
 ```python
-user_embeddings = df.groupby('UserId').ada_embedding.apply(np.mean)
-prod_embeddings = df.groupby('ProductId').ada_embedding.apply(np.mean)
+user_embeddings = df.groupby("UserId").ada_embedding.apply(np.mean)
+prod_embeddings = df.groupby("ProductId").ada_embedding.apply(np.mean)
 ```
 
 
@@ -456,9 +480,9 @@ from sklearn.cluster import KMeans
 matrix = np.vstack(df.ada_embedding.values)
 n_clusters = 4
 
-kmeans = KMeans(n_clusters = n_clusters, init='k-means++', random_state=42)
+kmeans = KMeans(n_clusters=n_clusters, init="k-means++", random_state=42)
 kmeans.fit(matrix)
-df['Cluster'] = kmeans.labels_
+df["Cluster"] = kmeans.labels_
 ```
 
 
@@ -473,11 +497,13 @@ Example code:
 ```python
 import tiktoken
 
+
 def num_tokens_from_string(string: str, encoding_name: str) -> int:
     """Returns the number of tokens in a text string."""
     encoding = tiktoken.get_encoding(encoding_name)
     num_tokens = len(encoding.encode(string))
     return num_tokens
+
 
 num_tokens_from_string("tiktoken is great!", "cl100k_base")
 ```

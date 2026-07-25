@@ -339,9 +339,11 @@ while (true) {
 
 ```python
 import json
+
 from openai import OpenAI
 
 client = OpenAI()
+model = "gpt-5.6"
 
 
 def get_inventory(sku):
@@ -412,7 +414,7 @@ input_items = [
 
 while True:
     response = client.responses.create(
-        model="YOUR_MODEL_ID",
+        model=model,
         store=False,
         input=input_items,
         tools=tools,
@@ -422,13 +424,13 @@ while True:
         raise RuntimeError(f"Response ended with status {response.status}")
 
     # Preserve every output item, including program and reasoning items.
-    input_items.extend(
-        item.model_dump(exclude_none=True) for item in response.output
-    )
+    input_items.extend(item.model_dump(exclude_none=True) for item in response.output)
 
     calls = [item for item in response.output if item.type == "function_call"]
     if not calls:
-        message = next((item for item in response.output if item.type == "message"), None)
+        message = next(
+            (item for item in response.output if item.type == "message"), None
+        )
         if message:
             refusal = next(
                 (part.refusal for part in message.content if part.type == "refusal"),

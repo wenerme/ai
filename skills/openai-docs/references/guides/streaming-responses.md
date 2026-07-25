@@ -31,6 +31,7 @@ for await (const event of stream) {
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 stream = client.responses.create(
@@ -95,32 +96,34 @@ The Responses API uses semantic events for streaming. Each event is typed with a
 For a full list of event types, see the [API reference for streaming](https://developers.openai.com/api/docs/api-reference/responses-streaming). Here are a few examples:
 
 ```python
-type StreamingEvent =
-	| ResponseCreatedEvent
-	| ResponseInProgressEvent
-	| ResponseFailedEvent
-	| ResponseCompletedEvent
-	| ResponseOutputItemAdded
-	| ResponseOutputItemDone
-	| ResponseContentPartAdded
-	| ResponseContentPartDone
-	| ResponseOutputTextDelta
-	| ResponseOutputTextAnnotationAdded
-	| ResponseTextDone
-	| ResponseRefusalDelta
-	| ResponseRefusalDone
-	| ResponseFunctionCallArgumentsDelta
-	| ResponseFunctionCallArgumentsDone
-	| ResponseFileSearchCallInProgress
-	| ResponseFileSearchCallSearching
-	| ResponseFileSearchCallCompleted
-	| ResponseCodeInterpreterInProgress
-	| ResponseCodeInterpreterCallCodeDelta
-	| ResponseCodeInterpreterCallCodeDone
-	| ResponseCodeInterpreterCallInterpreting
-	| ResponseCodeInterpreterCallCompleted
-	| Error
+StreamingEvent = (
+    ResponseCreatedEvent
+    | ResponseInProgressEvent
+    | ResponseFailedEvent
+    | ResponseCompletedEvent
+    | ResponseOutputItemAdded
+    | ResponseOutputItemDone
+    | ResponseContentPartAdded
+    | ResponseContentPartDone
+    | ResponseOutputTextDelta
+    | ResponseOutputTextAnnotationAdded
+    | ResponseTextDone
+    | ResponseRefusalDelta
+    | ResponseRefusalDone
+    | ResponseFunctionCallArgumentsDelta
+    | ResponseFunctionCallArgumentsDone
+    | ResponseFileSearchCallInProgress
+    | ResponseFileSearchCallSearching
+    | ResponseFileSearchCallCompleted
+    | ResponseCodeInterpreterInProgress
+    | ResponseCodeInterpreterCallCodeDelta
+    | ResponseCodeInterpreterCallCodeDone
+    | ResponseCodeInterpreterCallInterpreting
+    | ResponseCodeInterpreterCallCompleted
+    | Error
+)
 ```
+
 
 
 

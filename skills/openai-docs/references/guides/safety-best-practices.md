@@ -62,15 +62,14 @@ Example: Providing a safety identifier
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.chat.completions.create(
-model="gpt-5.5",
-messages=[
-{"role": "user", "content": "This is a test"}
-],
-max_completion_tokens=5,
-safety_identifier="user_123456"
+    model="gpt-5.6",
+    messages=[{"role": "user", "content": "This is a test"}],
+    max_completion_tokens=5,
+    safety_identifier="user_123456",
 )
 ```
 
@@ -79,7 +78,7 @@ curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
 -d '{
-"model": "gpt-5.5",
+"model": "gpt-5.6",
 "messages": [
 {"role": "user", "content": "This is a test"}
 ],

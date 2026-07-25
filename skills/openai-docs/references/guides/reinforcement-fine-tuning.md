@@ -348,9 +348,11 @@ To simplify JSON schema generation, start from a <a href="https://docs.pydantic.
 from openai.lib._pydantic import to_strict_json_schema
 from pydantic import BaseModel
 
+
 class MyCustomClass(BaseModel):
     name: str
     age: int
+
 
 # Note: Do not use MyCustomClass.model_json_schema() in place of
 # to_strict_json_schema as it is not equivalent
@@ -358,11 +360,7 @@ schema = to_strict_json_schema(MyCustomClass)
 
 response_format = dict(
     type="json_schema",
-    json_schema=dict(
-        name=MyCustomClass.__name__,
-        strict=True,
-        schema=schema
-    )
+    json_schema=dict(name=MyCustomClass.__name__, strict=True, schema=schema),
 )
 ```
 

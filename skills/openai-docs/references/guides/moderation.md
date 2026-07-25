@@ -27,6 +27,7 @@ Generate a response with moderation scores
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
@@ -45,6 +46,10 @@ response = client.responses.create(
 
 input_moderation = response.moderation.input
 output_moderation = response.moderation.output
+if input_moderation.type == "error":
+    raise RuntimeError(input_moderation.message)
+if output_moderation.type == "error":
+    raise RuntimeError(output_moderation.message)
 
 print(input_moderation.flagged)
 print(output_moderation.flagged)

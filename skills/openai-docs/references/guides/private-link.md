@@ -154,6 +154,7 @@ client = OpenAI(
 )
 ```
 
+
 The SDK reads `OPENAI_API_KEY` from your environment.
 
 You can also call the regional endpoint directly:
@@ -163,7 +164,7 @@ curl https://southcentralus.privatelink.api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "gpt-5.5",
+    "model": "gpt-5.6",
     "input": "Say hello from Private Link."
   }'
 ```

@@ -33,12 +33,13 @@ Safety identifiers do not carry over between APIs or sessions. If your applicati
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.responses.create(
-model="gpt-5.6-terra",
-input="This is a test",
-safety_identifier="user_123456",
+    model="gpt-5.6-terra",
+    input="This is a test",
+    safety_identifier="user_123456",
 )
 ```
 
@@ -60,14 +61,13 @@ curl https://api.openai.com/v1/responses \
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.chat.completions.create(
-model="gpt-5.6-terra",
-messages=[
-{"role": "user", "content": "This is a test"}
-],
-safety_identifier="user_123456"
+    model="gpt-5.6-terra",
+    messages=[{"role": "user", "content": "This is a test"}],
+    safety_identifier="user_123456",
 )
 ```
 

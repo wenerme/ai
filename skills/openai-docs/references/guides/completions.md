@@ -6,11 +6,11 @@ An example legacy Completions API call looks like the following:
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 response = client.completions.create(
-model="gpt-3.5-turbo-instruct",
-prompt="Write a tagline for an ice cream shop."
+    model="gpt-3.5-turbo-instruct", prompt="Write a tagline for an ice cream shop."
 )
 ```
 

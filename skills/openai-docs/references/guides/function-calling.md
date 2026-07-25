@@ -96,13 +96,13 @@ tools = [
     },
 ]
 
+
 def get_horoscope(sign):
     return f"{sign}: Next Tuesday you will befriend a baby otter."
 
+
 # Create a running input list we will add to over time
-input_list = [
-    {"role": "user", "content": "What is my horoscope? I am an Aquarius."}
-]
+input_list = [{"role": "user", "content": "What is my horoscope? I am an Aquarius."}]
 
 # 2. Prompt the model with tools defined
 response = client.responses.create(
@@ -120,13 +120,15 @@ for item in response.output:
             # 3. Execute the function logic for get_horoscope
             sign = json.loads(item.arguments)["sign"]
             horoscope = get_horoscope(sign)
-            
+
             # 4. Provide function call results to the model
-            input_list.append({
-                "type": "function_call_output",
-                "call_id": item.call_id,
-                "output": horoscope,
-            })
+            input_list.append(
+                {
+                    "type": "function_call_output",
+                    "call_id": item.call_id,
+                    "output": horoscope,
+                }
+            )
 
 print("Final input:")
 print(input_list)
@@ -391,6 +393,8 @@ If you are using [tool search](https://developers.openai.com/api/docs/guides/too
 Execute function calls and append results
 
 ```python
+input_messages += response.output
+
 for tool_call in response.output:
     if tool_call.type != "function_call":
         continue
@@ -399,14 +403,18 @@ for tool_call in response.output:
     args = json.loads(tool_call.arguments)
 
     result = call_function(name, args)
-    input_messages.append({
-        "type": "function_call_output",
-        "call_id": tool_call.call_id,
-        "output": str(result)
-    })
+    input_messages.append(
+        {
+            "type": "function_call_output",
+            "call_id": tool_call.call_id,
+            "output": json.dumps(result),
+        }
+    )
 ```
 
 ```javascript
+input.push(...response.output);
+
 for (const toolCall of response.output) {
   if (toolCall.type !== "function_call") {
     continue;
@@ -436,6 +444,7 @@ def call_function(name, args):
         return get_weather(**args)
     if name == "send_email":
         return send_email(**args)
+    raise ValueError(f"Unknown function: {name}")
 ```
 
 ```javascript
@@ -470,8 +479,10 @@ Send results back to model
 response = client.responses.create(
     model="gpt-5.6",
     input=input_messages,
-    tools=tools,
+    tools=responses_tools,
 )
+
+print(response.output_text)
 ```
 
 ```javascript
@@ -658,30 +669,30 @@ from openai import OpenAI
 
 client = OpenAI()
 
-tools = [{
-    "type": "function",
-    "name": "get_weather",
-    "description": "Get current temperature for a given location.",
-    "parameters": {
-        "type": "object",
-        "properties": {
-            "location": {
-                "type": "string",
-                "description": "City and country e.g. Bogotá, Colombia"
-            }
+tools = [
+    {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get current temperature for a given location.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "type": "string",
+                    "description": "City and country e.g. Bogotá, Colombia",
+                }
+            },
+            "required": ["location"],
+            "additionalProperties": False,
         },
-        "required": [
-            "location"
-        ],
-        "additionalProperties": False
     }
-}]
+]
 
 stream = client.responses.create(
     model="gpt-5.6",
     input=[{"role": "user", "content": "What's the weather like in Paris today?"}],
     tools=tools,
-    stream=True
+    stream=True,
 )
 
 for event in stream:
@@ -769,9 +780,9 @@ Accumulating tool_call deltas
 final_tool_calls = {}
 
 for event in stream:
-    if event.type === 'response.output_item.added':
-        final_tool_calls[event.output_index] = event.item;
-    elif event.type === 'response.function_call_arguments.delta':
+    if event.type == "response.output_item.added":
+        final_tool_calls[event.output_index] = event.item
+    elif event.type == "response.function_call_arguments.delta":
         index = event.output_index
 
         if final_tool_calls[index]:
@@ -840,7 +851,7 @@ response = client.responses.create(
             "name": "code_exec",
             "description": "Executes arbitrary Python code.",
         }
-    ]
+    ],
 )
 print(response.output)
 ```
@@ -928,7 +939,7 @@ response = client.responses.create(
                 "definition": grammar,
             },
         }
-    ]
+    ],
 )
 print(response.output)
 ```
@@ -1102,7 +1113,7 @@ response = client.responses.create(
                 "definition": grammar,
             },
         }
-    ]
+    ],
 )
 print(response.output)
 ```

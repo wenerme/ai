@@ -809,7 +809,8 @@ def handle_computer_actions(page, actions):
             case "wait":
                 time.sleep(2)
             case "screenshot":
-                pass
+                # The caller captures a screenshot after every action.
+                continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
@@ -958,9 +959,7 @@ def handle_computer_actions(vm, actions):
         match action.type:
             case "click":
                 reject_modifiers(action)
-                button = normalize_xdotool_button(
-                    getattr(action, "button", "left")
-                )
+                button = normalize_xdotool_button(getattr(action, "button", "left"))
                 docker_exec(
                     f"DISPLAY={vm.display} xdotool mousemove {action.x} {action.y} click {button}",
                     vm.container_name,
@@ -1026,7 +1025,8 @@ def handle_computer_actions(vm, actions):
             case "wait":
                 time.sleep(2)
             case "screenshot":
-                pass
+                # The caller captures a screenshot after every action.
+                continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
@@ -1246,7 +1246,8 @@ def handle_computer_actions(page, actions):
             case "wait":
                 time.sleep(2)
             case "screenshot":
-                pass
+                # The caller captures a screenshot after every action.
+                continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
@@ -1427,9 +1428,7 @@ def handle_computer_actions(vm, actions):
     for action in actions:
         match action.type:
             case "click":
-                button = normalize_xdotool_button(
-                    getattr(action, "button", "left")
-                )
+                button = normalize_xdotool_button(getattr(action, "button", "left"))
                 with_modifiers(
                     vm,
                     getattr(action, "keys", None),
@@ -1510,7 +1509,8 @@ def handle_computer_actions(vm, actions):
             case "wait":
                 time.sleep(2)
             case "screenshot":
-                pass
+                # The caller captures a screenshot after every action.
+                continue
             case _:
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
@@ -2054,10 +2054,11 @@ await main(getCliPrompt());
 #   "openai",
 # ]
 # ///
-# Run with: `uv run cua_code_mode_py_async.py`
+# Run with:
+#   \`uv run python test/run_example.py tools/cua/015-code-execution-harness-example.py\`
 # Override the user prompt with:
-#   `uv run cua_code_mode_py_async.py --prompt "Go to example.com and summarize the page."`
-# Requires `OPENAI_API_KEY` and `OPENAI_EXAMPLE_CODE_EXECUTION_URL`.
+#   \`uv run python test/run_example.py tools/cua/015-code-execution-harness-example.py --prompt "Go to example.com and summarize the page."\`
+# Requires \`OPENAI_API_KEY\` and \`OPENAI_EXAMPLE_CODE_EXECUTION_URL\`.
 
 """Async Python analogue of cua_code_mode.ts.
 
@@ -2095,7 +2096,7 @@ def _message_text(item: Any) -> str:
             if out:
                 return "\n".join(out)
     except Exception:
-        pass
+        return str(item)
     return str(item)
 
 
@@ -2115,19 +2116,11 @@ def _is_execution_output(value: Any) -> bool:
     )
 
 
-def _execute_in_sandbox(code: str, session_id: str) -> list[dict[str, Any]]:
-    endpoint = os.environ.get("OPENAI_EXAMPLE_CODE_EXECUTION_URL")
-    if not endpoint:
-        return [
-            {
-                "type": "input_text",
-                "text": (
-                    "Execution blocked. Configure OPENAI_EXAMPLE_CODE_EXECUTION_URL "
-                    "with a separately isolated sandbox service."
-                ),
-            }
-        ]
-
+def _execute_in_sandbox(
+    code: str,
+    session_id: str,
+    endpoint: str,
+) -> list[dict[str, Any]]:
     headers = {"Content-Type": "application/json"}
     token = os.environ.get("OPENAI_EXAMPLE_CODE_EXECUTION_TOKEN")
     if token:
@@ -2165,6 +2158,7 @@ async def main(
     max_steps: int = 20,
     model: str = "gpt-5.6",
 ) -> None:
+    code_execution_url = os.environ["OPENAI_EXAMPLE_CODE_EXECUTION_URL"]
     client = OpenAI()
     session_id = str(uuid.uuid4())
 
@@ -2229,7 +2223,10 @@ async def main(
             for item in resp.output:
                 item_type = getattr(item, "type", None)
 
-                if item_type == "function_call" and getattr(item, "name", None) == "exec_py":
+                if (
+                    item_type == "function_call"
+                    and getattr(item, "name", None) == "exec_py"
+                ):
                     had_tool_call = True
                     raw_args = getattr(item, "arguments", "{}") or "{}"
                     try:
@@ -2241,37 +2238,35 @@ async def main(
                     print(code)
                     print("----")
 
-                    if not os.environ.get("OPENAI_EXAMPLE_CODE_EXECUTION_URL"):
-                        py_output = _execute_in_sandbox(code, session_id)
+                    approval = await _ainput(
+                        "Send this generated Python to the isolated runtime? "
+                        "Type yes to continue: "
+                    )
+                    if approval.strip().lower() != "yes":
+                        py_output = [
+                            {
+                                "type": "input_text",
+                                "text": "The user declined this code execution.",
+                            }
+                        ]
                     else:
-                        approval = await _ainput(
-                            "Send this generated Python to the isolated runtime? "
-                            "Type yes to continue: "
-                        )
-                        if approval.strip().lower() != "yes":
+                        try:
+                            py_output = await asyncio.wait_for(
+                                asyncio.to_thread(
+                                    _execute_in_sandbox,
+                                    code,
+                                    session_id,
+                                    code_execution_url,
+                                ),
+                                timeout=EXECUTION_TIMEOUT_SECONDS,
+                            )
+                        except Exception as exc:
                             py_output = [
                                 {
                                     "type": "input_text",
-                                    "text": "The user declined this code execution.",
+                                    "text": str(exc),
                                 }
                             ]
-                        else:
-                            try:
-                                py_output = await asyncio.wait_for(
-                                    asyncio.to_thread(
-                                        _execute_in_sandbox,
-                                        code,
-                                        session_id,
-                                    ),
-                                    timeout=EXECUTION_TIMEOUT_SECONDS,
-                                )
-                            except Exception as exc:
-                                py_output = [
-                                    {
-                                        "type": "input_text",
-                                        "text": str(exc),
-                                    }
-                                ]
 
                     conversation.append(
                         {
@@ -2288,7 +2283,10 @@ async def main(
                             print("PY IMAGE: [base64 string omitted]")
                     print("=====")
 
-                elif item_type == "function_call" and getattr(item, "name", None) == "ask_user":
+                elif (
+                    item_type == "function_call"
+                    and getattr(item, "name", None) == "ask_user"
+                ):
                     had_tool_call = True
                     raw_args = getattr(item, "arguments", "{}") or "{}"
                     try:

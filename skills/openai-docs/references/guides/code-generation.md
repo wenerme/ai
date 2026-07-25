@@ -29,7 +29,13 @@ const openai = new OpenAI();
 
 const result = await openai.responses.create({
   model: "gpt-5.6",
-  input: "Find the null pointer exception: ...your code here...",
+  input: `Find the null pointer exception in this code:
+
+def display_name(user):
+    return user.profile.name
+
+print(display_name(None))
+`,
   reasoning: { effort: "high" },
 });
 
@@ -38,12 +44,19 @@ console.log(result.output_text);
 
 ```python
 from openai import OpenAI
+
 client = OpenAI()
 
 result = client.responses.create(
     model="gpt-5.6",
-    input="Find the null pointer exception: ...your code here...",
-    reasoning={ "effort": "high" },
+    input="""Find the null pointer exception in this code:
+
+def display_name(user):
+    return user.profile.name
+
+print(display_name(None))
+""",
+    reasoning={"effort": "high"},
 )
 
 print(result.output_text)
@@ -55,7 +68,7 @@ curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
     "model": "gpt-5.6",
-    "input": "Find the null pointer exception: ...your code here...",
+    "input": "Find the null pointer exception in this code:\n\ndef display_name(user):\n    return user.profile.name\n\nprint(display_name(None))\n",
     "reasoning": { "effort": "high" }
   }'
 ```

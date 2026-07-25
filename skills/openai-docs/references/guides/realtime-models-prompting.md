@@ -2,7 +2,7 @@
 
 `gpt-realtime-2` is our state-of-the-art reasoning voice model for low-latency speech-to-speech applications. It can think before it speaks, follow instructions more reliably, use a larger context window, and call tools with greater precision than earlier realtime models.
 
-To take advantage of these gains, design prompts with more intent. Define the assistant's responsibilities, decision points, tool-calling behavior, and guardrails clearly: what it should do, when it should do it, and what it should avoid.
+To take advantage of these gains, design prompts with more intent. Explicitly define the assistant's responsibilities, decision points, tool-calling behavior, and guardrails: what it should do, when it should do it, and what it should avoid.
 
 Start simple. Do not over-prompt upfront. Begin with a minimal prompt, run
   evaluations, then add instructions only for behaviors that fail in testing.
@@ -1394,35 +1394,45 @@ If you want to control more closely what type of phrases the model outputs at th
 
 ```python
 tools = [
-  {
-    "name": "lookup_account",
-    "description": "Retrieve a customer account using either an email or phone number to enable verification and account-specific actions.
+    {
+        "name": "lookup_account",
+        "description": """Retrieve a customer account using either an email or phone number to enable verification and account-specific actions.
 
 Preamble sample phrases:
 - For security, I’ll pull up your account using the email on file.
 - Let me look up your account by {email} now.
 - I’m fetching the account linked to {phone} to verify access.
-- One moment—I’m opening your account details."
-    "parameters": {
-      "..."
-    }
-  },
-  {
-    "name": "check_outage",
-    "description": "Check for network outages affecting a given service address and return status and ETA if applicable.
+- One moment—I’m opening your account details.""",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "email": {"type": "string"},
+                "phone": {"type": "string"},
+            },
+            "additionalProperties": False,
+        },
+    },
+    {
+        "name": "check_outage",
+        "description": """Check for network outages affecting a given service address and return status and ETA if applicable.
 
 Preamble sample phrases:
 - I’ll check for any outages at {service_address} right now.
 - Let me look up network status for your area.
 - I’m checking whether there’s an active outage impacting your address.
-- One sec—verifying service status and any posted ETA.",
-    "parameters": {
-      "..."
-    }
-  }
+- One sec—verifying service status and any posted ETA.""",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "service_address": {"type": "string"},
+            },
+            "required": ["service_address"],
+            "additionalProperties": False,
+        },
+    },
 ]
-
 ```
+
 
 ### Tool Calls Without Confirmation
 
@@ -1547,7 +1557,7 @@ A practical fix is to make the tool output look like a normal tool result and ma
 
 Tool returns:
 
-```python
+```text
 I just sent you an email with the verification link. Please open it and click “Confirm”.
 ```
 
@@ -1917,8 +1927,9 @@ State = Literal["verify", "resolve"]
 # Allowed transitions
 TRANSITIONS: Dict[State, List[State]] = {
     "verify": ["resolve"],
-    "resolve": []  # terminal
+    "resolve": [],  # terminal
 }
+
 
 def build_state_change_tool(current: State) -> dict:
     allowed = TRANSITIONS[current]
@@ -1933,38 +1944,41 @@ def build_state_change_tool(current: State) -> dict:
         ),
         "parameters": {
             "type": "object",
-            "properties": {
-                "next_state": {"type": "string", "enum": allowed}
-            },
-            "required": ["next_state"]
-        }
+            "properties": {"next_state": {"type": "string", "enum": allowed}},
+            "required": ["next_state"],
+        },
     }
+
 
 # Minimal business tools per state
 TOOLS_BY_STATE: Dict[State, List[dict]] = {
-    "verify": [{
-        "type": "function",
-        "name": "lookup_account",
-        "description": "Fetch account by email or phone.",
-        "parameters": {
-            "type": "object",
-            "properties": {"email_or_phone": {"type": "string"}},
-            "required": ["email_or_phone"]
-        }
-    }],
-    "resolve": [{
-        "type": "function",
-        "name": "schedule_technician",
-        "description": "Book a technician visit.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "account_id": {"type": "string"},
-                "window": {"type": "string", "enum": ["10-12 ET", "14-16 ET"]}
+    "verify": [
+        {
+            "type": "function",
+            "name": "lookup_account",
+            "description": "Fetch account by email or phone.",
+            "parameters": {
+                "type": "object",
+                "properties": {"email_or_phone": {"type": "string"}},
+                "required": ["email_or_phone"],
             },
-            "required": ["account_id", "window"]
         }
-    }]
+    ],
+    "resolve": [
+        {
+            "type": "function",
+            "name": "schedule_technician",
+            "description": "Book a technician visit.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "account_id": {"type": "string"},
+                    "window": {"type": "string", "enum": ["10-12 ET", "14-16 ET"]},
+                },
+                "required": ["account_id", "window"],
+            },
+        }
+    ],
 }
 
 # Short, phase-specific instructions
@@ -1976,7 +1990,7 @@ INSTRUCTIONS_BY_STATE: Dict[State, str] = {
         "- Ask for the email or phone on the account.\n"
         "- Read back digits one-by-one (e.g., '4-1-5… Is that correct?').\n"
         "Exit when: Account ID is returned.\n"
-        "When exit is satisfied: call set_conversation_state(next_state=\"resolve\")."
+        'When exit is satisfied: call set_conversation_state(next_state="resolve").'
     ),
     "resolve": (
         "# Role & Objective\n"
@@ -1986,8 +2000,9 @@ INSTRUCTIONS_BY_STATE: Dict[State, str] = {
         "- Book the chosen window.\n"
         "Exit when: Appointment is confirmed.\n"
         "When exit is satisfied: end the call politely."
-    )
+    ),
 }
+
 
 def build_session_update(state: State) -> dict:
     """Return the JSON payload for a Realtime `session.update` event."""
@@ -1995,10 +2010,11 @@ def build_session_update(state: State) -> dict:
         "type": "session.update",
         "session": {
             "instructions": INSTRUCTIONS_BY_STATE[state],
-            "tools": TOOLS_BY_STATE[state] + [build_state_change_tool(state)]
-        }
+            "tools": TOOLS_BY_STATE[state] + [build_state_change_tool(state)],
+        },
     }
 ```
+
 
 ## Safety & Escalation
 
