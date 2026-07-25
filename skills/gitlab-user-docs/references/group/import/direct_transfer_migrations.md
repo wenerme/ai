@@ -78,8 +78,6 @@ This requirement does not apply for migrations from GitLab.com to GitLab Dedicat
 
 ## User membership mapping
 
-- Mapping shared and inherited shared members as direct members [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/129017) in GitLab 16.3.
-- Mapping shared and inherited shared members as direct members [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/148220) in GitLab 16.11 for existing members of the imported group or project.
 - Mapping inherited members [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/458834) in GitLab 17.1.
 - Mapping user memberships initially to placeholder users [introduced](https://gitlab.com/groups/gitlab-org/-/epics/12378) in GitLab 17.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `bulk_import_importer_user_mapping`. Disabled by default.
 - Mapping user memberships initially to placeholder users [enabled on GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/478054) in GitLab 17.5.
@@ -144,7 +142,6 @@ On the destination GitLab instance, create the group you want to import to and c
 
 ## Select the groups and projects to import
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385689) in GitLab 15.8, option to import groups with or without projects.
 - **Import user memberships** checkbox [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/477734) in GitLab 17.6.
 
 After you have authorized access to the source GitLab instance, you are redirected to the GitLab group importer page. Here you can see a list of the top-level groups on the connected source instance where you have the Owner role.
@@ -160,9 +157,6 @@ If you do not want to import all user memberships from the source instance, ensu
 
 ## Review results of the import
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/429109) in GitLab 16.6 [with a feature flag](../../../administration/feature_flags/list.md) named `bulk_import_details_page`. Enabled by default.
-- Feature flag `bulk_import_details_page` removed in GitLab 16.8.
-- Details for partially completed and completed imports [added](https://gitlab.com/gitlab-org/gitlab/-/issues/437874) in GitLab 16.9.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/443492) in GitLab 17.0, an **Imported** badge to indicate that designs, epics, issues, merge requests, notes (system notes and comments), snippets, and user profile activity were imported.
 
 To review the results of an import:
@@ -174,8 +168,6 @@ To review the results of an import:
 You can also see that an item was imported when you see an **Imported** badge on some items in the GitLab UI.
 
 ## Group import history
-
-- **Partially completed** status [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/394727) in GitLab 16.7.
 
 You can view all groups migrated by you by direct transfer listed on the group import history page. This list includes:
 

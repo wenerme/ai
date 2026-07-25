@@ -67,7 +67,7 @@ GET /groups/:id/epics?state=opened
 | `order_by`          | string           | no         | Return epics ordered by `created_at`, `updated_at`, or `title` fields. Default is `created_at`                              |
 | `sort`              | string           | no         | Return epics sorted in `asc` or `desc` order. Default is `desc`                                                             |
 | `search`            | string           | no         | Search epics against their `title` and `description`                                                                        |
-| `state`             | string           | no         | Search epics against their `state`, possible filters: `opened`, `closed` and `all`, default: `all`                          |
+| `state`             | string           | no         | Search epics against their `state`, possible filters: `opened`, `closed`, and `all`, default: `all`                         |
 | `created_after`     | datetime         | no         | Return epics created on or after the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `created_before`    | datetime         | no         | Return epics created on or before the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
 | `updated_after`     | datetime         | no         | Return epics updated on or after the given time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`) |
@@ -449,9 +449,15 @@ Example response:
 
 ## Delete an epic
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/452189) in GitLab 16.11. In GitLab 16.10 and earlier, if you delete an epic, all its child epics and their descendants are deleted as well. If needed, you can remove child epics from the parent epic before you delete it.
-
 Deletes a specified epic from a group.
+
+Deleting an epic does not delete its child epics. Instead, the child epics are detached from the
+deleted epic.
+
+> [!warning]
+> In GitLab 16.10 and earlier, deleting an epic also deleted all its child epics and their
+> descendants. If needed, remove child epics from the parent epic before you delete it.
+> For more information, see [issue 452189](https://gitlab.com/gitlab-org/gitlab/-/issues/452189).
 
 ```plaintext
 DELETE /groups/:id/epics/:epic_iid

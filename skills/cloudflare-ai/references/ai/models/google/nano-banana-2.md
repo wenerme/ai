@@ -59,17 +59,17 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-![Futuristic City](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png)
+![Futuristic City](https://examples.aig.cloudflare.com/google/nano-banana-2/futuristic-city.png)
 
 ```json
 {
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/google/nano-banana-2/futuristic-city.png"
+  },
   "gatewayMetadata": {
     "keySource": "Unified"
-  },
-  "result": {
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/futuristic-city.png"
-  },
-  "state": "Completed"
+  }
 }
 ```
 
@@ -104,17 +104,17 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-![Abstract Art](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png)
+![Abstract Art](https://examples.aig.cloudflare.com/google/nano-banana-2/abstract-art.jpg)
 
 ```json
 {
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/google/nano-banana-2/abstract-art.jpg"
+  },
   "gatewayMetadata": {
     "keySource": "Unified"
-  },
-  "result": {
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/abstract-art.png"
-  },
-  "state": "Completed"
+  }
 }
 ```
 
@@ -146,17 +146,17 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-![With Google Search](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png)
+![With Google Search](https://examples.aig.cloudflare.com/google/nano-banana-2/with-google-search.jpg)
 
 ```json
 {
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/google/nano-banana-2/with-google-search.jpg"
+  },
   "gatewayMetadata": {
     "keySource": "Unified"
-  },
-  "result": {
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/with-google-search.png"
-  },
-  "state": "Completed"
+  }
 }
 ```
 
@@ -191,17 +191,17 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 }'
 ```
 
-![High Resolution Portrait](https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg)
+![High Resolution Portrait](https://examples.aig.cloudflare.com/google/nano-banana-2/high-resolution-portrait.jpg)
 
 ```json
 {
+  "state": "Completed",
+  "result": {
+    "image": "https://examples.aig.cloudflare.com/google/nano-banana-2/high-resolution-portrait.jpg"
+  },
   "gatewayMetadata": {
     "keySource": "Unified"
-  },
-  "result": {
-    "image": "https://pub-04a6d208d361438ea01b797e6973bd19.r2.dev/catalog/google__nano-banana-2/high-resolution-portrait.jpg"
-  },
-  "state": "Completed"
+  }
 }
 ```
 

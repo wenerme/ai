@@ -98,7 +98,6 @@ to prevent unintentional sharing and information destruction:
 
 ## Add users to a project
 
-- Expiring access email notification [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/12704) in GitLab 16.2.
 - Access expiration date for direct members of subgroups and projects [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/471051) in GitLab 17.4.
 
 Add users to a project so they become direct members and have permission

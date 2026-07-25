@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Exporting OpenTelemetry Data
 
-Last updated Jul 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Workers supports exporting OpenTelemetry (OTel)-compliant telemetry data to any destination with an available OTel endpoint, allowing you to integrate with your existing monitoring and observability stack.
 
@@ -37,7 +37,7 @@ Below are common OTLP endpoint formats for popular observability providers. Refe
 | [**Axiom**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/)                 | https://api.axiom.co/v1/traces                              | https://api.axiom.co/v1/logs                                 |
 | [**Sentry**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/)               | https://{HOST}/api/{PROJECT\_ID}/integration/otlp/v1/traces | https://{HOST}/api/{PROJECT\_ID}/integration/otlp/v1/logs    |
 | [**PostHog**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/)             | Not supported                                               | https://{REGION}.i.posthog.com/i/v1/logs                     |
-| [**Datadog** ↗](https://docs.datadoghq.com/opentelemetry/setup/otlp%5Fingest/)                                           | Coming soon, pending release from Datadog                   | https://otlp.{SITE}.datadoghq.com/v1/logs                    |
+| [**Datadog** ↗](https://docs.datadoghq.com/opentelemetry/setup/otlp%5Fingest/)                                           | https://otlp.{SITE}.datadoghq.com/v1/traces                 | https://otlp.{SITE}.datadoghq.com/v1/logs                    |
 | [**New Relic** ↗](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)                       | https://otlp.nr-data.net/v1/traces                          | https://otlp.nr-data.net/v1/logs                             |
 | [**Splunk Observability** ↗](https://dev.splunk.com/observability/reference/api/ingest%5Fdata/latest)                    | https://ingest.{REALM}.signalfx.com/v2/trace/otlp           | N/A                                                          |
 | [**Splunk Platform** ↗](https://github.com/splunk/splunk-connect-for-otlp)                                               | http://splunk.internal:4318/v1/traces                       | http://splunk.internal:4318/v1/logs                          |
@@ -158,5 +158,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#page","headline":"Exporting OpenTelemetry Data · Cloudflare Workers docs","description":"Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#page","headline":"Exporting OpenTelemetry Data · Cloudflare Workers docs","description":"Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

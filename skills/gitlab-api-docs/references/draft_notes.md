@@ -121,7 +121,7 @@ POST /projects/:id/merge_requests/:merge_request_iid/draft_notes
 | `position[start_sha]`       | string            | yes (if `position` is provided) | SHA referencing commit in target branch. |
 | `position[new_path]`        | string            | yes (if the position type is `text`) | File path after change. |
 | `position[old_path]`        | string            | yes (if the position type is `text`) | File path before change. |
-| `position[position_type]`   | string            | yes (if `position` is provided) | Type of the position reference. Allowed values: `text`, `image`, or `file`. `file` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/423046) in GitLab 16.4. |
+| `position[position_type]`   | string            | yes (if `position` is provided) | Type of the position reference. Allowed values: `text`, `image`, or `file`. |
 | `position[new_line]`        | integer           | no          | For `text` diff notes, the line number after change. |
 | `position[old_line]`        | integer           | no          | For `text` diff notes, the line number before change. |
 | `position[line_range]`      | hash              | no          | Line range for a multi-line diff note. |
@@ -155,7 +155,7 @@ PUT /projects/:id/merge_requests/:merge_request_iid/draft_notes/:draft_note_id
 | `position[start_sha]`     | string            | yes (if `position` is provided) | SHA referencing commit in target branch. |
 | `position[new_path]`      | string            | yes (if the position type is `text`) | File path after change. |
 | `position[old_path]`      | string            | yes (if the position type is `text`) | File path before change. |
-| `position[position_type]` | string            | yes (if `position` is provided) | Type of the position reference. Allowed values: `text`, `image` or `file`. `file` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/423046) in GitLab 16.4. |
+| `position[position_type]` | string            | yes (if `position` is provided) | Type of the position reference. Allowed values: `text`, `image`, or `file`. |
 | `position[new_line]`      | integer           | no       | For `text` diff notes, the line number after change. |
 | `position[old_line]`      | integer           | no       | For `text` diff notes, the line number before change. |
 | `position[line_range]`    | hash              | no       | Line range for a multi-line diff note. |

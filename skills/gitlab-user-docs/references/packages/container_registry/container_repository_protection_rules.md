@@ -38,8 +38,6 @@ A container repository is protected if at least one protection rule matches.
 
 ## Create a container repository protection rule
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/146523) in GitLab 16.10.
-
 Prerequisites:
 
 - You must have the Maintainer or Owner role.

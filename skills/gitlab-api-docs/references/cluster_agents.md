@@ -3,8 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Agent Tokens API [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/347046) in GitLab 15.0.
-
 Use this API to interact with the [GitLab agent for Kubernetes](../user/clusters/agent/_index.md).
 
 ## List all agents
@@ -244,8 +242,6 @@ curl --request DELETE \
 
 ## List all agent tokens
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/347046) in GitLab 15.0.
-
 Lists all active tokens for an agent.
 
 You must have the Developer, Maintainer, or Owner role to use this endpoint.
@@ -313,8 +309,6 @@ Example response:
 
 ## Retrieve an agent token
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/347046) in GitLab 15.0.
-
 Retrieves a single agent token.
 
 You must have the Developer, Maintainer, or Owner role to use this endpoint.
@@ -372,10 +366,6 @@ Example response:
 ```
 
 ## Create an agent token
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/347046) in GitLab 15.0.
-- Two-token limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/361030/) in GitLab 16.1 with a [flag](../administration/feature_flags/_index.md) named `cluster_agents_limit_tokens_created`.
-- Two-token limit [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/412399) in GitLab 16.2. Feature flag `cluster_agents_limit_tokens_created` removed.
 
 Creates a new token for an agent.
 
@@ -442,8 +432,6 @@ Example response:
 ```
 
 ## Revoke an agent token
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/347046) in GitLab 15.0.
 
 Revokes an agent token.
 

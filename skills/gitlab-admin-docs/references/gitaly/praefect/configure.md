@@ -1863,15 +1863,6 @@ praefect['configuration'] = {
 
 #### Enable deletions
 
-- [Introduced](https://gitlab.com/gitlab-org/gitaly/-/issues/4080) and disabled by default in GitLab 15.0
-- [Default enabled](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/5321) in GitLab 15.9.
-
-> [!warning]
-> Deletions were disabled by default prior to GitLab 15.9 due to a race condition with repository renames
-> that can cause incorrect deletions, which is especially prominent in Geo instances as Geo performs more renames
-> than instances without Geo. In GitLab 15.0 to 15.5, you should enable deletions only if the
-> [`gitaly_praefect_generated_replica_paths` feature flag](_index.md#praefect-generated-replica-paths) is enabled. The feature flag was removed in GitLab 15.6 making deletions always safe to enable.
-
 By default, the worker deletes invalid metadata records. It also logs the deleted records and outputs Prometheus
 metrics.
 

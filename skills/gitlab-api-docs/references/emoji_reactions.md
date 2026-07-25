@@ -3,8 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Renamed](https://gitlab.com/gitlab-org/gitlab/-/issues/409884) from "award emoji" to "emoji reactions" in GitLab 16.0.
-
 Use this API to manage [emoji reactions](../user/emoji_reactions.md).
 
 GitLab objects that accept emoji reactions are called awardables.
@@ -21,8 +19,6 @@ You can react with emoji on the following resources:
 For information on using these endpoints with comments, see [Add reactions to comments](#add-reactions-to-comments).
 
 ### List all emoji reactions for a resource
-
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/335068) in GitLab 15.1 to allow unauthenticated access to public awardables.
 
 Lists all emoji reactions for a specified issue, snippet, or merge request. This endpoint can
 be accessed without authentication if the awardable is publicly accessible.
@@ -88,8 +84,6 @@ Example response:
 ```
 
 ### Retrieve an emoji reaction from a resource
-
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/335068) in GitLab 15.1 to allow unauthenticated access to public awardables.
 
 Retrieves a specified emoji reaction from an issue, snippet, or merge request. This endpoint can be accessed without authentication if the awardable is publicly accessible.
 
@@ -218,8 +212,6 @@ Comments (also known as notes) are a sub-resource of issues, merge requests, and
 
 ### List all emoji reactions for a comment
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/335068) in GitLab 15.1 to allow unauthenticated access to public comments.
-
 Lists all emoji reactions for a specified comment. This endpoint can
 be accessed without authentication if the comment is publicly accessible.
 
@@ -267,8 +259,6 @@ Example response:
 ```
 
 ### Retrieve an emoji reaction from a comment
-
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/335068) in GitLab 15.1 to allow unauthenticated access to public comments.
 
 Retrieves an emoji reaction from a specified comment. This endpoint can
 be accessed without authentication if the comment is publicly accessible.

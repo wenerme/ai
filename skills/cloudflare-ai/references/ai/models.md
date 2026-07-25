@@ -12,7 +12,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 211 models
+We found 214 models
 
 No models found
 
@@ -48,6 +48,8 @@ Try a different search term, or broaden your search by removing filters.
 
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-opus-4.8AnthropicText GenerationClaude Opus 4.8 is Anthropic's most capable generally available model, with a step-change improvement in agentic coding over Claude Opus 4.7\. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-4.8/)
 
+[![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-opus-5AnthropicText GenerationClaude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing.Third-party](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/)
+
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-sonnet-4.5AnthropicText GenerationClaude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.5/)
 
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)claude-sonnet-4.6AnthropicText GenerationClaude Sonnet 4.6 is Anthropic's latest balanced model offering strong coding, reasoning, and agentic capabilities with improved instruction following.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-4.6/)
@@ -74,9 +76,17 @@ Try a different search term, or broaden your search by removing filters.
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedream-5-liteByteDanceText-to-ImageSeedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi-reference and batch generation support.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-lite/)
 
+[![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedream-5-proByteDanceText-to-ImageSeedream 5 Pro is ByteDance's high-quality image generation and editing model with text prompts, up to 10 reference images, and 1K, 2K, or explicit pixel-size output controls.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedream-5-pro/)
+
 [ddeepseek-v4-prodeepseekText GenerationDeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference.Third-party](https://developers.cloudflare.com/ai/models/deepseek/deepseek-v4-pro/)
 
+[![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)eleven-flash-v2-5ElevenLabsText-to-SpeechElevenLabs' low-latency Flash v2.5 text-to-speech model for fast multilingual speech generation.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-flash-v2-5/)
+
+[![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)eleven-multilingual-v2ElevenLabsText-to-SpeechElevenLabs' multilingual text-to-speech model for generating natural speech across many languages with ElevenLabs voices.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-multilingual-v2/)
+
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)eleven-turbo-v2-5ElevenLabsText-to-SpeechElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/)
+
+[![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)music-v2ElevenLabsMusic GenerationElevenLabs Music v2 composes songs and instrumental tracks from a prompt or detailed composition plan.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/music-v2/)
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)gemini-2.5-flashGoogleText GenerationGoogle's fast multimodal Gemini 2.5 model with strong reasoning and a 1M token context window.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/gemini-2.5-flash/)
 
@@ -107,10 +117,6 @@ Try a different search term, or broaden your search by removing filters.
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)nano-banana-2-liteGoogleText-to-ImageGoogle's fastest Gemini image generation model for rapid image creation and iteration.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/nano-banana-2-lite/)
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)nano-banana-proGoogleText-to-ImageGoogle's higher-quality image generation model with improved detail and prompt adherence.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/nano-banana-pro/)
-
-[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)veo-3GoogleText-to-VideoGoogle's video generation model capable of producing high-quality videos with optional audio from text prompts.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/veo-3/)
-
-[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)veo-3-fastGoogleText-to-VideoA faster version of Veo 3 optimized for lower latency video generation with audio support.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/veo-3-fast/)
 
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)veo-3.1GoogleText-to-VideoGoogle's latest video generation model with improved quality, motion, and audio generation.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/google/veo-3.1/)
 
@@ -158,15 +164,11 @@ Try a different search term, or broaden your search by removing filters.
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-5OpenAIText GenerationOpenAI's model excelling at coding, writing, and reasoning.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-5/)
 
-[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-5-chatOpenAIText GenerationGPT-5 Chat is the chat-tuned variant of GPT-5, optimised for back-and-forth conversation and instruction following.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-5-chat/)
-
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-5-miniOpenAIText GenerationGPT-5 Mini is the lightweight, low-cost variant of GPT-5, well suited to high-volume coding and reasoning tasks.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-5-mini/)
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-5-nanoOpenAIText GenerationGPT-5 Nano is OpenAI’s smallest GPT-5 variant, optimized for low latency and cheap, high-throughput tasks.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-5-nano/)
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-5.1OpenAIText GenerationGPT-5.1 is OpenAI’s incremental improvement over GPT-5, with stronger coding, reasoning, and writing.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-5.1/)
-
-[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-5.1-chatOpenAIText GenerationGPT-5.1 Chat is the chat-tuned variant of GPT-5.1, optimised for back-and-forth conversation and instruction following.Third-party](https://developers.cloudflare.com/ai/models/openai/gpt-5.1-chat/)
 
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-5.4OpenAIText GenerationGPT-5.4 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-5.4/)
 
@@ -249,6 +251,10 @@ Try a different search term, or broaden your search by removing filters.
 [![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)aleph-2RunwayMLText-to-VideoRunwayML's video editing model. Edit one frame to update your whole video, make changes across multiple shots, and work with up to 30 seconds of video. Supports keyframe-guided editing for precise control over specific moments in the clip.Third-party](https://developers.cloudflare.com/ai/models/runwayml/aleph-2/)
 
 [![RunwayML logo](https://developers.cloudflare.com/_astro/runway.Cq8Cjov4.svg)gen-4.5RunwayMLText-to-VideoRunwayML's video generation model supporting both text-to-video and image-to-video with customizable duration, aspect ratio, and content moderation controls.Third-party](https://developers.cloudflare.com/ai/models/runwayml/gen-4.5/)
+
+[tinklingthinkingmachinesText GenerationInkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output\_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint.Third-party](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/)
+
+[tinkling-256kthinkingmachinesText GenerationThe 256K-context variant of Inkling, Thinking Machines' open-weights hybrid reasoning MoE model. Same hybrid reasoning, tool-use, and streaming support as the base model, with an extended context window for longer conversations and documents. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments.Third-party](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling-256k/)
 
 [![Vidu logo](https://developers.cloudflare.com/_astro/vidu._WEx0U8r.svg)q3-proViduText-to-VideoVidu Q3 Pro is a high-quality video generation model supporting text-to-video, image-to-video, and start/end-frame-to-video workflows with audio and up to 16-second clips.Third-partyZero data retention](https://developers.cloudflare.com/ai/models/vidu/q3-pro/)
 

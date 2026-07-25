@@ -138,10 +138,10 @@
   "openai-docs/guides/admin-apis.md": {
     "url": "https://developers.openai.com/api/docs/guides/admin-apis.md",
     "skill": "openai-docs",
-    "etag": "W/\"74b3cbeb4e81c7ca0e965c0dabb0788f\"",
-    "lastModified": "Tue, 21 Jul 2026 06:53:08 GMT",
-    "size": 11444,
-    "updatedAt": "2026-07-21T12:09:08.050Z"
+    "etag": "W/\"9bcb38de42b7b5c7841cb7f0b86da5a2\"",
+    "lastModified": "Sat, 25 Jul 2026 02:52:54 GMT",
+    "size": 12361,
+    "updatedAt": "2026-07-25T03:33:00.606Z"
   },
   "openai-docs/guides/advanced-usage.md": {
     "url": "https://developers.openai.com/api/docs/guides/advanced-usage.md",
@@ -530,10 +530,10 @@
   "openai-docs/guides/ip-addresses.md": {
     "url": "https://developers.openai.com/api/docs/guides/ip-addresses.md",
     "skill": "openai-docs",
-    "etag": "W/\"f2695814cd54c76f67833bb983d65d45\"",
-    "lastModified": "Thu, 04 Jun 2026 00:50:16 GMT",
-    "size": 1559,
-    "updatedAt": "2026-06-04T00:50:16.473Z"
+    "etag": "W/\"2742eb661ff9c29629ee0617c62b2479\"",
+    "lastModified": "Sat, 25 Jul 2026 02:52:55 GMT",
+    "size": 1456,
+    "updatedAt": "2026-07-25T03:33:11.231Z"
   },
   "openai-docs/guides/latency-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/latency-optimization.md",
@@ -1218,10 +1218,10 @@
   "openai-docs/mcp.md": {
     "url": "https://developers.openai.com/api/docs/mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"163dce8a89f3c1c58af6951b313e3684\"",
-    "lastModified": "Fri, 10 Jul 2026 04:10:34 GMT",
-    "size": 31487,
-    "updatedAt": "2026-07-10T04:10:34.895Z"
+    "etag": "W/\"983b261ec1d50951c8101fd3e555698d\"",
+    "lastModified": "Fri, 24 Jul 2026 19:22:52 GMT",
+    "size": 30601,
+    "updatedAt": "2026-07-25T03:33:30.240Z"
   },
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",

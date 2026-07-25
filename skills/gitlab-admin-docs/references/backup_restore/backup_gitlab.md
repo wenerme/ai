@@ -20,7 +20,6 @@ For larger GitLab instances, alternative backup strategies include:
 
 ## Data included in a backup
 
-- Secure Files [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/121142) in GitLab 16.1.
 - External merge request diffs [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/154914) in GitLab 17.1.
 
 GitLab provides a command-line interface to back up your entire instance.
@@ -563,9 +562,6 @@ sudo -u git -H bundle exec rake gitlab:backup:create SKIP=tar RAILS_ENV=producti
 
 #### Create server-side repository backups
 
-- [Introduced](https://gitlab.com/gitlab-org/gitaly/-/issues/4941) in `gitlab-backup` in GitLab 16.3.
-- Server-side support in `gitlab-backup` for restoring a specified backup instead of the latest backup [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132188) in GitLab 16.6.
-- Server-side support in `gitlab-backup` for creating incremental backups [introduced](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/6475) in GitLab 16.6.
 - Server-side support in `backup-utility` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/438393) in GitLab 17.0.
 
 Instead of storing large repository backups in the backup archive, repository
@@ -638,8 +634,6 @@ toolbox:
 
 #### Incremental repository backups
 
-- Server-side support for creating incremental backups [introduced](https://gitlab.com/gitlab-org/gitaly/-/issues/5461) in GitLab 16.6.
-
 > [!note]
 > Only repositories support incremental backups. Therefore, if you use `INCREMENTAL=yes`, the task
 > creates a self-contained backup tar archive. This is because all subtasks except repositories are
@@ -678,8 +672,6 @@ sudo gitlab-backup create INCREMENTAL=yes SKIP=tar
 
 #### Back up specific repository storages
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/86896) in GitLab 15.0.
-
 When using [multiple repository storages](../repository_storage_paths.md),
 repositories from specific repository storages can be backed up separately
 using the `REPOSITORIES_STORAGES` option. The option accepts a comma-separated list of
@@ -700,9 +692,6 @@ sudo -u git -H bundle exec rake gitlab:backup:create REPOSITORIES_STORAGES=stora
 ```
 
 #### Back up specific repositories
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/88094) in GitLab 15.1.
-- [Skipping specific repositories added](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/121865) in GitLab 16.1.
 
 You can back up specific repositories using the `REPOSITORIES_PATHS` option.
 Similarly, you can use `SKIP_REPOSITORIES_PATHS` to skip certain repositories.
@@ -1293,8 +1282,6 @@ There are two ways to fix this:
 
 ###### Environment variable overrides
 
-- Multiple databases support was [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/133177) in GitLab 16.5.
-
 By default, GitLab uses the database configuration stored in a
 configuration file (`database.yml`). However, you can override the database settings
 for the backup and restore task by setting environment
@@ -1386,7 +1373,7 @@ Example: Amazon Elastic Block Store (EBS)
 - A GitLab server using the Linux package (Omnibus) hosted on Amazon AWS.
 - An EBS drive containing an ext4 file system is mounted at `/var/opt/gitlab`.
 - In this case you could make an application backup by taking an EBS snapshot.
-- The backup includes all repositories, uploads and PostgreSQL data.
+- The backup includes all repositories, uploads, and PostgreSQL data.
 
 Example: Logical Volume Manager (LVM) snapshots + rsync
 
@@ -1394,7 +1381,7 @@ Example: Logical Volume Manager (LVM) snapshots + rsync
 - Replicating the `/var/opt/gitlab` directory using rsync would not be reliable because too many files would change while rsync is running.
 - Instead of rsync-ing `/var/opt/gitlab`, we create a temporary LVM snapshot, which we mount as a read-only file system at `/mnt/gitlab_backup`.
 - Now we can have a longer running rsync job which creates a consistent replica on the remote server.
-- The replica includes all repositories, uploads and PostgreSQL data.
+- The replica includes all repositories, uploads, and PostgreSQL data.
 
 If you're running GitLab on a virtualized server, you can possibly also create
 VM snapshots of the entire GitLab server. It's not uncommon however for a VM

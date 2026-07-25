@@ -16,7 +16,7 @@ You can also choose to [use your own runners](#configure-runners-to-execute-flow
 When flows execute in GitLab CI/CD:
 
 - They use a [composite identity](../composite_identity.md) to limit access.
-- They create an ephemeral [workload pipieline](../../../ci/pipelines/pipeline_types.md#workload-pipeline),
+- They create an ephemeral [workload pipeline](../../../ci/pipelines/pipeline_types.md#workload-pipeline),
   which is removed when the flow is complete.
 - The tools at their disposal are specific to the purpose of the flow.
   These tools can include the creation of merge requests or the running of local shell commands in their execution environment.
@@ -556,11 +556,13 @@ To configure your own runner for flows:
    - If you configure runners with a `config.toml` file, add the tag to the `[[runners]]` section:
 
 
+
      ```toml
      [[runners]]
        executor = "docker"
        tags = ["gitlab--duo"]
      ```
+
 
 
 1. Configure the runner to use an [executor](https://docs.gitlab.com/runner/executors/) that

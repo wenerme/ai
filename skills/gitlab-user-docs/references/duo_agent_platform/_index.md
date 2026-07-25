@@ -95,7 +95,6 @@ but you require credits in your Monthly Commitment Pool to access them.
 | [AI audit event report](ai-audit-events.md)  Browse and filter a unified record of GitLab Duo agent activity for compliance and governance purposes. | No | Yes | Yes |
 | [Initialize project context](onboarding.md#initialize-project-context)  Automatically generate an `AGENTS.md` file that documents your project conventions for use by AI agents. | Yes | Yes | Yes |
 | [Improve CI/CD setup](onboarding.md#improve-cicd-setup)  Analyze your CI/CD configuration and generate a merge request with suggested improvements. | Yes | Yes | Yes |
-| [MCP server](../model_context_protocol/mcp_server.md)  Securely connect AI tools and applications to your GitLab instance. | No | Yes | Yes |
 | [CI Expert Agent](agents/foundational_agents/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | No | Yes | Yes |
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
 | [Resolve merge conflicts](../project/merge_requests/conflicts.md#resolve-conflicts-with-gitlab-duo)  Autonomously analyze merge conflicts, edit conflicting files, and push a resolution commit. | No | Yes | Yes |

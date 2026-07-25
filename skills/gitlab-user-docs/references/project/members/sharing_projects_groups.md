@@ -76,8 +76,7 @@ In addition:
 - On the project's **Members** page, the members of the invited group are listed on the **Members** tab.
 - On the usage quota page, members who have the **Project Invite** badge next to their profile count towards the billable members of the shared project's top-level group.
 
-[In GitLab 16.11 and later](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144638),
-the invited group's name and membership source are masked on the **Members** and the **Groups** tabs,
+The invited group's name and membership source are [masked](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144638) on the **Members** and the **Groups** tabs,
 unless one of the following applies:
 
 - The invited group is public.
@@ -243,8 +242,7 @@ After you invite a group to your group:
 - On the group's **Members** page, the members of the invited group are listed on the **Members** tab.
 - On the group's usage quota page, direct members of the invited group who have the **Group Invite** badge next to their profile count towards the billable members of the inviting group.
 
-[In GitLab 16.11 and later](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144638),
-the invited group's name and membership source are masked on the **Members** and the **Groups** tabs,
+The invited group's name and membership source are [masked](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144638) on the **Members** and the **Groups** tabs,
 unless one of the following applies:
 
 - The invited group is public.

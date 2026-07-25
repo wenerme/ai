@@ -1,6 +1,6 @@
-# Mid-conversation system messages
+# Mid-conversation system messages and tool changes
 
-Add or update system instructions partway through a conversation without invalidating the cached prefix that came before them.
+Change system instructions or tool availability partway through a conversation without invalidating the cached prefix that came before them.
 
 ---
 
@@ -12,11 +12,441 @@ System instructions normally live in the top-level `system` field, ahead of ever
 
 Mid-conversation system messages close that gap. You append a `{"role": "system"}` message at the point in the conversation where the new instruction becomes relevant, instead of editing the top-level `system` field. The cached prefix stays the same, so the next request still reads it from cache, and the new instruction is still applied as a system instruction rather than as ordinary user text.
 
+This page covers two features: mid-conversation system messages, which are generally available, and [mid-conversation tool changes](#mid-conversation-tool-changes), a beta introduced with Claude Opus 5 that applies the same approach to the `tools` array.
+
 <Note>
   Mid-conversation system messages are available on the Claude API, [Claude in Amazon Bedrock](/docs/en/build-with-claude/claude-in-amazon-bedrock), and [Google Cloud](/docs/en/build-with-claude/claude-on-vertex-ai).
 
-  This feature is available on Claude Fable 5, [Claude Mythos 5](https://anthropic.com/glasswing), and Claude Opus 4.8. No beta header is required. This feature is not available on Claude Sonnet 5; use the top-level `system` field instead.
+  This feature is available on Claude Fable 5, [Claude Mythos 5](https://anthropic.com/glasswing), Claude Opus 4.8, and Claude Opus 5. No beta header is required for mid-conversation system messages. This feature is not available on Claude Sonnet 5; use the top-level `system` field instead.
+
+  Mid-conversation tool changes are in beta and require the `mid-conversation-tool-changes-2026-07-01` beta header. They are available on Claude Fable 5, Claude Mythos 5, Claude Opus 4.8, and Claude Opus 5, on the Claude API, Amazon Bedrock, and Google Cloud.
 </Note>
+
+## Mid-conversation tool changes
+
+The `tools` array sits even earlier in the hashed request prefix than the top-level `system` field, so editing it invalidates the [prompt cache](/docs/en/build-with-claude/prompt-caching) for the entire conversation. Mid-conversation tool changes, a beta introduced with Claude Opus 5, are the tools counterpart to mid-conversation system messages. Instead of fixing the tool list for the lifetime of the conversation, you change which tools are offered to the model between turns: declare the full tool set in `tools` up front, then use `tool_addition` and `tool_removal` blocks to offer a tool to the model, or withdraw it, from a specific point in the conversation onward. The `tools` array itself never changes, so the cached prefix stays intact.
+
+`tool_addition` and `tool_removal` are content blocks in the `content` array of a `role: "system"` message, and they can be mixed with `text` blocks in the same message. The message follows the same placement rules as any mid-conversation system message (see [Limitations](#limitations)), and the change applies from that point in the conversation onward. Each block's `tool` field references a tool rather than defining one: `{"type": "tool_reference", "name": "..."}` names a tool declared in the request's `tools` array, and [MCP connector](/docs/en/agents-and-tools/mcp-connector) tools can be referenced individually with `mcp_tool_reference` (`server_name` and `name`) or as a whole toolset with `mcp_toolset_reference` (`server_name`). Referencing a name that is not declared in `tools` returns a 400 error.
+
+Every tool declared in `tools` is offered to the model from the start of the conversation unless it is declared with `defer_loading: true`, which keeps it withheld until a `tool_addition` block surfaces it. `tool_addition` also re-offers a tool that an earlier `tool_removal` withdrew.
+
+<CodeGroup>
+  ```bash cURL
+  curl https://api.anthropic.com/v1/messages \
+    -H "content-type: application/json" \
+    -H "x-api-key: $ANTHROPIC_API_KEY" \
+    -H "anthropic-version: 2023-06-01" \
+    -H "anthropic-beta: mid-conversation-tool-changes-2026-07-01" \
+    -d '{
+      "model": "claude-opus-5",
+      "max_tokens": 1024,
+      "tools": [
+        {
+          "name": "get_weather",
+          "description": "Get the current weather for a location.",
+          "input_schema": {
+            "type": "object",
+            "properties": {
+              "location": {"type": "string", "description": "City name"}
+            },
+            "required": ["location"]
+          }
+        }
+      ],
+      "messages": [
+        {
+          "role": "user",
+          "content": "Say OK."
+        },
+        {
+          "role": "system",
+          "content": [
+            {
+              "type": "tool_removal",
+              "tool": {"type": "tool_reference", "name": "get_weather"}
+            }
+          ]
+        }
+      ]
+    }'
+  ```
+
+  ```bash CLI
+  ant beta:messages create --beta mid-conversation-tool-changes-2026-07-01 \
+    --transform 'content.#(type=="text").text' --raw-output <<'YAML'
+  model: claude-opus-5
+  max_tokens: 1024
+  tools:
+    - name: get_weather
+      description: Get the current weather for a location.
+      input_schema:
+        type: object
+        properties:
+          location:
+            type: string
+            description: City name
+        required:
+          - location
+  messages:
+    - role: user
+      content: Say OK.
+    - role: system
+      content:
+        - type: tool_removal
+          tool:
+            type: tool_reference
+            name: get_weather
+  YAML
+  ```
+
+  ```python Python
+  client = anthropic.Anthropic()
+
+  response = client.beta.messages.create(
+      model="claude-opus-5",
+      max_tokens=1024,
+      betas=["mid-conversation-tool-changes-2026-07-01"],
+      # The full tool set is declared up front and never changes, so the
+      # cached prefix stays intact.
+      tools=[
+          {
+              "name": "get_weather",
+              "description": "Get the current weather for a location.",
+              "input_schema": {
+                  "type": "object",
+                  "properties": {
+                      "location": {"type": "string", "description": "City name"},
+                  },
+                  "required": ["location"],
+              },
+          },
+      ],
+      messages=[
+          {
+              "role": "user",
+              "content": "Say OK.",
+          },
+          # Withdraw get_weather from this point onward. The block references
+          # the tool by name instead of editing `tools`, so earlier turns stay
+          # byte-identical and the cache still hits.
+          {
+              "role": "system",
+              "content": [
+                  {
+                      "type": "tool_removal",
+                      "tool": {"type": "tool_reference", "name": "get_weather"},
+                  },
+              ],
+          },
+      ],
+  )
+
+  for block in response.content:
+      if block.type == "text":
+          print(block.text)
+  ```
+
+  ```typescript TypeScript
+  const client = new Anthropic();
+
+  const response = await client.beta.messages.create({
+    model: "claude-opus-5",
+    max_tokens: 1024,
+    betas: ["mid-conversation-tool-changes-2026-07-01"],
+    // The full tool set is declared up front and never changes, so the
+    // cached prefix stays intact.
+    tools: [
+      {
+        name: "get_weather",
+        description: "Get the current weather for a location.",
+        input_schema: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "City name"
+            }
+          },
+          required: ["location"]
+        }
+      }
+    ],
+    messages: [
+      { role: "user", content: "Say OK." },
+      // Withdraw get_weather from this point onward. The block references the
+      // tool by name instead of editing `tools`, so earlier turns stay
+      // byte-identical and the cache still hits.
+      {
+        role: "system",
+        content: [
+          {
+            type: "tool_removal",
+            tool: { type: "tool_reference", name: "get_weather" }
+          }
+        ]
+      }
+    ]
+  });
+
+  for (const block of response.content) {
+    if (block.type === "text") {
+      console.log(block.text);
+    }
+  }
+  ```
+
+  ```csharp C#
+  using Anthropic.Models.Beta.Messages;
+  using Messages = Anthropic.Models.Messages;
+
+  AnthropicClient client = new();
+
+  var response = await client.Beta.Messages.Create(new MessageCreateParams
+  {
+      Model = Messages::Model.ClaudeOpus5,
+      MaxTokens = 1024,
+      Betas = ["mid-conversation-tool-changes-2026-07-01"],
+      // The full tool set is declared up front and never changes, so the
+      // cached prefix stays intact.
+      Tools =
+      [
+          new BetaTool
+          {
+              Name = "get_weather",
+              Description = "Get the current weather for a location.",
+              InputSchema = new InputSchema
+              {
+                  Properties = new Dictionary<string, JsonElement>
+                  {
+                      ["location"] = JsonSerializer.SerializeToElement(new { type = "string", description = "City name" }),
+                  },
+                  Required = ["location"],
+              },
+          },
+      ],
+      Messages =
+      [
+          new() { Role = Role.User, Content = "Say OK." },
+          // Withdraw get_weather from this point onward. The block references
+          // the tool by name instead of editing `Tools`, so earlier turns stay
+          // byte-identical and the cache still hits.
+          new()
+          {
+              Role = Role.System,
+              Content = new(
+              [
+                  new BetaRequestToolRemovalBlock
+                  {
+                      Tool = new BetaToolChangeToolReference { Name = "get_weather" },
+                  },
+              ]),
+          },
+      ],
+  });
+
+  foreach (var block in response.Content)
+  {
+      if (block.TryPickText(out var text))
+      {
+          Console.WriteLine(text.Text);
+      }
+  }
+  ```
+
+  ```go Go
+  client := anthropic.NewClient()
+
+  response, err := client.Beta.Messages.New(context.TODO(), anthropic.BetaMessageNewParams{
+  	Model:     anthropic.ModelClaudeOpus5,
+  	MaxTokens: 1024,
+  	Betas:     []anthropic.AnthropicBeta{"mid-conversation-tool-changes-2026-07-01"},
+  	// The full tool set is declared up front and never changes, so the
+  	// cached prefix stays intact.
+  	Tools: []anthropic.BetaToolUnionParam{
+  		{OfTool: &anthropic.BetaToolParam{
+  			Name:        "get_weather",
+  			Description: anthropic.String("Get the current weather for a location."),
+  			InputSchema: anthropic.BetaToolInputSchemaParam{
+  				Properties: map[string]any{
+  					"location": map[string]any{
+  						"type":        "string",
+  						"description": "City name",
+  					},
+  				},
+  				Required: []string{"location"},
+  			},
+  		}},
+  	},
+  	Messages: []anthropic.BetaMessageParam{
+  		anthropic.NewBetaUserMessage(anthropic.NewBetaTextBlock("Say OK.")),
+  		// Withdraw get_weather from this point onward. The block references
+  		// the tool by name instead of editing Tools, so earlier turns stay
+  		// byte-identical and the cache still hits.
+  		{
+  			Role: anthropic.BetaMessageParamRoleSystem,
+  			Content: []anthropic.BetaContentBlockParamUnion{
+  				anthropic.NewBetaToolRemovalBlock(anthropic.BetaToolChangeToolReferenceParam{
+  					Name: "get_weather",
+  				}),
+  			},
+  		},
+  	},
+  })
+  if err != nil {
+  	log.Fatal(err)
+  }
+
+  for _, block := range response.Content {
+  	if textBlock, ok := block.AsAny().(anthropic.BetaTextBlock); ok {
+  		fmt.Println(textBlock.Text)
+  	}
+  }
+  ```
+
+  ```java Java
+  import com.anthropic.models.beta.messages.BetaContentBlockParam;
+  import com.anthropic.models.beta.messages.BetaMessage;
+  import com.anthropic.models.beta.messages.BetaMessageParam;
+  import com.anthropic.models.beta.messages.BetaRequestToolRemovalBlock;
+  import com.anthropic.models.beta.messages.BetaTool;
+  import com.anthropic.models.beta.messages.MessageCreateParams;
+  // ...
+      AnthropicClient client = AnthropicOkHttpClient.fromEnv();
+
+      // The full tool set is declared up front and never changes, so the
+      // cached prefix stays intact.
+      BetaTool weatherTool = BetaTool.builder()
+          .name("get_weather")
+          .description("Get the current weather for a location.")
+          .inputSchema(BetaTool.InputSchema.builder()
+              .properties(BetaTool.InputSchema.Properties.builder()
+                  .putAdditionalProperty("location", JsonValue.from(Map.of(
+                      "type", "string",
+                      "description", "City name")))
+                  .build())
+              .addRequired("location")
+              .build())
+          .build();
+
+      MessageCreateParams params = MessageCreateParams.builder()
+          .model(Model.CLAUDE_OPUS_5)
+          .maxTokens(1024)
+          .addBeta("mid-conversation-tool-changes-2026-07-01")
+          .addTool(weatherTool)
+          .addUserMessage("Say OK.")
+          // Withdraw get_weather from this point onward. The block references
+          // the tool by name instead of editing `tools`, so earlier turns stay
+          // byte-identical and the cache still hits.
+          .addMessage(BetaMessageParam.builder()
+              .role(BetaMessageParam.Role.SYSTEM)
+              .contentOfBetaContentBlockParams(List.of(
+                  BetaContentBlockParam.ofToolRemoval(BetaRequestToolRemovalBlock.builder()
+                      .referenceTool("get_weather")
+                      .build())))
+              .build())
+          .build();
+
+      BetaMessage response = client.beta().messages().create(params);
+      response.content().stream()
+          .flatMap(block -> block.text().stream())
+          .forEach(textBlock -> IO.println(textBlock.text()));
+  ```
+
+  ```php PHP
+  $client = new Client();
+
+  $response = $client->beta->messages->create(
+      model: 'claude-opus-5',
+      maxTokens: 1024,
+      betas: ['mid-conversation-tool-changes-2026-07-01'],
+      // The full tool set is declared up front and never changes, so the
+      // cached prefix stays intact.
+      tools: [
+          [
+              'name' => 'get_weather',
+              'description' => 'Get the current weather for a location.',
+              'input_schema' => [
+                  'type' => 'object',
+                  'properties' => [
+                      'location' => [
+                          'type' => 'string',
+                          'description' => 'City name',
+                      ],
+                  ],
+                  'required' => ['location'],
+              ],
+          ],
+      ],
+      messages: [
+          ['role' => 'user', 'content' => 'Say OK.'],
+          // Withdraw get_weather from this point onward. The block references
+          // the tool by name instead of editing `tools`, so earlier turns stay
+          // byte-identical and the cache still hits.
+          [
+              'role' => 'system',
+              'content' => [
+                  [
+                      'type' => 'tool_removal',
+                      'tool' => ['type' => 'tool_reference', 'name' => 'get_weather'],
+                  ],
+              ],
+          ],
+      ],
+  );
+
+  foreach ($response->content as $block) {
+      if ($block->type === 'text') {
+          echo $block->text, PHP_EOL;
+      }
+  }
+  ```
+
+  ```ruby Ruby
+  client = Anthropic::Client.new
+
+  response = client.beta.messages.create(
+    model: "claude-opus-5",
+    max_tokens: 1024,
+    betas: ["mid-conversation-tool-changes-2026-07-01"],
+    # The full tool set is declared up front and never changes, so the
+    # cached prefix stays intact.
+    tools: [
+      {
+        name: "get_weather",
+        description: "Get the current weather for a location.",
+        input_schema: {
+          type: "object",
+          properties: {
+            location: { type: "string", description: "City name" }
+          },
+          required: ["location"]
+        }
+      }
+    ],
+    messages: [
+      { role: "user", content: "Say OK." },
+      # Withdraw get_weather from this point onward. The block references
+      # the tool by name instead of editing `tools`, so earlier turns stay
+      # byte-identical and the cache still hits.
+      {
+        role: "system",
+        content: [
+          {
+            type: "tool_removal",
+            tool: { type: "tool_reference", name: "get_weather" }
+          }
+        ]
+      }
+    ]
+  )
+
+  response.content.each do |block|
+    puts block.text if block.type == :text
+  end
+  ```
+</CodeGroup>
+
+Mid-conversation tool changes are in beta. To use them, include the beta header `mid-conversation-tool-changes-2026-07-01` in your requests. They are available on Claude Fable 5, Claude Mythos 5, Claude Opus 4.8, and Claude Opus 5, on the Claude API, Amazon Bedrock, and Google Cloud.
 
 ## When to use a mid-conversation system message
 
@@ -49,7 +479,7 @@ You can still set the top-level `system` field for instructions that should appl
     -H "x-api-key: $ANTHROPIC_API_KEY" \
     -H "anthropic-version: 2023-06-01" \
     -d '{
-      "model": "claude-opus-4-8",
+      "model": "claude-opus-5",
       "max_tokens": 1024,
       "cache_control": {"type": "ephemeral"},
       "system": "You are a code review assistant. Be concise.",
@@ -75,8 +505,8 @@ You can still set the top-level `system` field for instructions that should appl
   ```
 
   ```bash CLI
-  ant messages create --transform 'content.0.text' --raw-output <<'YAML'
-  model: claude-opus-4-8
+  ant messages create --transform 'content.#(type=="text").text' --raw-output <<'YAML'
+  model: claude-opus-5
   max_tokens: 1024
   cache_control:
     type: ephemeral
@@ -99,7 +529,7 @@ You can still set the top-level `system` field for instructions that should appl
   client = anthropic.Anthropic()
 
   response = client.messages.create(
-      model="claude-opus-4-8",
+      model="claude-opus-5",
       max_tokens=1024,
       # Automatic prompt caching: each request caches the conversation so far,
       # and the next request reads the unchanged prefix from cache.
@@ -129,14 +559,16 @@ You can still set the top-level `system` field for instructions that should appl
       ],
   )
 
-  print(response.content[0].text)
+  for block in response.content:
+      if block.type == "text":
+          print(block.text)
   ```
 
   ```typescript TypeScript
   const client = new Anthropic();
 
   const response = await client.messages.create({
-    model: "claude-opus-4-8",
+    model: "claude-opus-5",
     max_tokens: 1024,
     // Automatic prompt caching: each request caches the conversation so far,
     // and the next request reads the unchanged prefix from cache.
@@ -178,7 +610,7 @@ You can still set the top-level `system` field for instructions that should appl
 
   var parameters = new MessageCreateParams
   {
-      Model = Model.ClaudeOpus4_8,
+      Model = Model.ClaudeOpus5,
       MaxTokens = 1024,
       // Automatic prompt caching: each request caches the conversation so far,
       // and the next request reads the unchanged prefix from cache.
@@ -221,7 +653,7 @@ You can still set the top-level `system` field for instructions that should appl
   client := anthropic.NewClient()
 
   response, err := client.Messages.New(context.TODO(), anthropic.MessageNewParams{
-  	Model:     anthropic.ModelClaudeOpus4_8,
+  	Model:     anthropic.ModelClaudeOpus5,
   	MaxTokens: 1024,
   	// Automatic prompt caching: each request caches the conversation so far,
   	// and the next request reads the unchanged prefix from cache.
@@ -248,7 +680,11 @@ You can still set the top-level `system` field for instructions that should appl
   if err != nil {
   	log.Fatal(err)
   }
-  fmt.Println(response.Content[0].Text)
+  for _, block := range response.Content {
+  	if textBlock, ok := block.AsAny().(anthropic.TextBlock); ok {
+  		fmt.Println(textBlock.Text)
+  	}
+  }
   ```
 
   ```java Java
@@ -259,7 +695,7 @@ You can still set the top-level `system` field for instructions that should appl
       AnthropicClient client = AnthropicOkHttpClient.fromEnv();
 
       MessageCreateParams params = MessageCreateParams.builder()
-          .model(Model.CLAUDE_OPUS_4_8)
+          .model(Model.CLAUDE_OPUS_5)
           .maxTokens(1024)
           // Automatic prompt caching: each request caches the conversation so far,
           // and the next request reads the unchanged prefix from cache.
@@ -281,13 +717,13 @@ You can still set the top-level `system` field for instructions that should appl
       Message response = client.messages().create(params);
       response.content().stream()
           .flatMap(block -> block.text().stream())
-          .forEach(textBlock -> System.out.println(textBlock.text()));
+          .forEach(textBlock -> IO.println(textBlock.text()));
   ```
 
   ```php PHP
   use Anthropic\Messages\CacheControlEphemeral;
   // ...
-  $client = new Client(apiKey: getenv("ANTHROPIC_API_KEY"));
+  $client = new Client();
 
   $response = $client->messages->create(
       maxTokens: 1024,
@@ -301,21 +737,25 @@ You can still set the top-level `system` field for instructions that should appl
           // request is still read from cache.
           ['role' => 'system', 'content' => 'From now on, every suggestion must include explicit type annotations.']
       ],
-      model: 'claude-opus-4-8',
+      model: 'claude-opus-5',
       // Automatic prompt caching: each request caches the conversation so far,
       // and the next request reads the unchanged prefix from cache.
       cacheControl: CacheControlEphemeral::with(),
       system: 'You are a code review assistant. Be concise.',
   );
 
-  echo $response->content[0]->text;
+  foreach ($response->content as $block) {
+      if ($block->type === 'text') {
+          echo $block->text, PHP_EOL;
+      }
+  }
   ```
 
   ```ruby Ruby
   client = Anthropic::Client.new
 
   response = client.messages.create(
-    model: "claude-opus-4-8",
+    model: "claude-opus-5",
     max_tokens: 1024,
     # Automatic prompt caching: each request caches the conversation so far,
     # and the next request reads the unchanged prefix from cache.
@@ -333,7 +773,9 @@ You can still set the top-level `system` field for instructions that should appl
     ]
   )
 
-  puts response.content.first.text
+  response.content.each do |block|
+    puts block.text if block.type == :text
+  end
   ```
 </CodeGroup>
 

@@ -196,7 +196,6 @@ Who can be notified:
 
 ## Add an internal note
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/142003) for merge requests in GitLab 16.9.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/538003) for GitLab Wiki in GitLab 18.2.
 
 Use internal notes to protect information added to a public issue, epic, wiki page, or merge request.
@@ -305,10 +304,6 @@ To create a thread:
 
 ## Resolve a thread
 
-- Resolvable threads for issues:
-  - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/31114) in GitLab 16.3 [with a feature flag](../../administration/feature_flags/_index.md) named `resolvable_issue_threads`. Disabled by default.
-  - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/31114) in GitLab 16.4.
-  - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/31114) in GitLab 16.7. Feature flag `resolvable_issue_threads` removed.
 - Resolvable threads for tasks, objectives, and key results [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/458818) in GitLab 17.3.
 - Resolvable threads for epics:
   - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/458818) in GitLab 17.5. [The new look for epics](../group/epics/_index.md#epics-as-work-items) must be enabled.
@@ -351,7 +346,6 @@ such as:
 - LLM for Amazon Q: Amazon Q Developer
 - Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10344) in GitLab 16.0 as an [experiment](../../policy/development_stages_support.md#experiment).
 - [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/454550) to GitLab Duo and changed to [beta](../../policy/development_stages_support.md#beta) in GitLab 17.3 [with a feature flag](../../administration/feature_flags/_index.md) named `summarize_notes_with_duo`. Disabled by default.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/162122) in GitLab 17.4.
 - Changed to require GitLab Duo add-on in GitLab 17.6 and later.

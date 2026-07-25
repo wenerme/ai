@@ -3,9 +3,6 @@
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352493) in GitLab 14.9 [with a feature flag](../administration/feature_flags/_index.md) named `related_epics_widget`. Enabled by default.
-- [Feature flag `related_epics_widget`](https://gitlab.com/gitlab-org/gitlab/-/issues/357089) removed in GitLab 15.0.
-
 > [!warning]
 > The Epics REST API was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/460668) in GitLab 17.0
 > and is planned for removal in v5 of the API.
@@ -218,8 +215,6 @@ Example response:
 
 ## Create a related epic link
 
-- Minimum required role for the group [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/381308) from Reporter to Guest in GitLab 15.8.
-
 Creates a two-way relation between two epics. The user must have the Guest, Planner, Reporter, Developer, Maintainer, or Owner role for both groups.
 
 ```plaintext
@@ -340,8 +335,6 @@ Example response:
 ```
 
 ## Delete a related epic link
-
-- Minimum required role for the group [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/381308) from Reporter to Guest in GitLab 15.8.
 
 Deletes a two-way relation between two specified epics. The user must have the Guest, Planner, Reporter, Developer, Maintainer, or Owner role for both groups.
 

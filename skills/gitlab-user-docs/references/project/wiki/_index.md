@@ -320,10 +320,6 @@ Prerequisites:
 
 ## Export a wiki page
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/414691) in GitLab 16.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `print_wiki`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/134251/) in GitLab 16.5.
-- Feature flag `print_wiki` removed in GitLab 16.6.
-
 You can export a wiki page as a PDF file:
 
 1. In the top bar, select **Search or go to** and find your project or group.
@@ -349,8 +345,6 @@ To set up the integration, you must:
 After completing the integration, the diagrams.net editor opens with the URL you provided.
 
 ## Wiki page templates
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/442228) in GitLab 16.10.
 
 You can create templates to use when creating new pages, or to apply
 to existing pages. Templates are wiki pages that are stored in the `templates/`
@@ -606,8 +600,6 @@ want to re-enable the wiki. To re-enable it, repeat the process
 to disable the wiki but toggle it on (in blue).
 
 ## Rich text editor
-
-- [Renamed](https://gitlab.com/gitlab-org/gitlab/-/issues/398152) from content editor to rich text editor in GitLab 16.2.
 
 GitLab provides a rich text editing experience for GitLab Flavored Markdown in wikis.
 

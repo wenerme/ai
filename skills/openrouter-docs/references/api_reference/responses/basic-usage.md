@@ -4,15 +4,9 @@
 
 # Basic Usage
 
-> Getting started with the Responses API Beta
+> Getting started with the Responses API
 
-<Warning>
-  **Beta API**
-
-  This API is in **beta stage** and may have breaking changes.
-</Warning>
-
-The Responses API Beta supports both simple string input and structured message arrays, making it easy to get started with basic text generation.
+The Responses API supports both simple string input and structured message arrays, making it easy to get started with basic text generation.
 
 ## Simple String Input
 
@@ -368,7 +362,7 @@ Handle common errors gracefully:
 
 ## Multiple Turn Conversations
 
-Since the Responses API Beta is stateless, you must include the full conversation history in each request to maintain context. Stateful parameters like `store: true` and `previous_response_id` are not supported and are rejected with a `400` error:
+Since the Responses API is stateless, you must include the full conversation history in each request to maintain context. Stateful parameters like `store: true` and `previous_response_id` are not supported and are rejected with a `400` error:
 
 <CodeGroup>
   ```typescript title="TypeScript" expandable lines theme={null}

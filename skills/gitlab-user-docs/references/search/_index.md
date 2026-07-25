@@ -137,9 +137,6 @@ a scope is selected automatically.
 
 ## Global search validation
 
-- Support for partial matches in issue search [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/71913) in GitLab 14.9 [with a feature flag](../../administration/feature_flags/_index.md) named `issues_full_text_search`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124703) in GitLab 16.2. Feature flag `issues_full_text_search` removed.
-
 Global search ignores and logs as abusive any search that includes:
 
 - Fewer than two characters
@@ -200,9 +197,6 @@ The results are displayed. To filter the results, in the left sidebar, select a 
 
 ## Include archived projects in search results
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/121981) in GitLab 16.1 [with a feature flag](../../administration/feature_flags/_index.md) named `search_projects_hide_archived` for project search. Disabled by default.
-- [Generally available](https://gitlab.com/groups/gitlab-org/-/epics/10957) in GitLab 16.6 for all search scopes.
-
 By default, archived projects are excluded from search results.
 To include archived projects in search results:
 
@@ -222,8 +216,6 @@ To search for code in all GitLab, ask your administrator to enable [advanced sea
 
 ### View Git blame from code search
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/327052) in GitLab 14.7.
-
 After you find search results, you can view who made the last change to the line
 where the results were found.
 
@@ -231,8 +223,6 @@ where the results were found.
 1. On the left, select **View blame**.
 
 ### Filter code search results by language
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/342651) in GitLab 15.10.
 
 To filter code search results by one or more languages:
 

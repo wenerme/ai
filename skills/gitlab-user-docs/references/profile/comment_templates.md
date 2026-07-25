@@ -5,8 +5,6 @@ Build templates for text frequently used in comments, and share those templates 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Feature flag `saved_replies` [enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/119468) in GitLab 16.0.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/123363) in GitLab 16.6. Feature flag `saved_replies` removed.
 - Saved replies for groups:
   - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/12669) in GitLab 16.11 [with a feature flag](../../administration/feature_flags/_index.md) named `group_saved_replies_flag`. Disabled by default.
   - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/504028) in GitLab 17.8. Feature flag `group_saved_replies_flag` removed.

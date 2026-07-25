@@ -96,8 +96,6 @@ To use a custom response:
 
 ## Maximum authenticated requests to `project/:id/jobs` per minute
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/129319) in GitLab 16.5.
-
 To reduce timeouts, the `project/:id/jobs` endpoint has a default [rate limit](../../security/rate_limits.md#project-jobs-api-endpoint) of 600 calls per authenticated user.
 
 To modify the maximum number of requests:
@@ -199,7 +197,7 @@ GitLab does not know who the user is.
 
 The allowlist is configured as a comma-separated list of user IDs in
 the `GITLAB_THROTTLE_USER_ALLOWLIST` environment variable. If you want
-users 1, 53 and 217 to bypass the authenticated request rate limiter,
+users 1, 53, and 217 to bypass the authenticated request rate limiter,
 the allowlist configuration would be `1,53,217`.
 
 - For [Linux package installations](https://docs.gitlab.com/omnibus/settings/environment-variables/),

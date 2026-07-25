@@ -5,8 +5,6 @@ Set auto-merge on a merge request when you have reviewed its content, so it can 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- **Merge when pipeline succeeds** and **Add to merge train when pipeline succeeds** [renamed](https://gitlab.com/gitlab-org/gitlab/-/issues/409530) to **Auto-merge** in GitLab 16.0 [with a feature flag](../../../administration/feature_flags/_index.md) named `auto_merge_labels_mr_widget`. Enabled by default.
-- Renamed auto-merge feature [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120922) in GitLab 16.0. Feature flag `auto_merge_labels_mr_widget` removed.
 - Enhanced auto-merge:
   - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10874) in GitLab 16.5 [with two feature flags](../../../administration/feature_flags/_index.md) named `merge_when_checks_pass` and `additional_merge_when_checks_ready`. Disabled by default.
   - [Merged](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/154366) the flag `additional_merge_when_checks_ready` with the flag `merge_when_checks_pass` in GitLab 17.1.

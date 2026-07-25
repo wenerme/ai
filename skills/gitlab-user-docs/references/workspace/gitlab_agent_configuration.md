@@ -5,9 +5,6 @@ Configure the GitLab agent for Kubernetes to support your workspace.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Feature flag `remote_development_feature_flag` [enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/391543) in GitLab 16.0.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/136744) in GitLab 16.7. Feature flag `remote_development_feature_flag` removed.
-
 When you [set up workspace infrastructure](configuration.md#set-up-workspace-infrastructure),
 you must configure a GitLab agent for Kubernetes to support workspaces. This guide assumes that a GitLab
 agent is already installed in the Kubernetes cluster.

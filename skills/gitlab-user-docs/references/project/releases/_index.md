@@ -226,8 +226,6 @@ release tag. When the `released_at` date and time has passed, the badge is autom
 
 ## Historical releases
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/199429) in GitLab 15.2.
-
 You can create a release in the past using either the
 [Releases API](../../../api/releases/_index.md#historical-releases) or the UI. When you set
 a past `released_at` date, an **Historical release** badge is displayed next to
@@ -251,8 +249,6 @@ In the UI:
 1. Select **Save changes**.
 
 ## Delete a release
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/213862) in GitLab 15.2
 
 When you delete a release, its assets are also deleted. However, the associated
 Git tag is not deleted.
@@ -393,8 +389,6 @@ For more information, see [Deployment safety](../../../ci/environments/deploymen
 
 ### Publish releases without giving access to source code
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/216485) in GitLab 15.6.
-
 You can make releases accessible to non-project members while keeping repository-related information, such as [source code](release_fields.md#source-code) and [release evidence](release_evidence.md), available only to project members. These settings are ideal for
 projects that use releases to give access to new versions of software, but do not want the source code to be publicly available.
 
@@ -443,7 +437,7 @@ You can copy the example project to your own group or instance for testing. More
 
 ## Troubleshooting
 
-### Errors when creating, updating or deleting releases and their assets
+### Errors when creating, updating, or deleting releases and their assets
 
 If the release is associated with a [protected tag](../protected_tags.md),
 the UI/API request might result in an authorization failures, such as:

@@ -5,8 +5,6 @@ Administer, configure, and troubleshoot the GitLab for Slack app on GitLab Self-
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/358872) for GitLab Self-Managed in GitLab 16.2.
-
 > [!note]
 > For user documentation, see [GitLab for Slack app](../../user/project/integrations/gitlab_slack_application.md).
 

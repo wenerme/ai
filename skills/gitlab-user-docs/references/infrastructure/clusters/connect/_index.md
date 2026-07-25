@@ -9,8 +9,6 @@ in GitLab 14.5. To connect your clusters, use the [GitLab agent for Kubernetes](
 
 ## Cluster levels (deprecated)
 
-- [Deprecated](https://gitlab.com/groups/gitlab-org/configure/-/epics/8) in GitLab 14.5.
-
 > [!warning]
 > The [concept of cluster levels was deprecated](../_index.md#cluster-levels)
 > in GitLab 14.5.
@@ -49,8 +47,6 @@ Prerequisites:
 1. In the left sidebar, select **Kubernetes**.
 
 ## Security implications for clusters connected with certificates
-
-- Connecting clusters to GitLab through cluster certificates was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/epics/8) in GitLab 14.5.
 
 > [!warning]
 > The whole cluster security is based on a model where [developers](../../../permissions.md)

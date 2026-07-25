@@ -4,15 +4,9 @@
 
 # Web Search
 
-> Real-time web search integration with the Responses API Beta
+> Real-time web search integration with the Responses API
 
-<Warning>
-  **Beta API**
-
-  This API is in **beta stage** and may have breaking changes.
-</Warning>
-
-The Responses API Beta supports web search integration, allowing models to access real-time information from the internet and provide responses with proper citations and annotations.
+The Responses API supports web search integration, allowing models to access real-time information from the internet and provide responses with proper citations and annotations.
 
 <Warning>
   **Deprecated Plugin Approach**

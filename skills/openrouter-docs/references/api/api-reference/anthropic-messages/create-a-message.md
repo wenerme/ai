@@ -86,8 +86,8 @@ tags:
     name: Workspaces
   - description: beta.Analytics endpoints
     name: beta.Analytics
-  - description: beta.responses endpoints
-    name: beta.responses
+  - description: responses endpoints
+    name: responses
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -616,6 +616,8 @@ components:
               - properties:
                   cache_control:
                     $ref: '#/components/schemas/AnthropicCacheControlDirective'
+                  defer_loading:
+                    type: boolean
                   description:
                     type: string
                   input_schema:
@@ -1213,6 +1215,10 @@ components:
                         type:
                           - string
                           - 'null'
+                      encrypted_content:
+                        type:
+                          - string
+                          - 'null'
                       type:
                         enum:
                           - compaction
@@ -1222,6 +1228,8 @@ components:
                       - content
                     type: object
                   - $ref: '#/components/schemas/MessagesAdvisorToolResultBlock'
+                  - $ref: '#/components/schemas/MessagesToolAdditionBlock'
+                  - $ref: '#/components/schemas/MessagesToolRemovalBlock'
               type: array
         role:
           enum:
@@ -2421,6 +2429,7 @@ components:
         - Modular
         - Moonshot AI
         - Morph
+        - VoyageAI by MongoDB
         - NCompass
         - Nebius
         - Nex AGI
@@ -2802,6 +2811,125 @@ components:
         - type
         - tool_use_id
         - content
+      type: object
+    MessagesToolAdditionBlock:
+      description: >-
+        Loads a previously deferred tool (declared in `tools` with
+        `defer_loading: true`) mid-conversation without invalidating the prompt
+        cache. Only valid in `role: "system"` messages. Not supported on Claude
+        Sonnet 5 or models older than Claude Opus 4.8.
+      example:
+        tool:
+          name: get_forecast
+          type: tool_reference
+        type: tool_addition
+      properties:
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        tool:
+          oneOf:
+            - properties:
+                name:
+                  type: string
+                type:
+                  enum:
+                    - tool_reference
+                  type: string
+              required:
+                - type
+                - name
+              type: object
+            - properties:
+                name:
+                  type: string
+                server_name:
+                  type: string
+                type:
+                  enum:
+                    - mcp_tool_reference
+                  type: string
+              required:
+                - type
+                - name
+                - server_name
+              type: object
+            - properties:
+                server_name:
+                  type: string
+                type:
+                  enum:
+                    - mcp_toolset_reference
+                  type: string
+              required:
+                - type
+                - server_name
+              type: object
+        type:
+          enum:
+            - tool_addition
+          type: string
+      required:
+        - type
+        - tool
+      type: object
+    MessagesToolRemovalBlock:
+      description: >-
+        Removes a tool from the conversation mid-conversation without
+        invalidating the prompt cache. Only valid in `role: "system"` messages.
+        Not supported on Claude Sonnet 5 or models older than Claude Opus 4.8.
+      example:
+        tool:
+          name: get_weather
+          type: tool_reference
+        type: tool_removal
+      properties:
+        cache_control:
+          $ref: '#/components/schemas/AnthropicCacheControlDirective'
+        tool:
+          oneOf:
+            - properties:
+                name:
+                  type: string
+                type:
+                  enum:
+                    - tool_reference
+                  type: string
+              required:
+                - type
+                - name
+              type: object
+            - properties:
+                name:
+                  type: string
+                server_name:
+                  type: string
+                type:
+                  enum:
+                    - mcp_tool_reference
+                  type: string
+              required:
+                - type
+                - name
+                - server_name
+              type: object
+            - properties:
+                server_name:
+                  type: string
+                type:
+                  enum:
+                    - mcp_toolset_reference
+                  type: string
+              required:
+                - type
+                - server_name
+              type: object
+        type:
+          enum:
+            - tool_removal
+          type: string
+      required:
+        - type
+        - tool
       type: object
     ContextCompressionEngine:
       description: The compression engine to use. Defaults to "middle-out".
@@ -3385,6 +3513,7 @@ components:
       enum:
         - end_turn
         - max_tokens
+        - model_context_window_exceeded
         - stop_sequence
         - tool_use
         - pause_turn
@@ -3715,6 +3844,10 @@ components:
                   type:
                     - string
                     - 'null'
+                encrypted_content:
+                  type:
+                    - string
+                    - 'null'
                 type:
                   enum:
                     - compaction_delta
@@ -3762,6 +3895,10 @@ components:
             - $ref: '#/components/schemas/AnthropicAdvisorToolResult'
             - properties:
                 content:
+                  type:
+                    - string
+                    - 'null'
+                encrypted_content:
                   type:
                     - string
                     - 'null'
@@ -4045,6 +4182,7 @@ components:
                 - Modular
                 - Moonshot AI
                 - Morph
+                - VoyageAI by MongoDB
                 - NCompass
                 - Nebius
                 - Nex AGI
@@ -4655,6 +4793,10 @@ components:
         type: compaction
       properties:
         content:
+          type:
+            - string
+            - 'null'
+        encrypted_content:
           type:
             - string
             - 'null'

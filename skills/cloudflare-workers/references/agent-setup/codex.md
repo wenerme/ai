@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 1. **Download Codex**

@@ -3,11 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/346567) from GitLab Premium to GitLab Free in 15.3.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/346585) to make the `id` attribute optional in GitLab 15.7.
-- Specifying a branch, tag, or commit reference to fetch the Kubernetes manifest files [introduced](https://gitlab.com/groups/gitlab-org/-/epics/4516) in GitLab 15.7.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/395364) in GitLab 16.1 to prioritize Flux for GitOps.
-
 GitLab integrates [Flux](https://fluxcd.io/flux/) for GitOps.
 To get started with Flux, see the [Flux for GitOps tutorial](getting_started.md).
 
@@ -75,10 +70,6 @@ You can package the delivery repository into multiple OCI images per application
 For additional repository structure recommendations, see the [Flux documentation](https://fluxcd.io/flux/guides/repository-structure/).
 
 ## Immediate Git repository reconciliation
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/392852) in GitLab 16.1 with a [flag](../../../administration/feature_flags/_index.md) named `notify_kas_on_git_push`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/126527) in GitLab 16.2.
-- [Feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/issues/410429) in GitLab 16.3.
 
 Usually, the Flux source controller reconciles Git repositories at configured intervals.
 This can cause delays between a `git push` and the reconciliation of the cluster state, and results in

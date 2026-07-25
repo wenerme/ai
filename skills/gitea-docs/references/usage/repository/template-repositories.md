@@ -35,6 +35,16 @@ a/b/c/d.json
 **.[bB][aA][tT]
 ```
 
+Gitea also supports to use sections to exclude some files:
+
+```
+[expand]
+*.md
+
+[exclude]
+*.log
+```
+
 ## Variable Expansion
 
 In any file matched by the above globs, the variables below will be expanded.

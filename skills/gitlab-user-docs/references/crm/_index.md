@@ -5,10 +5,6 @@ Customer management, organizations, contacts, and permissions.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/2256) in GitLab 14.6 [with a feature flag](../../administration/feature_flags/_index.md) named `customer_relations`. Disabled by default.
-- In GitLab 14.8 and later, you can [create contacts and organizations only in top-level groups](https://gitlab.com/gitlab-org/gitlab/-/issues/350634).
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/346082) in GitLab 15.0.
-- [Feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/issues/346082) in GitLab 15.1.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) the minimum user role from Reporter to Planner in GitLab 17.7.
 
 > [!note]
@@ -35,8 +31,6 @@ For more information about what is planned for the future, see [issue 2256](http
 | Create/edit contacts/organizations |       |         |                | ✓                                      |
 
 ## Enable customer relations management (CRM)
-
-- [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/108378) in GitLab 16.9.
 
 Customer relations management features are enabled at the group level. If your
 group also contains subgroups, and you want to use CRM features in the subgroup,
@@ -249,10 +243,6 @@ You can also add, remove, or replace work item contacts using the
 API.
 
 ## Autocomplete contacts
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/2256) in GitLab 14.8 [with a feature flag](../../administration/feature_flags/_index.md) named `contacts_autocomplete`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/352123) in GitLab 15.0.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/352123) in GitLab 15.2. [Feature flag `contacts_autocomplete`](https://gitlab.com/gitlab-org/gitlab/-/issues/352123) removed.
 
 When you use the `/add_contacts` quick action, follow it with `[contact:` and an autocomplete list with the [active](#change-the-state-of-a-contact) contacts appears:
 

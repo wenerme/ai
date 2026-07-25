@@ -690,7 +690,6 @@ When rendered, the example looks similar to:
 
 ## GitLab-specific references
 
-- Autocomplete for wiki pages [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/442229) in GitLab 16.11.
 - Option to reference labels from groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/455120) in GitLab 17.1.
 - Option to reference issues, epics, and work items with `[work_item:123]` syntax:
   - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352861) in GitLab 18.1 [with a feature flag](../administration/feature_flags/_index.md) named `extensible_reference_filters`. Disabled by default.
@@ -749,8 +748,7 @@ GitLab Flavored Markdown recognizes the following:
 
 **Footnotes**:
 
-1. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/384885) in GitLab 16.9.
-   Iteration cadence references are always rendered following the format `[cadence:<ID>]`.
+1. Iteration cadence references are always rendered following the format `[cadence:<ID>]`.
    For example, the text reference `[cadence:"plan"]` renders as `[cadence:1]` if the referenced
    iterations cadence's ID is `1`.
 1. For labels or milestones, prepend a `/` before `namespace/project` to specify the exact label
@@ -772,7 +770,6 @@ For example:
 
 ### Show item title
 
-- Support for work items (tasks, objectives, and key results) [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/390854) in GitLab 16.0.
 - Support for epics introduced in GitLab 17.7, with the flag named `work_item_epics`, enabled by default.
 - Generally available for epics in GitLab 18.1. Feature flag `work_item_epics` removed.
 
@@ -786,7 +783,6 @@ URL references like `https://gitlab.com/gitlab-org/gitlab/-/issues/1234+` are al
 
 ### Show item summary
 
-- Support for work items (tasks, objectives, and key results) [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/390854) in GitLab 16.0.
 - Support for epics introduced in GitLab 17.7, with the flag named `work_item_epics`, enabled by default.
 - Generally available for epics in GitLab 18.1. Feature flag `work_item_epics` removed.
 
@@ -1391,8 +1387,6 @@ You can generate diagrams from text by using:
 In wikis, you can also add and edit diagrams created with the [diagrams.net editor](project/wiki/markdown.md#diagramsnet-editor).
 
 ### Mermaid
-
-- Support for Entity Relationship diagrams and mind maps [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/384386) in GitLab 16.0.
 
 Visit the [official page](https://mermaidjs.github.io/) for more details. The
 [Mermaid Live Editor](https://mermaid-js.github.io/mermaid-live-editor/) helps you

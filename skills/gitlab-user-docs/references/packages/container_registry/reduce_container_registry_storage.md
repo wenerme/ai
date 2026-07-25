@@ -18,8 +18,6 @@ to automatically manage your container registry usage.
 
 - Tier: Free, Premium, Ultimate
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/5523) in GitLab 15.7
-
 View storage usage data for your container registry repositories.
 
 ### For a project
@@ -126,8 +124,6 @@ the size value only changes when:
   but [issue 386468](https://gitlab.com/gitlab-org/gitlab/-/issues/386468) proposes to improve this.
 
 ## Cleanup policy
-
-- [Required permissions](https://gitlab.com/gitlab-org/gitlab/-/issues/350682) changed from developer to maintainer in GitLab 15.0.
 
 The cleanup policy is a scheduled job you can use to remove tags from the container registry.
 For the project where it's defined, tags matching the regex pattern are removed.

@@ -1541,8 +1541,8 @@
   },
   "grafana-slo-app/dashboard.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/dashboard.md",
-    "size": 8414,
-    "updatedAt": "2026-06-25T05:43:13.975Z"
+    "size": 8654,
+    "updatedAt": "2026-07-25T04:03:48.445Z"
   },
   "grafana-slo-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest.md",
@@ -1551,8 +1551,8 @@
   },
   "grafana-slo-app/introduction.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/introduction.md",
-    "size": 6193,
-    "updatedAt": "2026-06-25T05:43:14.690Z"
+    "size": 6352,
+    "updatedAt": "2026-07-25T04:03:48.823Z"
   },
   "grafana-slo-app/manage.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/manage.md",
@@ -1586,8 +1586,8 @@
   },
   "grafana-slo-app/set-up/configure-burn-rate-notifications.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/configure-burn-rate-notifications.md",
-    "size": 4064,
-    "updatedAt": "2026-06-25T05:43:18.640Z"
+    "size": 4376,
+    "updatedAt": "2026-07-25T04:03:50.165Z"
   },
   "grafana-slo-app/set-up/rbac.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/rbac.md",

@@ -17,6 +17,7 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 Learn more about SSL/TLS protection options for your origin servers:
 
 * [Encryption modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/)
+* [Automatic key exchange to origins](https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/)
 * [SSL/TLS Recommender](https://developers.cloudflare.com/ssl/origin-configuration/ssl-tls-recommender/)
 * [Cloudflare origin CA](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/)
 * [Authenticated Origin Pulls (mTLS)](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/)

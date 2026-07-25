@@ -129,10 +129,7 @@ To configure an embedding model:
 #### GitLab-managed models
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/582638) in GitLab 19.0 [with a feature flag](feature_flags/_index.md) named `semantic_search_user_model_selection`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `semantic_search_user_model_selection` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246289) in GitLab 19.3.
 
 Prerequisites:
 
@@ -151,10 +148,7 @@ see [hybrid AI Gateway and model configuration](gitlab_duo_self_hosted/_index.md
 #### Self-hosted models
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/588849) in GitLab 19.1 [with a feature flag](feature_flags/_index.md) named `semantic_search_user_model_selection`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `semantic_search_user_model_selection` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246289) in GitLab 19.3.
 
 Prerequisites:
 
@@ -171,10 +165,7 @@ To select a self-hosted model:
 ### Chunking strategy
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/600201) in GitLab 19.2 [with a feature flag](feature_flags/_index.md) named `semantic_search_user_model_selection`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Feature flag `semantic_search_user_model_selection` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/246289) in GitLab 19.3.
 
 The chunking strategy is the algorithm used to split code files into smaller snippets for embeddings.
 Select one of the following strategies:

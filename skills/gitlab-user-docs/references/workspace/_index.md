@@ -5,9 +5,6 @@ Workspaces are virtual sandbox environments for creating and managing your GitLa
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Feature flag `remote_development_feature_flag` [enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/391543) in GitLab 16.0.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/136744) in GitLab 16.7. Feature flag `remote_development_feature_flag` removed.
-
 A workspace is a virtual sandbox environment for your code in GitLab.
 You can use workspaces to create and manage isolated development environments for your GitLab projects.
 These environments ensure that different projects don't interfere with each other.
@@ -38,8 +35,6 @@ A running workspace remains accessible to the user even if user permissions are 
 
 ### Manage workspaces from a project
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/125331) in GitLab 16.2.
-
 To manage workspaces from a project:
 
 1. In the top bar, select **Search or go to** and find your project.
@@ -65,8 +60,6 @@ To clean up orphaned resources, an administrator must manually delete the worksp
 [Epic 11452](https://gitlab.com/groups/gitlab-org/-/work_items/11452) proposes to change this behavior.
 
 ## Manage workspaces at the agent level
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/419281) in GitLab 16.8.
 
 To manage all workspaces associated with `agentk`:
 
@@ -443,7 +436,6 @@ For more information, see [configure VS Code Extension Marketplace](../../admini
 
 ## Personal access token
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/129715) in GitLab 16.4.
 - `api` permission [added](https://gitlab.com/gitlab-org/gitlab/-/issues/385157) in GitLab 17.2.
 
 When you create a workspace, you get a personal access token that expires in 365 days

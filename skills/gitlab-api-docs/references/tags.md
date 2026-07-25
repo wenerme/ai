@@ -10,8 +10,6 @@ signature information from signed tags.
 
 ## List all project repository tags
 
-- `created_at` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/451011) in GitLab 16.11.
-
 Lists all repository tags from a project, sorted by update date and time in
 descending order.
 
@@ -103,8 +101,6 @@ Example response:
 
 ## Retrieve a single repository tag
 
-- `created_at` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/451011) in GitLab 16.11.
-
 Retrieves a repository tag with the specified name. This endpoint can be
 accessed without authentication if the repository is publicly accessible.
 
@@ -180,8 +176,6 @@ Example response:
 ```
 
 ## Create a new tag
-
-- `created_at` response attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/451011) in GitLab 16.11.
 
 Creates a new tag in the repository that points to the supplied reference.
 
@@ -259,7 +253,7 @@ Example response:
 }
 ```
 
-The type of tag created determines the contents of `created_at`, `target` and `message`:
+The type of tag created determines the contents of `created_at`, `target`, and `message`:
 
 - For annotated tags:
   - `created_at` contains the timestamp of tag creation.

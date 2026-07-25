@@ -7,8 +7,6 @@ Use this API to interact with [CI/CD variables](../ci/variables/_index.md#for-an
 
 ## List all instance variables
 
-- `description` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/418331) in GitLab 16.8.
-
 Lists all instance-level variables. Use the `page` and `per_page` [pagination](rest/_index.md#offset-based-pagination)
 parameters to control the pagination of results.
 
@@ -47,8 +45,6 @@ curl \
 
 ## Retrieve instance variable details
 
-- `description` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/418331) in GitLab 16.8.
-
 Retrieves details of a specific instance-level variable.
 
 ```plaintext
@@ -78,8 +74,6 @@ curl \
 ```
 
 ## Create instance variable
-
-- `description` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/418331) in GitLab 16.8.
 
 Creates a new instance-level variable.
 
@@ -120,8 +114,6 @@ curl --request POST \
 ```
 
 ## Update instance variable
-
-- `description` parameter [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/418331) in GitLab 16.8.
 
 Updates an instance-level variable.
 

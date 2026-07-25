@@ -967,8 +967,6 @@ the cache hit rate.
 
 ### Observe the cache
 
-- Logs for pack-objects caching was [changed](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/5719) in GitLab 16.0.
-
 You can observe the cache using Prometheus metrics and log fields.
 
 #### Prometheus metrics
@@ -1098,7 +1096,6 @@ Configure the `cat-file` cache in the Gitaly configuration file.
 ## Configure commit signing for GitLab UI commits
 
 - Displaying **Verified** badge for signed GitLab UI commits [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124218) in GitLab 16.3 [with a feature flag](../feature_flags/_index.md) named `gitaly_gpg_signing`. Disabled by default.
-- Verifying the signatures using multiple keys specified in `rotated_signing_keys` option [introduced](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/6163) in GitLab 16.3.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/6876) on GitLab Self-Managed and GitLab Dedicated in GitLab 17.0.
 
 > [!flag]
@@ -1341,9 +1338,6 @@ Gitaly fails to start up if either:
 
 ## Configure server-side backups
 
-- [Introduced](https://gitlab.com/gitlab-org/gitaly/-/issues/4941) in GitLab 16.3.
-- Server-side support for restoring a specified backup instead of the latest backup [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/132188) in GitLab 16.6.
-- Server-side support for creating incremental backups [introduced](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/6475) in GitLab 16.6.
 - Server-side support added to Helm chart installations in GitLab 17.0.
 
 Repository backups can be configured so that the Gitaly node that hosts each

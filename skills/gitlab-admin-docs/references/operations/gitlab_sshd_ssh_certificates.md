@@ -1,6 +1,6 @@
 # Instance-level SSH certificates with `gitlab-sshd`
 
-Configure instance-level SSH certificate authentication with gitlab-sshd using trusted CA keys.
+Configure instance-level SSH certificate authentication with `gitlab-sshd` using trusted CA keys.
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed

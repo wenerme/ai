@@ -1,6 +1,6 @@
 ---
 description: FLUX.2 [pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest [pro] weights with strong multi-reference support.
-title: FLUX.2 [pro] Preview
+title: FLUX.2 [pro]
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 ![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)
 
-# FLUX.2 \[pro\] Preview
+# FLUX.2 \[pro\]
 
 Text-to-Image • Black Forest Labs
 
@@ -208,5 +208,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/#page","headline":"FLUX.2 [pro] Preview (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \\[pro] weights with strong multi-reference support.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/#page","headline":"FLUX.2 [pro] (Black Forest Labs) · Cloudflare AI docs · Cloudflare AI docs","description":"FLUX.2 \\[pro] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \\[pro] weights with strong multi-reference support.","url":"https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

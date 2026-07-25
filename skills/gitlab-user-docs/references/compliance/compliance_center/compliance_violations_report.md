@@ -3,8 +3,6 @@
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/112111) to compliance violations report in GitLab 15.9.
-- Ability to create and edit compliance frameworks [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/394950) in GitLab 16.0.
 - Dynamic compliance violations report
   - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/12774) in GitLab 18.2 [with feature flags](../../../administration/feature_flags/_index.md) named `compliance_violations_report` and `enable_project_compliance_violations`. Disabled by default.
   - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/201027) in GitLab 18.3.
@@ -190,8 +188,6 @@ When you select a row in the static compliance violations report, a drawer appea
 
 ### View the static compliance violations report
 
-- Target branch search [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/358414) in GitLab 16.0.
-
 Prerequisites:
 
 - You must be an administrator or have the Security Manager or Owner role for the project or group.
@@ -245,10 +241,6 @@ separation of duties is:
 - [The minimum number of approvals required to merge a merge request is at least two](../../project/merge_requests/approvals/rules.md).
 
 ### Export a report of merge request compliance violations on projects in a group
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/356791) in GitLab 16.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `compliance_violation_csv_export`. Disabled by default.
-- [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/424447) in GitLab 16.5.
-- [Feature flag `compliance_violation_csv_export`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/142568) removed in GitLab 16.9.
 
 Export a report of merge request compliance violations on merge requests belonging to projects in a group. Reports:
 

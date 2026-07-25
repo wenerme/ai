@@ -1426,9 +1426,8 @@ Scripts you specify in `after_script` execute in a new shell, separate from any
   - Command aliases and variables exported in `script` scripts.
   - Changes outside of the working tree (depending on the runner executor), like
     software installed by a `before_script` or `script` script.
-- Have a separate timeout. For GitLab Runner 16.4 and later, this defaults to 5 minutes, and can be configured with the
+- Have a separate timeout. This defaults to 5 minutes, and can be configured with the
   [`RUNNER_AFTER_SCRIPT_TIMEOUT`](../runners/configure_runners.md#set-script-and-after_script-timeouts) variable.
-  In GitLab 16.3 and earlier, the timeout is hard-coded to 5 minutes.
 - Don't affect the job's exit code. If the `script` section succeeds and the
   `after_script` times out or fails, the job exits with code `0` (`Job Succeeded`).
 - For jobs that time out:
@@ -6553,7 +6552,7 @@ The keywords available for use in trigger jobs are:
 **Supported values**:
 
 - For multi-project pipelines, the path to the downstream project. CI/CD variables [are supported](../variables/where_variables_can_be_used.md#gitlab-ciyml-file)
-  in GitLab 15.3 and later, but not [job-only variables](../variables/predefined_variables.md#variable-availability).
+  but not [job-only variables](../variables/predefined_variables.md#variable-availability).
   Alternatively, use [`trigger:project`](#triggerproject).
 - For child pipelines, use [`trigger:include`](#triggerinclude).
 
@@ -6691,7 +6690,7 @@ to specify a different branch.
 **Supported values**:
 
 - The path to the downstream project. CI/CD variables [are supported](../variables/where_variables_can_be_used.md#gitlab-ciyml-file)
-  in GitLab 15.3 and later, but not [job-only variables](../variables/predefined_variables.md#variable-availability).
+  but not [job-only variables](../variables/predefined_variables.md#variable-availability).
 
 **Example of `trigger:project`**:
 

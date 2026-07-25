@@ -42,15 +42,11 @@ Prerequisites:
 
 To disable the **Jira Connect Proxy URL** setting:
 
-- In GitLab 15.7:
-  1. Open a [Rails console](../operations/rails_console.md#starting-a-rails-console-session).
-  1. Execute `ApplicationSetting.current_without_cache.update(jira_connect_proxy_url: nil)`.
-- In GitLab 15.8 and later:
-  1. In the upper-right corner, select **Admin**.
-  1. In the left sidebar, select **Settings** > **General**.
-  1. Expand **GitLab for Jira App**.
-  1. Clear the **Jira Connect Proxy URL** text box.
-  1. Select **Save changes**.
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **General**.
+1. Expand **GitLab for Jira App**.
+1. Clear the **Jira Connect Proxy URL** text box.
+1. Select **Save changes**.
 
 If the issue persists, verify that your instance can connect to
 `connect-install-keys.atlassian.com` to get the public key from Atlassian.
@@ -153,23 +149,6 @@ To resolve this issue, ensure all prerequisites for your installation method hav
 
 If you have configured a Jira Connect Proxy URL and the problem persists after checking the prerequisites, review [Debugging Jira Connect Proxy issues](#debugging-jira-connect-proxy-issues).
 
-If you're using GitLab 15.8 and earlier and have previously enabled both the `jira_connect_oauth_self_managed`
-and the `jira_connect_oauth` feature flags, you must disable the `jira_connect_oauth_self_managed` flag
-due to a [known issue](https://gitlab.com/gitlab-org/gitlab/-/issues/388943). To check for these flags:
-
-1. Open a [Rails console](../operations/rails_console.md#starting-a-rails-console-session).
-1. Execute the following code:
-
-   ```ruby
-   # Check if both feature flags are enabled.
-   # If the flags are enabled, these commands return `true`.
-   Feature.enabled?(:jira_connect_oauth)
-   Feature.enabled?(:jira_connect_oauth_self_managed)
-
-   # If both flags are enabled, disable the `jira_connect_oauth_self_managed` flag.
-   Feature.disable(:jira_connect_oauth_self_managed)
-   ```
-
 ### Error: `Invalid audience`
 
 If you're using a [reverse proxy](jira_cloud_app.md#using-a-reverse-proxy),
@@ -246,8 +225,8 @@ For the second log, you might have one of the following scenarios:
     - The GitLab Self-Managed instance might be blocking outgoing connections. Ensure that your
       GitLab Self-Managed instance can connect to both `connect-install-keys.atlassian.com`
       and `gitlab.com`.
-    - The GitLab Self-Managed instance is unable to decrypt the JWT token from Jira. [From GitLab 16.11](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147234),
-      the [`exceptions_json.log`](../logs/_index.md#exceptions_jsonlog) contains more information about the error.
+    - The GitLab Self-Managed instance is unable to decrypt the JWT token from Jira. The
+      [`exceptions_json.log`](../logs/_index.md#exceptions_jsonlog) contains more information about the error.
     - If a [reverse proxy](jira_cloud_app.md#using-a-reverse-proxy) is in front of your GitLab Self-Managed instance,
       the `Host` header sent to the GitLab Self-Managed instance might not match the reverse proxy FQDN.
       Check the [Workhorse logs](../logs/_index.md#workhorse-logs) on the GitLab Self-Managed instance:

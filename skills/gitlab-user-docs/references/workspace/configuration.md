@@ -5,9 +5,6 @@ Configure your GitLab workspaces to manage your GitLab development environments.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Feature flag `remote_development_feature_flag` [enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/issues/391543) in GitLab 16.0.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/136744) in GitLab 16.7. Feature flag `remote_development_feature_flag` removed.
-
 You can use [workspaces](_index.md) to create and manage isolated development environments for your GitLab projects.
 Each workspace includes its own set of dependencies, libraries, and tools,
 which you can customize to meet the specific needs of each project.
@@ -34,10 +31,6 @@ For more information, see the
 
 ## Create a workspace
 
-- **Time before automatic termination** [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120168) in GitLab 16.0
-- Support for private projects [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/124273) in GitLab 16.4.
-- **Git reference** and **Devfile location** [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/392382) in GitLab 16.10.
-- **Time before automatic termination** [renamed](https://gitlab.com/gitlab-org/gitlab/-/issues/392382) to **Workspace automatically terminates after** in GitLab 16.10.
 - **Variables** [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463514) in GitLab 17.1.
 - **Workspace automatically terminates after** [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/166065) in GitLab 17.6.
 - **Workspace can be created from Merge Request page** [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/187320) in GitLab 18.0.
@@ -184,8 +177,6 @@ To configure sudo access with user namespaces:
    - Set [`allow_privilege_escalation`](settings.md#allow_privilege_escalation) to `true`.
 
 ## Connect to a workspace with SSH
-
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10478) in GitLab 16.3.
 
 Prerequisites:
 

@@ -5,8 +5,6 @@ Automate group membership with role assignment and synchronized access controls.
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/363084) to GitLab Self-Managed in GitLab 15.1.
-
 Use SAML group sync to assign users with specific roles to existing GitLab groups,
 based on the users' group assignment in the SAML identity provider (IdP).
 With SAML group sync you can create a many-to-many mapping between SAML IdP groups and GitLab groups.
@@ -310,8 +308,6 @@ To configure Self-Managed:
 
 ## Microsoft Azure Active Directory integration
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10507) in GitLab 16.3.
-
 > [!note]
 > Microsoft has [announced](https://azure.microsoft.com/en-us/updates/azure-ad-is-becoming-microsoft-entra-id/) that Azure Active Directory (AD) is being renamed to Entra ID.
 
@@ -405,8 +401,6 @@ To configure for GitLab Self-Managed:
 ## Global SAML group memberships lock
 
 - Offering: GitLab Self-Managed, GitLab Dedicated
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/386390) in GitLab 15.10.
 
 You can enforce a global lock on SAML group memberships. This lock limits who can invite new members to subgroups where membership is synchronized with SAML Group Links.
 

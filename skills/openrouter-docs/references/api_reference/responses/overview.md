@@ -2,15 +2,9 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Responses API Beta
+# Responses API
 
-> OpenAI-compatible Responses API (Beta)
-
-<Warning>
-  **Beta API**
-
-  This API is in **beta stage** and may have breaking changes. Use with caution in production environments.
-</Warning>
+> OpenAI-compatible Responses API
 
 <Info>
   **Stateless Only**
@@ -18,7 +12,7 @@
   This API is **stateless** - each request is independent and no conversation state is persisted between requests. You must include the full conversation history in each request. Requests that set `store: true` or a non-null `previous_response_id` are rejected with a `400` error.
 </Info>
 
-OpenRouter's Responses API Beta provides OpenAI-compatible access to multiple AI models through a unified interface, designed to be a drop-in replacement for OpenAI's Responses API. This stateless API offers enhanced capabilities including reasoning, tool calling, and web search integration, with each request being independent and no server-side state persisted.
+OpenRouter's Responses API provides OpenAI-compatible access to multiple AI models through a unified interface, designed to be a drop-in replacement for OpenAI's Responses API. This stateless API offers enhanced capabilities including reasoning, tool calling, and web search integration, with each request being independent and no server-side state persisted.
 
 ## Base URL
 

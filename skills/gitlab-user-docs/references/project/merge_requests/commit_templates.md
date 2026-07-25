@@ -63,8 +63,6 @@ GitLab creates a squash commit message with this template:
 
 ## Supported variables in commit templates
 
-- `local_reference` variable [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/199823) in GitLab 16.1.
-- `source_project_id` variables [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128553) in GitLab 16.3.
 - `merge_request_author` variable [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/152510) in GitLab 17.1.
 
 Commit message templates support these variables:

@@ -94,9 +94,11 @@ With multi-dimensional SLIs, the SLO dashboard allows you to filter results and 
 
 Visualizing SLO results by dimension helps identify degradations driven by specific components. These insights can then be used to refine or split existing SLOs.
 
-## View the state of burn rate alerts
+## View burn rate alerts and investigations
 
-When SLO alert rules are enabled, the SLO dashboard displays the **Burn Rate Alerts** panel, which shows the state of fast-burn and slow-burn alerts.
+When SLO alert rules are enabled, the SLO dashboard displays the **Burn Rate Alerts** panel, which shows the state of fast-burn and slow-burn alerts. On the right side, you can find assistant investigations triggered by SLO alerts or started manually with **Start an investigation**.
+
+[](/media/docs/grafana-cloud/slo/screenshot-slo-dashboard-burn-rate-alerts-and-investigations.png)
 
 You can also click the alert icon in the right sidebar to view these SLO alerts.
 

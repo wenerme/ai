@@ -343,7 +343,7 @@ Parameters:
 | `owned`                  | boolean           | no       | Limit to groups explicitly owned by the current user. |
 | `min_access_level`       | integer           | no       | Limit to groups where current user has at least the specified access level. Possible values: `5` (Minimal access), `10` (Guest), `15` (Planner), `20` (Reporter), `25` (Security Manager), `30` (Developer), `40` (Maintainer), or `50` (Owner). |
 | `top_level_only`         | boolean           | no       | Limit to top-level groups, excluding all subgroups. |
-| `repository_storage`     | string            | no       | Filter by repository storage used by the group (administrators only). [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/419643) in GitLab 16.3. Premium and Ultimate only. |
+| `repository_storage`     | string            | no       | Filter by repository storage used by the group (administrators only). Premium and Ultimate only. |
 | `marked_for_deletion_on` | date              | no       | Filter by date when group was marked for deletion. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/429315) in GitLab 17.1. Premium and Ultimate only. |
 | `active`                 | boolean           | no       | Limit by groups that are not archived and not marked for deletion. |
 | `archived`               | boolean           | no       | Limit by groups that are archived. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/519587) in GitLab 18.2. |
@@ -1336,11 +1336,11 @@ Parameters:
 | `path`                               | string  | yes      | The path of the group. |
 | `auto_devops_enabled`                | boolean | no       | Default to Auto DevOps pipeline for all projects within this group. |
 | `avatar`                             | mixed   | no       | Image file for avatar of the group. |
-| `default_branch`                     | string  | no       | The [default branch](../user/project/repository/branches/default.md) name for group's projects. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/442298) in GitLab 16.11. |
+| `default_branch`                     | string  | no       | The [default branch](../user/project/repository/branches/default.md) name for group's projects. |
 | `default_branch_protection`          | integer | no       | [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/408314) in GitLab 17.0. Use `default_branch_protection_defaults` instead. |
 | `default_branch_protection_defaults` | hash    | no       | Introduced in GitLab 17.0. For available options, see [Options for `default_branch_protection_defaults`](#options-for-default_branch_protection_defaults). |
 | `description`                        | string  | no       | The group's description. |
-| `enabled_git_access_protocol`        | string  | no       | Enabled protocols for Git access. Allowed values are: `ssh`, `http`, and `all` to allow both protocols. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/436618) in GitLab 16.9. |
+| `enabled_git_access_protocol`        | string  | no       | Enabled protocols for Git access. Allowed values are: `ssh`, `http`, and `all` to allow both protocols. |
 | `emails_disabled`                    | boolean | no       | ([Deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/127899) in GitLab 16.5.) Disable email notifications. Use `emails_enabled` instead. |
 | `emails_enabled`                     | boolean | no       | Enable email notifications. |
 | `lfs_enabled`                        | boolean | no       | Enable/disable Large File Storage (LFS) for the projects in this group. |
@@ -1406,7 +1406,6 @@ curl --request POST \
 
 ### Schedule a group for deletion
 
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/389557) in GitLab 16.0. Premium and Ultimate only.
 - [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 Schedules a group for deletion. Groups are deleted at the end of the retention period:
@@ -1841,11 +1840,11 @@ PUT /groups/:id
 | `avatar`                                             | mixed             | no       | Image file for avatar of the group. |
 | `built_in_project_templates_enabled`                | boolean           | no       | Enable built-in project templates when users create projects in the group. Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/593623) in GitLab 19.2. Feature flag `use_built_in_project_templates_enabled` removed. |
 | `lock_built_in_project_templates_enabled`           | boolean           | no       | Enforce the `built_in_project_templates_enabled` setting for all subgroups. Premium and Ultimate only. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235504) in GitLab 19.0 [with a feature flag](../administration/feature_flags/_index.md) named `use_built_in_project_templates_enabled`. Disabled by default. [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/593623) in GitLab 19.2. Feature flag `use_built_in_project_templates_enabled` removed. |
-| `default_branch`                                     | string            | no       | The [default branch](../user/project/repository/branches/default.md) name for group's projects. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/442298) in GitLab 16.11. |
+| `default_branch`                                     | string            | no       | The [default branch](../user/project/repository/branches/default.md) name for group's projects. |
 | `default_branch_protection`                          | integer           | no       | [Deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/408314) in GitLab 17.0. Use `default_branch_protection_defaults` instead. |
 | `default_branch_protection_defaults`                 | hash              | no       | [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/408314) in GitLab 17.0. For available options, see [Options for `default_branch_protection_defaults`](#options-for-default_branch_protection_defaults). |
 | `description`                                        | string            | no       | The description of the group. |
-| `enabled_git_access_protocol`                        | string            | no       | Enabled protocols for Git access. Allowed values are: `ssh`, `http`, and `all` to allow both protocols. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/436618) in GitLab 16.9. |
+| `enabled_git_access_protocol`                        | string            | no       | Enabled protocols for Git access. Allowed values are: `ssh`, `http`, and `all` to allow both protocols. |
 | `emails_disabled`                                    | boolean           | no       | ([Deprecated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/127899) in GitLab 16.5.) Disable email notifications. Use `emails_enabled` instead. |
 | `emails_enabled`                                     | boolean           | no       | Enable email notifications. |
 | `lfs_enabled`                                        | boolean           | no       | Enable/disable Large File Storage (LFS) for the projects in this group. |
@@ -1878,8 +1877,8 @@ PUT /groups/:id
 | `ai_settings_attributes`                             | hash | no | AI-related settings for this group. For available options, see [Options for `ai_settings_attributes`](#options-for-ai_settings_attributes). GitLab Duo features must be enabled. |
 | `math_rendering_limits_enabled`                      | boolean           | no       | Indicates if math rendering limits are used for this group. |
 | `lock_math_rendering_limits_enabled`                 | boolean           | no       | Indicates if math rendering limits are locked for all descendent groups. |
-| `duo_features_enabled`                               | boolean           | no       | Indicates whether GitLab Duo features are enabled for this group. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144931) in GitLab 16.10. GitLab Self-Managed, Premium and Ultimate only. |
-| `lock_duo_features_enabled`                          | boolean           | no       | Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/144931) in GitLab 16.10. GitLab Self-Managed, Premium and Ultimate only. |
+| `duo_features_enabled`                               | boolean           | no       | Indicates whether GitLab Duo features are enabled for this group. GitLab Self-Managed, Premium and Ultimate only. |
+| `lock_duo_features_enabled`                          | boolean           | no       | Indicates whether the GitLab Duo features enabled setting is enforced for all subgroups. GitLab Self-Managed, Premium and Ultimate only. |
 | `ai_audit_events_storage_enabled`                    | boolean           | no       | Indicates whether AI audit events are stored for the group. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2. Premium and Ultimate only. |
 | `lock_ai_audit_events_storage_enabled`               | boolean           | no       | Indicates whether the AI audit events storage setting is enforced for all subgroups and projects. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245843) in GitLab 19.2. Premium and Ultimate only. |
 | `max_artifacts_size`                                 | integer           | No       | The maximum file size in megabytes for individual job artifacts. |

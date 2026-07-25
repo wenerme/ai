@@ -78,9 +78,9 @@ In Grafana SLO, you can enable two types of burn rate alert rules:
 - **Slow-burn alerts**, which triggers when the error budget would be consumed over hours or days. These often indicate ongoing issues that require attention.
 - **Fast-burn alerts**, which trigger when the error budget would be consumed over minutes or hours. These typically indicate severe issues, such as outages.
 
-You may want to respond differently depending on how quickly the error budget is being consumed. For example, a slow burn might require creating a ticket, while a fast burn might require paging the on-call engineer.
+You may want to respond differently depending on how quickly the error budget is being consumed. For example, a slow burn might require creating a ticket, while a fast burn might require paging the on-call engineer and running an investigation.
 
-For more information, refer to [add SLO alert rules](/docs/grafana-cloud/alerting-and-irm/slo/create/#add-slo-alert-rules).
+You can enable **Assistant investigations** when burn-rate alerts fire. For more information, refer to [Add SLO alert rules and assistant investigations](/docs/grafana-cloud/alerting-and-irm/slo/create/#add-slo-alert-rules-and-assistant-investigations).
 
 ## SLO usage and billing
 

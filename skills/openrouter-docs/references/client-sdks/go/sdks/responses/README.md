@@ -2,13 +2,13 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Beta.Responses
+# Responses
 
-> beta.responses endpoints
+> responses endpoints
 
 ## Overview
 
-beta.responses endpoints
+responses endpoints
 
 ### Available Operations
 
@@ -38,7 +38,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Beta.Responses.Send(ctx, components.ResponsesRequest{}, nil)
+    res, err := s.Responses.Send(ctx, components.ResponsesRequest{}, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -74,7 +74,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Beta.Responses.Send(ctx, components.ResponsesRequest{}, nil)
+    res, err := s.Responses.Send(ctx, components.ResponsesRequest{}, nil)
     if err != nil {
         log.Fatal(err)
     }

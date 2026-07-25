@@ -137,6 +137,14 @@ The retaining endpoint is filtered out before your BYOK key is considered, and t
 
 To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled. See [Zero Data Retention](/docs/guides/features/zdr) and [Provider Routing](/docs/guides/routing/provider-selection).
 
+### BYOK and Guardrail Budgets
+
+By default, BYOK inference spend does **not** count toward [guardrail](/docs/guides/features/guardrails) budgets — only OpenRouter credit spend does. This means a budget limit can appear far from its cap even after significant BYOK usage.
+
+To count BYOK spend toward a guardrail's budget, enable **Include BYOK spend** on the guardrail (or set `include_byok_in_budgets` to `true` via the [management API](/docs/guides/features/guardrails#api-access)). When enabled, the amount OpenRouter would have charged had the request not used your own provider key is added to the budget alongside your credit spend, and the guardrail blocks requests once the combined total reaches the limit.
+
+This toggle is available on all guardrail budgets, including the workspace default guardrail. It has no effect on a guardrail without a budget limit.
+
 ### Multiple BYOK Keys for the Same Provider
 
 You can configure multiple BYOK keys for the same provider. All matching keys are used for routing, and each key produces its own endpoint copy that is pinned to that specific key throughout the request lifecycle.

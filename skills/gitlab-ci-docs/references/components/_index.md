@@ -605,7 +605,7 @@ In other cases, CI/CD variables might still be preferred. For example:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/407249) as an [experiment](../../policy/development_stages_support.md#experiment) in GitLab 16.1.
 - [Moved](https://gitlab.com/gitlab-org/gitlab/-/issues/432045) to [beta](../../policy/development_stages_support.md#beta) in GitLab 16.7.
-- [Made Generally Available](https://gitlab.com/gitlab-org/gitlab/-/issues/454306) in GitLab 17.0.
+- [Made generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/454306) in GitLab 17.0.
 
 The [CI/CD Catalog](https://gitlab.com/explore/catalog) is a list of projects with published CI/CD components you can use
 to extend your CI/CD workflow.

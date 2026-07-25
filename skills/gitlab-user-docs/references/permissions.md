@@ -90,7 +90,7 @@ Group permissions for [group features](group/_index.md):
 
 1. Developers and Maintainers can view events based on their individual actions only. For more
    information, see the [prerequisites](compliance/audit_events.md#prerequisites).
-1. Developers, Maintainers and Owners: Only if the project creation role is set
+1. Developers, Maintainers, and Owners: Only if the project creation role is set
    [for the instance](../administration/settings/visibility_and_access_controls.md#define-which-roles-can-create-projects)
    or [for the group](group/_index.md#specify-who-can-add-projects-to-a-group).
    Developers: Developers can push commits to the default branch of a new project only
@@ -796,7 +796,7 @@ Project permissions for [repository](project/repository/_index.md) features incl
    and internal projects (not on private projects). [External users](../administration/external_users.md)
    must be given explicit access (at least the **Planner** role) even if the project is internal.
    Users with the Guest role on GitLab.com are only able to perform this action on public projects because
-   internal visibility is not available. In GitLab 15.9 and later, users with the Guest role and an
+   internal visibility is not available. Users with the Guest role and an
    Ultimate license can view private repository content if an administrator (on GitLab Self-Managed
    or GitLab Dedicated) or group owner (on GitLab.com) gives those users permission. The administrator
    or group owner can create a [custom role](custom_roles/_index.md) through the API or UI and assign
@@ -808,7 +808,7 @@ Project permissions for [repository](project/repository/_index.md) features incl
    and internal projects (not on private projects). [External users](../administration/external_users.md)
    must be given explicit access (at least the **Reporter** role) even if the project is internal. Users
    with the Guest role on GitLab.com are only able to perform this action on public projects because
-   internal visibility is not available. In GitLab 15.9 and later, users with the Guest role and an
+   internal visibility is not available. Users with the Guest role and an
    Ultimate license can view private repository content if an administrator (on GitLab Self-Managed
    or GitLab Dedicated) or group owner (on GitLab.com) gives those users permission. The administrator
    or group owner can create a [custom role](custom_roles/_index.md) through the API or UI and assign
@@ -846,7 +846,6 @@ For more information, see
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Support for inviting users with Minimal Access role [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/106438) in GitLab 15.9.
 - Minimal Access users [changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216727) to non-billable in GitLab 18.9.
 - [Enforce](https://gitlab.com/gitlab-org/gitlab/-/work_items/534094) two-factor authentication requirements for users with Minimal Access role in GitLab 18.11.
 

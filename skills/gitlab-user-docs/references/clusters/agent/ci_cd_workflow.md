@@ -53,8 +53,6 @@ Authorization configuration can take one or two minutes to propagate.
 
 ### Authorize your projects to access the agent
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/346566) to remove hierarchy restrictions in GitLab 15.6.
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/356831) to allow authorizing projects in a user namespace in GitLab 15.7.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/377932) to allow the authorization of groups that belong to different top-level groups in GitLab 18.1.
 
 To authorize the GitLab project where you keep Kubernetes manifests to access the agent:
@@ -82,7 +80,6 @@ After making these changes:
 
 ### Authorize projects in your groups to access the agent
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/346566) to remove hierarchy restrictions in GitLab 15.6.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/377932) to allow the authorization of groups that belong to different top-level groups in GitLab 18.1.
 
 To authorize all of the GitLab projects in a group or subgroup to access the agent:
@@ -251,8 +248,6 @@ To configure your client, do one of the following:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/357934) in GitLab 15.5 to add impersonation support for environment tiers.
-
 By default, your CI/CD job inherits all the permissions from the service account used to install the
 agent in the cluster.
 To restrict access to your cluster, you can use [impersonation](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#user-impersonation).
@@ -355,8 +350,6 @@ See the [official Kubernetes documentation for details](https://kubernetes.io/do
 
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/343885) in GitLab 15.7.
 
 By default, if your agent is [available to a project](#authorize-agent-access), all of the project's CI/CD jobs can use that agent.
 

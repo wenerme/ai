@@ -562,9 +562,6 @@ To enable group file templates:
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/372040) in GitLab 15.9 [with a feature flag](../../administration/feature_flags/_index.md) name `support_group_level_merge_checks_setting`. Disabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/142708) in GitLab 16.9. Feature flag `support_group_level_merge_checks_setting` removed.
-
 Group Owners can set up merge request checks on a top-level group, which apply to all subgroups and projects.
 
 If the settings are inherited by a subgroup or project, they cannot be changed in the subgroup or project

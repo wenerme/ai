@@ -3,9 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Infrastructure registry and Terraform Module Registry [merged](https://gitlab.com/gitlab-org/gitlab/-/issues/404075) into a single Terraform Module Registry feature in GitLab 15.11.
-- Support for groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/140215) in GitLab 16.9.
-
 With the Terraform Module Registry, you can:
 
 - Use GitLab projects as a private registry for Terraform modules.
@@ -91,8 +88,6 @@ Example response:
 ```
 
 ### With a CI/CD template (recommended)
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/110493) in GitLab 15.9.
 
 You can use the [`Terraform-Module.gitlab-ci.yml`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Terraform-Module.gitlab-ci.yml)
 or the advanced [`Terraform/Module-Base.gitlab-ci.yml`](https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Terraform/Module-Base.gitlab-ci.yml)
@@ -192,7 +187,6 @@ When you name a module, keep these naming conventions in mind:
 
 ### Allow duplicate Terraform modules
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/368040) in GitLab 16.8.
 - Required role [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/370471) from Maintainer to Owner in GitLab 17.0.
 
 By default, the Terraform Module Registry enforces uniqueness for module names in the same namespace.

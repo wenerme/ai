@@ -4719,58 +4719,6 @@ Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflar
 
 ## 2025-07-24
 
-[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-
-
-**WARP client for Windows (version 2025.6.824.1)**
-
-A new Beta release for the Windows WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* Improvements to better manage multi-user pre-login registrations.
-* Fixed an issue preventing devices from reaching split-tunneled traffic even when WARP was disconnected.
-* Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
-* Improvement to managed network detection checks for faster switching between managed networks.
-
-**Known issues**
-
-* For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 version KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-* Devices with `KB5055523` installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-* DNS resolution may be broken when the following conditions are all true:
-
-  * WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  * A custom DNS server address is configured on the primary network adapter.
-  * The custom DNS server address on the primary network adapter is changed while WARP is connected.
-To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-07-24
-
-[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
-
-
-**WARP client for macOS (version 2025.6.824.1)**
-
-A new Beta release for the macOS WARP client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-* Fixed an issue preventing devices from reaching split-tunneled traffic even when WARP was disconnected.
-* Fix to prevent WARP from re-enabling its firewall rules after a user-initiated disconnect.
-* Improvement to managed network detection checks for faster switching between managed networks.
-
-**Known issues**
-
-* macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-* Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-## 2025-07-24
-
 [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 

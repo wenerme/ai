@@ -48,11 +48,7 @@ To enable the export of
 
 ## Enable migration of groups and projects by direct transfer
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/383268) in GitLab 15.8.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/461326) in GitLab 18.3.
-
-> [!warning]
-> In GitLab 16.1 and earlier, you should not use direct transfer with [scheduled scan execution policies](../../user/application_security/policies/scan_execution_policies.md). If using direct transfer, first upgrade to GitLab 16.2 and ensure security policy bots are enabled in the projects you are enforcing.
 
 Migration of groups and projects by direct transfer is disabled by default.
 To enable migration of groups and projects by direct transfer:
@@ -127,8 +123,6 @@ to non-bot users with any of the following states:
 
 ## Max export size
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/86124) in GitLab 15.0.
-
 To modify the maximum file size for exports in GitLab:
 
 1. In the upper-right corner, select **Admin**.
@@ -155,8 +149,6 @@ For GitLab.com repository size limits, read [accounts and limit settings](../../
 
 ## Maximum remote file size for imports
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/384976) in GitLab 16.3.
-
 By default, the maximum remote file size for imports from external object storages (for example, AWS) is 10 GiB.
 
 To modify this setting:
@@ -168,8 +160,6 @@ To modify this setting:
 
 ## Maximum download file size for imports by direct transfer
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/384976) in GitLab 16.3.
-
 By default, the maximum download file size for imports by direct transfer is 5 GiB.
 
 To modify this setting:
@@ -180,9 +170,6 @@ To modify this setting:
 1. In **Maximum download file size (MiB)**, enter a value. Set to `0` for no file size limit.
 
 ## Maximum decompressed file size for imported archives
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128218) in GitLab 16.3.
-- **Maximum decompressed file size for archives from imports** field [renamed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/130081) from **Maximum decompressed size** in GitLab 16.4.
 
 When you import a project using [file exports](../../user/project/settings/import_export.md) or
 [direct transfer](../../user/group/import/_index.md), you can specify the
@@ -204,8 +191,6 @@ To modify this setting:
 
 ## Timeout for decompressing archived files
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/128218) in GitLab 16.4.
-
 When you [import a project](../../user/project/settings/import_export.md), you can specify the maximum time out for decompressing imported archives. The default value is 210 seconds.
 
 To modify the maximum decompressed file size for imports in GitLab:
@@ -216,8 +201,6 @@ To modify the maximum decompressed file size for imports in GitLab:
 1. Set another value for **Timeout for decompressing archived files (seconds)**.
 
 ## Maximum number of simultaneous import jobs
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/143875) in GitLab 16.11.
 
 You can specify the maximum number of import jobs that are executed simultaneously for:
 

@@ -128,7 +128,6 @@ The sidebar on the milestone view shows the following:
 
 ## Create a milestone
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/343889) the minimum user role from Developer to Reporter in GitLab 15.0.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) the minimum user role from Reporter to Planner in GitLab 17.7.
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/195530) milestones to Epic work items in GitLab 18.2.
 
@@ -158,7 +157,6 @@ To avoid confusion within group hierarchies, duplicate milestone titles are not 
 
 ## Edit a milestone
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/343889) the minimum user role from Developer to Reporter in GitLab 15.0.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) the minimum user role from Reporter to Planner in GitLab 17.7.
 
 Prerequisites:
@@ -197,7 +195,6 @@ To close a milestone:
 
 ## Delete a milestone
 
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/343889) the minimum user role from Developer to Reporter in GitLab 15.0.
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/169256) the minimum user role from Reporter to Planner in GitLab 17.7.
 
 Prerequisites:

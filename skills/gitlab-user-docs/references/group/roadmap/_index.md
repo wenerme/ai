@@ -49,7 +49,6 @@ From an epic, you can also [view the roadmap filtered to this epic's descendants
 
 ## Sort and filter the roadmap
 
-- Filtering by group was [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385191) in GitLab 15.9.
 - Sorting by title, created date, and last updated date [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/460492) in GitLab 17.0.
 
 > [!note]
@@ -97,8 +96,6 @@ browser.
 In the future, you can quickly load the filtered roadmap using the bookmark.
 
 ### Roadmap settings
-
-- Labels visible on roadmaps [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/385231) in GitLab 15.9.
 
 When you enable the roadmap settings sidebar, you can use it to refine epics shown in the roadmap.
 
@@ -175,8 +172,6 @@ due dates.
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/33587) in GitLab 15.5: View blocking epics when hovering over the "blocked" icon.
 
 If an epic is [blocked by another epic](../epics/linked_epics.md#blocking-epics), an icon appears next to its title to indicate its blocked status.
 

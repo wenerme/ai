@@ -143,8 +143,6 @@ You can also use the [`/move` quick action](../quick_actions.md#move) in a comme
 
 #### From the Work items list
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/15991) in GitLab 15.6.
-
 You can move multiple issues at the same time when you're in a project.
 You can't move tasks or test cases.
 
@@ -357,8 +355,6 @@ The default issue closing pattern regex:
 ```
 
 #### Disable automatic issue closing
-
-- [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/240922) in GitLab 15.4: The referenced issue's project setting is checked instead of the project of the commit or merge request.
 
 You can disable the automatic issue closing feature on a per-project basis
 in the [project's settings](#disable-automatic-issue-closing).
