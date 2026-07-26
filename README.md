@@ -1283,7 +1283,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 115 skills, 32674 files, 384 MiB total
+> 115 skills, 32663 files, 384 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1322,7 +1322,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4853 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1591 | 9.5 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1593 | 9.6 MiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 306 | 1.9 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
@@ -1345,7 +1345,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 15 KiB |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 486 KiB |
-| [justfile-docs](./skills/justfile-docs/SKILL.md) | 112 | 164 KiB |
+| [justfile-docs](./skills/justfile-docs/SKILL.md) | 112 | 165 KiB |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | 58 | 1.8 MiB |
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
 | [linear-docs](./skills/linear-docs/SKILL.md) | 137 | 2.0 MiB |
@@ -1393,7 +1393,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 519 | 4.4 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 543 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 223 | 1.3 MiB |
-| [vllm-docs](./skills/vllm-docs/SKILL.md) | 173 | 1.4 MiB |
+| [vllm-docs](./skills/vllm-docs/SKILL.md) | 160 | 1.4 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 56 | 314 KiB |
 | [waku-docs](./skills/waku-docs/SKILL.md) | 35 | 196 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |

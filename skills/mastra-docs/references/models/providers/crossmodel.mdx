@@ -1,11 +1,11 @@
 ---
 title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 45 models available."
+description: "Use CrossModel models with Mastra. 46 models available."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 45 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 46 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -77,6 +77,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "crossmodel/anthropic/claude-opus-4-8",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "crossmodel/anthropic/claude-opus-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

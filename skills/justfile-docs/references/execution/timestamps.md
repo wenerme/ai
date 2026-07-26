@@ -34,3 +34,18 @@ The argument to `--timestamp-format` is a `strftime`-style format string, see
 the
 [`chrono` library docs](https://docs.rs/chrono/latest/chrono/format/strftime/index.html)
 for details.
+
+The `[timestamp]` attribute<sup>master</sup> can be used to enable timestamps
+for a specific recipe:
+
+```just
+[timestamp]
+foo:
+  echo hello
+```
+
+```
+$ just foo
+[07:28:46] echo hello
+hello
+```

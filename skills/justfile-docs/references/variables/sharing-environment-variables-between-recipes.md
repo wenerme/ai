@@ -44,6 +44,9 @@ $ just bar
 /subdir
 ```
 
+Note that this does not affect dotenv file search, or the working directory of
+backtick and `shell()` invocations.
+
 Use `set no-cd`<sup>1.51.0</sup> to make all recipes in the current module
 default to the same behavior.
 

@@ -19,5 +19,8 @@ Can be used with paths that are relative to the current directory, because
 `[no-cd]` prevents `just` from changing the current directory when executing
 `commit`.
 
+Note that this does not affect dotenv file search, or the working directory of
+backtick and `shell()` invocations.
+
 Organization
 ------------
