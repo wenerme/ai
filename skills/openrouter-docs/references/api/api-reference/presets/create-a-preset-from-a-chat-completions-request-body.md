@@ -2130,6 +2130,7 @@ components:
       type: object
     ProviderName:
       enum:
+        - Modal
         - AkashML
         - AI21
         - AionLabs
@@ -2149,6 +2150,7 @@ components:
         - Cerebras
         - Chutes
         - Cirrascale
+        - Claude Platform on AWS
         - Clarifai
         - Cloudflare
         - Cohere

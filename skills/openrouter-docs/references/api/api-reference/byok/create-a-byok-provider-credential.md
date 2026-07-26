@@ -410,6 +410,7 @@ components:
         - meta
         - minimax
         - mistral
+        - modal
         - modelrun
         - modular
         - moonshotai

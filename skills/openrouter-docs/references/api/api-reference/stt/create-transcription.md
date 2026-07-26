@@ -703,6 +703,9 @@ components:
         clarifai:
           additionalProperties: {}
           type: object
+        claude-on-aws:
+          additionalProperties: {}
+          type: object
         cloudflare:
           additionalProperties: {}
           type: object

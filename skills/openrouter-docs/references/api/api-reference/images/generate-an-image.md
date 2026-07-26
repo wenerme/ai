@@ -1256,6 +1256,7 @@ components:
       type: object
     ProviderName:
       enum:
+        - Modal
         - AkashML
         - AI21
         - AionLabs
@@ -1275,6 +1276,7 @@ components:
         - Cerebras
         - Chutes
         - Cirrascale
+        - Claude Platform on AWS
         - Clarifai
         - Cloudflare
         - Cohere
@@ -1437,6 +1439,9 @@ components:
           additionalProperties: {}
           type: object
         clarifai:
+          additionalProperties: {}
+          type: object
+        claude-on-aws:
           additionalProperties: {}
           type: object
         cloudflare:

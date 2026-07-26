@@ -207,6 +207,7 @@ paths:
               - meta
               - minimax
               - mistral
+              - modal
               - modelrun
               - modular
               - moonshotai
@@ -622,6 +623,7 @@ components:
         - meta
         - minimax
         - mistral
+        - modal
         - modelrun
         - modular
         - moonshotai
