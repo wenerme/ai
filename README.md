@@ -109,7 +109,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | Use when working with PowerDNS Authoritative Server: pdns.conf settings, backends, DNSSEC, primary/secondary operation,... | [PowerDNS/pdns/docs](https://github.com/PowerDNS/pdns/tree/master/docs) |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to... | [obra/superpowers](https://github.com/obra/superpowers) |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
 | [shadcn](./skills/shadcn/SKILL.md) | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | [skill-writer](./skills/skill-writer/SKILL.md) | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | [sling-cli](./skills/sling-cli/SKILL.md) | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
@@ -135,7 +135,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | [writing-skills](./skills/writing-skills/SKILL.md) | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
 | [zellij-docs](./skills/zellij-docs/SKILL.md) | Use when configuring, scripting, or troubleshooting zellij — including layouts (KDL), keybindings, sessions, CLI... | [zellij-org/zellij-org.github.io/docs](https://github.com/zellij-org/zellij-org.github.io/tree/main/docs) |
-| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | Use when the user requests Zellij, a command must persist after the current tool call, or an existing Zellij... |  |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces... |  |
 | [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions... |  |
 
 <details>
@@ -1095,7 +1095,7 @@ Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime 
 npx skills add wenerme/ai --skill requesting-code-review
 ```
 
-Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to verify both requirement fidelity and engineering quality.
+Use when completing tasks, implementing major features, or before merging to verify work meets requirements
 
 </details>
 <details>
@@ -1355,7 +1355,7 @@ Use when configuring, scripting, or troubleshooting zellij — including layouts
 npx skills add wenerme/ai --skill zellij-session-manager
 ```
 
-Use when the user requests Zellij, a command must persist after the current tool call, or an existing Zellij pane/session must be monitored or controlled.
+Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces tmux-session-manager for Zellij users. Enables multi-agent orchestration via remote pane control.
 
 </details>
 <details>
@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33047 files, 387 MiB total
+> 123 skills, 33084 files, 388 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1405,12 +1405,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 831 | 4.9 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.1 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.3 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 781 | 7.1 MiB |
-| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 917 | 9.2 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 785 | 7.1 MiB |
+| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 930 | 9.3 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4849 | 15 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4853 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1592 | 9.5 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1593 | 9.6 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 60 | 1.2 MiB |
 | [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 144 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
@@ -1430,16 +1430,16 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 244 | 14 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 903 | 8.0 MiB |
-| [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 295 | 462 KiB |
+| [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 464 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 825 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 90 | 2.1 MiB |
-| [grafana-docs](./skills/grafana-docs/SKILL.md) | 627 | 6.1 MiB |
+| [grafana-docs](./skills/grafana-docs/SKILL.md) | 628 | 6.1 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 622 | 4.1 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 86 | 354 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 359 | 2.0 MiB |
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 15 KiB |
-| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 324 KiB |
+| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 486 KiB |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 112 | 165 KiB |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | 58 | 1.8 MiB |
@@ -1461,7 +1461,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 461 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 440 | 2.4 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 453 | 2.4 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2361 | 14 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 86 | 357 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
@@ -1470,9 +1470,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 157 | 1.4 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 314 | 2.0 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.5 KiB |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.0 KiB |
 | [shadcn](./skills/shadcn/SKILL.md) | 15 | 95 KiB |
-| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
+| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 23 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 75 | 716 KiB |
 | [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 364 KiB |
@@ -1496,7 +1496,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |
 | [writing-skills](./skills/writing-skills/SKILL.md) | 7 | 105 KiB |
 | [zellij-docs](./skills/zellij-docs/SKILL.md) | 83 | 458 KiB |
-| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | 1 | 11 KiB |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | 1 | 10 KiB |
 | [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | 2 | 12 KiB |
 
 <!--endregion-->

@@ -49,3 +49,17 @@ $ just foo
 [07:28:46] echo hello
 hello
 ```
+
+Which may include a format string:
+
+```just
+[timestamp('%H:%M:%S%.3f')]
+foo:
+  echo hello
+```
+
+```
+$ just foo
+[07:28:46.487] echo hello
+hello
+```
