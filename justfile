@@ -57,6 +57,14 @@ update-grafana-docs:
 update-doris-docs:
     bun scripts/sync-doris-docs.ts
 
+# Test and sync DuckDB current docs from local duckdb/duckdb-web clone
+test-duckdb-docs:
+    bun test scripts/sync-duckdb-docs.test.ts
+
+update-duckdb-docs: test-duckdb-docs
+    bun scripts/sync-duckdb-docs.ts
+    set -e; for skill_dir in skills/duckdb-docs skills/duckdb-clients skills/duckdb-extensions skills/duckdb-data skills/duckdb-dev skills/duckdb-quack skills/duckdb-sql skills/duckdb-ops; do gitleaks dir "$skill_dir" --redact --exit-code 1; done
+
 # Sync ClickHouse docs from local ClickHouse/clickhouse-docs clone
 update-clickhouse-docs:
     bun scripts/sync-clickhouse-docs.ts
@@ -255,6 +263,7 @@ update:
     -just update-grafana-docs
     -just update-grafana-plugin-docs
     -just update-doris-docs
+    -just update-duckdb-docs
     -just update-clickhouse-docs
     -just update-gemini-cli-docs
     -just update-opencode-docs

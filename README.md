@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 115 skills available
+> 123 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -50,6 +50,14 @@ npx skills add wenerme/ai --skill <skill-name>
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
 | [doris-docs](./skills/doris-docs/SKILL.md) | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... | [apache/doris-website](https://github.com/apache/doris-website) |
+| [duckdb-clients](./skills/duckdb-clients/SKILL.md) | Use when integrating DuckDB through C, CLI, C++, Go, Java, Node.js, ODBC, Python, R, Rust, WebAssembly, ADBC, or... | [duckdb/duckdb-web/docs/current/clients](https://github.com/duckdb/duckdb-web/tree/main/docs/current/clients) |
+| [duckdb-data](./skills/duckdb-data/SKILL.md) | Use when importing, exporting, reading, writing, or bulk-loading CSV, JSON, Parquet, Iceberg, or other data in DuckDB. | [duckdb/duckdb-web/docs/current/data](https://github.com/duckdb/duckdb-web/tree/main/docs/current/data) |
+| [duckdb-dev](./skills/duckdb-dev/SKILL.md) | Use when building DuckDB from source, configuring builds, profiling, benchmarking, release work, or writing and... | [duckdb/duckdb-web/docs/current/dev](https://github.com/duckdb/duckdb-web/tree/main/docs/current/dev) |
+| [duckdb-docs](./skills/duckdb-docs/SKILL.md) | Use when working with DuckDB current documentation for connections, configuration, guides, performance, integration, or... | [duckdb/duckdb-web/docs/current](https://github.com/duckdb/duckdb-web/tree/main/docs/current) |
+| [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | Use when installing, loading, configuring, developing, or troubleshooting DuckDB core and community extensions. | [duckdb/duckdb-web/docs/current](https://github.com/duckdb/duckdb-web/tree/main/docs/current) |
+| [duckdb-ops](./skills/duckdb-ops/SKILL.md) | Use when deploying, operating, securing, sizing, logging, containerizing, or managing DuckDB in production or... | [duckdb/duckdb-web/docs/current/operations_manual](https://github.com/duckdb/duckdb-web/tree/main/docs/current/operations_manual) |
+| [duckdb-quack](./skills/duckdb-quack/SKILL.md) | Use when deploying, connecting to, securing, configuring, or troubleshooting DuckDB Quack remote protocol servers and... | [duckdb/duckdb-web/docs/current/quack](https://github.com/duckdb/duckdb-web/tree/main/docs/current/quack) |
+| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | Use when writing, debugging, optimizing, or checking DuckDB SQL syntax, statements, functions, data types, dialect, or... | [duckdb/duckdb-web/docs/current/sql](https://github.com/duckdb/duckdb-web/tree/main/docs/current/sql) |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | LLM evaluation & inference performance testing via the evalscope CLI. Translates natural language requests into... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | [find-skills](./skills/find-skills/SKILL.md) | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
@@ -101,7 +109,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | Use when working with PowerDNS Authoritative Server: pdns.conf settings, backends, DNSSEC, primary/secondary operation,... | [PowerDNS/pdns/docs](https://github.com/PowerDNS/pdns/tree/master/docs) |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | Use when working with PyTorch APIs, tensors, autograd, torch.nn, torch.optim, torch.compile, export, distributed/RPC,... | [pytorch/pytorch/docs](https://github.com/pytorch/pytorch/tree/main/docs) |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime errors (PanelGroup not exported,... |  |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, or before merging to verify work meets requirements | [obra/superpowers](https://github.com/obra/superpowers) |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to... | [obra/superpowers](https://github.com/obra/superpowers) |
 | [shadcn](./skills/shadcn/SKILL.md) | Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI, including chat... | [shadcn-ui/ui](https://github.com/shadcn-ui/ui) |
 | [skill-writer](./skills/skill-writer/SKILL.md) | Use when creating new skills, editing existing skills, optimizing skill descriptions and structure, splitting large... |  |
 | [sling-cli](./skills/sling-cli/SKILL.md) | Use when moving data between databases, files, or APIs with the sling CLI; configuring connections, writing replication... | [docs.slingdata.io](https://docs.slingdata.io) |
@@ -127,7 +135,7 @@ npx skills add wenerme/ai --skill <skill-name>
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | Use when implementing event-driven communication between React components using Emittery, including event types, sidecar... |  |
 | [writing-skills](./skills/writing-skills/SKILL.md) | Use when creating new skills, editing existing skills, or verifying skills work before deployment | [obra/superpowers](https://github.com/obra/superpowers) |
 | [zellij-docs](./skills/zellij-docs/SKILL.md) | Use when configuring, scripting, or troubleshooting zellij — including layouts (KDL), keybindings, sessions, CLI... | [zellij-org/zellij-org.github.io/docs](https://github.com/zellij-org/zellij-org.github.io/tree/main/docs) |
-| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces... |  |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | Use when the user requests Zellij, a command must persist after the current tool call, or an existing Zellij... |  |
 | [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | Use when implementing React state management with Zustand, including context-scoped stores, mutative updates, or actions... |  |
 
 <details>
@@ -488,6 +496,86 @@ npx skills add wenerme/ai --skill doris-docs
 ```
 
 Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL syntax, data import (Stream Load, Broker Load, INSERT INTO), data export, lakehouse (Hive/Iceberg/Hudi/Paimon catalogs), materialized views, query acceleration, inverted index, compute-storage decoupled mode, administration, or Doris ecosystem tools.
+
+</details>
+<details>
+<summary><code>duckdb-clients</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-clients
+```
+
+Use when integrating DuckDB through C, CLI, C++, Go, Java, Node.js, ODBC, Python, R, Rust, WebAssembly, ADBC, or tertiary client APIs.
+
+</details>
+<details>
+<summary><code>duckdb-data</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-data
+```
+
+Use when importing, exporting, reading, writing, or bulk-loading CSV, JSON, Parquet, Iceberg, or other data in DuckDB.
+
+</details>
+<details>
+<summary><code>duckdb-dev</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-dev
+```
+
+Use when building DuckDB from source, configuring builds, profiling, benchmarking, release work, or writing and debugging sqllogictests.
+
+</details>
+<details>
+<summary><code>duckdb-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-docs
+```
+
+Use when working with DuckDB current documentation for connections, configuration, guides, performance, integration, or storage internals.
+
+</details>
+<details>
+<summary><code>duckdb-extensions</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-extensions
+```
+
+Use when installing, loading, configuring, developing, or troubleshooting DuckDB core and community extensions.
+
+</details>
+<details>
+<summary><code>duckdb-ops</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-ops
+```
+
+Use when deploying, operating, securing, sizing, logging, containerizing, or managing DuckDB in production or mission-critical environments.
+
+</details>
+<details>
+<summary><code>duckdb-quack</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-quack
+```
+
+Use when deploying, connecting to, securing, configuring, or troubleshooting DuckDB Quack remote protocol servers and clients.
+
+</details>
+<details>
+<summary><code>duckdb-sql</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-sql
+```
+
+Use when writing, debugging, optimizing, or checking DuckDB SQL syntax, statements, functions, data types, dialect, or query semantics.
 
 </details>
 <details>
@@ -1007,7 +1095,7 @@ Use when upgrading react-resizable-panels from v3 to v4, fixing v4 type/runtime 
 npx skills add wenerme/ai --skill requesting-code-review
 ```
 
-Use when completing tasks, implementing major features, or before merging to verify work meets requirements
+Use when completing tasks, implementing major features, reviewing committed or uncommitted changes, or before merging to verify both requirement fidelity and engineering quality.
 
 </details>
 <details>
@@ -1267,7 +1355,7 @@ Use when configuring, scripting, or troubleshooting zellij — including layouts
 npx skills add wenerme/ai --skill zellij-session-manager
 ```
 
-Use when executing commands, running builds, starting services, or monitoring agent panes in Zellij. Replaces tmux-session-manager for Zellij users. Enables multi-agent orchestration via remote pane control.
+Use when the user requests Zellij, a command must persist after the current tool call, or an existing Zellij pane/session must be monitored or controlled.
 
 </details>
 <details>
@@ -1283,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 115 skills, 32663 files, 384 MiB total
+> 123 skills, 33047 files, 387 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1317,12 +1405,20 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 831 | 4.9 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.1 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.3 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 785 | 7.1 MiB |
-| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 930 | 9.3 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 781 | 7.1 MiB |
+| [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 917 | 9.2 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4853 | 15 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4849 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1593 | 9.6 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1592 | 9.5 MiB |
+| [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 60 | 1.2 MiB |
+| [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 144 KiB |
+| [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
+| [duckdb-docs](./skills/duckdb-docs/SKILL.md) | 100 | 438 KiB |
+| [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | 55 | 455 KiB |
+| [duckdb-ops](./skills/duckdb-ops/SKILL.md) | 14 | 40 KiB |
+| [duckdb-quack](./skills/duckdb-quack/SKILL.md) | 9 | 44 KiB |
+| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 127 | 911 KiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 306 | 1.9 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
@@ -1334,16 +1430,16 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 244 | 14 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 903 | 8.0 MiB |
-| [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 464 KiB |
+| [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 295 | 462 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 825 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 90 | 2.1 MiB |
-| [grafana-docs](./skills/grafana-docs/SKILL.md) | 628 | 6.1 MiB |
+| [grafana-docs](./skills/grafana-docs/SKILL.md) | 627 | 6.1 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 622 | 4.1 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 86 | 354 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 359 | 2.0 MiB |
 | [humanizer](./skills/humanizer/SKILL.md) | 1 | 15 KiB |
-| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
+| [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 324 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 77 | 486 KiB |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 112 | 165 KiB |
 | [k3s-docs](./skills/k3s-docs/SKILL.md) | 58 | 1.8 MiB |
@@ -1365,7 +1461,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 461 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 453 | 2.4 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 440 | 2.4 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2361 | 14 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 86 | 357 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
@@ -1374,9 +1470,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [powerdns-docs](./skills/powerdns-docs/SKILL.md) | 157 | 1.4 MiB |
 | [pytorch-docs](./skills/pytorch-docs/SKILL.md) | 314 | 2.0 MiB |
 | [react-resizable-panels-v3-to-v4](./skills/react-resizable-panels-v3-to-v4/SKILL.md) | 1 | 9.2 KiB |
-| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.0 KiB |
+| [requesting-code-review](./skills/requesting-code-review/SKILL.md) | 2 | 8.5 KiB |
 | [shadcn](./skills/shadcn/SKILL.md) | 15 | 95 KiB |
-| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 23 KiB |
+| [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 28 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 75 | 716 KiB |
 | [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 364 KiB |
@@ -1400,7 +1496,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |
 | [writing-skills](./skills/writing-skills/SKILL.md) | 7 | 105 KiB |
 | [zellij-docs](./skills/zellij-docs/SKILL.md) | 83 | 458 KiB |
-| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | 1 | 10 KiB |
+| [zellij-session-manager](./skills/zellij-session-manager/SKILL.md) | 1 | 11 KiB |
 | [zustand-mutative-pattern](./skills/zustand-mutative-pattern/SKILL.md) | 2 | 12 KiB |
 
 <!--endregion-->

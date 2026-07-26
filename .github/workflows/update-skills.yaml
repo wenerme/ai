@@ -100,6 +100,7 @@ jobs:
           mkdir -p .github/workflows skills
           cp ../source/README.md README.md
           cp ../source/LICENSE LICENSE
+          cp ../source/skills/.gitattributes skills/.gitattributes
           cp ../source/.github/workflows/schedule-update-skills.yaml .github/workflows/schedule-update-skills.yaml
           for skill_dir in ../source/skills/*/; do
             rsync -a --delete "$skill_dir" "skills/$(basename "$skill_dir")/"
