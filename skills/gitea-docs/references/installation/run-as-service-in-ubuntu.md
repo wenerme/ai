@@ -10,7 +10,7 @@ You can run Gitea as a Linux service, using either systemd or supervisor. The st
 
 ## Using systemd
 
-Copy the sample [gitea.service](https://github.com/go-gitea/gitea/blob/main/contrib/systemd/gitea.service) to `/etc/systemd/system/gitea.service`, then edit the file with your favorite editor.
+Copy the sample [gitea.service](https://github.com/go-gitea/gitea/blob/main/contrib/service/systemd/gitea.service) to `/etc/systemd/system/gitea.service`, then edit the file with your favorite editor.
 
 Uncomment any service that needs to be enabled on this host, such as MySQL.
 
@@ -46,7 +46,7 @@ mkdir /home/git/gitea/log/supervisor
 ```
 
 Append the configuration from the sample
-[supervisord config](https://github.com/go-gitea/gitea/blob/main/contrib/supervisor/gitea) to `/etc/supervisor/supervisord.conf`.
+[supervisord config](https://github.com/go-gitea/gitea/blob/main/contrib/service/supervisor/gitea) to `/etc/supervisor/supervisord.conf`.
 
 Using your favorite editor, change the user (`git`) and home
 (`/home/git`) settings to match the deployment environment. Change the PORT

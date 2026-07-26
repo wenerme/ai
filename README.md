@@ -10,7 +10,7 @@ npx skills add wenerme/ai --skill <skill-name>
 <!--region skills-->
 ## Skills
 
-> 115 skills available
+> 123 skills available
 
 | Skill | Description | Source |
 |-------|-------------|--------|
@@ -50,6 +50,14 @@ npx skills add wenerme/ai --skill <skill-name>
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | ComfyUI documentation — node-based Stable Diffusion GUI and workflow engine. Covers 67 built-in nodes (CheckpointLoader,... | [Comfy-Org/docs](https://github.com/Comfy-Org/docs) |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component... | [daisyui.com](https://daisyui.com) |
 | [doris-docs](./skills/doris-docs/SKILL.md) | Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL... | [apache/doris-website](https://github.com/apache/doris-website) |
+| [duckdb-clients](./skills/duckdb-clients/SKILL.md) | Use when integrating DuckDB through C, CLI, C++, Go, Java, Node.js, ODBC, Python, R, Rust, WebAssembly, ADBC, or... | [duckdb/duckdb-web/docs/current/clients](https://github.com/duckdb/duckdb-web/tree/main/docs/current/clients) |
+| [duckdb-data](./skills/duckdb-data/SKILL.md) | Use when importing, exporting, reading, writing, or bulk-loading CSV, JSON, Parquet, Iceberg, or other data in DuckDB. | [duckdb/duckdb-web/docs/current/data](https://github.com/duckdb/duckdb-web/tree/main/docs/current/data) |
+| [duckdb-dev](./skills/duckdb-dev/SKILL.md) | Use when building DuckDB from source, configuring builds, profiling, benchmarking, release work, or writing and... | [duckdb/duckdb-web/docs/current/dev](https://github.com/duckdb/duckdb-web/tree/main/docs/current/dev) |
+| [duckdb-docs](./skills/duckdb-docs/SKILL.md) | Use when working with DuckDB current documentation for connections, configuration, guides, performance, integration, or... | [duckdb/duckdb-web/docs/current](https://github.com/duckdb/duckdb-web/tree/main/docs/current) |
+| [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | Use when installing, loading, configuring, developing, or troubleshooting DuckDB core and community extensions. | [duckdb/duckdb-web/docs/current](https://github.com/duckdb/duckdb-web/tree/main/docs/current) |
+| [duckdb-ops](./skills/duckdb-ops/SKILL.md) | Use when deploying, operating, securing, sizing, logging, containerizing, or managing DuckDB in production or... | [duckdb/duckdb-web/docs/current/operations_manual](https://github.com/duckdb/duckdb-web/tree/main/docs/current/operations_manual) |
+| [duckdb-quack](./skills/duckdb-quack/SKILL.md) | Use when deploying, connecting to, securing, configuring, or troubleshooting DuckDB Quack remote protocol servers and... | [duckdb/duckdb-web/docs/current/quack](https://github.com/duckdb/duckdb-web/tree/main/docs/current/quack) |
+| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | Use when writing, debugging, optimizing, or checking DuckDB SQL syntax, statements, functions, data types, dialect, or... | [duckdb/duckdb-web/docs/current/sql](https://github.com/duckdb/duckdb-web/tree/main/docs/current/sql) |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | LLM evaluation & inference performance testing via the evalscope CLI. Translates natural language requests into... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | USE THIS SKILL WHEN working with EvalScope (ModelScope LLM evaluation framework): running evaluations, TaskConfig,... | [modelscope/evalscope](https://github.com/modelscope/evalscope) |
 | [find-skills](./skills/find-skills/SKILL.md) | Helps users discover and install agent skills when they ask questions like "how do I do X", "find a skill for X", "is... | [vercel-labs/skills](https://github.com/vercel-labs/skills) |
@@ -488,6 +496,86 @@ npx skills add wenerme/ai --skill doris-docs
 ```
 
 Use when working with Apache Doris: table design, data models (Duplicate/Unique/Aggregate), partitioning, bucketing, SQL syntax, data import (Stream Load, Broker Load, INSERT INTO), data export, lakehouse (Hive/Iceberg/Hudi/Paimon catalogs), materialized views, query acceleration, inverted index, compute-storage decoupled mode, administration, or Doris ecosystem tools.
+
+</details>
+<details>
+<summary><code>duckdb-clients</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-clients
+```
+
+Use when integrating DuckDB through C, CLI, C++, Go, Java, Node.js, ODBC, Python, R, Rust, WebAssembly, ADBC, or tertiary client APIs.
+
+</details>
+<details>
+<summary><code>duckdb-data</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-data
+```
+
+Use when importing, exporting, reading, writing, or bulk-loading CSV, JSON, Parquet, Iceberg, or other data in DuckDB.
+
+</details>
+<details>
+<summary><code>duckdb-dev</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-dev
+```
+
+Use when building DuckDB from source, configuring builds, profiling, benchmarking, release work, or writing and debugging sqllogictests.
+
+</details>
+<details>
+<summary><code>duckdb-docs</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-docs
+```
+
+Use when working with DuckDB current documentation for connections, configuration, guides, performance, integration, or storage internals.
+
+</details>
+<details>
+<summary><code>duckdb-extensions</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-extensions
+```
+
+Use when installing, loading, configuring, developing, or troubleshooting DuckDB core and community extensions.
+
+</details>
+<details>
+<summary><code>duckdb-ops</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-ops
+```
+
+Use when deploying, operating, securing, sizing, logging, containerizing, or managing DuckDB in production or mission-critical environments.
+
+</details>
+<details>
+<summary><code>duckdb-quack</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-quack
+```
+
+Use when deploying, connecting to, securing, configuring, or troubleshooting DuckDB Quack remote protocol servers and clients.
+
+</details>
+<details>
+<summary><code>duckdb-sql</code></summary>
+
+```bash
+npx skills add wenerme/ai --skill duckdb-sql
+```
+
+Use when writing, debugging, optimizing, or checking DuckDB SQL syntax, statements, functions, data types, dialect, or query semantics.
 
 </details>
 <details>
@@ -1283,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 115 skills, 32663 files, 384 MiB total
+> 123 skills, 33084 files, 388 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1323,6 +1411,14 @@ Use when implementing React state management with Zustand, including context-sco
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4853 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1593 | 9.6 MiB |
+| [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 60 | 1.2 MiB |
+| [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 144 KiB |
+| [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
+| [duckdb-docs](./skills/duckdb-docs/SKILL.md) | 100 | 438 KiB |
+| [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | 55 | 455 KiB |
+| [duckdb-ops](./skills/duckdb-ops/SKILL.md) | 14 | 40 KiB |
+| [duckdb-quack](./skills/duckdb-quack/SKILL.md) | 9 | 44 KiB |
+| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 127 | 911 KiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 306 | 1.9 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
