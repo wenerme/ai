@@ -40,8 +40,6 @@ Example response:
 
 ## Create Error Tracking settings
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/393035/) in GitLab 15.10.
-
 Creates Error Tracking settings for a specified project.
 
 > [!note]

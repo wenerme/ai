@@ -5,8 +5,6 @@ How GeoJSON files are rendered when viewed in GitLab projects.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/14134) in GitLab 16.1.
-
 A GeoJSON file is a format for encoding geographical data structures using JavaScript Object Notation (JSON).
 It is commonly used for representing geographic features, such as points, lines, and polygons, along with their associated attributes.
 

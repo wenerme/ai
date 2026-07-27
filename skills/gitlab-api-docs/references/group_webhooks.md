@@ -795,8 +795,6 @@ On success, no message is returned.
 
 ## Update a URL variable
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/90310) in GitLab 15.2.
-
 Updates a URL variable for a specified group hook.
 
 ```plaintext

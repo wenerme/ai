@@ -37,8 +37,6 @@ By default, the **Default** timeout cannot be set higher than `57` seconds. For 
 
 ## Configure the negotiation timeouts
 
-- [Introduced](https://gitlab.com/gitlab-org/gitaly/-/issues/5574) in GitLab 16.5.
-
 You might need to increase the negotiation timeout:
 
 - For particularly large repositories.

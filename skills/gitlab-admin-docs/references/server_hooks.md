@@ -5,8 +5,6 @@ Configure Git server hooks.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-- [Renamed](https://gitlab.com/gitlab-org/gitlab/-/issues/372991) from server hooks to Git server hooks in GitLab 15.6.
-
 Git server hooks run custom logic on the GitLab server. You can use them to run Git-related tasks such as:
 
 - Enforcing specific commit policies.

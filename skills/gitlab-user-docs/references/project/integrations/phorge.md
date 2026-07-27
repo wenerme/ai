@@ -3,8 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/145863) in GitLab 16.11.
-
 You can use [Phorge](https://we.phorge.it/) as an
 [external issue tracker](../../../integration/external-issue-tracker.md) in GitLab.
 

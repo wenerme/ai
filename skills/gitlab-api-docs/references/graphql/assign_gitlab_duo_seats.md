@@ -5,8 +5,6 @@ Assign GitLab Duo seats to users using the GraphQL API. Learn prerequisites, que
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/146620) in GitLab 16.11.
-
 Use this API to assign [GitLab Duo seats](../../user/gitlab_duo/_index.md) to users.
 
 ## Prerequisites

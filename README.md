@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33123 files, 388 MiB total
+> 123 skills, 33126 files, 388 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1429,7 +1429,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 373 | 4.6 MiB |
 | [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 244 | 14 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 2.0 MiB |
-| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 903 | 8.0 MiB |
+| [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 905 | 8.0 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 296 | 464 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 825 KiB |
@@ -1450,7 +1450,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 157 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 10 | 51 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 847 | 6.6 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 848 | 6.6 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 181 | 533 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |

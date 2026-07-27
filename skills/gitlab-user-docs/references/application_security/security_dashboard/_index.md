@@ -335,8 +335,6 @@ To view group security dashboard:
 
 ## Vulnerability metrics in the value streams dashboard
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/383697) in GitLab 16.0.
-
 There are additional vulnerability metrics available in the [value streams dashboard](../../analytics/value_streams_dashboard.md) comparison panel, which helps you understand security exposure in the context of your organization's software delivery workflows.
 
 ## Related topics

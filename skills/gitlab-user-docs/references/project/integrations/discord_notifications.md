@@ -23,7 +23,6 @@ and configure it in GitLab.
 
 ## Configure created webhook in GitLab
 
-- Event webhook overrides [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/125621) in GitLab 16.3.
 - Webhook URL validation introduced in GitLab 18.0.
 
 Prerequisites:

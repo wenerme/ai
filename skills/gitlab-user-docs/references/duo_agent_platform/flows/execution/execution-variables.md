@@ -1,5 +1,10 @@
 # Flow execution variables
 
+Learn which predefined, environment, and ID token variables are available in the jobs that execute flows, and which are not.
+
+- Tier: [Free](../../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
 Not all variables are available in the jobs that execute flows.
 
 - Some predefined and Agent Platform-specific variables are available.
@@ -73,14 +78,14 @@ in the execution container but are not intended for use in flow configuration.
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/224940) in GitLab 19.2.
 
-[ID tokens](../../../ci/secrets/id_token_authentication.md) that you declare are available as
+[ID tokens](../../../../ci/secrets/id_token_authentication.md) that you declare are available as
 environment variables in the flow job. Each variable uses the name of the token you declare.
 
 You declare ID tokens in:
 
 - The `agent-config.yml` file, for flows that use CI/CD. For more information, see
-  [configure ID tokens](execution.md#configure-id-tokens).
-- The configuration of a [custom external agent](../agents/external.md#authenticate-with-id-tokens).
+  [configure ID tokens](_index.md#configure-id-tokens).
+- The configuration of a [custom external agent](../../agents/external.md#authenticate-with-id-tokens).
 
 For example, when you declare an `id_tokens` block with a `VAULT_ID_TOKEN` token,
 the flow can use `$VAULT_ID_TOKEN`.
@@ -105,7 +110,7 @@ The following predefined CI/CD variables are not available:
 ### User identity
 
 The CI job token used during flow execution is a
-[composite identity](../composite_identity.md)
+[composite identity](../../composite_identity.md)
 token that represents both the triggering user and the service account.
 
 Git commits created during flow execution are committed by the user
@@ -121,7 +126,7 @@ and the service account identity is available in
 
 ### Custom CI/CD variables
 
-Custom CI/CD variables defined in **Settings > CI/CD > Variables**
+Custom CI/CD variables defined in **Settings** > **CI/CD** > **Variables**
 for projects, groups, or the instance are not available.
 
 Custom CI/CD variables include protected variables, unprotected variables, masked variables, and file variables.

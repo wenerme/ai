@@ -270,8 +270,6 @@ requests are queued and only rejected if the queue is full or the maximum waitin
 
 ## Adaptive concurrency limiting
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10734) in GitLab 16.6.
-
 Gitaly supports two concurrency limits:
 
 - An [RPC concurrency limit](#limit-rpc-concurrency), which allow you to configure a maximum number of simultaneous in-flight requests for each

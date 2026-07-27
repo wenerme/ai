@@ -195,8 +195,6 @@ user4
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/142189) in GitLab 16.9.
-
 To perform bulk user assignment for GitLab Duo Pro, you can use the following Rake task:
 
 ```shell

@@ -369,8 +369,6 @@ Follow these guidelines when you roll out pipeline secret detection:
 
 ## FIPS-enabled images
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/6479) in GitLab 14.10.
-
 The default scanner images are built off a base Alpine image for size and maintainability. GitLab
 offers [Red Hat UBI](https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image)
 versions of the images that are FIPS-enabled.

@@ -36,8 +36,6 @@ To configure Terraform state encryption:
 
 ## Terraform state storage limits
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/352951) in GitLab 15.7.
-
 You can limit the total storage of [Terraform state files](../terraform_state.md).
 The limit applies to each individual state file version and is checked when a new version is created.
 
