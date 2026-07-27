@@ -102,7 +102,7 @@ We use three classes of signals:
 
 * Tool-calling success and reliability from real traffic -- see [How Tool-Calling Success Rate Is Measured](/docs/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured) for the underlying methodology
 * Provider performance metrics such as throughput and latency
-* Benchmark and evaluation data as it becomes available
+* Benchmark data from OpenRouter's benchmark harness -- see [What the Benchmark Harness Runs](/docs/guides/routing/auto-exacto#what-the-benchmark-harness-runs) for the benchmarks and parameters, and [Where to Find the Scores](/docs/guides/routing/auto-exacto#where-to-find-the-scores) for the published results
 
 Providers with strong track records are moved toward the front of the list. Providers with limited data are kept behind well-established performers, and providers with poor quality signals are deprioritized further.
 
