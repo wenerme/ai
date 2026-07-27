@@ -230,8 +230,6 @@ Example response:
 
 ## Epics
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/97554) in GitLab 15.4.
-
 > [!warning]
 > The Epics REST API was [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/460668) in GitLab 17.0
 > and is planned for removal in v5 of the API.

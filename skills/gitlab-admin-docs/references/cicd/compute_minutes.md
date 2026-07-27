@@ -5,8 +5,6 @@ Calculations, quotas, purchase information.
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Renamed](https://gitlab.com/groups/gitlab-com/-/epics/2150) from "CI/CD minutes" to "compute quota" or "compute minutes" in GitLab 16.1.
-
 Administrators can limit the amount of time that projects can use to run jobs on
 [instance runners](../../ci/runners/runners_scope.md) each month. This limit
 is tracked with a [compute minutes quota](../../ci/pipelines/compute_minutes.md).

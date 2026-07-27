@@ -143,7 +143,7 @@ Integrity checks are supported for the following types of file:
 
 - CI artifacts
 - LFS objects
-- Project-level Secure Files (introduced in GitLab 16.1.0)
+- Project-level Secure Files
 - User uploads
 
 To check the integrity of uploaded files:
@@ -306,8 +306,6 @@ I, [2020-06-11T17:18:15.575711 #27148]  INFO -- : Done!
 ```
 
 ## Reset encrypted tokens when they can't be recovered
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/131893) in GitLab 16.6.
 
 > [!warning]
 > This operation is dangerous and can result in data-loss. Proceed with extreme caution.

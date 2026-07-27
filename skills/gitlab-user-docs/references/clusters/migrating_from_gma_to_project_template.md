@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-The GitLab Managed Apps were deprecated in GitLab 14.0
+The GitLab Managed Apps were deprecated
 in favor of user-controlled Cluster Management projects.
 Managing your cluster applications through a project enables you a
 lot more flexibility to manage your cluster than through the late GitLab Managed Apps.

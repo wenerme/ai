@@ -39,8 +39,6 @@ To see a file's Git history in the UI:
 
 ## Limit history range of results
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/423108) in GitLab 16.9.
-
 When reviewing history for old files, or files with many commits, you can
 limit the search results by date. Limiting the dates for commits helps fix
 [commit history requests timeouts](https://gitlab.com/gitlab-org/gitaly/-/issues/5426)

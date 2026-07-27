@@ -1393,8 +1393,6 @@ When the consolidated form is:
 
 #### Google Cloud Storage encryption
 
-- [Introduced in GitLab 16.11](https://gitlab.com/gitlab-org/gitlab/-/issues/441782).
-
 ETag mismatch errors occur also in Google Cloud Storage (GCS) when enabling [data encryption with customer-managed encryption keys (CMEK)](https://docs.cloud.google.com/storage/docs/encryption/using-customer-managed-keys).
 
 To use CMEK, use the [consolidated form](#configure-a-single-storage-connection-for-all-object-types-consolidated-form).

@@ -12,8 +12,6 @@ For development teams, the performance bar simplifies debugging by showing exact
 
 ## Available information
 
-- Rugged calls [removed](https://gitlab.com/gitlab-org/gitlab/-/issues/421591) in GitLab 16.6.
-
 From left to right, the performance bar displays:
 
 - **Current Host**: the current host serving the page.

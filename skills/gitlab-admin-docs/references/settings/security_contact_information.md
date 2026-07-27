@@ -3,8 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/433210) in GitLab 16.7.
-
 Organizations can facilitate the responsible disclosure of security issues by
 providing public contact information. GitLab supports using a
 [`security.txt`](https://securitytxt.org/) file for this purpose.

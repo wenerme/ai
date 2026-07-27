@@ -3,8 +3,6 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/120732) in GitLab 16.1.
-
 You can use [ClickUp](https://clickup.com/) as an
 [external issue tracker](../../../integration/external-issue-tracker.md).
 To enable the ClickUp integration in a project:

@@ -5,8 +5,6 @@ Kubernetes integration, GitOps, CI/CD, agent deployment, and cluster management.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Flux [recommended](https://gitlab.com/gitlab-org/gitlab/-/issues/357947#note_1253489000) as GitOps solution in GitLab 15.10.
-
 You can connect your Kubernetes cluster with GitLab to deploy, manage,
 and monitor your cloud-native solutions.
 

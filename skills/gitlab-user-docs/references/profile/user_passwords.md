@@ -84,8 +84,6 @@ To change your password:
 
 ## Reset your password
 
-- Password reset emails sent to any verified email address [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/16311) in GitLab 16.1.
-
 If you forget your password, you can submit a request to reset your password.
 
 To reset your password:

@@ -246,8 +246,6 @@ for a given package manager:
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Basic authentication for Maven packages [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/212854) in GitLab 16.0.
-
 The following authentication protocols are supported:
 
 | Package type                                           | Supported auth protocols                                    |

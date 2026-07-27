@@ -5,8 +5,6 @@ Configure a Diagrams.net integration for GitLab.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- Offline environment support [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/116281) in GitLab 16.1.
-
 Use the [diagrams.net](https://www.drawio.com/) integration to create and embed SVG diagrams in wikis.
 The diagram editor is available in both the plain text editor and the rich text editor.
 

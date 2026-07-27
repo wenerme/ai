@@ -5,8 +5,6 @@ Repository migration, third-party repositories, and user contribution mapping.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- All importers defaulting to disabled for GitLab Self-Managed instances [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/118970) in GitLab 16.0.
-
 Bring your existing work into GitLab.
 
 A migration tool is available for some third-party platforms. Some support

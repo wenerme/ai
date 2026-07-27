@@ -5,9 +5,6 @@ How GitLab detects new vulnerabilities for application dependencies outside of C
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Continuous vulnerability scanning for dependency scanning [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/371063) with [feature flags](../../../../administration/feature_flags/_index.md) `dependency_scanning_on_advisory_ingestion` and `package_metadata_advisory_scans` enabled by default.
-- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/425753) in GitLab 16.10. Feature flags `dependency_scanning_on_advisory_ingestion` and `package_metadata_advisory_scans` removed.
-
 Continuous vulnerability scanning (CVS) for dependency scanning looks for security vulnerabilities in your project's dependencies by comparing their component names and versions against information in the latest [security advisories](#security-advisories) without requiring a new pipeline to run.
 A pipeline must run at least once on the default branch to register your project's components through a CycloneDX SBOM. After that, CVS runs as advisories are published, without further pipeline executions, until your dependencies change.
 

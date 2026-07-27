@@ -3,8 +3,6 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/369140) in GitLab 16.0.
-
 Use this API to manage [Geo sites](../administration/geo/_index.md).
 
 Prerequisites:

@@ -33,8 +33,6 @@ curl --request DELETE \
 
 ## Retrieve Pages settings for a project
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/436932) in GitLab 16.8.
-
 Retrieves Pages settings for a specified project.
 
 Prerequisites:

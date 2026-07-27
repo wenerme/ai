@@ -5,8 +5,6 @@ Configure GitLab to send notifications to a Pumble channel.
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/93623) in GitLab 15.3.
-
 You can configure GitLab to send notifications to a Pumble channel:
 
 1. Create a webhook for the channel.

@@ -31,8 +31,6 @@ required number of seconds.
 
 ## Payload schema
 
-- `tag_list` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/335904) in GitLab 16.11.
-
 ```json
 {
   "type": "object",

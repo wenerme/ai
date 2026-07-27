@@ -179,8 +179,6 @@ Example response:
 
 ## Update a protected environment
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/351854) in GitLab 15.4.
-
 Updates a single environment.
 
 ```plaintext
