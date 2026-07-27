@@ -85,6 +85,10 @@ Connect to your RDS MariaDB instance as an admin user and execute the following 
     GRANT REPLICATION CLIENT ON *.* TO 'clickpipes_user'@'%';
     GRANT REPLICATION SLAVE ON *.* TO 'clickpipes_user'@'%';
 
+### Using IAM authentication (optional) {#iam-authentication}
+
+<IAMAuthentication engine="mysql" service="rds" />
+
 ## Configure network access {#configure-network-access}
 
 ### IP-based access control {#ip-based-access-control}

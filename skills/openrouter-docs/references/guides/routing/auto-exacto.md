@@ -14,7 +14,7 @@ When your request includes tools, Auto Exacto reorders the available providers f
 
 * **Throughput** -- real-time tokens-per-second metrics (visible on the [Performance tab](https://openrouter.ai/models) of any model page).
 * **Tool-calling success rate** -- how reliably each provider completes tool calls (also visible on the Performance tab).
-* **Benchmark data** -- internal evaluation results we are actively collecting. This data will be shown publicly soon but is not yet available on the site.
+* **Benchmark data** -- results from OpenRouter's own benchmark harness, which continuously benchmarks eligible provider endpoints. See [What the Benchmark Harness Runs](#what-the-benchmark-harness-runs) for the exact benchmarks and parameters, and [Where to Find the Scores](#where-to-find-the-scores) for where the results are published.
 
 Providers that underperform on these signals are deprioritized, while providers with strong track records are moved to the front of the list.
 
@@ -59,9 +59,32 @@ In other words: of all the requests where the model finished by emitting tool ca
 * Keywords introduced only in JSON Schema Draft 2019-09 or 2020-12 (for example `unevaluatedProperties`, `$dynamicRef`) are not enforced under Draft 7.
 * JavaScript regex semantics differ from the ECMA-262 regex dialect formally referenced by JSON Schema, so `pattern` checks may behave differently than a strict JSON Schema implementation would.
 
+## What the Benchmark Harness Runs
+
+The benchmark signal comes from OpenRouter's in-house benchmark harness, which runs on a recurring schedule against every provider endpoint serving an enrolled model. Two benchmarks currently feed Auto Exacto routing:
+
+* **GPQA Diamond** -- graduate-level multiple-choice science questions. The benchmark fixes temperature at `0.5` (matching the reference openbench configuration), shuffles answer options deterministically per question, and runs 10 epochs (repeated passes over the dataset) by default.
+* **Tau2-Bench Airline** -- an agentic tool-calling benchmark where an LLM user-simulator drives multi-turn conversations against airline-domain tools, with a binary reward from final database-state, golden-action, and communication-information checks. The benchmark fixes temperature at `0`, and runs 1 epoch by default.
+
+### How runs are executed
+
+* Each benchmark run **pins a specific provider endpoint**, so every score is attributable to exactly one endpoint with no fallback. An additional unpinned run against OpenRouter's default routing is executed as a baseline.
+* Tool-requiring presets are skipped on endpoints without tool support.
+* Scores used for routing are aggregated over a **rolling 32-day window**.
+* Runs must meet a minimum sample-size floor to count (currently at least 50 GPQA questions and 45 Tau2 tasks), so partial or failed runs do not affect routing.
+
+GPQA option shuffling deliberately differs from openbench: openbench reseeds per record so the correct answer is always `B`, while this harness shuffles by index, so its GPQA numbers are not directly comparable to openbench-published scores.
+
+## Where to Find the Scores
+
+Benchmark results are public:
+
+* **Model pages** -- the **AutoExacto Benchmarks** card on each enrolled model's page shows per-provider (and, where providers run multiple endpoints, per-endpoint) scores over the same rolling window used for routing.
+* **Performance tab** -- throughput and tool-call error rate for each endpoint are on the Performance tab of every model page.
+
 ## Results
 
-We have observed notable improvements in [tau-bench](https://github.com/sierra-research/tau-bench) scores and tool-calling success rates when Auto Exacto is active. More detailed benchmark results will be published as our evaluation data becomes publicly available.
+We have observed notable improvements in [tau-bench](https://github.com/sierra-research/tau-bench) scores and tool-calling success rates when Auto Exacto is active.
 
 ## Opting Out
 

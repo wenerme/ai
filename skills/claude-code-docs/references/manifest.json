@@ -289,9 +289,9 @@
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
-    "lastModified": "Sat, 25 Jul 2026 03:28:43 GMT",
-    "size": 145406,
-    "updatedAt": "2026-07-25T03:28:43.608Z"
+    "lastModified": "Mon, 27 Jul 2026 03:51:28 GMT",
+    "size": 148884,
+    "updatedAt": "2026-07-27T03:51:28.819Z"
   },
   "fast-mode.md": {
     "url": "https://code.claude.com/docs/en/fast-mode",
@@ -631,9 +631,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Fri, 24 Jul 2026 03:30:56 GMT",
-    "size": 269944,
-    "updatedAt": "2026-07-24T03:30:56.371Z"
+    "lastModified": "Mon, 27 Jul 2026 03:52:18 GMT",
+    "size": 267625,
+    "updatedAt": "2026-07-27T03:52:18.424Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",
@@ -655,9 +655,9 @@
   },
   "sub-agents.md": {
     "url": "https://code.claude.com/docs/en/sub-agents",
-    "lastModified": "Sat, 25 Jul 2026 03:29:33 GMT",
-    "size": 91156,
-    "updatedAt": "2026-07-25T03:29:33.060Z"
+    "lastModified": "Mon, 27 Jul 2026 03:52:23 GMT",
+    "size": 91500,
+    "updatedAt": "2026-07-27T03:52:23.632Z"
   },
   "terminal-config.md": {
     "url": "https://code.claude.com/docs/en/terminal-config",
@@ -727,9 +727,9 @@
   },
   "workflows.md": {
     "url": "https://code.claude.com/docs/en/workflows",
-    "lastModified": "Sat, 25 Jul 2026 03:29:55 GMT",
-    "size": 29401,
-    "updatedAt": "2026-07-25T03:29:55.212Z"
+    "lastModified": "Mon, 27 Jul 2026 03:52:47 GMT",
+    "size": 30213,
+    "updatedAt": "2026-07-27T03:52:47.478Z"
   },
   "worktrees.md": {
     "url": "https://code.claude.com/docs/en/worktrees",

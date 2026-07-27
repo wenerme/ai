@@ -78,10 +78,6 @@ keywords: Ultralytics, torch utils, model optimization, device selection, infere
 
 <hr>
 
-## ::: ultralytics.utils.torch_utils.get_flops_with_torch_profiler
-
-<hr>
-
 ## ::: ultralytics.utils.torch_utils.initialize_weights
 
 <hr>

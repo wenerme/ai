@@ -90,14 +90,11 @@ Connect to your Aurora PostgreSQL writer instance as an admin user and execute t
 
 ### Using IAM authentication (optional) {#iam-authentication}
 
-Instead of a password, you can authenticate the ClickPipes user via AWS IAM role-based access. This requires the `rds.iam_auth_for_replication` parameter to be set to `1`. Create the user as follows, then grant it the same schema and replication privileges shown above:
+<IAMAuthentication engine="postgres" service="aurora">
 
-```sql
-CREATE USER clickpipes_iam_user;
-GRANT rds_iam TO clickpipes_iam_user;
-```
+> **note**: IAM authentication for replication requires the `rds.iam_auth_for_replication` parameter to be set to `1`.
 
-See [AWS IAM DB authentication (RDS/Aurora)](/integrations/clickpipes/postgres/auth) for the full steps to set up the IAM role and policy required for ClickPipes to authenticate this way.
+</IAMAuthentication>
 
 ## Configure network access {#configure-network-access}
 

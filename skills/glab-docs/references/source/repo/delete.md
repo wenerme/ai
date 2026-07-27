@@ -11,6 +11,8 @@ Delete an existing project on GitLab.
 
 Delete an existing project on GitLab.
 
+Without an argument, targets the project for the current repository.
+
 This permanently deletes the entire project, including:
 
 - The Git repository.
@@ -22,7 +24,7 @@ This permanently deletes the entire project, including:
 This action cannot be undone.
 
 ```plaintext
-glab repo delete [<NAMESPACE>/]<NAME> [flags]
+glab repo delete [[<NAMESPACE>/]<NAME>] [flags]
 ```
 
 ## Examples

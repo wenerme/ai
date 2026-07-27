@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33120 files, 388 MiB total
+> 123 skills, 33123 files, 388 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1398,7 +1398,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
 | [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 127 | 5.2 MiB |
-| [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1102 | 10 MiB |
+| [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1101 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1551 | 16 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 2.9 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 31 KiB |
@@ -1461,7 +1461,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 461 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 453 | 2.4 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 454 | 2.5 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2361 | 14 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 86 | 357 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
@@ -1486,7 +1486,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 168 | 1.3 MiB |
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 43 | 1.7 MiB |
-| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 519 | 4.4 MiB |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 522 | 4.4 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 543 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 223 | 1.3 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 160 | 1.4 MiB |
