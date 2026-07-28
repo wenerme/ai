@@ -745,7 +745,10 @@ For models that offer a pro reasoning variant, the `reasoning.mode` parameter co
 * **`pro`**: Routes the request to the model's pro variant, which uses deeper multi-pass reasoning for harder problems.
 
 <Note title="Provider Support">
-  `reasoning.mode` is only supported by OpenAI GPT-5.6 and newer.
+  `reasoning.mode` is only supported by OpenAI GPT-5.6 and newer, when served
+  by OpenAI or Azure. Amazon Bedrock's OpenAI-compatible API accepts the field
+  but silently ignores it, so pro reasoning is not available on Bedrock —
+  OpenRouter only routes pro requests to providers that honor mode selection.
 </Note>
 
 For each supported model, there are two equivalent ways to request pro mode on OpenRouter:
@@ -790,6 +793,7 @@ All reasoning detail objects share these common fields:
   * `"unknown"` - Format is not specified
   * `"openai-responses-v1"` - OpenAI responses format version 1
   * `"azure-openai-responses-v1"` - Azure OpenAI responses format version 1
+  * `"bedrock-openai-responses-v1"` - Amazon Bedrock OpenAI responses format version 1
   * `"xai-responses-v1"` - xAI responses format version 1
   * `"meta-responses-v1"` - Meta responses format version 1
   * `"anthropic-claude-v1"` - Anthropic Claude format version 1 (default)

@@ -26,13 +26,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Instruct fine-tuned version of the Mistral-7b generative text model with 7 billion parameters
 
-| Model Info                                                                 |                                                          |
-| -------------------------------------------------------------------------- | -------------------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                                |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,824 tokens                                             |
-| More information                                                           | [link ↗](https://mistral.ai/news/announcing-mistral-7b/) |
-| LoRA                                                                       | Yes                                                      |
-| Unit Pricing                                                               | $0.11 per M input tokens, $0.19 per M output tokens      |
+| Model Info                                                                          |                                                          |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                                |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,824 tokens                                             |
+| More information                                                                    | [link ↗](https://mistral.ai/news/announcing-mistral-7b/) |
+| LoRA                                                                                | Yes                                                      |
+| Unit Pricing                                                                        | $0.11 per M input tokens, $0.19 per M output tokens      |
 
 ## Playground
 

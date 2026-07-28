@@ -981,7 +981,7 @@ components:
       properties:
         analysis_models:
           description: >-
-            Slugs of models to run in parallel as the "expert panel" the judge
+            Slugs of models to run in parallel as the "expert panel" the analyst
             analyzes. Each model receives the same user prompt with web_search +
             web_fetch enabled. Capped at 8 models to bound cost amplification.
             When omitted, defaults to the Quality preset from the /labs/fusion
@@ -1008,25 +1008,26 @@ components:
         max_tool_calls:
           description: >-
             Maximum number of tool-calling steps each panelist (analysis model)
-            and the judge model may take during their agentic web-research loop.
-            Models with web_search/web_fetch enabled iterate until they produce
-            a text response or hit this ceiling. Defaults to 8. Capped at 16.
+            and the analyst model may take during their agentic web-research
+            loop. Models with web_search/web_fetch enabled iterate until they
+            produce a text response or hit this ceiling. Defaults to 8. Capped
+            at 16.
           example: 12
           maximum: 16
           minimum: 1
           type: integer
         model:
           description: >-
-            Slug of the model that performs both the judge step (with web_search
-            + web_fetch) and the final synthesis. When omitted, defaults to the
-            first model in the Quality preset.
+            Slug of the model that performs both the analyst step (with
+            web_search + web_fetch) and the final synthesis. When omitted,
+            defaults to the first model in the Quality preset.
           example: ~anthropic/claude-opus-latest
           type: string
         preset:
           description: >-
             A curated OpenRouter fusion preset (slugs follow `<task>-<tier>`,
             e.g. `general-high`). Expands server-side into the preset's
-            analysis_models panel and judge model, so callers never name
+            analysis_models panel and analyst model, so callers never name
             individual models. Explicitly provided `analysis_models` / `model`
             take precedence.
           enum:
@@ -1037,9 +1038,9 @@ components:
           type: string
         tools:
           description: >-
-            Server tools available to panelist and judge inner calls. Each entry
-            uses the same `{ type, parameters? }` shorthand as the outer Chat
-            Completions request. When omitted, defaults to `[{ type:
+            Server tools available to panelist and analyst inner calls. Each
+            entry uses the same `{ type, parameters? }` shorthand as the outer
+            Chat Completions request. When omitted, defaults to `[{ type:
             "openrouter:web_search" }, { type: "openrouter:web_fetch" }]`. Pass
             an empty array to disable tools entirely (panelists answer from
             parametric knowledge only).
@@ -2266,8 +2267,11 @@ components:
         - int4
         - int8
         - fp4
+        - mxfp4
+        - nvfp4
         - fp6
         - fp8
+        - mxfp8
         - fp16
         - bf16
         - fp32
@@ -2513,8 +2517,9 @@ components:
     FusionServerTool_OpenRouter:
       description: >-
         OpenRouter built-in server tool: fans out the user prompt to a panel of
-        analysis models, then asks a judge model to summarize their collective
-        output as structured JSON the outer model can synthesize from.
+        analysis models, then asks an analyst model to summarize their
+        collective output as structured JSON the outer model can synthesize
+        from.
       example:
         parameters:
           analysis_models:
@@ -3230,7 +3235,7 @@ components:
           description: >-
             Slugs of models to run in parallel as the analysis panel. Each model
             receives the user prompt with openrouter:web_search and
-            openrouter:web_fetch enabled, then a judge model summarizes the
+            openrouter:web_fetch enabled, then an analyst model summarizes the
             collective output into structured analysis JSON. Capped at 8 models
             to bound cost amplification. Defaults to the Quality preset from
             /labs/fusion.
@@ -3248,36 +3253,37 @@ components:
         max_completion_tokens:
           description: >-
             Maximum number of output tokens (including reasoning tokens) each
-            panelist and the judge model may produce per inner call. Controls
+            panelist and the analyst model may produce per inner call. Controls
             the total output budget so reasoning-heavy models like GPT-5.5 do
             not exhaust their token allowance before producing visible text.
-            When omitted, panelists default to 32000 and the judge to 20000.
+            When omitted, panelists default to 32000 and the analyst to 20000.
           example: 16384
           type: integer
         max_tool_calls:
           description: >-
             Maximum number of tool-calling steps each panelist (analysis model)
-            and the judge model may take during their agentic web-research loop.
-            Models with web_search/web_fetch enabled iterate until they produce
-            a text response or hit this ceiling. Defaults to 8. Capped at 16.
+            and the analyst model may take during their agentic web-research
+            loop. Models with web_search/web_fetch enabled iterate until they
+            produce a text response or hit this ceiling. Defaults to 8. Capped
+            at 16.
           example: 12
           maximum: 16
           minimum: 1
           type: integer
         model:
           description: >-
-            Slug of the judge model that produces the structured analysis JSON.
-            Defaults to the model used in the outer API request.
+            Slug of the analyst model that produces the structured analysis
+            JSON. Defaults to the model used in the outer API request.
           example: ~anthropic/claude-opus-latest
           type: string
         reasoning:
           description: >-
-            Reasoning configuration forwarded to panelist and judge inner calls.
-            Use this to control reasoning effort and token budget for models
-            that support extended thinking.
+            Reasoning configuration forwarded to panelist and analyst inner
+            calls. Use this to control reasoning effort and token budget for
+            models that support extended thinking.
           properties:
             effort:
-              description: Reasoning effort level for panelist and judge inner calls.
+              description: Reasoning effort level for panelist and analyst inner calls.
               enum:
                 - max
                 - xhigh
@@ -3289,24 +3295,24 @@ components:
               type: string
             max_tokens:
               description: >-
-                Maximum number of reasoning tokens each panelist and judge model
-                may use. Helps bound cost when models allocate too much budget
-                to chain-of-thought.
+                Maximum number of reasoning tokens each panelist and analyst
+                model may use. Helps bound cost when models allocate too much
+                budget to chain-of-thought.
               type: integer
           type: object
         temperature:
           description: >-
-            Temperature forwarded to panelist inner calls. The judge always runs
-            at temperature 0 regardless of this value. When omitted, the
+            Temperature forwarded to panelist inner calls. The analyst always
+            runs at temperature 0 regardless of this value. When omitted, the
             provider's default applies.
           example: 0.7
           format: double
           type: number
         tools:
           description: >-
-            Server tools available to panelist and judge inner calls. Each entry
-            uses the same `{ type, parameters? }` shorthand as the outer Chat
-            Completions request. When omitted, defaults to `[{ type:
+            Server tools available to panelist and analyst inner calls. Each
+            entry uses the same `{ type, parameters? }` shorthand as the outer
+            Chat Completions request. When omitted, defaults to `[{ type:
             "openrouter:web_search" }, { type: "openrouter:web_fetch" }]`. Pass
             an empty array to disable tools entirely (panelists answer from
             parametric knowledge only).
@@ -4096,6 +4102,7 @@ components:
         - unknown
         - openai-responses-v1
         - azure-openai-responses-v1
+        - bedrock-openai-responses-v1
         - xai-responses-v1
         - meta-responses-v1
         - anthropic-claude-v1

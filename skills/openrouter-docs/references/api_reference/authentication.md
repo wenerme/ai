@@ -22,12 +22,6 @@ Our API authenticates requests using Bearer tokens. This allows you to use `curl
 
 To use an API key, [first create your key](https://openrouter.ai/keys). Give it a name and you can optionally set a credit limit.
 
-<Warning>
-  For security, the full API key value (starting with `sk-or-...`) is only shown **once**, immediately after you create it. It cannot be retrieved later — the key settings page only shows a masked hash. Copy the key right away and store it somewhere safe (for example, an environment variable or password manager). If you lose it, delete the key at [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys) and create a new one.
-</Warning>
-
-You can view, rename, disable, or delete existing keys at any time on the [API keys settings page](https://openrouter.ai/settings/keys). To do the same programmatically, see [Management API keys](/docs/guides/overview/auth/management-api-keys).
-
 If you're calling the OpenRouter API directly, set the `Authorization` header to a Bearer token with your API key.
 
 If you're using the OpenAI Typescript SDK, set the `api_base` to `https://openrouter.ai/api/v1` and the `apiKey` to your API key.

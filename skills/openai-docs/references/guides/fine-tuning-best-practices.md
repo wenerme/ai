@@ -1,11 +1,14 @@
 # Fine-tuning best practices
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 If you're not getting strong results with a fine-tuned model, consider the following iterations on your process.
 
 OpenAI is winding down the fine-tuning platform. The platform is no longer
   accessible to new users, but existing users of the fine-tuning platform will
   be able to create training jobs for the coming months.
-  <br />
+  
+
   All fine-tuned models will remain available for inference until their base
   models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
   [here](https://developers.openai.com/api/docs/deprecations).
@@ -133,16 +136,8 @@ Compute token counts with [the tokenizer tool](https://platform.openai.com/token
 
 Before uploading your data, you may want to check formatting and potential token costs - an example of how to do this can be found in the cookbook.
 
-<a
-  href="https://cookbook.openai.com/examples/chat_finetuning_data_prep"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Learn about fine-tuning data formatting
+[Fine-tuning data format validation
 
 
-</a>
+
+      Learn about fine-tuning data formatting](https://developers.openai.com/cookbook/examples/chat_finetuning_data_prep)

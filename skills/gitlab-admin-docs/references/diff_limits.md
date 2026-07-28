@@ -33,8 +33,9 @@ Read more about the [built-in limits for merge requests and diffs](instance_limi
 ## Configure diff limits
 
 > [!warning]
-> These settings are experimental. An increased maximum increases resource
-> consumption of your instance. Keep this in mind when adjusting the maximum.
+> Higher limits increase resource consumption and can cause instance
+> instability. Adjust these values with caution, and monitor instance
+> performance after any changes.
 
 Prerequisites:
 

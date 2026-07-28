@@ -1,5 +1,7 @@
 # Realtime API with SIP
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 [SIP](https://en.wikipedia.org/wiki/Session_Initiation_Protocol) is a
 protocol used to make phone calls over the internet. With SIP and the
 Realtime API you can direct incoming phone calls to the API.
@@ -19,7 +21,7 @@ will have a `proj_` prefix.
 
 When OpenAI receives SIP traffic associated with your project,
 your webhook will be fired. The event fired will be a
-[`realtime.call.incoming`](https://developers.openai.com/api/docs/api-reference/webhook-events/realtime/call/incoming) event,
+[`realtime.call.incoming`](https://developers.openai.com/api/reference/resources/webhooks) event,
 like the example below:
 
 ```
@@ -54,10 +56,10 @@ accept, reject, monitor, refer, and hangup the call are documented below.
 
 ## Accept the call
 
-Use the [Accept call endpoint](https://developers.openai.com/api/docs/api-reference/realtime-calls/accept-call) to
+Use the [Accept call endpoint](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/accept) to
 approve the inbound call and configure the realtime session that will answer it.
 Send the same parameters you would send in a
-[`create client secret`](https://developers.openai.com/api/docs/api-reference/realtime-sessions/create-realtime-client-secret)
+[`create client secret`](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets/methods/create)
 request, i.e., ensure the realtime model, voice, tools, or instructions are set before bridging the
 call to the model.
 
@@ -74,14 +76,14 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/accept" \
 
 
 The request path must include the `call_id` from the
-[`realtime.call.incoming`](https://developers.openai.com/api/docs/api-reference/webhook-events/realtime/call/incoming)
+[`realtime.call.incoming`](https://developers.openai.com/api/reference/resources/webhooks)
 webhook, and every request requires the `Authorization` header shown above. The
 endpoint returns `200 OK` once the SIP leg is ringing and the realtime session
 is being established.
 
 ## Reject the call
 
-Use the [Reject call endpoint](https://developers.openai.com/api/docs/api-reference/realtime-calls/reject-call) to
+Use the [Reject call endpoint](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/reject) to
 decline an invite when you do not want to handle the incoming call, (e.g., from
 an unsupported country code.) Supply the `call_id` path parameter
 and an optional SIP `status_code` (e.g., `486` to indicate "busy") in the JSON
@@ -121,7 +123,7 @@ via the `accept` endpoint).
 - `Authorization: Bearer YOUR_API_KEY`
 
 The WebSocket behaves exactly like any other Realtime API connection. Send
-[`response.create`](https://developers.openai.com/api/docs/api-reference/realtime_client_events/response/create),
+[`response.create`](https://developers.openai.com/api/reference/resources/realtime/client-events#response.create),
 and other client events to control the call, and listen for server events to
 track progress. See [Webhooks and server-side controls](https://developers.openai.com/api/docs/guides/realtime-server-controls)
 for more information.
@@ -130,7 +132,7 @@ for more information.
 import WebSocket from "ws";
 
 const callId = "rtc_u1_9c6574da8b8a41a18da9308f4ad974ce";
-const ws = new WebSocket(`wss://api.openai.com/v1/realtime?call_id=${callId}`, {
+const ws = new WebSocket(`wss://api.openai.com/v1/realtime?call_id=rtc_u1_9c6574da8b8a41a18da9308f4ad974ce`, {
   headers: {
     Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
   },
@@ -149,7 +151,7 @@ ws.on("open", () => {
 ## Redirect the call
 
 Transfer an active call using the
-[Refer call endpoint](https://developers.openai.com/api/docs/api-reference/realtime-calls/refer-call). Provide the
+[Refer call endpoint](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/refer). Provide the
 `call_id` as well as the `target_uri` that should be placed in the SIP `Refer-To`
 header (for example `tel:+14155550123` or `sip:agent@example.com`).
 
@@ -166,7 +168,7 @@ downstream system handles the rest of the call flow for the caller.
 
 ## Hang up the call
 
-End the session with the [Hang up endpoint](https://developers.openai.com/api/docs/api-reference/realtime-calls/hangup-call)
+End the session with the [Hang up endpoint](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/hangup)
 when your application should disconnect the caller. This endpoint can be used to
 terminate both SIP and WebRTC realtime sessions.
 
@@ -195,8 +197,8 @@ the Realtime API.
 
 
 
-<div data-content-switcher-pane data-value="python">
-    <div class="hidden">Python</div>
+Python
+
     Python
 
 ```python
@@ -270,8 +272,6 @@ def webhook():
 if __name__ == "__main__":
     app.run(port=8000)
 ```
-
-  </div>
 
 
 

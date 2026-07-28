@@ -1,5 +1,7 @@
 # Compaction
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ## Overview
 
 To support long-running interactions, you can use compaction to reduce context
@@ -82,7 +84,7 @@ while keep_going:
 ## Standalone compact endpoint
 
 For explicit control, use the
-[standalone compact endpoint](https://developers.openai.com/api/docs/api-reference/responses/compact) for
+[standalone compact endpoint](https://developers.openai.com/api/reference/resources/responses/methods/compact) for
 stateless compaction in long-running workflows.
 
 This endpoint is fully stateless and ZDR-friendly.

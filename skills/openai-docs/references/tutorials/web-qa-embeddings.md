@@ -1,10 +1,12 @@
 # Web QA with embeddings
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 This tutorial walks through a simple example of crawling a website (in this example, the OpenAI website), turning the crawled pages into embeddings using the [Embeddings API](https://developers.openai.com/api/docs/guides/embeddings), and then creating a basic search functionality that allows a user to ask questions about the embedded information. This is intended to be a starting point for more sophisticated applications that make use of custom knowledge bases.
 
 # Getting started
 
-Some basic knowledge of Python and GitHub is helpful for this tutorial. Before diving in, make sure to [set up an OpenAI API key](https://developers.openai.com/api/docs/api-reference/introduction) and walk through the [quickstart tutorial](https://developers.openai.com/api/docs/quickstart). This will give a good intuition on how to use the API to its full potential.
+Some basic knowledge of Python and GitHub is helpful for this tutorial. Before diving in, make sure to [set up an OpenAI API key](https://developers.openai.com/api/reference/overview) and walk through the [quickstart tutorial](https://developers.openai.com/api/docs/quickstart). This will give a good intuition on how to use the API to its full potential.
 
 Python is used as the main programming language along with the OpenAI, Pandas, transformers, NumPy, and other popular packages. If you run into any issues working through this tutorial, please ask a question on the [OpenAI Community Forum](https://community.openai.com).
 
@@ -24,24 +26,28 @@ The primary focus of this tutorial is the OpenAI API so if you prefer, you can s
 
 Learn how to build a web crawler
 
-<div className="sandbox-preview">
-  <div className="sandbox-screenshot">
-    </div>
-  <div className="preview-info">
-    <div className="description">
-      Acquiring data in text form is the first step to use embeddings. This
+
+
+  
+
+    Acquiring data in text form is the first step to use embeddings. This
       tutorial creates a new set of data by crawling the OpenAI website, a
       technique that you can also use for your own company or personal website.
-    </div>
-    <div className="actions">
+    
+
+    
+
       
 
 View source code
 
 
-    </div>
-  </div>
-</div>
+    
+
+  
+
+
+
 
 While this crawler is written from scratch, open source packages like [Scrapy](https://github.com/scrapy/scrapy) can also help with these operations.
 
@@ -210,23 +216,27 @@ The last line of the above example runs the crawler which goes through all the a
 
 ## Building an embeddings index
 
-<div className="sandbox-preview">
-  <div className="sandbox-screenshot">
-    </div>
-  <div className="preview-info">
-    <div className="description">
-      CSV is a common format for storing embeddings. You can use this format
+
+
+  
+
+    CSV is a common format for storing embeddings. You can use this format
       with Python by converting the raw text files (which are in the text
       directory) into Pandas data frames. Pandas is a popular open source
       library that helps you work with tabular data (data stored in rows and
       columns).
-    </div>
-    <div className="description">
+    
+
+    
+
       Blank empty lines can clutter the text files and make them harder to
       process. A simple function can remove those lines and tidy up the files.
-    </div>
-  </div>
-</div>
+    
+
+  
+
+
+
 
 ```python
 def remove_newlines(serie):
@@ -305,15 +315,19 @@ df.n_tokens.hist()
 ```
 
 
-<div className="sandbox-preview">
-  <div className="sandbox-screenshot">
+
+
+  
+
     <img src="https://cdn.openai.com/API/docs/images/tutorials/web-qa/embeddings-initial-histrogram.png"
       alt="Embeddings histogram"
       width="553"
       height="413"
     />
-  </div>
-</div>
+  
+
+
+
 
 The newest embeddings model can handle inputs with up to 8191 input tokens so most of the rows would not need any chunking, but this may not be the case for every subpage scraped so the next code chunk will split the longer lines into smaller chunks.
 
@@ -383,15 +397,19 @@ df.n_tokens.hist()
 ```
 
 
-<div className="sandbox-preview">
-  <div className="sandbox-screenshot">
+
+
+  
+
     <img src="https://cdn.openai.com/API/docs/images/tutorials/web-qa/embeddings-tokenized-output.png"
       alt="Embeddings tokenized output"
       width="552"
       height="418"
     />
-  </div>
-</div>
+  
+
+
+
 
 The content is now broken down into smaller chunks and a simple request can be sent to the OpenAI API specifying the use of the new text-embedding-ada-002 model to create the embeddings:
 
@@ -415,20 +433,22 @@ This should take about 3-5 minutes but after you will have your embeddings ready
 
 ## Building a question answer system with your embeddings
 
-<div className="sandbox-preview">
-  <div className="sandbox-screenshot">
-    </div>
-  <div className="preview-info">
-    <div className="description">
-      The embeddings are ready and the final step of this process is to create a
+
+
+  
+
+    The embeddings are ready and the final step of this process is to create a
       simple question and answer system. This will take a user's question,
       create an embedding of it, and compare it with the existing embeddings to
       retrieve the most relevant text from the scraped website. The
       gpt-3.5-turbo-instruct model will then generate a natural sounding answer
       based on the retrieved text.
-    </div>
-  </div>
-</div>
+    
+
+  
+
+
+
 
 ---
 

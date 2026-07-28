@@ -27,11 +27,11 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 This is a Gemma-2B base model that Cloudflare dedicates for inference with LoRA adapters. Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models.
 
-| Model Info                                                                 |              |
-| -------------------------------------------------------------------------- | ------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens |
-| LoRA                                                                       | Yes          |
-| Beta                                                                       | Yes          |
+| Model Info                                                                          |              |
+| ----------------------------------------------------------------------------------- | ------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| LoRA                                                                                | Yes          |
+| Beta                                                                                | Yes          |
 
 ## Playground
 

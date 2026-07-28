@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Google's lightest and most cost-efficient Gemini model for high-throughput tasks.
 
-| Model Info                                                                 |                                                                                                                                |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                               |
-| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
-| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
-| Zero data retention                                                        | Yes                                                                                                                            |
-| Request formats                                                            | Chat Completions                                                                                                               |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-lite) |
+| Model Info                                                                          |                                                                                                                                |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                               |
+| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                               |
+| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                         |
+| Zero data retention                                                                 | Yes                                                                                                                            |
+| Request formats                                                                     | Chat Completions                                                                                                               |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-lite) |
 
 ## Usage
 

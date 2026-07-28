@@ -1,15 +1,17 @@
 # GPT Release Notes
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Keep track of updates to OpenAI GPTs. You can also view all of the broader [ChatGPT releases](https://help.openai.com/en/articles/6825453-chatgpt-release-notes) which is used to share new features and capabilities. This page is maintained in a best effort fashion and may not reflect all changes
 being made.
 
 ### May 13th, 2024
 
-- Actions can [return](https://developers.openai.com/api/docs/actions/getting-started/returning-files) up to 10 files per request to be integrated into the conversation
+- Actions can [return](https://developers.openai.com/api/docs/actions/sending-files#returning-files) up to 10 files per request to be integrated into the conversation
 
 ### April 8th, 2024
 
-- Files created by Code Interpreter can now be [included](https://developers.openai.com/api/docs/actions/getting-started/sending-files) in POST requests
+- Files created by Code Interpreter can now be [included](https://developers.openai.com/api/docs/actions/sending-files#sending-files) in POST requests
 
 ### Mar 18th, 2024
 
@@ -17,7 +19,7 @@ being made.
 
 ### Mar 15th, 2024
 
-- POST requests can [include up to ten files](https://developers.openai.com/api/docs/actions/getting-started/including-files) (including DALL-E generated images) from the conversation
+- POST requests can [include up to ten files](https://developers.openai.com/api/docs/actions/sending-files#sending-files) (including DALL-E generated images) from the conversation
 
 ### Feb 22nd, 2024
 

@@ -1388,7 +1388,7 @@ components:
       properties:
         analysis_models:
           description: >-
-            Slugs of models to run in parallel as the "expert panel" the judge
+            Slugs of models to run in parallel as the "expert panel" the analyst
             analyzes. Each model receives the same user prompt with web_search +
             web_fetch enabled. Capped at 8 models to bound cost amplification.
             When omitted, defaults to the Quality preset from the /labs/fusion
@@ -1415,25 +1415,26 @@ components:
         max_tool_calls:
           description: >-
             Maximum number of tool-calling steps each panelist (analysis model)
-            and the judge model may take during their agentic web-research loop.
-            Models with web_search/web_fetch enabled iterate until they produce
-            a text response or hit this ceiling. Defaults to 8. Capped at 16.
+            and the analyst model may take during their agentic web-research
+            loop. Models with web_search/web_fetch enabled iterate until they
+            produce a text response or hit this ceiling. Defaults to 8. Capped
+            at 16.
           example: 12
           maximum: 16
           minimum: 1
           type: integer
         model:
           description: >-
-            Slug of the model that performs both the judge step (with web_search
-            + web_fetch) and the final synthesis. When omitted, defaults to the
-            first model in the Quality preset.
+            Slug of the model that performs both the analyst step (with
+            web_search + web_fetch) and the final synthesis. When omitted,
+            defaults to the first model in the Quality preset.
           example: ~anthropic/claude-opus-latest
           type: string
         preset:
           description: >-
             A curated OpenRouter fusion preset (slugs follow `<task>-<tier>`,
             e.g. `general-high`). Expands server-side into the preset's
-            analysis_models panel and judge model, so callers never name
+            analysis_models panel and analyst model, so callers never name
             individual models. Explicitly provided `analysis_models` / `model`
             take precedence.
           enum:
@@ -1444,9 +1445,9 @@ components:
           type: string
         tools:
           description: >-
-            Server tools available to panelist and judge inner calls. Each entry
-            uses the same `{ type, parameters? }` shorthand as the outer Chat
-            Completions request. When omitted, defaults to `[{ type:
+            Server tools available to panelist and analyst inner calls. Each
+            entry uses the same `{ type, parameters? }` shorthand as the outer
+            Chat Completions request. When omitted, defaults to `[{ type:
             "openrouter:web_search" }, { type: "openrouter:web_fetch" }]`. Pass
             an empty array to disable tools entirely (panelists answer from
             parametric knowledge only).
@@ -2805,8 +2806,11 @@ components:
         - int4
         - int8
         - fp4
+        - mxfp4
+        - nvfp4
         - fp6
         - fp8
+        - mxfp8
         - fp16
         - bf16
         - fp32

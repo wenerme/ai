@@ -1,5 +1,7 @@
 # Image generation
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The image generation tool allows you to generate images using a text prompt, and optionally image inputs. It uses GPT Image models, including `gpt-image-2`, `gpt-image-1.5`, `gpt-image-1`, and `gpt-image-1-mini`, and automatically optimizes text inputs for improved performance.
 
 To learn more about image generation, refer to our dedicated [image generation
@@ -68,7 +70,7 @@ To force the image generation tool call, you can set the parameter `tool_choice`
 
 ### Tool options
 
-You can configure the following output options as parameters for the [image generation tool](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-tools):
+You can configure the following output options as parameters for the [image generation tool](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-tools):
 
 - Size: Image dimensions, for example, 1024 × 1024 or 1024 × 1536
 - Quality: Rendering quality, for example, low, medium, or high
@@ -113,8 +115,8 @@ You can iteratively edit images by referencing previous response or image IDs. T
 
 
 
-<div data-content-switcher-pane data-value="responseid">
-    <div class="hidden">Using previous response ID</div>
+Using previous response ID
+
     Multi-turn image generation
 
 ```javascript
@@ -207,9 +209,13 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="imageid" hidden>
-    <div class="hidden">Using image ID</div>
+  
+
+  
+
+    
+Using image ID
+
     Multi-turn image generation
 
 ```javascript
@@ -317,8 +323,6 @@ if image_data_fwup:
     with open("cat_and_otter_realistic.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
 ```
-
-  </div>
 
 
 

@@ -24,11 +24,11 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Llama 3.1 8B quantized to FP8 precision
 
-| Model Info                                                                 |                                                                                          |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 32,000 tokens                                                                            |
-| Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
-| Unit Pricing                                                               | $0.15 per M input tokens, $0.29 per M output tokens                                      |
+| Model Info                                                                          |                                                                                          |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens                                                                            |
+| Terms and License                                                                   | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
+| Unit Pricing                                                                        | $0.15 per M input tokens, $0.29 per M output tokens                                      |
 
 ## Playground
 

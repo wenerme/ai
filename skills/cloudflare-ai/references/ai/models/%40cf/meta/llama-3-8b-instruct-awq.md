@@ -25,13 +25,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Quantized (int4) generative text model with 8 billion parameters from Meta.
 
-| Model Info                                                                 |                                                     |
-| -------------------------------------------------------------------------- | --------------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                           |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens                                        |
-| Terms and License                                                          | [link ↗](https://llama.meta.com/llama3/license/#)   |
-| More information                                                           | [link ↗](https://llama.meta.com)                    |
-| Unit Pricing                                                               | $0.12 per M input tokens, $0.27 per M output tokens |
+| Model Info                                                                          |                                                     |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                           |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens                                        |
+| Terms and License                                                                   | [link ↗](https://llama.meta.com/llama3/license/#)   |
+| More information                                                                    | [link ↗](https://llama.meta.com)                    |
+| Unit Pricing                                                                        | $0.12 per M input tokens, $0.27 per M output tokens |
 
 ## Playground
 

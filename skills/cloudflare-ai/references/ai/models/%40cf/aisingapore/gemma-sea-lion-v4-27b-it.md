@@ -24,10 +24,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 SEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.
 
-| Model Info                                                                 |                                                     |
-| -------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                      |
-| Unit Pricing                                                               | $0.35 per M input tokens, $0.56 per M output tokens |
+| Model Info                                                                          |                                                     |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                      |
+| Unit Pricing                                                                        | $0.35 per M input tokens, $0.56 per M output tokens |
 
 ## Playground
 

@@ -27,12 +27,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Phi-2 is a Transformer-based model with a next-word prediction objective, trained on 1.4T tokens from multiple passes on a mixture of Synthetic and Web datasets for NLP and coding.
 
-| Model Info                                                                 |                                                  |
-| -------------------------------------------------------------------------- | ------------------------------------------------ |
-| Deprecated                                                                 | 5/30/2026                                        |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,048 tokens                                     |
-| More information                                                           | [link ↗](https://huggingface.co/microsoft/phi-2) |
-| Beta                                                                       | Yes                                              |
+| Model Info                                                                          |                                                  |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------ |
+| Deprecated                                                                          | 5/30/2026                                        |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,048 tokens                                     |
+| More information                                                                    | [link ↗](https://huggingface.co/microsoft/phi-2) |
+| Beta                                                                                | Yes                                              |
 
 ## Playground
 

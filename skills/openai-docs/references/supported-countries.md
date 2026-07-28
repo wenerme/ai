@@ -1,5 +1,7 @@
 # Supported countries and territories
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Accessing or offering access to our services outside of the countries and territories listed below may result in your account being blocked or suspended.
 
 - Albania

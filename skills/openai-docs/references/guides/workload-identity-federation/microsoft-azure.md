@@ -1,13 +1,13 @@
 # Configuring workload identity federation for Microsoft Azure
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use Microsoft Azure as a Workload Identity Provider in either of these scenarios:
 
 - **Azure managed identity:** Exchange a Microsoft Entra ID access token issued for a managed identity for a short-lived OpenAI access token.
 - **AKS:** Exchange a projected Azure Kubernetes Service (AKS) service account token for a short-lived OpenAI access token.
 
 
-
-<div data-content-switcher-pane data-value="managed-identity">
 
 ## Azure managed identity
 
@@ -546,9 +546,11 @@ puts(response.output_text)
 ```
 
 
-  </div>
+  
 
-  <div data-content-switcher-pane data-value="aks" hidden>
+
+  
+
 
 ## Azure Kubernetes Service (AKS)
 
@@ -992,9 +994,6 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
-
-
-  </div>
 
 
 

@@ -1,5 +1,7 @@
 # Meeting minutes
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 In this tutorial, we'll harness the power of OpenAI's Whisper and GPT models to develop an automated meeting minutes generator. The application transcribes audio from a meeting, provides a summary of the discussion, extracts key points and action items, and performs a sentiment analysis.
 
 ## Getting started
@@ -19,37 +21,38 @@ pip install python-docx
 
 ## Transcribing audio with Whisper
 
-<div className="sandbox-preview">
-  <div className="sandbox-screenshot-small">
-    </div>
-  <div className="preview-info">
-    <div className="description">
-      The first step in transcribing the audio from a meeting is to pass the
+
+
+  
+
+    The first step in transcribing the audio from a meeting is to pass the
       audio file of the meeting into our 
-      <a href="/api/docs/api-reference/audio">/v1/audio API</a>. Whisper, the
+      [/v1/audio API](https://developers.openai.com/api/reference/resources/audio). Whisper, the
       model that powers the audio API, is capable of converting spoken language
       into written text. To start, we will avoid passing a 
-      <a href="/api/docs/api-reference/audio/createTranscription#audio/createTranscription-prompt">
-        prompt
-      </a> 
+      [prompt](https://developers.openai.com/api/reference/resources/audio/subresources/transcriptions/methods/create#audio/createTranscription-prompt) 
       or 
-      <a href="/api/docs/api-reference/audio/createTranscription#audio/createTranscription-temperature-4">
-        temperature
-      </a> 
+      [temperature](https://developers.openai.com/api/reference/resources/audio/subresources/transcriptions/methods/create#audio/createTranscription-temperature-4) 
       (optional parameters to control the model's output) and stick with the
       default values.
-    </div>
-    <div className="actions">
+    
+
+    
+
       
 
 Download sample audio
 
 
-    </div>
-  </div>
-</div>
+    
 
-<br />
+  
+
+
+
+
+
+
 
 Next, we import the required packages and define a function that uses the Whisper model to take in the audio file and
 transcribe it:
@@ -75,7 +78,7 @@ In this function, `audio_file_path` is the path to the audio file you want to tr
 
 ## Summarizing and analyzing the transcript with a GPT model
 
-Having obtained the transcript, we now pass it to a GPT model via the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). The snippets below use a tested model to generate a summary, extract key points, action items, and perform sentiment analysis. For new projects, start with [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol).
+Having obtained the transcript, we now pass it to a GPT model via the [Chat Completions API](https://developers.openai.com/api/reference/resources/chat). The snippets below use a tested model to generate a summary, extract key points, action items, and perform sentiment analysis. For new projects, start with [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol).
 
 This tutorial uses distinct functions for each task we want the model to perform. This is not the most efficient way to do this task - you can put these instructions into one function, however, splitting them up can lead to higher quality summarization.
 
@@ -182,22 +185,25 @@ def sentiment_analysis(transcription):
 
 ## Exporting meeting minutes
 
-<div className="sandbox-preview">
-  <div className="sandbox-screenshot-small">
-    </div>
-  <div className="preview-info">
-    <div className="description">
-      Once we've generated the meeting minutes, it's beneficial to save them
+
+
+  
+
+    Once we've generated the meeting minutes, it's beneficial to save them
       into a readable format that can be easily distributed. One common format
       for such reports is Microsoft Word. The Python docx library is a popular
       open source library for creating Word documents. If you wanted to build an
       end-to-end meeting minute application, you might consider removing this
       export step in favor of sending the summary inline as an email followup.
-    </div>
-  </div>
-</div>
+    
 
-<br></br>
+  
+
+
+
+
+
+</br>
 
 To handle the exporting process, define a function `save_as_docx` that converts the raw text to a Word document:
 

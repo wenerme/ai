@@ -26,12 +26,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Gemma 3 models are well-suited for a variety of text generation and image understanding tasks, including question answering, summarization, and reasoning. Gemma 3 models are multimodal, handling text and image input and generating text output, with a large, 128K context window, multilingual support in over 140 languages, and is available in more sizes than previous versions.
 
-| Model Info                                                                 |                                                     |
-| -------------------------------------------------------------------------- | --------------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                           |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 80,000 tokens                                       |
-| LoRA                                                                       | Yes                                                 |
-| Unit Pricing                                                               | $0.35 per M input tokens, $0.56 per M output tokens |
+| Model Info                                                                          |                                                     |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                           |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens                                       |
+| LoRA                                                                                | Yes                                                 |
+| Unit Pricing                                                                        | $0.35 per M input tokens, $0.56 per M output tokens |
 
 ## Playground
 

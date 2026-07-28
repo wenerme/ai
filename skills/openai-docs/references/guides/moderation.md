@@ -1,6 +1,8 @@
 # Moderation
 
-Use OpenAI moderation models to detect harmful content in text and images. You can classify standalone inputs with the [moderation endpoint](https://developers.openai.com/api/docs/api-reference/moderations) or request moderation scores alongside a generated response. Use the results to enforce your application's policy, such as filtering content, routing a request for review, or intervening with accounts that submit flagged content.
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+Use OpenAI moderation models to detect harmful content in text and images. You can classify standalone inputs with the [moderation endpoint](https://developers.openai.com/api/reference/resources/moderations) or request moderation scores alongside a generated response. Use the results to enforce your application's policy, such as filtering content, routing a request for review, or intervening with accounts that submit flagged content.
 
 The `omni-moderation-latest` model accepts text and image inputs. It doesn't classify audio. The moderation endpoint is free to use, and image files can be up to 20 MB.
 
@@ -102,16 +104,127 @@ If you stream a generated response, moderation scores arrive after the full gene
 
 ## Classify standalone inputs
 
-Use the [moderation endpoint](https://developers.openai.com/api/docs/api-reference/moderations) to classify text or image inputs without generating a model response. The tabs below show how to use the [OpenAI libraries](https://developers.openai.com/api/docs/libraries) and the [`omni-moderation-latest` model](https://developers.openai.com/api/docs/models#moderation):
+Use the [moderation endpoint](https://developers.openai.com/api/reference/resources/moderations) to classify text or image inputs without generating a model response. The tabs below show how to use the [OpenAI libraries](https://developers.openai.com/api/docs/libraries) and the [`omni-moderation-latest` model](https://developers.openai.com/api/docs/models#moderation):
 
 
 
-<div data-content-switcher-pane data-value="text">
-    <div class="hidden">Moderate text inputs</div>
-    </div>
-  <div data-content-switcher-pane data-value="images" hidden>
-    <div class="hidden">Moderate images and text</div>
-    </div>
+Moderate text inputs
+
+    
+
+Get classification information for a text input
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.moderations.create(
+    model="omni-moderation-latest",
+    input="...text to classify goes here...",
+)
+
+print(response)
+```
+
+```javascript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+const moderation = await openai.moderations.create({
+  model: "omni-moderation-latest",
+  input: "...text to classify goes here...",
+});
+
+console.log(moderation);
+```
+
+```bash
+curl https://api.openai.com/v1/moderations \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "omni-moderation-latest",
+    "input": "...text to classify goes here..."
+  }'
+```
+
+
+  
+
+  
+
+    
+Moderate images and text
+
+    
+
+Get classification information for image and text input
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.moderations.create(
+    model="omni-moderation-latest",
+    input=[
+        {"type": "text", "text": "...text to classify goes here..."},
+        {
+            "type": "image_url",
+            "image_url": {
+                "url": "https://example.com/image.png",
+                # You can also use a Base64 encoded image URL.
+                # "url": "data:image/jpeg;base64,abcdefg..."
+            },
+        },
+    ],
+)
+
+print(response)
+```
+
+```javascript
+import OpenAI from "openai";
+const openai = new OpenAI();
+
+const moderation = await openai.moderations.create({
+  model: "omni-moderation-latest",
+  input: [
+    { type: "text", text: "...text to classify goes here..." },
+    {
+      type: "image_url",
+      image_url: {
+        url: "https://example.com/image.png",
+        // You can also use a Base64 encoded image URL.
+        // url: "data:image/jpeg;base64,abcdefg...",
+      },
+    },
+  ],
+});
+
+console.log(moderation);
+```
+
+```bash
+curl https://api.openai.com/v1/moderations \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "omni-moderation-latest",
+    "input": [
+      { "type": "text", "text": "...text to classify goes here..." },
+      {
+        "type": "image_url",
+        "image_url": {
+          "url": "https://example.com/image.png"
+        }
+      }
+    ]
+  }'
+```
 
 
 
@@ -232,13 +345,13 @@ Categories marked as "Text only" do not support image inputs. If you send only
 <table>
   <tr>
     <th>
-      <strong>Category</strong>
+      **Category**
     </th>
     <th>
-      <strong>Description</strong>
+      **Description**
     </th>
     <th>
-      <strong>Inputs</strong>
+      **Inputs**
     </th>
   </tr>
   <tr>

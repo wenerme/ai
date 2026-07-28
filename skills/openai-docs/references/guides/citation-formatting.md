@@ -1,5 +1,7 @@
 # Citation Formatting
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Reliable citations build trust and help readers verify the accuracy of responses. This guide provides practical guidance on how to prepare citable material and instruct the model to format citations effectively, using patterns that are familiar to OpenAI models.
 
 ## Overview
@@ -53,10 +55,10 @@ Updated: 2026-03-01
 [L3] Exceptions may apply for approved accommodations.
 ```
 
-<strong>Source IDs vs. locators:</strong> A source ID is a stable,
-  model-generated identifier such as <code>block1</code>. A locator is the
-  precise UI-rendered highlight, such as <code>lines L8-L13</code> or 
-  <code>Paragraph 21</code>. In general, the model should emit the source ID,
+**Source IDs vs. locators:** A source ID is a stable,
+  model-generated identifier such as `block1`. A locator is the
+  precise UI-rendered highlight, such as `lines L8-L13` or 
+  `Paragraph 21`. In general, the model should emit the source ID,
   while your system resolves or renders the locator. Mixing the two too early
   tends to increase formatting errors.
 
@@ -79,13 +81,13 @@ our models are trained on. If you choose different marker values, keep the overa
 | Locator (optional)   | Narrows the citation to a precise span.                                                             | `L8-L13`                                 |
 | `CITATION_STOP`      | Closes the citation marker.                                                                         | `\ue201`                                 |
 
-For tool calls, <code>turnN</code> increments once per tool invocation, not
+For tool calls, `turnN` increments once per tool invocation, not
   once per individual result. Within a single invocation, sources are
-  distinguished by suffixes such as <code>file0</code>, <code>file1</code>, and
+  distinguished by suffixes such as `file0`, `file1`, and
   so on. In a single-response system, all references will be 
-  <code>turn0...</code> only if the model makes exactly one tool call before
+  `turn0...` only if the model makes exactly one tool call before
   answering. If it makes multiple tool calls, you may instead see references
-  like <code>turn0fileX</code>, <code>turn1fileX</code>, and so on.
+  like `turn0fileX`, `turn1fileX`, and so on.
 
 ### Template
 
@@ -538,8 +540,8 @@ Example output:
 The Court held that the District Court lacked personal jurisdiction over the petitioner. \ue200cite\ue202block5\ue201
 ```
 
-<strong>Note:</strong> OpenAI-hosted tools such as web search provide
+**Note:** OpenAI-hosted tools such as web search provide
   automatic inline citations. If you want to use hosted tools instead, see the 
-  <a href="/api/docs/guides/tools">tools overview</a>, 
-  <a href="/api/docs/guides/tools-web-search">web search guide</a>, and 
-  <a href="/api/docs/guides/tools-file-search">file search guide</a>.
+  [tools overview](https://developers.openai.com/api/docs/guides/tools), 
+  [web search guide](https://developers.openai.com/api/docs/guides/tools-web-search), and 
+  [file search guide](https://developers.openai.com/api/docs/guides/tools-file-search).

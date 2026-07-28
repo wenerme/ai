@@ -1,5 +1,7 @@
 # Results and state
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 When you run an agent, the result is more than just the final answer. It's also the handoff boundary, the next-turn continuation surface, and the resumable snapshot when a run pauses for review.
 
 ## Choose the result surface you need
@@ -8,11 +10,11 @@ Most applications only need a small set of result properties:
 
 | If you need                                          | Use                                                                                 |
 | ---------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| The final answer to show the user                    | |
-| Local replay-ready history                           | |
-| The specialist that should usually own the next turn | |
-| OpenAI-managed response chaining                     | |
-| Pending approvals and a resumable snapshot           | `interruptions` plus |
+| The final answer to show the user                    | `finalOutput` in TypeScript or `final_output` in Python              |
+| Local replay-ready history                           | `history` in TypeScript or `to_input_list()` in Python               |
+| The specialist that should usually own the next turn | `lastAgent` in TypeScript or `last_agent` in Python                  |
+| OpenAI-managed response chaining                     | `lastResponseId` in TypeScript or `last_response_id` in Python       |
+| Pending approvals and a resumable snapshot           | `interruptions` plus `state` in TypeScript or `to_state()` in Python |
 
 Those are the guide-level surfaces to learn first. Richer run items, raw model responses, and detailed diagnostics still belong in the SDK docs and reference material.
 
@@ -20,19 +22,19 @@ Those are the guide-level surfaces to learn first. Richer run items, raw model r
 
 Use the result in a way that matches your continuation strategy:
 
-- If your application owns full local history, reuse .
+- If your application owns full local history, reuse `history` in TypeScript or `to_input_list()` in Python.
 - If you are using a session, keep passing the same session and let the SDK load and persist history for you.
 - If you are using server-managed continuation, pass only the new user input and reuse the stored ID instead of replaying the full transcript.
-- After handoffs, reuse when that specialist should stay in control for the next turn.
+- After handoffs, reuse `lastAgent` in TypeScript or `last_agent` in Python when that specialist should stay in control for the next turn.
 
 ## Interrupted runs return state, not a final answer
 
 Approval flows are the main case where a result is intentionally incomplete.
 
-- can
+- `finalOutput` in TypeScript or `final_output` in Python can
   stay empty because the run hasn't actually finished.
 - `interruptions` tells you which pending tool calls need a decision.
-- is the saved
+- `state` in TypeScript or `to_state()` in Python is the saved
   snapshot you pass back into the runtime after approving or rejecting those
   items.
 
@@ -48,42 +50,21 @@ Those are useful for audits, custom interfaces, and deep debugging, but they don
 
 Once you know which result surfaces matter, continue with the guide that explains how those surfaces get produced or inspected.
 
-<div class="not-prose mt-4 grid gap-3">
-  <a
-    href="/api/docs/guides/agents/running-agents"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      Connect result handling back to the runtime loop and continuation
-      strategy.
 
 
-  </a>
-  <a
-    href="/api/docs/guides/agents/guardrails-approvals"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      See how paused runs return interruptions and resumable state.
+  [Running agents
 
 
-  </a>
-  <a
-    href="/api/docs/guides/agents/integrations-observability"
-    class="block no-underline hover:no-underline"
-  >
-    
 
-<span slot="icon">
-        </span>
-      Use traces when you need to inspect the richer workflow record.
+        Connect result handling back to the runtime loop and continuation
+      strategy.](https://developers.openai.com/api/docs/guides/agents/running-agents)
+  [Guardrails and human review
 
 
-  </a>
-</div>
+
+        See how paused runs return interruptions and resumable state.](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
+  [Integrations and observability
+
+
+
+        Use traces when you need to inspect the richer workflow record.](https://developers.openai.com/api/docs/guides/agents/integrations-observability)

@@ -24,13 +24,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Gemini 3.6 Flash provides sustained frontier-level intelligence optimized for real-world tasks at a higher speed and lower cost, excelling at code generation, agentic execution, and spatial reasoning.
 
-| Model Info                                                                 |                                                                                                                           |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,048,576 tokens                                                                                                          |
-| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
-| More information                                                           | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
-| Request formats                                                            | Chat Completions                                                                                                          |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.6-flash) |
+| Model Info                                                                          |                                                                                                                           |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens                                                                                                          |
+| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                          |
+| More information                                                                    | [link ↗](https://deepmind.google/technologies/gemini/)                                                                    |
+| Request formats                                                                     | Chat Completions                                                                                                          |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.6-flash) |
 
 ## Usage
 

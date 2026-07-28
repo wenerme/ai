@@ -54,9 +54,9 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
   Server tools are currently in beta. The API and behavior may change.
 </Note>
 
-The `openrouter:fusion` server tool gives any model access to multi-model deliberation. When your model decides a prompt benefits from multiple perspectives, it invokes this tool — a panel of models answers in parallel, a judge compares their responses, and the structured analysis comes back to your model for the final answer.
+The `openrouter:fusion` server tool gives any model access to multi-model deliberation. When your model decides a prompt benefits from multiple perspectives, it invokes this tool — a panel of models answers in parallel, an analyst compares their responses, and the structured analysis comes back to your model for the final answer.
 
-This is the same pipeline behind the [`openrouter/fusion` model alias](/docs/guides/routing/routers/fusion-router) and the [`fusion` plugin](/docs/guides/features/plugins/fusion). Using the server tool directly gives you the most control: choose your own outer model, combine it with other tools, and configure the panel and judge independently.
+This is the same pipeline behind the [`openrouter/fusion` model alias](/docs/guides/routing/routers/fusion-router) and the [`fusion` plugin](/docs/guides/features/plugins/fusion). Using the server tool directly gives you the most control: choose your own outer model, combine it with other tools, and configure the panel and analyst independently.
 
 ## Quick start
 
@@ -151,14 +151,14 @@ Pass an optional `parameters` object on the tool entry to override defaults:
 }
 ```
 
-| Field                   | Default                                                                                             | Description                                                                                                                                                             |
-| ----------------------- | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `analysis_models`       | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch` enabled. 1–8 models allowed.                                  |
-| `model`                 | Your outer model                                                                                    | The judge that produces the structured analysis JSON. Defaults to the same model handling your request.                                                                 |
-| `max_tool_calls`        | `8`                                                                                                 | Max tool-calling steps each panel model and the judge may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16. |
-| `max_completion_tokens` | Provider default                                                                                    | Max output tokens (including reasoning) per inner panel/judge call. Keeps reasoning-heavy models from exhausting their budget before producing visible text.            |
-| `reasoning`             | Provider default                                                                                    | Reasoning config forwarded to the panel and judge calls — an object with optional `effort` and `max_tokens`.                                                            |
-| `temperature`           | Provider default                                                                                    | Temperature (`0`–`2`) forwarded to the panel calls. The judge always runs at temperature 0.                                                                             |
+| Field                   | Default                                                                                             | Description                                                                                                                                                               |
+| ----------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `analysis_models`       | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch` enabled. 1–8 models allowed.                                    |
+| `model`                 | Your outer model                                                                                    | The analyst that produces the structured analysis JSON. Defaults to the same model handling your request.                                                                 |
+| `max_tool_calls`        | `8`                                                                                                 | Max tool-calling steps each panel model and the analyst may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16. |
+| `max_completion_tokens` | Provider default                                                                                    | Max output tokens (including reasoning) per inner panel/analyst call. Keeps reasoning-heavy models from exhausting their budget before producing visible text.            |
+| `reasoning`             | Provider default                                                                                    | Reasoning config forwarded to the panel and analyst calls — an object with optional `effort` and `max_tokens`.                                                            |
+| `temperature`           | Provider default                                                                                    | Temperature (`0`–`2`) forwarded to the panel calls. The analyst always runs at temperature 0.                                                                             |
 
 ## What the tool returns
 
@@ -190,9 +190,9 @@ On success, the tool result contains the structured analysis and the raw panel r
 
 When some panel models error but at least one succeeds, the result still has `status: "ok"` and adds a `failed_models` array describing which ones failed and why.
 
-### Judge degradation
+### Analyst degradation
 
-If the **panel** succeeds but the **judge** fails — an upstream error, an empty completion, or output that isn't valid analysis JSON — the tool does **not** error. It returns `status: "ok"` with the raw panel `responses` and simply **omits** `analysis`. Your model can still write the final answer from the panel responses:
+If the **panel** succeeds but the **analyst** fails — an upstream error, an empty completion, or output that isn't valid analysis JSON — the tool does **not** error. It returns `status: "ok"` with the raw panel `responses` and simply **omits** `analysis`. Your model can still write the final answer from the panel responses:
 
 ```json lines theme={null}
 {
@@ -227,11 +227,11 @@ The calling model can fall back to answering without the analysis whenever fusio
 
 ## Web tools
 
-`openrouter:web_search` and `openrouter:web_fetch` are enabled on both the **panel** and the **judge** calls, so models can pull fresh sources while they answer and analyze. The judge compares the panel responses rather than merging them: it treats what all or most models agree on as higher-confidence consensus, surfaces contradictions, preserves unique insights from individual models, and flags blind spots none of them addressed. The outer model writes the final answer from that analysis — so the result isn't a simple majority vote.
+`openrouter:web_search` and `openrouter:web_fetch` are enabled on both the **panel** and the **analyst** calls, so models can pull fresh sources while they answer and analyze. The analyst compares the panel responses rather than merging them: it treats what all or most models agree on as higher-confidence consensus, surfaces contradictions, preserves unique insights from individual models, and flags blind spots none of them addressed. The outer model writes the final answer from that analysis — so the result isn't a simple majority vote.
 
 ## Recursion protection
 
-Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge models cannot recursively invoke `openrouter:fusion` — the plugin refuses to inject the tool a second time, keeping deliberation bounded to a single level.
+Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and analyst models cannot recursively invoke `openrouter:fusion` — the plugin refuses to inject the tool a second time, keeping deliberation bounded to a single level.
 
 ## Related
 

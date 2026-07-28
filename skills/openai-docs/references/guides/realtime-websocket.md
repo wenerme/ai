@@ -1,5 +1,7 @@
 # Realtime API with WebSocket
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) are a broadly supported API for realtime data transfer, and a great choice for connecting to the OpenAI Realtime API in server-to-server applications. For browser and mobile clients, we recommend connecting via [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc).
 
 In a server-to-server integration with Realtime, your backend system will connect via WebSocket directly to the Realtime API. You can use a [standard API key](https://platform.openai.com/settings/organization/api-keys) to authenticate this connection, since the token will only be available on your secure backend server.
@@ -14,8 +16,8 @@ It is possible to use WebSocket in browsers with an ephemeral API token as shown
 
 
 
-<div data-content-switcher-pane data-value="ws">
-    <div class="hidden">ws module (Node.js)</div>
+ws module (Node.js)
+
     Connect using the ws module (Node.js)
 
 ```javascript
@@ -38,9 +40,13 @@ ws.on("message", function incoming(message) {
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="python" hidden>
-    <div class="hidden">websocket-client (Python)</div>
+  
+
+  
+
+    
+websocket-client (Python)
+
     Connect with websocket-client (Python)
 
 ```python
@@ -79,9 +85,13 @@ ws = websocket.WebSocketApp(
 ws.run_forever()
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="websocket" hidden>
-    <div class="hidden">WebSocket (browsers)</div>
+  
+
+  
+
+    
+WebSocket (browsers)
+
     Connect with standard WebSocket (browsers)
 
 ```javascript
@@ -113,13 +123,11 @@ ws.addEventListener("message", function incoming(event) {
 });
 ```
 
-  </div>
-
 
 
 ## Sending and receiving events
 
-Realtime API sessions are managed using a combination of [client-sent events](https://developers.openai.com/api/docs/api-reference/realtime_client_events/session) emitted by you as the developer, and [server-sent events](https://developers.openai.com/api/docs/api-reference/realtime_server_events/error) created by the Realtime API to indicate session lifecycle events.
+Realtime API sessions are managed using a combination of [client-sent events](https://developers.openai.com/api/reference/resources/realtime/client-events#session.update) emitted by you as the developer, and [server-sent events](https://developers.openai.com/api/reference/resources/realtime/server-events#error) created by the Realtime API to indicate session lifecycle events.
 
 Over a WebSocket, you will both send and receive JSON-serialized events as strings of text, as in this Node.js example below (the same principles apply for other WebSocket libraries):
 

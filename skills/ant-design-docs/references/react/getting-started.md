@@ -16,7 +16,7 @@ Ant Design React 致力于提供给程序员**愉悦**的开发体验。
 
 这是一个最简单的 Ant Design 组件的在线 codesandbox 演示。
 
-> Demo: 第一个例子 (source not bundled: ./demo/first-example.tsx)
+> Demo: 第一个例子 (source not bundled: ./_demo/first-example.tsx)
 
 ### 1. 创建一个 codesandbox
 

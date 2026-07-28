@@ -1,5 +1,5 @@
 ---
-description: Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.
+description: Reference the deprecated, feature-frozen McpAgent class while migrating existing stateful MCP servers to stateless handlers.
 title: McpAgent
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,9 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # McpAgent
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When you build MCP Servers on Cloudflare, you extend the [McpAgent class ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/mcp/index.ts#L32-L620), from the Agents SDK:
+`McpAgent` creates a stateful legacy MCP server backed by a Durable Object.
+
+Deprecated
+
+`McpAgent` remains available only for existing legacy servers while they migrate. It is deprecated and feature-frozen. Migrate to [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) at your earliest convenience.
+
+A server that depends on MCP session state, RPC, pushed server-to-client requests, standalone streams, or replay needs a staged migration. Design stateless equivalents, add a stateless route, and serve both lanes until clients migrate and existing sessions drain.
+
+Keep importing the legacy server `McpServer` from `@modelcontextprotocol/sdk`. An SDK v2 server from `@modelcontextprotocol/server` cannot run inside `McpAgent`.
+
+Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for the feature mapping and dual-era rollout.
 
 ```js
 import { McpAgent } from "agents/mcp";
@@ -58,7 +68,7 @@ export class MyMCP extends McpAgent {
 
 This means that each instance of your MCP server has its own durable state, backed by a [Durable Object](https://developers.cloudflare.com/durable-objects/), with its own [SQL database](https://developers.cloudflare.com/agents/runtime/lifecycle/state/).
 
-Your MCP server doesn't necessarily have to be an Agent. You can build MCP servers that are stateless, and just add [tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/) to your MCP server using the `@modelcontextprotocol/sdk` package.
+A stateless server can define [tools](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/) with `@modelcontextprotocol/server` and serve them through `createMcpHandler`.
 
 But if you want your MCP server to:
 
@@ -349,9 +359,9 @@ export class MyMCP extends McpAgent<Env, State, {}> {
 }
 ```
 
-## Elicitation
+## Elicitation on legacy servers
 
-[MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) lets a server request user input while handling another request, such as a tool call. The current stable MCP specification defines two modes:
+[MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) lets a server request user input while handling another request, such as a tool call. The legacy path defines two modes:
 
 * **Form mode** collects structured, non-sensitive data through the client.
 * **URL mode** sends the user to an out-of-band interaction, such as third-party authorization or payment.
@@ -518,7 +528,7 @@ switch (result.action) {
 
 MCP client support
 
-Not all MCP clients implement elicitation. Check the client before depending on it and provide a fallback when appropriate. Agents acting as MCP clients can handle both modes through [MCP client elicitation handlers](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#elicitation).
+Not all MCP clients implement legacy elicitation. Check the client before depending on it and provide a fallback when appropriate. Agents acting as MCP clients can handle both modes through [MCP client elicitation handlers](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/#elicitation).
 
 For more human-in-the-loop patterns, refer to [Human-in-the-loop patterns](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/).
 
@@ -553,5 +563,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Build stateful MCP servers on Cloudflare by extending the McpAgent class with persistent storage and agent capabilities.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#page","headline":"McpAgent · Cloudflare Agents docs","description":"Reference the deprecated, feature-frozen McpAgent class while migrating existing stateful MCP servers to stateless handlers.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

@@ -1,5 +1,7 @@
 # Migrate from prompt objects
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 OpenAI is deprecating reusable prompt objects in the API. Prompt creation will
   be de-emphasized beginning June 3, 2026, and `v1/prompts` is scheduled to shut
   down on November 30, 2026. See the [deprecations

@@ -1,8 +1,10 @@
 # Evaluation best practices
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Generative AI is variable. Models sometimes produce different output from the same input, which makes traditional software testing methods insufficient for AI architectures. Evaluations (**evals**) are a way to test your AI system despite this variability.
 
-This guide provides high-level guidance on designing evals. To get started with the [Evals API](https://developers.openai.com/api/docs/api-reference/evals), see [evaluating model performance](https://developers.openai.com/api/docs/guides/evals).
+This guide provides high-level guidance on designing evals. To get started with the [Evals API](https://developers.openai.com/api/reference/resources/evals), see [evaluating model performance](https://developers.openai.com/api/docs/guides/evals).
 
 OpenAI is deprecating the Evals platform. Existing evals content remains
   available during the transition window. Evals will become read-only for
@@ -30,7 +32,8 @@ This guide is about the third type: designing your own evals.
 You'll often see numerical eval scores between 0 and 1. There's more to evals than just scores. Combine metrics with human judgment to ensure you're answering the right questions.
 
 **Evals tips**
-<br/>
+
+
 - Adopt eval-driven development: Evaluate early and often. Write scoped tests at every stage.
 - Design task-specific evals: Make tests reflect model capability in real-world distributions.
 - Log everything: Log as you develop so you can mine your logs for good eval cases.
@@ -40,7 +43,8 @@ You'll often see numerical eval scores between 0 and 1. There's more to evals th
 
 **Anti-patterns**
 
-<br/>
+
+
 - Overly generic metrics: Relying solely on academic metrics like perplexity or BLEU score.
 - Biased design: Creating eval datasets that don't faithfully reproduce production traffic patterns.
 - Vibe-based evals: Using "it seems like it's working" as an evaluation strategy, or waiting until you ship before implementing any evals.
@@ -62,15 +66,20 @@ Let's run through a few examples.
 
 To test your LLM-based application's ability to summarize transcripts, your eval design might be:
 
-1. **Define eval objective**<br/>
+1. **Define eval objective**
+
    The model should be able to compete with reference summaries for relevance and accuracy.
-1. **Collect dataset**<br/>
+1. **Collect dataset**
+
    Use a mix of production data (collected from user feedback on generated summaries) and datasets created by domain experts (writers) to determine a "good" summary.
-1. **Define eval metrics**<br/>
+1. **Define eval metrics**
+
    On a held-out set of 1000 reference transcripts → summaries, the implementation should achieve a ROUGE-L score of at least 0.40 and coherence score of at least 80% using G-Eval.
-1. **Run and compare evals**<br/>
+1. **Run and compare evals**
+
    Use the [Evals API](https://developers.openai.com/api/docs/guides/evals) to create and run evals in the OpenAI dashboard.
-1. **Continuously evaluate**<br/>
+1. **Continuously evaluate**
+
    Set up continuous evaluation (CE) to run evals on every change, monitor your app to identify new cases of nondeterminism, and grow the eval set over time.
 
 LLMs are better at discriminating between options. Therefore, evaluations
@@ -83,15 +92,20 @@ LLMs are better at discriminating between options. Therefore, evaluations
 
 To test your LLM-based application's ability to do Q&A over docs, your eval design might be:
 
-1. **Define eval objective**<br/>
+1. **Define eval objective**
+
    The model should be able to provide precise answers, recall context as needed to reason through user prompts, and provide an answer that satisfies the user's need.
-1. **Collect dataset**<br/>
+1. **Collect dataset**
+
    Use a mix of production data (collected from users' satisfaction with answers provided to their questions), hard-coded correct answers to questions created by domain experts, and historical data from logs.
-1. **Define eval metrics**<br/>
+1. **Define eval metrics**
+
    Context recall of at least 0.85, context precision of over 0.7, and 70+% positively rated answers.
-1. **Run and compare evals**<br/>
+1. **Run and compare evals**
+
    Use the [Evals API](https://developers.openai.com/api/docs/guides/evals) to create and run evals in the OpenAI dashboard.
-1. **Continuously evaluate**<br/>
+1. **Continuously evaluate**
+
    Set up continuous evaluation (CE) to run evals on every change, monitor your app to identify new cases of nondeterminism, and grow the eval set over time.
 
 When creating an eval dataset, 
@@ -139,8 +153,10 @@ To ensure a consistent, efficient user experience, the model should **only retur
     <td>
       **Instruction following**: Does the model accurately understand and act
       according to the provided instructions?
-      <br />
-      <br />
+      
+
+      
+
       **Instruction following**: Does the model prioritize the system prompt
       over a conflicting user prompt?
     </td>
@@ -187,19 +203,25 @@ Each step in this workflow has its own system prompt that the model must follow,
     <td>
       **Instruction following**: Does the model accurately understand and act
       according to the provided instructions?
-      <br />
-      <br />
+      
+
+      
+
       **Instruction following**: Does the model prioritize the system prompt
       over a conflicting user prompt?
     </td>
     <td>
       Does the model stay focused on the triage task or get swayed by the user's
       question?
-      <br />
-      <br /> Does the model follow instructions to attempt to extract an Order
+      
+
+      
+ Does the model follow instructions to attempt to extract an Order
       ID?
-      <br />
-      <br />
+      
+
+      
+
       Does the final response include the order status, estimated arrival date,
       and tracking number?
     </td>
@@ -213,8 +235,10 @@ Each step in this workflow has its own system prompt that the model must follow,
     <td>
       Does the model's determination of intent correctly match the expected
       intent?
-      <br />
-      <br />
+      
+
+      
+
       Does the final response have the correct order status, estimated arrival
       date, and tracking number?
     </td>
@@ -251,16 +275,20 @@ When the customer asks about their order status, the agent dynamically decides t
     <td>
       **Instruction following**: Does the model accurately understand and act
       according to the provided instructions?
-      <br />
-      <br />
+      
+
+      
+
       **Instruction following**: Does the model prioritize the system prompt
       over a conflicting user prompt?
     </td>
     <td>
       Does the model stay focused on the triage task or get swayed by the user's
       question?
-      <br />
-      <br />
+      
+
+      
+
       Does the model follow instructions to attempt to extract an Order ID?
     </td>
   </tr>
@@ -280,8 +308,10 @@ When the customer asks about their order status, the agent dynamically decides t
     <td>
       **Tool selection**: Evaluations that test whether the agent is able to
       select the correct tool to use.
-      <br />
-      <br />
+      
+
+      
+
       **Data precision**: Evaluations that verify the agent calls the tool with
       the correct arguments. Typically these arguments are extracted from the
       conversation history, so the goal is to validate this extraction was
@@ -290,8 +320,10 @@ When the customer asks about their order status, the agent dynamically decides t
     <td>
       When the user asks about their order status, does the model correctly
       recommend invoking the order lookup tool?
-      <br />
-      <br />
+      
+
+      
+
       Does the model correctly extract the user-provided order ID to the lookup
       tool?
     </td>
@@ -325,24 +357,42 @@ When the customer asks about their order status, the triage agent may hand off t
   </tr>
   <tr>
     <td>Inputs provided by the developer and user</td>
-    <td>**Instruction following**: Does the model accurately understand and act according to the provided instructions?<br/><br/>**Instruction following**: Does the model prioritize the system prompt over a conflicting user prompt?</td>
-    <td>Does the model stay focused on the triage task or get swayed by the user's question?<br/><br/>Assuming the `lookup_order` call returned, does the order agent return a tracking number and delivery date (doesn't have to be the correct one)?</td>
+    <td>**Instruction following**: Does the model accurately understand and act according to the provided instructions?
+
+**Instruction following**: Does the model prioritize the system prompt over a conflicting user prompt?</td>
+    <td>Does the model stay focused on the triage task or get swayed by the user's question?
+
+Assuming the `lookup_order` call returned, does the order agent return a tracking number and delivery date (doesn't have to be the correct one)?</td>
   </tr>
   <tr>
     <td>Outputs generated by the model</td>
     <td>**Functional correctness**: Are the model's outputs are accurate, relevant, and thorough enough to fulfill the intended task or objective?</td>
-    <td>Does the model's determination of intent correctly match the expected intent?<br/><br/>Assuming the `lookup_order` call returned, does the order agent provide the correct tracking number and delivery date in its response?<br/><br/>Does the order agent follow system instructions to ask the customer their reason for requesting a return before processing the return?</td>
+    <td>Does the model's determination of intent correctly match the expected intent?
+
+Assuming the `lookup_order` call returned, does the order agent provide the correct tracking number and delivery date in its response?
+
+Does the order agent follow system instructions to ask the customer their reason for requesting a return before processing the return?</td>
   </tr>
   <tr>
     <td>Tools chosen by the model</td>
-    <td>**Tool selection**: Evaluations that test whether the agent is able to select the correct tool to use.<br/><br/>**Data precision**: Evaluations that verify the agent calls the tool with the correct arguments. Typically these arguments are extracted from the conversation history, so the goal is to validate this extraction was correct.</td>
-    <td>Does the order agent correctly call the lookup order tool?<br/><br/>Does the order agent correctly call the `refund_order` tool?<br/><br/>Does the order agent call the lookup order tool with the correct order ID?<br/><br/>Does the account agent correctly call the `reset_password` tool with the correct account ID?</td>
+    <td>**Tool selection**: Evaluations that test whether the agent is able to select the correct tool to use.
+
+**Data precision**: Evaluations that verify the agent calls the tool with the correct arguments. Typically these arguments are extracted from the conversation history, so the goal is to validate this extraction was correct.</td>
+    <td>Does the order agent correctly call the lookup order tool?
+
+Does the order agent correctly call the `refund_order` tool?
+
+Does the order agent call the lookup order tool with the correct order ID?
+
+Does the account agent correctly call the `reset_password` tool with the correct account ID?</td>
   </tr>
 
   <tr>
     <td>Agent handoff</td>
     <td>**Agent handoff accuracy**: Evaluations that test whether each agent can appropriately recognize the decision boundary for triaging to another agent</td>
-    <td>When a user asks about order status, does the triage agent correctly pass to the order agent?<br/><br/>When the user changes the subject to talk about the latest product, does the order agent hand back control to the triage agent?</td>
+    <td>When a user asks about order status, does the triage agent correctly pass to the order agent?
+
+When the user changes the subject to talk about the latest product, does the order agent hand back control to the triage agent?</td>
   </tr>
 </table>
 
@@ -441,4 +491,4 @@ For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/
 - [How to evaluate a summarization task](https://developers.openai.com/cookbook/examples/evaluation/how_to_eval_abstractive_summarization)
 - [Fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization)
 - [Graders](https://developers.openai.com/api/docs/guides/graders)
-- [Evals API reference](https://developers.openai.com/api/docs/api-reference/evals)
+- [Evals API reference](https://developers.openai.com/api/reference/resources/evals)

@@ -53,6 +53,8 @@ There are two equivalent ways to request pro mode:
 
 `mode` is independent of `effort`, so you can combine `mode: "pro"` with any supported effort level. Pro mode bills at the same per-token rates as standard mode but typically consumes more tokens.
 
+Pro mode is only honored by OpenAI and Azure. Amazon Bedrock's OpenAI-compatible API accepts `reasoning.mode` but silently ignores it, so OpenRouter only routes pro requests to providers that honor mode selection.
+
 See [Reasoning Mode](/docs/guides/best-practices/reasoning-tokens#reasoning-mode) for details.
 
 ## Persisted Reasoning with `reasoning.context`

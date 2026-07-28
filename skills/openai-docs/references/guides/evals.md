@@ -1,8 +1,10 @@
 # Working with evals
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Evaluations (often called **evals**) test model outputs to ensure they meet style and content criteria that you specify. Writing evals to understand how your LLM applications are performing against your expectations, especially when upgrading or trying new models, is an essential component to building reliable applications.
 
-In this guide, we will focus on **configuring evals programmatically using the [Evals API](https://developers.openai.com/api/docs/api-reference/evals)**. If you prefer, you can also configure evals [in the OpenAI dashboard](https://platform.openai.com/evaluations).
+In this guide, we will focus on **configuring evals programmatically using the [Evals API](https://developers.openai.com/api/reference/resources/evals)**. If you prefer, you can also configure evals [in the OpenAI dashboard](https://platform.openai.com/evaluations).
 
 OpenAI is deprecating the Evals platform. Existing evals content remains
   available during the transition window. Evals will become read-only for
@@ -21,13 +23,13 @@ Broadly, there are three steps to build and run evals for your LLM application.
 1. Run your eval with test inputs (a prompt and input data)
 1. Analyze the results, then iterate and improve on your prompt
 
-This process is somewhat similar to behavior-driven development (BDD), where you begin by specifying how the system should behave before implementing and testing the system. Let's see how we would complete each of the steps above using the [Evals API](https://developers.openai.com/api/docs/api-reference/evals).
+This process is somewhat similar to behavior-driven development (BDD), where you begin by specifying how the system should behave before implementing and testing the system. Let's see how we would complete each of the steps above using the [Evals API](https://developers.openai.com/api/reference/resources/evals).
 
 ## Create an eval for a task
 
 Creating an eval begins by describing a task to be done by a model. Let's say that we would like to use a model to classify the contents of IT support tickets into one of three categories: `Hardware`, `Software`, or `Other`.
 
-To implement this use case, you can use either the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat) or the [Responses API](https://developers.openai.com/api/docs/api-reference/responses). Both examples below combine a [developer message](https://developers.openai.com/api/docs/guides/text) with a user message containing the text of a support ticket.
+To implement this use case, you can use either the [Chat Completions API](https://developers.openai.com/api/reference/resources/chat) or the [Responses API](https://developers.openai.com/api/reference/resources/responses). Both examples below combine a [developer message](https://developers.openai.com/api/docs/guides/text) with a user message containing the text of a support ticket.
 
 
   Categorize IT support tickets
@@ -102,7 +104,7 @@ print(response.output_text)
 
 
 
-Let's set up an eval to test this behavior [via API](https://developers.openai.com/api/docs/api-reference/evals). An eval needs two key ingredients:
+Let's set up an eval to test this behavior [via API](https://developers.openai.com/api/reference/resources/evals). An eval needs two key ingredients:
 
 - `data_source_config`: A schema for the test data you will use along with the eval.
 - `testing_criteria`: The [graders](https://developers.openai.com/api/docs/guides/graders) that determine if the model output is correct.
@@ -292,7 +294,7 @@ There are several ways to provide test data for eval runs, but it may be conveni
 
 This data set contains both test inputs and ground truth labels to compare model outputs against.
 
-Next, let's upload our test data file to the OpenAI platform so we can reference it later. You can upload files [in the dashboard here](https://platform.openai.com/storage/files), but it's possible to [upload files via API](https://developers.openai.com/api/docs/api-reference/files/create) as well. The samples below assume you are running the command in a directory where you saved the sample JSON data above to a file called `tickets.jsonl`:
+Next, let's upload our test data file to the OpenAI platform so we can reference it later. You can upload files [in the dashboard here](https://platform.openai.com/storage/files), but it's possible to [upload files via API](https://developers.openai.com/api/reference/resources/files/methods/create) as well. The samples below assume you are running the command in a directory where you saved the sample JSON data above to a file called `tickets.jsonl`:
 
 Upload a test data file
 
@@ -346,7 +348,7 @@ When you upload the file, make note of the unique `id` property in the response 
 
 ### Creating an eval run
 
-With our test data in place, let's evaluate a prompt and see how it performs against our test criteria. Via API, we can do this by [creating an eval run](https://developers.openai.com/api/docs/api-reference/evals/createRun).
+With our test data in place, let's evaluate a prompt and see how it performs against our test criteria. Via API, we can do this by [creating an eval run](https://developers.openai.com/api/reference/resources/evals/methods/create).
 
 Make sure to replace `YOUR_EVAL_ID` and `YOUR_FILE_ID` with the unique IDs of the eval configuration and test data files you created in the steps above.
 
@@ -433,7 +435,7 @@ print(run)
 
 
 
-When we create the run, we set up a prompt using either a [Chat Completions](https://developers.openai.com/api/docs/guides/text?api-mode=chat) messages array or a [Responses](https://developers.openai.com/api/docs/api-reference/responses) input. This prompt is used to generate a model response for every line of test data in your data set. We can use the double curly brace syntax to template in the dynamic variable `item.ticket_text`, which is drawn from the current test data item.
+When we create the run, we set up a prompt using either a [Chat Completions](https://developers.openai.com/api/docs/guides/text?api-mode=chat) messages array or a [Responses](https://developers.openai.com/api/reference/resources/responses) input. This prompt is used to generate a model response for every line of test data in your data set. We can use the double curly brace syntax to template in the dynamic variable `item.ticket_text`, which is drawn from the current test data item.
 
 If the eval run is successfully created, you'll receive an API response that looks like this:
 
@@ -495,7 +497,7 @@ Your eval run has now been queued, and it will execute asynchronously as it proc
 
 To receive updates when a run succeeds, fails, or is canceled, create a webhook endpoint and subscribe to the `eval.run.succeeded`, `eval.run.failed`, and `eval.run.canceled` events. See the [webhooks guide](https://developers.openai.com/api/docs/guides/webhooks) for more details.
 
-Depending on the size of your dataset, the eval run may take some time to complete. You can view current status in the dashboard, but you can also [fetch the current status of an eval run via API](https://developers.openai.com/api/docs/api-reference/evals/getRun):
+Depending on the size of your dataset, the eval run may take some time to complete. You can view current status in the dashboard, but you can also [fetch the current status of an eval run via API](https://developers.openai.com/api/reference/resources/evals/methods/retrieve):
 
 Retrieve eval run status
 
@@ -606,60 +608,32 @@ In our simple test, the model reliably generated the content we wanted for a sma
 
 Now you know how to create and run evals via API, and using the dashboard! Here are a few other resources that may be useful to you as you continue to improve your model results.
 
-<a
-  href="https://cookbook.openai.com/examples/evaluation/use-cases/regression"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Keep tabs on the performance of your prompts as you iterate on them.
+[Cookbook: Detecting prompt regressions
 
 
-</a>
 
-<a
-  href="https://cookbook.openai.com/examples/evaluation/use-cases/bulk-experimentation"
-  target="_blank"
-  rel="noreferrer"
->
-  
+      Keep tabs on the performance of your prompts as you iterate on them.](https://developers.openai.com/cookbook/examples/evaluation/use-cases/regression)
 
-<span slot="icon">
-      </span>
-    Compare the results of many different prompts and models at once.
+[Cookbook: Bulk model and prompt experimentation
 
 
-</a>
 
-<a
-  href="https://cookbook.openai.com/examples/evaluation/use-cases/completion-monitoring"
-  target="_blank"
-  rel="noreferrer"
->
-  
+      Compare the results of many different prompts and models at once.](https://developers.openai.com/cookbook/examples/evaluation/use-cases/bulk-experimentation)
 
-<span slot="icon">
-      </span>
-    Examine stored completions to test for prompt regressions.
+[Cookbook: Monitoring stored completions
 
 
-</a>
 
-[
+      Examine stored completions to test for prompt regressions.](https://developers.openai.com/cookbook/examples/evaluation/use-cases/completion-monitoring)
 
-<span slot="icon">
-      </span>
-    Improve a model's ability to generate responses tailored to your use case.
+[Fine-tuning
 
-](https://developers.openai.com/api/docs/guides/fine-tuning)
-[
 
-<span slot="icon">
-      </span>
-    Learn how to distill large model results to smaller, cheaper, and faster
-    models.
 
-](https://developers.openai.com/api/docs/guides/distillation)
+      Improve a model's ability to generate responses tailored to your use case.](https://developers.openai.com/api/docs/guides/model-optimization)
+[Model distillation
+
+
+
+      Learn how to distill large model results to smaller, cheaper, and faster
+    models.](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#distilling-from-a-larger-model)

@@ -1,5 +1,7 @@
 # Skills
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Agent Skills let you upload and reuse versioned bundles of files in hosted and local shell environments.
 
 We support Skills in two form factors: local execution and hosted,

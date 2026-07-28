@@ -1,5 +1,9 @@
 # Assistants Function Calling
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+After achieving feature parity in the Responses API, we've deprecated the Assistants API. It will shut down on August 26, 2026. Follow the [migration guide](https://developers.openai.com/platform/assistants/migration) to update your integration. [Learn more](https://platform.openai.com/docs/guides/migrate-to-responses).
+
 ## Overview
 
 Similar to the Chat Completions API, the Assistants API supports function calling. Function calling allows you to describe functions to the Assistants API and have it intelligently return the functions that need to be called along with their arguments.
@@ -195,7 +199,8 @@ You will see two `tool_calls` within `required_action`, which indicates the user
 ```
 
 <figcaption>Run object truncated here for readability</figcaption>
-<br />
+
+
 
 How you initiate a Run and submit `tool_calls` will differ depending on whether you are using streaming or not,
 although in both cases all `tool_calls` need to be submitted at the same time.
@@ -204,12 +209,257 @@ Pass each `tool_call_id` referenced in the `required_action` object to match out
 
 
 
-<div data-content-switcher-pane data-value="streaming">
-    <div class="hidden">With streaming</div>
-    </div>
-  <div data-content-switcher-pane data-value="without-streaming" hidden>
-    <div class="hidden">Without streaming</div>
-    </div>
+With streaming
+
+    
+
+For the streaming case, we create an EventHandler class to handle events in the response stream and submit all tool outputs at once with the “submit tool outputs stream” helper in the Python and Node SDKs.
+
+```python
+from typing_extensions import override
+from openai import AssistantEventHandler
+
+class EventHandler(AssistantEventHandler):
+    @override
+    def on_event(self, event):
+        # Retrieve events that are denoted with 'requires_action'
+        # since these will have our tool_calls
+        if event.event == "thread.run.requires_action":
+            run_id = event.data.id  # Retrieve the run ID from the event data
+            self.handle_requires_action(event.data, run_id)
+
+    def handle_requires_action(self, data, run_id):
+        tool_outputs = []
+
+        for tool in data.required_action.submit_tool_outputs.tool_calls:
+            if tool.function.name == "get_current_temperature":
+                tool_outputs.append({"tool_call_id": tool.id, "output": "57"})
+            elif tool.function.name == "get_rain_probability":
+                tool_outputs.append({"tool_call_id": tool.id, "output": "0.06"})
+
+        # Submit all tool_outputs at the same time
+        self.submit_tool_outputs(tool_outputs, run_id)
+
+    def submit_tool_outputs(self, tool_outputs, run_id):
+        # Use the submit_tool_outputs_stream helper
+        with client.beta.threads.runs.submit_tool_outputs_stream(
+            thread_id=self.current_run.thread_id,
+            run_id=self.current_run.id,
+            tool_outputs=tool_outputs,
+            event_handler=EventHandler(),
+        ) as stream:
+            for text in stream.text_deltas:
+                print(text, end="", flush=True)
+            print()
+
+with client.beta.threads.runs.stream(
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+    event_handler=EventHandler(),
+) as stream:
+    stream.until_done()
+```
+
+```javascript
+class EventHandler extends EventEmitter {
+  constructor(client) {
+    super();
+    this.client = client;
+  }
+
+async onEvent(event) {
+try {
+console.log(event);
+// Retrieve events that are denoted with 'requires_action'
+// since these will have our tool_calls
+if (event.event === "thread.run.requires_action") {
+await this.handleRequiresAction(
+event.data,
+event.data.id,
+event.data.thread_id,
+);
+}
+} catch (error) {
+console.error("Error handling event:", error);
+}
+}
+
+async handleRequiresAction(data, runId, threadId) {
+try {
+const toolOutputs =
+data.required_action.submit_tool_outputs.tool_calls.map((toolCall) => {
+if (toolCall.function.name === "getCurrentTemperature") {
+return {
+tool_call_id: toolCall.id,
+output: "57",
+};
+} else if (toolCall.function.name === "getRainProbability") {
+return {
+tool_call_id: toolCall.id,
+output: "0.06",
+};
+}
+});
+// Submit all the tool outputs at the same time
+await this.submitToolOutputs(toolOutputs, runId, threadId);
+} catch (error) {
+console.error("Error processing required action:", error);
+}
+}
+
+async submitToolOutputs(toolOutputs, runId, threadId) {
+try {
+// Use the submitToolOutputsStream helper
+const stream = this.client.beta.threads.runs.submitToolOutputsStream(
+threadId,
+runId,
+{ tool_outputs: toolOutputs },
+);
+for await (const event of stream) {
+this.emit("event", event);
+}
+} catch (error) {
+console.error("Error submitting tool outputs:", error);
+}
+}
+}
+
+const eventHandler = new EventHandler(client);
+eventHandler.on("event", eventHandler.onEvent.bind(eventHandler));
+
+const stream = await client.beta.threads.runs.stream(
+threadId,
+{ assistant_id: assistantId },
+eventHandler,
+);
+
+for await (const event of stream) {
+eventHandler.emit("event", event);
+}
+```
+
+
+  
+
+  
+
+    
+Without streaming
+
+    
+
+Runs are asynchronous, which means you'll want to monitor their `status` by polling the Run object until a
+[terminal status](https://developers.openai.com/api/docs/assistants/deep-dive#runs-and-run-steps) is reached. For convenience, the 'create and poll' SDK helpers assist both in
+creating the run and then polling for its completion. Once the Run completes, you can list the
+Messages added to the Thread by the Assistant. Finally, you would retrieve all the `tool_outputs` from
+`required_action` and submit them at the same time to the 'submit tool outputs and poll' helper.
+
+```python
+run = client.beta.threads.runs.create_and_poll(
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+)
+
+if run.status == "completed":
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    print(messages)
+
+# Define the list to store tool outputs
+tool_outputs = []
+
+# Loop through each tool in the required action section
+if run.required_action:
+    for tool in run.required_action.submit_tool_outputs.tool_calls:
+        if tool.function.name == "get_current_temperature":
+            tool_outputs.append({"tool_call_id": tool.id, "output": "57"})
+        elif tool.function.name == "get_rain_probability":
+            tool_outputs.append({"tool_call_id": tool.id, "output": "0.06"})
+
+# Submit all tool outputs at once after collecting them in a list
+if tool_outputs:
+    try:
+        run = client.beta.threads.runs.submit_tool_outputs_and_poll(
+            thread_id=thread.id,
+            run_id=run.id,
+            tool_outputs=tool_outputs,
+        )
+        print("Tool outputs submitted successfully.")
+    except Exception as e:
+        print("Failed to submit tool outputs:", e)
+else:
+    print("No tool outputs to submit.")
+
+if run.status == "completed":
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    print(messages)
+else:
+    print(run.status)
+```
+
+```javascript
+const handleRequiresAction = async (run) => {
+  // Check if there are tools that require outputs
+  if (
+    run.required_action &&
+    run.required_action.submit_tool_outputs &&
+    run.required_action.submit_tool_outputs.tool_calls
+  ) {
+    // Loop through each tool in the required action section
+    const toolOutputs = run.required_action.submit_tool_outputs.tool_calls.map(
+      (tool) => {
+        if (tool.function.name === "getCurrentTemperature") {
+          return {
+            tool_call_id: tool.id,
+            output: "57",
+          };
+        } else if (tool.function.name === "getRainProbability") {
+          return {
+            tool_call_id: tool.id,
+            output: "0.06",
+          };
+        }
+      },
+    );
+
+    // Submit all tool outputs at once after collecting them in a list
+    if (toolOutputs.length > 0) {
+      run = await client.beta.threads.runs.submitToolOutputsAndPoll(
+        thread.id,
+        run.id,
+        { tool_outputs: toolOutputs },
+      );
+      console.log("Tool outputs submitted successfully.");
+    } else {
+      console.log("No tool outputs to submit.");
+    }
+
+    // Check status after submitting tool outputs
+    return handleRunStatus(run);
+
+}
+};
+
+const handleRunStatus = async (run) => {
+// Check if the run is completed
+if (run.status === "completed") {
+let messages = await client.beta.threads.messages.list(thread.id);
+console.log(messages.data);
+return messages.data;
+} else if (run.status === "requires_action") {
+console.log(run.status);
+return await handleRequiresAction(run);
+} else {
+console.error("Run did not complete:", run);
+}
+};
+
+// Create and poll run
+let run = await client.beta.threads.runs.createAndPoll(thread.id, {
+assistant_id: assistant.id,
+});
+
+handleRunStatus(run);
+```
 
 
 

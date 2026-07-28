@@ -1,5 +1,7 @@
 # Counting tokens
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Token counting lets you determine how many input tokens a request will use before you send it to the model. Use it to:
 
 - **Optimize prompts** to fit within context limits
@@ -7,7 +9,7 @@ Token counting lets you determine how many input tokens a request will use befor
 - **Route requests** based on size (e.g., smaller prompts to faster models)
 - **Avoid surprises** with images and files—no more character-based estimation
 
-The [input token count endpoint](https://developers.openai.com/api/reference/python/resources/responses/subresources/input_tokens/methods/count) accepts the same input format as the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create). Pass text, messages, images, files, tools, or conversations—the API returns the exact count the model will receive.
+The [input token count endpoint](https://developers.openai.com/api/reference/python/resources/responses/subresources/input_tokens/methods/count) accepts the same input format as the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create). Pass text, messages, images, files, tools, or conversations—the API returns the exact count the model will receive.
 
 The count includes formatting tokens used to represent request structure, such as message roles and boundaries. These tokens might not appear in the text or fields you tokenize locally.
 
@@ -275,7 +277,7 @@ YAML
 ```
 
 
-You can use `file_id` (from the [Files API](https://developers.openai.com/api/docs/api-reference/files)) or `image_url` (a URL or base64 data URL). See [images and vision](https://developers.openai.com/api/docs/guides/images-vision) for details.
+You can use `file_id` (from the [Files API](https://developers.openai.com/api/reference/resources/files)) or `image_url` (a URL or base64 data URL). See [images and vision](https://developers.openai.com/api/docs/guides/images-vision) for details.
 
 ## Count tokens with tools
 
@@ -377,7 +379,7 @@ YAML
 
 ## Count tokens with files
 
-[File inputs](https://developers.openai.com/api/docs/guides/pdf-files)—currently PDFs—are supported. Pass `file_id`, `file_url`, or `file_data` as you would for `responses.create`. The token count reflects the model’s full processed input.
+[File inputs](https://developers.openai.com/api/docs/guides/file-inputs)—currently PDFs—are supported. Pass `file_id`, `file_url`, or `file_data` as you would for `responses.create`. The token count reflects the model’s full processed input.
 
 ## Understand output token counts
 

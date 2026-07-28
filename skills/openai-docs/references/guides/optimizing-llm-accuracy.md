@@ -1,5 +1,7 @@
 # Optimizing LLM Accuracy
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ### How to maximize correctness and consistent behavior when working with LLMs
 
 Optimizing LLMs is hard.
@@ -73,13 +75,15 @@ The [Icelandic Errors Corpus](https://repository.clarin.is/repository/xmlui/hand
 
 Given an Icelandic sentence, we want the model to return a corrected version of the sentence. We’ll use Bleu score to measure the relative quality of the translation.
 
-<div className="icelandic-zero-shot-table">
+
+
 
 | system                                                                                                                                           | user                                                        | ground_truth                                               | assistant                                                  | BLEU |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---- |
 | The following sentences contain Icelandic sentences which may include errors. Please correct these errors using as few word changes as possible. | Sörvistölur eru nær hálsi og skartgripir kvenna á brjótsti. | Sörvistölur eru nær hálsi og skartgripir kvenna á brjósti. | Sörvistölur eru nær hálsi og skartgripir kvenna á brjósti. | 1.0  |
 
-</div>
+
+
 
 We perform a first attempt with GPT-4 with no examples, and it performs decently, getting a BLEU score of 62.
 We’ll now add some few-shot examples and see whether we can teach the model the style we’re looking for by showing rather than telling.
@@ -179,7 +183,7 @@ You have two areas your RAG application can break down:
 
 | Area      | Problem                                                                                                                                                                               | Resolution                                                                                                                                                                                                                                                                                                                                                                         |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Retrieval | You can supply the wrong context, so the model can’t possibly answer, or you can supply too much irrelevant context, which drowns out the real information and causes hallucinations. | Optimizing your retrieval, which can include:<br/>- Tuning the search to return the right results.<br/>- Tuning the search to include less noise.<br/>- Providing more information in each retrieved result<br/>These are just examples, as tuning RAG performance is an industry into itself, with libraries like LlamaIndex and LangChain giving many approaches to tuning here. |
+| Retrieval | You can supply the wrong context, so the model can’t possibly answer, or you can supply too much irrelevant context, which drowns out the real information and causes hallucinations. | Optimizing your retrieval, which can include:<br />- Tuning the search to return the right results.<br />- Tuning the search to include less noise.<br />- Providing more information in each retrieved result<br />These are just examples, as tuning RAG performance is an industry into itself, with libraries like LlamaIndex and LangChain giving many approaches to tuning here. |
 | LLM       | The model can also get the right context and do the wrong thing with it.                                                                                                              | Prompt engineering by improving the instructions and method the model uses, and, if showing it examples increases accuracy, adding in fine-tuning                                                                                                                                                                                                                                  |
 
 The key thing to take away here is that the principle remains the same from our mental model at the beginning - you evaluate to find out what has gone wrong, and take an optimization step to fix it. The only difference with RAG is you now have the retrieval axis to consider.
@@ -203,7 +207,7 @@ Many customers use a process known as **prompt baking**, where you extensively
 
 ![Fine-tuning process diagram](https://cdn.openai.com/API/docs/images/diagram-optimizing-accuracy-06.png)
 
-Once you have this clean set, you can train a fine-tuned model by performing a **training** run - depending on the platform or framework you’re using for training you may have hyperparameters you can tune here, similar to any other machine learning model. We always recommend maintaining a hold-out set to use for **evaluation** following training to detect overfitting. For tips on how to construct a good training set you can check out the [guidance](https://developers.openai.com/api/docs/guides/fine-tuning#analyzing-your-fine-tuned-model) in our Fine-tuning documentation. Once training is completed, the new, fine-tuned model is available for inference.
+Once you have this clean set, you can train a fine-tuned model by performing a **training** run - depending on the platform or framework you’re using for training you may have hyperparameters you can tune here, similar to any other machine learning model. We always recommend maintaining a hold-out set to use for **evaluation** following training to detect overfitting. For tips on how to construct a good training set you can check out the [guidance](https://developers.openai.com/api/docs/guides/model-optimization#analyzing-your-fine-tuned-model) in our Fine-tuning documentation. Once training is completed, the new, fine-tuned model is available for inference.
 
 For optimizing fine-tuning we’ll focus on best practices we observe with OpenAI’s model customization offerings, but these principles should hold true with other providers and OSS offerings. The key practices to observe here are:
 
@@ -282,7 +286,7 @@ An approach I’ve seen be successful here was for a customer service use case -
 
 First we identify the primary success and failure cases, and assign an estimated cost to them. This gives us a clear articulation of what the solution is likely to save or cost based on pilot performance.
 
-- For example, a case getting solved by an AI where it was previously solved by a human may save <strong>$20</strong>.
+- For example, a case getting solved by an AI where it was previously solved by a human may save **$20**.
 - Someone getting escalated to a human when they shouldn’t might cost **$40**
 - In the worst case scenario, a customer gets so frustrated with the AI they churn, costing us **$1000**. We assume this happens in 5% of cases.
 

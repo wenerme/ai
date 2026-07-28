@@ -1,5 +1,7 @@
 # Manage permissions in the OpenAI platform
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Role-based access control (RBAC) lets you decide who can do what across your organization and projects—both through the API and in the Dashboard. The same permissions govern both surfaces: if someone can call an endpoint (for example, `/v1/chat/completions`), they can use the equivalent Dashboard page, and missing permissions disable related UI (such as the **Upload** button in Playground). With RBAC you can:
 
 - Group users and assign permissions at scale
@@ -19,7 +21,8 @@ Role-based access control (RBAC) lets you decide who can do what across your org
 
 The table below shows the available permissions, which preset roles include them, and whether they can be configured for custom roles.
 
-<div style={{ overflowX: "auto" }}>
+
+
 
 | Area                   | What it allows                                                                       | Org owner permissions   | Org reader permissions | Project owner permissions | Project member permissions | Project viewer permissions | Custom role eligible |
 | ---------------------- | ------------------------------------------------------------------------------------ | ----------------------- | ---------------------- | ------------------------- | -------------------------- | -------------------------- | -------------------- |
@@ -53,7 +56,8 @@ The table below shows the available permissions, which preset roles include them
 | Voices                 | Create and retrieve voices                                                           | `Read`, `Write`         | `Read`, `Write`        | `Read`, `Write`           | `Read`, `Write`            | `Read`                     |                      |
 | Agent Builder          | Create and manage agents and workflows in Agent Builder                              | `Read`, `Write`         | `Read`                 | `Read`, `Write`           | `Read`, `Write`            | `Read`                     | ✓                    |
 
-</div>
+
+
 
 ## Setting up RBAC
 

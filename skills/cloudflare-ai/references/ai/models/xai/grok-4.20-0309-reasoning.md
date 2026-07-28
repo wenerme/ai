@@ -24,13 +24,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 xAI's Grok 4.20 reasoning model. Uses extended thinking to work through complex problems, returning a reasoning trace alongside the final answer.
 
-| Model Info                                                                 |                                                                                                                                |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,000,000 tokens                                                                                                               |
-| Terms and License                                                          | [link ↗](https://x.ai/legal/terms-of-service)                                                                                  |
-| More information                                                           | [link ↗](https://x.ai/)                                                                                                        |
-| Request formats                                                            | Chat Completions                                                                                                               |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-reasoning) |
+| Model Info                                                                          |                                                                                                                                |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens                                                                                                               |
+| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                  |
+| More information                                                                    | [link ↗](https://x.ai/)                                                                                                        |
+| Request formats                                                                     | Chat Completions                                                                                                               |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-reasoning) |
 
 ## Usage
 

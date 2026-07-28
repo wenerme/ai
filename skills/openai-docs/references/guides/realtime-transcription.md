@@ -1,5 +1,7 @@
 # Realtime transcription
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use realtime transcription when your application needs live speech-to-text without a spoken assistant response. Realtime transcription sessions stream transcript deltas as audio arrives, so users can see text before the full utterance is complete.
 
 For the lowest-latency streaming transcription path, use [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper). For offline files or workflows that don't need streaming deltas, use the standard speech-to-text models in the Audio API.
@@ -17,37 +19,33 @@ For the lowest-latency streaming transcription path, use [`gpt-realtime-whisper`
   <tbody>
     <tr>
       <td className="whitespace-nowrap">
-        <a href="/api/docs/models/gpt-realtime-whisper">
-          gpt-realtime-whisper
-        </a>
+        [gpt-realtime-whisper](https://developers.openai.com/api/docs/models/gpt-realtime-whisper)
       </td>
       <td>Live audio, transcript deltas, tunable latency.</td>
       <td>Natively streaming and designed for realtime sessions.</td>
     </tr>
     <tr>
       <td className="whitespace-nowrap">
-        <a href="/api/docs/models/gpt-4o-transcribe">gpt-4o-transcribe</a>
+        [gpt-4o-transcribe](https://developers.openai.com/api/docs/models/gpt-4o-transcribe)
       </td>
       <td>Higher-accuracy speech-to-text where streaming isn't required.</td>
       <td>Use for file and request-response transcription workflows.</td>
     </tr>
     <tr>
       <td className="whitespace-nowrap">
-        <a href="/api/docs/models/gpt-4o-mini-transcribe">
-          gpt-4o-mini-transcribe
-        </a>
+        [gpt-4o-mini-transcribe](https://developers.openai.com/api/docs/models/gpt-4o-mini-transcribe)
       </td>
       <td>Lower-cost transcription.</td>
       <td>Use when cost matters more than top accuracy.</td>
     </tr>
     <tr>
       <td className="whitespace-nowrap">
-        <a href="/api/docs/models/whisper-1">whisper-1</a>
+        [whisper-1](https://developers.openai.com/api/docs/models/whisper-1)
       </td>
       <td>Existing Whisper integrations.</td>
       <td>
         Not natively streaming in the same way as 
-        <code>gpt-realtime-whisper</code>.
+        `gpt-realtime-whisper`.
       </td>
     </tr>
   </tbody>
@@ -227,42 +225,26 @@ When log probabilities are available, request them with `include`:
 
 ## Related guides
 
-<a href="/api/docs/guides/realtime">
-  
-
-<span slot="icon">
-      </span>
-    Compare voice-agent, translation, and transcription sessions.
+[Realtime and audio overview
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-translation">
-  
+      Compare voice-agent, translation, and transcription sessions.](https://developers.openai.com/api/docs/guides/realtime)
 
-<span slot="icon">
-      </span>
-    Translate live speech with a dedicated translation session.
+[Realtime translation
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-websocket">
-  
+      Translate live speech with a dedicated translation session.](https://developers.openai.com/api/docs/guides/realtime-translation)
 
-<span slot="icon">
-      </span>
-    Stream raw audio through a server-side media pipeline.
+[WebSocket connection
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-vad">
-  
+      Stream raw audio through a server-side media pipeline.](https://developers.openai.com/api/docs/guides/realtime-websocket)
 
-<span slot="icon">
-      </span>
-    Configure turn detection for live audio streams.
+[Voice activity detection
 
 
-</a>
+
+      Configure turn detection for live audio streams.](https://developers.openai.com/api/docs/guides/realtime-vad)

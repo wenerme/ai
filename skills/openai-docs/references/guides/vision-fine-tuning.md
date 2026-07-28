@@ -1,16 +1,20 @@
 # Vision fine-tuning
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Vision fine-tuning uses image inputs for [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning) to improve the model's understanding of image inputs. This guide will take you through this subset of SFT, and outline some of the important considerations for fine-tuning with image inputs.
 
 OpenAI is winding down the fine-tuning platform. The platform is no longer
   accessible to new users, but existing users of the fine-tuning platform will
   be able to create training jobs for the coming months.
-  <br />
+  
+
   All fine-tuned models will remain available for inference until their base
   models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
   [here](https://developers.openai.com/api/docs/deprecations).
 
-<br />
+
+
 
 <table>
 <tbody>
@@ -37,7 +41,7 @@ Provide image inputs for supervised fine-tuning to improve the model's understan
 
 ## Data format
 
-Just as you can [send one or many image inputs and create model responses based on them](https://developers.openai.com/api/docs/guides/vision), you can include those same message types within your JSONL training data files. Images can be provided either as HTTP URLs or data URLs containing Base64-encoded images.
+Just as you can [send one or many image inputs and create model responses based on them](https://developers.openai.com/api/docs/guides/images-vision), you can include those same message types within your JSONL training data files. Images can be provided either as HTTP URLs or data URLs containing Base64-encoded images.
 
 Here's an example of an image message on a line of your JSONL file. Below, the JSON object is expanded for readability, but typically this JSON would appear on a single line in your data file:
 
@@ -115,7 +119,7 @@ Your images can get skipped during training for the following reasons:
 
 #### Reducing training cost
 
-If you set the `detail` parameter for an image to `low`, the image is resized to 512 by 512 pixels and is only represented by 85 tokens regardless of its size. This will reduce the cost of training. [See here for more information.](https://developers.openai.com/api/docs/guides/vision#low-or-high-fidelity-image-understanding)
+If you set the `detail` parameter for an image to `low`, the image is resized to 512 by 512 pixels and is only represented by 85 tokens regardless of its size. This will reduce the cost of training. [See here for more information.](https://developers.openai.com/api/docs/guides/images-vision#low-or-high-fidelity-image-understanding)
 
 ```json
 {
@@ -129,7 +133,7 @@ If you set the `detail` parameter for an image to `low`, the image is resized to
 
 #### Control image quality
 
-To control the fidelity of image understanding, set the `detail` parameter of `image_url` to `low`, `high`, or `auto` for each image. This will also affect the number of tokens per image that the model sees during training time, and will affect the cost of training. [See here for more information](https://developers.openai.com/api/docs/guides/vision#low-or-high-fidelity-image-understanding).
+To control the fidelity of image understanding, set the `detail` parameter of `image_url` to `low`, `high`, or `auto` for each image. This will also affect the number of tokens per image that the model sees during training time, and will affect the cost of training. [See here for more information](https://developers.openai.com/api/docs/guides/images-vision#low-or-high-fidelity-image-understanding).
 
 ## Safety checks
 
@@ -167,26 +171,20 @@ While these evaluations cover a broad range of safety categories, conduct your o
 
 Now that you know the basics of vision fine-tuning, explore these other methods as well.
 
-[
+[Supervised fine-tuning
 
-<span slot="icon">
-      </span>
-    Fine-tune a model by providing correct outputs for sample inputs.
 
-](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
 
-[
+      Fine-tune a model by providing correct outputs for sample inputs.](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
 
-<span slot="icon">
-      </span>
-    Fine-tune a model using direct preference optimization (DPO).
+[Direct preference optimization
 
-](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
 
-[
 
-<span slot="icon">
-      </span>
-    Fine-tune a reasoning model by grading its outputs.
+      Fine-tune a model using direct preference optimization (DPO).](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
 
-](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)
+[Reinforcement fine-tuning
+
+
+
+      Fine-tune a reasoning model by grading its outputs.](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)

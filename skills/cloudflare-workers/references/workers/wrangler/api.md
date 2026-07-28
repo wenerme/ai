@@ -12,14 +12,253 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler offers APIs to programmatically interact with your Cloudflare Workers.
 
+* [createTestHarness](#createtestharness) \- Start one or more Workers for integration tests in any Node.js test runner.
 * [experimental\_generateTypes](#experimental%5Fgeneratetypes) \- Generate TypeScript type definitions from your Worker configuration.
 * [unstable\_startWorker](#unstable%5Fstartworker) \- Start a server for running integration tests against your Worker.
 * [unstable\_dev](#unstable%5Fdev) \- Start a server for running either end-to-end (e2e) or integration tests against your Worker.
 * [getPlatformProxy](#getplatformproxy) \- Get proxies and values for emulating the Cloudflare Workers platform in a Node.js process.
+
+## `createTestHarness`
+
+`createTestHarness()` starts one or more Workers for integration tests from any Node.js test runner. It runs production build output from Wrangler configuration files, Vite-generated configuration files, or inline Wrangler configuration objects. The API wraps Miniflare and provides methods for dispatching requests and scheduled events.
+
+For setup guidance and examples, refer to [Integration test harness](https://developers.cloudflare.com/workers/testing/test-harness/).
+
+### Syntax
+
+```js
+import { createTestHarness } from "wrangler";
+
+const server = createTestHarness(options);
+```
+
+```ts
+import { createTestHarness } from "wrangler";
+
+const server = createTestHarness(options);
+```
+
+### Parameters
+
+* `options` `object`optional
+
+  * Test harness options. If you call `createTestHarness()` without options, call `server.update(options)` before `server.listen()`.
+
+    * `root` `string`optional
+      Base directory used to resolve relative Worker configuration paths. Defaults to `process.cwd()`.
+    * `workers` `WorkerInput[]`
+      Workers to run in the test server. The first Worker is the primary Worker.
+
+Each `WorkerInput` can load a Worker from a Wrangler configuration file:
+
+```js
+const server = createTestHarness({
+	workers: [
+		{ configPath: "./wrangler.web.jsonc" },
+		{ configPath: "./wrangler.api.jsonc" },
+	],
+});
+```
+
+```ts
+const server = createTestHarness({
+	workers: [
+		{ configPath: "./wrangler.web.jsonc" },
+		{ configPath: "./wrangler.api.jsonc" },
+	],
+});
+```
+
+Configuration file inputs support these fields:
+
+* `configPath` `string | URL`
+  * Path to a Wrangler configuration file. Relative paths resolve from `root`.
+* `env` `string`optional
+  * Wrangler environment to load from the configuration file.
+* `vars` `Record<string, Json>`optional
+  * Test-only variables that override variables from the Wrangler configuration file.
+* `secrets` `Record<string, string>`optional
+  * Test-only secrets that override values loaded from `.dev.vars` and `.env` files.
+* `bindingOverrides` `Record<string, string>`optional
+  * Test-only service binding overrides. Keys are binding names in this Worker's environment. Values are Worker names in this test harness.
+
+Each `WorkerInput` can also use `config` to provide an inline Wrangler configuration object:
+
+```js
+const server = createTestHarness({
+	workers: [
+		{
+			config: {
+				name: "api-worker",
+				main: "src/api.ts",
+				compatibility_date: "YYYY-MM-DD",
+			},
+		},
+	],
+});
+```
+
+```ts
+const server = createTestHarness({
+	workers: [
+		{
+			config: {
+				name: "api-worker",
+				main: "src/api.ts",
+				compatibility_date: "YYYY-MM-DD",
+			},
+		},
+	],
+});
+```
+
+### Return type
+
+`createTestHarness()` returns a `TestHarness` object with these methods:
+
+* `listen()` `Promise<{ url: URL }>`
+  * Starts the server and returns its current URL. Repeated calls return the same session until the server is closed or reset.
+* `fetch(input, init)` `Promise<Response>`
+  * Dispatches a fetch request through the server. Relative URLs resolve against the current server URL. Absolute URLs follow the configured Worker routes and fall back to the primary Worker.
+* `getWorker(name?)` `WorkerHandle`
+  * Returns a handle for dispatching events directly to a Worker. When no name is provided, this returns the primary Worker.
+* `getLogs()` `WorkerdStructuredLog[]`
+  * Returns captured Workers runtime logs since the current server session started or `clearLogs()` was last called.
+* `clearLogs()` `void`
+  * Clears captured Workers runtime logs.
+* `debug()` `void`
+  * Prints a diagnostic timeline for this test server, including server events and captured Workers runtime logs. This is useful in a test runner failure or cleanup hook.
+* `update(optionsOrUpdater)` `Promise<void>`
+  * Updates the server configuration with a `TestHarnessOptions` object or a function that receives the current options and returns the next options. If the server has not started yet, this configures the options used by `listen()`. If the server is running, this reloads the running Workers. Updating the number of Workers in a running server is not supported.
+* `reset()` `Promise<void>`
+  * Restores the server to the options used when the current session first started. Storage is recreated, and the server URL may change after reset.
+* `close()` `Promise<void>`
+  * Stops the server and releases all runtime resources.
+
+`getWorker(name?)` returns a `WorkerHandle` object with these methods:
+
+* `fetch(input, init)` `Promise<Response>`
+  * Dispatches a fetch event directly to this Worker.
+* `scheduled(options)` `Promise<{ outcome: "ok" | "canceled" | "exception"; noRetry: boolean }>`
+  * Dispatches a scheduled event directly to this Worker.
+* `getEnv()` `Promise<Env>`
+  * Returns the full environment object configured for this Worker, including variables, secrets, and bindings.
+* `getExport()` `Promise<Service<Module['default']>>`
+  * Returns the default Worker export, including RPC methods.
+* `applyD1Migrations(bindingName)` `Promise<void>`
+  * Applies local D1 migration files that have not already run to a D1 binding on this Worker.
+* `getDurableObjectStorage(classNameOrBindingName, options)` `Promise<DurableObjectStorageHandle>`
+  * Returns SQL storage access for a Durable Object instance.
+* `introspectWorkflow(bindingName)` `Promise<WorkflowIntrospector>`
+  * Creates an introspector for Workflow instances created after this method is called.
+* `introspectWorkflowInstance(bindingName, instanceId)` `Promise<WorkflowInstanceIntrospector>`
+  * Creates an introspector for a specific Workflow instance.
+
+### Usage
+
+This example uses the Node.js built-in test runner:
+
+```js
+import assert from "node:assert/strict";
+import { after, afterEach, before, describe, test } from "node:test";
+import { createTestHarness } from "wrangler";
+
+const server = createTestHarness({
+	workers: [
+		{ configPath: "./wrangler.web.jsonc" },
+		{ configPath: "./wrangler.api.jsonc" },
+	],
+});
+
+const apiWorker = server.getWorker("api-worker");
+
+describe("Worker", () => {
+	before(async () => {
+		await server.listen();
+	});
+
+	afterEach(async () => {
+		await server.reset();
+	});
+
+	after(async () => {
+		await server.close();
+	});
+
+	test("dispatches through configured routes", async () => {
+		const response = await server.fetch("http://example.com/users/123");
+		assert.equal(response.status, 200);
+	});
+
+	test("calls a specific Worker directly", async () => {
+		const response = await apiWorker.fetch(
+			"http://api.example.com/v1/users/123",
+		);
+		assert.equal(response.status, 200);
+	});
+
+	test("triggers a scheduled handler", async () => {
+		const result = await apiWorker.scheduled({
+			cron: "0 0 * * *",
+			scheduledTime: new Date(),
+		});
+		assert.equal(result.outcome, "ok");
+	});
+});
+```
+
+```ts
+import assert from "node:assert/strict";
+import { after, afterEach, before, describe, test } from "node:test";
+import { createTestHarness } from "wrangler";
+
+const server = createTestHarness({
+	workers: [
+		{ configPath: "./wrangler.web.jsonc" },
+		{ configPath: "./wrangler.api.jsonc" },
+	],
+});
+
+const apiWorker = server.getWorker("api-worker");
+
+describe("Worker", () => {
+	before(async () => {
+		await server.listen();
+	});
+
+	afterEach(async () => {
+		await server.reset();
+	});
+
+	after(async () => {
+		await server.close();
+	});
+
+	test("dispatches through configured routes", async () => {
+		const response = await server.fetch("http://example.com/users/123");
+		assert.equal(response.status, 200);
+	});
+
+	test("calls a specific Worker directly", async () => {
+		const response = await apiWorker.fetch(
+			"http://api.example.com/v1/users/123",
+		);
+		assert.equal(response.status, 200);
+	});
+
+	test("triggers a scheduled handler", async () => {
+		const result = await apiWorker.scheduled({
+			cron: "0 0 * * *",
+			scheduledTime: new Date(),
+		});
+		assert.equal(result.outcome, "ok");
+	});
+});
+```
 
 ## `experimental_generateTypes`
 
@@ -117,6 +356,10 @@ const result = await experimental_generateTypes({
 
 ## `unstable_startWorker`
 
+Caution
+
+`unstable_startWorker()` is deprecated. Cloudflare recommends [createTestHarness()](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [createServer() ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+
 This API exposes the internals of Wrangler's dev server, and allows you to customise how it runs. For example, you could use `unstable_startWorker()` to run integration tests against your Worker. This example uses `node:test`, but should apply to any testing framework:
 
 ```js
@@ -146,17 +389,15 @@ describe("worker", () => {
 
 ## `unstable_dev`
 
+Caution
+
+`unstable_dev()` is deprecated. Cloudflare recommends [createTestHarness()](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [createServer() ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+
 Start an HTTP server for testing your Worker.
 
 Once called, `unstable_dev` will return a `fetch()` function for invoking your Worker without needing to know the address or port, as well as a `stop()` function to shut down the HTTP server.
 
 By default, `unstable_dev` will perform integration tests against a local server. If you wish to perform an e2e test against a preview Worker, pass `local: false` in the `options` object when calling the `unstable_dev()` function. Note that e2e tests can be significantly slower than integration tests.
-
-Note
-
-The `unstable_dev()` function has an `unstable_` prefix because the API is experimental and may change in the future. We recommend migrating to the `unstable_startWorker()` API, documented above.
-
-If you have been using `unstable_dev()` for integration testing and want to migrate to Cloudflare's Vitest integration, refer to the [Migrate from unstable\_dev migration guide](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/) for more information.
 
 ### Constructor
 
@@ -521,5 +762,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/api/#page","headline":"API · Cloudflare Workers docs","description":"A set of programmatic APIs that can be integrated with local Cloudflare Workers-related workflows.","url":"https://developers.cloudflare.com/workers/wrangler/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

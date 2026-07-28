@@ -71,7 +71,7 @@ Valid input modalities are: `text`, `image`, `file`, `audio`, `video`.
 
 Valid output modalities are: `text`, `image`, `embeddings`, `audio`, `video`, `rerank`, `speech`, `transcription`.
 
-Valid quantization values are: `int4`, `int8`, `fp4`, `fp6`, `fp8`, `fp16`, `bf16`, `fp32`.
+Valid quantization values are: `int4`, `int8`, `fp4`, `mxfp4`, `nvfp4`, `fp6`, `fp8`, `mxfp8`, `fp16`, `bf16`, `fp32`.
 
 Valid sampling parameters are: `temperature`, `top_p`, `top_k`, `min_p`, `top_a`, `frequency_penalty`, `presence_penalty`, `repetition_penalty`, `stop`, `seed`, `max_tokens`, `logit_bias`.
 

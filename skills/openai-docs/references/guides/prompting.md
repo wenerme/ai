@@ -1,5 +1,7 @@
 # Prompting
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 **Prompting** is the process of providing input to a model. The quality of your output often depends on how well you're able to prompt the model.
 
 ## Overview
@@ -42,18 +44,14 @@ If you already use prompt IDs or prompt versions in API requests, follow the [mi
 
 When you feel confident in your prompts, you might want to check out the following guides and resources.
 
-[
+[Text generation
 
-<span slot="icon">
-      </span>
-    Learn how to prompt a model to generate text.
 
-](https://developers.openai.com/api/docs/guides/text)
 
-[
+      Learn how to prompt a model to generate text.](https://developers.openai.com/api/docs/guides/text)
 
-<span slot="icon">
-      </span>
-    Learn about OpenAI's prompt engineering tools and techniques.
+[Engineer better prompts
 
-](https://developers.openai.com/api/docs/guides/prompt-engineering)
+
+
+      Learn about OpenAI's prompt engineering tools and techniques.](https://developers.openai.com/api/docs/guides/prompt-engineering)

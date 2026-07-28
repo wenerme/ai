@@ -27,11 +27,11 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2.
 
-| Model Info                                                                 |               |
-| -------------------------------------------------------------------------- | ------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 15,000 tokens |
-| LoRA                                                                       | Yes           |
-| Beta                                                                       | Yes           |
+| Model Info                                                                          |               |
+| ----------------------------------------------------------------------------------- | ------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 15,000 tokens |
+| LoRA                                                                                | Yes           |
+| Beta                                                                                | Yes           |
 
 ## Playground
 

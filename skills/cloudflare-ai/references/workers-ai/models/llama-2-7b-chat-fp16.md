@@ -25,13 +25,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Full precision (fp16) generative text model with 7 billion parameters from Meta
 
-| Model Info                                                                 |                                                                               |
-| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                                                     |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 4,096 tokens                                                                  |
-| Terms and License                                                          | [link ↗](https://ai.meta.com/resources/models-and-libraries/llama-downloads/) |
-| More information                                                           | [link ↗](https://ai.meta.com/llama/)                                          |
-| Unit Pricing                                                               | $0.56 per M input tokens, $6.67 per M output tokens                           |
+| Model Info                                                                          |                                                                               |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                                                     |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 4,096 tokens                                                                  |
+| Terms and License                                                                   | [link ↗](https://ai.meta.com/resources/models-and-libraries/llama-downloads/) |
+| More information                                                                    | [link ↗](https://ai.meta.com/llama/)                                          |
+| Unit Pricing                                                                        | $0.56 per M input tokens, $6.67 per M output tokens                           |
 
 ## Playground
 

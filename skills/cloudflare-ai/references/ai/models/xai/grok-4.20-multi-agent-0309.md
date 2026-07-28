@@ -24,13 +24,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agents collaborate in parallel to perform deep research tasks, with function calling, structured outputs, and reasoning capabilities.
 
-| Model Info                                                                 |                                                                                                                                  |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 2,000,000 tokens                                                                                                                 |
-| Terms and License                                                          | [link ↗](https://x.ai/legal/terms-of-service)                                                                                    |
-| More information                                                           | [link ↗](https://x.ai/)                                                                                                          |
-| Request formats                                                            | Responses                                                                                                                        |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
+| Model Info                                                                          |                                                                                                                                  |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 2,000,000 tokens                                                                                                                 |
+| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                                    |
+| More information                                                                    | [link ↗](https://x.ai/)                                                                                                          |
+| Request formats                                                                     | Responses                                                                                                                        |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
 
 ## Usage
 

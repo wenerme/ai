@@ -1,5 +1,7 @@
 # Prompt generation
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The **Generate** button in the [Playground](https://platform.openai.com/chat/edit) lets you generate prompts, [functions](https://developers.openai.com/api/docs/guides/function-calling), and [schemas](https://developers.openai.com/api/docs/guides/structured-outputs#supported-schemas) from just a description of your task. This guide will walk through exactly how it works.
 
 ## Overview
@@ -21,8 +23,8 @@ We use specific meta-prompts for different output types, like audio, to ensure t
 
 
 
-<div data-content-switcher-pane data-value="text-out">
-    <div class="hidden">Text-out</div>
+Text-out
+
     Text meta-prompt
 
 ````python
@@ -95,9 +97,13 @@ def generate_prompt(task_or_prompt: str):
     return completion.choices[0].message.content
 ````
 
-  </div>
-  <div data-content-switcher-pane data-value="audio-out" hidden>
-    <div class="hidden">Audio-out</div>
+  
+
+  
+
+    
+Audio-out
+
     Audio meta-prompt
 
 ```python
@@ -161,8 +167,6 @@ def generate_prompt(task_or_prompt: str):
     return completion.choices[0].message.content
 ```
 
-  </div>
-
 
 
 ### Prompt edits
@@ -171,8 +175,8 @@ To edit prompts, we use a slightly modified meta-prompt. While direct edits are 
 
 
 
-<div data-content-switcher-pane data-value="text-out">
-    <div class="hidden">Text-out</div>
+Text-out
+
     Text meta-prompt for edits
 
 ````python
@@ -264,9 +268,13 @@ def generate_prompt(task_or_prompt: str):
     return completion.choices[0].message.content
 ````
 
-  </div>
-  <div data-content-switcher-pane data-value="audio-out" hidden>
-    <div class="hidden">Audio-out</div>
+  
+
+  
+
+    
+Audio-out
+
     Audio meta-prompt for edits
 
 ```python
@@ -349,8 +357,6 @@ def generate_prompt(task_or_prompt: str):
     return completion.choices[0].message.content
 ```
 
-  </div>
-
 
 
 ## Schemas
@@ -407,8 +413,8 @@ Each meta-schema has a corresponding prompt which includes few-shot examples. Wh
 
 
 
-<div data-content-switcher-pane data-value="structured-output">
-    <div class="hidden">Structured output schema</div>
+Structured output schema
+
     Structured output meta-schema
 
 ```python
@@ -670,9 +676,13 @@ def generate_schema(description: str):
     return json.loads(completion.choices[0].message.content)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="function" hidden>
-    <div class="hidden">Function schema</div>
+  
+
+  
+
+    
+Function schema
+
     Structured output meta-schema
 
 ```python
@@ -884,5 +894,3 @@ def generate_function_schema(description: str):
 
     return json.loads(completion.choices[0].message.content)
 ```
-
-  </div>

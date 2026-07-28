@@ -1,5 +1,7 @@
 # Shell
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The shell tool gives models the ability to work inside a complete terminal environment. We support shell for local execution and for hosted execution through the Responses API.
 
 The shell tool lets models run commands through either:
@@ -7,7 +9,7 @@ The shell tool lets models run commands through either:
 - Hosted shell containers managed by OpenAI.
 - [A local shell runtime](#local-shell-mode) that you host and execute yourself.
 
-Shell is available through the [Responses API](https://developers.openai.com/api/docs/guides/responses-vs-chat-completions). It's not available via the Chat Completions API.
+Shell is available through the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses). It's not available via the Chat Completions API.
 
 Running arbitrary shell commands can be dangerous. Always sandbox execution,
   apply allowlists or denylists where possible, and log tool activity for
@@ -1143,25 +1145,17 @@ if __name__ == "__main__":
 
 You can find working examples in the SDK repositories.
 
-<a href="https://github.com/openai/openai-agents-js/blob/main/examples/tools/shell.ts" target="_blank" rel="noreferrer">
-  
-
-<span slot="icon">
-      </span>
-    TypeScript example for the shell tool in the Agents SDK.
+[Shell tool example - TypeScript
 
 
-</a>
 
-<a href="https://github.com/openai/openai-agents-python/blob/main/examples/tools/shell.py" target="_blank" rel="noreferrer">
-  
+      TypeScript example for the shell tool in the Agents SDK.](https://github.com/openai/openai-agents-js/blob/main/examples/tools/shell.ts)
 
-<span slot="icon">
-      </span>
-    Python example for the shell tool in the Agents SDK.
+[Shell tool example - Python
 
 
-</a>
+
+      Python example for the shell tool in the Agents SDK.](https://github.com/openai/openai-agents-python/blob/main/examples/tools/shell.py)
 
 ## Handling common errors
 

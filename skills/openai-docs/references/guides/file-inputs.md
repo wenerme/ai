@@ -1,5 +1,7 @@
 # File inputs
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 OpenAI models can accept files as `input_file` items. In the Responses API, you can send a file as Base64-encoded data, a file ID returned by the Files API (`/v1/files`), or an external URL.
 
 ## How it works
@@ -195,23 +197,29 @@ puts(response.output_text)
 ```
 
 ```csharp
-using OpenAI.Files;
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-using HttpClient http = new();
-using Stream stream = await http.GetStreamAsync("https://www.berkshirehathaway.com/letters/2024ltr.pdf");
-OpenAIFileClient files = new(key);
-OpenAIFile file = files.UploadFile(stream, "2024ltr.pdf", FileUploadPurpose.UserData);
+Uri fileUrl = new(
+    "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Analyze the letter and provide a summary of the key points."),
-        ResponseContentPart.CreateInputFilePart(file.Id),
-    ]),
-]);
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart(
+                    "Analyze the letter and provide a summary of the key points."
+                ),
+                ResponseContentPart.CreateInputFilePart(fileUrl),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -223,7 +231,7 @@ Console.WriteLine(response.GetOutputText());
 
 ## Uploading files
 
-The following example uploads a file with the [Files API](https://developers.openai.com/api/docs/api-reference/files), then references its file ID in a request to the model.
+The following example uploads a file with the [Files API](https://developers.openai.com/api/reference/resources/files), then references its file ID in a request to the model.
 
 
 
@@ -348,19 +356,31 @@ puts(response.output_text)
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
 OpenAIFileClient files = new(key);
-OpenAIFile file = files.UploadFile("draconomicon.pdf", FileUploadPurpose.UserData);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputFilePart(file.Id),
-        ResponseContentPart.CreateInputTextPart("What is the first dragon in the book?"),
-    ]),
-]);
+OpenAIFile file = await files.UploadFileAsync(
+    "draconomicon.pdf",
+    FileUploadPurpose.UserData
+);
+
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputFilePart(file.Id),
+                ResponseContentPart.CreateInputTextPart(
+                    "What is the first dragon in the book?"
+                ),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -480,7 +500,7 @@ Keep these constraints in mind when you use file inputs:
 - **Token usage:** PDF parsing includes both extracted text and page images in context, which can increase token usage. In the Responses API, set `detail` to `auto` (the default), `low`, or `high` to control the amount of visual detail for PDF page images. Before deploying at scale, review pricing and token implications. [More on pricing](https://developers.openai.com/api/docs/pricing).
 - **File size limits:** A single request can include more than one file, but each file must be under 50 MB. The combined limit across all files in the request is 50 MB.
 - **Supported models:** PDF parsing that includes text and page images requires models with vision capabilities, such as `gpt-4o` and later models.
-- **File upload purpose:** You can upload files with any supported [purpose](https://developers.openai.com/api/docs/api-reference/files/create#files-create-purpose), but use `user_data` for files you plan to pass as model inputs.
+- **File upload purpose:** You can upload files with any supported [purpose](https://developers.openai.com/api/reference/resources/files/methods/create#files-create-purpose), but use `user_data` for files you plan to pass as model inputs.
 
 ## Full list of accepted file types
 
@@ -497,44 +517,42 @@ Keep these constraints in mind when you use file inputs:
 
 Next, you might want to explore one of these resources:
 
-<div>
-  [
 
-<span slot="icon">
-        </span>
-      Use the Playground to develop and iterate on prompts with file inputs.
 
-](https://platform.openai.com/chat/edit)
-</div>
+  [Experiment with file inputs in the Playground
 
-<div>
-  [
 
-<span slot="icon">
-        </span>
-      Check out the API reference for more options.
 
-](https://developers.openai.com/api/docs/api-reference/responses)
-</div>
+        Use the Playground to develop and iterate on prompts with file inputs.](https://platform.openai.com/chat/edit)
 
-<div>
-  [
 
-<span slot="icon">
-        </span>
-      Use retrieval over chunked files when you need scalable search instead of
-      sending whole files in a single context window.
 
-](https://developers.openai.com/api/docs/guides/tools-file-search)
-</div>
 
-<div>
-  [
 
-<span slot="icon">
-        </span>
-      Use Hosted Shell for advanced spreadsheet workflows such as joins,
-      aggregations, and charting.
+  [Full API reference
 
-](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart)
-</div>
+
+
+        Check out the API reference for more options.](https://developers.openai.com/api/reference/resources/responses)
+
+
+
+
+
+  [Use File Search for large corpora
+
+
+
+        Use retrieval over chunked files when you need scalable search instead of
+      sending whole files in a single context window.](https://developers.openai.com/api/docs/guides/tools-file-search)
+
+
+
+
+
+  [Use Hosted Shell for deep spreadsheet analysis
+
+
+
+        Use Hosted Shell for advanced spreadsheet workflows such as joins,
+      aggregations, and charting.](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart)

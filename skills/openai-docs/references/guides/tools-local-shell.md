@@ -1,17 +1,20 @@
 # Local shell
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The local shell tool is outdated. For new use cases, use the
   [`shell`](https://developers.openai.com/api/docs/guides/tools-shell) tool with GPT-5.1 instead. [Learn
   more](https://developers.openai.com/api/docs/guides/tools-shell).
 
 Local shell is a tool that allows agents to run shell commands locally on a machine you or the user provides. It's designed to work with [Codex CLI](https://github.com/openai/codex) and [`codex-mini-latest`](https://developers.openai.com/api/docs/models/codex-mini-latest). Commands are executed inside your own runtime, **you are fully in control of which commands actually run** —the API only returns the instructions, but does not execute them on OpenAI infrastructure.
 
-Local shell is available through the [Responses API](https://developers.openai.com/api/docs/guides/responses-vs-chat-completions) for use with [`codex-mini-latest`](https://developers.openai.com/api/docs/models/codex-mini-latest). It is not available on other models, or via the Chat Completions API.
+Local shell is available through the [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) for use with [`codex-mini-latest`](https://developers.openai.com/api/docs/models/codex-mini-latest). It is not available on other models, or via the Chat Completions API.
 
 Running arbitrary shell commands can be dangerous.  Always sandbox execution
 or add strict allow- / deny-lists before forwarding a command to the system
 shell.
-<br />
+
+
 
 See [Codex CLI](https://github.com/openai/codex) for reference implementation.
 

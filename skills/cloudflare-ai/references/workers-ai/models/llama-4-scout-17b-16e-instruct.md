@@ -27,14 +27,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Meta's Llama 4 Scout is a 17 billion parameter model with 16 experts that is natively multimodal. These models leverage a mixture-of-experts architecture to offer industry-leading performance in text and image understanding.
 
-| Model Info                                                                           |                                                                                      |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 131,000 tokens                                                                       |
-| Terms and License                                                                    | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE) |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                  |
-| Vision                                                                               | Yes                                                                                  |
-| Batch                                                                                | Yes                                                                                  |
-| Unit Pricing                                                                         | $0.27 per M input tokens, $0.85 per M output tokens                                  |
+| Model Info                                                                            |                                                                                      |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 131,000 tokens                                                                       |
+| Terms and License                                                                     | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama4/LICENSE) |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                  |
+| Vision                                                                                | Yes                                                                                  |
+| Batch                                                                                 | Yes                                                                                  |
+| Unit Pricing                                                                          | $0.27 per M input tokens, $0.85 per M output tokens                                  |
 
 ## Playground
 

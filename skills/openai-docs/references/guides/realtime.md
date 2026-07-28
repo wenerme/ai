@@ -1,11 +1,19 @@
 # Realtime and audio
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Start with the outcome you want to build. Realtime sessions are best for live audio that needs low latency. Request-based audio APIs are best for files, bounded requests, or generated speech that doesn't need a live session.
 
 ## Common use cases
 
-<div className="w-full max-w-full overflow-hidden">
-  </div>
+
+
+  - **[Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)**: Build speech-to-speech agents that listen, reason, speak, and call tools.
+- **[Live translation](https://developers.openai.com/api/docs/guides/realtime-translation)**: Translate live speech with a dedicated realtime translation session.
+- **[Transcription](https://developers.openai.com/api/docs/guides/realtime-transcription)**: Stream live transcript deltas or process audio files into text.
+- **[Speech generation](https://developers.openai.com/api/docs/guides/text-to-speech)**: Turn text into natural-sounding spoken audio.
+
+
 
 ## Understand different architectures
 
@@ -24,7 +32,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
         [`gpt-realtime-2.1`](https://developers.openai.com/api/docs/models/gpt-realtime-2.1)
       </td>
       <td>
-        <a href="/api/docs/guides/voice-agents">Voice agents</a>
+        [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)
       </td>
     </tr>
     <tr>
@@ -33,7 +41,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
         [`gpt-realtime-translate`](https://developers.openai.com/api/docs/models/gpt-realtime-translate)
       </td>
       <td>
-        <a href="/api/docs/guides/realtime-translation">Realtime translation</a>
+        [Realtime translation](https://developers.openai.com/api/docs/guides/realtime-translation)
       </td>
     </tr>
     <tr>
@@ -42,32 +50,28 @@ Start with the outcome you want to build. Realtime sessions are best for live au
         [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper)
       </td>
       <td>
-        <a href="/api/docs/guides/realtime-transcription">
-          Realtime transcription
-        </a>
+        [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription)
       </td>
     </tr>
     <tr>
       <td>Transcribe files or bounded audio requests</td>
       <td>Audio transcription models</td>
       <td>
-        <a href="/api/docs/guides/speech-to-text">Speech to text</a>
+        [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text)
       </td>
     </tr>
     <tr>
       <td>Generate speech from text</td>
       <td>Speech generation models</td>
       <td>
-        <a href="/api/docs/guides/text-to-speech">Text to speech</a>
+        [Text to speech](https://developers.openai.com/api/docs/guides/text-to-speech)
       </td>
     </tr>
     <tr>
       <td>Add audio to an existing Chat Completions app</td>
       <td>Audio-capable chat models</td>
       <td>
-        <a href="/api/docs/guides/audio#add-audio-to-your-existing-application">
-          Audio and speech
-        </a>
+        [Audio and speech](https://developers.openai.com/api/docs/guides/audio#add-audio-to-your-existing-application)
       </td>
     </tr>
   </tbody>
@@ -93,14 +97,14 @@ Realtime sessions keep a connection open while your application sends audio, rec
         conversation state.
       </td>
       <td>
-        Conversation session on <code>/v1/realtime</code>
+        Conversation session on `/v1/realtime`
       </td>
     </tr>
     <tr>
       <td>Translation session</td>
       <td>The app should continuously translate speech as it arrives.</td>
       <td>
-        Continuous translation session on <code>/v1/realtime/translations</code>
+        Continuous translation session on `/v1/realtime/translations`
       </td>
     </tr>
     <tr>
@@ -148,31 +152,25 @@ See [Realtime transcription](https://developers.openai.com/api/docs/guides/realt
 
 Choose the transport based on where your application captures and plays audio:
 
-[
+[WebRTC
 
-<span slot="icon">
-      </span>
-    Use for browser and mobile clients that capture or play audio directly.
 
-](https://developers.openai.com/api/docs/guides/realtime-webrtc)
 
-[
+      Use for browser and mobile clients that capture or play audio directly.](https://developers.openai.com/api/docs/guides/realtime-webrtc)
 
-<span slot="icon">
-      </span>
-    Use when your server already receives raw audio from a media pipeline, call
-    system, or worker.
+[WebSocket
 
-](https://developers.openai.com/api/docs/guides/realtime-websocket)
 
-[
 
-<span slot="icon">
-      </span>
-    Use for telephony voice agents. Confirm model support before using SIP for
-    translation or transcription.
+      Use when your server already receives raw audio from a media pipeline, call
+    system, or worker.](https://developers.openai.com/api/docs/guides/realtime-websocket)
 
-](https://developers.openai.com/api/docs/guides/realtime-sip)
+[SIP
+
+
+
+      Use for telephony voice agents. Confirm model support before using SIP for
+    translation or transcription.](https://developers.openai.com/api/docs/guides/realtime-sip)
 
 ## Safety identifiers
 
@@ -187,12 +185,12 @@ Safety identifiers do not carry over from Responses API requests or from other s
 If you still have a beta Realtime integration, migrate it to the GA interface before moving forward with new work. The most important changes are:
 
 - Remove the `OpenAI-Beta: realtime=v1` header when calling the GA interface.
-- Use [`POST /v1/realtime/client_secrets`](https://developers.openai.com/api/docs/api-reference/realtime-sessions/create-realtime-client-secret) to create ephemeral credentials for browser or mobile clients.
+- Use [`POST /v1/realtime/client_secrets`](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets/methods/create) to create ephemeral credentials for browser or mobile clients.
 - Use `/v1/realtime/calls` when establishing WebRTC sessions.
 - Update session and event shapes for the GA interface. In particular, set `session.type`, move output audio configuration under `session.audio.output`, and use the newer response event names like `response.output_text.delta`, `response.output_audio.delta`, and `response.output_audio_transcript.delta`.
 - If you are moving a speech-to-speech app forward, start from the [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide. If you are moving a transcription workflow forward, use [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription).
 
-See the [Realtime client events reference](https://developers.openai.com/api/docs/api-reference/realtime_client_events), [Realtime sessions reference](https://developers.openai.com/api/docs/api-reference/realtime-sessions), and [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide for the current GA flow.
+See the [Realtime client events reference](https://developers.openai.com/api/reference/resources/realtime/client-events), [Realtime sessions reference](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets), and [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) guide for the current GA flow.
 
 ## Related guides
 

@@ -25,12 +25,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks.
 
-| Model Info                                                                 |                                                                                          |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                                                                |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 7,968 tokens                                                                             |
-| Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
-| Unit Pricing                                                               | $0.28 per M input tokens, $0.83 per M output tokens                                      |
+| Model Info                                                                          |                                                                                          |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                                                                |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 7,968 tokens                                                                             |
+| Terms and License                                                                   | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
+| Unit Pricing                                                                        | $0.28 per M input tokens, $0.83 per M output tokens                                      |
 
 ## Playground
 

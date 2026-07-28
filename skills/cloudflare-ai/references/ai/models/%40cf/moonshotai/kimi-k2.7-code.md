@@ -27,14 +27,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Kimi K2.7 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.
 
-| Model Info                                                                           |                                                                                      |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 262,144 tokens                                                                       |
-| Terms and License                                                                    | [link ↗](https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE)         |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                  |
-| Reasoning                                                                            | Yes                                                                                  |
-| Vision                                                                               | Yes                                                                                  |
-| Unit Pricing                                                                         | $0.95 per M input tokens, $4.00 per M output tokens, $0.19 per M cached input tokens |
+| Model Info                                                                            |                                                                                      |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 262,144 tokens                                                                       |
+| Terms and License                                                                     | [link ↗](https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE)         |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                  |
+| Reasoning                                                                             | Yes                                                                                  |
+| Vision                                                                                | Yes                                                                                  |
+| Unit Pricing                                                                          | $0.95 per M input tokens, $4.00 per M output tokens, $0.19 per M cached input tokens |
 
 ## Playground
 

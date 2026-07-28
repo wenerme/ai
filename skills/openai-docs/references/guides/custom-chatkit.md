@@ -1,5 +1,7 @@
 # Advanced integrations with ChatKit
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 When you need full control—custom authentication, data residency, on‑prem deployment, or bespoke agent orchestration—you can run ChatKit on your own infrastructure. Use OpenAI's advanced self‑hosted option to use your own server and customized ChatKit.
 
 Agent Builder-hosted ChatKit workflows are in a transition window. For new
@@ -228,3 +230,9 @@ type Events = {
 | `messages`      | `object`                   | Configure message features (feedback, annotations, etc.).  |                |
 | `composer`      | `object`                   | Control attachments, entity tags, and placeholder text.    |                |
 | `entities`      | `object`                   | Callbacks for entity lookup, click handling, and previews. |                |
+
+### Plain-text aliases
+
+- "light" | "dark"
+- string | null
+- object | boolean

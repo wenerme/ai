@@ -1,5 +1,7 @@
 # Developer quickstart
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The OpenAI API provides a consistent interface to state-of-the-art AI [models](https://developers.openai.com/api/docs/models) for text generation, natural language processing, computer vision, and more. Get started by creating an API Key and running your first API call. Discover how to generate text, analyze images, build agents, and more.
 
 ## Create and export an API key
@@ -12,9 +14,11 @@ StatsigClient.logEvent("quickstart_create_api_key_click", null, null)
   Create an API Key
 
 
-<p></p>
+
+
+
 Before you begin, create an API key in the dashboard, which you'll use to
-securely [access the API](https://developers.openai.com/api/docs/api-reference/authentication). Store the key
+securely [access the API](https://developers.openai.com/api/reference/overview). Store the key
 in a safe location, like a [`.zshrc`
 file](https://www.freecodecamp.org/news/how-do-zsh-configuration-files-work/) or
 another text file on your computer. Once you've generated an API key, export it
@@ -23,24 +27,26 @@ in your terminal.
 
 
 
-<div data-content-switcher-pane data-value="macOS">
-    <div class="hidden">macOS / Linux</div>
+macOS / Linux
+
     Export an environment variable on macOS or Linux systems
 
 ```bash
 export OPENAI_API_KEY="your_api_key_here"
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="windows" hidden>
-    <div class="hidden">Windows</div>
+  
+
+  
+
+    
+Windows
+
     Export an environment variable in PowerShell
 
 ```bash
 setx OPENAI_API_KEY "your_api_key_here"
 ```
-
-  </div>
 
 
 
@@ -50,47 +56,298 @@ Each OpenAI SDK automatically reads your API key from the system environment.
 
 
 
-<div data-content-switcher-pane data-value="javascript">
-    <div class="hidden">JavaScript</div>
-    </div>
-  <div data-content-switcher-pane data-value="python" hidden>
-    <div class="hidden">Python</div>
-    </div>
-  <div data-content-switcher-pane data-value="csharp" hidden>
-    <div class="hidden">.NET</div>
-    </div>
-  <div data-content-switcher-pane data-value="java" hidden>
-    <div class="hidden">Java</div>
-    </div>
-  <div data-content-switcher-pane data-value="golang" hidden>
-    <div class="hidden">Go</div>
-    </div>
-  <div data-content-switcher-pane data-value="ruby" hidden>
-    <div class="hidden">Ruby</div>
-    </div>
+JavaScript
+
+    
+
+To use the OpenAI API in server-side JavaScript environments like Node.js, Deno, or Bun, you can use the official [OpenAI SDK for TypeScript and JavaScript](https://github.com/openai/openai-node). Get started by installing the SDK using [npm](https://www.npmjs.com/) or your preferred package manager:
+
+Install the OpenAI SDK with npm
+
+```bash
+npm install openai
+```
 
 
-<a
-  href="https://github.com/openai/openai-responses-starter-app"
-  target="_blank"
-  rel="noreferrer"
->
+With the OpenAI SDK installed, create a file called `example.mjs` and copy the example code into it:
+
+Test a basic API request
+
+```javascript
+import OpenAI from "openai";
+const client = new OpenAI();
+
+const response = await client.responses.create({
+  model: "gpt-5.6",
+  input: "Write a one-sentence bedtime story about a unicorn.",
+});
+
+console.log(response.output_text);
+```
+
+
+Execute the code with `node example.mjs` (or the equivalent command for Deno or Bun). In a few moments, you should see the output of your API request.
+
+[Learn more on GitHub
+
+
+
+      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-node)
+
+
   
 
-<span slot="icon">
-      </span>
-    Start building with the Responses API.
+  
+
+    
+Python
+
+    
+
+To use the OpenAI API in Python, you can use the official [OpenAI SDK for Python](https://github.com/openai/openai-python). Get started by installing the SDK using [pip](https://pypi.org/project/pip/):
+
+Install the OpenAI SDK with pip
+
+```bash
+pip install openai
+```
 
 
-</a>
+With the OpenAI SDK installed, create a file called `example.py` and copy the example code into it:
 
-[
+Test a basic API request
 
-<span slot="icon">
-      </span>
-    Learn more about prompting, message roles, and building conversational apps.
+```python
+from openai import OpenAI
 
-](https://developers.openai.com/api/docs/guides/text)
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input="Write a one-sentence bedtime story about a unicorn.",
+)
+
+print(response.output_text)
+```
+
+
+Execute the code with `python example.py`. In a few moments, you should see the output of your API request.
+
+[Learn more on GitHub
+
+
+
+      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-python)
+
+
+  
+
+  
+
+    
+.NET
+
+    
+
+In collaboration with Microsoft, OpenAI provides an officially supported API client for C#. You can install it with the .NET CLI from [NuGet](https://www.nuget.org/).
+
+```
+dotnet add package OpenAI
+```
+
+A simple API request to the [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
+
+Test a basic API request
+
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
+
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
+
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    "Say 'this is a test.'"
+);
+
+Console.WriteLine($"[ASSISTANT]: {response.GetOutputText()}");
+```
+
+
+  
+
+  
+
+    
+Java
+
+    
+
+OpenAI provides an API helper for the Java programming language, currently in beta. You can include the Maven dependency using the following configuration:
+
+```xml
+<dependency>
+  <groupId>com.openai</groupId>
+  <artifactId>openai-java</artifactId>
+  <version>4.0.0</version>
+</dependency>
+```
+
+A simple API request to [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
+
+Test a basic API request
+
+```java
+import com.openai.client.OpenAIClient;
+import com.openai.client.okhttp.OpenAIOkHttpClient;
+import com.openai.models.responses.Response;
+import com.openai.models.responses.ResponseCreateParams;
+
+public class Main {
+  public static void main(String[] args) {
+    OpenAIClient client = OpenAIOkHttpClient.fromEnv();
+
+    ResponseCreateParams params =
+        ResponseCreateParams.builder().input("Say this is a test").model("gpt-5.6").build();
+
+    Response response = client.responses().create(params);
+    response.output().stream()
+        .flatMap(item -> item.message().stream())
+        .flatMap(message -> message.content().stream())
+        .flatMap(content -> content.outputText().stream())
+        .forEach(outputText -> System.out.println(outputText.text()));
+  }
+}
+```
+
+
+To learn more about using the OpenAI API in Java, check out the GitHub repo linked below!
+
+[Learn more on GitHub
+
+
+
+      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-java)
+
+
+  
+
+  
+
+    
+Go
+
+    
+
+OpenAI provides an API helper for the Go programming language, currently in beta. You can import the library using the code below:
+
+```go
+import (
+	"github.com/openai/openai-go/v3" // imported as openai
+)
+```
+
+
+A first API request to the [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
+
+Test a basic API request
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient(
+		option.WithAPIKey("My API Key"), // or set OPENAI_API_KEY in your env
+	)
+
+	resp, err := client.Responses.New(context.TODO(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say this is a test")},
+	})
+	if err != nil {
+		panic(err.Error())
+	}
+
+	fmt.Println(resp.OutputText())
+}
+```
+
+
+To learn more about using the OpenAI API in Go, check out the GitHub repo linked below!
+
+[Learn more on GitHub
+
+
+
+      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-go)
+
+
+  
+
+  
+
+    
+Ruby
+
+    
+
+To use the OpenAI API in Ruby, you can use the official [OpenAI SDK for Ruby](https://github.com/openai/openai-ruby). Get started by adding the gem to your application:
+
+Install the OpenAI SDK with Bundler
+
+```ruby
+gem "openai"
+```
+
+
+With the OpenAI SDK installed, create a file called `example.rb` and copy the example code into it:
+
+Test a basic API request
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  input: "Write a one-sentence bedtime story about a unicorn."
+)
+
+puts(response.output_text)
+```
+
+
+Execute the code with `ruby example.rb`. In a few moments, you should see the output of your API request.
+
+[Learn more on GitHub
+
+
+
+      Discover more SDK capabilities and options on the library's GitHub README.](https://github.com/openai/openai-ruby)
+
+
+[Responses starter app
+
+
+
+      Start building with the Responses API.](https://github.com/openai/openai-responses-starter-app)
+
+[Text generation and prompting
+
+
+
+      Learn more about prompting, message roles, and building conversational apps.](https://developers.openai.com/api/docs/guides/text)
 
 ## Add credits to keep building
 
@@ -103,38 +360,32 @@ StatsigClient.logEvent("quickstart_add_credits_billing_click", null, null)
 
 
 {/* prettier-ignore */}
-<div className="mt-2">Congrats on running a free test API request! Start building real applications with higher limits and use <a href="/api/docs/models" target="_blank">our models</a> to generate text, audio, images, videos and more.</div>
 
-<div className="mt-2">
+Congrats on running a free test API request! Start building real applications with higher limits and use [our models](https://developers.openai.com/api/docs/models) to generate text, audio, images, videos and more.
+
+
+
+
   Explore tools and docs designed to help you ship faster:
-</div>
-<a
-  href="https://platform.openai.com/chat"
-  target="_blank"
-  rel="noreferrer"
-  onClick={() =>
-    StatsigClient.logEvent(
+
+
+[StatsigClient.logEvent(
       "quickstart_add_credits_chat_playground_click",
       null,
       null
     )
   }
 >
-  
-
-<span slot="icon">
-      </span>
-    Build & test conversational prompts and embed them in your app.
+  Chat Playground
 
 
-</a>
-[
 
-<span slot="icon">
-      </span>
-    Use the Agents SDK to build, run, and observe agent workflows.
+      Build & test conversational prompts and embed them in your app.](https://platform.openai.com/chat)
+[Build agents
 
-](https://developers.openai.com/api/docs/guides/agents)
+
+
+      Use the Agents SDK to build, run, and observe agent workflows.](https://developers.openai.com/api/docs/guides/agents)
 
 ## Analyze images and files
 
@@ -142,8 +393,8 @@ Send image URLs, uploaded files, or PDF documents directly to the model to extra
 
 
 
-<div data-content-switcher-pane data-value="image-url">
-    <div class="hidden">Image URL</div>
+Image URL
+
     Analyze the content of an image
 
 ```javascript
@@ -242,16 +493,26 @@ print(response.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is in this image?"),
-        ResponseContentPart.CreateInputImagePart(new Uri("https://openai-documentation.vercel.app/images/cat_and_otter.png")),
-    ]),
-]);
+Uri imageUrl = new(
+    "https://openai-documentation.vercel.app/images/cat_and_otter.png"
+);
+
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart("What is in this image?"),
+                ResponseContentPart.CreateInputImagePart(imageUrl),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -283,9 +544,13 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="file-url" hidden>
-    <div class="hidden">File URL</div>
+  
+
+  
+
+    
+File URL
+
     Use a file URL as input
 
 ```bash
@@ -393,30 +658,40 @@ puts(response.output_text)
 ```
 
 ```csharp
-using OpenAI.Files;
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-using HttpClient http = new();
-using Stream stream = await http.GetStreamAsync("https://www.berkshirehathaway.com/letters/2024ltr.pdf");
-OpenAIFileClient files = new(key);
-OpenAIFile file = files.UploadFile(stream, "2024ltr.pdf", FileUploadPurpose.UserData);
+Uri fileUrl = new(
+    "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Analyze the letter and provide a summary of the key points."),
-        ResponseContentPart.CreateInputFilePart(file.Id),
-    ]),
-]);
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart(
+                    "Analyze the letter and provide a summary of the key points."
+                ),
+                ResponseContentPart.CreateInputFilePart(fileUrl),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine(response.GetOutputText());
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="file-upload" hidden>
-    <div class="hidden">Upload file</div>
+  
+
+  
+
+    
+Upload file
+
     Upload a file and use it as input
 
 ```bash
@@ -538,42 +813,48 @@ puts(response.output_text)
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
 OpenAIFileClient files = new(key);
-OpenAIFile file = files.UploadFile("draconomicon.pdf", FileUploadPurpose.UserData);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputFilePart(file.Id),
-        ResponseContentPart.CreateInputTextPart("What is the first dragon in the book?"),
-    ]),
-]);
+OpenAIFile file = await files.UploadFileAsync(
+    "draconomicon.pdf",
+    FileUploadPurpose.UserData
+);
+
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputFilePart(file.Id),
+                ResponseContentPart.CreateInputTextPart(
+                    "What is the first dragon in the book?"
+                ),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine(response.GetOutputText());
 ```
 
-  </div>
+
+
+[Image inputs guide
 
 
 
-[
+      Learn to use image inputs to the model and extract meaning from images.](https://developers.openai.com/api/docs/guides/images-vision)
 
-<span slot="icon">
-      </span>
-    Learn to use image inputs to the model and extract meaning from images.
+[File inputs guide
 
-](https://developers.openai.com/api/docs/guides/images)
 
-[
 
-<span slot="icon">
-      </span>
-    Learn to use file inputs to the model and extract meaning from documents.
-
-](https://developers.openai.com/api/docs/guides/file-inputs)
+      Learn to use file inputs to the model and extract meaning from documents.](https://developers.openai.com/api/docs/guides/file-inputs)
 
 ## Extend the model with tools
 
@@ -581,8 +862,8 @@ Give the model access to external data and functions by attaching [tools](https:
 
 
 
-<div data-content-switcher-pane data-value="web-search">
-    <div class="hidden">Web search</div>
+Web search
+
     Use web search in a response
 
 ```javascript
@@ -636,18 +917,18 @@ YAML
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
 options.Tools.Add(ResponseTool.CreateWebSearchTool());
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What was a positive news story from today?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What was a positive news story from today?"),
-    ]),
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -666,9 +947,13 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="file-search" hidden>
-    <div class="hidden">File search</div>
+  
+
+  
+
+    
+File search
+
     Search your files in a response
 
 ```python
@@ -703,18 +988,20 @@ console.log(response);
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateFileSearchTool(["<vector_store_id>"])
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What is deep research by OpenAI?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is deep research by OpenAI?"),
-    ]),
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -738,9 +1025,13 @@ response = openai.responses.create(
 puts(response)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="code-interpreter" hidden>
-    <div class="hidden">Code Interpreter</div>
+  
+
+  
+
+    
+Code Interpreter
+
     Use Code Interpreter in a response
 
 ```javascript
@@ -815,9 +1106,13 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="function-calling" hidden>
-    <div class="hidden">Function calling</div>
+  
+
+  
+
+    
+Function calling
+
     Call your own function
 
 ```javascript
@@ -894,40 +1189,51 @@ print(response.output[0].to_json())
 
 ```csharp
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using OpenAI.Responses;
+#pragma warning disable CA1869
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFunctionTool(
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateFunctionTool(
         functionName: "get_weather",
         functionDescription: "Get current temperature for a given location.",
-        functionParameters: BinaryData.FromObjectAsJson(new
-        {
-            type = "object",
-            properties = new
+        functionParameters: BinaryData.FromString(
+            """
             {
-                location = new
-                {
-                    type = "string",
-                    description = "City and country e.g. Bogotá, Colombia"
-                }
-            },
-            required = new[] { "location" },
-            additionalProperties = false
-        }),
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "City and country e.g. Bogotá, Colombia"
+                    }
+                },
+                "required": ["location"],
+                "additionalProperties": false
+            }
+            """
+        ),
         strictModeEnabled: true
     )
 );
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What is the weather like in Paris today?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is the weather like in Paris today?")
-    ])
-], options);
-
-Console.WriteLine(JsonSerializer.Serialize(response.OutputItems[0]));
+ResponseResult response = client.CreateResponse(options);
+Console.WriteLine(
+    JsonSerializer.Serialize(
+        response.OutputItems[0],
+        new JsonSerializerOptions
+        {
+            TypeInfoResolver = new DefaultJsonTypeInfoResolver(),
+        }
+    )
+);
 ```
 
 ```bash
@@ -997,9 +1303,13 @@ response = openai.responses.create(
 puts(response.output.first.to_json)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="remote-mcp" hidden>
-    <div class="hidden">Remote MCP</div>
+  
+
+  
+
+    
+Remote MCP
+
     Call a remote MCP server
 
 ```bash
@@ -1067,22 +1377,22 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "dmcp",
+        serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
+        toolCallApprovalPolicy: GlobalMcpToolCallApprovalPolicy.NeverRequireApproval
+    )
+);
+options.InputItems.Add(ResponseItem.CreateUserMessageItem("Roll 2d4+1"));
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Roll 2d4+1")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -1109,25 +1419,19 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-  </div>
+
+
+[Use built-in tools
 
 
 
-[
+      Learn about powerful built-in tools like web search and file search.](https://developers.openai.com/api/docs/guides/tools)
 
-<span slot="icon">
-      </span>
-    Learn about powerful built-in tools like web search and file search.
+[Function calling guide
 
-](https://developers.openai.com/api/docs/guides/tools)
 
-[
 
-<span slot="icon">
-      </span>
-    Learn to enable the model to call your own custom code.
-
-](https://developers.openai.com/api/docs/guides/function-calling)
+      Learn to enable the model to call your own custom code.](https://developers.openai.com/api/docs/guides/function-calling)
 
 ## Stream responses and build real-time apps
 
@@ -1177,17 +1481,17 @@ for event in stream:
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-var responses = client.CreateResponseStreamingAsync([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Say 'double bubble bath' ten times fast."),
-    ]),
-]);
+var responses = client.CreateResponseStreamingAsync(
+    "gpt-5.6",
+    "Say 'double bubble bath' ten times fast."
+);
 
-await foreach (var response in responses)
+await foreach (StreamingResponseUpdate response in responses)
 {
     if (response is StreamingResponseOutputTextDeltaUpdate delta)
     {
@@ -1217,21 +1521,17 @@ end
 ```
 
 
-[
+[Use streaming events
 
-<span slot="icon">
-      </span>
-    Use server-sent events to stream model responses to users fast.
 
-](https://developers.openai.com/api/docs/guides/streaming-responses)
 
-[
+      Use server-sent events to stream model responses to users fast.](https://developers.openai.com/api/docs/guides/streaming-responses)
 
-<span slot="icon">
-      </span>
-    Use WebRTC or WebSockets for super fast speech-to-speech AI apps.
+[Get started with the Realtime API
 
-](https://developers.openai.com/api/docs/guides/realtime)
+
+
+      Use WebRTC or WebSockets for super fast speech-to-speech AI apps.](https://developers.openai.com/api/docs/guides/realtime)
 
 ## Build agents
 
@@ -1294,10 +1594,8 @@ if __name__ == "__main__":
 ```
 
 
-[
+[Build agents that can take action
 
-<span slot="icon">
-      </span>
-    Learn how to use the OpenAI platform to build powerful, capable AI agents.
 
-](https://developers.openai.com/api/docs/guides/agents)
+
+      Learn how to use the OpenAI platform to build powerful, capable AI agents.](https://developers.openai.com/api/docs/guides/agents)

@@ -1627,9 +1627,12 @@ By default, requests are load-balanced across all available providers, ordered b
 
 * `int4`: Integer (4 bit)
 * `int8`: Integer (8 bit)
-* `fp4`: Floating point (4 bit)
+* `fp4`: Floating point (4 bit), including `mxfp4` or `nvfp4`
+* `mxfp4`: Microscaling floating point (4 bit)
+* `nvfp4`: NVIDIA floating point (4 bit)
 * `fp6`: Floating point (6 bit)
-* `fp8`: Floating point (8 bit)
+* `fp8`: Floating point (8 bit), including `mxfp8`
+* `mxfp8`: Microscaling floating point (8 bit)
 * `fp16`: Floating point (16 bit)
 * `bf16`: Brain floating point (16 bit)
 * `fp32`: Floating point (32 bit)

@@ -27,14 +27,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Gemma 4 is Google's most intelligent family of open models, built from Gemini 3 research to maximize intelligence-per-parameter.
 
-| Model Info                                                                           |                                                                |
-| ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 256,000 tokens                                                 |
-| Terms and License                                                                    | [link ↗](https://ai.google.dev/gemma/docs/gemma%5F4%5Flicense) |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                            |
-| Reasoning                                                                            | Yes                                                            |
-| Vision                                                                               | Yes                                                            |
-| Unit Pricing                                                                         | $0.10 per M input tokens, $0.30 per M output tokens            |
+| Model Info                                                                            |                                                                |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 256,000 tokens                                                 |
+| Terms and License                                                                     | [link ↗](https://ai.google.dev/gemma/docs/gemma%5F4%5Flicense) |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                            |
+| Reasoning                                                                             | Yes                                                            |
+| Vision                                                                                | Yes                                                            |
+| Unit Pricing                                                                          | $0.10 per M input tokens, $0.30 per M output tokens            |
 
 ## Playground
 

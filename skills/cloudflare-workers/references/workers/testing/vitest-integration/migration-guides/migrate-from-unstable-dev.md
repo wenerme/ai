@@ -1,5 +1,5 @@
 ---
-description: Migrate from the [`unstable_dev`](/workers/wrangler/api/#unstable_dev) API to writing tests with the Workers Vitest integration.
+description: Migrate from the unstable_dev API to writing tests with the Workers Vitest integration.
 title: Migrate from unstable_dev
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,9 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate from unstable\_dev
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [unstable\_dev](https://developers.cloudflare.com/workers/wrangler/api/#unstable%5Fdev) API has been a recommended approach to run integration tests. The `@cloudflare/vitest-pool-workers` package integrates directly with Vitest for fast re-runs, supports both unit and integration tests, all whilst providing isolated per-test storage.
+Note
+
+Cloudflare recommends using the [createTestHarness()](https://developers.cloudflare.com/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.
+
+The [unstable\_dev](https://developers.cloudflare.com/workers/wrangler/api/#unstable%5Fdev) API has been a recommended approach to run integration tests. The `@cloudflare/vitest-pool-workers` package integrates directly with Vitest for fast re-runs, supports both unit and integration tests, and provides isolated per-test storage.
 
 This guide demonstrates key differences between tests written with the `unstable_dev` API and the Workers Vitest integration. For more information on writing tests with the Workers Vitest integration, refer to [Write your first test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/).
 
@@ -107,5 +111,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/#page","headline":"Migrate from unstable_dev · Cloudflare Workers docs","description":"Migrate from the unstable\\_dev API to writing tests with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/#page","headline":"Migrate from unstable_dev · Cloudflare Workers docs","description":"Migrate from the unstable\\_dev API to writing tests with the Workers Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -25,10 +25,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Quantized (int8) generative text model with 7 billion parameters from Meta
 
-| Model Info                                                                 |              |
-| -------------------------------------------------------------------------- | ------------ |
-| Deprecated                                                                 | 5/30/2026    |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens |
+| Model Info                                                                          |              |
+| ----------------------------------------------------------------------------------- | ------------ |
+| Deprecated                                                                          | 5/30/2026    |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
 
 ## Playground
 

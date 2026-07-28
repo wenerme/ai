@@ -1,5 +1,7 @@
 # Safety checks
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 We run several types of evaluations on our models and how they're being used. This guide covers how we test for safety and what you can do to avoid violations.
 
 ## Safety classifiers for GPT-5 and forward
@@ -21,14 +23,14 @@ If your org engages in suspicious activity that violates our safety policies, we
 
 ### Implementing safety identifiers for individual users
 
-The `safety_identifier` parameter is available in both the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create) and older [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create). The Realtime API supports the same concept through the `OpenAI-Safety-Identifier` header. To use safety identifiers, provide a stable ID for your end user on each request. Hash user email or internal user IDs to avoid passing any personal information.
+The `safety_identifier` parameter is available in both the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) and older [Chat Completions API](https://developers.openai.com/api/reference/resources/chat). The Realtime API supports the same concept through the `OpenAI-Safety-Identifier` header. To use safety identifiers, provide a stable ID for your end user on each request. Hash user email or internal user IDs to avoid passing any personal information.
 
 Safety identifiers do not carry over between APIs or sessions. If your application already sends `safety_identifier` with Responses API requests, pass the same stable value separately when you create or connect each Realtime session.
 
 
 
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
+Responses API
+
     Providing a safety identifier with the Responses API
 
 ```python
@@ -54,9 +56,13 @@ curl https://api.openai.com/v1/responses \
 }'
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="chat" hidden>
-    <div class="hidden">Chat Completions API</div>
+  
+
+  
+
+    
+Chat Completions API
+
     Providing a safety identifier with the Chat Completions API
 
 ```python
@@ -84,9 +90,13 @@ curl https://api.openai.com/v1/chat/completions \
 }'
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="realtime" hidden>
-    <div class="hidden">Realtime API</div>
+  
+
+  
+
+    
+Realtime API
+
     Providing a safety identifier with the Realtime API
 
 ```bash
@@ -101,8 +111,6 @@ curl https://api.openai.com/v1/realtime/client_secrets \
 }
 }'
 ```
-
-  </div>
 
 
 

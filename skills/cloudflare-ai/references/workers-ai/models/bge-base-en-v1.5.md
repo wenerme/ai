@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 BAAI general embedding (Base) model that transforms any given text into a 768-dimensional vector
 
-| Model Info                                                                 |                                                        |
-| -------------------------------------------------------------------------- | ------------------------------------------------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 153,600 tokens                                         |
-| More information                                                           | [link ↗](https://huggingface.co/BAAI/bge-base-en-v1.5) |
-| Maximum Input Tokens                                                       | 512                                                    |
-| Output Dimensions                                                          | 768                                                    |
-| Batch                                                                      | Yes                                                    |
-| Unit Pricing                                                               | $0.067 per M input tokens                              |
+| Model Info                                                                          |                                                        |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 153,600 tokens                                         |
+| More information                                                                    | [link ↗](https://huggingface.co/BAAI/bge-base-en-v1.5) |
+| Maximum Input Tokens                                                                | 512                                                    |
+| Output Dimensions                                                                   | 768                                                    |
+| Batch                                                                               | Yes                                                    |
+| Unit Pricing                                                                        | $0.067 per M input tokens                              |
 
 ## Usage
 

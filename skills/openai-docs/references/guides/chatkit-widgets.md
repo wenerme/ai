@@ -1,5 +1,7 @@
 # ChatKit widgets
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Widgets are the containers and components that come with ChatKit. You can use prebuilt widgets, modify templates, or design your own to fully customize ChatKit in your product.
 
 ![widgets](https://cdn.openai.com/API/images/widget-graphic.png)

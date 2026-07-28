@@ -1,5 +1,7 @@
 # Completions API
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The completions API endpoint received its final update in July 2023 and has a different interface than the new Chat Completions endpoint. Instead of the input being a list of messages, the input is a freeform text string called a `prompt`.
 
 An example legacy Completions API call looks like the following:
@@ -26,7 +28,7 @@ See the full [API reference documentation](https://platform.openai.com/docs/api-
 
 #### Inserting text
 
-The completions endpoint also supports inserting text by providing a [suffix](https://developers.openai.com/api/docs/api-reference/completions/create#completions-create-suffix) in addition to the standard prompt which is treated as a prefix. This need naturally arises when writing long-form text, transitioning between paragraphs, following an outline, or guiding the model towards an ending. This also works on code, and can be used to insert in the middle of a function or file.
+The completions endpoint also supports inserting text by providing a [suffix](https://developers.openai.com/api/reference/resources/completions/methods/create#completions-create-suffix) in addition to the standard prompt which is treated as a prefix. This need naturally arises when writing long-form text, transitioning between paragraphs, following an outline, or guiding the model towards an ending. This also works on code, and can be used to insert in the middle of a function or file.
 
 
 
@@ -95,7 +97,7 @@ The response format is similar to the response format of the Chat Completions AP
 
 ### Inserting text
 
-The completions endpoint also supports inserting text by providing a [suffix](https://developers.openai.com/api/docs/api-reference/completions/create#completions-create-suffix) in addition to the standard prompt which is treated as a prefix. This need naturally arises when writing long-form text, transitioning between paragraphs, following an outline, or guiding the model towards an ending. This also works on code, and can be used to insert in the middle of a function or file.
+The completions endpoint also supports inserting text by providing a [suffix](https://developers.openai.com/api/reference/resources/completions/methods/create#completions-create-suffix) in addition to the standard prompt which is treated as a prefix. This need naturally arises when writing long-form text, transitioning between paragraphs, following an outline, or guiding the model towards an ending. This also works on code, and can be used to insert in the middle of a function or file.
 
 
 

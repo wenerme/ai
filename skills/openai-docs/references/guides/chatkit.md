@@ -1,5 +1,7 @@
 # ChatKit
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ChatKit is the best way to build agentic chat experiences. Whether you’re building an internal knowledge base assistant, HR onboarding helper, research companion, shopping or scheduling assistant, troubleshooting bot, financial planning advisor, or support agent, ChatKit provides a customizable chat embed to handle all user experience details.
 
 Use ChatKit's embeddable UI widgets, customizable prompts, tool‑invocation support, file attachments, and chain‑of‑thought visualizations to build agents without reinventing the chat UI.
@@ -21,13 +23,17 @@ OpenAI is deprecating Agent Builder. Existing users can continue using it
 
 ## Get started with ChatKit
 
+- **[Custom server integration](https://developers.openai.com/api/docs/guides/custom-chatkit)**: Use any server and the ChatKit SDKs to build your own custom ChatKit user experience
+- **[Existing hosted workflow](#embed-chatkit-in-your-frontend)**: Connect ChatKit to an existing Agent Builder workflow during the transition window
+
 ## Embed ChatKit in your frontend
 
 Use this path only if you already have an Agent Builder workflow that backs your ChatKit implementation. For new ChatKit apps, or when migrating before Agent Builder shuts down, use the [advanced integration](https://developers.openai.com/api/docs/guides/custom-chatkit) to connect ChatKit to your own server-side agent implementation.
 
 At a high level, setting up ChatKit with an existing hosted workflow is a three-step process. Open your existing workflow while Agent Builder remains available. Then set up ChatKit and add features to build your chat experience.
 
-<br />
+
+
 ![OpenAI-hosted
 ChatKit](https://cdn.openai.com/API/docs/images/openai-hosted.png)
 
@@ -165,9 +171,9 @@ export default async function getChatKitSessionToken(
 
 3. In your project directory, install the ChatKit React bindings:
 
-   ```bash
+```bash
    npm install @openai/chatkit-react
-   ```
+```
 
 4. Add the ChatKit JS script to your page. Drop this snippet into your page’s `<head>` or wherever you load scripts, and the browser will fetch and run ChatKit for you.
 
@@ -252,89 +258,57 @@ See the [custom theming](https://developers.openai.com/api/docs/guides/chatkit-t
 
 #### Build your implementation
 
-<a href="https://openai.github.io/chatkit-python">
-  
-
-<span slot="icon">
-      </span>
-    Learn to handle authentication, add theming and customization, and more.
+[ChatKit docs on GitHub
 
 
-</a>
-<a href="https://github.com/openai/chatkit-python">
-  
 
-<span slot="icon">
-      </span>
-    Add server-side storage, access control, tools, and other backend
-    functionality.
+      Learn to handle authentication, add theming and customization, and more.](https://openai.github.io/chatkit-python)
+[ChatKit Python SDK
 
 
-</a>
 
-<a href="https://github.com/openai/chatkit-js">
-  
+      Add server-side storage, access control, tools, and other backend
+    functionality.](https://github.com/openai/chatkit-python)
 
-<span slot="icon">
-      </span>
-    Check out the ChatKit JS repo.
+[ChatKit JS SDK
 
 
-</a>
+
+      Check out the ChatKit JS repo.](https://github.com/openai/chatkit-js)
 
 #### Explore ChatKit UI
 
-<a href="https://chatkit.world">
-  
-
-<span slot="icon">
-      </span>
-    Play with an interactive demo of ChatKit.
+[chatkit.world
 
 
-</a>
 
-<a href="https://widgets.chatkit.studio">
-  
+      Play with an interactive demo of ChatKit.](https://chatkit.world)
 
-<span slot="icon">
-      </span>
-    Browse available widgets.
+[Widget builder
 
 
-</a>
 
-<a href="https://chatkit.studio/playground">
-  
+      Browse available widgets.](https://widgets.chatkit.studio)
 
-<span slot="icon">
-      </span>
-    Play with an interactive demo to learn by doing.
+[ChatKit playground
 
 
-</a>
+
+      Play with an interactive demo to learn by doing.](https://chatkit.studio/playground)
 
 #### See working examples
 
-<a href="https://github.com/openai/openai-chatkit-advanced-samples">
-  
-
-<span slot="icon">
-      </span>
-    See working examples of ChatKit and get inspired.
+[Samples on GitHub
 
 
-</a>
 
-<a href="https://github.com/openai/openai-chatkit-starter-app">
-  
+      See working examples of ChatKit and get inspired.](https://github.com/openai/openai-chatkit-advanced-samples)
 
-<span slot="icon">
-      </span>
-    Clone a repo to start with a fully working template.
+[Starter app repo
 
 
-</a>
+
+      Clone a repo to start with a fully working template.](https://github.com/openai/openai-chatkit-starter-app)
 
 ## Next steps
 

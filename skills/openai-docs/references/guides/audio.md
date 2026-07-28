@@ -1,5 +1,7 @@
 # Audio and speech
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Audio models can understand spoken input, generate spoken output, or do both in the same interaction. This guide explains the vocabulary used across OpenAI's audio docs. When you're ready to choose an implementation path, start with the [Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime).
 
 ## Audio modalities
@@ -69,16 +71,16 @@ await session.connect({
 
 This example uses JavaScript because browser voice agents connect with WebRTC from the client. For Python voice workflows, use the [Voice agents guide](https://developers.openai.com/api/docs/guides/voice-agents), which covers chained voice pipelines.
 
-If you already have a text-based LLM application with the [Chat Completions endpoint](https://developers.openai.com/api/docs/api-reference/chat/), you may want to add audio capabilities. For example, if your chat application supports text input, you can add audio input and output: include `audio` in the `modalities` array and use an audio model, like [`gpt-audio-1.5`](https://developers.openai.com/api/docs/models/gpt-audio-1.5).
+If you already have a text-based LLM application with the [Chat Completions endpoint](https://developers.openai.com/api/reference/resources/chat), you may want to add audio capabilities. For example, if your chat application supports text input, you can add audio input and output: include `audio` in the `modalities` array and use an audio model, like [`gpt-audio-1.5`](https://developers.openai.com/api/docs/models/gpt-audio-1.5).
 
-The [Responses API](https://developers.openai.com/api/docs/api-reference/responses) docs currently describe
+The [Responses API](https://developers.openai.com/api/reference/resources/responses) docs currently describe
   text and image inputs with text outputs. For this audio-chat pattern, use Chat
   Completions with an audio-capable model.
 
 
 
-<div data-content-switcher-pane data-value="audio-out">
-    <div class="hidden">Audio output from model</div>
+Audio output from model
+
     Create a human-like audio response to a prompt
 
 ```javascript
@@ -149,9 +151,13 @@ curl "https://api.openai.com/v1/chat/completions" \
     }'
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="audio-in" hidden>
-    <div class="hidden">Audio input to model</div>
+  
+
+  
+
+    
+Audio input to model
+
     Use audio inputs for prompting a model
 
 ```javascript
@@ -246,5 +252,3 @@ curl "https://api.openai.com/v1/chat/completions" \
       ]
     }'
 ```
-
-  </div>

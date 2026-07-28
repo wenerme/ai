@@ -130,7 +130,6 @@ The continent where the request is destined. Geolocation is determined from the 
 | North America | NA   |
 | Oceania       | OC   |
 | South America | SA   |
-| Tor network   | T1   |
 
 | UI name                              | API example                   |
 | ------------------------------------ | ----------------------------- |
@@ -229,7 +228,6 @@ Geolocation is determined from the device's public IP address (typically assigne
 | North America | NA   |
 | Oceania       | OC   |
 | South America | SA   |
-| Tor network   | T1   |
 
 | UI name                         | API example                              |
 | ------------------------------- | ---------------------------------------- |

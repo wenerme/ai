@@ -1,6 +1,8 @@
 # Text to speech
 
-The Audio API provides a [`speech`](https://developers.openai.com/api/docs/api-reference/audio/createSpeech) endpoint based on our [GPT-4o mini TTS (text-to-speech) model](https://developers.openai.com/api/docs/models/gpt-4o-mini-tts). It comes with 11 built-in voices and can be used to:
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+The Audio API provides a [`speech`](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create) endpoint based on our [GPT-4o mini TTS (text-to-speech) model](https://developers.openai.com/api/docs/models/gpt-4o-mini-tts). It comes with 11 built-in voices and can be used to:
 
 - Narrate a written blog post
 - Produce spoken audio in multiple languages
@@ -16,9 +18,9 @@ Our [usage policies](https://openai.com/policies/usage-policies) require you
 
 The `speech` endpoint takes three key inputs:
 
-1. The [model](https://developers.openai.com/api/docs/api-reference/audio/createSpeech#audio-createspeech-model) you're using
-1. The [text](https://developers.openai.com/api/docs/api-reference/audio/createSpeech#audio-createspeech-input) to be turned into audio
-1. The [voice](https://developers.openai.com/api/docs/api-reference/audio/createSpeech#audio-createspeech-voice) that will speak the output
+1. The [model](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create#audio-createspeech-model) you're using
+1. The [text](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create#audio-createspeech-input) to be turned into audio
+1. The [voice](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create#audio-createspeech-voice) that will speak the output
 
 Here's a simple request example:
 
@@ -206,7 +208,7 @@ You can generate spoken audio in these languages by providing input text in the 
 
 ## Custom voices
 
-Custom voices enable you to create a unique voice for your agent or application. These voices can be used for audio output with the [Text to Speech API](https://developers.openai.com/api/docs/api-reference/audio/createSpeech), the [Realtime API](https://developers.openai.com/api/docs/api-reference/realtime), or the [Chat Completions API with audio output](https://developers.openai.com/api/docs/guides/audio).
+Custom voices enable you to create a unique voice for your agent or application. These voices can be used for audio output with the [Text to Speech API](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), the [Realtime API](https://developers.openai.com/api/reference/resources/realtime), or the [Chat Completions API with audio output](https://developers.openai.com/api/docs/guides/audio).
 
 To create a custom voice, you’ll provide a short sample audio reference that the model will seek to replicate.
 
@@ -295,7 +297,7 @@ If successful, the created voice will be listed under the [Audio tab](https://pl
 
 #### Using a voice during speech generation
 
-Speech generation will work as usual. Simply specify the ID of the voice in the `voice` parameter when [creating speech](https://developers.openai.com/api/docs/api-reference/audio/createSpeech), or when initiating a [realtime session](https://developers.openai.com/api/docs/api-reference/realtime/create-call#realtime_create_call-session-audio-output-voice).
+Speech generation will work as usual. Simply specify the ID of the voice in the `voice` parameter when [creating speech](https://developers.openai.com/api/reference/resources/audio/subresources/speech/methods/create), or when initiating a [realtime session](https://developers.openai.com/api/reference/resources/realtime/subresources/calls/methods/create#realtime_create_call-session-audio-output-voice).
 
 **Text to speech example**
 
@@ -335,23 +337,15 @@ const sessionConfig = JSON.stringify({
 
 ## Related guides
 
-<a href="/api/docs/guides/realtime">
-  
-
-<span slot="icon">
-      </span>
-    Choose the right path for voice agents, translation, transcription, and
-    speech generation.
+[Realtime and audio overview
 
 
-</a>
 
-<a href="/api/docs/guides/audio">
-  
+      Choose the right path for voice agents, translation, transcription, and
+    speech generation.](https://developers.openai.com/api/docs/guides/realtime)
 
-<span slot="icon">
-      </span>
-    Review audio modalities, speech tasks, streaming, and request-based APIs.
+[Audio and speech concepts
 
 
-</a>
+
+      Review audio modalities, speech tasks, streaming, and request-based APIs.](https://developers.openai.com/api/docs/guides/audio)

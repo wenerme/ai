@@ -1,6 +1,8 @@
 # Predicted Outputs
 
-**Predicted Outputs** enable you to speed up API responses from [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat/create) when many of the output tokens are known ahead of time. This is most common when you are regenerating a text or code file with minor modifications. You can provide your prediction using the [`prediction` request parameter in Chat Completions](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-prediction).
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+**Predicted Outputs** enable you to speed up API responses from [Chat Completions](https://developers.openai.com/api/reference/resources/chat) when many of the output tokens are known ahead of time. This is most common when you are regenerating a text or code file with minor modifications. You can provide your prediction using the [`prediction` request parameter in Chat Completions](https://developers.openai.com/api/reference/resources/chat#chat-create-prediction).
 
 Predicted Outputs are available today using the latest `gpt-4o`, `gpt-4o-mini`, `gpt-4.1`, `gpt-4.1-mini`, and `gpt-4.1-nano` models. Read on to learn how to use Predicted Outputs to reduce latency in your applications.
 
@@ -351,8 +353,8 @@ This time, there were no rejected prediction tokens, because the entire content 
 When using Predicted Outputs, you should consider the following factors and limitations.
 
 - Predicted Outputs are only supported with the GPT-4o, GPT-4o-mini, GPT-4.1, GPT-4.1-mini, and GPT-4.1-nano series of models.
-- When providing a prediction, any tokens provided that are not part of the final completion are still charged at completion token rates. See the [`rejected_prediction_tokens` property of the `usage` object](https://developers.openai.com/api/docs/api-reference/chat/object#chat/object-usage) to see how many tokens are not used in the final response.
-- The following [API parameters](https://developers.openai.com/api/docs/api-reference/chat/create) are not supported when using Predicted Outputs:
+- When providing a prediction, any tokens provided that are not part of the final completion are still charged at completion token rates. See the [`rejected_prediction_tokens` property of the `usage` object](https://developers.openai.com/api/reference/resources/chat#chat/object-usage) to see how many tokens are not used in the final response.
+- The following [API parameters](https://developers.openai.com/api/reference/resources/chat) are not supported when using Predicted Outputs:
   - `n`: values higher than 1 are not supported
   - `logprobs`: not supported
   - `presence_penalty`: values greater than 0 are not supported

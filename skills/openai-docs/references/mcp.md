@@ -1,5 +1,7 @@
 # Building MCP servers for plugins and API integrations
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) is an open protocol that's becoming the industry standard for extending AI models with additional tools and knowledge. Remote MCP servers can be used to connect models over the Internet to new data sources and capabilities.
 
 In this guide, we'll cover how to build a remote MCP server that reads data from a private data source (a [vector store](https://developers.openai.com/api/docs/guides/retrieval)) and makes it available through a plugin in ChatGPT and Codex, through ChatGPT deep research and company knowledge, and [through the API](https://developers.openai.com/api/docs/guides/deep-research).
@@ -152,15 +154,11 @@ preserves the result as ordinary tool output.
 
 You can try this example MCP server in a [browser-based development environment](https://replit.com/). Configure the sample with your own API credentials and vector store information.
 
-<a href="https://replit.com/@kwhinnery-oai/DeepResearchServer?v=1#README.md">
-  
-
-<span slot="icon">
-      </span>
-    Remix the server example on Replit to test live.
+[Example MCP server on Replit
 
 
-</a>
+
+      Remix the server example on Replit to test live.](https://replit.com/@kwhinnery-oai/DeepResearchServer?v=1#README.md)
 
 A full implementation of both the `search` and `fetch` tools in FastMCP is below also for convenience.
 
@@ -465,7 +463,7 @@ If you connect your custom remote MCP server through a plugin, users in your wor
 ### Connect in ChatGPT
 
 1. In [ChatGPT](https://chatgpt.com), open **Settings → Security and login** and turn on **Developer mode**.
-1. Open **Settings → Plugins** or the [Plugins directory](https://chatgpt.com/plugins), select the plus button, and connect your server URL in developer mode.
+1. Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button, and connect your server URL in developer mode.
 1. Test your plugin by running prompts in chat and deep research.
 
 For detailed setup steps, see [Connect and test your plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt).

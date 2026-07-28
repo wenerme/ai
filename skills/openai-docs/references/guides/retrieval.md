@@ -1,5 +1,7 @@
 # Retrieval
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The **Retrieval API** allows you to perform [**semantic search**](#semantic-search) over your data, which is a technique that surfaces semantically similar results—even when they match few or no keywords. Retrieval is useful on its own, but is especially powerful when combined with our models to synthesize responses.
 
 ![Retrieval depiction](https://cdn.openai.com/API/docs/images/retrieval-depiction.png)
@@ -204,8 +206,8 @@ Below are some example filters.
 
 
 
-<div data-content-switcher-pane data-value="region">
-    <div class="hidden">Region</div>
+Region
+
     Filter for a region
 
 ```json
@@ -216,9 +218,13 @@ Below are some example filters.
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="date-range" hidden>
-    <div class="hidden">Date range</div>
+  
+
+  
+
+    
+Date range
+
     Filter for a date range
 
 ```json
@@ -239,9 +245,13 @@ Below are some example filters.
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="filename" hidden>
-    <div class="hidden">Filenames</div>
+  
+
+  
+
+    
+Filenames
+
     Filter to match any of a set of filenames
 
 ```json
@@ -252,9 +262,13 @@ Below are some example filters.
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="exclude-filenames" hidden>
-    <div class="hidden">Exclude filenames</div>
+  
+
+  
+
+    
+Exclude filenames
+
     Filter to exclude drafts by filename
 
 ```json
@@ -265,9 +279,13 @@ Below are some example filters.
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="date-range-and-region" hidden>
-    <div class="hidden">Complex</div>
+  
+
+  
+
+    
+Complex
+
     Filter for top secret projects with certain names in english
 
 ```json
@@ -308,8 +326,6 @@ Below are some example filters.
 }
 ```
 
-  </div>
-
 
 
 ### Ranking
@@ -322,11 +338,11 @@ Vector stores are the containers that power semantic search for the Retrieval AP
 
 Vector stores contain `vector_store_file` objects, which are backed by a `file` object.
 
-| <div style={{ minWidth: '150px', whiteSpace: 'nowrap' }}>Object type</div> | Description                                                                                                                                                                           |
+| Object type | Description                                                                                                                                                                           |
 | -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `file`                                                                     | Represents content uploaded through the [Files API](https://developers.openai.com/api/docs/api-reference/files). Often used with vector stores, but also for fine-tuning and other use cases.                      |
+| `file`                                                                     | Represents content uploaded through the [Files API](https://developers.openai.com/api/reference/resources/files). Often used with vector stores, but also for fine-tuning and other use cases.                      |
 | `vector_store`                                                             | Container for searchable files.                                                                                                                                                       |
-| `vector_store.file`                                                        | Wrapper type specifically representing a `file` that has been chunked and embedded, and has been associated with a `vector_store`. <br/>Contains `attributes` map used for filtering. |
+| `vector_store.file`                                                        | Wrapper type specifically representing a `file` that has been chunked and embedded, and has been associated with a `vector_store`. <br />Contains `attributes` map used for filtering. |
 
 ### Pricing
 
@@ -343,8 +359,8 @@ See [expiration policies](#expiration-policies) for options to minimize costs.
 
 
 
-<div data-content-switcher-pane data-value="create">
-    <div class="hidden">Create</div>
+Create
+
     Create vector store
 
 ```python
@@ -361,9 +377,13 @@ await client.vector_stores.create({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="retrieve" hidden>
-    <div class="hidden">Retrieve</div>
+  
+
+  
+
+    
+Retrieve
+
     Retrieve vector store
 
 ```python
@@ -378,9 +398,13 @@ await client.vector_stores.retrieve({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="update" hidden>
-    <div class="hidden">Update</div>
+  
+
+  
+
+    
+Update
+
     Update vector store
 
 ```python
@@ -397,9 +421,13 @@ await client.vector_stores.update({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="delete" hidden>
-    <div class="hidden">Delete</div>
+  
+
+  
+
+    
+Delete
+
     Delete vector store
 
 ```python
@@ -414,9 +442,13 @@ await client.vector_stores.delete({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="list" hidden>
-    <div class="hidden">List</div>
+  
+
+  
+
+    
+List
+
     List vector stores
 
 ```python
@@ -427,20 +459,18 @@ client.vector_stores.list()
 await client.vector_stores.list();
 ```
 
-  </div>
-
 
 
 ### Vector store file operations
 
 Some operations, like `create` for `vector_store.file`, are asynchronous and may take time to complete—use our helper functions, like `create_and_poll` to block until it is. Otherwise, you may check the status. Removing files from a vector store is eventually consistent, and search results may still include content from a removed file for a short period.
 
-Adding files is rate limited per vector store ID. Requests to [`/vector_stores/{vector_store_id}/files`](https://developers.openai.com/api/docs/api-reference/vector-stores/createFile) and [`/vector_stores/{vector_store_id}/file_batches`](https://developers.openai.com/api/docs/api-reference/vector-stores/createBatch) share a per-vector-store limit of 300 requests per minute.
+Adding files is rate limited per vector store ID. Requests to [`/vector_stores/{vector_store_id}/files`](https://developers.openai.com/api/reference/resources/vector_stores/subresources/files/methods/create) and [`/vector_stores/{vector_store_id}/file_batches`](https://developers.openai.com/api/reference/resources/vector_stores/subresources/file_batches/methods/create) share a per-vector-store limit of 300 requests per minute.
 
 
 
-<div data-content-switcher-pane data-value="create">
-    <div class="hidden">Create</div>
+Create
+
     Create vector store file
 
 ```python
@@ -457,9 +487,13 @@ await client.vector_stores.files.create_and_poll({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="upload" hidden>
-    <div class="hidden">Upload</div>
+  
+
+  
+
+    
+Upload
+
     Upload vector store file
 
 ```python
@@ -476,9 +510,13 @@ await client.vector_stores.files.upload_and_poll({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="retrieve" hidden>
-    <div class="hidden">Retrieve</div>
+  
+
+  
+
+    
+Retrieve
+
     Retrieve vector store file
 
 ```python
@@ -495,9 +533,13 @@ await client.vector_stores.files.retrieve({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="update" hidden>
-    <div class="hidden">Update</div>
+  
+
+  
+
+    
+Update
+
     Update vector store file
 
 ```python
@@ -516,9 +558,13 @@ await client.vector_stores.files.update({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="delete" hidden>
-    <div class="hidden">Delete</div>
+  
+
+  
+
+    
+Delete
+
     Delete vector store file
 
 ```python
@@ -535,9 +581,13 @@ await client.vector_stores.files.delete({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="list" hidden>
-    <div class="hidden">List</div>
+  
+
+  
+
+    
+List
+
     List vector store files
 
 ```python
@@ -552,16 +602,14 @@ await client.vector_stores.files.list({
 });
 ```
 
-  </div>
-
 
 
 ### Batch operations
 
 
 
-<div data-content-switcher-pane data-value="create">
-    <div class="hidden">Create</div>
+Create
+
     Batch create operation
 
 ```python
@@ -604,9 +652,13 @@ await client.vector_stores.file_batches.create_and_poll({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="retrieve" hidden>
-    <div class="hidden">Retrieve</div>
+  
+
+  
+
+    
+Retrieve
+
     Batch retrieve operation
 
 ```python
@@ -623,9 +675,13 @@ await client.vector_stores.file_batches.retrieve({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="cancel" hidden>
-    <div class="hidden">Cancel</div>
+  
+
+  
+
+    
+Cancel
+
     Batch cancel operation
 
 ```python
@@ -642,9 +698,13 @@ await client.vector_stores.file_batches.cancel({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="list" hidden>
-    <div class="hidden">List</div>
+  
+
+  
+
+    
+List
+
     List files in a batch
 
 ```python
@@ -659,8 +719,6 @@ await client.vectorStores.fileBatches.listFiles("vsfb_123", {
     vector_store_id: "vs_123"
 });
 ```
-
-  </div>
 
 
 
@@ -733,7 +791,7 @@ The maximum file size is 512 MB. Each file should contain no more than 5,000,000
 
 By default, `max_chunk_size_tokens` is set to `800` and `chunk_overlap_tokens` is set to `400`, meaning every file is indexed by being split up into 800-token chunks, with 400-token overlap between consecutive chunks.
 
-You can adjust this by setting [`chunking_strategy`](https://developers.openai.com/api/docs/api-reference/vector-stores-files/createFile#vector-stores-files-createfile-chunking_strategy) when adding files to the vector store. The strategy has certain limitations:
+You can adjust this by setting [`chunking_strategy`](https://developers.openai.com/api/reference/resources/vector_stores/subresources/files/methods/create#vector-stores-files-createfile-chunking_strategy) when adding files to the vector store. The strategy has certain limitations:
 
 - `max_chunk_size_tokens` must be between 100 and 4096 inclusive.
 - `chunk_overlap_tokens` must be non-negative and should not exceed `max_chunk_size_tokens / 2`.
@@ -840,7 +898,7 @@ const completion = await client.chat.completions.create({
         },
         {
             role: "user",
-            content: `Sources: ${formattedResults}\n\nQuery: '${userQuery}'`
+            content: `Sources: ${formattedResults}\n\nQuery: 'What is the return policy?'`
         }
     ],
 });

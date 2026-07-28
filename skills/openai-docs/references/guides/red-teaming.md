@@ -1,8 +1,10 @@
 # Red teaming
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Red teaming uses adversarial test cases to help uncover unsafe, insecure, or policy-violating behavior before deployment. It complements evals by focusing on misuse cases, failure modes, and high-risk interactions that ordinary quality testing may not expose.
 
-<strong>Important:</strong> Only submit to OpenAI Red Teaming code or other
+**Important:** Only submit to OpenAI Red Teaming code or other
   assets that you own or are expressly authorized to test. Do not use OpenAI Red
   Teaming to analyze or report vulnerabilities in open-source or any third-party
   code without OpenAI's express written permission.

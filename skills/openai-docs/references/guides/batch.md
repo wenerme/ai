@@ -1,6 +1,8 @@
 # Batch API
 
-Learn how to use OpenAI's Batch API to send asynchronous groups of requests with 50% lower costs, a separate pool of significantly higher rate limits, and a clear 24-hour turnaround time. The service is ideal for processing jobs that don't require immediate responses. You can also [explore the API reference directly here](https://developers.openai.com/api/docs/api-reference/batch).
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+Learn how to use OpenAI's Batch API to send asynchronous groups of requests with 50% lower costs, a separate pool of significantly higher rate limits, and a clear 24-hour turnaround time. The service is ideal for processing jobs that don't require immediate responses. You can also [explore the API reference directly here](https://developers.openai.com/api/reference/resources/batches).
 
 ## Overview
 
@@ -25,13 +27,13 @@ Compared to using standard endpoints directly, Batch API has:
 
 Batches start with a `.jsonl` file where each line contains the details of an individual request to the API. For now, the available endpoints are:
 
-- `/v1/responses` ([Responses API](https://developers.openai.com/api/docs/api-reference/responses))
-- `/v1/chat/completions` ([Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat))
-- `/v1/embeddings` ([Embeddings API](https://developers.openai.com/api/docs/api-reference/embeddings))
-- `/v1/completions` ([Completions API](https://developers.openai.com/api/docs/api-reference/completions))
+- `/v1/responses` ([Responses API](https://developers.openai.com/api/reference/resources/responses))
+- `/v1/chat/completions` ([Chat Completions API](https://developers.openai.com/api/reference/resources/chat))
+- `/v1/embeddings` ([Embeddings API](https://developers.openai.com/api/reference/resources/embeddings))
+- `/v1/completions` ([Completions API](https://developers.openai.com/api/reference/resources/completions))
 - `/v1/moderations` ([Moderation guide](https://developers.openai.com/api/docs/guides/moderation))
-- `/v1/images/generations` ([Images API](https://developers.openai.com/api/docs/api-reference/images))
-- `/v1/images/edits` ([Images API](https://developers.openai.com/api/docs/api-reference/images))
+- `/v1/images/generations` ([Images API](https://developers.openai.com/api/reference/resources/images))
+- `/v1/images/edits` ([Images API](https://developers.openai.com/api/reference/resources/images))
 - `/v1/videos` ([Video generation guide](https://developers.openai.com/api/docs/guides/video-generation))
 
 For a given input file, the parameters in each line's `body` field are the same as the parameters for the underlying endpoint. Each request must include a unique `custom_id` value, which you can use to reference results after completion. Here's an example of an input file with 2 requests. Note that each input file can only include requests to a single model.
@@ -99,7 +101,7 @@ Prefer referencing remote assets with `image_url` (instead of base64 blobs) to
 
 ### 2. Upload your batch input file
 
-Similar to our [Fine-tuning API](https://developers.openai.com/api/docs/guides/model-optimization), you must first upload your input file so that you can reference it correctly when kicking off batches. Upload your `.jsonl` file using the [Files API](https://developers.openai.com/api/docs/api-reference/files).
+Similar to our [Fine-tuning API](https://developers.openai.com/api/docs/guides/model-optimization), you must first upload your input file so that you can reference it correctly when kicking off batches. Upload your `.jsonl` file using the [Files API](https://developers.openai.com/api/reference/resources/files).
 
 Upload files for Batch API
 
@@ -190,7 +192,7 @@ openai batches create \
 ```
 
 
-This request will return a [Batch object](https://developers.openai.com/api/docs/api-reference/batch/object) with metadata about your batch:
+This request will return a [Batch object](https://developers.openai.com/api/reference/resources/batches) with metadata about your batch:
 
 ```json
 {
@@ -264,7 +266,7 @@ The status of a given Batch object can be any of the following:
 
 ### 5. Retrieve the results
 
-Once the batch is complete, you can download the output by making a request against the [Files API](https://developers.openai.com/api/docs/api-reference/files) via the `output_file_id` field from the Batch object and writing it to a file on your machine, in this case `batch_output.jsonl`
+Once the batch is complete, you can download the output by making a request against the [Files API](https://developers.openai.com/api/reference/resources/files) via the `output_file_id` field from the Batch object and writing it to a file on your machine, in this case `batch_output.jsonl`
 
 Retrieving the batch results
 

@@ -25,11 +25,11 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). As of now, Qwen2.5-Coder has covered six mainstream model sizes, 0.5, 1.5, 3, 7, 14, 32 billion parameters, to meet the needs of different developers. Qwen2.5-Coder brings the following improvements upon CodeQwen1.5:
 
-| Model Info                                                                 |                                                     |
-| -------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 32,768 tokens                                       |
-| LoRA                                                                       | Yes                                                 |
-| Unit Pricing                                                               | $0.66 per M input tokens, $1.00 per M output tokens |
+| Model Info                                                                          |                                                     |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,768 tokens                                       |
+| LoRA                                                                                | Yes                                                 |
+| Unit Pricing                                                                        | $0.66 per M input tokens, $1.00 per M output tokens |
 
 ## Playground
 

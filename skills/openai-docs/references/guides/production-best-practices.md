@@ -1,5 +1,7 @@
 # Production best practices
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 This guide provides a comprehensive set of best practices to help you transition from prototype to production. Whether you are a seasoned machine learning engineer or a recent enthusiast, this guide should provide you with the tools you need to successfully put the platform to work in a production setting: from securing access to our API to designing a robust architecture that can handle high traffic volumes. Use this guide to help develop a plan for deploying your application as smoothly and effectively as possible.
 
 If you want to explore best practices for going into production further, please check out our Developer Day talk:
@@ -18,7 +20,7 @@ If you want to explore best practices for going into production further, please 
 
 Once you [log in](https://platform.openai.com/login) to your OpenAI account, you can find your organization name and ID in your [organization settings](https://platform.openai.com/settings/organization/general). The organization name is the label for your organization, shown in user interfaces. The organization ID is the unique identifier for your organization which can be used in API requests.
 
-Users who belong to multiple organizations can [pass a header](https://developers.openai.com/api/docs/api-reference/requesting-organization) to specify which organization is used for an API request. Usage from these API requests will count against the specified organization's quota. If no header is provided, the [default organization](https://platform.openai.com/settings/organization/api-keys) will be billed. You can change your default organization in your [user settings](https://platform.openai.com/settings/organization/api-keys).
+Users who belong to multiple organizations can [pass a header](https://developers.openai.com/api/reference/overview#authentication) to specify which organization is used for an API request. Usage from these API requests will count against the specified organization's quota. If no header is provided, the [default organization](https://platform.openai.com/settings/organization/api-keys) will be billed. You can change your default organization in your [user settings](https://platform.openai.com/settings/organization/api-keys).
 
 You can invite new members to your organization from the [Team page](https://platform.openai.com/settings/organization/team). Members can be **readers** or **owners**.
 
@@ -74,7 +76,12 @@ Latency is the time it takes for a request to be processed and a response to be 
 
 The latency of a completion request is mostly influenced by two factors: the model and the number of tokens generated. The life cycle of a completion request looks like this:
 
-<br />
+- End user to API latency
+- Time to process prompt tokens
+- Time to sample/generate tokens
+- API to end user latency
+
+
 
 The bulk of the latency typically arises from the token generation step.
 
@@ -107,7 +114,7 @@ Setting `stream: true` in a request makes the model start returning tokens as so
 
 #### Batching
 
-Depending on your use case, batching <em>may help</em>. If you are sending multiple requests to the same endpoint, you can [batch the prompts](https://developers.openai.com/api/docs/guides/rate-limits#batching-requests) to be sent in the same request. This will reduce the number of requests you need to make. The prompt parameter can hold up to 20 unique prompts. We advise you to test out this method and see if it helps. In some cases, you may end up increasing the number of generated tokens which will slow the response time.
+Depending on your use case, batching _may help_. If you are sending multiple requests to the same endpoint, you can [batch the prompts](https://developers.openai.com/api/docs/guides/rate-limits#batching-requests) to be sent in the same request. This will reduce the number of requests you need to make. The prompt parameter can hold up to 20 unique prompts. We advise you to test out this method and see if it helps. In some cases, you may end up increasing the number of generated tokens which will slow the response time.
 
 ## Managing costs
 

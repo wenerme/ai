@@ -1,5 +1,7 @@
 # OpenAI CLI
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Interact with the OpenAI API directly from your terminal with the `openai` command-line tool.
 
 ## Installation
@@ -59,7 +61,7 @@ These options work across commands:
 | `--transform` | Extract or reshape response data with a GJSON path before printing.                                          |
 | `--debug`     | Print request and response details to stderr. Authorization is redacted; review headers before sharing logs. |
 
-This guide focuses on CLI patterns. For the latest arguments and response shapes for any API family, use the live [API reference](https://developers.openai.com/api/reference).
+This guide focuses on CLI patterns. For the latest arguments and response shapes for any API family, use the live [API reference](https://developers.openai.com/api/reference/overview).
 
 You can also change the base URL when you need to point the CLI at another compatible endpoint, such as a deployment that supports a different model set or only a subset of the API surface.
 
@@ -73,7 +75,7 @@ Command:
 
 ```bash
 openai responses create \
-  --model gpt-5.5 \
+  --model gpt-5.6 \
   --input "Say hello in one sentence."
 ```
 
@@ -121,7 +123,7 @@ For a simple local file, build the prompt inline with command substitution:
 
 ```bash
 openai responses create \
-  --model gpt-5.5 \
+  --model gpt-5.6 \
   --input "Summarize this note in one sentence.
 
 <note>
@@ -179,7 +181,7 @@ When the prompt itself needs shell assembly, build a YAML body and pipe it into 
   sed 's/^/  /' ./note.md
   printf '  </note>\n'
 } | openai responses create \
-  --model gpt-5.5 \
+  --model gpt-5.6 \
   --format yaml \
   --transform 'output.#(type=="message").content.0.text'
 ```
@@ -212,7 +214,7 @@ Command:
 
 ```bash
 openai responses create \
-  --model gpt-5.5 \
+  --model gpt-5.6 \
   --instructions "Extract the person and topic from the input." \
   --input "Ada Lovelace wrote notes about the Analytical Engine." \
   --text.format "$(cat ./schema.json)" \
@@ -297,7 +299,7 @@ Command:
 
 ```bash
 openai responses create \
-  --model gpt-5.5 \
+  --model gpt-5.6 \
   --format yaml \
   --transform 'output.#(type=="message").content.0.text' <<'YAML'
 tools:

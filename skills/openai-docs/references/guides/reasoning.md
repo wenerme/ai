@@ -1,8 +1,10 @@
 # Reasoning models
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 **Reasoning models** like [GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5) use internal reasoning tokens before producing a response. This helps the model plan, use tools effectively, inspect alternatives, recover from ambiguity, and solve harder multi-step tasks. Reasoning models work especially well for complex problem solving, coding, scientific reasoning, and multi-step agentic workflows. They're also the best models for [Codex CLI](https://github.com/openai/codex), our lightweight coding agent.
 
-Start with `gpt-5.6` for most reasoning workloads. If you need the highest-intelligence API option for more challenging problems that can tolerate more latency, use <a href="/api/docs/models/gpt-5.6-sol"><code>gpt-5.6-sol</code></a> in the Responses API with `reasoning.mode` set to `pro`. For lower cost, consider [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra), or [`gpt-5.6-luna`](https://developers.openai.com/api/docs/models/gpt-5.6-luna) for the lowest cost and latency.
+Start with `gpt-5.6` for most reasoning workloads. If you need the highest-intelligence API option for more challenging problems that can tolerate more latency, use [`gpt-5.6-sol`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) in the Responses API with `reasoning.mode` set to `pro`. For lower cost, consider [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra), or [`gpt-5.6-luna`](https://developers.openai.com/api/docs/models/gpt-5.6-luna) for the lowest cost and latency.
 
 **Reasoning models work better with the [Responses
   API](https://developers.openai.com/api/docs/guides/migrate-to-responses)**. While the Chat Completions API
@@ -11,7 +13,7 @@ Start with `gpt-5.6` for most reasoning workloads. If you need the highest-intel
 
 ## Get started with reasoning
 
-Call the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create) and specify your reasoning model and reasoning effort:
+Call the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) and specify your reasoning model and reasoning effort:
 
 Using a reasoning model in the Responses API
 
@@ -135,7 +137,7 @@ While reasoning tokens are not visible via the API, they still occupy space in
 
 ### Managing the context window
 
-It's important to ensure there's enough space in the context window for reasoning tokens when creating responses. Depending on the problem's complexity, the models may generate anywhere from a few hundred to tens of thousands of reasoning tokens. The exact number of reasoning tokens used is visible in the [usage object of the response object](https://developers.openai.com/api/docs/api-reference/responses/object), under `output_tokens_details`:
+It's important to ensure there's enough space in the context window for reasoning tokens when creating responses. Depending on the problem's complexity, the models may generate anywhere from a few hundred to tens of thousands of reasoning tokens. The exact number of reasoning tokens used is visible in the [usage object of the response object](https://developers.openai.com/api/reference/resources/responses), under `output_tokens_details`:
 
 ```json
 {
@@ -160,7 +162,7 @@ Context window lengths are found on the [model reference page](https://developer
 To manage costs with reasoning models, you can limit the total number of tokens the
 model generates, including reasoning tokens, visible output tokens, and non-visible
 formatting tokens, by using the
-[`max_output_tokens`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-max_output_tokens)
+[`max_output_tokens`](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-max_output_tokens)
 parameter. See [output token counts](https://developers.openai.com/api/docs/guides/token-counting#understand-output-token-counts) for details about how generated tokens are reflected in usage and output limits.
 
 ### Allocating space for reasoning
@@ -237,9 +239,9 @@ if (
 
 ### Keeping reasoning items in context
 
-When doing [function calling](https://developers.openai.com/api/docs/guides/function-calling) with a reasoning model in the [Responses API](https://developers.openai.com/api/docs/api-reference/responses), we highly recommend you pass back any reasoning items returned with the last function call (in addition to the output of your function). If the model calls multiple functions consecutively, you should pass back all reasoning items, function call items, and function call output items, since the last `user` message. This allows the model to continue its reasoning process to produce better results in the most token-efficient manner.
+When doing [function calling](https://developers.openai.com/api/docs/guides/function-calling) with a reasoning model in the [Responses API](https://developers.openai.com/api/reference/resources/responses), we highly recommend you pass back any reasoning items returned with the last function call (in addition to the output of your function). If the model calls multiple functions consecutively, you should pass back all reasoning items, function call items, and function call output items, since the last `user` message. This allows the model to continue its reasoning process to produce better results in the most token-efficient manner.
 
-The simplest way to do this is to pass in all reasoning items from a previous response into the next one. Our systems will smartly ignore any reasoning items that aren't relevant to your functions, and only retain those in context that are relevant. You can pass reasoning items from previous responses either using the `previous_response_id` parameter, or by manually passing in all the [output](https://developers.openai.com/api/docs/api-reference/responses/object#responses/object-output) items from a past response into the [input](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-input) of a new one.
+The simplest way to do this is to pass in all reasoning items from a previous response into the next one. Our systems will smartly ignore any reasoning items that aren't relevant to your functions, and only retain those in context that are relevant. You can pass reasoning items from previous responses either using the `previous_response_id` parameter, or by manually passing in all the [output](https://developers.openai.com/api/reference/resources/responses#responses/object-output) items from a past response into the [input](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-input) of a new one.
 
 For advanced use cases where you might be truncating and optimizing parts of the context window before passing them on to the next response, just ensure all items between the last user message and your function call output are passed into the next response untouched. This will ensure that the model has all the context it needs.
 
@@ -251,8 +253,8 @@ Conversation state and reasoning state serve different purposes. Passing message
 
 Persisted reasoning provides continuity; it does not expose the model's raw reasoning. The reasoning items remain opaque, and the API does not return their reasoning text. Set `reasoning.context` to control which available reasoning items the model can use:
 
-Support for <code>reasoning.context</code> modes is model-dependent. Replace
-  <code>YOUR_MODEL_ID</code> in the examples with a model that supports the mode
+Support for `reasoning.context` modes is model-dependent. Replace
+  `YOUR_MODEL_ID` in the examples with a model that supports the mode
   you select.
 
 | Value          | Behavior                                                                                                                        |
@@ -426,7 +428,7 @@ While we don't expose the raw reasoning tokens emitted by the model, you can vie
 
 Different models support different reasoning summary settings. For example, our computer use model supports the `concise` summarizer, while o4-mini supports `detailed`. To access the most detailed summarizer available for a model, set the value of this parameter to `auto`. `auto` will be equivalent to `detailed` for most reasoning models today, but there may be more granular settings in the future.
 
-Reasoning summary output is part of the `summary` array in the `reasoning` [output item](https://developers.openai.com/api/docs/api-reference/responses/object#responses/object-output). This output will not be included unless you explicitly opt in to including reasoning summaries.
+Reasoning summary output is part of the `summary` array in the `reasoning` [output item](https://developers.openai.com/api/reference/resources/responses#responses/object-output). This output will not be included unless you explicitly opt in to including reasoning summaries.
 
 The example below shows how to make an API request that includes a reasoning summary.
 
@@ -596,15 +598,240 @@ For more information on best practices when using reasoning models, [refer to th
 
 
 
-<div data-content-switcher-pane data-value="refactoring">
-    <div class="hidden">Coding (refactoring)</div>
-    </div>
-  <div data-content-switcher-pane data-value="planning" hidden>
-    <div class="hidden">Coding (planning)</div>
-    </div>
-  <div data-content-switcher-pane data-value="research" hidden>
-    <div class="hidden">STEM Research</div>
-    </div>
+Coding (refactoring)
+
+    
+
+OpenAI o-series models are able to implement complex algorithms and produce code. This prompt asks o1 to refactor a React component based on some specific criteria.
+
+
+
+
+  Refactor code
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const prompt = `
+Instructions:
+- Given the React component below, change it so that nonfiction books have red
+  text.
+- Return only the code in your reply
+- Do not include any additional formatting, such as markdown code blocks
+- For formatting, use four space tabs, and do not allow any lines of code to
+  exceed 80 columns
+
+const books = [
+  { title: 'Dune', category: 'fiction', id: 1 },
+  { title: 'Frankenstein', category: 'fiction', id: 2 },
+  { title: 'Moneyball', category: 'nonfiction', id: 3 },
+];
+
+export default function BookList() {
+  const listItems = books.map(book =>
+    <li>
+      {book.title}
+    </li>
+  );
+
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+`.trim();
+
+const response = await openai.responses.create({
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: prompt,
+    },
+  ],
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+prompt = """
+Instructions:
+- Given the React component below, change it so that nonfiction books have red
+  text.
+- Return only the code in your reply
+- Do not include any additional formatting, such as markdown code blocks
+- For formatting, use four space tabs, and do not allow any lines of code to
+  exceed 80 columns
+
+const books = [
+  { title: 'Dune', category: 'fiction', id: 1 },
+  { title: 'Frankenstein', category: 'fiction', id: 2 },
+  { title: 'Moneyball', category: 'nonfiction', id: 3 },
+];
+
+export default function BookList() {
+  const listItems = books.map(book =>
+    <li>
+      {book.title}
+    </li>
+  );
+
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+"""
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": prompt,
+        }
+    ],
+)
+
+print(response.output_text)
+```
+
+
+  
+
+  
+
+    
+Coding (planning)
+
+    
+
+OpenAI o-series models are also adept in creating multi-step plans. This example prompt asks o1 to create a filesystem structure for a full solution, along with Python code that implements the desired use case.
+
+
+
+
+  Plan and create a Python project
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const prompt = `
+I want to build a Python app that takes user questions and looks
+them up in a database where they are mapped to answers. If there
+is close match, it retrieves the matched answer. If there isn't,
+it asks the user to provide an answer and stores the
+question/answer pair in the database. Make a plan for the directory
+structure you'll need, then return each file in full. Only supply
+your reasoning at the beginning and end, not throughout the code.
+`.trim();
+
+const response = await openai.responses.create({
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: prompt,
+    },
+  ],
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+prompt = """
+I want to build a Python app that takes user questions and looks
+them up in a database where they are mapped to answers. If there
+is close match, it retrieves the matched answer. If there isn't,
+it asks the user to provide an answer and stores the
+question/answer pair in the database. Make a plan for the directory
+structure you'll need, then return each file in full. Only supply
+your reasoning at the beginning and end, not throughout the code.
+"""
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": prompt,
+        }
+    ],
+)
+
+print(response.output_text)
+```
+
+
+  
+
+  
+
+    
+STEM Research
+
+    
+
+OpenAI o-series models have shown excellent performance in STEM research. Prompts asking for support of basic research tasks should show strong results.
+
+
+
+
+  Ask questions related to basic scientific research
+
+```javascript
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+const prompt = `
+What are three compounds we should consider investigating to
+advance research into new antibiotics? Why should we consider
+them?
+`;
+
+const response = await openai.responses.create({
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: prompt,
+    },
+  ],
+});
+
+console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+prompt = """
+What are three compounds we should consider investigating to
+advance research into new antibiotics? Why should we consider
+them?
+"""
+
+response = client.responses.create(
+    model="gpt-5.6", input=[{"role": "user", "content": prompt}]
+)
+
+print(response.output_text)
+```
 
 
 
@@ -612,30 +839,14 @@ For more information on best practices when using reasoning models, [refer to th
 
 Some examples of using reasoning models for real-world use cases can be found in [the cookbook](https://developers.openai.com/cookbook).
 
-<a
-  href="https://cookbook.openai.com/examples/o1/using_reasoning_for_data_validation"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Evaluate a synthetic medical data set for discrepancies.
+[Using reasoning for data validation
 
 
-</a>
 
-<a
-  href="https://cookbook.openai.com/examples/o1/using_reasoning_for_routine_generation"
-  target="_blank"
-  rel="noreferrer"
->
-  
+      Evaluate a synthetic medical data set for discrepancies.](https://developers.openai.com/cookbook/examples/o1/using_reasoning_for_data_validation)
 
-<span slot="icon">
-      </span>
-    Use help center articles to generate actions that an agent could perform.
+[Using reasoning for routine generation
 
 
-</a>
+
+      Use help center articles to generate actions that an agent could perform.](https://developers.openai.com/cookbook/examples/o1/using_reasoning_for_routine_generation)

@@ -1,5 +1,7 @@
 # Data controls in the OpenAI platform
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Understand how OpenAI uses your data, and how you can control it.
 
 Your data is your data. As of March 1, 2023, data sent to the OpenAI API is not used to train or improve OpenAI models (unless you explicitly opt in to share data with us).
@@ -95,7 +97,7 @@ The table below indicates when application state is stored for each endpoint. Ze
 - Background mode stores response data to disk for roughly 10 minutes to enable polling.
 - Audio outputs application state is stored for 1 hour to enable [multi-turn conversations](https://developers.openai.com/api/docs/guides/audio).
 - See [image and file inputs](#image-and-file-inputs).
-- MCP servers (used with the [remote MCP server tool](https://developers.openai.com/api/docs/guides/tools-remote-mcp)) are third-party services, and data sent to an MCP server is subject to their data retention policies.
+- MCP servers (used with the [remote MCP server tool](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)) are third-party services, and data sent to an MCP server is subject to their data retention policies.
 - Hosted containers used by [Hosted Shell](https://developers.openai.com/api/docs/guides/tools-shell#hosted-shell-quickstart) and [Code Interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter) may write temporary application state to the container filesystem (backed by ephemeral block storage) while the container is active. Container data is deleted when the container expires or is explicitly deleted.
 - Prompt caching may store encrypted key/value tensors in GPU-local storage as application state. This data is stored on the local GPU machines and is not retained after the 24-hour expiration. For `gpt-5.5` and `gpt-5.5-pro`, setting `prompt_cache_retention` to `in_memory` returns an error. For GPT-5.6 models and later model families, `prompt_cache_options.ttl` controls the minimum cache lifetime, not this maximum application-state retention period. To learn more, see the [prompt caching guide](https://developers.openai.com/api/docs/guides/prompt-caching#prompt-cache-retention).
 - When Zero Data Retention is not enabled for an organization, all queries use extended prompt caching for all supported models.
@@ -113,7 +115,7 @@ The table below indicates when application state is stored for each endpoint. Ze
 
 #### `/v1/files`
 
-- Files can be manually deleted via the API or the dashboard, or can be automatically deleted by setting the `expires_after` parameter. See [here](https://developers.openai.com/api/docs/api-reference/files/create#files_create-expires_after) for more information.
+- Files can be manually deleted via the API or the dashboard, or can be automatically deleted by setting the `expires_after` parameter. See [here](https://developers.openai.com/api/reference/resources/files/methods/create#files_create-expires_after) for more information.
 
 #### `/v1/videos`
 

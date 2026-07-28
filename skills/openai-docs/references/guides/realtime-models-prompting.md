@@ -1,5 +1,7 @@
 # Using realtime models
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 `gpt-realtime-2` is our state-of-the-art reasoning voice model for low-latency speech-to-speech applications. It can think before it speaks, follow instructions more reliably, use a larger context window, and call tools with greater precision than earlier realtime models.
 
 To take advantage of these gains, design prompts with more intent. Explicitly define the assistant's responsibilities, decision points, tool-calling behavior, and guardrails: what it should do, when it should do it, and what it should avoid.
@@ -20,9 +22,7 @@ Start simple. Do not over-prompt upfront. Begin with a minimal prompt, run
   <tbody>
     <tr>
       <td style={{ whiteSpace: "nowrap" }}>
-        <a href="/api/docs/models/gpt-realtime-2">
-          <code>gpt-realtime-2</code>
-        </a>
+        [`gpt-realtime-2`](https://developers.openai.com/api/docs/models/gpt-realtime-2)
       </td>
       <td>
         You need the strongest realtime reasoning, tool use, and instruction
@@ -35,9 +35,7 @@ Start simple. Do not over-prompt upfront. Begin with a minimal prompt, run
     </tr>
     <tr>
       <td style={{ whiteSpace: "nowrap" }}>
-        <a href="/api/docs/models/gpt-realtime-1.5">
-          <code>gpt-realtime-1.5</code>
-        </a>
+        [`gpt-realtime-1.5`](https://developers.openai.com/api/docs/models/gpt-realtime-1.5)
       </td>
       <td>You need a fast, reliable non-reasoning speech-to-speech model.</td>
       <td>
@@ -50,15 +48,16 @@ Start simple. Do not over-prompt upfront. Begin with a minimal prompt, run
 
 
 
-<div data-content-switcher-pane data-value="gpt-realtime-2">
 ## Realtime 2.0 Prompting Guide
 
-    <p>
-      Use <code>gpt-realtime-2</code> when the voice agent needs stronger
+    
+
+      Use `gpt-realtime-2` when the voice agent needs stronger
       reasoning, tool selection, exact entity handling, or long-session state.
-      Start with <code>reasoning.effort: "low"</code>, test default preamble
+      Start with `reasoning.effort: "low"`, test default preamble
       behavior, and define clear confirmation boundaries before write actions.
-    </p>
+    
+
 
 ## What changed in Realtime 2
 
@@ -864,8 +863,10 @@ When migrating from earlier realtime models, treat the prompt as a behavior surf
 6. Run a final consistency pass. Confirm the prompt clearly separates hard requirements, defaults, tool rules, safety rules, and fallback behavior.
 7. Run evals, inspect representative failures, and iterate on the prompt until the target behaviors are reliable.
 
-  </div>
-  <div data-content-switcher-pane data-value="gpt-realtime-1.5" hidden>
+  
+
+  
+
 
 ## Realtime 1.5 Prompting Guide
 
@@ -926,15 +927,13 @@ You are a Quebecois French-speaking customer service bot. Your task is to answer
 
 Earlier realtime preview:
 
-<div className="my-6">
-  </div>
 
-`gpt-realtime-1.5`:
 
-<div className="my-6">
-  </div>
+  `gpt-realtime-1.5`:
 
-#### Example (model takes on a character)
+
+
+  #### Example (model takes on a character)
 
 ```
 # Role & Objective
@@ -943,15 +942,13 @@ You are a high-energy game-show host guiding the caller to guess a secret number
 
 Earlier realtime preview:
 
-<div className="my-6">
-  </div>
 
-`gpt-realtime-1.5`:
 
-<div className="my-6">
-  </div>
+  `gpt-realtime-1.5`:
 
-`gpt-realtime-1.5` is able to enact the specified role more reliably than earlier realtime preview models.
+
+
+  `gpt-realtime-1.5` is able to enact the specified role more reliably than earlier realtime preview models.
 
 ## Personality and Tone
 
@@ -986,10 +983,9 @@ Earlier realtime preview:
 
 `gpt-realtime-1.5`:
 
-<div className="my-6">
-  </div>
 
-The model is able to adhere to the complex instructions and switch between three emotions throughout the audio response.
+
+  The model is able to adhere to the complex instructions and switch between three emotions throughout the audio response.
 
 ### Speed Instructions
 
@@ -1019,15 +1015,13 @@ In the Realtime API, the `speed` parameter changes playback rate, not how the mo
 
 Earlier realtime preview:
 
-<div className="my-6">
-  </div>
 
-`gpt-realtime-1.5`:
 
-<div className="my-6">
-  </div>
+  `gpt-realtime-1.5`:
 
-With explicit pacing instructions, `gpt-realtime-1.5` can produce a noticeably faster pace without sounding too hurried.
+
+
+  With explicit pacing instructions, `gpt-realtime-1.5` can produce a noticeably faster pace without sounding too hurried.
 
 ### Language Constraint
 
@@ -1154,15 +1148,13 @@ When voicing these words, use the respective pronunciations:
 
 Earlier realtime preview:
 
-<div className="my-6">
-  </div>
 
-`gpt-realtime-1.5`:
 
-<div className="my-6">
-  </div>
+  `gpt-realtime-1.5`:
 
-With the reference pronunciation instructions, `gpt-realtime-1.5` can correctly pronounce SQL as "sequel."
+
+
+  With the reference pronunciation instructions, `gpt-realtime-1.5` can correctly pronounce SQL as "sequel."
 
 ### Alphanumeric Pronunciations
 
@@ -1303,10 +1295,9 @@ Sometimes the model thinks it hears something and tries to respond. You can add 
 
 These are the responses **after** applying the instruction using `gpt-realtime-1.5`.
 
-<div className="my-6">
-  </div>
 
-In this example, the model asks for clarification after my _(very)_ loud cough and unclear audio.
+
+  In this example, the model asks for clarification after my _(very)_ loud cough and unclear audio.
 
 ### Background Music or Sounds
 
@@ -2053,8 +2044,6 @@ The second example shows conversation responses from `gpt-realtime-1.5` using th
 ![escalate 07](https://developers.openai.com/cookbook/assets/images/escalate_07.png)
 
 `gpt-realtime-1.5` is able to follow the instruction and escalate to a human more reliably.
-
-  </div>
 
 
 

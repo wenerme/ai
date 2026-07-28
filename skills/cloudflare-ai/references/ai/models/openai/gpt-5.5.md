@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 GPT-5.5 is OpenAI's flagship model with strong coding, reasoning, and multimodal capabilities.
 
-| Model Info                                                                 |                                                                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                 |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                    |
-| Zero data retention                                                        | Yes                                                                                                              |
-| Request formats                                                            | Responses, Chat Completions                                                                                      |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5) |
+| Model Info                                                                          |                                                                                                                  |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                 |
+| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                           |
+| More information                                                                    | [link ↗](https://openai.com/)                                                                                    |
+| Zero data retention                                                                 | Yes                                                                                                              |
+| Request formats                                                                     | Responses, Chat Completions                                                                                      |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.5) |
 
 ## Usage
 

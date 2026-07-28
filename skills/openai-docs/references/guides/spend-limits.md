@@ -1,5 +1,7 @@
 # Spend limits
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use spend alerts to track monthly API costs. To stop traffic after tracked spend reaches a configured amount, enforce a hard spend limit for your organization or an individual project.
 
 Hard spend limits can interrupt production traffic. When tracked spend reaches
@@ -26,8 +28,8 @@ You need permission to manage the applicable organization or project settings. F
 
 
 
-<div data-content-switcher-pane data-value="organization">
-    <div class="hidden">Organization</div>
+Organization
+
 
 1. Go to [Organization limits](https://platform.openai.com/settings/organization/limits).
 2. In **Spend**, select **Edit spend limit**.
@@ -35,9 +37,13 @@ You need permission to manage the applicable organization or project settings. F
 4. To make API responses fail after the organization reaches the limit, turn on **Enforce a hard limit**.
 5. Select **Save**.
 
-  </div>
-  <div data-content-switcher-pane data-value="project" hidden>
-    <div class="hidden">Project</div>
+  
+
+  
+
+    
+Project
+
 
 1. Go to [Project settings](https://platform.openai.com/settings/).
 2. Select **Limits**.
@@ -45,8 +51,6 @@ You need permission to manage the applicable organization or project settings. F
 4. Enter the **Monthly spend limit**.
 5. To make API responses fail after the project reaches the limit, turn on **Enforce a hard limit**.
 6. Select **Save**.
-
-  </div>
 
 
 

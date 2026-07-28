@@ -1,16 +1,20 @@
 # Reinforcement fine-tuning
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Reinforcement fine-tuning (RFT) adapts an OpenAI reasoning model with a feedback signal you define. Like [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning), it tailors the model to your task. The difference is that instead of training on fixed “correct” answers, it relies on a programmable grader that scores every candidate response. The training algorithm then shifts the model’s weights, so high-scoring outputs become more likely and low-scoring ones fade.
 
 OpenAI is winding down the fine-tuning platform. The platform is no longer
   accessible to new users, but existing users of the fine-tuning platform will
   be able to create training jobs for the coming months.
-  <br />
+  
+
   All fine-tuned models will remain available for inference until their base
   models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
   [here](https://developers.openai.com/api/docs/deprecations).
 
-<br />
+
+
 
 <table>
 <tbody>
@@ -57,7 +61,7 @@ When should I use reinforcement fine-tuning?
 It's useful to understand the strengths and weaknesses of reinforcement fine-tuning to identify opportunities and to avoid wasted effort.
 
 - **RFT works best with unambiguous tasks**. Check whether qualified human experts agree on the answers. If conscientious experts working independently (with access only to the same instructions and information as the model) do not converge on the same answers, the task may be too ambiguous and may benefit from revision or reframing.
-- **Your task must be compatible with the grading options**. Review [grading options in the API](https://developers.openai.com/api/docs/api-reference/graders) first and verify it's possible to grade your task with them.
+- **Your task must be compatible with the grading options**. Review [grading options in the API](https://developers.openai.com/api/reference/resources/graders) first and verify it's possible to grade your task with them.
 - **Your eval results must be variable enough to improve**. Run [evals](https://developers.openai.com/api/docs/guides/evals) before using RFT. If your eval scores between minimum and maximum possible scores, you'll have enough data to work with to reinforce positive answers. If the model you want to fine-tune scores at either the absolute minimum or absolute maximum score, RFT won't be useful to you.
 - **Your model must have some success at the desired task**. Reinforcement fine-tuning makes gradual changes, sampling many answers and choosing the best ones. If a model has a 0% success rate at a given task, you cannot bootstrap to higher performance levels through RFT.
 - **Your task should be guess-proof**. If the model can get a higher reward from a lucky guess, the training signal is too noisy, as the model can get the right answer with an incorrect reasoning process. Reframe your task to make guessing more difficult—for example, by expanding classes into subclasses or revising a multiple choice problem to take open-ended answers.
@@ -103,10 +107,10 @@ Let's fine-tune a model with RFT to perform well at this task.
 
 To perform RFT, define a [grader](https://developers.openai.com/api/docs/guides/graders) to score the model's output during training, indicating the quality of its response. RFT uses the same set of graders as [evals](https://developers.openai.com/api/docs/guides/evals), which you may already be familiar with.
 
-In this example, we define [multiple graders](https://developers.openai.com/api/docs/api-reference/graders/multi) to examine the properties of the JSON returned by our fine-tuned model:
+In this example, we define [multiple graders](https://developers.openai.com/api/reference/resources/graders) to examine the properties of the JSON returned by our fine-tuned model:
 
-- The [`string_check`](https://developers.openai.com/api/docs/api-reference/graders/string-check) grader to ensure the proper `compliant` property has been set
-- The [`score_model`](https://developers.openai.com/api/docs/api-reference/graders/score-model) grader to provide a score between zero and one for the explanation text, using another evaluator model
+- The [`string_check`](https://developers.openai.com/api/reference/resources/graders) grader to ensure the proper `compliant` property has been set
+- The [`score_model`](https://developers.openai.com/api/reference/resources/graders) grader to provide a score between zero and one for the explanation text, using another evaluator model
 
 We weight the output of each property equally in the `calculate_output` expression.
 
@@ -114,8 +118,8 @@ Below is the JSON payload data we'll use for this grader in API requests. In bot
 
 
 
-<div data-content-switcher-pane data-value="grader">
-    <div class="hidden">Grader configuration</div>
+Grader configuration
+
     Multi-grader configuration object
 
 ```json
@@ -146,9 +150,13 @@ Below is the JSON payload data we'll use for this grader in API requests. In bot
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="grader_json" hidden>
-    <div class="hidden">Grading prompt</div>
+  
+
+  
+
+    
+Grading prompt
+
     Grading prompt in the grader config
 
 ```markdown
@@ -244,13 +252,11 @@ Reference Answer: {{item.explanation}}
 Model Answer: {{sample.output_json.explanation}}
 ```
 
-  </div>
-
 
 
 ## Prepare your dataset
 
-To create an RFT fine-tune, you'll need both a training and test dataset. Both the training and test datasets will share the same [JSONL format](https://jsonlines.org/). Each line in the JSONL data file will contain a `messages` array, along with any additional fields required to grade the output from the model. The full specification for RFT dataset [can be found here](https://developers.openai.com/api/docs/api-reference/fine-tuning/reinforcement-input).
+To create an RFT fine-tune, you'll need both a training and test dataset. Both the training and test datasets will share the same [JSONL format](https://jsonlines.org/). Each line in the JSONL data file will contain a `messages` array, along with any additional fields required to grade the output from the model. The full specification for RFT dataset [can be found here](https://developers.openai.com/api/reference/resources/fine_tuning).
 
 In our case, in addition to the `messages` array, each line in our JSONL file also needs `compliant` and `explanation` properties, which we can use as reference values to test the fine-tuned model's Structured Output.
 
@@ -297,13 +303,13 @@ Your training file can contain a maximum of 50,000 examples. Test datasets can c
 
 ### Upload your files
 
-The process for uploading RFT training and test data files is the same as [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning). Upload your training data to OpenAI either through the [API](https://developers.openai.com/api/docs/api-reference/files/create) or [using our UI](https://platform.openai.com/storage). Files must be uploaded with a purpose of `fine-tune` in order to be used with fine-tuning.
+The process for uploading RFT training and test data files is the same as [supervised fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning). Upload your training data to OpenAI either through the [API](https://developers.openai.com/api/reference/resources/files/methods/create) or [using our UI](https://platform.openai.com/storage). Files must be uploaded with a purpose of `fine-tune` in order to be used with fine-tuning.
 
 **You need file IDs for both your test and training data files** to create a fine-tune job.
 
 ## Create a fine-tune job
 
-Create a fine-tune job using either the [API](https://developers.openai.com/api/docs/api-reference/fine-tuning) or [fine-tuning dashboard](https://platform.openai.com/finetune). To do this, you need:
+Create a fine-tune job using either the [API](https://developers.openai.com/api/reference/resources/fine_tuning) or [fine-tuning dashboard](https://platform.openai.com/finetune). To do this, you need:
 
 - File IDs for both your training and test datasets
 - The grader configuration we created earlier
@@ -337,7 +343,7 @@ If you're fine-tuning a model to return [Structured Outputs](https://developers.
 
 Generating a JSON schema from a Pydantic model
 
-To simplify JSON schema generation, start from a <a href="https://docs.pydantic.dev/latest/api/base_model/">Pydantic BaseModel</a> class:
+To simplify JSON schema generation, start from a [Pydantic BaseModel](https://docs.pydantic.dev/latest/api/base_model/) class:
 
 1. Define your class
 1. Use `to_strict_json_schema` from the OpenAI library to generate a valid schema
@@ -437,13 +443,13 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 ```
 
 
-This request returns a [fine-tuning job object](https://developers.openai.com/api/docs/api-reference/fine-tuning/object), which includes a job `id`. Use this ID to monitor the progress of your job and retrieve the fine-tuned model when the job is complete.
+This request returns a [fine-tuning job object](https://developers.openai.com/api/reference/resources/fine_tuning), which includes a job `id`. Use this ID to monitor the progress of your job and retrieve the fine-tuned model when the job is complete.
 
 To qualify for [data sharing inference pricing](https://developers.openai.com/api/docs/pricing#fine-tuning), make sure to [share evaluation and fine-tuning data](https://help.openai.com/en/articles/10306912-sharing-feedback-evaluation-and-fine-tuning-data-and-api-inputs-and-outputs-with-openai#h_c93188c569) with OpenAI before creating the job. You can verify the job was marked as shared by confirming `shared_with_openai` is set to `true`.
 
 ### Monitoring your fine-tune job
 
-Fine-tuning jobs take some time to complete, and RFT jobs tend to take longer than SFT or DPO jobs. To monitor the progress of your fine-tune job, use the [fine-tuning dashboard](https://platform.openai.com/finetune) or the [API](https://developers.openai.com/api/docs/api-reference/fine-tuning).
+Fine-tuning jobs take some time to complete, and RFT jobs tend to take longer than SFT or DPO jobs. To monitor the progress of your fine-tune job, use the [fine-tuning dashboard](https://platform.openai.com/finetune) or the [API](https://developers.openai.com/api/reference/resources/fine_tuning).
 
 #### Reward metrics
 
@@ -474,16 +480,39 @@ Understanding the model's behavior can be done quickly by inspecting the evals a
 
 ### Try using your fine-tuned model
 
-Evaluate your newly optimized model by using it! When the fine-tuned model finishes training, use its ID in either the [Responses](https://developers.openai.com/api/docs/api-reference/responses) or [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat) API, just as you would an OpenAI base model.
+Evaluate your newly optimized model by using it! When the fine-tuned model finishes training, use its ID in either the [Responses](https://developers.openai.com/api/reference/resources/responses) or [Chat Completions](https://developers.openai.com/api/reference/resources/chat) API, just as you would an OpenAI base model.
 
 
 
-<div data-content-switcher-pane data-value="ui">
-    <div class="hidden">Use your model in the Playground</div>
-    </div>
-  <div data-content-switcher-pane data-value="api" hidden>
-    <div class="hidden">Use your model with an API call</div>
-    </div>
+Use your model in the Playground
+
+    
+
+1. Navigate to your fine-tuning job in [the dashboard](https://platform.openai.com/finetune).
+1. In the right pane, navigate to **Output model** and copy the model ID. It should start with `ft:…`
+1. Open the [Playground](https://platform.openai.com/playground).
+1. In the **Model** dropdown menu, paste the model ID. Here, you should also see other fine-tuned models you've created.
+1. Run some prompts and see how your fine-tuned performs!
+
+
+  
+
+  
+
+    
+Use your model with an API call
+
+    
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "ft:gpt-4.1-nano-2025-04-14:openai::BTz2REMH",
+    "input": "What is 4+4?"
+  }'
+```
 
 
 
@@ -493,12 +522,52 @@ Checkpoints are models you can use that are created before the final step of the
 
 
 
-<div data-content-switcher-pane data-value="ui">
-    <div class="hidden">Find checkpoints in the dashboard</div>
-    </div>
-  <div data-content-switcher-pane data-value="api" hidden>
-    <div class="hidden">Query the API for checkpoints</div>
-    </div>
+Find checkpoints in the dashboard
+
+    
+
+1. Navigate to the [fine-tuning dashboard](https://platform.openai.com/finetune).
+1. In the left panel, select the job you want to investigate. Wait until it succeeds.
+1. In the right panel, scroll to the list of checkpoints.
+1. Hover over any checkpoint to see a link to launch in the Playground.
+1. Test the checkpoint model's behavior by prompting it in the Playground.
+
+
+  
+
+  
+
+    
+Query the API for checkpoints
+
+    
+
+1. Wait until a job succeeds, which you can verify by [querying the status of a job](https://developers.openai.com/api/reference/resources/fine_tuning).
+1. [Query the checkpoints endpoint](https://developers.openai.com/api/reference/resources/fine_tuning/subresources/jobs/subresources/checkpoints/methods/list) with your fine-tuning job ID to access a list of model checkpoints for the fine-tuning job.
+1. Find the `fine_tuned_model_checkpoint` field for the name of the model checkpoint.
+1. Use this model just like you would the final fine-tuned model.
+
+The checkpoint object contains `metrics` data to help you determine the usefulness of this model. As an example, the response looks like this:
+
+```json
+{
+  "object": "fine_tuning.job.checkpoint",
+  "id": "ftckpt_zc4Q7MP6XxulcVzj4MZdwsAB",
+  "created_at": 1519129973,
+  "fine_tuned_model_checkpoint": "ft:gpt-3.5-turbo-0125:my-org:custom-suffix:96olL566:ckpt-step-2000",
+  "metrics": {
+    "full_valid_loss": 0.134,
+    "full_valid_mean_token_accuracy": 0.874
+  },
+  "fine_tuning_job_id": "ftjob-abc123",
+  "step_number": 2000
+}
+```
+
+Each checkpoint specifies:
+
+- `step_number`: The step at which the checkpoint was created (where each epoch is number of steps in the training set divided by the batch size)
+- `metrics`: An object containing the metrics for your fine-tuning job at the step when the checkpoint was created
 
 
 
@@ -530,7 +599,7 @@ Each category has a predefined pass threshold; if too many evaluated examples in
 
 How to pass safety checks
 
-In addition to reviewing any failed safety checks in the fine-tuning job object, you can retrieve details about which categories failed by querying the [fine-tuning API events endpoint](https://developers.openai.com/api/docs/api-reference/fine-tuning/list-events). Look for events of type `moderation_checks` for details about category results and enforcement. This information can help you narrow down which categories to target for retraining and improvement. The [model spec](https://cdn.openai.com/spec/model-spec-2024-05-08.html#overview) has rules and examples that can help identify areas for additional training data.
+In addition to reviewing any failed safety checks in the fine-tuning job object, you can retrieve details about which categories failed by querying the [fine-tuning API events endpoint](https://developers.openai.com/api/reference/resources/fine_tuning/subresources/jobs/methods/list). Look for events of type `moderation_checks` for details about category results and enforcement. This information can help you narrow down which categories to target for retraining and improvement. The [model spec](https://cdn.openai.com/spec/model-spec-2024-05-08.html#overview) has rules and examples that can help identify areas for additional training data.
 
 While these evaluations cover a broad range of safety categories, conduct your own evaluations of the fine-tuned model to ensure it's appropriate for your use case.
 
@@ -538,35 +607,29 @@ While these evaluations cover a broad range of safety categories, conduct your o
 
 Now that you know the basics of reinforcement fine-tuning, explore other fine-tuning methods.
 
-[
+[Supervised fine-tuning
 
-<span slot="icon">
-      </span>
-    Fine-tune a model by providing correct outputs for sample inputs.
 
-](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
 
-[
+      Fine-tune a model by providing correct outputs for sample inputs.](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
 
-<span slot="icon">
-      </span>
-    Learn to fine-tune for computer vision with image inputs.
+[Vision fine-tuning
 
-](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
 
-[
 
-<span slot="icon">
-      </span>
-    Fine-tune a model using direct preference optimization (DPO).
+      Learn to fine-tune for computer vision with image inputs.](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
 
-](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
+[Direct preference optimization
+
+
+
+      Fine-tune a model using direct preference optimization (DPO).](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
 
 ## Appendix
 
 ### Training metrics
 
-Reinforcement fine-tuning jobs publish per-step training metrics as [fine-tuning events](https://developers.openai.com/api/docs/api-reference/fine-tuning/event-object). Pull these metrics through the [API](https://developers.openai.com/api/docs/api-reference/fine-tuning/list-events) or view them as graphs and charts in the [fine-tuning dashboard](https://platform.openai.com/finetune).
+Reinforcement fine-tuning jobs publish per-step training metrics as [fine-tuning events](https://developers.openai.com/api/reference/resources/fine_tuning). Pull these metrics through the [API](https://developers.openai.com/api/reference/resources/fine_tuning/subresources/jobs/methods/list) or view them as graphs and charts in the [fine-tuning dashboard](https://platform.openai.com/finetune).
 
 Learn more about training metrics below.
 
@@ -681,7 +744,7 @@ Score metrics
 
 The top-level metrics to watch are `train_reward_mean` and `valid_reward_mean`, which indicate the average reward assigned by your graders across all samples in the training and validation datasets, respectively.
 
-Additionally, if you use a [multi-grader](https://developers.openai.com/api/docs/api-reference/graders/multi) configuration, per-grader train and validation reward metrics will be published as well. These metrics are included under the `event.data.scores` object in the fine-tuning events object, with one entry per grader. The per-grader metrics are useful for understanding how the model is performing on each individual grader, and can help you identify if the model is overfitting to one grader or another.
+Additionally, if you use a [multi-grader](https://developers.openai.com/api/reference/resources/graders) configuration, per-grader train and validation reward metrics will be published as well. These metrics are included under the `event.data.scores` object in the fine-tuning events object, with one entry per grader. The per-grader metrics are useful for understanding how the model is performing on each individual grader, and can help you identify if the model is overfitting to one grader or another.
 
 From the fine-tuning dashboard, the individual grader metrics will be displayed in their own graph below the overall `train_reward_mean` and `valid_reward_mean` metrics.
 
@@ -733,7 +796,7 @@ Reinforcement fine-tuning jobs are directly integrated with our [evals product](
 
 As validation steps are performed, the input prompts, model samples, grader outputs, and more metadata will be combined to make a new [eval run](https://developers.openai.com/api/docs/guides/evals#creating-an-eval-run) for that step. At the end of the job, you will have one run for each validation step. This allows you to compare the performance of the model at different steps, and to see how the model's behavior has changed over the course of training.
 
-You can find the eval associated with your fine-tuning job by viewing your job on the fine-tuning dashboard, or by finding the `eval_id` field on the [fine-tuning job object](https://developers.openai.com/api/docs/api-reference/fine-tuning/object).
+You can find the eval associated with your fine-tuning job by viewing your job on the fine-tuning dashboard, or by finding the `eval_id` field on the [fine-tuning job object](https://developers.openai.com/api/reference/resources/fine_tuning).
 
 The evals product is useful for inspecting the outputs of the model on specific datapoints, to get an understanding for how the model is behaving in different scenarios. It can help you figure out which slice of your dataset the model is performing poorly on which can help you identify areas for improvement in your training data.
 
@@ -741,15 +804,15 @@ The evals product can also help you find areas of improvement for your graders b
 
 ### Pausing and resuming jobs
 
-You can pause a fine-tuning job at any time by using the [fine-tuning jobs API](https://developers.openai.com/api/docs/api-reference/fine-tuning/pause). Calling the pause API will tell the training process to create a new model snapshot, stop training, and put the job into a "Paused" state. The model snapshot will go through a normal safety screening process after which it will be available for you to use throughout the OpenAI platform as a normal fine-tuned model.
+You can pause a fine-tuning job at any time by using the [fine-tuning jobs API](https://developers.openai.com/api/reference/resources/fine_tuning). Calling the pause API will tell the training process to create a new model snapshot, stop training, and put the job into a "Paused" state. The model snapshot will go through a normal safety screening process after which it will be available for you to use throughout the OpenAI platform as a normal fine-tuned model.
 
-If you wish to continue the training process for a paused job, you can do so by using the [fine-tuning jobs API](https://developers.openai.com/api/docs/api-reference/fine-tuning/resume). This will resume the training process from the last checkpoint created when the job was paused and will continue training until the job is either completed or paused again.
+If you wish to continue the training process for a paused job, you can do so by using the [fine-tuning jobs API](https://developers.openai.com/api/reference/resources/fine_tuning). This will resume the training process from the last checkpoint created when the job was paused and will continue training until the job is either completed or paused again.
 
 ### Grading with Tools
 
 If you are training your model to [perform tool calls](https://developers.openai.com/api/docs/guides/function-calling), you will need to:
 
-1. Provide the set of tools available for your model to call on each datapoint in the RFT training dataset. More info here in the [dataset API reference](https://developers.openai.com/api/docs/api-reference/fine-tuning/reinforcement-input).
+1. Provide the set of tools available for your model to call on each datapoint in the RFT training dataset. More info here in the [dataset API reference](https://developers.openai.com/api/reference/resources/fine_tuning).
 2. Configure your grader to assign rewards based on the contents of the tool calls made by the model. Information on grading tools calls can be found [here in the grading docs](https://developers.openai.com/api/docs/guides/graders/#sample-namespace)
 
 ### Billing details

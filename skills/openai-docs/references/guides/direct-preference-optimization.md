@@ -1,16 +1,20 @@
 # Direct preference optimization
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 [Direct Preference Optimization](https://arxiv.org/abs/2305.18290) (DPO) fine-tuning allows you to fine-tune models based on prompts and pairs of responses. This approach enables the model to learn from more subjective human preferences, optimizing for outputs that are more likely to be favored. DPO is currently only supported for text inputs and outputs.
 
 OpenAI is winding down the fine-tuning platform. The platform is no longer
   accessible to new users, but existing users of the fine-tuning platform will
   be able to create training jobs for the coming months.
-  <br />
+  
+
   All fine-tuned models will remain available for inference until their base
   models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
   [here](https://developers.openai.com/api/docs/deprecations).
 
-<br />
+
+
 
 <table>
 <tbody>
@@ -45,7 +49,7 @@ Each example in your dataset should contain:
 - A preferred output (an ideal assistant response).
 - A non-preferred output (a suboptimal assistant response).
 
-The data should be formatted in JSONL format, with each line [representing an example](https://developers.openai.com/api/docs/api-reference/fine-tuning/preference-input) in the following structure:
+The data should be formatted in JSONL format, with each line [representing an example](https://developers.openai.com/api/reference/resources/fine_tuning) in the following structure:
 
 ```json
 {
@@ -80,7 +84,7 @@ Currently, we only train on one-turn conversations for each example, where the p
 
 Uploading training data and using a model fine-tuned with DPO follows the [same flow described here](https://developers.openai.com/api/docs/guides/model-optimization).
 
-To create a DPO fine-tune job, use the `method` field in the [fine-tuning job creation endpoint](https://developers.openai.com/api/docs/api-reference/fine-tuning/create), where you can specify `type` as well as any associated `hyperparameters`. For DPO:
+To create a DPO fine-tune job, use the `method` field in the [fine-tuning job creation endpoint](https://developers.openai.com/api/reference/resources/fine_tuning), where you can specify `type` as well as any associated `hyperparameters`. For DPO:
 
 - set the `type` parameter to `dpo`
 - optionally set the `hyperparameters` property with any options you'd like to configure.
@@ -173,26 +177,20 @@ While these evaluations cover a broad range of safety categories, conduct your o
 
 Now that you know the basics of DPO, explore these other methods as well.
 
-[
+[Supervised fine-tuning
 
-<span slot="icon">
-      </span>
-    Fine-tune a model by providing correct outputs for sample inputs.
 
-](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
 
-[
+      Fine-tune a model by providing correct outputs for sample inputs.](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
 
-<span slot="icon">
-      </span>
-    Learn to fine-tune for computer vision with image inputs.
+[Vision fine-tuning
 
-](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
 
-[
 
-<span slot="icon">
-      </span>
-    Fine-tune a reasoning model by grading its outputs.
+      Learn to fine-tune for computer vision with image inputs.](https://developers.openai.com/api/docs/guides/vision-fine-tuning)
 
-](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)
+[Reinforcement fine-tuning
+
+
+
+      Fine-tune a reasoning model by grading its outputs.](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)

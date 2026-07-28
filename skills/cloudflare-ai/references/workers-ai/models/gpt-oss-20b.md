@@ -26,12 +26,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 OpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-20b is for lower latency, and local or specialized use-cases.
 
-| Model Info                                                                           |                                                     |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 128,000 tokens                                      |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                 |
-| Reasoning                                                                            | Yes                                                 |
-| Unit Pricing                                                                         | $0.20 per M input tokens, $0.30 per M output tokens |
+| Model Info                                                                            |                                                     |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 128,000 tokens                                      |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                 |
+| Reasoning                                                                             | Yes                                                 |
+| Unit Pricing                                                                          | $0.20 per M input tokens, $0.30 per M output tokens |
 
 ## Usage
 
