@@ -1,5 +1,7 @@
 # Data retrieval with GPT Actions
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 One of the most common tasks an action in a GPT can perform is data retrieval. An action might:
 
 1. Access an API to retrieve data based on a keyword search

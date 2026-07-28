@@ -1,5 +1,7 @@
 # GPT Action authentication
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Actions offer different authentication schemas to accommodate various use cases. To specify the authentication schema for your action, use the GPT editor and select "None", "API Key", or "OAuth".
 
 By default, the authentication method for all actions is set to "None", but you can change this and allow different actions to have different authentication methods.

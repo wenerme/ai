@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build a search and execute MCP server
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `openApiMcpServer()` to publish a large OpenAPI service through two Model Context Protocol (MCP) tools:
 
@@ -28,6 +28,8 @@ Code Mode is experimental and may have breaking changes. Use caution in producti
 ## Prerequisites
 
 You need a Cloudflare Workers project, an OpenAPI 3.x document, and a host-side method for authenticating API requests.
+
+`openApiMcpServer()` currently returns an SDK v1 server. Serve it through the explicit legacy `createLegacyMcpHandler` API.
 
 ## Publish the service
 
@@ -52,7 +54,7 @@ bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
   "name": "openapi-codemode-mcp",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-22",
+  "compatibility_date": "2026-07-27",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -67,7 +69,7 @@ bun add @cloudflare/codemode agents @modelcontextprotocol/sdk zod
 name = "openapi-codemode-mcp"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-07-27"
 compatibility_flags = ["nodejs_compat"]
 [[worker_loaders]]
 binding = "LOADER"
@@ -76,7 +78,7 @@ binding = "LOADER"
 ```js
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 import { openApiMcpServer } from "@cloudflare/codemode/mcp";
-import { createMcpHandler } from "agents/mcp";
+import { createLegacyMcpHandler } from "agents/mcp";
 const SPEC_URL = "https://api.example.com/openapi.json";
 const API_ORIGIN = "https://api.example.com";
 let specCache;
@@ -126,25 +128,24 @@ export default {
 								? options.body
 								: JSON.stringify(options.body),
 				});
-				if (response.status === 204) return null;
-				const responseType = response.headers.get("Content-Type") ?? "";
-				const result = responseType.includes("application/json")
-					? await response.json()
-					: await response.text();
 				if (!response.ok) {
 					throw new Error(`API request failed: ${response.status}`);
 				}
-				return result;
+				if (response.status === 204) return null;
+				const responseType = response.headers.get("Content-Type") ?? "";
+				return responseType.includes("application/json")
+					? await response.json()
+					: await response.text();
 			},
 		});
-		return createMcpHandler(server, { route: "/mcp" })(request, env, ctx);
+		return createLegacyMcpHandler(server, { route: "/mcp" })(request, env, ctx);
 	},
 };
 ```
 ```ts
 import { DynamicWorkerExecutor } from "@cloudflare/codemode";
 import { openApiMcpServer } from "@cloudflare/codemode/mcp";
-import { createMcpHandler } from "agents/mcp";
+import { createLegacyMcpHandler } from "agents/mcp";
 const SPEC_URL = "https://api.example.com/openapi.json";
 const API_ORIGIN = "https://api.example.com";
 let specCache: Record<string, unknown> | undefined;
@@ -194,18 +195,17 @@ export default {
 								? (options.body as string)
 								: JSON.stringify(options.body),
 				});
-				if (response.status === 204) return null;
-				const responseType = response.headers.get("Content-Type") ?? "";
-				const result = responseType.includes("application/json")
-					? await response.json()
-					: await response.text();
 				if (!response.ok) {
 					throw new Error(`API request failed: ${response.status}`);
 				}
-				return result;
+				if (response.status === 204) return null;
+				const responseType = response.headers.get("Content-Type") ?? "";
+				return responseType.includes("application/json")
+					? await response.json()
+					: await response.text();
 			},
 		});
-		return createMcpHandler(server, { route: "/mcp" })(
+		return createLegacyMcpHandler(server, { route: "/mcp" })(
 			request,
 			env,
 			ctx,
@@ -290,5 +290,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/#page","headline":"Build a search and execute MCP server · Cloudflare Agents docs","description":"Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/#page","headline":"Build a search and execute MCP server · Cloudflare Agents docs","description":"Create Code Mode search and execute MCP tools from an OpenAPI document while keeping credentials in the host Worker.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/build-codemode-openapi-mcp-server/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","MCP"]}
 ```

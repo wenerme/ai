@@ -1,5 +1,7 @@
 # Guardrails and human review
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use guardrails for automatic checks and human review for approval decisions. Together, they define when a run should continue, pause, or stop.
 
 - **Guardrails** validate input, output, or tool behavior automatically.
@@ -196,7 +198,7 @@ if __name__ == "__main__":
 ```
 
 
-This same interruption pattern applies even when the approving tool lives deeper in the workflow, such as after a handoff or inside a nested call.
+This same interruption pattern applies even when the approving tool lives deeper in the workflow, such as after a handoff or inside a nested `agent.asTool()` in TypeScript or `agent.as_tool()` in Python call.
 
 ## Approval lifecycle
 
@@ -227,42 +229,21 @@ Streaming doesn't create a separate approval system. If a streamed run pauses, w
 
 Once the control boundaries are clear, continue with the guide that covers the runtime or tool surface around them.
 
-<div class="not-prose mt-4 grid gap-3">
-  <a
-    href="/api/docs/guides/agents/running-agents"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      See how interruptions and resumptions fit into the runtime loop.
 
 
-  </a>
-  <a
-    href="/api/docs/guides/agents/results"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      Learn which result surfaces paused runs return to your application.
+  [Running agents
 
 
-  </a>
-  <a
-    href="/api/docs/guides/tools#usage-in-the-agents-sdk"
-    class="block no-underline hover:no-underline"
-  >
-    
 
-<span slot="icon">
-        </span>
-      Decide which tool surfaces need validation or approval before side effects
-      happen.
+        See how interruptions and resumptions fit into the runtime loop.](https://developers.openai.com/api/docs/guides/agents/running-agents)
+  [Results and state
 
 
-  </a>
-</div>
+
+        Learn which result surfaces paused runs return to your application.](https://developers.openai.com/api/docs/guides/agents/results)
+  [Using tools
+
+
+
+        Decide which tool surfaces need validation or approval before side effects
+      happen.](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)

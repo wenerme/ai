@@ -2,7 +2,9 @@ The Gemini Interactions API allows developers to build generative AI application
 [View as markdown](https://ai.google.dev/static/api/interactions.md.txt) [View the OpenAPI Spec](https://ai.google.dev/static/api/interactions.openapi.json)
 
 > [!NOTE]
-> This API is in Beta. Endpoints are under `/v1beta/`.
+> **Beta** : You are viewing the beta version of the Interactions API. Endpoints are under `/v1beta/`. The stable [v1 version](https://ai.google.dev/api/interactions-api-v1) is also available.
+
+API version: v1beta [v1](https://ai.google.dev/api/interactions-api-v1)
 
 ## Creating an interaction
 
@@ -121,7 +123,7 @@ Configuration parameters for model interactions.
 
 max_output_tokens integer (optional) The maximum number of tokens to include in the response.
 seed integer (optional) Seed used in decoding for reproducibility.
-speech_config SpeechConfig (optional) Configuration for speech interaction.
+speech_config array (SpeechConfig) (optional) Configuration for speech interaction.
 The configuration for speech interaction.
 
 #### Fields
@@ -253,7 +255,7 @@ values:
 - `verify`
 
   Performs classification followed by detailed investigation.
-source_files FileContent (optional) A list of source files to provide as context for the scan.
+source_files array (FileContent) (optional) A list of source files to provide as context for the scan.
 Content of a single file in the codebase.
 
 #### Fields
@@ -270,7 +272,7 @@ description string (optional) Additional context or custom instructions provided
 the patch generation process.
 finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
 maps to a previously discovered vulnerability.
-source_files FileContent (optional) A list of source files providing context for the remediation. These files
+source_files array (FileContent) (optional) A list of source files providing context for the remediation. These files
 are typically the ones containing the identified vulnerability.
 Content of a single file in the codebase.
 
@@ -331,7 +333,7 @@ Always set to `"dynamic"`.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 labels object (optional) The labels with user-defined metadata for the request.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
-response_modalities ResponseModality (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
+response_modalities array (ResponseModality) (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
 <br />
 
 #### Possible values
@@ -351,7 +353,7 @@ response_modalities ResponseModality (optional) The requested modalities of the 
 - `document`
 
   Indicates the model should return documents.
-safety_settings SafetySetting (optional) Safety settings for the interaction.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
 A safety setting that affects the safety-blocking behavior.
 
 A SafetySetting consists of a
@@ -1044,7 +1046,7 @@ page_token string (optional) Optional. A page token from a previous ListTriggers
 If successful, the response body contains data with the following structure:
 next_page_token string (optional) A page token, received from a previous \`ListTriggers\` call.
 Provide this to retrieve the subsequent page.
-triggers Trigger (optional) The list of triggers.
+triggers array (Trigger) (optional) The list of triggers.
 A trigger configuration that is scheduled to run an agent.
 
 #### Fields
@@ -1266,7 +1268,7 @@ page_token string (optional) Optional. A page token from a previous ListTriggerE
 If successful, the response body contains data with the following structure:
 next_page_token string (optional) A page token, received from a previous \`ListTriggerExecutions\` call.
 Provide this to retrieve the subsequent page.
-trigger_executions TriggerExecution (optional) The list of trigger executions.
+trigger_executions array (TriggerExecution) (optional) The list of trigger executions.
 An execution instance of a trigger.
 
 #### Fields
@@ -1540,7 +1542,7 @@ values:
 - `verify`
 
   Performs classification followed by detailed investigation.
-source_files FileContent (optional) A list of source files to provide as context for the scan.
+source_files array (FileContent) (optional) A list of source files to provide as context for the scan.
 Content of a single file in the codebase.
 
 #### Fields
@@ -1557,7 +1559,7 @@ description string (optional) Additional context or custom instructions provided
 the patch generation process.
 finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
 maps to a previously discovered vulnerability.
-source_files FileContent (optional) A list of source files providing context for the remediation. These files
+source_files array (FileContent) (optional) A list of source files providing context for the remediation. These files
 are typically the ones containing the identified vulnerability.
 Content of a single file in the codebase.
 
@@ -1817,7 +1819,7 @@ Always set to `"video"`.
 uri string (optional) The URI of the video.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
-response_modalities ResponseModality (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
+response_modalities array (ResponseModality) (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
 <br />
 
 #### Possible values
@@ -1837,7 +1839,7 @@ response_modalities ResponseModality (optional) The requested modalities of the 
 - `document`
 
   Indicates the model should return documents.
-safety_settings SafetySetting (optional) Safety settings for the interaction.
+safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
 A safety setting that affects the safety-blocking behavior.
 
 A SafetySetting consists of a
@@ -1971,7 +1973,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -1997,7 +1999,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -2018,7 +2020,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2044,7 +2046,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2070,7 +2072,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2282,7 +2284,7 @@ type object (required) No description provided.
 Always set to `"image"`.
 uri string (optional) The URI of the image.
 TextContent A text content block.
-annotations Annotation (optional) Citation information for model-generated content.
+annotations array (Annotation) (optional) Citation information for model-generated content.
 Citation information for model-generated content.
 
 #### Possible Types
@@ -2306,7 +2308,7 @@ PlaceCitation A place citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 name string (optional) Title of the place.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
 the features of a specific place in Google Maps.
@@ -2558,7 +2560,7 @@ type object (required) No description provided.
 
 Always set to `"google_search"`.
 McpServer A MCPServer is a server that can be called by the model to perform actions.
-allowed_tools AllowedTools (optional) The allowed tools.
+allowed_tools array (AllowedTools) (optional) The allowed tools.
 The configuration for allowed tools.
 
 #### Fields
@@ -2608,7 +2610,7 @@ Use to specify configuration for RAG Store.
 
 #### Fields
 
-rag_resources RagResource (optional) Optional. The representation of the rag source.
+rag_resources array (RagResource) (optional) Optional. The representation of the rag source.
 The definition of the Rag resource.
 
 #### Fields
@@ -2726,7 +2728,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2752,7 +2754,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -2773,7 +2775,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2799,7 +2801,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2825,7 +2827,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2921,7 +2923,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2947,7 +2949,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -2968,7 +2970,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -2994,7 +2996,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3020,7 +3022,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3063,7 +3065,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3089,7 +3091,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -3110,7 +3112,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3136,7 +3138,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3162,7 +3164,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3258,7 +3260,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3284,7 +3286,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -3305,7 +3307,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3331,7 +3333,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3357,7 +3359,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3400,7 +3402,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3426,7 +3428,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -3447,7 +3449,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3473,7 +3475,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3499,7 +3501,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3550,7 +3552,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3576,7 +3578,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -3597,7 +3599,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3623,7 +3625,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3649,7 +3651,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -3831,7 +3833,7 @@ type object (required) No description provided.
 Always set to `"file_search_call"`.
 FileSearchResultDelta <br />
 
-result FileSearchResult (required) No description provided.
+result array (FileSearchResult) (required) No description provided.
 The result of the File Search.
 signature string (optional) A signature hash for backend validation.
 type object (required) No description provided.
@@ -3860,19 +3862,19 @@ type object (required) No description provided.
 Always set to `"google_maps_call"`.
 GoogleMapsResultDelta <br />
 
-result GoogleMapsResult (optional) The results of the Google Maps.
+result array (GoogleMapsResult) (optional) The results of the Google Maps.
 The result of the Google Maps.
 
 #### Fields
 
-places Places (optional) The places that were found.
+places array (Places) (optional) The places that were found.
 <br />
 
 #### Fields
 
 name string (optional) Title of the place.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
 the features of a specific place in Google Maps.
@@ -3903,7 +3905,7 @@ Always set to `"google_search_call"`.
 GoogleSearchResultDelta <br />
 
 is_error boolean (optional) No description provided.
-result GoogleSearchResult (required) No description provided.
+result array (GoogleSearchResult) (required) No description provided.
 The result of the Google Search.
 
 #### Fields
@@ -4018,7 +4020,7 @@ type object (required) No description provided.
 Always set to `"retrieval_result"`.
 TextAnnotationDelta <br />
 
-annotations Annotation (optional) Citation information for model-generated content.
+annotations array (Annotation) (optional) Citation information for model-generated content.
 Citation information for model-generated content.
 
 #### Possible Types
@@ -4042,7 +4044,7 @@ PlaceCitation A place citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 name string (optional) Title of the place.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
 the features of a specific place in Google Maps.
@@ -4121,7 +4123,7 @@ Always set to `"url_context_call"`.
 UrlContextResultDelta <br />
 
 is_error boolean (optional) No description provided.
-result UrlContextResult (required) No description provided.
+result array (UrlContextResult) (required) No description provided.
 The result of the URL context.
 
 #### Fields
@@ -4220,7 +4222,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4246,7 +4248,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -4267,7 +4269,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4293,7 +4295,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4319,7 +4321,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4370,7 +4372,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4396,7 +4398,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -4417,7 +4419,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4443,7 +4445,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4469,7 +4471,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4521,7 +4523,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4547,7 +4549,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -4568,7 +4570,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4594,7 +4596,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4620,7 +4622,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4658,7 +4660,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4684,7 +4686,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -4705,7 +4707,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4731,7 +4733,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4757,7 +4759,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4795,7 +4797,7 @@ Statistics on the interaction request's token usage.
 
 #### Fields
 
-cached_tokens_by_modality ModalityTokens (optional) A breakdown of cached token usage by modality.
+cached_tokens_by_modality array (ModalityTokens) (optional) A breakdown of cached token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4821,7 +4823,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-grounding_tool_count GroundingToolCount (optional) Grounding tool count.
+grounding_tool_count array (GroundingToolCount) (optional) Grounding tool count.
 The number of grounding tool counts.
 
 #### Fields
@@ -4842,7 +4844,7 @@ values:
 - `retrieval`
 
   Grounding with customer's data, for example, VertexAISearch.
-input_tokens_by_modality ModalityTokens (optional) A breakdown of input token usage by modality.
+input_tokens_by_modality array (ModalityTokens) (optional) A breakdown of input token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4868,7 +4870,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-output_tokens_by_modality ModalityTokens (optional) A breakdown of output token usage by modality.
+output_tokens_by_modality array (ModalityTokens) (optional) A breakdown of output token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -4894,7 +4896,7 @@ modality ResponseModality (optional) The modality associated with the token coun
 
   Indicates the model should return documents.
 tokens integer (optional) Number of tokens for the modality.
-tool_use_tokens_by_modality ModalityTokens (optional) A breakdown of tool-use token usage by modality.
+tool_use_tokens_by_modality array (ModalityTokens) (optional) A breakdown of tool-use token usage by modality.
 The token count for a single response modality.
 
 #### Fields
@@ -5366,19 +5368,19 @@ type object (required) No description provided.
 Always set to `"google_maps_call"`.
 GoogleMapsResultStep Google Maps result step.
 call_id string (required) Required. ID to match the ID from the function call block.
-result GoogleMapsResultItem (required) No description provided.
+result array (GoogleMapsResultItem) (required) No description provided.
 The result of the Google Maps.
 
 #### Fields
 
-places GoogleMapsResultPlaces (optional) No description provided.
+places array (GoogleMapsResultPlaces) (optional) No description provided.
 <br />
 
 #### Fields
 
 name string (optional) No description provided.
 place_id string (optional) No description provided.
-review_snippets ReviewSnippet (optional) No description provided.
+review_snippets array (ReviewSnippet) (optional) No description provided.
 Encapsulates a snippet of a user review that answers a question about
 the features of a specific place in Google Maps.
 
@@ -5422,7 +5424,7 @@ Always set to `"google_search_call"`.
 GoogleSearchResultStep Google Search result step.
 call_id string (required) Required. ID to match the ID from the function call block.
 is_error boolean (optional) Whether the Google Search resulted in an error.
-result GoogleSearchResultItem (required) Required. The results of the Google Search.
+result array (GoogleSearchResultItem) (required) Required. The results of the Google Search.
 The result of the Google Search.
 
 #### Fields
@@ -5472,7 +5474,7 @@ type object (required) No description provided.
 Always set to `"model_output"`.
 ThoughtStep A thought step.
 signature string (optional) A signature hash for backend validation.
-summary ThoughtSummaryContent (optional) A summary of the thought.
+summary array (ThoughtSummaryContent) (optional) A summary of the thought.
 <br />
 
 #### Possible Types
@@ -5531,7 +5533,7 @@ type object (required) No description provided.
 Always set to `"image"`.
 uri string (optional) The URI of the image.
 TextContent A text content block.
-annotations Annotation (optional) Citation information for model-generated content.
+annotations array (Annotation) (optional) Citation information for model-generated content.
 Citation information for model-generated content.
 
 #### Possible Types
@@ -5555,7 +5557,7 @@ PlaceCitation A place citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 name string (optional) Title of the place.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
 the features of a specific place in Google Maps.
@@ -5620,7 +5622,7 @@ Always set to `"url_context_call"`.
 UrlContextResultStep URL context result step.
 call_id string (required) Required. ID to match the ID from the function call block.
 is_error boolean (optional) Whether the URL context resulted in an error.
-result UrlContextResult (required) Required. The results of the URL context.
+result array (UrlContextResult) (required) Required. The results of the URL context.
 The result of the URL context.
 
 #### Fields
@@ -5897,7 +5899,7 @@ values:
 - `disabled`
 
   Turns all network off.
-sources Source (optional) No description provided.
+sources array (Source) (optional) No description provided.
 A source to be mounted into the environment.
 
 #### Fields
@@ -6020,7 +6022,7 @@ Outbound networking configuration for the sandbox. Accepts an object with an 'al
 #### Possible Types
 
 object Outbound networking configuration for the sandbox. When specified, restricts which external domains the sandbox can reach. Omit entirely to allow all outbound traffic with no header injection.
-allowlist AllowlistEntry (optional) List of allowed outbound domains. Only requests to listed domains are permitted. Use \[{'domain': '\*'}\] to allow all domains while still injecting headers on specific ones.
+allowlist array (AllowlistEntry) (optional) List of allowed outbound domains. Only requests to listed domains are permitted. Use \[{'domain': '\*'}\] to allow all domains while still injecting headers on specific ones.
 A single domain allowlist rule with optional header injection.
 
 #### Fields
@@ -6178,7 +6180,7 @@ A text content block.
 
 #### Fields
 
-annotations Annotation (optional) Citation information for model-generated content.
+annotations array (Annotation) (optional) Citation information for model-generated content.
 Citation information for model-generated content.
 
 #### Possible Types
@@ -6202,7 +6204,7 @@ PlaceCitation A place citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 name string (optional) Title of the place.
 place_id string (optional) The ID of the place, in \`places/{place_id}\` format.
-review_snippets ReviewSnippet (optional) Snippets of reviews that are used to generate answers about the
+review_snippets array (ReviewSnippet) (optional) Snippets of reviews that are used to generate answers about the
 features of a given place in Google Maps.
 Encapsulates a snippet of a user review that answers a question about
 the features of a specific place in Google Maps.

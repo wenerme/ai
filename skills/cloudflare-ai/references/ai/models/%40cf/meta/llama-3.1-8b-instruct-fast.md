@@ -24,10 +24,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 \[Fast version\] The Meta Llama 3.1 collection of multilingual large language models (LLMs) is a collection of pretrained and instruction tuned generative models. The Llama 3.1 instruction tuned text only models are optimized for multilingual dialogue use cases and outperform many of the available open source and closed chat models on common industry benchmarks.
 
-| Model Info                                                                 |                                                                                          |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                           |
-| Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
+| Model Info                                                                          |                                                                                          |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                           |
+| Terms and License                                                                   | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F1/LICENSE) |
 
 ## Playground
 

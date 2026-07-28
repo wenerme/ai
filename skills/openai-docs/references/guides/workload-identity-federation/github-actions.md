@@ -1,5 +1,7 @@
 # Configuring workload identity federation for GitHub Actions
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use GitHub Actions as a Workload Identity Provider by exchanging a GitHub-issued OIDC token for a short-lived OpenAI access token. This lets workflows authenticate to the OpenAI API without storing a long-lived API key in GitHub secrets.
 
 GitHub can mint a signed OIDC JWT for a workflow job that has `id-token: write` permission and requests an identity token. OpenAI validates the token issuer, audience, signature, and mapping attributes before issuing an OpenAI access token.
@@ -101,13 +103,13 @@ Configure the Workload Identity Provider first, then create the service account 
 
 2. **Add exact claim assertions.** Add one **Key** and **Value** row for each GitHub claim that must match. OpenAI requires every configured row to match before it issues an access token. For a production deploy workflow, use assertions like:
 
-   ```text
+```text
    iss == "https://token.actions.githubusercontent.com"
    aud == "https://api.openai.com/v1"
    repository == "my-org/my-repo"
    ref == "refs/heads/main"
    workflow_ref == "my-org/my-repo/.github/workflows/deploy.yml@refs/heads/main"
-   ```
+```
 
    Prefer `workflow_ref` over `workflow` for privileged mappings because admins usually intend to trust a specific workflow file path and ref. Workflow names can be renamed, and multiple workflow files can share the same name.
 

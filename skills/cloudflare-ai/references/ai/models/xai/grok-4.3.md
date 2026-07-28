@@ -24,13 +24,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool calling with minimal hallucinations. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (none, low, medium, high).
 
-| Model Info                                                                 |                                                                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                               |
-| Terms and License                                                          | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
-| More information                                                           | [link ↗](https://docs.x.ai/docs/models/grok-4.3)                                                               |
-| Request formats                                                            | Chat Completions                                                                                               |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.3) |
+| Model Info                                                                          |                                                                                                                |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                               |
+| Terms and License                                                                   | [link ↗](https://x.ai/legal/terms-of-service)                                                                  |
+| More information                                                                    | [link ↗](https://docs.x.ai/docs/models/grok-4.3)                                                               |
+| Request formats                                                                     | Chat Completions                                                                                               |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.3) |
 
 ## Usage
 

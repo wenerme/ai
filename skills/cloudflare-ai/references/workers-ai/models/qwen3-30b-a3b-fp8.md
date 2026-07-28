@@ -27,13 +27,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Qwen3 is the latest generation of large language models in Qwen series, offering a comprehensive suite of dense and mixture-of-experts (MoE) models. Built upon extensive training, Qwen3 delivers groundbreaking advancements in reasoning, instruction-following, agent capabilities, and multilingual support.
 
-| Model Info                                                                           |                                                      |
-| ------------------------------------------------------------------------------------ | ---------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 32,768 tokens                                        |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                  |
-| Reasoning                                                                            | Yes                                                  |
-| Batch                                                                                | Yes                                                  |
-| Unit Pricing                                                                         | $0.051 per M input tokens, $0.34 per M output tokens |
+| Model Info                                                                            |                                                      |
+| ------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 32,768 tokens                                        |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                  |
+| Reasoning                                                                             | Yes                                                  |
+| Batch                                                                                 | Yes                                                  |
+| Unit Pricing                                                                          | $0.051 per M input tokens, $0.34 per M output tokens |
 
 ## Playground
 

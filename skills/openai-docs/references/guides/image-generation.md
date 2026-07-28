@@ -1,12 +1,14 @@
 # Image generation
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ## Overview
 
 The OpenAI API lets you generate and edit images from text prompts using GPT Image models, including our latest, `gpt-image-2`. You can access image generation capabilities through two APIs:
 
 ### Image API
 
-Starting with `gpt-image-1` and later models, the [Image API](https://developers.openai.com/api/docs/api-reference/images) provides two endpoints, each with distinct capabilities:
+Starting with `gpt-image-1` and later models, the [Image API](https://developers.openai.com/api/reference/resources/images) provides two endpoints, each with distinct capabilities:
 
 - **Generations**: [Generate images](#generate-images) from scratch based on a text prompt
 - **Edits**: [Modify existing images](#edit-images) using a new prompt, either partially or entirely
@@ -15,12 +17,12 @@ The Image API also includes a variations endpoint for models that support it, su
 
 ### Responses API
 
-The [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-tools) allows you to generate images as part of conversations or multi-step flows. It supports image generation as a [built-in tool](https://developers.openai.com/api/docs/guides/tools?api-mode=responses), and accepts image inputs and outputs within context.
+The [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-tools) allows you to generate images as part of conversations or multi-step flows. It supports image generation as a [built-in tool](https://developers.openai.com/api/docs/guides/tools?api-mode=responses), and accepts image inputs and outputs within context.
 
 Compared to the Image API, it adds:
 
 - **Multi-turn editing**: Iteratively make high fidelity edits to images with prompting
-- **Flexible inputs**: Accept image [File](https://developers.openai.com/api/docs/api-reference/files) IDs as input images, not just bytes
+- **Flexible inputs**: Accept image [File](https://developers.openai.com/api/reference/resources/files) IDs as input images, not just bytes
 
 The Responses API image generation tool uses its own GPT Image model selection. For details on mainline models that support calling this tool, refer to the [supported models](#supported-models) below.
 
@@ -51,11 +53,12 @@ To ensure these models are used responsibly, you may need to complete the [API
     alt="A beige coffee mug on a wooden table"
     style={{ height: "180px", width: "auto", borderRadius: "8px" }}
   />
-</div>
+
+
 
 ## Generate Images
 
-You can use the [image generation endpoint](https://developers.openai.com/api/docs/api-reference/images/create) to create images based on text prompts, or the [image generation tool](https://developers.openai.com/api/docs/guides/tools?api-mode=responses) in the Responses API to generate images as part of a conversation.
+You can use the [image generation endpoint](https://developers.openai.com/api/reference/resources/images) to create images based on text prompts, or the [image generation tool](https://developers.openai.com/api/docs/guides/tools?api-mode=responses) in the Responses API to generate images as part of a conversation.
 
 To learn more about customizing the output (size, quality, format, compression), refer to the [customize image output](#customize-image-output) section below.
 
@@ -63,8 +66,8 @@ You can set the `n` parameter to generate multiple images at once in a single re
 
 
 
-<div data-content-switcher-pane data-value="image">
-    <div class="hidden">Image API</div>
+Image API
+
     Generate an image
 
 ```javascript
@@ -127,9 +130,13 @@ openai images generate \
   --transform 'data.0.b64_json' | base64 --decode > otter.png
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="responses" hidden>
-    <div class="hidden">Responses API</div>
+  
+
+  
+
+    
+Responses API
+
     Generate an image
 
 ```javascript
@@ -179,8 +186,6 @@ if image_data:
     with open("otter.png", "wb") as f:
         f.write(base64.b64decode(image_base64))
 ```
-
-  </div>
 
 
 
@@ -246,8 +251,8 @@ If you force `edit` without providing an image in context, the call will return 
 
 
 
-<div data-content-switcher-pane data-value="responseid">
-    <div class="hidden">Using previous response ID</div>
+Using previous response ID
+
     Multi-turn image generation
 
 ```javascript
@@ -340,9 +345,13 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="imageid" hidden>
-    <div class="hidden">Using image ID</div>
+  
+
+  
+
+    
+Using image ID
+
     Multi-turn image generation
 
 ```javascript
@@ -451,13 +460,12 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
-  </div>
-
 
 
 #### Result
 
-<div className="not-prose">
+
+
   <table style={{ width: "100%" }}>
     <tbody>
       <tr>
@@ -491,7 +499,8 @@ if image_data_fwup:
       </tr>
     </tbody>
   </table>
-</div>
+
+
 
 ### Streaming
 
@@ -504,8 +513,8 @@ You can adjust the `partial_images` parameter to receive 0-3 partial images.
 
 
 
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
+Responses API
+
     Stream an image
 
 ```javascript
@@ -577,9 +586,13 @@ for event in stream:
             save_base64_image("river-final.png", image_data[0])
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="image" hidden>
-    <div class="hidden">Image API</div>
+  
+
+  
+
+    
+Image API
+
     Stream an image
 
 ```javascript
@@ -629,24 +642,26 @@ for event in stream:
             f.write(image_bytes)
 ```
 
-  </div>
-
 
 
 #### Result
 
-<div className="images-examples">
+
+
 
 | Partial 1                                                                                                                       | Partial 2                                                                                                                       | Final image                                                                                                                     |
 | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/imgen1p5-streaming1.png" alt="1st partial" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/imgen1p5-streaming2.png" alt="2nd partial" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/imgen1p5-streaming3.png" alt="3rd partial" /> |
 
-</div>
 
-<div className="images-edit-prompt body-small">
+
+
+
+
   Prompt: Draw a gorgeous image of a river made of white owl feathers, snaking
   its way through a serene winter landscape
-</div>
+
+
 
 ### Revised prompt
 
@@ -669,7 +684,7 @@ Revised prompt response
 
 ## Edit Images
 
-The [image edits](https://developers.openai.com/api/docs/api-reference/images/createEdit) endpoint lets you:
+The [image edits](https://developers.openai.com/api/reference/resources/images) endpoint lets you:
 
 - Edit existing images
 - Generate new images using other images as a reference
@@ -681,11 +696,228 @@ You can use one or more images as a reference to generate a new image.
 
 In this example, we'll use 4 input images to generate a new image of a gift basket containing the items in the reference images.
 
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
-    </div>
-  <div data-content-switcher-pane data-value="image" hidden>
-    <div class="hidden">Image API</div>
+Responses API
+
+    
+
+With the Responses API, you can provide input images in 3 different ways:
+
+- By providing a fully qualified URL
+- By providing an image as a Base64-encoded data URL
+- By providing a file ID (created with the [Files API](https://developers.openai.com/api/reference/resources/files))
+
+#### Create a File
+
+Create a File
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+
+def create_file(file_path):
+    with open(file_path, "rb") as file_content:
+        result = client.files.create(
+            file=file_content,
+            purpose="vision",
+        )
+        return result.id
+```
+
+```javascript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+async function createFile(filePath) {
+  const fileContent = fs.createReadStream(filePath);
+  const result = await openai.files.create({
+    file: fileContent,
+    purpose: "vision",
+  });
+  return result.id;
+}
+```
+
+
+#### Create a base64 encoded image
+
+Create a base64 encoded image
+
+```python
+import base64
+
+
+def encode_image(file_path):
+    with open(file_path, "rb") as f:
+        base64_image = base64.b64encode(f.read()).decode("utf-8")
+    return base64_image
+```
+
+```javascript
+import fs from "fs";
+
+function encodeImage(filePath) {
+  const base64Image = fs.readFileSync(filePath, "base64");
+  return base64Image;
+}
+```
+
+
+Edit an image
+
+```python
+from openai import OpenAI
+import base64
+
+client = OpenAI()
+
+
+def encode_image(file_path):
+    with open(file_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
+
+
+def create_file(file_path):
+    with open(file_path, "rb") as file_content:
+        result = client.files.create(file=file_content, purpose="vision")
+    return result.id
+
+
+prompt = """Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures."""
+
+base64_image1 = encode_image("body-lotion.png")
+base64_image2 = encode_image("soap.png")
+file_id1 = create_file("bath-bomb.png")
+file_id2 = create_file("incense-kit.png")
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "input_text", "text": prompt},
+                {
+                    "type": "input_image",
+                    "image_url": f"data:image/png;base64,{base64_image1}",
+                },
+                {
+                    "type": "input_image",
+                    "image_url": f"data:image/png;base64,{base64_image2}",
+                },
+                {
+                    "type": "input_image",
+                    "file_id": file_id1,
+                },
+                {
+                    "type": "input_image",
+                    "file_id": file_id2,
+                },
+            ],
+        }
+    ],
+    tools=[{"type": "image_generation"}],
+)
+
+image_generation_calls = [
+    output for output in response.output if output.type == "image_generation_call"
+]
+
+image_data = [output.result for output in image_generation_calls]
+
+if image_data:
+    image_base64 = image_data[0]
+    with open("gift-basket.png", "wb") as f:
+        f.write(base64.b64decode(image_base64))
+else:
+    print(response.output_text)
+```
+
+```javascript
+import fs from "fs";
+import OpenAI from "openai";
+
+const openai = new OpenAI();
+
+function encodeImage(filePath) {
+  return fs.readFileSync(filePath, "base64");
+}
+
+async function createFile(filePath) {
+  const result = await openai.files.create({
+    file: fs.createReadStream(filePath),
+    purpose: "vision",
+  });
+  return result.id;
+}
+
+const prompt = `Generate a photorealistic image of a gift basket on a white background
+labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+containing all the items in the reference pictures.`;
+
+const base64Image1 = encodeImage("fixtures/body-lotion.png");
+const base64Image2 = encodeImage("fixtures/soap.png");
+const fileId1 = await createFile("fixtures/bath-bomb.png");
+const fileId2 = await createFile("fixtures/incense-kit.png");
+
+const response = await openai.responses.create({
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
+        { type: "input_text", text: prompt },
+        {
+          type: "input_image",
+          image_url: `data:image/png;base64,${base64Image1}`,
+          detail: "auto",
+        },
+        {
+          type: "input_image",
+          image_url: `data:image/png;base64,${base64Image2}`,
+          detail: "auto",
+        },
+        {
+          type: "input_image",
+          file_id: fileId1,
+          detail: "auto",
+        },
+        {
+          type: "input_image",
+          file_id: fileId2,
+          detail: "auto",
+        },
+      ],
+    },
+  ],
+  tools: [{ type: "image_generation" }],
+});
+
+const imageData = response.output
+  .filter((output) => output.type === "image_generation_call")
+  .map((output) => output.result);
+
+if (imageData.length > 0) {
+  const imageBase64 = imageData[0];
+  fs.writeFileSync("gift-basket.png", Buffer.from(imageBase64, "base64"));
+} else {
+  console.log(response.output_text);
+}
+```
+
+
+  
+
+  
+
+    
+Image API
+
     Edit an image
 
 ```python
@@ -784,8 +1016,6 @@ openai images edit \
   --transform 'data.0.b64_json' | base64 --decode > gift-basket.png
 ```
 
-  </div>
-
 
 
 ### Edit an image using a mask
@@ -801,8 +1031,8 @@ If you provide multiple input images, the mask will be applied to the first imag
 
 
 
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
+Responses API
+
     Edit an image with a mask
 
 ```python
@@ -917,9 +1147,13 @@ if (imageData.length > 0) {
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="image" hidden>
-    <div class="hidden">Image API</div>
+  
+
+  
+
+    
+Image API
+
     Edit an image with a mask
 
 ```python
@@ -987,21 +1221,23 @@ openai images edit \
   --transform 'data.0.b64_json' | base64 --decode > out.png
 ```
 
-  </div>
 
 
 
-<div className="images-examples">
+
 
 | Image                                                                                                                                 | Mask                                                                                                                            | Output                                                                                                                                                                                |
 | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/sunlit_lounge.png" alt="A pink room with a pool" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/mask.png" alt="A mask in part of the pool" /> | <img className="images-example-image" src="https://cdn.openai.com/API/docs/images/sunlit_lounge_result.png" alt="The original pool with an inflatable flamingo replacing the mask" /> |
 
-</div>
 
-<div className="images-edit-prompt body-small">
+
+
+
+
   Prompt: a sunlit indoor lounge area with a pool containing a flamingo
-</div>
+
+
 
 #### Mask requirements
 
@@ -1074,28 +1310,28 @@ You can configure the following output options:
       <td>
         <ul>
           <li>
-            <code>1024x1024</code> (square)
+            `1024x1024` (square)
           </li>
           <li>
-            <code>1536x1024</code> (landscape)
+            `1536x1024` (landscape)
           </li>
           <li>
-            <code>1024x1536</code> (portrait)
+            `1024x1536` (portrait)
           </li>
           <li>
-            <code>2048x2048</code> (2K square)
+            `2048x2048` (2K square)
           </li>
           <li>
-            <code>2048x1152</code> (2K landscape)
+            `2048x1152` (2K landscape)
           </li>
           <li>
-            <code>3840x2160</code> (4K landscape)
+            `3840x2160` (4K landscape)
           </li>
           <li>
-            <code>2160x3840</code> (4K portrait)
+            `2160x3840` (4K portrait)
           </li>
           <li>
-            <code>auto</code> (default)
+            `auto` (default)
           </li>
         </ul>
       </td>
@@ -1106,17 +1342,17 @@ You can configure the following output options:
         <ul>
           <li>
             Maximum edge length must be less than or equal to 
-            <code>3840px</code>
+            `3840px`
           </li>
           <li>
-            Both edges must be multiples of <code>16px</code>
+            Both edges must be multiples of `16px`
           </li>
           <li>
-            Long edge to short edge ratio must not exceed <code>3:1</code>
+            Long edge to short edge ratio must not exceed `3:1`
           </li>
           <li>
-            Total pixels must be at least <code>655,360</code> and no more than 
-            <code>8,294,400</code>
+            Total pixels must be at least `655,360` and no more than 
+            `8,294,400`
           </li>
         </ul>
       </td>
@@ -1126,16 +1362,16 @@ You can configure the following output options:
       <td>
         <ul>
           <li>
-            <code>low</code>
+            `low`
           </li>
           <li>
-            <code>medium</code>
+            `medium`
           </li>
           <li>
-            <code>high</code>
+            `high`
           </li>
           <li>
-            <code>auto</code> (default)
+            `auto` (default)
           </li>
         </ul>
       </td>
@@ -1369,8 +1605,11 @@ A larger non-square resolution can sometimes produce fewer output tokens than
     <tr>
       <td rowSpan="3" style={{ padding: "8px", width: "28%" }}>
         GPT Image 2
-        <br />
-        <span style={{ fontSize: "0.875em" }}>Additional sizes available</span>
+        
+
+        
+Additional sizes available
+
       </td>
       <td style={{ padding: "8px" }}>Low</td>
       <td style={{ padding: "8px" }}>$0.006</td>

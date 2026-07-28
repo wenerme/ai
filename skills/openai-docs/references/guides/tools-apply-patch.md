@@ -1,5 +1,7 @@
 # Apply Patch
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The `apply_patch` tool lets GPT-5.1 create, update, and delete files in your codebase using structured diffs. Instead of just suggesting edits, the model emits patch operations that your application applies and then reports back on, enabling iterative, multi-step code editing workflows.
 
 ## When to use
@@ -325,33 +327,17 @@ if __name__ == "__main__":
 
 You can find full working examples on GitHub.
 
-<a
-  href="https://github.com/openai/openai-agents-js/blob/main/examples/tools/applyPatch.ts"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Example of how to use the apply patch tool with the Agents SDK in TypeScript
+[Apply patch tool example - TypeScript
 
 
-</a>
 
-<a
-  href="https://github.com/openai/openai-agents-python/blob/main/examples/tools/apply_patch.py"
-  target="_blank"
-  rel="noreferrer"
->
-  
+      Example of how to use the apply patch tool with the Agents SDK in TypeScript](https://github.com/openai/openai-agents-js/blob/main/examples/tools/applyPatch.ts)
 
-<span slot="icon">
-      </span>
-    Example of how to use the apply patch tool with the Agents SDK in Python
+[Apply patch tool example - Python
 
 
-</a>
+
+      Example of how to use the apply patch tool with the Agents SDK in Python](https://github.com/openai/openai-agents-python/blob/main/examples/tools/apply_patch.py)
 
 ## Handling common errors
 
@@ -359,8 +345,8 @@ Use `status: "failed"` plus a clear `output` message to help the model recover.
 
 
 
-<div data-content-switcher-pane data-value="file-missing">
-    <div class="hidden">File not found</div>
+File not found
+
     File not found error
 
 ```json
@@ -372,9 +358,13 @@ Use `status: "failed"` plus a clear `output` message to help the model recover.
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="patch-conflict" hidden>
-    <div class="hidden">Patch conflict</div>
+  
+
+  
+
+    
+Patch conflict
+
     Patch conflict error
 
 ```json
@@ -385,8 +375,6 @@ Use `status: "failed"` plus a clear `output` message to help the model recover.
   "output": "Error: Invalid Context:\n@@ def fib(n):"
 }
 ```
-
-  </div>
 
 
 
@@ -415,23 +403,32 @@ The model can then adjust future diffs (for example, by re-reading a file in you
 
 <tr>
   <td>
-    <div className="mb-1 flex items-center gap-2">
-      [Responses](https://developers.openai.com/api/docs/api-reference/responses)
-    </div>
-    <div className="mb-1 flex items-center gap-2">
-      [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat)
-    </div>
-    <div className="mb-1 flex items-center gap-2">
-      [Assistants](https://developers.openai.com/api/docs/api-reference/assistants)
-    </div>
+    
+
+      [Responses](https://developers.openai.com/api/reference/resources/responses)
+    
+
+    
+
+      [Chat Completions](https://developers.openai.com/api/reference/resources/chat)
+    
+
+    
+
+      [Assistants](https://developers.openai.com/api/reference/resources/beta/subresources/assistants)
+    
+
   </td>
   <td style={{ maxWidth: "150px" }}>
     [GPT-5.5](https://developers.openai.com/api/docs/models/gpt-5.5)
-    <br />
+    
+
     [GPT-5.4](https://developers.openai.com/api/docs/models/gpt-5.4)
-    <br />
+    
+
     [GPT-5.2](https://developers.openai.com/api/docs/models/gpt-5.2)
-    <br />
+    
+
     [GPT-5.1](https://developers.openai.com/api/docs/models/gpt-5.1)
   </td>
 </tr>

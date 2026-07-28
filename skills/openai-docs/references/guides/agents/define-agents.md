@@ -1,5 +1,7 @@
 # Agent definitions
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 An agent is the core unit of an SDK-based workflow. It packages a model, instructions, and optional runtime behavior such as tools, guardrails, MCP servers, handoffs, and structured outputs.
 
 ## What belongs on an agent
@@ -13,9 +15,9 @@ Use agent configuration for decisions that are intrinsic to that specialist:
 | `prompt`                                                                                                          | Stored prompt configuration for Responses-based runs        | [Models and providers](https://developers.openai.com/api/docs/guides/agents/models)                                   |
 | `model` and model settings                                                                                        | Choosing the model and tuning behavior                      | [Models and providers](https://developers.openai.com/api/docs/guides/agents/models)                                   |
 | `tools`                                                                                                           | Capabilities the agent can call directly                    | [Using tools](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)                            |
-| | Hinting when another agent should delegate here             | [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)                      |
+| `handoffDescription` in TypeScript or `handoff_description` in Python | Hinting when another agent should delegate here             | [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)                      |
 | `handoffs`                                                                                                        | Delegating to another agent                                 | [Orchestration and handoffs](https://developers.openai.com/api/docs/guides/agents/orchestration)                      |
-| | Returning structured output instead of plain text           | This page                                                                                |
+| `outputType` in TypeScript or `output_type` in Python                 | Returning structured output instead of plain text           | This page                                                                                |
 | Guardrails and approvals                                                                                          | Validation, blocking, and review flows                      | [Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)              |
 | MCP servers and hosted MCP tools                                                                                  | Attaching MCP-backed capabilities                           | [Integrations and observability](https://developers.openai.com/api/docs/guides/agents/integrations-observability#mcp) |
 
@@ -70,8 +72,8 @@ agent = Agent(
 Three configuration choices deserve extra care:
 
 - Start with static `instructions`. When the guidance depends on the current user, tenant, or runtime context, switch to a dynamic instructions callback instead of stitching strings together at the call site.
-- Keep short and concrete so routing agents know when to pick this specialist.
-- Use when downstream code needs typed data rather than free-form prose.
+- Keep `handoffDescription` in TypeScript or `handoff_description` in Python short and concrete so routing agents know when to pick this specialist.
+- Use `outputType` in TypeScript or `output_type` in Python when downstream code needs typed data rather than free-form prose.
 
 Return structured output
 
@@ -227,53 +229,25 @@ Split an agent when one specialist shouldn't own the full reply or when separate
 
 Once one specialist is defined cleanly, move to the guide that matches the next design question.
 
-<div class="not-prose mt-4 grid gap-3">
-  <a
-    href="/api/docs/guides/agents/models"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      Choose models, defaults, and transport strategy for this agent.
 
 
-  </a>
-  <a
-    href="/api/docs/guides/tools#usage-in-the-agents-sdk"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      Add capabilities the agent can call directly.
+  [Models and providers
 
 
-  </a>
-  <a
-    href="/api/docs/guides/agents/orchestration"
-    class="block no-underline hover:no-underline"
-  >
-    
 
-<span slot="icon">
-        </span>
-      Choose how specialists collaborate once one agent is no longer enough.
+        Choose models, defaults, and transport strategy for this agent.](https://developers.openai.com/api/docs/guides/agents/models)
+  [Using tools
 
 
-  </a>
-  <a
-    href="/api/docs/guides/agents/running-agents"
-    class="block no-underline hover:no-underline"
-  >
-    
 
-<span slot="icon">
-        </span>
-      Understand the runtime loop, state, and streaming behavior.
+        Add capabilities the agent can call directly.](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
+  [Orchestration and handoffs
 
 
-  </a>
-</div>
+
+        Choose how specialists collaborate once one agent is no longer enough.](https://developers.openai.com/api/docs/guides/agents/orchestration)
+  [Running agents
+
+
+
+        Understand the runtime loop, state, and streaming behavior.](https://developers.openai.com/api/docs/guides/agents/running-agents)

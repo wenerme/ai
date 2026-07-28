@@ -25,10 +25,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Generation over generation, Meta Llama 3 demonstrates state-of-the-art performance on a wide range of industry benchmarks and offers new capabilities, including improved reasoning.
 
-| Model Info                                                                 |              |
-| -------------------------------------------------------------------------- | ------------ |
-| Deprecated                                                                 | 5/30/2026    |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens |
+| Model Info                                                                          |              |
+| ----------------------------------------------------------------------------------- | ------------ |
+| Deprecated                                                                          | 5/30/2026    |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
 
 ## Playground
 

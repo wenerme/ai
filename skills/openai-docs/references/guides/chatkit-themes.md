@@ -1,5 +1,7 @@
 # Theming and customization in ChatKit
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 After following the [ChatKit quickstart](https://developers.openai.com/api/docs/guides/chatkit), learn how to change themes and add customization to your chat embed. Match your app’s aesthetic with light and dark themes, setting an accent color, controlling the density, and rounded corners.
 
 ## Overview
@@ -17,57 +19,37 @@ Visit [ChatKit Studio](https://chatkit.studio) to see working implementations of
 
 #### Explore ChatKit UI
 
-<a href="https://chatkit.world">
-  
-
-<span slot="icon">
-      </span>
-    Play with an interactive demo of ChatKit.
+[chatkit.world
 
 
-</a>
 
-<a href="https://widgets.chatkit.studio">
-  
+      Play with an interactive demo of ChatKit.](https://chatkit.world)
 
-<span slot="icon">
-      </span>
-    Browse available widgets.
+[Widget builder
 
 
-</a>
 
-<a href="https://chatkit.studio/playground">
-  
+      Browse available widgets.](https://widgets.chatkit.studio)
 
-<span slot="icon">
-      </span>
-    Play with an interactive demo to learn by doing.
+[ChatKit playground
 
 
-</a>
+
+      Play with an interactive demo to learn by doing.](https://chatkit.studio/playground)
 
 #### See working examples
 
-<a href="https://github.com/openai/openai-chatkit-advanced-samples">
-  
-
-<span slot="icon">
-      </span>
-    See working examples of ChatKit and get inspired.
+[Samples on GitHub
 
 
-</a>
 
-<a href="https://github.com/openai/openai-chatkit-starter-app">
-  
+      See working examples of ChatKit and get inspired.](https://github.com/openai/openai-chatkit-advanced-samples)
 
-<span slot="icon">
-      </span>
-    Clone a repo to start with a fully working template.
+[Starter app repo
 
 
-</a>
+
+      Clone a repo to start with a fully working template.](https://github.com/openai/openai-chatkit-starter-app)
 
 ## Change the theme
 
@@ -208,15 +190,11 @@ const options: Partial<ChatKitOptions> = {
 
 You can customize the appearance of entity tags on mouseover using widgets. Show rich previews such as a business card, document summary, or image when the user hovers over an entity tag.
 
-<a href="https://widgets.chatkit.studio">
-  
-
-<span slot="icon">
-      </span>
-    Browse available widgets.
+[Widget builder
 
 
-</a>
+
+      Browse available widgets.](https://widgets.chatkit.studio)
 
 ```jsx
 const options: Partial<ChatKitOptions> = {

@@ -28,14 +28,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Gemma is a family of lightweight, state-of-the-art open models from Google, built from the same research and technology used to create the Gemini models. They are text-to-text, decoder-only large language models, available in English, with open weights, pre-trained variants, and instruction-tuned variants.
 
-| Model Info                                                                 |                                             |
-| -------------------------------------------------------------------------- | ------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                   |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens                                |
-| Terms and License                                                          | [link ↗](https://ai.google.dev/gemma/terms) |
-| More information                                                           | [link ↗](https://ai.google.dev/gemma/docs)  |
-| LoRA                                                                       | Yes                                         |
-| Beta                                                                       | Yes                                         |
+| Model Info                                                                          |                                             |
+| ----------------------------------------------------------------------------------- | ------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                   |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens                                |
+| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemma/terms) |
+| More information                                                                    | [link ↗](https://ai.google.dev/gemma/docs)  |
+| LoRA                                                                                | Yes                                         |
+| Beta                                                                                | Yes                                         |
 
 ## Playground
 

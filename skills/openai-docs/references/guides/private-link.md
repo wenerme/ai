@@ -1,5 +1,7 @@
 # Private Link
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 OpenAI Private Link lets Azure workloads reach regional OpenAI API endpoints through Azure Private Link instead of connecting directly to public API endpoints. Create a private endpoint for each OpenAI-provided regional Private Link Service, map its regional host name in private DNS, and send normal authenticated API requests to that host name.
 
 Use Private Link when your organization has strict requirements to keep traffic on Azure private networking. If you don't have private-network requirements, OpenAI's public endpoints are simpler to set up and operate. Private Link isn't compatible with IP allowlist controls or mutual TLS (mTLS); contact OpenAI if you need help choosing the right enterprise network controls.

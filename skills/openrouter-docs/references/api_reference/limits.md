@@ -308,7 +308,7 @@ type Key = {
 
 ## Credit Limits
 
-Credits on OpenRouter are denominated in US dollars — 1 credit equals \$1 USD, and all pricing on the site and API is quoted in dollars. Credit limits govern how much you can spend. They come from two places:
+Credit limits govern how much you can spend. They come from two places:
 
 1. **Account balance** — your available credits across the account. If your account has a negative credit balance, you may see <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors, including for free models. Adding credits to put your balance above zero allows you to use those models again.
 2. **Per-key credit limits** — an optional spending cap configured on an individual API key. The `limit`, `limit_reset`, and `limit_remaining` fields in the `GET /api/v1/key` response above describe this cap and how much of it remains.

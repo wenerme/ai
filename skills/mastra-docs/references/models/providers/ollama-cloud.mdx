@@ -1,11 +1,11 @@
 ---
 title: "Ollama Cloud | Models"
-description: "Use Ollama Cloud models with Mastra. 18 models available."
+description: "Use Ollama Cloud models with Mastra. 19 models available."
 ---
 
 # [Ollama Cloud logo]Ollama Cloud
 
-Access 18 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
+Access 19 Ollama Cloud models through Mastra's model router. Authentication is handled automatically using the `OLLAMA_API_KEY` environment variable.
 
 Learn more in the [Ollama Cloud documentation](https://docs.ollama.com/cloud).
 
@@ -156,6 +156,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "ollama-cloud/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

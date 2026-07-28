@@ -27,13 +27,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 This model is intended to be used by non-technical users to understand data inside their SQL databases.
 
-| Model Info                                                                 |                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                                        |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 10,000 tokens                                                    |
-| Terms and License                                                          | [link ↗](https://creativecommons.org/licenses/by-sa/4.0/deed.en) |
-| More information                                                           | [link ↗](https://huggingface.co/defog/sqlcoder-7b-2)             |
-| Beta                                                                       | Yes                                                              |
+| Model Info                                                                          |                                                                  |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                                        |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 10,000 tokens                                                    |
+| Terms and License                                                                   | [link ↗](https://creativecommons.org/licenses/by-sa/4.0/deed.en) |
+| More information                                                                    | [link ↗](https://huggingface.co/defog/sqlcoder-7b-2)             |
+| Beta                                                                                | Yes                                                              |
 
 ## Playground
 

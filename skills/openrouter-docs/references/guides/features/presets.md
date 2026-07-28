@@ -23,6 +23,7 @@ Each preset can manage:
 * System prompts
 * Generation parameters (temperature, top\_p, etc.)
 * Provider inclusion/exclusion rules
+* Tools, including [OpenRouter server tools](/docs/guides/features/server-tools/web-search) such as web search, [advisors](/docs/guides/features/server-tools/advisor), and [subagents](/docs/guides/features/server-tools/subagent)
 
 ## Quick Start
 
@@ -108,6 +109,63 @@ You can reference the preset as if it was a model by sending requests to `@prese
 }
 ```
 
+## Tools in Presets
+
+A preset can store a `tools` array, exactly like the one you would send on a request. This includes:
+
+* **OpenRouter server tools** — for example `openrouter:web_search`, `openrouter:advisor`, and `openrouter:subagent`. The advisor and subagent tools may appear multiple times, one entry per named instance, so a single preset can define a whole roster of named workers (see the [subagent](/docs/guides/features/server-tools/subagent) and [advisor](/docs/guides/features/server-tools/advisor#multiple-advisors) docs).
+* **Function tools** and other custom tool definitions, which are stored and forwarded verbatim.
+
+For example, a preset can bundle a design assistant with a roster of named subagents — one for creative ideation, one that generates images and mockups, and one for frontend design:
+
+```json lines theme={null}
+{
+  "tools": [
+    {
+      "type": "openrouter:subagent",
+      "parameters": {
+        "name": "ideator",
+        "model": "anthropic/claude-fable-5",
+        "instructions": "You brainstorm creative directions, naming, and copy. Return several distinct options."
+      }
+    },
+    {
+      "type": "openrouter:subagent",
+      "parameters": {
+        "name": "mockup artist",
+        "instructions": "You generate images and UI mockups for the concepts you are given.",
+        "tools": [
+          {
+            "type": "openrouter:image_generation",
+            "parameters": { "model": "openai/gpt-5.4-image-2" }
+          }
+        ]
+      }
+    },
+    {
+      "type": "openrouter:subagent",
+      "parameters": {
+        "name": "frontend designer",
+        "model": "moonshotai/kimi-k3",
+        "instructions": "You turn approved mockups into clean, responsive frontend code."
+      }
+    }
+  ]
+}
+```
+
+Any client that references `@preset/{slug}` gets these tools applied server-side — no SDK or orchestration code required, and you can add, remove, or retune the tools later without touching the client.
+
+### How preset tools merge with request tools
+
+When a request that references a preset also sends its own `tools`, the two arrays are unioned, and a request tool overrides the preset's tool of the same identity (mirroring how request fields override preset config elsewhere). Identity is determined per tool kind:
+
+* `openrouter:advisor` and `openrouter:subagent` entries are keyed by type plus `parameters.name`, so a request can override one named instance while keeping the preset's others.
+* Function tools are keyed by function name.
+* Other OpenRouter server tools (such as `openrouter:web_search`) are singletons, keyed by type.
+
+Preset tools keep their relative order; request-only tools are appended after them.
+
 ## Creating Presets from API Requests
 
 In addition to the dashboard, you can create (or update) a preset
@@ -118,7 +176,8 @@ configuration without re-typing it in the UI.
 Each inference skin has its own endpoint. Send the same JSON body
 you would send to the matching inference route — OpenRouter
 persists only the fields that overlap with the preset config
-(e.g. `model`, `temperature`, `provider`, `top_p`, `system`).
+(e.g. `model`, `temperature`, `provider`, `top_p`, `system`,
+`tools`).
 Transient fields like `messages`, `input`, `prompt`, and `stream`
 are silently ignored.
 

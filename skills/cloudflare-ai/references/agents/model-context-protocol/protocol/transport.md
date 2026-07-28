@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transport
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Model Context Protocol (MCP) specification defines two standard [transport mechanisms ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) for communication between clients and servers:
 
@@ -21,7 +21,7 @@ The Model Context Protocol (MCP) specification defines two standard [transport m
 
 Note
 
-Server-Sent Events (SSE) was previously used for remote MCP connections but has been deprecated in favor of Streamable HTTP. If you need SSE support for legacy clients, use the [McpAgent](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/) class.
+Server-Sent Events (SSE) was previously used for remote MCP connections but has been deprecated in favor of Streamable HTTP. Existing `McpAgent` deployments can retain SSE temporarily while they migrate, but new servers should use the stateless Streamable HTTP handler.
 
 MCP servers built with the [Agents SDK](https://developers.cloudflare.com/agents) use [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) to handle Streamable HTTP transport.
 
@@ -40,8 +40,8 @@ You can use the "Deploy to Cloudflare" button to create a remote MCP server.
 Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
 
 ```js
-import { createMcpHandler } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createMcpHandler } from "agents/mcp/server";
+import { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 function createServer() {
@@ -67,17 +67,15 @@ function createServer() {
 }
 
 export default {
-	fetch: (request, env, ctx) => {
-		// Create a new server instance per request
-		const server = createServer();
-		return createMcpHandler(server)(request, env, ctx);
+	fetch(request, env, ctx) {
+		return createMcpHandler(createServer)(request, env, ctx);
 	},
 };
 ```
 
 ```ts
-import { createMcpHandler } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createMcpHandler } from "agents/mcp/server";
+import { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 function createServer() {
@@ -103,12 +101,10 @@ function createServer() {
 }
 
 export default {
-	fetch: (request: Request, env: Env, ctx: ExecutionContext) => {
-		// Create a new server instance per request
-		const server = createServer();
-		return createMcpHandler(server)(request, env, ctx);
+	fetch(request, env, ctx) {
+		return createMcpHandler(createServer)(request, env, ctx);
 	},
-} satisfies ExportedHandler<Env>;
+} satisfies ExportedHandler;
 ```
 
 #### MCP server with authentication
@@ -118,13 +114,7 @@ If your MCP server implements authentication & authorization using the [Workers 
 ```js
 export default new OAuthProvider({
 	apiRoute: "/mcp",
-	apiHandler: {
-		fetch: (request, env, ctx) => {
-			// Create a new server instance per request
-			const server = createServer();
-			return createMcpHandler(server)(request, env, ctx);
-		},
-	},
+	apiHandler: createMcpHandler(createServer),
 	// ... other OAuth configuration
 });
 ```
@@ -132,24 +122,18 @@ export default new OAuthProvider({
 ```ts
 export default new OAuthProvider({
 	apiRoute: "/mcp",
-	apiHandler: {
-		fetch: (request: Request, env: Env, ctx: ExecutionContext) => {
-			// Create a new server instance per request
-			const server = createServer();
-			return createMcpHandler(server)(request, env, ctx);
-		},
-	},
+	apiHandler: createMcpHandler(createServer),
 	// ... other OAuth configuration
 });
 ```
 
-### Stateful MCP servers
+### Servers that need protocol sessions
 
-If your MCP server needs to maintain state across requests, use `createMcpHandler` with a `WorkerTransport` inside an [Agent](https://developers.cloudflare.com/agents/) class. This allows you to persist session state in Durable Object storage and use advanced MCP features like [elicitation ↗](https://modelcontextprotocol.io/specification/draft/client/elicitation) and [sampling ↗](https://modelcontextprotocol.io/specification/draft/client/sampling).
+MCP has no protocol-level session on the stateless path. Applications can store durable business data behind a separate storage boundary.
 
-See [Stateful MCP Servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#stateful-mcp-servers) for implementation details.
+While migrating legacy sessions, existing servers can keep a temporary `createLegacyMcpHandler` with `WorkerTransport` or `McpAgent` route beside the new stateless route. These APIs support transport state, event replay, pushed elicitation, sampling, and roots requests. `McpAgent` is deprecated and feature-frozen.
 
-Streamable HTTP streams are resumable: configure an `EventStore` so clients can reconnect with a `Last-Event-ID` header and replay missed events, keeping in-flight tool calls alive across the edge idle-stream watchdog. `DurableObjectEventStore` is exported from `agents/mcp` for stateful `WorkerTransport` callers. Refer to [McpAgent: Stream resumability](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#stream-resumability).
+Add the stateless route before moving clients, and keep both lanes until existing sessions drain. Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for the staged migration. Refer to [McpAgent: Stream resumability](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#stream-resumability) for existing stream behavior.
 
 ## RPC transport
 
@@ -161,7 +145,11 @@ The **RPC transport** is designed for internal applications where your MCP serve
 
 RPC transport does not support authentication. Use Streamable HTTP for external connections that require OAuth.
 
-### Connecting an Agent to an McpAgent via RPC
+### Connect an Agent to an existing `McpAgent` through RPC
+
+Deprecated server path
+
+This section applies only to existing `McpAgent` deployments during migration. Do not create a new `McpAgent` server. Use a stateless `createMcpHandler` server instead.
 
 #### 1\. Define your MCP server
 
@@ -292,15 +280,15 @@ In your `wrangler.jsonc`, define bindings for both Durable Objects:
 	"durable_objects": {
 		"bindings": [
 			{ "name": "Chat", "class_name": "Chat" },
-			{ "name": "MyMCP", "class_name": "MyMCP" }
-		]
+			{ "name": "MyMCP", "class_name": "MyMCP" },
+		],
 	},
 	"migrations": [
 		{
 			"new_sqlite_classes": ["MyMCP", "Chat"],
-			"tag": "v1"
-		}
-	]
+			"tag": "v1",
+		},
+	],
 }
 ```
 
@@ -393,9 +381,7 @@ export class MyMCP extends McpAgent<
 			const role = this.props?.role || "guest";
 
 			return {
-				content: [
-					{ type: "text", text: `User ID: ${userId}, Role: ${role}` },
-				],
+				content: [{ type: "text", text: `User ID: ${userId}, Role: ${role}` }],
 			};
 		});
 	}
@@ -462,15 +448,15 @@ export class MyMCP extends McpAgent<Env, State> {
 | ------------------- | ------------------------------------- | ---------------------------------------- | ------------------------------------- |
 | **Streamable HTTP** | External MCP servers, production apps | Standard protocol, secure, supports auth | Slight network overhead               |
 | **RPC**             | Internal agents on Cloudflare         | Fastest, simplest setup                  | No auth, Durable Object bindings only |
-| **SSE**             | Legacy compatibility                  | Backwards compatible                     | Deprecated, use Streamable HTTP       |
+| **SSE**             | Compatibility with older clients      | Backwards compatible                     | Deprecated, use Streamable HTTP       |
 
-### Migrating from McpAgent
+### Migrate from McpAgent
 
-If you have an existing MCP server using the `McpAgent` class:
+If the endpoint does not use legacy stateful features, migrate directly to a stateless server factory from `@modelcontextprotocol/server` and pass it to `createMcpHandler`.
 
-* **Not using state?** Replace your `McpAgent` class with `McpServer` from `@modelcontextprotocol/sdk` and use `createMcpHandler(server)` in a Worker `fetch` handler.
-* **Using state?** Use `createMcpHandler` with a `WorkerTransport` inside an [Agent](https://developers.cloudflare.com/agents/) class. See [Stateful MCP Servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#stateful-mcp-servers) for details.
-* **Need SSE support?** Continue using `McpAgent` with `serveSSE()` for legacy client compatibility. See the [McpAgent API reference](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/).
+If it depends on MCP session state, RPC, pushed server-to-client requests, standalone streams, or replay, first design stateless equivalents. For example, move business state behind explicit application storage and replace pushed input requests with stateless elicitation. Serve stateless and legacy lanes together while clients migrate and existing sessions drain.
+
+Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/) for the feature mapping, dual-era routing, and rollout steps.
 
 ### Testing with MCP clients
 
@@ -487,5 +473,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/#page","headline":"Transport · Cloudflare Agents docs","description":"Configure Streamable HTTP transport for remote MCP servers built with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/#page","headline":"Transport · Cloudflare Agents docs","description":"Configure Streamable HTTP transport for remote MCP servers built with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

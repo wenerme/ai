@@ -26,12 +26,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.
 
-| Model Info                                                                 |                                                     |
-| -------------------------------------------------------------------------- | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 24,000 tokens                                       |
-| Reasoning                                                                  | Yes                                                 |
-| LoRA                                                                       | Yes                                                 |
-| Unit Pricing                                                               | $0.66 per M input tokens, $1.00 per M output tokens |
+| Model Info                                                                          |                                                     |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 24,000 tokens                                       |
+| Reasoning                                                                           | Yes                                                 |
+| LoRA                                                                                | Yes                                                 |
+| Unit Pricing                                                                        | $0.66 per M input tokens, $1.00 per M output tokens |
 
 ## Playground
 

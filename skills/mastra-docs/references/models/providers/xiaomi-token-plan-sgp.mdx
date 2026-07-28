@@ -1,11 +1,11 @@
 ---
 title: "Xiaomi Token Plan (Singapore) | Models"
-description: "Use Xiaomi Token Plan (Singapore) models with Mastra. 6 models available."
+description: "Use Xiaomi Token Plan (Singapore) models with Mastra. 7 models available."
 ---
 
 # [Xiaomi Token Plan (Singapore) logo]Xiaomi Token Plan (Singapore)
 
-Access 6 Xiaomi Token Plan (Singapore) models through Mastra's model router. Authentication is handled automatically using the `XIAOMI_API_KEY` environment variable.
+Access 7 Xiaomi Token Plan (Singapore) models through Mastra's model router. Authentication is handled automatically using the `XIAOMI_API_KEY` environment variable.
 
 Learn more in the [Xiaomi Token Plan (Singapore) documentation](https://platform.xiaomimimo.com/#/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "xiaomi-token-plan-sgp/mimo-v2-tts"
+  model: "xiaomi-token-plan-sgp/mimo-v2-pro"
 });
 
 // Generate a response
@@ -124,7 +124,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://token-plan-sgp.xiaomimimo.com/v1",
-    id: "xiaomi-token-plan-sgp/mimo-v2-tts",
+    id: "xiaomi-token-plan-sgp/mimo-v2-pro",
     apiKey: process.env.XIAOMI_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -143,7 +143,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "xiaomi-token-plan-sgp/mimo-v2.5-tts-voicedesign"
-      : "xiaomi-token-plan-sgp/mimo-v2-tts";
+      : "xiaomi-token-plan-sgp/mimo-v2-pro";
   }
 });
 ```

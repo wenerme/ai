@@ -1,10 +1,14 @@
 # Assistants Code Interpreter
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+After achieving feature parity in the Responses API, we've deprecated the Assistants API. It will shut down on August 26, 2026. Follow the [migration guide](https://developers.openai.com/platform/assistants/migration) to update your integration. [Learn more](https://platform.openai.com/docs/guides/migrate-to-responses).
+
 ## Overview
 
 Code Interpreter allows Assistants to write and run Python code in a sandboxed execution environment. This tool can process files with diverse data and formatting, and generate files with data and images of graphs. Code Interpreter allows your Assistant to run code iteratively to solve challenging code and math problems. When your Assistant writes code that fails to run, it can iterate on this code by attempting to run different code until the code execution succeeds.
 
-See a quickstart of how to get started with Code Interpreter [here](https://developers.openai.com/api/docs/assistants/overview#step-1-create-an-assistant?context=with-streaming).
+See a quickstart of how to get started with Code Interpreter [here](https://developers.openai.com/api/docs/assistants/migration#step-1-create-an-assistant?context=with-streaming).
 
 ## How it works
 
@@ -109,7 +113,7 @@ curl https://api.openai.com/v1/assistants \
 ```
 
 
-Files can also be passed at the Thread level. These files are only accessible in the specific Thread. Upload the File using the [File upload](https://developers.openai.com/api/docs/api-reference/files/create) endpoint and then pass the File ID as part of the Message creation request:
+Files can also be passed at the Thread level. These files are only accessible in the specific Thread. Upload the File using the [File upload](https://developers.openai.com/api/reference/resources/files/methods/create) endpoint and then pass the File ID as part of the Message creation request:
 
 ```python
 thread = client.beta.threads.create(

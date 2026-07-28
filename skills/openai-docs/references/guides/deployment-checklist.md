@@ -1,5 +1,7 @@
 # API deployment checklist
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 | Contents                                                                        | Expected impact                     |
 | ------------------------------------------------------------------------------- | ----------------------------------- |
 | [Use the Responses API](#use-the-responses-api)                                 | Quality, cost, latency, reliability |
@@ -559,7 +561,7 @@ print(next_response.output_text)
 [Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching) automatically reduces latency
 and cost when requests reuse the same long prefix. For high-volume workflows,
 set
-[`prompt_cache_key`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-prompt_cache_key)
+[`prompt_cache_key`](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-prompt_cache_key)
 consistently for requests that share the same stable prefix. The service
 combines the key with the prompt prefix hash to help route similar requests to
 the same cache without changing the model input. Keep the key stable for

@@ -1,5 +1,7 @@
 # Safety in building agents
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 As you build and deploy agents with [Agent Builder](https://developers.openai.com/api/docs/guides/agent-builder), it's important to understand the risks. Learn about risk types and how to mitigate them when building multi-agent workflows.
 
 OpenAI is deprecating Agent Builder. Existing users can continue using it

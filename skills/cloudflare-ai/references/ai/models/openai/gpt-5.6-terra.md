@@ -24,13 +24,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 GPT-5.6 Terra is an OpenAI GPT-5.6 model that balances intelligence and cost, using the Responses API for reasoning and stateful context management.
 
-| Model Info                                                                 |                                                                                                                        |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,050,000 tokens                                                                                                       |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                                 |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                          |
-| Request formats                                                            | Responses                                                                                                              |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-terra) |
+| Model Info                                                                          |                                                                                                                        |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,050,000 tokens                                                                                                       |
+| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                                 |
+| More information                                                                    | [link ↗](https://openai.com/)                                                                                          |
+| Request formats                                                                     | Responses                                                                                                              |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-terra) |
 
 ## Usage
 

@@ -1,5 +1,9 @@
 # Assistants File Search
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+After achieving feature parity in the Responses API, we've deprecated the Assistants API. It will shut down on August 26, 2026. Follow the [migration guide](https://developers.openai.com/platform/assistants/migration) to update your integration. [Learn more](https://platform.openai.com/docs/guides/migrate-to-responses).
+
 ## Overview
 
 File Search augments the Assistant with knowledge from outside its model, such as proprietary product information or documents provided by your users. OpenAI automatically parses and chunks your documents, creates and stores the embeddings, and use both vector and keyword search to retrieve relevant content to answer user queries.
@@ -182,9 +186,9 @@ Now, create a Run and observe that the model uses the File Search tool to provid
 
 
 
-<div data-content-switcher-pane data-value="streaming">
-    <div class="hidden">With streaming</div>
-    ```python
+With streaming
+
+```python
 from typing_extensions import override
 from openai import AssistantEventHandler, OpenAI
 
@@ -260,10 +264,14 @@ const citations: string[] = [];
     }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="without-streaming" hidden>
-    <div class="hidden">Without streaming</div>
-    ```python
+  
+
+  
+
+    
+Without streaming
+
+```python
 # Use the create and poll SDK helper to create a run and poll the status of
 # the run until it's in a terminal state.
 
@@ -321,8 +329,6 @@ console.log(text.value);
 console.log(citations.join("\n"));
 }
 ```
-
-  </div>
 
 
 
@@ -388,9 +394,9 @@ const vectorStore = await openai.vectorStores.create({
 ```
 
 
-Adding files to vector stores is an async operation. To ensure the operation is complete, we recommend that you use the 'create and poll' helpers in our official SDKs. If you're not using the SDKs, you can retrieve the `vector_store` object and monitor its [`file_counts`](https://developers.openai.com/api/docs/api-reference/vector-stores/object#vector-stores/object-file_counts) property to see the result of the file ingestion operation.
+Adding files to vector stores is an async operation. To ensure the operation is complete, we recommend that you use the 'create and poll' helpers in our official SDKs. If you're not using the SDKs, you can retrieve the `vector_store` object and monitor its [`file_counts`](https://developers.openai.com/api/reference/resources/vector_stores#vector-stores/object-file_counts) property to see the result of the file ingestion operation.
 
-Files can also be added to a vector store after it's created by [creating vector store files](https://developers.openai.com/api/docs/api-reference/vector-stores/createFile).
+Files can also be added to a vector store after it's created by [creating vector store files](https://developers.openai.com/api/reference/resources/vector_stores/subresources/files/methods/create).
 
 Adding files is rate limited per vector store ID. Requests to `/vector_stores/{vector_store_id}/files` and `/vector_stores/{vector_store_id}/file_batches` share a per-vector-store limit of 300 requests per minute.
 
@@ -408,7 +414,7 @@ const file = await openai.vectorStores.files.createAndPoll(
 ```
 
 
-Alternatively, you can add several files to a vector store by [creating batches](https://developers.openai.com/api/docs/api-reference/vector-stores/createBatch) of up to 500 files.
+Alternatively, you can add several files to a vector store by [creating batches](https://developers.openai.com/api/reference/resources/vector_stores/subresources/file_batches/methods/create) of up to 500 files.
 
 Batch creation accepts either a simple list of `file_ids` or a `files` array made up of objects with a `file_id` plus optional `attributes` and `chunking_strategy`. Use `files` when you need per-file metadata or chunking settings, and note that `file_ids` and `files` are mutually exclusive in a single request.
 
@@ -456,8 +462,8 @@ const batch = await openai.vectorStores.fileBatches.createAndPoll(
 
 Similarly, these files can be removed from a vector store by either:
 
-- Deleting the [vector store file object](https://developers.openai.com/api/docs/api-reference/vector-stores/deleteFile) or,
-- By deleting the underlying [file object](https://developers.openai.com/api/docs/api-reference/files/delete) (which removes the file it from all `vector_store` and `code_interpreter` configurations across all assistants and threads in your organization)
+- Deleting the [vector store file object](https://developers.openai.com/api/reference/resources/vector_stores/subresources/files/methods/delete) or,
+- By deleting the underlying [file object](https://developers.openai.com/api/reference/resources/files/methods/delete) (which removes the file it from all `vector_store` and `code_interpreter` configurations across all assistants and threads in your organization)
 
 The maximum file size is 512 MB. Each file should contain no more than 5,000,000 tokens per file (computed automatically when you attach a file).
 
@@ -508,7 +514,7 @@ You can also attach a vector store to Threads or Assistants after they're create
 
 #### Ensuring vector store readiness before creating runs
 
-We highly recommend that you ensure all files in a `vector_store` are fully processed before you create a run. This will ensure that all the data in your `vector_store` is searchable. You can check for `vector_store` readiness by using the polling helpers in our SDKs, or by manually polling the `vector_store` object to ensure the [`status`](https://developers.openai.com/api/docs/api-reference/vector-stores/object#vector-stores/object-status) is `completed`.
+We highly recommend that you ensure all files in a `vector_store` are fully processed before you create a run. This will ensure that all the data in your `vector_store` is searchable. You can check for `vector_store` readiness by using the polling helpers in our SDKs, or by manually polling the `vector_store` object to ensure the [`status`](https://developers.openai.com/api/reference/resources/vector_stores#vector-stores/object-status) is `completed`.
 
 As a fallback, we've built a **60 second maximum wait** in the Run object when the **thread’s** vector store contains files that are still being processed. This is to ensure that any files your users upload in a thread a fully searchable before the run proceeds. This fallback wait _does not_ apply to the assistant's vector store.
 
@@ -520,14 +526,14 @@ You can customize how the `file_search` tool chunks your data and how many chunk
 
 By default, `max_chunk_size_tokens` is set to `800` and `chunk_overlap_tokens` is set to `400`, meaning every file is indexed by being split up into 800-token chunks, with 400-token overlap between consecutive chunks.
 
-You can adjust this by setting [`chunking_strategy`](https://developers.openai.com/api/docs/api-reference/vector-stores-files/createFile#vector-stores-files-createfile-chunking_strategy) when adding files to the vector store. There are certain limitations to `chunking_strategy`:
+You can adjust this by setting [`chunking_strategy`](https://developers.openai.com/api/reference/resources/vector_stores/subresources/files/methods/create#vector-stores-files-createfile-chunking_strategy) when adding files to the vector store. There are certain limitations to `chunking_strategy`:
 
 - `max_chunk_size_tokens` must be between 100 and 4096 inclusive.
 - `chunk_overlap_tokens` must be non-negative and should not exceed `max_chunk_size_tokens / 2`.
 
 **Number of chunks**
 
-By default, the `file_search` tool outputs up to 20 chunks for `gpt-4*` and o-series models and up to 5 chunks for `gpt-3.5-turbo`. You can adjust this by setting [`file_search.max_num_results`](https://developers.openai.com/api/docs/api-reference/assistants/createAssistant#assistants-createassistant-tools) in the tool when creating the assistant or the run.
+By default, the `file_search` tool outputs up to 20 chunks for `gpt-4*` and o-series models and up to 5 chunks for `gpt-3.5-turbo`. You can adjust this by setting [`file_search.max_num_results`](https://developers.openai.com/api/reference/resources/beta/subresources/assistants/methods/create#assistants-createassistant-tools) in the tool when creating the assistant or the run.
 
 Note that the `file_search` tool may output fewer than this number for a myriad of reasons:
 
@@ -543,7 +549,7 @@ By default, the file search tool will return all search results to the model tha
 
 **Inspecting file search chunks**
 
-The first step in improving the quality of your file search results is inspecting the current behavior of your assistant. Most often, this will involve investigating responses from your assistant that are not not performing well. You can get [granular information about a past run step](https://developers.openai.com/api/docs/api-reference/run-steps/getRunStep) using the REST API, specifically using the `include` query parameter to get the file chunks that are being used to generate results.
+The first step in improving the quality of your file search results is inspecting the current behavior of your assistant. Most often, this will involve investigating responses from your assistant that are not not performing well. You can get [granular information about a past run step](https://developers.openai.com/api/reference/resources/beta/subresources/threads/subresources/runs/subresources/steps/methods/retrieve) using the REST API, specifically using the `include` query parameter to get the file chunks that are being used to generate results.
 
 Include file search results in response when creating a run
 
@@ -591,7 +597,7 @@ You can then log and inspect the search results used during the run step, and de
 
 **Configure ranking options**
 
-If you have determined that your file search results are not sufficiently relevant to generate high quality responses, you can adjust the settings of the result ranker used to choose which search results should be used to generate responses. You can adjust this setting [`file_search.ranking_options`](https://developers.openai.com/api/docs/api-reference/assistants/createAssistant#assistants-createassistant-tools) in the tool when **creating the assistant** or **creating the run**.
+If you have determined that your file search results are not sufficiently relevant to generate high quality responses, you can adjust the settings of the result ranker used to choose which search results should be used to generate responses. You can adjust this setting [`file_search.ranking_options`](https://developers.openai.com/api/reference/resources/beta/subresources/assistants/methods/create#assistants-createassistant-tools) in the tool when **creating the assistant** or **creating the run**.
 
 The settings you can configure are:
 
@@ -604,7 +610,7 @@ At least one of `hybrid_search.embedding_weight` or `hybrid_search.text_weight` 
 
 #### Managing costs with expiration policies
 
-The `file_search` tool uses the `vector_stores` object as its resource and you will be billed based on the [size](https://developers.openai.com/api/docs/api-reference/vector-stores/object#vector-stores/object-bytes) of the `vector_store` objects created. The size of the vector store object is the sum of all the parsed chunks from your files and their corresponding embeddings.
+The `file_search` tool uses the `vector_stores` object as its resource and you will be billed based on the [size](https://developers.openai.com/api/reference/resources/vector_stores#vector-stores/object-bytes) of the `vector_store` objects created. The size of the vector store object is the sum of all the parsed chunks from your files and their corresponding embeddings.
 
 You first GB is free and beyond that, usage is billed at $0.10/GB/day of vector storage. There are no other costs associated with vector store operations.
 
@@ -638,7 +644,7 @@ let vectorStore = await openai.vectorStores.create({
 
 **Thread vector stores have default expiration policies**
 
-Vector stores created using thread helpers (like [`tool_resources.file_search.vector_stores`](https://developers.openai.com/api/docs/api-reference/threads/createThread#threads-createthread-tool_resources) in Threads or [message.attachments](https://developers.openai.com/api/docs/api-reference/messages/createMessage#messages-createmessage-attachments) in Messages) have a default expiration policy of 7 days after they were last active (defined as the last time the vector store was part of a run).
+Vector stores created using thread helpers (like [`tool_resources.file_search.vector_stores`](https://developers.openai.com/api/reference/resources/beta/subresources/threads/methods/create#threads-createthread-tool_resources) in Threads or [message.attachments](https://developers.openai.com/api/reference/resources/beta/subresources/threads/subresources/messages/methods/create#messages-createmessage-attachments) in Messages) have a default expiration policy of 7 days after they were last active (defined as the last time the vector store was part of a run).
 
 When a vector store expires, runs on that thread will fail. To fix this, you can simply recreate a new `vector_store` with the same files and reattach it to the thread.
 

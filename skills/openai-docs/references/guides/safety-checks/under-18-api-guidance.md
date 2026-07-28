@@ -1,5 +1,7 @@
 # Under 18 API Guidance
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Young people have unique needs online and offline, so developers should implement additional safeguards when using our API to serve minors (under 18 years old). These are in addition to requirements under our [usage policies](https://openai.com/policies/usage-policies/) and [terms and conditions](https://openai.com/policies/services-agreement/).
 
 **Regulatory Standards**

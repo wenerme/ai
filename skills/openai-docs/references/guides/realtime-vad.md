@@ -1,5 +1,7 @@
 # Voice activity detection (VAD)
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Voice activity detection (VAD) is a feature available in the Realtime API allowing to automatically detect when the user has started or stopped speaking.
 It is enabled by default in [speech-to-speech](https://developers.openai.com/api/docs/guides/realtime-conversations) Realtime sessions, but is optional and can be turned off.
 In [transcription](https://developers.openai.com/api/docs/guides/realtime-transcription) Realtime sessions, turn detection support depends on the transcription model. Models that support VAD default to `server_vad`, while `gpt-realtime-whisper` requires turn detection to be omitted or set to `null`.
@@ -13,7 +15,7 @@ When VAD is enabled, the audio is chunked automatically and the Realtime API sen
 
 You can use these events to handle speech turns in your application. For example, you can use them to manage conversation state or process transcripts in chunks.
 
-You can configure VAD with the [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) client event by setting `session.audio.input.turn_detection`.
+You can configure VAD with the [`session.update`](https://developers.openai.com/api/reference/resources/realtime) client event by setting `session.audio.input.turn_detection`.
 
 There are two modes for VAD:
 

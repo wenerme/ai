@@ -1,6 +1,8 @@
 # Graders
 
-Graders are a way to evaluate your model's performance against reference answers. Our [graders API](https://developers.openai.com/api/docs/api-reference/graders) is a way to test your graders, experiment with results, and improve your fine-tuning or evaluation framework to get the results you want.
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+Graders are a way to evaluate your model's performance against reference answers. Our [graders API](https://developers.openai.com/api/reference/resources/graders) is a way to test your graders, experiment with results, and improve your fine-tuning or evaluation framework to get the results you want.
 
 OpenAI is deprecating graders as part of the evals and fine-tuning workflows
   they support. See the [deprecations page](https://developers.openai.com/api/docs/deprecations) for the
@@ -47,8 +49,8 @@ The sample namespace will be populated with variables from the model sampling st
 
 - `output_text`, the model output content as a string.
 - `output_json`, the model output content as a JSON object, only if `response_format` is included in the sample.
-- `output_tools`, the model output `tool_calls`, which have the same structure as output tool calls in the [chat completions API](https://developers.openai.com/api/docs/api-reference/chat/object).
-- `choices`, the output choices, which has the same structure as output choices in the [chat completions API](https://developers.openai.com/api/docs/api-reference/chat/object).
+- `output_tools`, the model output `tool_calls`, which have the same structure as output tool calls in the [chat completions API](https://developers.openai.com/api/reference/resources/chat).
+- `choices`, the output choices, which has the same structure as output choices in the [chat completions API](https://developers.openai.com/api/reference/resources/chat).
 - `output_audio`, the model audio output object containing Base64-encoded `data` and a `transcript`.
 
 For example, to access the model output content as a string, `{{ sample.output_text }}` can be used within the grader.
@@ -250,7 +252,7 @@ This format queries the model not just for the numeric `result` (the reward valu
 
 ### Model grader constraints
 
-- Only the following models are supported for the `model` parameter`
+- Only the following models are supported for the `model` parameter
   - `gpt-4o-2024-08-06`
   - `gpt-4o-mini-2024-07-18`
   - `gpt-4.1-2025-04-14`

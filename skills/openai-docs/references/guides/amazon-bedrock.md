@@ -1,5 +1,7 @@
 # OpenAI models in Amazon Bedrock
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Amazon Bedrock makes supported OpenAI models available through AWS-managed
 infrastructure. This deployment path is useful when your organization wants to
 keep procurement, identity, regional controls, and related cloud operations in

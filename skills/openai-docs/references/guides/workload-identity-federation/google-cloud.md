@@ -1,13 +1,13 @@
 # Configuring workload identity federation for Google Cloud
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use Google Cloud as a Workload Identity Provider in either of these scenarios:
 
 - **Google workload identity:** Exchange a Google-signed OIDC token issued to an attached Google service account for a short-lived OpenAI access token.
 - **Google Kubernetes Engine:** Exchange a projected GKE service account token for a short-lived OpenAI access token.
 
 
-
-<div data-content-switcher-pane data-value="workload-identity">
 
 ## Google workload identity
 
@@ -521,9 +521,11 @@ puts(response.output_text)
 ```
 
 
-  </div>
+  
 
-  <div data-content-switcher-pane data-value="gke" hidden>
+
+  
+
 
 ## Google Kubernetes Engine
 
@@ -958,9 +960,6 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
-
-
-  </div>
 
 
 

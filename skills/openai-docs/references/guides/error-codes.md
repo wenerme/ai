@@ -1,6 +1,8 @@
 # Error codes
 
-This guide includes an overview on error codes you might see from both the [API](https://developers.openai.com/api/docs/introduction) and our [official Python library](https://developers.openai.com/api/docs/libraries#install-an-official-sdk). Each error code mentioned in the overview has a dedicated section with further guidance.
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+This guide includes an overview on error codes you might see from both the [API](https://developers.openai.com/api/docs/concepts) and our [official Python library](https://developers.openai.com/api/docs/libraries#install-an-official-sdk). Each error code mentioned in the overview has a dedicated section with further guidance.
 
 ## API errors
 
@@ -64,7 +66,7 @@ To resolve this error, please follow these steps:
 
 - If you have left or been removed from your previous organization, you can either request a new organization or get invited to an existing one.
 - To request a new organization, reach out to us via help.openai.com
-- Existing organization owners can invite you to join their organization via the [Team page](https://platform.openai.com/settings/organization/people) or can create a new project from the [Settings page](https://developers.openai.com/api/docs/guides/settings/organization/general)
+- Existing organization owners can invite you to join their organization via the [Team page](https://platform.openai.com/settings/organization/people) or can create a new project from the [Settings page](https://platform.openai.com/settings/organization/general).
 - If you have left or been removed from a previous project, you can ask your organization or project owner to add you to it, or create a new one.
 
 429 - Rate limit reached for requests
@@ -125,7 +127,7 @@ To resolve this error, please follow these steps:
 | APIConnectionError       | **Cause:** Issue connecting to our services. <br /> **Solution:** Check your network settings, proxy configuration, SSL certificates, or firewall rules.                                                                                                                                                                                                                                                                                 |
 | APITimeoutError          | **Cause:** Request timed out. <br /> **Solution:** Retry your request after a brief wait and contact us if the issue persists.                                                                                                                                                                                                                                                                                                           |
 | AuthenticationError      | **Cause:** Your API key or token was invalid, expired, or revoked. <br /> **Solution:** Check your API key or token and make sure it is correct and active. You may need to generate a new one from your account dashboard.                                                                                                                                                                                                              |
-| BadRequestError          | **Cause:** Your request was malformed or missing some required parameters, such as a token or an input. <br /> **Solution:** The error message should advise you on the specific error made. Check the [documentation](https://developers.openai.com/api/docs/api-reference/) for the specific API method you are calling and make sure you are sending valid and complete parameters. You may also need to check the encoding, format, or size of your request data. |
+| BadRequestError          | **Cause:** Your request was malformed or missing some required parameters, such as a token or an input. <br /> **Solution:** The error message should advise you on the specific error made. Check the [documentation](https://developers.openai.com/api/reference/overview) for the specific API method you are calling and make sure you are sending valid and complete parameters. You may also need to check the encoding, format, or size of your request data. |
 | ConflictError            | **Cause:** The resource was updated by another request. <br /> **Solution:** Try to update the resource again and ensure no other requests are trying to update it.                                                                                                                                                                                                                                                                      |
 | InternalServerError      | **Cause:** Issue on our side. <br /> **Solution:** Retry your request after a brief wait and contact us if the issue persists.                                                                                                                                                                                                                                                                                                           |
 | NotFoundError            | **Cause:** Requested resource does not exist. <br /> **Solution:** Ensure you are the correct resource identifier.                                                                                                                                                                                                                                                                                                                       |
@@ -172,7 +174,7 @@ An `BadRequestError` (formerly `InvalidRequestError`) indicates that your reques
 If you encounter an `BadRequestError`, please try the following steps:
 
 - Read the error message carefully and identify the specific error made. The error message should advise you on what parameter was invalid or missing, and what value or format was expected.
-- Check the [API Reference](https://developers.openai.com/api/docs/api-reference/) for the specific API method you were calling and make sure you are sending valid and complete parameters. You may need to review the parameter names, types, values, and formats, and ensure they match the documentation.
+- Check the [API Reference](https://developers.openai.com/api/reference/overview) for the specific API method you were calling and make sure you are sending valid and complete parameters. You may need to review the parameter names, types, values, and formats, and ensure they match the documentation.
 - Check the encoding, format, or size of your request data and make sure they are compatible with our services. You may need to encode your data in UTF-8, format your data in JSON, or compress your data if it is too large.
 - Test your request using a tool like Postman or curl and make sure it works as expected. You may need to debug your code and fix any errors or inconsistencies in your request logic.
 - If the issue persists, check out our persistent errors next steps section.

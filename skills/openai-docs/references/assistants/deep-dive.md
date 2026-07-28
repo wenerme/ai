@@ -1,21 +1,25 @@
 # Assistants API deep dive
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+After achieving feature parity in the Responses API, we've deprecated the Assistants API. It will shut down on August 26, 2026. Follow the [migration guide](https://developers.openai.com/platform/assistants/migration) to update your integration. [Learn more](https://platform.openai.com/docs/guides/migrate-to-responses).
+
 ## Overview
 
 Don't start a new integration on the Assistants API. We've announced plans to deprecate it soon, as the Responses API now provides the same features and a more elegant integration.
 
-There are several concepts involved in building an app with the Assistants API, covered below in case it helps with your [migration to Responses](https://developers.openai.com/api/docs/guides/assistants/migration).
+There are several concepts involved in building an app with the Assistants API, covered below in case it helps with your [migration to Responses](https://developers.openai.com/api/docs/assistants/migration).
 
 ## Creating assistants
 
-We recommend using OpenAI's <a href="/api/docs/models">latest models</a> with
+We recommend using OpenAI's [latest models](https://developers.openai.com/api/docs/models) with
   the Assistants API for best results and maximum compatibility with tools.
 
 To get started, creating an Assistant only requires specifying the `model` to use. But you can further customize the behavior of the Assistant:
 
 1. Use the `instructions` parameter to guide the personality of the Assistant and define its goals. Instructions are similar to system messages in the Chat Completions API.
 2. Use the `tools` parameter to give the Assistant access to up to 128 tools. You can give it access to OpenAI built-in tools like `code_interpreter` and `file_search`, or call a third-party tools via a `function` calling.
-3. Use the `tool_resources` parameter to give the tools like `code_interpreter` and `file_search` access to files. Files are uploaded using the `File` [upload endpoint](https://developers.openai.com/api/docs/api-reference/files/create) and must have the `purpose` set to `assistants` to be used with this API.
+3. Use the `tool_resources` parameter to give the tools like `code_interpreter` and `file_search` access to files. Files are uploaded using the `File` [upload endpoint](https://developers.openai.com/api/reference/resources/files/methods/create) and must have the `purpose` set to `assistants` to be used with this API.
 
 For example, to create an Assistant that can create data visualization based on a `.csv` file, first upload a file.
 
@@ -85,7 +89,7 @@ curl https://api.openai.com/v1/assistants \
 ```
 
 
-You can attach a maximum of 20 files to `code_interpreter` and 10,000 files to `file_search` (using `vector_store` [objects](https://developers.openai.com/api/docs/api-reference/vector-stores/object)). For vector stores created starting in November 2025, the `file_search` limit is 100,000,000 files.
+You can attach a maximum of 20 files to `code_interpreter` and 10,000 files to `file_search` (using `vector_store` [objects](https://developers.openai.com/api/reference/resources/vector_stores)). For vector stores created starting in November 2025, the `file_search` limit is 100,000,000 files.
 
 Each file can be at most 512 MB in size and have a maximum of 5,000,000 tokens. By default, each project can store up to 2.5 TB of files total. There is no organization-wide storage limit. You can reach out to our support team to increase this limit.
 
@@ -152,7 +156,7 @@ Messages can contain text, images, or file attachment. Message `attachments` are
 
 ### Creating image input content
 
-Message content can contain either external image URLs or File IDs uploaded via the [File API](https://developers.openai.com/api/docs/api-reference/files/create). Only [models](https://developers.openai.com/api/docs/models) with Vision support can accept image input. Supported image content types include png, jpg, gif, and webp. When creating image files, pass `purpose="vision"` to allow you to later download and display the input content. Projects are limited to 2.5 TB total file storage, and there is no organization-wide storage limit. Please contact us to request a limit increase.
+Message content can contain either external image URLs or File IDs uploaded via the [File API](https://developers.openai.com/api/reference/resources/files/methods/create). Only [models](https://developers.openai.com/api/docs/models) with Vision support can accept image input. Supported image content types include png, jpg, gif, and webp. When creating image files, pass `purpose="vision"` to allow you to later download and display the input content. Projects are limited to 2.5 TB total file storage, and there is no organization-wide storage limit. Please contact us to request a limit increase.
 
 Tools cannot access image content unless specified. To pass image files to Code Interpreter, add the file ID in the message `attachments` list to allow the tool to read and analyze the input. Image URLs cannot be downloaded in Code Interpreter today.
 
@@ -349,7 +353,7 @@ Using a truncation strategy of type `auto` will use OpenAI's default truncation 
 
 ### Message annotations
 
-Messages created by Assistants may contain [`annotations`](https://developers.openai.com/api/docs/api-reference/messages/object#messages/object-content) within the `content` array of the object. Annotations provide information around how you should annotate the text in the Message.
+Messages created by Assistants may contain [`annotations`](https://developers.openai.com/api/reference/resources/beta/subresources/threads/subresources/messages#messages/object-content) within the `content` array of the object. Annotations provide information around how you should annotate the text in the Message.
 
 There are two types of Annotations:
 
@@ -471,7 +475,7 @@ curl https://api.openai.com/v1/threads/THREAD_ID/runs \
 ```
 
 
-Note: `tool_resources` associated with the Assistant cannot be overridden during Run creation. You must use the [modify Assistant](https://developers.openai.com/api/docs/api-reference/assistants/modifyAssistant) endpoint to do this.
+Note: `tool_resources` associated with the Assistant cannot be overridden during Run creation. You must use the [modify Assistant](https://developers.openai.com/api/reference/resources/beta/subresources/assistants/methods/update) endpoint to do this.
 
 #### Run lifecycle
 
@@ -482,18 +486,18 @@ Run objects can have multiple statuses.
 | Status            | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `queued`          | When Runs are first created or when you complete the `required_action`, they are moved to a queued status. They should almost immediately move to `in_progress`.                                                                                                                                                                                                                                                                                                                                           |
-| `in_progress`     | While in_progress, the Assistant uses the model and tools to perform steps. You can view progress being made by the Run by examining the [Run Steps](https://developers.openai.com/api/docs/api-reference/runs/step-object).                                                                                                                                                                                                                                                                                                            |
+| `in_progress`     | While `in_progress`, the Assistant uses the model and tools to perform steps. You can view progress being made by the Run by examining the [Run Steps](https://developers.openai.com/api/reference/resources/beta/subresources/threads/subresources/runs/subresources/steps).                                                                                                                                                                                                                                                           |
 | `completed`       | The Run successfully completed! You can now view all Messages the Assistant added to the Thread, and all the steps the Run took. You can also continue the conversation by adding more user Messages to the Thread and creating another Run.                                                                                                                                                                                                                                                               |
-| `requires_action` | When using the [Function calling](https://developers.openai.com/api/docs/assistants/tools/function-calling) tool, the Run will move to a `required_action` state once the model determines the names and arguments of the functions to be called. You must then run those functions and [submit the outputs](https://developers.openai.com/api/docs/api-reference/runs/submitToolOutputs) before the run proceeds. If the outputs are not provided before the `expires_at` timestamp passes (roughly 10 mins past creation), the run will move to an expired status. |
+| `requires_action` | When using the [Function calling](https://developers.openai.com/api/docs/assistants/tools/function-calling) tool, the Run will move to a `required_action` state once the model determines the names and arguments of the functions to be called. You must then run those functions and [submit the outputs](https://developers.openai.com/api/reference/resources/beta/subresources/threads/subresources/runs/methods/submit_tool_outputs) before the run proceeds. If the outputs are not provided before the `expires_at` timestamp passes (roughly 10 mins past creation), the run will move to an expired status. |
 | `expired`         | This happens when the function calling outputs were not submitted before `expires_at` and the run expires. Additionally, if the runs take too long to execute and go beyond the time stated in `expires_at`, our systems will expire the run.                                                                                                                                                                                                                                                              |
-| `cancelling`      | You can attempt to cancel an `in_progress` run using the [Cancel Run](https://developers.openai.com/api/docs/api-reference/runs/cancelRun) endpoint. Once the attempt to cancel succeeds, status of the Run moves to `cancelled`. Cancellation is attempted but not guaranteed.                                                                                                                                                                                                                                                         |
+| `cancelling`      | You can attempt to cancel an `in_progress` run using the [Cancel Run](https://developers.openai.com/api/reference/resources/beta/subresources/threads/subresources/runs/methods/cancel) endpoint. Once the attempt to cancel succeeds, status of the Run moves to `cancelled`. Cancellation is attempted but not guaranteed.                                                                                                                                                                                                                                                         |
 | `cancelled`       | Run was successfully cancelled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | `failed`          | You can view the reason for the failure by looking at the `last_error` object in the Run. The timestamp for the failure will be recorded under `failed_at`.                                                                                                                                                                                                                                                                                                                                                |
 | `incomplete`      | Run ended due to `max_prompt_tokens` or `max_completion_tokens` reached. You can view the specific reason by looking at the `incomplete_details` object in the Run.                                                                                                                                                                                                                                                                                                                                        |
 
 #### Polling for updates
 
-If you are not using [streaming](https://developers.openai.com/api/docs/assistants/overview#step-4-create-a-run?context=with-streaming), in order to keep the status of your run up to date, you will have to periodically [retrieve the Run](https://developers.openai.com/api/docs/api-reference/runs/getRun) object. You can check the status of the run each time you retrieve the object to determine what your application should do next.
+If you are not using [streaming](https://developers.openai.com/api/docs/assistants/migration#step-4-create-a-run?context=with-streaming), in order to keep the status of your run up to date, you will have to periodically [retrieve the Run](https://developers.openai.com/api/reference/resources/beta/subresources/threads/subresources/runs/methods/retrieve) object. You can check the status of the run each time you retrieve the object to determine what your application should do next.
 
 You can optionally use Polling Helpers in our [Node](https://github.com/openai/openai-node?tab=readme-ov-file#polling-helpers) and [Python](https://github.com/openai/openai-python?tab=readme-ov-file#polling-helpers) SDKs to help you with this. These helpers will automatically poll the Run object for you and return the Run object when it's in a terminal state.
 

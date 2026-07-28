@@ -28,13 +28,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 The Mistral-7B-Instruct-v0.2 Large Language Model (LLM) is an instruct fine-tuned version of the Mistral-7B-v0.2\. Mistral-7B-v0.2 has the following changes compared to Mistral-7B-v0.1: 32k context window (vs 8k context in v0.1), rope-theta = 1e6, and no Sliding-Window Attention.
 
-| Model Info                                                                 |                                                                     |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| Deprecated                                                                 | 5/30/2026                                                           |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 3,072 tokens                                                        |
-| More information                                                           | [link ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) |
-| LoRA                                                                       | Yes                                                                 |
-| Beta                                                                       | Yes                                                                 |
+| Model Info                                                                          |                                                                     |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| Deprecated                                                                          | 5/30/2026                                                           |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 3,072 tokens                                                        |
+| More information                                                                    | [link ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) |
+| LoRA                                                                                | Yes                                                                 |
+| Beta                                                                                | Yes                                                                 |
 
 ## Playground
 

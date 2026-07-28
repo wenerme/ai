@@ -1,5 +1,7 @@
 # Getting started with datasets
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Evaluations (often called **evals**) test model outputs to ensure they meet your specified style and content criteria. Writing evals is an essential part of building reliable applications. [Datasets](https://platform.openai.com/evaluation/datasets), a feature of the OpenAI platform, provide a quick way to get started with evals and test prompts.
 
 OpenAI is deprecating the Evals platform. Existing evals content remains
@@ -66,7 +68,7 @@ The tabs in the datasets dashboard let multiple prompts interact with the same d
 
 1. In the prompt panel, use the provided fields and settings to control the inference call:
 
-- Click the slider icon in the top right to control model [`temperature`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-temperature) and [`top_p`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-top_p).
+- Click the slider icon in the top right to control model [`temperature`](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-temperature) and [`top_p`](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-top_p).
 - Add tools to grant your inference call the ability to access the web, use an MCP, or complete other tool-call actions.
 - Add variables. The prompt and your [graders](#add-graders) can both refer to these variables.
 - Type your system message directly, or click the pencil icon to have a model help generate a prompt for you, based on basic instructions you provide.
@@ -152,44 +154,26 @@ Datasets are great for rapid iteration. When you're ready to track performance o
 
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook/topic/evals), which contains example code and links to third-party resources, or learn more about our evaluation tools:
 
-<a
-  href="https://cookbook.openai.com/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Operate a flywheel of continuous improvement using evaluations.
+[Cookbook: Building resilient prompts with evals
 
 
-</a>
 
-<a href="/api/docs/guides/evals" target="_blank" rel="noreferrer">
-  
+      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
 
-<span slot="icon">
-      </span>
-    Evaluate against external models, interact with evals via API, and more.
+[Working with evals
 
 
-</a>
 
-<a href="/api/docs/guides/prompt-optimizer" target="_blank" rel="noreferrer">
-  
+      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)
 
-<span slot="icon">
-      </span>
-    Use your dataset to automatically improve your prompts.
+[Prompt optimizer
 
 
-</a>
 
-[
+      Use your dataset to automatically improve your prompts.](https://developers.openai.com/api/docs/guides/prompt-optimizer)
 
-<span slot="icon">
-      </span>
-    Build sophisticated graders to improve the effectiveness of your evals.
+[Graders
 
-](https://developers.openai.com/api/docs/guides/graders)
+
+
+      Build sophisticated graders to improve the effectiveness of your evals.](https://developers.openai.com/api/docs/guides/graders)

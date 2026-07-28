@@ -1,6 +1,8 @@
 # Flex processing
 
-Flex processing provides lower costs for [Responses](https://developers.openai.com/api/docs/api-reference/responses) or [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat) requests in exchange for slower response times and occasional resource unavailability. It's ideal for non-production or lower priority tasks, such as model evaluations, data enrichment, and asynchronous workloads.
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+Flex processing provides lower costs for [Responses](https://developers.openai.com/api/reference/resources/responses) or [Chat Completions](https://developers.openai.com/api/reference/resources/chat) requests in exchange for slower response times and occasional resource unavailability. It's ideal for non-production or lower priority tasks, such as model evaluations, data enrichment, and asynchronous workloads.
 
 Tokens are [priced](https://developers.openai.com/api/docs/pricing) at [Batch API rates](https://developers.openai.com/api/docs/guides/batch), with additional discounts from [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
 

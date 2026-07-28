@@ -24,13 +24,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, tool use, reasoning, and long-horizon professional work at lower cost than Opus-class models.
 
-| Model Info                                                                 |                                                                                                                             |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,000,000 tokens                                                                                                            |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                           |
-| Request formats                                                            | Anthropic Messages                                                                                                          |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-5) |
+| Model Info                                                                          |                                                                                                                             |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,000,000 tokens                                                                                                            |
+| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
+| More information                                                                    | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                           |
+| Request formats                                                                     | Anthropic Messages                                                                                                          |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-5) |
 
 ## Usage
 

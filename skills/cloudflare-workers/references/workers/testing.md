@@ -1,5 +1,5 @@
 ---
-description: Compare testing options for Cloudflare Workers, including Vitest integration, Miniflare, and unstable_startWorker.
+description: Choose testing tools for Cloudflare Workers, including createTestHarness and the Vitest integration.
 title: Testing
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,34 +12,33 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Testing
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Workers platform has a variety of ways to test your applications, depending on your requirements. We recommend using the [Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration), which allows you to run tests _inside_ the Workers runtime, and unit test individual functions within your Worker.
+The Workers platform provides complementary tools for testing different parts of your application. For most projects, use the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) for unit tests and the [createTestHarness()](https://developers.cloudflare.com/workers/testing/test-harness/) API for integration tests.
 
-[Get started with Vitest](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/)
+## Unit tests
 
-## Testing comparison matrix
+Use the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) for fast feedback while testing individual functions and modules. Tests run inside the Workers runtime, so your test code can access bindings and runtime APIs directly.
 
-However, if you don't use Vitest, both [Miniflare's API](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests) and the [unstable\_startWorker()](https://developers.cloudflare.com/workers/wrangler/api/#unstable%5Fstartworker) API provide options for testing your Worker in any testing framework.
+The Workers Vitest integration provides:
 
-| Feature                               | [Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration) | [unstable\_startWorker()](https://developers.cloudflare.com/workers/testing/unstable%5Fstartworker/) | [Miniflare's API](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/) |
-| ------------------------------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Unit testing                          | ✅                                                                                          | ❌                                                                                                    | ❌                                                                                             |
-| Integration testing                   | ✅                                                                                          | ✅                                                                                                    | ✅                                                                                             |
-| Loading Wrangler configuration files  | ✅                                                                                          | ✅                                                                                                    | ❌                                                                                             |
-| Use bindings directly in tests        | ✅                                                                                          | ❌                                                                                                    | ✅                                                                                             |
-| Isolated per-test storage             | ✅                                                                                          | ❌                                                                                                    | ❌                                                                                             |
-| Outbound request mocking              | ✅                                                                                          | ❌                                                                                                    | ✅                                                                                             |
-| Multiple Worker support               | ✅                                                                                          | ✅                                                                                                    | ✅                                                                                             |
-| Direct access to Durable Objects      | ✅                                                                                          | ❌                                                                                                    | ❌                                                                                             |
-| Run Durable Object alarms immediately | ✅                                                                                          | ❌                                                                                                    | ❌                                                                                             |
-| List Durable Objects                  | ✅                                                                                          | ❌                                                                                                    | ❌                                                                                             |
-| Test Durable Object eviction          | ✅                                                                                          | ❌                                                                                                    | ❌                                                                                             |
-| Testing service Workers               | ❌                                                                                          | ✅                                                                                                    | ✅                                                                                             |
+* Fast feedback while testing individual functions and modules.
+* Direct assertions against binding state, such as values written to KV, R2, D1, or Durable Objects.
+* Direct calls to Durable Objects and other runtime APIs.
 
-Pages Functions
+To set up unit tests, refer to [Write your first Vitest test](https://developers.cloudflare.com/workers/testing/vitest-integration/write-your-first-test/).
 
-The content described on this page is also applicable to [Pages Functions](https://developers.cloudflare.com/pages/functions/). Pages Functions are Cloudflare Workers and can be thought of synonymously with Workers in this context.
+## Integration tests
+
+Use the [createTestHarness()](https://developers.cloudflare.com/workers/testing/test-harness/) API to exercise one or more Workers as a whole and test how they interact with each other and with external services.
+
+The integration test harness provides:
+
+* Confidence from exercising production Worker builds.
+* Coverage through configured HTTP routes across Workers.
+* Compatibility with any Node.js test runner and tools such as Playwright or MSW.
+
+To set up integration tests, refer to [Get started with the integration test harness](https://developers.cloudflare.com/workers/testing/test-harness/get-started/).
 
 Was this helpful?
 
@@ -50,5 +49,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/testing/#page","headline":"Testing · Cloudflare Workers docs","description":"Compare testing options for Cloudflare Workers, including Vitest integration, Miniflare, and unstable\\_startWorker.","url":"https://developers.cloudflare.com/workers/testing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/testing/#page","headline":"Testing · Cloudflare Workers docs","description":"Choose testing tools for Cloudflare Workers, including createTestHarness and the Vitest integration.","url":"https://developers.cloudflare.com/workers/testing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

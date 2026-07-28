@@ -1,5 +1,7 @@
 # Workload identity federation
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Workload identity federation lets trusted workloads exchange externally issued identity tokens for short-lived OpenAI access tokens. Use these guides to configure your external identity provider, create OpenAI service account mappings, and authenticate workloads without storing long-lived API keys.
 
 For token exchange request and response details, authorization behavior, and current limitations, see the [workload identity token exchange reference](https://developers.openai.com/api/reference/workload-identity-federation).
@@ -19,8 +21,17 @@ You must be an organization owner to configure this feature. To access it, go to
 
 Start with the guide that matches where your workload runs:
 
-<div className="my-4 w-full max-w-full overflow-hidden">
-  </div>
+
+
+  - **[Kubernetes](https://developers.openai.com/api/docs/guides/workload-identity-federation/kubernetes)**: Use projected service account tokens in self-managed clusters.
+- **[AWS](https://developers.openai.com/api/docs/guides/workload-identity-federation/aws)**: Use outbound identity federation or Amazon EKS projected tokens.
+- **[Microsoft Azure](https://developers.openai.com/api/docs/guides/workload-identity-federation/microsoft-azure)**: Use managed identity tokens or AKS projected service account tokens.
+- **[Google Cloud](https://developers.openai.com/api/docs/guides/workload-identity-federation/google-cloud)**: Use metadata server identity tokens or GKE projected service account tokens.
+- **[Oracle Cloud Infrastructure](https://developers.openai.com/api/docs/guides/workload-identity-federation/oracle-cloud)**: Use instance principal tokens from an Oracle identity domain.
+- **[GitHub Actions](https://developers.openai.com/api/docs/guides/workload-identity-federation/github-actions)**: Use OIDC tokens in continuous integration workflows.
+- **[SPIFFE](https://developers.openai.com/api/docs/guides/workload-identity-federation/spiffe)**: Use SPIFFE JWT-SVIDs issued by SPIRE or a compatible provider.
+
+
 
 OpenAI supports OIDC-compatible JWT subject tokens in the documented configurations, including SPIFFE JWT-SVIDs. If you need an OIDC provider that isn't listed, contact us.
 
@@ -38,9 +49,17 @@ Workload Identity Provider configuration includes these dashboard options:
 | OIDC Issuer URL                          | The expected OIDC issuer URL. Issuer comparisons ignore a trailing slash.                                                                                    |
 | Audience                                 | The expected `aud` claim on the external subject token.                                                                                                      |
 | Description                              | Optional description for the Workload Identity Provider.                                                                                                     |
+| Use custom URL for OIDC discovery        | When enabled, OpenAI fetches OIDC discovery metadata from a public HTTPS URL that can differ from the token issuer.                                          |
+| Custom OIDC discovery URL                | The discovery base URL or complete `/.well-known/openid-configuration` URL used when custom discovery is enabled.                                            |
 | Use uploaded JWKS for token verification | When enabled, OpenAI verifies tokens against an uploaded JWKS instead of fetching keys from OIDC discovery.                                                  |
 | JWKS JSON                                | The uploaded public JWKS object used when uploaded JWKS verification is enabled. The JWKS must contain a non-empty `keys` array and no private key material. |
 | Attribute transformations                | Optional CEL expressions that derive custom `openai.*` attributes from token claims for mapping decisions.                                                   |
+
+Custom OIDC discovery and uploaded JWKS are mutually exclusive. Enabling custom discovery hides the uploaded JWKS option. The custom discovery URL must use public HTTPS and cannot contain credentials, a custom port, a query, or a fragment.
+
+If **Use custom URL for OIDC discovery** does not appear in your dashboard, use standard OIDC discovery or enable **Use uploaded JWKS for token verification** instead. Use the public JWKS published by your identity provider and update it when the provider rotates its signing keys.
+
+When the token issuer and discovery host differ, set **OIDC Issuer URL** to the token's `iss` claim and **Custom OIDC discovery URL** to the host that publishes the provider's discovery document. OpenAI still checks the token against the configured issuer; the custom URL only determines where it retrieves discovery metadata and public signing keys.
 
 ### Transform token claims with CEL
 
@@ -78,7 +97,7 @@ Use CEL syntax defined by the CEL language specification. For example, you can r
 ]
 ```
 
-Transformation results must be scalar values: strings, booleans, integers, or finite numbers. Arrays, objects, null values, and evaluation errors fail mapping resolution. OpenAI converts scalar transformation results to strings before comparing them to mapping values. For example, `true` becomes `"true"` and `7` becomes `"7"`.
+Transformation results must be scalar values: strings, boolean values, integers, or finite numbers. Arrays, objects, null values, and evaluation errors fail mapping resolution. OpenAI converts scalar transformation results to strings before comparing them to mapping values. For example, `true` becomes `"true"` and `7` becomes `"7"`.
 
 Mapping keys that start with `openai.` resolve only from attribute transformations. Raw subject token claims that already use an `openai.` prefix don't affect mapping decisions unless you configure a matching transformation.
 
@@ -87,6 +106,7 @@ Mapping keys that start with `openai.` resolve only from attribute transformatio
 OpenAI verifies OIDC subject tokens with the key source configured on the Workload Identity Provider.
 
 - **OIDC discovery:** OpenAI fetches the issuer's `/.well-known/openid-configuration`, then fetches the discovered `jwks_uri`. Discovery documents and remote JWKS payloads are cached for 600 seconds.
+- **Custom OIDC discovery:** OpenAI fetches `/.well-known/openid-configuration` from the configured custom discovery base URL, then fetches the discovered `jwks_uri`. The token's `iss` claim must still match **OIDC Issuer URL**. Use this option when the issuer and discovery document use different hosts.
 - **Key refresh on miss:** If a token `kid` isn't found in the cached JWKS, OpenAI refreshes the JWKS and tries the lookup again before rejecting the token.
 - **Uploaded JWKS:** When **Use uploaded JWKS for token verification** is enabled, OpenAI uses the uploaded JWKS stored on the Workload Identity Provider and doesn't perform OIDC discovery or remote JWKS fetching. After a provider update is saved and available to token exchange, new exchanges use the saved JWKS.
 - **Multiple keys:** A JWKS can contain multiple public keys, and each key must have a unique non-empty `kid`.

@@ -1,5 +1,7 @@
 # Streaming API responses
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 By default, when you make a request to the OpenAI API, we generate the model's entire output before sending it back in a single HTTP response. When generating long outputs, waiting for a response can take time. Streaming responses lets you start printing or processing the beginning of the model's output while it continues generating the full response.
 
 This guide focuses on HTTP streaming (`stream=true`) over server-sent events (SSE). For persistent WebSocket transport with incremental inputs via `previous_response_id`, see [the Responses API WebSocket mode](https://developers.openai.com/api/docs/guides/websocket-mode).
@@ -51,17 +53,17 @@ for event in stream:
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-var responses = client.CreateResponseStreamingAsync([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Say 'double bubble bath' ten times fast."),
-    ]),
-]);
+var responses = client.CreateResponseStreamingAsync(
+    "gpt-5.6",
+    "Say 'double bubble bath' ten times fast."
+);
 
-await foreach (var response in responses)
+await foreach (StreamingResponseUpdate response in responses)
 {
     if (response is StreamingResponseOutputTextDeltaUpdate delta)
     {
@@ -93,7 +95,7 @@ end
 
 The Responses API uses semantic events for streaming. Each event is typed with a predefined schema, so you can listen for events you care about.
 
-For a full list of event types, see the [API reference for streaming](https://developers.openai.com/api/docs/api-reference/responses-streaming). Here are a few examples:
+For a full list of event types, see the [API reference for streaming](https://developers.openai.com/api/reference/resources/responses). Here are a few examples:
 
 ```python
 StreamingEvent = (
@@ -144,7 +146,7 @@ Some key lifecycle events are emitted only once, while others are emitted multip
 - `error`
 ```
 
-For a full list of events you can listen for, see the [API reference for streaming](https://developers.openai.com/api/docs/api-reference/responses-streaming).
+For a full list of events you can listen for, see the [API reference for streaming](https://developers.openai.com/api/reference/resources/responses).
 
 
 

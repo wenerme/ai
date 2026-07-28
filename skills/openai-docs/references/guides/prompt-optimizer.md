@@ -1,5 +1,7 @@
 # Prompt optimizer
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The [prompt optimizer](https://platform.openai.com/chat/edit?optimize=true) is a chat interface in the dashboard, where you enter a prompt, and we optimize it according to current best practices before returning it to you. Pairing the prompt optimizer with [datasets](https://developers.openai.com/api/docs/guides/evaluation-getting-started) is a powerful way to automatically improve prompts.
 
 OpenAI is deprecating the dataset-backed prompt optimizer as part of the Evals
@@ -40,42 +42,26 @@ Always evaluate and manually review optimized prompts before using them in produ
 
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook), which contains example code and links to third-party resources, or learn more about our tools for evals:
 
-<a
-  href="https://cookbook.openai.com/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Operate a flywheel of continuous improvement using evaluations.
+[Cookbook: Building resilient prompts with evals
 
 
-</a>
 
-<a href="/api/docs/guides/evals" target="_blank" rel="noreferrer">
-  
+      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)
 
-<span slot="icon">
-      </span>
-    Evaluate against external models, interact with evals via API, and more.
+[Working with evals
 
 
-</a>
 
-[
+      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)
 
-<span slot="icon">
-      </span>
-    Build sophisticated graders to improve the effectiveness of your evals.
+[Graders
 
-](https://developers.openai.com/api/docs/guides/graders)
 
-[
 
-<span slot="icon">
-      </span>
-    Improve a model's ability to generate responses tailored to your use case.
+      Build sophisticated graders to improve the effectiveness of your evals.](https://developers.openai.com/api/docs/guides/graders)
 
-](https://developers.openai.com/api/docs/guides/fine-tuning)
+[Fine-tuning
+
+
+
+      Improve a model's ability to generate responses tailored to your use case.](https://developers.openai.com/api/docs/guides/model-optimization)

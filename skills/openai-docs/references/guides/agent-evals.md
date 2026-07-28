@@ -1,5 +1,7 @@
 # Evaluate agent workflows
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The OpenAI Platform offers a suite of evaluation tools to help you ensure your agents perform consistently and accurately.
 
 Use this page as the decision point for the evaluation surfaces that matter most for agent workflows.
@@ -32,50 +34,26 @@ If you need advanced features such as evaluation against external models, evalua
 
 ## Related evaluation surfaces
 
-<a
-  href="/api/docs/guides/evaluation-getting-started"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Operate a flywheel of continuous improvement using evaluations.
+[Getting started with evals: Datasets
 
 
-</a>
 
-<a href="/api/docs/guides/evals" target="_blank" rel="noreferrer">
-  
+      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/api/docs/guides/evaluation-getting-started)
 
-<span slot="icon">
-      </span>
-    Evaluate against external models, interact with evals via API, and more.
+[Working with evals
 
 
-</a>
 
-<a href="/api/docs/guides/prompt-optimizer" target="_blank" rel="noreferrer">
-  
+      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)
 
-<span slot="icon">
-      </span>
-    Use your dataset to automatically improve your prompts.
+[Prompt optimizer
 
 
-</a>
 
-<a
-  href="https://cookbook.openai.com/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel"
-  target="_blank"
-  rel="noreferrer"
->
-  
+      Use your dataset to automatically improve your prompts.](https://developers.openai.com/api/docs/guides/prompt-optimizer)
 
-<span slot="icon">
-      </span>
-    Operate a flywheel of continuous improvement using evaluations.
+[Cookbook: Building resilient prompts with evals
 
 
-</a>
+
+      Operate a flywheel of continuous improvement using evaluations.](https://developers.openai.com/cookbook/examples/evaluation/building_resilient_prompts_using_an_evaluation_flywheel)

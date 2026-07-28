@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tools
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-MCP tools are functions that an [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/) exposes for clients to call. When an LLM decides it needs to take an action — look up data, run a calculation, call an API — it invokes a tool. The MCP server executes the tool and returns the result.
+MCP tools are functions that an [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/) exposes for clients to call. An LLM can invoke a tool to look up data, run a calculation, or call an API. The MCP server executes the tool and returns its result.
 
-Tools are defined using the `@modelcontextprotocol/sdk` package. The Agents SDK handles transport and lifecycle; the tool definitions are the same regardless of whether you use [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/) or [McpAgent](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/).
+Use `@modelcontextprotocol/server` for a stateless `createMcpHandler` server. `McpAgent` is deprecated and feature-frozen. Existing `McpAgent` routes must keep using `@modelcontextprotocol/sdk` only while they migrate.
 
 Experimental WebMCP adapter
 
@@ -28,19 +28,21 @@ Bridge MCP tools from a Cloudflare McpAgent into Chrome's experimental WebMCP AP
 
 ## Defining tools
 
-Use `server.tool()` to register a tool on an `McpServer` instance. Each tool has a name, a description (used by the LLM to decide when to call it), an input schema defined with [Zod ↗](https://zod.dev), and a handler function.
+Use `server.registerTool()` to register a tool on a stateless `McpServer` instance. Each tool has a name, a description, an input schema defined with [Zod ↗](https://zod.dev), and a handler function.
 
 ```js
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 function createServer() {
 	const server = new McpServer({ name: "Math", version: "1.0.0" });
 
-	server.tool(
+	server.registerTool(
 		"add",
-		"Add two numbers together",
-		{ a: z.number(), b: z.number() },
+		{
+			description: "Add two numbers together",
+			inputSchema: { a: z.number(), b: z.number() },
+		},
 		async ({ a, b }) => ({
 			content: [{ type: "text", text: String(a + b) }],
 		}),
@@ -51,16 +53,18 @@ function createServer() {
 ```
 
 ```ts
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 function createServer() {
 	const server = new McpServer({ name: "Math", version: "1.0.0" });
 
-	server.tool(
+	server.registerTool(
 		"add",
-		"Add two numbers together",
-		{ a: z.number(), b: z.number() },
+		{
+			description: "Add two numbers together",
+			inputSchema: { a: z.number(), b: z.number() },
+		},
 		async ({ a, b }) => ({
 			content: [{ type: "text", text: String(a + b) }],
 		}),
@@ -77,10 +81,12 @@ The tool handler receives the validated input and must return an object with a `
 Tool results are returned as an array of content parts. The most common type is `text`, but you can also return images and embedded resources.
 
 ```js
-server.tool(
+server.registerTool(
 	"lookup",
-	"Look up a user by ID",
-	{ userId: z.string() },
+	{
+		description: "Look up a user by ID",
+		inputSchema: { userId: z.string() },
+	},
 	async ({ userId }) => {
 		const user = await db.getUser(userId);
 
@@ -99,10 +105,12 @@ server.tool(
 ```
 
 ```ts
-server.tool(
+server.registerTool(
 	"lookup",
-	"Look up a user by ID",
-	{ userId: z.string() },
+	{
+		description: "Look up a user by ID",
+		inputSchema: { userId: z.string() },
+	},
 	async ({ userId }) => {
 		const user = await db.getUser(userId);
 
@@ -135,21 +143,23 @@ The `description` parameter is critical — it is what the LLM reads to decide w
 Tool inputs are defined as Zod schemas and validated automatically before the handler runs. Use Zod's `.describe()` method to give the LLM context about each parameter.
 
 ```js
-server.tool(
+server.registerTool(
 	"search",
-	"Search for documents by query",
 	{
-		query: z.string().describe("The search query"),
-		limit: z
-			.number()
-			.min(1)
-			.max(100)
-			.default(10)
-			.describe("Maximum number of results to return"),
-		category: z
-			.enum(["docs", "blog", "api"])
-			.optional()
-			.describe("Filter by content category"),
+		description: "Search for documents by query",
+		inputSchema: {
+			query: z.string().describe("The search query"),
+			limit: z
+				.number()
+				.min(1)
+				.max(100)
+				.default(10)
+				.describe("Maximum number of results to return"),
+			category: z
+				.enum(["docs", "blog", "api"])
+				.optional()
+				.describe("Filter by content category"),
+		},
 	},
 	async ({ query, limit, category }) => {
 		const results = await searchIndex(query, { limit, category });
@@ -161,21 +171,23 @@ server.tool(
 ```
 
 ```ts
-server.tool(
+server.registerTool(
 	"search",
-	"Search for documents by query",
 	{
-		query: z.string().describe("The search query"),
-		limit: z
-			.number()
-			.min(1)
-			.max(100)
-			.default(10)
-			.describe("Maximum number of results to return"),
-		category: z
-			.enum(["docs", "blog", "api"])
-			.optional()
-			.describe("Filter by content category"),
+		description: "Search for documents by query",
+		inputSchema: {
+			query: z.string().describe("The search query"),
+			limit: z
+				.number()
+				.min(1)
+				.max(100)
+				.default(10)
+				.describe("Maximum number of results to return"),
+			category: z
+				.enum(["docs", "blog", "api"])
+				.optional()
+				.describe("Filter by content category"),
+		},
 	},
 	async ({ query, limit, category }) => {
 		const results = await searchIndex(query, { limit, category });
@@ -191,54 +203,60 @@ server.tool(
 For stateless MCP servers, define tools inside a factory function and pass the server to [createMcpHandler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/):
 
 ```js
-import { createMcpHandler } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createMcpHandler } from "agents/mcp/server";
+import { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 function createServer() {
 	const server = new McpServer({ name: "My Tools", version: "1.0.0" });
 
-	server.tool("ping", "Check if the server is alive", {}, async () => ({
-		content: [{ type: "text", text: "pong" }],
-	}));
+	server.registerTool(
+		"ping",
+		{ description: "Check if the server is alive", inputSchema: {} },
+		async () => ({
+			content: [{ type: "text", text: "pong" }],
+		}),
+	);
 
 	return server;
 }
 
 export default {
-	fetch: (request, env, ctx) => {
-		const server = createServer();
-		return createMcpHandler(server)(request, env, ctx);
+	fetch(request, env, ctx) {
+		return createMcpHandler(createServer)(request, env, ctx);
 	},
 };
 ```
 
 ```ts
-import { createMcpHandler } from "agents/mcp";
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { createMcpHandler } from "agents/mcp/server";
+import { McpServer } from "@modelcontextprotocol/server";
 import { z } from "zod";
 
 function createServer() {
 	const server = new McpServer({ name: "My Tools", version: "1.0.0" });
 
-	server.tool("ping", "Check if the server is alive", {}, async () => ({
-		content: [{ type: "text", text: "pong" }],
-	}));
+	server.registerTool(
+		"ping",
+		{ description: "Check if the server is alive", inputSchema: {} },
+		async () => ({
+			content: [{ type: "text", text: "pong" }],
+		}),
+	);
 
 	return server;
 }
 
 export default {
-	fetch: (request: Request, env: Env, ctx: ExecutionContext) => {
-		const server = createServer();
-		return createMcpHandler(server)(request, env, ctx);
+	fetch(request, env, ctx) {
+		return createMcpHandler(createServer)(request, env, ctx);
 	},
-} satisfies ExportedHandler<Env>;
+} satisfies ExportedHandler;
 ```
 
 ## Using tools with `McpAgent`
 
-For stateful MCP servers, define tools in the `init()` method of an [McpAgent](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/). Tools have access to the agent instance via `this`, which means they can read and write state.
+This section applies only to existing legacy routes during migration. Define their tools in the `init()` method of an [McpAgent](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/). Tools have access to the agent instance through `this`, so they can read and write state.
 
 ```js
 import { McpAgent } from "agents/mcp";
@@ -317,5 +335,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Define, register, and manage MCP tools that expose server-side functions for AI agents to call.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/#page","headline":"Tools · Cloudflare Agents docs","description":"Define, register, and manage MCP tools that expose server-side functions for AI agents to call.","url":"https://developers.cloudflare.com/agents/model-context-protocol/protocol/tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

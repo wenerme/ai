@@ -24,10 +24,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Multi-Functionality, Multi-Linguality, and Multi-Granularity embeddings model.
 
-| Model Info                                                                 |                           |
-| -------------------------------------------------------------------------- | ------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 60,000 tokens             |
-| Unit Pricing                                                               | $0.012 per M input tokens |
+| Model Info                                                                          |                           |
+| ----------------------------------------------------------------------------------- | ------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 60,000 tokens             |
+| Unit Pricing                                                                        | $0.012 per M input tokens |
 
 ## Usage
 

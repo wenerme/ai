@@ -1,5 +1,7 @@
 # Realtime translation
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Realtime translation lets you stream source audio into a dedicated translation session and receive translated audio plus transcript deltas while the speaker is still talking. Use it for live interpretation, multilingual calls, broadcasts, meetings, lessons, and video rooms.
 
 Use [`gpt-realtime-translate`](https://developers.openai.com/api/docs/models/gpt-realtime-translate) when your application should translate what a human says. If you need an assistant that answers questions, calls tools, and manages a conversation, use [`gpt-realtime-2.1`](https://developers.openai.com/api/docs/models/gpt-realtime-2.1) with a standard Realtime session instead.
@@ -408,42 +410,26 @@ If your use case depends on exact names or domain terms, build a golden set befo
 
 ## Related guides
 
-<a href="/api/docs/guides/realtime">
-  
-
-<span slot="icon">
-      </span>
-    Compare voice-agent, translation, and transcription sessions.
+[Realtime and audio overview
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-webrtc">
-  
+      Compare voice-agent, translation, and transcription sessions.](https://developers.openai.com/api/docs/guides/realtime)
 
-<span slot="icon">
-      </span>
-    Connect browser media to a realtime session.
+[WebRTC connection
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-websocket">
-  
+      Connect browser media to a realtime session.](https://developers.openai.com/api/docs/guides/realtime-webrtc)
 
-<span slot="icon">
-      </span>
-    Stream raw audio through a server-side media pipeline.
+[WebSocket connection
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-transcription">
-  
+      Stream raw audio through a server-side media pipeline.](https://developers.openai.com/api/docs/guides/realtime-websocket)
 
-<span slot="icon">
-      </span>
-    Stream transcript deltas from live audio.
+[Realtime transcription
 
 
-</a>
+
+      Stream transcript deltas from live audio.](https://developers.openai.com/api/docs/guides/realtime-transcription)

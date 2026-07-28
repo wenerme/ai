@@ -1,13 +1,20 @@
 # Model optimization
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 LLM output is non-deterministic, and model behavior changes between model snapshots and families. Developers must constantly measure and tune the performance of LLM applications to ensure they're getting the best results. In this guide, we explore the techniques and OpenAI platform tools you can use to ensure high quality outputs from the model.
 
 This guide covers evals and fine-tuning workflows that are being moved into
   legacy documentation. See the [deprecations page](https://developers.openai.com/api/docs/deprecations) for
   the current timelines for the affected platform surfaces.
 
-<div className="my-4 w-full max-w-full overflow-hidden">
-  </div>
+
+
+  - **[Evals](https://developers.openai.com/api/docs/guides/evals)**: Systematically measure performance.
+- **[Prompt engineering](https://developers.openai.com/api/docs/guides/text?api-mode=responses#prompt-engineering)**: Give context, instructions, and goals.
+- **[Fine-tuning](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)**: Train models to excel at a task.
+
+
 
 ## Model optimization workflow
 
@@ -28,13 +35,11 @@ In the OpenAI platform, you can [build and run evals](https://developers.openai.
 
 Run your evals against test inputs like you expect to see in production. Using one of several available [graders](https://developers.openai.com/api/docs/guides/graders), measure the results of a prompt against your test data set.
 
-[
+[Learn about evals
 
-<span slot="icon">
-      </span>
-    Run tests on your model outputs to ensure you're getting the right results.
 
-](https://developers.openai.com/api/docs/guides/evals)
+
+      Run tests on your model outputs to ensure you're getting the right results.](https://developers.openai.com/api/docs/guides/evals)
 
 ## Write effective prompts
 
@@ -44,20 +49,19 @@ With evals in place, you can effectively iterate on [prompts](https://developers
 - **Provide clear instructions** - your prompt should contain clear goals about what kind of output you want. Start with [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) for new work, and use [reasoning model guidance](https://developers.openai.com/api/docs/guides/reasoning) to tune outcome-level instructions, reasoning effort, and verbosity.
 - **Provide example outputs** - give the model a few examples of correct output for a given prompt (a process called few-shot learning). The model can extrapolate from these examples how it should respond for other prompts.
 
-[
+[Learn about prompt engineering
 
-<span slot="icon">
-      </span>
-    Learn the basics of writing good prompts for the model.
 
-](https://developers.openai.com/api/docs/guides/text)
+
+      Learn the basics of writing good prompts for the model.](https://developers.openai.com/api/docs/guides/text)
 
 ## Fine-tune a model
 
 OpenAI is winding down the fine-tuning platform. The platform is no longer
   accessible to new users, but existing users of the fine-tuning platform will
   be able to create training jobs for the coming months.
-  <br />
+  
+
   All fine-tuned models will remain available for inference until their base
   models are [deprecated](https://developers.openai.com/api/docs/deprecations). The full timeline is
   [here](https://developers.openai.com/api/docs/deprecations).
@@ -77,9 +81,100 @@ Visit our [pricing page](https://openai.com/api/pricing) to learn more about how
 
 These are the fine-tuning methods supported in the OpenAI platform today.
 
+
+
+<table>
+<tbody>
+<tr>
+<th>Method</th>
+<th>How it works</th>
+<th>Best for</th>
+<th>Use with</th>
+</tr>
+
+<tr>
+<td>
+[Supervised fine-tuning (SFT)](https://developers.openai.com/api/docs/guides/supervised-fine-tuning)
+</td>
+<td>
+Provide examples of correct responses to prompts to guide the model's behavior.
+
+Often uses human-generated "ground truth" responses to show the model how it should respond.
+
+</td>
+<td>
+- Classification
+- Nuanced translation
+- Generating content in a specific format
+- Correcting instruction-following failures
+</td>
+<td>
+`gpt-4.1-2025-04-14`
+`gpt-4.1-mini-2025-04-14`
+`gpt-4.1-nano-2025-04-14`
+</td>
+</tr>
+
+<tr>
+  <td>[Vision fine-tuning](https://developers.openai.com/api/docs/guides/vision-fine-tuning)</td>
+  <td>
+    Provide image inputs for supervised fine-tuning to improve the model's
+    understanding of image inputs.
+  </td>
+  <td>
+    - Image classification - Correcting failures in instruction following for
+    complex prompts
+  </td>
+  <td>`gpt-4o-2024-08-06`</td>
+</tr>
+
+<tr>
+  <td>
+    [Direct preference optimization
+    (DPO)](https://developers.openai.com/api/docs/guides/direct-preference-optimization)
+  </td>
+  <td>
+    Provide both a correct and incorrect example response for a prompt. Indicate
+    the correct response to help the model perform better.
+  </td>
+  <td>
+    - Summarizing text, focusing on the right things - Generating chat messages
+    with the right tone and style
+  </td>
+  <td>
+    `gpt-4.1-2025-04-14` `gpt-4.1-mini-2025-04-14` `gpt-4.1-nano-2025-04-14`
+  </td>
+</tr>
+
+<tr>
+<td>
+[Reinforcement fine-tuning (RFT)](https://developers.openai.com/api/docs/guides/reinforcement-fine-tuning)
+</td>
+<td>
+Generate a response for a prompt, provide an expert grade for the result, and reinforce the model's chain-of-thought for higher-scored responses.
+
+Requires expert graders to agree on the ideal output from the model.
+
+**Reasoning models only**.
+
+</td>
+<td>
+- Complex domain-specific tasks that require advanced reasoning
+- Medical diagnoses based on history and diagnostic guidelines
+- Determining relevant passages from legal case law
+</td>
+<td>
+`o4-mini-2025-04-16`
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
 ### How fine-tuning works
 
-In the OpenAI platform, you can create fine-tuned models either in the [dashboard](https://platform.openai.com/finetune) or [with the API](https://developers.openai.com/api/docs/api-reference/fine-tuning). This is the general shape of the fine-tuning process:
+In the OpenAI platform, you can create fine-tuned models either in the [dashboard](https://platform.openai.com/finetune) or [with the API](https://developers.openai.com/api/reference/resources/fine_tuning). This is the general shape of the fine-tuning process:
 
 1. Collect a dataset of examples to use as training data
 1. Upload that dataset to OpenAI, formatted in JSONL
@@ -95,8 +190,8 @@ Model optimization is a complex topic, and sometimes more art than science. Chec
 
 
 
-<div data-content-switcher-pane data-value="cost">
-    <div class="hidden">Cost/accuracy/latency</div>
+Cost/accuracy/latency
+
     <iframe
       width="100%"
       height="400"
@@ -105,9 +200,13 @@ Model optimization is a complex topic, and sometimes more art than science. Chec
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen
     ></iframe>
-  </div>
-  <div data-content-switcher-pane data-value="distillation" hidden>
-    <div class="hidden">Distillation</div>
+  
+
+  
+
+    
+Distillation
+
     <iframe
       width="100%"
       height="400"
@@ -116,9 +215,13 @@ Model optimization is a complex topic, and sometimes more art than science. Chec
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen
     ></iframe>
-  </div>
-  <div data-content-switcher-pane data-value="techniques" hidden>
-    <div class="hidden">Optimizing LLM Performance</div>
+  
+
+  
+
+    
+Optimizing LLM Performance
+
     <iframe
       width="100%"
       height="400"
@@ -127,4 +230,3 @@ Model optimization is a complex topic, and sometimes more art than science. Chec
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen
     ></iframe>
-  </div>

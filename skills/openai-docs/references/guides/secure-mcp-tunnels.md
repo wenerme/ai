@@ -1,5 +1,7 @@
 # Secure MCP Tunnel
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Secure MCP Tunnel lets you connect private MCP servers to supported OpenAI products without opening inbound firewall ports or exposing those servers to the public internet. Run `tunnel-client` inside the network that can already reach your MCP server; it opens an outbound HTTPS path to OpenAI, pulls queued MCP work, forwards requests locally, and returns responses through the same tunnel.
 
 ## What is an MCP tunnel?
@@ -100,7 +102,7 @@ Keep `tunnel-client run ...` healthy while you create or test the app. App disco
 
 <figure className="not-prose my-8">
   <figcaption className="mt-3 text-sm text-gray-600 dark:text-gray-400">
-    The local admin UI at <code>/ui</code> shows whether the running client is
+    The local admin UI at `/ui` shows whether the running client is
     healthy, ready, and connected before you test from ChatGPT, Codex, or an API
     flow.
   </figcaption>
@@ -116,7 +118,7 @@ Run `tunnel-client` in the same trust boundary that can already reach the privat
 
 ## Connect from ChatGPT
 
-Open **Settings → Plugins** or [chatgpt.com/plugins](https://chatgpt.com/plugins), select the plus button to create a developer-mode app, and choose **Tunnel** under **Connection**. Select an available tunnel when ChatGPT lists it, or paste a valid `tunnel_id` if you already have one.
+Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button to create a developer-mode app, and choose **Tunnel** under **Connection**. Select an available tunnel when ChatGPT lists it, or paste a valid `tunnel_id` if you already have one.
 
 If the tunnel does not appear in ChatGPT, verify that the tunnel is associated with the target ChatGPT workspace, not only with a Platform organization, and that the app creator has Tunnels **Read** + **Use**.
 
@@ -170,40 +172,36 @@ Use this when you need to reach a small set of private REST endpoints without ex
 ## Where to configure it
 
 - Manage OpenAI-hosted MCP tunnel endpoints in [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels).
-- Use a tunnel when creating a developer-mode app from **Settings → Plugins** or [chatgpt.com/plugins](https://chatgpt.com/plugins).
+- Use a tunnel when creating a developer-mode app at [ChatGPT Plugins](https://chatgpt.com/plugins).
 - For Codex or API flows, use the tunnel-backed MCP target exposed by the supported product surface.
 
 ## Next steps
 
 - Create or manage the tunnel in [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels).
 - Validate your `tunnel-client` profile with `tunnel-client doctor --profile <profile> --explain`.
-- Connect the tunnel from **Settings → Plugins**, [chatgpt.com/plugins](https://chatgpt.com/plugins), or the supported OpenAI surface you are using.
+- Connect the tunnel from [ChatGPT Plugins](https://chatgpt.com/plugins) or the supported OpenAI surface you are using.
 
-<div class="not-prose my-8 grid gap-4 lg:grid-cols-2">
+
+
   <figure>
-    <a href="https://platform.openai.com/settings/organization/tunnels">
-      <img src="https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/platform-tunnels-settings.png"
+    [<img src="https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/platform-tunnels-settings.png"
         alt="Sanitized OpenAI Platform tunnel settings screenshot."
         loading="lazy"
         class="w-full rounded-md border border-gray-200 dark:border-gray-800"
-      />
-    </a>
+      />](https://platform.openai.com/settings/organization/tunnels)
     <figcaption class="mt-3 text-sm text-gray-600 dark:text-gray-400">
       Create and manage OpenAI-hosted MCP tunnel endpoints from Platform tunnel
       settings.
     </figcaption>
   </figure>
   <figure>
-    <a href="https://chatgpt.com/plugins">
-      <img src="https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/chatgpt-connectors-tunnel.png"
+    [<img src="https://developers.openai.com/images/platform/guides/secure-mcp-tunnels/chatgpt-connectors-tunnel.png"
         alt="Sanitized ChatGPT app creation screenshot with Tunnel selected."
         loading="lazy"
         class="w-full rounded-md border border-gray-200 dark:border-gray-800"
-      />
-    </a>
+      />](https://chatgpt.com/plugins)
     <figcaption class="mt-3 text-sm text-gray-600 dark:text-gray-400">
       Select Tunnel when connecting a ChatGPT developer-mode app to a private
       MCP server.
     </figcaption>
   </figure>
-</div>

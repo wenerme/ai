@@ -26,13 +26,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-agent applications and specialized agentic AI systems.
 
-| Model Info                                                                           |                                                                                                           |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 256,000 tokens                                                                                            |
-| Terms and License                                                                    | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                                       |
-| Reasoning                                                                            | Yes                                                                                                       |
-| Unit Pricing                                                                         | $0.50 per M input tokens, $1.50 per M output tokens                                                       |
+| Model Info                                                                            |                                                                                                           |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 256,000 tokens                                                                                            |
+| Terms and License                                                                     | [link ↗](https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-nemotron-open-model-license/) |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                                       |
+| Reasoning                                                                             | Yes                                                                                                       |
+| Unit Pricing                                                                          | $0.50 per M input tokens, $1.50 per M output tokens                                                       |
 
 ## Playground
 

@@ -1,5 +1,7 @@
 # Frontend prompt instructions
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 These instructions target GPT-5.5, but many of the patterns apply to other model versions as well.
 
 ```prompt

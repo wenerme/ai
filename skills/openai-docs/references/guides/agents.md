@@ -1,5 +1,7 @@
 # Agents SDK
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Agents are applications that plan, call tools, collaborate across specialists, and keep enough state to complete multi-step work.
 
 ## Get your first agent running
@@ -10,36 +12,20 @@ Start with the [Agents SDK quickstart](https://developers.openai.com/api/docs/gu
 
 Use the GitHub repositories for more examples, issues, and language-specific reference details.
 
-<div class="not-prose mt-4 grid gap-3">
-  <a
-    href="https://github.com/openai/openai-agents-js"
-    class="block no-underline hover:no-underline"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    
-
-<span slot="icon">
-        </span>
-      Open the TypeScript SDK repository on GitHub.
 
 
-  </a>
-  <a
-    href="https://github.com/openai/openai-agents-python"
-    class="block no-underline hover:no-underline"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    
-
-<span slot="icon">
-        </span>
-      Open the Python SDK repository on GitHub.
+  [TypeScript SDK
 
 
-  </a>
-</div>
+
+        Open the TypeScript SDK repository on GitHub.](https://github.com/openai/openai-agents-js)
+  [Python SDK
+
+
+
+        Open the Python SDK repository on GitHub.](https://github.com/openai/openai-agents-python)
+
+
 
 ## Choose your starting point
 

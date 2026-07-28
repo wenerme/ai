@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Writing tests
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
-For most users, Cloudflare recommends using the Workers Vitest integration. If you have been using test environments from Miniflare, refer to the [Migrate from Miniflare 2 guide](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-miniflare-2/).
+For most users, Cloudflare recommends using the [Workers Vitest integration](https://developers.cloudflare.com/workers/testing/vitest-integration/) for unit tests and [createTestHarness()](https://developers.cloudflare.com/workers/testing/test-harness/) for integration tests. Use Miniflare directly when you need low-level simulator control that is not exposed by those higher-level testing APIs.
 
 This guide will show you how to set up [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare) to test your Workers. Miniflare is a low-level API that allows you to fully control how your Workers are run and tested.
 
@@ -204,5 +204,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/#page","headline":"Writing tests · Cloudflare Workers docs","description":"Write integration tests against Workers using Miniflare.","url":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/#page","headline":"Writing tests · Cloudflare Workers docs","description":"Write integration tests against Workers using Miniflare.","url":"https://developers.cloudflare.com/workers/testing/miniflare/writing-tests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

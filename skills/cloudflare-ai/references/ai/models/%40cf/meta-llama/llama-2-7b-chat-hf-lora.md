@@ -27,11 +27,11 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 This is a Llama2 base model that Cloudflare dedicated for inference with LoRA adapters. Llama 2 is a collection of pretrained and fine-tuned generative text models ranging in scale from 7 billion to 70 billion parameters. This is the repository for the 7B fine-tuned model, optimized for dialogue use cases and converted for the Hugging Face Transformers format.
 
-| Model Info                                                                 |              |
-| -------------------------------------------------------------------------- | ------------ |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens |
-| LoRA                                                                       | Yes          |
-| Beta                                                                       | Yes          |
+| Model Info                                                                          |              |
+| ----------------------------------------------------------------------------------- | ------------ |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens |
+| LoRA                                                                                | Yes          |
+| Beta                                                                                | Yes          |
 
 ## Playground
 

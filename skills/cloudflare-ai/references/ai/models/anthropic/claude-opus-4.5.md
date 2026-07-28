@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Claude Opus 4.5 brings further reasoning, coding, and agentic improvements over Opus 4.1, with stronger tool use and tighter instruction following.
 
-| Model Info                                                                 |                                                                                                                             |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                              |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                         |
-| Request formats                                                            | Anthropic Messages                                                                                                          |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
+| Model Info                                                                          |                                                                                                                             |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                              |
+| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                  |
+| More information                                                                    | [link ↗](https://www.anthropic.com/claude/opus)                                                                             |
+| Zero data retention                                                                 | Yes                                                                                                                         |
+| Request formats                                                                     | Anthropic Messages                                                                                                          |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.5) |
 
 ## Usage
 

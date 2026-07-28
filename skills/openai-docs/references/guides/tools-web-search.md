@@ -1,5 +1,7 @@
 # Web search
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Web search allows models to access up-to-date information from the internet and provide answers with sourced citations. To enable this, use the web search tool in the Responses API or, in some cases, Chat Completions.
 
 There are three main types of web search available with OpenAI models:
@@ -16,7 +18,7 @@ There are three main types of web search available with OpenAI models:
 | Existing Chat Completions search integration  | Chat Completions with `gpt-5-search-api`      | Use this only when you need to preserve a Chat Completions integration                                      |
 | Multi-step research or long-running reporting | `gpt-5.5` with `high` or `xhigh` reasoning    | Use background mode for reports that can take several minutes                                               |
 
-Using the [Responses API](https://developers.openai.com/api/docs/api-reference/responses), you can enable web search by configuring it in the `tools` array in an API request to generate content. Like any other tool, the model can choose to search the web or not based on the content of the input prompt.
+Using the [Responses API](https://developers.openai.com/api/reference/resources/responses), you can enable web search by configuring it in the `tools` array in an API request to generate content. Like any other tool, the model can choose to search the web or not based on the content of the input prompt.
 
 For new Responses API integrations, use `{ "type": "web_search" }`. The earlier `web_search_preview` tool remains available for legacy integrations, but it does not support newer controls such as `filters`, `external_web_access`, and `return_token_budget`.
 
@@ -73,18 +75,18 @@ YAML
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
 options.Tools.Add(ResponseTool.CreateWebSearchTool());
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What was a positive news story from today?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What was a positive news story from today?"),
-    ]),
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -198,22 +200,22 @@ print(response.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateWebSearchTool(
-    searchContextSize: WebSearchToolContextSize.Low
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateWebSearchTool(
+        searchContextSize: WebSearchToolContextSize.Low
+    )
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What movie won best picture in 2025?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart(
-            "What movie won best picture in 2025?"
-        )
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -618,26 +620,26 @@ print(response.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateWebSearchTool(
-    userLocation: WebSearchToolLocation.CreateApproximateLocation(
-        country: "GB",
-        city: "London",
-        region: "Granary Square"
-    )
-));
-
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart(
-            "What are the best restaurants near me?"
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateWebSearchTool(
+        userLocation: WebSearchToolLocation.CreateApproximateLocation(
+            country: "GB",
+            city: "London",
+            region: "London"
         )
-    ])
-], options);
+    )
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What are the best restaurants near me?")
+);
+
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -790,22 +792,29 @@ For Responses API web search, the search context window is limited to 128k, even
 
 <tr>
   <td>
-    <div className="mb-1 flex items-center gap-2">
-      [Responses](https://developers.openai.com/api/docs/api-reference/responses)
-    </div>
-    <div className="mb-1 flex items-center gap-2">
-      [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat)
-    </div>
-    <div className="mb-1 flex items-center gap-2">
-      [Assistants](https://developers.openai.com/api/docs/api-reference/assistants)
-    </div>
+    
+
+      [Responses](https://developers.openai.com/api/reference/resources/responses)
+    
+
+    
+
+      [Chat Completions](https://developers.openai.com/api/reference/resources/chat)
+    
+
+    
+
+      [Assistants](https://developers.openai.com/api/reference/resources/beta/subresources/assistants)
+    
+
   </td>
   <td style={{ maxWidth: "150px" }}>
     Same as tiered rate limits for underlying [model](https://developers.openai.com/api/docs/models) used
     with the tool.
   </td>
   <td style={{ maxWidth: "150px" }}>
-    [Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) <br />
+    [Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) 
+
     [ZDR and data residency](https://developers.openai.com/api/docs/guides/your-data)
   </td>
 </tr>

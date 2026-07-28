@@ -1,5 +1,7 @@
 # Evaluate external models
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Model selection is an important lever that enables builders to improve their AI applications. When using Evaluations on the OpenAI Platform, in addition to evaluating OpenAI’s native models, you can also evaluate a variety of external models.
 
 We support accessing **third-party models** (no API key required) and accessing **custom endpoints** (API key required).
@@ -15,7 +17,7 @@ OpenAI is deprecating the Evals platform. Existing evals content remains
 
 In order to use third-party models, the following must be true:
 
-- Your OpenAI organization must be in [usage tier 1](https://developers.openai.com/api/docs/guides/rate-limits/usage-tiers#usage-tiers) or higher.
+- Your OpenAI organization must be in [usage tier 1](https://developers.openai.com/api/docs/guides/rate-limits#usage-tiers) or higher.
 - An admin for your OpenAI organization must enable this feature via [Settings > Organization > General](https://platform.openai.com/settings/organization/general). To enable this feature, the admin must accept the usage disclaimer shown.
 
 Calls made to external models pass data to third parties and are subject to
@@ -52,7 +54,7 @@ In order to use this feature, an admin for your OpenAI organization must enable 
 
 Once you are eligible to use custom providers, you can set up a provider under the **Evaluations** tab under [Settings](https://platform.openai.com/settings/). Note that custom providers are configured on a per-project basis. To connect your custom endpoint, you will need:
 
-- An endpoint compatible with [OpenAI’s chat completions endpoint](https://developers.openai.com/api/docs/api-reference/chat/create)
+- An endpoint compatible with [OpenAI’s chat completions endpoint](https://developers.openai.com/api/reference/resources/chat)
 - An API key
 
 Name your endpoint, provide an endpoint URL, and specify your API key. We require that you use an `https://` endpoint, and we encrypt your keys for security. Specify any model names (slugs) you wish to evaluate. You can click the **Verify** button to ensure that your models are set up correctly. This will make a test call containing minimal input to each of your model slugs, and will indicate any failures.
@@ -70,26 +72,14 @@ Once you have configured an external model, you can use it for evals on the by s
 
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook), which contains example code and links to third-party resources, or learn more about our tools for evals:
 
-<a
-  href="/api/docs/guides/evaluation-getting-started"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Uses Datasets to quickly build evals and iterate on prompts.
+[Getting started with evals
 
 
-</a>
 
-<a href="/api/docs/guides/evals" target="_blank" rel="noreferrer">
-  
+      Uses Datasets to quickly build evals and iterate on prompts.](https://developers.openai.com/api/docs/guides/evaluation-getting-started)
 
-<span slot="icon">
-      </span>
-    Evaluate against external models, interact with evals via API, and more.
+[Working with evals
 
 
-</a>
+
+      Evaluate against external models, interact with evals via API, and more.](https://developers.openai.com/api/docs/guides/evals)

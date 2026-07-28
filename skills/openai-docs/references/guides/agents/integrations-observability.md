@@ -1,5 +1,7 @@
 # Integrations and observability
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 After the workflow shape is clear, the next questions are which external surfaces should live inside the agent loop and how you will inspect what actually happened at runtime.
 
 ## Choose what lives in the SDK
@@ -190,41 +192,20 @@ Use traces for two jobs:
 
 Once the external surfaces are wired in, continue with the guide that covers capability design, review boundaries, or evaluation.
 
-<div class="not-prose mt-4 grid gap-3">
-  <a
-    href="/api/docs/guides/tools#usage-in-the-agents-sdk"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      See how hosted tools, function tools, and agents-as-tools fit beside MCP.
 
 
-  </a>
-  <a
-    href="/api/docs/guides/agents/guardrails-approvals"
-    class="block no-underline hover:no-underline"
-  >
-    
-
-<span slot="icon">
-        </span>
-      Add approval or validation boundaries around sensitive capabilities.
+  [Using tools
 
 
-  </a>
-  <a
-    href="/api/docs/guides/agent-evals"
-    class="block no-underline hover:no-underline"
-  >
-    
 
-<span slot="icon">
-        </span>
-      Move from one-off traces into repeatable grading once behavior stabilizes.
+        See how hosted tools, function tools, and agents-as-tools fit beside MCP.](https://developers.openai.com/api/docs/guides/tools#usage-in-the-agents-sdk)
+  [Guardrails and human review
 
 
-  </a>
-</div>
+
+        Add approval or validation boundaries around sensitive capabilities.](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals)
+  [Agent workflow evaluation
+
+
+
+        Move from one-off traces into repeatable grading once behavior stabilizes.](https://developers.openai.com/api/docs/guides/agent-evals)

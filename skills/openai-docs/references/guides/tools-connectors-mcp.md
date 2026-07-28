@@ -1,5 +1,7 @@
 # MCP and Connectors
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 In addition to tools you make available to the model with [function calling](https://developers.openai.com/api/docs/guides/function-calling), you can give models new capabilities using **connectors** and **remote MCP servers**. These tools give the model the ability to connect to and control external services when needed to respond to a user's prompt. These tool calls can either be allowed automatically, or restricted with explicit approval required by you as the developer.
 
 - **Connectors** are OpenAI-maintained MCP wrappers for popular services like Google Workspace or Dropbox, like the connectors available in [ChatGPT](https://chatgpt.com).
@@ -13,17 +15,19 @@ If your MCP server is private, on-premises, or behind a firewall, use [Secure MC
 
 ## Quickstart
 
-Check out the examples below to see how remote MCP servers and connectors work through the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create). Both connectors and remote MCP servers can be used with the `mcp` built-in tool type.
+Check out the examples below to see how remote MCP servers and connectors work through the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create). Both connectors and remote MCP servers can be used with the `mcp` built-in tool type.
 
 
 
-<div data-content-switcher-pane data-value="remote-mcp">
-    <div class="hidden">Using remote MCP servers</div>
-    <p>
-        Remote MCP servers require a <code>server_url</code>. Depending on the server,
-        you may also need an OAuth <code>authorization</code> parameter containing an
+Using remote MCP servers
+
+    
+
+        Remote MCP servers require a `server_url`. Depending on the server,
+        you may also need an OAuth `authorization` parameter containing an
         access token.
-    </p>
+    
+
 
     Using a remote MCP server in the Responses API
 
@@ -92,22 +96,22 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "dmcp",
+        serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
+        toolCallApprovalPolicy: GlobalMcpToolCallApprovalPolicy.NeverRequireApproval
+    )
+);
+options.InputItems.Add(ResponseItem.CreateUserMessageItem("Roll 2d4+1"));
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Roll 2d4+1")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -138,15 +142,21 @@ puts(response.output_text)
     It is very important that developers trust any remote MCP server they use with
         the Responses API. A malicious server can exfiltrate sensitive data from
         anything that enters the model's context. Carefully review the 
-        <strong>Risks and Safety</strong> section below before using this tool.
+        **Risks and Safety** section below before using this tool.
 
-  </div>
-  <div data-content-switcher-pane data-value="connector" hidden>
-    <div class="hidden">Using connectors</div>
-    <p>
-        Connectors require a <code>connector_id</code> parameter, and an OAuth access
-        token provided by your application in the <code>authorization</code> parameter.
-    </p>
+  
+
+  
+
+    
+Using connectors
+
+    
+
+        Connectors require a `connector_id` parameter, and an OAuth access
+        token provided by your application in the `authorization` parameter.
+    
+
 
     Using connectors in the Responses API
 
@@ -217,30 +227,30 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
-string dropboxToken = Environment.GetEnvironmentVariable("DROPBOX_OAUTH_ACCESS_TOKEN")!;
+string dropboxToken =
+    Environment.GetEnvironmentVariable("DROPBOX_OAUTH_ACCESS_TOKEN")!;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "Dropbox",
-    connectorId: McpToolConnectorId.Dropbox,
-    authorizationToken: dropboxToken,
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "Dropbox",
+        connectorId: McpToolConnectorId.Dropbox,
+        authorizationToken: dropboxToken,
+        toolCallApprovalPolicy: GlobalMcpToolCallApprovalPolicy.NeverRequireApproval
+    )
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("Summarize the Q2 earnings report.")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Summarize the Q2 earnings report.")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
-
-
-  </div>
 
 
 
@@ -291,7 +301,7 @@ Read on in the guide below to learn more about how the MCP tool works, how to fi
 
 ## How it works
 
-The MCP tool (for both remote MCP servers and connectors) is available in the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create) in most recent models. Check MCP tool compatibility for your model [here](https://developers.openai.com/api/docs/models). When you're using the MCP tool, you only pay for [tokens](https://developers.openai.com/api/docs/pricing) used when importing tool definitions or making tool calls. There are no additional fees involved per tool call.
+The MCP tool (for both remote MCP servers and connectors) is available in the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) in most recent models. Check MCP tool compatibility for your model [here](https://developers.openai.com/api/docs/models). When you're using the MCP tool, you only pay for [tokens](https://developers.openai.com/api/docs/pricing) used when importing tool definitions or making tool calls. There are no additional fees involved per tool call.
 
 Below, we'll step through the process the API takes when calling an MCP tool.
 
@@ -407,23 +417,23 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
-    allowedTools: new McpToolFilter() { ToolNames = { "roll" } },
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "dmcp",
+        serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
+        allowedTools: new McpToolFilter() { ToolNames = { "roll" } },
+        toolCallApprovalPolicy: GlobalMcpToolCallApprovalPolicy.NeverRequireApproval
+    )
+);
+options.InputItems.Add(ResponseItem.CreateUserMessageItem("Roll 2d4+1"));
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Roll 2d4+1")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -553,31 +563,34 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.AlwaysRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "dmcp",
+        serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
+        toolCallApprovalPolicy: GlobalMcpToolCallApprovalPolicy.AlwaysRequireApproval
+    )
+);
 
-// STEP 1: Create response that requests tool call approval
-OpenAIResponse response1 = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Roll 2d4+1")
-    ])
-], options);
+// STEP 1: Create a response that requests tool-call approval.
+options.InputItems.Add(ResponseItem.CreateUserMessageItem("Roll 2d4+1"));
+ResponseResult response1 = await client.CreateResponseAsync(options);
 
-McpToolCallApprovalRequestItem? approvalRequestItem = response1.OutputItems.Last() as McpToolCallApprovalRequestItem;
+McpToolCallApprovalRequestItem approvalRequest =
+    response1.OutputItems.OfType<McpToolCallApprovalRequestItem>().Single();
 
-// STEP 2: Approve the tool call request and get final response
+// STEP 2: Approve the tool call and get the final response.
 options.PreviousResponseId = response1.Id;
-OpenAIResponse response2 = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateMcpApprovalResponseItem(approvalRequestItem!.Id, approved: true),
-], options);
+options.InputItems.Clear();
+options.InputItems.Add(
+    ResponseItem.CreateMcpApprovalResponseItem(approvalRequest.Id, approved: true)
+);
+ResponseResult response2 = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response2.GetOutputText());
 ```
@@ -661,23 +674,32 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "deepwiki",
-    serverUri: new Uri("https://mcp.deepwiki.com/mcp"),
-    allowedTools: new McpToolFilter() { ToolNames = { "ask_question", "read_wiki_structure" } },
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "deepwiki",
+        serverUri: new Uri("https://mcp.deepwiki.com/mcp"),
+        toolCallApprovalPolicy: new CustomMcpToolCallApprovalPolicy
+        {
+            ToolsNeverRequiringApproval = new McpToolFilter
+            {
+                ToolNames = { "ask_question", "read_wiki_structure" },
+            },
+        }
+    )
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem(
+        "What transport protocols does the 2025-03-26 version of the MCP spec (modelcontextprotocol/modelcontextprotocol) support?"
+    )
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What transport protocols does the 2025-03-26 version of the MCP spec (modelcontextprotocol/modelcontextprotocol) support?")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -752,23 +774,26 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
-string authToken = Environment.GetEnvironmentVariable("STRIPE_OAUTH_ACCESS_TOKEN")!;
+string authToken =
+    Environment.GetEnvironmentVariable("STRIPE_OAUTH_ACCESS_TOKEN")!;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "stripe",
-    serverUri: new Uri("https://mcp.stripe.com"),
-    authorizationToken: authToken
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "stripe",
+        serverUri: new Uri("https://mcp.stripe.com"),
+        authorizationToken: authToken
+    )
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("Create a payment link for $20")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Create a payment link for $20")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -879,24 +904,27 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
-string authToken = Environment.GetEnvironmentVariable("GOOGLE_CALENDAR_OAUTH_ACCESS_TOKEN")!;
+string authToken =
+    Environment.GetEnvironmentVariable("GOOGLE_CALENDAR_OAUTH_ACCESS_TOKEN")!;
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "google_calendar",
-    connectorId: McpToolConnectorId.GoogleCalendar,
-    authorizationToken: authToken,
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "google_calendar",
+        connectorId: McpToolConnectorId.GoogleCalendar,
+        authorizationToken: authToken,
+        toolCallApprovalPolicy: GlobalMcpToolCallApprovalPolicy.NeverRequireApproval
+    )
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What's on my Google Calendar for today?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What's on my Google Calendar for today?")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -1290,29 +1318,39 @@ In other words, if you're an organization with Data Residency in Europe, OpenAI 
 
 <tr>
 <td>
-<div className="mb-1 flex items-center gap-2">
-    [Responses](https://developers.openai.com/api/docs/api-reference/responses)
-</div>
-<div className="mb-1 flex items-center gap-2">
-    [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat)
-</div>
-<div className="mb-1 flex items-center gap-2">
-    [Assistants](https://developers.openai.com/api/docs/api-reference/assistants)
-</div>
+
+
+    [Responses](https://developers.openai.com/api/reference/resources/responses)
+
+
+
+
+    [Chat Completions](https://developers.openai.com/api/reference/resources/chat)
+
+
+
+
+    [Assistants](https://developers.openai.com/api/reference/resources/beta/subresources/assistants)
+
+
 </td>
 <td style={{"maxWidth": "150px"}}>
-**Tier 1**<br/>
+**Tier 1**
+
 200 RPM
 
-**Tier 2 and 3**<br/>
+**Tier 2 and 3**
+
 1000 RPM
 
-**Tier 4 and 5**<br/>
+**Tier 4 and 5**
+
 2000 RPM
 
 </td>
 <td style={{"maxWidth": "150px"}}>
-[Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) <br/>
+[Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) 
+
 [ZDR and data residency](https://developers.openai.com/api/docs/guides/your-data)
 </td>
 </tr>

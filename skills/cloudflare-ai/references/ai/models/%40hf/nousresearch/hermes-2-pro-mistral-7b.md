@@ -28,13 +28,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Hermes 2 Pro on Mistral 7B is the new flagship 7B Hermes! Hermes 2 Pro is an upgraded, retrained version of Nous Hermes 2, consisting of an updated and cleaned version of the OpenHermes 2.5 Dataset, as well as a newly introduced Function Calling and JSON Mode dataset developed in-house.
 
-| Model Info                                                                           |                                                                       |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------- |
-| Deprecated                                                                           | 5/30/2026                                                             |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 24,000 tokens                                                         |
-| More information                                                                     | [link ↗](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B) |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                   |
-| Beta                                                                                 | Yes                                                                   |
+| Model Info                                                                            |                                                                       |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| Deprecated                                                                            | 5/30/2026                                                             |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 24,000 tokens                                                         |
+| More information                                                                      | [link ↗](https://huggingface.co/NousResearch/Hermes-2-Pro-Mistral-7B) |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                   |
+| Beta                                                                                  | Yes                                                                   |
 
 ## Playground
 

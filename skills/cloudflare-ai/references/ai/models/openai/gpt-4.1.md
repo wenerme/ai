@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 OpenAI's flagship GPT model for complex tasks with a million-token context window.
 
-| Model Info                                                                 |                                                                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 1,047,576 tokens                                                                                                 |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                           | [link ↗](https://openai.com/index/gpt-4-1/)                                                                      |
-| Zero data retention                                                        | Yes                                                                                                              |
-| Request formats                                                            | Responses, Chat Completions                                                                                      |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1) |
+| Model Info                                                                          |                                                                                                                  |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,047,576 tokens                                                                                                 |
+| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                           |
+| More information                                                                    | [link ↗](https://openai.com/index/gpt-4-1/)                                                                      |
+| Zero data retention                                                                 | Yes                                                                                                              |
+| Request formats                                                                     | Responses, Chat Completions                                                                                      |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1) |
 
 ## Usage
 

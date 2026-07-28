@@ -7,6 +7,8 @@ latestModelInfo:
 
 # Using GPT-5.6
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ## Introduction
 
 GPT-5.6 sets a new quality and efficiency baseline for complex production workflows. GPT-5.6 is especially token-efficient and improves frontend aesthetics, including layout, visual hierarchy, and design judgment.
@@ -36,7 +38,9 @@ If your application serves individual end users, send a stable, privacy-preservi
 
 We are continuously evolving these safeguards so that they are robust and effective in holding up to adversarial pressure, while preserving access to legitimate work such as code review, vulnerability research, patch development, debugging, security education, and defensive testing.
 
-<div id="migrate-to-gpt-56" aria-hidden="true"></div>
+
+
+
 
 ## Migration quickstart
 

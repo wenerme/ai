@@ -1,5 +1,7 @@
 # Voice agents
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Voice agents turn the same agent concepts into spoken, low-latency interactions. The key design choice is deciding whether the model should work directly with live audio or whether your application should explicitly chain speech-to-text, text reasoning, and text-to-speech.
 
 ## Choose the right architecture
@@ -18,7 +20,9 @@ The examples below are intentionally different architectures, not matching langu
 - In TypeScript, the fastest path to a browser-based voice assistant is a `RealtimeAgent` and `RealtimeSession`.
 - In Python, the simplest path to extending an existing text agent into voice is a chained `VoicePipeline`.
 
-<span id="speech-to-speech-realtime-architecture"></span>
+
+
+
 
 ## Build a speech-to-speech voice agent
 
@@ -88,7 +92,7 @@ def get_weather(city: str) -> str:
 agent = Agent(
     name="Assistant",
     instructions="You are a helpful voice assistant.",
-    model="gpt-5.5",
+    model="gpt-5.6",
     tools=[get_weather],
 )
 
@@ -123,42 +127,26 @@ The practical rule is: choose the audio architecture first, then design the rest
 
 ## Next steps
 
-<a href="/api/docs/guides/realtime">
-  
-
-<span slot="icon">
-      </span>
-    Choose the right realtime or audio guide for your use case.
+[Realtime and audio overview
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-conversations">
-  
+      Choose the right realtime or audio guide for your use case.](https://developers.openai.com/api/docs/guides/realtime)
 
-<span slot="icon">
-      </span>
-    Work with the Realtime session lifecycle and event model.
+[Managing conversations
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-webrtc">
-  
+      Work with the Realtime session lifecycle and event model.](https://developers.openai.com/api/docs/guides/realtime-conversations)
 
-<span slot="icon">
-      </span>
-    Connect browser and mobile audio directly to a Realtime session.
+[WebRTC connection
 
 
-</a>
 
-<a href="/api/docs/guides/realtime-models-prompting">
-  
+      Connect browser and mobile audio directly to a Realtime session.](https://developers.openai.com/api/docs/guides/realtime-webrtc)
 
-<span slot="icon">
-      </span>
-    Tune reasoning, preambles, tools, entity capture, and voice behavior.
+[Realtime prompting guide
 
 
-</a>
+
+      Tune reasoning, preambles, tools, entity capture, and voice behavior.](https://developers.openai.com/api/docs/guides/realtime-models-prompting)

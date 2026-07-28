@@ -1,6 +1,8 @@
 # Migrate to the Responses API
 
-The [Responses API](https://developers.openai.com/api/docs/api-reference/responses) is our new API primitive, an evolution of [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat) which brings added simplicity and powerful agentic primitives to your integrations.
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+The [Responses API](https://developers.openai.com/api/reference/resources/responses) is our new API primitive, an evolution of [Chat Completions](https://developers.openai.com/api/reference/resources/chat) which brings added simplicity and powerful agentic primitives to your integrations.
 
 **While Chat Completions remains supported, Responses is recommended for all new projects.**
 
@@ -8,7 +10,7 @@ The [Responses API](https://developers.openai.com/api/docs/api-reference/respons
 
 The Responses API is a unified interface for building powerful, agent-like applications. It contains:
 
-- Built-in tools like [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [file search](https://developers.openai.com/api/docs/guides/tools-file-search), [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use), [code interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter), and [remote MCPs](https://developers.openai.com/api/docs/guides/tools-remote-mcp).
+- Built-in tools like [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [file search](https://developers.openai.com/api/docs/guides/tools-file-search), [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use), [code interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter), and [remote MCPs](https://developers.openai.com/api/docs/guides/tools-connectors-mcp).
 - Seamless multi-turn interactions that allow you to pass previous responses for higher accuracy reasoning results.
 - Native multimodal support for text and images.
 
@@ -24,7 +26,8 @@ The Responses API contains several benefits over Chat Completions:
 - **Encrypted reasoning**: Opt-out of statefulness while still benefiting from advanced reasoning.
 - **Future-proof**: Future-proofed for upcoming models.
 
-<div className="roles-table">
+
+
 
 | Capabilities        | Chat Completions API  | Responses API         |
 | ------------------- | --------------------- | --------------------- |
@@ -41,7 +44,8 @@ The Responses API contains several benefits over Chat Completions:
 | Image generation    | | |
 | Reasoning summaries | | |
 
-</div>
+
+
 
 ### Examples
 
@@ -63,6 +67,68 @@ To disable storage when using either API, set `store: false`.
 
 The objects you receive back from these APIs will differ slightly. In Chat Completions, you receive an array of
 `choices`, each containing a `message`. In Responses, you receive an array of Items labeled `output`.
+
+
+
+#### Chat Completions API
+
+```json
+{
+    "id": "chatcmpl-C9EDpkjH60VPPIB86j2zIhiR8kWiC",
+    "object": "chat.completion",
+    "created": 1756315657,
+    "model": "gpt-5.5",
+    "choices": [
+      {
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "Under a blanket of starlight, a sleepy unicorn tiptoed through moonlit meadows, gathering dreams like dew to tuck beneath its silver mane until morning.",
+          "refusal": null,
+          "annotations": []
+        },
+        "finish_reason": "stop"
+      }
+    ],
+    ...
+}
+```
+
+#### Responses API
+
+```json
+{
+    "id": "resp_68af4030592c81938ec0a5fbab4a3e9f05438e46b5f69a3b",
+    "object": "response",
+    "created_at": 1756315696,
+    "model": "gpt-5.5",
+    "output": [
+      {
+        "id": "rs_68af4030baa48193b0b43b4c2a176a1a05438e46b5f69a3b",
+        "type": "reasoning",
+        "content": [],
+        "summary": []
+      },
+      {
+        "id": "msg_68af40337e58819392e935fb404414d005438e46b5f69a3b",
+        "type": "message",
+        "status": "completed",
+        "content": [
+          {
+            "type": "output_text",
+            "annotations": [],
+            "logprobs": [],
+            "text": "Under a quilt of moonlight, a drowsy unicorn wandered through quiet meadows, brushing blossoms with her glowing horn so they sighed soft lullabies that carried every dreamer gently to sleep."
+          }
+        ],
+        "role": "assistant"
+      }
+    ],
+    ...
+}
+```
+
+
 
 ### Additional differences
 
@@ -140,8 +206,8 @@ response = client.responses.create(model="gpt-5.6", input=context)
 
 
 
-<div data-content-switcher-pane data-value="chat-completions">
-    <div class="hidden">Chat Completions</div>
+Chat Completions
+
     With Chat Completions, you create a `messages` array and read the model text
     from `completion.choices[0].message.content`.
     Generate text from a model
@@ -189,9 +255,13 @@ curl https://api.openai.com/v1/chat/completions \
 ```
 
 
-  </div>
-  <div data-content-switcher-pane data-value="responses" hidden>
-    <div class="hidden">Responses</div>
+  
+
+  
+
+    
+Responses
+
     With Responses, you can separate `instructions` and `input` at the top level
     and read generated text from `response.output_text`.
     Generate text from a model
@@ -232,9 +302,6 @@ curl https://api.openai.com/v1/responses \
 ```
 
 
-  </div>
-
-
 
 ### 2. Map Messages to Items
 
@@ -262,8 +329,8 @@ If you have multi-turn conversations in your application, update your context lo
 
 
 
-<div data-content-switcher-pane data-value="chat-completions">
-    <div class="hidden">Chat Completions</div>
+Chat Completions
+
     In Chat Completions, you store the transcript and send the accumulated
     `messages` array on each request.
     Multi-turn conversation
@@ -302,9 +369,13 @@ res2 = client.chat.completions.create(model="gpt-5.6", messages=messages)
 ```
 
 
-  </div>
-  <div data-content-switcher-pane data-value="responses" hidden>
-    <div class="hidden">Responses</div>
+  
+
+  
+
+    
+Responses
+
     With Responses, you can manually pass outputs from one response into the
     input of another.
     Multi-turn conversation
@@ -382,9 +453,6 @@ res2 = client.responses.create(
 ```
 
 
-  </div>
-
-
 
 Even when using `previous_response_id`, all previous input tokens for responses in the chain are billed as input tokens in the API.
 
@@ -396,7 +464,7 @@ Some organizations, such as those with Zero Data Retention (ZDR) requirements, c
 
 To disable statefulness but still take advantage of reasoning:
 
-- Set `store: false` in the [store field](https://developers.openai.com/api/docs/api-reference/responses/create#responses_create-store).
+- Set `store: false` in the [store field](https://developers.openai.com/api/reference/resources/responses/methods/create#responses_create-store).
 - Preserve and replay every returned reasoning item. Each item includes `encrypted_content` by default when you create a response.
 
 The API will then return an encrypted version of the reasoning tokens, which you can pass back in future requests just like regular reasoning items.
@@ -411,6 +479,57 @@ There are two minor, but notable, differences in how functions are defined betwe
 
 The Responses API function example on the right is functionally equivalent to the Chat Completions example on the left.
 
+
+
+#### Chat Completions API
+
+```javascript
+{
+    "type": "function",
+    "function": {
+      "name": "get_weather",
+      "description": "Determine weather in my location",
+      "strict": true,
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {
+            "type": "string",
+          },
+        },
+        "additionalProperties": false,
+        "required": [
+          "location"
+        ]
+      }
+    }
+}
+```
+
+#### Responses API
+
+```javascript
+{
+    "type": "function",
+    "name": "get_weather",
+    "description": "Determine weather in my location",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string",
+        },
+      },
+      "additionalProperties": false,
+      "required": [
+        "location"
+      ]
+    }
+}
+```
+
+
+
 #### Follow function-calling best practices
 
 In Responses, tool calls and their outputs are two distinct types of Items that are correlated using a `call_id`. See
@@ -422,8 +541,8 @@ In the Responses API, Structured Outputs definitions have moved from `response_f
 
 
 
-<div data-content-switcher-pane data-value="chat-completions">
-    <div class="hidden">Chat Completions</div>
+Chat Completions
+
     Structured Outputs
 
 ```bash
@@ -537,9 +656,13 @@ const completion = await openai.chat.completions.create({
 });
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="responses" hidden>
-    <div class="hidden">Responses</div>
+  
+
+  
+
+    
+Responses
+
     Structured Outputs
 
 ```bash
@@ -631,8 +754,6 @@ const response = await openai.responses.create({
 });
 ```
 
-  </div>
-
 
 
 ### 7. Update streaming consumers
@@ -646,7 +767,7 @@ For text streaming, listen for events such as:
 - `response.completed`
 - `error`
 
-Function-calling streams can also emit events such as `response.function_call_arguments.delta` and `response.function_call_arguments.done`. See the [streaming Responses guide](https://developers.openai.com/api/docs/guides/streaming-responses?api-mode=responses) and [Responses streaming events reference](https://developers.openai.com/api/docs/api-reference/responses-streaming).
+Function-calling streams can also emit events such as `response.function_call_arguments.delta` and `response.function_call_arguments.done`. See the [streaming Responses guide](https://developers.openai.com/api/docs/guides/streaming-responses?api-mode=responses) and [Responses streaming events reference](https://developers.openai.com/api/reference/resources/responses).
 
 ### 8. Upgrade to native tools
 
@@ -654,8 +775,8 @@ If your application has use cases that would benefit from OpenAI's native [tools
 
 
 
-<div data-content-switcher-pane data-value="chat-completions">
-    <div class="hidden">Chat Completions</div>
+Chat Completions
+
     With Chat Completions, you cannot use OpenAI-hosted tools natively and have
     to write your own tool integration.
     Web search tool
@@ -723,9 +844,13 @@ curl https://api.example.com/search \
   --data-urlencode "key=$SEARCH_API_KEY"\
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="responses" hidden>
-    <div class="hidden">Responses</div>
+  
+
+  
+
+    
+Responses
+
     With Responses, you can specify the tools that you want the model to use.
     Web search tool
 
@@ -761,9 +886,6 @@ curl https://api.openai.com/v1/responses \
 ```
 
 
-  </div>
-
-
 
 ### 9. Check common migration errors
 
@@ -795,6 +917,6 @@ We recommend migrating all flows to the Responses API over time to take advantag
 
 ## Assistants API
 
-Based on developer feedback from the [Assistants API](https://developers.openai.com/api/docs/api-reference/assistants) beta, we've incorporated key improvements into the Responses API to make it more flexible, faster, and easier to use. The Responses API represents the future direction for building agents on OpenAI.
+Based on developer feedback from the [Assistants API](https://developers.openai.com/api/reference/resources/beta/subresources/assistants) beta, we've incorporated key improvements into the Responses API to make it more flexible, faster, and easier to use. The Responses API represents the future direction for building agents on OpenAI.
 
-We now have Assistant-like and Thread-like objects in the Responses API. Learn more in the [migration guide](https://developers.openai.com/api/docs/guides/assistants/migration). As of August 26, 2025, we're deprecating the Assistants API, with a sunset date of August 26, 2026.
+We now have Assistant-like and Thread-like objects in the Responses API. Learn more in the [migration guide](https://developers.openai.com/api/docs/assistants/migration). As of August 26, 2025, we're deprecating the Assistants API, with a sunset date of August 26, 2026.

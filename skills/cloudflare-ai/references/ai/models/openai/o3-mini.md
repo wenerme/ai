@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 o3-mini is the lightweight, low-cost reasoning variant of o3, well suited to quick analytical tasks at scale.
 
-| Model Info                                                                 |                                                                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                   |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                    |
-| Zero data retention                                                        | Yes                                                                                                              |
-| Request formats                                                            | Responses, Chat Completions                                                                                      |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o3-mini) |
+| Model Info                                                                          |                                                                                                                  |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                   |
+| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                           |
+| More information                                                                    | [link ↗](https://openai.com/)                                                                                    |
+| Zero data retention                                                                 | Yes                                                                                                              |
+| Request formats                                                                     | Responses, Chat Completions                                                                                      |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o3-mini) |
 
 ## Usage
 

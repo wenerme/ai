@@ -1,5 +1,7 @@
 # Prompt caching
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Model prompts often contain repetitive content, like system prompts and common instructions. OpenAI routes API requests to servers that recently processed the same prompt, making it faster and less expensive to reuse an exact prompt prefix than to process it from scratch. Prompt Caching works automatically for eligible requests, with no code changes required. It is enabled for all recent [models](https://developers.openai.com/api/docs/models), `gpt-4o` and newer.
 
 Cache writes have no additional fee on models before the GPT-5.6 family. For GPT-5.6 models and later model families, cache writes cost 1.25× the uncached input token rate. On these models, both implicit and explicit caching are more consistent and reliable. You can also use explicit cache breakpoints to control exactly which prompt prefixes OpenAI caches. OpenAI reports writes in `cache_write_tokens` and reads in `cached_tokens`, so you can measure the cost of writes against the savings from later cache hits.
@@ -19,7 +21,7 @@ By default, caching is enabled automatically for prompts that are 1024 tokens or
 1. **Cache Routing**:
 
 - Requests are routed to a machine based on a hash of the initial prefix of the prompt. The hash typically uses the first 256 tokens, though the exact length varies depending on the model.
-- If you provide the [`prompt_cache_key`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-prompt_cache_key) parameter, it is combined with the prefix hash, allowing you to influence routing and improve cache hit rates. This is especially beneficial when many requests share long, common prefixes.
+- If you provide the [`prompt_cache_key`](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-prompt_cache_key) parameter, it is combined with the prefix hash, allowing you to influence routing and improve cache hit rates. This is especially beneficial when many requests share long, common prefixes.
 
 2. **Cache Lookup**: The system checks if the initial portion (prefix) of your prompt exists in the cache on the selected machine.
 3. **Cache Hit**: If a matching prefix is found, the system uses the cached result. This decreases latency and bills those tokens at the cached-input rate.
@@ -54,13 +56,13 @@ The following examples are abbreviated to show the request shape. In a real requ
 
 
 
-<div data-content-switcher-pane data-value="responses">
-    <div class="hidden">Responses API</div>
+Responses API
+
 
     This request uses the default `implicit` mode, which places a breakpoint on
     the latest message, and adds an explicit breakpoint after a stable file.
 
-    ```json
+```json
 {
   "model": "gpt-5.6",
   "prompt_cache_key": "tenant:acme:knowledge-base-v1",
@@ -87,15 +89,19 @@ The following examples are abbreviated to show the request shape. In a real requ
 ```
 
 
-  </div>
-  <div data-content-switcher-pane data-value="chat-completions" hidden>
-    <div class="hidden">Chat Completions API</div>
+  
+
+  
+
+    
+Chat Completions API
+
 
     This request disables automatic breakpoint placement. Only the marked
     system-message prefix is eligible for billable cache writes and discounted
     cache reads.
 
-    ```json
+```json
 {
   "model": "gpt-5.6",
   "prompt_cache_key": "tenant:acme:support-assistant-v1",
@@ -122,9 +128,6 @@ The following examples are abbreviated to show the request shape. In a real requ
   ]
 }
 ```
-
-
-  </div>
 
 
 
@@ -192,7 +195,7 @@ The following legacy example sets the retention policy for a `gpt-5.5` request:
 
 Caching is available for prompts containing 1024 tokens or more.
 
-All requests, including those with fewer than 1024 tokens, display a `cached_tokens` field in the usage token details. Responses API returns this field in `usage.input_tokens_details` on the [Response object](https://developers.openai.com/api/docs/api-reference/responses/object); Chat Completions API returns it in `usage.prompt_tokens_details` on the [Chat object](https://developers.openai.com/api/docs/api-reference/chat/object). The field indicates how many input tokens were read from cache. For requests under 1024 tokens, `cached_tokens` is zero.
+All requests, including those with fewer than 1024 tokens, display a `cached_tokens` field in the usage token details. Responses API returns this field in `usage.input_tokens_details` on the [Response object](https://developers.openai.com/api/reference/resources/responses); Chat Completions API returns it in `usage.prompt_tokens_details` on the [Chat object](https://developers.openai.com/api/reference/resources/chat). The field indicates how many input tokens were read from cache. For requests under 1024 tokens, `cached_tokens` is zero.
 
 For GPT-5.6 models and later model families, `cache_write_tokens` reports the number of prompt tokens written to cache. Cache write billing uses this value at 1.25× the uncached input token rate.
 
@@ -225,7 +228,7 @@ The following Chat Completions usage example shows both fields. In this response
 ## Best practices
 
 - Structure prompts with **static or repeated content at the beginning** and dynamic, user-specific content at the end.
-- Use the **[`prompt_cache_key`](https://developers.openai.com/api/docs/api-reference/responses/create#responses-create-prompt_cache_key) parameter** consistently across requests that share long, common prefixes to improve cache hit rates. On GPT-5.6 models and later model families, you must set this parameter to use the more reliable cache matching. Keep the total traffic for each key to approximately 15 requests per minute, and use more keys for higher-volume workloads.
+- Use the **[`prompt_cache_key`](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-prompt_cache_key) parameter** consistently across requests that share long, common prefixes to improve cache hit rates. On GPT-5.6 models and later model families, you must set this parameter to use the more reliable cache matching. Keep the total traffic for each key to approximately 15 requests per minute, and use more keys for higher-volume workloads.
 - On GPT-5.6 models and later model families, place **explicit cache breakpoints** after stable prompt content that is likely to be reused. Set `prompt_cache_options.mode` to `explicit` when you want the service to use only the breakpoints you provide.
 - **Monitor cache reads and writes** by logging `cached_tokens` and `cache_write_tokens`. Compare cache-write volume with subsequent cache reads to understand net cost and adjust breakpoint placement. You can also monitor cached token counts in the OpenAI Usage dashboard.
 - **Maintain a steady stream of requests** with identical prompt prefixes to minimize cache evictions and maximize caching benefits.

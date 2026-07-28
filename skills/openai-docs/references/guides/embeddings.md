@@ -1,5 +1,7 @@
 # Vector embeddings
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ## What are embeddings?
 
 OpenAI’s text embeddings measure the relatedness of text strings. Embeddings are commonly used for:
@@ -13,11 +15,11 @@ OpenAI’s text embeddings measure the relatedness of text strings. Embeddings a
 
 An embedding is a vector (list) of floating point numbers. The [distance](#which-distance-function-should-i-use) between two vectors measures their relatedness. Small distances suggest high relatedness and large distances suggest low relatedness.
 
-Visit our [pricing page](https://openai.com/api/pricing/) to learn about embeddings pricing. Requests are billed based on the number of [tokens](https://platform.openai.com/tokenizer) in the [input](https://developers.openai.com/api/docs/api-reference/embeddings/create#embeddings/create-input).
+Visit our [pricing page](https://openai.com/api/pricing/) to learn about embeddings pricing. Requests are billed based on the number of [tokens](https://platform.openai.com/tokenizer) in the [input](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings/create-input).
 
 ## How to get embeddings
 
-To get an embedding, send your text string to the [embeddings API endpoint](https://developers.openai.com/api/docs/api-reference/embeddings) along with the embedding model name (e.g., `text-embedding-3-small`):
+To get an embedding, send your text string to the [embeddings API endpoint](https://developers.openai.com/api/reference/resources/embeddings) along with the embedding model name (e.g., `text-embedding-3-small`):
 
 Example: Getting embeddings
 
@@ -80,7 +82,7 @@ The response contains the embedding vector (list of floating point numbers) alon
 }
 ```
 
-By default, the length of the embedding vector is `1536` for `text-embedding-3-small` or `3072` for `text-embedding-3-large`. To reduce the embedding's dimensions without losing its concept-representing properties, pass in the [dimensions parameter](https://developers.openai.com/api/docs/api-reference/embeddings/create#embeddings-create-dimensions). Find more detail on embedding dimensions in the [embedding use case section](#use-cases).
+By default, the length of the embedding vector is `1536` for `text-embedding-3-small` or `3072` for `text-embedding-3-large`. To reduce the embedding's dimensions without losing its concept-representing properties, pass in the [dimensions parameter](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings-create-dimensions). Find more detail on embedding dimensions in the [embedding use case section](#use-cases).
 
 ## Embedding models
 
@@ -102,20 +104,23 @@ Here we show some representative use cases, using the [Amazon fine-food reviews 
 
 The dataset contains a total of 568,454 food reviews left by Amazon users up to October 2012. We use a subset of the 1000 most recent reviews for illustration purposes. The reviews are in English and tend to be positive or negative. Each review has a `ProductId`, `UserId`, `Score`, review title (`Summary`) and review body (`Text`). For example:
 
-<div className="docs-embeddings-sample-data-table">
+
+
 
 | Product Id | User Id        | Score | Summary               | Text                                              |
 | ---------- | -------------- | ----- | --------------------- | ------------------------------------------------- |
 | B001E4KFG0 | A3SGXH7AUHU8GW | 5     | Good Quality Dog Food | I have bought several of the Vitality canned...   |
 | B00813GRG4 | A1D87F6ZCVE5NK | 1     | Not as Advertised     | Product arrived labeled as Jumbo Salted Peanut... |
 
-</div>
+
+
 
 Below, we combine the review summary and review text into a single combined text. The model encodes this combined text and output a single vector embedding.
 
 
 
-<span>Get_embeddings_from_dataset.ipynb</span> ```python
+Get_embeddings_from_dataset.ipynb
+```python
 from openai import OpenAI
 
 client = OpenAI()
@@ -147,7 +152,7 @@ Reducing embedding dimensions
 
 Using larger embeddings, for example storing them in a vector store for retrieval, generally costs more and consumes more compute, memory and storage than using smaller embeddings.
 
-Both of our new embedding models were trained [with a technique](https://arxiv.org/abs/2205.13147) that allows developers to trade-off performance and cost of using embeddings. Specifically, developers can shorten embeddings (i.e. remove some numbers from the end of the sequence) without the embedding losing its concept-representing properties by passing in the [`dimensions` API parameter](https://developers.openai.com/api/docs/api-reference/embeddings/create#embeddings-create-dimensions). For example, on the MTEB benchmark, a `text-embedding-3-large` embedding can be shortened to a size of 256 while still outperforming an unshortened `text-embedding-ada-002` embedding with a size of 1536. You can read more about how changing the dimensions impacts performance in our [embeddings v3 launch blog post](https://openai.com/blog/new-embedding-models-and-api-updates#:~:text=Native%20support%20for%20shortening%20embeddings).
+Both of our new embedding models were trained [with a technique](https://arxiv.org/abs/2205.13147) that allows developers to trade-off performance and cost of using embeddings. Specifically, developers can shorten embeddings (i.e. remove some numbers from the end of the sequence) without the embedding losing its concept-representing properties by passing in the [`dimensions` API parameter](https://developers.openai.com/api/reference/resources/embeddings/methods/create#embeddings-create-dimensions). For example, on the MTEB benchmark, a `text-embedding-3-large` embedding can be shortened to a size of 256 while still outperforming an unshortened `text-embedding-ada-002` embedding with a size of 1536. You can read more about how changing the dimensions impacts performance in our [embeddings v3 launch blog post](https://openai.com/blog/new-embedding-models-and-api-updates#:~:text=Native%20support%20for%20shortening%20embeddings).
 
 In general, using the `dimensions` parameter when creating the embedding is the suggested approach. In certain cases, you may need to change the embedding dimension after you generate it. When you change the dimension manually, you need to be sure to normalize the dimensions of the embedding as is shown below.
 
@@ -185,12 +190,12 @@ Dynamically changing the dimensions enables very flexible usage. For example, wh
 
 Question answering using embeddings-based search
 
-<p>
+
+
   
 
-<span>Question_answering_using_embeddings.ipynb</span> </p>
-
-There are many common cases where the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
+Question_answering_using_embeddings.ipynb
+ There are many common cases where the model is not trained on data which contains key facts and information you want to make accessible when generating responses to a user query. One way of solving this, as shown below, is to put additional information into the context window of the model. This is effective in many use cases but leads to higher token costs. In this notebook, we explore the tradeoff between this approach and embeddings bases search.
 
 ```python
 query = f"""Use the below article on the 2022 Winter Olympics to answer the subsequent question. If the answer cannot be found, write "I don't know."
@@ -220,12 +225,12 @@ print(response.choices[0].message.content)
 
 Text search using embeddings
 
-<p>
+
+
   
 
-<span>Semantic_text_search_using_embeddings.ipynb</span> </p>
-
-To retrieve the most relevant documents we use the cosine similarity between the embedding vectors of the query and each document, and return the highest scored documents.
+Semantic_text_search_using_embeddings.ipynb
+ To retrieve the most relevant documents we use the cosine similarity between the embedding vectors of the query and each document, and return the highest scored documents.
 
 ```python
 def search_reviews(df, product_description, n=3, pprint=True):
@@ -243,12 +248,12 @@ res = search_reviews(df, "delicious beans", n=3)
 
 Code search using embeddings
 
-<p>
+
+
   
 
-<span>Code_search.ipynb</span> </p>
-
-Code search works similarly to embedding-based text search. We provide a method to extract Python functions from all the Python files in a given repository. Each function is then indexed by the `text-embedding-3-small` model.
+Code_search.ipynb
+ Code search works similarly to embedding-based text search. We provide a method to extract Python functions from all the Python files in a given repository. Each function is then indexed by the `text-embedding-3-small` model.
 
 To perform a code search, we embed the query in natural language using the same model. Then we calculate cosine similarity between the resulting query embedding and each of the function embeddings. The highest cosine similarity results are most relevant.
 
@@ -274,12 +279,12 @@ res = search_functions(df, "Completions API tests", n=3)
 
 Recommendations using embeddings
 
-<p>
+
+
   
 
-<span>Recommendation_using_embeddings.ipynb</span> </p>
-
-Because shorter distances between embedding vectors represent greater similarity, embeddings can be useful for recommendation.
+Recommendation_using_embeddings.ipynb
+ Because shorter distances between embedding vectors represent greater similarity, embeddings can be useful for recommendation.
 
 Below, we illustrate a basic recommender. It takes in a list of strings and one 'source' string, computes their embeddings, and then returns a ranking of the strings, ranked from most similar to least similar. As a concrete example, the linked notebook below applies a version of this function to the [AG news dataset](http://groups.di.unipi.it/~gulli/AG_corpus_of_news_articles.html) (sampled down to 2,000 news article descriptions) to return the top 5 most similar articles to any given source article.
 
@@ -312,12 +317,12 @@ def recommendations_from_strings(
 
 Data visualization in 2D
 
-<p>
+
+
   
 
-<span>Visualizing_embeddings_in_2D.ipynb</span> </p>
-
-The size of the embeddings varies with the complexity of the underlying model. In order to visualize this high dimensional data we use the t-SNE algorithm to transform the data into two dimensions.
+Visualizing_embeddings_in_2D.ipynb
+ The size of the embeddings varies with the complexity of the underlying model. In order to visualize this high dimensional data we use the t-SNE algorithm to transform the data into two dimensions.
 
 We color the individual reviews based on the star rating which the reviewer has given:
 
@@ -358,12 +363,12 @@ plt.title("Amazon ratings visualized in language using t-SNE")
 
 Embedding as a text feature encoder for ML algorithms
 
-<p>
+
+
   
 
-<span>Regression_using_embeddings.ipynb</span> </p>
-
-An embedding can be used as a general free-text feature encoder within a machine learning model. Incorporating embeddings will improve the performance of any machine learning model, if some of the relevant inputs are free text. An embedding can also be used as a categorical feature encoder within a ML model. This adds most value if the names of categorical variables are meaningful and numerous, such as job titles. Similarity embeddings generally perform better than search embeddings for this task.
+Regression_using_embeddings.ipynb
+ An embedding can be used as a general free-text feature encoder within a machine learning model. Incorporating embeddings will improve the performance of any machine learning model, if some of the relevant inputs are free text. An embedding can also be used as a categorical feature encoder within a ML model. This adds most value if the names of categorical variables are meaningful and numerous, such as job titles. Similarity embeddings generally perform better than search embeddings for this task.
 
 We observed that generally the embedding representation is very rich and information dense. For example, reducing the dimensionality of the inputs using SVD or PCA, even by 10%, generally results in worse downstream performance on specific tasks.
 
@@ -395,12 +400,12 @@ preds = rfr.predict(X_test)
 
 Classification using the embedding features
 
-<p>
+
+
   
 
-<span>Classification_using_embeddings.ipynb</span> </p>
-
-This time, instead of having the algorithm predict a value anywhere between 1 and 5, we will attempt to classify the exact number of stars for a review into 5 buckets, ranging from 1 to 5 stars.
+Classification_using_embeddings.ipynb
+ This time, instead of having the algorithm predict a value anywhere between 1 and 5, we will attempt to classify the exact number of stars for a review into 5 buckets, ranging from 1 to 5 stars.
 
 After the training, the model learns to predict 1 and 5-star reviews much better than the more nuanced reviews (2-4 stars), likely due to more extreme sentiment expression.
 
@@ -416,12 +421,12 @@ preds = clf.predict(X_test)
 
 Zero-shot classification
 
-<p>
+
+
   
 
-<span>Zero-shot_classification_with_embeddings.ipynb</span> </p>
-
-We can use embeddings for zero shot classification without any labeled training data. For each class, we embed the class name or a short description of the class. To classify some new text in a zero-shot manner, we compare its embedding to all class embeddings and predict the class with the highest similarity.
+Zero-shot_classification_with_embeddings.ipynb
+ We can use embeddings for zero shot classification without any labeled training data. For each class, we embed the class name or a short description of the class. To classify some new text in a zero-shot manner, we compare its embedding to all class embeddings and predict the class with the highest similarity.
 
 ```python
 df = df[df.Score != 3]
@@ -447,12 +452,12 @@ prediction = (
 
 Obtaining user and product embeddings for cold-start recommendation
 
-<p>
+
+
   
 
-<span>User_and_product_embeddings.ipynb</span> </p>
-
-We can obtain a user embedding by averaging over all of their reviews. Similarly, we can obtain a product embedding by averaging over all the reviews about that product. In order to showcase the usefulness of this approach we use a subset of 50k reviews to cover more reviews per user and per product.
+User_and_product_embeddings.ipynb
+ We can obtain a user embedding by averaging over all of their reviews. Similarly, we can obtain a product embedding by averaging over all the reviews about that product. In order to showcase the usefulness of this approach we use a subset of 50k reviews to cover more reviews per user and per product.
 
 We evaluate the usefulness of these embeddings on a separate test set, where we plot similarity of the user and product embedding as a function of the rating. Interestingly, based on this approach, even before the user receives the product we can predict better than random whether they would like the product.
 
@@ -464,12 +469,12 @@ prod_embeddings = df.groupby("ProductId").ada_embedding.apply(np.mean)
 
 Clustering
 
-<p>
+
+
   
 
-<span>Clustering.ipynb</span> </p>
-
-Clustering is one way of making sense of a large volume of textual data. Embeddings are useful for this task, as they provide semantically meaningful vector representations of each text. Thus, in an unsupervised way, clustering will uncover hidden groupings in our dataset.
+Clustering.ipynb
+ Clustering is one way of making sense of a large volume of textual data. Embeddings are useful for this task, as they provide semantically meaningful vector representations of each text. Thus, in an unsupervised way, clustering will uncover hidden groupings in our dataset.
 
 In this example, we discover four distinct clusters: one focusing on dog food, one on negative reviews, and two on positive reviews.
 

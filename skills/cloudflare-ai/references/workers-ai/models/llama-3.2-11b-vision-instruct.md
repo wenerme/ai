@@ -37,13 +37,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
    -d '{ "prompt": "agree"}'
 ```
 
-| Model Info                                                                 |                                                                                          |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                           |
-| Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) |
-| Vision                                                                     | Yes                                                                                      |
-| LoRA                                                                       | Yes                                                                                      |
-| Unit Pricing                                                               | $0.049 per M input tokens, $0.68 per M output tokens                                     |
+| Model Info                                                                          |                                                                                          |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                           |
+| Terms and License                                                                   | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) |
+| Vision                                                                              | Yes                                                                                      |
+| LoRA                                                                                | Yes                                                                                      |
+| Unit Pricing                                                                        | $0.049 per M input tokens, $0.68 per M output tokens                                     |
 
 ## Playground
 

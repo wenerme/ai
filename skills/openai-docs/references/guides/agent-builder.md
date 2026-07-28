@@ -1,5 +1,7 @@
 # Agent Builder
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 **Agent Builder** is a visual canvas for building multi-step agent workflows.
 
 You can start from templates, drag and drop nodes for each step in your workflow, provide typed inputs and outputs, and preview runs using live data. When you're ready to deploy, embed the workflow into your site with ChatKit, or download the SDK code to run it yourself.
@@ -21,8 +23,10 @@ To build useful agents, you create workflows for them. A **workflow** is a combi
 Open Agent Builder
 
 
-<br />
-<br />
+
+
+
+
 
 There are three main steps in building agents to handle tasks:
 

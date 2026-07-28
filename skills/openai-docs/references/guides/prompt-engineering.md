@@ -1,10 +1,12 @@
 # Prompt engineering
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 With the OpenAI API, you can use a [large language model](https://developers.openai.com/api/docs/models) to generate text from a prompt, as you might using [ChatGPT](https://chatgpt.com). Models can generate almost any kind of text response—like code, mathematical equations, structured JSON data, or human-like prose.
 
 
 
-Here's a simple example using the [Responses API](https://developers.openai.com/api/docs/api-reference/responses).
+Here's a simple example using the [Responses API](https://developers.openai.com/api/reference/resources/responses).
 
 Generate text from a simple prompt
 
@@ -42,27 +44,18 @@ openai responses create \
 ```
 
 ```csharp
-using System;
-using System.Threading.Tasks;
-using OpenAI;
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
-class Program
-{
-    static async Task Main()
-    {
-        var client = new OpenAIClient(
-            Environment.GetEnvironmentVariable("OPENAI_API_KEY")
-        );
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
 
-        var response = await client.Responses.CreateAsync(new ResponseCreateRequest
-        {
-            Model = "gpt-5.6",
-            Input = "Say 'this is a test.'"
-        });
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    "Say 'this is a test.'"
+);
 
-        Console.WriteLine($"[ASSISTANT]: {response.OutputText()}");
-    }
-}
+Console.WriteLine($"[ASSISTANT]: {response.GetOutputText()}");
 ```
 
 ```java
@@ -342,7 +335,7 @@ For new prompt-engineering work:
 
 - Keep prompt builders in a small module near the feature they support.
 - Use typed function arguments or schemas for dynamic values such as customer data, files, or task options.
-- Pass the generated `instructions` and `input` directly to the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create).
+- Pass the generated `instructions` and `input` directly to the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create).
 - Add representative fixtures, tests, and evaluation checks before changing production prompts.
 - Roll out prompt changes through your deployment system, using feature flags or configuration when you need staged releases.
 
@@ -365,8 +358,8 @@ Below is an example of using Markdown and XML tags to construct a `developer` me
 
 
 
-<div data-content-switcher-pane data-value="prompt">
-    <div class="hidden">Example prompt</div>
+Example prompt
+
     A developer message for code generation
 
 ```text
@@ -396,9 +389,13 @@ var first_name = "Anna";
 </assistant_response>
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="code" hidden>
-    <div class="hidden">API request</div>
+  
+
+  
+
+    
+API request
+
     Send a prompt to generate code through the API
 
 ```javascript
@@ -445,13 +442,11 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-  </div>
-
 
 
 #### Save on cost and latency with prompt caching
 
-When constructing a message, you should try and keep content that you expect to use over and over in your API requests at the beginning of your prompt, **and** among the first API parameters you pass in the JSON request body to [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat) or [Responses](https://developers.openai.com/api/docs/api-reference/responses). This enables you to maximize cost and latency savings from [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
+When constructing a message, you should try and keep content that you expect to use over and over in your API requests at the beginning of your prompt, **and** among the first API parameters you pass in the JSON request body to [Chat Completions](https://developers.openai.com/api/reference/resources/chat) or [Responses](https://developers.openai.com/api/reference/resources/responses). This enables you to maximize cost and latency savings from [prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching).
 
 ## Few-shot learning
 
@@ -518,16 +513,10 @@ Models have different context window sizes from the low 100k range up to one mil
 
 GPT models like [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) benefit from precise instructions that explicitly provide the logic and data required to complete the task in the prompt. To get the most out of the latest GPT-5 series model, start with the current prompting guide.
 
-<a href="/api/docs/guides/latest-model#prompting-best-practices">
-  
+[
 
-<span slot="icon">
-      </span>
-    Get the most out of prompting the latest GPT-5 series model with current
-    guidance, practical examples, and migration notes.
-
-
-</a>
+      Get the most out of prompting the latest GPT-5 series model with current
+    guidance, practical examples, and migration notes.](https://developers.openai.com/api/docs/guides/latest-model#prompting-best-practices)
 
 ### Prompting best practices for the latest GPT-5 series model
 
@@ -643,35 +632,29 @@ For more information on best practices when using reasoning models, [refer to th
 
 Now that you know the basics of text inputs and outputs, you might want to check out one of these resources next.
 
-[
+[Build a prompt in the Playground
 
-<span slot="icon">
-      </span>
-    Use the Playground to develop and iterate on prompts.
 
-](https://platform.openai.com/chat/edit)
 
-[
+      Use the Playground to develop and iterate on prompts.](https://platform.openai.com/chat/edit)
 
-<span slot="icon">
-      </span>
-    Ensure JSON data emitted from a model conforms to a JSON schema.
+[Generate JSON data with Structured Outputs
 
-](https://developers.openai.com/api/docs/guides/structured-outputs)
 
-[
 
-<span slot="icon">
-      </span>
-    Check out all the options for text generation in the API reference.
+      Ensure JSON data emitted from a model conforms to a JSON schema.](https://developers.openai.com/api/docs/guides/structured-outputs)
 
-](https://developers.openai.com/api/docs/api-reference/responses)
+[Full API reference
+
+
+
+      Check out all the options for text generation in the API reference.](https://developers.openai.com/api/reference/resources/responses)
 
 ## Other resources
 
 For more inspiration, visit the [OpenAI Cookbook](https://developers.openai.com/cookbook), which contains example code and also links to third-party resources such as:
 
-- [Prompting libraries & tools](https://developers.openai.com/cookbook/related_resources#prompting-libraries--tools)
-- [Prompting guides](https://developers.openai.com/cookbook/related_resources#prompting-guides)
-- [Video courses](https://developers.openai.com/cookbook/related_resources#video-courses)
-- [Papers on advanced prompting to improve reasoning](https://developers.openai.com/cookbook/related_resources#papers-on-advanced-prompting-to-improve-reasoning)
+- [Prompting libraries & tools](https://developers.openai.com/cookbook/articles/related_resources#prompting-libraries--tools)
+- [Prompting guides](https://developers.openai.com/cookbook/articles/related_resources#prompting-guides)
+- [Video courses](https://developers.openai.com/cookbook/articles/related_resources#video-courses)
+- [Papers on advanced prompting to improve reasoning](https://developers.openai.com/cookbook/articles/related_resources#papers-on-advanced-prompting-to-improve-reasoning)

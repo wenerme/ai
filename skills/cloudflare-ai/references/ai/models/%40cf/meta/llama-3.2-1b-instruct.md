@@ -24,11 +24,11 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 The Llama 3.2 instruction-tuned text only models are optimized for multilingual dialogue use cases, including agentic retrieval and summarization tasks.
 
-| Model Info                                                                 |                                                                                          |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 60,000 tokens                                                                            |
-| Terms and License                                                          | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) |
-| Unit Pricing                                                               | $0.027 per M input tokens, $0.20 per M output tokens                                     |
+| Model Info                                                                          |                                                                                          |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 60,000 tokens                                                                            |
+| Terms and License                                                                   | [link ↗](https://github.com/meta-llama/llama-models/blob/main/models/llama3%5F2/LICENSE) |
+| Unit Pricing                                                                        | $0.027 per M input tokens, $0.20 per M output tokens                                     |
 
 ## Playground
 

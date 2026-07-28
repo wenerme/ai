@@ -1,5 +1,7 @@
 # Realtime conversations
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Once you have connected to the Realtime API through either [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc) or [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket), you can call a Realtime model (such as [`gpt-realtime-2.1`](https://developers.openai.com/api/docs/models/gpt-realtime-2.1)) to have speech-to-speech conversations. Doing so will require you to **send client events** to initiate actions, and **listen for server events** to respond to actions taken by the Realtime API.
 
 This guide will walk through the event flows required to use model capabilities like audio and text generation, image input, and function calling, and how to think about the state of a Realtime Session.
@@ -20,7 +22,8 @@ A Realtime Session is a stateful interaction between the model and a connected c
 
 If you are using WebRTC, much of the media handling required to send and receive audio from the model is assisted by WebRTC APIs.
 
-<br/>
+
+
 If you are using WebSockets for audio, you will need to manually interact with the **input audio buffer** by sending audio to the server, sent with JSON events with base64-encoded audio.
 
 All these components together make up a Realtime Session. You will use client events to update the state of the session, and listen for server events to react to state changes within the session.
@@ -29,7 +32,7 @@ All these components together make up a Realtime Session. You will use client ev
 
 ## Session lifecycle events
 
-After initiating a session via either [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc) or [WebSockets](https://developers.openai.com/api/docs/guides/realtime-websockets), the server will send a [`session.created`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/session/created) event indicating the session is ready. On the client, you can update the current session configuration with the [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) event. Most session properties can be updated at any time, except for the `voice` the model uses for audio output, after the model has responded with audio once during the session. The maximum duration of a Realtime session is **60 minutes**.
+After initiating a session via either [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc) or [WebSockets](https://developers.openai.com/api/docs/guides/realtime-websocket), the server will send a [`session.created`](https://developers.openai.com/api/reference/resources/realtime) event indicating the session is ready. On the client, you can update the current session configuration with the [`session.update`](https://developers.openai.com/api/reference/resources/realtime) event. Most session properties can be updated at any time, except for the `voice` the model uses for audio output, after the model has responded with audio once during the session. The maximum duration of a Realtime session is **60 minutes**.
 
 The following example shows updating the session with a `session.update` client event. See the [WebRTC](https://developers.openai.com/api/docs/guides/realtime-webrtc#sending-and-receiving-events) or [WebSocket](https://developers.openai.com/api/docs/guides/realtime-websocket#sending-and-receiving-events) guide for more on sending client events over these channels.
 
@@ -81,45 +84,43 @@ dataChannel.send(JSON.stringify(event));
 ```python
 event = {
     "type": "session.update",
-    session: {
-      type: "realtime",
-      model: "gpt-realtime-2.1",
-      # Lock the output to audio (add "text" if you also want text)
-      output_modalities: ["audio"],
-      audio: {
-        input: {
-          format: {
-            type: "audio/pcm",
-            rate: 24000,
-          },
-          turn_detection: {
-            type: "semantic_vad"
-          }
+    "session": {
+        "type": "realtime",
+        "model": "gpt-realtime-2.1",
+        # Lock the output to audio (add "text" if you also want text).
+        "output_modalities": ["audio"],
+        "audio": {
+            "input": {
+                "format": {
+                    "type": "audio/pcm",
+                    "rate": 24000,
+                },
+                "turn_detection": {"type": "semantic_vad"},
+            },
+            "output": {
+                "format": {
+                    "type": "audio/pcmu",
+                },
+                "voice": "marin",
+            },
         },
-        output: {
-          format: {
-            type: "audio/pcmu",
-          },
-          voice: "marin",
-        }
-      },
-      # Use a server-stored prompt by ID. Optionally pin a version and pass variables.
-      prompt: {
-        id: "pmpt_123",          // your stored prompt ID
-        version: "89",           // optional: pin a specific version
-        variables: {
-          city: "Paris"          // example variable used by your prompt
-        }
-      },
-      # You can still set direct session fields; these override prompt fields if they overlap:
-      instructions: "Speak clearly and briefly. Confirm understanding before taking actions."
-    }
+        # Use a server-stored prompt by ID. Optionally pin a version and pass variables.
+        "prompt": {
+            "id": "pmpt_123",  # Your stored prompt ID.
+            "version": "89",  # Optional: pin a specific version.
+            "variables": {
+                "city": "Paris",  # Example variable used by your prompt.
+            },
+        },
+        # Direct session fields override prompt fields if they overlap.
+        "instructions": "Speak clearly and briefly. Confirm understanding before taking actions.",
+    },
 }
 ws.send(json.dumps(event))
 ```
 
 
-When the session has been updated, the server will emit a [`session.updated`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/session/updated) event with the new state of the session.
+When the session has been updated, the server will emit a [`session.updated`](https://developers.openai.com/api/reference/resources/realtime) event with the new state of the session.
 
 <table>
   <tr>
@@ -128,21 +129,22 @@ When the session has been updated, the server will emit a [`session.updated`](ht
   </tr>
   <tr>
     <td>
-      [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update)
+      [`session.update`](https://developers.openai.com/api/reference/resources/realtime)
     </td>
     <td>
-      [`session.created`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/session/created)
-      <div />
-      [`session.updated`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/session/updated)
+      [`session.created`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`session.updated`](https://developers.openai.com/api/reference/resources/realtime)
     </td>
   </tr>
 </table>
 
 ## Text inputs and outputs
 
-To generate text with a Realtime model, you can add text inputs to the current conversation, ask the model to generate a response, and listen for server-sent events indicating the progress of the model's response. In order to generate text, the [session must be configured](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) with the `text` modality (this is true by default).
+To generate text with a Realtime model, you can add text inputs to the current conversation, ask the model to generate a response, and listen for server-sent events indicating the progress of the model's response. In order to generate text, the [session must be configured](https://developers.openai.com/api/reference/resources/realtime) with the `text` modality (this is true by default).
 
-Create a new text conversation item using the [`conversation.item.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/conversation/item/create) client event. This is similar to sending a [user message (prompt) in Chat Completions](https://developers.openai.com/api/docs/guides/text-generation) in the REST API.
+Create a new text conversation item using the [`conversation.item.create`](https://developers.openai.com/api/reference/resources/realtime) client event. This is similar to sending a [user message (prompt) in Chat Completions](https://developers.openai.com/api/docs/guides/text) in the REST API.
 
 Create a conversation item with user input
 
@@ -176,14 +178,14 @@ event = {
                 "type": "input_text",
                 "text": "What Prince album sold the most copies?",
             }
-        ]
-    }
+        ],
+    },
 }
 ws.send(json.dumps(event))
 ```
 
 
-After adding the user message to the conversation, send the [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) event to initiate a response from the model. If both audio and text are enabled for the current session, the model will respond with both audio and text content. If you'd like to generate text only, you can specify that when sending the `response.create` client event, as shown below.
+After adding the user message to the conversation, send the [`response.create`](https://developers.openai.com/api/reference/resources/realtime) event to initiate a response from the model. If both audio and text are enabled for the current session, the model will respond with both audio and text content. If you'd like to generate text only, you can specify that when sending the `response.create` client event, as shown below.
 
 Generate a text-only response
 
@@ -200,17 +202,12 @@ dataChannel.send(JSON.stringify(event));
 ```
 
 ```python
-event = {
-    "type": "response.create",
-    "response": {
-        "output_modalities": [ "text" ]
-    }
-}
+event = {"type": "response.create", "response": {"output_modalities": ["text"]}}
 ws.send(json.dumps(event))
 ```
 
 
-When the response is completely finished, the server will emit the [`response.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/done) event. This event will contain the full text generated by the model, as shown below.
+When the response is completely finished, the server will emit the [`response.done`](https://developers.openai.com/api/reference/resources/realtime) event. This event will contain the full text generated by the model, as shown below.
 
 Listen for response.done to see the final results
 
@@ -233,12 +230,12 @@ dataChannel.addEventListener("message", handleEvent);
 ```python
 def on_message(ws, message):
     server_event = json.loads(message)
-    if server_event.type == "response.done":
-        print(server_event.response.output[0])
+    if server_event["type"] == "response.done":
+        print(server_event["response"]["output"][0])
 ```
 
 
-While the model response is being generated, the server will emit a number of lifecycle events during the process. You can listen for these events, such as [`response.output_text.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_text/delta), to provide realtime feedback to users as the response is generated. A full listing of the events emitted by there server are found below under **related server events**. They are provided in the rough order of when they are emitted, along with relevant client-side events for text generation.
+While the model response is being generated, the server will emit a number of lifecycle events during the process. You can listen for these events, such as [`response.output_text.delta`](https://developers.openai.com/api/reference/resources/realtime), to provide realtime feedback to users as the response is generated. A full listing of the events emitted by there server are found below under **related server events**. They are provided in the rough order of when they are emitted, along with relevant client-side events for text generation.
 
 <table>
   <tr>
@@ -247,32 +244,43 @@ While the model response is being generated, the server will emit a number of li
   </tr>
   <tr>
     <td>
-      [`conversation.item.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/conversation/item/create)
-      <div />
-      [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create)
+      [`conversation.item.create`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.create`](https://developers.openai.com/api/reference/resources/realtime)
     </td>
     <td>
-      [`conversation.item.added`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/conversation/item/added)
-      <div />
-      [`conversation.item.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/conversation/item/done)
-      <div />
-      [`response.created`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/created)
-      <div />
-      [`response.output_item.added`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_item/added)
-      <div />
-      [`response.content_part.added`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/content_part/added)
-      <div />
-      [`response.output_text.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_text/delta)
-      <div />
-      [`response.output_text.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_text/done)
-      <div />
-      [`response.content_part.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/content_part/done)
-      <div />
-      [`response.output_item.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_item/done)
-      <div />
-      [`response.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/done)
-      <div />
-      [`rate_limits.updated`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/rate_limits/updated)
+      [`conversation.item.added`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`conversation.item.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.created`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_item.added`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.content_part.added`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_text.delta`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_text.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.content_part.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_item.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`rate_limits.updated`](https://developers.openai.com/api/reference/resources/realtime/server-events#rate_limits.updated)
     </td>
   </tr>
 </table>
@@ -318,10 +326,10 @@ By default, WebRTC clients don't need to send any client events to the Realtime 
 
 However, WebRTC clients still receive a number of server-sent lifecycle events as audio is moving back and forth between client and server over the peer connection. Examples include:
 
-- When input is sent over the local media track, you will receive [`input_audio_buffer.speech_started`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/input_audio_buffer/speech_started) events from the server.
-- When local audio input stops, you'll receive the [`input_audio_buffer.speech_stopped`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/input_audio_buffer/speech_started) event.
-- You'll receive [delta events for the in-progress audio transcript](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio_transcript/delta).
-- You'll receive a [`response.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/done) event when the model has transcribed and completed sending a response.
+- When input is sent over the local media track, you will receive [`input_audio_buffer.speech_started`](https://developers.openai.com/api/reference/resources/realtime) events from the server.
+- When local audio input stops, you'll receive the [`input_audio_buffer.speech_stopped`](https://developers.openai.com/api/reference/resources/realtime) event.
+- You'll receive [delta events for the in-progress audio transcript](https://developers.openai.com/api/reference/resources/realtime).
+- You'll receive a [`response.done`](https://developers.openai.com/api/reference/resources/realtime) event when the model has transcribed and completed sending a response.
 
 Manipulating WebRTC APIs for media streams may give you all the control you need. However, it may occasionally be necessary to use lower-level interfaces for audio input and output. Refer to the WebSockets section below for more information and a listing of events required for granular audio input handling.
 
@@ -340,90 +348,115 @@ The events below are given in lifecycle order, though some events (like the `del
   <tr>
     <td>Session initialization</td>
     <td>
-      [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update)
+      [`session.update`](https://developers.openai.com/api/reference/resources/realtime)
     </td>
     <td>
-      [`session.created`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/session/created)
-      <div />
-      [`session.updated`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/session/updated)
+      [`session.created`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`session.updated`](https://developers.openai.com/api/reference/resources/realtime)
     </td>
   </tr>
   <tr>
     <td>User audio input</td>
     <td>
-      [`conversation.item.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/conversation/item/create)
-      <br />
+      [`conversation.item.create`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
       &nbsp;&nbsp;(send whole audio message)
-      <div />
-      [`input_audio_buffer.append`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/append)
-      <br />
+      
+
+      [`input_audio_buffer.append`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
       &nbsp;&nbsp;(stream audio in chunks)
-      <div />
-      [`input_audio_buffer.commit`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/commit)
-      <br />
+      
+
+      [`input_audio_buffer.commit`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
       &nbsp;&nbsp;(used when VAD is disabled)
-      <div />
-      [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create)
-      <br />
+      
+
+      [`response.create`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
       &nbsp;&nbsp;(used when VAD is disabled)
     </td>
     <td>
-      [`input_audio_buffer.speech_started`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/input_audio_buffer/speech_started)
-      <div />
-      [`input_audio_buffer.speech_stopped`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/input_audio_buffer/speech_stopped)
-      <div />
-      [`input_audio_buffer.committed`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/input_audio_buffer/committed)
+      [`input_audio_buffer.speech_started`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`input_audio_buffer.speech_stopped`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`input_audio_buffer.committed`](https://developers.openai.com/api/reference/resources/realtime)
     </td>
   </tr>
   <tr>
     <td>Server audio output</td>
     <td>
-      [`input_audio_buffer.clear`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/clear)
-      <br />
+      [`input_audio_buffer.clear`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
       &nbsp;&nbsp;(used when VAD is disabled)
     </td>
     <td>
-      [`conversation.item.added`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/conversation/item/added)
-      <div />
-      [`conversation.item.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/conversation/item/done)
-      <div />
-      [`response.created`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/created)
-      <div />
-      [`response.output_item.created`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_item/created)
-      <div />
-      [`response.content_part.added`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/content_part/added)
-      <div />
-      [`response.output_audio.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio/delta)
-      <div />
-      [`response.output_audio.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio/done)
-      <div />
-      [`response.output_audio_transcript.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio_transcript/delta)
-      <div />
-      [`response.output_audio_transcript.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio_transcript/done)
-      <div />
-      [`response.output_text.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_text/delta)
-      <div />
-      [`response.output_text.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_text/done)
-      <div />
-      [`response.content_part.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/content_part/done)
-      <div />
-      [`response.output_item.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_item/done)
-      <div />
-      [`response.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/done)
-      <div />
-      [`rate_limits.updated`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/rate_limits/updated)
+      [`conversation.item.added`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`conversation.item.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.created`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_item.added`](https://developers.openai.com/api/reference/resources/realtime/server-events#response.output_item.added)
+      
+
+      [`response.content_part.added`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_audio.delta`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_audio.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_audio_transcript.delta`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_audio_transcript.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_text.delta`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_text.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.content_part.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.output_item.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`response.done`](https://developers.openai.com/api/reference/resources/realtime)
+      
+
+      [`rate_limits.updated`](https://developers.openai.com/api/reference/resources/realtime)
     </td>
   </tr>
 </table>
 
 ### Streaming audio input to the server
 
-To stream audio input to the server, you can use the [`input_audio_buffer.append`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/append) client event. This event requires you to send chunks of **Base64-encoded audio bytes** to the Realtime API over the socket. Each chunk cannot exceed 15 MB in size.
+To stream audio input to the server, you can use the [`input_audio_buffer.append`](https://developers.openai.com/api/reference/resources/realtime) client event. This event requires you to send chunks of **Base64-encoded audio bytes** to the Realtime API over the socket. Each chunk cannot exceed 15 MB in size.
 
 The format of the input chunks can be configured either for the entire session, or per response.
 
-- Session: `session.input_audio_format` in [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update)
-- Response: `response.input_audio_format` in [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create)
+- Session: `session.input_audio_format` in [`session.update`](https://developers.openai.com/api/reference/resources/realtime)
+- Response: `response.input_audio_format` in [`response.create`](https://developers.openai.com/api/reference/resources/realtime)
 
 Append audio input bytes to the conversation
 
@@ -490,39 +523,35 @@ from websocket import create_connection
 
 # ... create websocket-client named ws ...
 
+
 def float_to_16bit_pcm(float32_array):
     clipped = [max(-1.0, min(1.0, x)) for x in float32_array]
-    pcm16 = b''.join(struct.pack('<h', int(x * 32767)) for x in clipped)
+    pcm16 = b"".join(struct.pack("<h", int(x * 32767)) for x in clipped)
     return pcm16
+
 
 def base64_encode_audio(float32_array):
     pcm_bytes = float_to_16bit_pcm(float32_array)
-    encoded = base64.b64encode(pcm_bytes).decode('ascii')
+    encoded = base64.b64encode(pcm_bytes).decode("ascii")
     return encoded
 
-files = [
-    './path/to/sample1.wav',
-    './path/to/sample2.wav',
-    './path/to/sample3.wav'
-]
+
+files = ["./path/to/sample1.wav", "./path/to/sample2.wav", "./path/to/sample3.wav"]
 
 for filename in files:
-    data, samplerate = sf.read(filename, dtype='float32')
+    data, samplerate = sf.read(filename, dtype="float32")
     channel_data = data[:, 0] if data.ndim > 1 else data
     base64_chunk = base64_encode_audio(channel_data)
 
     # Send the client event
-    event = {
-        "type": "input_audio_buffer.append",
-        "audio": base64_chunk
-    }
+    event = {"type": "input_audio_buffer.append", "audio": base64_chunk}
     ws.send(json.dumps(event))
 ```
 
 
 ### Send full audio messages
 
-It is also possible to create conversation messages that are full audio recordings. Use the [`conversation.item.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/conversation/item/create) client event to create messages with `input_audio` content.
+It is also possible to create conversation messages that are full audio recordings. Use the [`conversation.item.create`](https://developers.openai.com/api/reference/resources/realtime) client event to create messages with `input_audio` content.
 
 Create full audio input conversation items
 
@@ -572,14 +601,14 @@ ws.send(json.dumps(event))
 
 **To play output audio back on a client device like a web browser, we recommend using WebRTC rather than WebSockets**. WebRTC will be more robust sending media to client devices over uncertain network conditions.
 
-But to work with audio output in server-to-server applications using a WebSocket, you will need to listen for [`response.output_audio.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio/delta) events containing the Base64-encoded chunks of audio data from the model. You will either need to buffer these chunks and write them out to a file, or maybe immediately stream them to another source like [a phone call with Twilio](https://www.twilio.com/en-us/blog/twilio-openai-realtime-api-launch-integration).
+But to work with audio output in server-to-server applications using a WebSocket, you will need to listen for [`response.output_audio.delta`](https://developers.openai.com/api/reference/resources/realtime) events containing the Base64-encoded chunks of audio data from the model. You will either need to buffer these chunks and write them out to a file, or maybe immediately stream them to another source like [a phone call with Twilio](https://www.twilio.com/en-us/blog/twilio-openai-realtime-api-launch-integration).
 
-Note that the [`response.output_audio.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio/done) and [`response.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/done) events won't actually contain audio data in them - just audio content transcriptions. To get the actual bytes, you'll need to listen for the [`response.output_audio.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/output_audio/delta) events.
+Note that the [`response.output_audio.done`](https://developers.openai.com/api/reference/resources/realtime) and [`response.done`](https://developers.openai.com/api/reference/resources/realtime) events won't actually contain audio data in them - just audio content transcriptions. To get the actual bytes, you'll need to listen for the [`response.output_audio.delta`](https://developers.openai.com/api/reference/resources/realtime) events.
 
 The format of the output chunks can be configured either for the entire session, or per response.
 
-- Session: `session.audio.output.format` in [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update)
-- Response: `response.audio.output.format` in [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create)
+- Session: `session.audio.output.format` in [`session.update`](https://developers.openai.com/api/reference/resources/realtime)
+- Response: `response.audio.output.format` in [`response.create`](https://developers.openai.com/api/reference/resources/realtime)
 
 Listen for response.output_audio.delta events
 
@@ -601,7 +630,7 @@ def on_message(ws, message):
     server_event = json.loads(message)
     if server_event["type"] == "response.output_audio.delta":
         # Access Base64-encoded audio chunks:
-        # print(server_event["delta"])
+        print(server_event["delta"])
 ```
 
 
@@ -641,17 +670,17 @@ Read more about how to configure VAD in our [voice activity detection](https://d
 
 ### Disable VAD
 
-VAD can be disabled by setting `turn_detection` to `null` with the [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) client event. This can be useful for interfaces where you would like to take granular control over audio input, like [push to talk](https://en.wikipedia.org/wiki/Push-to-talk) interfaces.
+VAD can be disabled by setting `turn_detection` to `null` with the [`session.update`](https://developers.openai.com/api/reference/resources/realtime) client event. This can be useful for interfaces where you would like to take granular control over audio input, like [push to talk](https://en.wikipedia.org/wiki/Push-to-talk) interfaces.
 
 When VAD is disabled, the client will have to manually emit some additional client events to trigger audio responses:
 
-- Manually send [`input_audio_buffer.commit`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/commit), which will create a new user input item for the conversation.
-- Manually send [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) to trigger an audio response from the model.
-- Send [`input_audio_buffer.clear`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/clear) before beginning a new user input.
+- Manually send [`input_audio_buffer.commit`](https://developers.openai.com/api/reference/resources/realtime), which will create a new user input item for the conversation.
+- Manually send [`response.create`](https://developers.openai.com/api/reference/resources/realtime) to trigger an audio response from the model.
+- Send [`input_audio_buffer.clear`](https://developers.openai.com/api/reference/resources/realtime) before beginning a new user input.
 
 ### Keep VAD, but disable automatic responses
 
-If you would like to keep VAD mode enabled, but would just like to retain the ability to manually decide when a response is generated, you can set `turn_detection.interrupt_response` and `turn_detection.create_response` to `false` with the [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) client event. This will retain all the behavior of VAD but not automatically create new Responses. Clients can trigger these manually with a [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) event.
+If you would like to keep VAD mode enabled, but would just like to retain the ability to manually decide when a response is generated, you can set `turn_detection.interrupt_response` and `turn_detection.create_response` to `false` with the [`session.update`](https://developers.openai.com/api/reference/resources/realtime) client event. This will retain all the behavior of VAD but not automatically create new Responses. Clients can trigger these manually with a [`response.create`](https://developers.openai.com/api/reference/resources/realtime) event.
 
 This can be useful for moderation or input validation or RAG patterns, where you're comfortable trading a bit more latency in the interaction for control over inputs.
 
@@ -659,7 +688,7 @@ This can be useful for moderation or input validation or RAG patterns, where you
 
 By default, all responses generated during a session are added to the session's conversation state (the "default conversation"). However, you may want to generate model responses outside the context of the session's default conversation, or have multiple responses generated concurrently. You might also want to have more granular control over which conversation items are considered while the model generates a response (e.g. only the last N number of turns).
 
-Generating "out-of-band" responses which are not added to the default conversation state is possible by setting the `response.conversation` field to the string `none` when creating a response with the [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) client event.
+Generating "out-of-band" responses which are not added to the default conversation state is possible by setting the `response.conversation` field to the string `none` when creating a response with the [`response.create`](https://developers.openai.com/api/reference/resources/realtime) client event.
 
 When creating an out-of-band response, you will probably also want some way to identify which server-sent events pertain to this response. You can provide `metadata` for your model response that will help you identify which response is being generated for this client-sent event.
 
@@ -703,12 +732,10 @@ event = {
         # Setting to "none" indicates the response is out of band,
         # and will not be added to the default conversation
         "conversation": "none",
-
         # Set metadata to help identify responses sent back from the model
-        "metadata": { "topic": "classification" },
-
+        "metadata": {"topic": "classification"},
         # Set any other available response fields
-        "output_modalities": [ "text" ],
+        "output_modalities": ["text"],
         "instructions": prompt,
     },
 }
@@ -717,7 +744,7 @@ ws.send(json.dumps(event))
 ```
 
 
-Now, when you listen for the [`response.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/done) server event, you can identify the result of your out-of-band response.
+Now, when you listen for the [`response.done`](https://developers.openai.com/api/reference/resources/realtime) server event, you can identify the result of your out-of-band response.
 
 Create an out-of-band model response
 
@@ -748,19 +775,19 @@ def on_message(ws, message):
 
     # See if metadata is present
     try:
-        topic = server_event.response.metadata.topic
-    except AttributeError:
+        topic = server_event["response"]["metadata"]["topic"]
+    except KeyError:
         print("topic not set")
 
-    if server_event.type == "response.done" and topic == "classification":
+    if server_event["type"] == "response.done" and topic == "classification":
         # this server event pertained to our OOB model response
-        print(server_event.response.output[0])
+        print(server_event["response"]["output"][0])
 ```
 
 
 ### Create a custom context for responses
 
-You can also construct a custom context that the model will use to generate a response, outside the default/current conversation. This can be done using the `input` array on a [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) client event. You can use new inputs, or reference existing input items in the conversation by ID.
+You can also construct a custom context that the model will use to generate a response, outside the default/current conversation. This can be done using the `input` array on a [`response.create`](https://developers.openai.com/api/reference/resources/realtime) client event. You can use new inputs, or reference existing input items in the conversation by ID.
 
 Listen for out-of-band model response with custom context
 
@@ -803,18 +830,13 @@ event = {
     "type": "response.create",
     "response": {
         "conversation": "none",
-        "metadata": { "topic": "pizza" },
-        "output_modalities": [ "text" ],
-
+        "metadata": {"topic": "pizza"},
+        "output_modalities": ["text"],
         # Create a custom input array for this request with whatever
         # context is appropriate
         "input": [
             # potentially include existing conversation items:
-            {
-                "type": "item_reference",
-                "id": "some_conversation_item_id"
-            },
-
+            {"type": "item_reference", "id": "some_conversation_item_id"},
             # include new content as well
             {
                 "type": "message",
@@ -825,7 +847,7 @@ event = {
                         "text": "Is it okay to put pineapple on pizza?",
                     }
                 ],
-            }
+            },
         ],
     },
 }
@@ -884,7 +906,7 @@ ws.send(json.dumps(event))
 
 The Realtime models also support **function calling**, which enables you to execute custom code to extend the capabilities of the model. Here's how it works at a high level:
 
-1. When [updating the session](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) or [creating a response](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create), you can specify a list of available functions for the model to call.
+1. When [updating the session](https://developers.openai.com/api/reference/resources/realtime) or [creating a response](https://developers.openai.com/api/reference/resources/realtime), you can specify a list of available functions for the model to call.
 1. If when processing input, the model determines it should make a function call, it will add items to the conversation representing arguments to a function call.
 1. When the client detects conversation items that contain function call arguments, it will execute custom code using those arguments
 1. When the custom code has been executed, the client will create new conversation items that contain the output of the function call, and ask the model to respond.
@@ -895,12 +917,12 @@ Let's see how this would work in practice by adding a callable function that wil
 
 First, we must give the model a selection of functions it can call based on user input. Available functions can be configured either at the session level, or the individual response level.
 
-- Session: `session.tools` property in [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update)
-- Response: `response.tools` property in [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create)
+- Session: `session.tools` property in [`session.update`](https://developers.openai.com/api/reference/resources/realtime)
+- Response: `response.tools` property in [`response.create`](https://developers.openai.com/api/reference/resources/realtime)
 
 Here's an example client event payload for a `session.update` that configures a horoscope generation function, that takes a single argument (the astrological sign for which the horoscope should be generated):
 
-[`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update)
+[`session.update`](https://developers.openai.com/api/reference/resources/realtime)
 
 ```json
 {
@@ -946,7 +968,7 @@ The `description` fields for the function and the parameters help the model choo
 
 ### Detect when the model wants to call a function
 
-Based on inputs to the model, the model may decide to call a function in order to generate the best response. Let's say our application adds the following conversation item with a [`conversation.item.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/conversation/item/create) event and then creates a response:
+Based on inputs to the model, the model may decide to call a function in order to generate the best response. Let's say our application adds the following conversation item with a [`conversation.item.create`](https://developers.openai.com/api/reference/resources/realtime) event and then creates a response:
 
 ```json
 {
@@ -964,7 +986,7 @@ Based on inputs to the model, the model may decide to call a function in order t
 }
 ```
 
-Followed by a [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) client event to generate a response:
+Followed by a [`response.create`](https://developers.openai.com/api/reference/resources/realtime) client event to generate a response:
 
 ```json
 {
@@ -972,9 +994,9 @@ Followed by a [`response.create`](https://developers.openai.com/api/docs/api-ref
 }
 ```
 
-Instead of immediately returning a text or audio response, the model will instead generate a response that contains the arguments that should be passed to a function in the developer's application. You can listen for realtime updates to function call arguments using the [`response.function_call_arguments.delta`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/function_call_arguments/delta) server event, but `response.done` will also have the complete data we need to call our function.
+Instead of immediately returning a text or audio response, the model will instead generate a response that contains the arguments that should be passed to a function in the developer's application. You can listen for realtime updates to function call arguments using the [`response.function_call_arguments.delta`](https://developers.openai.com/api/reference/resources/realtime) server event, but `response.done` will also have the complete data we need to call our function.
 
-[`response.done`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/response/done)
+[`response.done`](https://developers.openai.com/api/reference/resources/realtime)
 
 ```json
 {
@@ -1016,7 +1038,7 @@ Given this information, we can execute code in our application to generate the h
 
 Upon receiving a response from the model with arguments to a function call, your application can execute code that satisfies the function call. This could be anything you want, like talking to external APIs or accessing databases.
 
-Once you are ready to give the model the results of your custom code, you can create a new conversation item containing the result via the [`conversation.item.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/conversation/item/create) client event.
+Once you are ready to give the model the results of your custom code, you can create a new conversation item containing the result via the [`conversation.item.create`](https://developers.openai.com/api/reference/resources/realtime) client event.
 
 ```json
 {
@@ -1033,7 +1055,7 @@ Once you are ready to give the model the results of your custom code, you can cr
 - `item.call_id` is the same ID we got back in the `response.done` event above
 - `item.output` is a JSON string containing the results of our function call
 
-Once we have added the conversation item containing our function call results, we again emit the [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) event from the client. This will trigger a model response using the data from the function call.
+Once we have added the conversation item containing our function call results, we again emit the [`response.create`](https://developers.openai.com/api/reference/resources/realtime) event from the client. This will trigger a model response using the data from the function call.
 
 ```json
 {
@@ -1043,7 +1065,7 @@ Once we have added the conversation item containing our function call results, w
 
 ## Error handling
 
-The [`error`](https://developers.openai.com/api/docs/api-reference/realtime-server-events/error) event is emitted by the server whenever an error condition is encountered on the server during the session. Occasionally, these errors can be traced to a client event that was emitted by your application.
+The [`error`](https://developers.openai.com/api/reference/resources/realtime) event is emitted by the server whenever an error condition is encountered on the server during the session. Occasionally, these errors can be traced to a client event that was emitted by your application.
 
 Unlike HTTP requests and responses, where a response is implicitly tied to a request from the client, we need to use an `event_id` property on client events to know when one of them has triggered an error condition on the server. This technique is shown in the code below, where the client attempts to emit an unsupported event type.
 
@@ -1079,7 +1101,7 @@ With a WebSocket connection the client manages audio playback, and thus must sto
 
 1. The client monitors for new `input_audio_buffer.speech_started` events from the server, which indicate the user has started speaking. The server will automatically cancel any in-progress model response and a `response.cancelled` event will be emitted.
 1. When the client detects this event, it should immediately stop playback of any audio currently being played from the model. It should note how much of the last audio response was played before the interruption.
-1. The client should send a [`conversation.item.truncate`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/conversation/item/truncate) event to remove the unplayed portion of the model's last response from the conversation.
+1. The client should send a [`conversation.item.truncate`](https://developers.openai.com/api/reference/resources/realtime) event to remove the unplayed portion of the model's last response from the conversation.
 
 Here's an example:
 
@@ -1104,21 +1126,21 @@ Implementing push-to-talk looks a bit different on WebSockets and WebRTC. In a R
 
 To implement push-to-talk with a WebSocket connection, you'll want the client to stop audio playback, handle interruptions, and kick off a new response. Here's a more detailed procedure:
 
-1. Turn VAD off by setting `"turn_detection": null` in a [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) event.
+1. Turn VAD off by setting `"turn_detection": null` in a [`session.update`](https://developers.openai.com/api/reference/resources/realtime) event.
 1. On push down, start recording audio on the client.
-   1. If there is an in-progress response from the model, cancel it by sending a [`response.cancel`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/cancel) event.
+   1. If there is an in-progress response from the model, cancel it by sending a [`response.cancel`](https://developers.openai.com/api/reference/resources/realtime) event.
    1. If there is is ongoing output playback from the model, stop playback immediately and send an `conversation.item.truncate` event to remove any unplayed audio from the conversation.
-1. On up, send an [`input_audio_buffer.append`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/append) message with the audio to place new audio into the input buffer.
-1. Send an [`input_audio_buffer.commit`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/commit) event, this will commit the audio written to the input buffer and kick off input transcription (if enabled).
-1. Then trigger a response with a [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) event.
+1. On up, send an [`input_audio_buffer.append`](https://developers.openai.com/api/reference/resources/realtime) message with the audio to place new audio into the input buffer.
+1. Send an [`input_audio_buffer.commit`](https://developers.openai.com/api/reference/resources/realtime) event, this will commit the audio written to the input buffer and kick off input transcription (if enabled).
+1. Then trigger a response with a [`response.create`](https://developers.openai.com/api/reference/resources/realtime) event.
 
 ### WebRTC and SIP
 
 Implementing push-to-talk with WebRTC is similar but the input audio buffer must be explicitly cleared. Here's a procedure:
 
-1. Turn VAD off by setting `"turn_detection": null` in a [`session.update`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/session/update) event.
-1. On push down, send an [`input_audio_buffer.clear`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/clear) event to clear any previous audio input.
-   1. If there is an in-progress response from the model, cancel it by sending a [`response.cancel`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/cancel) event.
-   1. If there is is ongoing output playback from the model, send an [`output_audio_buffer.clear`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/output_audio_buffer/clear) event to clear out the unplayed audio, this truncates the conversation as well.
-1. On up, send an [`input_audio_buffer.commit`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/input_audio_buffer/commit) event, this will commit the audio written to the input buffer and kick off input transcription (if enabled).
-1. Then trigger a response with a [`response.create`](https://developers.openai.com/api/docs/api-reference/realtime-client-events/response/create) event.
+1. Turn VAD off by setting `"turn_detection": null` in a [`session.update`](https://developers.openai.com/api/reference/resources/realtime) event.
+1. On push down, send an [`input_audio_buffer.clear`](https://developers.openai.com/api/reference/resources/realtime) event to clear any previous audio input.
+   1. If there is an in-progress response from the model, cancel it by sending a [`response.cancel`](https://developers.openai.com/api/reference/resources/realtime) event.
+   1. If there is is ongoing output playback from the model, send an [`output_audio_buffer.clear`](https://developers.openai.com/api/reference/resources/realtime) event to clear out the unplayed audio, this truncates the conversation as well.
+1. On up, send an [`input_audio_buffer.commit`](https://developers.openai.com/api/reference/resources/realtime) event, this will commit the audio written to the input buffer and kick off input transcription (if enabled).
+1. Then trigger a response with a [`response.create`](https://developers.openai.com/api/reference/resources/realtime) event.

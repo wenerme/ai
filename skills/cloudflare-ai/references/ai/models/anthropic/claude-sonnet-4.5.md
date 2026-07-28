@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Claude Sonnet 4.5 is the best coding model to date, with significant improvements across the entire development lifecycle.
 
-| Model Info                                                                 |                                                                                                                               |
-| -------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                                |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                           |
-| Request formats                                                            | Anthropic Messages                                                                                                            |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
+| Model Info                                                                          |                                                                                                                               |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                                |
+| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                    |
+| More information                                                                    | [link ↗](https://www.anthropic.com/claude/sonnet)                                                                             |
+| Zero data retention                                                                 | Yes                                                                                                                           |
+| Request formats                                                                     | Anthropic Messages                                                                                                            |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
 
 ## Usage
 

@@ -24,12 +24,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output\_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint.
 
-| Model Info                                                                 |                                                                                                                            |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 64,000 tokens                                                                                                              |
-| More information                                                           | [link ↗](https://huggingface.co/thinkingmachines/Inkling)                                                                  |
-| Request formats                                                            | Anthropic Messages                                                                                                         |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/thinkingmachines/inkling) |
+| Model Info                                                                          |                                                                                                                            |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 64,000 tokens                                                                                                              |
+| More information                                                                    | [link ↗](https://huggingface.co/thinkingmachines/Inkling)                                                                  |
+| Request formats                                                                     | Anthropic Messages                                                                                                         |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/thinkingmachines/inkling) |
 
 ## Usage
 

@@ -1,11 +1,13 @@
 # Using tools
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 When generating model responses or building agents, you can extend capabilities using built‑in tools, function calling, Programmatic Tool Calling, tool search, and remote MCP servers. These enable the model to search the web, retrieve from your files, load deferred tool definitions at runtime, call your own functions, compose tool calls in JavaScript, or access third‑party services. Only `gpt-5.4` and later models support `tool_search`.
 
 
 
-<div data-content-switcher-pane data-value="web-search">
-    <div class="hidden">Web search</div>
+Web search
+
     Include web search results for the model response
 
 ```javascript
@@ -59,18 +61,18 @@ YAML
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
 options.Tools.Add(ResponseTool.CreateWebSearchTool());
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What was a positive news story from today?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What was a positive news story from today?"),
-    ]),
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -89,9 +91,13 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="file-search" hidden>
-    <div class="hidden">File search</div>
+  
+
+  
+
+    
+File search
+
     Search your files in a response
 
 ```python
@@ -126,18 +132,20 @@ console.log(response);
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateFileSearchTool(["<vector_store_id>"])
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What is deep research by OpenAI?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is deep research by OpenAI?"),
-    ]),
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -161,9 +169,13 @@ response = openai.responses.create(
 puts(response)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="tool-search" hidden>
-    <div class="hidden">Tool search</div>
+  
+
+  
+
+    
+Tool search
+
     Load deferred tools at runtime
 
 ```python
@@ -278,9 +290,13 @@ const response = await client.responses.create({
 console.log(response.output);
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="function-calling" hidden>
-    <div class="hidden">Function calling</div>
+  
+
+  
+
+    
+Function calling
+
     Call your own function
 
 ```javascript
@@ -357,40 +373,51 @@ print(response.output[0].to_json())
 
 ```csharp
 using System.Text.Json;
+using System.Text.Json.Serialization.Metadata;
 using OpenAI.Responses;
+#pragma warning disable CA1869
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFunctionTool(
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateFunctionTool(
         functionName: "get_weather",
         functionDescription: "Get current temperature for a given location.",
-        functionParameters: BinaryData.FromObjectAsJson(new
-        {
-            type = "object",
-            properties = new
+        functionParameters: BinaryData.FromString(
+            """
             {
-                location = new
-                {
-                    type = "string",
-                    description = "City and country e.g. Bogotá, Colombia"
-                }
-            },
-            required = new[] { "location" },
-            additionalProperties = false
-        }),
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "City and country e.g. Bogotá, Colombia"
+                    }
+                },
+                "required": ["location"],
+                "additionalProperties": false
+            }
+            """
+        ),
         strictModeEnabled: true
     )
 );
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What is the weather like in Paris today?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is the weather like in Paris today?")
-    ])
-], options);
-
-Console.WriteLine(JsonSerializer.Serialize(response.OutputItems[0]));
+ResponseResult response = client.CreateResponse(options);
+Console.WriteLine(
+    JsonSerializer.Serialize(
+        response.OutputItems[0],
+        new JsonSerializerOptions
+        {
+            TypeInfoResolver = new DefaultJsonTypeInfoResolver(),
+        }
+    )
+);
 ```
 
 ```bash
@@ -460,9 +487,13 @@ response = openai.responses.create(
 puts(response.output.first.to_json)
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="remote-mcp" hidden>
-    <div class="hidden">Remote MCP</div>
+  
+
+  
+
+    
+Remote MCP
+
     Call a remote MCP server
 
 ```bash
@@ -530,22 +561,22 @@ print(resp.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateMcpTool(
-    serverLabel: "dmcp",
-    serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
-    toolCallApprovalPolicy: new McpToolCallApprovalPolicy(GlobalMcpToolCallApprovalPolicy.NeverRequireApproval)
-));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateMcpTool(
+        serverLabel: "dmcp",
+        serverUri: new Uri("https://dmcp-server.deno.dev/mcp"),
+        toolCallApprovalPolicy: GlobalMcpToolCallApprovalPolicy.NeverRequireApproval
+    )
+);
+options.InputItems.Add(ResponseItem.CreateUserMessageItem("Roll 2d4+1"));
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("Roll 2d4+1")
-    ])
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -572,128 +603,86 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-  </div>
-
 
 
 ## Available tools
 
 Here's an overview of the tools available in the OpenAI platform—select one of them for further guidance on usage.
 
-<a href="/api/docs/guides/function-calling">
-  
-
-<span slot="icon">
-      </span>
-    Call custom code to give the model access to additional data and
-    capabilities.
+[Function calling
 
 
-</a>
 
-<a href="/api/docs/guides/tools-web-search">
-  
+      Call custom code to give the model access to additional data and
+    capabilities.](https://developers.openai.com/api/docs/guides/function-calling)
 
-<span slot="icon">
-      </span>
-    Include data from the Internet in model response generation.
+[Web search
 
 
-</a>
 
-<a href="/api/docs/guides/tools-connectors-mcp">
-  
+      Include data from the Internet in model response generation.](https://developers.openai.com/api/docs/guides/tools-web-search)
 
-<span slot="icon">
-      </span>
-    Give the model access to new capabilities via Model Context Protocol (MCP)
-    servers.
+[Remote MCP servers
 
 
-</a>
 
-<a href="/api/docs/guides/tools-skills">
-  
+      Give the model access to new capabilities via Model Context Protocol (MCP)
+    servers.](https://developers.openai.com/api/docs/guides/tools-connectors-mcp)
 
-<span slot="icon">
-      </span>
-    Upload and reuse versioned skill bundles in hosted shell environments.
+[Skills
 
 
-</a>
 
-<a href="/api/docs/guides/tools-shell">
-  
+      Upload and reuse versioned skill bundles in hosted shell environments.](https://developers.openai.com/api/docs/guides/tools-skills)
 
-<span slot="icon">
-      </span>
-    Run shell commands in hosted containers or in your own local runtime.
+[Shell
 
 
-</a>
 
-<a href="/api/docs/guides/tools-computer-use">
-  
+      Run shell commands in hosted containers or in your own local runtime.](https://developers.openai.com/api/docs/guides/tools-shell)
 
-<span slot="icon">
-      </span>
-    Create agentic workflows that enable a model to control a computer
-    interface.
+[Computer use
 
 
-</a>
 
-<a href="/api/docs/guides/tools-image-generation">
-  
+      Create agentic workflows that enable a model to control a computer
+    interface.](https://developers.openai.com/api/docs/guides/tools-computer-use)
 
-<span slot="icon">
-      </span>
-    Generate or edit images using GPT Image.
+[Image generation
 
 
-</a>
 
-<a href="/api/docs/guides/tools-file-search">
-  
+      Generate or edit images using GPT Image.](https://developers.openai.com/api/docs/guides/tools-image-generation)
 
-<span slot="icon">
-      </span>
-    Search the contents of uploaded files for context when generating a
-    response.
+[File search
 
 
-</a>
 
-<a href="/api/docs/guides/tools-tool-search">
-  
+      Search the contents of uploaded files for context when generating a
+    response.](https://developers.openai.com/api/docs/guides/tools-file-search)
 
-<span slot="icon">
-      </span>
-    Dynamically load relevant tools into the model’s context to optimize token
-    usage.
+[Tool search
 
 
-</a>
 
-<a href="/api/docs/guides/tools-programmatic-tool-calling">
-  
+      Dynamically load relevant tools into the model’s context to optimize token
+    usage.](https://developers.openai.com/api/docs/guides/tools-tool-search)
 
-<span slot="icon">
-      </span>
-    Let models compose and run JavaScript that orchestrates tool calls.
+[Programmatic Tool Calling
 
 
-</a>
+
+      Let models compose and run JavaScript that orchestrates tool calls.](https://developers.openai.com/api/docs/guides/tools-programmatic-tool-calling)
 
 ## Usage in the API
 
-When making a request to generate a [model response](https://developers.openai.com/api/docs/api-reference/responses/create), you usually enable tool access by specifying configurations in the `tools` parameter. Each tool has its own unique configuration requirements—see the [Available tools](#available-tools) section for detailed instructions.
+When making a request to generate a [model response](https://developers.openai.com/api/reference/resources/responses/methods/create), you usually enable tool access by specifying configurations in the `tools` parameter. Each tool has its own unique configuration requirements—see the [Available tools](#available-tools) section for detailed instructions.
 
 Based on the provided [prompt](https://developers.openai.com/api/docs/guides/text), the model automatically decides whether to use a configured tool. For instance, if your prompt requests information beyond the model's training cutoff date and web search is enabled, the model will typically invoke the web search tool to retrieve relevant, up-to-date information.
 
 Some advanced workflows can also load more tool definitions during the interaction. For example, [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) can defer function definitions until the model decides they're needed.
 
-You can explicitly control or guide this behavior by setting the `tool_choice` parameter [in the API request](https://developers.openai.com/api/docs/api-reference/responses/create).
+You can explicitly control or guide this behavior by setting the `tool_choice` parameter [in the API request](https://developers.openai.com/api/reference/resources/responses/methods/create).
 
 ## Usage in the Agents SDK
 

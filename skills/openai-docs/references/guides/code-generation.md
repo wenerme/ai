@@ -1,15 +1,21 @@
 # Code generation
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Writing, reviewing, editing, and answering questions about code is one of the primary use cases for OpenAI models today. This guide walks through your options for code generation with [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) and Codex.
 
 ## Get started
 
-<div className="mb-10 w-full max-w-full overflow-hidden">
-  </div>
+
+
+  - **[Use Codex for out-of-the-box coding agents](#use-codex)**: Connect your codebase to Codex and accelerate your projects using software engineering agents.
+- **[Integrate with coding models](#integrate-with-coding-models)**: Use OpenAI models in your application. Add them to a model picker, for instance.
+
+
 
 ## Use Codex
 
-[**Codex**](https://developers.openai.com/codex/overview) is OpenAI's coding agent for software development. It helps you write, review and debug code. Interact with Codex in a variety of interfaces: in your IDE, through the CLI, on web and mobile sites, or in your CI/CD pipelines with the SDK. Codex is the best way to get agentic software engineering on your projects.
+[**Codex**](https://developers.openai.com/codex) is OpenAI's coding agent for software development. It helps you write, review and debug code. Interact with Codex in a variety of interfaces: in your IDE, through the CLI, on web and mobile sites, or in your CI/CD pipelines with the SDK. Codex is the best way to get agentic software engineering on your projects.
 
 Codex works best with the latest models from the GPT-5 family, such as [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol). We offer a range of models specifically designed to work with coding agents like Codex, such as [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex), but we recommend using the latest general-purpose model for most code generation tasks.
 
@@ -17,9 +23,9 @@ See the [ChatGPT docs](https://developers.openai.com/codex) for setup guides, re
 
 ## Integrate with coding models
 
-For most API-based code generation, start with <strong>`gpt-5.6`</strong>. It handles both general-purpose work and coding, which makes it a strong default when your application needs to write code, reason about requirements, inspect docs, and handle broader workflows in one place.
+For most API-based code generation, start with **`gpt-5.6`**. It handles both general-purpose work and coding, which makes it a strong default when your application needs to write code, reason about requirements, inspect docs, and handle broader workflows in one place.
 
-This example shows how you can use the [Responses API](https://developers.openai.com/api/docs/api-reference/responses) for a code generation use case:
+This example shows how you can use the [Responses API](https://developers.openai.com/api/reference/resources/responses) for a code generation use case:
 
 Default model for most coding tasks
 
@@ -83,5 +89,5 @@ The demo applications below were one shot generations, i.e. generated from a sin
 ## Next steps
 
 - Visit the [ChatGPT docs](https://developers.openai.com/codex) to learn what you can do with Codex, set up Codex in whichever interface you choose, or find more details.
-- Read <a href="/api/docs/guides/latest-model">Model guidance</a> for model selection, features, migration guidance, and prompting patterns that work well on coding and agentic tasks.
+- Read [Model guidance](https://developers.openai.com/api/docs/guides/latest-model) for model selection, features, migration guidance, and prompting patterns that work well on coding and agentic tasks.
 - Compare [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) and [`gpt-5.3-codex`](https://developers.openai.com/api/docs/models/gpt-5.3-codex) on the model pages.

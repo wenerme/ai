@@ -1,5 +1,7 @@
 # Function calling
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 **Function calling** (also known as **tool calling**) provides a powerful and flexible way for OpenAI models to interface with external systems and access data outside their training data. This guide shows how you can connect a model to data and actions provided by your application. We'll show how to use function tools (defined by a JSON schema) and custom tools which work with free form text inputs and outputs.
 
 If your application has many functions or large schemas, you can pair function calling with [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) to defer rarely used tools and load them only when the model needs them. Only `gpt-5.4` and later models support `tool_search`.
@@ -35,7 +37,7 @@ To complete our weather example:
 
 - The model has access to a `get_weather` **tool** that takes `location` as an argument.
 - In response to a prompt like "what's the weather in Paris?" the model returns a **tool call** that contains a `location` argument with a value of `Paris`
-- The **tool call output** might return a JSON object (e.g., `{"temperature": "25", "unit": "C"}`, indicating a current temperature of 25 degrees), [Image contents](https://developers.openai.com/api/docs/guides/images), or [File contents](https://developers.openai.com/api/docs/guides/file-inputs).
+- The **tool call output** might return a JSON object (e.g., `{"temperature": "25", "unit": "C"}`, indicating a current temperature of 25 degrees), [Image contents](https://developers.openai.com/api/docs/guides/images-vision), or [File contents](https://developers.openai.com/api/docs/guides/file-inputs).
 
 We then send all of the tool definition, the original prompt, the model's tool call, and the tool call output back to the model to finally receive a text response like:
 
@@ -47,7 +49,7 @@ Functions versus tools
 
 - A function is a specific kind of tool, defined by a JSON schema. A function definition allows the model to pass data to your application, where your code can access data or take actions suggested by the model.
 - In addition to function tools, there are custom tools (described in this guide) that work with free text inputs and outputs.
-- There are also [built-in tools](https://developers.openai.com/api/docs/guides/tools) that are part of the OpenAI platform. These tools enable the model to [search the web](https://developers.openai.com/api/docs/guides/tools-web-search), [execute code](https://developers.openai.com/api/docs/guides/tools-code-interpreter), access the functionality of an [MCP server](https://developers.openai.com/api/docs/guides/tools-remote-mcp), and more.
+- There are also [built-in tools](https://developers.openai.com/api/docs/guides/tools) that are part of the OpenAI platform. These tools enable the model to [search the web](https://developers.openai.com/api/docs/guides/tools-web-search), [execute code](https://developers.openai.com/api/docs/guides/tools-code-interpreter), access the functionality of an [MCP server](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), and more.
 
 ### The tool calling flow
 
@@ -343,13 +345,13 @@ If you need to give the model access to a large ecosystem of tools, you can defe
 
 1. **Leverage OpenAI resources.**
    - **Generate and iterate on function schemas** in the [Playground](https://platform.openai.com/playground).
-   - **Consider [fine-tuning](https://developers.openai.com/api/docs/guides/fine-tuning) to increase function calling accuracy** for large numbers of functions or difficult tasks. ([cookbook](https://developers.openai.com/cookbook/examples/fine_tuning_for_function_calling))
+   - **Consider [fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization) to increase function calling accuracy** for large numbers of functions or difficult tasks. ([cookbook](https://developers.openai.com/cookbook/examples/fine_tuning_for_function_calling))
 
 ### Token Usage
 
 Under the hood, functions are injected into the system message in a syntax the model has been trained on. This means callable function definitions count against the model's context limit and are billed as input tokens. If you run into token limits, we suggest limiting the number of functions loaded up front, shortening descriptions where possible, or using [tool search](https://developers.openai.com/api/docs/guides/tools-tool-search) so deferred tools are loaded only when needed.
 
-It is also possible to use [fine-tuning](https://developers.openai.com/api/docs/guides/fine-tuning#fine-tuning-examples) to reduce the number of tokens used if you have many functions defined in your tools specification.
+It is also possible to use [fine-tuning](https://developers.openai.com/api/docs/guides/model-optimization#fine-tuning-examples) to reduce the number of tokens used if you have many functions defined in your tools specification.
 
 ## Handling function calls
 
@@ -463,7 +465,7 @@ const callFunction = async (name, args) => {
 
 The result you pass in the `function_call_output` message should typically be a string, where the format is up to you (JSON, error codes, plain text, etc.). The model will interpret that string as needed.
 
-For functions that return images or files, you can pass an [array of image or file objects](https://developers.openai.com/api/docs/api-reference/responses/create#responses_create-input-input_item_list-item-function_tool_call_output-output) instead of a string.
+For functions that return images or files, you can pass an [array of image or file objects](https://developers.openai.com/api/reference/resources/responses/methods/create#responses_create-input-input_item_list-item-function_tool_call_output-output) instead of a string.
 
 If your function has no return value (e.g. `send_email`), simply return a string that indicates success or failure. (e.g. `"success"`)
 
@@ -573,9 +575,9 @@ calling, explicitly set `strict: false`.
 
 
 
-<div data-content-switcher-pane data-value="enabled">
-    <div class="hidden">Strict mode enabled</div>
-    ```json
+Strict mode enabled
+
+```json
 {
     "type": "function",
     "name": "get_weather",
@@ -606,10 +608,14 @@ calling, explicitly set `strict: false`.
 }
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="disabled" hidden>
-    <div class="hidden">Strict mode disabled</div>
-    ```json
+  
+
+  
+
+    
+Strict mode disabled
+
+```json
 {
     "type": "function",
     "name": "get_weather",
@@ -635,8 +641,6 @@ calling, explicitly set `strict: false`.
     }
 }
 ```
-
-  </div>
 
 
 

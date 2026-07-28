@@ -25,13 +25,13 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Google's fastest Gemini image generation model for rapid image creation and iteration.
 
-| Model Info                                                                 |                                                                                                                             |
-| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 65,536 tokens                                                                                                               |
-| Terms and License                                                          | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                            |
-| More information                                                           | [link ↗](https://deepmind.google/technologies/imagen/)                                                                      |
-| Zero data retention                                                        | Yes                                                                                                                         |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2-lite) |
+| Model Info                                                                          |                                                                                                                             |
+| ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 65,536 tokens                                                                                                               |
+| Terms and License                                                                   | [link ↗](https://ai.google.dev/gemini-api/terms)                                                                            |
+| More information                                                                    | [link ↗](https://deepmind.google/technologies/imagen/)                                                                      |
+| Zero data retention                                                                 | Yes                                                                                                                         |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2-lite) |
 
 ## Usage
 

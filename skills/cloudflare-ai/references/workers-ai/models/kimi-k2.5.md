@@ -28,16 +28,16 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Kimi K2.5 is a frontier-scale open-source model with a 256k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.
 
-| Model Info                                                                           |                                                                                      |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| Deprecated                                                                           | 5/30/2026                                                                            |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 256,000 tokens                                                                       |
-| Terms and License                                                                    | [link ↗](https://github.com/MoonshotAI/Kimi-K2.5/blob/master/LICENSE)                |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                                                  |
-| Reasoning                                                                            | Yes                                                                                  |
-| Vision                                                                               | Yes                                                                                  |
-| Batch                                                                                | Yes                                                                                  |
-| Unit Pricing                                                                         | $0.60 per M input tokens, $3.00 per M output tokens, $0.10 per M cached input tokens |
+| Model Info                                                                            |                                                                                      |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| Deprecated                                                                            | 5/30/2026                                                                            |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 256,000 tokens                                                                       |
+| Terms and License                                                                     | [link ↗](https://github.com/MoonshotAI/Kimi-K2.5/blob/master/LICENSE)                |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                  |
+| Reasoning                                                                             | Yes                                                                                  |
+| Vision                                                                                | Yes                                                                                  |
+| Batch                                                                                 | Yes                                                                                  |
+| Unit Pricing                                                                          | $0.60 per M input tokens, $3.00 per M output tokens, $0.10 per M cached input tokens |
 
 ## Playground
 

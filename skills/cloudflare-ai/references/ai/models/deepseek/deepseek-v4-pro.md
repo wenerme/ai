@@ -24,12 +24,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via Fireworks infrastructure for production-grade inference.
 
-| Model Info                                                                 |                                                                                                                            |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 131,072 tokens                                                                                                             |
-| More information                                                           | [link ↗](https://api-docs.deepseek.com)                                                                                    |
-| Request formats                                                            | Chat Completions                                                                                                           |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/deepseek/deepseek-v4-pro) |
+| Model Info                                                                          |                                                                                                                            |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens                                                                                                             |
+| More information                                                                    | [link ↗](https://api-docs.deepseek.com)                                                                                    |
+| Request formats                                                                     | Chat Completions                                                                                                           |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/deepseek/deepseek-v4-pro) |
 
 ## Usage
 

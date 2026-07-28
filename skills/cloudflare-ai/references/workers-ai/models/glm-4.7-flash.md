@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
 
 # glm-4.7-flash
 
@@ -26,12 +26,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.
 
-| Model Info                                                                           |                                                     |
-| ------------------------------------------------------------------------------------ | --------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/)           | 131,072 tokens                                      |
-| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling) | Yes                                                 |
-| Reasoning                                                                            | Yes                                                 |
-| Unit Pricing                                                                         | $0.06 per M input tokens, $0.40 per M output tokens |
+| Model Info                                                                            |                                                     |
+| ------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 131,072 tokens                                      |
+| Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                 |
+| Reasoning                                                                             | Yes                                                 |
+| Unit Pricing                                                                          | $0.06 per M input tokens, $0.40 per M output tokens |
 
 ## Playground
 

@@ -1,5 +1,7 @@
 # Configuring workload identity federation for AWS
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use AWS as a Workload Identity Provider in either of these scenarios:
 
 - **AWS outbound identity federation:** Exchange an AWS STS-issued OIDC JWT from `GetWebIdentityToken` for a short-lived OpenAI access token.
@@ -11,8 +13,6 @@ OpenAI supports AWS-issued OIDC JWTs from outbound identity federation and
   as workload identity federation subject tokens.
 
 
-
-<div data-content-switcher-pane data-value="outbound">
 
 ## AWS outbound identity federation
 
@@ -500,9 +500,11 @@ puts(response.output_text)
 ```
 
 
-  </div>
+  
 
-  <div data-content-switcher-pane data-value="eks" hidden>
+
+  
+
 
 ## Amazon EKS projected service account tokens
 
@@ -931,9 +933,6 @@ response = client.responses.create(
 
 puts(response.output_text)
 ```
-
-
-  </div>
 
 
 

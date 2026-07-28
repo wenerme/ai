@@ -1,31 +1,25 @@
 # Advanced usage
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 OpenAI's text generation models (often called generative pre-trained transformers or large language models) have been trained to understand natural language, code, and images. The models provide text outputs in response to their inputs. The text inputs to these models are also referred to as "prompts." Designing a prompt is essentially how you “program” a large language model, usually by providing instructions or some examples of how to successfully complete a task.
 
 ## Reproducible outputs
 
-Chat Completions are non-deterministic by default (which means model outputs may differ from request to request). That being said, we offer some control towards deterministic outputs by giving you access to the [`seed`](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-seed) parameter and the [`system_fingerprint`](https://developers.openai.com/api/docs/api-reference/completions/object#completions/object-system_fingerprint) response field.
+Chat Completions are non-deterministic by default (which means model outputs may differ from request to request). That being said, we offer some control towards deterministic outputs by giving you access to the [`seed`](https://developers.openai.com/api/reference/resources/chat#chat-create-seed) parameter and the [`system_fingerprint`](https://developers.openai.com/api/reference/resources/completions#completions/object-system_fingerprint) response field.
 
 To receive (mostly) deterministic outputs across API calls, you can:
 
-- Set the [seed](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-seed) parameter to any integer of your choice and use the same value across requests you'd like deterministic outputs for.
+- Set the [seed](https://developers.openai.com/api/reference/resources/chat#chat-create-seed) parameter to any integer of your choice and use the same value across requests you'd like deterministic outputs for.
 - Ensure all other parameters (like `prompt` or `temperature`) are the exact same across requests.
 
-Sometimes, determinism may be impacted due to necessary changes OpenAI makes to model configurations on our end. To help you keep track of these changes, we expose the [`system_fingerprint`](https://developers.openai.com/api/docs/api-reference/chat/object#chat/object-system_fingerprint) field. If this value is different, you may see different outputs due to changes we've made on our systems.
+Sometimes, determinism may be impacted due to necessary changes OpenAI makes to model configurations on our end. To help you keep track of these changes, we expose the [`system_fingerprint`](https://developers.openai.com/api/reference/resources/chat#chat/object-system_fingerprint) field. If this value is different, you may see different outputs due to changes we've made on our systems.
 
-<a
-  href="https://cookbook.openai.com/examples/reproducible_outputs_with_the_seed_parameter"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Explore the new seed parameter in the OpenAI cookbook
+[Deterministic outputs
 
 
-</a>
+
+      Explore the new seed parameter in the OpenAI cookbook](https://developers.openai.com/cookbook/examples/reproducible_outputs_with_the_seed_parameter)
 
 ## Managing tokens
 
@@ -34,13 +28,7 @@ Language models read and write text in chunks called tokens. In English, a token
 As a rough rule of thumb, 1 token is approximately 4 characters or 0.75 words for English text.
 
 Check out our 
-  <a
-    href="https://platform.openai.com/tokenizer"
-    target="_blank"
-    rel="noreferrer"
-  >
-    Tokenizer tool
-  </a> 
+  [Tokenizer tool](https://platform.openai.com/tokenizer) 
   to test specific strings and see how they are translated into tokens.
 
 For example, the string `"ChatGPT is great!"` is encoded into six tokens: `["Chat", "G", "PT", " is", " great", "!"]`.
@@ -160,7 +148,7 @@ Note that long conversations are more likely to receive incomplete replies. For 
 
 ### Frequency and presence penalties
 
-The frequency and presence penalties found in the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create) and [Legacy Completions API](https://developers.openai.com/api/docs/api-reference/completions) can be used to reduce the likelihood of sampling repetitive sequences of tokens.
+The frequency and presence penalties found in the [Chat Completions API](https://developers.openai.com/api/reference/resources/chat) and [Legacy Completions API](https://developers.openai.com/api/reference/resources/completions) can be used to reduce the likelihood of sampling repetitive sequences of tokens.
 
 
 
@@ -187,7 +175,7 @@ Reasonable values for the penalty coefficients are around 0.1 to 1 if the aim is
 
 ### Token log probabilities
 
-The [`logprobs`](https://developers.openai.com/api/docs/api-reference/chat/create#chat-create-logprobs) parameter found in the [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat/create) and [Legacy Completions API](https://developers.openai.com/api/docs/api-reference/completions), when requested, provides the log probabilities of each output token, and a limited number of the most likely tokens at each token position alongside their log probabilities. This can be useful in some cases to assess the confidence of the model in its output, or to examine alternative responses the model might have given.
+The [`logprobs`](https://developers.openai.com/api/reference/resources/chat#chat-create-logprobs) parameter found in the [Chat Completions API](https://developers.openai.com/api/reference/resources/chat) and [Legacy Completions API](https://developers.openai.com/api/reference/resources/completions), when requested, provides the log probabilities of each output token, and a limited number of the most likely tokens at each token position alongside their log probabilities. This can be useful in some cases to assess the confidence of the model in its output, or to examine alternative responses the model might have given.
 
 ### Other parameters
 

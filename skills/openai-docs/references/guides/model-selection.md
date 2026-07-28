@@ -1,5 +1,7 @@
 # Model selection
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Choosing the right model, whether [`gpt-5.6`](https://developers.openai.com/api/docs/models/gpt-5.6-sol) or a smaller option like [`gpt-5.6-terra`](https://developers.openai.com/api/docs/models/gpt-5.6-terra), requires balancing **accuracy**, **latency**, and **cost**. This guide explains key principles to help you make informed decisions, along with a practical example.
 
 ## Core principles

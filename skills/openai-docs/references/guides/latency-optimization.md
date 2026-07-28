@@ -1,5 +1,7 @@
 # Latency optimization
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 This guide covers the core set of principles you can apply to improve latency across a wide variety of LLM-related use cases. These techniques come from working with a wide range of customers and developers on production applications, so they should apply regardless of what you're building – from a granular workflow to an end-to-end chatbot.
 
 While there's many individual techniques, we'll be grouping them into **seven principles** meant to represent a high-level taxonomy of approaches for improving latency.
@@ -31,15 +33,15 @@ You can also employ inference optimizations like our [**Predicted outputs**](htt
 
 
 Other factors that affect inference speed are the amount of 
-  <strong>compute</strong> you have available and any additional 
-  <strong>inference optimizations</strong> you employ. <br /> <br />
+  **compute** you have available and any additional 
+  **inference optimizations** you employ. 
+ 
+
   Most people can't influence these factors directly, but if you're curious, and
-  have some control over your infra, <strong>faster hardware</strong> or 
-  <strong>running engines at a lower saturation</strong> may give you a modest
+  have some control over your infra, **faster hardware** or 
+  **running engines at a lower saturation** may give you a modest
   TPM boost. And if you're down in the trenches, there's a myriad of other 
-  <a href="https://lilianweng.github.io/posts/2023-01-10-inference-optimization/">
-    inference optimizations
-  </a> 
+  [inference optimizations](https://lilianweng.github.io/posts/2023-01-10-inference-optimization/) 
   that are a bit beyond the scope of this guide.
 
 
@@ -270,7 +272,8 @@ Response: {query: "Thank you!", retrieval: "false"}
 
 USER: [JSON-formatted input conversation here]
 ```
-<br/>
+
+
 
 Actually, adding context and determining whether to retrieve are very straightforward and well defined tasks, so we can likely use a **smaller, fine-tuned model** instead. Switching to GPT-3.5 will let us [process tokens faster](#process-tokens-faster).
 
@@ -374,7 +377,8 @@ USER: # Relevant Information
 ` ` `
 ```
 
-<br />
+
+
 
 In fact, now that the reasoning prompt does not depend on the retrieved context we can [parallelize](#parallelize) and fire it off at the same time as the retrieval prompts.
 
@@ -431,7 +435,7 @@ Let's review the optimizations we implemented for the customer service bot examp
 ![Assistants object architecture diagram](https://cdn.openai.com/API/docs/images/diagram-latency-customer-service-11b.png)
 
 1. **Combined** query contextualization and retrieval check steps to [make fewer requests](#make-fewer-requests).
-2. For the new prompt, **switched to a smaller, fine-tuned GPT-3.5** to [process tokens faster](https://developers.openai.com/api/docs/guides/process-tokens-faster).
+2. For the new prompt, **switched to a smaller, fine-tuned GPT-3.5** to [process tokens faster](#process-tokens-faster).
 3. Split the assistant prompt in two, **switching to a smaller, fine-tuned GPT-3.5** for the reasoning, again to [process tokens faster](#process-tokens-faster).
 4. [Parallelized](#parallelize) the retrieval checks and the reasoning steps.
 5. **Shortened reasoning field names** and moved comments into the prompt, to [generate fewer tokens](#generate-fewer-tokens).

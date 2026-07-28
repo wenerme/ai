@@ -16,6 +16,32 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Templates are GitHub repositories that are designed to be a starting point for building a new Cloudflare Workers project. To start any of the projects below, run:
 
+### agent-commerce-analytics-template
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/agent-commerce-analytics-template)
+
+Merchant-facing analytics for AI shopping agents. Tracks the discover → browse → purchase journey per agent, payment network, and verification status, with auto-generated insights and a React dashboard.
+
+Explore on [GitHub ↗](https://github.com/cloudflare/templates/tree/main/agent-commerce-analytics-template)
+
+npmyarnpnpm
+
+```
+npm create cloudflare@latest -- --template=cloudflare/templates/agent-commerce-analytics-template
+```
+
+```
+yarn create cloudflare --template=cloudflare/templates/agent-commerce-analytics-template
+```
+
+```
+pnpm create cloudflare@latest --template=cloudflare/templates/agent-commerce-analytics-template
+```
+
+
+---
+
+
 ### agent-visibility-template
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/agent-visibility-template)

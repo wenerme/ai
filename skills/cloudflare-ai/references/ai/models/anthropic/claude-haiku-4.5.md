@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Claude Haiku 4.5 delivers similar levels of coding performance at one-third the cost and more than twice the speed of larger models.
 
-| Model Info                                                                 |                                                                                                                              |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                               |
-| Terms and License                                                          | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
-| More information                                                           | [link ↗](https://www.anthropic.com/claude/haiku)                                                                             |
-| Zero data retention                                                        | Yes                                                                                                                          |
-| Request formats                                                            | Anthropic Messages                                                                                                           |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
+| Model Info                                                                          |                                                                                                                              |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                               |
+| Terms and License                                                                   | [link ↗](https://www.anthropic.com/legal/commercial-terms)                                                                   |
+| More information                                                                    | [link ↗](https://www.anthropic.com/claude/haiku)                                                                             |
+| Zero data retention                                                                 | Yes                                                                                                                          |
+| Request formats                                                                     | Anthropic Messages                                                                                                           |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
 
 ## Usage
 

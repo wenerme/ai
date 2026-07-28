@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 GPT-5 Nano is OpenAI’s smallest GPT-5 variant, optimized for low latency and cheap, high-throughput tasks.
 
-| Model Info                                                                 |                                                                                                                     |
-| -------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 128,000 tokens                                                                                                      |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                              |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                       |
-| Zero data retention                                                        | Yes                                                                                                                 |
-| Request formats                                                            | Responses, Chat Completions                                                                                         |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-nano) |
+| Model Info                                                                          |                                                                                                                     |
+| ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens                                                                                                      |
+| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                              |
+| More information                                                                    | [link ↗](https://openai.com/)                                                                                       |
+| Zero data retention                                                                 | Yes                                                                                                                 |
+| Request formats                                                                     | Responses, Chat Completions                                                                                         |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-nano) |
 
 ## Usage
 

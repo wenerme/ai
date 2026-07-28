@@ -1,5 +1,7 @@
 # Code Interpreter
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 The Code Interpreter tool allows models to write and run Python code in a sandboxed environment to solve complex problems in domains like data analysis, coding, and math. Use it for:
 
 - Processing files with diverse data and formatting
@@ -7,7 +9,7 @@ The Code Interpreter tool allows models to write and run Python code in a sandbo
 - Writing and running code iteratively to solve problems—for example, a model that writes code that fails to run can keep rewriting and running that code until it succeeds
 - Boosting visual intelligence in our latest reasoning models (like [o3](https://developers.openai.com/api/docs/models/o3) and [o4-mini](https://developers.openai.com/api/docs/models/o4-mini)). The model can use this tool to crop, zoom, rotate, and otherwise process and transform images.
 
-Here's an example of calling the [Responses API](https://developers.openai.com/api/docs/api-reference/responses) with a tool call to Code Interpreter:
+Here's an example of calling the [Responses API](https://developers.openai.com/api/reference/resources/responses) with a tool call to Code Interpreter:
 
 Use the Responses API with Code Interpreter
 
@@ -83,12 +85,12 @@ While we call this tool Code Interpreter, the model knows it as the "python
 
 ## Containers
 
-The Code Interpreter tool requires a [container object](https://developers.openai.com/api/docs/api-reference/containers/object). A container is a fully sandboxed virtual machine that the model can run Python code in. This container can contain files that you upload, or that it generates.
+The Code Interpreter tool requires a [container object](https://developers.openai.com/api/reference/resources/containers). A container is a fully sandboxed virtual machine that the model can run Python code in. This container can contain files that you upload, or that it generates.
 
 There are two ways to create containers:
 
 1. Auto mode: as seen in the example above, you can do this by passing the `"container": { "type": "auto", "memory_limit": "4g", "file_ids": ["file-1", "file-2"] }` property in the tool configuration while creating a new Response object. This automatically creates a new container, or reuses an active container that was used by a previous `code_interpreter_call` item in the model's context. Leaving out `memory_limit` keeps the default 1 GB tier for the container. Look for the `code_interpreter_call` item in the output of this API request to find the `container_id` that was generated or used.
-2. Explicit mode: here, you explicitly [create a container](https://developers.openai.com/api/docs/api-reference/containers/createContainers) using the `v1/containers` endpoint, including the `memory_limit` you need (for example `"memory_limit": "4g"`), and assign its `id` as the `container` value in the tool configuration in the Response object. For example:
+2. Explicit mode: here, you explicitly [create a container](https://developers.openai.com/api/reference/resources/containers/methods/create) using the `v1/containers` endpoint, including the `memory_limit` you need (for example `"memory_limit": "4g"`), and assign its `id` as the `container` value in the tool configuration in the Response object. For example:
 
 Use explicit container creation
 
@@ -161,7 +163,7 @@ console.log(resp.output_text);
 
 You can choose from `1g` (default), `4g`, `16g`, or `64g`. Higher tiers offer more RAM for the session and are billed at the [built-in tools rates](https://developers.openai.com/api/docs/pricing#built-in-tools) for Code Interpreter. The selected `memory_limit` applies for the entire life of that container, whether it was created automatically or via the containers API.
 
-Note that containers created with the auto mode are also accessible using the [`/v1/containers`](https://developers.openai.com/api/docs/api-reference/containers) endpoint.
+Note that containers created with the auto mode are also accessible using the [`/v1/containers`](https://developers.openai.com/api/reference/resources/containers) endpoint.
 
 ### Expiration
 
@@ -202,14 +204,14 @@ When running Code Interpreter, the model can create its own files. For example, 
 }
 ```
 
-You can download these constructed files by calling the [get container file content](https://developers.openai.com/api/docs/api-reference/container-files/retrieveContainerFileContent) method.
+You can download these constructed files by calling the [get container file content](https://developers.openai.com/api/reference/resources/containers/subresources/files/subresources/content/methods/retrieve) method.
 
 Any [files in the model input](https://developers.openai.com/api/docs/guides/file-inputs) get automatically uploaded to the container. You do not have to explicitly upload it to the container.
 
 ### Uploading and downloading files
 
-Add new files to your container using [Create container file](https://developers.openai.com/api/docs/api-reference/container-files/createContainerFile). This endpoint accepts either a multipart upload or a JSON body with a `file_id`.
-List existing container files with [List container files](https://developers.openai.com/api/docs/api-reference/container-files/listContainerFiles) and download bytes from [Retrieve container file content](https://developers.openai.com/api/docs/api-reference/container-files/retrieveContainerFileContent).
+Add new files to your container using [Create container file](https://developers.openai.com/api/reference/resources/containers/subresources/files/methods/create). This endpoint accepts either a multipart upload or a JSON body with a `file_id`.
+List existing container files with [List container files](https://developers.openai.com/api/reference/resources/containers/subresources/files/methods/list) and download bytes from [Retrieve container file content](https://developers.openai.com/api/reference/resources/containers/subresources/files/subresources/content/methods/retrieve).
 
 ### Dealing with citations
 
@@ -265,19 +267,26 @@ Files and images generated by the model are returned as annotations on the assis
 
 <tr>
   <td>
-    <div className="mb-1 flex items-center gap-2">
-      [Responses](https://developers.openai.com/api/docs/api-reference/responses)
-    </div>
-    <div className="mb-1 flex items-center gap-2">
-      [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat)
-    </div>
-    <div className="mb-1 flex items-center gap-2">
-      [Assistants](https://developers.openai.com/api/docs/api-reference/assistants)
-    </div>
+    
+
+      [Responses](https://developers.openai.com/api/reference/resources/responses)
+    
+
+    
+
+      [Chat Completions](https://developers.openai.com/api/reference/resources/chat)
+    
+
+    
+
+      [Assistants](https://developers.openai.com/api/reference/resources/beta/subresources/assistants)
+    
+
   </td>
   <td style={{ maxWidth: "150px" }}>100 RPM per org</td>
   <td style={{ maxWidth: "150px" }}>
-    [Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) <br />
+    [Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) 
+
     [ZDR and data residency](https://developers.openai.com/api/docs/guides/your-data)
   </td>
 </tr>

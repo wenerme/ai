@@ -1,5 +1,7 @@
 # Computer use
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Computer use lets a model operate software through the user interface. It can inspect screenshots, return interface actions for your code to execute, or work through a custom harness that mixes visual and programmatic interaction with the UI.
 
 `gpt-5.4` includes new training for this kind of work, and future models will build on the same pattern. The model is designed to operate flexibly across a range of harness shapes, including the built-in Responses API `computer` tool, custom tools layered on top of existing automation harnesses, and code-execution environments that expose browser or desktop controls.
@@ -283,8 +285,8 @@ Add normalization helpers
 
 
 
-<div data-content-switcher-pane data-value="playwright">
-    <div class="hidden">Playwright</div>
+Playwright
+
     Normalization helpers
 
 ```javascript
@@ -449,9 +451,13 @@ def normalize_drag_path(path):
     return normalized
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="docker" hidden>
-    <div class="hidden">Docker</div>
+  
+
+  
+
+    
+Docker
+
     Normalization helpers
 
 ```javascript
@@ -647,8 +653,6 @@ def normalize_drag_path(path):
     return normalized
 ```
 
-  </div>
-
 
 
 Batched actions in one turn
@@ -674,8 +678,8 @@ The following helpers show how to run a batch of actions in either environment:
 
 
 
-<div data-content-switcher-pane data-value="playwright">
-    <div class="hidden">Playwright</div>
+Playwright
+
     Execute Computer use actions
 
 ```javascript
@@ -815,9 +819,13 @@ def handle_computer_actions(page, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="docker" hidden>
-    <div class="hidden">Docker</div>
+  
+
+  
+
+    
+Docker
+
     Execute Computer use actions
 
 ```javascript
@@ -1031,8 +1039,6 @@ def handle_computer_actions(vm, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
-  </div>
-
 
 
 For modifier-assisted mouse actions such as `Ctrl`+click or `Shift`+drag, see the examples below.
@@ -1069,8 +1075,8 @@ Modifier-assisted action
 
 
 
-<div data-content-switcher-pane data-value="playwright">
-    <div class="hidden">Playwright</div>
+Playwright
+
     Execute modifier-assisted Computer use actions
 
 ```javascript
@@ -1252,9 +1258,13 @@ def handle_computer_actions(page, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="docker" hidden>
-    <div class="hidden">Docker</div>
+  
+
+  
+
+    
+Docker
+
     Execute modifier-assisted Computer use actions
 
 ```javascript
@@ -1515,8 +1525,6 @@ def handle_computer_actions(vm, actions):
                 raise ValueError(f"Unsupported action: {action.type}")
 ```
 
-  </div>
-
 
 
 ### 4. Capture and return the updated screenshot
@@ -1525,8 +1533,8 @@ Capture the full UI state after the action batch finishes.
 
 
 
-<div data-content-switcher-pane data-value="playwright">
-    <div class="hidden">Playwright</div>
+Playwright
+
     Capture a screenshot
 
 ```javascript
@@ -1540,9 +1548,13 @@ def capture_screenshot(page):
     return page.screenshot(type="png")
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="docker" hidden>
-    <div class="hidden">Docker</div>
+  
+
+  
+
+    
+Docker
+
     Capture a screenshot
 
 ```javascript
@@ -1564,8 +1576,6 @@ def capture_screenshot(vm):
         decode=False,
     )
 ```
-
-  </div>
 
 
 
@@ -1773,8 +1783,8 @@ The examples below do not run generated code in the API client. They send each a
 
 
 
-<div data-content-switcher-pane data-value="javascript">
-    <div class="hidden">JavaScript</div>
+JavaScript
+
     Code-execution harness
 
 ```javascript
@@ -2042,9 +2052,13 @@ function getCliPrompt(): string | undefined {
 await main(getCliPrompt());
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="python" hidden>
-    <div class="hidden">Python</div>
+  
+
+  
+
+    
+Python
+
     Code-execution harness
 
 ```python
@@ -2333,8 +2347,6 @@ if __name__ == "__main__":
     asyncio.run(main(prompt=args.prompt) if args.prompt is not None else main())
 ```
 
-  </div>
-
 
 
 ## Handle user confirmation and consent
@@ -2523,16 +2535,8 @@ Computer use can reach the same sites, forms, and workflows that a person can. T
 
 To see end-to-end examples in many environments, use the sample app:
 
-<a
-  href="https://github.com/openai/openai-cua-sample-app"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Examples of how to integrate the computer use tool in different environments
+[CUA sample app
 
 
-</a>
+
+      Examples of how to integrate the computer use tool in different environments](https://github.com/openai/openai-cua-sample-app)

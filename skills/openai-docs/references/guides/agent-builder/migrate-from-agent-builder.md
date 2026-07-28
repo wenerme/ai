@@ -1,5 +1,7 @@
 # Migrate from Agent Builder
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use this guide to export an existing Agent Builder workflow as Agents SDK code.
 You can use the export to recreate the workflow as a ChatGPT Workspace Agent or
 continue with the Agents SDK in your application.

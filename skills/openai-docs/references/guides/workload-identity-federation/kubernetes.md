@@ -1,5 +1,7 @@
 # Configuring workload identity federation for Kubernetes
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Use Kubernetes as a Workload Identity Provider by exchanging a projected Kubernetes service account token for a short-lived OpenAI access token.
 
 ## Setting up Kubernetes

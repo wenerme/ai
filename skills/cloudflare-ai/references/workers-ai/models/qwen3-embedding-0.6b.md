@@ -24,10 +24,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 The Qwen3 Embedding model series is the latest proprietary model of the Qwen family, specifically designed for text embedding and ranking tasks.
 
-| Model Info                                                                 |                           |
-| -------------------------------------------------------------------------- | ------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 8,192 tokens              |
-| Unit Pricing                                                               | $0.012 per M input tokens |
+| Model Info                                                                          |                           |
+| ----------------------------------------------------------------------------------- | ------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 8,192 tokens              |
+| Unit Pricing                                                                        | $0.012 per M input tokens |
 
 ## Usage
 

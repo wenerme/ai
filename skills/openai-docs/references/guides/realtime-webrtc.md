@@ -1,5 +1,7 @@
 # Realtime API with WebRTC
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 [WebRTC](https://webrtc.org/) is a powerful set of standard interfaces for building real-time applications. The OpenAI Realtime API supports connecting to realtime models through a WebRTC peer connection.
 
 For browser-based speech-to-speech voice applications, we recommend starting with [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents), which covers the Agents SDK's higher-level helpers and APIs for managing Realtime sessions. The WebRTC interface is powerful and flexible, but lower level than the Agents SDK.
@@ -12,7 +14,7 @@ For more guidance on building user interfaces on top of WebRTC, [refer to the do
 
 ## Overview
 
-The Realtime API supports two mechanisms for connecting to the Realtime API from the browser, either using ephemeral API keys ([generated via the OpenAI REST API](https://developers.openai.com/api/docs/api-reference/realtime-sessions)), or via the new unified interface. Generally, using the unified interface is simpler, but puts your application server in the critical path for session initialization.
+The Realtime API supports two mechanisms for connecting to the Realtime API from the browser, either using ephemeral API keys ([generated via the OpenAI REST API](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets)), or via the new unified interface. Generally, using the unified interface is simpler, but puts your application server in the critical path for session initialization.
 
 ### Connecting using the unified interface
 
@@ -122,14 +124,14 @@ await pc.setRemoteDescription(answer);
 The process for initializing a WebRTC connection using an ephemeral API key is as follows (assuming a web browser client):
 
 1. The browser makes a request to a developer-controlled server to mint an ephemeral API key.
-1. The developer's server uses a [standard API key](https://platform.openai.com/settings/organization/api-keys) to request an ephemeral key from the [OpenAI REST API](https://developers.openai.com/api/docs/api-reference/realtime-sessions), and returns that new key to the browser.
+1. The developer's server uses a [standard API key](https://platform.openai.com/settings/organization/api-keys) to request an ephemeral key from the [OpenAI REST API](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets), and returns that new key to the browser.
 1. The browser uses the ephemeral key to authenticate a session directly with the OpenAI Realtime API as a [WebRTC peer connection](https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection).
 
 ![connect to realtime via WebRTC](https://openaidevs.retool.com/api/file/55b47800-9aaf-48b9-90d5-793ab227ddd3)
 
 #### Creating an ephemeral token
 
-To create an ephemeral token to use on the client-side, you will need to build a small server-side application (or integrate with an existing one) to make an [OpenAI REST API](https://developers.openai.com/api/docs/api-reference/realtime-sessions) request for an ephemeral key. You will use a [standard API key](https://platform.openai.com/settings/organization/api-keys) to authenticate this request on your backend server.
+To create an ephemeral token to use on the client-side, you will need to build a small server-side application (or integrate with an existing one) to make an [OpenAI REST API](https://developers.openai.com/api/reference/resources/realtime/subresources/client_secrets) request for an ephemeral key. You will use a [standard API key](https://platform.openai.com/settings/organization/api-keys) to authenticate this request on your backend server.
 
 Below is an example of a simple Node.js [express](https://expressjs.com/) server which mints an ephemeral API key using the REST API:
 
@@ -236,7 +238,7 @@ await pc.setRemoteDescription(answer);
 
 ## Sending and receiving events
 
-Realtime API sessions are managed using a combination of [client-sent events](https://developers.openai.com/api/docs/api-reference/realtime_client_events/session) emitted by you as the developer, and [server-sent events](https://developers.openai.com/api/docs/api-reference/realtime_server_events/error) created by the Realtime API to indicate session lifecycle events.
+Realtime API sessions are managed using a combination of [client-sent events](https://developers.openai.com/api/reference/resources/realtime/client-events#session.update) emitted by you as the developer, and [server-sent events](https://developers.openai.com/api/reference/resources/realtime/server-events#error) created by the Realtime API to indicate session lifecycle events.
 
 When connecting to a Realtime model via WebRTC, you don't have to handle audio events from the model in the same granular way you must with [WebSockets](https://developers.openai.com/api/docs/guides/realtime-websocket). The WebRTC peer connection object, if configured as above, will do all that work for you.
 
@@ -272,16 +274,8 @@ dc.send(JSON.stringify(event));
 
 To learn more about managing Realtime conversations, refer to the [Realtime conversations guide](https://developers.openai.com/api/docs/guides/realtime-conversations).
 
-<a
-  href="https://github.com/openai/openai-realtime-console/"
-  target="_blank"
-  rel="noreferrer"
->
-  
-
-<span slot="icon">
-      </span>
-    Check out the WebRTC Realtime API in this light weight example app.
+[Realtime Console
 
 
-</a>
+
+      Check out the WebRTC Realtime API in this light weight example app.](https://github.com/openai/openai-realtime-console/)

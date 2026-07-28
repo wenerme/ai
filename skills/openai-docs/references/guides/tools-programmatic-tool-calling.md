@@ -1,5 +1,7 @@
 # Programmatic Tool Calling
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 Programmatic Tool Calling lets a model write and run JavaScript that coordinates the tools in a Responses API request. A program can call tools in parallel, use loops and conditions, and keep intermediate results in the hosted runtime. This is useful when a task needs a sequence of related tool calls or needs to process large tool outputs before returning a result.
 
 Your application decides whether Programmatic Tool Calling is available and which eligible tools the model can call directly, from a program, or either way. It continues to run any client-owned tool calls.

@@ -1,10 +1,15 @@
 # Assistants migration guide
 
-<br />
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-We're moving from the Assistants API to the new [Responses API](https://developers.openai.com/api/docs/guides/responses-vs-chat-completions) for a simpler and more flexible mental model.
+After achieving feature parity in the Responses API, we've deprecated the Assistants API. It will shut down on August 26, 2026. Follow the [migration guide](https://developers.openai.com/platform/assistants/migration) to update your integration. [Learn more](https://platform.openai.com/docs/guides/migrate-to-responses).
 
-Responses are simpler—send input items and get output items back. With the Responses API, you also get better performance and new features like [deep research](https://developers.openai.com/api/docs/guides/deep-research), [MCP](https://developers.openai.com/api/docs/guides/tools-remote-mcp), and [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use). This change also lets you manage conversations instead of passing back `previous_response_id`.
+
+
+
+We're moving from the Assistants API to the new [Responses API](https://developers.openai.com/api/docs/guides/migrate-to-responses) for a simpler and more flexible mental model.
+
+Responses are simpler—send input items and get output items back. With the Responses API, you also get better performance and new features like [deep research](https://developers.openai.com/api/docs/guides/deep-research), [MCP](https://developers.openai.com/api/docs/guides/tools-connectors-mcp), and [computer use](https://developers.openai.com/api/docs/guides/tools-computer-use). This change also lets you manage conversations instead of passing back `previous_response_id`.
 
 ### What's changed?
 
@@ -78,6 +83,37 @@ A thread was a collection of messages stored server-side. Threads could _only_ s
 
 ### Response example
 
+
+
+#### Thread object
+
+```json
+{
+  "id": "thread_CrXtCzcyEQbkAcXuNmVSKFs1",
+  "object": "thread",
+  "created_at": 1752855924,
+  "metadata": {
+    "user_id": "peter_le_fleur"
+  },
+  "tool_resources": {}
+}
+```
+
+#### Conversation object
+
+```json
+{
+	"id": "conv_68542dc602388199a30af27d040cefd4087a04b576bfeb24",
+	"object": "conversation",
+	"created_at": 1752855924,
+	"metadata": {
+		"user_id": "peter_le_fleur"
+	}
+}
+```
+
+
+
 ---
 
 ## From runs to responses
@@ -90,12 +126,11 @@ Responses are designed to be used alone, but you can also use them with prompt a
 
 ### Response example
 
-<CodeComparison
-  client:load
-  snippets={[
-    {
-      language: "json",
-      code: `
+
+
+#### Run object
+
+```json
 {
   "id": "run_FKIpcs5ECSwuCmehBqsqkORj",
   "assistant_id": "asst_8fVY45hU3IM6creFkVi5MBKB",
@@ -140,12 +175,11 @@ Responses are designed to be used alone, but you can also use them with prompt a
   "tool_resources": {},
   "reasoning_effort": null
 }
-`,
-      title: "Run object",
-    },
-    {
-      language: "json",
-      code: `
+```
+
+#### Response object
+
+```json
 {
   "id": "resp_687a7b53036c819baad6012d58b39bcb074adcd9e24850fc",
   "created_at": 1752857427,
@@ -164,7 +198,7 @@ Responses are designed to be used alone, but you can also use them with prompt a
       "content": [
         {
           "annotations": [],
-          "text": "The \\"5 Ds of Dodgeball\\" are a humorous set of rules made famous by the 2004 comedy film **\\"Dodgeball: A True Underdog Story.\\"** In the movie, dodgeball coach Patches O’Houlihan teaches these basics to his team. The **5 Ds** are:\n\n1. **Dodge**\n2. **Duck**\n3. **Dip**\n4. **Dive**\n5. **Dodge** (yes, dodge is listed twice for emphasis!)\n\nIn summary:  \n> **“If you can dodge a wrench, you can dodge a ball!”**\n\nThese 5 Ds are not official competitive rules, but have become a fun and memorable pop culture reference for the sport of dodgeball.",
+          "text": "The \"5 Ds of Dodgeball\" are a humorous set of rules made famous by the 2004 comedy film **\"Dodgeball: A True Underdog Story.\"** In the movie, dodgeball coach Patches O’Houlihan teaches these basics to his team. The **5 Ds** are:\n\n1. **Dodge**\n2. **Duck**\n3. **Dip**\n4. **Dive**\n5. **Dodge** (yes, dodge is listed twice for emphasis!)\n\nIn summary:  \n> **“If you can dodge a wrench, you can dodge a ball!”**\n\nThese 5 Ds are not official competitive rules, but have become a fun and memorable pop culture reference for the sport of dodgeball.",
           "type": "output_text",
           "logprobs": []
         }
@@ -211,11 +245,9 @@ Responses are designed to be used alone, but you can also use them with prompt a
   "store": true,
   "top_logprobs": 0
 }
-`,
-      title: "Response object",
-    },
-  ]}
-/>
+```
+
+
 
 ---
 
@@ -292,9 +324,9 @@ Here are a few examples of integrations using both the Assistants API and the Re
 
 
 
-<div data-content-switcher-pane data-value="assistants">
-    <div class="hidden">Assistants API</div>
-    ```python
+Assistants API
+
+```python
 threads_by_session: dict[str, str] = {}
 
 
@@ -332,10 +364,14 @@ async def message(message: Message):
 ```
 
 
-  </div>
-  <div data-content-switcher-pane data-value="responses" hidden>
-    <div class="hidden">Responses API</div>
-    ```python
+  
+
+  
+
+    
+Responses API
+
+```python
 conversations_by_session: dict[str, str] = {}
 
 
@@ -354,6 +390,3 @@ async def message(message: Message):
 
     return {"content": response.output_text}
 ```
-
-
-  </div>

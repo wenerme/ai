@@ -1,6 +1,8 @@
 # File search
 
-File search is a tool available in the [Responses API](https://developers.openai.com/api/docs/api-reference/responses).
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+File search is a tool available in the [Responses API](https://developers.openai.com/api/reference/resources/responses).
 It enables models to retrieve information in a knowledge base of previously uploaded files through semantic and keyword search.
 By creating vector stores and uploading files to them, you can augment the models' inherent knowledge by giving them access to these knowledge bases or `vector_stores`.
 
@@ -184,18 +186,20 @@ console.log(response);
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-ResponseCreationOptions options = new();
-options.Tools.Add(ResponseTool.CreateFileSearchTool(["<vector_store_id>"]));
+CreateResponseOptions options = new() { Model = "gpt-5.6" };
+options.Tools.Add(
+    ResponseTool.CreateFileSearchTool(["<vector_store_id>"])
+);
+options.InputItems.Add(
+    ResponseItem.CreateUserMessageItem("What is deep research by OpenAI?")
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is deep research by OpenAI?"),
-    ]),
-], options);
+ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -461,29 +465,39 @@ _For `text/` MIME types, the encoding must be one of `utf-8`, `utf-16`, or `asci
 
 <tr>
 <td>
-<div className="mb-1 flex items-center gap-2">
-    [Responses](https://developers.openai.com/api/docs/api-reference/responses)
-</div>
-<div className="mb-1 flex items-center gap-2">
-    [Chat Completions](https://developers.openai.com/api/docs/api-reference/chat)
-</div>
-<div className="mb-1 flex items-center gap-2">
-    [Assistants](https://developers.openai.com/api/docs/api-reference/assistants)
-</div>
+
+
+    [Responses](https://developers.openai.com/api/reference/resources/responses)
+
+
+
+
+    [Chat Completions](https://developers.openai.com/api/reference/resources/chat)
+
+
+
+
+    [Assistants](https://developers.openai.com/api/reference/resources/beta/subresources/assistants)
+
+
 </td>
 <td style={{"maxWidth": "150px"}}>
-**Tier 1**<br/>
+**Tier 1**
+
 100 RPM
 
-**Tier 2 and 3**<br/>
+**Tier 2 and 3**
+
 500 RPM
 
-**Tier 4 and 5**<br/>
+**Tier 4 and 5**
+
 1000 RPM
 
 </td>
 <td style={{"maxWidth": "150px"}}>
-[Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) <br/>
+[Pricing](https://developers.openai.com/api/docs/pricing#built-in-tools) 
+
 [ZDR and data residency](https://developers.openai.com/api/docs/guides/your-data)
 </td>
 </tr>

@@ -25,14 +25,14 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 OpenAI's fast, lightweight reasoning model optimized for multi-step problem solving at lower cost.
 
-| Model Info                                                                 |                                                                                                                  |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 200,000 tokens                                                                                                   |
-| Terms and License                                                          | [link ↗](https://openai.com/policies/)                                                                           |
-| More information                                                           | [link ↗](https://openai.com/)                                                                                    |
-| Zero data retention                                                        | Yes                                                                                                              |
-| Request formats                                                            | Responses, Chat Completions                                                                                      |
-| Pricing                                                                    | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o4-mini) |
+| Model Info                                                                          |                                                                                                                  |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 200,000 tokens                                                                                                   |
+| Terms and License                                                                   | [link ↗](https://openai.com/policies/)                                                                           |
+| More information                                                                    | [link ↗](https://openai.com/)                                                                                    |
+| Zero data retention                                                                 | Yes                                                                                                              |
+| Request formats                                                                     | Responses, Chat Completions                                                                                      |
+| Pricing                                                                             | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o4-mini) |
 
 ## Usage
 

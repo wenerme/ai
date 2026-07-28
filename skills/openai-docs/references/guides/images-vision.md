@@ -1,9 +1,15 @@
 # Images and vision
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ## Overview
 
-<div className="mb-10 w-full max-w-full overflow-hidden">
-  </div>
+
+
+  - **[Create images](https://developers.openai.com/api/docs/guides/image-generation)**: Use GPT Image models to generate or edit images.
+- **[Process image inputs](#analyze-images)**: Use our models' vision capabilities to analyze images.
+
+
 
 In this guide, you will learn about building applications involving images with the OpenAI API.
 If you know what you want to build, find your use case below to get started. If you're not sure where to start, continue reading to get an overview.
@@ -16,9 +22,9 @@ The OpenAI API offers several endpoints to process images as input or generate t
 
 | API                                                  | Supported use cases                                                   |
 | ---------------------------------------------------- | --------------------------------------------------------------------- |
-| [Responses API](https://developers.openai.com/api/docs/api-reference/responses)   | Analyze images and use them as input and/or generate images as output |
-| [Images API](https://developers.openai.com/api/docs/api-reference/images)         | Generate images as output, optionally using images as input           |
-| [Chat Completions API](https://developers.openai.com/api/docs/api-reference/chat) | Analyze images and use them as input to generate text or audio        |
+| [Responses API](https://developers.openai.com/api/reference/resources/responses)   | Analyze images and use them as input and/or generate images as output |
+| [Images API](https://developers.openai.com/api/reference/resources/images)         | Generate images as output, optionally using images as input           |
+| [Chat Completions API](https://developers.openai.com/api/reference/resources/chat) | Analyze images and use them as input to generate text or audio        |
 
 To learn more about the input and output modalities supported by our models, refer to our [models page](https://developers.openai.com/api/docs/models).
 
@@ -117,14 +123,14 @@ You can provide images as input to generation requests in multiple ways:
 
 - By providing a fully qualified URL to an image file
 - By providing an image as a Base64-encoded data URL
-- By providing a file ID (created with the [Files API](https://developers.openai.com/api/docs/api-reference/files))
+- By providing a file ID (created with the [Files API](https://developers.openai.com/api/reference/resources/files))
 
 You can provide multiple images as input in a single request by including multiple images in the `content` array, but keep in mind that [images count as tokens](#calculating-costs) and will be billed accordingly.
 
 
 
-<div data-content-switcher-pane data-value="url">
-    <div class="hidden">Passing a URL</div>
+Passing a URL
+
     Analyze the content of an image
 
 ```javascript
@@ -179,18 +185,26 @@ print(response.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-Uri imageUrl = new("https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg");
+Uri imageUrl = new(
+    "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg"
+);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is in this image?"),
-        ResponseContentPart.CreateInputImagePart(imageUrl)
-    ])
-]);
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart("What is in this image?"),
+                ResponseContentPart.CreateInputImagePart(imageUrl),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine(response.GetOutputText());
 ```
@@ -231,9 +245,13 @@ input:
 YAML
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="base64-encoded" hidden>
-    <div class="hidden">Passing a Base64 encoded image</div>
+  
+
+  
+
+    
+Passing a Base64 encoded image
+
     Analyze the content of an image
 
 ```javascript
@@ -306,41 +324,61 @@ print(response.output_text)
 
 ```csharp
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
-Uri imageUrl = new("https://openai-documentation.vercel.app/images/cat_and_otter.png");
+Uri imageUrl = new(
+    "https://openai-documentation.vercel.app/images/cat_and_otter.png"
+);
+
 using HttpClient http = new();
 
-// Download an image as stream
-using var stream = await http.GetStreamAsync(imageUrl);
+// Download an image as a stream.
+using Stream stream = await http.GetStreamAsync(imageUrl);
+BinaryData imageData = BinaryData.FromStream(stream, "image/png");
 
-OpenAIResponse response1 = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is in this image?"),
-        ResponseContentPart.CreateInputImagePart(BinaryData.FromStream(stream), "image/png")
-    ])
-]);
+ResponseResult response1 = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart("What is in this image?"),
+                ResponseContentPart.CreateInputImagePart(imageData),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine($"From image stream: {response1.GetOutputText()}");
 
-// Download an image as byte array
+// Download an image as a byte array.
 byte[] bytes = await http.GetByteArrayAsync(imageUrl);
+imageData = BinaryData.FromBytes(bytes, "image/png");
 
-OpenAIResponse response2 = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("What is in this image?"),
-        ResponseContentPart.CreateInputImagePart(BinaryData.FromBytes(bytes), "image/png")
-    ])
-]);
+ResponseResult response2 = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart("What is in this image?"),
+                ResponseContentPart.CreateInputImagePart(imageData),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine($"From byte array: {response2.GetOutputText()}");
 ```
 
-  </div>
-  <div data-content-switcher-pane data-value="file" hidden>
-    <div class="hidden">Passing a file ID</div>
+  
+
+  
+
+    
+Passing a file ID
+
     Analyze the content of an image
 
 ```javascript
@@ -423,31 +461,43 @@ print(response.output_text)
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
 string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-OpenAIResponseClient client = new(model: "gpt-5.6", apiKey: key);
+ResponsesClient client = new(key);
 
 string filename = "cat_and_otter.png";
-Uri imageUrl = new($"https://openai-documentation.vercel.app/images/{filename}");
-using var http = new HttpClient();
+Uri imageUrl = new(
+    $"https://openai-documentation.vercel.app/images/{filename}"
+);
 
-// Download an image as stream
-using var stream = await http.GetStreamAsync(imageUrl);
+using HttpClient http = new();
+
+// Download an image as a stream.
+using Stream stream = await http.GetStreamAsync(imageUrl);
 
 OpenAIFileClient files = new(key);
-OpenAIFile file = await files.UploadFileAsync(BinaryData.FromStream(stream), filename, FileUploadPurpose.Vision);
 
-OpenAIResponse response = (OpenAIResponse)client.CreateResponse([
-    ResponseItem.CreateUserMessageItem([
-        ResponseContentPart.CreateInputTextPart("what's in this image?"),
-        ResponseContentPart.CreateInputImagePart(file.Id)
-    ])
-]);
+OpenAIFile file = await files.UploadFileAsync(
+    stream,
+    filename,
+    FileUploadPurpose.Vision
+);
+
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart("what's in this image?"),
+                ResponseContentPart.CreateInputImagePart(file.Id),
+            ]
+        ),
+    ]
+);
 
 Console.WriteLine(response.GetOutputText());
 ```
-
-  </div>
 
 
 
@@ -487,7 +537,7 @@ The `detail` parameter tells the model what level of detail to use when processi
 
 
 
-  ```plain
+```plain
 {
     "type": "input_image",
     "image_url": "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
@@ -502,11 +552,11 @@ Use the following guidance to choose a detail level:
 | Detail level | Best for                                                                                                                                       |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
 | `low`        | Fast, low-cost understanding when fine visual detail is not important. The model receives a low-resolution 512px x 512px version of the image. |
-| `high`       | Standard high-fidelity image understanding.                                                                                                    |
+| `high`       | Standard high-fidelity image understanding when precise original-image coordinates are not required.                                           |
 | `original`   | Large, dense, spatially sensitive, or computer-use images. Available on `gpt-5.4` and future models.                                           |
 | `auto`       | Automatic detail selection. On `gpt-5.5` and GPT-5.6 models, `auto` and the omitted/default behavior are equivalent to `original`.             |
 
-For computer use, localization, and click-accuracy use cases on `gpt-5.4` and future models, we recommend `"detail": "original"`. See the [Computer use guide](https://developers.openai.com/api/docs/guides/tools-computer-use) for more detail.
+For high-accuracy tasks that require fine visual detail or precise coordinates in the original image, such as optical character recognition (OCR), small-object detection, bounding boxes, localization, or computer use, set `"detail": "original"` when supported. The `low` and `high` detail levels may resize the image before analysis, which can obscure small details and cause model-generated coordinates to no longer match the original image. On `gpt-5.4` and `gpt-5.5`, `original` can also resize images that exceed the model's patch or dimension limits; for coordinate-sensitive tasks, resize those images before sending them and remap returned coordinates to the original image. Use `low` or `high` when lower cost or latency is more important than fine-detail recognition or spatial accuracy. See the [Computer use guide](https://developers.openai.com/api/docs/guides/tools-computer-use) for more detail.
 
 Read more about how models resize images in the [Model sizing
   behavior](#model-sizing-behavior) section, and about token costs in the
@@ -525,71 +575,71 @@ Different models use different resizing rules before image tokenization:
   <tr>
     <td>GPT-5.6 family</td>
     <td>
-      <code>low</code>, <code>high</code>, <code>original</code>,
-      <code>auto</code>
+      `low`, `high`, `original`,
+      `auto`
     </td>
     <td>
-      <code>low</code> and <code>high</code> can resize images under their
-      finite limits. <code>original</code> preserves the input dimensions and
+      `low` and `high` can resize images under their
+      finite limits. `original` preserves the input dimensions and
       does not resize the image to a pixel-dimension or patch-budget limit.
-      <code>auto</code> and omitted <code>detail</code> use the same sizing
-      behavior as <code>original</code>. Request payload and other image-input
+      `auto` and omitted `detail` use the same sizing
+      behavior as `original`. Request payload and other image-input
       limits still apply.
     </td>
   </tr>
   <tr>
     <td>
-      <code>gpt-5.5</code>
+      `gpt-5.5`
     </td>
     <td>
-      <code>low</code>, <code>high</code>, <code>original</code>,
-      <code>auto</code>
+      `low`, `high`, `original`,
+      `auto`
     </td>
     <td>
-      <code>high</code> allows up to 2,500 patches or a 2048-pixel maximum
-      dimension. <code>original</code> allows up to 10,000 patches or a
+      `high` allows up to 2,500 patches or a 2048-pixel maximum
+      dimension. `original` allows up to 10,000 patches or a
       6000-pixel maximum dimension. If either limit is exceeded, we resize the
       image while preserving aspect ratio to fit within the lesser of those two
-      constraints for the selected detail level. <code>auto</code> and omitted
-      <code>detail</code> use the same sizing behavior as
-      <code>original</code>. [Full resizing details
+      constraints for the selected detail level. `auto` and omitted
+      `detail` use the same sizing behavior as
+      `original`. [Full resizing details
       below.](#patch-based-image-tokenization)
     </td>
   </tr>
   <tr>
     <td>
-      <code>gpt-5.4</code>
+      `gpt-5.4`
     </td>
     <td>
-      <code>low</code>, <code>high</code>, <code>original</code>,
-      <code>auto</code>
+      `low`, `high`, `original`,
+      `auto`
     </td>
     <td>
-      <code>high</code> allows up to 2,500 patches or a 2048-pixel maximum
-      dimension. <code>original</code> allows up to 10,000 patches or a
+      `high` allows up to 2,500 patches or a 2048-pixel maximum
+      dimension. `original` allows up to 10,000 patches or a
       6000-pixel maximum dimension. If either limit is exceeded, we resize the
       image while preserving aspect ratio to fit within the lesser of those two
-      constraints for the selected detail level. <code>auto</code> and omitted
-      <code>detail</code> use the same sizing behavior as
-      <code>high</code>. [Full resizing details
+      constraints for the selected detail level. `auto` and omitted
+      `detail` use the same sizing behavior as
+      `high`. [Full resizing details
       below.](#patch-based-image-tokenization)
     </td>
   </tr>
   <tr>
     <td>
-      <code>gpt-5.4-mini</code>, <code>gpt-5.4-nano</code>,
-      <code>gpt-5-mini</code>, <code>gpt-5-nano</code>, <code>gpt-5.2</code>,
-      <code>gpt-5.3-codex</code>, <code>gpt-5-codex-mini</code>,
-      <code>gpt-5.1-codex-mini</code>, <code>gpt-5.2-codex</code>,
-      <code>gpt-5.2-chat-latest</code>, <code>o4-mini</code>, and the 
-      <code>gpt-4.1-mini</code> and <code>gpt-4.1-nano</code> 2025-04-14
+      `gpt-5.4-mini`, `gpt-5.4-nano`,
+      `gpt-5-mini`, `gpt-5-nano`, `gpt-5.2`,
+      `gpt-5.3-codex`, `gpt-5-codex-mini`,
+      `gpt-5.1-codex-mini`, `gpt-5.2-codex`,
+      `gpt-5.2-chat-latest`, `o4-mini`, and the 
+      `gpt-4.1-mini` and `gpt-4.1-nano` 2025-04-14
       snapshot variants
     </td>
     <td>
-      <code>low</code>, <code>high</code>, <code>auto</code>
+      `low`, `high`, `auto`
     </td>
     <td>
-      <code>high</code> allows up to 1,536 patches or a 2048-pixel maximum
+      `high` allows up to 1,536 patches or a 2048-pixel maximum
       dimension. If either limit is exceeded, we resize the image while
       preserving aspect ratio to fit within the lesser of those two constraints.
       [Full resizing details below.](#patch-based-image-tokenization)
@@ -597,18 +647,16 @@ Different models use different resizing rules before image tokenization:
   </tr>
   <tr>
     <td>
-      <code>GPT-4o</code>, <code>GPT-4.1</code>, <code>GPT-4o-mini</code>,
-      <code>computer-use-preview</code>, and o-series models except
-      <code>o4-mini</code>
+      `GPT-4o`, `GPT-4.1`, `GPT-4o-mini`,
+      `computer-use-preview`, and o-series models except
+      `o4-mini`
     </td>
     <td>
-      <code>low</code>, <code>high</code>, <code>auto</code>
+      `low`, `high`, `auto`
     </td>
     <td>
       Use tile-based resizing behavior. See 
-      <a href="#gpt-4o-gpt-41-gpt-4o-mini-cua-and-o-series-except-o4-mini">
-        the detailed behavior below
-      </a>
+      [the detailed behavior below](#gpt-4o-gpt-41-gpt-4o-mini-cua-and-o-series-except-o4-mini)
     </td>
   </tr>
 </table>

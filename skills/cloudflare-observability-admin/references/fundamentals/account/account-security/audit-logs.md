@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Audit Logs - version 2
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
 
@@ -122,6 +122,84 @@ To create a Logpush job:
 3. In **Select a destination**, select the destination of your choice and add the destination details.
 4. In the datasets section, select the [Audit Logs v2 dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/audit%5Flogs%5Fv2/). Audit Logs v2 is an account-based dataset.
 5. Once you are done configuring your logpush job, select **Submit**.
+
+## Resource History
+
+Resource History shows what changed on every configuration modification captured in Audit Logs. For any audit log entry, you can see the sequence of previous changes to the same resource and view a side-by-side diff of what was modified.
+
+Resource History is available in the Cloudflare dashboard and via the Audit Logs API. It uses the audit log entries you already have. There is no additional configuration, no backend recapture, and no changes to how audit logs are generated.
+
+### What Resource History gives you
+
+For any audit log entry, Resource History retrieves every other audit log entry for the same resource, ordered chronologically. You can then pick an earlier entry from that history to see exactly which fields changed between the two.
+
+### Use Resource History in the dashboard
+
+1. Go to **Manage Account** \> **Audit Logs**.
+2. Open any audit log entry.
+3. Select **Change History** to see the full history for the resource that entry describes.
+4. In the history view, select any earlier entry to see a side-by-side diff of the fields that changed between it and the current entry.
+
+When Resource History cannot identify the underlying resource (for example, for certain system-initiated events), the dashboard shows an empty state indicating that change history is not available for that entry.
+
+### Use Resource History via the API
+
+You can retrieve the change history for any audit log entry using the History endpoint. Given the `id` of a source audit log entry, the endpoint derives identifying filters from that entry and returns matching audit log entries within a date window you specify.
+
+For account-scoped audit logs, use:
+
+```bash
+GET https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit/{id}/history
+```
+
+For organization-scoped audit logs, use:
+
+```bash
+GET https://api.cloudflare.com/client/v4/organizations/{organization_id}/logs/audit/{id}/history
+```
+
+The `{id}` path parameter is the `id` of the source audit log entry whose resource history you want to retrieve.
+
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+
+* `Account Settings Read`
+* `Account Settings Write`
+
+The endpoint requires three query parameters:
+
+* `action_time` (required): RFC3339 timestamp of the source audit log entry's action time. Provide the `action.time` value from the audit log identified by `{id}`. This narrows the source-entry lookup window.
+* `since` (required): Limits returned results to entries newer than this date. Accepts a date string (`2024-10-30`, interpreted as UTC) or an RFC3339 timestamp.
+* `before` (required): Limits returned results to entries older than this date. Same format as `since`.
+
+Optional query parameters:
+
+* `direction`: `desc` (default) or `asc`.
+* `limit`: Number of entries to return per page. Default `100`.
+* `cursor`: Pagination cursor from a previous response's `result_info.cursor`.
+
+Required API token permissions
+
+At least one of the following [token permissions](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) is required:
+* `Account Settings Write`
+* `Account Settings Read`
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logs/audit/$ID/history" \
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+Each entry in `result` has the same shape as an entry returned by the Audit Logs list endpoint. Results are paginated using the `cursor` value in `result_info`.
+
+The `result_info.history_status` field indicates the quality of resource identification used to build the history:
+
+* `exact`: The source entry contained a resource URI, so the history was built from an exact resource match.
+* `approximate`: The source entry did not contain a resource URI, so the history was built from an approximate match (other resources of the same product and type). The dashboard surfaces this state with a warning banner.
+* `unavailable`: The source entry did not contain enough information to identify the resource. `result` is empty. This can happen for certain system-initiated events.
+
+Resource History reflects the audit log entries currently retained by Audit Logs v2 (refer to [Retention](#retention)). Entries older than the retention window are not returned. Resource History is a query-time capability and is not exposed as additional fields in the `audit_logs_v2` Logpush dataset.
 
 ## Audit Log structure
 
@@ -291,5 +369,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2 · Cloudflare Fundamentals docs","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2 · Cloudflare Fundamentals docs","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

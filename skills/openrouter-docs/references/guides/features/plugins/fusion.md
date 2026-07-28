@@ -4,7 +4,7 @@
 
 # Fusion
 
-> Multi-model analysis with a judge model
+> Multi-model analysis with an analyst model
 
 export const Template = ({children, data}) => {
   const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
@@ -46,7 +46,7 @@ export const Template = ({children, data}) => {
 
 export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
-The Fusion plugin gives your model access to a multi-model deliberation tool. When the model invokes it, a panel of models answers your prompt in parallel (with `openrouter:web_search`), a judge compares their responses and returns structured analysis, and your model uses that analysis to write a better final answer.
+The Fusion plugin gives your model access to a multi-model deliberation tool. When the model invokes it, a panel of models answers your prompt in parallel (with `openrouter:web_search`), an analyst compares their responses and returns structured analysis, and your model uses that analysis to write a better final answer.
 
 The Fusion plugin is a configuration surface for the [`openrouter:fusion` server tool](/docs/guides/features/server-tools/fusion). It's also the mechanism behind the [`openrouter/fusion` model alias](/docs/guides/routing/routers/fusion-router). All three entry points hit the same pipeline.
 
@@ -60,15 +60,15 @@ Reach for Fusion when a single model isn't enough — research, expert critique,
 flowchart LR
   request[Your request] --> model[Your model]
   model -- calls openrouter:fusion --> panel[Panel<br/>up to 8 models<br/>+ web_search + web_fetch]
-  panel --> judge[Judge / analysis<br/>+ web_search + web_fetch<br/>structured JSON]
-  judge -- analysis --> model
+  panel --> analyst[Analyst / analysis<br/>+ web_search + web_fetch<br/>structured JSON]
+  analyst -- analysis --> model
   model --> answer[Final answer]
 ```
 
 1. The plugin injects the `openrouter:fusion` tool into your request. If you used `model: "openrouter/fusion"`, it also resolves the alias to a real model.
 2. Your model reads the prompt and decides whether to invoke `openrouter:fusion`.
 3. The **panel** — a set of models — answers your prompt in parallel, each with `openrouter:web_search` and `openrouter:web_fetch` enabled.
-4. The **judge** receives all panel responses, with `openrouter:web_search` and `openrouter:web_fetch` available, and compares them — it doesn't merge them. It returns structured analysis as JSON: consensus (points all or most models agree on, treated as higher-confidence), contradictions, partial coverage, unique insights from individual models, and blind spots none of them addressed.
+4. The **analyst** receives all panel responses, with `openrouter:web_search` and `openrouter:web_fetch` available, and compares them — it doesn't merge them. It returns structured analysis as JSON: consensus (points all or most models agree on, treated as higher-confidence), contradictions, partial coverage, unique insights from individual models, and blind spots none of them addressed.
 5. Your model receives the structured analysis and writes the final answer.
 
 ## Configuration
@@ -90,20 +90,20 @@ flowchart LR
 }
 ```
 
-| Field             | Default                                                                                             | Description                                                                                                                                                                                                                                  |
-| ----------------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `preset`          | *none*                                                                                              | A curated OpenRouter preset slug (e.g. `general-high`) that expands into a panel + judge, so you don't have to name models. Explicit `analysis_models` / `model` override it. See [Presets](#presets).                                       |
-| `analysis_models` | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch`. 1–8 models allowed.                                                                                                               |
-| `model`           | First model in the Quality preset (`~anthropic/claude-opus-latest`)                                 | The judge model that produces the structured analysis. With `model: "openrouter/fusion"`, this also becomes the model that writes your final answer; when you attach the plugin to your own model instead, the judge defaults to that model. |
-| `max_tool_calls`  | `8`                                                                                                 | Max tool-calling steps each panel model and the judge may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16.                                                                      |
-| `enabled`         | `true`                                                                                              | Set to `false` to bypass fusion for a single request.                                                                                                                                                                                        |
+| Field             | Default                                                                                             | Description                                                                                                                                                                                                                                      |
+| ----------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `preset`          | *none*                                                                                              | A curated OpenRouter preset slug (e.g. `general-high`) that expands into a panel + analyst, so you don't have to name models. Explicit `analysis_models` / `model` override it. See [Presets](#presets).                                         |
+| `analysis_models` | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch`. 1–8 models allowed.                                                                                                                   |
+| `model`           | First model in the Quality preset (`~anthropic/claude-opus-latest`)                                 | The analyst model that produces the structured analysis. With `model: "openrouter/fusion"`, this also becomes the model that writes your final answer; when you attach the plugin to your own model instead, the analyst defaults to that model. |
+| `max_tool_calls`  | `8`                                                                                                 | Max tool-calling steps each panel model and the analyst may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16.                                                                        |
+| `enabled`         | `true`                                                                                              | Set to `false` to bypass fusion for a single request.                                                                                                                                                                                            |
 
 When you send `model: "openrouter/fusion"` without a plugin config, the defaults match the **Quality** preset on the [Fusion lab](https://openrouter.ai/fusion/).
 
 ### Presets
 
 Don't want to pick models? Reference a curated preset by slug with `preset` —
-the panel and judge are chosen for you:
+the panel and analyst are chosen for you:
 
 ```json lines theme={null}
 {
@@ -114,15 +114,15 @@ the panel and judge are chosen for you:
 
 Slugs follow `<task>-<tier>`: `task` is what you're optimizing the panel for,
 and `tier` is the quality/cost/speed tradeoff (`high` = strongest models, `budget` =
-cheaper panel with the same frontier judge, `fast` = a latency-homogeneous panel
+cheaper panel with the same frontier analyst, `fast` = a latency-homogeneous panel
 where every model has similar TTFT so no single model gates the fan-out). These
 mirror the presets shown in the [Fusion lab](https://openrouter.ai/labs/fusion) UI.
 
-| Preset           | For                                                                                  |
-| ---------------- | ------------------------------------------------------------------------------------ |
-| `general-high`   | The strongest all-round panel.                                                       |
-| `general-budget` | A cheaper panel with a frontier judge for strong synthesis at lower cost.            |
-| `general-fast`   | A latency-homogeneous panel optimized for fast agentic turns, with a frontier judge. |
+| Preset           | For                                                                                    |
+| ---------------- | -------------------------------------------------------------------------------------- |
+| `general-high`   | The strongest all-round panel.                                                         |
+| `general-budget` | A cheaper panel with a frontier analyst for strong synthesis at lower cost.            |
+| `general-fast`   | A latency-homogeneous panel optimized for fast agentic turns, with a frontier analyst. |
 
 Explicit `analysis_models` or `model` always take precedence over a preset.
 
@@ -229,7 +229,7 @@ API_KEY_REF,
 
 ## Recursion protection
 
-Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and judge models cannot recursively invoke `openrouter:fusion` — the plugin refuses to inject the tool a second time, keeping deliberation bounded to a single level.
+Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and analyst models cannot recursively invoke `openrouter:fusion` — the plugin refuses to inject the tool a second time, keeping deliberation bounded to a single level.
 
 ## Related
 

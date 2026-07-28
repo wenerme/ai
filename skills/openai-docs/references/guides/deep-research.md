@@ -1,12 +1,14 @@
 # Deep research
 
-The [`o3-deep-research`](https://developers.openai.com/api/docs/models/o3-deep-research) and [`o4-mini-deep-research`](https://developers.openai.com/api/docs/models/o4-mini-deep-research) models can find, analyze, and synthesize hundreds of sources to create a comprehensive report at the level of a research analyst. These models are optimized for browsing and data analysis, and can use [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [remote MCP](https://developers.openai.com/api/docs/guides/tools-remote-mcp) servers, and [file search](https://developers.openai.com/api/docs/guides/tools-file-search) over internal [vector stores](https://developers.openai.com/api/docs/api-reference/vector-stores) to generate detailed reports, ideal for use cases like:
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
+The [`o3-deep-research`](https://developers.openai.com/api/docs/models/o3-deep-research) and [`o4-mini-deep-research`](https://developers.openai.com/api/docs/models/o4-mini-deep-research) models can find, analyze, and synthesize hundreds of sources to create a comprehensive report at the level of a research analyst. These models are optimized for browsing and data analysis, and can use [web search](https://developers.openai.com/api/docs/guides/tools-web-search), [remote MCP](https://developers.openai.com/api/docs/guides/tools-connectors-mcp) servers, and [file search](https://developers.openai.com/api/docs/guides/tools-file-search) over internal [vector stores](https://developers.openai.com/api/reference/resources/vector_stores) to generate detailed reports, ideal for use cases like:
 
 - Legal or scientific research
 - Market analysis
 - Reporting on large bodies of internal company data
 
-To use deep research, use the [Responses API](https://developers.openai.com/api/docs/api-reference/responses) with the model set to `o3-deep-research` or `o4-mini-deep-research`. You must include at least one data source: web search, remote MCP servers, or file search with vector stores. You can also include the [code interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter) tool to allow the model to perform complex analysis by writing code.
+To use deep research, use the [Responses API](https://developers.openai.com/api/reference/resources/responses) with the model set to `o3-deep-research` or `o4-mini-deep-research`. You must include at least one data source: web search, remote MCP servers, or file search with vector stores. You can also include the [code interpreter](https://developers.openai.com/api/docs/guides/tools-code-interpreter) tool to allow the model to perform complex analysis by writing code.
 
 Kick off a deep research task
 
@@ -435,7 +437,7 @@ Deep research models are designed to access both public and private data sources
 
 - Include relevant data directly in the prompt text
 - Upload files to vector stores, and use the file search tool to connect model to vector stores
-- Use [connectors](https://developers.openai.com/api/docs/guides/tools-remote-mcp#connectors) to pull in context from popular applications, like Dropbox and Gmail
+- Use [connectors](https://developers.openai.com/api/docs/guides/tools-connectors-mcp#connectors) to pull in context from popular applications, like Dropbox and Gmail
 - Connect the model to a remote MCP server that can access your data source
 
 ### Prompt text
@@ -448,7 +450,7 @@ In most cases, you'll want to use the file search tool connected to vector store
 
 ### Connectors
 
-Connectors are third-party integrations with popular applications, like Dropbox and Gmail, that let you pull in context to build richer experiences in a single API call. In the Responses API, you can think of these connectors as built-in tools, with a third-party backend. Learn how to [set up connectors](https://developers.openai.com/api/docs/guides/tools-remote-mcp#connectors) in the remote MCP guide.
+Connectors are third-party integrations with popular applications, like Dropbox and Gmail, that let you pull in context to build richer experiences in a single API call. In the Responses API, you can think of these connectors as built-in tools, with a third-party backend. Learn how to [set up connectors](https://developers.openai.com/api/docs/guides/tools-connectors-mcp#connectors) in the remote MCP guide.
 
 ### Remote MCP servers
 
@@ -540,14 +542,12 @@ print(resp.output_text)
 ```
 
 
-[
+[Build a deep research compatible remote MCP server
 
-<span slot="icon">
-      </span>
-    Give deep research models access to private data via remote Model Context
-    Protocol (MCP) servers.
 
-](https://developers.openai.com/api/docs/mcp)
+
+      Give deep research models access to private data via remote Model Context
+    Protocol (MCP) servers.](https://developers.openai.com/api/docs/mcp)
 
 ### Supported tools
 

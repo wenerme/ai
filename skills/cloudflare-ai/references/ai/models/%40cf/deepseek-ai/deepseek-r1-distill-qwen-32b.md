@@ -25,12 +25,12 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5\. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.
 
-| Model Info                                                                 |                                                                        |
-| -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/glossary/) | 80,000 tokens                                                          |
-| Terms and License                                                          | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
-| Reasoning                                                                  | Yes                                                                    |
-| Unit Pricing                                                               | $0.50 per M input tokens, $4.88 per M output tokens                    |
+| Model Info                                                                          |                                                                        |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 80,000 tokens                                                          |
+| Terms and License                                                                   | [link ↗](https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE) |
+| Reasoning                                                                           | Yes                                                                    |
+| Unit Pricing                                                                        | $0.50 per M input tokens, $4.88 per M output tokens                    |
 
 ## Playground
 

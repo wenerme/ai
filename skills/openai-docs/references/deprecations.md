@@ -1,5 +1,7 @@
 # Deprecations
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 ## Overview
 
 As we launch safer and more capable models, we regularly retire older models. Software relying on OpenAI models may need occasional updates to keep working. Impacted customers will always be notified by email and in our documentation along with [blog posts](https://openai.com/blog) for larger changes.
@@ -224,7 +226,7 @@ There are a few key differences between the interfaces in the Realtime beta API 
 
 On August 26th, 2025, we notified developers using the Assistants API of its deprecation and removal from the API one year later, on August 26, 2026.
 
-When we released the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create) in [March 2025](https://developers.openai.com/api/docs/changelog), we announced plans to bring all Assistants API features to the easier to use Responses API, with a sunset date in 2026.
+When we released the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) in [March 2025](https://developers.openai.com/api/docs/changelog), we announced plans to bring all Assistants API features to the easier to use Responses API, with a sunset date in 2026.
 
 See the Assistants to Conversations [migration guide](https://developers.openai.com/api/docs/assistants/migration) to learn more about how to migrate your current integration to the Responses API and Conversations API.
 
@@ -310,7 +312,7 @@ On April 14th, 2025, we notified developers that the `gpt-4.5-preview` model is 
 
 ### 2024-10-02: Assistants API beta v1
 
-In [April 2024](https://developers.openai.com/api/docs/assistants/whats-new) when we released the v2 beta version of the Assistants API, we announced that access to the v1 beta would be shut off by the end of 2024. Access to the v1 beta will be discontinued on December 18, 2024.
+In [April 2024](https://developers.openai.com/api/docs/assistants/migration) when we released the v2 beta version of the Assistants API, we announced that access to the v1 beta would be shut off by the end of 2024. Access to the v1 beta will be discontinued on December 18, 2024.
 
 See the Assistants API v2 beta [migration guide](https://developers.openai.com/api/docs/assistants/migration) to learn more about how to migrate your tool usage to the latest version of the Assistants API.
 
@@ -459,3 +461,17 @@ On June 13, 2023, we announced new chat model versions in the [Function calling 
 | 2022-12-03    | `/v1/search`          | [View transition guide](https://help.openai.com/en/articles/6272952-search-transition-guide)          |
 | 2022-12-03    | `/v1/classifications` | [View transition guide](https://help.openai.com/en/articles/6272941-classifications-transition-guide) |
 | 2022-12-03    | `/v1/answers`         | [View transition guide](https://help.openai.com/en/articles/6233728-answers-transition-guide)         |
+
+### Plain-text aliases
+
+- computer-use-preview-2025-03-11 | computer-use-preview
+- o3-deep-research-2025-06-26 | o3-deep-research
+- o4-mini-deep-research-2025-06-26 | o4-mini-deep-research
+- gpt-3.5-turbo-0125 | gpt-3.5-turbo, gpt-3.5-turbo-completions
+- gpt-4-0613 | gpt-4, gpt-4-0613-completions, gpt-4-completions
+- gpt-4-turbo | gpt-4-turbo-2024-04-09, gpt-4-turbo-completions
+- gpt-4.1-nano | gpt-4.1-nano-2025-04-14
+- o1-2024-12-17 | o1
+- o1-pro-2025-03-19 | o1-pro
+- o3-mini-2025-01-31 | o3-mini
+- o4-mini-2025-04-16 | o4-mini

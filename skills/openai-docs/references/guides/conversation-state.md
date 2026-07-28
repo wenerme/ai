@@ -1,5 +1,7 @@
 # Conversation state
 
+> For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
+
 OpenAI provides a few ways to manage conversation state, which is important for preserving information across multiple messages or turns in a conversation.
 
 
@@ -145,7 +147,7 @@ Our APIs make it easier to manage conversation state automatically, so you don't
 
 ### Using the Conversations API
 
-The [Conversations API](https://developers.openai.com/api/docs/api-reference/conversations/create) works with the [Responses API](https://developers.openai.com/api/docs/api-reference/responses/create) to persist conversation state as a long-running object with its own durable identifier. After creating a conversation object, you can keep using it across sessions, devices, or jobs.
+The [Conversations API](https://developers.openai.com/api/reference/resources/conversations/methods/create) works with the [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create) to persist conversation state as a long-running object with its own durable identifier. After creating a conversation object, you can keep using it across sessions, devices, or jobs.
 
 Conversations store items, which can be messages, tool calls, tool outputs, and other data.
 
@@ -272,19 +274,21 @@ If you are using [the Responses API WebSocket mode](https://developers.openai.co
 
 The connection-local cache currently keeps the most recent previous response in memory for low-latency continuation. If an uncached ID cannot be resolved, send a new turn with `previous_response_id` set to `null` and pass full input context.
 
-<div style={{ margin: "-16px 0 10px 0" }}>
+
+
   Data retention for model responses
 
 Response objects are saved for 30 days by default. They can be viewed in the dashboard 
       [logs](https://platform.openai.com/logs?api=responses) page or 
-      [retrieved](https://developers.openai.com/api/docs/api-reference/responses/get) via the API. 
-      You can disable this behavior by setting <code>store</code> to <code>false</code>
+      [retrieved](https://developers.openai.com/api/reference/resources/responses/methods/retrieve) via the API. 
+      You can disable this behavior by setting `store` to `false`
       when creating a Response.
 
       Conversation objects and items in them are not subject to the 30 day TTL. Any response attached to a conversation will have its items persisted with no 30 day TTL.
 
       OpenAI does not use data sent via API to train our models without your explicit consent—[learn more](https://developers.openai.com/api/docs/guides/your-data).
-</div>
+
+
 
 
 Even when using `previous_response_id`, all previous input tokens for responses in the chain are billed as input tokens in the API.
@@ -310,9 +314,9 @@ Use the [tokenizer tool](https://platform.openai.com/tokenizer), built with the 
 
 
 
-For example, when making an API request to the [Responses API](https://developers.openai.com/api/docs/api-reference/responses) with a reasoning enabled model, like the [o1 model](https://developers.openai.com/api/docs/guides/reasoning), the following token counts will apply toward the context window total:
+For example, when making an API request to the [Responses API](https://developers.openai.com/api/reference/resources/responses) with a reasoning enabled model, like the [o1 model](https://developers.openai.com/api/docs/guides/reasoning), the following token counts will apply toward the context window total:
 
-- Input tokens (inputs you include in the `input` array for the [Responses API](https://developers.openai.com/api/docs/api-reference/responses))
+- Input tokens (inputs you include in the `input` array for the [Responses API](https://developers.openai.com/api/reference/resources/responses))
 - Output tokens (tokens generated in response to your prompt) 
 - Reasoning tokens (used by the model to plan a response)
 
@@ -334,7 +338,7 @@ Detailed compaction guidance now lives in
   [Server-side compaction](https://developers.openai.com/api/docs/guides/compaction#server-side-compaction).
 - For explicit compaction control, see
   [Standalone compact endpoint](https://developers.openai.com/api/docs/guides/compaction#standalone-compact-endpoint)
-  and the [`/responses/compact` API reference](https://developers.openai.com/api/docs/api-reference/responses/compact).
+  and the [`/responses/compact` API reference](https://developers.openai.com/api/reference/resources/responses/methods/compact).
 
 ## Next steps
 
