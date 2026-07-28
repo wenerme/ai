@@ -1,11 +1,11 @@
 ---
 title: "CrofAI | Models"
-description: "Use CrofAI models with Mastra. 23 models available."
+description: "Use CrofAI models with Mastra. 24 models available."
 ---
 
 # [CrofAI logo]CrofAI
 
-Access 23 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
+Access 24 CrofAI models through Mastra's model router. Authentication is handled automatically using the `CROF_API_KEY` environment variable.
 
 Learn more in the [CrofAI documentation](https://crof.ai/docs).
 
@@ -254,6 +254,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.55,
     "outputCost": 2.25
+  },
+  {
+    "model": "crof/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 262144,
+    "inputCost": 2,
+    "outputCost": 8
   },
   {
     "model": "crof/mimo-v2.5-pro",

@@ -17,12 +17,13 @@ Currently, the following secret types are available:
 | `gcs`         | Google Cloud Storage | [`httpfs`](https://duckdb.org/docs/current/core_extensions/httpfs/s3api.html)               |
 | `http`        | HTTP and HTTPS       | [`httpfs`](https://duckdb.org/docs/current/core_extensions/httpfs/https.html)               |
 | `huggingface` | Hugging Face         | [`httpfs`](https://duckdb.org/docs/current/core_extensions/httpfs/hugging_face.html)        |
-| `iceberg`     | Iceberg REST Catalog | [`httpfs`](https://duckdb.org/docs/current/core_extensions/httpfs/s3api.html), [`iceberg`](https://duckdb.org/docs/current/core_extensions/iceberg/iceberg_rest_catalogs.html) |
+| `iceberg`     | Iceberg REST Catalog | [`httpfs`](https://duckdb.org/docs/current/core_extensions/httpfs/s3api.html), [`iceberg`](https://duckdb.org/docs/current/core_extensions/iceberg/catalogs.html) |
 | `mysql`       | MySQL                | [`mysql`](https://duckdb.org/docs/current/core_extensions/mysql.html)                       |
 | `postgres`    | PostgreSQL           | [`postgres`](https://duckdb.org/docs/current/core_extensions/postgres/overview.html)                 |
 | `quack`       | Quack                | [`quack`](https://duckdb.org/docs/current/core_extensions/quack.html)                       |
 | `r2`          | Cloudflare R2        | [`httpfs`](https://duckdb.org/docs/current/core_extensions/httpfs/s3api.html)               |
 | `s3`          | AWS S3               | [`httpfs`](https://duckdb.org/docs/current/core_extensions/httpfs/s3api.html)               |
+| `aws`         | AWS                  | [`aws`](% link docs/current/core_extensions/aws.md %})                  |
 
 For each type, there are one or more “secret providers” that specify how the secret is created. Secrets can also have an optional scope, which is a file path prefix that the secret applies to. When fetching a secret for a path, the secret scopes are compared to the path, returning the matching secret for the path. In the case of multiple matching secrets, the longest prefix is chosen.
 

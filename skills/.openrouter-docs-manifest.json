@@ -10003,9 +10003,9 @@
   },
   "api/api-reference/anthropic-messages/create-a-message.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-a-message.md",
-    "lastModified": "Tue, 28 Jul 2026 03:46:14 GMT",
-    "size": 178443,
-    "updatedAt": "2026-07-28T03:46:14.227Z"
+    "lastModified": "Tue, 28 Jul 2026 12:33:39 GMT",
+    "size": 178405,
+    "updatedAt": "2026-07-28T12:33:39.462Z"
   },
   "api/api-reference/api-keys/create-a-new-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/create-a-new-api-key.md",
@@ -10093,9 +10093,9 @@
   },
   "api/api-reference/chat/create-a-chat-completion.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/chat/create-a-chat-completion.md",
-    "lastModified": "Tue, 28 Jul 2026 03:46:18 GMT",
-    "size": 159333,
-    "updatedAt": "2026-07-28T03:46:18.924Z"
+    "lastModified": "Tue, 28 Jul 2026 12:33:44 GMT",
+    "size": 159257,
+    "updatedAt": "2026-07-28T12:33:44.596Z"
   },
   "api/api-reference/classifications/task-classification-market-share.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/classifications/task-classification-market-share.md",
@@ -10333,21 +10333,21 @@
   },
   "api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body.md",
-    "lastModified": "Tue, 28 Jul 2026 03:46:32 GMT",
-    "size": 130764,
-    "updatedAt": "2026-07-28T03:46:32.411Z"
+    "lastModified": "Tue, 28 Jul 2026 12:33:57 GMT",
+    "size": 130688,
+    "updatedAt": "2026-07-28T12:33:57.633Z"
   },
   "api/api-reference/presets/create-a-preset-from-a-messages-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body.md",
-    "lastModified": "Tue, 28 Jul 2026 03:46:32 GMT",
-    "size": 114845,
-    "updatedAt": "2026-07-28T03:46:32.689Z"
+    "lastModified": "Tue, 28 Jul 2026 12:33:57 GMT",
+    "size": 114807,
+    "updatedAt": "2026-07-28T12:33:57.938Z"
   },
   "api/api-reference/presets/create-a-preset-from-a-responses-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body.md",
-    "lastModified": "Tue, 28 Jul 2026 03:46:32 GMT",
-    "size": 208900,
-    "updatedAt": "2026-07-28T03:46:32.951Z"
+    "lastModified": "Tue, 28 Jul 2026 12:33:58 GMT",
+    "size": 209032,
+    "updatedAt": "2026-07-28T12:33:58.248Z"
   },
   "api/api-reference/presets/get-a-preset.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/get-a-preset.md",
@@ -10387,9 +10387,9 @@
   },
   "api/api-reference/responses/create-a-response.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-a-response.md",
-    "lastModified": "Tue, 28 Jul 2026 03:46:35 GMT",
-    "size": 321640,
-    "updatedAt": "2026-07-28T03:46:35.034Z"
+    "lastModified": "Tue, 28 Jul 2026 12:34:00 GMT",
+    "size": 321772,
+    "updatedAt": "2026-07-28T12:34:00.368Z"
   },
   "api/api-reference/stt/create-transcription.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/stt/create-transcription.md",

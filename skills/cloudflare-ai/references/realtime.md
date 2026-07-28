@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Realtime
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime is a comprehensive suite of products designed to help you build powerful, scalable real-time applications.
 
@@ -64,7 +64,7 @@ Cloudflare Stream lets you or your end users upload, store, encode, and deliver 
 
 Connect with the Realtime community on Discord to ask questions, show what you are building, and discuss the platform with other developers.
 
-### [Use cases](https://developers.cloudflare.com/realtime/realtimekit/introduction#use-cases)
+### [Use cases](https://developers.cloudflare.com/realtime/realtimekit/#build-with-realtimekit)
 
 Learn how you can build and deploy ambitious Realtime applications to Cloudflare's global network.
 
@@ -81,5 +81,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.","url":"https://developers.cloudflare.com/realtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build scalable real-time applications with Cloudflare Realtime products including RealtimeKit, SFU, and TURN.","url":"https://developers.cloudflare.com/realtime/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

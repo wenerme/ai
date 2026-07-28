@@ -337,10 +337,9 @@ following response attributes:
 | `statistics.packages_size` | integer | Packages storage size in bytes. |
 | `statistics.snippets_size` | integer | Snippets storage size in bytes. |
 | `statistics.uploads_size` | integer | Uploads storage size in bytes. |
-| `statistics.container_registry_size` | integer | Container registry storage size in bytes. <sup>1</sup> |
+| `statistics.container_registry_size` | integer | Total container registry storage size in bytes used by all container repositories in the project. Updates when container images are pushed or deleted. For GitLab Self-Managed instances, requires the container registry metadata database to be enabled. |
 | `forked_from_project` | object | The upstream project this project was forked from. If the upstream project is private, an authentication token is required to view this field. |
 | `mr_default_target_self` | boolean | Whether merge requests target this project by default. If `false`, merge requests target the upstream project. Appears only if the project is a fork. |
-
 {.condensed}
 
 Example request:
@@ -597,7 +596,6 @@ Supported attributes:
 | `with_programming_language`   | string   | No       | Limit by projects which use the given programming language. |
 | `marked_for_deletion_on`      | date     | No       | Filter by date when project was marked for deletion. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463939) in GitLab 17.1. Premium and Ultimate only. |
 | `active`                      | boolean  | No       | Limit by projects that are not archived and not marked for deletion. |
-
 {.condensed}
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
@@ -742,7 +740,6 @@ following response attributes:
 | `permissions` | object | User permissions for the project. |
 | `permissions.project_access` | object | Project access permissions for the user. |
 | `permissions.group_access` | object | Group access permissions for the user. |
-
 {.condensed}
 
 Example request:
@@ -1117,7 +1114,6 @@ following response attributes:
 | `permissions` | object | User permissions for the project. |
 | `permissions.project_access` | object | Project access permissions for the user. |
 | `permissions.group_access` | object | Group access permissions for the user. |
-
 {.condensed}
 
 Example request:
@@ -1574,7 +1570,6 @@ following response attributes:
 | `permissions` | object | User permissions for the project. |
 | `permissions.project_access` | object | Project access permissions for the user. |
 | `permissions.group_access` | object | Group access permissions for the user. |
-
 {.condensed}
 
 Example request:

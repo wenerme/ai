@@ -3386,8 +3386,8 @@ components:
         excluded_domains:
           description: >-
             Exclude search results from these domains. Supported by Exa,
-            Firecrawl, Parallel, Perplexity, Anthropic, and xAI. Not supported
-            with OpenAI (silently ignored). Cannot be used with allowed_domains.
+            Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and xAI. Cannot
+            be used with allowed_domains.
           items:
             type: string
           type: array
@@ -4375,8 +4375,8 @@ components:
         excluded_domains:
           description: >-
             Exclude search results from these domains. Supported by Exa,
-            Firecrawl, Parallel, Perplexity, Anthropic, and xAI. Not supported
-            with OpenAI (silently ignored). Cannot be used with allowed_domains.
+            Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and xAI. Cannot
+            be used with allowed_domains.
           items:
             type: string
           type: array

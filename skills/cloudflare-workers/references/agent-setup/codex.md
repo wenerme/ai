@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 1. **Download Codex**

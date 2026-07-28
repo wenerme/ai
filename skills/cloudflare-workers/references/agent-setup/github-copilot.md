@@ -50,7 +50,7 @@ In Visual Studio Code, `.vscode/mcp.json` uses `servers` as the root key instead
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access

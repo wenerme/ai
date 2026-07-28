@@ -94,8 +94,6 @@ The image name must be in one of the following formats:
 
 ## Extended Docker configuration options
 
-- Introduced in GitLab and GitLab Runner 9.4.
-
 You can use a string or a map for the `image` or `services` entries:
 
 - Strings must include the full image name
@@ -133,8 +131,6 @@ For example, the following two definitions are equal:
 When a CI job runs in a Docker container, the `before_script`, `script`, and `after_script` commands run in the `/builds/<project-path>/` directory. Your image may have a different default `WORKDIR` defined. To move to your `WORKDIR`, save the `WORKDIR` as an environment variable so you can reference it in the container during the job's runtime.
 
 ### Override the entrypoint of an image
-
-- Introduced in GitLab and GitLab Runner 9.4. Read more about the [extended configuration options](using_docker_images.md#extended-docker-configuration-options).
 
 Before explaining the available entrypoint override methods, let's describe
 how the runner starts. It uses a Docker image for the containers used in the
