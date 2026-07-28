@@ -33,7 +33,9 @@ in the Agent Platform.
 | Claude Opus 4.6             | Yes             | No                                 | Yes      |
 | Claude Opus 4.7             | Yes             | No                                 | Yes      |
 | Claude Opus 4.8             | Yes             | No                                 | Yes      |
+| Claude Opus 5               | Yes             | No                                 | Yes      |
 | Gemini 3.5 Flash            | Yes             | No                                 | Yes      |
+| Gemini 3.6 Flash            | Yes             | No                                 | Yes      |
 | GPT-5                       | Yes             | No                                 | Yes      |
 | GPT-5.1                     | Yes             | No                                 | Yes      |
 | GPT-5.2                     | Yes             | Yes                                | Yes      |

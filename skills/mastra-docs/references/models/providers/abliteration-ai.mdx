@@ -1,11 +1,11 @@
 ---
 title: "abliteration.ai | Models"
-description: "Use abliteration.ai models with Mastra. 1 model available."
+description: "Use abliteration.ai models with Mastra. 2 models available."
 ---
 
 # [abliteration.ai logo]abliteration.ai
 
-Access 1 abliteration.ai model through Mastra's model router. Authentication is handled automatically using the `ABLIT_KEY` environment variable.
+Access 2 abliteration.ai models through Mastra's model router. Authentication is handled automatically using the `ABLIT_KEY` environment variable.
 
 Learn more in the [abliteration.ai documentation](https://docs.abliteration.ai/models).
 
@@ -45,11 +45,23 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 150000,
     "maxOutput": 8192,
     "inputCost": 3,
     "outputCost": 3
+  },
+  {
+    "model": "abliteration-ai/abliterated-model-large",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 999990,
+    "inputCost": 5,
+    "outputCost": 5
   }
 ]}
 />
@@ -82,7 +94,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "abliteration-ai/abliterated-model"
+      ? "abliteration-ai/abliterated-model-large"
       : "abliteration-ai/abliterated-model";
   }
 });

@@ -1,11 +1,11 @@
 ---
 title: "Nvidia | Models"
-description: "Use Nvidia models with Mastra. 84 models available."
+description: "Use Nvidia models with Mastra. 98 models available."
 ---
 
 # [Nvidia logo]Nvidia
 
-Access 84 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
+Access 98 Nvidia models through Mastra's model router. Authentication is handled automatically using the `NVIDIA_API_KEY` environment variable.
 
 Learn more in the [Nvidia documentation](https://docs.api.nvidia.com/nim/).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "nvidia/abacusai/dracarys-llama-3_1-70b-instruct"
+  model: "nvidia/abacusai/dracarys-llama-3.1-70b-instruct"
 });
 
 // Generate a response
@@ -40,7 +40,7 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "nvidia/abacusai/dracarys-llama-3_1-70b-instruct",
+    "model": "nvidia/abacusai/dracarys-llama-3.1-70b-instruct",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -156,6 +156,30 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 4096,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/google/gemma-3-12b-it",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 131072,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/google/gemma-3-4b-it",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 131072,
+    "maxOutput": 16384,
     "inputCost": null,
     "outputCost": null
   },
@@ -400,7 +424,19 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nvidia/mistralai/mistral-7b-instruct-v03",
+    "model": "nvidia/mistralai/ministral-14b-instruct-2512",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 262144,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/mistralai/mistral-7b-instruct-v0.3",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -431,6 +467,18 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 131072,
+    "maxOutput": 32768,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/mistralai/mistral-medium-3.5-128b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
     "maxOutput": 32768,
     "inputCost": null,
     "outputCost": null
@@ -520,6 +568,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "nvidia/nvidia/cosmos-reason2-8b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "nvidia/nvidia/cosmos-transfer1-7b",
     "imageInput": true,
     "audioInput": false,
@@ -556,7 +616,55 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nvidia/nvidia/llama-3_1-nemotron-safety-guard-8b-v3",
+    "model": "nvidia/nvidia/llama-3_2-nemoretriever-300m-embed-v1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 32768,
+    "maxOutput": 2048,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/nvidia/llama-3.1-nemotron-70b-instruct",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 128000,
+    "maxOutput": 8192,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/nvidia/llama-3.1-nemotron-nano-8b-v1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/nvidia/llama-3.1-nemotron-nano-vl-8b-v1",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 32768,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/nvidia/llama-3.1-nemotron-safety-guard-8b-v3",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -568,14 +676,38 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nvidia/nvidia/llama-3_2-nemoretriever-300m-embed-v1",
+    "model": "nvidia/nvidia/llama-3.1-nemotron-ultra-253b-v1",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 32768,
-    "maxOutput": 2048,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 128000,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/nvidia/llama-3.3-nemotron-super-49b-v1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/nvidia/llama-3.3-nemotron-super-49b-v1.5",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 65536,
     "inputCost": null,
     "outputCost": null
   },
@@ -700,6 +832,18 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "nvidia/nvidia/nemotron-nano-12b-v2-vl",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 128000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "nvidia/nvidia/nemotron-voicechat",
     "imageInput": false,
     "audioInput": true,
@@ -760,7 +904,7 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nvidia/nvidia/riva-translate-4b-instruct-v1_1",
+    "model": "nvidia/nvidia/riva-translate-4b-instruct-v1.1",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -876,6 +1020,18 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": null,
     "maxOutput": 4096,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/poolside/laguna-xs-2.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 16384,
     "inputCost": null,
     "outputCost": null
   },
@@ -1000,7 +1156,19 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nvidia/upstage/solar-10_7b-instruct",
+    "model": "nvidia/thinkingmachines/inkling",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nvidia/upstage/solar-10.7b-instruct",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -1036,7 +1204,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://integrate.api.nvidia.com/v1",
-    id: "nvidia/abacusai/dracarys-llama-3_1-70b-instruct",
+    id: "nvidia/abacusai/dracarys-llama-3.1-70b-instruct",
     apiKey: process.env.NVIDIA_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -1055,7 +1223,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "nvidia/z-ai/glm-5.2"
-      : "nvidia/abacusai/dracarys-llama-3_1-70b-instruct";
+      : "nvidia/abacusai/dracarys-llama-3.1-70b-instruct";
   }
 });
 ```
