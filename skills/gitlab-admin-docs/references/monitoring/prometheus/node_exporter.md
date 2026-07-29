@@ -4,7 +4,7 @@
 - Offering: GitLab Self-Managed
 
 The [node exporter](https://github.com/prometheus/node_exporter) enables you to measure
-various machine resources such as memory, disk and CPU utilization.
+various machine resources such as memory, disk, and CPU utilization.
 
 For self-compiled installations, you must install and configure it yourself.
 

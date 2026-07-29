@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Setup
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A CNAME setup (also known as partial setup) allows you to use [Cloudflare's reverse proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) while maintaining your primary and authoritative DNS provider.
 
@@ -87,6 +87,10 @@ The verification record must remain in place for as long as your domain is activ
 
 If your organization has multiple Cloudflare accounts, also consider using zone holds to have more control over [domain ownership](https://developers.cloudflare.com/dns/zone-setups/partial-setup/#domain-ownership).
 
+Note
+
+If your zone stays in **Pending Nameserver Update** status after adding the verification TXT record, confirm your authoritative DNS provider serves the record (for example, with `dig TXT cloudflare-verify.<YOUR_DOMAIN>` or a web-based tool such as [digwebinterface.com ↗](https://www.digwebinterface.com/) or [whatsmydns.net ↗](https://www.whatsmydns.net/)). For the full activation troubleshooting flow, refer to [Zone stuck in Pending Nameserver Update](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/).
+
 ## 3\. Add DNS records
 
 1. At your authoritative DNS provider:
@@ -115,5 +119,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#page","headline":"Set up a partial zone (CNAME setup) · Cloudflare DNS docs","description":"A CNAME setup (also known as partial) allows you to use Cloudflare's reverse proxy while maintaining your primary and authoritative DNS provider.","url":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#page","headline":"Set up a partial zone (CNAME setup) · Cloudflare DNS docs","description":"A CNAME setup (also known as partial) allows you to use Cloudflare's reverse proxy while maintaining your primary and authoritative DNS provider.","url":"https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

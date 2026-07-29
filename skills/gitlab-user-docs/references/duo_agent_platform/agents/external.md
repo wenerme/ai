@@ -90,7 +90,7 @@ Required steps to enable and use managed agents:
    GitLab-managed external agents display a GitLab-maintained badge ().
 
 1. [Enable the agent](#enable-the-agent).
-1. [Use the external agent](#use-an-external-agent) in issues, epics or merge requests.
+1. [Use the external agent](#use-an-external-agent) in issues, epics, or merge requests.
 
 ### Claude Code Agent
 

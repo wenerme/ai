@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ## Cloudflare platform access
@@ -110,23 +110,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
-```
-
-```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

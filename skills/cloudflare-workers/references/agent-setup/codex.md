@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 1. **Download Codex**
@@ -124,23 +124,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Tips

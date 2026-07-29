@@ -12,9 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you see unexpected results when [changing your nameservers](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/), review the following troubleshooting questions.
+
+Note
+
+If your zone is still in **Pending Nameserver Update** status, refer to [Zone stuck in Pending Nameserver Update](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/) for a step-by-step check of the delegation at your registrar.
 
 ## Is a DS record present at your registrar?
 
@@ -45,5 +49,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/#page","headline":"Troubleshooting primary setup (full) · Cloudflare DNS docs","description":"Learn how to troubleshoot issues with a primary setup (full)","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/#page","headline":"Troubleshooting primary setup (full) · Cloudflare DNS docs","description":"Learn how to troubleshoot issues with a primary setup (full)","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

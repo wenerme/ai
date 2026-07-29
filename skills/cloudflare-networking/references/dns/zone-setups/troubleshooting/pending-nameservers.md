@@ -1,5 +1,5 @@
 ---
-description: Troubleshoot a Cloudflare zone that stays in Pending Nameserver Update status after changing nameservers, including stale DNSSEC DS records.
+description: Troubleshoot a Cloudflare zone that stays in Pending Nameserver Update status, including how to verify the delegation at your registrar and check for stale DNSSEC DS records.
 title: Zone stuck in Pending Nameserver Update
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,32 +12,159 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone stuck in Pending Nameserver Update
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If your nameservers are correctly set to Cloudflare but your zone remains in **Pending Nameserver Update** status, stale DNSSEC DS records at your registrar are the most common cause.
+A zone stays in **Pending Nameserver Update** when Cloudflare cannot confirm that your domain is delegated to the Cloudflare nameservers assigned to it.
 
-## Stale DNSSEC DS records
+The most common reasons are that the nameserver change was not fully published at the registrar, that the domain is not using the exact nameservers assigned to it, or that stale DNSSEC records at the registrar are blocking the delegation.
 
-DS records belong to your **registrar** (where the domain is registered), not to Cloudflare. When you change DNS providers, DS records from the previous provider often remain at the registrar and cause Cloudflare's zone verification to fail.
+The rest of this page walks through what to check, in order, and shows how to verify each item independently of your registrar's control panel.
 
-**To check for stale DS records:**
+Partial (CNAME) setup
+
+If you use a [partial (CNAME) setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), Cloudflare does not verify nameservers. Instead, it checks that the verification TXT record is present on your authoritative DNS provider. Refer to [Set up a partial zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/) for details.
+
+For details on how zone status is evaluated, refer to [Zone status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/).
+
+## 1\. Confirm the assigned Cloudflare nameservers
+
+In the Cloudflare dashboard, open the domain and go to the **Overview** page. Copy the full list of nameservers Cloudflare has assigned to this zone. The number of nameservers and their hostname format depend on your setup:
+
+| Setup                                                                                                                                                                                                              | Number of nameservers | Nameserver name format                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Standard [full setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/)                                                                                                                               | 2                     | <proper\_name>.ns.cloudflare.com                                                                                                                        |
+| [Foundation DNS](https://developers.cloudflare.com/dns/foundation-dns/) with [advanced nameservers](https://developers.cloudflare.com/dns/foundation-dns/advanced-nameservers/#nameservers-hosting-and-assignment) | 3                     | One nameserver in each of <color>.foundationdns.com, <color>.foundationdns.net, and <color>.foundationdns.org — all three must be set at the registrar. |
+| [Cloudflare as Secondary DNS](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/)                                                                                           | 2                     | <proper\_name>.secondary.cloudflare.com                                                                                                                 |
+| [Custom nameservers](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/)                                                                                                                        | Varies                | Your own branded names                                                                                                                                  |
+
+Whichever format applies, the exact values shown in your dashboard are the ones the parent zone must publish. Do not assume the assignment is the same as one you have used before on another domain or in another account. For details, refer to [Nameserver assignments](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#assignment-method).
+
+Note
+
+If the assigned nameservers do not match what you expected, the delegation at your registrar most likely already pointed to Cloudflare when the zone was created. To prevent domain hijacking, Cloudflare assigns a different set in that case. Re-adding a previously deleted domain triggers the same reassignment. Always update the delegation at your registrar after creating the zone in Cloudflare, using the values shown on this zone's **Overview** page.
+
+Caution
+
+Copy the nameserver names directly from the Cloudflare dashboard rather than typing them manually. Typos such as `cloudlfare.com` or `cloudfare.com` are a common cause of the zone remaining in **Pending Nameserver Update** status.
+
+## 2\. Check what the parent zone actually publishes
+
+The registrar control panel shows what you _asked_ the registrar to publish. It does not show what the parent zone (the TLD) is actually returning to the Internet. These can differ when a change was not saved, not yet propagated, applied to a different domain, or applied in a different registrar account.
+
+Use one of the following methods to query the parent zone directly.
+
+### Option A - `dig +trace`
+
+`dig +trace` follows the delegation from the root zone down. Adding `+noall +authority +nodnssec` trims the output to just the delegation section from each level, which is what you care about when checking where the parent zone points your domain. In a terminal, run:
 
 ```sh
-dig DS yourdomain.com
+dig +trace example.com NS +noall +authority +nodnssec
 ```
 
-If DS records are returned and you did not configure Cloudflare DNSSEC, these are stale records from your previous provider.
+* `+trace` — follows the delegation step by step, from the root nameservers down to your domain, instead of asking a single recursive resolver.
+* `+noall +authority` — hides everything except the **AUTHORITY** section returned at each hop, which is where each parent zone lists the nameservers it delegates to. The last hop shown before your domain is the parent zone (`com.`, `co.uk.`, etc.), and its authority section is what actually delegates your zone.
+* `+nodnssec` — hides DNSSEC-related records (`RRSIG`, `NSEC`, `NSEC3`, and DNSKEYs) so the output is easier to scan.
 
-**To remove stale DS records:**
+The last non-empty section of the output should return **only** the Cloudflare nameservers assigned to your zone (or, if you use [multi-provider DNS](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns), it should include them alongside your other provider's nameservers).
 
-1. Log in to your domain registrar's control panel.
-2. Find DNSSEC settings (may be under **Advanced DNS** or **Security**).
+Caution
+
+`+nodnssec` hides `DS` records from the output. Once you have confirmed the delegation is correct at the parent zone, re-run the query without `+nodnssec` (or use `dig DS example.com` — see [Step 4](#4-check-for-stale-dnssec-ds-records)) to make sure the parent zone is not still publishing a stale `DS` record from a previous DNS provider.
+
+### Option B - `nslookup`
+
+If you are on Windows or prefer `nslookup`, query the `NS` records for your domain. Add the `-debug` flag to see the full response, including the authority section. In a terminal, run:
+
+```sh
+nslookup -type=ns -debug example.com
+```
+
+By default, `nslookup` queries your system's configured resolver, which may return a cached answer. For a definitive check against the parent zone (equivalent to `dig +trace`), query a TLD nameserver directly by adding it as the last argument. For a `.com` domain, this looks like:
+
+```sh
+nslookup -type=ns -debug example.com a.gtld-servers.net
+```
+
+For other TLDs, refer to [IANA's root zone database ↗](https://www.iana.org/domains/root/db) to find the authoritative nameservers for your TLD.
+
+If the output shows nameservers other than the ones assigned to your Cloudflare zone, the delegation is not yet correct.
+
+### Option C - web-based lookup
+
+If you do not have `dig` or `nslookup` locally, use a public lookup tool:
+
+* [digwebinterface.com ↗](https://www.digwebinterface.com/) \- enable the **Trace** option to follow the delegation from the root zone down, which is the equivalent of `dig +trace`.
+* [whatsmydns.net ↗](https://www.whatsmydns.net/) \- useful to see the `NS` record as observed from resolvers in multiple regions.
+
+Query the `NS` record for your domain. The result must match the nameservers assigned in your Cloudflare dashboard.
+
+### What to do based on the result
+
+Use the following table to decide the next step based on what your lookup returns:
+
+| Result at the parent zone                                           | What it means and what to do                                                                                                                                                                                                                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Exactly the Cloudflare nameservers assigned to this zone.           | Delegation is correct. If the dashboard still shows Pending, wait for Cloudflare's next activation check or [trigger one via API](https://developers.cloudflare.com/api/resources/zones/subresources/activation%5Fcheck/methods/trigger/). Then continue at Step 4 to check DNSSEC.  |
+| Cloudflare nameservers, but different names than the ones assigned. | The domain is likely added to a different Cloudflare account, or you set your registrar to nameservers you had previously used. Set the registrar to the exact values displayed on this zone's Overview page. For Foundation DNS advanced nameservers, all three values must be set. |
+| Nameservers from a different provider.                              | The registrar has not published your change. Continue at Step 3.                                                                                                                                                                                                                     |
+| No nameservers returned.                                            | The domain is not yet delegated. If it was just registered, wait for the parent TLD to propagate (up to 24 hours), then retest.                                                                                                                                                      |
+| Cloudflare and other-provider nameservers together.                 | Only valid if your setup uses [multi-provider DNS](https://developers.cloudflare.com/dns/nameservers/nameserver-options/#multi-provider-dns). Otherwise, remove the non-Cloudflare records at the registrar.                                                                         |
+
+## 3\. Verify the change was actually saved at the registrar
+
+If the parent zone does not return the correct Cloudflare nameservers, the registrar has not published your change. Common patterns:
+
+* The nameserver change was entered in the registrar UI but not saved or submitted.
+* The change was made on a different domain, on a subdomain, or in a different registrar account.
+* The domain is under a **Transfer**, **Registrar Lock**, or **Redemption** state that prevents nameserver changes. Complete or cancel the pending state first.
+* The registrar requires an additional confirmation step (email confirmation, admin approval, two-factor prompt).
+* The registrar publishes changes on a delay. Ask your registrar's support for their expected propagation window.
+* Your domain is at a reseller and the nameserver setting must be changed one level up. Refer to [Update your nameservers at your registrar](https://developers.cloudflare.com/dns/nameservers/update-nameservers/#specific-processes).
+
+After fixing the change at the registrar, re-run the check from Step 2.
+
+## 4\. Check for stale DNSSEC DS records
+
+If Step 2 shows the correct Cloudflare nameservers at the parent zone but the zone is still Pending, check whether DNSSEC is still enabled from a previous DNS provider.
+
+DS records live at the registrar, not at the DNS provider, and they must be removed or updated when you move DNS providers. If they are not, the DNSSEC chain of trust breaks and resolvers return SERVFAIL for your domain.
+
+To check for DS records:
+
+```sh
+dig DS example.com
+```
+
+If DS records are returned and you did not intentionally configure DNSSEC on Cloudflare, they are stale from your previous provider and will block activation.
+
+To remove them:
+
+1. Sign in to your registrar's control panel.
+2. Find DNSSEC settings (often under **Advanced DNS** or **Security**).
 3. Remove all existing DS records.
-4. Wait up to 24 hours for the DS removal to propagate.
+4. Wait up to 24 hours for the removal to propagate through DNS caches.
 
-After the stale DS records are removed and expire from cache, your Cloudflare zone will activate automatically. You can then turn on DNSSEC in the Cloudflare dashboard if needed.
+After the stale DS records are removed and expire from cache, your Cloudflare zone will activate automatically. You can then [enable DNSSEC in Cloudflare](https://developers.cloudflare.com/dns/dnssec/) if you want to.
 
 For more information on DNSSEC configuration, refer to [Configure DNSSEC](https://developers.cloudflare.com/dns/dnssec/) and [Troubleshoot DNSSEC](https://developers.cloudflare.com/dns/dnssec/troubleshooting/).
+
+## 5\. If the zone is still Pending
+
+If Steps 1-4 all check out, and the parent zone returns the correct Cloudflare nameservers, wait for Cloudflare's next activation check. Checks happen on an increasing interval.
+
+You can request an earlier check from the **Overview** page or by [triggering one via API](https://developers.cloudflare.com/api/resources/zones/subresources/activation%5Fcheck/methods/trigger/). This endpoint is rate-limited and may return an error if you have requested a check recently. A successful request does not activate the zone immediately — it places your zone in a prioritized queue, and activation can take a few minutes to a few hours, depending both on when the recheck runs and on whether the nameserver change at your registrar has taken effect by then.
+
+Caution
+
+Free-plan zones that stay Pending for more than 28 days are automatically deleted. Refer to [Zone status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) for the full status flow.
+
+If the parent zone matches, DS records are clean, and the zone still does not activate after several rechecks, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and include:
+
+* Your domain name.
+* The Cloudflare nameservers assigned in the dashboard.
+* The output of `dig +trace <YOUR_DOMAIN> NS`.
+* The output of `dig DS <YOUR_DOMAIN>`.
+* The registrar you use.
 
 Was this helpful?
 
@@ -48,5 +175,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/#page","headline":"Zone stuck in Pending Nameserver Update · Cloudflare DNS docs","description":"Troubleshoot a Cloudflare zone that stays in Pending Nameserver Update status after changing nameservers, including stale DNSSEC DS records.","url":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/#page","headline":"Zone stuck in Pending Nameserver Update · Cloudflare DNS docs","description":"Troubleshoot a Cloudflare zone that stays in Pending Nameserver Update status, including how to verify the delegation at your registrar and check for stale DNSSEC DS records.","url":"https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

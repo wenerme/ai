@@ -3,7 +3,7 @@
 Configure large language models for GitLab Duo features.
 
 - Tier: Premium, Ultimate
-- Add-on: GitLab Duo Core, Pro or Enterprise
+- Add-on: GitLab Duo Core, Pro, or Enterprise
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Every GitLab Duo feature uses a default model. GitLab might update default models to optimize performance. You can select a different model for a feature, which persists until you change it.
