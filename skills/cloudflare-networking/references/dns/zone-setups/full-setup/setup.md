@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up a primary zone (Full setup)
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare DNS offers a few different [setup options](https://developers.cloudflare.com/dns/zone-setups/). A primary setup (also known as full) is the most common and the only one available for Free or Pro plans. For details, refer to [About](https://developers.cloudflare.com/dns/zone-setups/full-setup/). For more introductory context, refer to [Concepts](https://developers.cloudflare.com/dns/concepts/).
 
@@ -289,7 +289,7 @@ nslookup -type=ns <DOMAIN_NAME> 8.8.8.8
 
 Note
 
-If you see unexpected results, refer to our [troubleshooting suggestions](https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/) and check with your domain registrar.
+If you see unexpected results, refer to our [troubleshooting suggestions](https://developers.cloudflare.com/dns/zone-setups/full-setup/troubleshooting/) and check with your domain registrar. If your zone is stuck in **Pending Nameserver Update**, refer to [Zone stuck in Pending Nameserver Update](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/) for how to verify the delegation at the parent zone.
 
 ## 4\. Re-enable DNSSEC
 
@@ -308,5 +308,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#page","headline":"Change your nameservers (Full setup) · Cloudflare DNS docs","description":"If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/#page","headline":"Change your nameservers (Full setup) · Cloudflare DNS docs","description":"If you want to use Cloudflare as your primary DNS provider and manage your DNS records, your domain should be using a full setup.","url":"https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

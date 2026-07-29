@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33173 files, 389 MiB total
+> 123 skills, 33170 files, 389 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1397,7 +1397,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 128 | 5.3 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 129 | 5.4 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1101 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1553 | 16 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 395 | 2.9 MiB |
@@ -1410,7 +1410,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4889 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1593 | 9.6 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1587 | 9.5 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 60 | 1.2 MiB |
 | [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 144 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
@@ -1484,9 +1484,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [threejs-docs](./skills/threejs-docs/SKILL.md) | 798 | 2.0 MiB |
 | [threejs-guide](./skills/threejs-guide/SKILL.md) | 11 | 134 KiB |
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
-| [transformers-docs](./skills/transformers-docs/SKILL.md) | 168 | 1.3 MiB |
+| [transformers-docs](./skills/transformers-docs/SKILL.md) | 169 | 1.2 MiB |
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 43 | 1.7 MiB |
-| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 525 | 4.4 MiB |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 526 | 4.4 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 543 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 223 | 1.3 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 160 | 1.4 MiB |

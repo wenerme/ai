@@ -89,7 +89,7 @@ illustrate:
 ##   Detailed Description
 1. /binlog
 
-Binlog is an important feature in Doris, used to record data changes and can be used for cross-cluster data synchronization (CCR) and other scenarios. Through this command, administrators can monitor the status of Binlog, ensure its normal operation, and plan storage space reasonably.
+Binlog records data changes in Doris. Through this command, administrators can monitor the status of Binlog, ensure its normal operation, and plan storage space reasonably.
 
 | Field Name | Data Type | Description |
 |------------|-----------|-------------|

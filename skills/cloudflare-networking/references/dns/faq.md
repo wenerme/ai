@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The sections below cover frequently asked questions about Cloudflare authoritative DNS. For DNS Firewall, refer to [DNS Firewall FAQ](https://developers.cloudflare.com/dns/dns-firewall/faq/).
 
@@ -66,6 +66,8 @@ dig kate.ns.cloudflare.com
 ```sh
 kate.ns.cloudflare.com.    68675    IN    A    173.245.58.124.
 ```
+
+To verify that your domain's parent zone is publishing the Cloudflare nameservers assigned to you (for example, when your zone is stuck in **Pending Nameserver Update** status), refer to [Zone stuck in Pending Nameserver Update](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/).
 
 ### Where do I change my nameservers to point to Cloudflare?
 
@@ -182,5 +184,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/faq/#page","headline":"FAQ · Cloudflare DNS docs","description":"Find answers to common questions about Cloudflare's authoritative DNS.","url":"https://developers.cloudflare.com/dns/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

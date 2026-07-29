@@ -19,7 +19,7 @@ short-lived (results from hyperparameter tuning triggered by a merge request),
 but usually hold model runs that have a similar set of parameters measured
 by the same metrics.
 
-[Model experiment table showing models and their number of runs, creator and last activity.]
+[Model experiment table showing models and their number of runs, creator, and last activity.]
 
 ## Model run
 

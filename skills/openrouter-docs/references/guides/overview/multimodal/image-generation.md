@@ -10,6 +10,22 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 OpenRouter provides a dedicated Image API for generating images from text prompts (and optional reference images). The API covers model discovery, per-endpoint capabilities, and generation. You can browse available models and pricing on the [models page filtered by image output](https://openrouter.ai/models?output_modalities=image).
 
+<Frame caption="Generated with openai/gpt-image-2 — 16:9, high quality">
+  ![A contemporary neighborhood storefront at blue hour, lit by a warm-white cursive neon sign reading OpenRouter, with plants and a bicycle by the entrance and light reflecting off wet pavement](https://model-assets.openrouter.ai/model-examples/openai/gpt-image-2/a5e8605c-e799-4bfa-811b-3afb065e0350/original-0.png)
+</Frame>
+
+<Accordion title="Prompt and parameters">
+  > Editorial architectural photograph of a contemporary neighborhood storefront at blue hour, glowing warmly against the dusk. Above the entrance, a warm-white neon sign in flowing hand-bent cursive reads exactly "OpenRouter", the only text in the scene. Large windows reveal a cozy, lived-in interior: wood shelves styled with books and ceramics, lush trailing plants, and soft pendant lighting. Potted plants and a bicycle rest by the entrance, and golden light spills across the wet pavement in gentle reflections. Straight-on composition, realistic materials, quiet street with no people.
+
+  * **Model**: `openai/gpt-image-2`
+  * **Parameters**: `quality: "high"`, `aspect_ratio: "16:9"`, `n: 1`
+  * **Output**: `1536×864` PNG
+  * **Generation time**: 94s
+  * **Cost**: \$0.13
+
+  [Try this prompt in the Image Playground →](https://openrouter.ai/openai/gpt-image-2?output_modalities=image)
+</Accordion>
+
 ## Model Discovery
 
 ### Via the Image Models API

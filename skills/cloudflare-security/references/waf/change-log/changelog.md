@@ -1,5 +1,5 @@
 ---
-description: This release introduces new rules for vulnerabilities in Adobe ColdFusion, Next.js, WordPress alongside updates to existing rules thereby providing enhanced generic protections against Server-Side Request Forgery (SSRF), Local File Inclusion (LFI), and Cross-Site Scripting (XSS).
+description: This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Nuxt Server Island components and Alibaba Fastjson deserialization routines, alongside enhanced protections for cloud metadata Server-Side Request Forgery (SSRF) and obfuscated command injection attempts.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,32 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-07-29
+
+
+**WAF Release - 2026-07-29**
+
+This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Nuxt Server Island components and Alibaba Fastjson deserialization routines, alongside enhanced protections for cloud metadata Server-Side Request Forgery (SSRF) and obfuscated command injection attempts.
+
+**Key Findings**
+
+* Nuxt Server Island - RCE(GHSA-9473-5f9j-94wq): An unauthenticated vulnerability in Nuxt Server Islands where remote attackers can supply arbitrary component names or props to endpoints. Manipulating these parameters allows unauthenticated component Remote Code Execution (RCE) on the server.
+* Alibaba Fastjson JSONType Remote Code Execution: A unauthenticated remote code execution vulnerability in Alibaba Fastjson (≤ 1.2.83) during JSON deserialization. Under default configurations, attackers can execute arbitrary system commands, bypassing traditional classpath and gadget-based defenses.
+* Generic Protections (SSRF & Command Injection): Added improved detection logic targeting Server-Side Request Forgery (SSRF) in cloud-hosted applications, alongside new rules targeting obfuscated command injection patterns across request parameters.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                            | Previous Action | New Action | Comments                                                         |
+| -------------------------- | ----------- | -------------- | ------------------------------------------------------ | --------------- | ---------- | ---------------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...c2e84e2d | N/A            | SSRF - Cloud - Beta                                    | Log             | Block      | This is an improved detection.                                   |
+| Cloudflare Managed Ruleset | ...761e7a4c | N/A            | Command Injection - Obfuscation                        | Log             | Block      | This is a new detection.                                         |
+| Cloudflare Managed Ruleset | ...7347c892 | N/A            | Alibaba Fastjson JSONType Remote Code Execution - Body | Log             | Block      | This is a new detection.                                         |
+| Cloudflare Managed Ruleset | ...8ec012ea | N/A            | Nuxt Server Island - RCE                               | N/A             | Block      | This is a new detection.This was labeled as Generic Rules - RCE. |
+| Cloudflare Managed Ruleset | ...3590a4ad | N/A            | Generic Rules - RCE                                    | N/A             | Block      | This is a new detection.                                         |
+| Cloudflare Managed Ruleset | ...9c6dff1c | N/A            | Generic Rules - XSS                                    | N/A             | Block      | This is a new detection.                                         |
+| Cloudflare Managed Ruleset | ...3a5b40d6 | N/A            | File Upload - RCE                                      | N/A             | Block      | This is a new detection.                                         |
+| Cloudflare Free Ruleset    | ...cfe1a93c | N/A            | Generic Rules - RCE                                    | N/A             | Block      | This is a new detection.                                         |
+| Cloudflare Free Ruleset    | ...9ab5ed95 | N/A            | Generic Rules - XSS                                    | N/A             | Block      | This is a new detection.                                         |
+| Cloudflare Free Ruleset    | ...1b7f9c67 | N/A            | File Upload - RCE                                      | N/A             | Block      | This is a new detection.                                         |
 
 ## 2026-07-21
 
@@ -631,25 +657,8 @@ Successful exploitation of these SmarterMail vulnerabilities could lead to full 
 | Cloudflare Managed Ruleset | ...ee964a8c | N/A            | SmarterMail - Authentication Bypass - CVE-2026-23760 | Log             | Block      | This is a new detection.                                                                    |
 | Cloudflare Managed Ruleset | ...75b64d99 | N/A            | Command Injection - Nslookup - Beta                  | Log             | Block      | This rule is merged into the original rule "Command Injection - Nslookup" (ID: ...b090ba9a) |
 
-## 2026-02-16
-
-
-**WAF Release - 2026-02-16**
-
-This week’s release introduces new detections for CVE-2025-68645 and CVE-2025-31125.
-
-**Key Findings**
-
-* CVE-2025-68645: A Local File Inclusion (LFI) vulnerability in the Webmail Classic UI of Zimbra Collaboration Suite (ZCS) 10.0 and 10.1 allows unauthenticated remote attackers to craft requests to the `/h/rest` endpoint, improperly influence internal dispatching, and include arbitrary files from the WebRoot directory.
-* CVE-2025-31125: Vite, the JavaScript frontend tooling framework, exposes content of non-allowed files via `?inline&import` when its development server is network-exposed, enabling unauthorized attackers to read arbitrary files and potentially leak sensitive information.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                            | Previous Action | New Action | Comments                 |
-| -------------------------- | ----------- | -------------- | ------------------------------------------------------ | --------------- | ---------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...833761f7 | N/A            | Zimbra - Local File Inclusion - CVE:CVE-2025-68645     | Log             | Block      | This is a new detection. |
-| Cloudflare Managed Ruleset | ...950ed8c8 | N/A            | Vite - WASM Import Path Traversal - CVE:CVE-2025-31125 | Log             | Block      | This is a new detection. |
-
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new rules for vulnerabilities in Adobe ColdFusion, Next.js, WordPress alongside updates to existing rules thereby providing enhanced generic protections against Server-Side Request Forgery (SSRF), Local File Inclusion (LFI), and Cross-Site Scripting (XSS).","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new rules and updates existing threat signatures to provide targeted protections for vulnerabilities in Nuxt Server Island components and Alibaba Fastjson deserialization routines, alongside enhanced protections for cloud metadata Server-Side Request Forgery (SSRF) and obfuscated command injection attempts.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

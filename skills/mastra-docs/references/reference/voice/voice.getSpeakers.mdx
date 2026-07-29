@@ -8,7 +8,7 @@ packages:
 
 # voice.getSpeakers()
 
-The `getSpeakers()` method retrieves a list of available voice options (speakers) from the voice provider. This allows applications to present users with voice choices or programmatically select the most appropriate voice for different contexts.
+The `getSpeakers()` method retrieves a list of available voice options (speakers) from the voice provider. Applications can present users with voice choices or programmatically select the most appropriate voice for different contexts.
 
 ## Usage example
 
@@ -276,7 +276,7 @@ Different voice providers return different metadata for their voices:
 
 ## Notes
 
-- The available voices vary significantly between providers
+- The available voices vary substantially between providers
 - Some providers may require authentication to retrieve the full list of voices
 - The default implementation returns an empty array if the provider doesn't support this method
 - For performance reasons, consider caching the results if you need to display the list frequently

@@ -150,7 +150,7 @@ const thread = await memoryStore?.getThreadById({ threadId: '...' })
 store.pool // mssql connection pool instance
 ```
 
-This enables direct queries and custom transaction management. When using these fields:
+It supports direct queries and custom transaction management. When using these fields:
 
 - You are responsible for proper connection and transaction handling.
 - Closing the store (`store.close()`) will destroy the associated connection pool.

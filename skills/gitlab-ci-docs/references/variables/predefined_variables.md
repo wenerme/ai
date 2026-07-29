@@ -40,10 +40,10 @@ Predefined variables become available at three different phases of pipeline exec
 | `CI_BUILD_NETWORK_NAME`                         | Job-only     | The name of the network that the job created. Available only with the Docker executor when [`FF_NETWORK_PER_BUILD`](https://docs.gitlab.com/runner/configuration/feature-flags/#available-feature-flags) is enabled. |
 | `CI_BUILDS_DIR`                                 | Job-only     | The top-level directory where builds are executed. |
 | `CI_COMMIT_AUTHOR`                              | Pre-pipeline | The author of the commit in `Name <email>` format. |
-| `CI_COMMIT_BEFORE_SHA`                          | Pre-pipeline | The previous latest commit present on a branch or tag. Is always `0000000000000000000000000000000000000000` for merge request pipelines, scheduled pipelines, the first commit in pipelines for branches or tags, or when manually running a pipeline. |
+| `CI_COMMIT_BEFORE_SHA`                          | Pre-pipeline | The previous latest commit present on a branch or tag. It is always `0000000000000000000000000000000000000000` for merge request pipelines, scheduled pipelines, the first commit in pipelines for branches or tags, or when manually running a pipeline. |
 | `CI_COMMIT_BRANCH`                              | Pre-pipeline | The commit branch name. Available in branch pipelines, including pipelines for the default branch. Not available in merge request pipelines or tag pipelines. |
 | `CI_COMMIT_DEFAULT_BRANCH_BASE_SHA`             | Pre-pipeline | The merge base between `CI_COMMIT_SHA` and the default branch. Available only in non-default branch pipelines. Introduced in GitLab 19.1. |
-| `CI_COMMIT_DESCRIPTION`                         | Pre-pipeline | The description of the commit. If the title is shorter than 100 characters, the message without the first line. |
+| `CI_COMMIT_DESCRIPTION`                         | Pre-pipeline | The description of the commit. If the title is shorter than 100 characters, the description is the message without the first line. |
 | `CI_COMMIT_MESSAGE`                             | Pre-pipeline | The full commit message. |
 | `CI_COMMIT_MESSAGE_IS_TRUNCATED`                | Pre-pipeline | `true` if `CI_COMMIT_MESSAGE` is truncated to the size specified in the `GITLAB_CI_MAX_COMMIT_MESSAGE_SIZE_IN_BYTES` system environment variable (default 100 KB) because the commit message is too long. Otherwise `false`. Introduced in GitLab 18.6. |
 | `CI_COMMIT_REF_NAME`                            | Pre-pipeline | The branch or tag name for which project is built. |
@@ -89,6 +89,7 @@ Predefined variables become available at three different phases of pipeline exec
 | `CI_JOB_NAME_SLUG`                              | Pipeline     | `CI_JOB_NAME` in lowercase, shortened to 63 bytes, and with everything except `0-9` and `a-z` replaced with `-`. No leading / trailing `-`. Use in paths. |
 | `CI_JOB_STAGE`                                  | Pipeline     | The name of the job's stage. |
 | `CI_JOB_STATUS`                                 | Job-only     | The status of the job as each runner stage is executed. Use with [`after_script`](../yaml/_index.md#after_script). Can be `success`, `failed`, or `canceled`. |
+| `CI_JOB_TAGS`                                   | Job-only     | A JSON array of the job's [runner tags](../yaml/_index.md#tags). For example `["tag_1", "tag_2"]`. Introduced in GitLab 19.3. |
 | `CI_JOB_TIMEOUT`                                | Job-only     | The job timeout, in seconds. |
 | `CI_JOB_TOKEN`                                  | Job-only     | A token to authenticate with [certain API endpoints](../jobs/ci_job_token.md). The token is valid as long as the job is running. |
 | `CI_JOB_URL`                                    | Job-only     | The job details URL. |
@@ -137,7 +138,7 @@ Predefined variables become available at three different phases of pipeline exec
 | `CI_RUNNER_ID`                                  | Job-only     | The unique ID of the runner being used. |
 | `CI_RUNNER_REVISION`                            | Job-only     | The revision of the runner running the job. |
 | `CI_RUNNER_SHORT_TOKEN`                         | Job-only     | The runner's unique ID, used to authenticate new job requests. The token contains a prefix, and the first 17 characters are used. |
-| `CI_RUNNER_TAGS`                                | Job-only     | A JSON array of runner tags. For example `["tag_1", "tag_2"]`. |
+| `CI_RUNNER_TAGS`                                | Job-only     | A JSON array of the runner tags configured on the runner that picked up the job. For example `["tag_1", "tag_2"]`. |
 | `CI_RUNNER_VERSION`                             | Job-only     | The version of the GitLab Runner running the job. |
 | `CI_SERVER_FQDN`                                | Pre-pipeline | The fully qualified domain name (FQDN) of the instance. For example `gitlab.example.com:8080`. |
 | `CI_SERVER_HOST`                                | Pre-pipeline | The host of the GitLab instance URL, without protocol or port. For example `gitlab.example.com`. |

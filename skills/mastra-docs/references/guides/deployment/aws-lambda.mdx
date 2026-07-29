@@ -15,7 +15,7 @@ You'll need:
 
 - A [Mastra application](/guides/getting-started/quickstart)
 - An [AWS account](https://aws.amazon.com/) with permissions for Lambda, ECR, and IAM
-- **[AWS CLI](https://aws.amazon.com/cli/)** installed — run `aws configure` to authenticate
+- **[AWS CLI](https://aws.amazon.com/cli/)** installed: Run `aws configure` to authenticate
 - **[Docker](https://www.docker.com/)** installed and running
 
 > **warning**: On AWS Lambda, the filesystem is ephemeral, so any local database file will be lost between invocations. If you're using [LibSQLStore](/reference/storage/libsql) with a local file, configure it to use a remote LibSQL-compatible database (for example, [Turso](https://turso.tech/)) instead.

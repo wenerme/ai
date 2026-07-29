@@ -169,7 +169,7 @@ query: type = Issue AND project = "gitlab-org/gitlab" AND assignee = currentUser
 ```
 ````
 
-This source displays a view with columns `Title`, `Workflow` and `Priority`.
+This source displays a view with columns `Title`, `Workflow`, and `Priority`.
 
 ### Display types
 

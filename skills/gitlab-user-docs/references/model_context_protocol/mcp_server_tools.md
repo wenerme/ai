@@ -400,13 +400,13 @@ Available scopes depend on the [search type](../search/_index.md).
 
 | Parameter      | Type             | Required | Description |
 |----------------|------------------|----------|-------------|
-| `scope`        | string           | Yes      | Search scope (for example, `issues`, `merge_requests`, or `projects`). |
+| `scope`        | string           | Yes      | Search scope (for example, `work_items`, `merge_requests`, or `projects`). |
 | `search`       | string           | Yes      | Search term. |
 | `group_id`     | string           | No       | ID or URL-encoded path of the group you want to search. |
 | `project_id`   | string           | No       | ID or URL-encoded path of the project you want to search. |
-| `state`        | string           | No       | State of search results (for `issues` and `merge_requests`). |
-| `confidential` | boolean          | No       | Filters results by confidentiality (for `issues`). Default is `false`. |
-| `fields`       | array of strings | No       | Array of fields you want to search (for `issues` and `merge_requests`). |
+| `state`        | string           | No       | State of search results (for `work_items` and `merge_requests`). |
+| `confidential` | boolean          | No       | Filters results by confidentiality (for `work_items`). Default is `false`. |
+| `fields`       | array of strings | No       | Array of fields you want to search (for `work_items` and `merge_requests`). |
 | `order_by`     | string           | No       | Attribute to order results by. Default is `created_at` for basic search and relevance for advanced search. |
 | `sort`         | string           | No       | Sort direction for results. Default is `desc`. |
 | `per_page`     | integer          | No       | Number of results per page. Default is `20`. |
@@ -436,6 +436,29 @@ Example:
 
 ```plaintext
 Show me all labels in project gitlab-org/gitlab
+```
+
+## `list_wiki_pages`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240973) in GitLab 19.3.
+
+Lists the wiki pages in a GitLab project or group.
+
+| Parameter    | Type    | Required | Description |
+|--------------|---------|----------|-------------|
+| `project_id` | string  | No       | Full path or numeric ID of the project (for example, `gitlab-org/gitlab` or `278964`). |
+| `group_id`   | string  | No       | Full path or numeric ID of the group (for example, `gitlab-org` or `9970`). |
+| `first`      | integer | No       | Number of wiki pages to return for forward pagination (maximum 100). |
+| `after`      | string  | No       | Cursor for forward pagination. |
+
+Provide only one `project_id` or `group_id`.
+Each call returns a single page of results.
+If more pages exist, the response includes an `end_cursor` you can pass as `after` to fetch the next page.
+
+Example:
+
+```plaintext
+List the wiki pages in gitlab-org/gitlab
 ```
 
 ## `semantic_code_search`

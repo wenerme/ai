@@ -39,7 +39,7 @@ https://mcp.cloudflare.com/mcp
 Ask Bionic to investigate a task, make changes, and run relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Cloudflare platform access
@@ -113,15 +113,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
@@ -129,7 +129,7 @@ Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips
