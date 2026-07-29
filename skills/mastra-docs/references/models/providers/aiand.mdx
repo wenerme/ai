@@ -1,11 +1,11 @@
 ---
 title: "ai& | Models"
-description: "Use ai& models with Mastra. 10 models available."
+description: "Use ai& models with Mastra. 8 models available."
 ---
 
 # [ai& logo]ai&
 
-Access 10 ai& models through Mastra's model router. Authentication is handled automatically using the `AIAND_API_KEY` environment variable.
+Access 8 ai& models through Mastra's model router. Authentication is handled automatically using the `AIAND_API_KEY` environment variable.
 
 Learn more in the [ai& documentation](https://docs.aiand.com/).
 
@@ -76,18 +76,6 @@ for await (const chunk of stream) {
     "outputCost": 0.5
   },
   {
-    "model": "aiand/moonshotai/kimi-k2.6",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.85,
-    "outputCost": 3.5
-  },
-  {
     "model": "aiand/moonshotai/kimi-k2.7-code",
     "imageInput": true,
     "audioInput": false,
@@ -134,18 +122,6 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": null,
     "outputCost": null
-  },
-  {
-    "model": "aiand/zai-org/glm-5.1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 131072,
-    "inputCost": 1.4,
-    "outputCost": 4.4
   },
   {
     "model": "aiand/zai-org/glm-5.2",

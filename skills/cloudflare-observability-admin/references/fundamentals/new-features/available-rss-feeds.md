@@ -125,6 +125,8 @@ This feed is for all Consumer services products in the changelog: [Subscribe to 
 
 Included products
 
+* [1.1.1.1 (DNS Resolver)](https://developers.cloudflare.com/1.1.1.1/)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/1.1.1.1.xml)
 * [Radar](https://developers.cloudflare.com/radar/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/radar.xml)
 

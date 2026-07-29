@@ -240,6 +240,7 @@ Prices per 1M tokens unless noted.
 | gpt-realtime-2 | Text | $4.00 | $0.40 | $24.00 |
 | gpt-realtime-2 | Image | $5.00 | $0.50 | - |
 | gpt-realtime-translate | Audio | - | - | $0.034 / minute |
+| gpt-live-transcribe | Audio | - | - | $0.017 / minute |
 | gpt-realtime-whisper | Audio | - | - | $0.017 / minute |
 | gpt-realtime-1.5 | Audio | $32.00 | $0.40 | $64.00 |
 | gpt-realtime-1.5 | Text | $4.00 | $0.40 | $16.00 |
@@ -402,6 +403,8 @@ Prices per 1M tokens unless noted.
 
 | Model | Use case | Input | Output | Estimated cost |
 | --- | --- | --- | --- | --- |
+| gpt-transcribe | Transcription | - | - | $0.0045 / minute |
+| gpt-live-transcribe | Live transcription | - | - | $0.017 / minute |
 | gpt-4o-transcribe | Transcription | $2.50 | $10.00 | $0.006 / minute |
 | gpt-4o-mini-transcribe | Transcription | $1.25 | $5.00 | $0.003 / minute |
 | gpt-4o-transcribe-diarize | Transcription + diarization | $2.50 | $10.00 | $0.006 / minute |

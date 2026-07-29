@@ -72,6 +72,8 @@ tags:
     name: Providers
   - description: Rerank endpoints
     name: Rerank
+  - description: OpenAI-compatible Responses API endpoints
+    name: Responses
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
@@ -84,8 +86,6 @@ tags:
     name: Workspaces
   - description: beta.Analytics endpoints
     name: beta.Analytics
-  - description: responses endpoints
-    name: responses
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs

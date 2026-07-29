@@ -12,9 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Logpush
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/logs/logpush/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/observability/logs/logpush/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports the ability to send [Workers Trace Event Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers%5Ftrace%5Fevents/) to a [supported destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/). Worker’s Trace Events Logpush includes metadata about requests and responses, unstructured `console.log()` messages and any uncaught exceptions. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/workers/platform/pricing/#workers-trace-events-logpush).
+[Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/) supports the ability to send [Workers Trace Event Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/workers%5Ftrace%5Fevents/) to a [supported destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/). Workers Trace Events Logpush includes metadata about requests and responses, unstructured `console.log()` messages and any uncaught exceptions. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/workers/platform/pricing/#workers-trace-events-logpush).
+
+Prefer OpenTelemetry export
+
+For new integrations, consider using [OpenTelemetry export](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/) instead. OpenTelemetry export supports both traces and logs, can be configured with `persist: false` to avoid storing logs and traces in Cloudflare, and works with any OTLP-compatible destination.
 
 Caution
 
@@ -85,7 +89,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-28",
+	"compatibility_date": "2026-07-29",
 	"workers_dev": false,
 	"logpush": true,
 	"route": {
@@ -100,7 +104,7 @@ Enable logging on your Worker by adding a new property, `logpush = true`, to you
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-28"
+compatibility_date = "2026-07-29"
 workers_dev = false
 logpush = true
 
@@ -151,30 +155,30 @@ To illustrate this, suppose our Logpush event looks like the JSON below and the 
 
 ```json
 {
-  "Exceptions": [
-    {
-      "Name": "SampleError",
-      "Message": "something went wrong",
-      "TimestampMs": 0
-    },
-    {
-      "Name": "AuthError",
-      "Message": "unable to process request authentication from client",
-      "TimestampMs": 1
-    },
-  ],
-  "Logs": [
-    {
-      "Level": "log",
-      "Message": ["Hello "],
-      "TimestampMs": 0
-    },
-    {
-      "Level": "log",
-      "Message": ["World!"],
-      "TimestampMs": 0
-    }
-  ]
+	"Exceptions": [
+		{
+			"Name": "SampleError",
+			"Message": "something went wrong",
+			"TimestampMs": 0
+		},
+		{
+			"Name": "AuthError",
+			"Message": "unable to process request authentication from client",
+			"TimestampMs": 1
+		}
+	],
+	"Logs": [
+		{
+			"Level": "log",
+			"Message": ["Hello "],
+			"TimestampMs": 0
+		},
+		{
+			"Level": "log",
+			"Message": ["World!"],
+			"TimestampMs": 0
+		}
+	]
 }
 ```
 
@@ -182,25 +186,25 @@ To illustrate this, suppose our Logpush event looks like the JSON below and the 
 
 ```json
 {
-  "Exceptions": [
-    {
-      "name": "SampleError",
-      "message": "something went wrong",
-      "TimestampMs": 0
-    },
-    {
-      "name": "AuthError",
-      "message": "unable to <<<Logpush: exception messages truncated>>>",
-      "TimestampMs": 1
-    },
-  ],
-  "Logs": [
-    {
-      "Level": "log",
-      "Message": ["<<<Logpush: messages truncated>>>"],
-      "TimestampMs": 0
-    }
-  ]
+	"Exceptions": [
+		{
+			"name": "SampleError",
+			"message": "something went wrong",
+			"TimestampMs": 0
+		},
+		{
+			"name": "AuthError",
+			"message": "unable to <<<Logpush: exception messages truncated>>>",
+			"TimestampMs": 1
+		}
+	],
+	"Logs": [
+		{
+			"Level": "log",
+			"Message": ["<<<Logpush: messages truncated>>>"],
+			"TimestampMs": 0
+		}
+	]
 }
 ```
 
@@ -213,5 +217,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/logpush/#page","headline":"Workers Logpush · Cloudflare Workers docs","description":"Send Workers Trace Event Logs to a supported third party, such as a storage or logging provider.","url":"https://developers.cloudflare.com/workers/observability/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/logpush/#page","headline":"Workers Logpush · Cloudflare Workers docs","description":"Send Workers Trace Event Logs to a supported third party, such as a storage or logging provider.","url":"https://developers.cloudflare.com/workers/observability/logs/logpush/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

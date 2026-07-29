@@ -136,28 +136,80 @@ For production use, implement `StateAccessor` with a persistent backend like Red
 
 The state object tracks everything needed to resume a conversation:
 
-| Field                | Type                      | Description                                                                |
-| -------------------- | ------------------------- | -------------------------------------------------------------------------- |
-| `id`                 | `string`                  | Unique conversation identifier                                             |
-| `messages`           | `OpenResponsesInputUnion` | Full message history                                                       |
-| `previousResponseId` | `string?`                 | Previous response ID for server-side chaining                              |
-| `pendingToolCalls`   | `ParsedToolCall[]?`       | Tool calls awaiting human input, such as approval/rejection or HITL output |
-| `unsentToolResults`  | `UnsentToolResult[]?`     | Executed results not yet sent to model                                     |
-| `partialResponse`    | `PartialResponse?`        | Data captured during interruption                                          |
-| `interruptedBy`      | `string?`                 | Signal from a new request that interrupted this conversation               |
-| `status`             | `ConversationStatus`      | Current state of the conversation                                          |
-| `createdAt`          | `number`                  | Creation timestamp (Unix ms)                                               |
-| `updatedAt`          | `number`                  | Last update timestamp (Unix ms)                                            |
+| Field                | Type                      | Description                                                                                                                                                                                |
+| -------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `version`            | `number?`                 | Serialization-contract version for this state blob. Absence means version `1`; `createInitialState` stamps `1` on new states. See [Serialization & Versioning](#serialization--versioning) |
+| `id`                 | `string`                  | Unique conversation identifier                                                                                                                                                             |
+| `messages`           | `OpenResponsesInputUnion` | Full message history                                                                                                                                                                       |
+| `previousResponseId` | `string?`                 | Previous response ID for server-side chaining                                                                                                                                              |
+| `pendingToolCalls`   | `ParsedToolCall[]?`       | Tool calls awaiting human input (approval/rejection, HITL output, or unresolved manual `execute: false` calls)                                                                             |
+| `unsentToolResults`  | `UnsentToolResult[]?`     | Executed results not yet sent to model                                                                                                                                                     |
+| `partialResponse`    | `PartialResponse?`        | Data captured during interruption                                                                                                                                                          |
+| `interruptedBy`      | `string?`                 | Signal from a new request that interrupted this conversation                                                                                                                               |
+| `status`             | `ConversationStatus`      | Current state of the conversation                                                                                                                                                          |
+| `createdAt`          | `number`                  | Creation timestamp (Unix ms)                                                                                                                                                               |
+| `updatedAt`          | `number`                  | Last update timestamp (Unix ms)                                                                                                                                                            |
 
 ### Status Values
 
-| Status                | Meaning                                                                                                                                                                                        |
-| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `'in_progress'`       | Conversation is actively processing                                                                                                                                                            |
-| `'awaiting_approval'` | Paused, waiting for tool call approval/rejection                                                                                                                                               |
-| `'awaiting_hitl'`     | Paused by a [HITL tool](/docs/agent-sdk/call-model/tools#human-in-the-loop-hitl-tools) whose `onToolCalled` hook returned `null`; resume by supplying a `function_call_output` for each paused call |
-| `'complete'`          | Conversation finished normally                                                                                                                                                                 |
-| `'interrupted'`       | Conversation was interrupted and can be resumed                                                                                                                                                |
+| Status                    | Meaning                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `'in_progress'`           | Conversation is actively processing                                                                                                                                                                                                                                                                                                                                                                                        |
+| `'awaiting_approval'`     | Paused, waiting for tool call approval/rejection                                                                                                                                                                                                                                                                                                                                                                           |
+| `'awaiting_hitl'`         | Paused by a [HITL tool](/docs/agent-sdk/call-model/tools#human-in-the-loop-hitl-tools) whose `onToolCalled` hook returned `null`; resume by supplying a `function_call_output` for each paused call                                                                                                                                                                                                                             |
+| `'awaiting_client_tools'` | Paused because one or more [manual tools](/docs/agent-sdk/call-model/tools#manual-tools) (`execute: false` / no execute fn) were called but not resolved. The unresolved calls are stored in `pendingToolCalls`. Resume by calling `callModel` again with new `input`; this clears the stale pendings and continues as a normal turn. Unlike `awaiting_approval` and `awaiting_hitl`, manual tools are not resumed via call IDs |
+| `'complete'`              | Conversation finished normally                                                                                                                                                                                                                                                                                                                                                                                             |
+| `'interrupted'`           | Conversation was interrupted and can be resumed                                                                                                                                                                                                                                                                                                                                                                            |
+
+## Serialization & Versioning
+
+`ConversationState` carries an optional `version` field that identifies the serialization contract of the blob. `createInitialState` stamps `version: 1`; older states without the field are treated as version `1`.
+
+`StateAccessor.load` / `save` themselves are unchanged. Most callers still round-trip through `JSON.stringify` / `JSON.parse`. Use the opt-in helpers when you want typed errors and a future-proof migration hook:
+
+```typescript lines theme={null}
+import {
+  serializeConversationState,
+  deserializeConversationState,
+  UnsupportedStateVersionError,
+  InvalidStateError,
+} from '@openrouter/agent';
+// Also available at the subpath:
+// import { ... } from '@openrouter/agent/conversation-state';
+
+const state: StateAccessor = {
+  load: async () => {
+    const blob = await redis.get(`conv:${id}`);
+    if (!blob) return null;
+    try {
+      return deserializeConversationState(blob);
+    } catch (err) {
+      if (err instanceof UnsupportedStateVersionError) {
+        // err.found and err.supported let you decide: reset, migrate, or fail
+        console.error(`State version ${err.found} not in ${err.supported.join(', ')}`);
+      }
+      if (err instanceof InvalidStateError) {
+        // Malformed JSON or missing required fields
+      }
+      throw err;
+    }
+  },
+  save: async (s) => {
+    await redis.set(`conv:${id}`, serializeConversationState(s));
+  },
+};
+```
+
+Compatibility policy:
+
+* Treat the serialized JSON as **opaque**. Do not introspect item shapes across releases.
+* Additive field changes are allowed within a major version.
+* On version bumps, any migration work runs inside `deserializeConversationState`. Consumers using the helpers get forward-compat automatically.
+
+Errors:
+
+* `UnsupportedStateVersionError`: the blob's `version` isn't in this SDK build's supported set. Exposes `{ found, supported }` for logging or migration routing.
+* `InvalidStateError`: the payload is malformed JSON or missing required fields (`id`, `messages`, `status`, `createdAt`, `updatedAt`).
 
 ## Complete Example
 

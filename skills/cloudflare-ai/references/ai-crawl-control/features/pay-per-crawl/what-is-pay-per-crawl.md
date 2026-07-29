@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # What is Pay Per Crawl?
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Pay per crawl closed beta
+Pay per crawl beta
 
 Pay per crawl is currently in closed beta.
 
-To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗](http://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
+To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗](https://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
 
 To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay per crawl: enabling content owners to charge AI crawlers for access ↗](https://blog.cloudflare.com/introducing-pay-per-crawl/).
 
@@ -60,5 +60,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/#page","headline":"What is Pay Per Crawl? · Cloudflare AI Crawl Control docs","description":"Understand the Pay Per Crawl monetization model.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/#page","headline":"What is Pay Per Crawl? · Cloudflare AI Crawl Control docs","description":"Understand the Pay Per Crawl monetization model.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

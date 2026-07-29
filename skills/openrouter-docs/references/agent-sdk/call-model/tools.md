@@ -4,7 +4,7 @@
 
 # Tools
 
-> Create type-safe tools with Zod schemas and automatic execution. Supports regular tools, generator tools with progress, manual tools, human-in-the-loop tools, and automatic multi-turn execution.
+> Define type-safe tools for callModel with Zod schemas, including regular, generator, manual, HITL, and MCP-branded tools, with automatic multi-turn execution.
 
 ## The tool() Helper
 
@@ -123,6 +123,8 @@ const manualTool = tool({
 ```
 
 Use `getToolCalls()` to retrieve manual tool calls for processing.
+
+When manual tool calls are left unresolved at the end of a round, the loop pauses and the calls are persisted to `ConversationState.pendingToolCalls` with `status: 'awaiting_client_tools'`, so cold-start consumers can recover them from serialized state. To continue, call `callModel` again with new `input`; the stale pendings are cleared and the run proceeds as a normal turn. Manual tools are not approved or rejected by call ID the way [approval](/docs/agent-sdk/call-model/tool-approval-state) and [HITL](#human-in-the-loop-hitl-tools) flows are. See [Status Values](/docs/agent-sdk/call-model/tool-approval-state#status-values).
 
 ### Human-in-the-Loop (HITL) Tools
 
@@ -710,6 +712,12 @@ for await (const event of result.getFullResponsesStream()) {
 type ToolResultEvent<TResult = unknown, TPreliminaryResults = unknown> = {
   type: 'tool.result';
   toolCallId: string;
+  /**
+   * Origin of the tool: `'client'` for locally-defined tools (result is
+   * precisely typed from your `outputSchema`), `'mcp'` for tools wrapped from a
+   * remote MCP server (result is `unknown`).
+   */
+  source: 'client' | 'mcp';
   result: TResult;
   timestamp: number;
   preliminaryResults?: TPreliminaryResults[];
@@ -717,6 +725,36 @@ type ToolResultEvent<TResult = unknown, TPreliminaryResults = unknown> = {
 ```
 
 The `tool.result` event provides the final output from tool execution along with all intermediate `preliminaryResults` that were yielded during execution (for generator tools). This is useful when you need both real-time progress updates and a summary of all progress at completion.
+
+<Warning>
+  The `source` field was added in `@openrouter/agent` 0.8.0. This is an additive breaking change for consumers that exhaustively matched (or constructed) `tool.result` events; add a `source` case, or spread it through, to keep type-checking clean.
+</Warning>
+
+#### Narrowing MCP vs. client results
+
+Mixing an MCP tool (whose output schema is `unknown`) with fully-typed local tools used to collapse the entire result union to `unknown`. The `source` discriminant fixes that: narrow on `source === 'client'` to recover your schema-derived result types, and treat `source === 'mcp'` results as `unknown`.
+
+```typescript lines theme={null}
+for await (const event of result.getFullResponsesStream()) {
+  if (event.type !== 'tool.result') continue;
+
+  if (event.source === 'client') {
+    // event.result is typed from the tool's outputSchema union
+    console.log('Local tool result:', event.result);
+  } else {
+    // event.source === 'mcp': result stays unknown; validate before use
+    console.log('MCP tool result (unknown):', event.result);
+  }
+}
+```
+
+Helpers exported from `@openrouter/agent`:
+
+* `markMcp(tool)`: brand a tool as originating from an MCP server. `@openrouter/mcp` brands its wrapped tools automatically, so most callers just spread `mcp.tools` and never call this directly.
+* `isMcpTool(tool)`: runtime guard for the MCP brand.
+* `McpBranded<T>`: type-level brand that keeps MCP results isolated in the `ToolResultEvent` / `ToolExecutionResult` unions.
+
+The brand is purely informational: MCP tools still execute locally and serialize on the wire as `type: 'function'`.
 
 ### Parallel Tool Execution
 

@@ -8,6 +8,14 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## July, 2026
 
+### Jul 28
+
+Feature · Model: gpt-transcribe · Model: gpt-live-transcribe · API: v1/audio/transcriptions · API: v1/realtime
+
+Released [GPT Transcribe](https://developers.openai.com/api/docs/models/gpt-transcribe) for accurate file transcription and final transcripts of committed Realtime turns, along with [GPT Live Transcribe](https://developers.openai.com/api/docs/models/gpt-live-transcribe) for low-latency streaming transcription.
+
+Both models support free-form transcription context, keyword hints, and multiple expected input languages. Compare supported outputs and workflows in the [transcription guide](https://developers.openai.com/api/docs/guides/transcription).
+
 ### Jul 22
 
 Feature

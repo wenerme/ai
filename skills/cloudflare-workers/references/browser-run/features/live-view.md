@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Live View
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/live-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/live-view/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Live View lets you see and interact with a remote Browser Run session in real time. This is useful for debugging automation scripts, monitoring what a browser is doing, or manually stepping in when a task requires human intervention (see [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)).
 
@@ -41,6 +41,7 @@ The hosted UI supports two viewing modes, controlled by the `mode` parameter in 
 | Mode      | URL pattern                                            | Description                                                 |
 | --------- | ------------------------------------------------------ | ----------------------------------------------------------- |
 | Tab       | https://live.browser.run/ui/view?mode=tab&wss=...      | Standalone page view                                        |
+| Full      | https://live.browser.run/ui/view?mode=full&wss=...     | Multi-tab page view                                         |
 | Inspector | https://live.browser.run/ui/view?mode=devtools&wss=... | DevTools inspector panel (Elements, Console, Network, etc.) |
 
 ### Native Chrome DevTools (Chrome only)
@@ -55,7 +56,7 @@ Paste this URL into Chrome's address bar to connect native DevTools to the remot
 
 URL validity
 
-The `devtoolsFrontendUrl` is valid for five minutes from when it was generated. If you do not open the URL within this timeframe, list the targets again to get a fresh URL. Once the DevTools connection is established, it remains active as long as the browser session is alive.
+The `devtoolsFrontendUrl` is valid for five minutes by default. You can change this by setting the `expiresInMs` parameter when sending the `Cloudflare.getLiveView` CDP command (max 1 hour). If you do not open the URL within this timeframe, list the targets again or send a new `Cloudflare.getLiveView` command to get a fresh URL. Once the DevTools connection is established, it remains active as long as the browser session is alive.
 
 ## View a new session
 
@@ -118,6 +119,42 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-renderin
 ```
 3. Copy the `devtoolsFrontendUrl` and open it in your browser.
 
+## Get Live View URL via CDP
+
+When using Puppeteer, Playwright, or a direct WebSocket connection, you can retrieve a Live View URL programmatically using the `Cloudflare.getLiveView` CDP command:
+
+```js
+// Create a CDP session from your page
+const cdp = await page.createCDPSession();
+
+// Get all targets
+const { targetInfos } = await cdp.send("Target.getTargets");
+
+// Find a specific target (for example, a page with a specific URL)
+// or if there's only one page, just grab the first one
+const target =
+	targetInfos.find((t) => t.type === "page" && t.url.includes("example.com")) ||
+	targetInfos[0];
+
+if (!target) {
+	throw new Error("Target not found");
+}
+
+const targetId = target.targetId;
+console.log(`Selected target: ${targetId}`);
+
+// Get the Live View URL for the selected target
+const { devtoolsFrontendUrl } = await cdp.send("Cloudflare.getLiveView", {
+	targetId, // use the target ID from above, this is optional, if omitted the current target will be used
+	mode: "tab", // Options: "devtools", "tab", or "full"
+	expiresInMs: 300000, // optional, default is 5 minutes (max 1 hour)
+});
+
+console.log(`Live View URL: ${devtoolsFrontendUrl}`);
+```
+
+Refer to the [Human in the Loop reference](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/#cloudflaregetliveview) for full parameter and return details.
+
 Was this helpful?
 
 YesNo
@@ -127,5 +164,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/live-view/#page","headline":"Live View · Cloudflare Browser Run docs","description":"View and interact with remote Browser Run sessions in real time using the hosted DevTools UI or native Chrome DevTools.","url":"https://developers.cloudflare.com/browser-run/features/live-view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/live-view/#page","headline":"Live View · Cloudflare Browser Run docs","description":"View and interact with remote Browser Run sessions in real time using the hosted DevTools UI or native Chrome DevTools.","url":"https://developers.cloudflare.com/browser-run/features/live-view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

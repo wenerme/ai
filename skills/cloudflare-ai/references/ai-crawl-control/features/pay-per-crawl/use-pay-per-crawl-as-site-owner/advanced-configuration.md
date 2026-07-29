@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced configuration
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Disable Pay Per Crawl by URI pattern
 
@@ -45,9 +45,86 @@ Note
 
 Some paths are always free to crawl. These paths are: `/robots.txt`, `/sitemap.xml`, `/security.txt`, `/.well-known/security.txt`, `/crawlers.json`
 
+## Dynamic pricing
+
+The price you specify in Pay Per Crawl settings applies to the entire zone by default, but you can implement a differentiated pricing policy by selecting **Enable dynamic pricing** and having your origin HTTP responses include a `crawler-price` header. For example:
+
+```http
+crawler-price: USD 3.14
+```
+
+When the `crawler-price` header is present in a response, the price it specifies will be used instead of the default price specified in the Pay Per Crawl settings for the zone.
+
+Note
+
+When Pay Per Crawl is enabled for a zone, the `crawler-price` response header is only forwarded to the client when the client is being asked to pay for the content (HTTP 402).
+
+### Request header for dynamic pricing
+
+Pay Per Crawl adds a `cf-pay-per-crawl` header to every origin request. This header indicates the pricing mode in effect, and can be used by the origin to decide whether or not to include a `crawler-price` header with the response.
+
+```http
+cf-pay-per-crawl: protocol=cloudflare, pricing=in-band
+```
+
+Currently, the only possible value for the `protocol` indicator is `cloudflare`. For the `pricing` indicator the value can be one of the following:
+
+* **`zone-default`**: When the zone does not have in-band pricing enabled.
+* **`in-band`**: When the zone has dynamic pricing enabled.
+* **`bypass`**: When the request is not subject to payment (for example, not a bot).
+
+### Use Workers for dynamic pricing
+
+If you prefer to maintain your origin as is, you can use a Worker to include the `crawler-price` header in responses. From a Worker you can, for example, select the price based on the incoming request's properties (including information added by the Cloudflare global network) or the content itself.
+
+Snippets limitations
+
+The `cf-pay-per-crawl` request header is also visible to Snippets, allowing for simple transformations without the full power of Workers. However, Snippets cannot be used to select a `crawler-price`, as response transformations at that later stage of request processing are no longer actionable by Pay Per Crawl.
+
+The following Worker script implements a simple example policy that selects the price based on the requested URL path, while still taking advantage of Cloudflare Cache:
+
+```typescript
+function getContentPriceUSD(request, response) {
+	const requestPath = new URL(request.url).pathname;
+
+	if (requestPath.startsWith("/premium-content/")) {
+		return 3.14;
+	}
+
+	if (requestPath.startsWith("/free-content/")) {
+		return 0.0;
+	}
+
+	return null; // Use the default price set in the zone configuration.
+}
+
+export default {
+	async fetch(request, env, ctx) {
+		// Obtain the response first (and allow it to be cached if possible).
+		let response = await fetch(request, { cf: { cacheEverything: true } });
+
+		// Indicates the pricing mode in effect ("bypass", "zone-default", "in-band").
+		const cfPayPerCrawl = request.headers.get("CF-Pay-Per-Crawl") || "";
+
+		// If in-band pricing is enabled, use the request/response to select a price.
+		if (cfPayPerCrawl.match(/\bpricing=in-band\b/)) {
+			const contentPrice = getContentPriceUSD(request, response);
+
+			if (contentPrice !== null) {
+				// Make the response mutable, to allow setting the price header.
+				response = new Response(response.body, response);
+				response.headers.set("Crawler-Price", `USD ${contentPrice.toFixed(2)}`);
+			}
+		}
+		return response;
+	}
+};
+```
+
 ## Additional resources
 
 * [Configuration Rules documentation](https://developers.cloudflare.com/rules/configuration-rules/)
+* [Workers documentation](https://developers.cloudflare.com/workers/)
 
 Was this helpful?
 
@@ -58,5 +135,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/#page","headline":"Advanced configuration · Cloudflare AI Crawl Control docs","description":"Configure advanced Pay Per Crawl settings.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/#page","headline":"Advanced configuration · Cloudflare AI Crawl Control docs","description":"Configure advanced Pay Per Crawl settings.","url":"https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

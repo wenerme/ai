@@ -388,6 +388,8 @@ Port of the local dev session (default: 8787)
 Name of the workflow
 * `[ID]` `string` required
 ID of the instance - instead of an UUID you can type 'latest' to get the latest instance and describe it
+* `--rollback` `boolean` default: false
+Run registered rollback handlers before terminating
 
 Global flags
 

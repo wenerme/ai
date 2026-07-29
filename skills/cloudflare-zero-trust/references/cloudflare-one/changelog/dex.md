@@ -16,6 +16,31 @@ Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/dex.xml)
 
+## 2026-07-09
+
+
+**Wi-Fi signal and network performance analytics for Cloudflare One Client devices**
+
+[Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) provides visibility into device, network, and application performance across your Cloudflare SASE deployment.
+
+The **Device Monitoring** page now analyzes hardware and network data between a Cloudflare One Client device and Cloudflare's edge, so you can diagnose connectivity and performance issues. Previously, this data was only available in raw DEX Device State Event logs, which required you to build your own analytics to interpret it.
+
+![Device Monitoring summary with connection status, connection mode, Wi-Fi signal strength, traffic performance, and device health](https://developers.cloudflare.com/_astro/dex-device-monitoring-summary.CBxeSd6b_Z18SrWs.webp)
+
+A summary at the top of the page shows the health of each category at a glance, using **Good**, **Fair**, and **Poor** labels:
+
+* **Connection** — connection status, Cloudflare One Client mode, and tunnel type over time
+* **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
+* **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
+* **Device health** — hardware metrics such as CPU, memory, and disk
+![Wi-Fi signal strength and network throughput charts on the Device Monitoring page](https://developers.cloudflare.com/_astro/dex-device-monitoring-wifi-network.CoEBznAm_2qKt5Q.webp)
+
+You can filter by category and adjust the time range to correlate a device's metrics with a user's reported issue.
+
+These analytics are available to all Cloudflare One customers at no additional cost.
+
+To learn more, refer to the [DEX monitoring documentation](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/).
+
 ## 2026-04-29
 
 

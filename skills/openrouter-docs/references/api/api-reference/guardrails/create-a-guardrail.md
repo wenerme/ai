@@ -74,6 +74,8 @@ tags:
     name: Providers
   - description: Rerank endpoints
     name: Rerank
+  - description: OpenAI-compatible Responses API endpoints
+    name: Responses
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
@@ -86,8 +88,6 @@ tags:
     name: Workspaces
   - description: beta.Analytics endpoints
     name: beta.Analytics
-  - description: responses endpoints
-    name: responses
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -273,6 +273,28 @@ components:
           maxLength: 1000
           type:
             - string
+            - 'null'
+        enable_free_model_publication:
+          description: Whether this guardrail allows free endpoints that publish prompts.
+          example: false
+          type:
+            - boolean
+            - 'null'
+        enable_free_model_training:
+          description: >-
+            Whether this guardrail allows free endpoints that train on request
+            data.
+          example: true
+          type:
+            - boolean
+            - 'null'
+        enable_paid_model_training:
+          description: >-
+            Whether this guardrail allows paid endpoints that train on request
+            data.
+          example: true
+          type:
+            - boolean
             - 'null'
         enforce_zdr:
           deprecated: true
@@ -579,6 +601,9 @@ components:
         content_filters: null
         created_at: '2025-08-24T10:30:00Z'
         description: Guardrail for production environment
+        enable_free_model_publication: false
+        enable_free_model_training: true
+        enable_paid_model_training: true
         enforce_zdr: null
         enforce_zdr_anthropic: true
         enforce_zdr_google: false
@@ -650,6 +675,28 @@ components:
           example: Guardrail for production environment
           type:
             - string
+            - 'null'
+        enable_free_model_publication:
+          description: Whether this guardrail allows free endpoints that publish prompts.
+          example: false
+          type:
+            - boolean
+            - 'null'
+        enable_free_model_training:
+          description: >-
+            Whether this guardrail allows free endpoints that train on request
+            data.
+          example: true
+          type:
+            - boolean
+            - 'null'
+        enable_paid_model_training:
+          description: >-
+            Whether this guardrail allows paid endpoints that train on request
+            data.
+          example: true
+          type:
+            - boolean
             - 'null'
         enforce_zdr:
           deprecated: true

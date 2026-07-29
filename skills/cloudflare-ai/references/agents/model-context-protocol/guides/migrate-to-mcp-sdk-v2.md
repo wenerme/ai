@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate to MCP SDK v2
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers the [MCP SDK v2 ↗](https://github.com/modelcontextprotocol/typescript-sdk) upgrade in Agents SDK v0.20.0\. It explains how to move servers to `@modelcontextprotocol/server`, use a temporary legacy lane only when sessionful features require it, and update MCP clients.
 
@@ -37,26 +37,26 @@ Agents SDK v0.20.0 deprecates these APIs:
 
 ## Install the MCP packages
 
-Install only the MCP package generations that your application imports. Keep the v2 beta version exact.
+Install only the MCP package generations that your application imports. Keep the v2 version exact.
 
 For a stateless server:
 
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+npm i agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 ```
-yarn add agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+yarn add agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+pnpm add agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 ```
-bun add agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+bun add agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 For a temporary legacy lane:
@@ -64,19 +64,19 @@ For a temporary legacy lane:
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/sdk@1.29.0 zod
+npm i agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
 ```
-yarn add agents @modelcontextprotocol/sdk@1.29.0 zod
+yarn add agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/sdk@1.29.0 zod
+pnpm add agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
 ```
-bun add agents @modelcontextprotocol/sdk@1.29.0 zod
+bun add agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
 For an Agent that connects to MCP servers:
@@ -84,22 +84,22 @@ For an Agent that connects to MCP servers:
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/client@2.0.0-beta.5
+npm i agents @modelcontextprotocol/client@2.0.0
 ```
 
 ```
-yarn add agents @modelcontextprotocol/client@2.0.0-beta.5
+yarn add agents @modelcontextprotocol/client@2.0.0
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/client@2.0.0-beta.5
+pnpm add agents @modelcontextprotocol/client@2.0.0
 ```
 
 ```
-bun add agents @modelcontextprotocol/client@2.0.0-beta.5
+bun add agents @modelcontextprotocol/client@2.0.0
 ```
 
-Follow peer dependency instructions from your package manager. The exact v2 pin will change with later Agents releases while the MCP SDK remains in beta.
+Follow peer dependency instructions from your package manager. Update the exact MCP versions with the Agents release that supports them.
 
 ## Decide whether a temporary legacy lane is required
 
@@ -451,7 +451,7 @@ Custom transports, proxies, and gateways must preserve the draft request headers
 * `Mcp-Name` for tool, prompt, and resource operations
 * Declared `Mcp-Param-*` tool headers
 
-The exact beta used by Agents is a draft snapshot. Beta.5 makes `clientInfo` optional and places server identity in result `_meta`. Use high-level SDK APIs and update MCP packages with the Agents release that supports each snapshot. Raw stateless results must include `resultType`.
+The exact SDK version used by Agents implements the MCP 2026-07-28 revision. It makes `clientInfo` optional and places server identity in result `_meta`. Use high-level SDK APIs and update MCP packages with the Agents release that supports each protocol revision. Raw stateless results must include `resultType`.
 
 The draft deprecates Roots, Sampling, Logging, the old HTTP+SSE transport, and Dynamic Client Registration. The types remain available during the deprecation window for legacy compatibility. The published experimental task methods become the `io.modelcontextprotocol/tasks` extension. Agents SDK v0.20.0 does not add that extension.
 
@@ -492,5 +492,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/#page","headline":"Migrate to MCP SDK v2 · Cloudflare Agents docs","description":"Migrate Agents SDK MCP servers and clients to the split MCP TypeScript SDK v2 packages while retaining legacy compatibility.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/#page","headline":"Migrate to MCP SDK v2 · Cloudflare Agents docs","description":"Migrate Agents SDK MCP servers and clients to the split MCP TypeScript SDK v2 packages while retaining legacy compatibility.","url":"https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

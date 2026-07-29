@@ -2,9 +2,9 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# API Reference
+# Agent SDK API Reference
 
-> Complete reference for the callModel API, ModelResult class, tool types, and helper functions.
+> Type signatures and exports for the Agent SDK, covering callModel, ModelResult, tool types, conversation state helpers, stop conditions, and format utilities.
 
 ## callModel
 
@@ -16,39 +16,40 @@ Creates a response using the OpenResponses API with multiple consumption pattern
 
 ### CallModelInput
 
-| Parameter            | Type                                       | Required | Description                                                                                                                                                                                                                                                                                   |
-| -------------------- | ------------------------------------------ | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `model`              | `string \| ((ctx: TurnContext) => string)` | Yes\*    | Model ID (e.g., "openai/gpt-5-nano")                                                                                                                                                                                                                                                          |
-| `models`             | `string[]`                                 | Yes\*    | Model fallback array                                                                                                                                                                                                                                                                          |
-| `input`              | `OpenResponsesInput`                       | Yes      | Input messages or string                                                                                                                                                                                                                                                                      |
-| `instructions`       | `string \| ((ctx: TurnContext) => string)` | No       | System instructions                                                                                                                                                                                                                                                                           |
-| `tools`              | `Tool[]`                                   | No       | Tools available to the model                                                                                                                                                                                                                                                                  |
-| `maxToolRounds`      | `MaxToolRounds`                            | No       | Tool execution limit (deprecated)                                                                                                                                                                                                                                                             |
-| `stopWhen`           | `StopWhen`                                 | No       | Stop conditions                                                                                                                                                                                                                                                                               |
-| `allowFinalResponse` | `boolean \| string`                        | No       | Final text turn when `stopWhen` halts mid-tool-call. Default on: makes one more turn with `toolChoice: 'none'` and a built-in final-answer directive (`DEFAULT_FINAL_RESPONSE_DIRECTIVE`). A string overrides the directive wording; `''` appends no message; `false` disables the final turn |
-| `temperature`        | `number \| ((ctx: TurnContext) => number)` | No       | Sampling temperature (0-2)                                                                                                                                                                                                                                                                    |
-| `maxOutputTokens`    | `number \| ((ctx: TurnContext) => number)` | No       | Maximum tokens to generate                                                                                                                                                                                                                                                                    |
-| `topP`               | `number`                                   | No       | Top-p sampling                                                                                                                                                                                                                                                                                |
-| `text`               | `ResponseTextConfig`                       | No       | Text format configuration                                                                                                                                                                                                                                                                     |
-| `provider`           | `ProviderPreferences`                      | No       | Provider routing and configuration                                                                                                                                                                                                                                                            |
-| `topK`               | `number`                                   | No       | Top-k sampling                                                                                                                                                                                                                                                                                |
-| `metadata`           | `Record<string, string>`                   | No       | Request metadata                                                                                                                                                                                                                                                                              |
-| `toolChoice`         | `ToolChoice`                               | No       | Tool choice configuration                                                                                                                                                                                                                                                                     |
-| `parallelToolCalls`  | `boolean`                                  | No       | Enable parallel tool calling                                                                                                                                                                                                                                                                  |
-| `reasoning`          | `ReasoningConfig`                          | No       | Reasoning configuration                                                                                                                                                                                                                                                                       |
-| `promptCacheKey`     | `string`                                   | No       | Cache key for prompt caching                                                                                                                                                                                                                                                                  |
-| `previousResponseId` | `string`                                   | No       | Context from previous response                                                                                                                                                                                                                                                                |
-| `include`            | `string[]`                                 | No       | Include extra fields in response                                                                                                                                                                                                                                                              |
-| `background`         | `boolean`                                  | No       | Run request in background                                                                                                                                                                                                                                                                     |
-| `safetyIdentifier`   | `string`                                   | No       | User safety identifier                                                                                                                                                                                                                                                                        |
-| `serviceTier`        | `string`                                   | No       | Service tier preference                                                                                                                                                                                                                                                                       |
-| `truncation`         | `string`                                   | No       | Truncation mode                                                                                                                                                                                                                                                                               |
-| `plugins`            | `Plugin[]`                                 | No       | Enabled plugins                                                                                                                                                                                                                                                                               |
-| `user`               | `string`                                   | No       | End-user identifier                                                                                                                                                                                                                                                                           |
-| `sessionId`          | `string`                                   | No       | Session identifier                                                                                                                                                                                                                                                                            |
-| `store`              | `boolean`                                  | No       | Store request data                                                                                                                                                                                                                                                                            |
-| `context`            | `ContextInput<ToolContextMap>`             | No       | Tool context keyed by tool name                                                                                                                                                                                                                                                               |
-| `hooks`              | `InlineHookConfig \| HooksManager`         | No       | Agent lifecycle hooks                                                                                                                                                                                                                                                                         |
+| Parameter             | Type                                       | Required | Description                                                                                                                                                                                                                                                                                                |
+| --------------------- | ------------------------------------------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`               | `string \| ((ctx: TurnContext) => string)` | Yes\*    | Model ID (e.g., "openai/gpt-5-nano")                                                                                                                                                                                                                                                                       |
+| `models`              | `string[]`                                 | Yes\*    | Model fallback array                                                                                                                                                                                                                                                                                       |
+| `input`               | `OpenResponsesInput`                       | Yes      | Input messages or string                                                                                                                                                                                                                                                                                   |
+| `instructions`        | `string \| ((ctx: TurnContext) => string)` | No       | System instructions                                                                                                                                                                                                                                                                                        |
+| `tools`               | `Tool[]`                                   | No       | Tools available to the model                                                                                                                                                                                                                                                                               |
+| `maxToolRounds`       | `MaxToolRounds`                            | No       | Tool execution limit (deprecated)                                                                                                                                                                                                                                                                          |
+| `stopWhen`            | `StopWhen`                                 | No       | Stop conditions                                                                                                                                                                                                                                                                                            |
+| `allowFinalResponse`  | `boolean \| string`                        | No       | Final text turn when `stopWhen` halts mid-tool-call. Default on: makes one more turn with `toolChoice: 'none'` and a built-in final-answer directive (`DEFAULT_FINAL_RESPONSE_DIRECTIVE`). A string overrides the directive wording; `''` appends no message; `false` disables the final turn              |
+| `strictFinalResponse` | `boolean`                                  | No       | Throw if the final response has empty `output` even after completed tool rounds (pre-0.8.0 behavior). Default `false`: retry the follow-up once, then resolve successfully with empty text so tool-terminal runs aren't reported as failures. Runs with no completed tool work still throw on empty output |
+| `temperature`         | `number \| ((ctx: TurnContext) => number)` | No       | Sampling temperature (0-2)                                                                                                                                                                                                                                                                                 |
+| `maxOutputTokens`     | `number \| ((ctx: TurnContext) => number)` | No       | Maximum tokens to generate                                                                                                                                                                                                                                                                                 |
+| `topP`                | `number`                                   | No       | Top-p sampling                                                                                                                                                                                                                                                                                             |
+| `text`                | `ResponseTextConfig`                       | No       | Text format configuration                                                                                                                                                                                                                                                                                  |
+| `provider`            | `ProviderPreferences`                      | No       | Provider routing and configuration                                                                                                                                                                                                                                                                         |
+| `topK`                | `number`                                   | No       | Top-k sampling                                                                                                                                                                                                                                                                                             |
+| `metadata`            | `Record<string, string>`                   | No       | Request metadata                                                                                                                                                                                                                                                                                           |
+| `toolChoice`          | `ToolChoice`                               | No       | Tool choice configuration                                                                                                                                                                                                                                                                                  |
+| `parallelToolCalls`   | `boolean`                                  | No       | Enable parallel tool calling                                                                                                                                                                                                                                                                               |
+| `reasoning`           | `ReasoningConfig`                          | No       | Reasoning configuration                                                                                                                                                                                                                                                                                    |
+| `promptCacheKey`      | `string`                                   | No       | Cache key for prompt caching                                                                                                                                                                                                                                                                               |
+| `previousResponseId`  | `string`                                   | No       | Context from previous response                                                                                                                                                                                                                                                                             |
+| `include`             | `string[]`                                 | No       | Include extra fields in response                                                                                                                                                                                                                                                                           |
+| `background`          | `boolean`                                  | No       | Run request in background                                                                                                                                                                                                                                                                                  |
+| `safetyIdentifier`    | `string`                                   | No       | User safety identifier                                                                                                                                                                                                                                                                                     |
+| `serviceTier`         | `string`                                   | No       | Service tier preference                                                                                                                                                                                                                                                                                    |
+| `truncation`          | `string`                                   | No       | Truncation mode                                                                                                                                                                                                                                                                                            |
+| `plugins`             | `Plugin[]`                                 | No       | Enabled plugins                                                                                                                                                                                                                                                                                            |
+| `user`                | `string`                                   | No       | End-user identifier                                                                                                                                                                                                                                                                                        |
+| `sessionId`           | `string`                                   | No       | Session identifier                                                                                                                                                                                                                                                                                         |
+| `store`               | `boolean`                                  | No       | Store request data                                                                                                                                                                                                                                                                                         |
+| `context`             | `ContextInput<ToolContextMap>`             | No       | Tool context keyed by tool name                                                                                                                                                                                                                                                                            |
+| `hooks`               | `InlineHookConfig \| HooksManager`         | No       | Agent lifecycle hooks                                                                                                                                                                                                                                                                                      |
 
 See [Lifecycle Hooks](/docs/agent-sdk/call-model/lifecycle-hooks) for hook payloads,
 results, and manager APIs.
@@ -436,11 +437,118 @@ interface ParsedToolCall {
 interface ToolExecutionResult {
   toolCallId: string;
   toolName: string;
+  /**
+   * `'client'` for locally-defined tools: `result` is precisely typed from
+   * the tool's `outputSchema`. `'mcp'` for tools wrapped from a remote MCP
+   * server: `result` is `unknown`.
+   *
+   * Consumers narrow on `source` to keep MCP's `unknown` from collapsing the
+   * result union of typed client tools. Also present on `ToolResultEvent`
+   * (streaming). See [Tools › ToolResultEvent](/agent-sdk/call-model/tools#toolresultevent-type).
+   */
+  source: 'client' | 'mcp';
   result: unknown;
   preliminaryResults?: unknown[];
   error?: Error;
 }
 ```
+
+<Warning>
+  The `source` field was added in `@openrouter/agent` 0.8.0. This is an additive breaking change for consumers that exhaustively matched or constructed `ToolExecutionResult` (or `ToolResultEvent`) payloads.
+</Warning>
+
+### MCP branding
+
+```typescript lines theme={null}
+// Guard: returns true for tools branded as originating from an MCP server.
+function isMcpTool(tool: Tool): tool is McpBranded;
+
+// Helper: brand a tool as MCP. `@openrouter/mcp` brands its wrapped tools
+// automatically; most callers never call this directly.
+function markMcp<T extends Tool>(tool: T): McpBranded<T>;
+
+// Type-level brand that isolates MCP results in ToolExecutionResult /
+// ToolResultEvent unions.
+type McpBranded<T extends Tool = Tool> = T & { readonly _mcp: true };
+```
+
+***
+
+## Conversation State
+
+See [Tool Approval & State](/docs/agent-sdk/call-model/tool-approval-state) for a walkthrough of the state accessor pattern, resumption, and status values.
+
+### ConversationState
+
+```typescript lines theme={null}
+interface ConversationState<TTools extends readonly Tool[] = readonly Tool[]> {
+  /**
+   * Serialization-contract version. Optional so legacy blobs remain
+   * assignable; absence means `1`. `createInitialState` stamps `1`.
+   */
+  version?: number;
+  id: string;
+  messages: OpenResponsesInputUnion;
+  previousResponseId?: string;
+  pendingToolCalls?: ParsedToolCall[];
+  unsentToolResults?: UnsentToolResult[];
+  partialResponse?: PartialResponse;
+  interruptedBy?: string;
+  status: ConversationStatus;
+  createdAt: number;
+  updatedAt: number;
+}
+```
+
+### ConversationStatus
+
+```typescript lines theme={null}
+type ConversationStatus =
+  | 'in_progress'
+  | 'awaiting_approval'
+  | 'awaiting_hitl'
+  | 'awaiting_client_tools'
+  | 'complete'
+  | 'interrupted';
+```
+
+`'awaiting_client_tools'` was added in `@openrouter/agent` 0.8.0 for unresolved manual (`execute: false`) tool calls. See [Status Values](/docs/agent-sdk/call-model/tool-approval-state#status-values).
+
+### StateAccessor
+
+```typescript lines theme={null}
+interface StateAccessor<TTools extends readonly Tool[] = readonly Tool[]> {
+  load: () => Promise<ConversationState<TTools> | null>;
+  save: (state: ConversationState<TTools>) => Promise<void>;
+}
+```
+
+### Serialization helpers
+
+Opt-in wrappers over `JSON.stringify` / `JSON.parse` that manage the state version and surface typed errors on load. Available at the package root and via the `@openrouter/agent/conversation-state` subpath.
+
+```typescript lines theme={null}
+const CONVERSATION_STATE_VERSION = 1;
+
+function serializeConversationState<TTools>(
+  state: ConversationState<TTools>,
+): string;
+
+function deserializeConversationState<TTools>(
+  json: string,
+): ConversationState<TTools>;
+
+// Thrown when the blob's `version` is not supported by this SDK build.
+class UnsupportedStateVersionError extends Error {
+  readonly found: number;
+  readonly supported: readonly number[];
+}
+
+// Thrown for malformed JSON or missing required fields.
+class InvalidStateError extends Error {}
+```
+
+Treat the serialized JSON as opaque. Additive changes stay within a major version; migrations run inside `deserializeConversationState` on version bumps. `StateAccessor.load` / `save` are unchanged, so these helpers are opt-in.
 
 ***
 
@@ -592,7 +700,20 @@ export {
   isManualTool,
   isHITLTool,
   isAutoResolvableTool,
+  isMcpTool,
+  markMcp,
 } from '@openrouter/agent';
+
+// Conversation state helpers
+export {
+  createInitialState,
+  serializeConversationState,
+  deserializeConversationState,
+  CONVERSATION_STATE_VERSION,
+  UnsupportedStateVersionError,
+  InvalidStateError,
+} from '@openrouter/agent';
+// Also available at the subpath: '@openrouter/agent/conversation-state'
 
 // Format helpers
 export { fromChatMessages, toChatMessage, fromClaudeMessages, toClaudeMessage } from '@openrouter/agent';
@@ -626,11 +747,16 @@ export type {
   ManualTool,
   HITLTool,
   HITLToolFunction,
+  McpBranded,
   ToolExecuteContext,
   ToolContextMap,
   TurnContext,
   ParsedToolCall,
   ToolExecutionResult,
+  ToolResultEvent,
+  ConversationState,
+  ConversationStatus,
+  StateAccessor,
   StopCondition,
   StopWhen,
   InferToolInput,

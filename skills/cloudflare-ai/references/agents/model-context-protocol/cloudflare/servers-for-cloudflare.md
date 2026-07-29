@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare's own MCP servers
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare runs a catalog of managed remote MCP servers which you can connect to using OAuth on clients like [Claude ↗](https://modelcontextprotocol.io/quickstart/user), [Windsurf ↗](https://docs.windsurf.com/windsurf/cascade/mcp), our own [AI Playground ↗](https://playground.ai.cloudflare.com/) or any [SDK that supports MCP ↗](https://github.com/cloudflare/agents/tree/main/packages/agents/src/mcp).
 
-These MCP servers allow your MCP client to read configurations from your account, process information, make suggestions based on data, and even make those suggested changes for you. All of these actions can happen across Cloudflare's many services including application development, security and performance. They support both the `streamable-http` transport via `/mcp` and the `sse` transport (deprecated) via `/sse`.
+These MCP servers allow your MCP client to read configurations from your account, process information, make suggestions based on data, and even make those suggested changes for you. All of these actions can happen across Cloudflare's many services including application development, security and performance.
+
+Use the Streamable HTTP endpoint at `/mcp` for new connections. The servers support the new MCP 2026-07-28 Specification and stateless requests from 2025 Streamable HTTP clients. Historical `/sse` URLs remain available as aliases for the same Streamable HTTP handler, but they do not serve the deprecated HTTP+SSE transport. Clients configured to force SSE transport must switch to Streamable HTTP or automatic transport detection.
 
 ## Cloudflare API MCP server
 
@@ -94,7 +96,7 @@ In addition to the Cloudflare API MCP server, Cloudflare provides product-specif
 
 | Server Name                                                                                                               | Description                                                                                     | Server URL                                   |
 | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------- |
-| [Documentation server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-vectorize)               | Get up to date reference information on Cloudflare                                              | https://docs.mcp.cloudflare.com/mcp          |
+| [Documentation server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search)               | Get up to date reference information on Cloudflare                                              | https://docs.mcp.cloudflare.com/mcp          |
 | [Workers Bindings server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-bindings)          | Build Workers applications with storage, AI, and compute primitives                             | https://bindings.mcp.cloudflare.com/mcp      |
 | [Workers Builds server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-builds)              | Get insights and manage your Cloudflare Workers Builds                                          | https://builds.mcp.cloudflare.com/mcp        |
 | [Observability server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability)        | Debug and get insight into your application's logs and analytics                                | https://observability.mcp.cloudflare.com/mcp |
@@ -122,5 +124,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers · Cloudflare Agents docs","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/#page","headline":"Cloudflare's own MCP servers · Cloudflare Agents docs","description":"Connect to Cloudflare's managed remote MCP servers to read configurations, manage services, and automate actions across your account.","url":"https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

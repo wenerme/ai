@@ -19,6 +19,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 * [Enable flexible variants](https://developers.cloudflare.com/images/optimization/hosted-images/enable-flexible-variants/)
 * [Apply blur](https://developers.cloudflare.com/images/optimization/hosted-images/blur-variants/)
 * [Delete variants](https://developers.cloudflare.com/images/optimization/hosted-images/delete-variants/)
+* [Preserve Content Credentials](https://developers.cloudflare.com/images/optimization/hosted-images/preserve-content-credentials/)
 * [Browser TTL](https://developers.cloudflare.com/images/optimization/hosted-images/browser-ttl/)
 * [Serve images from custom domains](https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/)
 * [Serve private images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-private-images/)

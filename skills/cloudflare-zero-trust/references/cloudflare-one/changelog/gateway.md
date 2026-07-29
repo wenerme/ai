@@ -16,6 +16,24 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
+## 2026-07-28
+
+
+**Control Cloudflare Gateway DNS caching with a maximum TTL setting**
+
+You can now set a maximum time-to-live (TTL) for DNS responses returned by Gateway. When an upstream DNS record has a TTL that exceeds the configured maximum, Gateway caps it to your specified value. This ensures that DNS policy changes - such as blocking a newly identified malicious domain - take effect faster across all clients.
+
+![The maximum DNS TTL setting in Traffic policies > Traffic settings, showing a numeric input field that accepts values between 60 and 36,000 seconds](https://developers.cloudflare.com/_astro/gateway-max-ttl-traffic-settings.BRF3NUMp_Z1H1aSr.webp)
+
+The setting is available at two levels:
+
+* **Account level** \- In **Traffic Policies** \> **Traffic Settings**, under **Proxy and inspection**. This sets the default cap for all DNS locations.
+* **Per-location** \- Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
+
+Two new fields are also available in DNS logs: `upstream_record_ttls` (the original TTL from the upstream response) and `applied_max_ttl` (the cap Gateway applied). These appear in the DNS logs column picker and in Logpush datasets.
+
+For more information, refer to [Maximum DNS TTL](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/maximum-dns-ttl/).
+
 ## 2026-07-17
 
 

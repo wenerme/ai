@@ -65,13 +65,13 @@ func main() {
 
 ### Parameters
 
-| Parameter     | Type                                                       | Required             | Description                                                                    | Example                                                  |
-| ------------- | ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------- |
-| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                            |                                                          |
-| `limit`       | `*int64`                                                   | :heavy\_minus\_sign: | Maximum number of files to return (1–1000).                                    | 100                                                      |
-| `cursor`      | `*string`                                                  | :heavy\_minus\_sign: | Opaque pagination cursor from a previous response.                             | eyJjdXJzb3IiOiJmaWxlXzAxMUNOaGE4aUNKY1Uxd1hOUjZxNFY4dyJ9 |
-| `workspaceID` | `*string`                                                  | :heavy\_minus\_sign: | Workspace to scope the request to. Defaults to the caller’s default workspace. | a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7                     |
-| `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                  |                                                          |
+| Parameter     | Type                                                       | Required             | Description                                                                    | Example                                                      |
+| ------------- | ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------ |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                            |                                                              |
+| `limit`       | `*int64`                                                   | :heavy\_minus\_sign: | Maximum number of files to return (1–1000).                                    | 100                                                          |
+| `cursor`      | `*string`                                                  | :heavy\_minus\_sign: | Opaque pagination cursor from a previous response.                             | eyJjdXJzb3IiOiJvcl9maWxlXzAxMUNOaGE4aUNKY1Uxd1hOUjZxNFY4dyJ9 |
+| `workspaceID` | `*string`                                                  | :heavy\_minus\_sign: | Workspace to scope the request to. Defaults to the caller’s default workspace. | a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7                         |
+| `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                  |                                                              |
 
 ### Response
 
@@ -194,7 +194,7 @@ func main() {
 | Parameter     | Type                                                       | Required             | Description                                                                    | Example                              |
 | ------------- | ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
 | `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                            |                                      |
-| `fileID`      | `string`                                                   | :heavy\_check\_mark: | N/A                                                                            | file\_011CNha8iCJcU1wXNR6q4V8w       |
+| `fileID`      | `string`                                                   | :heavy\_check\_mark: | N/A                                                                            | or\_file\_011CNha8iCJcU1wXNR6q4V8w   |
 | `workspaceID` | `*string`                                                  | :heavy\_minus\_sign: | Workspace to scope the request to. Defaults to the caller’s default workspace. | a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7 |
 | `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                  |                                      |
 
@@ -250,7 +250,7 @@ func main() {
 | Parameter     | Type                                                       | Required             | Description                                                                    | Example                              |
 | ------------- | ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
 | `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                            |                                      |
-| `fileID`      | `string`                                                   | :heavy\_check\_mark: | N/A                                                                            | file\_011CNha8iCJcU1wXNR6q4V8w       |
+| `fileID`      | `string`                                                   | :heavy\_check\_mark: | N/A                                                                            | or\_file\_011CNha8iCJcU1wXNR6q4V8w   |
 | `workspaceID` | `*string`                                                  | :heavy\_minus\_sign: | Workspace to scope the request to. Defaults to the caller’s default workspace. | a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7 |
 | `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                  |                                      |
 
@@ -306,7 +306,7 @@ func main() {
 | Parameter     | Type                                                       | Required             | Description                                                                    | Example                              |
 | ------------- | ---------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
 | `ctx`         | [context.Context](https://pkg.go.dev/context#Context)      | :heavy\_check\_mark: | The context to use for the request.                                            |                                      |
-| `fileID`      | `string`                                                   | :heavy\_check\_mark: | N/A                                                                            | file\_011CNha8iCJcU1wXNR6q4V8w       |
+| `fileID`      | `string`                                                   | :heavy\_check\_mark: | N/A                                                                            | or\_file\_011CNha8iCJcU1wXNR6q4V8w   |
 | `workspaceID` | `*string`                                                  | :heavy\_minus\_sign: | Workspace to scope the request to. Defaults to the caller’s default workspace. | a103d8b6-42f0-4e50-9a3c-bf41e2c3c1a7 |
 | `opts`        | \[][operations.Option](../../models/operations/option.mdx) | :heavy\_minus\_sign: | The options for this request.                                                  |                                      |
 

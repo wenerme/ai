@@ -32,11 +32,11 @@ new Validator(parameters, '7')
 
 Tools whose `parameters` schema is absent or fails to compile are treated as having no schema and are always considered valid, so the metric is conservative when caller-side schemas are malformed.
 
-### Regex engine
+### Regex Engine
 
 `@cfworker/json-schema` delegates `pattern` and `patternProperties` to the runtime's built-in regex implementation. In OpenRouter's environment that is the native JavaScript `RegExp` (V8 / ECMA-262). There is no ECMA-262-conformance shim layered on top, so JavaScript regex semantics differ in some edge cases from the regex dialect specified by JSON Schema.
 
-### Per-tool-call classification
+### Per-Tool-Call Classification
 
 Each tool call is bucketed into one of three error categories, or counted as valid:
 
@@ -44,7 +44,7 @@ Each tool call is bucketed into one of three error categories, or counted as val
 * **`UnknownName`** -- `function.name` is not present in the request's `tools[]`.
 * **`SchemaMismatch`** -- the validator returns `valid: false` against the resolved schema.
 
-### Request-level aggregation
+### Request-Level Aggregation
 
 A request is flagged as errored if **any** of its tool calls falls into one of the three buckets above. The Tool Call Error Rate displayed per endpoint per day is then computed at the **request** level -- both the numerator and the denominator are counts of requests, not counts of individual tool calls:
 
@@ -66,14 +66,18 @@ The benchmark signal comes from OpenRouter's in-house benchmark harness, which r
 * **GPQA Diamond** -- graduate-level multiple-choice science questions. The benchmark fixes temperature at `0.5` (matching the reference openbench configuration), shuffles answer options deterministically per question, and runs 10 epochs (repeated passes over the dataset) by default.
 * **Tau2-Bench Airline** -- an agentic tool-calling benchmark where an LLM user-simulator drives multi-turn conversations against airline-domain tools, with a binary reward from final database-state, golden-action, and communication-information checks. The benchmark fixes temperature at `0`, and runs 1 epoch by default.
 
-### How runs are executed
+### How Runs Are Executed
 
 * Each benchmark run **pins a specific provider endpoint**, so every score is attributable to exactly one endpoint with no fallback. An additional unpinned run against OpenRouter's default routing is executed as a baseline.
 * Tool-requiring presets are skipped on endpoints without tool support.
-* Scores used for routing are aggregated over a **rolling 32-day window**.
+* Scores used for routing are each endpoint's current score, aggregated over a **rolling 32-day window**.
 * Runs must meet a minimum sample-size floor to count (currently at least 50 GPQA questions and 45 Tau2 tasks), so partial or failed runs do not affect routing.
 
 GPQA option shuffling deliberately differs from openbench: openbench reseeds per record so the correct answer is always `B`, while this harness shuffles by index, so its GPQA numbers are not directly comparable to openbench-published scores.
+
+### How the benchmark threshold is set
+
+Each model and benchmark type has a fixed baseline: the median of per-endpoint scores during the model's first approximately 21 days of benchmarking. The derank threshold is that baseline minus **2σ**. An endpoint's current rolling score is compared against this fixed threshold, which does not move when another provider's current score changes.
 
 ## Where to Find the Scores
 

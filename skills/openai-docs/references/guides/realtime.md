@@ -10,7 +10,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
 
   - **[Voice agents](https://developers.openai.com/api/docs/guides/voice-agents)**: Build speech-to-speech agents that listen, reason, speak, and call tools.
 - **[Live translation](https://developers.openai.com/api/docs/guides/realtime-translation)**: Translate live speech with a dedicated realtime translation session.
-- **[Transcription](https://developers.openai.com/api/docs/guides/realtime-transcription)**: Stream live transcript deltas or process audio files into text.
+- **[Transcription](https://developers.openai.com/api/docs/guides/transcription)**: Stream live transcript deltas or process audio files into text.
 - **[Speech generation](https://developers.openai.com/api/docs/guides/text-to-speech)**: Turn text into natural-sounding spoken audio.
 
 
@@ -47,7 +47,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
     <tr>
       <td>Transcribe live audio into streaming text</td>
       <td className="whitespace-nowrap">
-        [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper)
+        [`gpt-live-transcribe`](https://developers.openai.com/api/docs/models/gpt-live-transcribe)
       </td>
       <td>
         [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription)
@@ -57,7 +57,7 @@ Start with the outcome you want to build. Realtime sessions are best for live au
       <td>Transcribe files or bounded audio requests</td>
       <td>Audio transcription models</td>
       <td>
-        [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text)
+        [File transcription](https://developers.openai.com/api/docs/guides/speech-to-text)
       </td>
     </tr>
     <tr>
@@ -142,9 +142,9 @@ See [Realtime translation](https://developers.openai.com/api/docs/guides/realtim
 
 ### Transcription sessions
 
-You can transcribe audio in more than one way. Use a realtime transcription session when your application needs live transcript deltas from streaming audio. Use the [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text) guide for file uploads, request-based transcription, or diarization-focused workflows.
+You can transcribe audio in more than one way. Use a realtime transcription session when your application needs live transcript deltas from streaming audio. Use the [File transcription](https://developers.openai.com/api/docs/guides/speech-to-text) guide for file uploads, request-based transcription, translation, or speaker-labeling workflows.
 
-For realtime transcription, [`gpt-realtime-whisper`](https://developers.openai.com/api/docs/models/gpt-realtime-whisper) gives you controllable latency. Lower delay settings produce earlier partial text, while higher delay settings can improve transcript quality. Test with your real audio conditions, target languages, accents, and domain vocabulary before choosing a production default.
+For realtime transcription, [`gpt-live-transcribe`](https://developers.openai.com/api/docs/models/gpt-live-transcribe) gives you controllable latency. Lower delay settings produce earlier partial text, while higher delay settings can improve transcript quality. Test with your real audio conditions, target languages, accents, and domain vocabulary before choosing a production default.
 
 See [Realtime transcription](https://developers.openai.com/api/docs/guides/realtime-transcription) for session configuration and event handling.
 
@@ -174,11 +174,11 @@ Choose the transport based on where your application captures and plays audio:
 
 ## Safety identifiers
 
-If your application identifies individual end users, include a [safety identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) with Realtime API requests. Safety identifiers are recommended but not required. They help OpenAI monitor and detect abuse while allowing enforcement to target an individual user rather than your entire organization. Use a stable, privacy-preserving value, such as a hashed internal user ID.
+If your application identifies individual end users, include a [safety identifier](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers) with Realtime API requests. OpenAI recommends safety identifiers but doesn't require them. They help OpenAI detect harmful behavior and target enforcement to an individual user rather than your entire organization. Use a stable, privacy-preserving value, such as a hashed internal user ID.
 
-For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier` header. When using ephemeral tokens, set the header on the server-side request that creates the client secret so the identifier is bound to that session. When connecting from a trusted server with WebSocket or the unified WebRTC interface, set the header on the connection request.
+For Realtime API requests, send the identifier in the `OpenAI-Safety-Identifier` header. When using ephemeral tokens, set the header on the server-side request that creates the client secret to associate the identifier with the session. When connecting from a trusted server with WebSocket or the unified WebRTC interface, set the header on the connection request.
 
-Safety identifiers do not carry over from Responses API requests or from other sessions. If you use the Responses API `safety_identifier` parameter elsewhere in your application, pass the same stable value separately when you create or connect each Realtime session.
+Safety identifiers don't carry over from Responses API requests or other sessions. If you use the Responses API `safety_identifier` parameter elsewhere in your application, pass the same stable value when you create or connect each Realtime session.
 
 ## Beta to GA migration
 
