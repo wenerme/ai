@@ -65,8 +65,8 @@ To use this skill in other coding agents, download it from the [OpenAI skills re
   - Use `high` or `xhigh` when more reasoning produces a measured quality gain.
   - Reserve `max` for the hardest quality-first workloads. Compare `max` and `xhigh` to find the best quality, latency, and cost tradeoff for your use case.
 - To use pro mode, keep your selected GPT-5.6 model and set `reasoning.mode` to `pro` in the Responses API; do not switch to a separate Pro model slug. Choose `reasoning.effort` independently. If you omit it, GPT-5.6 defaults to `medium` in both standard and pro modes. See [reasoning mode](https://developers.openai.com/api/docs/guides/reasoning#reasoning-mode) for a request example and billing details.
-- Configure persisted reasoning based on how much prior reasoning is still relevant.
-  - Omit `reasoning.context` or set it to `auto` to use the model's default. Check the response's `reasoning.context` field to confirm the effective mode.
+- Configure persisted reasoning based on how much prior reasoning is still relevant. GPT-5.6 models default to `all_turns`; earlier models default to `current_turn`.
+  - Omit `reasoning.context` or set it to `auto` to use `all_turns`, the GPT-5.6 default. Check the response's `reasoning.context` field to confirm the effective mode.
   - Set `reasoning.context` to `all_turns` when the task's goals, assumptions, and priorities stay stable across turns.
   - With `all_turns`, continue with `previous_response_id` to make reasoning from earlier responses available to the model.
   - When managing history manually, preserve and resend previous user inputs and every response output item. For `store: false` or Zero Data Retention, replay the encrypted reasoning items that the API returns by default.

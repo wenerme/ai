@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP handler APIs
 
-Last updated Jul 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Agents SDK provides two server handler paths:
 
@@ -30,19 +30,19 @@ For a stateless server:
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+npm i agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 ```
-yarn add agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+yarn add agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+pnpm add agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 ```
-bun add agents @modelcontextprotocol/server@2.0.0-beta.5 zod
+bun add agents @modelcontextprotocol/server@2.0.0 zod
 ```
 
 For an explicit legacy server:
@@ -50,22 +50,22 @@ For an explicit legacy server:
 npmyarnpnpmbun
 
 ```
-npm i agents @modelcontextprotocol/sdk@1.29.0 zod
+npm i agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
 ```
-yarn add agents @modelcontextprotocol/sdk@1.29.0 zod
+yarn add agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
 ```
-pnpm add agents @modelcontextprotocol/sdk@1.29.0 zod
+pnpm add agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
 ```
-bun add agents @modelcontextprotocol/sdk@1.29.0 zod
+bun add agents @modelcontextprotocol/sdk@1.30.0 zod
 ```
 
-Use the exact MCP versions required by your installed Agents release while the v2 SDK remains in beta.
+Use the exact MCP versions required by your installed Agents release.
 
 ## `createMcpHandler`
 
@@ -514,5 +514,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"MCP handler APIs · Cloudflare Agents docs","description":"Create stateless or legacy MCP server handlers for Cloudflare Workers with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#page","headline":"MCP handler APIs · Cloudflare Agents docs","description":"Create stateless or legacy MCP server handlers for Cloudflare Workers with the Agents SDK.","url":"https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

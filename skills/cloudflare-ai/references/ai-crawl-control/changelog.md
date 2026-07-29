@@ -16,6 +16,20 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-crawl-control.xml)
 
+## 2026-06-16
+
+
+**Pay Per Crawl advanced configuration**
+
+You can now configure advanced Pay Per Crawl settings for your zone, including:
+
+* **Disable Pay Per Crawl by URI pattern** using [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/) to offer free access to specific pages while charging for others.
+* **Dynamic pricing** by having your origin return a `crawler-price` response header, or by using a [Cloudflare Worker](https://developers.cloudflare.com/workers/) to set prices based on request properties.
+
+When dynamic pricing is enabled, Pay Per Crawl adds a `cf-pay-per-crawl` request header to origin requests so your origin or Worker can determine the appropriate price.
+
+Refer to the [Advanced configuration documentation](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/use-pay-per-crawl-as-site-owner/advanced-configuration/) for details.
+
 ## 2026-04-17
 
 

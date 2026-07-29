@@ -4,7 +4,7 @@
 
 # List Benchmarks
 
-> Unified benchmark endpoint that aggregates scores from multiple benchmark sources (Artificial Analysis, Design Arena). Filter by source to reproduce the exact shapes from the legacy per-source endpoints, or use task_type to find models suited for specific workloads. Authenticate with any valid OpenRouter API key. Rate-limited to 30 requests/minute per key and 500 requests/day per account.
+> Unified benchmark endpoint that aggregates scores from multiple benchmark sources (Artificial Analysis, Design Arena, and OpenRouter's own tau-bench and GPQA evals). Filter by source to reproduce the exact shapes from the legacy per-source endpoints, or use task_type to find models suited for specific workloads. Authenticate with any valid OpenRouter API key. Rate-limited to 30 requests/minute per key and 500 requests/day per account.
 
 
 
@@ -74,6 +74,8 @@ tags:
     name: Providers
   - description: Rerank endpoints
     name: Rerank
+  - description: OpenAI-compatible Responses API endpoints
+    name: Responses
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
@@ -86,8 +88,6 @@ tags:
     name: Workspaces
   - description: beta.Analytics endpoints
     name: beta.Analytics
-  - description: responses endpoints
-    name: responses
 externalDocs:
   description: OpenRouter Documentation
   url: https://openrouter.ai/docs
@@ -99,11 +99,12 @@ paths:
       summary: List Benchmarks
       description: >-
         Unified benchmark endpoint that aggregates scores from multiple
-        benchmark sources (Artificial Analysis, Design Arena). Filter by source
-        to reproduce the exact shapes from the legacy per-source endpoints, or
-        use task_type to find models suited for specific workloads. Authenticate
-        with any valid OpenRouter API key. Rate-limited to 30 requests/minute
-        per key and 500 requests/day per account.
+        benchmark sources (Artificial Analysis, Design Arena, and OpenRouter's
+        own tau-bench and GPQA evals). Filter by source to reproduce the exact
+        shapes from the legacy per-source endpoints, or use task_type to find
+        models suited for specific workloads. Authenticate with any valid
+        OpenRouter API key. Rate-limited to 30 requests/minute per key and 500
+        requests/day per account.
       operationId: getBenchmarks
       parameters:
         - description: >-
@@ -119,6 +120,7 @@ paths:
             enum:
               - artificial-analysis
               - design-arena
+              - openrouter
             example: artificial-analysis
             type: string
         - description: >-
@@ -197,6 +199,15 @@ paths:
                       completion: '0.00001'
                       prompt: '0.0000025'
                     source: artificial-analysis
+                  - accuracy: 0.72
+                    accuracy_stddev: 0.03
+                    avg_cost_per_task: 0.002
+                    benchmark_type: gpqa_diamond
+                    display_name: GPT-4o
+                    last_run_timestamp: '2026-06-03T12:00:00Z'
+                    model_permaslug: openai/gpt-4o
+                    source: openrouter
+                    total_tasks: 300
                 meta:
                   as_of: '2026-06-03T12:00:00Z'
                   citation: null
@@ -264,6 +275,15 @@ components:
               completion: '0.00001'
               prompt: '0.0000025'
             source: artificial-analysis
+          - accuracy: 0.72
+            accuracy_stddev: 0.03
+            avg_cost_per_task: 0.002
+            benchmark_type: gpqa_diamond
+            display_name: GPT-4o
+            last_run_timestamp: '2026-06-03T12:00:00Z'
+            model_permaslug: openai/gpt-4o
+            source: openrouter
+            total_tasks: 300
         meta:
           as_of: '2026-06-03T12:00:00Z'
           citation: null
@@ -281,10 +301,13 @@ components:
                   $ref: '#/components/schemas/UnifiedBenchmarksAAItem'
                 design-arena:
                   $ref: '#/components/schemas/UnifiedBenchmarksDAItem'
+                openrouter:
+                  $ref: '#/components/schemas/UnifiedBenchmarksORItem'
               propertyName: source
             oneOf:
               - $ref: '#/components/schemas/UnifiedBenchmarksAAItem'
               - $ref: '#/components/schemas/UnifiedBenchmarksDAItem'
+              - $ref: '#/components/schemas/UnifiedBenchmarksORItem'
           type: array
         meta:
           $ref: '#/components/schemas/UnifiedBenchmarksMeta'
@@ -539,6 +562,76 @@ components:
         - tournament_stats
         - pricing
       type: object
+    UnifiedBenchmarksORItem:
+      example:
+        accuracy: 0.72
+        accuracy_stddev: 0.03
+        avg_cost_per_task: 0.002
+        benchmark_type: gpqa_diamond
+        display_name: GPT-4o
+        last_run_timestamp: '2026-06-03T12:00:00Z'
+        model_permaslug: openai/gpt-4o
+        source: openrouter
+        total_tasks: 300
+      properties:
+        accuracy:
+          description: Aggregate accuracy score from 0 to 1. Higher is better.
+          example: 0.72
+          format: double
+          type: number
+        accuracy_stddev:
+          description: Standard deviation of run accuracy, or null for a single run.
+          example: 0.03
+          format: double
+          type:
+            - number
+            - 'null'
+        avg_cost_per_task:
+          description: Average cost per task in USD, or null if unavailable.
+          example: 0.002
+          format: double
+          type:
+            - number
+            - 'null'
+        benchmark_type:
+          description: OpenRouter benchmark evaluation type.
+          enum:
+            - gpqa_diamond
+            - tau_bench_verified_airline
+          example: gpqa_diamond
+          type: string
+        display_name:
+          description: Human-readable model name.
+          example: GPT-4o
+          type: string
+        last_run_timestamp:
+          description: Timestamp of the most recent public benchmark run.
+          example: '2026-06-03T12:00:00Z'
+          type: string
+        model_permaslug:
+          description: Stable OpenRouter model identifier.
+          example: openai/gpt-4o
+          type: string
+        source:
+          description: Benchmark source discriminator.
+          enum:
+            - openrouter
+          type: string
+        total_tasks:
+          description: Total benchmark tasks across runs.
+          example: 300
+          type: integer
+      required:
+        - source
+        - model_permaslug
+        - display_name
+        - benchmark_type
+        - accuracy
+        - accuracy_stddev
+        - avg_cost_per_task
+        - total_tasks
+        - last_run_timestamp
+      type: object
     UnifiedBenchmarksMeta:
       example:
         as_of: '2026-06-03T12:00:00Z'
@@ -574,6 +667,7 @@ components:
           enum:
             - artificial-analysis
             - design-arena
+            - openrouter
             - null
           example: artificial-analysis
           type:

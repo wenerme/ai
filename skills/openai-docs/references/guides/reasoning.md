@@ -127,7 +127,7 @@ Pro mode aggregates the model work performed to produce the final answer and bil
 
 Reasoning models introduce **reasoning tokens** in addition to input and output tokens. The models use these reasoning tokens to "think," breaking down the prompt and considering multiple approaches to generating a response. Our reasoning models like `gpt-5.5` and `gpt-5.4` support interleaved thinking, where the model is able to generate visible output tokens before and in between thinking, and is able to think in between tool calls.
 
-Here is the default behavior for a multi-step conversation between a user and an assistant. Input and output tokens from each step are carried over, while reasoning from earlier turns is not rendered into the next sample. Models that support persisted reasoning can change this behavior with `reasoning.context`.
+For models released before GPT-5.6, the default behavior in a multi-step conversation is to carry over input and output tokens from each step without rendering reasoning from earlier turns into the next sample. GPT-5.6 models instead default to rendering available reasoning from earlier turns. Use `reasoning.context` to select either behavior on supported models.
 
 ![Reasoning tokens with current-turn context](https://cdn.openai.com/API/docs/images/context-window.png)
 
@@ -253,15 +253,16 @@ Conversation state and reasoning state serve different purposes. Passing message
 
 Persisted reasoning provides continuity; it does not expose the model's raw reasoning. The reasoning items remain opaque, and the API does not return their reasoning text. Set `reasoning.context` to control which available reasoning items the model can use:
 
-Support for `reasoning.context` modes is model-dependent. Replace
-  `YOUR_MODEL_ID` in the examples with a model that supports the mode
-  you select.
+The [GPT-5.6 model family](https://developers.openai.com/api/docs/guides/latest-model) supports
+  `all_turns` and uses it by default. Earlier models default to
+  `current_turn`. Omit `reasoning.context` or set it to
+  `auto` to use the selected model's default.
 
-| Value          | Behavior                                                                                                                        |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `auto`         | Uses the selected model's default. Omitting `reasoning.context` has the same effect as `auto`.                                  |
-| `current_turn` | Makes reasoning from the active turn available, but does not render reasoning from earlier turns into the next sample.          |
-| `all_turns`    | Renders available, compatible reasoning items from earlier turns into the next sample. Only supported models accept this value. |
+| Value          | Behavior                                                                                                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `auto`         | Uses the selected model's default. Omitting `reasoning.context` has the same effect as `auto`.                            |
+| `current_turn` | Makes reasoning from the active turn available, but does not render reasoning from earlier turns into the next sample.    |
+| `all_turns`    | Renders available, compatible reasoning items from earlier turns into the next sample. GPT-5.6 models support this value. |
 
 The response's `reasoning.context` field contains the effective mode, either `current_turn` or `all_turns`. Check this field on each response to confirm which mode the model used. The setting does not create reasoning items that are not already available.
 
@@ -279,13 +280,13 @@ import OpenAI from "openai";
 const client = new OpenAI();
 
 const first = await client.responses.create({
-  model: "YOUR_MODEL_ID",
+  model: "gpt-5.6",
   input: "Inspect this repository and identify the likely bug.",
   reasoning: { context: "current_turn" },
 });
 
 const second = await client.responses.create({
-  model: "YOUR_MODEL_ID",
+  model: "gpt-5.6",
   previous_response_id: first.id,
   input: "Now patch the bug and explain the change.",
   reasoning: { context: "all_turns" },
@@ -359,7 +360,7 @@ const history = [
 ];
 
 const first = await client.responses.create({
-  model: "YOUR_MODEL_ID",
+  model: "gpt-5.6",
   store: false,
   input: history,
   reasoning: { context: "current_turn" },
@@ -373,7 +374,7 @@ history.push({
 });
 
 const second = await client.responses.create({
-  model: "YOUR_MODEL_ID",
+  model: "gpt-5.6",
   store: false,
   input: history,
   reasoning: { context: "all_turns" },

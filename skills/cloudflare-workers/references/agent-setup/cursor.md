@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 [All agents](https://developers.cloudflare.com/agent-setup/)
 
-![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/light.svg)![Cursor icon](https://developers.cloudflare.com/icons/agents/cursor/dark.svg)
-
-# Cursor + Cloudflare
+![](https://developers.cloudflare.com/icons/agents/cursor/light.svg)![](https://developers.cloudflare.com/icons/agents/cursor/dark.svg)
 
 Cursor
+
+# Cursor + Cloudflare
 
 AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.
 
 IDETerminalStandaloneCloud
 
-[Cloudflare Skills ↗](https://github.com/cloudflare/skills)[Cloudflare Code Mode API MCP ↗](https://github.com/cloudflare/mcp)[Cloudflare Domain Specific MCPs ↗](https://github.com/cloudflare/mcp-server-cloudflare)[Cursor Docs ↗](https://docs.cursor.com)
+[Cloudflare Skills](https://github.com/cloudflare/skills)·[Cloudflare Code Mode API MCP](https://github.com/cloudflare/mcp)·[Cloudflare Domain Specific MCPs](https://github.com/cloudflare/mcp-server-cloudflare)·[Cursor Docs](https://docs.cursor.com)
 
 ## Quick start
 
@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access
@@ -109,13 +109,34 @@ For a full overview of how these docs are structured for agents, refer to the [D
 
 ## Example prompts
 
-“Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.”“Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.”“Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.”“Build a serverless AI inference endpoint on Workers AI with streaming responses.”“Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.”“Add a D1 database to my Worker and create a users table with full CRUD endpoints.”“Build an image upload and transformation service using R2 and Cloudflare Images.”“Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.”“Set up a KV namespace for edge-cached session storage in my Worker.”“Add a cron trigger to my Worker that processes a job queue every hour.”“Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.”“Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.”“Add mTLS authentication and schema validation to protect my API endpoints.”“Set up rate limiting and WAF rules to block abuse on my public API.”“Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.”“Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.”“Use Workers for Platforms to let my customers deploy their own code in isolated environments.”“Add bot protection and rate limiting to my login and checkout endpoints.”“Set up WAF rules to block SQL injection and XSS attacks on my application.”“Configure Zero Trust access policies to protect my internal staging environment.”“Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.”“Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.”“Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.”“Check my Workers deployment logs for errors and suggest fixes.”“Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.”“Create a Logpush job to stream Workers analytics to my data warehouse.”
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+```
 
 ## Tips
 
 * The Cloudflare API MCP server uses Code Mode — Cursor writes JavaScript against a typed API to reach any of 2,500+ endpoints in \~1,000 tokens.
 * Add `@wrangler.jsonc` to your Composer prompts so Cursor sees your current bindings when generating or modifying code.
-* For more information on available MCP servers, or when to use Code Mode versus traditional MCP servers, refer to the [Cloudflare MCP server repository ↗](https://github.com/cloudflare/mcp-server-cloudflare).
+
+### [Cloudflare MCP server repository](https://github.com/cloudflare/mcp-server-cloudflare)
+
+Available MCP servers, and when to use Code Mode versus traditional MCP servers.
 
 ## FAQ
 
@@ -149,20 +170,18 @@ Add the Cloudflare docs MCP server and Workers documentation to your project con
 
 ## Build agents on Cloudflare
 
-Also worth knowing
-
 Cloudflare is not just a deploy target for agents, it is a full stack for building your own.
 
-[Agents SDKStateful AI agents with state, scheduling, RPC, email, streaming chat — and the Code Mode SDK for token-efficient tool use.Learn more →](https://developers.cloudflare.com/agents/)[Build an MCP serverShip a remote MCP server on Workers with OAuth, durable state, and streamable HTTP transport.Learn more →](https://developers.cloudflare.com/agents/model-context-protocol/)[Workers AIRun open-source LLMs, embedding models, and image models at the edge. Use it as your agent's model provider.Learn more →](https://developers.cloudflare.com/workers-ai/)[Worker LoaderLoad user-generated code into isolated Workers on demand. The secure sandbox behind Code Mode.Learn more →](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/)
+[Agents SDKStateful AI agents with state, scheduling, RPC, email, streaming chat — and the Code Mode SDK for token-efficient tool use.Learn more](https://developers.cloudflare.com/agents/)[Build an MCP serverShip a remote MCP server on Workers with OAuth, durable state, and streamable HTTP transport.Learn more](https://developers.cloudflare.com/agents/model-context-protocol/)[Workers AIRun open-source LLMs, embedding models, and image models at the edge. Use it as your agent's model provider.Learn more](https://developers.cloudflare.com/workers-ai/)[Worker LoaderLoad user-generated code into isolated Workers on demand. The secure sandbox behind Code Mode.Learn more](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/)
 
 ## Other agents
 
-[![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/light.svg)![Claude Code icon](https://developers.cloudflare.com/icons/agents/claude/dark.svg)Claude CodeAnthropicTerminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic.](https://developers.cloudflare.com/agent-setup/claude-code/)[![Codex icon](https://developers.cloudflare.com/icons/agents/codex/light.svg)![Codex icon](https://developers.cloudflare.com/icons/agents/codex/dark.svg)CodexOpenAIOpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.](https://developers.cloudflare.com/agent-setup/codex/)[![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/light.svg)![GitHub Copilot icon](https://developers.cloudflare.com/icons/agents/copilot/dark.svg)GitHub CopilotGitHubEditor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.](https://developers.cloudflare.com/agent-setup/github-copilot/)[![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![OpenCode icon](https://developers.cloudflare.com/icons/agents/opencode/dark.svg)OpenCodeAnomalyOpen-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.](https://developers.cloudflare.com/agent-setup/opencode/)[![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/light.svg)![Windsurf icon](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg)WindsurfCognitionAgentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.](https://developers.cloudflare.com/agent-setup/windsurf/)[![Visual Studio Code icon](https://developers.cloudflare.com/icons/agents/visual-studio-code/light.svg)![Visual Studio Code icon](https://developers.cloudflare.com/icons/agents/visual-studio-code/dark.svg)Visual Studio CodeMicrosoftFree, open-source code editor with native Model Context Protocol (MCP) client support and Copilot Chat integration. Made by Microsoft.](https://developers.cloudflare.com/agent-setup/visual-studio-code/)[![Bionic icon](https://developers.cloudflare.com/icons/agents/bionic/light.svg)![Bionic icon](https://developers.cloudflare.com/icons/agents/bionic/dark.svg)BionicLM StudioPowerful agent for coding and work. Natively local, with open models in the cloud. By LM Studio.](https://developers.cloudflare.com/agent-setup/bionic/)
+[![](https://developers.cloudflare.com/icons/agents/claude/light.svg)![](https://developers.cloudflare.com/icons/agents/claude/dark.svg)AnthropicClaude CodeTerminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic.View guide](https://developers.cloudflare.com/agent-setup/claude-code/)[![](https://developers.cloudflare.com/icons/agents/codex/light.svg)![](https://developers.cloudflare.com/icons/agents/codex/dark.svg)OpenAICodexOpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.View guide](https://developers.cloudflare.com/agent-setup/codex/)[![](https://developers.cloudflare.com/icons/agents/copilot/light.svg)![](https://developers.cloudflare.com/icons/agents/copilot/dark.svg)GitHubGitHub CopilotEditor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.View guide](https://developers.cloudflare.com/agent-setup/github-copilot/)[![](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg)AnomalyOpenCodeOpen-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.View guide](https://developers.cloudflare.com/agent-setup/opencode/)[![](https://developers.cloudflare.com/icons/agents/windsurf/light.svg)![](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg)CognitionWindsurfAgentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.View guide](https://developers.cloudflare.com/agent-setup/windsurf/)[![](https://developers.cloudflare.com/icons/agents/visual-studio-code/light.svg)![](https://developers.cloudflare.com/icons/agents/visual-studio-code/dark.svg)MicrosoftVisual Studio CodeFree, open-source code editor with native Model Context Protocol (MCP) client support and Copilot Chat integration. Made by Microsoft.View guide](https://developers.cloudflare.com/agent-setup/visual-studio-code/)[![](https://developers.cloudflare.com/icons/agents/bionic/light.svg)![](https://developers.cloudflare.com/icons/agents/bionic/dark.svg)LM StudioBionicPowerful agent for coding and work. Natively local, with open models in the cloud. By LM Studio.View guide](https://developers.cloudflare.com/agent-setup/bionic/)
 
 Was this helpful?
 
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/cursor/#page","headline":"Cursor + Cloudflare · Agent setup docs","description":"AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.","url":"https://developers.cloudflare.com/agent-setup/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/cursor/#page","headline":"Cursor + Cloudflare · Agent setup docs","description":"AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.","url":"https://developers.cloudflare.com/agent-setup/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

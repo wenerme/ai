@@ -8,9 +8,17 @@
 
 ## What is OpenCode?
 
-[OpenCode](https://opencode.ai) is an open-source AI coding agent available as a terminal interface and desktop app (beta). It features LSP integration, multi-session support, sharable session links, and compatibility with 75+ LLM providers — including OpenRouter for unified multi-model access through a single API key.
+[OpenCode](https://opencode.ai) is an open-source AI coding agent available as a terminal interface (TUI), a desktop app for macOS, Windows, and Linux, and an IDE extension. It features LSP integration, multi-session support, sharable session links, and compatibility with 75+ LLM providers — including OpenRouter for unified multi-model access through a single API key.
 
-## Quick Start
+Both the terminal and desktop apps read the same `opencode.json` config and the same stored credentials, so connecting OpenRouter once makes it available in either interface.
+
+## Get Your OpenRouter API Key
+
+1. Sign up or log in at [OpenRouter](https://openrouter.ai)
+2. Navigate to your [API Keys page](https://openrouter.ai/settings/keys)
+3. Click **Create API Key** and copy it (starts with `sk-or-v1-...`)
+
+## Quick Start: Terminal
 
 ### Step 1: Install OpenCode
 
@@ -36,14 +44,7 @@
 
 For additional installation methods (Bun, pnpm, Yarn, Arch Linux, Windows), see the [OpenCode installation docs](https://opencode.ai/docs).
 
-### Step 2: Get Your OpenRouter API Key
-
-1. Sign up or log in at [OpenRouter](https://openrouter.ai)
-2. Navigate to your [API Keys page](https://openrouter.ai/keys)
-3. Create a new API key
-4. Copy your key (starts with `sk-or-...`)
-
-### Step 3: Connect OpenCode to OpenRouter
+### Step 2: Connect OpenCode to OpenRouter
 
 OpenCode supports OpenRouter as a built-in provider. Use the interactive `/connect` command:
 
@@ -54,7 +55,7 @@ OpenCode supports OpenRouter as a built-in provider. Use the interactive `/conne
    opencode
    ```
 
-2. Run the `/connect` command and select **OpenRouter**:
+2. Run the `/connect` command and search for **OpenRouter**:
 
    ```text lines theme={null}
    /connect
@@ -62,7 +63,7 @@ OpenCode supports OpenRouter as a built-in provider. Use the interactive `/conne
 
 3. Paste your OpenRouter API key when prompted.
 
-4. Run `/models` to select a model:
+4. Run `/models` to select a model — many OpenRouter models are preloaded by default:
 
    ```text lines theme={null}
    /models
@@ -70,9 +71,55 @@ OpenCode supports OpenRouter as a built-in provider. Use the interactive `/conne
 
 Your requests will now be routed through OpenRouter.
 
-### Alternative: Config File
+## Quick Start: Desktop
 
-You can also configure OpenRouter directly in your `opencode.json` config file:
+The desktop app organizes projects and active sessions into tabs, and configures providers through a settings UI rather than slash commands.
+
+### Step 1: Install OpenCode Desktop
+
+<Tabs>
+  <Tab title="macOS">
+    ```bash lines theme={null}
+    brew install --cask opencode-desktop
+    ```
+
+    Or download the DMG for Apple Silicon or Intel from the [OpenCode download page](https://opencode.ai/download).
+  </Tab>
+
+  <Tab title="Windows">
+    Download the x64 installer from the [OpenCode download page](https://opencode.ai/download).
+  </Tab>
+
+  <Tab title="Linux">
+    Download the `.deb` or `.rpm` package from the [OpenCode download page](https://opencode.ai/download).
+  </Tab>
+</Tabs>
+
+### Step 2: Connect OpenRouter
+
+1. Launch OpenCode Desktop and open a project folder.
+
+2. Open **Settings** (or run **Connect provider** from the command palette).
+
+3. Under **Providers**, find **OpenRouter** in the **Popular providers** list and click **Connect**.
+
+4. Choose the **API key** method, paste your OpenRouter key, and confirm. OpenRouter appears under **Connected providers**.
+
+### Step 3: Pick a Model
+
+Use the model picker in the session view, or run **Choose model** from the command palette, and select an OpenRouter model.
+
+<Note>
+  If no OpenRouter models appear in the picker right after you add your API key, fully quit OpenCode Desktop and reopen it. The provider catalog is loaded at startup, so a newly connected provider may not surface until the app restarts.
+</Note>
+
+<Tip>
+  If you already connected OpenRouter in the terminal, the desktop app picks up the same credentials automatically — skip straight to choosing a model.
+</Tip>
+
+## Config File
+
+Many OpenRouter models are preloaded, but you can add any others in your `opencode.json` config file. Use the model's OpenRouter slug as the key:
 
 ```json lines theme={null}
 {
@@ -88,13 +135,34 @@ You can also configure OpenRouter directly in your `opencode.json` config file:
 }
 ```
 
-Set your API key via the `/connect` command or by adding it to `~/.local/share/opencode/auth.json`:
+<Note>
+  The leading `~` is not a typo. Slugs like `~anthropic/claude-sonnet-latest` are OpenRouter [latest aliases](/docs/guides/routing/routers/latest-resolution) that always resolve to that lab's newest flagship model, so you keep getting the freshest version without editing your config. Pinned slugs such as `anthropic/claude-sonnet-4.5` work exactly the same way — browse them all at [openrouter.ai/models](https://openrouter.ai/models).
+</Note>
+
+Project config belongs in `opencode.json` at your project root; user-wide settings go in `~/.config/opencode/opencode.json`. Both formats also accept JSONC.
+
+### Setting a Default Model
+
+To skip the model picker on startup, set a top-level `model` key. OpenCode composes model IDs as `provider_id/model_id`, so an OpenRouter model is prefixed with `openrouter/`:
+
+```json lines theme={null}
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "openrouter/~anthropic/claude-sonnet-latest"
+}
+```
+
+This applies across the TUI, the desktop app, and `opencode run`. You can also override it per invocation with the `--model` / `-m` flag.
+
+### Setting the API Key Manually
+
+Keys added via `/connect` or the desktop settings UI are stored in `~/.local/share/opencode/auth.json`, the same path on macOS, Linux, and Windows, and shared by the terminal and desktop apps. If you set `XDG_DATA_HOME`, substitute that directory. You can also write the file directly:
 
 ```json lines theme={null}
 {
   "openrouter": {
     "type": "api",
-    "key": "sk-or-your-key-here"
+    "key": "sk-or-v1-your-key-here"
   }
 }
 ```
@@ -141,17 +209,21 @@ For teams, OpenRouter provides centralized budget management. Set spending limit
 
 ### Model Flexibility
 
-Switch models by updating your config or using the `/models` command — no need to reconfigure API keys or endpoints.
+Switch models with the `/models` command, the desktop model picker, or your config — no need to reconfigure API keys or endpoints.
 
 ## Troubleshooting
 
-* **Auth Errors:** Ensure your API key is set correctly via `/connect`. Check at [openrouter.ai/keys](https://openrouter.ai/keys).
-* **Model Not Found:** Verify the model ID on [openrouter.ai/models](https://openrouter.ai/models). Use the exact format (e.g., `~anthropic/claude-sonnet-latest`).
+* **Auth Errors:** Ensure your API key is set correctly via `/connect` (or the desktop **Providers** settings). Run `opencode auth list` to confirm the credential was stored. Verify the key itself at [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
+* **Model Not Found:** Verify the slug on [openrouter.ai/models](https://openrouter.ai/models) and keep it exact, including any leading `~` (e.g. `~anthropic/claude-sonnet-latest`). In a top-level `model` key, remember the `openrouter/` provider prefix.
+* **No Models After Connecting:** Fully quit and restart OpenCode. The provider catalog is read at startup, so models from a newly connected provider may not appear until then.
+* **Model Missing From the Picker:** Add it under `provider.openrouter.models` in your config, then restart OpenCode.
 * **Privacy:** OpenRouter does not log your source code prompts unless you opt in to prompt logging. See our [Privacy Policy](https://openrouter.ai/privacy) for details.
 
 ## Resources
 
 * [OpenCode Website](https://opencode.ai)
+* [OpenCode Download](https://opencode.ai/download)
 * [OpenCode on GitHub](https://github.com/anomalyco/opencode)
 * [OpenCode Provider Docs](https://opencode.ai/docs/providers)
+* [OpenCode IDE Extensions](https://opencode.ai/docs/ide)
 * [OpenRouter Models](https://openrouter.ai/models)

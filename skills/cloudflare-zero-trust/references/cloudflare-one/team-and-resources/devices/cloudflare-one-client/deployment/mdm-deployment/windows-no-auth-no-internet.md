@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Block internet access until user authenticates
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Availability Beta
 
@@ -35,7 +35,7 @@ When **no-auth-no-internet** is enabled, the Cloudflare One Client locks down ge
 
 When this feature is enabled, the authentication is done via in-app WebView2 browser instead of the default browser on the system.
 
-The lockdown re-engages automatically any time the device transitions back to an unauthenticated state — for example, if the registration expires, another OS user that has never authenticated with the Cloudflare One Client logs in while in [multi-user mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/), or the user switches into a new organization.
+The lockdown re-engages automatically any time the device transitions back to an unauthenticated state — for example, if the registration is deleted/revoked, another OS user that has never authenticated with the Cloudflare One Client logs in while in [multi-user mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-multiuser/), or the user switches into a new organization.
 
 ## Prerequisites
 
@@ -103,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/#page","headline":"Block internet access until user authenticates · Cloudflare One docs","description":"Block internet access on a Windows device until the user authenticates with the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/#page","headline":"Block internet access until user authenticates · Cloudflare One docs","description":"Block internet access on a Windows device until the user authenticates with the Cloudflare One Client.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-no-auth-no-internet/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Windows"]}
 ```

@@ -103,7 +103,9 @@ Each override entry carries condition fields plus the prices that apply when the
 }
 ```
 
-**Time-based pricing** uses `utc_start` / `utc_end` — HHMM clock values in UTC. Windows are half-open (`[start, end)`) and may wrap midnight. Entries priced the same as the base pricing describe off-peak segments; list the full daily schedule:
+**Time-based pricing** uses `utc_start` / `utc_end` — HHMM clock values in UTC. Windows are half-open (`[start, end)`) and may wrap midnight. The windows are pure time conditions: the base pricing applies outside them and the override prices apply inside them, in either direction — the override may be higher or lower than the base price. OpenRouter labels whichever schedule segments are higher-priced as "Peak" on the model page.
+
+Base as the discounted price, with a surcharge override during peak hours:
 
 ```json lines theme={null}
 {
@@ -116,6 +118,25 @@ Each override entry carries condition fields plus the prices that apply when the
         "utc_end": 500,
         "prompt": "0.00000056",
         "completion": "0.0000022"
+      }
+    ]
+  }
+}
+```
+
+Or equivalently, base as the normal price, with a discount override during off-peak hours:
+
+```json lines theme={null}
+{
+  "pricing": {
+    "prompt": "0.00000056", // base (peak) pricing per 1 token
+    "completion": "0.0000022",
+    "overrides": [
+      {
+        "utc_start": 500, // off-peak window: 05:00–01:00 UTC
+        "utc_end": 100,
+        "prompt": "0.00000028",
+        "completion": "0.0000011"
       }
     ]
   }
@@ -294,15 +315,15 @@ These are the same metrics available in your provider dashboard. Once onboarded,
 
 #### How deprioritization thresholds work
 
-For each model, we compare every provider's signal values against the group of providers serving that model. We use a **median + MAD** (median absolute deviation) approach rather than simple averages, which keeps thresholds stable even when one provider is a significant outlier.
+Throughput and tool-calling success rate compare current signal values against the live group of providers serving each model using a **median + MAD** (median absolute deviation) approach. Benchmark accuracy instead uses a fixed historical baseline, so its cutoff does not move with the current peer group.
 
 Each signal has a different sensitivity:
 
-* **Benchmark accuracy** -- providers falling more than **1 standard deviation** below the median are deprioritized. This is the tightest threshold because benchmark scores cluster closely and small differences are meaningful.
+* **Benchmark accuracy** -- the cutoff is a fixed baseline computed from the model's first approximately 21 days of benchmarking: the median of per-endpoint scores over that window minus **2 standard deviations** (median − 2σ). Later changes in another provider's score do not move this cutoff. An endpoint scoring below the cutoff, or missing benchmark data entirely, is deprioritized.
 * **Throughput** -- providers falling more than **1.5 standard deviations** below the median are deprioritized. The wider margin accounts for natural throughput variance caused by time-of-day load patterns.
 * **Tool-calling success rate** -- providers falling more than **2 standard deviations** below the median are deprioritized. Success rates cluster near 100%, so this wider margin avoids penalizing normal noise while catching genuinely broken endpoints.
 
-A minimum of **4 providers** serving the same model is required before statistical thresholds are computed. Below that count, no deprioritization is applied for that signal.
+A minimum of **4 providers** is required before statistical thresholds are computed for live signals; benchmark thresholds require **4 endpoints** within the model's first-21-day baseline window. Below the applicable count, no deprioritization is applied for that signal.
 
 Endpoints are placed into one of three tiers:
 

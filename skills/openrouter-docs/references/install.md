@@ -24,7 +24,7 @@ DONE WHEN: You have successfully made a chat completion request and received a r
 * [ ] Create a test script that makes a chat completion request
 * [ ] Run the script and verify a response is returned
 
-## Get an API Key
+## Get an API key
 
 You must obtain an OpenRouter API key before proceeding. Visit [https://openrouter.ai/settings/keys](https://openrouter.ai/settings/keys) to create one.
 
@@ -60,7 +60,7 @@ You need to install the OpenRouter SDK. Choose TypeScript or Python based on you
   ```
 </CodeGroup>
 
-## API Key Setup
+## API key setup
 
 You must set your OpenRouter API key as an environment variable. The API key is required for all requests.
 
@@ -82,7 +82,7 @@ $env:OPENROUTER_API_KEY="sk-or-v1-YOUR-API-KEY"
 set OPENROUTER_API_KEY=sk-or-v1-YOUR-API-KEY
 ```
 
-## Create Test Script
+## Create a test script
 
 Your task is to create a test script that makes a chat completion request and outputs the result.
 
@@ -134,7 +134,7 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
-## Run the Test
+## Run the test
 
 You must execute the test script to verify the installation works:
 
@@ -234,7 +234,7 @@ curl https://openrouter.ai/api/v1/chat/completions \
 }'
 ```
 
-## Next Steps
+## Next steps
 
 Once installation is verified, you can explore these additional capabilities:
 

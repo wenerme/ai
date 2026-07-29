@@ -171,6 +171,35 @@ The final turn only happens when a stop condition halted the loop while the
 last response contained executable tool calls. It never fires on natural
 completion, HITL/approval pauses, or interruption.
 
+### Empty final output after tool rounds
+
+Some mini-class models intermittently treat a successful tool call as the
+terminal answer, returning an empty `output` array on the final turn. By
+default, the SDK retries that follow-up once, and if it's still empty,
+resolves the run with empty text instead of throwing `Invalid final
+response: empty or invalid output`.
+
+This tolerance only applies after at least one completed tool execution
+round. Runs that produce no tool work still throw on an empty final
+response.
+
+Opt back into the strict contract with `strictFinalResponse: true`:
+
+```typescript lines theme={null}
+const result = openrouter.callModel({
+  model: 'openai/gpt-5-mini',
+  input: 'Look up the weather in Paris',
+  tools: [weatherTool],
+  // Throw if the final turn after tool rounds returns empty output
+  // (restores pre-0.8.0 behavior).
+  strictFinalResponse: true,
+});
+```
+
+Set `strictFinalResponse: true` if your code depends on non-empty final
+text and you'd rather see an error than an empty completion. Leave it off
+(the default) to keep tool-terminal runs from being reported as failures.
+
 ## Custom Stop Conditions
 
 Create custom conditions with a function:

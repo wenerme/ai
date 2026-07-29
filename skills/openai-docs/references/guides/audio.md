@@ -17,7 +17,7 @@ An audio application combines one or more of these modalities:
 
 ## Common speech tasks
 
-**Speech to text** converts speech into text. Use it for captions, notes, transcripts, analytics, search, and accessibility. Transcription can be request-based for files or streaming for live audio.
+**Speech to text** converts speech into text. Use it for captions, notes, transcripts, analytics, search, and accessibility. Transcription can be request-based for files or streaming for live audio. Start with the [Transcription overview](https://developers.openai.com/api/docs/guides/transcription) to choose a workflow and model.
 
 **Text to speech** converts text into spoken audio. Use it for narration, assistants, accessibility, and generated voice responses. Speech generation can stream audio back as the model produces it.
 
@@ -37,9 +37,9 @@ OpenAI supports two broad audio architectures:
 
 | Architecture                | Use when                                             | Examples                                                                                                                                                       |
 | --------------------------- | ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Request-based audio APIs    | You have a file, a text input, or a bounded request. | [Speech to text](https://developers.openai.com/api/docs/guides/speech-to-text), [text to speech](https://developers.openai.com/api/docs/guides/text-to-speech).                                                          |
+| Request-based audio APIs    | You have a file, a text input, or a bounded request. | [File transcription](https://developers.openai.com/api/docs/guides/speech-to-text), [text to speech](https://developers.openai.com/api/docs/guides/text-to-speech).                                                      |
 | Realtime sessions           | Audio is live and the app needs low-latency events.  | [Voice agents](https://developers.openai.com/api/docs/guides/voice-agents), [translation](https://developers.openai.com/api/docs/guides/realtime-translation), [transcription](https://developers.openai.com/api/docs/guides/realtime-transcription). |
-| Multimodal chat completions | You are extending an existing chat flow with audio.  | [Audio input or output](#add-audio-to-your-existing-application).                                                                                              |
+| Multimodal Chat Completions | You are extending an existing chat flow with audio.  | [Audio input or output](#add-audio-to-your-existing-application).                                                                                              |
 
 For build-path guidance, see the [Realtime and audio overview](https://developers.openai.com/api/docs/guides/realtime).
 

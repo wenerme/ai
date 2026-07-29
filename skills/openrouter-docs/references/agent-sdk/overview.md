@@ -20,6 +20,7 @@ Choose the Agent SDK when you need **agentic behavior** — multi-step reasoning
 * **Conversation state** — the SDK tracks messages, tool results, and context across turns
 * **Streaming** — real-time token output within each agent step
 * **Dynamic parameters** — change model, temperature, or tools between turns based on context
+* **MCP tools** — plug in a remote [Model Context Protocol](/docs/agent-sdk/call-model/mcp-tools) server and its tools drop straight into `callModel`
 
 <Tip>
   If you only need simple request/response calls to a model without agent loops, the [Client SDKs](/docs/client-sdks/overview) are a lighter-weight option.

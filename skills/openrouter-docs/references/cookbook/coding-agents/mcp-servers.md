@@ -10,6 +10,10 @@ MCP servers are a popular way of providing LLMs with tool calling abilities, and
 
 By converting MCP (Anthropic) tool definitions to OpenAI-compatible tool definitions, you can use MCP servers with OpenRouter.
 
+<Tip>
+  Building a TypeScript agent? The [`@openrouter/mcp`](/docs/agent-sdk/call-model/mcp-tools) package handles all of this for you — it connects to a remote MCP server, authenticates once, and returns tools you spread directly into `callModel`.
+</Tip>
+
 In this example, we'll use [Anthropic's MCP client SDK](https://github.com/modelcontextprotocol/python-sdk?tab=readme-ov-file#writing-mcp-clients) to interact with the File System MCP, all with OpenRouter under the hood.
 
 <Warning>

@@ -16,6 +16,26 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-07-28
+
+[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
+
+
+**Control Cloudflare Gateway DNS caching with a maximum TTL setting**
+
+You can now set a maximum time-to-live (TTL) for DNS responses returned by Gateway. When an upstream DNS record has a TTL that exceeds the configured maximum, Gateway caps it to your specified value. This ensures that DNS policy changes - such as blocking a newly identified malicious domain - take effect faster across all clients.
+
+![The maximum DNS TTL setting in Traffic policies > Traffic settings, showing a numeric input field that accepts values between 60 and 36,000 seconds](https://developers.cloudflare.com/_astro/gateway-max-ttl-traffic-settings.BRF3NUMp_Z1H1aSr.webp)
+
+The setting is available at two levels:
+
+* **Account level** \- In **Traffic Policies** \> **Traffic Settings**, under **Proxy and inspection**. This sets the default cap for all DNS locations.
+* **Per-location** \- Each [DNS location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-proxies/) can inherit the account setting, disable the cap, or override it with a custom value.
+
+Two new fields are also available in DNS logs: `upstream_record_ttls` (the original TTL from the upstream response) and `applied_max_ttl` (the cap Gateway applied). These appear in the DNS logs column picker and in Logpush datasets.
+
+For more information, refer to [Maximum DNS TTL](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/maximum-dns-ttl/).
+
 ## 2026-07-21
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -165,6 +185,33 @@ Enable and set [confidence levels](https://developers.cloudflare.com/cloudflare-
 Source code detection applies to standalone source code files in [Gateway HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). It does not detect source code embedded within other file types or payloads, such as `.docx` files or chat messages.
 
 For more information, refer to [Source Code predefined profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#source-code).
+
+## 2026-07-09
+
+[Digital Experience Monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/)
+
+
+**Wi-Fi signal and network performance analytics for Cloudflare One Client devices**
+
+[Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) provides visibility into device, network, and application performance across your Cloudflare SASE deployment.
+
+The **Device Monitoring** page now analyzes hardware and network data between a Cloudflare One Client device and Cloudflare's edge, so you can diagnose connectivity and performance issues. Previously, this data was only available in raw DEX Device State Event logs, which required you to build your own analytics to interpret it.
+
+![Device Monitoring summary with connection status, connection mode, Wi-Fi signal strength, traffic performance, and device health](https://developers.cloudflare.com/_astro/dex-device-monitoring-summary.CBxeSd6b_Z18SrWs.webp)
+
+A summary at the top of the page shows the health of each category at a glance, using **Good**, **Fair**, and **Poor** labels:
+
+* **Connection** — connection status, Cloudflare One Client mode, and tunnel type over time
+* **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
+* **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
+* **Device health** — hardware metrics such as CPU, memory, and disk
+![Wi-Fi signal strength and network throughput charts on the Device Monitoring page](https://developers.cloudflare.com/_astro/dex-device-monitoring-wifi-network.CoEBznAm_2qKt5Q.webp)
+
+You can filter by category and adjust the time range to correlate a device's metrics with a user's reported issue.
+
+These analytics are available to all Cloudflare One customers at no additional cost.
+
+To learn more, refer to the [DEX monitoring documentation](https://developers.cloudflare.com/cloudflare-one/insights/dex/monitoring/).
 
 ## 2026-07-09
 

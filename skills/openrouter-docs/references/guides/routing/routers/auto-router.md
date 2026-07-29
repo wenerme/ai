@@ -347,7 +347,7 @@ When no patterns are configured, the Auto Router uses all supported models.
 
 ## Cost / Quality Tradeoff
 
-Control how aggressively the Auto Router optimizes for cost vs. quality using the `cost_quality_tradeoff` parameter (integer, 0–10):
+Control how aggressively the Auto Router optimizes for cost vs. quality using the `cost_quality_tradeoff` parameter (integer, 0–10). **Deprecated:** use the named `cost_tier` parameter instead. The numeric parameter remains supported for compatibility and takes precedence if both are provided.
 
 * **0** = pure quality — always picks the most capable model regardless of cost
 * **10** = maximize for cost — cheapest model wins
@@ -355,15 +355,31 @@ Control how aggressively the Auto Router optimizes for cost vs. quality using th
 
 The default is **9** for Auto Beta (`openrouter/auto-beta`) and **7** for the deprecated `openrouter/auto`, balancing cost savings with strong output quality.
 
+For the recommended named setting, use the `cost_tier` plugin parameter. On Auto it is a shorthand for `cost_quality_tradeoff`; on Auto Beta it selects a contiguous cost-percentile band:
+
+| `cost_tier` | Auto cqt | Auto Beta cost band | Behavior                             |
+| ----------- | -------: | ------------------: | ------------------------------------ |
+| `low`       |        9 |            \[0, 20) | Cheapest models                      |
+| `medium`    |        7 |           \[20, 40) | Lower-cost models                    |
+| `high`      |        5 |           \[40, 60) | Middle-cost models                   |
+| `xhigh`     |        3 |           \[60, 80) | Higher-cost, higher-quality models   |
+| `max`       |        1 |          \[80, 100] | Highest-cost, highest-quality models |
+
+```typescript theme={null}
+plugins: [{ id: 'auto-router', cost_tier: 'medium' }]
+```
+
+If both parameters are provided, the numeric `cost_quality_tradeoff` value takes precedence.
+
 ### How It Works in Auto Beta
 
-In Auto Beta, the tradeoff acts as a cost-percentile ceiling on the ranked candidate pool for your prompt's task type. Each candidate model has an average cost per generation for that task; the dial keeps only models at or below a percentile of that cost distribution:
+With a numeric `cost_quality_tradeoff`, Auto Beta acts as a cost-percentile ceiling on the ranked candidate pool for your prompt's task type. Each candidate model has an average cost per generation for that task; the dial keeps only models at or below a percentile of that cost distribution:
 
 * At **0**, nearly the whole pool is eligible (up to the 90th cost percentile), so the top spend-share models win regardless of price.
 * At the Auto Beta default of **9**, only the cheapest \~fifth of candidates survive.
 * At **10**, just the cheapest decile remains.
 
-The cheapest model is always kept, so the filter can never come up empty, and the surviving models are still ranked by spend share — the dial changes how expensive a model is allowed to be, not how candidates are ordered.
+When `cost_tier` is supplied without a numeric `cost_quality_tradeoff`, Auto Beta instead keeps models inside the tier's band. Unlike the numeric ceiling, a tier excludes models cheaper than the selected band. Each band is a clamped cost-sorted slice, so every non-empty candidate pool contributes at least one model; surviving models are still ranked by spend share.
 
 ### Via API Request
 

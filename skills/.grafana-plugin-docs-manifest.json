@@ -1554,6 +1554,11 @@
     "size": 6352,
     "updatedAt": "2026-07-25T04:03:48.823Z"
   },
+  "grafana-slo-app/maintenance-windows.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/maintenance-windows.md",
+    "size": 405,
+    "updatedAt": "2026-07-29T03:57:01.574Z"
+  },
   "grafana-slo-app/manage.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/manage.md",
     "size": 1268,

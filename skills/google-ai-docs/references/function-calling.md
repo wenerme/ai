@@ -898,7 +898,7 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
 - `auto` (Default): Model decides whether to call a function or respond directly.
 - `any`: Model is constrained to always predict a function call.
 - `none`: Model is prohibited from making function calls.
-- `validated` (Preview): Model ensures function schema adherence.
+- `validated`: Model ensures function schema adherence.
 
 ### Python
 

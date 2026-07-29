@@ -8,6 +8,156 @@
 
 Entries on this page are generated automatically from [OpenAPI specification](/docs/api_reference/overview) diffs when releases ship. Breaking changes are reviewed by a human before publication — see [API Versioning](/docs/api_reference/versioning) for what counts as a breaking change and how deprecations are announced. Endpoint paths are shown relative to the API base URL (`https://openrouter.ai/api/v1`).
 
+<Update label="July 29, 2026" tags={["Benchmarks"]} rss="1 modified endpoint, 1 new schema, 2 modified schemas.">
+  ## Modified endpoints
+
+  * [`GET /benchmarks`](/docs/api/api-reference/benchmarks/list-benchmarks) — description updated; parameter `source` updated; response schema updated
+
+  ## New schemas
+
+  * `UnifiedBenchmarksORItem`
+    * Used by [`GET /benchmarks`](/docs/api/api-reference/benchmarks/list-benchmarks)
+
+  ## Modified schemas
+
+  * `UnifiedBenchmarksMeta` — enum property\_added
+    * Used by [`GET /benchmarks`](/docs/api/api-reference/benchmarks/list-benchmarks)
+  * `UnifiedBenchmarksResponse` — example modified; new union variant added
+    * Used by [`GET /benchmarks`](/docs/api/api-reference/benchmarks/list-benchmarks)
+</Update>
+
+<Update label="July 28, 2026" tags={["Breaking","Files","Responses","Schemas"]} rss="2 breaking changes, 5 modified endpoints, 22 modified schemas.">
+  ## Breaking changes
+
+  * `FusionCallAnalysisInProgressEvent` — required `analyst_model` property added
+    * **No action required for existing consumers.** `analyst_model` replaces `judge_model` in this streaming event; `judge_model` is retained as a deprecated alias that always carries the same value.
+    * Used by [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * \$.tags: responses object removed
+    * **No action required.** The `responses` OpenAPI tag was renamed to `Responses` for consistent Title Case across the API Reference. This is a documentation-grouping change only: `POST /api/v1/responses` and its schemas are unchanged, SDK namespaces are unchanged (`client.responses.send()` in TypeScript and Python, `Sdk.Responses.Send()` in Go), and endpoint documentation URLs are unchanged.
+
+  ## Modified endpoints
+
+  * [`GET /files`](/docs/api/api-reference/files/list-files) — parameter `cursor` updated; response schema updated
+  * [`POST /files`](/docs/api/api-reference/files/upload-a-file) — response schema updated
+  * [`DELETE /files/{file_id}`](/docs/api/api-reference/files/delete-a-file) — parameter `file_id` updated; response schema updated
+  * [`GET /files/{file_id}`](/docs/api/api-reference/files/get-file-metadata) — parameter `file_id` updated; response schema updated
+  * [`GET /files/{file_id}/content`](/docs/api/api-reference/files/download-file-content) — parameter `file_id` updated
+
+  ## Modified schemas
+
+  * `FusionAnalysisResult` — description updated
+    * Used by [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body), [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * `FusionCallAnalysisCompletedEvent` — description updated
+    * Used by [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * `FusionCallAnalysisInProgressEvent`:
+    * description updated
+    * example modified
+    * new property `analyst_model`
+    * property `judge_model` deprecated (alias of `analyst_model`, kept for existing consumers)
+    * Used by [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * `FusionPlugin` — description updated
+
+      <Expandable title="6 endpoints using this schema">
+        * [`POST /chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion)
+        * [`POST /messages`](/docs/api/api-reference/anthropic-messages/create-a-message)
+        * [`POST /presets/{slug}/chat/completions`](/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body)
+        * [`POST /presets/{slug}/messages`](/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body)
+        * [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body)
+        * [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+      </Expandable>
+  * `FusionServerToolConfig` — description updated; property `effort` updated; property `max_tokens` updated
+
+      <Expandable title="4 endpoints using this schema">
+        * [`POST /chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion)
+        * [`POST /presets/{slug}/chat/completions`](/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body)
+        * [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body)
+        * [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+      </Expandable>
+  * `FusionServerTool_OpenRouter` — description updated
+
+      <Expandable title="4 endpoints using this schema">
+        * [`POST /chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion)
+        * [`POST /presets/{slug}/chat/completions`](/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body)
+        * [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body)
+        * [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+      </Expandable>
+  * `FusionSource` — description updated
+    * Used by [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body), [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * `OutputFusionServerToolItem` — description updated
+    * Used by [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body), [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * `ChatWebSearchShorthand` — description updated
+    * Used by [`POST /chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion), [`POST /presets/{slug}/chat/completions`](/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body)
+  * `WebSearchConfig` — description updated
+
+      <Expandable title="4 endpoints using this schema">
+        * [`POST /chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion)
+        * [`POST /messages`](/docs/api/api-reference/anthropic-messages/create-a-message)
+        * [`POST /presets/{slug}/chat/completions`](/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body)
+        * [`POST /presets/{slug}/messages`](/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body)
+      </Expandable>
+  * `WebSearchDomainFilter` — example modified; new property `blocked_domains`
+    * Used by [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body), [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * `WebSearchServerToolConfig` — description updated
+    * Used by [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body), [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+  * `AnthropicFileDocumentSource` — example modified
+    * Used by [`POST /messages`](/docs/api/api-reference/anthropic-messages/create-a-message), [`POST /presets/{slug}/messages`](/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body)
+  * `FileDeleteResponse` — example modified
+    * Used by [`DELETE /files/{file_id}`](/docs/api/api-reference/files/delete-a-file)
+  * `FileListResponse` — example modified
+    * Used by [`GET /files`](/docs/api/api-reference/files/list-files)
+  * `FileMetadata` — example modified
+    * Used by [`GET /files`](/docs/api/api-reference/files/list-files), [`GET /files/{file_id}`](/docs/api/api-reference/files/get-file-metadata), [`POST /files`](/docs/api/api-reference/files/upload-a-file)
+  * `GenerationResponse` — property `data_region` updated
+    * Used by [`GET /generation`](/docs/api/api-reference/generations/get-request-&-usage-metadata-for-a-generation)
+  * `CreateGuardrailRequest` — new property `enable_free_model_publication`; new property `enable_free_model_training`; new property `enable_paid_model_training`
+    * Used by [`POST /guardrails`](/docs/api/api-reference/guardrails/create-a-guardrail)
+  * `Guardrail`:
+
+    * example modified
+    * new property `enable_free_model_publication`
+    * new property `enable_free_model_training`
+    * new property `enable_paid_model_training`
+
+      <Expandable title="4 endpoints using this schema">
+        - [`GET /guardrails`](/docs/api/api-reference/guardrails/list-guardrails)
+        - [`GET /guardrails/{id}`](/docs/api/api-reference/guardrails/get-a-guardrail)
+        - [`PATCH /guardrails/{id}`](/docs/api/api-reference/guardrails/update-a-guardrail)
+        - [`POST /guardrails`](/docs/api/api-reference/guardrails/create-a-guardrail)
+      </Expandable>
+  * `UpdateGuardrailRequest` — new property `enable_free_model_publication`; new property `enable_free_model_training`; new property `enable_paid_model_training`
+    * Used by [`PATCH /guardrails/{id}`](/docs/api/api-reference/guardrails/update-a-guardrail)
+  * `AutoBetaRouterPlugin`:
+
+    * example modified
+    * new property `cost_tier`
+    * deprecated property\_added
+    * description updated
+
+      <Expandable title="6 endpoints using this schema">
+        - [`POST /chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion)
+        - [`POST /messages`](/docs/api/api-reference/anthropic-messages/create-a-message)
+        - [`POST /presets/{slug}/chat/completions`](/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body)
+        - [`POST /presets/{slug}/messages`](/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body)
+        - [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body)
+        - [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+      </Expandable>
+  * `AutoRouterPlugin`:
+
+    * example modified
+    * new property `cost_tier`
+    * deprecated property\_added
+    * description updated
+
+      <Expandable title="6 endpoints using this schema">
+        - [`POST /chat/completions`](/docs/api/api-reference/chat/create-a-chat-completion)
+        - [`POST /messages`](/docs/api/api-reference/anthropic-messages/create-a-message)
+        - [`POST /presets/{slug}/chat/completions`](/docs/api/api-reference/presets/create-a-preset-from-a-chat-completions-request-body)
+        - [`POST /presets/{slug}/messages`](/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body)
+        - [`POST /presets/{slug}/responses`](/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body)
+        - [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
+      </Expandable>
+</Update>
+
 <Update label="July 27, 2026" tags={["Embeddings","Schemas"]} rss="1 modified endpoint, 2 modified schemas.">
   ## Modified endpoints
 
@@ -39,7 +189,7 @@ Entries on this page are generated automatically from [OpenAPI specification](/d
       </Expandable>
 </Update>
 
-<Update label="July 25, 2026" tags={["BYOK","Breaking","Schemas","responses"]} rss="2 breaking changes, 2 modified endpoints, 5 modified schemas.">
+<Update label="July 25, 2026" tags={["BYOK","Breaking","Responses","Schemas"]} rss="2 breaking changes, 2 modified endpoints, 5 modified schemas.">
   ## Breaking changes
 
   * [`POST /responses`](/docs/api/api-reference/responses/create-a-response) — tags `beta.responses` property removed
