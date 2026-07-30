@@ -438,7 +438,7 @@ func main() {
 
 ## SetBudget
 
-Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime > monthly > weekly > daily). [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime > monthly > weekly > daily). The optional `include_byok_in_budgets` flag is a workspace-wide setting: when provided it applies to every budget interval for the workspace, not just the interval in this request. Note that a change made here is applied to budget enforcement immediately, but an already-open workspace settings page in the web dashboard may keep showing the previous value until it is reloaded. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -461,6 +461,7 @@ func main() {
     )
 
     res, err := s.Workspaces.SetBudget(ctx, "production", components.WorkspaceBudgetIntervalMonthly, components.UpsertWorkspaceBudgetRequest{
+        IncludeByokInBudgets: openrouter.Pointer(true),
         LimitUsd: 100.0,
     })
     if err != nil {
@@ -474,13 +475,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                      | Type                                                                                                | Required             | Description                                                                    | Example                          |
-| ------------------------------ | --------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------ | -------------------------------- |
-| `ctx`                          | [context.Context](https://pkg.go.dev/context#Context)                                               | :heavy\_check\_mark: | The context to use for the request.                                            |                                  |
-| `id`                           | `string`                                                                                            | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                | production                       |
-| `interval`                     | [components.WorkspaceBudgetInterval](../../models/components/workspacebudgetinterval.mdx)           | :heavy\_check\_mark: | Budget reset interval. Use "lifetime" for a one-time budget that never resets. | monthly                          |
-| `upsertWorkspaceBudgetRequest` | [components.UpsertWorkspaceBudgetRequest](../../models/components/upsertworkspacebudgetrequest.mdx) | :heavy\_check\_mark: | N/A                                                                            | \{<br />"limit\_usd": 100<br />} |
-| `opts`                         | \[][operations.Option](../../models/operations/option.mdx)                                          | :heavy\_minus\_sign: | The options for this request.                                                  |                                  |
+| Parameter                      | Type                                                                                                | Required             | Description                                                                    | Example                                                                   |
+| ------------------------------ | --------------------------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| `ctx`                          | [context.Context](https://pkg.go.dev/context#Context)                                               | :heavy\_check\_mark: | The context to use for the request.                                            |                                                                           |
+| `id`                           | `string`                                                                                            | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                | production                                                                |
+| `interval`                     | [components.WorkspaceBudgetInterval](../../models/components/workspacebudgetinterval.mdx)           | :heavy\_check\_mark: | Budget reset interval. Use "lifetime" for a one-time budget that never resets. | monthly                                                                   |
+| `upsertWorkspaceBudgetRequest` | [components.UpsertWorkspaceBudgetRequest](../../models/components/upsertworkspacebudgetrequest.mdx) | :heavy\_check\_mark: | N/A                                                                            | \{<br />"include\_byok\_in\_budgets": true,<br />"limit\_usd": 100<br />} |
+| `opts`                         | \[][operations.Option](../../models/operations/option.mdx)                                          | :heavy\_minus\_sign: | The options for this request.                                                  |                                                                           |
 
 ### Response
 

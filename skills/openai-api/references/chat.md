@@ -1262,7 +1262,7 @@ chunk objects if the request is streamed.
 
         The input format for the custom tool. Default is unconstrained text.
 
-        - `TextFormat object { type }`
+        - `Text object { type }`
 
           Unconstrained free-form text.
 
@@ -1272,7 +1272,7 @@ chunk objects if the request is streamed.
 
             - `"text"`
 
-        - `GrammarFormat object { grammar, type }`
+        - `Grammar object { grammar, type }`
 
           A grammar defined by the user.
 
@@ -2104,109 +2104,6 @@ curl https://api.openai.com/v1/chat/completions \
 }
 ```
 
-### Image input
-
-```http
-curl https://api.openai.com/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.4",
-    "messages": [
-      {
-        "role": "user",
-        "content": [
-          {
-            "type": "text",
-            "text": "What is in this image?"
-          },
-          {
-            "type": "image_url",
-            "image_url": {
-              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
-            }
-          }
-        ]
-      }
-    ],
-    "max_tokens": 300
-  }'
-```
-
-#### Response
-
-```json
-{
-  "id": "chatcmpl-B9MHDbslfkBeAs8l4bebGdFOJ6PeG",
-  "object": "chat.completion",
-  "created": 1741570283,
-  "model": "gpt-5.4",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "The image shows a wooden boardwalk path running through a lush green field or meadow. The sky is bright blue with some scattered clouds, giving the scene a serene and peaceful atmosphere. Trees and shrubs are visible in the background.",
-        "refusal": null,
-        "annotations": []
-      },
-      "logprobs": null,
-      "finish_reason": "stop"
-    }
-  ],
-  "usage": {
-    "prompt_tokens": 1117,
-    "completion_tokens": 46,
-    "total_tokens": 1163,
-    "prompt_tokens_details": {
-      "cached_tokens": 0,
-      "audio_tokens": 0
-    },
-    "completion_tokens_details": {
-      "reasoning_tokens": 0,
-      "audio_tokens": 0,
-      "accepted_prediction_tokens": 0,
-      "rejected_prediction_tokens": 0
-    }
-  },
-  "service_tier": "default"
-}
-```
-
-### Streaming
-
-```http
-curl https://api.openai.com/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "VAR_chat_model_id",
-    "messages": [
-      {
-        "role": "developer",
-        "content": "You are a helpful assistant."
-      },
-      {
-        "role": "user",
-        "content": "Hello!"
-      }
-    ],
-    "stream": true
-  }'
-```
-
-#### Response
-
-```json
-{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
-
-{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
-
-....
-
-{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
-```
-
 ### Functions
 
 ```http
@@ -2287,6 +2184,75 @@ curl https://api.openai.com/v1/chat/completions \
       "rejected_prediction_tokens": 0
     }
   }
+}
+```
+
+### Image input
+
+```http
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.4",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "What is in this image?"
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg"
+            }
+          }
+        ]
+      }
+    ],
+    "max_tokens": 300
+  }'
+```
+
+#### Response
+
+```json
+{
+  "id": "chatcmpl-B9MHDbslfkBeAs8l4bebGdFOJ6PeG",
+  "object": "chat.completion",
+  "created": 1741570283,
+  "model": "gpt-5.4",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The image shows a wooden boardwalk path running through a lush green field or meadow. The sky is bright blue with some scattered clouds, giving the scene a serene and peaceful atmosphere. Trees and shrubs are visible in the background.",
+        "refusal": null,
+        "annotations": []
+      },
+      "logprobs": null,
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 1117,
+    "completion_tokens": 46,
+    "total_tokens": 1163,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "audio_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 0,
+      "rejected_prediction_tokens": 0
+    }
+  },
+  "service_tier": "default"
 }
 ```
 
@@ -2500,6 +2466,105 @@ curl https://api.openai.com/v1/chat/completions \
     }
   },
   "system_fingerprint": null
+}
+```
+
+### Streaming
+
+```http
+curl https://api.openai.com/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "VAR_chat_model_id",
+    "messages": [
+      {
+        "role": "developer",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
+      }
+    ],
+    "stream": true
+  }'
+```
+
+#### Response
+
+```json
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"role":"assistant","content":""},"logprobs":null,"finish_reason":null}]}
+
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{"content":"Hello"},"logprobs":null,"finish_reason":null}]}
+
+....
+
+{"id":"chatcmpl-123","object":"chat.completion.chunk","created":1694268190,"model":"gpt-4o-mini", "system_fingerprint": "fp_44709d6fcb", "choices":[{"index":0,"delta":{},"logprobs":null,"finish_reason":"stop"}]}
+```
+
+## Delete chat completion
+
+**delete** `/chat/completions/{completion_id}`
+
+Delete a stored chat completion. Only Chat Completions that have been
+created with the `store` parameter set to `true` can be deleted.
+
+### Path Parameters
+
+- `completion_id: string`
+
+### Returns
+
+- `ChatCompletionDeleted object { id, deleted, object }`
+
+  - `id: string`
+
+    The ID of the chat completion that was deleted.
+
+  - `deleted: boolean`
+
+    Whether the chat completion was deleted.
+
+  - `object: "chat.completion.deleted"`
+
+    The type of object being deleted.
+
+    - `"chat.completion.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chat.completion.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+  "object": "chat.completion.deleted",
+  "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
+  "deleted": true
 }
 ```
 
@@ -4679,72 +4744,39 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 }
 ```
 
-## Delete chat completion
-
-**delete** `/chat/completions/{completion_id}`
-
-Delete a stored chat completion. Only Chat Completions that have been
-created with the `store` parameter set to `true` can be deleted.
-
-### Path Parameters
-
-- `completion_id: string`
-
-### Returns
-
-- `ChatCompletionDeleted object { id, deleted, object }`
-
-  - `id: string`
-
-    The ID of the chat completion that was deleted.
-
-  - `deleted: boolean`
-
-    Whether the chat completion was deleted.
-
-  - `object: "chat.completion.deleted"`
-
-    The type of object being deleted.
-
-    - `"chat.completion.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "chat.completion.deleted"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-  "object": "chat.completion.deleted",
-  "id": "chatcmpl-AyPNinnUqUDYo9SAdA52NobMflmj2",
-  "deleted": true
-}
-```
-
 ## Domain Types
+
+### Chat Completion Allowed Tools
+
+- `ChatCompletionAllowedTools object { mode, tools }`
+
+  Constrains the tools available to the model to a pre-defined set.
+
+  - `mode: "auto" or "required"`
+
+    Constrains the tools available to the model to a pre-defined set.
+
+    `auto` allows the model to pick from among the allowed tools and generate a
+    message.
+
+    `required` requires the model to call one or more of the allowed tools.
+
+    - `"auto"`
+
+    - `"required"`
+
+  - `tools: array of map[unknown]`
+
+    A list of tool definitions that the model should be allowed to call.
+
+    For the Chat Completions API, the list of tool definitions might look like:
+
+    ```json
+    [
+      { "type": "function", "function": { "name": "get_weather" } },
+      { "type": "function", "function": { "name": "get_time" } }
+    ]
+    ```
 
 ### Chat Completion
 
@@ -6175,7 +6207,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
       The input format for the custom tool. Default is unconstrained text.
 
-      - `TextFormat object { type }`
+      - `Text object { type }`
 
         Unconstrained free-form text.
 
@@ -6185,7 +6217,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
           - `"text"`
 
-      - `GrammarFormat object { grammar, type }`
+      - `Grammar object { grammar, type }`
 
         A grammar defined by the user.
 
@@ -7373,7 +7405,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
         The input format for the custom tool. Default is unconstrained text.
 
-        - `TextFormat object { type }`
+        - `Text object { type }`
 
           Unconstrained free-form text.
 
@@ -7383,7 +7415,7 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
 
             - `"text"`
 
-        - `GrammarFormat object { grammar, type }`
+        - `Grammar object { grammar, type }`
 
           A grammar defined by the user.
 
@@ -7713,38 +7745,6 @@ curl -X DELETE https://api.openai.com/v1/chat/completions/chat_abc123 \
   - `name: optional string`
 
     An optional name for the participant. Provides the model information to differentiate between participants of the same role.
-
-### Chat Completion Allowed Tools
-
-- `ChatCompletionAllowedTools object { mode, tools }`
-
-  Constrains the tools available to the model to a pre-defined set.
-
-  - `mode: "auto" or "required"`
-
-    Constrains the tools available to the model to a pre-defined set.
-
-    `auto` allows the model to pick from among the allowed tools and generate a
-    message.
-
-    `required` requires the model to call one or more of the allowed tools.
-
-    - `"auto"`
-
-    - `"required"`
-
-  - `tools: array of map[unknown]`
-
-    A list of tool definitions that the model should be allowed to call.
-
-    For the Chat Completions API, the list of tool definitions might look like:
-
-    ```json
-    [
-      { "type": "function", "function": { "name": "get_weather" } },
-      { "type": "function", "function": { "name": "get_time" } }
-    ]
-    ```
 
 # Messages
 

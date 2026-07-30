@@ -16,6 +16,36 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/audit-logs.xml)
 
+## 2026-07-27
+
+
+**Audit Logs v2 — Resource History**
+
+Audit Logs v2 now includes **Resource History**. For any audit log entry, you can see the sequence of previous changes to the same resource and view a side-by-side diff of what was modified.
+
+Resource History uses the audit log entries you already have. There is no additional configuration, no backend recapture, and no changes to how audit logs are generated.
+
+![Resource History in Audit Logs v2](https://developers.cloudflare.com/_astro/Audit_logs_v2_resource_history.tpxHc9ML_wz0Yd.webp)
+
+**Dashboard:**
+
+1. Go to **Manage Account** \> **Audit Logs**.
+2. Open any audit log entry.
+3. Select the **History** tab to see the full history for that resource.
+4. Select any earlier entry to see a side-by-side diff of the fields that changed between it and the current entry.
+
+**API:**
+
+Use the History endpoint to retrieve the change history for any audit log entry:
+
+```txt
+GET https://api.cloudflare.com/client/v4/accounts/{account_id}/logs/audit/{id}/history
+```
+
+The endpoint is also available for organization-scoped audit logs at `/organizations/{organization_id}/logs/audit/{id}/history`.
+
+For more information, refer to the [Resource History documentation](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#resource-history).
+
 ## 2026-06-24
 
 

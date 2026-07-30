@@ -6,8 +6,9 @@ Use spend alerts to track monthly API costs. To stop traffic after tracked spend
 
 Hard spend limits can interrupt production traffic. When tracked spend reaches
   an applicable hard limit, affected API requests return a `429` error with the
-  `insufficient_quota` code. Enforcement is not instantaneous, so recorded spend
-  can slightly exceed the configured amount.
+  `organization_spend_limit_exceeded` or `project_spend_limit_exceeded` code.
+  Enforcement is not instantaneous, so recorded spend can slightly exceed the
+  configured amount.
 
 ## Choose a spend control
 
@@ -60,7 +61,8 @@ Organization and project hard limits can both apply to a request:
 
 - An organization hard limit applies to API traffic across all projects in the organization.
 - A project hard limit applies only to API traffic billed to that project.
-- Reaching either applicable hard limit causes affected requests to return `429` errors with the `insufficient_quota` code.
+- Reaching an organization hard limit returns a `429` error with the `organization_spend_limit_exceeded` code.
+- Reaching a project hard limit returns a `429` error with the `project_spend_limit_exceeded` code.
 - Raising or removing the reached limit allows traffic to resume after the update propagates. Otherwise, the limit resets with the next monthly cycle.
 
 Enforcement is not instantaneous. The API Platform can process a small amount of extra usage while the limit state propagates, so recorded spend can slightly exceed the configured amount.
@@ -71,9 +73,10 @@ Use spend alerts to get notified before spend reaches a hard limit. Add alerts a
 
 ## Restore API traffic
 
-If requests return quota-related `429` errors:
+If requests fail because of a billing-related limit or credit balance:
 
-1. Compare [current usage](https://platform.openai.com/settings/organization/usage) with the organization and project spend limits that apply to the request.
-2. Raise or remove the reached hard limit if traffic should resume before the monthly reset.
-3. If tracked spend is below every applicable hard limit, check whether the organization exhausted prepaid credits or reached its OpenAI-approved usage limit.
-4. If the error reports a request or token rate limit instead of `insufficient_quota`, follow the [rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).
+1. Check `error.code` to identify whether the request reached an organization spend limit, project spend limit, or OpenAI-assigned usage limit, or whether the organization exhausted its prepaid credits.
+2. For `organization_spend_limit_exceeded` or `project_spend_limit_exceeded`, compare [current usage](https://platform.openai.com/settings/organization/usage) with your spend limits. Raise or remove the reached limit if traffic should resume before the monthly reset.
+3. For `organization_usage_limit_exceeded`, request a higher [approved usage limit](https://platform.openai.com/settings/organization/limits).
+4. For `credit_balance_exhausted`, [add credits](https://platform.openai.com/settings/organization/billing).
+5. If the error reports a request or token rate limit, follow the [rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).

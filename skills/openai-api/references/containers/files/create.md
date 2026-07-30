@@ -55,7 +55,8 @@ You can send either a multipart/form-data request with the raw file content, or 
 ```http
 curl https://api.openai.com/v1/containers/$CONTAINER_ID/files \
     -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{}'
 ```
 
 #### Response

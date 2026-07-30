@@ -186,9 +186,8 @@ Configuration for speech recognition (transcription).
 custom_vocabulary array (string) (optional) Optional. A list of custom vocabulary phrases to bias the speech recognition model
 toward recognizing specific terms.
 diarization_mode string (optional) Optional. Configures speaker diarization. Supported values: "speaker".
-language_hints array (string) (optional) Required. BCP-47 language codes providing hints about the languages present in the
-audio. At least one must be specified, or set to \["auto"\] to enable
-automatic language detection.
+language_codes array (string) (optional) Optional. BCP-47 language codes providing hints about the languages present in the
+audio. If omitted or empty, defaults to automatic language detection.
 timestamp_granularities array (string) (optional) Optional. The granularity of timestamps to include in the transcription output.
 Supported values: "word". If empty, no timestamps are generated.
 video_config VideoConfig (optional) Configuration for video generation.
@@ -811,177 +810,6 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 }
 ```
 
-## CreateTrigger
-
-post https://generativelanguage.googleapis.com/v1beta/triggers Creates a new trigger that will invoke the specified agent on the given cron schedule.
-- [Request body](https://ai.google.dev/api/interactions-api#CreateTrigger.request_body)
-- [Response](https://ai.google.dev/api/interactions-api#CreateTrigger.response)
-
-### Request body
-
-The request body contains data with the following structure:
-display_name string (optional) Optional. The display name of the trigger.
-environment_id string (optional) Optional. The environment ID for the trigger execution.
-execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
-interaction CreateAgentInteractionParams or CreateModelInteractionParams (required) Required. The interaction request template to be executed.
-max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before the trigger is automatically paused (status becomes ERROR).
-schedule string (required) Required. The cron schedule on which the trigger should run. Standard cron format.
-time_zone string (required) Required. Time zone in which the schedule should be interpreted.
-
-### Response
-
-If successful, the response body contains data with the following structure:
-consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
-since the last successful execution.
-create_time string (optional) Output only. The time when the trigger was created.
-display_name string (optional) Optional. The display name of the trigger.
-environment_id string (optional) Optional. The environment ID for the trigger execution.
-execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
-id string (optional) Required. Output only. Identifier. The ID of the trigger.
-interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
-last_pause_time string (optional) Output only. The time when the trigger was last paused.
-last_resume_time string (optional) Output only. The time when the trigger was last resumed.
-last_run_time string (optional) Output only. The time when the trigger was last run.
-max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
-the trigger is automatically paused (status becomes ERROR).
-next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
-previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
-schedule string (optional) Required. The cron schedule on which the trigger should run.
-Standard cron format.
-status enum (string) (optional) Output only. The current status of the trigger.
-
-Possible
-values:
-
-- `active`
-
-  The trigger is active and will fire on schedule.
-- `paused`
-
-  The trigger is paused and will not fire.
-- `error`
-
-  The trigger has entered an error state due to consecutive failures.
-time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
-update_time string (optional) Output only. The time when the trigger was last updated.
-
-### Example
-
-<iframe src="https:///frame/api/interactions-api_2c17974f0086a42383da3e7ba7a4b39285dc07d5f7457bb64ec3d4947cb7d65d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "consecutive_failure_count": 0,
-  "create_time": "string",
-  "display_name": "string",
-  "environment_id": "string",
-  "execution_timeout_seconds": 0,
-  "id": "string",
-  "interaction": {
-    "created": "2025-12-04T15:01:45Z",
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.6-flash",
-    "object": "interaction",
-    "status": "completed",
-    "steps": [
-      {
-        "type": "model_output",
-        "content": [
-          {
-            "type": "text",
-            "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
-          }
-        ]
-      }
-    ],
-    "updated": "2025-12-04T15:01:45Z",
-    "usage": {
-      "input_tokens_by_modality": [
-        {
-          "modality": "text",
-          "tokens": 7
-        }
-      ],
-      "total_cached_tokens": 0,
-      "total_input_tokens": 7,
-      "total_output_tokens": 23,
-      "total_thought_tokens": 49,
-      "total_tokens": 79,
-      "total_tool_use_tokens": 0
-    }
-  },
-  "last_pause_time": "string",
-  "last_resume_time": "string",
-  "last_run_time": "string",
-  "max_consecutive_failures": 0,
-  "next_run_time": "string",
-  "previous_interaction_id": "string",
-  "schedule": "string",
-  "status": "active",
-  "time_zone": "string",
-  "update_time": "string"
-}
-```
-
-## RunTrigger
-
-post https://generativelanguage.googleapis.com/v1beta/triggers/{trigger_id}/executions Runs a trigger immediately.
-- [Response](https://ai.google.dev/api/interactions-api#RunTrigger.response)
-
-### Response
-
-If successful, the response body contains data with the following structure:
-end_time string (optional) Output only. The time when the execution finished.
-environment_id string (optional) Output only. The environment ID used for the execution.
-error string (optional) Output only. The error message if the execution failed.
-id string (optional) Required. Output only. Identifier. The ID of the trigger execution.
-interaction_id string (optional) Output only. The ID of the interaction created by this execution, if any.
-scheduled_time string (optional) Output only. The time when the execution was scheduled to run.
-start_time string (optional) Output only. The time when the execution started.
-status enum (string) (optional) Output only. The status of the execution.
-
-Possible
-values:
-
-- `in_progress`
-
-  The execution is currently in progress.
-- `completed`
-
-  The execution completed successfully.
-- `failed`
-
-  The execution failed.
-- `skipped`
-
-  The execution was skipped (e.g., previous execution still running).
-- `timed_out`
-
-  The execution timed out.
-trigger_id string (optional) Required. Output only. Identifier. The ID of the trigger that created this execution.
-
-### Example
-
-<iframe src="https:///frame/api/interactions-api_e1331871767008a10ddd9fcf15fdb6ed30d023f5e3c0f32ef161ad17cc1c1a4c.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "end_time": "string",
-  "environment_id": "string",
-  "error": "string",
-  "id": "string",
-  "interaction_id": "string",
-  "scheduled_time": "string",
-  "start_time": "string",
-  "status": "in_progress",
-  "trigger_id": "string"
-}
-```
-
 ## Retrieving an interaction
 
 get https://generativelanguage.googleapis.com/v1beta/interactions/{id} Retrieves the full details of a single interaction based on its \`Interaction.id\`.
@@ -1029,426 +857,6 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 }
 ```
 
-## ListTriggers
-
-get https://generativelanguage.googleapis.com/v1beta/triggers Lists triggers for a project.
-- [Path / Query parameters](https://ai.google.dev/api/interactions-api#ListTriggers.PATH_PARAMETERS)
-- [Response](https://ai.google.dev/api/interactions-api#ListTriggers.response)
-
-### Path / Query Parameters
-
-filter string (optional) Optional. Filter expression (e.g., by state).
-page_size integer (optional) Optional. The maximum number of triggers to return per page.
-page_token string (optional) Optional. A page token from a previous ListTriggers call.
-
-### Response
-
-If successful, the response body contains data with the following structure:
-next_page_token string (optional) A page token, received from a previous \`ListTriggers\` call.
-Provide this to retrieve the subsequent page.
-triggers array (Trigger) (optional) The list of triggers.
-A trigger configuration that is scheduled to run an agent.
-
-#### Fields
-
-consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
-since the last successful execution.
-create_time string (optional) Output only. The time when the trigger was created.
-display_name string (optional) Optional. The display name of the trigger.
-environment_id string (optional) Optional. The environment ID for the trigger execution.
-execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
-id string (optional) Required. Output only. Identifier. The ID of the trigger.
-interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
-last_pause_time string (optional) Output only. The time when the trigger was last paused.
-last_resume_time string (optional) Output only. The time when the trigger was last resumed.
-last_run_time string (optional) Output only. The time when the trigger was last run.
-max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
-the trigger is automatically paused (status becomes ERROR).
-next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
-previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
-schedule string (optional) Required. The cron schedule on which the trigger should run.
-Standard cron format.
-status enum (string) (optional) Output only. The current status of the trigger.
-
-Possible
-values:
-
-- `active`
-
-  The trigger is active and will fire on schedule.
-- `paused`
-
-  The trigger is paused and will not fire.
-- `error`
-
-  The trigger has entered an error state due to consecutive failures.
-time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
-update_time string (optional) Output only. The time when the trigger was last updated.
-
-### Example
-
-<iframe src="https:///frame/api/interactions-api_88d4ce9cd00dfdb0d58650ad142188cdc7a715b46fc632f001253acce33dd756.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "next_page_token": "string",
-  "triggers": [
-    {
-      "consecutive_failure_count": 0,
-      "create_time": "string",
-      "display_name": "string",
-      "environment_id": "string",
-      "execution_timeout_seconds": 0,
-      "id": "string",
-      "interaction": {
-        "created": "2025-12-04T15:01:45Z",
-        "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-        "model": "gemini-3.6-flash",
-        "object": "interaction",
-        "status": "completed",
-        "steps": [
-          {
-            "type": "model_output",
-            "content": [
-              {
-                "type": "text",
-                "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
-              }
-            ]
-          }
-        ],
-        "updated": "2025-12-04T15:01:45Z",
-        "usage": {
-          "input_tokens_by_modality": [
-            {
-              "modality": "text",
-              "tokens": 7
-            }
-          ],
-          "total_cached_tokens": 0,
-          "total_input_tokens": 7,
-          "total_output_tokens": 23,
-          "total_thought_tokens": 49,
-          "total_tokens": 79,
-          "total_tool_use_tokens": 0
-        }
-      },
-      "last_pause_time": "string",
-      "last_resume_time": "string",
-      "last_run_time": "string",
-      "max_consecutive_failures": 0,
-      "next_run_time": "string",
-      "previous_interaction_id": "string",
-      "schedule": "string",
-      "status": "active",
-      "time_zone": "string",
-      "update_time": "string"
-    }
-  ]
-}
-```
-
-## GetTrigger
-
-get https://generativelanguage.googleapis.com/v1beta/triggers/{id} Gets details of a single trigger.
-- [Response](https://ai.google.dev/api/interactions-api#GetTrigger.response)
-
-### Response
-
-If successful, the response body contains data with the following structure:
-consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
-since the last successful execution.
-create_time string (optional) Output only. The time when the trigger was created.
-display_name string (optional) Optional. The display name of the trigger.
-environment_id string (optional) Optional. The environment ID for the trigger execution.
-execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
-id string (optional) Required. Output only. Identifier. The ID of the trigger.
-interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
-last_pause_time string (optional) Output only. The time when the trigger was last paused.
-last_resume_time string (optional) Output only. The time when the trigger was last resumed.
-last_run_time string (optional) Output only. The time when the trigger was last run.
-max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
-the trigger is automatically paused (status becomes ERROR).
-next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
-previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
-schedule string (optional) Required. The cron schedule on which the trigger should run.
-Standard cron format.
-status enum (string) (optional) Output only. The current status of the trigger.
-
-Possible
-values:
-
-- `active`
-
-  The trigger is active and will fire on schedule.
-- `paused`
-
-  The trigger is paused and will not fire.
-- `error`
-
-  The trigger has entered an error state due to consecutive failures.
-time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
-update_time string (optional) Output only. The time when the trigger was last updated.
-
-### Example
-
-<iframe src="https:///frame/api/interactions-api_892e9f2b810313e63b3bd47c6343735a49e8d336477a131eb5bc29ca83c47471.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "consecutive_failure_count": 0,
-  "create_time": "string",
-  "display_name": "string",
-  "environment_id": "string",
-  "execution_timeout_seconds": 0,
-  "id": "string",
-  "interaction": {
-    "created": "2025-12-04T15:01:45Z",
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.6-flash",
-    "object": "interaction",
-    "status": "completed",
-    "steps": [
-      {
-        "type": "model_output",
-        "content": [
-          {
-            "type": "text",
-            "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
-          }
-        ]
-      }
-    ],
-    "updated": "2025-12-04T15:01:45Z",
-    "usage": {
-      "input_tokens_by_modality": [
-        {
-          "modality": "text",
-          "tokens": 7
-        }
-      ],
-      "total_cached_tokens": 0,
-      "total_input_tokens": 7,
-      "total_output_tokens": 23,
-      "total_thought_tokens": 49,
-      "total_tokens": 79,
-      "total_tool_use_tokens": 0
-    }
-  },
-  "last_pause_time": "string",
-  "last_resume_time": "string",
-  "last_run_time": "string",
-  "max_consecutive_failures": 0,
-  "next_run_time": "string",
-  "previous_interaction_id": "string",
-  "schedule": "string",
-  "status": "active",
-  "time_zone": "string",
-  "update_time": "string"
-}
-```
-
-## ListTriggerExecutions
-
-get https://generativelanguage.googleapis.com/v1beta/triggers/{trigger_id}/executions Lists executions for a trigger.
-- [Path / Query parameters](https://ai.google.dev/api/interactions-api#ListTriggerExecutions.PATH_PARAMETERS)
-- [Response](https://ai.google.dev/api/interactions-api#ListTriggerExecutions.response)
-
-### Path / Query Parameters
-
-page_size integer (optional) Optional. The maximum number of executions to return per page.
-page_token string (optional) Optional. A page token from a previous ListTriggerExecutions call.
-
-### Response
-
-If successful, the response body contains data with the following structure:
-next_page_token string (optional) A page token, received from a previous \`ListTriggerExecutions\` call.
-Provide this to retrieve the subsequent page.
-trigger_executions array (TriggerExecution) (optional) The list of trigger executions.
-An execution instance of a trigger.
-
-#### Fields
-
-end_time string (optional) Output only. The time when the execution finished.
-environment_id string (optional) Output only. The environment ID used for the execution.
-error string (optional) Output only. The error message if the execution failed.
-id string (optional) Required. Output only. Identifier. The ID of the trigger execution.
-interaction_id string (optional) Output only. The ID of the interaction created by this execution, if any.
-scheduled_time string (optional) Output only. The time when the execution was scheduled to run.
-start_time string (optional) Output only. The time when the execution started.
-status enum (string) (optional) Output only. The status of the execution.
-
-Possible
-values:
-
-- `in_progress`
-
-  The execution is currently in progress.
-- `completed`
-
-  The execution completed successfully.
-- `failed`
-
-  The execution failed.
-- `skipped`
-
-  The execution was skipped (e.g., previous execution still running).
-- `timed_out`
-
-  The execution timed out.
-trigger_id string (optional) Required. Output only. Identifier. The ID of the trigger that created this execution.
-
-### Example
-
-<iframe src="https:///frame/api/interactions-api_d38ba4d65ae2de3c341cbf5acbcdb7c642f39bed084f90073b0de1f6b2a71df6.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "next_page_token": "string",
-  "trigger_executions": [
-    {
-      "end_time": "string",
-      "environment_id": "string",
-      "error": "string",
-      "id": "string",
-      "interaction_id": "string",
-      "scheduled_time": "string",
-      "start_time": "string",
-      "status": "in_progress",
-      "trigger_id": "string"
-    }
-  ]
-}
-```
-
-## UpdateTrigger
-
-patch https://generativelanguage.googleapis.com/v1beta/triggers/{id} Updates a trigger.
-- [Request body](https://ai.google.dev/api/interactions-api#UpdateTrigger.request_body)
-- [Response](https://ai.google.dev/api/interactions-api#UpdateTrigger.response)
-
-### Request body
-
-The request body contains data with the following structure:
-display_name string (optional) Optional. The display name of the trigger.
-status enum (string) (optional) Optional. The status of the trigger.
-
-Possible
-values:
-
-- `active`
-
-  The trigger is active and will fire on schedule.
-- `paused`
-
-  The trigger is paused and will not fire.
-- `error`
-
-  The trigger has entered an error state due to consecutive failures.
-
-### Response
-
-If successful, the response body contains data with the following structure:
-consecutive_failure_count integer (optional) Output only. The number of consecutive failures that have occurred
-since the last successful execution.
-create_time string (optional) Output only. The time when the trigger was created.
-display_name string (optional) Optional. The display name of the trigger.
-environment_id string (optional) Optional. The environment ID for the trigger execution.
-execution_timeout_seconds integer (optional) Optional. The execution timeout for the triggered interaction.
-id string (optional) Required. Output only. Identifier. The ID of the trigger.
-interaction [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) (optional) Required. The interaction request template to be executed.
-last_pause_time string (optional) Output only. The time when the trigger was last paused.
-last_resume_time string (optional) Output only. The time when the trigger was last resumed.
-last_run_time string (optional) Output only. The time when the trigger was last run.
-max_consecutive_failures integer (optional) Optional. The maximum number of consecutive failures allowed before
-the trigger is automatically paused (status becomes ERROR).
-next_run_time string (optional) Output only. The time when the trigger is scheduled to run next.
-previous_interaction_id string (optional) Output only. The ID of the last interaction created by this trigger.
-schedule string (optional) Required. The cron schedule on which the trigger should run.
-Standard cron format.
-status enum (string) (optional) Output only. The current status of the trigger.
-
-Possible
-values:
-
-- `active`
-
-  The trigger is active and will fire on schedule.
-- `paused`
-
-  The trigger is paused and will not fire.
-- `error`
-
-  The trigger has entered an error state due to consecutive failures.
-time_zone string (optional) Required. Time zone in which the schedule should be interpreted.
-update_time string (optional) Output only. The time when the trigger was last updated.
-
-### Example
-
-<iframe src="https:///frame/api/interactions-api_688432ac6861c110cf6e29cb42c21d64ee43c80a0b5ef324fa1b757c973d2ab9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-#### Example Response
-
-```json
-{
-  "consecutive_failure_count": 0,
-  "create_time": "string",
-  "display_name": "string",
-  "environment_id": "string",
-  "execution_timeout_seconds": 0,
-  "id": "string",
-  "interaction": {
-    "created": "2025-12-04T15:01:45Z",
-    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
-    "model": "gemini-3.6-flash",
-    "object": "interaction",
-    "status": "completed",
-    "steps": [
-      {
-        "type": "model_output",
-        "content": [
-          {
-            "type": "text",
-            "text": "Hello! I'm doing well, functioning as expected. Thank you for asking! How are you doing today?"
-          }
-        ]
-      }
-    ],
-    "updated": "2025-12-04T15:01:45Z",
-    "usage": {
-      "input_tokens_by_modality": [
-        {
-          "modality": "text",
-          "tokens": 7
-        }
-      ],
-      "total_cached_tokens": 0,
-      "total_input_tokens": 7,
-      "total_output_tokens": 23,
-      "total_thought_tokens": 49,
-      "total_tokens": 79,
-      "total_tool_use_tokens": 0
-    }
-  },
-  "last_pause_time": "string",
-  "last_resume_time": "string",
-  "last_run_time": "string",
-  "max_consecutive_failures": 0,
-  "next_run_time": "string",
-  "previous_interaction_id": "string",
-  "schedule": "string",
-  "status": "active",
-  "time_zone": "string",
-  "update_time": "string"
-}
-```
-
 ## Deleting an interaction
 
 delete https://generativelanguage.googleapis.com/v1beta/interactions/{id} Deletes the interaction by id.
@@ -1467,19 +875,6 @@ If successful, the response is empty.
 ### Delete
 
 <iframe src="https:///frame/api/interactions-api_513c9609e66e12d61d05211d53102de3457a011bd487dc4589b25c9e06448bcd.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
-
-## DeleteTrigger
-
-delete https://generativelanguage.googleapis.com/v1beta/triggers/{id} Deletes a trigger.
-- [Response](https://ai.google.dev/api/interactions-api#DeleteTrigger.response)
-
-### Response
-
-If successful, the response is empty.
-
-### Example
-
-<iframe src="https:///frame/api/interactions-api_2f61d2ed63f72748ba633b64f7ccc8683e6a31cfce26bd5490f2037cdd9fc1e8.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Resources
 
@@ -2164,7 +1559,6 @@ The content of the response.
 
 ### Possible Types
 
-Polymorphic discriminator: `type`
 AudioContent An audio content block.
 channels integer (optional) The number of audio channels.
 data string (optional) The audio content.
@@ -2289,7 +1683,6 @@ Citation information for model-generated content.
 
 #### Possible Types
 
-Polymorphic discriminator: `type`
 FileCitation A file citation annotation.
 custom_metadata object (optional) User provided metadata about the retrieved context.
 document_uri string (optional) The URI of the file.
@@ -2467,7 +1860,6 @@ A tool that can be used by the model.
 
 ### Possible Types
 
-Polymorphic discriminator: `type`
 CodeExecution A tool that can be used by the model to execute code.
 type object (required) No description provided.
 
@@ -3722,7 +3114,6 @@ delta StepDeltaData (required) No description provided.
 
 #### Possible Types
 
-Polymorphic discriminator: `type`
 ArgumentsDelta <br />
 
 arguments string (optional) No description provided.
@@ -4025,7 +3416,6 @@ Citation information for model-generated content.
 
 #### Possible Types
 
-Polymorphic discriminator: `type`
 FileCitation A file citation annotation.
 custom_metadata object (optional) User provided metadata about the retrieved context.
 document_uri string (optional) The URI of the file.
@@ -5298,7 +4688,6 @@ A step in the interaction.
 
 ### Possible Types
 
-Polymorphic discriminator: `type`
 CodeExecutionCallStep Code execution call step.
 arguments CodeExecutionCallStepArguments (required) Required. The arguments to pass to the code execution.
 The arguments to pass to the code execution.
@@ -5479,7 +4868,6 @@ summary array (ThoughtSummaryContent) (optional) A summary of the thought.
 
 #### Possible Types
 
-Polymorphic discriminator: `type`
 ImageContent An image content block.
 data string (optional) The image content.
 mime_type enum (string) (optional) The mime type of the image.
@@ -5538,7 +4926,6 @@ Citation information for model-generated content.
 
 #### Possible Types
 
-Polymorphic discriminator: `type`
 FileCitation A file citation annotation.
 custom_metadata object (optional) User provided metadata about the retrieved context.
 document_uri string (optional) The URI of the file.
@@ -6185,7 +5572,6 @@ Citation information for model-generated content.
 
 #### Possible Types
 
-Polymorphic discriminator: `type`
 FileCitation A file citation annotation.
 custom_metadata object (optional) User provided metadata about the retrieved context.
 document_uri string (optional) The URI of the file.

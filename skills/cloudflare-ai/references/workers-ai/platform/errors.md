@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Errors
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/platform/errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai/platform/errors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below is a list of Workers AI errors.
 
@@ -26,6 +26,7 @@ Below is a list of Workers AI errors.
 | Model agreement                       | 5016              | 403           | User has not agreed to Llama3.2 model terms                                                                                                          |
 | Account blocked                       | 3023              | 403           | Service unavailable for account                                                                                                                      |
 | Account not allowed for private model | 3041              | 403           | The account is not allowed to access this model                                                                                                      |
+| Model requires Workers Paid plan      | 5035              | 403           | This model requires a Workers Paid plan. See [pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/) for details.                  |
 | Deprecated SDK version                | 5019              | 405           | Request trying to use deprecated SDK version                                                                                                         |
 | LoRa unsupported                      | 5005              | 405           | The model ${this.model} does not support LoRa inference                                                                                              |
 | Invalid model ID                      | 3042              | 404           | The model name is invalid                                                                                                                            |
@@ -44,5 +45,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/errors/#page","headline":"Errors · Cloudflare Workers AI docs","description":"Reference table of Workers AI error codes, HTTP statuses, and descriptions.","url":"https://developers.cloudflare.com/workers-ai/platform/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/platform/errors/#page","headline":"Errors · Cloudflare Workers AI docs","description":"Reference table of Workers AI error codes, HTTP statuses, and descriptions.","url":"https://developers.cloudflare.com/workers-ai/platform/errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

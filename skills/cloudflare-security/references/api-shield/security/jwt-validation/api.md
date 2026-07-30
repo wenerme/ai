@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure JWT validation via the API
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/), which requires token configurations and token validation rules.
 
@@ -47,6 +47,10 @@ Refer to the [Ruleset Engine documentation](https://developers.cloudflare.com/ru
 ### Credentials
 
 API Shield supports credentials of type `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, `PS512`, `ES256`, and `ES384`. RSA keys must be at least 2048-bit. Each JSON web key must have a “KID” which must be present in the JWT's header as well to allow API Shield to match them.
+
+Provide an `alg` value for every JSON web key. The effective algorithm, whether provided or defaulted, must match the `alg` value in the JWT header.
+
+For compatibility with identity providers that omit `alg`, API Shield defaults an RSA key without `alg` to `RS256`. RSA key size does not identify which signing algorithm an identity provider uses. Specify `alg` explicitly if the identity provider uses another supported algorithm.
 
 We allow up to 4 different keys in order to aid in key rollover.
 
@@ -147,6 +151,17 @@ The response will be in a Cloudflare `v4` response envelope and the result conta
 	"messages": []
 }
 ```
+
+If API Shield defaults an omitted algorithm, the response includes the effective algorithm in `result`. The `messages` array also contains one message for each defaulted key:
+
+```json
+{
+	"code": 110003,
+	"message": "keys[0].alg was omitted and defaulted to \"RS256\" (kid \"key-1\")"
+}
+```
+
+Inspect both `result` and `messages` to confirm the effective credentials.
 
 ## Token validation rules
 
@@ -508,6 +523,8 @@ Cloudflare will remove any fields that are unnecessary from each key and will dr
 
 It is highly recommended to validate the output of the API call to check that the resulting keys appear as intended.
 
+Credential updates use the same algorithm compatibility behavior as configuration creation. The response includes normalized credentials and a message for each defaulted algorithm.
+
 Use the `PUT` command to update keys.
 
 ```bash
@@ -634,5 +651,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Create token configurations and validation rules for JWT validation using the API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API · Cloudflare API Shield docs","description":"Create token configurations and validation rules for JWT validation using the API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

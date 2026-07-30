@@ -435,6 +435,8 @@ components:
           is_moderated: true
           max_completion_tokens: 4096
       properties:
+        alias_target:
+          $ref: '#/components/schemas/ModelAliasTarget'
         architecture:
           $ref: '#/components/schemas/ModelArchitecture'
         benchmarks:
@@ -530,6 +532,24 @@ components:
         - default_parameters
         - supported_voices
         - links
+      type: object
+    ModelAliasTarget:
+      description: Concrete model targeted by this tilde-latest alias, when applicable
+      example:
+        name: Claude Sonnet 4.5
+        slug: anthropic/claude-sonnet-4.5
+      properties:
+        name:
+          description: Human-readable name of the concrete model targeted by this alias
+          type: string
+        slug:
+          description: >-
+            Routable model ID of the concrete target, matching that model row's
+            id
+          type: string
+      required:
+        - slug
+        - name
       type: object
     ModelArchitecture:
       description: Model architecture information

@@ -61,7 +61,7 @@ Make sure you're logged in to your ClickHouse Cloud account. If you don't have a
 
    :::info
 
-   Before you start adding your connection details make sure that you have whitelisted ClickPipes IP addresses in your firewall rules. You can find the list of ClickPipes IP addresses [here](../index.md#list-of-static-ips).
+   Before you start adding your connection details make sure that you have whitelisted ClickPipes IP addresses in your firewall rules. You can find the list of ClickPipes IP addresses [here](/integrations/clickpipes/networking/static-ips).
    For more information refer to the source Postgres setup guides linked at [the top of this page](#prerequisites).
 
    :::
@@ -90,7 +90,7 @@ You can specify SSH tunneling details if your source Postgres database isn't pub
 3. To use Key-based authentication, click on "Revoke and generate key pair" to generate a new key pair and copy the generated public key to your SSH server under `~/.ssh/authorized_keys`.
 4. Click on "Verify Connection" to verify the connection.
 
-> **note**: Make sure to whitelist [ClickPipes IP addresses](../clickpipes#list-of-static-ips) in your firewall rules for the SSH bastion host so that ClickPipes can establish the SSH tunnel.
+> **note**: Make sure to whitelist [ClickPipes IP addresses](/integrations/clickpipes/networking/static-ips) in your firewall rules for the SSH bastion host so that ClickPipes can establish the SSH tunnel.
 
 Once the connection details are filled in, click on "Next".
 

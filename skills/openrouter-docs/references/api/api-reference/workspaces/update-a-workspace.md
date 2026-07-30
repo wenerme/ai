@@ -134,6 +134,7 @@ paths:
                   default_text_model: openai/gpt-4o
                   description: Production environment workspace
                   id: 550e8400-e29b-41d4-a716-446655440000
+                  include_byok_in_budgets: false
                   io_logging_api_key_ids: null
                   io_logging_sampling_rate: 1
                   is_data_discount_logging_enabled: true
@@ -281,6 +282,7 @@ components:
           default_text_model: openai/gpt-4o
           description: Production environment workspace
           id: 550e8400-e29b-41d4-a716-446655440000
+          include_byok_in_budgets: false
           io_logging_api_key_ids: null
           io_logging_sampling_rate: 1
           is_data_discount_logging_enabled: true
@@ -412,6 +414,7 @@ components:
         default_text_model: openai/gpt-4o
         description: Production environment workspace
         id: 550e8400-e29b-41d4-a716-446655440000
+        include_byok_in_budgets: false
         io_logging_api_key_ids: null
         io_logging_sampling_rate: 1
         is_data_discount_logging_enabled: true
@@ -469,6 +472,12 @@ components:
           example: 550e8400-e29b-41d4-a716-446655440000
           format: uuid
           type: string
+        include_byok_in_budgets:
+          description: >-
+            Whether BYOK (bring-your-own-key) spend counts toward this
+            workspace's budgets. Set it via the workspace budget endpoints.
+          example: false
+          type: boolean
         io_logging_api_key_ids:
           description: >-
             Optional array of API key IDs to filter I/O logging. Null means all

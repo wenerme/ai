@@ -4,6 +4,13 @@
 
 Secure MCP Tunnel lets you connect private MCP servers to supported OpenAI products without opening inbound firewall ports or exposing those servers to the public internet. Run `tunnel-client` inside the network that can already reach your MCP server; it opens an outbound HTTPS path to OpenAI, pulls queued MCP work, forwards requests locally, and returns responses through the same tunnel.
 
+Secure MCP Tunnel supports private MCP connections, including developer-mode
+  testing. It does not support public plugin submission or distribution. Public
+  plugins require a stable, publicly reachable HTTPS MCP endpoint. If the MCP
+  server must stay private, expose a public HTTPS proxy that forwards requests
+  to it. See [public plugin submission](https://developers.openai.com/plugins/deploy/submission) for endpoint
+  and authentication requirements.
+
 ## What is an MCP tunnel?
 
 An MCP tunnel is an outbound-only connection from a host inside your network to an OpenAI-hosted MCP endpoint. Use it when your MCP server is private, on-premises, or behind a firewall, but ChatGPT, Codex, the Responses API, or another supported OpenAI surface still needs to call it.

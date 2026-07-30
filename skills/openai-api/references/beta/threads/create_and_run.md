@@ -374,7 +374,7 @@ Create a thread and run it in one request.
 
           The chunking strategy used to chunk the file(s). If not set, will use the `auto` strategy.
 
-          - `AutoChunkingStrategy object { type }`
+          - `Auto object { type }`
 
             The default strategy. This strategy currently uses a `max_chunk_size_tokens` of `800` and `chunk_overlap_tokens` of `400`.
 
@@ -384,7 +384,7 @@ Create a thread and run it in one request.
 
               - `"auto"`
 
-          - `StaticChunkingStrategy object { static, type }`
+          - `Static object { static, type }`
 
             - `static: object { chunk_overlap_tokens, max_chunk_size_tokens }`
 

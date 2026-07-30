@@ -23,6 +23,8 @@ Zero completion insurance automatically applies to all requests across all model
 
 Zero completion insurance covers the model's inference cost: prompt tokens, completion tokens, and reasoning tokens are not billed when a response qualifies.
 
+For text-to-speech requests, usable output means that the response stream delivered format-valid audio: at least one complete MPEG frame for MP3 or one complete sample for PCM. Empty, invalid, and truncated output is not billed. Character-priced requests are billed for the full input once usable audio is delivered, including when the client cancels after receiving partial audio.
+
 It does not cover charges for auxiliary services that already ran before the response failed. Work performed by [web search](/docs/guides/features/plugins/web-search) (e.g. per-request search fees), file parsing / PDF OCR, and web fetch may still be billed based on the work actually performed, even when the model's response subsequently ends in an error. (In some failure cases — for example an upstream failure that produces no tokens at all — these charges are skipped as well.) When billed, these charges appear in the request's usage breakdown.
 
 ## Viewing Protected Requests

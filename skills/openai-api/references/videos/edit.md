@@ -147,7 +147,7 @@ curl https://api.openai.com/v1/videos/edits \
   "progress": 0,
   "prompt": "prompt",
   "remixed_from_video_id": "remixed_from_video_id",
-  "seconds": "seconds",
+  "seconds": "string",
   "size": "720x1280",
   "status": "queued"
 }

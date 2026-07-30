@@ -60,7 +60,7 @@ Returns the created client secret and the effective session object. The client s
 
           The format of the input audio.
 
-          - `PCMAudioFormat object { rate, type }`
+          - `PCMAudio object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -76,7 +76,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcm"`
 
-          - `PCMUAudioFormat object { type }`
+          - `PCMUAudio object { type }`
 
             The G.711 μ-law format.
 
@@ -86,7 +86,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcmu"`
 
-          - `PCMAAudioFormat object { type }`
+          - `PCMAAudio object { type }`
 
             The G.711 A-law format.
 
@@ -130,23 +130,35 @@ Returns the created client secret and the effective session object. The client s
 
             - `"xhigh"`
 
+          - `keywords: optional array of string`
+
+            Words or phrases to guide transcription of the input audio. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
+
           - `language: optional string`
 
             The language of the input audio. Supplying the input language in
             [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
             will improve accuracy and latency.
 
-          - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+          - `languages: optional array of string`
 
-            The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+            Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
+
+          - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
+
+            The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
             - `string`
 
-            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+            - `"whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
-              The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+              The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
               - `"whisper-1"`
+
+              - `"gpt-transcribe"`
+
+              - `"gpt-live-transcribe"`
 
               - `"gpt-4o-mini-transcribe"`
 
@@ -1043,7 +1055,7 @@ Returns the created client secret and the effective session object. The client s
 
           The format of the input audio.
 
-          - `PCMAudioFormat object { rate, type }`
+          - `PCMAudio object { rate, type }`
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -1059,7 +1071,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcm"`
 
-          - `PCMUAudioFormat object { type }`
+          - `PCMUAudio object { type }`
 
             The G.711 μ-law format.
 
@@ -1069,7 +1081,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcmu"`
 
-          - `PCMAAudioFormat object { type }`
+          - `PCMAAudio object { type }`
 
             The G.711 A-law format.
 
@@ -1093,7 +1105,7 @@ Returns the created client secret and the effective session object. The client s
 
             - `"far_field"`
 
-        - `transcription: optional object { language, model, prompt }`
+        - `transcription: optional object { language, languages, model, prompt }`
 
           Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
@@ -1101,17 +1113,25 @@ Returns the created client secret and the effective session object. The client s
 
             The language of the input audio.
 
-          - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+          - `languages: optional array of string`
 
-            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+            The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+          - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
+
+            The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
             - `string`
 
-            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+            - `"whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
-              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+              The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
               - `"whisper-1"`
+
+              - `"gpt-transcribe"`
+
+              - `"gpt-live-transcribe"`
 
               - `"gpt-4o-mini-transcribe"`
 
@@ -1858,7 +1878,7 @@ Returns the created client secret and the effective session object. The client s
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-        - `transcription: optional object { language, model, prompt }`
+        - `transcription: optional object { language, languages, model, prompt }`
 
           Configuration of the transcription model.
 
@@ -1866,17 +1886,25 @@ Returns the created client secret and the effective session object. The client s
 
             The language of the input audio.
 
-          - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+          - `languages: optional array of string`
 
-            The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+            The possible input audio languages configured for transcription, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format.
+
+          - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
+
+            The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
             - `string`
 
-            - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+            - `"whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
-              The model used for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
+              The model used for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`.
 
               - `"whisper-1"`
+
+              - `"gpt-transcribe"`
+
+              - `"gpt-live-transcribe"`
 
               - `"gpt-4o-mini-transcribe"`
 
@@ -1964,6 +1992,9 @@ curl https://api.openai.com/v1/realtime/client_secrets \
         },
         "transcription": {
           "language": "language",
+          "languages": [
+            "string"
+          ],
           "model": "whisper-1",
           "prompt": "prompt"
         },
