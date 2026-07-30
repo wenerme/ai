@@ -1,11 +1,11 @@
 ---
 title: "Weights & Biases | Models"
-description: "Use Weights & Biases models with Mastra. 30 models available."
+description: "Use Weights & Biases models with Mastra. 31 models available."
 ---
 
 # [Weights & Biases logo]Weights & Biases
 
-Access 30 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
+Access 31 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
 
 Learn more in the [Weights & Biases documentation](https://docs.wandb.ai).
 
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.71,
     "outputCost": 3.5
+  },
+  {
+    "model": "wandb/moonshotai/Kimi-K3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "wandb/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",

@@ -1,11 +1,11 @@
 ---
 title: "Chutes | Models"
-description: "Use Chutes models with Mastra. 14 models available."
+description: "Use Chutes models with Mastra. 15 models available."
 ---
 
 # [Chutes logo]Chutes
 
-Access 14 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
+Access 15 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
 
 Learn more in the [Chutes documentation](https://llm.chutes.ai).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 65535,
     "inputCost": 0.66,
     "outputCost": 3.5
+  },
+  {
+    "model": "chutes/moonshotai/Kimi-K3-TEE",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65535,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "chutes/Nemotron-3-Nano-Omni-30B-TEE",

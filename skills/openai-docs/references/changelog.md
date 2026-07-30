@@ -8,6 +8,14 @@ Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecatio
 
 ## July, 2026
 
+### Jul 29
+
+Feature
+
+Released the official [OpenAI Terraform provider](https://developers.openai.com/api/docs/guides/terraform) for managing OpenAI API Platform resources as infrastructure as code.
+
+Provision and manage projects, users, groups, roles, access assignments, service accounts, certificates, invitations, and project-level rate limits. Use standard Terraform workflows to review and apply changes, import existing resources, and detect and reconcile configuration drift. Install the provider from the [Terraform Registry](https://registry.terraform.io/providers/openai/openai/latest).
+
 ### Jul 28
 
 Feature · Model: gpt-transcribe · Model: gpt-live-transcribe · API: v1/audio/transcriptions · API: v1/realtime

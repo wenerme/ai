@@ -92,13 +92,16 @@ run();
 
 ### Errors
 
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError      | 400         | application/json |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError         | 400         | application/json |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.ForbiddenResponseError          | 403         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
 
 ## upload
 
@@ -119,6 +122,7 @@ const openRouter = new OpenRouter({
 
 async function run() {
   const result = await openRouter.files.upload({
+    provider: "openai",
     requestBody: {
       file: await openAsBlob("example.file"),
     },
@@ -150,6 +154,7 @@ const openRouter = new OpenRouterCore({
 
 async function run() {
   const res = await filesUpload(openRouter, {
+    provider: "openai",
     requestBody: {
       file: await openAsBlob("example.file"),
     },
@@ -176,19 +181,21 @@ run();
 
 ### Response
 
-**Promise\<[models.FileMetadata](../../models/filemetadata.mdx)>**
+**Promise\<[models.FileResponse](../../models/fileresponse.mdx)>**
 
 ### Errors
 
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError      | 400         | application/json |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.ForbiddenResponseError       | 403         | application/json |
-| errors.PayloadTooLargeResponseError | 413         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError         | 400         | application/json |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.ForbiddenResponseError          | 403         | application/json |
+| errors.PayloadTooLargeResponseError    | 413         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
 
 ## delete
 
@@ -209,6 +216,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.files.delete({
     fileId: "file_011CNha8iCJcU1wXNR6q4V8w",
+    provider: "openai",
   });
 
   console.log(result);
@@ -237,6 +245,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await filesDelete(openRouter, {
     fileId: "file_011CNha8iCJcU1wXNR6q4V8w",
+    provider: "openai",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -264,13 +273,16 @@ run();
 
 ### Errors
 
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.NotFoundResponseError        | 404         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.ForbiddenResponseError          | 403         | application/json |
+| errors.NotFoundResponseError           | 404         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
 
 ## retrieve
 
@@ -291,6 +303,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.files.retrieve({
     fileId: "file_011CNha8iCJcU1wXNR6q4V8w",
+    provider: "openai",
   });
 
   console.log(result);
@@ -319,6 +332,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await filesRetrieve(openRouter, {
     fileId: "file_011CNha8iCJcU1wXNR6q4V8w",
+    provider: "openai",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -342,17 +356,20 @@ run();
 
 ### Response
 
-**Promise\<[models.FileMetadata](../../models/filemetadata.mdx)>**
+**Promise\<[models.FileResponse](../../models/fileresponse.mdx)>**
 
 ### Errors
 
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.NotFoundResponseError        | 404         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.ForbiddenResponseError          | 403         | application/json |
+| errors.NotFoundResponseError           | 404         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |
 
 ## download
 
@@ -373,6 +390,7 @@ const openRouter = new OpenRouter({
 async function run() {
   const result = await openRouter.files.download({
     fileId: "file_011CNha8iCJcU1wXNR6q4V8w",
+    provider: "openai",
   });
 
   console.log(result);
@@ -401,6 +419,7 @@ const openRouter = new OpenRouterCore({
 async function run() {
   const res = await filesDownload(openRouter, {
     fileId: "file_011CNha8iCJcU1wXNR6q4V8w",
+    provider: "openai",
   });
   if (res.ok) {
     const { value: result } = res;
@@ -428,11 +447,14 @@ run();
 
 ### Errors
 
-| Error Type                          | Status Code | Content Type     |
-| ----------------------------------- | ----------- | ---------------- |
-| errors.BadRequestResponseError      | 400         | application/json |
-| errors.UnauthorizedResponseError    | 401         | application/json |
-| errors.NotFoundResponseError        | 404         | application/json |
-| errors.TooManyRequestsResponseError | 429         | application/json |
-| errors.InternalServerResponseError  | 500         | application/json |
-| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+| Error Type                             | Status Code | Content Type     |
+| -------------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError         | 400         | application/json |
+| errors.UnauthorizedResponseError       | 401         | application/json |
+| errors.ForbiddenResponseError          | 403         | application/json |
+| errors.NotFoundResponseError           | 404         | application/json |
+| errors.TooManyRequestsResponseError    | 429         | application/json |
+| errors.InternalServerResponseError     | 500         | application/json |
+| errors.BadGatewayResponseError         | 502         | application/json |
+| errors.ServiceUnavailableResponseError | 503         | application/json |
+| errors.OpenRouterDefaultError          | 4XX, 5XX    | \*/\*            |

@@ -34,3 +34,7 @@ Run through the SLO’s’ five-step process to create a new SLO and configure a
 [SLO dashboard
 \
 Analyze SLO performance and view key metrics such as burn rate, error budget, SLI results and more.](/docs/grafana-cloud/alerting-and-irm/slo/dashboard/)
+
+[Maintenance windows
+\
+Schedule planned work to pause error budget consumption and burn rate alerting for selected SLOs.](/docs/grafana-cloud/alerting-and-irm/slo/maintenance-windows/)

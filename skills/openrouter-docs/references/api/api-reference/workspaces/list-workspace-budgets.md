@@ -123,6 +123,7 @@ paths:
                     reset_interval: monthly
                     updated_at: '2025-08-24T15:45:00Z'
                     workspace_id: 550e8400-e29b-41d4-a716-446655440000
+                include_byok_in_budgets: false
               schema:
                 $ref: '#/components/schemas/ListWorkspaceBudgetsResponse'
           description: Budgets retrieved successfully
@@ -167,12 +168,21 @@ components:
             reset_interval: monthly
             updated_at: '2025-08-24T15:45:00Z'
             workspace_id: 550e8400-e29b-41d4-a716-446655440000
+        include_byok_in_budgets: false
       properties:
         data:
           description: List of budgets configured for the workspace
           items:
             $ref: '#/components/schemas/WorkspaceBudget'
           type: array
+        include_byok_in_budgets:
+          description: >-
+            Whether BYOK (bring-your-own-key) spend is included when enforcing
+            the workspace's budgets. This is a workspace-wide setting that
+            applies to all budget intervals (daily, weekly, monthly, and
+            lifetime).
+          example: false
+          type: boolean
       required:
         - data
       type: object

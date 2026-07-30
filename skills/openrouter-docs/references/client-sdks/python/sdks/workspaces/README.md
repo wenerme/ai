@@ -391,7 +391,7 @@ with OpenRouter(
 
 ## set\_budget
 
-Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime > monthly > weekly > daily). [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime > monthly > weekly > daily). The optional `include_byok_in_budgets` flag is a workspace-wide setting: when provided it applies to every budget interval for the workspace, not just the interval in this request. Note that a change made here is applied to budget enforcement immediately, but an already-open workspace settings page in the web dashboard may keep showing the previous value until it is reloaded. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -407,7 +407,7 @@ with OpenRouter(
     api_key=os.getenv("OPENROUTER_API_KEY", ""),
 ) as open_router:
 
-    res = open_router.workspaces.set_budget(id="production", interval="monthly", limit_usd=100)
+    res = open_router.workspaces.set_budget(id="production", interval="monthly", limit_usd=100, include_byok_in_budgets=True)
 
     # Handle response
     print(res)
@@ -416,15 +416,16 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter                  | Type                                                                               | Required             | Description                                                                                                                                                 | Example    |
-| -------------------------- | ---------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| `id`                       | *str*                                                                              | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                                                                                             | production |
-| `interval`                 | [components.WorkspaceBudgetInterval](../../components/workspacebudgetinterval.mdx) | :heavy\_check\_mark: | Budget reset interval. Use "lifetime" for a one-time budget that never resets.                                                                              | monthly    |
-| `limit_usd`                | *float*                                                                            | :heavy\_check\_mark: | Spending limit in USD. Must be greater than 0.                                                                                                              | 100        |
-| `http_referer`             | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |            |
-| `x_open_router_title`      | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |            |
-| `x_open_router_categories` | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |            |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)                | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |            |
+| Parameter                  | Type                                                                               | Required             | Description                                                                                                                                                                                                                                                                                                 | Example    |
+| -------------------------- | ---------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `id`                       | *str*                                                                              | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                                                                                                                                                                                                                                             | production |
+| `interval`                 | [components.WorkspaceBudgetInterval](../../components/workspacebudgetinterval.mdx) | :heavy\_check\_mark: | Budget reset interval. Use "lifetime" for a one-time budget that never resets.                                                                                                                                                                                                                              | monthly    |
+| `limit_usd`                | *float*                                                                            | :heavy\_check\_mark: | Spending limit in USD. Must be greater than 0.                                                                                                                                                                                                                                                              | 100        |
+| `http_referer`             | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />                                                                                                                                                 |            |
+| `x_open_router_title`      | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                                                                                                                                                          |            |
+| `x_open_router_categories` | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                                                                                                                 |            |
+| `include_byok_in_budgets`  | *Optional\[bool]*                                                                  | :heavy\_minus\_sign: | Whether to include BYOK (bring-your-own-key) spend when enforcing the workspace's budgets. This is a workspace-wide setting: it applies to every budget interval (daily, weekly, monthly, and lifetime), not just the interval being upserted in this request. Omit to leave the current setting unchanged. | true       |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)                | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                                                         |            |
 
 ### Response
 

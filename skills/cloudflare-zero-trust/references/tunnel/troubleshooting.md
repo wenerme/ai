@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/tunnel/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this page to diagnose and resolve common issues with Cloudflare Tunnel. Many issues are resolved by upgrading to the latest version of `cloudflared` — refer to [Update cloudflared](https://developers.cloudflare.com/tunnel/downloads/update-cloudflared/) before investigating further.
 
@@ -328,6 +328,58 @@ net.core.rmem_max = 2500000
 
 Proxied traffic through Cloudflare Tunnel is buffered by default unless the origin server includes the `Content-Type: text/event-stream` response header. This header tells `cloudflared` to stream data as it arrives instead of buffering the entire response.
 
+## Cloudflare Tunnel fails to connect through Palo Alto Networks Next-Generation Firewall
+
+Cloudflare recently became aware of a change in Palo Alto Networks Next Generation Firewall (NGFW) App-ID database version 9128 that affects the requirements for permitting Cloudflare Tunnel and Cloudflare One Client traffic.
+
+Palo Alto Networks Next Generation Firewall (NGFW) detects both Cloudflare Tunnel (`cloudflared`) and the Cloudflare One Client (WARP with Zero Trust) as `cloudflare-warp`, regardless of the App-ID database version. There is currently no separate App-ID for `cloudflared`.
+
+This issue is likely to impact the Cloudflare One Client and WARP client, because Palo Alto Networks NGFW identifies their traffic as `cloudflare-warp`.
+
+This section focuses on Cloudflare Tunnel (`cloudflared`) connecting to Cloudflare over QUIC (UDP port `7844`).
+
+Starting with App-ID database version 9128 (released on July 27, 2026), NGFW changed the requirements for permitting this traffic. App-ID database version 9128 and later requires you to explicitly allow the `quic-base` application in addition to the previously required App-IDs and their dependencies.
+
+To restore connectivity, either revert the App-ID database or explicitly allow the required applications and UDP port.
+
+### Option 1: Revert the App-ID database
+
+Revert to App-ID database version 9127 and disable automatic App-ID updates until Palo Alto Networks provides a permanent resolution.
+
+If you revert the App-ID database, treat this as a temporary mitigation and coordinate with your security team. Re-enable automatic updates once Palo Alto Networks provides a permanent resolution.
+
+### Option 2: Configure an explicit firewall policy
+
+#### Create a custom service for UDP port 7844
+
+1. In PAN-OS, go to **Objects** \> **Services**.
+2. Create a service with the following settings:
+
+| Setting          | Value                    |
+| ---------------- | ------------------------ |
+| Name             | cloudflared\_7844\_udp   |
+| Description      | Optional                 |
+| Protocol         | UDP                      |
+| Destination Port | 7844                     |
+| Source Port      | Leave blank              |
+| Session Timeout  | Inherit from application |
+3. Select **OK**.
+
+#### Create or update a firewall rule
+
+1. Go to **Policies**.
+2. Create or modify a **universal** or **interzone** firewall rule.
+3. Configure the **Source** and **Destination** criteria to match the relevant traffic flows in your environment:
+  * **Source**: Select the appropriate Source Zone and/or Source Address.
+  * **Destination**: Select the appropriate Destination Zone and/or Destination Address.
+4. Under **Application**, add all of the following applications:
+  * `cloudflare-warp`
+  * `quic-base`
+5. Under **Service/URL Category**, add the custom service `cloudflared_7844_udp`.
+6. Set the rule **Action** to **Allow**.
+7. Enable logging according to your organization's security policy.
+8. Commit the policy change, then verify that Cloudflare Tunnel can establish and maintain connections through the firewall.
+
 ## How do I contact support?
 
 For the fastest possible troubleshooting, ensure your support ticket includes comprehensive details. The more context you provide, the faster your issue can be identified and resolved.
@@ -375,5 +427,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Docs","description":"Resolve common Cloudflare Tunnel connection and configuration issues.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/troubleshooting/#page","headline":"Troubleshooting · Cloudflare Docs","description":"Resolve common Cloudflare Tunnel connection and configuration issues.","url":"https://developers.cloudflare.com/tunnel/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

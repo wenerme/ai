@@ -348,11 +348,62 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `"event"`
 
+### Live Call Incoming Webhook Event
+
+- `LiveCallIncomingWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an incoming API SIP session is available for Live acceptance. The
+  same pending session can also emit `realtime.call.incoming`; the first
+  successful Realtime or Live accept endpoint selects the runtime surface.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the event was created.
+
+  - `data: object { session_id, sip_headers }`
+
+    Event data payload.
+
+    - `session_id: string`
+
+      The Transceiver `rtc_...` ID of the pending SIP session. The same
+      value appears as `call_id` in `realtime.call.incoming`.
+
+    - `sip_headers: array of object { name, value }`
+
+      Headers from the SIP Invite.
+
+      - `name: string`
+
+        Name of the SIP Header.
+
+      - `value: string`
+
+        Value of the SIP Header.
+
+  - `type: "live.call.incoming"`
+
+    The type of the event. Always `live.call.incoming`.
+
+    - `"live.call.incoming"`
+
+  - `object: optional "event"`
+
+    The object of the event. Always `event`.
+
+    - `"event"`
+
 ### Realtime Call Incoming Webhook Event
 
 - `RealtimeCallIncomingWebhookEvent object { id, created_at, data, 2 more }`
 
-  Sent when Realtime API Receives a incoming SIP call.
+  Sent when an incoming API SIP session is available for Realtime acceptance.
+  The same pending session can also emit `live.call.incoming`; the first
+  successful Realtime or Live accept endpoint selects the runtime surface.
 
   - `id: string`
 
@@ -368,7 +419,8 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
     - `call_id: string`
 
-      The unique ID of this call.
+      The Transceiver `rtc_...` ID of the pending SIP session. The same
+      value appears as `session_id` in `live.call.incoming`.
 
     - `sip_headers: array of object { name, value }`
 
@@ -532,7 +584,7 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 12 more`
+- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 13 more`
 
   Sent when a batch API request has been cancelled.
 
@@ -856,9 +908,58 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `"event"`
 
+  - `LiveCallIncomingWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an incoming API SIP session is available for Live acceptance. The
+    same pending session can also emit `realtime.call.incoming`; the first
+    successful Realtime or Live accept endpoint selects the runtime surface.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp (in seconds) of when the event was created.
+
+    - `data: object { session_id, sip_headers }`
+
+      Event data payload.
+
+      - `session_id: string`
+
+        The Transceiver `rtc_...` ID of the pending SIP session. The same
+        value appears as `call_id` in `realtime.call.incoming`.
+
+      - `sip_headers: array of object { name, value }`
+
+        Headers from the SIP Invite.
+
+        - `name: string`
+
+          Name of the SIP Header.
+
+        - `value: string`
+
+          Value of the SIP Header.
+
+    - `type: "live.call.incoming"`
+
+      The type of the event. Always `live.call.incoming`.
+
+      - `"live.call.incoming"`
+
+    - `object: optional "event"`
+
+      The object of the event. Always `event`.
+
+      - `"event"`
+
   - `RealtimeCallIncomingWebhookEvent object { id, created_at, data, 2 more }`
 
-    Sent when Realtime API Receives a incoming SIP call.
+    Sent when an incoming API SIP session is available for Realtime acceptance.
+    The same pending session can also emit `live.call.incoming`; the first
+    successful Realtime or Live accept endpoint selects the runtime surface.
 
     - `id: string`
 
@@ -874,7 +975,8 @@ Validates that the given payload was sent by OpenAI and parses the payload.
 
       - `call_id: string`
 
-        The unique ID of this call.
+        The Transceiver `rtc_...` ID of the pending SIP session. The same
+        value appears as `session_id` in `live.call.incoming`.
 
       - `sip_headers: array of object { name, value }`
 

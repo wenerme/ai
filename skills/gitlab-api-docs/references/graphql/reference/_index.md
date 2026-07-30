@@ -23329,6 +23329,52 @@ Fields:
 | <a id="duoworkfloweventedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="duoworkfloweventedge-node"></a>`node` | [`DuoWorkflowEvent`](#duoworkflowevent) | The item at the end of the edge. |
 
+#### `DuoWorkflowMergeRequestLinkConnection`
+
+The connection type for [`DuoWorkflowMergeRequestLink`](#duoworkflowmergerequestlink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowmergerequestlinkconnection-edges"></a>`edges` | [`[DuoWorkflowMergeRequestLinkEdge]`](#duoworkflowmergerequestlinkedge) | A list of edges. |
+| <a id="duoworkflowmergerequestlinkconnection-nodes"></a>`nodes` | [`[DuoWorkflowMergeRequestLink]`](#duoworkflowmergerequestlink) | A list of nodes. |
+| <a id="duoworkflowmergerequestlinkconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `DuoWorkflowMergeRequestLinkEdge`
+
+The edge type for [`DuoWorkflowMergeRequestLink`](#duoworkflowmergerequestlink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowmergerequestlinkedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="duoworkflowmergerequestlinkedge-node"></a>`node` | [`DuoWorkflowMergeRequestLink`](#duoworkflowmergerequestlink) | The item at the end of the edge. |
+
+#### `DuoWorkflowNoteLinkConnection`
+
+The connection type for [`DuoWorkflowNoteLink`](#duoworkflownotelink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflownotelinkconnection-edges"></a>`edges` | [`[DuoWorkflowNoteLinkEdge]`](#duoworkflownotelinkedge) | A list of edges. |
+| <a id="duoworkflownotelinkconnection-nodes"></a>`nodes` | [`[DuoWorkflowNoteLink]`](#duoworkflownotelink) | A list of nodes. |
+| <a id="duoworkflownotelinkconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `DuoWorkflowNoteLinkEdge`
+
+The edge type for [`DuoWorkflowNoteLink`](#duoworkflownotelink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflownotelinkedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="duoworkflownotelinkedge-node"></a>`node` | [`DuoWorkflowNoteLink`](#duoworkflownotelink) | The item at the end of the edge. |
+
 #### `DuoWorkflowSessionArtifactConnection`
 
 The connection type for [`DuoWorkflowSessionArtifact`](#duoworkflowsessionartifact).
@@ -31396,6 +31442,40 @@ Fields:
 | <a id="aifoundationalchatagentflowconfig-flowconfigschemaversion"></a>`flowConfigSchemaVersion` | [`String`](#string) | Flow config schema version sent to the Duo Workflow Service. |
 | <a id="aifoundationalchatagentflowconfig-flowversion"></a>`flowVersion` | [`String`](#string) | Flow version sent to the Duo Workflow Service. |
 
+### `AiGovernanceKpi`
+
+Aggregated KPI for the AI governance dashboard.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancekpi-count"></a>`count` | [`Int`](#int) | Count in the selected timeframe. |
+| <a id="aigovernancekpi-previouscount"></a>`previousCount` | [`Int`](#int) | Count in the preceding timeframe of equal length. |
+| <a id="aigovernancekpi-trend"></a>`trend` | [`[AiGovernanceKpiTrendPoint!]`](#aigovernancekpitrendpoint) | Bucketed counts across the selected timeframe. |
+
+### `AiGovernanceKpiTrendPoint`
+
+Single bucket of an AI governance KPI trend series.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancekpitrendpoint-bucketstart"></a>`bucketStart` | [`Time!`](#time) | Timestamp of the start of the bucket. |
+| <a id="aigovernancekpitrendpoint-count"></a>`count` | [`Int!`](#int) | Count of items in the bucket. |
+
+### `AiGovernanceMetrics`
+
+Aggregated AI governance dashboard metrics.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancemetrics-agents"></a>`agents` | [`AiGovernanceKpi`](#aigovernancekpi) | Distinct AI agents with sessions in the timeframe. |
+| <a id="aigovernancemetrics-sessions"></a>`sessions` | [`AiGovernanceKpi`](#aigovernancekpi) | AI agent sessions in the timeframe. |
+
 ### `AiInstanceUsageData`
 
 Instance wide usage data for events stored in either PostgreSQL (default) or ClickHouse (when configured). Data retention: three months in PostgreSQL, indefinite in ClickHouse. Premium and Ultimate only.
@@ -33766,6 +33846,7 @@ Fields:
 | <a id="cdrollout-rollouttransitions"></a>`rolloutTransitions`  | [`CdRolloutTransitionConnection`](#cdrollouttransitionconnection) | Introduced in GitLab 19.2. Status: Experiment. Transition journal of the rollout. |
 | <a id="cdrollout-startedat"></a>`startedAt` | [`Time`](#time) | Timestamp of when the rollout started. |
 | <a id="cdrollout-state"></a>`state` | [`CdRolloutState!`](#cdrolloutstate) | State of the rollout. |
+| <a id="cdrollout-triggeredbyuser"></a>`triggeredByUser`  | [`UserCore`](#usercore) | Introduced in GitLab 19.3. Status: Experiment. User who triggered the rollout, derived from its transition journal. Null if the rollout was triggered by a non-user principal (for example, a policy or schedule). |
 | <a id="cdrollout-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the rollout was last updated. |
 | <a id="cdrollout-versionset"></a>`versionSet` | [`CdVersionSet`](#cdversionset) | Version set the rollout deploys. |
 | <a id="cdrollout-workflowref"></a>`workflowRef` | [`String`](#string) | Workflow reference of the rollout. |
@@ -33867,6 +33948,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="cdversionset-application"></a>`application` | [`CdApplication`](#cdapplication) | Application the version set belongs to. |
+| <a id="cdversionset-author"></a>`author`  | [`UserCore`](#usercore) | Introduced in GitLab 19.3. Status: Experiment. User who created the version set. Null if it was created before author tracking was added. |
 | <a id="cdversionset-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the version set was created. |
 | <a id="cdversionset-description"></a>`description` | [`String`](#string) | Description of the version set. |
 | <a id="cdversionset-entriesdigest"></a>`entriesDigest` | [`String`](#string) | Digest of the version set entries. |
@@ -39041,6 +39123,38 @@ Fields:
 
 #### Fields with arguments
 
+##### `DuoWorkflow.mergeRequestLinks`
+
+Merge requests linked to the session.
+
+Returns [`DuoWorkflowMergeRequestLinkConnection`](#duoworkflowmergerequestlinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-mergerequestlinks-linktype"></a>`linkType` | [`DuoWorkflowMergeRequestLinkType`](#duoworkflowmergerequestlinktype) | Filter links by their link type. |
+
+##### `DuoWorkflow.noteLinks`
+
+Notes linked to the session.
+
+Returns [`DuoWorkflowNoteLinkConnection`](#duoworkflownotelinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-notelinks-linktype"></a>`linkType` | [`DuoWorkflowNoteLinkType`](#duoworkflownotelinktype) | Filter links by their link type. |
+
 ##### `DuoWorkflow.toolCallApproved`
 
 Whether the specified tool call is approved for the session.
@@ -39117,6 +39231,32 @@ Fields:
 | <a id="duoworkflowevent-workflowgoal"></a>`workflowGoal` | [`String`](#string) | Goal of the session. |
 | <a id="duoworkflowevent-workflowstatus"></a>`workflowStatus` | [`DuoWorkflowStatus`](#duoworkflowstatus) | Status of the session. |
 
+### `DuoWorkflowMergeRequestLink`
+
+Link between a GitLab Duo Agent Platform session and a merge request.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowmergerequestlink-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the link was created. |
+| <a id="duoworkflowmergerequestlink-linktype"></a>`linkType` | [`DuoWorkflowMergeRequestLinkType!`](#duoworkflowmergerequestlinktype) | How the merge request relates to the session. |
+| <a id="duoworkflowmergerequestlink-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Linked merge request. |
+| <a id="duoworkflowmergerequestlink-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Linked GitLab Duo Agent Platform session. |
+
+### `DuoWorkflowNoteLink`
+
+Link between a GitLab Duo Agent Platform session and a note.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflownotelink-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the link was created. |
+| <a id="duoworkflownotelink-linktype"></a>`linkType` | [`DuoWorkflowNoteLinkType!`](#duoworkflownotelinktype) | How the note relates to the session. |
+| <a id="duoworkflownotelink-note"></a>`note` | [`Note`](#note) | Linked note. |
+| <a id="duoworkflownotelink-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Linked GitLab Duo Agent Platform session. |
+
 ### `DuoWorkflowPermissions`
 
 Check permissions for the current user on a Duo workflow.
@@ -39143,6 +39283,7 @@ Fields:
 | <a id="duoworkflowsessionartifact-downloadpath"></a>`downloadPath` | [`String`](#string) | Path to download the session artifact as a JSON file. |
 | <a id="duoworkflowsessionartifact-id"></a>`id` | [`ID!`](#id) | Global ID of the session, as an `Ai::DuoWorkflows::Workflow`. |
 | <a id="duoworkflowsessionartifact-project"></a>`project` | [`Project`](#project) | Project the session belongs to. |
+| <a id="duoworkflowsessionartifact-user"></a>`user` | [`UserCore`](#usercore) | User who initiated the session. |
 | <a id="duoworkflowsessionartifact-webpath"></a>`webPath` | [`String`](#string) | Path of the session. |
 | <a id="duoworkflowsessionartifact-workflowcreatedat"></a>`workflowCreatedAt` | [`Time!`](#time) | Timestamp of when the session was created. |
 | <a id="duoworkflowsessionartifact-workflowdefinition"></a>`workflowDefinition` | [`String!`](#string) | Workflow definition type of the session. |
@@ -41719,6 +41860,21 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="group-aidomainsettings-domainsettingtype"></a>`domainSettingType` | [`AiDomainSettingType!`](#aidomainsettingtype) | Type of domain setting to retrieve. |
 | <a id="group-aidomainsettings-search"></a>`search` | [`String`](#string) | Filter domains by substring match. |
+
+##### `Group.aiGovernanceMetrics`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Aggregated AI governance dashboard metrics. Returns null when the `ai_governance_dashboard` feature flag is disabled.
+
+Returns [`AiGovernanceMetrics`](#aigovernancemetrics).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="group-aigovernancemetrics-timeframe"></a>`timeframe` | [`AiGovernanceMetricsTimeframe`](#aigovernancemetricstimeframe) | Time window for the metrics. Defaults to LAST_7_DAYS. |
 
 ##### `Group.aiMetrics`
 
@@ -45792,6 +45948,22 @@ Arguments:
 | <a id="mergerequest-discussionswithactivity-filter"></a>`filter` | [`NotesFilterType`](#notesfiltertype) | Type of notes collection: ALL_NOTES, ONLY_COMMENTS, ONLY_ACTIVITY. |
 | <a id="mergerequest-discussionswithactivity-sort"></a>`sort` | [`WorkItemDiscussionsSort`](#workitemdiscussionssort) | Sort order for the discussions. |
 
+##### `MergeRequest.duoWorkflowLinks`
+
+GitLab Duo Agent Platform sessions linked to the merge request.
+
+Returns [`DuoWorkflowMergeRequestLinkConnection`](#duoworkflowmergerequestlinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequest-duoworkflowlinks-linktype"></a>`linkType` | [`DuoWorkflowMergeRequestLinkType`](#duoworkflowmergerequestlinktype) | Filter links by their link type. |
+
 ##### `MergeRequest.findingReportsComparer`
 
 - Introduced in GitLab 16.1.
@@ -49174,6 +49346,24 @@ Fields:
 | <a id="note-url"></a>`url` | [`String`](#string) | URL to view the note in the Web UI. |
 | <a id="note-userpermissions"></a>`userPermissions` | [`NotePermissions!`](#notepermissions) | Permissions for the current user on the resource. |
 
+#### Fields with arguments
+
+##### `Note.duoWorkflowLinks`
+
+GitLab Duo Agent Platform sessions linked to the note.
+
+Returns [`DuoWorkflowNoteLinkConnection`](#duoworkflownotelinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="note-duoworkflowlinks-linktype"></a>`linkType` | [`DuoWorkflowNoteLinkType`](#duoworkflownotelinktype) | Filter links by their link type. |
+
 ### `NotePermissions`
 
 Fields:
@@ -51411,6 +51601,21 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="project-aiflowtriggers-ids"></a>`ids` | [`[AiFlowTriggerID!]`](#aiflowtriggerid) | Filter AI flow triggers by IDs. |
+
+##### `Project.aiGovernanceMetrics`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Aggregated AI governance dashboard metrics. Returns null when the `ai_governance_dashboard` feature flag is disabled.
+
+Returns [`AiGovernanceMetrics`](#aigovernancemetrics).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="project-aigovernancemetrics-timeframe"></a>`timeframe` | [`AiGovernanceMetricsTimeframe`](#aigovernancemetricstimeframe) | Time window for the metrics. Defaults to LAST_7_DAYS. |
 
 ##### `Project.aiMetrics`
 
@@ -61361,6 +61566,16 @@ Possible event types for flow triggers.
 | <a id="aiflowtriggereventtype-pipeline_hooks"></a>`PIPELINE_HOOKS` | Flow trigger pipeline_hooks event. |
 | <a id="aiflowtriggereventtype-work_item"></a>`WORK_ITEM` | Flow trigger work_item event. |
 
+### `AiGovernanceMetricsTimeframe`
+
+Time window for AI governance dashboard metrics.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aigovernancemetricstimeframe-last_24_hours"></a>`LAST_24_HOURS` | Last 24 hours, bucketed hourly. |
+| <a id="aigovernancemetricstimeframe-last_30_days"></a>`LAST_30_DAYS` | Last 30 days, bucketed daily. |
+| <a id="aigovernancemetricstimeframe-last_7_days"></a>`LAST_7_DAYS` | Last 7 days, bucketed daily. |
+
 ### `AiMessageRole`
 
 Possible message roles for AI features.
@@ -63263,6 +63478,23 @@ List of GitLab Duo licensed features.
 | <a id="duolicensedfeature-agentic_chat"></a>`AGENTIC_CHAT` | Agentic Chat feature. |
 | <a id="duolicensedfeature-ai_catalog"></a>`AI_CATALOG` | AI Catalog feature. |
 | <a id="duolicensedfeature-ai_features"></a>`AI_FEATURES` | AI features. |
+
+### `DuoWorkflowMergeRequestLinkType`
+
+Type of link between a GitLab Duo Agent Platform session and a merge request.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoworkflowmergerequestlinktype-created"></a>`CREATED` | Link of type `created` between a session and a merge request. |
+| <a id="duoworkflowmergerequestlinktype-source"></a>`SOURCE` | Link of type `source` between a session and a merge request. |
+
+### `DuoWorkflowNoteLinkType`
+
+Type of link between a GitLab Duo Agent Platform session and a note.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoworkflownotelinktype-created"></a>`CREATED` | Link of type `created` between a session and a note. |
 
 ### `DuoWorkflowStatus`
 
@@ -66155,6 +66387,7 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-email_otp_enrollment_callout"></a>`EMAIL_OTP_ENROLLMENT_CALLOUT` | Callout feature name for email_otp_enrollment_callout. |
 | <a id="usercalloutfeaturenameenum-expired_trial_status_widget"></a>`EXPIRED_TRIAL_STATUS_WIDGET` | Callout feature name for expired_trial_status_widget. |
 | <a id="usercalloutfeaturenameenum-feature_flags_new_version"></a>`FEATURE_FLAGS_NEW_VERSION` | Callout feature name for feature_flags_new_version. |
+| <a id="usercalloutfeaturenameenum-feature_library_shimmer_seen"></a>`FEATURE_LIBRARY_SHIMMER_SEEN` | Callout feature name for feature_library_shimmer_seen. |
 | <a id="usercalloutfeaturenameenum-file_tree_browser_popover"></a>`FILE_TREE_BROWSER_POPOVER` | Callout feature name for file_tree_browser_popover. |
 | <a id="usercalloutfeaturenameenum-focused_vulnerability_reporting"></a>`FOCUSED_VULNERABILITY_REPORTING` | Callout feature name for focused_vulnerability_reporting. |
 | <a id="usercalloutfeaturenameenum-geo_enable_hashed_storage"></a>`GEO_ENABLE_HASHED_STORAGE` | Callout feature name for geo_enable_hashed_storage. |
@@ -66185,7 +66418,6 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-secrets_manager_nav_badge"></a>`SECRETS_MANAGER_NAV_BADGE` | Callout feature name for secrets_manager_nav_badge. |
 | <a id="usercalloutfeaturenameenum-security_configuration_devops_alert"></a>`SECURITY_CONFIGURATION_DEVOPS_ALERT` | Callout feature name for security_configuration_devops_alert. |
 | <a id="usercalloutfeaturenameenum-security_configuration_upgrade_banner"></a>`SECURITY_CONFIGURATION_UPGRADE_BANNER` | Callout feature name for security_configuration_upgrade_banner. |
-| <a id="usercalloutfeaturenameenum-security_manager_role"></a>`SECURITY_MANAGER_ROLE` | Callout feature name for security_manager_role. |
 | <a id="usercalloutfeaturenameenum-security_policy_protected_branch_modification"></a>`SECURITY_POLICY_PROTECTED_BRANCH_MODIFICATION` | Callout feature name for security_policy_protected_branch_modification. |
 | <a id="usercalloutfeaturenameenum-security_scanner_profiles_announcement"></a>`SECURITY_SCANNER_PROFILES_ANNOUNCEMENT` | Callout feature name for security_scanner_profiles_announcement. |
 | <a id="usercalloutfeaturenameenum-single_origin_fallback_callout"></a>`SINGLE_ORIGIN_FALLBACK_CALLOUT` | Callout feature name for single_origin_fallback_callout. |

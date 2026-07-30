@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 185 models available."
+description: "Use LLM Gateway models with Mastra. 186 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 185 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 186 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -2014,10 +2014,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 131072,
+    "contextWindow": 262144,
     "maxOutput": 8192,
-    "inputCost": 0.3,
-    "outputCost": 1.5
+    "inputCost": 0.2,
+    "outputCost": 0.88
   },
   {
     "model": "llmgateway/qwen3-vl-235b-a22b-thinking",
@@ -2038,10 +2038,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 131072,
+    "contextWindow": 262144,
     "maxOutput": 8192,
-    "inputCost": 0.2,
-    "outputCost": 0.7
+    "inputCost": 0.15,
+    "outputCost": 0.6
   },
   {
     "model": "llmgateway/qwen3-vl-flash",
@@ -2126,6 +2126,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 3
+  },
+  {
+    "model": "llmgateway/qwen3.7-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 0.03,
+    "outputCost": 0.13
   },
   {
     "model": "llmgateway/qwen3.7-max",

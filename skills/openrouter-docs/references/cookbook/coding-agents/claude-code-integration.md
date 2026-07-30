@@ -87,6 +87,14 @@ Requirements:
     <Note>
       **Persistence:** We recommend adding these lines to your shell profile (`~/.bashrc`, `~/.zshrc`, or `~/.config/fish/config.fish`).
     </Note>
+
+    <Warning>
+      **Ordering matters:** `ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"` is expanded when the profile is sourced. If `OPENROUTER_API_KEY` is defined *later* in the file, in a different file, or injected by a secrets manager after your profile runs, the auth token silently expands to an empty string and every request fails with an auth error. Ensure the key is defined **before** it is consumed by `ANTHROPIC_AUTH_TOKEN`, or put it in a file that loads earlier (e.g. `~/.zshenv` for zsh).
+    </Warning>
+
+    <Note>
+      **Secret hygiene:** This puts a plaintext API key in your shell profile — a file that is easy to accidentally commit to a dotfiles repo or paste into a gist. Consider loading the key from your OS keychain instead, e.g. on macOS: `export OPENROUTER_API_KEY="$(security find-generic-password -s openrouter -w)"`. If a key does leak, revoke and rotate it at [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
+    </Note>
   </Tab>
 
   <Tab title="Project Settings File">
@@ -126,6 +134,16 @@ Then quit and re-launch `claude` so it picks up the new environment variables.
 
 <Note>
   If you have never logged in to Claude Code with Anthropic, you can skip this step.
+</Note>
+
+<Note>
+  **Where the cached login lives:** On macOS the cached session is stored in the Keychain as a generic password named `Claude Code-credentials` (native installs do not write `~/.claude/.credentials.json`). If you are debugging a stubborn auth conflict, you can confirm a stale session exists with:
+
+  ```bash lines theme={null}
+  security find-generic-password -s "Claude Code-credentials"
+  ```
+
+  If it prints an entry after `/logout`, delete it with `security delete-generic-password -s "Claude Code-credentials"` and relaunch `claude`.
 </Note>
 
 ### Step 4: Start your session
@@ -258,6 +276,13 @@ Download the statusline scripts from the [openrouter-examples repository](https:
 ```
 
 The script uses your `ANTHROPIC_AUTH_TOKEN` environment variable, which should already be set to your OpenRouter API key if you followed the setup above.
+
+A few practical notes:
+
+* **Prerequisites:** `statusline.sh` is a thin wrapper that runs `npx tsx statusline.ts`, so it requires Node.js and network access on first render (npx downloads `tsx` on first use, which can make the first refresh slow). Download **both** files and keep them in the same directory.
+* **Only one statusline:** `settings.json` supports a single `statusLine` entry. If you already use another statusline (e.g. ccusage or a tool-provided one), adding this one **replaces** it — they cannot be combined without writing a wrapper script that merges their output.
+* **API usage:** Each refresh makes one request to the [generation endpoint](/docs/api/api-reference/generations/get-generation) per new generation in the session. Long sessions catch up incrementally; costs shown are cumulative for the current session.
+* **State files:** Per-session state accumulates at `/tmp/claude-openrouter-cost-<session-id>.json`. These are small and cleared on OS reboot on most systems, but you can delete them at any time.
 
 ## Troubleshooting
 

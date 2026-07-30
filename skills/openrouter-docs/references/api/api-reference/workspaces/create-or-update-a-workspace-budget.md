@@ -4,7 +4,7 @@
 
 # Create or update a workspace budget
 
-> Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime > monthly > weekly > daily). [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Create or update the budget for a given interval. Budget limits must strictly decrease as the interval narrows (lifetime > monthly > weekly > daily). The optional `include_byok_in_budgets` flag is a workspace-wide setting: when provided it applies to every budget interval for the workspace, not just the interval in this request. Note that a change made here is applied to budget enforcement immediately, but an already-open workspace settings page in the web dashboard may keep showing the previous value until it is reloaded. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -100,8 +100,13 @@ paths:
       description: >-
         Create or update the budget for a given interval. Budget limits must
         strictly decrease as the interval narrows (lifetime > monthly > weekly >
-        daily). [Management key](/docs/guides/overview/auth/management-api-keys)
-        required.
+        daily). The optional `include_byok_in_budgets` flag is a workspace-wide
+        setting: when provided it applies to every budget interval for the
+        workspace, not just the interval in this request. Note that a change
+        made here is applied to budget enforcement immediately, but an
+        already-open workspace settings page in the web dashboard may keep
+        showing the previous value until it is reloaded. [Management
+        key](/docs/guides/overview/auth/management-api-keys) required.
       operationId: upsertWorkspaceBudget
       parameters:
         - description: The workspace ID (UUID) or slug
@@ -126,6 +131,7 @@ paths:
         content:
           application/json:
             example:
+              include_byok_in_budgets: true
               limit_usd: 100
             schema:
               $ref: '#/components/schemas/UpsertWorkspaceBudgetRequest'
@@ -142,6 +148,7 @@ paths:
                   reset_interval: monthly
                   updated_at: '2025-08-24T15:45:00Z'
                   workspace_id: 550e8400-e29b-41d4-a716-446655440000
+                include_byok_in_budgets: true
               schema:
                 $ref: '#/components/schemas/UpsertWorkspaceBudgetResponse'
           description: Budget created or updated successfully
@@ -200,8 +207,18 @@ components:
       type: string
     UpsertWorkspaceBudgetRequest:
       example:
+        include_byok_in_budgets: true
         limit_usd: 100
       properties:
+        include_byok_in_budgets:
+          description: >-
+            Whether to include BYOK (bring-your-own-key) spend when enforcing
+            the workspace's budgets. This is a workspace-wide setting: it
+            applies to every budget interval (daily, weekly, monthly, and
+            lifetime), not just the interval being upserted in this request.
+            Omit to leave the current setting unchanged.
+          example: true
+          type: boolean
         limit_usd:
           description: Spending limit in USD. Must be greater than 0.
           example: 100
@@ -219,11 +236,20 @@ components:
           reset_interval: monthly
           updated_at: '2025-08-24T15:45:00Z'
           workspace_id: 550e8400-e29b-41d4-a716-446655440000
+        include_byok_in_budgets: true
       properties:
         data:
           allOf:
             - $ref: '#/components/schemas/WorkspaceBudget'
             - description: The created or updated budget
+        include_byok_in_budgets:
+          description: >-
+            Whether BYOK (bring-your-own-key) spend is included when enforcing
+            the workspace's budgets. This is a workspace-wide setting that
+            applies to all budget intervals (daily, weekly, monthly, and
+            lifetime).
+          example: true
+          type: boolean
       required:
         - data
       type: object

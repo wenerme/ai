@@ -29,7 +29,7 @@ handle it.
 
       The format of the input audio.
 
-      - `PCMAudioFormat object { rate, type }`
+      - `PCMAudio object { rate, type }`
 
         The PCM audio format. Only a 24kHz sample rate is supported.
 
@@ -45,7 +45,7 @@ handle it.
 
           - `"audio/pcm"`
 
-      - `PCMUAudioFormat object { type }`
+      - `PCMUAudio object { type }`
 
         The G.711 μ-law format.
 
@@ -55,7 +55,7 @@ handle it.
 
           - `"audio/pcmu"`
 
-      - `PCMAAudioFormat object { type }`
+      - `PCMAAudio object { type }`
 
         The G.711 A-law format.
 
@@ -99,23 +99,35 @@ handle it.
 
         - `"xhigh"`
 
+      - `keywords: optional array of string`
+
+        Words or phrases to guide transcription of the input audio. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
+
       - `language: optional string`
 
         The language of the input audio. Supplying the input language in
         [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) (e.g. `en`) format
         will improve accuracy and latency.
 
-      - `model: optional string or "whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+      - `languages: optional array of string`
 
-        The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+        Possible languages of the input audio, in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) format. Supported by `gpt-transcribe` and `gpt-live-transcribe`.
+
+      - `model: optional string or "whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
+
+        The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
         - `string`
 
-        - `"whisper-1" or "gpt-4o-mini-transcribe" or "gpt-4o-mini-transcribe-2025-12-15" or 3 more`
+        - `"whisper-1" or "gpt-transcribe" or "gpt-live-transcribe" or 5 more`
 
-          The model to use for transcription. Current options are `whisper-1`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
+          The model to use for transcription. Current options are `whisper-1`, `gpt-transcribe`, `gpt-live-transcribe`, `gpt-4o-mini-transcribe`, `gpt-4o-mini-transcribe-2025-12-15`, `gpt-4o-transcribe`, `gpt-4o-transcribe-diarize`, and `gpt-realtime-whisper`. Use `gpt-4o-transcribe-diarize` when you need diarization with speaker labels.
 
           - `"whisper-1"`
+
+          - `"gpt-transcribe"`
+
+          - `"gpt-live-transcribe"`
 
           - `"gpt-4o-mini-transcribe"`
 

@@ -60,7 +60,11 @@ Create a new skill.
 curl https://api.openai.com/v1/skills \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files='["Example data"]'
+    -d '{
+          "files": [
+            "string"
+          ]
+        }'
 ```
 
 #### Response
@@ -74,6 +78,46 @@ curl https://api.openai.com/v1/skills \
   "latest_version": "latest_version",
   "name": "name",
   "object": "skill"
+}
+```
+
+## Delete a skill by its ID.
+
+**delete** `/skills/{skill_id}`
+
+Delete a skill by its ID.
+
+### Path Parameters
+
+- `skill_id: string`
+
+### Returns
+
+- `DeletedSkill object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "skill.deleted"`
+
+    - `"skill.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/skills/$SKILL_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.deleted"
 }
 ```
 
@@ -326,46 +370,6 @@ curl https://api.openai.com/v1/skills/$SKILL_ID \
 }
 ```
 
-## Delete a skill by its ID.
-
-**delete** `/skills/{skill_id}`
-
-Delete a skill by its ID.
-
-### Path Parameters
-
-- `skill_id: string`
-
-### Returns
-
-- `DeletedSkill object { id, deleted, object }`
-
-  - `id: string`
-
-  - `deleted: boolean`
-
-  - `object: "skill.deleted"`
-
-    - `"skill.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/skills/$SKILL_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "skill.deleted"
-}
-```
-
 ## Domain Types
 
 ### Deleted Skill
@@ -559,7 +563,11 @@ Create a new immutable skill version.
 curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files='["Example data"]'
+    -d '{
+          "files": [
+            "string"
+          ]
+        }'
 ```
 
 #### Response
@@ -572,6 +580,55 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions \
   "name": "name",
   "object": "skill.version",
   "skill_id": "skill_id",
+  "version": "version"
+}
+```
+
+## Delete a skill version.
+
+**delete** `/skills/{skill_id}/versions/{version}`
+
+Delete a skill version.
+
+### Path Parameters
+
+- `skill_id: string`
+
+- `version: string`
+
+  The skill version number.
+
+### Returns
+
+- `DeletedSkillVersion object { id, deleted, object, version }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "skill.version.deleted"`
+
+    - `"skill.version.deleted"`
+
+  - `version: string`
+
+    The deleted skill version.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "skill.version.deleted",
   "version": "version"
 }
 ```
@@ -754,55 +811,6 @@ curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
   "name": "name",
   "object": "skill.version",
   "skill_id": "skill_id",
-  "version": "version"
-}
-```
-
-## Delete a skill version.
-
-**delete** `/skills/{skill_id}/versions/{version}`
-
-Delete a skill version.
-
-### Path Parameters
-
-- `skill_id: string`
-
-- `version: string`
-
-  The skill version number.
-
-### Returns
-
-- `DeletedSkillVersion object { id, deleted, object, version }`
-
-  - `id: string`
-
-  - `deleted: boolean`
-
-  - `object: "skill.version.deleted"`
-
-    - `"skill.version.deleted"`
-
-  - `version: string`
-
-    The deleted skill version.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/skills/$SKILL_ID/versions/$VERSION \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "skill.version.deleted",
   "version": "version"
 }
 ```

@@ -46,6 +46,27 @@ Replacements:
 
 Integrations that read or edit multiple settings in a single call must migrate to per-setting requests before March 31, 2027 to ensure uninterrupted service. After this date, the batch endpoints will no longer be available.
 
+## 2026-07-27
+
+**Foundation DNS boolean setting**
+
+Deprecation date: July 27, 2026
+
+End of life date: November 23, 2026
+
+The `foundation_dns` boolean is deprecated in the [DNS settings endpoints](https://developers.cloudflare.com/api/resources/dns/subresources/settings/) for zone settings and account defaults. Use `nameservers.type: "cloudflare.advanced"` to configure Advanced Nameservers instead.
+
+Affected endpoints:
+
+* [/zones/{zone\_id}/dns\_settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/zone/)
+* [/accounts/{account\_id}/dns\_settings](https://developers.cloudflare.com/api/resources/dns/subresources/settings/subresources/account/)
+
+Beginning October 26, 2026, the DNS settings API will gradually represent Advanced Nameservers with `nameservers.type: "cloudflare.advanced"`. This rollout is expected to take seven days. Before the rollout reaches an account, the API will continue to return `nameservers.type: "cloudflare.standard"` for Advanced Nameservers. The API will accept `nameservers.type: "cloudflare.advanced"` in `PATCH` requests for entitled accounts throughout the rollout.
+
+The `foundation_dns` boolean remains available as a compatibility alias during this transition. You can continue to read and write it. If a `PATCH` request includes both values, they must match. The API will reject conflicting values.
+
+Beginning November 23, 2026, the DNS settings API will no longer return or accept `foundation_dns`. This rollout is expected to take seven days. `PATCH` requests that include `foundation_dns` will be rejected. Update clients that treat `nameservers.type` as a closed enum to recognize the `"cloudflare.advanced"` value, and update clients that read or write `foundation_dns` before the end-of-life date. This API change does not change your Foundation DNS subscription or whether Advanced Nameservers are enabled on your zones. It does not require a zone migration.
+
 ## 2026-07-22
 
 **Account name 65-character limit**

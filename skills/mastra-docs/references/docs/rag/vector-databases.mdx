@@ -21,7 +21,7 @@ packages:
 
 # Storing embeddings in a vector database
 
-After generating embeddings, you need to store them in a database that supports vector similarity search. Mastra provides a consistent interface for storing and querying embeddings across various vector databases.
+After generating embeddings, you need to store them in a database that supports vector similarity search. Mastra provides a consistent interface for storing and querying embeddings across vector databases.
 
 ## Supported databases
 
@@ -578,7 +578,7 @@ The upsert operation:
 
 Vector stores support rich metadata (any JSON-serializable fields) for filtering and organization. Since metadata is stored with no fixed schema, use consistent field naming to avoid unexpected query results.
 
-> **warning**: Metadata is crucial for vector storage - without it, you'd only have numerical embeddings with no way to return the original text or filter results. Always store at least the source text as metadata.
+> **warning**: Metadata is important for vector storage. Without it, you'd only have numerical embeddings with no way to return the original text or filter results. Always store at least the source text as metadata.
 ```ts
 // Store embeddings with rich metadata for better organization and filtering
 await store.upsert({

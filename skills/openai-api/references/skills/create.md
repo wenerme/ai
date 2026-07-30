@@ -58,7 +58,11 @@ Create a new skill.
 curl https://api.openai.com/v1/skills \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F files='["Example data"]'
+    -d '{
+          "files": [
+            "string"
+          ]
+        }'
 ```
 
 #### Response

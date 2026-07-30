@@ -83,6 +83,21 @@ When `session_id` is set, sticky routing activates on any successful request —
   When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
 </Info>
 
+### Grouping requests across modalities
+
+Beyond sticky routing, OpenRouter uses `session_id` to group your requests in the [Sessions view on the Logs page](https://openrouter.ai/logs?tab=sessions). One `session_id` links requests across conversation turns, retries, and different modalities. This lets you trace a full agent session in one place.
+
+This grouping works across the synchronous endpoints, not just chat completions:
+
+* **Chat and Responses**: send `session_id` in the request body, or the `x-session-id` header.
+* **Embeddings, reranking, speech-to-text, text-to-speech, image generation, and video generation**: send the `x-session-id` header. These endpoints do not accept a body `session_id`. They use the value only for grouping, so sticky routing does not apply to them.
+
+The 256-character limit applies to both inputs. Send a consistent `x-session-id` across a multimodal workflow to group all of those generations under one session. For example, an agent transcribes audio, calls a chat model, then generates an image.
+
+<Note>
+  The [Batch API](/docs/batch-quickstart) does not yet group its generations by `session_id`.
+</Note>
+
 ## Inspecting cache usage
 
 To see how much caching saved on each generation, you can:

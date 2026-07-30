@@ -98,7 +98,7 @@ See ["Creating your first Azure ClickPipe"](/integrations/clickpipes/object-stor
 > **note**: ClickPipes uses separate static IP addresses for outbound connections.
 These IPs must be allowlisted if you're using IP-based firewall rules.
 
-See ["List of Static IPs"](/integrations/clickpipes#list-of-static-ips)
+See ["List of Static IPs"](/integrations/clickpipes/networking/static-ips)
 
 > **tip**: The same-region IP whitelisting limitation mentioned at the start of this document applies to ClickPipes as well.
 If your ClickPipes service and Azure Blob Storage are in the same region, use SAS token authentication instead of IP whitelisting.

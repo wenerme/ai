@@ -8,6 +8,34 @@ Cache writes have no additional fee on models before the GPT-5.6 family. For GPT
 
 This guide describes how Prompt Caching works in detail, so that you can optimize your prompts for lower latency and cost.
 
+## Caching behavior changes when migrating to GPT-5.6
+
+GPT-5.6 models and later model families cache exact prompt prefixes at cache
+breakpoints. By default, the service places an implicit breakpoint at the latest
+user or tool message. Unlike earlier models, it does not automatically fall
+back to the longest matching unmarked prefix before that breakpoint.
+
+For example, requests might share 4,000 tokens of instructions and other static
+content, followed by changing timestamps, tool-call history, or user input. If
+the implicit breakpoint includes that changing content, the full prefix at the
+breakpoint differs between requests. As a result, `cached_tokens` can be `0`
+even though the requests share thousands of identical tokens, and the service
+can repeatedly write the changing prefix to cache.
+
+To reuse the shared content, add an explicit `prompt_cache_breakpoint` at the
+end of the stable prefix and set the same `prompt_cache_key` on requests that
+share it. Content after the breakpoint can then change without invalidating the
+cached prefix.
+
+To avoid cache-write charges for the changing suffix, set
+`prompt_cache_options.mode` to `explicit`. This disables the implicit
+breakpoint, so only your explicit breakpoints are eligible for cache reads and
+writes. On GPT-5.6 models and later model families, cache writes cost 1.25× the
+uncached input token rate, so caching only the reusable prefix can reduce costs.
+
+See [Prompt cache breakpoints](#prompt-cache-breakpoints) for request examples,
+supported content blocks, and cache policy options.
+
 ## Structuring prompts
 
 Cache hits are only possible for exact prefix matches within a prompt. To realize caching benefits, place static content like instructions and examples at the beginning of your prompt, and put variable content, such as user-specific information, at the end. This also applies to images and tools, which must be identical between requests.

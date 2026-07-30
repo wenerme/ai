@@ -77,7 +77,7 @@ Connect to your Cloud SQL Postgres through the admin user and run the below comm
 
 Please follow the below steps to add ClickPipes IPs to your network.
 
-> **note**: If your are using SSH Tunneling, then you need to add the [ClickPipes IPs](../../index.md#list-of-static-ips) to the firewall rules of the Jump Server/Bastion.
+> **note**: If your are using SSH Tunneling, then you need to add the [ClickPipes IPs](/integrations/clickpipes/networking/static-ips) to the firewall rules of the Jump Server/Bastion.
 
 1. Go to **Connections** section
 
@@ -87,7 +87,7 @@ Please follow the below steps to add ClickPipes IPs to your network.
 
 <Image img={connections_networking} alt="Networking Subsection in Cloud SQL" size="lg" border/>
 
-3. Add the [public IPs of ClickPipes](../../index.md#list-of-static-ips)
+3. Add the [public IPs of ClickPipes](/integrations/clickpipes/networking/static-ips)
 
 <Image img={firewall1} alt="Add ClickPipes Networks to Firewall" size="lg" border/>
 <Image img={firewall2} alt="ClickPipes Networks Added to Firewall" size="lg" border/>

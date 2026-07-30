@@ -257,16 +257,9 @@ curl https://api.openai.com/v1/images/edits \
             }
           ],
           "prompt": "Add a watercolor effect to this image",
-          "background": "transparent",
           "model": "gpt-image-1.5",
-          "moderation": "auto",
-          "n": 1,
-          "output_compression": 100,
-          "output_format": "png",
-          "partial_images": 1,
           "quality": "high",
-          "size": "1024x1024",
-          "user": "user-1234"
+          "size": "1024x1024"
         }'
 ```
 

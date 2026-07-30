@@ -26,6 +26,10 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 
 Z.ai's flagship agentic coding model
 
+Requires Workers Paid
+
+This model is not available on the [Workers Free plan](https://developers.cloudflare.com/workers/platform/pricing/#workers). To use it, upgrade to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers).
+
 | Model Info                                                                            |                                                                                      |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | Context Window[ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/)   | 262,144 tokens                                                                       |
