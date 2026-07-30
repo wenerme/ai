@@ -16,6 +16,12 @@ Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-07-30
+
+**Use AI Search with the Agents SDK, Vercel AI SDK, and LangChain**
+
+New guides show how to use an AI Search instance from popular frameworks: the [Cloudflare Agents SDK](https://developers.cloudflare.com/ai-search/agent-sdks/agents-sdk/), the [Vercel AI SDK](https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/), and [LangChain](https://developers.cloudflare.com/ai-search/agent-sdks/langchain/). The AI SDK integration is a new `ai-search-provider` package, and the LangChain integration is a new retriever in the existing `langchain-cloudflare` package. Refer to the [Agents](https://developers.cloudflare.com/ai-search/agent-sdks/) section.
+
 ## 2026-07-08
 
 **GIF and BMP image support**

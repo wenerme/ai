@@ -1468,6 +1468,8 @@ Payload example:
 
 ## Pipeline events
 
+- `object_attributes.default_branch` [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/606357) in GitLab 19.3.
+
 Pipeline events are triggered when the status of a pipeline changes.
 
 Pipeline webhooks triggered by blocked users are not processed.
@@ -1505,6 +1507,8 @@ Payload example:
     "finished_at": "2016-08-12 15:26:29 UTC",
     "duration": 63,
     "queued_duration": 10,
+    "protected_ref": false,
+    "default_branch": true,
     "variables": [
       {
         "key": "NESTOR_PROD_ENVIRONMENT",
