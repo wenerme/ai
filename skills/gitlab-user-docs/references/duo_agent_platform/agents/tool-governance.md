@@ -6,6 +6,7 @@ Configure tool-level approval policies for GitLab Duo agents to gate sensitive a
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20466) in GitLab 19.1 as a [beta](../../../policy/development_stages_support.md) with a [feature flag](../../../administration/feature_flags/_index.md) named `gitlab_duo_governance_settings`. Enabled by default.
+- Enforcement for background flows, such as the Duo Developer foundational flow, added in GitLab 19.3 behind a [feature flag](../../../administration/feature_flags/_index.md) named `duo_workflow_background_tool_governance`. Disabled by default.
 
 > [!warning]
 > This feature is in [beta](../../../policy/development_stages_support.md).
@@ -16,6 +17,10 @@ Tool governance sits at the execution boundary. After an agent has been
 admitted to a project, and before a tool is invoked, the governance layer
 consults the configured rules for the user's role and the tool's action
 category, then enforces the resulting mode.
+
+> [!flag]
+> Enforcement for background flows is controlled by a feature flag.
+> For more information, see the history.
 
 Tools are classified into three action categories:
 
@@ -37,8 +42,7 @@ This feature applies to Agentic Chat and IDE extensions. For flows, governance
 enforcement depends on where the flow runs:
 
 - For flows that run in an IDE extension, GitLab enforces governance rules.
-- For flows that run in CI/CD runners, such as the Duo Developer or Duo Code Review foundational flows,
-  GitLab does not enforce governance rules. For more information, see [Known issues](#known-issues).
+- For background flows, such as the Duo Developer foundational flow, GitLab enforces governance rules.
 
 ## Default governance matrix
 
@@ -123,13 +127,9 @@ To configure tool governance rules for a project:
 
 ## Known issues
 
-- Tool governance rules do not apply to flows that run in CI/CD runners, such as the
-  [Duo Developer foundational flow](../flows/foundational_flows/developer.md).
-  When a flow runs in a runner, the runner's permissions override governance
-  enforcement, and the configured Always Allow, Always Ask, or Always Deny
-  modes have no effect.
-- The governance UI has two access categories: Web (browser-based sessions) and
-  Local (IDE and CLI). Flows that run in CI/CD runners do not map to either category.
+- The background category supports only Always Allow and Always Deny. Always Ask does not apply,
+  because no user is present to respond to an approval prompt in a background flow. A tool with no
+  configured background rule defaults to Always Allow.
 
 ## Related topics
 

@@ -15709,6 +15709,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mutation-updateaitoolrule-backgroundaccess"></a>`backgroundAccess`  | [`AiBackgroundToolPermission`](#aibackgroundtoolpermission) | Introduced in GitLab 19.3. Status: Experiment. Permission mode for the background-flow surface. |
 | <a id="mutation-updateaitoolrule-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-updateaitoolrule-fullpath"></a>`fullPath` | [`ID!`](#id) | Full path of the root namespace to update the tool rule for. |
 | <a id="mutation-updateaitoolrule-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. |
@@ -16278,6 +16279,7 @@ Arguments:
 | <a id="mutation-updatenamespacepackagesettings-lockmavenpackagerequestsforwarding"></a>`lockMavenPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether Maven package forwarding is locked for all descendent namespaces. |
 | <a id="mutation-updatenamespacepackagesettings-locknpmpackagerequestsforwarding"></a>`lockNpmPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether npm package forwarding is locked for all descendent namespaces. |
 | <a id="mutation-updatenamespacepackagesettings-lockpypipackagerequestsforwarding"></a>`lockPypiPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether PyPI package forwarding is locked for all descendent namespaces. |
+| <a id="mutation-updatenamespacepackagesettings-lockrubygemspackagerequestsforwarding"></a>`lockRubygemsPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether RubyGems package forwarding is locked for all descendent namespaces. |
 | <a id="mutation-updatenamespacepackagesettings-mavenduplicateexceptionregex"></a>`mavenDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When maven_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
 | <a id="mutation-updatenamespacepackagesettings-mavenduplicatesallowed"></a>`mavenDuplicatesAllowed` | [`Boolean`](#boolean) | Indicates whether duplicate Maven packages are allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-mavenpackagerequestsforwarding"></a>`mavenPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether Maven package forwarding is allowed for the namespace. |
@@ -16287,6 +16289,7 @@ Arguments:
 | <a id="mutation-updatenamespacepackagesettings-nugetduplicatesallowed"></a>`nugetDuplicatesAllowed` | [`Boolean`](#boolean) | Indicates whether duplicate NuGet packages are allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-nugetsymbolserverenabled"></a>`nugetSymbolServerEnabled` | [`Boolean`](#boolean) | Indicates whether the NuGet symbol server is enabled for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-pypipackagerequestsforwarding"></a>`pypiPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether PyPI package forwarding is allowed for the namespace. |
+| <a id="mutation-updatenamespacepackagesettings-rubygemspackagerequestsforwarding"></a>`rubygemsPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether RubyGems package forwarding is allowed for the namespace. |
 | <a id="mutation-updatenamespacepackagesettings-terraformmoduleduplicateexceptionregex"></a>`terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
 | <a id="mutation-updatenamespacepackagesettings-terraformmoduleduplicatesallowed"></a>`terraformModuleDuplicatesAllowed` | [`Boolean`](#boolean) | Indicates whether duplicate Terraform packages are allowed for the namespace. |
 
@@ -31703,6 +31706,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aitoolrule-actiontype"></a>`actionType` | [`AiToolActionType!`](#aitoolactiontype) | Action type categorisation for the tool. |
+| <a id="aitoolrule-backgroundaccess"></a>`backgroundAccess`  | [`AiBackgroundToolPermission`](#aibackgroundtoolpermission) | Introduced in GitLab 19.3. Status: Experiment. Permission mode for the background-flow surface. Null means no rule is set and the value falls back to the default privileged group. |
 | <a id="aitoolrule-category"></a>`category` | [`String!`](#string) | Display category for the tool. For example, GitLab Read, Files, and Commands. |
 | <a id="aitoolrule-id"></a>`id` | [`ID!`](#id) | Tool name. Used as stable identifier. Always the tool name string and never a database ID. |
 | <a id="aitoolrule-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. Null means no rule is set and the value falls back to the default privileged group. |
@@ -50112,6 +50116,7 @@ Fields:
 | <a id="packagesettings-lockmavenpackagerequestsforwarding"></a>`lockMavenPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether Maven package forwarding is locked for all descendent namespaces. |
 | <a id="packagesettings-locknpmpackagerequestsforwarding"></a>`lockNpmPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether npm package forwarding is locked for all descendent namespaces. |
 | <a id="packagesettings-lockpypipackagerequestsforwarding"></a>`lockPypiPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether PyPI package forwarding is locked for all descendent namespaces. |
+| <a id="packagesettings-lockrubygemspackagerequestsforwarding"></a>`lockRubygemsPackageRequestsForwarding` | [`Boolean!`](#boolean) | Indicates whether RubyGems package forwarding is locked for all descendent namespaces. |
 | <a id="packagesettings-mavenduplicateexceptionregex"></a>`mavenDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When maven_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
 | <a id="packagesettings-mavenduplicatesallowed"></a>`mavenDuplicatesAllowed` | [`Boolean!`](#boolean) | Indicates whether duplicate Maven packages are allowed for the namespace. |
 | <a id="packagesettings-mavenpackagerequestsforwarding"></a>`mavenPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether Maven package forwarding is allowed for the namespace. |
@@ -50123,6 +50128,8 @@ Fields:
 | <a id="packagesettings-nugetsymbolserverenabled"></a>`nugetSymbolServerEnabled` | [`Boolean!`](#boolean) | Indicates whether the NuGet symbol server is enabled for the namespace. |
 | <a id="packagesettings-pypipackagerequestsforwarding"></a>`pypiPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether PyPI package forwarding is allowed for the namespace. |
 | <a id="packagesettings-pypipackagerequestsforwardinglocked"></a>`pypiPackageRequestsForwardingLocked` | [`Boolean!`](#boolean) | Indicates whether PyPI package forwarding settings are locked by a parent namespace. |
+| <a id="packagesettings-rubygemspackagerequestsforwarding"></a>`rubygemsPackageRequestsForwarding` | [`Boolean`](#boolean) | Indicates whether RubyGems package forwarding is allowed for the namespace. |
+| <a id="packagesettings-rubygemspackagerequestsforwardinglocked"></a>`rubygemsPackageRequestsForwardingLocked` | [`Boolean!`](#boolean) | Indicates whether RubyGems package forwarding settings are locked by a parent namespace. |
 | <a id="packagesettings-terraformmoduleduplicateexceptionregex"></a>`terraformModuleDuplicateExceptionRegex` | [`UntrustedRegexp`](#untrustedregexp) | When terraform_module_duplicates_allowed is false, you can publish duplicate packages with names that match this regex. Otherwise, this setting has no effect. |
 | <a id="packagesettings-terraformmoduleduplicatesallowed"></a>`terraformModuleDuplicatesAllowed` | [`Boolean!`](#boolean) | Indicates whether duplicate Terraform packages are allowed for the namespace. |
 
@@ -61370,6 +61377,15 @@ The category of the additional context.
 | <a id="aiadditionalcontextcategory-terminal"></a>`TERMINAL` | Terminal content category. |
 | <a id="aiadditionalcontextcategory-user_rule"></a>`USER_RULE` | User_rule content category. |
 
+### `AiBackgroundToolPermission`
+
+Permission mode for an AI tool on the background-flow surface. `ask` is not available because no human is present to approve on a background flow.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aibackgroundtoolpermission-allow"></a>`ALLOW` | Tool is always allowed to run without approval. |
+| <a id="aibackgroundtoolpermission-deny"></a>`DENY` | Tool is always blocked from running. |
+
 ### `AiCatalogFlowConfigType`
 
 Possible flow configuration types for AI Catalog agents.
@@ -71141,6 +71157,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="bulktoolruleinput-backgroundaccess"></a>`backgroundAccess`  | [`AiBackgroundToolPermission`](#aibackgroundtoolpermission) | Introduced in GitLab 19.3. Status: Experiment. Permission mode for the background-flow surface. Omitting the field sets it to null, clearing any existing value. |
 | <a id="bulktoolruleinput-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. Omitting the field sets it to null, clearing any existing value. |
 | <a id="bulktoolruleinput-toolid"></a>`toolId` | [`String!`](#string) | Tool name string identifying the tool to update. For example, "create_issue". |
 | <a id="bulktoolruleinput-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for web surface. Omitting the field sets it to null, clearing any existing value. |

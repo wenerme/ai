@@ -73,6 +73,8 @@ Supported attributes:
 | `created_before`            | datetime      | No       | Returns merge requests created on or before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `deployed_after`            | datetime      | No       | Returns merge requests deployed after the given date/time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `deployed_before`           | datetime      | No       | Returns merge requests deployed before the given date/time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
+| `merged_after`             | datetime      | No       | Returns merge requests merged on or after the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
+| `merged_before`            | datetime      | No       | Returns merge requests merged on or before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `environment`               | string        | No       | Returns merge requests deployed to the given environment. |
 | `in`                        | string        | No       | Change the scope of the `search` attribute. `title`, `description`, or a string joining them with comma. Default is `title,description`. |
 | `labels`                    | string        | No       | Returns merge requests matching a comma-separated list of labels. `None` lists all merge requests with no labels. `Any` lists all merge requests with at least one label. Predefined names are case-insensitive. |
@@ -393,6 +395,8 @@ Supported attributes:
 | `created_before`                | datetime       | No       | Returns merge requests created on or before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `deployed_after`                | datetime       | No       | Returns merge requests deployed after the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `deployed_before`               | datetime       | No       | Returns merge requests deployed before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
+| `merged_after`             | datetime      | No       | Returns merge requests merged on or after the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
+| `merged_before`            | datetime      | No       | Returns merge requests merged on or before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `environment`                   | string         | No       | Returns merge requests deployed to the given environment. |
 | `in`                            | string         | No       | Change the scope of the `search` attribute. `title`, `description`, or a string joining them with comma. Default is `title,description`. |
 | `labels`                        | string         | No       | Returns merge requests matching a comma-separated list of labels. `None` lists all merge requests with no labels. `Any` lists all merge requests with at least one label. Predefined names are case-insensitive. |
@@ -644,6 +648,8 @@ Supported attributes:
 | `created_before`            | datetime          | No       | Returns merge requests created on or before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `deployed_after`            | datetime          | No       | Returns merge requests deployed after the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `deployed_before`           | datetime          | No       | Returns merge requests deployed before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
+| `merged_after`             | datetime      | No       | Returns merge requests merged on or after the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
+| `merged_before`            | datetime      | No       | Returns merge requests merged on or before the given date and time. Expected in ISO 8601 format (`2019-03-15T08:00:00Z`). |
 | `environment`               | string            | No       | Returns merge requests deployed to the given environment. |
 | `in`                        | string            | No       | Change the scope of the `search` attribute. `title`, `description`, or a string joining them with comma. Default is `title,description`. |
 | `labels`                  | string             | No       | Returns merge requests matching a comma-separated list of labels. `None` lists all merge requests with no labels. `Any` lists all merge requests with at least one label. Predefined names are case-insensitive. |
