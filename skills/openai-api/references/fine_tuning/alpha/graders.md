@@ -305,11 +305,11 @@ Run a grader.
 
       The sampling parameters for the model.
 
-      - `max_completions_tokens: optional number`
+      - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
 
-      - `reasoning_effort: optional ReasoningEffort`
+      - `reasoning_effort: optional ReasoningEffort or null`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -333,15 +333,15 @@ Run a grader.
 
         - `"max"`
 
-      - `seed: optional number`
+      - `seed: optional number or null`
 
         A seed value to initialize the randomness, during sampling.
 
-      - `temperature: optional number`
+      - `temperature: optional number or null`
 
         A higher temperature increases randomness in the outputs.
 
-      - `top_p: optional number`
+      - `top_p: optional number or null`
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -512,17 +512,17 @@ Run a grader.
 
     - `model_grader_server_error: boolean`
 
-    - `model_grader_server_error_details: string`
+    - `model_grader_server_error_details: string or null`
 
     - `other_error: boolean`
 
     - `python_grader_runtime_error: boolean`
 
-    - `python_grader_runtime_error_details: string`
+    - `python_grader_runtime_error_details: string or null`
 
     - `python_grader_server_error: boolean`
 
-    - `python_grader_server_error_type: string`
+    - `python_grader_server_error_type: string or null`
 
     - `sample_parse_error: boolean`
 
@@ -534,11 +534,11 @@ Run a grader.
 
   - `name: string`
 
-  - `sampled_model_name: string`
+  - `sampled_model_name: string or null`
 
   - `scores: map[unknown]`
 
-  - `token_usage: number`
+  - `token_usage: number or null`
 
   - `type: string`
 
@@ -604,6 +604,88 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/run \
     "foo": "bar"
   }
 }
+```
+
+### Score an audio response
+
+```http
+curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "grader": {
+      "type": "score_model",
+      "name": "Audio clarity grader",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Listen to the clip and return a confidence score from 0 to 1 that the speaker said: {{item.target_phrase}}"
+            },
+            {
+              "type": "input_audio",
+              "input_audio": {
+                "data": "{{item.audio_clip_b64}}",
+                "format": "mp3"
+              }
+            }
+          ]
+        }
+      ],
+      "model": "gpt-audio",
+      "sampling_params": {
+        "temperature": 0.2,
+        "top_p": 1,
+        "seed": 123
+      }
+    },
+    "item": {
+      "target_phrase": "Please deliver the package on Tuesday",
+      "audio_clip_b64": "<base64-encoded mp3>"
+    },
+    "model_sample": "Please deliver the package on Tuesday"
+  }'
+```
+
+### Score an image caption
+
+```http
+curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "grader": {
+      "type": "score_model",
+      "name": "Image caption grader",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Score how well the provided caption matches the image on a 0-1 scale. Only return the score.\n\nCaption: {{sample.output_text}}"
+            },
+            {
+              "type": "input_image",
+              "image_url": "https://example.com/dog-catching-ball.png",
+              "file_id": null,
+              "detail": "high"
+            }
+          ]
+        }
+      ],
+      "model": "gpt-5-mini",
+      "sampling_params": {
+        "temperature": 0.2
+      }
+    },
+    "item": {
+      "expected_caption": "A golden retriever jumps to catch a tennis ball"
+    },
+    "model_sample": "A dog leaps to grab a tennis ball mid-air"
+  }'
 ```
 
 ### Score text alignment
@@ -685,88 +767,6 @@ curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
     }
   }
 }
-```
-
-### Score an image caption
-
-```http
-curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "grader": {
-      "type": "score_model",
-      "name": "Image caption grader",
-      "input": [
-        {
-          "role": "user",
-          "content": [
-            {
-              "type": "input_text",
-              "text": "Score how well the provided caption matches the image on a 0-1 scale. Only return the score.\n\nCaption: {{sample.output_text}}"
-            },
-            {
-              "type": "input_image",
-              "image_url": "https://example.com/dog-catching-ball.png",
-              "file_id": null,
-              "detail": "high"
-            }
-          ]
-        }
-      ],
-      "model": "gpt-5-mini",
-      "sampling_params": {
-        "temperature": 0.2
-      }
-    },
-    "item": {
-      "expected_caption": "A golden retriever jumps to catch a tennis ball"
-    },
-    "model_sample": "A dog leaps to grab a tennis ball mid-air"
-  }'
-```
-
-### Score an audio response
-
-```http
-curl -X POST https://api.openai.com/v1/fine_tuning/alpha/graders/run \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "grader": {
-      "type": "score_model",
-      "name": "Audio clarity grader",
-      "input": [
-        {
-          "role": "user",
-          "content": [
-            {
-              "type": "input_text",
-              "text": "Listen to the clip and return a confidence score from 0 to 1 that the speaker said: {{item.target_phrase}}"
-            },
-            {
-              "type": "input_audio",
-              "input_audio": {
-                "data": "{{item.audio_clip_b64}}",
-                "format": "mp3"
-              }
-            }
-          ]
-        }
-      ],
-      "model": "gpt-audio",
-      "sampling_params": {
-        "temperature": 0.2,
-        "top_p": 1,
-        "seed": 123
-      }
-    },
-    "item": {
-      "target_phrase": "Please deliver the package on Tuesday",
-      "audio_clip_b64": "<base64-encoded mp3>"
-    },
-    "model_sample": "Please deliver the package on Tuesday"
-  }'
 ```
 
 ## Validate grader
@@ -1074,11 +1074,11 @@ Validate a grader.
 
       The sampling parameters for the model.
 
-      - `max_completions_tokens: optional number`
+      - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
 
-      - `reasoning_effort: optional ReasoningEffort`
+      - `reasoning_effort: optional ReasoningEffort or null`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -1102,15 +1102,15 @@ Validate a grader.
 
         - `"max"`
 
-      - `seed: optional number`
+      - `seed: optional number or null`
 
         A seed value to initialize the randomness, during sampling.
 
-      - `temperature: optional number`
+      - `temperature: optional number or null`
 
         A higher temperature increases randomness in the outputs.
 
-      - `top_p: optional number`
+      - `top_p: optional number or null`
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -1552,11 +1552,11 @@ Validate a grader.
 
       The sampling parameters for the model.
 
-      - `max_completions_tokens: optional number`
+      - `max_completions_tokens: optional number or null`
 
         The maximum number of tokens the grader model may generate in its response.
 
-      - `reasoning_effort: optional ReasoningEffort`
+      - `reasoning_effort: optional ReasoningEffort or null`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -1580,15 +1580,15 @@ Validate a grader.
 
         - `"max"`
 
-      - `seed: optional number`
+      - `seed: optional number or null`
 
         A seed value to initialize the randomness, during sampling.
 
-      - `temperature: optional number`
+      - `temperature: optional number or null`
 
         A higher temperature increases randomness in the outputs.
 
-      - `top_p: optional number`
+      - `top_p: optional number or null`
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -1813,17 +1813,17 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
       - `model_grader_server_error: boolean`
 
-      - `model_grader_server_error_details: string`
+      - `model_grader_server_error_details: string or null`
 
       - `other_error: boolean`
 
       - `python_grader_runtime_error: boolean`
 
-      - `python_grader_runtime_error_details: string`
+      - `python_grader_runtime_error_details: string or null`
 
       - `python_grader_server_error: boolean`
 
-      - `python_grader_server_error_type: string`
+      - `python_grader_server_error_type: string or null`
 
       - `sample_parse_error: boolean`
 
@@ -1835,11 +1835,11 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
     - `name: string`
 
-    - `sampled_model_name: string`
+    - `sampled_model_name: string or null`
 
     - `scores: map[unknown]`
 
-    - `token_usage: number`
+    - `token_usage: number or null`
 
     - `type: string`
 
@@ -2150,11 +2150,11 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
         The sampling parameters for the model.
 
-        - `max_completions_tokens: optional number`
+        - `max_completions_tokens: optional number or null`
 
           The maximum number of tokens the grader model may generate in its response.
 
-        - `reasoning_effort: optional ReasoningEffort`
+        - `reasoning_effort: optional ReasoningEffort or null`
 
           Constrains effort on reasoning for reasoning models. Currently supported
           values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -2178,15 +2178,15 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
           - `"max"`
 
-        - `seed: optional number`
+        - `seed: optional number or null`
 
           A seed value to initialize the randomness, during sampling.
 
-        - `temperature: optional number`
+        - `temperature: optional number or null`
 
           A higher temperature increases randomness in the outputs.
 
-        - `top_p: optional number`
+        - `top_p: optional number or null`
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 

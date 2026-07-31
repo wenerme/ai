@@ -10,7 +10,7 @@ Create a vector store file batch.
 
 ### Body Parameters
 
-- `attributes: optional map[string or number or boolean]`
+- `attributes: optional map[string or number or boolean] or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
@@ -72,7 +72,7 @@ Create a vector store file batch.
 
     A [File](/docs/api-reference/files) ID that the vector store should use. Useful for tools like `file_search` that can access files. For multi-file ingestion, we recommend [`file_batches`](/docs/api-reference/vector-stores-file-batches/createBatch) to minimize per-vector-store write requests.
 
-  - `attributes: optional map[string or number or boolean]`
+  - `attributes: optional map[string or number or boolean] or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured

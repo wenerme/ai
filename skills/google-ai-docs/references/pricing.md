@@ -54,7 +54,7 @@ superior search and grounding.
 | Input price | Free of charge | $1.50 |
 | Output price (including thinking tokens) | Free of charge | $7.50 |
 | Context caching price | Free of charge | $0.15 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -65,7 +65,7 @@ superior search and grounding.
 | Input price | Not available | $0.75 |
 | Output price (including thinking tokens) | Not available | $3.75 |
 | Context caching price | Not available | $0.075 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -76,7 +76,7 @@ superior search and grounding.
 | Input price | Not available | $0.75 |
 | Output price (including thinking tokens) | Not available | $3.75 |
 | Context caching price | Not available | $0.075 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -87,7 +87,7 @@ superior search and grounding.
 | Input price | Free of charge | $2.70 |
 | Output price (including thinking tokens) | Free of charge | $13.50 |
 | Context caching price | Free of charge | $0.27 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -112,7 +112,7 @@ superior search and grounding.
 | Input price | Free of charge | $1.50 |
 | Output price (including thinking tokens) | Free of charge | $9.00 |
 | Context caching price | Free of charge | $0.15 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -123,7 +123,7 @@ superior search and grounding.
 | Input price | Not available | $0.75 |
 | Output price (including thinking tokens) | Not available | $4.50 |
 | Context caching price | Not available | $0.075 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -134,7 +134,7 @@ superior search and grounding.
 | Input price | Not available | $0.75 |
 | Output price (including thinking tokens) | Not available | $4.50 |
 | Context caching price | Not available | $0.08 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -145,7 +145,7 @@ superior search and grounding.
 | Input price | Free of charge | $2.70 |
 | Output price (including thinking tokens) | Free of charge | $16.20 |
 | Context caching price | Free of charge | $0.27 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -187,8 +187,8 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.30 (text / image / video / audio) |
 | Output price (including thinking tokens) | Free of charge | $2.50 |
 | Context caching price | Not available | $0.03 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
-| Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
+| Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ### Batch
@@ -198,7 +198,7 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.15 (text / image / video / audio) |
 | Output price (including thinking tokens) | Free of charge | $1.25 |
 | Context caching price | Not available | $0.02 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -209,7 +209,7 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.15 (text / image / video / audio) |
 | Output price (including thinking tokens) | Free of charge | $1.25 |
 | Context caching price | Not available | $0.02 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -220,7 +220,7 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.54 (text / image / video / audio) |
 | Output price (including thinking tokens) | Free of charge | $4.50 |
 | Context caching price | Not available | $0.05 $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -241,7 +241,7 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.25 (text / image / video) $0.50 (audio) |
 | Output price (including thinking tokens) | Free of charge | $1.50 |
 | Context caching price | Not available | $0.025 (text / image / video) $0.05 (audio) $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -252,7 +252,7 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.125 (text / image / video) $0.25 (audio) |
 | Output price (including thinking tokens) | Free of charge | $0.75 |
 | Context caching price | Not available | $0.0125 (text / image / video) $0.025 (audio) $0.50 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -263,7 +263,7 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.125 (text / image / video) $0.25 (audio) |
 | Output price (including thinking tokens) | Free of charge | $0.75 |
 | Context caching price | Not available | $0.0125 (text / image / video) $0.025 (audio) $0.50 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -274,7 +274,7 @@ translation, and simple data processing.
 | Input price | Free of charge | $0.45 (text / image / video) $0.90 (audio) |
 | Output price (including thinking tokens) | Free of charge | $2.70 |
 | Context caching price | Not available | $0.045 (text / image / video) $0.09 (audio) $1.80 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -319,7 +319,7 @@ agentic capabilities, and vibe-coding.
 | Input price | Not available | $2.00, prompts \<= 200k tokens $4.00, prompts \> 200k tokens |
 | Output price (including thinking tokens) | Not available | $12.00, prompts \<= 200k tokens $18.00, prompts \> 200k |
 | Context caching price | Not available | $0.20, prompts \<= 200k tokens $0.40, prompts \> 200k $4.50 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -330,7 +330,7 @@ agentic capabilities, and vibe-coding.
 | Input price | Not available | $1.00, prompts \<= 200k tokens $2.00, prompts \> 200k tokens |
 | Output price (including thinking tokens) | Not available | $6.00, prompts \<= 200k tokens $9.00, prompts \> 200k |
 | Context caching price | Not available | *Same as Standard* $0.20, prompts \<= 200k tokens $0.40, prompts \> 200k $4.50 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -341,7 +341,7 @@ agentic capabilities, and vibe-coding.
 | Input price | Not available | $1.00, prompts \<= 200k tokens $2.00, prompts \> 200k tokens |
 | Output price (including thinking tokens) | Not available | $6.00, prompts \<= 200k tokens $9.00, prompts \> 200k |
 | Context caching price | Not available | *Same as Standard* $0.20, prompts \<= 200k tokens $0.40, prompts \> 200k $4.50 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -352,7 +352,7 @@ agentic capabilities, and vibe-coding.
 | Input price | Not available | $3.60, prompts \<= 200k tokens $7.20, prompts \> 200k tokens |
 | Output price (including thinking tokens) | Not available | $21.60, prompts \<= 200k tokens $32.40, prompts \> 200k |
 | Context caching price | Not available | $0.36, prompts \<= 200k tokens $0.72, prompts \> 200k $8.10 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -374,7 +374,7 @@ acoustic nuance detection, numeric precision, and multimodal awareness.
 |---|---|---|
 | Input price | Free of charge | $0.75 (text) $3.00 or $0.005/min (audio) $1.00 or $0.002/min (image/video) |
 | Output price (including thinking tokens) | Free of charge | $4.50 (text) $12.00 or $0.018/min (audio) |
-| Grounding with Google Search^\*^ | Supported | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Supported | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ^\*^ A customer-submitted request to Gemini may result in one or more
@@ -397,7 +397,7 @@ effective for quick, interactive responses and high throughput.
 |---|---|---|
 | Input price | Not available | $0.50 (text/image) |
 | Output price | Not available | $3 (text and thinking) $60.00 (images) Equivalent to $0.045 per 0.5K image^\*^ $0.067 per 1K image^\*^, $0.101 per 2K image^\*^, and $0.151 per 4K image^\*^. |
-| Grounding with Google Web and Image Search^\*\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries for text and image-based grounding. |
+| Grounding with Google Web and Image Search^\*\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests for text and image-based grounding. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ### Batch
@@ -497,7 +497,7 @@ superior search and grounding.
 | Input price | Free of charge | $0.50 (text / image / video) $1.00 (audio) |
 | Output price (including thinking tokens) | Free of charge | $3.00 |
 | Context caching price | Free of charge | $0.05 (text / image / video) $0.10 (audio) $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -508,7 +508,7 @@ superior search and grounding.
 | Input price | Not available | $0.25 (text / image / video) $0.50 (audio) |
 | Output price (including thinking tokens) | Not available | $1.50 |
 | Context caching price | Not available | *Same as Standard* $0.05 (text / image / video) $0.10 (audio) $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -519,7 +519,7 @@ superior search and grounding.
 | Input price | Not available | $0.25 (text / image / video) $0.50 (audio) |
 | Output price (including thinking tokens) | Not available | $1.50 |
 | Context caching price | Not available | *Same as Standard* $0.05 (text / image / video) $0.10 (audio) $1.00 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 requests per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -530,7 +530,7 @@ superior search and grounding.
 | Input price | Free of charge | $0.90 (text / image / video) $1.80 (audio) |
 | Output price (including thinking tokens) | Free of charge | $5.40 |
 | Context caching price | Free of charge | $0.09 (text / image / video) $0.18 (audio) $1.80 / 1,000,000 tokens per hour (storage price) |
-| Grounding with Google Search^\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Grounding with Google Maps | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
@@ -555,7 +555,7 @@ contextual understanding. **Text input and output** is priced the same as
 |---|---|---|
 | Input price | Not available | $2.00 (text/image), equivalent to $0.0011 per image^\*^ |
 | Output price | Not available | $12.00 (text and thinking) $120.00 (images) Equivalent to $0.134 per 1K/2K image^\*\*^ and $0.24 per 4K image^\*\*^ |
-| Grounding with Google Search^\*\*\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*\*\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ### Batch
@@ -580,7 +580,7 @@ contextual understanding. **Text input and output** is priced the same as
 |---|---|---|
 | Input price | Not available | $3.60 (text/image) |
 | Output price | Not available | $21.60 (text and thinking) $216.00 (images) |
-| Grounding with Google Search^\*\*\*^ | Not available | 5,000 prompts per month (free, shared across Gemini 3), then $14 / 1,000 search queries |
+| Grounding with Google Search^\*\*\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ^\*^ Image input is set at 560 tokens or $0.0011 per image.
@@ -1133,14 +1133,67 @@ Our Gemini Embeddings model for text-only use cases, available to developers on 
 | Input price | Not available | $0.075 |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini Robotics-ER 1.6 Preview
+## Gemini Robotics ER 2 Preview
+
+*`gemini-robotics-er-2-preview`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-robotics-er-2-preview)
+
+Gemini Robotics ER 2, short for Gemini Robotics Embodied Reasoning 2, is a
+vision-language model endpoint that enables robots to understand their environments
+precisely, supporting agentic orchestration of robots, video progress
+understanding, multi-robot collaboration, and advanced spatial reasoning.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $2.00 (text / image / video / audio) |
+| Output price (including thinking tokens) | Free of charge | $10.00 |
+| Context caching price | Not available | $0.20 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $1.00 (text / image / video / audio) |
+| Output price (including thinking tokens) | Not available | $5.00 |
+| Context caching price | Not available | $0.10 $1.00 / 1,000,000 tokens per hour (storage price) |
+| Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+## Gemini Robotics ER 2 Streaming Preview
+
+*`gemini-robotics-er-2-streaming-preview`*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com?model=gemini-robotics-er-2-streaming-preview)
+
+Gemini Robotics ER 2 Streaming is a vision-language model endpoint for robotics
+optimized for real-time text streaming using the Live API. It accepts text,
+image, video, and audio input and supports bidirectional streaming with
+function calling.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $2.00 (text / image / video / audio) |
+| Output price | Free of charge | $10.00 |
+| Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+## Gemini Robotics ER 1.6 Preview
 
 *`gemini-robotics-er-1.6-preview`*
 
 
 [Try it in Google AI Studio](https://aistudio.google.com?model=gemini-robotics-er-1.6-preview)
 
-Gemini Robotics-ER, short for Gemini Robotics-Embodied Reasoning, is a thinking
+Gemini Robotics ER, short for Gemini Robotics-Embodied Reasoning, is a thinking
 model that enhances robots' abilities to understand and interact with the
 physical world.
 
@@ -1150,7 +1203,7 @@ physical world.
 |---|---|---|
 | Input price | Free of charge | $1.00 (text / image / video) $2.00 (audio) |
 | Output price (including thinking tokens) | Free of charge | $5.00 |
-| Grounding with Google Search | Not available | 5,000 prompts per month (free, limit shared with Flash), then $14 / 1,000 search queries for text and image-based grounding. |
+| Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ### Batch
@@ -1159,7 +1212,7 @@ physical world.
 |---|---|---|
 | Input price | Not available | $0.50 (text / image / video) $1.00 (audio) |
 | Output price (including thinking tokens) | Not available | $2.50 |
-| Grounding with Google Search | Not available | Not available |
+| Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
 ## Gemini 2.5 Computer Use Preview
@@ -1198,7 +1251,7 @@ to each model.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
-| [Google Search](https://ai.google.dev/gemini-api/docs/google-search#pricing) | 500 RPD free (limit shared for Flash and Flash-Lite). Not available for Pro. | Gemini 2.5 models: 1,500 RPD free (limit shared for Flash and Flash-Lite). Then $35 / 1,000 grounded prompts Gemini 3 models: 5,000 prompts per month (free), then $14 / 1,000 search queries |
+| [Google Search](https://ai.google.dev/gemini-api/docs/google-search#pricing) | 500 RPD free (limit shared for Flash and Flash-Lite). Not available for Pro. | Gemini 2.5 models: 1,500 RPD free (limit shared for Flash and Flash-Lite). Then $35 / 1,000 grounded prompts Gemini 3 models: 5,000 free search requests per month (shared across all Gemini models), then $14 per 1,000 requests. |
 | [Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding#pricing_and_rate_limits) | 500 RPD Not available for Pro. | 1,500 RPD free (limit shared for Flash and Flash-Lite) 10,000 RPD free for Pro. Then $25 / 1,000 grounded prompts |
 | [Code execution](https://ai.google.dev/gemini-api/docs/code-execution#billing) | Free of charge | Code execution is billed at the standard token rates for the selected model. Costs are determined solely by the tool's usage, no charges are accrued for the session runtime. The generated code and execution results are billed as **Output tokens** when created, and as **Input tokens** when the model uses them as part of its iterative reasoning process. |
 | [URL context](https://ai.google.dev/gemini-api/docs/url-context#limitations) | Free of charge | Charged as input tokens per model pricing. |

@@ -52,21 +52,22 @@ To view a high-level summary of rate limits per model, visit the [models page](h
 
 In addition to seeing your rate limit on your [account page](https://platform.openai.com/settings/organization/limits), you can also view important information about your rate limits such as the remaining requests, tokens, and other metadata in the headers of the HTTP response.
 
-You can expect to see the following header fields:
+Responses can include the following header fields:
 
-| Field                                | Sample Value | Description                                                                                     |
-| ------------------------------------ | ------------ | ----------------------------------------------------------------------------------------------- |
-| x-ratelimit-limit-requests           | 60           | The maximum number of requests that are permitted before exhausting the rate limit.             |
-| x-ratelimit-limit-tokens             | 150000       | The maximum number of tokens that are permitted before exhausting the rate limit.               |
-| x-ratelimit-remaining-requests       | 59           | The remaining number of requests that are permitted before exhausting the rate limit.           |
-| x-ratelimit-remaining-tokens         | 149984       | The remaining number of tokens that are permitted before exhausting the rate limit.             |
-| x-ratelimit-reset-requests           | 1s           | The time until the rate limit (based on requests) resets to its initial state.                  |
-| x-ratelimit-reset-tokens             | 6m0s         | The time until the rate limit (based on tokens) resets to its initial state.                    |
-| x-ratelimit-limit-project-tokens     | 60000        | The token limit for the project.                                                                |
-| x-ratelimit-remaining-project-tokens | 57000        | The remaining number of tokens permitted before exhausting the project-scoped token rate limit. |
-| x-ratelimit-reset-project-tokens     | 3s           | The time until the project-scoped token rate limit resets to its initial state.                 |
+| Field                                | Sample Value | Description                                                                                       |
+| ------------------------------------ | ------------ | ------------------------------------------------------------------------------------------------- |
+| Retry-After                          | 56           | The minimum number of seconds to wait before retrying a temporary rate-limit error, when present. |
+| x-ratelimit-limit-requests           | 60           | The maximum number of requests that are permitted before exhausting the rate limit.               |
+| x-ratelimit-limit-tokens             | 150000       | The maximum number of tokens that are permitted before exhausting the rate limit.                 |
+| x-ratelimit-remaining-requests       | 59           | The remaining number of requests that are permitted before exhausting the rate limit.             |
+| x-ratelimit-remaining-tokens         | 149984       | The remaining number of tokens that are permitted before exhausting the rate limit.               |
+| x-ratelimit-reset-requests           | 1s           | The time until the rate limit (based on requests) resets to its initial state.                    |
+| x-ratelimit-reset-tokens             | 6m0s         | The time until the rate limit (based on tokens) resets to its initial state.                      |
+| x-ratelimit-limit-project-tokens     | 60000        | The token limit for the project.                                                                  |
+| x-ratelimit-remaining-project-tokens | 57000        | The remaining number of tokens permitted before exhausting the project-scoped token rate limit.   |
+| x-ratelimit-reset-project-tokens     | 3s           | The time until the project-scoped token rate limit resets to its initial state.                   |
 
-Project-token headers may be present when a project-scoped token limit applies.
+Project-token headers may be present when a project-scoped token limit applies. `Retry-After` may be present on `429` responses caused by a temporary rate limit. It does not mean that quota, billing, or other errors that require user action can be resolved by retrying.
 
 ### Fine-tuning rate limits
 
@@ -90,7 +91,14 @@ To protect against automated and high-volume misuse, set a usage limit for indiv
 
 #### Retrying with exponential backoff
 
-One easy way to avoid rate limit errors is to automatically retry requests with a random exponential backoff. Retrying with exponential backoff means performing a short sleep when a rate limit error is hit, then retrying the unsuccessful request. If the request is still unsuccessful, the sleep length is increased and the process is repeated. This continues until the request is successful or until a maximum number of retries is reached.
+When a request exceeds a temporary rate limit, the API returns a `429` error. The response can include a `Retry-After` header that tells you how many seconds to wait before trying again. Treat this value as a minimum: wait at least that long and add a small random delay so multiple clients don't retry at the same time.
+
+Each [official OpenAI SDK](https://developers.openai.com/api/docs/libraries#install-an-official-sdk) automatically retries eligible rate-limit errors and honors `Retry-After` when it's present. You don't need to parse the header or add another retry loop for standard API calls.
+
+If you're using your own HTTP client, follow `Retry-After` when the header is present and contains a valid value. If it's missing or invalid, fall back to exponential backoff with jitter. Limit both the number of attempts and the total time spent retrying. If you add application-level retries, account for the retries your SDK already performs. Don't retry quota, billing, or other errors that require you to take action.
+
+Exponential backoff means waiting briefly after an unsuccessful request, then increasing the delay after each unsuccessful retry. This continues until the request succeeds or reaches a configured retry limit.
+
 This approach has many benefits:
 
 - Automatic retries means you can recover from rate limit errors without crashes or missing data

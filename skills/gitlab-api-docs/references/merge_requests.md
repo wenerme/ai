@@ -152,7 +152,7 @@ returns a subset of fields. Otherwise, response attributes include:
 | `iid`                                    | integer  | The internal ID of the merge request in the project. |
 | `imported`                               | boolean  | If `true`, the merge request was imported. |
 | `imported_from`                          | string   | Source of import, such as `Bitbucket`. |
-| `labels[]`                               | array    | Array of label assigned to the merge request. If `with_labels_details` is `true`, returns an array for each label. |
+| `labels[]`                               | array    | Array of labels assigned to the merge request. If `with_labels_details` is `true`, returns an array for each label. |
 | `labels.archived`                        | boolean  | If `with_labels_details` is `true`, the label is archived. |
 | `labels.color`                           | string   | If `with_labels_details` is `true`, the background color of the label. |
 | `labels.description`                     | string   | If `with_labels_details` is `true`, the description text of the label. If `null`, the label has no description. |
@@ -433,7 +433,7 @@ response attributes:
 | `[].assignee`                      | object   | First assignee of the merge request. |
 | `[].assignees`                     | array    | Assignees of the merge request. |
 | `[].author`                        | object   | User who created this merge request. |
-| `[].blocking_discussions_resolved` | boolean  | Indicates if all discussions are resolved only if all are required before merge request can be merged. |
+| `[].blocking_discussions_resolved` | boolean  | Indicates if all discussions are resolved only if all are required before the merge request can be merged. |
 | `[].closed_at`                     | datetime | Timestamp of when the merge request was closed. |
 | `[].closed_by`                     | object   | User who closed this merge request. |
 | `[].created_at`                    | datetime | Timestamp of when the merge request was created. |
@@ -729,7 +729,7 @@ returns a subset of fields. Otherwise, response attributes include:
 | `iid`                                    | integer  | The internal ID of the merge request in the project. |
 | `imported`                               | boolean  | If `true`, the merge request was imported. |
 | `imported_from`                          | string   | Source of import, such as `Bitbucket`. |
-| `labels[]`                               | array    | Array of label assigned to the merge request. If `with_labels_details` is `true`, returns an array for each label. |
+| `labels[]`                               | array    | Array of labels assigned to the merge request. If `with_labels_details` is `true`, returns an array for each label. |
 | `labels.archived`                        | boolean  | If `with_labels_details` is `true`, the label is archived. |
 | `labels.color`                           | string   | If `with_labels_details` is `true`, the background color of the label. |
 | `labels.description`                     | string   | If `with_labels_details` is `true`, the description text of the label. If `null`, the label has no description. |
@@ -1068,7 +1068,7 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes). Other p
 | `iid`                                                       | integer  | Internal ID of the merge request. |
 | `imported`                                                  | boolean  | If `true`, the merge request was imported. |
 | `imported_from`                                             | string   | Source of import, such as `Bitbucket`. |
-| `labels[]`                                                  | array    | Array of label assigned to the merge request. If `with_labels_details` is `true`, returns an array for each label. |
+| `labels[]`                                                  | array    | Array of labels assigned to the merge request. If `with_labels_details` is `true`, returns an array for each label. |
 | `labels.archived`                                           | boolean  | If `with_labels_details` is `true`, the label is archived. |
 | `labels.color`                                              | string   | If `with_labels_details` is `true`, the background color of the label. |
 | `labels.description`                                        | string   | If `with_labels_details` is `true`, the description text of the label. If `null`, the label has no description. |
@@ -2906,7 +2906,7 @@ curl --request DELETE \
 - Feature flag `fix_merge_api_train_bypass` removed in GitLab 19.1.
 - Setting to require a commit `sha` on the merge requests API [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/244421) in GitLab 19.2.
 
-Accept and merge changes submitted with merge request using this API.
+Accepts and merges the changes submitted in a merge request.
 
 ```plaintext
 PUT /projects/:id/merge_requests/:merge_request_iid/merge
@@ -3597,7 +3597,7 @@ Example response when you use an external issue tracker, like Jira:
 
 ## Subscribe to a merge request
 
-Subscribes the authenticated user to a merge request to receive notification.
+Subscribes the authenticated user to a merge request to receive notifications.
 
 ```plaintext
 POST /projects/:id/merge_requests/:merge_request_iid/subscribe

@@ -24,7 +24,7 @@ Retrieves a vector store file.
 
     The Unix timestamp (in seconds) for when the vector store file was created.
 
-  - `last_error: object { code, message }`
+  - `last_error: object { code, message }  or null`
 
     The last error associated with this vector store file. Will be `null` if there are no errors.
 
@@ -68,7 +68,7 @@ Retrieves a vector store file.
 
     The ID of the [vector store](/docs/api-reference/vector-stores/object) that the [File](/docs/api-reference/files) is attached to.
 
-  - `attributes: optional map[string or number or boolean]`
+  - `attributes: optional map[string or number or boolean] or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured

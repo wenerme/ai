@@ -10,7 +10,7 @@ Updates hosted tool permissions for a project.
 
 ### Body Parameters
 
-- `code_interpreter: optional object { enabled }`
+- `code_interpreter: optional object { enabled }  or null`
 
   The code interpreter permission update.
 
@@ -18,7 +18,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `file_search: optional object { enabled }`
+- `file_search: optional object { enabled }  or null`
 
   The file search permission update.
 
@@ -26,7 +26,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `image_generation: optional object { enabled }`
+- `image_generation: optional object { enabled }  or null`
 
   The image generation permission update.
 
@@ -34,7 +34,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `mcp: optional object { enabled }`
+- `mcp: optional object { enabled }  or null`
 
   The MCP permission update.
 
@@ -42,7 +42,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `web_search: optional object { enabled }`
+- `web_search: optional object { enabled }  or null`
 
   The web search permission update.
 

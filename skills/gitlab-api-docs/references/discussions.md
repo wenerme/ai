@@ -1433,7 +1433,7 @@ Example response:
 ]
 ```
 
-Diff comments contain also position:
+Diff comments also contain position:
 
 ```json
 [

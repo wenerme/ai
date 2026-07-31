@@ -36,19 +36,19 @@ Returns a list of projects.
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 
@@ -58,9 +58,9 @@ Returns a list of projects.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 

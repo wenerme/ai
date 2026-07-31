@@ -70,11 +70,11 @@ Returns a list of invites in the organization.
 
     - `"pending"`
 
-  - `accepted_at: optional number`
+  - `accepted_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `expires_at: optional number`
+  - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
 
@@ -88,11 +88,11 @@ Returns a list of invites in the organization.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
   The first `invite_id` in the retrieved `list`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
   The last `invite_id` in the retrieved `list`
 

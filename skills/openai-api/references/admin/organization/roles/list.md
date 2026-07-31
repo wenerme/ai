@@ -32,7 +32,7 @@ Lists the roles configured for the organization.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -62,7 +62,7 @@ Lists the roles configured for the organization.
 
   Whether more roles are available when paginating.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when there are no additional roles.
 

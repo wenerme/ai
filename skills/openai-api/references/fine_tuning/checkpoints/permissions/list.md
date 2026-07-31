@@ -60,9 +60,9 @@ Organization owners can use this endpoint to view all permissions for a fine-tun
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 

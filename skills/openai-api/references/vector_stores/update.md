@@ -10,7 +10,7 @@ Modifies a vector store.
 
 ### Body Parameters
 
-- `expires_after: optional object { anchor, days }`
+- `expires_after: optional object { anchor, days }  or null`
 
   The expiration policy for a vector store.
 
@@ -24,7 +24,7 @@ Modifies a vector store.
 
     The number of days after the anchor time that the vector store will expire.
 
-- `metadata: optional Metadata`
+- `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
@@ -33,7 +33,7 @@ Modifies a vector store.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `name: optional string`
+- `name: optional string or null`
 
   The name of the vector store.
 
@@ -73,11 +73,11 @@ Modifies a vector store.
 
       The total number of files.
 
-  - `last_active_at: number`
+  - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
 
-  - `metadata: Metadata`
+  - `metadata: Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -124,7 +124,7 @@ Modifies a vector store.
 
       The number of days after the anchor time that the vector store will expire.
 
-  - `expires_at: optional number`
+  - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
 

@@ -93,7 +93,7 @@ Already-shutdown models are indicated with gray backgrounds.
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | `gemini-embedding-2` | April 22, 2026 | No shutdown date announced |   |
-| `gemini-embedding-001` | July 14, 2025 | July 14, 2026 | `gemini-embedding-2` |
+| `gemini-embedding-001` | July 14, 2025 | May 14, 2028 | `gemini-embedding-2` |
 | `text-embedding-004` | April 9, 2024 | January 14, 2026 | `gemini-embedding-2` |
 | Preview models ||||
 | `embedding-2-preview` | March 10, 2026 | August 10, 2026 | `gemini-embedding-2` |
@@ -141,5 +141,5 @@ Already-shutdown models are indicated with gray backgrounds.
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | Preview models ||||
-| `gemini-robotics-er-1.6-preview` | April 14, 2026 | No shut down date announced |   |
+| `gemini-robotics-er-1.6-preview` | April 14, 2026 | August 31, 2026 | gemini-robotics-er-2-preview |
 | `gemini-robotics-er-1.5-preview` | September 25, 2025 | April 30, 2026 | `gemini-robotics-er-1.6-preview` |

@@ -1,5 +1,66 @@
 # API Keys
 
+## Delete project API key
+
+**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
+
+Deletes an API key from the project.
+
+Returns confirmation of the key deletion, or an error if the key belonged to
+a service account.
+
+### Path Parameters
+
+- `project_id: string`
+
+- `api_key_id: string`
+
+### Returns
+
+- `id: string`
+
+- `deleted: boolean`
+
+- `object: "organization.project.api_key.deleted"`
+
+  - `"organization.project.api_key.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.project.api_key.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.api_key.deleted",
+    "id": "key_abc",
+    "deleted": true
+}
+```
+
 ## List project API keys
 
 **get** `/organization/projects/{project_id}/api_keys`
@@ -42,7 +103,7 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -128,9 +189,9 @@ Returns a list of API keys in the project.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 
@@ -243,7 +304,7 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -392,68 +453,19 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 }
 ```
 
-## Delete project API key
-
-**delete** `/organization/projects/{project_id}/api_keys/{api_key_id}`
-
-Deletes an API key from the project.
-
-Returns confirmation of the key deletion, or an error if the key belonged to
-a service account.
-
-### Path Parameters
-
-- `project_id: string`
-
-- `api_key_id: string`
-
-### Returns
-
-- `id: string`
-
-- `deleted: boolean`
-
-- `object: "organization.project.api_key.deleted"`
-
-  - `"organization.project.api_key.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/api_keys/$API_KEY_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.project.api_key.deleted"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "organization.project.api_key.deleted",
-    "id": "key_abc",
-    "deleted": true
-}
-```
-
 ## Domain Types
+
+### API Key Delete Response
+
+- `APIKeyDeleteResponse object { id, deleted, object }`
+
+  - `id: string`
+
+  - `deleted: boolean`
+
+  - `object: "organization.project.api_key.deleted"`
+
+    - `"organization.project.api_key.deleted"`
 
 ### Project API Key
 
@@ -469,7 +481,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -548,15 +560,3 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/api_keys
   - `redacted_value: string`
 
     The redacted value of the API key
-
-### API Key Delete Response
-
-- `APIKeyDeleteResponse object { id, deleted, object }`
-
-  - `id: string`
-
-  - `deleted: boolean`
-
-  - `object: "organization.project.api_key.deleted"`
-
-    - `"organization.project.api_key.deleted"`

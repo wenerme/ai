@@ -18,6 +18,7 @@ The way you set up Keyless SSL depends on how you route traffic to your keyless 
 
 * [Cloudflare Tunnel](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/)
 * [Public DNS](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/)
+* [Run with Docker](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/run-with-docker/)
 
 Was this helpful?
 

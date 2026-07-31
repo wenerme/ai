@@ -36,7 +36,7 @@ Creates a project spend alert.
 
     - `"email"`
 
-  - `subject_prefix: optional string`
+  - `subject_prefix: optional string or null`
 
     Optional subject prefix for alert emails.
 
@@ -80,7 +80,7 @@ Creates a project spend alert.
 
       - `"email"`
 
-    - `subject_prefix: optional string`
+    - `subject_prefix: optional string or null`
 
       Optional subject prefix for alert emails.
 

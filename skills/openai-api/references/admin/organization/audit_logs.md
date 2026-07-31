@@ -652,7 +652,7 @@ List user actions and configuration changes within this organization.
 
     - `"tenant.workspace_invite_email_settings.updated"`
 
-  - `actor: optional object { api_key, session, type }`
+  - `actor: optional object { api_key, session, type }  or null`
 
     The actor who performed the audit logged action.
 
@@ -1626,9 +1626,9 @@ List user actions and configuration changes within this organization.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 
@@ -2376,7 +2376,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
     - `"tenant.workspace_invite_email_settings.updated"`
 
-  - `actor: optional object { api_key, session, type }`
+  - `actor: optional object { api_key, session, type }  or null`
 
     The actor who performed the audit logged action.
 

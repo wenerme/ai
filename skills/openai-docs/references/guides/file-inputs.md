@@ -142,6 +142,50 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(
+					responses.ResponseInputMessageContentListParam{
+						responses.ResponseInputContentParamOfInputText(
+							"Analyze the letter and provide a summary of the key points.",
+						),
+						{
+							OfInputFile: &responses.ResponseInputFileParam{
+								FileURL: openai.String(
+									"https://www.berkshirehathaway.com/letters/2024ltr.pdf",
+								),
+							},
+						},
+					},
+					responses.EasyInputMessageRoleUser,
+				),
+			},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
 ```python
 from openai import OpenAI
 
@@ -298,6 +342,63 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	file, err := os.Open("draconomicon.pdf")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	uploadedFile, err := client.Files.New(context.Background(), openai.FileNewParams{
+		File:    file,
+		Purpose: openai.FilePurposeUserData,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(
+					responses.ResponseInputMessageContentListParam{
+						{
+							OfInputFile: &responses.ResponseInputFileParam{
+								FileID: openai.String(uploadedFile.ID),
+							},
+						},
+						responses.ResponseInputContentParamOfInputText(
+							"What is the first dragon in the book?",
+						),
+					},
+					responses.EasyInputMessageRoleUser,
+				),
+			},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
 ```python
 from openai import OpenAI
 
@@ -452,6 +553,57 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	data, err := os.ReadFile("draconomicon.pdf")
+	if err != nil {
+		panic(err)
+	}
+	fileData := "data:application/pdf;base64," + base64.StdEncoding.EncodeToString(data)
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(
+					responses.ResponseInputMessageContentListParam{
+						{
+							OfInputFile: &responses.ResponseInputFileParam{
+								Filename: openai.String("draconomicon.pdf"),
+								FileData: openai.String(fileData),
+							},
+						},
+						responses.ResponseInputContentParamOfInputText(
+							"What is the first dragon in the book?",
+						),
+					},
+					responses.EasyInputMessageRoleUser,
+				),
+			},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```python

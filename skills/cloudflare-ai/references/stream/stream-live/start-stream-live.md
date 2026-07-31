@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Start a live stream
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you subscribe to Stream, you can create Live Inputs in Dash or via the API. Broadcast to your new Live Input using RTMPS or SRT. SRT supports newer video codecs and makes using accessibility features, such as captions and multiple audio tracks, easier.
 
@@ -108,7 +108,9 @@ The following four properties are nested under the `recording` object.
 
 ## Manage live inputs
 
-You can update live inputs by making a `PUT` request:
+### Update a live input
+
+Update a live input by making a `PUT` request:
 
 ```bash
 curl --request PUT \
@@ -116,6 +118,44 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{i
 --header "Authorization: Bearer <API_TOKEN>" \
 --data '{"meta": {"name":"test stream 1"},"recording": { "mode": "automatic", "timeoutSeconds": 10 }}'
 ```
+
+### Enable or disable a live input
+
+Live inputs are enabled by default. When a live input is disabled, it rejects incoming RTMPS and SRT connections. Use this to temporarily pause a live input without deleting it, terminate active broadcasts, and prevent new broadcasts from starting on a specific input.
+
+To disable a live input, set `enabled` to `false`:
+
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{"enabled": false}'
+```
+
+To enable the live input again, set `enabled` to `true`:
+
+```bash
+curl --request PUT \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
+--header "Authorization: Bearer <API_TOKEN>" \
+--data '{"enabled": true}'
+```
+
+### Rotate broadcast keys
+
+Rotate the broadcast credentials for a live input when credentials may have been shared with the wrong audience, exposed in client code or a screenshare, or need to be refreshed as part of your security process. Rotating keys does not change the live input ID or its other configuration.
+
+When keys are rotated, old credentials are revoked, broadcasts using stale credentials are disconnected, and refreshed credentials are returned in the API response.
+
+```bash
+curl --request POST \
+https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id}/rotate_keys \
+--header "Authorization: Bearer <API_TOKEN>"
+```
+
+Live input responses include `keysRotatedAt`, which indicates when the live input keys were last rotated. This field is omitted for live inputs whose keys have never been rotated.
+
+### Delete a live input
 
 Delete a live input by making a `DELETE` request:
 
@@ -162,5 +202,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

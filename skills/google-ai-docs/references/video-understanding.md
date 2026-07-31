@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/video-understanding).
-
 > To learn about video generation, see the [Veo](https://ai.google.dev/gemini-api/docs/video) guide.
 
 Gemini models can process videos, enabling many frontier developer use cases
@@ -46,7 +43,7 @@ summarize the video.
         myfile = client.files.get(name=myfile.name)
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "video", "uri": myfile.uri, "mime_type": myfile.mime_type},
             {"type": "text", "text": "Summarize this video. Then create a quiz with an answer key based on the information in this video."}
@@ -82,7 +79,7 @@ summarize the video.
       }
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
           { type: "video", uri: myfile.uri, mime_type: myfile.mimeType },
           { type: "text", text: "Summarize this video. Then create a quiz with an answer key based on the information in this video." }
@@ -150,7 +147,7 @@ summarize the video.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": [
             {"type": "video", "uri": "'${file_uri}'", "mime_type": "'${MIME_TYPE}'"},
             {"type": "text", "text": "Summarize this video. Then create a quiz with an answer key based on the information in this video."}
@@ -185,7 +182,7 @@ Here's an example of providing inline video data:
 
     client = genai.Client()
     interaction = client.interactions.create(
-        model='gemini-3.5-flash',
+        model='gemini-3.6-flash',
         input=[
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {
@@ -208,7 +205,7 @@ Here's an example of providing inline video data:
     });
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: [
         { type: "text", text: "Please summarize the video in 3 sentences." },
         {
@@ -237,7 +234,7 @@ Here's an example of providing inline video data:
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": [
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {
@@ -261,7 +258,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
 
     client = genai.Client()
     interaction = client.interactions.create(
-        model='gemini-3.5-flash',
+        model='gemini-3.6-flash',
         input=[
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {
@@ -279,7 +276,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
     const ai = new GoogleGenAI({});
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: [
         { type: "text", text: "Please summarize the video in 3 sentences." },
         {
@@ -296,7 +293,7 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": [
             {"type": "text", "text": "Please summarize the video in 3 sentences."},
             {

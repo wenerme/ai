@@ -85,7 +85,7 @@ Get a list of output items for an evaluation run.
 
       The numeric score produced by the grader.
 
-    - `sample: optional map[unknown]`
+    - `sample: optional map[unknown] or null`
 
       Optional sample or intermediate data produced by the grader.
 

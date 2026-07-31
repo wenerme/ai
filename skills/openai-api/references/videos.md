@@ -72,7 +72,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -80,7 +80,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -92,7 +92,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -124,11 +124,11 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 
@@ -227,7 +227,7 @@ Create a character from an uploaded video.
 
 ### Returns
 
-- `id: string`
+- `id: string or null`
 
   Identifier for the character creation cameo.
 
@@ -235,7 +235,7 @@ Create a character from an uploaded video.
 
   Unix timestamp (in seconds) when the character was created.
 
-- `name: string`
+- `name: string or null`
 
   Display name for the character.
 
@@ -364,7 +364,7 @@ Create a new video generation job by editing a source video or existing generate
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -372,7 +372,7 @@ Create a new video generation job by editing a source video or existing generate
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -384,7 +384,7 @@ Create a new video generation job by editing a source video or existing generate
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -416,11 +416,11 @@ Create a new video generation job by editing a source video or existing generate
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 
@@ -529,7 +529,7 @@ Create an extension of a completed video.
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -537,7 +537,7 @@ Create an extension of a completed video.
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -549,7 +549,7 @@ Create an extension of a completed video.
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -581,11 +581,11 @@ Create an extension of a completed video.
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 
@@ -667,7 +667,7 @@ Fetch a character.
 
 ### Returns
 
-- `id: string`
+- `id: string or null`
 
   Identifier for the character creation cameo.
 
@@ -675,7 +675,7 @@ Fetch a character.
 
   Unix timestamp (in seconds) when the character was created.
 
-- `name: string`
+- `name: string or null`
 
   Display name for the character.
 
@@ -730,7 +730,7 @@ List recently generated videos for the current project.
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -738,7 +738,7 @@ List recently generated videos for the current project.
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -750,7 +750,7 @@ List recently generated videos for the current project.
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -782,11 +782,11 @@ List recently generated videos for the current project.
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 
@@ -818,7 +818,7 @@ List recently generated videos for the current project.
 
     - `"failed"`
 
-- `first_id: string`
+- `first_id: string or null`
 
   The ID of the first item in the list.
 
@@ -826,7 +826,7 @@ List recently generated videos for the current project.
 
   Whether there are more items available.
 
-- `last_id: string`
+- `last_id: string or null`
 
   The ID of the last item in the list.
 
@@ -923,7 +923,7 @@ Create a remix of a completed video using a refreshed prompt.
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -931,7 +931,7 @@ Create a remix of a completed video using a refreshed prompt.
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -943,7 +943,7 @@ Create a remix of a completed video using a refreshed prompt.
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -975,11 +975,11 @@ Create a remix of a completed video using a refreshed prompt.
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 
@@ -1092,7 +1092,7 @@ Fetch the latest metadata for a generated video.
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -1100,7 +1100,7 @@ Fetch the latest metadata for a generated video.
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -1112,7 +1112,7 @@ Fetch the latest metadata for a generated video.
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -1144,11 +1144,11 @@ Fetch the latest metadata for a generated video.
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 
@@ -1232,7 +1232,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -1240,7 +1240,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -1252,7 +1252,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -1284,11 +1284,11 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 
@@ -1324,7 +1324,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
 - `VideoCreateCharacterResponse object { id, created_at, name }`
 
-  - `id: string`
+  - `id: string or null`
 
     Identifier for the character creation cameo.
 
@@ -1332,7 +1332,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
     Unix timestamp (in seconds) when the character was created.
 
-  - `name: string`
+  - `name: string or null`
 
     Display name for the character.
 
@@ -1374,7 +1374,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
 - `VideoGetCharacterResponse object { id, created_at, name }`
 
-  - `id: string`
+  - `id: string or null`
 
     Identifier for the character creation cameo.
 
@@ -1382,7 +1382,7 @@ curl https://api.openai.com/v1/videos/$VIDEO_ID \
 
     Unix timestamp (in seconds) when the character was created.
 
-  - `name: string`
+  - `name: string or null`
 
     Display name for the character.
 

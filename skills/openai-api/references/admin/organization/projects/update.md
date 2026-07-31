@@ -10,15 +10,15 @@ Modifies a project in the organization.
 
 ### Body Parameters
 
-- `external_key_id: optional string`
+- `external_key_id: optional string or null`
 
   External key ID to associate with the project.
 
-- `geography: optional string`
+- `geography: optional string or null`
 
   Geography for the project.
 
-- `name: optional string`
+- `name: optional string or null`
 
   The updated name of the project, this name appears in reports.
 
@@ -42,19 +42,19 @@ Modifies a project in the organization.
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 

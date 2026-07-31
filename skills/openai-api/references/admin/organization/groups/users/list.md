@@ -36,7 +36,7 @@ Lists the users assigned to a group.
 
     The identifier, which can be referenced in API endpoints
 
-  - `email: string`
+  - `email: string or null`
 
     The email address of the user.
 
@@ -48,7 +48,7 @@ Lists the users assigned to a group.
 
   Whether more users are available when paginating.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when no further users are available.
 

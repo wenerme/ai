@@ -76,6 +76,8 @@ tags:
     name: Rerank
   - description: OpenAI-compatible Responses API endpoints
     name: Responses
+  - description: SCIM endpoints
+    name: SCIM
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
@@ -271,11 +273,11 @@ components:
         voice:
           description: Voice identifier (provider-specific).
           example: en_paul_neutral
+          minLength: 1
           type: string
       required:
         - model
         - input
-        - voice
       type: object
     BadRequestResponse:
       description: Bad Request - Invalid request parameters or malformed input
@@ -851,6 +853,9 @@ components:
           additionalProperties: {}
           type: object
         tenstorrent:
+          additionalProperties: {}
+          type: object
+        thinkingmachines:
           additionalProperties: {}
           type: object
         together:

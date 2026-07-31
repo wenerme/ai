@@ -86,6 +86,24 @@ Other non-HTTP protocols (SSH, RDP, arbitrary TCP/UDP) continue to use the Cloud
 
 ## 2026-07-17
 
+[Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)[Cloudflare One](https://developers.cloudflare.com/cloudflare-one/)[Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
+
+
+**Restart, reboot, or shut down a Cloudflare One Appliance from the dashboard**
+
+You can now restart, reboot, or shut down a [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) directly from the dashboard or via API.
+
+![Restarting a Cloudflare One Appliance from the Operations section of the Edit Appliance page](https://developers.cloudflare.com/_astro/2026-07-17-appliance-restart-reboot-shutdown.DKqTLOh6_ZyBB8S.webp)
+* **Restart** — Restart managed services. Purges temporary and (optionally) persistent state.
+* **Reboot** — Power cycle the appliance. Optionally, purge persistent state. Re-applies configuration starting from scratch.
+* **Shutdown** — Power off the appliance. Optionally, purge persistent state. The machine will be offline until manually powered on again.
+
+In the dashboard, go to **Networking** \> **Connectors** \> **Appliances**, select an appliance, then **Edit** \> **Operations** to send an operation. Via API, `POST` to the `/accounts/{account_id}/magic/connectors/{connector_id}/interrupts` endpoint.
+
+For details, refer to [Appliance operations](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/).
+
+## 2026-07-17
+
 [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 
 

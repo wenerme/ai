@@ -76,6 +76,8 @@ tags:
     name: Rerank
   - description: OpenAI-compatible Responses API endpoints
     name: Responses
+  - description: SCIM endpoints
+    name: SCIM
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
@@ -509,6 +511,7 @@ components:
         - switchpoint
         - tencent
         - tenstorrent
+        - thinkingmachines
         - together
         - upstage
         - venice

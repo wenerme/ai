@@ -53,8 +53,10 @@ For example, if your monthly budget is $1,000, the weekly budget must be less th
 
 Each budget row shows a progress bar with current-period spend against the limit. If spend already exceeds a limit, the bar turns red and a warning appears.
 
+The **Include BYOK spend** toggle above the budget rows controls whether [BYOK](/docs/guides/overview/auth/byok) inference spend counts toward these limits. It applies to the whole workspace, so it affects every interval at once. See [Including BYOK spend](#including-byok-spend) for the API equivalent.
+
 <Note>
-  These dashboard steps require the **Organization Administrator** role.
+  These dashboard steps require the **Organization Administrator** role. Members can see the budgets, the spend bars, and the **Include BYOK spend** setting, but cannot change them.
 </Note>
 
 ## Setting Budgets via the API
@@ -79,9 +81,12 @@ curl https://openrouter.ai/api/v1/workspaces/{workspace_id}/budgets \
       "created_at": "2025-08-24T10:30:00Z",
       "updated_at": "2025-08-24T15:45:00Z"
     }
-  ]
+  ],
+  "include_byok_in_budgets": false
 }
 ```
+
+`include_byok_in_budgets` sits alongside `data` rather than on each budget row, because it applies to the whole workspace rather than to a single interval. See [Including BYOK spend](#including-byok-spend).
 
 ### Create or Update a Budget
 
@@ -96,12 +101,52 @@ curl -X PUT https://openrouter.ai/api/v1/workspaces/{workspace_id}/budgets/month
 
 Valid intervals: `daily`, `weekly`, `monthly`, `lifetime`.
 
+The response echoes the created or updated budget plus the workspace's current BYOK setting:
+
+```json lines theme={null}
+{
+  "data": {
+    "id": "770e8400-e29b-41d4-a716-446655440000",
+    "workspace_id": "880e8400-e29b-41d4-a716-446655440000",
+    "limit_usd": 1000,
+    "reset_interval": "monthly",
+    "created_at": "2025-08-24T10:30:00Z",
+    "updated_at": "2025-08-24T15:45:00Z"
+  },
+  "include_byok_in_budgets": false
+}
+```
+
 The server validates the ordering rule — if the new limit would violate the strictly-decreasing constraint relative to existing budgets, the request returns `400 Bad Request` with a message like:
 
 ```
 Budget limits must be strictly decreasing as scope narrows:
 the monthly limit ($500) must be greater than the weekly limit ($600).
 ```
+
+### Including BYOK Spend
+
+By default, only OpenRouter credit spend counts toward a workspace's budgets. Set `include_byok_in_budgets` to `true` to also count [BYOK](/docs/guides/overview/auth/byok) inference spend — the amount OpenRouter would have charged had the request not used your own provider key:
+
+```bash lines theme={null}
+curl -X PUT https://openrouter.ai/api/v1/workspaces/{workspace_id}/budgets/monthly \
+  -H "Authorization: Bearer $MANAGEMENT_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"limit_usd": 1000, "include_byok_in_budgets": true}'
+```
+
+This is the same setting as the **Include BYOK spend** toggle in the dashboard's Budgets section.
+
+Two things to know about the field:
+
+* **It applies to the whole workspace.** The interval in the request URL doesn't scope BYOK inclusion.
+* **Omit it to leave the current setting unchanged.** Only send it when you intend to change it; sending `false` explicitly turns inclusion off.
+
+The current value is returned by both the list and upsert endpoints, and on the workspace resource itself (`GET /api/v1/workspaces/{id}`).
+
+<Note>
+  A change made through the API applies to budget enforcement immediately. An already-open workspace settings page in the dashboard may keep showing the previous value until it is reloaded.
+</Note>
 
 ### Delete a Budget
 
@@ -123,11 +168,13 @@ Deleting a budget that doesn't exist returns success (idempotent).
 
 Budget enforcement uses OpenRouter's usage pipeline, which tracks spend per workspace across each interval window. The progress bar in the dashboard shows real-time spend relative to each configured limit.
 
+By default only OpenRouter credit spend is tracked against a budget. With [**Include BYOK spend**](#including-byok-spend) enabled, BYOK inference spend is added to the same total.
+
 When you create a workspace, spend starts at zero for every interval. Periodic budgets (daily, weekly, monthly) reset automatically at the start of each period. lifetime budgets accumulate indefinitely.
 
 ## Budgets During Workspace Creation
 
-Enterprise org admins can also set budgets when creating a new workspace. The workspace creation form includes an optional **Budgets** section where you can configure limits before any keys are issued.
+Enterprise org admins can also set budgets when creating a new workspace. The workspace creation form includes an optional **Budgets** section where you can configure limits before any keys are issued, along with the **Include BYOK spend** toggle.
 
 ## FAQ
 
@@ -137,7 +184,9 @@ Enterprise org admins can also set budgets when creating a new workspace. The wo
   </Accordion>
 
   <Accordion title="Do BYOK (Bring Your Own Key) requests count against workspace budgets?">
-    Workspace budgets apply to OpenRouter-billed spend. BYOK requests that are routed with your own provider key and don't consume OpenRouter credits are not counted against workspace budgets.
+    By default, no — workspace budgets apply to OpenRouter-billed spend, so [BYOK](/docs/guides/overview/auth/byok) requests routed with your own provider key don't count.
+
+    You can opt in per workspace by enabling **Include BYOK spend** in the dashboard, or by setting `include_byok_in_budgets` to `true` on the budget endpoint. When enabled, the amount OpenRouter would have charged had the request not used your own provider key counts toward every interval for that workspace.
   </Accordion>
 
   <Accordion title="Can I set budgets on the Default workspace?">

@@ -145,6 +145,12 @@ To count BYOK spend toward a guardrail's budget, enable **Include BYOK spend** o
 
 This toggle is available on all guardrail budgets, including the workspace default guardrail. It has no effect on a guardrail without a budget limit.
 
+### BYOK and Workspace Budgets
+
+[Workspace budgets](/docs/guides/features/workspaces/workspace-budgets) behave the same way and are controlled separately from guardrails. By default BYOK spend does **not** count toward them; enable **Include BYOK spend** in the workspace's Budgets settings, or set `include_byok_in_budgets` to `true` on the workspace budget endpoint.
+
+The workspace setting applies to every interval for that workspace at once — daily, weekly, monthly, and lifetime.
+
 ### Multiple BYOK Keys for the Same Provider
 
 You can configure multiple BYOK keys for the same provider. All matching keys are used for routing, and each key produces its own endpoint copy that is pinned to that specific key throughout the request lifecycle.

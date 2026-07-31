@@ -4,6 +4,12 @@
 
 Returns a list of input items for a given response.
 
+### Header Parameters
+
+- `"openai-beta": optional array of "responses_multi_agent=v1"`
+
+  - `"responses_multi_agent=v1"`
+
 ### Path Parameters
 
 - `response_id: string`
@@ -50,12 +56,6 @@ Returns a list of input items for a given response.
   - `"asc"`
 
   - `"desc"`
-
-### Header Parameters
-
-- `"openai-beta": optional array of "responses_multi_agent=v1"`
-
-  - `"responses_multi_agent=v1"`
 
 ### Returns
 
@@ -124,11 +124,11 @@ Returns a list of input items for a given response.
 
             - `"input_image"`
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
-          - `image_url: optional string`
+          - `image_url: optional string or null`
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -166,7 +166,7 @@ Returns a list of input items for a given response.
 
             The content of the file to be sent to the model.
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
@@ -204,7 +204,7 @@ Returns a list of input items for a given response.
 
         - `"message"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -402,7 +402,7 @@ Returns a list of input items for a given response.
 
         - `"message"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -410,7 +410,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `phase: optional "commentary" or "final_answer"`
+      - `phase: optional "commentary" or "final_answer" or null`
 
         Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
         For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
@@ -454,7 +454,7 @@ Returns a list of input items for a given response.
 
         - `"file_search_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -462,11 +462,11 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `results: optional array of object { attributes, file_id, filename, 2 more }`
+      - `results: optional array of object { attributes, file_id, filename, 2 more }  or null`
 
         The results of the file search tool call.
 
-        - `attributes: optional map[string or number or boolean]`
+        - `attributes: optional map[string or number or boolean] or null`
 
           Set of 16 key-value pairs that can be attached to an object. This can be
           useful for storing additional information about the object in a structured
@@ -517,11 +517,11 @@ Returns a list of input items for a given response.
 
           The ID of the pending safety check.
 
-        - `code: optional string`
+        - `code: optional string or null`
 
           The type of the pending safety check.
 
-        - `message: optional string`
+        - `message: optional string or null`
 
           Details about the pending safety check.
 
@@ -578,7 +578,7 @@ Returns a list of input items for a given response.
 
             The y-coordinate where the click occurred.
 
-          - `keys: optional array of string`
+          - `keys: optional array of string or null`
 
             The keys being held while clicking.
 
@@ -586,7 +586,7 @@ Returns a list of input items for a given response.
 
           A double click action.
 
-          - `keys: array of string`
+          - `keys: array of string or null`
 
             The keys being held while double-clicking.
 
@@ -633,7 +633,7 @@ Returns a list of input items for a given response.
 
             - `"drag"`
 
-          - `keys: optional array of string`
+          - `keys: optional array of string or null`
 
             The keys being held while dragging the mouse.
 
@@ -669,7 +669,7 @@ Returns a list of input items for a given response.
 
             The y-coordinate to move to.
 
-          - `keys: optional array of string`
+          - `keys: optional array of string or null`
 
             The keys being held while moving the mouse.
 
@@ -709,7 +709,7 @@ Returns a list of input items for a given response.
 
             The y-coordinate where the scroll occurred.
 
-          - `keys: optional array of string`
+          - `keys: optional array of string or null`
 
             The keys being held while scrolling.
 
@@ -778,7 +778,7 @@ Returns a list of input items for a given response.
 
           A wait action.
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -843,15 +843,15 @@ Returns a list of input items for a given response.
 
           The ID of the pending safety check.
 
-        - `code: optional string`
+        - `code: optional string or null`
 
           The type of the pending safety check.
 
-        - `message: optional string`
+        - `message: optional string or null`
 
           Details about the pending safety check.
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -919,7 +919,7 @@ Returns a list of input items for a given response.
 
             - `"open_page"`
 
-          - `url: optional string`
+          - `url: optional string or null`
 
             The URL opened by the model.
 
@@ -959,7 +959,7 @@ Returns a list of input items for a given response.
 
         - `"web_search_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -1002,7 +1002,7 @@ Returns a list of input items for a given response.
 
         - `"function_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -1010,7 +1010,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -1038,7 +1038,7 @@ Returns a list of input items for a given response.
 
         The namespace of the function to run.
 
-    - `FunctionCallOutput object { id, call_id, output, 5 more }`
+    - `FunctionCallOutput object { id, call_id, output, 7 more }`
 
       - `id: string`
 
@@ -1090,7 +1090,7 @@ Returns a list of input items for a given response.
 
         - `"function_call_output"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -1098,7 +1098,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -1125,6 +1125,14 @@ Returns a list of input items for a given response.
       - `created_by: optional string`
 
         The identifier of the actor that created the item.
+
+      - `name: optional string`
+
+        The name of the tool that produced the output.
+
+      - `namespace: optional string`
+
+        The namespace of the tool that produced the output.
 
     - `AgentMessage object { id, author, content, 3 more }`
 
@@ -1210,11 +1218,11 @@ Returns a list of input items for a given response.
 
             - `"original"`
 
-          - `file_id: string`
+          - `file_id: string or null`
 
             The identifier of an uploaded file that contains the screenshot.
 
-          - `image_url: string`
+          - `image_url: string or null`
 
             The URL of the screenshot image.
 
@@ -1382,7 +1390,7 @@ Returns a list of input items for a given response.
 
         Arguments used for the tool search call.
 
-      - `call_id: string`
+      - `call_id: string or null`
 
         The unique ID of the tool search call generated by the model.
 
@@ -1428,7 +1436,7 @@ Returns a list of input items for a given response.
 
         The unique ID of the tool search output item.
 
-      - `call_id: string`
+      - `call_id: string or null`
 
         The unique ID of the tool search call generated by the model.
 
@@ -1462,11 +1470,11 @@ Returns a list of input items for a given response.
 
             The name of the function to call.
 
-          - `parameters: map[unknown]`
+          - `parameters: map[unknown] or null`
 
             A JSON schema object describing the parameters of the function.
 
-          - `strict: boolean`
+          - `strict: boolean or null`
 
             Whether strict parameter validation is enforced for this function tool.
 
@@ -1476,7 +1484,7 @@ Returns a list of input items for a given response.
 
             - `"function"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -1488,11 +1496,11 @@ Returns a list of input items for a given response.
 
             Whether this function is deferred and loaded via tool search.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-          - `output_schema: optional map[unknown]`
+          - `output_schema: optional map[unknown] or null`
 
             A JSON schema object describing the JSON value encoded in string outputs for this function.
 
@@ -1510,7 +1518,7 @@ Returns a list of input items for a given response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }`
+          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
 
             A filter to apply.
 
@@ -1725,11 +1733,11 @@ Returns a list of input items for a given response.
 
             - `"web_search_2025_08_26"`
 
-          - `filters: optional object { allowed_domains }`
+          - `filters: optional object { allowed_domains }  or null`
 
             Filters for the search.
 
-            - `allowed_domains: optional array of string`
+            - `allowed_domains: optional array of string or null`
 
               Allowed domains for the search. If not provided, all domains are allowed.
               Subdomains of the provided domains are allowed as well.
@@ -1746,23 +1754,23 @@ Returns a list of input items for a given response.
 
             - `"high"`
 
-          - `user_location: optional object { city, country, region, 2 more }`
+          - `user_location: optional object { city, country, region, 2 more }  or null`
 
             The approximate location of the user.
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -1787,7 +1795,7 @@ Returns a list of input items for a given response.
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -1795,7 +1803,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -1860,12 +1868,12 @@ Returns a list of input items for a given response.
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -1955,7 +1963,7 @@ Returns a list of input items for a given response.
 
                 An optional list of uploaded files to make available to your code.
 
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
 
@@ -2013,7 +2021,7 @@ Returns a list of input items for a given response.
 
             - `"code_interpreter"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2060,7 +2068,7 @@ Returns a list of input items for a given response.
 
             - `"auto"`
 
-          - `input_fidelity: optional "high" or "low"`
+          - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
 
@@ -2175,7 +2183,7 @@ Returns a list of input items for a given response.
 
             - `"shell"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2183,7 +2191,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic"`
 
-          - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference`
+          - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference or null`
 
             - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
@@ -2197,7 +2205,7 @@ Returns a list of input items for a given response.
 
                 An optional list of uploaded files to make available to your code.
 
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the container.
 
@@ -2323,7 +2331,7 @@ Returns a list of input items for a given response.
 
             - `"custom"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2399,7 +2407,7 @@ Returns a list of input items for a given response.
 
                 - `"function"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -2411,15 +2419,15 @@ Returns a list of input items for a given response.
 
                 Whether this function should be deferred and discovered via tool search.
 
-              - `description: optional string`
+              - `description: optional string or null`
 
-              - `output_schema: optional map[unknown]`
+              - `output_schema: optional map[unknown] or null`
 
                 A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
 
-              - `parameters: optional unknown`
+              - `parameters: optional unknown or null`
 
-              - `strict: optional boolean`
+              - `strict: optional boolean or null`
 
                 Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
@@ -2437,7 +2445,7 @@ Returns a list of input items for a given response.
 
                 - `"custom"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -2505,7 +2513,7 @@ Returns a list of input items for a given response.
 
             - `"tool_search"`
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             Description shown to the model for a client-executed tool search tool.
 
@@ -2517,7 +2525,7 @@ Returns a list of input items for a given response.
 
             - `"client"`
 
-          - `parameters: optional unknown`
+          - `parameters: optional unknown or null`
 
             Parameter schema for a client-executed tool search tool.
 
@@ -2549,7 +2557,7 @@ Returns a list of input items for a given response.
 
             - `"high"`
 
-          - `user_location: optional object { type, city, country, 2 more }`
+          - `user_location: optional object { type, city, country, 2 more }  or null`
 
             The user's location.
 
@@ -2559,19 +2567,19 @@ Returns a list of input items for a given response.
 
               - `"approximate"`
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -2585,7 +2593,7 @@ Returns a list of input items for a given response.
 
             - `"apply_patch"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2649,11 +2657,11 @@ Returns a list of input items for a given response.
 
             The name of the function to call.
 
-          - `parameters: map[unknown]`
+          - `parameters: map[unknown] or null`
 
             A JSON schema object describing the parameters of the function.
 
-          - `strict: boolean`
+          - `strict: boolean or null`
 
             Whether strict parameter validation is enforced for this function tool.
 
@@ -2663,7 +2671,7 @@ Returns a list of input items for a given response.
 
             - `"function"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2675,11 +2683,11 @@ Returns a list of input items for a given response.
 
             Whether this function is deferred and loaded via tool search.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-          - `output_schema: optional map[unknown]`
+          - `output_schema: optional map[unknown] or null`
 
             A JSON schema object describing the JSON value encoded in string outputs for this function.
 
@@ -2697,7 +2705,7 @@ Returns a list of input items for a given response.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }`
+          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
 
             A filter to apply.
 
@@ -2912,11 +2920,11 @@ Returns a list of input items for a given response.
 
             - `"web_search_2025_08_26"`
 
-          - `filters: optional object { allowed_domains }`
+          - `filters: optional object { allowed_domains }  or null`
 
             Filters for the search.
 
-            - `allowed_domains: optional array of string`
+            - `allowed_domains: optional array of string or null`
 
               Allowed domains for the search. If not provided, all domains are allowed.
               Subdomains of the provided domains are allowed as well.
@@ -2933,23 +2941,23 @@ Returns a list of input items for a given response.
 
             - `"high"`
 
-          - `user_location: optional object { city, country, region, 2 more }`
+          - `user_location: optional object { city, country, region, 2 more }  or null`
 
             The approximate location of the user.
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -2974,7 +2982,7 @@ Returns a list of input items for a given response.
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2982,7 +2990,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -3047,12 +3055,12 @@ Returns a list of input items for a given response.
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -3142,7 +3150,7 @@ Returns a list of input items for a given response.
 
                 An optional list of uploaded files to make available to your code.
 
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
 
@@ -3168,7 +3176,7 @@ Returns a list of input items for a given response.
 
             - `"code_interpreter"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3215,7 +3223,7 @@ Returns a list of input items for a given response.
 
             - `"auto"`
 
-          - `input_fidelity: optional "high" or "low"`
+          - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
 
@@ -3330,7 +3338,7 @@ Returns a list of input items for a given response.
 
             - `"shell"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3338,7 +3346,7 @@ Returns a list of input items for a given response.
 
             - `"programmatic"`
 
-          - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference`
+          - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference or null`
 
             - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
@@ -3360,7 +3368,7 @@ Returns a list of input items for a given response.
 
             - `"custom"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3436,7 +3444,7 @@ Returns a list of input items for a given response.
 
                 - `"function"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -3448,15 +3456,15 @@ Returns a list of input items for a given response.
 
                 Whether this function should be deferred and discovered via tool search.
 
-              - `description: optional string`
+              - `description: optional string or null`
 
-              - `output_schema: optional map[unknown]`
+              - `output_schema: optional map[unknown] or null`
 
                 A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
 
-              - `parameters: optional unknown`
+              - `parameters: optional unknown or null`
 
-              - `strict: optional boolean`
+              - `strict: optional boolean or null`
 
                 Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
@@ -3474,7 +3482,7 @@ Returns a list of input items for a given response.
 
                 - `"custom"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -3542,7 +3550,7 @@ Returns a list of input items for a given response.
 
             - `"tool_search"`
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             Description shown to the model for a client-executed tool search tool.
 
@@ -3554,7 +3562,7 @@ Returns a list of input items for a given response.
 
             - `"client"`
 
-          - `parameters: optional unknown`
+          - `parameters: optional unknown or null`
 
             Parameter schema for a client-executed tool search tool.
 
@@ -3586,7 +3594,7 @@ Returns a list of input items for a given response.
 
             - `"high"`
 
-          - `user_location: optional object { type, city, country, 2 more }`
+          - `user_location: optional object { type, city, country, 2 more }  or null`
 
             The user's location.
 
@@ -3596,19 +3604,19 @@ Returns a list of input items for a given response.
 
               - `"approximate"`
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -3622,7 +3630,7 @@ Returns a list of input items for a given response.
 
             - `"apply_patch"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3675,7 +3683,7 @@ Returns a list of input items for a given response.
 
         - `"reasoning"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -3697,7 +3705,7 @@ Returns a list of input items for a given response.
 
           - `"reasoning_text"`
 
-      - `encrypted_content: optional string`
+      - `encrypted_content: optional string or null`
 
         The encrypted content of the reasoning item. This is populated by default
         for reasoning items returned by `POST /v1/responses` and WebSocket
@@ -3820,7 +3828,7 @@ Returns a list of input items for a given response.
 
         The unique ID of the image generation call.
 
-      - `result: string`
+      - `result: string or null`
 
         The generated image encoded in base64.
 
@@ -3842,7 +3850,7 @@ Returns a list of input items for a given response.
 
         - `"image_generation_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -3858,7 +3866,7 @@ Returns a list of input items for a given response.
 
         The unique ID of the code interpreter tool call.
 
-      - `code: string`
+      - `code: string or null`
 
         The code to run, or null if not available.
 
@@ -3866,7 +3874,7 @@ Returns a list of input items for a given response.
 
         The ID of the container used to run the code.
 
-      - `outputs: array of object { logs, type }  or object { type, url }`
+      - `outputs: array of object { logs, type }  or object { type, url }  or null`
 
         The outputs generated by the code interpreter, such as logs or images.
         Can be null if no outputs are available.
@@ -3919,7 +3927,7 @@ Returns a list of input items for a given response.
 
         - `"code_interpreter_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -3953,15 +3961,15 @@ Returns a list of input items for a given response.
 
           - `"exec"`
 
-        - `timeout_ms: optional number`
+        - `timeout_ms: optional number or null`
 
           Optional timeout in milliseconds for the command.
 
-        - `user: optional string`
+        - `user: optional string or null`
 
           Optional user to run the command as.
 
-        - `working_directory: optional string`
+        - `working_directory: optional string or null`
 
           Optional working directory to run the command in.
 
@@ -3985,7 +3993,7 @@ Returns a list of input items for a given response.
 
         - `"local_shell_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4011,7 +4019,7 @@ Returns a list of input items for a given response.
 
         - `"local_shell_call_output"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4019,7 +4027,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `status: optional "in_progress" or "completed" or "incomplete"`
+      - `status: optional "in_progress" or "completed" or "incomplete" or null`
 
         The status of the item. One of `in_progress`, `completed`, or `incomplete`.
 
@@ -4043,11 +4051,11 @@ Returns a list of input items for a given response.
 
         - `commands: array of string`
 
-        - `max_output_length: number`
+        - `max_output_length: number or null`
 
           Optional maximum number of characters to return from each command.
 
-        - `timeout_ms: number`
+        - `timeout_ms: number or null`
 
           Optional timeout in milliseconds for the commands.
 
@@ -4055,7 +4063,7 @@ Returns a list of input items for a given response.
 
         The unique ID of the shell tool call generated by the model.
 
-      - `environment: BetaResponseLocalEnvironment or BetaResponseContainerReference`
+      - `environment: BetaResponseLocalEnvironment or BetaResponseContainerReference or null`
 
         Represents the use of a local environment to perform shell actions.
 
@@ -4105,7 +4113,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -4141,7 +4149,7 @@ Returns a list of input items for a given response.
 
         The unique ID of the shell tool call generated by the model.
 
-      - `max_output_length: number`
+      - `max_output_length: number or null`
 
         The maximum length of the shell command output. This is generated by the model and should be passed back with the raw output.
 
@@ -4213,7 +4221,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -4325,7 +4333,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -4383,7 +4391,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -4407,7 +4415,7 @@ Returns a list of input items for a given response.
 
         The ID of the entity that created this tool call output.
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         Optional textual output returned by the apply patch tool.
 
@@ -4435,11 +4443,11 @@ Returns a list of input items for a given response.
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -4449,7 +4457,7 @@ Returns a list of input items for a given response.
 
         - `"mcp_list_tools"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4457,7 +4465,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `error: optional string`
+      - `error: optional string or null`
 
         Error message if the server could not list tools.
 
@@ -4487,7 +4495,7 @@ Returns a list of input items for a given response.
 
         - `"mcp_approval_request"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4517,7 +4525,7 @@ Returns a list of input items for a given response.
 
         - `"mcp_approval_response"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4525,7 +4533,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -4555,7 +4563,7 @@ Returns a list of input items for a given response.
 
         - `"mcp_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4563,16 +4571,16 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string`
+      - `error: optional string or null`
 
         The error from the tool call, if any.
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -4625,7 +4633,7 @@ Returns a list of input items for a given response.
 
         - `"custom_tool_call"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4633,7 +4641,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 
@@ -4713,7 +4721,7 @@ Returns a list of input items for a given response.
 
         - `"custom_tool_call_output"`
 
-      - `agent: optional object { agent_name }`
+      - `agent: optional object { agent_name }  or null`
 
         The agent that produced this item.
 
@@ -4721,7 +4729,7 @@ Returns a list of input items for a given response.
 
           The canonical name of the agent that produced this item.
 
-      - `caller: optional object { type }  or object { caller_id, type }`
+      - `caller: optional object { type }  or object { caller_id, type }  or null`
 
         The execution context that produced this tool call.
 

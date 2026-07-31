@@ -392,7 +392,7 @@
 
       - `"mcp_approval_response"`
 
-    - `reason: optional string`
+    - `reason: optional string or null`
 
       Optional reason for the decision.
 
@@ -416,11 +416,11 @@
 
         The name of the tool.
 
-      - `annotations: optional unknown`
+      - `annotations: optional unknown or null`
 
         Additional annotations about the tool.
 
-      - `description: optional string`
+      - `description: optional string or null`
 
         The description of the tool.
 
@@ -460,11 +460,11 @@
 
       - `"mcp_call"`
 
-    - `approval_request_id: optional string`
+    - `approval_request_id: optional string or null`
 
       The ID of an associated approval request, if any.
 
-    - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+    - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
       The error from the tool call, if any.
 
@@ -496,7 +496,7 @@
 
           - `"http_error"`
 
-    - `output: optional string`
+    - `output: optional string or null`
 
       The output from the tool call.
 
@@ -834,7 +834,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -858,11 +858,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -902,11 +902,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -938,7 +938,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -974,7 +974,7 @@
 
     - `"conversation.item.added"`
 
-  - `previous_item_id: optional string`
+  - `previous_item_id: optional string or null`
 
     The ID of the item that precedes this one, if any. This is used to
     maintain ordering when items are inserted.
@@ -1283,7 +1283,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -1307,11 +1307,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -1351,11 +1351,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -1387,7 +1387,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -1746,7 +1746,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -1770,11 +1770,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -1814,11 +1814,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -1850,7 +1850,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -1886,7 +1886,7 @@
 
     - `"conversation.item.created"`
 
-  - `previous_item_id: optional string`
+  - `previous_item_id: optional string or null`
 
     The ID of the preceding item in the Conversation context, allows the
     client to understand the order of the conversation. Can be `null` if the
@@ -2241,7 +2241,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -2265,11 +2265,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -2309,11 +2309,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -2345,7 +2345,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -2381,7 +2381,7 @@
 
     - `"conversation.item.done"`
 
-  - `previous_item_id: optional string`
+  - `previous_item_id: optional string or null`
 
     The ID of the item that precedes this one, if any. This is used to
     maintain ordering when items are inserted.
@@ -2484,7 +2484,7 @@
 
       The code of a language detected in the audio.
 
-  - `logprobs: optional array of LogProbProperties`
+  - `logprobs: optional array of LogProbProperties or null`
 
     The log probabilities of the transcription.
 
@@ -2528,7 +2528,7 @@
 
     The text delta.
 
-  - `logprobs: optional array of LogProbProperties`
+  - `logprobs: optional array of LogProbProperties or null`
 
     The log probabilities of the transcription. These can be enabled by configurating the session with `"include": ["item.input_audio_transcription.logprobs"]`. Each entry in the array corresponds a log probability of which token would be selected for this chunk of transcription. This can help to identify if it was possible there were multiple valid options for a given chunk of transcription.
 
@@ -2952,7 +2952,7 @@
 
     - `"input_audio_buffer.committed"`
 
-  - `previous_item_id: optional string`
+  - `previous_item_id: optional string or null`
 
     The ID of the preceding item after which the new item will be inserted.
     Can be `null` if the item has no predecessor.
@@ -3365,7 +3365,7 @@
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-    - `turn_detection: optional RealtimeAudioInputTurnDetection`
+    - `turn_detection: optional RealtimeAudioInputTurnDetection or null`
 
       Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -3392,7 +3392,7 @@
 
           If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-        - `idle_timeout_ms: optional number`
+        - `idle_timeout_ms: optional number or null`
 
           Optional timeout after which a model response will be triggered automatically. This is
           useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -3642,7 +3642,7 @@
       For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
       Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-  - `turn_detection: optional RealtimeAudioInputTurnDetection`
+  - `turn_detection: optional RealtimeAudioInputTurnDetection or null`
 
     Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -3669,7 +3669,7 @@
 
         If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-      - `idle_timeout_ms: optional number`
+      - `idle_timeout_ms: optional number or null`
 
         Optional timeout after which a model response will be triggered automatically. This is
         useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -3902,7 +3902,7 @@
 
       If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-    - `idle_timeout_ms: optional number`
+    - `idle_timeout_ms: optional number or null`
 
       Optional timeout after which a model response will be triggered automatically. This is
       useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -4279,7 +4279,7 @@
 
           - `"mcp_approval_response"`
 
-        - `reason: optional string`
+        - `reason: optional string or null`
 
           Optional reason for the decision.
 
@@ -4303,11 +4303,11 @@
 
             The name of the tool.
 
-          - `annotations: optional unknown`
+          - `annotations: optional unknown or null`
 
             Additional annotations about the tool.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             The description of the tool.
 
@@ -4347,11 +4347,11 @@
 
           - `"mcp_call"`
 
-        - `approval_request_id: optional string`
+        - `approval_request_id: optional string or null`
 
           The ID of an associated approval request, if any.
 
-        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
           The error from the tool call, if any.
 
@@ -4383,7 +4383,7 @@
 
               - `"http_error"`
 
-        - `output: optional string`
+        - `output: optional string or null`
 
           The output from the tool call.
 
@@ -4828,7 +4828,7 @@
 
           - `"inf"`
 
-      - `metadata: optional Metadata`
+      - `metadata: optional Metadata or null`
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
@@ -4852,7 +4852,7 @@
         Whether the model may call multiple tools in parallel. Only supported by
         reasoning Realtime models such as `gpt-realtime-2`.
 
-      - `prompt: optional ResponsePrompt`
+      - `prompt: optional ResponsePrompt or null`
 
         Reference to a prompt template and its variables.
         [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -4861,7 +4861,7 @@
 
           The unique identifier of the prompt template to use.
 
-        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
           Optional map of values to substitute in for variables in your
           prompt. The substitution values can either be strings, or other
@@ -4915,11 +4915,11 @@
 
               - `"input_image"`
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
-            - `image_url: optional string`
+            - `image_url: optional string or null`
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -4957,7 +4957,7 @@
 
               The content of the file to be sent to the model.
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
@@ -4979,7 +4979,7 @@
 
                 - `"explicit"`
 
-        - `version: optional string`
+        - `version: optional string or null`
 
           Optional version of the prompt template.
 
@@ -5052,7 +5052,7 @@
 
             - `"mcp"`
 
-          - `name: optional string`
+          - `name: optional string or null`
 
             The name of the tool to call on the server.
 
@@ -5097,7 +5097,7 @@
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -5105,7 +5105,7 @@
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -5170,12 +5170,12 @@
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -5356,7 +5356,7 @@
                 For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
                 Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-            - `turn_detection: optional RealtimeAudioInputTurnDetection`
+            - `turn_detection: optional RealtimeAudioInputTurnDetection or null`
 
               Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -5383,7 +5383,7 @@
 
                   If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-                - `idle_timeout_ms: optional number`
+                - `idle_timeout_ms: optional number or null`
 
                   Optional timeout after which a model response will be triggered automatically. This is
                   useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -5597,7 +5597,7 @@
           Whether the model may call multiple tools in parallel. Only supported by
           reasoning Realtime models such as `gpt-realtime-2`.
 
-        - `prompt: optional ResponsePrompt`
+        - `prompt: optional ResponsePrompt or null`
 
           Reference to a prompt template and its variables.
           [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -5651,7 +5651,7 @@
 
               - `"mcp"`
 
-            - `allowed_callers: optional array of "direct" or "programmatic"`
+            - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
 
@@ -5659,7 +5659,7 @@
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }`
+            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -5724,12 +5724,12 @@
 
               Whether this MCP tool is deferred and discovered via tool search.
 
-            - `headers: optional map[string]`
+            - `headers: optional map[string] or null`
 
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never"`
+            - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -5791,7 +5791,7 @@
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `tracing: optional RealtimeTracingConfig`
+        - `tracing: optional RealtimeTracingConfig or null`
 
           Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
           tracing is enabled for a session, the configuration cannot be modified.
@@ -5898,7 +5898,7 @@
 
               Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-            - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+            - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection or null`
 
               Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -5925,7 +5925,7 @@
 
                   If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-                - `idle_timeout_ms: optional number`
+                - `idle_timeout_ms: optional number or null`
 
                   Optional timeout after which a model response will be triggered automatically. This is
                   useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -6302,15 +6302,15 @@
 
     The type of error (e.g., "invalid_request_error", "server_error").
 
-  - `code: optional string`
+  - `code: optional string or null`
 
     Error code, if any.
 
-  - `event_id: optional string`
+  - `event_id: optional string or null`
 
     The event_id of the client event that caused the error, if applicable.
 
-  - `param: optional string`
+  - `param: optional string or null`
 
     Parameter related to the error, if any.
 
@@ -6334,15 +6334,15 @@
 
       The type of error (e.g., "invalid_request_error", "server_error").
 
-    - `code: optional string`
+    - `code: optional string or null`
 
       Error code, if any.
 
-    - `event_id: optional string`
+    - `event_id: optional string or null`
 
       The event_id of the client event that caused the error, if applicable.
 
-    - `param: optional string`
+    - `param: optional string or null`
 
       Parameter related to the error, if any.
 
@@ -6432,7 +6432,7 @@
 
     - `"mcp_approval_response"`
 
-  - `reason: optional string`
+  - `reason: optional string or null`
 
     Optional reason for the decision.
 
@@ -6458,11 +6458,11 @@
 
       The name of the tool.
 
-    - `annotations: optional unknown`
+    - `annotations: optional unknown or null`
 
       Additional annotations about the tool.
 
-    - `description: optional string`
+    - `description: optional string or null`
 
       The description of the tool.
 
@@ -6516,11 +6516,11 @@
 
     - `"mcp_call"`
 
-  - `approval_request_id: optional string`
+  - `approval_request_id: optional string or null`
 
     The ID of an associated approval request, if any.
 
-  - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+  - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
     The error from the tool call, if any.
 
@@ -6552,7 +6552,7 @@
 
         - `"http_error"`
 
-  - `output: optional string`
+  - `output: optional string or null`
 
     The output from the tool call.
 
@@ -6730,7 +6730,7 @@
 
       - `"inf"`
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -7037,7 +7037,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -7061,11 +7061,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -7105,11 +7105,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -7141,7 +7141,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -7809,7 +7809,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -7833,11 +7833,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -7877,11 +7877,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -7913,7 +7913,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -7961,7 +7961,7 @@
 
       - `"inf"`
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -7985,7 +7985,7 @@
     Whether the model may call multiple tools in parallel. Only supported by
     reasoning Realtime models such as `gpt-realtime-2`.
 
-  - `prompt: optional ResponsePrompt`
+  - `prompt: optional ResponsePrompt or null`
 
     Reference to a prompt template and its variables.
     [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -7994,7 +7994,7 @@
 
       The unique identifier of the prompt template to use.
 
-    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
       Optional map of values to substitute in for variables in your
       prompt. The substitution values can either be strings, or other
@@ -8048,11 +8048,11 @@
 
           - `"input_image"`
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
-        - `image_url: optional string`
+        - `image_url: optional string or null`
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -8090,7 +8090,7 @@
 
           The content of the file to be sent to the model.
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
@@ -8112,7 +8112,7 @@
 
             - `"explicit"`
 
-    - `version: optional string`
+    - `version: optional string or null`
 
       Optional version of the prompt template.
 
@@ -8185,7 +8185,7 @@
 
         - `"mcp"`
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         The name of the tool to call on the server.
 
@@ -8230,7 +8230,7 @@
 
         - `"mcp"`
 
-      - `allowed_callers: optional array of "direct" or "programmatic"`
+      - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
         The tool invocation context(s).
 
@@ -8238,7 +8238,7 @@
 
         - `"programmatic"`
 
-      - `allowed_tools: optional array of string or object { read_only, tool_names }`
+      - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
         List of allowed tool names or a filter object.
 
@@ -8303,12 +8303,12 @@
 
         Whether this MCP tool is deferred and discovered via tool search.
 
-      - `headers: optional map[string]`
+      - `headers: optional map[string] or null`
 
         Optional HTTP headers to send to the MCP server. Use for authentication
         or other purposes.
 
-      - `require_approval: optional object { always, never }  or "always" or "never"`
+      - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
         Specify which of the MCP server's tools require approval.
 
@@ -8880,7 +8880,7 @@
 
           - `"mcp_approval_response"`
 
-        - `reason: optional string`
+        - `reason: optional string or null`
 
           Optional reason for the decision.
 
@@ -8904,11 +8904,11 @@
 
             The name of the tool.
 
-          - `annotations: optional unknown`
+          - `annotations: optional unknown or null`
 
             Additional annotations about the tool.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             The description of the tool.
 
@@ -8948,11 +8948,11 @@
 
           - `"mcp_call"`
 
-        - `approval_request_id: optional string`
+        - `approval_request_id: optional string or null`
 
           The ID of an associated approval request, if any.
 
-        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
           The error from the tool call, if any.
 
@@ -8984,7 +8984,7 @@
 
               - `"http_error"`
 
-        - `output: optional string`
+        - `output: optional string or null`
 
           The output from the tool call.
 
@@ -9020,7 +9020,7 @@
 
       - `"conversation.item.created"`
 
-    - `previous_item_id: optional string`
+    - `previous_item_id: optional string or null`
 
       The ID of the preceding item in the Conversation context, allows the
       client to understand the order of the conversation. Can be `null` if the
@@ -9142,7 +9142,7 @@
 
         The code of a language detected in the audio.
 
-    - `logprobs: optional array of LogProbProperties`
+    - `logprobs: optional array of LogProbProperties or null`
 
       The log probabilities of the transcription.
 
@@ -9184,7 +9184,7 @@
 
       The text delta.
 
-    - `logprobs: optional array of LogProbProperties`
+    - `logprobs: optional array of LogProbProperties or null`
 
       The log probabilities of the transcription. These can be enabled by configurating the session with `"include": ["item.input_audio_transcription.logprobs"]`. Each entry in the array corresponds a log probability of which token would be selected for this chunk of transcription. This can help to identify if it was possible there were multiple valid options for a given chunk of transcription.
 
@@ -9312,15 +9312,15 @@
 
         The type of error (e.g., "invalid_request_error", "server_error").
 
-      - `code: optional string`
+      - `code: optional string or null`
 
         Error code, if any.
 
-      - `event_id: optional string`
+      - `event_id: optional string or null`
 
         The event_id of the client event that caused the error, if applicable.
 
-      - `param: optional string`
+      - `param: optional string or null`
 
         Parameter related to the error, if any.
 
@@ -9370,7 +9370,7 @@
 
       - `"input_audio_buffer.committed"`
 
-    - `previous_item_id: optional string`
+    - `previous_item_id: optional string or null`
 
       The ID of the preceding item after which the new item will be inserted.
       Can be `null` if the item has no predecessor.
@@ -9863,7 +9863,7 @@
 
           - `"inf"`
 
-      - `metadata: optional Metadata`
+      - `metadata: optional Metadata or null`
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
@@ -10383,7 +10383,7 @@
 
                 The prompt configured for input audio transcription, when present.
 
-            - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
+            - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
 
               Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -10410,7 +10410,7 @@
 
                   If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-                - `idle_timeout_ms: optional number`
+                - `idle_timeout_ms: optional number or null`
 
                   Optional timeout after which a model response will be triggered automatically. This is
                   useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -10620,7 +10620,7 @@
 
           - `"audio"`
 
-        - `prompt: optional ResponsePrompt`
+        - `prompt: optional ResponsePrompt or null`
 
           Reference to a prompt template and its variables.
           [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -10629,7 +10629,7 @@
 
             The unique identifier of the prompt template to use.
 
-          - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+          - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
             Optional map of values to substitute in for variables in your
             prompt. The substitution values can either be strings, or other
@@ -10683,11 +10683,11 @@
 
                 - `"input_image"`
 
-              - `file_id: optional string`
+              - `file_id: optional string or null`
 
                 The ID of the file to be sent to the model.
 
-              - `image_url: optional string`
+              - `image_url: optional string or null`
 
                 The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -10725,7 +10725,7 @@
 
                 The content of the file to be sent to the model.
 
-              - `file_id: optional string`
+              - `file_id: optional string or null`
 
                 The ID of the file to be sent to the model.
 
@@ -10747,7 +10747,7 @@
 
                   - `"explicit"`
 
-          - `version: optional string`
+          - `version: optional string or null`
 
             Optional version of the prompt template.
 
@@ -10820,7 +10820,7 @@
 
               - `"mcp"`
 
-            - `name: optional string`
+            - `name: optional string or null`
 
               The name of the tool to call on the server.
 
@@ -10865,7 +10865,7 @@
 
               - `"mcp"`
 
-            - `allowed_callers: optional array of "direct" or "programmatic"`
+            - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
               The tool invocation context(s).
 
@@ -10873,7 +10873,7 @@
 
               - `"programmatic"`
 
-            - `allowed_tools: optional array of string or object { read_only, tool_names }`
+            - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
               List of allowed tool names or a filter object.
 
@@ -10938,12 +10938,12 @@
 
               Whether this MCP tool is deferred and discovered via tool search.
 
-            - `headers: optional map[string]`
+            - `headers: optional map[string] or null`
 
               Optional HTTP headers to send to the MCP server. Use for authentication
               or other purposes.
 
-            - `require_approval: optional object { always, never }  or "always" or "never"`
+            - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
               Specify which of the MCP server's tools require approval.
 
@@ -11005,7 +11005,7 @@
               The Secure MCP Tunnel ID to use instead of a direct server URL. One of
               `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-        - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+        - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
 
           Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
           tracing is enabled for a session, the configuration cannot be modified.
@@ -11156,7 +11156,7 @@
 
                 The prompt configured for input audio transcription, when present.
 
-            - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
+            - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection or null`
 
               Configuration for turn detection. Can be set to `null` to turn off. Server
               VAD means that the model will detect the start and end of speech based on
@@ -11316,7 +11316,7 @@
 
       - `"conversation.item.added"`
 
-    - `previous_item_id: optional string`
+    - `previous_item_id: optional string or null`
 
       The ID of the item that precedes this one, if any. This is used to
       maintain ordering when items are inserted.
@@ -11341,7 +11341,7 @@
 
       - `"conversation.item.done"`
 
-    - `previous_item_id: optional string`
+    - `previous_item_id: optional string or null`
 
       The ID of the item that precedes this one, if any. This is used to
       maintain ordering when items are inserted.
@@ -11510,7 +11510,7 @@
 
       - `"response.mcp_call_arguments.delta"`
 
-    - `obfuscation: optional string`
+    - `obfuscation: optional string or null`
 
       If present, indicates the delta text was obfuscated.
 
@@ -11624,7 +11624,7 @@
 
     Expiration timestamp for the session, in seconds since epoch.
 
-  - `include: optional array of "item.input_audio_transcription.logprobs"`
+  - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
     Additional fields to include in server outputs.
 
@@ -11658,7 +11658,7 @@
 
       - `"far_field"`
 
-  - `input_audio_transcription: optional object { language, languages, model, prompt }`
+  - `input_audio_transcription: optional object { language, languages, model, prompt }  or null`
 
     Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](https://platform.openai.com/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
@@ -11796,7 +11796,7 @@
 
     - `"g711_alaw"`
 
-  - `prompt: optional ResponsePrompt`
+  - `prompt: optional ResponsePrompt or null`
 
     Reference to a prompt template and its variables.
     [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -11805,7 +11805,7 @@
 
       The unique identifier of the prompt template to use.
 
-    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
       Optional map of values to substitute in for variables in your
       prompt. The substitution values can either be strings, or other
@@ -11859,11 +11859,11 @@
 
           - `"input_image"`
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
-        - `image_url: optional string`
+        - `image_url: optional string or null`
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -11901,7 +11901,7 @@
 
           The content of the file to be sent to the model.
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
@@ -11923,7 +11923,7 @@
 
             - `"explicit"`
 
-    - `version: optional string`
+    - `version: optional string or null`
 
       Optional version of the prompt template.
 
@@ -11966,7 +11966,7 @@
 
       - `"function"`
 
-  - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+  - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
 
     Configuration options for tracing. Set to null to disable tracing. Once
     tracing is enabled for a session, the configuration cannot be modified.
@@ -11999,7 +11999,7 @@
         The name of the workflow to attach to this trace. This is used to
         name the trace in the traces dashboard.
 
-  - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
+  - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
 
     Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -12026,7 +12026,7 @@
 
         If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-      - `idle_timeout_ms: optional number`
+      - `idle_timeout_ms: optional number or null`
 
         Optional timeout after which a model response will be triggered automatically. This is
         useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -12271,7 +12271,7 @@
           For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
           Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-      - `turn_detection: optional RealtimeAudioInputTurnDetection`
+      - `turn_detection: optional RealtimeAudioInputTurnDetection or null`
 
         Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -12298,7 +12298,7 @@
 
             If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-          - `idle_timeout_ms: optional number`
+          - `idle_timeout_ms: optional number or null`
 
             Optional timeout after which a model response will be triggered automatically. This is
             useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -12512,7 +12512,7 @@
     Whether the model may call multiple tools in parallel. Only supported by
     reasoning Realtime models such as `gpt-realtime-2`.
 
-  - `prompt: optional ResponsePrompt`
+  - `prompt: optional ResponsePrompt or null`
 
     Reference to a prompt template and its variables.
     [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -12521,7 +12521,7 @@
 
       The unique identifier of the prompt template to use.
 
-    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
       Optional map of values to substitute in for variables in your
       prompt. The substitution values can either be strings, or other
@@ -12575,11 +12575,11 @@
 
           - `"input_image"`
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
-        - `image_url: optional string`
+        - `image_url: optional string or null`
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -12617,7 +12617,7 @@
 
           The content of the file to be sent to the model.
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
@@ -12639,7 +12639,7 @@
 
             - `"explicit"`
 
-    - `version: optional string`
+    - `version: optional string or null`
 
       Optional version of the prompt template.
 
@@ -12712,7 +12712,7 @@
 
         - `"mcp"`
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         The name of the tool to call on the server.
 
@@ -12757,7 +12757,7 @@
 
         - `"mcp"`
 
-      - `allowed_callers: optional array of "direct" or "programmatic"`
+      - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
         The tool invocation context(s).
 
@@ -12765,7 +12765,7 @@
 
         - `"programmatic"`
 
-      - `allowed_tools: optional array of string or object { read_only, tool_names }`
+      - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
         List of allowed tool names or a filter object.
 
@@ -12830,12 +12830,12 @@
 
         Whether this MCP tool is deferred and discovered via tool search.
 
-      - `headers: optional map[string]`
+      - `headers: optional map[string] or null`
 
         Optional HTTP headers to send to the MCP server. Use for authentication
         or other purposes.
 
-      - `require_approval: optional object { always, never }  or "always" or "never"`
+      - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
         Specify which of the MCP server's tools require approval.
 
@@ -12897,7 +12897,7 @@
         The Secure MCP Tunnel ID to use instead of a direct server URL. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-  - `tracing: optional RealtimeTracingConfig`
+  - `tracing: optional RealtimeTracingConfig or null`
 
     Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
     tracing is enabled for a session, the configuration cannot be modified.
@@ -13022,7 +13022,7 @@
 
       - `"mcp"`
 
-    - `name: optional string`
+    - `name: optional string or null`
 
       The name of the tool to call on the server.
 
@@ -13069,7 +13069,7 @@
 
       - `"mcp"`
 
-    - `allowed_callers: optional array of "direct" or "programmatic"`
+    - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
       The tool invocation context(s).
 
@@ -13077,7 +13077,7 @@
 
       - `"programmatic"`
 
-    - `allowed_tools: optional array of string or object { read_only, tool_names }`
+    - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
       List of allowed tool names or a filter object.
 
@@ -13142,12 +13142,12 @@
 
       Whether this MCP tool is deferred and discovered via tool search.
 
-    - `headers: optional map[string]`
+    - `headers: optional map[string] or null`
 
       Optional HTTP headers to send to the MCP server. Use for authentication
       or other purposes.
 
-    - `require_approval: optional object { always, never }  or "always" or "never"`
+    - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
       Specify which of the MCP server's tools require approval.
 
@@ -13253,7 +13253,7 @@
 
       - `"mcp"`
 
-    - `allowed_callers: optional array of "direct" or "programmatic"`
+    - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
       The tool invocation context(s).
 
@@ -13261,7 +13261,7 @@
 
       - `"programmatic"`
 
-    - `allowed_tools: optional array of string or object { read_only, tool_names }`
+    - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
       List of allowed tool names or a filter object.
 
@@ -13326,12 +13326,12 @@
 
       Whether this MCP tool is deferred and discovered via tool search.
 
-    - `headers: optional map[string]`
+    - `headers: optional map[string] or null`
 
       Optional HTTP headers to send to the MCP server. Use for authentication
       or other purposes.
 
-    - `require_approval: optional object { always, never }  or "always" or "never"`
+    - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
       Specify which of the MCP server's tools require approval.
 
@@ -13558,7 +13558,7 @@
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-    - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+    - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection or null`
 
       Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -13585,7 +13585,7 @@
 
           If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-        - `idle_timeout_ms: optional number`
+        - `idle_timeout_ms: optional number or null`
 
           Optional timeout after which a model response will be triggered automatically. This is
           useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -13780,7 +13780,7 @@
       For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
       Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-  - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+  - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection or null`
 
     Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -13807,7 +13807,7 @@
 
         If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-      - `idle_timeout_ms: optional number`
+      - `idle_timeout_ms: optional number or null`
 
         Optional timeout after which a model response will be triggered automatically. This is
         useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -13905,7 +13905,7 @@
 
       If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-    - `idle_timeout_ms: optional number`
+    - `idle_timeout_ms: optional number or null`
 
       Optional timeout after which a model response will be triggered automatically. This is
       useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -14114,7 +14114,7 @@
           For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
           Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-      - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+      - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection or null`
 
         Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -14141,7 +14141,7 @@
 
             If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-          - `idle_timeout_ms: optional number`
+          - `idle_timeout_ms: optional number or null`
 
             Optional timeout after which a model response will be triggered automatically. This is
             useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -14241,7 +14241,7 @@
 
         - `input: optional object { noise_reduction, transcription }`
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Optional input noise reduction. Set to `null` to disable it.
 
@@ -14253,7 +14253,7 @@
 
               - `"far_field"`
 
-          - `transcription: optional object { model }`
+          - `transcription: optional object { model }  or null`
 
             Optional source-language transcription. When configured, the server emits
             `session.input_transcript.delta` events. Translation itself still runs from
@@ -14348,7 +14348,7 @@
 
       - `input: optional object { noise_reduction, transcription }`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Optional input noise reduction. Set to `null` to disable it.
 
@@ -14360,7 +14360,7 @@
 
             - `"far_field"`
 
-        - `transcription: optional object { model }`
+        - `transcription: optional object { model }  or null`
 
           Optional source-language transcription. When configured, the server emits
           `session.input_transcript.delta` events. Translation itself still runs from
@@ -14418,7 +14418,7 @@
 
       - `input: optional object { noise_reduction, transcription }`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Optional input noise reduction.
 
@@ -14430,7 +14430,7 @@
 
             - `"far_field"`
 
-        - `transcription: optional object { model }`
+        - `transcription: optional object { model }  or null`
 
           Optional source-language transcription. When configured, the server emits
           `session.input_transcript.delta` events. Translation itself still runs from
@@ -14523,7 +14523,7 @@
 
     - `"session.input_transcript.delta"`
 
-  - `elapsed_ms: optional number`
+  - `elapsed_ms: optional number or null`
 
     Timing metadata for stream alignment, derived from the translation frame
     when available. It advances in 200 ms increments, but multiple transcript
@@ -14555,7 +14555,7 @@
 
     Number of audio channels.
 
-  - `elapsed_ms: optional number`
+  - `elapsed_ms: optional number or null`
 
     Timing metadata for stream alignment, derived from the translation frame
     when available. Treat `elapsed_ms` as alignment metadata, not a unique
@@ -14594,7 +14594,7 @@
 
     - `"session.output_transcript.delta"`
 
-  - `elapsed_ms: optional number`
+  - `elapsed_ms: optional number or null`
 
     Timing metadata for stream alignment, derived from the translation frame
     when available. It advances in 200 ms increments, but multiple transcript
@@ -14625,15 +14625,15 @@
 
         The type of error (e.g., "invalid_request_error", "server_error").
 
-      - `code: optional string`
+      - `code: optional string or null`
 
         Error code, if any.
 
-      - `event_id: optional string`
+      - `event_id: optional string or null`
 
         The event_id of the client event that caused the error, if applicable.
 
-      - `param: optional string`
+      - `param: optional string or null`
 
         Parameter related to the error, if any.
 
@@ -14671,7 +14671,7 @@
 
         - `input: optional object { noise_reduction, transcription }`
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Optional input noise reduction.
 
@@ -14683,7 +14683,7 @@
 
               - `"far_field"`
 
-          - `transcription: optional object { model }`
+          - `transcription: optional object { model }  or null`
 
             Optional source-language transcription. When configured, the server emits
             `session.input_transcript.delta` events. Translation itself still runs from
@@ -14775,7 +14775,7 @@
 
       - `"session.input_transcript.delta"`
 
-    - `elapsed_ms: optional number`
+    - `elapsed_ms: optional number or null`
 
       Timing metadata for stream alignment, derived from the translation frame
       when available. It advances in 200 ms increments, but multiple transcript
@@ -14803,7 +14803,7 @@
 
       - `"session.output_transcript.delta"`
 
-    - `elapsed_ms: optional number`
+    - `elapsed_ms: optional number or null`
 
       Timing metadata for stream alignment, derived from the translation frame
       when available. It advances in 200 ms increments, but multiple transcript
@@ -14833,7 +14833,7 @@
 
       Number of audio channels.
 
-    - `elapsed_ms: optional number`
+    - `elapsed_ms: optional number or null`
 
       Timing metadata for stream alignment, derived from the translation frame
       when available. Treat `elapsed_ms` as alignment metadata, not a unique
@@ -14866,7 +14866,7 @@
 
     - `input: optional object { noise_reduction, transcription }`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Optional input noise reduction.
 
@@ -14878,7 +14878,7 @@
 
           - `"far_field"`
 
-      - `transcription: optional object { model }`
+      - `transcription: optional object { model }  or null`
 
         Optional source-language transcription. When configured, the server emits
         `session.input_transcript.delta` events. Translation itself still runs from
@@ -14960,7 +14960,7 @@
 
     - `input: optional object { noise_reduction, transcription }`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Optional input noise reduction. Set to `null` to disable it.
 
@@ -14972,7 +14972,7 @@
 
           - `"far_field"`
 
-      - `transcription: optional object { model }`
+      - `transcription: optional object { model }  or null`
 
         Optional source-language transcription. When configured, the server emits
         `session.input_transcript.delta` events. Translation itself still runs from
@@ -15014,7 +15014,7 @@
 
       - `input: optional object { noise_reduction, transcription }`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Optional input noise reduction.
 
@@ -15026,7 +15026,7 @@
 
             - `"far_field"`
 
-        - `transcription: optional object { model }`
+        - `transcription: optional object { model }  or null`
 
           Optional source-language transcription. When configured, the server emits
           `session.input_transcript.delta` events. Translation itself still runs from
@@ -15082,7 +15082,7 @@
 
       - `input: optional object { noise_reduction, transcription }`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Optional input noise reduction. Set to `null` to disable it.
 
@@ -15094,7 +15094,7 @@
 
             - `"far_field"`
 
-        - `transcription: optional object { model }`
+        - `transcription: optional object { model }  or null`
 
           Optional source-language transcription. When configured, the server emits
           `session.input_transcript.delta` events. Translation itself still runs from
@@ -15132,7 +15132,7 @@
 
     - `input: optional object { noise_reduction, transcription }`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Optional input noise reduction. Set to `null` to disable it.
 
@@ -15144,7 +15144,7 @@
 
           - `"far_field"`
 
-      - `transcription: optional object { model }`
+      - `transcription: optional object { model }  or null`
 
         Optional source-language transcription. When configured, the server emits
         `session.input_transcript.delta` events. Translation itself still runs from
@@ -15185,7 +15185,7 @@
 
       - `input: optional object { noise_reduction, transcription }`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Optional input noise reduction.
 
@@ -15197,7 +15197,7 @@
 
             - `"far_field"`
 
-        - `transcription: optional object { model }`
+        - `transcription: optional object { model }  or null`
 
           Optional source-language transcription. When configured, the server emits
           `session.input_transcript.delta` events. Translation itself still runs from
@@ -16007,7 +16007,7 @@
 
           - `"mcp_approval_response"`
 
-        - `reason: optional string`
+        - `reason: optional string or null`
 
           Optional reason for the decision.
 
@@ -16031,11 +16031,11 @@
 
             The name of the tool.
 
-          - `annotations: optional unknown`
+          - `annotations: optional unknown or null`
 
             Additional annotations about the tool.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             The description of the tool.
 
@@ -16075,11 +16075,11 @@
 
           - `"mcp_call"`
 
-        - `approval_request_id: optional string`
+        - `approval_request_id: optional string or null`
 
           The ID of an associated approval request, if any.
 
-        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
           The error from the tool call, if any.
 
@@ -16111,7 +16111,7 @@
 
               - `"http_error"`
 
-        - `output: optional string`
+        - `output: optional string or null`
 
           The output from the tool call.
 
@@ -16159,7 +16159,7 @@
 
         - `"inf"`
 
-    - `metadata: optional Metadata`
+    - `metadata: optional Metadata or null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
@@ -16183,7 +16183,7 @@
       Whether the model may call multiple tools in parallel. Only supported by
       reasoning Realtime models such as `gpt-realtime-2`.
 
-    - `prompt: optional ResponsePrompt`
+    - `prompt: optional ResponsePrompt or null`
 
       Reference to a prompt template and its variables.
       [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -16192,7 +16192,7 @@
 
         The unique identifier of the prompt template to use.
 
-      - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+      - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
         Optional map of values to substitute in for variables in your
         prompt. The substitution values can either be strings, or other
@@ -16246,11 +16246,11 @@
 
             - `"input_image"`
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
-          - `image_url: optional string`
+          - `image_url: optional string or null`
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -16288,7 +16288,7 @@
 
             The content of the file to be sent to the model.
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
@@ -16310,7 +16310,7 @@
 
               - `"explicit"`
 
-      - `version: optional string`
+      - `version: optional string or null`
 
         Optional version of the prompt template.
 
@@ -16383,7 +16383,7 @@
 
           - `"mcp"`
 
-        - `name: optional string`
+        - `name: optional string or null`
 
           The name of the tool to call on the server.
 
@@ -16428,7 +16428,7 @@
 
           - `"mcp"`
 
-        - `allowed_callers: optional array of "direct" or "programmatic"`
+        - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
           The tool invocation context(s).
 
@@ -16436,7 +16436,7 @@
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }`
+        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -16501,12 +16501,12 @@
 
           Whether this MCP tool is deferred and discovered via tool search.
 
-        - `headers: optional map[string]`
+        - `headers: optional map[string] or null`
 
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never"`
+        - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -16691,7 +16691,7 @@
 
         - `"inf"`
 
-    - `metadata: optional Metadata`
+    - `metadata: optional Metadata or null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
@@ -16998,7 +16998,7 @@
 
           - `"mcp_approval_response"`
 
-        - `reason: optional string`
+        - `reason: optional string or null`
 
           Optional reason for the decision.
 
@@ -17022,11 +17022,11 @@
 
             The name of the tool.
 
-          - `annotations: optional unknown`
+          - `annotations: optional unknown or null`
 
             Additional annotations about the tool.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             The description of the tool.
 
@@ -17066,11 +17066,11 @@
 
           - `"mcp_call"`
 
-        - `approval_request_id: optional string`
+        - `approval_request_id: optional string or null`
 
           The ID of an associated approval request, if any.
 
-        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
           The error from the tool call, if any.
 
@@ -17102,7 +17102,7 @@
 
               - `"http_error"`
 
-        - `output: optional string`
+        - `output: optional string or null`
 
           The output from the tool call.
 
@@ -17406,7 +17406,7 @@
 
         - `"inf"`
 
-    - `metadata: optional Metadata`
+    - `metadata: optional Metadata or null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
@@ -17713,7 +17713,7 @@
 
           - `"mcp_approval_response"`
 
-        - `reason: optional string`
+        - `reason: optional string or null`
 
           Optional reason for the decision.
 
@@ -17737,11 +17737,11 @@
 
             The name of the tool.
 
-          - `annotations: optional unknown`
+          - `annotations: optional unknown or null`
 
             Additional annotations about the tool.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             The description of the tool.
 
@@ -17781,11 +17781,11 @@
 
           - `"mcp_call"`
 
-        - `approval_request_id: optional string`
+        - `approval_request_id: optional string or null`
 
           The ID of an associated approval request, if any.
 
-        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+        - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
           The error from the tool call, if any.
 
@@ -17817,7 +17817,7 @@
 
               - `"http_error"`
 
-        - `output: optional string`
+        - `output: optional string or null`
 
           The output from the tool call.
 
@@ -18100,7 +18100,7 @@
 
     - `"response.mcp_call_arguments.delta"`
 
-  - `obfuscation: optional string`
+  - `obfuscation: optional string or null`
 
     If present, indicates the delta text was obfuscated.
 
@@ -18510,7 +18510,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -18534,11 +18534,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -18578,11 +18578,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -18614,7 +18614,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -18961,7 +18961,7 @@
 
         - `"mcp_approval_response"`
 
-      - `reason: optional string`
+      - `reason: optional string or null`
 
         Optional reason for the decision.
 
@@ -18985,11 +18985,11 @@
 
           The name of the tool.
 
-        - `annotations: optional unknown`
+        - `annotations: optional unknown or null`
 
           Additional annotations about the tool.
 
-        - `description: optional string`
+        - `description: optional string or null`
 
           The description of the tool.
 
@@ -19029,11 +19029,11 @@
 
         - `"mcp_call"`
 
-      - `approval_request_id: optional string`
+      - `approval_request_id: optional string or null`
 
         The ID of an associated approval request, if any.
 
-      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError`
+      - `error: optional RealtimeMcpProtocolError or RealtimeMcpToolExecutionError or RealtimeMcphttpError or null`
 
         The error from the tool call, if any.
 
@@ -19065,7 +19065,7 @@
 
             - `"http_error"`
 
-      - `output: optional string`
+      - `output: optional string or null`
 
         The output from the tool call.
 
@@ -19320,7 +19320,7 @@
 
               The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
+          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
 
             Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -19347,7 +19347,7 @@
 
                 If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-              - `idle_timeout_ms: optional number`
+              - `idle_timeout_ms: optional number or null`
 
                 Optional timeout after which a model response will be triggered automatically. This is
                 useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -19557,7 +19557,7 @@
 
         - `"audio"`
 
-      - `prompt: optional ResponsePrompt`
+      - `prompt: optional ResponsePrompt or null`
 
         Reference to a prompt template and its variables.
         [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -19566,7 +19566,7 @@
 
           The unique identifier of the prompt template to use.
 
-        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
           Optional map of values to substitute in for variables in your
           prompt. The substitution values can either be strings, or other
@@ -19620,11 +19620,11 @@
 
               - `"input_image"`
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
-            - `image_url: optional string`
+            - `image_url: optional string or null`
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -19662,7 +19662,7 @@
 
               The content of the file to be sent to the model.
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
@@ -19684,7 +19684,7 @@
 
                 - `"explicit"`
 
-        - `version: optional string`
+        - `version: optional string or null`
 
           Optional version of the prompt template.
 
@@ -19757,7 +19757,7 @@
 
             - `"mcp"`
 
-          - `name: optional string`
+          - `name: optional string or null`
 
             The name of the tool to call on the server.
 
@@ -19802,7 +19802,7 @@
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -19810,7 +19810,7 @@
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -19875,12 +19875,12 @@
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -19942,7 +19942,7 @@
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
 
         Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
         tracing is enabled for a session, the configuration cannot be modified.
@@ -20093,7 +20093,7 @@
 
               The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
+          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection or null`
 
             Configuration for turn detection. Can be set to `null` to turn off. Server
             VAD means that the model will detect the start and end of speech based on
@@ -20295,7 +20295,7 @@
               For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
               Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-          - `turn_detection: optional RealtimeAudioInputTurnDetection`
+          - `turn_detection: optional RealtimeAudioInputTurnDetection or null`
 
             Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -20322,7 +20322,7 @@
 
                 If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-              - `idle_timeout_ms: optional number`
+              - `idle_timeout_ms: optional number or null`
 
                 Optional timeout after which a model response will be triggered automatically. This is
                 useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -20536,7 +20536,7 @@
         Whether the model may call multiple tools in parallel. Only supported by
         reasoning Realtime models such as `gpt-realtime-2`.
 
-      - `prompt: optional ResponsePrompt`
+      - `prompt: optional ResponsePrompt or null`
 
         Reference to a prompt template and its variables.
         [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -20545,7 +20545,7 @@
 
           The unique identifier of the prompt template to use.
 
-        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
           Optional map of values to substitute in for variables in your
           prompt. The substitution values can either be strings, or other
@@ -20599,11 +20599,11 @@
 
               - `"input_image"`
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
-            - `image_url: optional string`
+            - `image_url: optional string or null`
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -20641,7 +20641,7 @@
 
               The content of the file to be sent to the model.
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
@@ -20663,7 +20663,7 @@
 
                 - `"explicit"`
 
-        - `version: optional string`
+        - `version: optional string or null`
 
           Optional version of the prompt template.
 
@@ -20736,7 +20736,7 @@
 
             - `"mcp"`
 
-          - `name: optional string`
+          - `name: optional string or null`
 
             The name of the tool to call on the server.
 
@@ -20781,7 +20781,7 @@
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -20789,7 +20789,7 @@
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -20854,12 +20854,12 @@
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -20921,7 +20921,7 @@
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-      - `tracing: optional RealtimeTracingConfig`
+      - `tracing: optional RealtimeTracingConfig or null`
 
         Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
         tracing is enabled for a session, the configuration cannot be modified.
@@ -21028,7 +21028,7 @@
 
             Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-          - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+          - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection or null`
 
             Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -21055,7 +21055,7 @@
 
                 If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-              - `idle_timeout_ms: optional number`
+              - `idle_timeout_ms: optional number or null`
 
                 Optional timeout after which a model response will be triggered automatically. This is
                 useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -21279,7 +21279,7 @@
 
               The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
+          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
 
             Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -21306,7 +21306,7 @@
 
                 If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-              - `idle_timeout_ms: optional number`
+              - `idle_timeout_ms: optional number or null`
 
                 Optional timeout after which a model response will be triggered automatically. This is
                 useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -21516,7 +21516,7 @@
 
         - `"audio"`
 
-      - `prompt: optional ResponsePrompt`
+      - `prompt: optional ResponsePrompt or null`
 
         Reference to a prompt template and its variables.
         [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -21525,7 +21525,7 @@
 
           The unique identifier of the prompt template to use.
 
-        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
           Optional map of values to substitute in for variables in your
           prompt. The substitution values can either be strings, or other
@@ -21579,11 +21579,11 @@
 
               - `"input_image"`
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
-            - `image_url: optional string`
+            - `image_url: optional string or null`
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -21621,7 +21621,7 @@
 
               The content of the file to be sent to the model.
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
@@ -21643,7 +21643,7 @@
 
                 - `"explicit"`
 
-        - `version: optional string`
+        - `version: optional string or null`
 
           Optional version of the prompt template.
 
@@ -21716,7 +21716,7 @@
 
             - `"mcp"`
 
-          - `name: optional string`
+          - `name: optional string or null`
 
             The name of the tool to call on the server.
 
@@ -21761,7 +21761,7 @@
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -21769,7 +21769,7 @@
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -21834,12 +21834,12 @@
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -21901,7 +21901,7 @@
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
 
         Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
         tracing is enabled for a session, the configuration cannot be modified.
@@ -22052,7 +22052,7 @@
 
               The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
+          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection or null`
 
             Configuration for turn detection. Can be set to `null` to turn off. Server
             VAD means that the model will detect the start and end of speech based on
@@ -22517,7 +22517,7 @@ handle it.
         For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
         Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-    - `turn_detection: optional RealtimeAudioInputTurnDetection`
+    - `turn_detection: optional RealtimeAudioInputTurnDetection or null`
 
       Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -22544,7 +22544,7 @@ handle it.
 
           If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-        - `idle_timeout_ms: optional number`
+        - `idle_timeout_ms: optional number or null`
 
           Optional timeout after which a model response will be triggered automatically. This is
           useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -22758,7 +22758,7 @@ handle it.
   Whether the model may call multiple tools in parallel. Only supported by
   reasoning Realtime models such as `gpt-realtime-2`.
 
-- `prompt: optional ResponsePrompt`
+- `prompt: optional ResponsePrompt or null`
 
   Reference to a prompt template and its variables.
   [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -22767,7 +22767,7 @@ handle it.
 
     The unique identifier of the prompt template to use.
 
-  - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+  - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
     Optional map of values to substitute in for variables in your
     prompt. The substitution values can either be strings, or other
@@ -22821,11 +22821,11 @@ handle it.
 
         - `"input_image"`
 
-      - `file_id: optional string`
+      - `file_id: optional string or null`
 
         The ID of the file to be sent to the model.
 
-      - `image_url: optional string`
+      - `image_url: optional string or null`
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -22863,7 +22863,7 @@ handle it.
 
         The content of the file to be sent to the model.
 
-      - `file_id: optional string`
+      - `file_id: optional string or null`
 
         The ID of the file to be sent to the model.
 
@@ -22885,7 +22885,7 @@ handle it.
 
           - `"explicit"`
 
-  - `version: optional string`
+  - `version: optional string or null`
 
     Optional version of the prompt template.
 
@@ -22958,7 +22958,7 @@ handle it.
 
       - `"mcp"`
 
-    - `name: optional string`
+    - `name: optional string or null`
 
       The name of the tool to call on the server.
 
@@ -23003,7 +23003,7 @@ handle it.
 
       - `"mcp"`
 
-    - `allowed_callers: optional array of "direct" or "programmatic"`
+    - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
       The tool invocation context(s).
 
@@ -23011,7 +23011,7 @@ handle it.
 
       - `"programmatic"`
 
-    - `allowed_tools: optional array of string or object { read_only, tool_names }`
+    - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
       List of allowed tool names or a filter object.
 
@@ -23076,12 +23076,12 @@ handle it.
 
       Whether this MCP tool is deferred and discovered via tool search.
 
-    - `headers: optional map[string]`
+    - `headers: optional map[string] or null`
 
       Optional HTTP headers to send to the MCP server. Use for authentication
       or other purposes.
 
-    - `require_approval: optional object { always, never }  or "always" or "never"`
+    - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
       Specify which of the MCP server's tools require approval.
 
@@ -23143,7 +23143,7 @@ handle it.
       The Secure MCP Tunnel ID to use instead of a direct server URL. One of
       `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-- `tracing: optional RealtimeTracingConfig`
+- `tracing: optional RealtimeTracingConfig or null`
 
   Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
   tracing is enabled for a session, the configuration cannot be modified.
@@ -23519,7 +23519,7 @@ Returns the created client secret and the effective session object. The client s
             For `gpt-4o-transcribe` models (excluding `gpt-4o-transcribe-diarize`), the prompt is a free text string, for example "expect words related to technology".
             Prompt is not supported with `gpt-realtime-whisper` in GA Realtime sessions.
 
-        - `turn_detection: optional RealtimeAudioInputTurnDetection`
+        - `turn_detection: optional RealtimeAudioInputTurnDetection or null`
 
           Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -23546,7 +23546,7 @@ Returns the created client secret and the effective session object. The client s
 
               If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-            - `idle_timeout_ms: optional number`
+            - `idle_timeout_ms: optional number or null`
 
               Optional timeout after which a model response will be triggered automatically. This is
               useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -23760,7 +23760,7 @@ Returns the created client secret and the effective session object. The client s
       Whether the model may call multiple tools in parallel. Only supported by
       reasoning Realtime models such as `gpt-realtime-2`.
 
-    - `prompt: optional ResponsePrompt`
+    - `prompt: optional ResponsePrompt or null`
 
       Reference to a prompt template and its variables.
       [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -23769,7 +23769,7 @@ Returns the created client secret and the effective session object. The client s
 
         The unique identifier of the prompt template to use.
 
-      - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+      - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
         Optional map of values to substitute in for variables in your
         prompt. The substitution values can either be strings, or other
@@ -23823,11 +23823,11 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_image"`
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
-          - `image_url: optional string`
+          - `image_url: optional string or null`
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -23865,7 +23865,7 @@ Returns the created client secret and the effective session object. The client s
 
             The content of the file to be sent to the model.
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
@@ -23887,7 +23887,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"explicit"`
 
-      - `version: optional string`
+      - `version: optional string or null`
 
         Optional version of the prompt template.
 
@@ -23960,7 +23960,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"mcp"`
 
-        - `name: optional string`
+        - `name: optional string or null`
 
           The name of the tool to call on the server.
 
@@ -24005,7 +24005,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"mcp"`
 
-        - `allowed_callers: optional array of "direct" or "programmatic"`
+        - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
           The tool invocation context(s).
 
@@ -24013,7 +24013,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }`
+        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -24078,12 +24078,12 @@ Returns the created client secret and the effective session object. The client s
 
           Whether this MCP tool is deferred and discovered via tool search.
 
-        - `headers: optional map[string]`
+        - `headers: optional map[string] or null`
 
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never"`
+        - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -24145,7 +24145,7 @@ Returns the created client secret and the effective session object. The client s
           The Secure MCP Tunnel ID to use instead of a direct server URL. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-    - `tracing: optional RealtimeTracingConfig`
+    - `tracing: optional RealtimeTracingConfig or null`
 
       Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
       tracing is enabled for a session, the configuration cannot be modified.
@@ -24252,7 +24252,7 @@ Returns the created client secret and the effective session object. The client s
 
           Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/docs/api-reference/audio/createTranscription) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-        - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection`
+        - `turn_detection: optional RealtimeTranscriptionSessionAudioInputTurnDetection or null`
 
           Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -24279,7 +24279,7 @@ Returns the created client secret and the effective session object. The client s
 
               If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-            - `idle_timeout_ms: optional number`
+            - `idle_timeout_ms: optional number or null`
 
               Optional timeout after which a model response will be triggered automatically. This is
               useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -24488,7 +24488,7 @@ Returns the created client secret and the effective session object. The client s
 
             The prompt configured for input audio transcription, when present.
 
-        - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
+        - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
 
           Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -24515,7 +24515,7 @@ Returns the created client secret and the effective session object. The client s
 
               If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-            - `idle_timeout_ms: optional number`
+            - `idle_timeout_ms: optional number or null`
 
               Optional timeout after which a model response will be triggered automatically. This is
               useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -24725,7 +24725,7 @@ Returns the created client secret and the effective session object. The client s
 
       - `"audio"`
 
-    - `prompt: optional ResponsePrompt`
+    - `prompt: optional ResponsePrompt or null`
 
       Reference to a prompt template and its variables.
       [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -24734,7 +24734,7 @@ Returns the created client secret and the effective session object. The client s
 
         The unique identifier of the prompt template to use.
 
-      - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+      - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
         Optional map of values to substitute in for variables in your
         prompt. The substitution values can either be strings, or other
@@ -24788,11 +24788,11 @@ Returns the created client secret and the effective session object. The client s
 
             - `"input_image"`
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
-          - `image_url: optional string`
+          - `image_url: optional string or null`
 
             The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -24830,7 +24830,7 @@ Returns the created client secret and the effective session object. The client s
 
             The content of the file to be sent to the model.
 
-          - `file_id: optional string`
+          - `file_id: optional string or null`
 
             The ID of the file to be sent to the model.
 
@@ -24852,7 +24852,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"explicit"`
 
-      - `version: optional string`
+      - `version: optional string or null`
 
         Optional version of the prompt template.
 
@@ -24925,7 +24925,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"mcp"`
 
-        - `name: optional string`
+        - `name: optional string or null`
 
           The name of the tool to call on the server.
 
@@ -24970,7 +24970,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"mcp"`
 
-        - `allowed_callers: optional array of "direct" or "programmatic"`
+        - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
           The tool invocation context(s).
 
@@ -24978,7 +24978,7 @@ Returns the created client secret and the effective session object. The client s
 
           - `"programmatic"`
 
-        - `allowed_tools: optional array of string or object { read_only, tool_names }`
+        - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
           List of allowed tool names or a filter object.
 
@@ -25043,12 +25043,12 @@ Returns the created client secret and the effective session object. The client s
 
           Whether this MCP tool is deferred and discovered via tool search.
 
-        - `headers: optional map[string]`
+        - `headers: optional map[string] or null`
 
           Optional HTTP headers to send to the MCP server. Use for authentication
           or other purposes.
 
-        - `require_approval: optional object { always, never }  or "always" or "never"`
+        - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
           Specify which of the MCP server's tools require approval.
 
@@ -25110,7 +25110,7 @@ Returns the created client secret and the effective session object. The client s
           The Secure MCP Tunnel ID to use instead of a direct server URL. One of
           `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-    - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+    - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
 
       Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
       tracing is enabled for a session, the configuration cannot be modified.
@@ -25261,7 +25261,7 @@ Returns the created client secret and the effective session object. The client s
 
             The prompt configured for input audio transcription, when present.
 
-        - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
+        - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection or null`
 
           Configuration for turn detection. Can be set to `null` to turn off. Server
           VAD means that the model will detect the start and end of speech based on
@@ -25599,7 +25599,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
+          - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
 
             Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -25626,7 +25626,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
                 If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-              - `idle_timeout_ms: optional number`
+              - `idle_timeout_ms: optional number or null`
 
                 Optional timeout after which a model response will be triggered automatically. This is
                 useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -25836,7 +25836,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         - `"audio"`
 
-      - `prompt: optional ResponsePrompt`
+      - `prompt: optional ResponsePrompt or null`
 
         Reference to a prompt template and its variables.
         [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -25845,7 +25845,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The unique identifier of the prompt template to use.
 
-        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+        - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
           Optional map of values to substitute in for variables in your
           prompt. The substitution values can either be strings, or other
@@ -25899,11 +25899,11 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               - `"input_image"`
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
-            - `image_url: optional string`
+            - `image_url: optional string or null`
 
               The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -25941,7 +25941,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               The content of the file to be sent to the model.
 
-            - `file_id: optional string`
+            - `file_id: optional string or null`
 
               The ID of the file to be sent to the model.
 
@@ -25963,7 +25963,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
                 - `"explicit"`
 
-        - `version: optional string`
+        - `version: optional string or null`
 
           Optional version of the prompt template.
 
@@ -26036,7 +26036,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"mcp"`
 
-          - `name: optional string`
+          - `name: optional string or null`
 
             The name of the tool to call on the server.
 
@@ -26081,7 +26081,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -26089,7 +26089,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -26154,12 +26154,12 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -26221,7 +26221,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
             The Secure MCP Tunnel ID to use instead of a direct server URL. One of
             `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+      - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
 
         Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
         tracing is enabled for a session, the configuration cannot be modified.
@@ -26372,7 +26372,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               The prompt configured for input audio transcription, when present.
 
-          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
+          - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection or null`
 
             Configuration for turn detection. Can be set to `null` to turn off. Server
             VAD means that the model will detect the start and end of speech based on
@@ -26539,7 +26539,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The prompt configured for input audio transcription, when present.
 
-      - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }`
+      - `turn_detection: optional object { type, create_response, idle_timeout_ms, 4 more }  or object { type, create_response, eagerness, interrupt_response }  or null`
 
         Configuration for turn detection, ether Server VAD or Semantic VAD. This can be set to `null` to turn off, in which case the client must manually trigger model response.
 
@@ -26566,7 +26566,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             If both `create_response` and `interrupt_response` are set to `false`, the model will never respond automatically but VAD events will still be emitted.
 
-          - `idle_timeout_ms: optional number`
+          - `idle_timeout_ms: optional number or null`
 
             Optional timeout after which a model response will be triggered automatically. This is
             useful for situations in which a long pause from the user is unexpected, such as a phone
@@ -26776,7 +26776,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
     - `"audio"`
 
-  - `prompt: optional ResponsePrompt`
+  - `prompt: optional ResponsePrompt or null`
 
     Reference to a prompt template and its variables.
     [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -26785,7 +26785,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
       The unique identifier of the prompt template to use.
 
-    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+    - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
       Optional map of values to substitute in for variables in your
       prompt. The substitution values can either be strings, or other
@@ -26839,11 +26839,11 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"input_image"`
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
-        - `image_url: optional string`
+        - `image_url: optional string or null`
 
           The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -26881,7 +26881,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The content of the file to be sent to the model.
 
-        - `file_id: optional string`
+        - `file_id: optional string or null`
 
           The ID of the file to be sent to the model.
 
@@ -26903,7 +26903,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"explicit"`
 
-    - `version: optional string`
+    - `version: optional string or null`
 
       Optional version of the prompt template.
 
@@ -26976,7 +26976,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         - `"mcp"`
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         The name of the tool to call on the server.
 
@@ -27021,7 +27021,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         - `"mcp"`
 
-      - `allowed_callers: optional array of "direct" or "programmatic"`
+      - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
         The tool invocation context(s).
 
@@ -27029,7 +27029,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         - `"programmatic"`
 
-      - `allowed_tools: optional array of string or object { read_only, tool_names }`
+      - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
         List of allowed tool names or a filter object.
 
@@ -27094,12 +27094,12 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         Whether this MCP tool is deferred and discovered via tool search.
 
-      - `headers: optional map[string]`
+      - `headers: optional map[string] or null`
 
         Optional HTTP headers to send to the MCP server. Use for authentication
         or other purposes.
 
-      - `require_approval: optional object { always, never }  or "always" or "never"`
+      - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
         Specify which of the MCP server's tools require approval.
 
@@ -27161,7 +27161,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
         The Secure MCP Tunnel ID to use instead of a direct server URL. One of
         `server_url`, `connector_id`, or `tunnel_id` must be provided.
 
-  - `tracing: optional "auto" or object { group_id, metadata, workflow_name }`
+  - `tracing: optional "auto" or object { group_id, metadata, workflow_name }  or null`
 
     Realtime API can write session traces to the [Traces Dashboard](https://platform.openai.com/logs?api=traces). Set to null to disable tracing. Once
     tracing is enabled for a session, the configuration cannot be modified.
@@ -27354,7 +27354,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           The prompt configured for input audio transcription, when present.
 
-      - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection`
+      - `turn_detection: optional RealtimeTranscriptionSessionTurnDetection or null`
 
         Configuration for turn detection. Can be set to `null` to turn off. Server
         VAD means that the model will detect the start and end of speech based on
@@ -27502,7 +27502,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
   The format of output audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-- `prompt: optional ResponsePrompt`
+- `prompt: optional ResponsePrompt or null`
 
   Reference to a prompt template and its variables.
   [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -27511,7 +27511,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     The unique identifier of the prompt template to use.
 
-  - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+  - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
     Optional map of values to substitute in for variables in your
     prompt. The substitution values can either be strings, or other
@@ -27565,11 +27565,11 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"input_image"`
 
-      - `file_id: optional string`
+      - `file_id: optional string or null`
 
         The ID of the file to be sent to the model.
 
-      - `image_url: optional string`
+      - `image_url: optional string or null`
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -27607,7 +27607,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The content of the file to be sent to the model.
 
-      - `file_id: optional string`
+      - `file_id: optional string or null`
 
         The ID of the file to be sent to the model.
 
@@ -27629,7 +27629,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"explicit"`
 
-  - `version: optional string`
+  - `version: optional string or null`
 
     Optional version of the prompt template.
 
@@ -29003,7 +29003,7 @@ The client secret is a string that looks like `ek_1234`.
 
     - `input: optional object { noise_reduction, transcription }`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Optional input noise reduction. Set to `null` to disable it.
 
@@ -29015,7 +29015,7 @@ The client secret is a string that looks like `ek_1234`.
 
           - `"far_field"`
 
-      - `transcription: optional object { model }`
+      - `transcription: optional object { model }  or null`
 
         Optional source-language transcription. When configured, the server emits
         `session.input_transcript.delta` events. Translation itself still runs from
@@ -29073,7 +29073,7 @@ The client secret is a string that looks like `ek_1234`.
 
       - `input: optional object { noise_reduction, transcription }`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Optional input noise reduction.
 
@@ -29085,7 +29085,7 @@ The client secret is a string that looks like `ek_1234`.
 
             - `"far_field"`
 
-        - `transcription: optional object { model }`
+        - `transcription: optional object { model }  or null`
 
           Optional source-language transcription. When configured, the server emits
           `session.input_transcript.delta` events. Translation itself still runs from

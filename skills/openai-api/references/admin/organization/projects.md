@@ -30,19 +30,19 @@ Archives a project in the organization. Archived projects cannot be used or upda
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 
@@ -101,11 +101,11 @@ Create a new project in the organization. Projects can be created and archived, 
 
   The friendly name of the project, this name appears in reports.
 
-- `external_key_id: optional string`
+- `external_key_id: optional string or null`
 
   External key ID to associate with the project.
 
-- `geography: optional string`
+- `geography: optional string or null`
 
   Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
@@ -129,19 +129,19 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 
@@ -232,19 +232,19 @@ Returns a list of projects.
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 
@@ -254,9 +254,9 @@ Returns a list of projects.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 
@@ -346,19 +346,19 @@ Retrieves a project.
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 
@@ -416,15 +416,15 @@ Modifies a project in the organization.
 
 ### Body Parameters
 
-- `external_key_id: optional string`
+- `external_key_id: optional string or null`
 
   External key ID to associate with the project.
 
-- `geography: optional string`
+- `geography: optional string or null`
 
   Geography for the project.
 
-- `name: optional string`
+- `name: optional string or null`
 
   The updated name of the project, this name appears in reports.
 
@@ -448,19 +448,19 @@ Modifies a project in the organization.
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 
@@ -520,19 +520,19 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc \
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 
@@ -641,7 +641,7 @@ Returns a list of API keys in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -727,9 +727,9 @@ Returns a list of API keys in the project.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 
@@ -842,7 +842,7 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -1019,7 +1019,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/api_keys/key_abc \
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 
@@ -1143,7 +1143,7 @@ You can atomically and idempotently activate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the certificate.
 
@@ -1277,7 +1277,7 @@ idempotently deactivate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the certificate.
 
@@ -1424,7 +1424,7 @@ List certificates for this project.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the certificate.
 
@@ -1434,11 +1434,11 @@ List certificates for this project.
 
     - `"organization.project.certificate"`
 
-- `first_id: string`
+- `first_id: string or null`
 
 - `has_more: boolean`
 
-- `last_id: string`
+- `last_id: string or null`
 
 - `object: "list"`
 
@@ -1536,7 +1536,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the certificate.
 
@@ -1574,7 +1574,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the certificate.
 
@@ -1612,7 +1612,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the certificate.
 
@@ -2054,7 +2054,7 @@ Lists the groups that have access to a project.
 
   Whether additional project group memberships are available.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when there are no more results.
 
@@ -2333,7 +2333,7 @@ Assigns a project role to a group within a project.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -2532,7 +2532,7 @@ Lists the project roles assigned to a group within a project.
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -2540,23 +2540,23 @@ Lists the project roles assigned to a group within a project.
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -2576,7 +2576,7 @@ Lists the project roles assigned to a group within a project.
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
@@ -2584,7 +2584,7 @@ Lists the project roles assigned to a group within a project.
 
   Whether additional assignments are available when paginating.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when there are no more assignments.
 
@@ -2698,7 +2698,7 @@ Retrieves a project role assigned to a group.
 
   Identifier for the role.
 
-- `assignment_sources: array of object { principal_id, principal_type }`
+- `assignment_sources: array of object { principal_id, principal_type }  or null`
 
   Principals from which the role assignment is inherited, when available.
 
@@ -2706,23 +2706,23 @@ Retrieves a project role assigned to a group.
 
   - `principal_type: string`
 
-- `created_at: number`
+- `created_at: number or null`
 
   When the role was created.
 
-- `created_by: string`
+- `created_by: string or null`
 
   Identifier of the actor who created the role.
 
-- `created_by_user_obj: map[unknown]`
+- `created_by_user_obj: map[unknown] or null`
 
   User details for the actor that created the role, when available.
 
-- `description: string`
+- `description: string or null`
 
   Description of the role.
 
-- `metadata: map[unknown]`
+- `metadata: map[unknown] or null`
 
   Arbitrary metadata stored on the role.
 
@@ -2742,7 +2742,7 @@ Retrieves a project role assigned to a group.
 
   Resource type the role applies to.
 
-- `updated_at: number`
+- `updated_at: number or null`
 
   When the role was last updated.
 
@@ -2861,7 +2861,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
       Identifier for the role.
 
-    - `description: string`
+    - `description: string or null`
 
       Optional description of the role.
 
@@ -2911,7 +2911,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -2919,23 +2919,23 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -2955,7 +2955,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
@@ -2969,7 +2969,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -2977,23 +2977,23 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -3013,7 +3013,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
@@ -3146,7 +3146,7 @@ Updates hosted tool permissions for a project.
 
 ### Body Parameters
 
-- `code_interpreter: optional object { enabled }`
+- `code_interpreter: optional object { enabled }  or null`
 
   The code interpreter permission update.
 
@@ -3154,7 +3154,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `file_search: optional object { enabled }`
+- `file_search: optional object { enabled }  or null`
 
   The file search permission update.
 
@@ -3162,7 +3162,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `image_generation: optional object { enabled }`
+- `image_generation: optional object { enabled }  or null`
 
   The image generation permission update.
 
@@ -3170,7 +3170,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `mcp: optional object { enabled }`
+- `mcp: optional object { enabled }  or null`
 
   The MCP permission update.
 
@@ -3178,7 +3178,7 @@ Updates hosted tool permissions for a project.
 
     Whether to enable the hosted tool for the project.
 
-- `web_search: optional object { enabled }`
+- `web_search: optional object { enabled }  or null`
 
   The web search permission update.
 
@@ -3701,9 +3701,9 @@ Returns the rate limits per model for a project.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 
@@ -3964,7 +3964,7 @@ Creates a custom role for a project.
 
   Unique name for the role.
 
-- `description: optional string`
+- `description: optional string or null`
 
   Optional description of the role.
 
@@ -3978,7 +3978,7 @@ Creates a custom role for a project.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -4169,7 +4169,7 @@ Lists the roles configured for a project.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -4199,7 +4199,7 @@ Lists the roles configured for a project.
 
   Whether more roles are available when paginating.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when there are no additional roles.
 
@@ -4293,7 +4293,7 @@ Retrieves a project role.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -4381,15 +4381,15 @@ Updates an existing project role.
 
 ### Body Parameters
 
-- `description: optional string`
+- `description: optional string or null`
 
   New description for the role.
 
-- `permissions: optional array of string`
+- `permissions: optional array of string or null`
 
   Updated set of permissions for the role.
 
-- `role_name: optional string`
+- `role_name: optional string or null`
 
   New name for the role.
 
@@ -4403,7 +4403,7 @@ Updates an existing project role.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -4527,7 +4527,7 @@ Creates a new service account in the project. By default, this also returns an u
 
   The name of the service account being created.
 
-- `create_service_account_only: optional boolean`
+- `create_service_account_only: optional boolean or null`
 
   Create the service account without default roles or an API key.
 
@@ -4535,7 +4535,7 @@ Creates a new service account in the project. By default, this also returns an u
 
 - `id: string`
 
-- `api_key: object { id, created_at, name, 2 more }`
+- `api_key: object { id, created_at, name, 2 more }  or null`
 
   - `id: string`
 
@@ -4746,9 +4746,9 @@ Returns a list of service accounts in the project.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 
@@ -5037,7 +5037,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 
   - `id: string`
 
-  - `api_key: object { id, created_at, name, 2 more }`
+  - `api_key: object { id, created_at, name, 2 more }  or null`
 
     - `id: string`
 
@@ -5245,7 +5245,7 @@ Creates a project spend alert.
 
     - `"email"`
 
-  - `subject_prefix: optional string`
+  - `subject_prefix: optional string or null`
 
     Optional subject prefix for alert emails.
 
@@ -5289,7 +5289,7 @@ Creates a project spend alert.
 
       - `"email"`
 
-    - `subject_prefix: optional string`
+    - `subject_prefix: optional string or null`
 
       Optional subject prefix for alert emails.
 
@@ -5512,7 +5512,7 @@ Lists project spend alerts.
 
       - `"email"`
 
-    - `subject_prefix: optional string`
+    - `subject_prefix: optional string or null`
 
       Optional subject prefix for alert emails.
 
@@ -5526,7 +5526,7 @@ Lists project spend alerts.
 
     The alert threshold amount, in cents.
 
-- `first_id: string`
+- `first_id: string or null`
 
   The ID of the first spend alert in this page.
 
@@ -5534,7 +5534,7 @@ Lists project spend alerts.
 
   Whether more spend alerts are available when paginating.
 
-- `last_id: string`
+- `last_id: string or null`
 
   The ID of the last spend alert in this page.
 
@@ -5659,7 +5659,7 @@ Retrieves a project spend alert.
 
       - `"email"`
 
-    - `subject_prefix: optional string`
+    - `subject_prefix: optional string or null`
 
       Optional subject prefix for alert emails.
 
@@ -5764,7 +5764,7 @@ Updates a project spend alert.
 
     - `"email"`
 
-  - `subject_prefix: optional string`
+  - `subject_prefix: optional string or null`
 
     Optional subject prefix for alert emails.
 
@@ -5808,7 +5808,7 @@ Updates a project spend alert.
 
       - `"email"`
 
-    - `subject_prefix: optional string`
+    - `subject_prefix: optional string or null`
 
       Optional subject prefix for alert emails.
 
@@ -5933,7 +5933,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_aler
 
       - `"email"`
 
-    - `subject_prefix: optional string`
+    - `subject_prefix: optional string or null`
 
       Optional subject prefix for alert emails.
 
@@ -6362,11 +6362,11 @@ Adds a user to the project. Users must already be members of the organization to
 
   `owner` or `member`
 
-- `email: optional string`
+- `email: optional string or null`
 
   Email of the user to add.
 
-- `user_id: optional string`
+- `user_id: optional string or null`
 
   The ID of the user.
 
@@ -6394,11 +6394,11 @@ Adds a user to the project. Users must already be members of the organization to
 
     `owner` or `member`
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 
@@ -6553,11 +6553,11 @@ Returns a list of users in the project.
 
     `owner` or `member`
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 
@@ -6565,9 +6565,9 @@ Returns a list of users in the project.
 
 - `object: string`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 
@@ -6662,11 +6662,11 @@ Retrieves a user in the project.
 
     `owner` or `member`
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 
@@ -6725,7 +6725,7 @@ Modifies a user's role in the project.
 
 ### Body Parameters
 
-- `role: optional string`
+- `role: optional string or null`
 
   `owner` or `member`
 
@@ -6753,11 +6753,11 @@ Modifies a user's role in the project.
 
     `owner` or `member`
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 
@@ -6833,11 +6833,11 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/users/user
 
     `owner` or `member`
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 
@@ -6889,7 +6889,7 @@ Assigns a project role to a user within a project.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -6933,7 +6933,7 @@ Assigns a project role to a user within a project.
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number`
+  - `api_key_last_used_at: optional number or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
@@ -6941,11 +6941,11 @@ Assigns a project role to a user within a project.
 
     The Unix timestamp (in seconds) of when the user was created.
 
-  - `developer_persona: optional string`
+  - `developer_persona: optional string or null`
 
     The developer persona metadata for the user.
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
@@ -6953,7 +6953,7 @@ Assigns a project role to a user within a project.
 
     Whether this is the organization's default user.
 
-  - `is_scale_tier_authorized_purchaser: optional boolean`
+  - `is_scale_tier_authorized_purchaser: optional boolean or null`
 
     Whether the user is an authorized purchaser for Scale Tier.
 
@@ -6965,31 +6965,31 @@ Assigns a project role to a user within a project.
 
     Whether the user is a service account.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 
-  - `projects: optional object { data, object }`
+  - `projects: optional object { data, object }  or null`
 
     Projects associated with the user, if included.
 
     - `data: array of object { id, name, role }`
 
-      - `id: optional string`
+      - `id: optional string or null`
 
-      - `name: optional string`
+      - `name: optional string or null`
 
-      - `role: optional string`
+      - `role: optional string or null`
 
     - `object: "list"`
 
       - `"list"`
 
-  - `role: optional string`
+  - `role: optional string or null`
 
     `owner` or `reader`
 
-  - `technical_level: optional string`
+  - `technical_level: optional string or null`
 
     The technical level metadata for the user.
 
@@ -7003,17 +7003,17 @@ Assigns a project role to a user within a project.
 
       - `"user"`
 
-    - `banned: optional boolean`
+    - `banned: optional boolean or null`
 
-    - `banned_at: optional number`
+    - `banned_at: optional number or null`
 
-    - `email: optional string`
+    - `email: optional string or null`
 
-    - `enabled: optional boolean`
+    - `enabled: optional boolean or null`
 
-    - `name: optional string`
+    - `name: optional string or null`
 
-    - `picture: optional string`
+    - `picture: optional string or null`
 
 ### Example
 
@@ -7218,7 +7218,7 @@ Lists the project roles assigned to a user within a project.
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -7226,23 +7226,23 @@ Lists the project roles assigned to a user within a project.
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -7262,7 +7262,7 @@ Lists the project roles assigned to a user within a project.
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
@@ -7270,7 +7270,7 @@ Lists the project roles assigned to a user within a project.
 
   Whether additional assignments are available when paginating.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when there are no more assignments.
 
@@ -7384,7 +7384,7 @@ Retrieves a project role assigned to a user.
 
   Identifier for the role.
 
-- `assignment_sources: array of object { principal_id, principal_type }`
+- `assignment_sources: array of object { principal_id, principal_type }  or null`
 
   Principals from which the role assignment is inherited, when available.
 
@@ -7392,23 +7392,23 @@ Retrieves a project role assigned to a user.
 
   - `principal_type: string`
 
-- `created_at: number`
+- `created_at: number or null`
 
   When the role was created.
 
-- `created_by: string`
+- `created_by: string or null`
 
   Identifier of the actor who created the role.
 
-- `created_by_user_obj: map[unknown]`
+- `created_by_user_obj: map[unknown] or null`
 
   User details for the actor that created the role, when available.
 
-- `description: string`
+- `description: string or null`
 
   Description of the role.
 
-- `metadata: map[unknown]`
+- `metadata: map[unknown] or null`
 
   Arbitrary metadata stored on the role.
 
@@ -7428,7 +7428,7 @@ Retrieves a project role assigned to a user.
 
   Resource type the role applies to.
 
-- `updated_at: number`
+- `updated_at: number or null`
 
   When the role was last updated.
 
@@ -7521,7 +7521,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       Identifier for the role.
 
-    - `description: string`
+    - `description: string or null`
 
       Optional description of the role.
 
@@ -7565,7 +7565,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       - `"organization.user"`
 
-    - `api_key_last_used_at: optional number`
+    - `api_key_last_used_at: optional number or null`
 
       The Unix timestamp (in seconds) of the user's last API key usage.
 
@@ -7573,11 +7573,11 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       The Unix timestamp (in seconds) of when the user was created.
 
-    - `developer_persona: optional string`
+    - `developer_persona: optional string or null`
 
       The developer persona metadata for the user.
 
-    - `email: optional string`
+    - `email: optional string or null`
 
       The email address of the user
 
@@ -7585,7 +7585,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       Whether this is the organization's default user.
 
-    - `is_scale_tier_authorized_purchaser: optional boolean`
+    - `is_scale_tier_authorized_purchaser: optional boolean or null`
 
       Whether the user is an authorized purchaser for Scale Tier.
 
@@ -7597,31 +7597,31 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
       Whether the user is a service account.
 
-    - `name: optional string`
+    - `name: optional string or null`
 
       The name of the user
 
-    - `projects: optional object { data, object }`
+    - `projects: optional object { data, object }  or null`
 
       Projects associated with the user, if included.
 
       - `data: array of object { id, name, role }`
 
-        - `id: optional string`
+        - `id: optional string or null`
 
-        - `name: optional string`
+        - `name: optional string or null`
 
-        - `role: optional string`
+        - `role: optional string or null`
 
       - `object: "list"`
 
         - `"list"`
 
-    - `role: optional string`
+    - `role: optional string or null`
 
       `owner` or `reader`
 
-    - `technical_level: optional string`
+    - `technical_level: optional string or null`
 
       The technical level metadata for the user.
 
@@ -7635,17 +7635,17 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
         - `"user"`
 
-      - `banned: optional boolean`
+      - `banned: optional boolean or null`
 
-      - `banned_at: optional number`
+      - `banned_at: optional number or null`
 
-      - `email: optional string`
+      - `email: optional string or null`
 
-      - `enabled: optional boolean`
+      - `enabled: optional boolean or null`
 
-      - `name: optional string`
+      - `name: optional string or null`
 
-      - `picture: optional string`
+      - `picture: optional string or null`
 
 ### Role Delete Response
 
@@ -7671,7 +7671,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -7679,23 +7679,23 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -7715,7 +7715,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
@@ -7729,7 +7729,7 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -7737,23 +7737,23 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -7773,6 +7773,6 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles/role
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.

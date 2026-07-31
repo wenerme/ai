@@ -68,7 +68,7 @@ List ChatKit threads with optional pagination and user filters.
 
       Indicates that a thread is locked and cannot accept new input.
 
-      - `reason: string`
+      - `reason: string or null`
 
         Reason that the thread was locked. Defaults to null when no reason is recorded.
 
@@ -82,7 +82,7 @@ List ChatKit threads with optional pagination and user filters.
 
       Indicates that a thread has been closed.
 
-      - `reason: string`
+      - `reason: string or null`
 
         Reason that the thread was closed. Defaults to null when no reason is recorded.
 
@@ -92,7 +92,7 @@ List ChatKit threads with optional pagination and user filters.
 
         - `"closed"`
 
-  - `title: string`
+  - `title: string or null`
 
     Optional human-readable title for the thread. Defaults to null when no title has been generated.
 
@@ -100,7 +100,7 @@ List ChatKit threads with optional pagination and user filters.
 
     Free-form string that identifies your end user who owns the thread.
 
-- `first_id: string`
+- `first_id: string or null`
 
   The ID of the first item in the list.
 
@@ -108,7 +108,7 @@ List ChatKit threads with optional pagination and user filters.
 
   Whether there are more items available.
 
-- `last_id: string`
+- `last_id: string or null`
 
   The ID of the last item in the list.
 

@@ -14,7 +14,7 @@ Creates a custom role for the organization.
 
   Unique name for the role.
 
-- `description: optional string`
+- `description: optional string or null`
 
   Optional description of the role.
 
@@ -28,7 +28,7 @@ Creates a custom role for the organization.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 

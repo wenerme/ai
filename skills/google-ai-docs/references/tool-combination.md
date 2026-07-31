@@ -1,7 +1,4 @@
 > [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/tool-combination).
-
-> [!NOTE]
 > **Preview** : Built-in and custom tools combinations are in [Preview](https://cloud.google.com/products#product-launch-stages) and supported for [Gemini 3](https://ai.google.dev/gemini-api/docs/models#gemini-3) models only.
 
 Gemini allows the combination of [built-in tools](https://ai.google.dev/gemini-api/docs/tools), such
@@ -40,7 +37,7 @@ Here's an example that enables built-in and custom tool combinations with
     # The Interactions API manages context automatically across tool calls.
     # The model will first use Google Search, then call getWeather.
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="What is the northernmost city in the United States? What's the weather like there today?",
         tools=[
             {"type": "google_search"},
@@ -81,7 +78,7 @@ Here's an example that enables built-in and custom tool combinations with
     // The Interactions API manages context automatically across tool calls.
     // The model will first use Google Search, then call getWeather.
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "What is the northernmost city in the United States? What's the weather like there today?",
         tools: [
             { type: "google_search" },
@@ -105,7 +102,7 @@ Here's an example that enables built-in and custom tool combinations with
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-      "model": "gemini-3.5-flash",
+      "model": "gemini-3.6-flash",
       "input": "What is the northernmost city in the United States? What'\''s the weather like there today?",
       "tools": [
         { "type": "google_search" },

@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/webhooks).
-
 Webhooks allow the Gemini API to push real-time notifications to your server
 when asynchronous or Long-Running Operations (LROs) complete. This replaces the
 need to poll the API for status updates, reducing latency and overhead.

@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/image-understanding).
-
 Gemini models are built to be multimodal from the ground up, unlocking a wide
 range of image processing and computer vision tasks including but not limited to
 image captioning, classification, and visual question answering without having
@@ -32,7 +29,7 @@ in the request:
     uploaded_file = client.files.upload(file="path/to/organ.jpg")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Caption this image."},
             {
@@ -56,7 +53,7 @@ in the request:
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             {type: "text", text: "Caption this image."},
             {
@@ -75,7 +72,7 @@ in the request:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Caption this image."},
           {
@@ -101,7 +98,7 @@ You can provide image data as base64-encoded strings:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Caption this image."},
             {
@@ -124,7 +121,7 @@ You can provide image data as base64-encoded strings:
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             {type: "text", text: "Caption this image."},
             {
@@ -150,7 +147,7 @@ You can provide image data as base64-encoded strings:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Caption this image."},
           {
@@ -178,7 +175,7 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
     my_file = client.files.upload(file="path/to/sample.jpg")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Caption this image."},
             {
@@ -202,7 +199,7 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             {type: "text", text: "Caption this image."},
             {
@@ -223,7 +220,7 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Caption this image."},
           {
@@ -246,7 +243,7 @@ objects in the `input` array:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "What is different between these two images?"},
             {
@@ -270,7 +267,7 @@ objects in the `input` array:
     const client = new GoogleGenAI({});
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             {type: "text", text: "What is different between these two images?"},
             {
@@ -293,7 +290,7 @@ objects in the `input` array:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "What is different between these two images?"},
           {
@@ -338,7 +335,7 @@ your original image size.
         boxes: List[BoundingBox]
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": prompt},
             {
@@ -374,7 +371,7 @@ your original image size.
     });
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: [
         { type: "text", text: prompt },
         {
@@ -399,7 +396,7 @@ your original image size.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000."},
           {
@@ -471,7 +468,7 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
         boxes: List[BoundingBox]
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": prompt},
             {
@@ -515,7 +512,7 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
     });
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: [
         { type: "text", text: prompt },
         {
@@ -543,7 +540,7 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Give the segmentation masks for the wooden and glass items.\nOutput a JSON list of segmentation masks where each entry contains the 2D\nbounding box in the key \"box_2d\", the segmentation mask in key \"mask\", and\nthe text label in the key \"label\". Use descriptive labels."},
           {

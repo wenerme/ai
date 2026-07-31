@@ -1,11 +1,11 @@
 ---
 title: "Perplexity Agent | Models"
-description: "Use Perplexity Agent models with Mastra. 18 models available."
+description: "Use Perplexity Agent models with Mastra. 20 models available."
 ---
 
 # [Perplexity Agent logo]Perplexity Agent
 
-Access 18 Perplexity Agent models through Mastra's model router. Authentication is handled automatically using the `PERPLEXITY_API_KEY` environment variable.
+Access 20 Perplexity Agent models through Mastra's model router. Authentication is handled automatically using the `PERPLEXITY_API_KEY` environment variable.
 
 Learn more in the [Perplexity Agent documentation](https://docs.perplexity.ai/docs/agent-api/models).
 
@@ -158,6 +158,30 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 2,
     "outputCost": 12
+  },
+  {
+    "model": "perplexity-agent/moonshot-ai/kimi-k2.7-code",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.95,
+    "outputCost": 4
+  },
+  {
+    "model": "perplexity-agent/moonshot-ai/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "perplexity-agent/nvidia/nemotron-3-super-120b-a12b",

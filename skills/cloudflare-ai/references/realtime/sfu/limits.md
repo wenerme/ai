@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits, timeouts and quotas
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Understanding the limits and timeouts of Cloudflare Realtime is crucial for optimizing the performance and reliability of your applications. This section outlines the key constraints and behaviors you should be aware of when integrating Cloudflare Realtime into your app.
 
@@ -26,6 +26,7 @@ Understanding the limits and timeouts of Cloudflare Realtime is crucial for opti
 * **API Realtime per Session**: You can make up to 50 API calls per second for each session. There is no ratelimit on a App basis, just sessions.
 * **Tracks per API Call**: Up to 64 tracks can be added with a single API call. If you need to add more tracks to a session, you should distribute them across multiple API calls.
 * **Tracks per Session**: There's no upper limit to the number of tracks a session can contain, the practical limit is governed by your connection's bandwidth to and from Cloudflare.
+* **DataChannel canReply exclusivity**: At most one subscriber may hold `canReply` for a given publisher DataChannel at a time. Granting `canReply` to another subscriber replaces the previous selection. The publisher receives reverse traffic only, and it is not fanned out to other subscribers. For more information, refer to [Return to publisher (canReply)](https://developers.cloudflare.com/realtime/sfu/datachannels/#return-to-publisher-canreply).
 
 ## Inactivity Timeout
 
@@ -73,5 +74,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/limits/#page","headline":"Limits, timeouts and quotas · Cloudflare Realtime docs","description":"Realtime SFU rate limits, track timeouts, session constraints, and free tier quotas.","url":"https://developers.cloudflare.com/realtime/sfu/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/limits/#page","headline":"Limits, timeouts and quotas · Cloudflare Realtime docs","description":"Realtime SFU rate limits, track timeouts, session constraints, and free tier quotas.","url":"https://developers.cloudflare.com/realtime/sfu/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

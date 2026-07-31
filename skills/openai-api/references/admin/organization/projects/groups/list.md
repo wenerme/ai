@@ -66,7 +66,7 @@ Lists the groups that have access to a project.
 
   Whether additional project group memberships are available.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when there are no more results.
 

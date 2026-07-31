@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/tokens).
-
 Gemini and other generative AI models process input and output at a granularity
 called a *token*.
 
@@ -47,14 +44,14 @@ You can count tokens in the following ways:
 
     # Count tokens before sending
     total_tokens = client.models.count_tokens(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         contents=prompt
     )
     print("total_tokens:", total_tokens.total_tokens)
 
     # Get usage from interaction
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=prompt
     )
     print(interaction.usage)
@@ -69,14 +66,14 @@ You can count tokens in the following ways:
 
     // Count tokens before sending
     const countResponse = await client.models.countTokens({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         contents: prompt,
     });
     console.log(countResponse.totalTokens);
 
     // Get usage from interaction
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: prompt,
     });
     console.log(interaction.usage);
@@ -84,7 +81,7 @@ You can count tokens in the following ways:
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:countTokens" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:countTokens" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{"contents": [{"parts": [{"text": "The quick brown fox."}]}]}'
@@ -98,13 +95,13 @@ Count tokens across conversation history using `previous_interaction_id`:
     # This will only work for SDK newer than 2.0.0
     # First interaction
     interaction1 = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Hi, my name is Bob"
     )
 
     # Second interaction continues the conversation
     interaction2 = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="What's my name?",
         previous_interaction_id=interaction1.id
     )
@@ -119,13 +116,13 @@ Count tokens across conversation history using `previous_interaction_id`:
     // This will only work for SDK newer than 2.0.0
     // First interaction
     const interaction1 = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Hi, my name is Bob"
     });
 
     // Second interaction continues the conversation
     const interaction2 = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "What's my name?",
         previous_interaction_id: interaction1.id
     });
@@ -151,14 +148,14 @@ Key points about tokenization:
 
     # Count tokens for image + text
     total_tokens = client.models.count_tokens(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         contents=["Tell me about this image", uploaded_file]
     )
     print(f"Total tokens: {total_tokens}")
 
     # Generate with image
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Tell me about this image"},
             {"type": "image", "uri": uploaded_file.uri, "mime_type": uploaded_file.mime_type}
@@ -176,7 +173,7 @@ Key points about tokenization:
 
     // Count tokens
     const countResponse = await client.models.countTokens({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         contents: [
             { text: "Tell me about this image" },
             { fileData: { fileUri: uploadedFile.uri, mimeType: uploadedFile.mimeType } }
@@ -195,7 +192,7 @@ Key points about tokenization:
         image_bytes = f.read()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Describe this image"},
             {
@@ -223,14 +220,14 @@ Key points about tokenization:
 
     # A 60-second video is approximately 263 * 60 = 15,780 tokens
     total_tokens = client.models.count_tokens(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         contents=["Summarize this video", video_file]
     )
     print(f"Total tokens: {total_tokens}")
 
     # Generate with video
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Summarize this video"},
             {"type": "video", "uri": video_file.uri, "mime_type": video_file.mime_type}
@@ -247,14 +244,14 @@ Key points about tokenization:
 
     # A 60-second audio clip is approximately 32 * 60 = 1,920 tokens
     total_tokens = client.models.count_tokens(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         contents=["Transcribe this audio", audio_file]
     )
     print(f"Total tokens: {total_tokens}")
 
     # Generate with audio
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Transcribe this audio"},
             {"type": "audio", "uri": audio_file.uri, "mime_type": audio_file.mime_type}
@@ -270,7 +267,7 @@ System instructions are counted as part of the input tokens:
 
     # This will only work for SDK newer than 2.0.0
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Hello!",
         system_instruction="You are a helpful assistant who speaks like a pirate."
     )
@@ -300,7 +297,7 @@ Tools (functions, code execution, Google Search) are also counted:
     ]
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="What's the weather in Tokyo?",
         tools=tools
     )
@@ -318,14 +315,14 @@ window defines the combined limit of input and output tokens.
 ### Python
 
     # This will only work for SDK newer than 2.0.0
-    model_info = client.models.get(model="gemini-3.5-flash")
+    model_info = client.models.get(model="gemini-3.6-flash")
     print(f"Input token limit: {model_info.input_token_limit}")
     print(f"Output token limit: {model_info.output_token_limit}")
 
 ### JavaScript
 
     // This will only work for SDK newer than 2.0.0
-    const modelInfo = await client.models.get({ model: "gemini-3.5-flash" });
+    const modelInfo = await client.models.get({ model: "gemini-3.6-flash" });
     console.log(`Input token limit: ${modelInfo.inputTokenLimit}`);
     console.log(`Output token limit: ${modelInfo.outputTokenLimit}`);
 

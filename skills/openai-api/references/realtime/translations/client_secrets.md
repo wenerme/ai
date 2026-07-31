@@ -31,7 +31,7 @@ The client secret is a string that looks like `ek_1234`.
 
     - `input: optional object { noise_reduction, transcription }`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Optional input noise reduction. Set to `null` to disable it.
 
@@ -43,7 +43,7 @@ The client secret is a string that looks like `ek_1234`.
 
           - `"far_field"`
 
-      - `transcription: optional object { model }`
+      - `transcription: optional object { model }  or null`
 
         Optional source-language transcription. When configured, the server emits
         `session.input_transcript.delta` events. Translation itself still runs from
@@ -101,7 +101,7 @@ The client secret is a string that looks like `ek_1234`.
 
       - `input: optional object { noise_reduction, transcription }`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Optional input noise reduction.
 
@@ -113,7 +113,7 @@ The client secret is a string that looks like `ek_1234`.
 
             - `"far_field"`
 
-        - `transcription: optional object { model }`
+        - `transcription: optional object { model }  or null`
 
           Optional source-language transcription. When configured, the server emits
           `session.input_transcript.delta` events. Translation itself still runs from

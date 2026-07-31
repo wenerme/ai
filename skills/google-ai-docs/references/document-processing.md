@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/document-processing).
-
 Gemini models can process documents in PDF format, using native
 vision to understand entire document contexts. This goes beyond
 just text extraction, allowing Gemini to:
@@ -35,7 +32,7 @@ The following example shows you how to pass PDF data inline:
         pdf_bytes = f.read()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {
                 "type": "document",
@@ -61,7 +58,7 @@ The following example shows you how to pass PDF data inline:
         });
 
         const interaction = await ai.interactions.create({
-            model: "gemini-3.5-flash",
+            model: "gemini-3.6-flash",
             input: [
                 { type: "text", text: "Summarize this document" },
                 {
@@ -90,7 +87,7 @@ The following example shows you how to pass PDF data inline:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {
             "type": "document",
@@ -112,7 +109,7 @@ You can also upload a local PDF file for processing:
     uploaded_file = client.files.upload(file="file.pdf")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "document", "uri": uploaded_file.uri, "mime_type": uploaded_file.mime_type},
             {"type": "text", "text": "Summarize this document"}
@@ -133,7 +130,7 @@ You can also upload a local PDF file for processing:
         });
 
         const interaction = await ai.interactions.create({
-            model: "gemini-3.5-flash",
+            model: "gemini-3.6-flash",
             input: [
                 { type: "text", text: "Summarize this document" },
                 {
@@ -185,7 +182,7 @@ You can also upload a local PDF file for processing:
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": [
             {"type": "document", "uri": "'$file_uri'", "mime_type": "application/pdf"},
             {"type": "text", "text": "Summarize this document"}
@@ -231,7 +228,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "document", "uri": sample_doc.uri, "mime_type": sample_doc.mime_type},
             {"type": "text", "text": prompt}
@@ -274,7 +271,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         }
 
         const interaction = await ai.interactions.create({
-            model: 'gemini-3.5-flash',
+            model: 'gemini-3.6-flash',
             input: [
                 { type: "document", uri: file.uri, mime_type: file.mime_type },
                 { type: "text", text: "Summarize this document" }
@@ -331,7 +328,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     # Create payload JSON file for safety
     cat << EOF > payload.json
     {
-      "model": "gemini-3.5-flash",
+      "model": "gemini-3.6-flash",
       "input": [
         {"type": "text", "text": "${PROMPT}"},
         {"type": "document", "uri": "${file_uri}", "mime_type": "application/pdf"}
@@ -370,7 +367,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
     )
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "document", "uri": sample_file.uri, "mime_type": sample_file.mime_type},
             {"type": "text", "text": "Summarize this document"}
@@ -407,7 +404,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         }
 
         const interaction = await ai.interactions.create({
-            model: 'gemini-3.5-flash',
+            model: 'gemini-3.6-flash',
             input: [
                 { type: "document", uri: file.uri, mime_type: file.mime_type },
                 { type: "text", text: "Summarize this document" }
@@ -457,7 +454,7 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         -H 'Content-Type: application/json' \
         -X POST \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": [
             {"type": "document", "uri": "'$file_uri'", "mime_type": "application/pdf"},
             {"type": "text", "text": "Can you add a few more lines to this poem?"}
@@ -552,7 +549,7 @@ prompt stays within the model's context window.
     prompt = "What is the difference between each of the main benchmarks between these two papers? Output these in a table."
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "document", "uri": sample_pdf_1.uri, "mime_type": sample_pdf_1.mime_type},
             {"type": "document", "uri": sample_pdf_2.uri, "mime_type": sample_pdf_2.mime_type},
@@ -603,7 +600,7 @@ prompt stays within the model's context window.
         const file2 = await uploadRemotePDF("https://arxiv.org/pdf/2403.05530", "PDF 2");
 
         const interaction = await ai.interactions.create({
-            model: 'gemini-3.5-flash',
+            model: 'gemini-3.6-flash',
             input: [
                 { type: "document", uri: file1.uri, mime_type: file1.mime_type },
                 { type: "document", uri: file2.uri, mime_type: file2.mime_type },
@@ -682,7 +679,7 @@ prompt stays within the model's context window.
     # Create payload JSON file for safety
     cat << EOF > payload_multi.json
     {
-      "model": "gemini-3.5-flash",
+      "model": "gemini-3.6-flash",
       "input": [
         {"type": "document", "uri": "${file_uri_1}", "mime_type": "application/pdf"},
         {"type": "document", "uri": "${file_uri_2}", "mime_type": "application/pdf"},

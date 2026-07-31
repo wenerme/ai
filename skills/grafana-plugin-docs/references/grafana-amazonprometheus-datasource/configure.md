@@ -117,19 +117,22 @@ Expand **Advanced settings** to configure optional behavior. These settings are 
 
 Expand table
 
-| Setting                           | Description                                                                                                                            |
-|-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
-| **Manage alerts via Alerting UI** | When enabled, lets you manage recording and alerting rules stored in the workspace from the Grafana Alerting UI.                       |
-| **Scrape interval**               | Sets the interval Grafana uses to align queries. Set this to match the scrape interval configured in Prometheus. The default is `15s`. |
-| **Query timeout**                 | The maximum time Grafana waits for a query to return. The default is `60s`.                                                            |
-| **Default editor**                | Sets the default query editor mode, either **Builder** or **Code**.                                                                    |
-| **Disable metric lookup**         | Disables the metric and label autocomplete and the metrics browser to reduce load on large workspaces.                                 |
-| **Cache level**                   | Controls how aggressively Grafana caches metadata responses. Options are `Low`, `Medium`, `High`, and `None`.                          |
-| **Incremental querying**          | When enabled, Grafana caches query results and requests only new data on dashboard refreshes.                                          |
-| **Query overlap window**          | When incremental querying is enabled, the amount of overlapping time to re-request to avoid gaps, for example `10m`.                   |
-| **Disable recording rules**       | Prevents Grafana from querying for and processing recording rules.                                                                     |
-| **Custom query parameters**       | Appends custom URL parameters to all queries, such as `max_source_resolution=5m`.                                                      |
-| **HTTP method**                   | The HTTP method Grafana uses for queries. `POST` is recommended and is the default.                                                    |
+| Setting                           | Description                                                                                                                                                                                                                                 |
+|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Manage alerts via Alerting UI** | When enabled, lets you manage recording and alerting rules stored in the workspace from the Grafana Alerting UI.                                                                                                                            |
+| **Scrape interval**               | Sets the interval Grafana uses to align queries. Set this to match the scrape interval configured in Prometheus. The default is `15s`.                                                                                                      |
+| **Query timeout**                 | The maximum time Grafana waits for a query to return. The default is `60s`.                                                                                                                                                                 |
+| **Default editor**                | Sets the default query editor mode, either **Builder** or **Code**.                                                                                                                                                                         |
+| **Disable metric lookup**         | Disables the metric and label autocomplete and the metrics browser to reduce load on large workspaces.                                                                                                                                      |
+| **Cache level**                   | Controls how aggressively Grafana caches metadata responses. Options are `Low`, `Medium`, `High`, and `None`.                                                                                                                               |
+| **Incremental querying**          | When enabled, Grafana caches query results and requests only new data on dashboard refreshes.                                                                                                                                               |
+| **Query overlap window**          | When incremental querying is enabled, the amount of overlapping time to re-request to avoid gaps, for example `10m`.                                                                                                                        |
+| **Disable recording rules**       | Prevents Grafana from querying for and processing recording rules.                                                                                                                                                                          |
+| **Custom query parameters**       | Appends custom URL parameters to all queries, such as `max_source_resolution=5m`.                                                                                                                                                           |
+| **HTTP method**                   | The HTTP method Grafana uses for queries. `POST` is recommended and is the default.                                                                                                                                                         |
+| **Query statistics**              | Requests AMP query processing statistics and displays **Total queryable samples** in **Query Inspector &gt; Stats**. This option is disabled by default because AMP returns additional response metadata, including per-step sample counts. |
+
+When **Query statistics** is enabled, Grafana adds `stats=all` to instant and range queries. The Query Inspector Stats tab shows the total number of queryable samples. The complete AMP `stats` object remains available in the response frame metadata, including `totalQueryableSamplesPerStep`.
 
 ## Verify the connection
 
@@ -165,6 +168,7 @@ datasources:
       sigv4Service: aps
       defaultEditor: builder
       manageAlerts: true
+      queryStatsEnabled: false
     secureJsonData:
       sigV4AccessKey: <ACCESS_KEY_ID>
       sigV4SecretKey: <SECRET_ACCESS_KEY>

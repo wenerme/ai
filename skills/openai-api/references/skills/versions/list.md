@@ -64,7 +64,7 @@ List skill versions for a skill.
 
       Version number for this skill.
 
-  - `first_id: string`
+  - `first_id: string or null`
 
     The ID of the first item in the list.
 
@@ -72,7 +72,7 @@ List skill versions for a skill.
 
     Whether there are more items available.
 
-  - `last_id: string`
+  - `last_id: string or null`
 
     The ID of the last item in the list.
 

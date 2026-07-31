@@ -26,8 +26,6 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [chatgpt-image-latest](/api/docs/models/chatgpt-image-latest.md): Previous image model used in ChatGPT.
 - [codex-mini-latest](/api/docs/models/codex-mini-latest.md): Fast reasoning model optimized for the Codex CLI
 - [computer-use-preview](/api/docs/models/computer-use-preview.md): Specialized model for computer use tool
-- [DALL·E 2](/api/docs/models/dall-e-2.md): Our first image generation model
-- [DALL·E 3](/api/docs/models/dall-e-3.md): Previous generation image generation model
 - [davinci-002](/api/docs/models/davinci-002.md): Replacement for the GPT-3 curie and davinci base models
 - [GPT Image 1](/api/docs/models/gpt-image-1.md): Our previous image generation model
 - [GPT Image 1.5](/api/docs/models/gpt-image-1.5.md): Our previous image generation model
@@ -35,8 +33,6 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [GPT Live Transcribe](/api/docs/models/gpt-live-transcribe.md): Low-latency speech-to-text model for realtime transcription
 - [GPT Transcribe](/api/docs/models/gpt-transcribe.md): High-accuracy speech-to-text model for file and Realtime input transcription
 - [GPT-3.5 Turbo](/api/docs/models/gpt-3.5-turbo.md): Legacy GPT model for cheaper chat and non-chat tasks
-- [gpt-3.5-turbo-16k-0613](/api/docs/models/gpt-3.5-turbo-16k-0613.md): Legacy GPT model for cheaper chat and non-chat tasks
-- [gpt-3.5-turbo-instruct](/api/docs/models/gpt-3.5-turbo-instruct.md): An older model only compatible with the legacy Completions endpoint
 - [GPT-4](/api/docs/models/gpt-4.md): An older high-intelligence GPT model
 - [GPT-4 Turbo](/api/docs/models/gpt-4-turbo.md): An older high-intelligence GPT model
 - [GPT-4 Turbo Preview](/api/docs/models/gpt-4-turbo-preview.md): An older fast GPT model

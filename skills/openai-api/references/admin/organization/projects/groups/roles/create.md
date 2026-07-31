@@ -58,7 +58,7 @@ Assigns a project role to a group within a project.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 

@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/files).
-
 Gemini can handle various types of input data, including text, images, and
 audio, at the same time.
 
@@ -28,7 +25,7 @@ The following code uploads a file and then uses the file in a call to
     myfile = client.files.upload(file="path/to/sample.mp3")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {"type": "audio", "uri": myfile.uri, "mime_type": myfile.mime_type}
@@ -50,7 +47,7 @@ The following code uploads a file and then uses the file in a call to
       });
 
       const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
           { type: "text", text: "Describe this audio clip" },
           { type: "audio", uri: myfile.uri, mime_type: myfile.mimeType }
@@ -69,7 +66,7 @@ The following code uploads a file and then uses the file in a call to
     }
     defer client.Files.Delete(ctx, file.Name)
 
-    interaction, err := client.Interactions.Create(ctx, "gemini-3.5-flash", &genai.InteractionRequest{
+    interaction, err := client.Interactions.Create(ctx, "gemini-3.6-flash", &genai.InteractionRequest{
         Input: []interface{}{
             genai.NewPartFromFile(*file),
             genai.NewPartFromText("Describe this audio clip"),
@@ -130,7 +127,7 @@ The following code uploads a file and then uses the file in a call to
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": [
             {"type": "text", "text": "Describe this audio clip"},
             {"type": "audio", "uri": '$file_uri', "mime_type": "'${MIME_TYPE}'"}

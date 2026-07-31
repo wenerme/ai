@@ -56,7 +56,7 @@ Lists all groups in the organization.
 
   Whether additional groups are available when paginating.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` if there are no more results.
 

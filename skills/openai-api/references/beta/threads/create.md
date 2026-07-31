@@ -99,7 +99,7 @@ Create a thread.
 
     - `"assistant"`
 
-  - `attachments: optional array of object { file_id, tools }`
+  - `attachments: optional array of object { file_id, tools }  or null`
 
     A list of files attached to the message, and the tools they should be added to.
 
@@ -127,7 +127,7 @@ Create a thread.
 
           - `"file_search"`
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -136,7 +136,7 @@ Create a thread.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-- `metadata: optional Metadata`
+- `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
@@ -145,7 +145,7 @@ Create a thread.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `tool_resources: optional object { code_interpreter, file_search }`
+- `tool_resources: optional object { code_interpreter, file_search }  or null`
 
   A set of resources that are made available to the assistant's tools in this thread. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
 
@@ -203,7 +203,7 @@ Create a thread.
 
         A list of [file](/docs/api-reference/files) IDs to add to the vector store. For vector stores created before Nov 2025, there can be a maximum of 10,000 files in a vector store. For vector stores created starting in Nov 2025, the limit is 100,000,000 files.
 
-      - `metadata: optional Metadata`
+      - `metadata: optional Metadata or null`
 
         Set of 16 key-value pairs that can be attached to an object. This can be
         useful for storing additional information about the object in a structured
@@ -226,7 +226,7 @@ Create a thread.
 
     The Unix timestamp (in seconds) for when the thread was created.
 
-  - `metadata: Metadata`
+  - `metadata: Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -241,7 +241,7 @@ Create a thread.
 
     - `"thread"`
 
-  - `tool_resources: object { code_interpreter, file_search }`
+  - `tool_resources: object { code_interpreter, file_search }  or null`
 
     A set of resources that are made available to the assistant's tools in this thread. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
 

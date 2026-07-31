@@ -110,11 +110,11 @@ more in the [moderation guide](/docs/guides/moderation).
 
       Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste.
 
-    - `illicit: boolean`
+    - `illicit: boolean or null`
 
       Content that includes instructions or advice that facilitate the planning or execution of wrongdoing, or that gives advice or instruction on how to commit illicit acts. For example, "how to shoplift" would fit this category.
 
-    - `"illicit/violent": boolean`
+    - `"illicit/violent": boolean or null`
 
       Content that includes instructions or advice that facilitate the planning or execution of wrongdoing that also includes violence, or that gives advice or instruction on the procurement of any weapon.
 
@@ -585,11 +585,11 @@ curl https://api.openai.com/v1/moderations \
 
       Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste.
 
-    - `illicit: boolean`
+    - `illicit: boolean or null`
 
       Content that includes instructions or advice that facilitate the planning or execution of wrongdoing, or that gives advice or instruction on how to commit illicit acts. For example, "how to shoplift" would fit this category.
 
-    - `"illicit/violent": boolean`
+    - `"illicit/violent": boolean or null`
 
       Content that includes instructions or advice that facilitate the planning or execution of wrongdoing that also includes violence, or that gives advice or instruction on the procurement of any weapon.
 
@@ -813,11 +813,11 @@ curl https://api.openai.com/v1/moderations \
 
         Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste.
 
-      - `illicit: boolean`
+      - `illicit: boolean or null`
 
         Content that includes instructions or advice that facilitate the planning or execution of wrongdoing, or that gives advice or instruction on how to commit illicit acts. For example, "how to shoplift" would fit this category.
 
-      - `"illicit/violent": boolean`
+      - `"illicit/violent": boolean or null`
 
         Content that includes instructions or advice that facilitate the planning or execution of wrongdoing that also includes violence, or that gives advice or instruction on the procurement of any weapon.
 

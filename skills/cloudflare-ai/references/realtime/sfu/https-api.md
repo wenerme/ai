@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connection API
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/https-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/https-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Realtime simplifies the management of peer connections and media tracks through HTTPS API endpoints. These endpoints allow developers to efficiently manage sessions, add or remove tracks, and gather session information.
 
@@ -22,10 +22,20 @@ Cloudflare Realtime simplifies the management of peer connections and media trac
   * `POST /apps/{appId}/sessions/new`
 * **Add a New Track**: Adds a media track (audio or video) to an existing session.
   * `POST /apps/{appId}/sessions/{sessionId}/tracks/new`
+* **Update Tracks**: Changes tracks by reusing existing transceivers.
+  * `PUT /apps/{appId}/sessions/{sessionId}/tracks/update`
 * **Renegotiate a Session**: Updates the session's negotiation state to accommodate new tracks or changes in the existing ones.
   * `PUT /apps/{appId}/sessions/{sessionId}/renegotiate`
 * **Close a Track**: Removes a specified track from the session.
   * `PUT /apps/{appId}/sessions/{sessionId}/tracks/close`
+* **Establish a DataChannel Transport**: Pulls the `server-events` channel to establish DataChannel transport. Call this before you add DataChannels.
+  * `POST /apps/{appId}/sessions/{sessionId}/datachannels/establish`
+* **Add DataChannels**: Publishes a local DataChannel or pulls a remote one (optional `waitForAck`, `canReply`).
+  * `POST /apps/{appId}/sessions/{sessionId}/datachannels/new`
+* **Update DataChannels**: Grants or revokes flags on an already pulled remote DataChannel (for example `canReply`).
+  * `PUT /apps/{appId}/sessions/{sessionId}/datachannels/update`
+* **Close DataChannels**: Removes a specified DataChannel from the session.
+  * `PUT /apps/{appId}/sessions/{sessionId}/datachannels/close`
 * **Retrieve Session Information**: Fetches detailed information about a specific session.
   * `GET /apps/{appId}/sessions/{sessionId}`
 
@@ -106,5 +116,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/https-api/#page","headline":"Connection API · Cloudflare Realtime docs","description":"Manage Realtime SFU sessions and media tracks using the HTTPS connection API.","url":"https://developers.cloudflare.com/realtime/sfu/https-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/https-api/#page","headline":"Connection API · Cloudflare Realtime docs","description":"Manage Realtime SFU sessions and media tracks using the HTTPS connection API.","url":"https://developers.cloudflare.com/realtime/sfu/https-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

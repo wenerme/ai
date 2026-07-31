@@ -10,7 +10,7 @@ Fetch a character.
 
 ### Returns
 
-- `id: string`
+- `id: string or null`
 
   Identifier for the character creation cameo.
 
@@ -18,7 +18,7 @@ Fetch a character.
 
   Unix timestamp (in seconds) when the character was created.
 
-- `name: string`
+- `name: string or null`
 
   Display name for the character.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Modify HTTP request headers in Gateway
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gateway HTTP policies with Allow actions can modify the headers of matching requests before they reach their destination. You can add dynamic values to set headers to forward information like user identity, source IP, and other inputs to upstream services, enforce SaaS tenant control, strip internal headers, override header content.
 
@@ -215,6 +215,22 @@ ChatGPT
 
 For more information, refer to the [OpenAI documentation ↗](https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace).
 
+Claude
+
+| Selector    | Operator | Value    | Action | Untrusted certificate action |
+| ----------- | -------- | -------- | ------ | ---------------------------- |
+| Application | in       | _Claude_ | Allow  | Block                        |
+
+| Custom header name        | Custom header value      |
+| ------------------------- | ------------------------ |
+| anthropic-allowed-org-ids | Your organization's UUID |
+
+To allow access from multiple organizations, enter a comma-separated list of UUIDs with no spaces (for example, `<org-uuid-1>,<org-uuid-2>`).
+
+You can find your organization UUID in **Settings** \> **Account** \> **Organization ID** on [claude.ai ↗](https://claude.ai/settings/account).
+
+For more information, refer to the [Claude documentation ↗](https://support.claude.com/en/articles/13198485-enforce-network-level-access-control-with-tenant-restrictions).
+
 ### Forward user identity to upstream services
 
 You can use dynamic header values to forward user identity information to your upstream applications without requiring those applications to integrate with Cloudflare Access directly.
@@ -297,5 +313,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/#page","headline":"Modify HTTP request headers in Gateway · Cloudflare One docs","description":"Add, overwrite, and remove HTTP request headers in Gateway HTTP policies using static or dynamic values.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/#page","headline":"Modify HTTP request headers in Gateway · Cloudflare One docs","description":"Add, overwrite, and remove HTTP request headers in Gateway HTTP policies using static or dynamic values.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers"]}
 ```

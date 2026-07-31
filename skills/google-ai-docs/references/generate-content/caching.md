@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the previous **generateContent API** . We recommend using the new [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) for access to all the latest features and models. You can use the toggle on this page to switch to the [Interactions API version of this page](https://ai.google.dev/gemini-api/docs/caching).
-
 In a typical AI workflow, you might pass the same input tokens over and over to
 a model. The Gemini API offers two different caching mechanisms:
 
@@ -84,7 +81,7 @@ instruction and video file.
 
     print(f'Video processing complete: {video_file.uri}')
 
-    model='models/gemini-3.5-flash'
+    model='models/gemini-3.6-flash'
 
     # Create a cache with a 5 minute TTL (300 seconds)
     cache = client.caches.create(
@@ -132,7 +129,7 @@ instruction and video file.
       config=dict(mime_type='application/pdf')
     )
 
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.6-flash"
     system_instruction = "You are an expert analyzing transcripts."
 
     # Create a cached content object
@@ -177,7 +174,7 @@ instruction and a text file.
       });
       console.log("Uploaded file name:", doc.name);
 
-      const modelName = "gemini-3.5-flash";
+      const modelName = "gemini-3.6-flash";
       const cache = await ai.caches.create({
         model: modelName,
         config: {
@@ -221,7 +218,7 @@ The following example shows how to generate content using a cache.
             log.Fatal(err)
         }
 
-        modelName := "gemini-3.5-flash"
+        modelName := "gemini-3.6-flash"
         document, err := client.Files.UploadFromPath(
             ctx,
             "media/a11.txt",
@@ -274,7 +271,7 @@ generate content.
 
     wget https://storage.googleapis.com/generativeai-downloads/data/a11.txt
     echo '{
-      "model": "models/gemini-3.5-flash",
+      "model": "models/gemini-3.6-flash",
       "contents":[
         {
           "parts":[
@@ -305,7 +302,7 @@ generate content.
 
     CACHE_NAME=$(cat cache.json | grep '"name":' | cut -d '"' -f 4 | head -n 1)
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=$GEMINI_API_KEY" \
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=$GEMINI_API_KEY" \
     -H 'Content-Type: application/json' \
     -d '{
           "contents": [
@@ -325,7 +322,7 @@ generate content.
     DISPLAY_NAME="A11_Mission_Report"
     SYSTEM_INSTRUCTION="You are an expert at analyzing transcripts."
     PROMPT="Please summarize this transcript"
-    MODEL="models/gemini-3.5-flash"
+    MODEL="models/gemini-3.6-flash"
     TTL="300s"
 
     # Download the PDF

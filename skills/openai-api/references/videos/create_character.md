@@ -6,7 +6,7 @@ Create a character from an uploaded video.
 
 ### Returns
 
-- `id: string`
+- `id: string or null`
 
   Identifier for the character creation cameo.
 
@@ -14,7 +14,7 @@ Create a character from an uploaded video.
 
   Unix timestamp (in seconds) when the character was created.
 
-- `name: string`
+- `name: string or null`
 
   Display name for the character.
 

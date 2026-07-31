@@ -16,11 +16,11 @@ Retrieves a user in a group.
 
   Identifier for the user.
 
-- `email: string`
+- `email: string or null`
 
   Email address of the user, or `null` for users without an email.
 
-- `is_service_account: boolean`
+- `is_service_account: boolean or null`
 
   Whether the user is a service account.
 
@@ -28,7 +28,7 @@ Retrieves a user in a group.
 
   Display name of the user.
 
-- `picture: string`
+- `picture: string or null`
 
   URL of the user's profile picture, if available.
 

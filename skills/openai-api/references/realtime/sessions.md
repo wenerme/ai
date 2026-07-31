@@ -78,7 +78,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
   The format of output audio. Options are `pcm16`, `g711_ulaw`, or `g711_alaw`.
 
-- `prompt: optional ResponsePrompt`
+- `prompt: optional ResponsePrompt or null`
 
   Reference to a prompt template and its variables.
   [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
@@ -87,7 +87,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
     The unique identifier of the prompt template to use.
 
-  - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile]`
+  - `variables: optional map[string or ResponseInputText or ResponseInputImage or ResponseInputFile] or null`
 
     Optional map of values to substitute in for variables in your
     prompt. The substitution values can either be strings, or other
@@ -141,11 +141,11 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         - `"input_image"`
 
-      - `file_id: optional string`
+      - `file_id: optional string or null`
 
         The ID of the file to be sent to the model.
 
-      - `image_url: optional string`
+      - `image_url: optional string or null`
 
         The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -183,7 +183,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The content of the file to be sent to the model.
 
-      - `file_id: optional string`
+      - `file_id: optional string or null`
 
         The ID of the file to be sent to the model.
 
@@ -205,7 +205,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"explicit"`
 
-  - `version: optional string`
+  - `version: optional string or null`
 
     Optional version of the prompt template.
 

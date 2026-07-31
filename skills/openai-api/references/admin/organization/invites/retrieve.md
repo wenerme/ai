@@ -66,11 +66,11 @@ Retrieves an invite.
 
     - `"pending"`
 
-  - `accepted_at: optional number`
+  - `accepted_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `expires_at: optional number`
+  - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
 

@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/maps-grounding).
-
 Grounding with Google Maps connects the generative capabilities of Gemini with
 the rich, factual, and up-to-date data of Google Maps. This feature enables
 developers to easily incorporate location-aware functionality into their

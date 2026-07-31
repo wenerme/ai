@@ -28,19 +28,19 @@ Retrieves a project.
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 

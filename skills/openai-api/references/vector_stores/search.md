@@ -127,7 +127,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
   The list of search result items.
 
-  - `attributes: map[string or number or boolean]`
+  - `attributes: map[string or number or boolean] or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -171,7 +171,7 @@ Search a vector store for relevant chunks based on a query and file attributes f
 
   Indicates if there are more results to fetch.
 
-- `next_page: string`
+- `next_page: string or null`
 
   The token for the next page, if any.
 

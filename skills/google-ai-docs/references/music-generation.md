@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/music-generation).
-
 Lyria 3 is Google's family of music generation models, available
 through the Gemini API. With Lyria 3, you can generate
 high-quality, 44.1 kHz stereo audio from text prompts or from images. These
@@ -562,9 +559,9 @@ Here are some examples of effective prompts:
 
 ## What's next
 
-- Check [pricing](https://ai.google.dev/gemini-api/docs/pricing) for Lyria 3 models,
-- Try [real-time, streaming music generation](https://ai.google.dev/gemini-api/docs/realtime-music-generation) with Lyria RealTime,
-- Generate multi-speaker conversations with the [TTS models](https://ai.google.dev/gemini-api/docs/speech-generation),
-- Discover how to generate [images](https://ai.google.dev/gemini-api/docs/image-generation) or [videos](https://ai.google.dev/gemini-api/docs/video),
-- Find out how Gemini can [understand audio files](https://ai.google.dev/gemini-api/docs/audio),
+- Check [pricing](https://ai.google.dev/gemini-api/docs/pricing) for Lyria 3 models.
+- Try [real-time, streaming music generation](https://ai.google.dev/gemini-api/docs/realtime-music-generation) with Lyria RealTime.
+- Generate multi-speaker conversations with the [TTS models](https://ai.google.dev/gemini-api/docs/speech-generation).
+- Discover how to generate [images](https://ai.google.dev/gemini-api/docs/image-generation) or [videos](https://ai.google.dev/gemini-api/docs/video).
+- Find out how Gemini can [understand audio files](https://ai.google.dev/gemini-api/docs/audio).
 - Have a real-time conversation with Gemini using the [Live API](https://ai.google.dev/gemini-api/docs/live).

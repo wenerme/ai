@@ -1,122 +1,5 @@
 # Service Accounts
 
-## List project service accounts
-
-**get** `/organization/projects/{project_id}/service_accounts`
-
-Returns a list of service accounts in the project.
-
-### Path Parameters
-
-- `project_id: string`
-
-### Query Parameters
-
-- `after: optional string`
-
-  A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
-
-- `limit: optional number`
-
-  A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
-
-### Returns
-
-- `data: array of ProjectServiceAccount`
-
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) of when the service account was created
-
-  - `name: string`
-
-    The name of the service account
-
-  - `object: "organization.project.service_account"`
-
-    The object type, which is always `organization.project.service_account`
-
-    - `"organization.project.service_account"`
-
-  - `role: "owner" or "member" or "none"`
-
-    `owner`, `member`, or `none`
-
-    - `"owner"`
-
-    - `"member"`
-
-    - `"none"`
-
-- `has_more: boolean`
-
-- `object: "list"`
-
-  - `"list"`
-
-- `first_id: optional string`
-
-- `last_id: optional string`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "name": "name",
-      "object": "organization.project.service_account",
-      "role": "owner"
-    }
-  ],
-  "has_more": true,
-  "object": "list",
-  "first_id": "first_id",
-  "last_id": "last_id"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?after=custom_id&limit=20 \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "list",
-    "data": [
-        {
-            "object": "organization.project.service_account",
-            "id": "svc_acct_abc",
-            "name": "Service Account",
-            "role": "owner",
-            "created_at": 1711471533
-        }
-    ],
-    "first_id": "svc_acct_abc",
-    "last_id": "svc_acct_xyz",
-    "has_more": false
-}
-```
-
 ## Create project service account
 
 **post** `/organization/projects/{project_id}/service_accounts`
@@ -133,7 +16,7 @@ Creates a new service account in the project. By default, this also returns an u
 
   The name of the service account being created.
 
-- `create_service_account_only: optional boolean`
+- `create_service_account_only: optional boolean or null`
 
   Create the service account without default roles or an API key.
 
@@ -141,7 +24,7 @@ Creates a new service account in the project. By default, this also returns an u
 
 - `id: string`
 
-- `api_key: object { id, created_at, name, 2 more }`
+- `api_key: object { id, created_at, name, 2 more }  or null`
 
   - `id: string`
 
@@ -230,6 +113,184 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
         "created_at": 1711471533,
         "id": "key_abc"
     }
+}
+```
+
+## Delete project service account
+
+**delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
+
+Deletes a service account from the project.
+
+Returns confirmation of service account deletion, or an error if the project
+is archived (archived projects have no service accounts).
+
+### Path Parameters
+
+- `project_id: string`
+
+- `service_account_id: string`
+
+### Returns
+
+- `id: string`
+
+- `deleted: boolean`
+
+- `object: "organization.project.service_account.deleted"`
+
+  - `"organization.project.service_account.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "organization.project.service_account.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "organization.project.service_account.deleted",
+    "id": "svc_acct_abc",
+    "deleted": true
+}
+```
+
+## List project service accounts
+
+**get** `/organization/projects/{project_id}/service_accounts`
+
+Returns a list of service accounts in the project.
+
+### Path Parameters
+
+- `project_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  A cursor for use in pagination. `after` is an object ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with obj_foo, your subsequent call can include after=obj_foo in order to fetch the next page of the list.
+
+- `limit: optional number`
+
+  A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20.
+
+### Returns
+
+- `data: array of ProjectServiceAccount`
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) of when the service account was created
+
+  - `name: string`
+
+    The name of the service account
+
+  - `object: "organization.project.service_account"`
+
+    The object type, which is always `organization.project.service_account`
+
+    - `"organization.project.service_account"`
+
+  - `role: "owner" or "member" or "none"`
+
+    `owner`, `member`, or `none`
+
+    - `"owner"`
+
+    - `"member"`
+
+    - `"none"`
+
+- `has_more: boolean`
+
+- `object: "list"`
+
+  - `"list"`
+
+- `first_id: optional string or null`
+
+- `last_id: optional string or null`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "name": "name",
+      "object": "organization.project.service_account",
+      "role": "owner"
+    }
+  ],
+  "has_more": true,
+  "object": "list",
+  "first_id": "first_id",
+  "last_id": "last_id"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/projects/proj_abc/service_accounts?after=custom_id&limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "organization.project.service_account",
+            "id": "svc_acct_abc",
+            "name": "Service Account",
+            "role": "owner",
+            "created_at": 1711471533
+        }
+    ],
+    "first_id": "svc_acct_abc",
+    "last_id": "svc_acct_xyz",
+    "has_more": false
 }
 ```
 
@@ -423,67 +484,6 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/service_ac
 }
 ```
 
-## Delete project service account
-
-**delete** `/organization/projects/{project_id}/service_accounts/{service_account_id}`
-
-Deletes a service account from the project.
-
-Returns confirmation of service account deletion, or an error if the project
-is archived (archived projects have no service accounts).
-
-### Path Parameters
-
-- `project_id: string`
-
-- `service_account_id: string`
-
-### Returns
-
-- `id: string`
-
-- `deleted: boolean`
-
-- `object: "organization.project.service_account.deleted"`
-
-  - `"organization.project.service_account.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/projects/$PROJECT_ID/service_accounts/$SERVICE_ACCOUNT_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "organization.project.service_account.deleted"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_accounts/svc_acct_abc \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "organization.project.service_account.deleted",
-    "id": "svc_acct_abc",
-    "deleted": true
-}
-```
-
 ## Domain Types
 
 ### Project Service Account
@@ -526,7 +526,7 @@ curl -X DELETE https://api.openai.com/v1/organization/projects/proj_abc/service_
 
   - `id: string`
 
-  - `api_key: object { id, created_at, name, 2 more }`
+  - `api_key: object { id, created_at, name, 2 more }  or null`
 
     - `id: string`
 

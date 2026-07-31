@@ -36,7 +36,7 @@ Lists all of the users in the organization.
 
     - `"organization.user"`
 
-  - `api_key_last_used_at: optional number`
+  - `api_key_last_used_at: optional number or null`
 
     The Unix timestamp (in seconds) of the user's last API key usage.
 
@@ -44,11 +44,11 @@ Lists all of the users in the organization.
 
     The Unix timestamp (in seconds) of when the user was created.
 
-  - `developer_persona: optional string`
+  - `developer_persona: optional string or null`
 
     The developer persona metadata for the user.
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
@@ -56,7 +56,7 @@ Lists all of the users in the organization.
 
     Whether this is the organization's default user.
 
-  - `is_scale_tier_authorized_purchaser: optional boolean`
+  - `is_scale_tier_authorized_purchaser: optional boolean or null`
 
     Whether the user is an authorized purchaser for Scale Tier.
 
@@ -68,31 +68,31 @@ Lists all of the users in the organization.
 
     Whether the user is a service account.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 
-  - `projects: optional object { data, object }`
+  - `projects: optional object { data, object }  or null`
 
     Projects associated with the user, if included.
 
     - `data: array of object { id, name, role }`
 
-      - `id: optional string`
+      - `id: optional string or null`
 
-      - `name: optional string`
+      - `name: optional string or null`
 
-      - `role: optional string`
+      - `role: optional string or null`
 
     - `object: "list"`
 
       - `"list"`
 
-  - `role: optional string`
+  - `role: optional string or null`
 
     `owner` or `reader`
 
-  - `technical_level: optional string`
+  - `technical_level: optional string or null`
 
     The technical level metadata for the user.
 
@@ -106,17 +106,17 @@ Lists all of the users in the organization.
 
       - `"user"`
 
-    - `banned: optional boolean`
+    - `banned: optional boolean or null`
 
-    - `banned_at: optional number`
+    - `banned_at: optional number or null`
 
-    - `email: optional string`
+    - `email: optional string or null`
 
-    - `enabled: optional boolean`
+    - `enabled: optional boolean or null`
 
-    - `name: optional string`
+    - `name: optional string or null`
 
-    - `picture: optional string`
+    - `picture: optional string or null`
 
 - `has_more: boolean`
 
@@ -124,9 +124,9 @@ Lists all of the users in the organization.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 

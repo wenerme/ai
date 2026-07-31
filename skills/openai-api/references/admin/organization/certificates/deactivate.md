@@ -36,7 +36,7 @@ You can atomically and idempotently deactivate up to 10 certificates at a time.
 
     The Unix timestamp (in seconds) of when the certificate was uploaded.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the certificate.
 

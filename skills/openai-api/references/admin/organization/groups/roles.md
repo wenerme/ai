@@ -1,189 +1,5 @@
 # Roles
 
-## List group organization role assignments
-
-**get** `/organization/groups/{group_id}/roles`
-
-Lists the organization roles assigned to a group within the organization.
-
-### Path Parameters
-
-- `group_id: string`
-
-### Query Parameters
-
-- `after: optional string`
-
-  Cursor for pagination. Provide the value from the previous response's `next` field to continue listing organization roles.
-
-- `limit: optional number`
-
-  A limit on the number of organization role assignments to return.
-
-- `order: optional "asc" or "desc"`
-
-  Sort order for the returned organization roles.
-
-  - `"asc"`
-
-  - `"desc"`
-
-### Returns
-
-- `data: array of object { id, assignment_sources, created_at, 9 more }`
-
-  Role assignments returned in the current page.
-
-  - `id: string`
-
-    Identifier for the role.
-
-  - `assignment_sources: array of object { principal_id, principal_type }`
-
-    Principals from which the role assignment is inherited, when available.
-
-    - `principal_id: string`
-
-    - `principal_type: string`
-
-  - `created_at: number`
-
-    When the role was created.
-
-  - `created_by: string`
-
-    Identifier of the actor who created the role.
-
-  - `created_by_user_obj: map[unknown]`
-
-    User details for the actor that created the role, when available.
-
-  - `description: string`
-
-    Description of the role.
-
-  - `metadata: map[unknown]`
-
-    Arbitrary metadata stored on the role.
-
-  - `name: string`
-
-    Name of the role.
-
-  - `permissions: array of string`
-
-    Permissions associated with the role.
-
-  - `predefined_role: boolean`
-
-    Whether the role is predefined by OpenAI.
-
-  - `resource_type: string`
-
-    Resource type the role applies to.
-
-  - `updated_at: number`
-
-    When the role was last updated.
-
-- `has_more: boolean`
-
-  Whether additional assignments are available when paginating.
-
-- `next: string`
-
-  Cursor to fetch the next page of results, or `null` when there are no more assignments.
-
-- `object: "list"`
-
-  Always `list`.
-
-  - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "assignment_sources": [
-        {
-          "principal_id": "principal_id",
-          "principal_type": "principal_type"
-        }
-      ],
-      "created_at": 0,
-      "created_by": "created_by",
-      "created_by_user_obj": {
-        "foo": "bar"
-      },
-      "description": "description",
-      "metadata": {
-        "foo": "bar"
-      },
-      "name": "name",
-      "permissions": [
-        "string"
-      ],
-      "predefined_role": true,
-      "resource_type": "resource_type",
-      "updated_at": 0
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "list",
-    "data": [
-        {
-            "id": "role_01J1F8ROLE01",
-            "name": "API Group Manager",
-            "permissions": [
-                "api.groups.read",
-                "api.groups.write"
-            ],
-            "resource_type": "api.organization",
-            "predefined_role": false,
-            "description": "Allows managing organization groups",
-            "created_at": 1711471533,
-            "updated_at": 1711472599,
-            "created_by": "user_abc123",
-            "created_by_user_obj": {
-                "id": "user_abc123",
-                "name": "Ada Lovelace",
-                "email": "ada@example.com"
-            },
-            "metadata": {}
-        }
-    ],
-    "has_more": false,
-    "next": null
-}
-```
-
 ## Assign organization role to group
 
 **post** `/organization/groups/{group_id}/roles`
@@ -242,7 +58,7 @@ Assigns an organization role to a group within the organization.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -343,6 +159,246 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/r
 }
 ```
 
+## Unassign organization role from group
+
+**delete** `/organization/groups/{group_id}/roles/{role_id}`
+
+Unassigns an organization role from a group within the organization.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `deleted: boolean`
+
+  Whether the assignment was removed.
+
+- `object: string`
+
+  Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.role.deleted",
+    "deleted": true
+}
+```
+
+## List group organization role assignments
+
+**get** `/organization/groups/{group_id}/roles`
+
+Lists the organization roles assigned to a group within the organization.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  Cursor for pagination. Provide the value from the previous response's `next` field to continue listing organization roles.
+
+- `limit: optional number`
+
+  A limit on the number of organization role assignments to return.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for the returned organization roles.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of object { id, assignment_sources, created_at, 9 more }`
+
+  Role assignments returned in the current page.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number or null`
+
+    When the role was created.
+
+  - `created_by: string or null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown] or null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string or null`
+
+    Description of the role.
+
+  - `metadata: map[unknown] or null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number or null`
+
+    When the role was last updated.
+
+- `has_more: boolean`
+
+  Whether additional assignments are available when paginating.
+
+- `next: string or null`
+
+  Cursor to fetch the next page of results, or `null` when there are no more assignments.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
+      "created_at": 0,
+      "created_by": "created_by",
+      "created_by_user_obj": {
+        "foo": "bar"
+      },
+      "description": "description",
+      "metadata": {
+        "foo": "bar"
+      },
+      "name": "name",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type",
+      "updated_at": 0
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "role_01J1F8ROLE01",
+            "name": "API Group Manager",
+            "permissions": [
+                "api.groups.read",
+                "api.groups.write"
+            ],
+            "resource_type": "api.organization",
+            "predefined_role": false,
+            "description": "Allows managing organization groups",
+            "created_at": 1711471533,
+            "updated_at": 1711472599,
+            "created_by": "user_abc123",
+            "created_by_user_obj": {
+                "id": "user_abc123",
+                "name": "Ada Lovelace",
+                "email": "ada@example.com"
+            },
+            "metadata": {}
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
 ## Retrieve group organization role
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
@@ -361,7 +417,7 @@ Retrieves an organization role assigned to a group.
 
   Identifier for the role.
 
-- `assignment_sources: array of object { principal_id, principal_type }`
+- `assignment_sources: array of object { principal_id, principal_type }  or null`
 
   Principals from which the role assignment is inherited, when available.
 
@@ -369,23 +425,23 @@ Retrieves an organization role assigned to a group.
 
   - `principal_type: string`
 
-- `created_at: number`
+- `created_at: number or null`
 
   When the role was created.
 
-- `created_by: string`
+- `created_by: string or null`
 
   Identifier of the actor who created the role.
 
-- `created_by_user_obj: map[unknown]`
+- `created_by_user_obj: map[unknown] or null`
 
   User details for the actor that created the role, when available.
 
-- `description: string`
+- `description: string or null`
 
   Description of the role.
 
-- `metadata: map[unknown]`
+- `metadata: map[unknown] or null`
 
   Arbitrary metadata stored on the role.
 
@@ -405,7 +461,7 @@ Retrieves an organization role assigned to a group.
 
   Resource type the role applies to.
 
-- `updated_at: number`
+- `updated_at: number or null`
 
   When the role was last updated.
 
@@ -476,121 +532,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 }
 ```
 
-## Unassign organization role from group
-
-**delete** `/organization/groups/{group_id}/roles/{role_id}`
-
-Unassigns an organization role from a group within the organization.
-
-### Path Parameters
-
-- `group_id: string`
-
-- `role_id: string`
-
-### Returns
-
-- `deleted: boolean`
-
-  Whether the assignment was removed.
-
-- `object: string`
-
-  Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "deleted": true,
-  "object": "object"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8ROLE01 \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "group.role.deleted",
-    "deleted": true
-}
-```
-
 ## Domain Types
-
-### Role List Response
-
-- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
-
-  Detailed information about a role assignment entry returned when listing assignments.
-
-  - `id: string`
-
-    Identifier for the role.
-
-  - `assignment_sources: array of object { principal_id, principal_type }`
-
-    Principals from which the role assignment is inherited, when available.
-
-    - `principal_id: string`
-
-    - `principal_type: string`
-
-  - `created_at: number`
-
-    When the role was created.
-
-  - `created_by: string`
-
-    Identifier of the actor who created the role.
-
-  - `created_by_user_obj: map[unknown]`
-
-    User details for the actor that created the role, when available.
-
-  - `description: string`
-
-    Description of the role.
-
-  - `metadata: map[unknown]`
-
-    Arbitrary metadata stored on the role.
-
-  - `name: string`
-
-    Name of the role.
-
-  - `permissions: array of string`
-
-    Permissions associated with the role.
-
-  - `predefined_role: boolean`
-
-    Whether the role is predefined by OpenAI.
-
-  - `resource_type: string`
-
-    Resource type the role applies to.
-
-  - `updated_at: number`
-
-    When the role was last updated.
 
 ### Role Create Response
 
@@ -638,7 +580,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
       Identifier for the role.
 
-    - `description: string`
+    - `description: string or null`
 
       Optional description of the role.
 
@@ -664,9 +606,23 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
 
-### Role Retrieve Response
+### Role Delete Response
 
-- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
+### Role List Response
+
+- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
 
   Detailed information about a role assignment entry returned when listing assignments.
 
@@ -674,7 +630,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -682,23 +638,23 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -718,20 +674,64 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
-### Role Delete Response
+### Role Retrieve Response
 
-- `RoleDeleteResponse object { deleted, object }`
+- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
 
-  Confirmation payload returned after unassigning a role.
+  Detailed information about a role assignment entry returned when listing assignments.
 
-  - `deleted: boolean`
+  - `id: string`
 
-    Whether the assignment was removed.
+    Identifier for the role.
 
-  - `object: string`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
-    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number or null`
+
+    When the role was created.
+
+  - `created_by: string or null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown] or null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string or null`
+
+    Description of the role.
+
+  - `metadata: map[unknown] or null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number or null`
+
+    When the role was last updated.
