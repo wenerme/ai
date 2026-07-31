@@ -1,11 +1,11 @@
 ---
 title: "Charm Hyper | Models"
-description: "Use Charm Hyper models with Mastra. 22 models available."
+description: "Use Charm Hyper models with Mastra. 23 models available."
 ---
 
 # [Charm Hyper logo]Charm Hyper
 
-Access 22 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
+Access 23 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
 
 Learn more in the [Charm Hyper documentation](https://hyper.charm.land).
 
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 20480,
     "inputCost": 0.48,
     "outputCost": 1.86
+  },
+  {
+    "model": "hyper/minimax-m3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 512000,
+    "maxOutput": 512000,
+    "inputCost": 0.32664,
+    "outputCost": 1.30656
   },
   {
     "model": "hyper/qwen3-coder-480b-a35b-instruct-int4-mixed-ar",

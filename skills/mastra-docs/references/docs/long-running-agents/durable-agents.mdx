@@ -251,7 +251,7 @@ On startup, this discovers every registered durable agent with runs stuck in `ru
 
 ### Manual recovery
 
-If you need finer control — for example gating recovery behind a leader election or running it on a schedule — call the methods directly:
+If you need finer control, such as gating recovery behind a leader election or running it on a schedule, call the methods directly:
 
 ```typescript
 // Recover all durable agents
@@ -267,7 +267,7 @@ await durableAgent.recoverActiveRuns({ runId: 'run-abc-123' })
 
 ### Multi-instance deployments
 
-There is no distributed lease or lock yet. In multi-replica deployments, every replica that starts with `recovery.durableAgents: 'auto'` will race to recover the same runs. For now, either gate recovery behind your own leader election or run it from a single replica.
+Mastra doesn't provide a distributed lease or lock yet. In multi-replica deployments, every replica that starts with `recovery.durableAgents: 'auto'` will race to recover the same runs. For now, either gate recovery behind your own leader election or run it from a single replica.
 
 ## Related
 

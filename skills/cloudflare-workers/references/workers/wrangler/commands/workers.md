@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler commands for creating, developing, deploying, and managing Workers.
 
@@ -1360,19 +1360,40 @@ interface Env {
 
 ### `startup`
 
-Generate a CPU profile of your Worker's startup phase.
+Analyze your Worker's startup phase. Wrangler reports bundle size and a summary of local CPU activity. It also saves a detailed CPU profile.
 
-After you run `wrangler check startup`, you can import the profile into Chrome DevTools or open it directly in VSCode to view a flamegraph of your Worker's startup phase. Additionally, when a Worker deployment fails with a startup time error Wrangler will automatically generate a CPU profile for easy investigation.
+```sh
+wrangler check startup
+```
+
+```txt
+Bundle: 42.31 KiB / gzip: 11.24 KiB
+
+Local startup profile:
+  Profile window: 25.2 ms
+  Sampled time: 24.8 ms
+  Active: 18.4 ms (including 1.2 ms garbage collection)
+  Idle: 6.4 ms
+  Samples: 25
+```
+
+The local startup profile includes the following metrics:
+
+| Metric         | Description                                                              |
+| -------------- | ------------------------------------------------------------------------ |
+| Profile window | Elapsed time between the start and end of the profiling session.         |
+| Sampled time   | Total time represented by the captured CPU samples.                      |
+| Active         | Sampled time that the Worker was not idle, including garbage collection. |
+| Idle           | Sampled time that the Worker was idle.                                   |
+| Samples        | Number of CPU samples captured during the profiling session.             |
+
+Import the generated `.cpuprofile` file into Chrome DevTools or open it directly in VS Code to view a flamegraph. When a Worker deployment fails with a startup time error, Wrangler also generates this profile automatically.
 
 Note
 
 This command measures performance of your Worker locally, on your own machine — which has a different CPU than when your Worker runs on Cloudflare. This means results can vary widely.
 
-You should use the CPU profile that `wrangler check startup` generates in order to understand where time is spent at startup, but you should not expect the overall startup time in the profile to match exactly what your Worker's startup time will be when deploying to Cloudflare.
-
-```sh
-wrangler check startup
-```
+Use the summary and CPU profile to understand where your Worker spends time during startup. Do not expect the local profile duration to match your Worker's startup time on Cloudflare.
 
 * `--args` `string`optional
   * To customise the way `wrangler check startup` builds your Worker for analysis, provide the exact arguments you use when deploying your Worker with `wrangler deploy`, or your Pages project with `wrangler pages functions build`. For instance, if you deploy your Worker with `wrangler deploy --no-bundle`, you should use `wrangler check startup --args="--no-bundle"` to profile the startup phase.
@@ -1399,5 +1420,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

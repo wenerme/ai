@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure CORS
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/cors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/buckets/cors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Cross-Origin Resource Sharing (CORS) ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a standardized method that prevents domain X from accessing the resources of domain Y. It does so by using special headers in HTTP responses from domain Y, that allow your browser to verify that domain Y permits domain X to access these resources.
 
@@ -43,6 +43,8 @@ Next, [add a CORS policy](#add-cors-policies-from-the-dashboard) to your bucket 
 [Presigned URLs](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) allow temporary access to perform specific actions on your bucket without exposing your credentials. While presigned URLs handle authentication, you still need to configure CORS when making requests from a browser.
 
 When a browser makes a request to a presigned URL on a different origin, the browser enforces CORS. Without a CORS policy, browser-based uploads and downloads using presigned URLs will fail, even though the presigned URL itself is valid.
+
+Expired presigned URLs return a `403` `ExpiredRequest` response. R2 does not include CORS response headers on expired presigned URL responses, so browser JavaScript cannot read the error body. Refresh presigned URLs before they expire, or route requests through your application server if the browser needs to handle expiration errors directly.
 
 To enable browser-based access with presigned URLs:
 
@@ -173,5 +175,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/cors/#page","headline":"Configure CORS · Cloudflare R2 docs","description":"Set up Cross-Origin Resource Sharing (CORS) policies on R2 buckets for browser access.","url":"https://developers.cloudflare.com/r2/buckets/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/cors/#page","headline":"Configure CORS · Cloudflare R2 docs","description":"Set up Cross-Origin Resource Sharing (CORS) policies on R2 buckets for browser access.","url":"https://developers.cloudflare.com/r2/buckets/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
