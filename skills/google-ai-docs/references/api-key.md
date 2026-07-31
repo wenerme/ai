@@ -1,12 +1,9 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/api-key).
-
 To use the Gemini API, you must authenticate your requests. You can
 authenticate using a standard or authorization API key.
 
 [Create or view a Gemini API Key](https://aistudio.google.com/apikey)
 
-## API key types: Standard versus Authorization
+## API key types: standard versus authorization
 
 API keys provide access to the Gemini API, but their security characteristics
 differ. The Gemini API is transitioning from standard API keys to authorization
@@ -72,7 +69,7 @@ project that is not associated with an organization to generate your keys.
 Once you have a key, configure your environment to use it securely in your
 applications.
 
-### Option 1: Use environment variables (Recommended)
+### Option 1: Use environment variables (recommended)
 
 Set the environment variable `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The Gemini
 API client libraries automatically detect and use these variables. If both are
@@ -136,7 +133,7 @@ if you cannot use environment variables.
     client = genai.Client(api_key="YOUR_API_KEY")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input="Explain how AI works in a few words"
     )
     print(interaction.output_text)
@@ -149,7 +146,7 @@ if you cannot use environment variables.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: "Explain how AI works in a few words",
       });
       console.log(interaction.output_text);
@@ -180,7 +177,7 @@ if you cannot use environment variables.
         }
 
         interaction, err := client.Interactions.NewModel(ctx, interactions.NewModelParams{
-            Model: "gemini-3.5-flash",
+            Model: "gemini-3.6-flash",
             Input: interactions.Input{
                 String: "Explain how AI works in a few words",
             },
@@ -215,7 +212,7 @@ if you cannot use environment variables.
         CreateModelInteractionParams params =
             CreateModelInteractionParams.builder()
                 .input("Explain how AI works in a few words")
-                .model("gemini-3.5-flash")
+                .model("gemini-3.6-flash")
                 .build();
 
         Interaction interaction = client.interactions.create(params);
@@ -239,7 +236,7 @@ if you cannot use environment variables.
       -H "x-goog-api-key: YOUR_API_KEY" \
       -X POST \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": "Explain how AI works in a few words"
       }'
 

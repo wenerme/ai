@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/structured-output).
-
 You can configure Gemini models to generate responses that adhere to a provided
 JSON Schema. This ensures predictable, type-safe results and simplifies
 extracting structured data from unstructured text.
@@ -56,7 +53,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
     """
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=prompt,
         response_format={
             "type": "text",
@@ -123,7 +120,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
     `;
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: prompt,
       response_format: {
         type: 'text',
@@ -141,7 +138,7 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": "Please extract the recipe from the following text.\nThe user wants to make delicious chocolate chip cookies.\nThey need 2 and 1/4 cups of all-purpose flour, 1 teaspoon of baking soda,\n1 teaspoon of salt, 1 cup of unsalted butter (softened), 3/4 cup of granulated sugar,\n3/4 cup of packed brown sugar, 1 teaspoon of vanilla extract, and 2 large eggs.\nFor the best part, they will need 2 cups of semisweet chocolate chips.\nFirst, preheat the oven to 375°F (190°C). Then, in a small bowl, whisk together the flour,\nbaking soda, and salt. In a large bowl, cream together the butter, granulated sugar, and brown sugar\nuntil light and fluffy. Beat in the vanilla and eggs, one at a time. Gradually beat in the dry\ningredients until just combined. Finally, stir in the chocolate chips. Drop by rounded tablespoons\nonto ungreased baking sheets and bake for 9 to 11 minutes.",
           "response_format": {
             "type": "text",
@@ -235,7 +232,7 @@ classification, allowing the output structure to vary based on the content.
     """
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=prompt,
         response_format={
             "type": "text",
@@ -294,7 +291,7 @@ classification, allowing the output structure to vary based on the content.
     `;
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: prompt,
       response_format: {
         type: 'text',
@@ -312,7 +309,7 @@ classification, allowing the output structure to vary based on the content.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": "Please moderate the following content and provide a decision.\nContent: '\''Congratulations! You have won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'\''",
           "response_format": {
             "type": "text",
@@ -388,7 +385,7 @@ organization chart.
     """
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=prompt,
         response_format={
             "type": "text",
@@ -432,7 +429,7 @@ organization chart.
     `;
 
     const interaction = await client.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: prompt,
       response_format: {
         type: 'text',
@@ -450,7 +447,7 @@ organization chart.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": "Generate an organization chart for a small team.\nThe manager is Alice, who manages Bob and Charlie. Bob manages David.",
           "response_format": {
             "type": "text",
@@ -519,7 +516,7 @@ strings that can be concatenated to form the final JSON object.
     prompt = "The new UI is incredibly intuitive. Add a very long summary to test streaming!"
 
     stream = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=prompt,
         response_format={
             "type": "text",
@@ -553,7 +550,7 @@ strings that can be concatenated to form the final JSON object.
     const client = new GoogleGenAI({});
 
     const stream = await client.interactions.create({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       input: "The new UI is incredibly intuitive. Add a very long summary!",
       response_format: {
         type: 'text',
@@ -577,7 +574,7 @@ strings that can be concatenated to form the final JSON object.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": "The new UI is incredibly intuitive. Add a very long summary!",
           "response_format": {
             "type": "text",

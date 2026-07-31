@@ -24,7 +24,7 @@ Retrieves an API key in the project.
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `last_used_at: number`
+  - `last_used_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used.
 

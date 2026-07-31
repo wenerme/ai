@@ -28,7 +28,7 @@ Retrieve the parsed contents of a vector store file.
 
   Indicates if there are more content pages to fetch.
 
-- `next_page: string`
+- `next_page: string or null`
 
   The token for the next page, if any.
 

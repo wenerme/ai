@@ -56,7 +56,7 @@ Get an evaluation run output item by ID.
 
     The numeric score produced by the grader.
 
-  - `sample: optional map[unknown]`
+  - `sample: optional map[unknown] or null`
 
     Optional sample or intermediate data produced by the grader.
 

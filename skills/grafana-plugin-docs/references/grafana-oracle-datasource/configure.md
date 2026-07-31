@@ -66,12 +66,14 @@ If you’re new to Oracle Database connectivity, these terms are used throughout
 
 Expand table
 
-| Term                | Description                                                                                                                               |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
-| **TNSNames**        | A file-based naming method (`tnsnames.ora`) that maps connection identifiers to Oracle Net connection descriptors.                        |
-| **Connection pool** | A cache of database connections maintained for reuse, reducing the overhead of creating new connections for each query.                   |
-| **PDC**             | Private data source connect, a Grafana Cloud feature that establishes a private, secured connection to data sources in a private network. |
-| **Prefetch rows**   | The number of rows buffered from the database after each query execution, improving performance for large result sets.                    |
+| Term                  | Description                                                                                                                                                                                     |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **TNSNames**          | A file-based naming method (`tnsnames.ora`) that maps connection identifiers to Oracle Net connection descriptors.                                                                              |
+| **Easy Connect Plus** | A connection method that encodes the host, port, and service name in a single string (`host:port/service`), optionally with SSL/TLS via a `tcps://` prefix. No `tnsnames.ora` file is required. |
+| **Oracle wallet**     | A directory holding the certificates and credentials used for SSL/TLS connections. Auto-login wallets don’t require a password.                                                                 |
+| **Connection pool**   | A cache of database connections maintained for reuse, reducing the overhead of creating new connections for each query.                                                                         |
+| **PDC**               | Private data source connect, a Grafana Cloud feature that establishes a private, secured connection to data sources in a private network.                                                       |
+| **Prefetch rows**     | The number of rows buffered from the database after each query execution, improving performance for large result sets.                                                                          |
 
 ## Add the data source
 
@@ -96,14 +98,15 @@ Expand table
 
 ## Connection
 
-You can connect to Oracle using two connection methods.
+You can connect to Oracle using three connection methods.
 
 Expand table
 
-| Method                 | Best for                | Grafana Cloud |
-|------------------------|-------------------------|---------------|
-| **Host with TCP Port** | Any deployment          | Supported     |
-| **TNSNames Entry**     | Self-managed Enterprise | Not supported |
+| Method                 | Best for                                                                                               | Grafana Cloud |
+|------------------------|--------------------------------------------------------------------------------------------------------|---------------|
+| **Host with TCP Port** | Any deployment                                                                                         | Supported     |
+| **Easy Connect Plus**  | Cloud databases (such as Oracle Autonomous Database) and single-host connections with optional SSL/TLS | Supported     |
+| **TNSNames Entry**     | Self-managed Enterprise                                                                                | Not supported |
 
 ### Host with TCP Port
 
@@ -115,6 +118,22 @@ Expand table
 |--------------|--------------------------------------------------------------------------------------|
 | **Host**     | The hostname or IP address with TCP port number (for example, `oracle-server:1521`). |
 | **Database** | The name of the Oracle database or service name.                                     |
+
+### Easy Connect Plus
+
+Connect using an Easy Connect Plus connection string that specifies the host, port, and service name in a single value. This method is convenient for cloud databases such as Oracle Autonomous Database and for connections that need SSL/TLS.
+
+Expand table
+
+| Setting               | Description                                                                                                                                                                               |
+|-----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Connection String** | An Easy Connect Plus string in the form `host:port/service` or `tcps://host:port/service`. The port is optional and defaults to `1521`. Use the `tcps://` prefix to connect over SSL/TLS. |
+
+> Note
+>
+> Only the `[tcp[s]://]host[:port]/service` form is supported. Easy Connect Plus parameters (`?param=value`) and comma-separated multi-host address lists are not supported.
+
+Configure SSL/TLS and Oracle wallet options for this connection method under [SSL/TLS](#ssltls).
 
 ### TNSNames Entry
 
@@ -147,13 +166,30 @@ Expand table
 
 ### Kerberos authentication
 
-Kerberos authentication requires a TNSNames connection and server-side Kerberos configuration.
+Kerberos authentication requires a TNSNames or Easy Connect Plus connection and server-side Kerberos configuration. It is not available with the Host with TCP Port method.
 
 > Note
 >
 > Kerberos authentication is not supported in Grafana Cloud.
 
-Kerberos must be configured in the `tnsnames.ora` and `sqlnet.ora` files. Refer to [Kerberos integration](/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for configuration parameters.
+Kerberos must be configured in the `sqlnet.ora` file (and, for TNSNames connections, the `tnsnames.ora` file). Refer to [Kerberos integration](/docs/plugins/grafana-oracle-datasource/latest/kerberos/) for configuration parameters.
+
+## SSL/TLS
+
+SSL/TLS and Oracle wallet options are available for the **Host with TCP Port** and **Easy Connect Plus** connection methods. They aren’t available for TNSNames connections, where transport security is configured in `sqlnet.ora`.
+
+Expand table
+
+| Setting             | Description                                                                                                                                                                   | Default  |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
+| **Enable SSL**      | Enable SSL/TLS encryption for the database connection.                                                                                                                        | Disabled |
+| **SSL Verify**      | Verify the server’s SSL certificate. Only shown when **Enable SSL** is enabled. Disable only for self-signed certificates or testing.                                         | Enabled  |
+| **Wallet Location** | Path to an Oracle wallet directory on the Grafana server (for example, `/opt/oracle/wallet`). Supports auto-login wallets, which can be used without enabling **Enable SSL**. | Not set  |
+| **Wallet Password** | Password for the Oracle wallet. Leave empty for auto-login wallets.                                                                                                           | Not set  |
+
+> Note
+>
+> Wallet-based SSL/TLS requires the wallet files to be present on the Grafana server’s filesystem, so it isn’t available in Grafana Cloud.
 
 ## Additional settings
 
@@ -251,6 +287,29 @@ datasources:
       user: <USERNAME>
     secureJsonData:
       password: <PASSWORD>
+```
+
+### Easy Connect Plus connection with SSL/TLS
+
+YAML [Copy code to clipboard] Copy
+
+```yaml
+apiVersion: 1
+datasources:
+  - name: Oracle (Easy Connect Plus)
+    type: grafana-oracle-datasource
+    access: proxy
+    jsonData:
+      timezone_name: UTC
+      connectionType: ecp
+      ecpString: tcps://<HOST>:<PORT>/<SERVICE>
+      user: <USERNAME>
+      enableSSL: true
+      sslVerify: true
+      walletLocation: /opt/oracle/wallet
+    secureJsonData:
+      password: <PASSWORD>
+      walletPassword: <WALLET_PASSWORD>
 ```
 
 ### Terraform

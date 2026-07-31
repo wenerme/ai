@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/audio).
-
 Gemini can analyze audio input and generate text responses.
 
 ### Python
@@ -13,7 +10,7 @@ Gemini can analyze audio input and generate text responses.
     uploaded_file = client.files.upload(file="path/to/sample.mp3")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {
@@ -37,7 +34,7 @@ Gemini can analyze audio input and generate text responses.
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             {type: "text", text: "Describe this audio clip"},
             {
@@ -56,7 +53,7 @@ Gemini can analyze audio input and generate text responses.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -135,7 +132,7 @@ timestamps, speaker diarization, and emotion detection using
     }
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "video", "uri": YOUTUBE_URL, "mime_type": "video/mp4"},
             {"type": "text", "text": prompt}
@@ -191,7 +188,7 @@ timestamps, speaker diarization, and emotion detection using
     };
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             { type: "video", uri: YOUTUBE_URL, mime_type: "video/mp4" },
             { type: "text", text: prompt }
@@ -207,7 +204,7 @@ timestamps, speaker diarization, and emotion detection using
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {
             "type": "video",
@@ -261,7 +258,7 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
     uploaded_file = client.files.upload(file="path/to/sample.mp3")
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {
@@ -285,7 +282,7 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             {type: "text", text: "Describe this audio clip"},
             {
@@ -304,7 +301,7 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -330,7 +327,7 @@ For small audio files under 20MB total request size:
         audio_bytes = f.read()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Describe this audio clip"},
             {
@@ -354,7 +351,7 @@ For small audio files under 20MB total request size:
     });
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             {type: "text", text: "Describe this audio clip"},
             {
@@ -380,7 +377,7 @@ For small audio files under 20MB total request size:
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Describe this audio clip"},
           {
@@ -402,7 +399,7 @@ To get a transcript, ask for it in the prompt:
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Generate a transcript of the speech."},
             {
@@ -417,7 +414,7 @@ To get a transcript, ask for it in the prompt:
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             { type: "text", text: "Generate a transcript of the speech." },
             {
@@ -436,7 +433,7 @@ Use `MM:SS` format to reference specific sections:
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": "Provide a transcript from 02:30 to 03:29."},
             {
@@ -450,7 +447,7 @@ Use `MM:SS` format to reference specific sections:
 ### JavaScript
 
     const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             { type: "text", text: "Provide a transcript from 02:30 to 03:29." },
             { type: "audio", uri: uploadedFile.uri, mime_type: "audio/mp3" }
@@ -464,7 +461,7 @@ Count tokens in an audio file:
 ### Python
 
     response = client.models.count_tokens(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         contents=[uploaded_file]
     )
     print(response)
@@ -472,7 +469,7 @@ Count tokens in an audio file:
 ### JavaScript
 
     const response = await client.models.countTokens({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         contents: [
             { fileData: { fileUri: uploadedFile.uri, mimeType: uploadedFile.mimeType } }
         ]

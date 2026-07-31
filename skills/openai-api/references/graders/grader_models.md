@@ -589,11 +589,11 @@
 
         The sampling parameters for the model.
 
-        - `max_completions_tokens: optional number`
+        - `max_completions_tokens: optional number or null`
 
           The maximum number of tokens the grader model may generate in its response.
 
-        - `reasoning_effort: optional ReasoningEffort`
+        - `reasoning_effort: optional ReasoningEffort or null`
 
           Constrains effort on reasoning for reasoning models. Currently supported
           values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -617,15 +617,15 @@
 
           - `"max"`
 
-        - `seed: optional number`
+        - `seed: optional number or null`
 
           A seed value to initialize the randomness, during sampling.
 
-        - `temperature: optional number`
+        - `temperature: optional number or null`
 
           A higher temperature increases randomness in the outputs.
 
-        - `top_p: optional number`
+        - `top_p: optional number or null`
 
           An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -953,11 +953,11 @@
 
     The sampling parameters for the model.
 
-    - `max_completions_tokens: optional number`
+    - `max_completions_tokens: optional number or null`
 
       The maximum number of tokens the grader model may generate in its response.
 
-    - `reasoning_effort: optional ReasoningEffort`
+    - `reasoning_effort: optional ReasoningEffort or null`
 
       Constrains effort on reasoning for reasoning models. Currently supported
       values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -981,15 +981,15 @@
 
       - `"max"`
 
-    - `seed: optional number`
+    - `seed: optional number or null`
 
       A seed value to initialize the randomness, during sampling.
 
-    - `temperature: optional number`
+    - `temperature: optional number or null`
 
       A higher temperature increases randomness in the outputs.
 
-    - `top_p: optional number`
+    - `top_p: optional number or null`
 
       An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 

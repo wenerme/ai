@@ -60,11 +60,11 @@ Returns a list of vector stores.
 
       The total number of files.
 
-  - `last_active_at: number`
+  - `last_active_at: number or null`
 
     The Unix timestamp (in seconds) for when the vector store was last active.
 
-  - `metadata: Metadata`
+  - `metadata: Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -111,7 +111,7 @@ Returns a list of vector stores.
 
       The number of days after the anchor time that the vector store will expire.
 
-  - `expires_at: optional number`
+  - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the vector store will expire.
 

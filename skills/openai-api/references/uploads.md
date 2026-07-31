@@ -1,74 +1,16 @@
 # Uploads
 
-## Create upload
+## Cancel upload
 
-**post** `/uploads`
+**post** `/uploads/{upload_id}/cancel`
 
-Creates an intermediate [Upload](/docs/api-reference/uploads/object) object
-that you can add [Parts](/docs/api-reference/uploads/part-object) to.
-Currently, an Upload can accept at most 8 GB in total and expires after an
-hour after you create it.
+Cancels the Upload. No Parts may be added after an Upload is cancelled.
 
-Once you complete the Upload, we will create a
-[File](/docs/api-reference/files/object) object that contains all the parts
-you uploaded. This File is usable in the rest of our platform as a regular
-File object.
+Returns the Upload object with status `cancelled`.
 
-For certain `purpose` values, the correct `mime_type` must be specified.
-Please refer to documentation for the
-[supported MIME types for your use case](/docs/assistants/tools/file-search#supported-files).
+### Path Parameters
 
-For guidance on the proper filename extensions for each purpose, please
-follow the documentation on [creating a
-File](/docs/api-reference/files/create).
-
-Returns the Upload object with status `pending`.
-
-### Body Parameters
-
-- `bytes: number`
-
-  The number of bytes in the file you are uploading.
-
-- `filename: string`
-
-  The name of the file to upload.
-
-- `mime_type: string`
-
-  The MIME type of the file.
-
-  This must fall within the supported MIME types for your file purpose. See
-  the supported MIME types for assistants and vision.
-
-- `purpose: "assistants" or "batch" or "fine-tune" or "vision"`
-
-  The intended purpose of the uploaded file.
-
-  See the [documentation on File
-  purposes](/docs/api-reference/files/create#files-create-purpose).
-
-  - `"assistants"`
-
-  - `"batch"`
-
-  - `"fine-tune"`
-
-  - `"vision"`
-
-- `expires_after: optional object { anchor, seconds }`
-
-  The expiration policy for a file. By default, files with `purpose=batch` expire after 30 days and all other files are persisted until they are manually deleted.
-
-  - `anchor: "created_at"`
-
-    Anchor timestamp after which the expiration policy applies. Supported anchors: `created_at`.
-
-    - `"created_at"`
-
-  - `seconds: number`
-
-    The number of seconds after the anchor time that the file will expire. Must be between 3600 (1 hour) and 2592000 (30 days).
+- `upload_id: string`
 
 ### Returns
 
@@ -112,7 +54,7 @@ Returns the Upload object with status `pending`.
 
     - `"expired"`
 
-  - `file: optional FileObject`
+  - `file: optional FileObject or null`
 
     The `File` object represents a document that has been uploaded to OpenAI.
 
@@ -185,15 +127,9 @@ Returns the Upload object with status `pending`.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/uploads \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "bytes": 0,
-          "filename": "filename",
-          "mime_type": "mime_type",
-          "purpose": "assistants"
-        }'
+curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
+    -X POST \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
 #### Response
@@ -225,18 +161,7 @@ curl https://api.openai.com/v1/uploads \
 ### Example
 
 ```http
-curl https://api.openai.com/v1/uploads \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "purpose": "fine-tune",
-    "filename": "training_examples.jsonl",
-    "bytes": 2147483648,
-    "mime_type": "text/jsonl",
-    "expires_after": {
-      "anchor": "created_at",
-      "seconds": 3600
-    }
-  }'
+curl https://api.openai.com/v1/uploads/upload_abc123/cancel
 ```
 
 #### Response
@@ -249,7 +174,7 @@ curl https://api.openai.com/v1/uploads \
   "created_at": 1719184911,
   "filename": "training_examples.jsonl",
   "purpose": "fine-tune",
-  "status": "pending",
+  "status": "cancelled",
   "expires_at": 1719127296
 }
 ```
@@ -323,7 +248,7 @@ Returns the Upload object with status `completed`, including an additional `file
 
     - `"expired"`
 
-  - `file: optional FileObject`
+  - `file: optional FileObject or null`
 
     The `File` object represents a document that has been uploaded to OpenAI.
 
@@ -465,17 +390,75 @@ curl https://api.openai.com/v1/uploads/upload_abc123/complete
 }
 ```
 
-## Cancel upload
+## Create upload
 
-**post** `/uploads/{upload_id}/cancel`
+**post** `/uploads`
 
-Cancels the Upload. No Parts may be added after an Upload is cancelled.
+Creates an intermediate [Upload](/docs/api-reference/uploads/object) object
+that you can add [Parts](/docs/api-reference/uploads/part-object) to.
+Currently, an Upload can accept at most 8 GB in total and expires after an
+hour after you create it.
 
-Returns the Upload object with status `cancelled`.
+Once you complete the Upload, we will create a
+[File](/docs/api-reference/files/object) object that contains all the parts
+you uploaded. This File is usable in the rest of our platform as a regular
+File object.
 
-### Path Parameters
+For certain `purpose` values, the correct `mime_type` must be specified.
+Please refer to documentation for the
+[supported MIME types for your use case](/docs/assistants/tools/file-search#supported-files).
 
-- `upload_id: string`
+For guidance on the proper filename extensions for each purpose, please
+follow the documentation on [creating a
+File](/docs/api-reference/files/create).
+
+Returns the Upload object with status `pending`.
+
+### Body Parameters
+
+- `bytes: number`
+
+  The number of bytes in the file you are uploading.
+
+- `filename: string`
+
+  The name of the file to upload.
+
+- `mime_type: string`
+
+  The MIME type of the file.
+
+  This must fall within the supported MIME types for your file purpose. See
+  the supported MIME types for assistants and vision.
+
+- `purpose: "assistants" or "batch" or "fine-tune" or "vision"`
+
+  The intended purpose of the uploaded file.
+
+  See the [documentation on File
+  purposes](/docs/api-reference/files/create#files-create-purpose).
+
+  - `"assistants"`
+
+  - `"batch"`
+
+  - `"fine-tune"`
+
+  - `"vision"`
+
+- `expires_after: optional object { anchor, seconds }`
+
+  The expiration policy for a file. By default, files with `purpose=batch` expire after 30 days and all other files are persisted until they are manually deleted.
+
+  - `anchor: "created_at"`
+
+    Anchor timestamp after which the expiration policy applies. Supported anchors: `created_at`.
+
+    - `"created_at"`
+
+  - `seconds: number`
+
+    The number of seconds after the anchor time that the file will expire. Must be between 3600 (1 hour) and 2592000 (30 days).
 
 ### Returns
 
@@ -519,7 +502,7 @@ Returns the Upload object with status `cancelled`.
 
     - `"expired"`
 
-  - `file: optional FileObject`
+  - `file: optional FileObject or null`
 
     The `File` object represents a document that has been uploaded to OpenAI.
 
@@ -592,9 +575,15 @@ Returns the Upload object with status `cancelled`.
 ### Example
 
 ```http
-curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+curl https://api.openai.com/v1/uploads \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "bytes": 0,
+          "filename": "filename",
+          "mime_type": "mime_type",
+          "purpose": "assistants"
+        }'
 ```
 
 #### Response
@@ -626,7 +615,18 @@ curl https://api.openai.com/v1/uploads/$UPLOAD_ID/cancel \
 ### Example
 
 ```http
-curl https://api.openai.com/v1/uploads/upload_abc123/cancel
+curl https://api.openai.com/v1/uploads \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "purpose": "fine-tune",
+    "filename": "training_examples.jsonl",
+    "bytes": 2147483648,
+    "mime_type": "text/jsonl",
+    "expires_after": {
+      "anchor": "created_at",
+      "seconds": 3600
+    }
+  }'
 ```
 
 #### Response
@@ -639,7 +639,7 @@ curl https://api.openai.com/v1/uploads/upload_abc123/cancel
   "created_at": 1719184911,
   "filename": "training_examples.jsonl",
   "purpose": "fine-tune",
-  "status": "cancelled",
+  "status": "pending",
   "expires_at": 1719127296
 }
 ```
@@ -688,7 +688,7 @@ curl https://api.openai.com/v1/uploads/upload_abc123/cancel
 
     - `"expired"`
 
-  - `file: optional FileObject`
+  - `file: optional FileObject or null`
 
     The `File` object represents a document that has been uploaded to OpenAI.
 

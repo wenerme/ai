@@ -134,8 +134,6 @@ High-efficiency, low-cost, developer-first video generation, editing, and cinema
 
 Fast, conversational video generation and editing. Turn text and images into video, and refine results through natural language.
 
-<br />
-
 ### [Nano Banana](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image)
 
 State-of-the-art native image generation and editing designed for fast, creative workflows.
@@ -145,8 +143,6 @@ State-of-the-art native image generation and editing designed for fast, creative
 Text-to-image model yet, featuring fast and ultra-fast generation and exceptional clarity up to 2K resolution.
 
 *** ** * ** ***
-
-<br />
 
 ## Music generation models
 
@@ -196,7 +192,11 @@ Our first multimodal embedding model, mapping text, images, video, audio, and PD
 
 High-dimensional vector representations for advanced semantic search, text classification, and RAG systems.
 
-### [Gemini Robotics-ER 1.6Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview)
+### [Gemini Robotics ER 2Preview](https://ai.google.dev/gemini-api/docs/robotics-overview)
+
+Embodied reasoning model delivering advanced video understanding, spatial reasoning, multi-step tool orchestration, and multi-robot collaboration for robotics tasks.
+
+### [Gemini Robotics ER 1.6Preview](https://ai.google.dev/gemini-api/docs/models/gemini-robotics-er-1.6-preview)
 
 Advanced embodied reasoning model that understands physical spaces and plans multi-step tasks for robotic agents with new capabilities like instrument reading, improved spatial and physical reasoning.
 

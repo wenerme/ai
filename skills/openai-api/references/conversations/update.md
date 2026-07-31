@@ -10,7 +10,7 @@ Update a conversation
 
 ### Body Parameters
 
-- `metadata: Metadata`
+- `metadata: Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured

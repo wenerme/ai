@@ -132,7 +132,7 @@ import { Context, Effect } from 'effect'
 interface ServerContext extends WithEffectContext<never> {}
 
 export async function fetch(request: Request) {
-  const { response } = await handler.fetch(request, {
+  const { matched, response } = await handler.handle(request, {
     context: {
       'effect/context': Context.empty(),
       'effect/wrap': (effect, opts) => effect.pipe(
@@ -143,7 +143,11 @@ export async function fetch(request: Request) {
     }
   })
 
-  return response ?? new Response('Not Found', { status: 404 })
+  if (matched) {
+    return response
+  }
+
+  return new Response('Not Found', { status: 404 })
 }
 ```
 
@@ -239,13 +243,17 @@ const TracingLive = Tracer.layerGlobal.pipe(
 )
 
 export async function fetch(request: Request) {
-  const { response } = await handler.fetch(request, {
+  const { matched, response } = await handler.handle(request, {
     context: {
       'effect/context': Context.empty(),
       'effect/wrap': (effect, opts) => effect.pipe(Effect.provide(TracingLive)),
     }
   })
 
-  return response ?? new Response('Not Found', { status: 404 })
+  if (matched) {
+    return response
+  }
+
+  return new Response('Not Found', { status: 404 })
 }
 ```

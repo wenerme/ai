@@ -197,7 +197,7 @@ Example response:
 - `inputs` attribute [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/525504) in GitLab 17.11 [with a feature flag](../administration/feature_flags/_index.md) named `ci_inputs_for_pipelines`. Enabled by default.
 - `inputs` attribute [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/536548) in GitLab 18.1. Feature flag `ci_inputs_for_pipelines` removed.
 
-Create a new pipeline schedule of a project.
+Create a new pipeline schedule for a project.
 
 ```plaintext
 POST /projects/:id/pipeline_schedules

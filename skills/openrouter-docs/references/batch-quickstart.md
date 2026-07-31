@@ -16,6 +16,16 @@ The Batch API supports several OpenRouter API shapes, including chat completions
 
 ***
 
+## Pricing
+
+Batch requests are typically billed at 50% of the model's standard per-token pricing, mirroring the batch discounts offered by [OpenAI](https://developers.openai.com/api/docs/guides/batch) and [Anthropic](https://platform.claude.com/docs/en/build-with-claude/batch-processing). For a completed batch, `usage.cost` reports the amount OpenRouter charges; for BYOK-routed batches, this is only the OpenRouter BYOK fee because provider inference is billed directly by the provider.
+
+<Note>
+  Non-token pricing components are not uniformly discounted; for example, web-search calls bill at standard rates and prompt-caching rates vary by model, so the pricing shown on each model's page is the source of truth.
+</Note>
+
+***
+
 ## Submit a batch
 
 Submit a batch with:
@@ -237,7 +247,7 @@ A completed batch response looks like this:
     "prompt_tokens": 20,
     "completion_tokens": 40,
     "total_tokens": 60,
-    "cost": 0.00045,
+    "cost": 0.000225,
     "is_byok": false
   },
   "results": [

@@ -1,11 +1,11 @@
 ---
 title: "Charm Hyper | Models"
-description: "Use Charm Hyper models with Mastra. 20 models available."
+description: "Use Charm Hyper models with Mastra. 22 models available."
 ---
 
 # [Charm Hyper logo]Charm Hyper
 
-Access 20 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
+Access 22 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
 
 Learn more in the [Charm Hyper documentation](https://hyper.charm.land).
 
@@ -72,8 +72,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 256000,
     "maxOutput": 25600,
-    "inputCost": 0.116,
-    "outputCost": 0.408
+    "inputCost": 0.122,
+    "outputCost": 0.424
   },
   {
     "model": "hyper/glm-5",
@@ -84,8 +84,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 202752,
     "maxOutput": 20275,
-    "inputCost": 0.81,
-    "outputCost": 2.624
+    "inputCost": 0.88,
+    "outputCost": 2.78
   },
   {
     "model": "hyper/glm-5.1",
@@ -121,7 +121,7 @@ for await (const chunk of stream) {
     "contextWindow": 131072,
     "maxOutput": 13107,
     "inputCost": 0.178,
-    "outputCost": 0.68
+    "outputCost": 0.612
   },
   {
     "model": "hyper/kimi-k2.5",
@@ -132,8 +132,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 262144,
     "maxOutput": 26214,
-    "inputCost": 0.528,
-    "outputCost": 2.79
+    "inputCost": 0.534,
+    "outputCost": 2.82
   },
   {
     "model": "hyper/kimi-k2.6",
@@ -160,6 +160,18 @@ for await (const chunk of stream) {
     "outputCost": 4
   },
   {
+    "model": "hyper/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3.2664,
+    "outputCost": 16.332
+  },
+  {
     "model": "hyper/llama-3.3-70b-instruct",
     "imageInput": false,
     "audioInput": false,
@@ -168,8 +180,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 12800,
-    "inputCost": 0.6066,
-    "outputCost": 1.0386
+    "inputCost": 0.5126,
+    "outputCost": 1.0446
   },
   {
     "model": "hyper/llama-4-maverick-17b-128e-instruct-fp8",
@@ -192,8 +204,8 @@ for await (const chunk of stream) {
     "reasoning": false,
     "contextWindow": 204800,
     "maxOutput": 20480,
-    "inputCost": 0.41,
-    "outputCost": 1.52
+    "inputCost": 0.48,
+    "outputCost": 1.86
   },
   {
     "model": "hyper/qwen3-coder-480b-a35b-instruct-int4-mixed-ar",
@@ -254,6 +266,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 2,
     "outputCost": 6
+  },
+  {
+    "model": "hyper/qwen3.7-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 1000000,
+    "maxOutput": 64000,
+    "inputCost": 0.2,
+    "outputCost": 0.8
   },
   {
     "model": "hyper/qwen3.7-max",

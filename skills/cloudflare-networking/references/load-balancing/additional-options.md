@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Additional configuration
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beyond [creating a simple load balancer](https://developers.cloudflare.com/load-balancing/load-balancers/create-load-balancer/), you may want to further customize how your load balancer routes traffic or integrate your load balancer with other Cloudflare products.
 
@@ -21,6 +21,7 @@ Beyond [creating a simple load balancer](https://developers.cloudflare.com/load-
 * Route traffic according to characteristics of each request by [creating custom rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
 * Protect at-risk endpoints from reaching failover by [setting up load shedding](https://developers.cloudflare.com/load-balancing/additional-options/load-shedding/)
 * Take endpoints out of rotation for [planned maintenance](https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/)
+* Return endpoint hostnames as `CNAME` records to support downstream DNS steering with [CNAME flattening for endpoints](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/)
 
 ## Integrate with other Cloudflare products
 
@@ -40,5 +41,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/additional-options/#page","headline":"Additional configuration · Cloudflare Load Balancing docs","description":"Additional load balancing features and integrations.","url":"https://developers.cloudflare.com/load-balancing/additional-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/load-balancing/additional-options/#page","headline":"Additional configuration · Cloudflare Load Balancing docs","description":"Additional load balancing features and integrations.","url":"https://developers.cloudflare.com/load-balancing/additional-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

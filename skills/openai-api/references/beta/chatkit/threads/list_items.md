@@ -64,7 +64,7 @@ List items that belong to a ChatKit thread.
 
           Original display name for the attachment.
 
-        - `preview_url: string`
+        - `preview_url: string or null`
 
           Preview URL for rendering the attachment inline.
 
@@ -112,15 +112,15 @@ List items that belong to a ChatKit thread.
 
         Unix timestamp (in seconds) for when the item was created.
 
-      - `inference_options: object { model, tool_choice }`
+      - `inference_options: object { model, tool_choice }  or null`
 
         Inference overrides applied to the message. Defaults to null when unset.
 
-        - `model: string`
+        - `model: string or null`
 
           Model name that generated the response. Defaults to null when using the session default.
 
-        - `tool_choice: object { id }`
+        - `tool_choice: object { id }  or null`
 
           Preferred tool to invoke. Defaults to null when ChatKit should auto-select.
 
@@ -298,7 +298,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.thread_item"`
 
-      - `output: string`
+      - `output: string or null`
 
         JSON-encoded output captured from the tool. Defaults to null while execution is in progress.
 
@@ -332,7 +332,7 @@ List items that belong to a ChatKit thread.
 
         Unix timestamp (in seconds) for when the item was created.
 
-      - `heading: string`
+      - `heading: string or null`
 
         Optional heading for the task. Defaults to null when not provided.
 
@@ -342,7 +342,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.thread_item"`
 
-      - `summary: string`
+      - `summary: string or null`
 
         Optional summary that describes the task. Defaults to null when omitted.
 
@@ -386,11 +386,11 @@ List items that belong to a ChatKit thread.
 
         Tasks included in the group.
 
-        - `heading: string`
+        - `heading: string or null`
 
           Optional heading for the grouped task. Defaults to null when not provided.
 
-        - `summary: string`
+        - `summary: string or null`
 
           Optional summary that describes the grouped task. Defaults to null when omitted.
 
@@ -412,7 +412,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.task_group"`
 
-  - `first_id: string`
+  - `first_id: string or null`
 
     The ID of the first item in the list.
 
@@ -420,7 +420,7 @@ List items that belong to a ChatKit thread.
 
     Whether there are more items available.
 
-  - `last_id: string`
+  - `last_id: string or null`
 
     The ID of the last item in the list.
 

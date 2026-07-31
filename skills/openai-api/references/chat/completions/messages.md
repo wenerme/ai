@@ -40,7 +40,7 @@ returned.
 
     The identifier of the chat message.
 
-  - `content_parts: optional array of ChatCompletionContentPartText or ChatCompletionContentPartImage`
+  - `content_parts: optional array of ChatCompletionContentPartText or ChatCompletionContentPartImage or null`
 
     If a content parts array was provided, this is an array of `text` and `image_url` parts.
     Otherwise, null.

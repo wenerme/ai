@@ -107,6 +107,8 @@ Use the alternative attributes instead.
 
 - `mr_default_title_template` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228442) in GitLab 18.11 [with a feature flag](../administration/feature_flags/_index.md) named `mr_default_title_template`. Disabled by default.
 - Feature flag `mr_default_title_template` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235642) in GitLab 19.0.
+- `merge_train_enforcement` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
+- `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
 Retrieves the specified project. This endpoint can be accessed without authentication if
 the project is publicly accessible.
@@ -298,6 +300,7 @@ following response attributes:
 | `merge_pipelines_enabled` | boolean | Indicates if merge pipelines are enabled. |
 | `merge_trains_enabled` | boolean | Indicates if merge trains are enabled. |
 | `merge_trains_skip_train_allowed` | boolean | Indicates if skipping the merge train is allowed. |
+| `merge_train_enforcement` | string | Merge train enforcement level. One of `allow_bypass`, `enforce_for_all_users`, or `enforce_with_owner_override`. Has no effect unless merge trains are enabled for the project. |
 | `max_pipelines_per_merge_train` | integer | Maximum number of parallel pipelines per merge train. |
 | `only_allow_merge_if_all_status_checks_passed` | boolean | Whether merges are allowed only if all status checks have passed. Ultimate only. |
 | `allow_pipeline_trigger_approve_deployment` | boolean | Whether pipeline triggers can approve deployments. |
@@ -544,10 +547,10 @@ List projects and project attributes.
 - `web_based_commit_signing_enabled` [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/542975) in GitLab 19.1. Feature flag `use_web_based_commit_signing_enabled` removed.
 - `mr_default_title_template` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228442) in GitLab 18.11 [with a feature flag](../administration/feature_flags/_index.md) named `mr_default_title_template`. Disabled by default.
 - Feature flag `mr_default_title_template` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235642) in GitLab 19.0.
+- `merge_train_enforcement` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
+- `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
 Lists all projects on the instance accessible to the authenticated user. Unauthenticated requests return only public projects with a limited subset of attributes.
-
-You can filter responses by [custom attributes](custom_attributes.md).
 
 This endpoint supports pagination:
 
@@ -565,6 +568,7 @@ Supported attributes:
 | Attribute                     | Type     | Required | Description |
 |:------------------------------|:---------|:---------|:------------|
 | `archived`                    | boolean  | No       | Limit by archived status. |
+| `custom_attributes`           | hash     | No       | Limit by [custom attributes](custom_attributes.md) that match all of the specified key and value pairs. _(administrators only)_ |
 | `id_after`                    | integer  | No       | Limit results to projects with IDs greater than the specified ID. |
 | `id_before`                   | integer  | No       | Limit results to projects with IDs less than the specified ID. |
 | `imported`                    | boolean  | No       | Limit results to projects which were imported from external systems by current user. |
@@ -597,6 +601,12 @@ Supported attributes:
 | `marked_for_deletion_on`      | date     | No       | Filter by date when project was marked for deletion. [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/463939) in GitLab 17.1. Premium and Ultimate only. |
 | `active`                      | boolean  | No       | Limit by projects that are not archived and not marked for deletion. |
 {.condensed}
+
+To filter by custom attributes, specify the key and value of each attribute:
+
+```plaintext
+GET /projects?custom_attributes[<key>]=<value>&custom_attributes[<other_key>]=<other_value>
+```
 
 If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the
 following response attributes:
@@ -727,6 +737,7 @@ following response attributes:
 | `merge_pipelines_enabled` | boolean | Indicates if merge pipelines are enabled. |
 | `merge_trains_enabled` | boolean | Indicates if merge trains are enabled. |
 | `merge_trains_skip_train_allowed` | boolean | Indicates if skipping the merge train is allowed. |
+| `merge_train_enforcement` | string | Merge train enforcement level. One of `allow_bypass`, `enforce_for_all_users`, or `enforce_with_owner_override`. Has no effect unless merge trains are enabled for the project. |
 | `max_pipelines_per_merge_train` | integer | Maximum number of parallel pipelines per merge train. |
 | `only_allow_merge_if_all_status_checks_passed` | boolean | Whether merges are allowed only if all status checks have passed. Ultimate only. |
 | `allow_pipeline_trigger_approve_deployment` | boolean | Whether pipeline triggers can approve deployments. |
@@ -914,6 +925,8 @@ Example response:
 
 - `mr_default_title_template` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228442) in GitLab 18.11 [with a feature flag](../administration/feature_flags/_index.md) named `mr_default_title_template`. Disabled by default.
 - Feature flag `mr_default_title_template` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235642) in GitLab 19.0.
+- `merge_train_enforcement` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
+- `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
 Lists all personal projects for a specified user. The following restrictions apply:
 
@@ -1101,6 +1114,7 @@ following response attributes:
 | `merge_pipelines_enabled` | boolean | Indicates if merge pipelines are enabled. |
 | `merge_trains_enabled` | boolean | Indicates if merge trains are enabled. |
 | `merge_trains_skip_train_allowed` | boolean | Indicates if skipping the merge train is allowed. |
+| `merge_train_enforcement` | string | Merge train enforcement level. One of `allow_bypass`, `enforce_for_all_users`, or `enforce_with_owner_override`. Has no effect unless merge trains are enabled for the project. |
 | `max_pipelines_per_merge_train` | integer | Maximum number of parallel pipelines per merge train. |
 | `only_allow_merge_if_all_status_checks_passed` | boolean | Whether merges are allowed only if all status checks have passed. Ultimate only. |
 | `allow_pipeline_trigger_approve_deployment` | boolean | Whether pipeline triggers can approve deployments. |
@@ -1395,6 +1409,8 @@ Example response:
 
 - `mr_default_title_template` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228442) in GitLab 18.11 [with a feature flag](../administration/feature_flags/_index.md) named `mr_default_title_template`. Disabled by default.
 - Feature flag `mr_default_title_template` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235642) in GitLab 19.0.
+- `merge_train_enforcement` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
+- `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
 Lists all contributions to visible projects for a specified user. Returns only contributions in
 the past year. For more information about what counts as a contribution, see
@@ -1557,6 +1573,7 @@ following response attributes:
 | `merge_pipelines_enabled` | boolean | Indicates if merge pipelines are enabled. |
 | `merge_trains_enabled` | boolean | Indicates if merge trains are enabled. |
 | `merge_trains_skip_train_allowed` | boolean | Indicates if skipping the merge train is allowed. |
+| `merge_train_enforcement` | string | Merge train enforcement level. One of `allow_bypass`, `enforce_for_all_users`, or `enforce_with_owner_override`. Has no effect unless merge trains are enabled for the project. |
 | `max_pipelines_per_merge_train` | integer | Maximum number of parallel pipelines per merge train. |
 | `only_allow_merge_if_all_status_checks_passed` | boolean | Whether merges are allowed only if all status checks have passed. Ultimate only. |
 | `allow_pipeline_trigger_approve_deployment` | boolean | Whether pipeline triggers can approve deployments. |
@@ -2098,6 +2115,8 @@ Manage a project, including creation, deletion, and archival.
 
 - `packages_enabled` [deprecated](https://gitlab.com/gitlab-org/gitlab/-/issues/454759) in GitLab 17.10.
 - `package_registry_access_level` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/454759) in GitLab 18.5.
+- `merge_train_enforcement` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
+- `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
 Creates a project owned by the authenticated user.
 
@@ -2150,6 +2169,7 @@ Supported general project attributes:
 | `merge_requests_enabled`                           | boolean | No                             | _(Deprecated)_ Enable merge requests for this project. Use `merge_requests_access_level` instead. |
 | `merge_trains_enabled`                             | boolean | No                             | Enable or disable merge trains. |
 | `merge_trains_skip_train_allowed`                  | boolean | No                             | Allows merge train merge requests to be merged without waiting for pipelines to finish. |
+| `merge_train_enforcement`                          | string  | No                             | Merge train enforcement level. One of `allow_bypass`, `enforce_for_all_users`, or `enforce_with_owner_override`. Has no effect unless merge trains are enabled for the project. |
 | `max_pipelines_per_merge_train`                    | integer | No                             | Maximum number of parallel pipelines per merge train. |
 | `mirror_trigger_builds`                            | boolean | No                             | Pull mirroring triggers builds. Premium and Ultimate only. |
 | `mirror`                                           | boolean | No                             | Enables pull mirroring in a project. Premium and Ultimate only. |
@@ -2293,6 +2313,8 @@ see [Project feature visibility level](#project-feature-visibility-level).
 - `mr_default_title_template` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/228442) in GitLab 18.11 [with a feature flag](../administration/feature_flags/_index.md) named `mr_default_title_template`. Disabled by default.
 - Feature flag `mr_default_title_template` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/235642) in GitLab 19.0.
 - `reviewer_assignment_strategy` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/601621) in GitLab 19.1.
+- `merge_train_enforcement` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
+- `merge_train_enforcement` [generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
 Updates an existing project.
 
@@ -2362,6 +2384,7 @@ Supported general project attributes:
 | `mr_default_title_template`                        | string            | No       | [Template](../user/project/merge_requests/title_templates.md) used to set default merge request title. |
 | `merge_trains_enabled`                             | boolean           | No       | Enable or disable merge trains. |
 | `merge_trains_skip_train_allowed`                  | boolean           | No       | Allows merge train merge requests to be merged without waiting for pipelines to finish. |
+| `merge_train_enforcement`                          | string            | No       | Merge train enforcement level. One of `allow_bypass`, `enforce_for_all_users`, or `enforce_with_owner_override`. Has no effect unless merge trains are enabled for the project. |
 | `max_pipelines_per_merge_train`                    | integer           | No       | Maximum number of parallel pipelines per merge train. |
 | `mirror_overwrites_diverged_branches`              | boolean           | No       | Pull mirror overwrites diverged branches. Premium and Ultimate only. |
 | `mirror_trigger_builds`                            | boolean           | No       | Pull mirroring triggers builds. Premium and Ultimate only. |
@@ -2875,7 +2898,7 @@ Supported attributes:
 | Attribute   | Type              | Required | Description |
 |:------------|:------------------|:---------|:------------|
 | `id`        | integer or string | Yes      | The ID or [URL-encoded path of the project](rest/_index.md#namespaced-paths). |
-| `namespace` | integer or string | Yes      | The ID or path of the namespace to transfer to project to. |
+| `namespace` | integer or string | Yes      | The ID or path of the namespace to transfer the project to. |
 
 Example request:
 
@@ -3338,5 +3361,5 @@ For example, if you:
   the response returns `restrict_user_defined_variables: false`. Setting `ci_pipeline_variables_minimum_override_role`
   to `developer` takes precedence and variables are not restricted.
 - Set `restrict_user_defined_variables` to `false` and `ci_pipeline_variables_minimum_override_role` to `maintainer`,
-  The response returns `restrict_user_defined_variables: true` because setting `ci_pipeline_variables_minimum_override_role`
+  the response returns `restrict_user_defined_variables: true` because setting `ci_pipeline_variables_minimum_override_role`
   to `maintainer` takes precedence and variables are restricted.

@@ -1,8 +1,5 @@
 <br />
 
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/speech-generation).
-
 The Gemini API can transform text input into single speaker or multi-speaker
 audio using Gemini text-to-speech (TTS) generation capabilities.
 Text-to-speech (TTS) generation is *[controllable](https://ai.google.dev/gemini-api/docs/speech-generation#controllable)* ,
@@ -292,7 +289,7 @@ then pass that transcript to the TTS model to read aloud.
     client = genai.Client()
 
     transcript_interaction = client.interactions.create(
-       model="gemini-3.5-flash",
+       model="gemini-3.6-flash",
        input="""Generate a short transcript around 100 words that reads
                 like it was clipped from a podcast by excited herpetologists.
                 The hosts names are Dr. Anya and Liam."""
@@ -320,7 +317,7 @@ then pass that transcript to the TTS model to read aloud.
     async function main() {
 
     const transcriptInteraction = await client.interactions.create({
-       model: "gemini-3.5-flash",
+       model: "gemini-3.6-flash",
        input: "Generate a short transcript around 100 words that reads like it was clipped from a podcast by excited herpetologists. The hosts names are Dr. Anya and Liam.",
        })
 

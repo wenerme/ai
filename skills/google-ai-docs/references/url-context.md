@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/url-context).
-
 The URL context tool lets you provide additional context to the models in the
 form of URLs. By including URLs in your request, the model will access
 the content from those pages (as long as it's not a URL type listed in the
@@ -246,7 +243,6 @@ Price per token depends on the model used, see the
 - Request limit: The tool can process up to 20 URLs per request.
 - URL content size: The maximum size for content retrieved from a single URL is 34MB.
 - Public accessibility: The URLs must be publicly accessible on the web. Localhost addresses (e.g., localhost, 127.0.0.1), private networks, and tunneling services (e.g., ngrok, pinggy) are not supported.
-- Gemini API only: URL Context is only available in the Gemini API, not through Gemini Enterprise Agent Platform.
 
 ### Supported and unsupported content types
 

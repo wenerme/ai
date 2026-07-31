@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/file-input-methods).
-
 This guide explains the different ways you can include media files such as
 images, audio, video, and documents when making requests to the Gemini API.
 The new methods are supported in all of the Gemini API endpoints, including
@@ -26,7 +23,7 @@ input types and limits.
 
     prompt = "Summarize this document"
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": prompt},
             {"type": "document", "data": base64.b64encode(filepath.read_bytes()).decode('utf-8'), "mime_type": "application/pdf"}
@@ -46,7 +43,7 @@ input types and limits.
         const filePath = 'my_local_file.pdf';
 
         const interaction = await client.interactions.create({
-            model: "gemini-3.5-flash",
+            model: "gemini-3.6-flash",
             input: [
                 { type: "text", text: prompt },
                 {
@@ -70,7 +67,7 @@ input types and limits.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.5-flash",
+        "model": "gemini-3.6-flash",
         "input": [
           {"type": "text", "text": "Summarize this document"},
           {
@@ -122,7 +119,7 @@ input.
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "document", "data": base64.b64encode(doc_data).decode('utf-8'), "mime_type": "application/pdf"},
             {"type": "text", "text": prompt}
@@ -143,7 +140,7 @@ input.
           .then((response) => response.arrayBuffer());
 
         const interaction = await client.interactions.create({
-            model: "gemini-3.5-flash",
+            model: "gemini-3.6-flash",
             input: [
                 { type: "text", text: prompt },
                 {
@@ -180,7 +177,7 @@ input.
     # Create JSON payload file
     cat <<EOF > payload.json
     {
-    "model": "gemini-3.5-flash",
+    "model": "gemini-3.6-flash",
     "input": [
     {"type": "document", "data": "${ENCODED_PDF}", "mime_type": "application/pdf"},
     {"type": "text", "text": "${PROMPT}"}
@@ -219,7 +216,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
     prompt = "Summarize this document"
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "text", "text": prompt},
             {"type": "document", "uri": doc_file.uri, "mime_type": doc_file.mime_type}
@@ -243,7 +240,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
       });
 
       const interaction = await client.interactions.create({
-        model: "gemini-3.5-flash",
+        model: "gemini-3.6-flash",
         input: [
             { type: "text", text: prompt },
             { type: "document", uri: myfile.uri, mime_type: myfile.mimeType }
@@ -291,7 +288,7 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d '{
-          "model": "gemini-3.5-flash",
+          "model": "gemini-3.6-flash",
           "input": [
             {"type": "text", "text": "Summarize this document"},
             {"type": "document", "uri": '$file_uri', "mime_type": "'${MIME_TYPE}'"}
@@ -453,7 +450,7 @@ download and re-upload it. You can register it directly with the File API.
        for f in registered_gcs_files.files:
          print(f.name)
          interaction = client.interactions.create(
-           model="gemini-3.5-flash",
+           model="gemini-3.6-flash",
            input=[
              {"type": "text", "text": prompt},
              {"type": "document", "uri": f.uri, "mime_type": f.mime_type}
@@ -477,7 +474,7 @@ download and re-upload it. You can register it directly with the File API.
            for (const file of registeredGcsFiles.files) {
                console.log(file.name);
                const interaction = await ai.interactions.create({
-                   model: "gemini-3.5-flash",
+                   model: "gemini-3.6-flash",
                    input: [
                        { type: "text", text: prompt },
                        { type: "document", uri: file.uri, mime_type: file.mimeType }
@@ -519,7 +516,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.5-flash",
+        model="gemini-3.6-flash",
         input=[
             {"type": "document", "uri": uri, "mime_type": "application/pdf"},
             {"type": "text", "text": prompt}
@@ -537,7 +534,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
 
     async function main() {
       const interaction = await client.interactions.create({
-        model: 'gemini-3.5-flash',
+        model: 'gemini-3.6-flash',
         input: [
           { type: "document", uri: uri, mime_type: "application/pdf" },
           { type: "text", text: "summarize this file" }
@@ -555,7 +552,7 @@ This is ideal for files up to 100MB that you don't want to re-upload.
           -H 'x-goog-api-key: $GEMINI_API_KEY' \
           -H 'Content-Type: application/json' \
           -d '{
-              "model": "gemini-3.5-flash",
+              "model": "gemini-3.6-flash",
               "input": [
                 {"type": "text", "text": "Summarize this pdf"},
                 {

@@ -121,8 +121,8 @@
   },
   "grafana-amazonprometheus-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest/configure.md",
-    "size": 16563,
-    "updatedAt": "2026-07-02T01:38:49.768Z"
+    "size": 18476,
+    "updatedAt": "2026-07-31T04:11:15.403Z"
   },
   "grafana-amazonprometheus-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-amazonprometheus-datasource/latest.md",
@@ -1211,8 +1211,8 @@
   },
   "grafana-oracle-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest/configure.md",
-    "size": 17173,
-    "updatedAt": "2026-07-21T06:50:25.521Z"
+    "size": 21925,
+    "updatedAt": "2026-07-31T04:11:59.764Z"
   },
   "grafana-oracle-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-oracle-datasource/latest.md",

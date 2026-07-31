@@ -1,5 +1,960 @@
 # Jobs
 
+## Cancel fine-tuning
+
+**post** `/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
+
+Immediately cancel a fine-tune job.
+
+### Path Parameters
+
+- `fine_tuning_job_id: string`
+
+### Returns
+
+- `FineTuningJob object { id, created_at, error, 16 more }`
+
+  The `fine_tuning.job` object represents a fine-tuning job that has been created through the API.
+
+  - `id: string`
+
+    The object identifier, which can be referenced in the API endpoints.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the fine-tuning job was created.
+
+  - `error: object { code, message, param }  or null`
+
+    For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
+
+    - `code: string`
+
+      A machine-readable error code.
+
+    - `message: string`
+
+      A human-readable error message.
+
+    - `param: string or null`
+
+      The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
+
+  - `fine_tuned_model: string or null`
+
+    The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
+
+  - `finished_at: number or null`
+
+    The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+  - `hyperparameters: object { batch_size, learning_rate_multiplier, n_epochs }`
+
+    The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
+
+    - `batch_size: optional "auto" or number or null`
+
+      Number of examples in each batch. A larger batch size means that model parameters
+      are updated less frequently, but with lower variance.
+
+      - `"auto"`
+
+        - `"auto"`
+
+      - `number`
+
+    - `learning_rate_multiplier: optional "auto" or number`
+
+      Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
+      overfitting.
+
+      - `"auto"`
+
+        - `"auto"`
+
+      - `number`
+
+    - `n_epochs: optional "auto" or number`
+
+      The number of epochs to train the model for. An epoch refers to one full cycle
+      through the training dataset.
+
+      - `"auto"`
+
+        - `"auto"`
+
+      - `number`
+
+  - `model: string`
+
+    The base model that is being fine-tuned.
+
+  - `object: "fine_tuning.job"`
+
+    The object type, which is always "fine_tuning.job".
+
+    - `"fine_tuning.job"`
+
+  - `organization_id: string`
+
+    The organization that owns the fine-tuning job.
+
+  - `result_files: array of string`
+
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+
+  - `seed: number`
+
+    The seed used for the fine-tuning job.
+
+  - `status: "validating_files" or "queued" or "running" or 3 more`
+
+    The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`.
+
+    - `"validating_files"`
+
+    - `"queued"`
+
+    - `"running"`
+
+    - `"succeeded"`
+
+    - `"failed"`
+
+    - `"cancelled"`
+
+  - `trained_tokens: number or null`
+
+    The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
+
+  - `training_file: string`
+
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+
+  - `validation_file: string or null`
+
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+
+  - `estimated_finish: optional number or null`
+
+    The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
+
+  - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
+
+    A list of integrations to enable for this fine-tuning job.
+
+    - `type: "wandb"`
+
+      The type of the integration being enabled for the fine-tuning job
+
+      - `"wandb"`
+
+    - `wandb: FineTuningJobWandbIntegration`
+
+      The settings for your integration with Weights and Biases. This payload specifies the project that
+      metrics will be sent to. Optionally, you can set an explicit display name for your run, add tags
+      to your run, and set a default entity (team, username, etc) to be associated with your run.
+
+      - `project: string`
+
+        The name of the project that the new run will be created under.
+
+      - `entity: optional string or null`
+
+        The entity to use for the run. This allows you to set the team or username of the WandB user that you would
+        like associated with the run. If not set, the default entity for the registered WandB API key is used.
+
+      - `name: optional string or null`
+
+        A display name to set for the run. If not set, we will use the Job ID as the name.
+
+      - `tags: optional array of string`
+
+        A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
+        default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
+
+  - `metadata: optional Metadata or null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `method: optional object { type, dpo, reinforcement, supervised }`
+
+    The method used for fine-tuning.
+
+    - `type: "supervised" or "dpo" or "reinforcement"`
+
+      The type of method. Is either `supervised`, `dpo`, or `reinforcement`.
+
+      - `"supervised"`
+
+      - `"dpo"`
+
+      - `"reinforcement"`
+
+    - `dpo: optional DpoMethod`
+
+      Configuration for the DPO fine-tuning method.
+
+      - `hyperparameters: optional DpoHyperparameters`
+
+        The hyperparameters used for the DPO fine-tuning job.
+
+        - `batch_size: optional "auto" or number`
+
+          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `beta: optional "auto" or number`
+
+          The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `learning_rate_multiplier: optional "auto" or number`
+
+          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `n_epochs: optional "auto" or number`
+
+          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+    - `reinforcement: optional ReinforcementMethod`
+
+      Configuration for the reinforcement fine-tuning method.
+
+      - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
+
+        The grader used for the fine-tuning job.
+
+        - `StringCheckGrader object { input, name, operation, 2 more }`
+
+          A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+          - `input: string`
+
+            The input text. This may include template strings.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `operation: "eq" or "ne" or "like" or "ilike"`
+
+            The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+            - `"eq"`
+
+            - `"ne"`
+
+            - `"like"`
+
+            - `"ilike"`
+
+          - `reference: string`
+
+            The reference text. This may include template strings.
+
+          - `type: "string_check"`
+
+            The object type, which is always `string_check`.
+
+            - `"string_check"`
+
+        - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
+
+          A TextSimilarityGrader object which grades text based on similarity metrics.
+
+          - `evaluation_metric: "cosine" or "fuzzy_match" or "bleu" or 8 more`
+
+            The evaluation metric to use. One of `cosine`, `fuzzy_match`, `bleu`,
+            `gleu`, `meteor`, `rouge_1`, `rouge_2`, `rouge_3`, `rouge_4`, `rouge_5`,
+            or `rouge_l`.
+
+            - `"cosine"`
+
+            - `"fuzzy_match"`
+
+            - `"bleu"`
+
+            - `"gleu"`
+
+            - `"meteor"`
+
+            - `"rouge_1"`
+
+            - `"rouge_2"`
+
+            - `"rouge_3"`
+
+            - `"rouge_4"`
+
+            - `"rouge_5"`
+
+            - `"rouge_l"`
+
+          - `input: string`
+
+            The text being graded.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `reference: string`
+
+            The text being graded against.
+
+          - `type: "text_similarity"`
+
+            The type of grader.
+
+            - `"text_similarity"`
+
+        - `PythonGrader object { name, source, type, image_tag }`
+
+          A PythonGrader object that runs a python script on the input.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `source: string`
+
+            The source code of the python script.
+
+          - `type: "python"`
+
+            The object type, which is always `python`.
+
+            - `"python"`
+
+          - `image_tag: optional string`
+
+            The image tag to use for the python script.
+
+        - `ScoreModelGrader object { input, model, name, 3 more }`
+
+          A ScoreModelGrader object that uses a model to assign a score to the input.
+
+          - `input: array of object { content, role, type }`
+
+            The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
+
+            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+              Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+              - `TextInput = string`
+
+                A text input to the model.
+
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+                A text input to the model.
+
+                - `text: string`
+
+                  The text input to the model.
+
+                - `type: "input_text"`
+
+                  The type of the input item. Always `input_text`.
+
+                  - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
+              - `OutputText object { text, type }`
+
+                A text output from the model.
+
+                - `text: string`
+
+                  The text output from the model.
+
+                - `type: "output_text"`
+
+                  The type of the output text. Always `output_text`.
+
+                  - `"output_text"`
+
+              - `InputImage object { image_url, type, detail }`
+
+                An image input block used within EvalItem content arrays.
+
+                - `image_url: string`
+
+                  The URL of the image input.
+
+                - `type: "input_image"`
+
+                  The type of the image input. Always `input_image`.
+
+                  - `"input_image"`
+
+                - `detail: optional string`
+
+                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+              - `ResponseInputAudio object { input_audio, type }`
+
+                An audio input to the model.
+
+                - `input_audio: object { data, format }`
+
+                  - `data: string`
+
+                    Base64-encoded audio data.
+
+                  - `format: "mp3" or "wav"`
+
+                    The format of the audio data. Currently supported formats are `mp3` and
+                    `wav`.
+
+                    - `"mp3"`
+
+                    - `"wav"`
+
+                - `type: "input_audio"`
+
+                  The type of the input item. Always `input_audio`.
+
+                  - `"input_audio"`
+
+              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                A list of inputs, each of which may be either an input text, output text, input
+                image, or input audio object.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+            - `role: "user" or "assistant" or "system" or "developer"`
+
+              The role of the message input. One of `user`, `assistant`, `system`, or
+              `developer`.
+
+              - `"user"`
+
+              - `"assistant"`
+
+              - `"system"`
+
+              - `"developer"`
+
+            - `type: optional "message"`
+
+              The type of the message input. Always `message`.
+
+              - `"message"`
+
+          - `model: string`
+
+            The model to use for the evaluation.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `type: "score_model"`
+
+            The object type, which is always `score_model`.
+
+            - `"score_model"`
+
+          - `range: optional array of number`
+
+            The range of the score. Defaults to `[0, 1]`.
+
+          - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
+
+            The sampling parameters for the model.
+
+            - `max_completions_tokens: optional number or null`
+
+              The maximum number of tokens the grader model may generate in its response.
+
+            - `reasoning_effort: optional ReasoningEffort or null`
+
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
+
+            - `seed: optional number or null`
+
+              A seed value to initialize the randomness, during sampling.
+
+            - `temperature: optional number or null`
+
+              A higher temperature increases randomness in the outputs.
+
+            - `top_p: optional number or null`
+
+              An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+        - `MultiGrader object { calculate_output, graders, name, type }`
+
+          A MultiGrader object combines the output of multiple graders to produce a single score.
+
+          - `calculate_output: string`
+
+            A formula to calculate the output based on grader results.
+
+          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
+
+            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+            - `StringCheckGrader object { input, name, operation, 2 more }`
+
+              A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+            - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
+
+              A TextSimilarityGrader object which grades text based on similarity metrics.
+
+            - `PythonGrader object { name, source, type, image_tag }`
+
+              A PythonGrader object that runs a python script on the input.
+
+            - `ScoreModelGrader object { input, model, name, 3 more }`
+
+              A ScoreModelGrader object that uses a model to assign a score to the input.
+
+            - `LabelModelGrader object { input, labels, model, 3 more }`
+
+              A LabelModelGrader object which uses a model to assign labels to each item
+              in the evaluation.
+
+              - `input: array of object { content, role, type }`
+
+                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                  Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                  - `TextInput = string`
+
+                    A text input to the model.
+
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+                    A text input to the model.
+
+                  - `OutputText object { text, type }`
+
+                    A text output from the model.
+
+                    - `text: string`
+
+                      The text output from the model.
+
+                    - `type: "output_text"`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `InputImage object { image_url, type, detail }`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: string`
+
+                      The URL of the image input.
+
+                    - `type: "input_image"`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: optional string`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `ResponseInputAudio object { input_audio, type }`
+
+                    An audio input to the model.
+
+                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                    A list of inputs, each of which may be either an input text, output text, input
+                    image, or input audio object.
+
+                - `role: "user" or "assistant" or "system" or "developer"`
+
+                  The role of the message input. One of `user`, `assistant`, `system`, or
+                  `developer`.
+
+                  - `"user"`
+
+                  - `"assistant"`
+
+                  - `"system"`
+
+                  - `"developer"`
+
+                - `type: optional "message"`
+
+                  The type of the message input. Always `message`.
+
+                  - `"message"`
+
+              - `labels: array of string`
+
+                The labels to assign to each item in the evaluation.
+
+              - `model: string`
+
+                The model to use for the evaluation. Must support structured outputs.
+
+              - `name: string`
+
+                The name of the grader.
+
+              - `passing_labels: array of string`
+
+                The labels that indicate a passing result. Must be a subset of labels.
+
+              - `type: "label_model"`
+
+                The object type, which is always `label_model`.
+
+                - `"label_model"`
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `type: "multi"`
+
+            The object type, which is always `multi`.
+
+            - `"multi"`
+
+      - `hyperparameters: optional ReinforcementHyperparameters`
+
+        The hyperparameters used for the reinforcement fine-tuning job.
+
+        - `batch_size: optional "auto" or number`
+
+          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `compute_multiplier: optional "auto" or number`
+
+          Multiplier on amount of compute used for exploring search space during training.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `eval_interval: optional "auto" or number`
+
+          The number of training steps between evaluation runs.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `eval_samples: optional "auto" or number`
+
+          Number of evaluation samples to generate per training step.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `learning_rate_multiplier: optional "auto" or number`
+
+          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `n_epochs: optional "auto" or number`
+
+          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
+
+          Level of reasoning effort.
+
+          - `"default"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+    - `supervised: optional SupervisedMethod`
+
+      Configuration for the supervised fine-tuning method.
+
+      - `hyperparameters: optional SupervisedHyperparameters`
+
+        The hyperparameters used for the fine-tuning job.
+
+        - `batch_size: optional "auto" or number`
+
+          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `learning_rate_multiplier: optional "auto" or number`
+
+          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `n_epochs: optional "auto" or number`
+
+          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID/cancel \
+    -X POST \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/cancel \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "gpt-4o-mini-2024-07-18",
+  "created_at": 1721764800,
+  "fine_tuned_model": null,
+  "organization_id": "org-123",
+  "result_files": [],
+  "status": "cancelled",
+  "validation_file": "file-abc123",
+  "training_file": "file-abc123"
+}
+```
+
 ## Create fine-tuning job
 
 **post** `/fine_tuning/jobs`
@@ -82,7 +1037,7 @@ Response includes details of the enqueued job including job status and the name 
 
     - `number`
 
-- `integrations: optional array of object { type, wandb }`
+- `integrations: optional array of object { type, wandb }  or null`
 
   A list of integrations to enable for your fine-tuning job.
 
@@ -102,12 +1057,12 @@ Response includes details of the enqueued job including job status and the name 
 
       The name of the project that the new run will be created under.
 
-    - `entity: optional string`
+    - `entity: optional string or null`
 
       The entity to use for the run. This allows you to set the team or username of the WandB user that you would
       like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-    - `name: optional string`
+    - `name: optional string or null`
 
       A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -116,7 +1071,7 @@ Response includes details of the enqueued job including job status and the name 
       A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
       default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
 
-- `metadata: optional Metadata`
+- `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
@@ -488,11 +1443,11 @@ Response includes details of the enqueued job including job status and the name 
 
           The sampling parameters for the model.
 
-          - `max_completions_tokens: optional number`
+          - `max_completions_tokens: optional number or null`
 
             The maximum number of tokens the grader model may generate in its response.
 
-          - `reasoning_effort: optional ReasoningEffort`
+          - `reasoning_effort: optional ReasoningEffort or null`
 
             Constrains effort on reasoning for reasoning models. Currently supported
             values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -516,15 +1471,15 @@ Response includes details of the enqueued job including job status and the name 
 
             - `"max"`
 
-          - `seed: optional number`
+          - `seed: optional number or null`
 
             A seed value to initialize the randomness, during sampling.
 
-          - `temperature: optional number`
+          - `temperature: optional number or null`
 
             A higher temperature increases randomness in the outputs.
 
-          - `top_p: optional number`
+          - `top_p: optional number or null`
 
             An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -781,18 +1736,18 @@ Response includes details of the enqueued job including job status and the name 
 
         - `number`
 
-- `seed: optional number`
+- `seed: optional number or null`
 
   The seed controls the reproducibility of the job. Passing in the same seed and job parameters should produce the same results, but may differ in rare cases.
   If a seed is not specified, one will be generated for you.
 
-- `suffix: optional string`
+- `suffix: optional string or null`
 
   A string of up to 64 characters that will be added to your fine-tuned model name.
 
   For example, a `suffix` of "custom-model-name" would produce a model name like `ft:gpt-4o-mini:openai:custom-model-name:7p4lURel`.
 
-- `validation_file: optional string`
+- `validation_file: optional string or null`
 
   The ID of an uploaded file that contains validation data.
 
@@ -819,7 +1774,7 @@ Response includes details of the enqueued job including job status and the name 
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
-  - `error: object { code, message, param }`
+  - `error: object { code, message, param }  or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
 
@@ -831,15 +1786,15 @@ Response includes details of the enqueued job including job status and the name 
 
       A human-readable error message.
 
-    - `param: string`
+    - `param: string or null`
 
       The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
 
-  - `fine_tuned_model: string`
+  - `fine_tuned_model: string or null`
 
     The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
 
-  - `finished_at: number`
+  - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
@@ -847,7 +1802,7 @@ Response includes details of the enqueued job including job status and the name 
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
-    - `batch_size: optional "auto" or number`
+    - `batch_size: optional "auto" or number or null`
 
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
@@ -918,7 +1873,7 @@ Response includes details of the enqueued job including job status and the name 
 
     - `"cancelled"`
 
-  - `trained_tokens: number`
+  - `trained_tokens: number or null`
 
     The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
 
@@ -926,15 +1881,15 @@ Response includes details of the enqueued job including job status and the name 
 
     The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `validation_file: string`
+  - `validation_file: string or null`
 
     The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `estimated_finish: optional number`
+  - `estimated_finish: optional number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
-  - `integrations: optional array of FineTuningJobWandbIntegrationObject`
+  - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
 
@@ -954,12 +1909,12 @@ Response includes details of the enqueued job including job status and the name 
 
         The name of the project that the new run will be created under.
 
-      - `entity: optional string`
+      - `entity: optional string or null`
 
         The entity to use for the run. This allows you to set the team or username of the WandB user that you would
         like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -968,7 +1923,7 @@ Response includes details of the enqueued job including job status and the name 
         A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
         default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -1340,11 +2295,11 @@ Response includes details of the enqueued job including job status and the name 
 
             The sampling parameters for the model.
 
-            - `max_completions_tokens: optional number`
+            - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
 
-            - `reasoning_effort: optional ReasoningEffort`
+            - `reasoning_effort: optional ReasoningEffort or null`
 
               Constrains effort on reasoning for reasoning models. Currently supported
               values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -1368,15 +2323,15 @@ Response includes details of the enqueued job including job status and the name 
 
               - `"max"`
 
-            - `seed: optional number`
+            - `seed: optional number or null`
 
               A seed value to initialize the randomness, during sampling.
 
-            - `temperature: optional number`
+            - `temperature: optional number or null`
 
               A higher temperature increases randomness in the outputs.
 
-            - `top_p: optional number`
+            - `top_p: optional number or null`
 
               An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -1732,6 +2687,69 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 }
 ```
 
+### DPO
+
+```http
+curl https://api.openai.com/v1/fine_tuning/jobs \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "training_file": "file-abc123",
+    "validation_file": "file-abc123",
+    "model": "gpt-4o-mini",
+    "method": {
+      "type": "dpo",
+      "dpo": {
+        "hyperparameters": {
+          "beta": 0.1
+        }
+      }
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc",
+  "model": "gpt-4o-mini",
+  "created_at": 1746130590,
+  "fine_tuned_model": null,
+  "organization_id": "org-abc",
+  "result_files": [],
+  "status": "queued",
+  "validation_file": "file-123",
+  "training_file": "file-abc",
+  "method": {
+    "type": "dpo",
+    "dpo": {
+      "hyperparameters": {
+        "beta": 0.1,
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  },
+  "metadata": null,
+  "error": {
+    "code": null,
+    "message": null,
+    "param": null
+  },
+  "finished_at": null,
+  "hyperparameters": null,
+  "seed": 1036326793,
+  "estimated_finish": null,
+  "integrations": [],
+  "user_provided_suffix": null,
+  "usage_metrics": null,
+  "shared_with_openai": false
+}
+```
+
 ### Example
 
 ```http
@@ -1830,69 +2848,6 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
   "finished_at": null,
   "seed": 683058546,
   "trained_tokens": null,
-  "estimated_finish": null,
-  "integrations": [],
-  "user_provided_suffix": null,
-  "usage_metrics": null,
-  "shared_with_openai": false
-}
-```
-
-### DPO
-
-```http
-curl https://api.openai.com/v1/fine_tuning/jobs \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "training_file": "file-abc123",
-    "validation_file": "file-abc123",
-    "model": "gpt-4o-mini",
-    "method": {
-      "type": "dpo",
-      "dpo": {
-        "hyperparameters": {
-          "beta": 0.1
-        }
-      }
-    }
-  }'
-```
-
-#### Response
-
-```json
-{
-  "object": "fine_tuning.job",
-  "id": "ftjob-abc",
-  "model": "gpt-4o-mini",
-  "created_at": 1746130590,
-  "fine_tuned_model": null,
-  "organization_id": "org-abc",
-  "result_files": [],
-  "status": "queued",
-  "validation_file": "file-123",
-  "training_file": "file-abc",
-  "method": {
-    "type": "dpo",
-    "dpo": {
-      "hyperparameters": {
-        "beta": 0.1,
-        "batch_size": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      }
-    }
-  },
-  "metadata": null,
-  "error": {
-    "code": null,
-    "message": null,
-    "param": null
-  },
-  "finished_at": null,
-  "hyperparameters": null,
-  "seed": 1036326793,
   "estimated_finish": null,
   "integrations": [],
   "user_provided_suffix": null,
@@ -2099,7 +3054,7 @@ List your organization's fine-tuning jobs
 
   Number of fine-tuning jobs to retrieve.
 
-- `metadata: optional map[string]`
+- `metadata: optional map[string] or null`
 
   Optional metadata filter. To filter, use the syntax `metadata[k]=v`. Alternatively, set `metadata=null` to indicate no metadata.
 
@@ -2115,7 +3070,7 @@ List your organization's fine-tuning jobs
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
-  - `error: object { code, message, param }`
+  - `error: object { code, message, param }  or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
 
@@ -2127,15 +3082,15 @@ List your organization's fine-tuning jobs
 
       A human-readable error message.
 
-    - `param: string`
+    - `param: string or null`
 
       The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
 
-  - `fine_tuned_model: string`
+  - `fine_tuned_model: string or null`
 
     The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
 
-  - `finished_at: number`
+  - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
@@ -2143,7 +3098,7 @@ List your organization's fine-tuning jobs
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
-    - `batch_size: optional "auto" or number`
+    - `batch_size: optional "auto" or number or null`
 
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
@@ -2214,7 +3169,7 @@ List your organization's fine-tuning jobs
 
     - `"cancelled"`
 
-  - `trained_tokens: number`
+  - `trained_tokens: number or null`
 
     The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
 
@@ -2222,15 +3177,15 @@ List your organization's fine-tuning jobs
 
     The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `validation_file: string`
+  - `validation_file: string or null`
 
     The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `estimated_finish: optional number`
+  - `estimated_finish: optional number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
-  - `integrations: optional array of FineTuningJobWandbIntegrationObject`
+  - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
 
@@ -2250,12 +3205,12 @@ List your organization's fine-tuning jobs
 
         The name of the project that the new run will be created under.
 
-      - `entity: optional string`
+      - `entity: optional string or null`
 
         The entity to use for the run. This allows you to set the team or username of the WandB user that you would
         like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -2264,7 +3219,7 @@ List your organization's fine-tuning jobs
         A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
         default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -2636,11 +3591,11 @@ List your organization's fine-tuning jobs
 
             The sampling parameters for the model.
 
-            - `max_completions_tokens: optional number`
+            - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
 
-            - `reasoning_effort: optional ReasoningEffort`
+            - `reasoning_effort: optional ReasoningEffort or null`
 
               Constrains effort on reasoning for reasoning models. Currently supported
               values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -2664,15 +3619,15 @@ List your organization's fine-tuning jobs
 
               - `"max"`
 
-            - `seed: optional number`
+            - `seed: optional number or null`
 
               A seed value to initialize the randomness, during sampling.
 
-            - `temperature: optional number`
+            - `temperature: optional number or null`
 
               A higher temperature increases randomness in the outputs.
 
-            - `top_p: optional number`
+            - `top_p: optional number or null`
 
               An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -3067,984 +4022,6 @@ curl https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value \
 }
 ```
 
-## Retrieve fine-tuning job
-
-**get** `/fine_tuning/jobs/{fine_tuning_job_id}`
-
-Get info about a fine-tuning job.
-
-[Learn more about fine-tuning](/docs/guides/model-optimization)
-
-### Path Parameters
-
-- `fine_tuning_job_id: string`
-
-### Returns
-
-- `FineTuningJob object { id, created_at, error, 16 more }`
-
-  The `fine_tuning.job` object represents a fine-tuning job that has been created through the API.
-
-  - `id: string`
-
-    The object identifier, which can be referenced in the API endpoints.
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) for when the fine-tuning job was created.
-
-  - `error: object { code, message, param }`
-
-    For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
-
-    - `code: string`
-
-      A machine-readable error code.
-
-    - `message: string`
-
-      A human-readable error message.
-
-    - `param: string`
-
-      The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
-
-  - `fine_tuned_model: string`
-
-    The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
-
-  - `finished_at: number`
-
-    The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
-
-  - `hyperparameters: object { batch_size, learning_rate_multiplier, n_epochs }`
-
-    The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
-
-    - `batch_size: optional "auto" or number`
-
-      Number of examples in each batch. A larger batch size means that model parameters
-      are updated less frequently, but with lower variance.
-
-      - `"auto"`
-
-        - `"auto"`
-
-      - `number`
-
-    - `learning_rate_multiplier: optional "auto" or number`
-
-      Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
-      overfitting.
-
-      - `"auto"`
-
-        - `"auto"`
-
-      - `number`
-
-    - `n_epochs: optional "auto" or number`
-
-      The number of epochs to train the model for. An epoch refers to one full cycle
-      through the training dataset.
-
-      - `"auto"`
-
-        - `"auto"`
-
-      - `number`
-
-  - `model: string`
-
-    The base model that is being fine-tuned.
-
-  - `object: "fine_tuning.job"`
-
-    The object type, which is always "fine_tuning.job".
-
-    - `"fine_tuning.job"`
-
-  - `organization_id: string`
-
-    The organization that owns the fine-tuning job.
-
-  - `result_files: array of string`
-
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
-
-  - `seed: number`
-
-    The seed used for the fine-tuning job.
-
-  - `status: "validating_files" or "queued" or "running" or 3 more`
-
-    The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`.
-
-    - `"validating_files"`
-
-    - `"queued"`
-
-    - `"running"`
-
-    - `"succeeded"`
-
-    - `"failed"`
-
-    - `"cancelled"`
-
-  - `trained_tokens: number`
-
-    The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
-
-  - `training_file: string`
-
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
-
-  - `validation_file: string`
-
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
-
-  - `estimated_finish: optional number`
-
-    The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
-
-  - `integrations: optional array of FineTuningJobWandbIntegrationObject`
-
-    A list of integrations to enable for this fine-tuning job.
-
-    - `type: "wandb"`
-
-      The type of the integration being enabled for the fine-tuning job
-
-      - `"wandb"`
-
-    - `wandb: FineTuningJobWandbIntegration`
-
-      The settings for your integration with Weights and Biases. This payload specifies the project that
-      metrics will be sent to. Optionally, you can set an explicit display name for your run, add tags
-      to your run, and set a default entity (team, username, etc) to be associated with your run.
-
-      - `project: string`
-
-        The name of the project that the new run will be created under.
-
-      - `entity: optional string`
-
-        The entity to use for the run. This allows you to set the team or username of the WandB user that you would
-        like associated with the run. If not set, the default entity for the registered WandB API key is used.
-
-      - `name: optional string`
-
-        A display name to set for the run. If not set, we will use the Job ID as the name.
-
-      - `tags: optional array of string`
-
-        A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
-        default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
-
-  - `metadata: optional Metadata`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `method: optional object { type, dpo, reinforcement, supervised }`
-
-    The method used for fine-tuning.
-
-    - `type: "supervised" or "dpo" or "reinforcement"`
-
-      The type of method. Is either `supervised`, `dpo`, or `reinforcement`.
-
-      - `"supervised"`
-
-      - `"dpo"`
-
-      - `"reinforcement"`
-
-    - `dpo: optional DpoMethod`
-
-      Configuration for the DPO fine-tuning method.
-
-      - `hyperparameters: optional DpoHyperparameters`
-
-        The hyperparameters used for the DPO fine-tuning job.
-
-        - `batch_size: optional "auto" or number`
-
-          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `beta: optional "auto" or number`
-
-          The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `learning_rate_multiplier: optional "auto" or number`
-
-          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `n_epochs: optional "auto" or number`
-
-          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-    - `reinforcement: optional ReinforcementMethod`
-
-      Configuration for the reinforcement fine-tuning method.
-
-      - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-        The grader used for the fine-tuning job.
-
-        - `StringCheckGrader object { input, name, operation, 2 more }`
-
-          A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
-
-          - `input: string`
-
-            The input text. This may include template strings.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `operation: "eq" or "ne" or "like" or "ilike"`
-
-            The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
-
-            - `"eq"`
-
-            - `"ne"`
-
-            - `"like"`
-
-            - `"ilike"`
-
-          - `reference: string`
-
-            The reference text. This may include template strings.
-
-          - `type: "string_check"`
-
-            The object type, which is always `string_check`.
-
-            - `"string_check"`
-
-        - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
-
-          A TextSimilarityGrader object which grades text based on similarity metrics.
-
-          - `evaluation_metric: "cosine" or "fuzzy_match" or "bleu" or 8 more`
-
-            The evaluation metric to use. One of `cosine`, `fuzzy_match`, `bleu`,
-            `gleu`, `meteor`, `rouge_1`, `rouge_2`, `rouge_3`, `rouge_4`, `rouge_5`,
-            or `rouge_l`.
-
-            - `"cosine"`
-
-            - `"fuzzy_match"`
-
-            - `"bleu"`
-
-            - `"gleu"`
-
-            - `"meteor"`
-
-            - `"rouge_1"`
-
-            - `"rouge_2"`
-
-            - `"rouge_3"`
-
-            - `"rouge_4"`
-
-            - `"rouge_5"`
-
-            - `"rouge_l"`
-
-          - `input: string`
-
-            The text being graded.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `reference: string`
-
-            The text being graded against.
-
-          - `type: "text_similarity"`
-
-            The type of grader.
-
-            - `"text_similarity"`
-
-        - `PythonGrader object { name, source, type, image_tag }`
-
-          A PythonGrader object that runs a python script on the input.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `source: string`
-
-            The source code of the python script.
-
-          - `type: "python"`
-
-            The object type, which is always `python`.
-
-            - `"python"`
-
-          - `image_tag: optional string`
-
-            The image tag to use for the python script.
-
-        - `ScoreModelGrader object { input, model, name, 3 more }`
-
-          A ScoreModelGrader object that uses a model to assign a score to the input.
-
-          - `input: array of object { content, role, type }`
-
-            The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
-
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
-
-              Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
-
-              - `TextInput = string`
-
-                A text input to the model.
-
-              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                A text input to the model.
-
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-                - `prompt_cache_breakpoint: optional object { mode }`
-
-                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                  - `mode: "explicit"`
-
-                    The breakpoint mode. Always `explicit`.
-
-                    - `"explicit"`
-
-              - `OutputText object { text, type }`
-
-                A text output from the model.
-
-                - `text: string`
-
-                  The text output from the model.
-
-                - `type: "output_text"`
-
-                  The type of the output text. Always `output_text`.
-
-                  - `"output_text"`
-
-              - `InputImage object { image_url, type, detail }`
-
-                An image input block used within EvalItem content arrays.
-
-                - `image_url: string`
-
-                  The URL of the image input.
-
-                - `type: "input_image"`
-
-                  The type of the image input. Always `input_image`.
-
-                  - `"input_image"`
-
-                - `detail: optional string`
-
-                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-              - `ResponseInputAudio object { input_audio, type }`
-
-                An audio input to the model.
-
-                - `input_audio: object { data, format }`
-
-                  - `data: string`
-
-                    Base64-encoded audio data.
-
-                  - `format: "mp3" or "wav"`
-
-                    The format of the audio data. Currently supported formats are `mp3` and
-                    `wav`.
-
-                    - `"mp3"`
-
-                    - `"wav"`
-
-                - `type: "input_audio"`
-
-                  The type of the input item. Always `input_audio`.
-
-                  - `"input_audio"`
-
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
-
-                A list of inputs, each of which may be either an input text, output text, input
-                image, or input audio object.
-
-                - `TextInput = string`
-
-                  A text input to the model.
-
-                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                  A text input to the model.
-
-                - `OutputText object { text, type }`
-
-                  A text output from the model.
-
-                  - `text: string`
-
-                    The text output from the model.
-
-                  - `type: "output_text"`
-
-                    The type of the output text. Always `output_text`.
-
-                    - `"output_text"`
-
-                - `InputImage object { image_url, type, detail }`
-
-                  An image input block used within EvalItem content arrays.
-
-                  - `image_url: string`
-
-                    The URL of the image input.
-
-                  - `type: "input_image"`
-
-                    The type of the image input. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `detail: optional string`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                - `ResponseInputAudio object { input_audio, type }`
-
-                  An audio input to the model.
-
-            - `role: "user" or "assistant" or "system" or "developer"`
-
-              The role of the message input. One of `user`, `assistant`, `system`, or
-              `developer`.
-
-              - `"user"`
-
-              - `"assistant"`
-
-              - `"system"`
-
-              - `"developer"`
-
-            - `type: optional "message"`
-
-              The type of the message input. Always `message`.
-
-              - `"message"`
-
-          - `model: string`
-
-            The model to use for the evaluation.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `type: "score_model"`
-
-            The object type, which is always `score_model`.
-
-            - `"score_model"`
-
-          - `range: optional array of number`
-
-            The range of the score. Defaults to `[0, 1]`.
-
-          - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
-
-            The sampling parameters for the model.
-
-            - `max_completions_tokens: optional number`
-
-              The maximum number of tokens the grader model may generate in its response.
-
-            - `reasoning_effort: optional ReasoningEffort`
-
-              Constrains effort on reasoning for reasoning models. Currently supported
-              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
-              Reducing reasoning effort can result in faster responses and fewer tokens
-              used on reasoning in a response. Not all reasoning models support every
-              value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
-              for model-specific support.
-
-              - `"none"`
-
-              - `"minimal"`
-
-              - `"low"`
-
-              - `"medium"`
-
-              - `"high"`
-
-              - `"xhigh"`
-
-              - `"max"`
-
-            - `seed: optional number`
-
-              A seed value to initialize the randomness, during sampling.
-
-            - `temperature: optional number`
-
-              A higher temperature increases randomness in the outputs.
-
-            - `top_p: optional number`
-
-              An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
-
-        - `MultiGrader object { calculate_output, graders, name, type }`
-
-          A MultiGrader object combines the output of multiple graders to produce a single score.
-
-          - `calculate_output: string`
-
-            A formula to calculate the output based on grader results.
-
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
-
-            - `StringCheckGrader object { input, name, operation, 2 more }`
-
-              A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
-
-            - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
-
-              A TextSimilarityGrader object which grades text based on similarity metrics.
-
-            - `PythonGrader object { name, source, type, image_tag }`
-
-              A PythonGrader object that runs a python script on the input.
-
-            - `ScoreModelGrader object { input, model, name, 3 more }`
-
-              A ScoreModelGrader object that uses a model to assign a score to the input.
-
-            - `LabelModelGrader object { input, labels, model, 3 more }`
-
-              A LabelModelGrader object which uses a model to assign labels to each item
-              in the evaluation.
-
-              - `input: array of object { content, role, type }`
-
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
-
-                  Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
-
-                  - `TextInput = string`
-
-                    A text input to the model.
-
-                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                    A text input to the model.
-
-                  - `OutputText object { text, type }`
-
-                    A text output from the model.
-
-                    - `text: string`
-
-                      The text output from the model.
-
-                    - `type: "output_text"`
-
-                      The type of the output text. Always `output_text`.
-
-                      - `"output_text"`
-
-                  - `InputImage object { image_url, type, detail }`
-
-                    An image input block used within EvalItem content arrays.
-
-                    - `image_url: string`
-
-                      The URL of the image input.
-
-                    - `type: "input_image"`
-
-                      The type of the image input. Always `input_image`.
-
-                      - `"input_image"`
-
-                    - `detail: optional string`
-
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                  - `ResponseInputAudio object { input_audio, type }`
-
-                    An audio input to the model.
-
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
-
-                    A list of inputs, each of which may be either an input text, output text, input
-                    image, or input audio object.
-
-                - `role: "user" or "assistant" or "system" or "developer"`
-
-                  The role of the message input. One of `user`, `assistant`, `system`, or
-                  `developer`.
-
-                  - `"user"`
-
-                  - `"assistant"`
-
-                  - `"system"`
-
-                  - `"developer"`
-
-                - `type: optional "message"`
-
-                  The type of the message input. Always `message`.
-
-                  - `"message"`
-
-              - `labels: array of string`
-
-                The labels to assign to each item in the evaluation.
-
-              - `model: string`
-
-                The model to use for the evaluation. Must support structured outputs.
-
-              - `name: string`
-
-                The name of the grader.
-
-              - `passing_labels: array of string`
-
-                The labels that indicate a passing result. Must be a subset of labels.
-
-              - `type: "label_model"`
-
-                The object type, which is always `label_model`.
-
-                - `"label_model"`
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `type: "multi"`
-
-            The object type, which is always `multi`.
-
-            - `"multi"`
-
-      - `hyperparameters: optional ReinforcementHyperparameters`
-
-        The hyperparameters used for the reinforcement fine-tuning job.
-
-        - `batch_size: optional "auto" or number`
-
-          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `compute_multiplier: optional "auto" or number`
-
-          Multiplier on amount of compute used for exploring search space during training.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `eval_interval: optional "auto" or number`
-
-          The number of training steps between evaluation runs.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `eval_samples: optional "auto" or number`
-
-          Number of evaluation samples to generate per training step.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `learning_rate_multiplier: optional "auto" or number`
-
-          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `n_epochs: optional "auto" or number`
-
-          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
-
-          Level of reasoning effort.
-
-          - `"default"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-    - `supervised: optional SupervisedMethod`
-
-      Configuration for the supervised fine-tuning method.
-
-      - `hyperparameters: optional SupervisedHyperparameters`
-
-        The hyperparameters used for the fine-tuning job.
-
-        - `batch_size: optional "auto" or number`
-
-          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `learning_rate_multiplier: optional "auto" or number`
-
-          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `n_epochs: optional "auto" or number`
-
-          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "error": {
-    "code": "code",
-    "message": "message",
-    "param": "param"
-  },
-  "fine_tuned_model": "fine_tuned_model",
-  "finished_at": 0,
-  "hyperparameters": {
-    "batch_size": "auto",
-    "learning_rate_multiplier": "auto",
-    "n_epochs": "auto"
-  },
-  "model": "model",
-  "object": "fine_tuning.job",
-  "organization_id": "organization_id",
-  "result_files": [
-    "file-abc123"
-  ],
-  "seed": 0,
-  "status": "validating_files",
-  "trained_tokens": 0,
-  "training_file": "training_file",
-  "validation_file": "validation_file",
-  "estimated_finish": 0,
-  "integrations": [
-    {
-      "type": "wandb",
-      "wandb": {
-        "project": "my-wandb-project",
-        "entity": "entity",
-        "name": "name",
-        "tags": [
-          "custom-tag"
-        ]
-      }
-    }
-  ],
-  "metadata": {
-    "foo": "string"
-  },
-  "method": {
-    "type": "supervised",
-    "dpo": {
-      "hyperparameters": {
-        "batch_size": "auto",
-        "beta": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      }
-    },
-    "reinforcement": {
-      "grader": {
-        "input": "input",
-        "name": "name",
-        "operation": "eq",
-        "reference": "reference",
-        "type": "string_check"
-      },
-      "hyperparameters": {
-        "batch_size": "auto",
-        "compute_multiplier": "auto",
-        "eval_interval": "auto",
-        "eval_samples": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
-        "reasoning_effort": "default"
-      }
-    },
-    "supervised": {
-      "hyperparameters": {
-        "batch_size": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      }
-    }
-  }
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
-  -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "object": "fine_tuning.job",
-  "id": "ftjob-abc123",
-  "model": "davinci-002",
-  "created_at": 1692661014,
-  "finished_at": 1692661190,
-  "fine_tuned_model": "ft:davinci-002:my-org:custom_suffix:7q8mpxmy",
-  "organization_id": "org-123",
-  "result_files": [
-      "file-abc123"
-  ],
-  "status": "succeeded",
-  "validation_file": null,
-  "training_file": "file-abc123",
-  "hyperparameters": {
-      "n_epochs": 4,
-      "batch_size": 1,
-      "learning_rate_multiplier": 1.0
-  },
-  "trained_tokens": 5768,
-  "integrations": [],
-  "seed": 0,
-  "estimated_finish": 0,
-  "method": {
-    "type": "supervised",
-    "supervised": {
-      "hyperparameters": {
-        "n_epochs": 4,
-        "batch_size": 1,
-        "learning_rate_multiplier": 1.0
-      }
-    }
-  }
-}
-```
-
 ## List fine-tuning events
 
 **get** `/fine_tuning/jobs/{fine_tuning_job_id}/events`
@@ -4178,961 +4155,6 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/events \
 }
 ```
 
-## Cancel fine-tuning
-
-**post** `/fine_tuning/jobs/{fine_tuning_job_id}/cancel`
-
-Immediately cancel a fine-tune job.
-
-### Path Parameters
-
-- `fine_tuning_job_id: string`
-
-### Returns
-
-- `FineTuningJob object { id, created_at, error, 16 more }`
-
-  The `fine_tuning.job` object represents a fine-tuning job that has been created through the API.
-
-  - `id: string`
-
-    The object identifier, which can be referenced in the API endpoints.
-
-  - `created_at: number`
-
-    The Unix timestamp (in seconds) for when the fine-tuning job was created.
-
-  - `error: object { code, message, param }`
-
-    For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
-
-    - `code: string`
-
-      A machine-readable error code.
-
-    - `message: string`
-
-      A human-readable error message.
-
-    - `param: string`
-
-      The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
-
-  - `fine_tuned_model: string`
-
-    The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
-
-  - `finished_at: number`
-
-    The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
-
-  - `hyperparameters: object { batch_size, learning_rate_multiplier, n_epochs }`
-
-    The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
-
-    - `batch_size: optional "auto" or number`
-
-      Number of examples in each batch. A larger batch size means that model parameters
-      are updated less frequently, but with lower variance.
-
-      - `"auto"`
-
-        - `"auto"`
-
-      - `number`
-
-    - `learning_rate_multiplier: optional "auto" or number`
-
-      Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
-      overfitting.
-
-      - `"auto"`
-
-        - `"auto"`
-
-      - `number`
-
-    - `n_epochs: optional "auto" or number`
-
-      The number of epochs to train the model for. An epoch refers to one full cycle
-      through the training dataset.
-
-      - `"auto"`
-
-        - `"auto"`
-
-      - `number`
-
-  - `model: string`
-
-    The base model that is being fine-tuned.
-
-  - `object: "fine_tuning.job"`
-
-    The object type, which is always "fine_tuning.job".
-
-    - `"fine_tuning.job"`
-
-  - `organization_id: string`
-
-    The organization that owns the fine-tuning job.
-
-  - `result_files: array of string`
-
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
-
-  - `seed: number`
-
-    The seed used for the fine-tuning job.
-
-  - `status: "validating_files" or "queued" or "running" or 3 more`
-
-    The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`.
-
-    - `"validating_files"`
-
-    - `"queued"`
-
-    - `"running"`
-
-    - `"succeeded"`
-
-    - `"failed"`
-
-    - `"cancelled"`
-
-  - `trained_tokens: number`
-
-    The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
-
-  - `training_file: string`
-
-    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
-
-  - `validation_file: string`
-
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
-
-  - `estimated_finish: optional number`
-
-    The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
-
-  - `integrations: optional array of FineTuningJobWandbIntegrationObject`
-
-    A list of integrations to enable for this fine-tuning job.
-
-    - `type: "wandb"`
-
-      The type of the integration being enabled for the fine-tuning job
-
-      - `"wandb"`
-
-    - `wandb: FineTuningJobWandbIntegration`
-
-      The settings for your integration with Weights and Biases. This payload specifies the project that
-      metrics will be sent to. Optionally, you can set an explicit display name for your run, add tags
-      to your run, and set a default entity (team, username, etc) to be associated with your run.
-
-      - `project: string`
-
-        The name of the project that the new run will be created under.
-
-      - `entity: optional string`
-
-        The entity to use for the run. This allows you to set the team or username of the WandB user that you would
-        like associated with the run. If not set, the default entity for the registered WandB API key is used.
-
-      - `name: optional string`
-
-        A display name to set for the run. If not set, we will use the Job ID as the name.
-
-      - `tags: optional array of string`
-
-        A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
-        default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
-
-  - `metadata: optional Metadata`
-
-    Set of 16 key-value pairs that can be attached to an object. This can be
-    useful for storing additional information about the object in a structured
-    format, and querying for objects via API or the dashboard.
-
-    Keys are strings with a maximum length of 64 characters. Values are strings
-    with a maximum length of 512 characters.
-
-  - `method: optional object { type, dpo, reinforcement, supervised }`
-
-    The method used for fine-tuning.
-
-    - `type: "supervised" or "dpo" or "reinforcement"`
-
-      The type of method. Is either `supervised`, `dpo`, or `reinforcement`.
-
-      - `"supervised"`
-
-      - `"dpo"`
-
-      - `"reinforcement"`
-
-    - `dpo: optional DpoMethod`
-
-      Configuration for the DPO fine-tuning method.
-
-      - `hyperparameters: optional DpoHyperparameters`
-
-        The hyperparameters used for the DPO fine-tuning job.
-
-        - `batch_size: optional "auto" or number`
-
-          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `beta: optional "auto" or number`
-
-          The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `learning_rate_multiplier: optional "auto" or number`
-
-          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `n_epochs: optional "auto" or number`
-
-          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-    - `reinforcement: optional ReinforcementMethod`
-
-      Configuration for the reinforcement fine-tuning method.
-
-      - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-        The grader used for the fine-tuning job.
-
-        - `StringCheckGrader object { input, name, operation, 2 more }`
-
-          A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
-
-          - `input: string`
-
-            The input text. This may include template strings.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `operation: "eq" or "ne" or "like" or "ilike"`
-
-            The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
-
-            - `"eq"`
-
-            - `"ne"`
-
-            - `"like"`
-
-            - `"ilike"`
-
-          - `reference: string`
-
-            The reference text. This may include template strings.
-
-          - `type: "string_check"`
-
-            The object type, which is always `string_check`.
-
-            - `"string_check"`
-
-        - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
-
-          A TextSimilarityGrader object which grades text based on similarity metrics.
-
-          - `evaluation_metric: "cosine" or "fuzzy_match" or "bleu" or 8 more`
-
-            The evaluation metric to use. One of `cosine`, `fuzzy_match`, `bleu`,
-            `gleu`, `meteor`, `rouge_1`, `rouge_2`, `rouge_3`, `rouge_4`, `rouge_5`,
-            or `rouge_l`.
-
-            - `"cosine"`
-
-            - `"fuzzy_match"`
-
-            - `"bleu"`
-
-            - `"gleu"`
-
-            - `"meteor"`
-
-            - `"rouge_1"`
-
-            - `"rouge_2"`
-
-            - `"rouge_3"`
-
-            - `"rouge_4"`
-
-            - `"rouge_5"`
-
-            - `"rouge_l"`
-
-          - `input: string`
-
-            The text being graded.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `reference: string`
-
-            The text being graded against.
-
-          - `type: "text_similarity"`
-
-            The type of grader.
-
-            - `"text_similarity"`
-
-        - `PythonGrader object { name, source, type, image_tag }`
-
-          A PythonGrader object that runs a python script on the input.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `source: string`
-
-            The source code of the python script.
-
-          - `type: "python"`
-
-            The object type, which is always `python`.
-
-            - `"python"`
-
-          - `image_tag: optional string`
-
-            The image tag to use for the python script.
-
-        - `ScoreModelGrader object { input, model, name, 3 more }`
-
-          A ScoreModelGrader object that uses a model to assign a score to the input.
-
-          - `input: array of object { content, role, type }`
-
-            The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
-
-            - `content: string or ResponseInputText or object { text, type }  or 3 more`
-
-              Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
-
-              - `TextInput = string`
-
-                A text input to the model.
-
-              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                A text input to the model.
-
-                - `text: string`
-
-                  The text input to the model.
-
-                - `type: "input_text"`
-
-                  The type of the input item. Always `input_text`.
-
-                  - `"input_text"`
-
-                - `prompt_cache_breakpoint: optional object { mode }`
-
-                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                  - `mode: "explicit"`
-
-                    The breakpoint mode. Always `explicit`.
-
-                    - `"explicit"`
-
-              - `OutputText object { text, type }`
-
-                A text output from the model.
-
-                - `text: string`
-
-                  The text output from the model.
-
-                - `type: "output_text"`
-
-                  The type of the output text. Always `output_text`.
-
-                  - `"output_text"`
-
-              - `InputImage object { image_url, type, detail }`
-
-                An image input block used within EvalItem content arrays.
-
-                - `image_url: string`
-
-                  The URL of the image input.
-
-                - `type: "input_image"`
-
-                  The type of the image input. Always `input_image`.
-
-                  - `"input_image"`
-
-                - `detail: optional string`
-
-                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-              - `ResponseInputAudio object { input_audio, type }`
-
-                An audio input to the model.
-
-                - `input_audio: object { data, format }`
-
-                  - `data: string`
-
-                    Base64-encoded audio data.
-
-                  - `format: "mp3" or "wav"`
-
-                    The format of the audio data. Currently supported formats are `mp3` and
-                    `wav`.
-
-                    - `"mp3"`
-
-                    - `"wav"`
-
-                - `type: "input_audio"`
-
-                  The type of the input item. Always `input_audio`.
-
-                  - `"input_audio"`
-
-              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
-
-                A list of inputs, each of which may be either an input text, output text, input
-                image, or input audio object.
-
-                - `TextInput = string`
-
-                  A text input to the model.
-
-                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                  A text input to the model.
-
-                - `OutputText object { text, type }`
-
-                  A text output from the model.
-
-                  - `text: string`
-
-                    The text output from the model.
-
-                  - `type: "output_text"`
-
-                    The type of the output text. Always `output_text`.
-
-                    - `"output_text"`
-
-                - `InputImage object { image_url, type, detail }`
-
-                  An image input block used within EvalItem content arrays.
-
-                  - `image_url: string`
-
-                    The URL of the image input.
-
-                  - `type: "input_image"`
-
-                    The type of the image input. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `detail: optional string`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                - `ResponseInputAudio object { input_audio, type }`
-
-                  An audio input to the model.
-
-            - `role: "user" or "assistant" or "system" or "developer"`
-
-              The role of the message input. One of `user`, `assistant`, `system`, or
-              `developer`.
-
-              - `"user"`
-
-              - `"assistant"`
-
-              - `"system"`
-
-              - `"developer"`
-
-            - `type: optional "message"`
-
-              The type of the message input. Always `message`.
-
-              - `"message"`
-
-          - `model: string`
-
-            The model to use for the evaluation.
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `type: "score_model"`
-
-            The object type, which is always `score_model`.
-
-            - `"score_model"`
-
-          - `range: optional array of number`
-
-            The range of the score. Defaults to `[0, 1]`.
-
-          - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
-
-            The sampling parameters for the model.
-
-            - `max_completions_tokens: optional number`
-
-              The maximum number of tokens the grader model may generate in its response.
-
-            - `reasoning_effort: optional ReasoningEffort`
-
-              Constrains effort on reasoning for reasoning models. Currently supported
-              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
-              Reducing reasoning effort can result in faster responses and fewer tokens
-              used on reasoning in a response. Not all reasoning models support every
-              value. See the
-              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
-              for model-specific support.
-
-              - `"none"`
-
-              - `"minimal"`
-
-              - `"low"`
-
-              - `"medium"`
-
-              - `"high"`
-
-              - `"xhigh"`
-
-              - `"max"`
-
-            - `seed: optional number`
-
-              A seed value to initialize the randomness, during sampling.
-
-            - `temperature: optional number`
-
-              A higher temperature increases randomness in the outputs.
-
-            - `top_p: optional number`
-
-              An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
-
-        - `MultiGrader object { calculate_output, graders, name, type }`
-
-          A MultiGrader object combines the output of multiple graders to produce a single score.
-
-          - `calculate_output: string`
-
-            A formula to calculate the output based on grader results.
-
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
-
-            - `StringCheckGrader object { input, name, operation, 2 more }`
-
-              A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
-
-            - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
-
-              A TextSimilarityGrader object which grades text based on similarity metrics.
-
-            - `PythonGrader object { name, source, type, image_tag }`
-
-              A PythonGrader object that runs a python script on the input.
-
-            - `ScoreModelGrader object { input, model, name, 3 more }`
-
-              A ScoreModelGrader object that uses a model to assign a score to the input.
-
-            - `LabelModelGrader object { input, labels, model, 3 more }`
-
-              A LabelModelGrader object which uses a model to assign labels to each item
-              in the evaluation.
-
-              - `input: array of object { content, role, type }`
-
-                - `content: string or ResponseInputText or object { text, type }  or 3 more`
-
-                  Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
-
-                  - `TextInput = string`
-
-                    A text input to the model.
-
-                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                    A text input to the model.
-
-                  - `OutputText object { text, type }`
-
-                    A text output from the model.
-
-                    - `text: string`
-
-                      The text output from the model.
-
-                    - `type: "output_text"`
-
-                      The type of the output text. Always `output_text`.
-
-                      - `"output_text"`
-
-                  - `InputImage object { image_url, type, detail }`
-
-                    An image input block used within EvalItem content arrays.
-
-                    - `image_url: string`
-
-                      The URL of the image input.
-
-                    - `type: "input_image"`
-
-                      The type of the image input. Always `input_image`.
-
-                      - `"input_image"`
-
-                    - `detail: optional string`
-
-                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
-
-                  - `ResponseInputAudio object { input_audio, type }`
-
-                    An audio input to the model.
-
-                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
-
-                    A list of inputs, each of which may be either an input text, output text, input
-                    image, or input audio object.
-
-                - `role: "user" or "assistant" or "system" or "developer"`
-
-                  The role of the message input. One of `user`, `assistant`, `system`, or
-                  `developer`.
-
-                  - `"user"`
-
-                  - `"assistant"`
-
-                  - `"system"`
-
-                  - `"developer"`
-
-                - `type: optional "message"`
-
-                  The type of the message input. Always `message`.
-
-                  - `"message"`
-
-              - `labels: array of string`
-
-                The labels to assign to each item in the evaluation.
-
-              - `model: string`
-
-                The model to use for the evaluation. Must support structured outputs.
-
-              - `name: string`
-
-                The name of the grader.
-
-              - `passing_labels: array of string`
-
-                The labels that indicate a passing result. Must be a subset of labels.
-
-              - `type: "label_model"`
-
-                The object type, which is always `label_model`.
-
-                - `"label_model"`
-
-          - `name: string`
-
-            The name of the grader.
-
-          - `type: "multi"`
-
-            The object type, which is always `multi`.
-
-            - `"multi"`
-
-      - `hyperparameters: optional ReinforcementHyperparameters`
-
-        The hyperparameters used for the reinforcement fine-tuning job.
-
-        - `batch_size: optional "auto" or number`
-
-          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `compute_multiplier: optional "auto" or number`
-
-          Multiplier on amount of compute used for exploring search space during training.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `eval_interval: optional "auto" or number`
-
-          The number of training steps between evaluation runs.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `eval_samples: optional "auto" or number`
-
-          Number of evaluation samples to generate per training step.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `learning_rate_multiplier: optional "auto" or number`
-
-          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `n_epochs: optional "auto" or number`
-
-          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
-
-          Level of reasoning effort.
-
-          - `"default"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-    - `supervised: optional SupervisedMethod`
-
-      Configuration for the supervised fine-tuning method.
-
-      - `hyperparameters: optional SupervisedHyperparameters`
-
-        The hyperparameters used for the fine-tuning job.
-
-        - `batch_size: optional "auto" or number`
-
-          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `learning_rate_multiplier: optional "auto" or number`
-
-          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-        - `n_epochs: optional "auto" or number`
-
-          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-
-          - `"auto"`
-
-            - `"auto"`
-
-          - `number`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID/cancel \
-    -X POST \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "created_at": 0,
-  "error": {
-    "code": "code",
-    "message": "message",
-    "param": "param"
-  },
-  "fine_tuned_model": "fine_tuned_model",
-  "finished_at": 0,
-  "hyperparameters": {
-    "batch_size": "auto",
-    "learning_rate_multiplier": "auto",
-    "n_epochs": "auto"
-  },
-  "model": "model",
-  "object": "fine_tuning.job",
-  "organization_id": "organization_id",
-  "result_files": [
-    "file-abc123"
-  ],
-  "seed": 0,
-  "status": "validating_files",
-  "trained_tokens": 0,
-  "training_file": "training_file",
-  "validation_file": "validation_file",
-  "estimated_finish": 0,
-  "integrations": [
-    {
-      "type": "wandb",
-      "wandb": {
-        "project": "my-wandb-project",
-        "entity": "entity",
-        "name": "name",
-        "tags": [
-          "custom-tag"
-        ]
-      }
-    }
-  ],
-  "metadata": {
-    "foo": "string"
-  },
-  "method": {
-    "type": "supervised",
-    "dpo": {
-      "hyperparameters": {
-        "batch_size": "auto",
-        "beta": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      }
-    },
-    "reinforcement": {
-      "grader": {
-        "input": "input",
-        "name": "name",
-        "operation": "eq",
-        "reference": "reference",
-        "type": "string_check"
-      },
-      "hyperparameters": {
-        "batch_size": "auto",
-        "compute_multiplier": "auto",
-        "eval_interval": "auto",
-        "eval_samples": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
-        "reasoning_effort": "default"
-      }
-    },
-    "supervised": {
-      "hyperparameters": {
-        "batch_size": "auto",
-        "learning_rate_multiplier": "auto",
-        "n_epochs": "auto"
-      }
-    }
-  }
-}
-```
-
-### Example
-
-```http
-curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/cancel \
-  -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "object": "fine_tuning.job",
-  "id": "ftjob-abc123",
-  "model": "gpt-4o-mini-2024-07-18",
-  "created_at": 1721764800,
-  "fine_tuned_model": null,
-  "organization_id": "org-123",
-  "result_files": [],
-  "status": "cancelled",
-  "validation_file": "file-abc123",
-  "training_file": "file-abc123"
-}
-```
-
 ## Pause fine-tuning
 
 **post** `/fine_tuning/jobs/{fine_tuning_job_id}/pause`
@@ -5157,7 +4179,7 @@ Pause a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
-  - `error: object { code, message, param }`
+  - `error: object { code, message, param }  or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
 
@@ -5169,15 +4191,15 @@ Pause a fine-tune job.
 
       A human-readable error message.
 
-    - `param: string`
+    - `param: string or null`
 
       The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
 
-  - `fine_tuned_model: string`
+  - `fine_tuned_model: string or null`
 
     The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
 
-  - `finished_at: number`
+  - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
@@ -5185,7 +4207,7 @@ Pause a fine-tune job.
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
-    - `batch_size: optional "auto" or number`
+    - `batch_size: optional "auto" or number or null`
 
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
@@ -5256,7 +4278,7 @@ Pause a fine-tune job.
 
     - `"cancelled"`
 
-  - `trained_tokens: number`
+  - `trained_tokens: number or null`
 
     The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
 
@@ -5264,15 +4286,15 @@ Pause a fine-tune job.
 
     The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `validation_file: string`
+  - `validation_file: string or null`
 
     The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `estimated_finish: optional number`
+  - `estimated_finish: optional number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
-  - `integrations: optional array of FineTuningJobWandbIntegrationObject`
+  - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
 
@@ -5292,12 +4314,12 @@ Pause a fine-tune job.
 
         The name of the project that the new run will be created under.
 
-      - `entity: optional string`
+      - `entity: optional string or null`
 
         The entity to use for the run. This allows you to set the team or username of the WandB user that you would
         like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -5306,7 +4328,7 @@ Pause a fine-tune job.
         A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
         default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -5678,11 +4700,11 @@ Pause a fine-tune job.
 
             The sampling parameters for the model.
 
-            - `max_completions_tokens: optional number`
+            - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
 
-            - `reasoning_effort: optional ReasoningEffort`
+            - `reasoning_effort: optional ReasoningEffort or null`
 
               Constrains effort on reasoning for reasoning models. Currently supported
               values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -5706,15 +4728,15 @@ Pause a fine-tune job.
 
               - `"max"`
 
-            - `seed: optional number`
+            - `seed: optional number or null`
 
               A seed value to initialize the randomness, during sampling.
 
-            - `temperature: optional number`
+            - `temperature: optional number or null`
 
               A higher temperature increases randomness in the outputs.
 
-            - `top_p: optional number`
+            - `top_p: optional number or null`
 
               An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -6112,7 +5134,7 @@ Resume a fine-tune job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
-  - `error: object { code, message, param }`
+  - `error: object { code, message, param }  or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
 
@@ -6124,15 +5146,15 @@ Resume a fine-tune job.
 
       A human-readable error message.
 
-    - `param: string`
+    - `param: string or null`
 
       The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
 
-  - `fine_tuned_model: string`
+  - `fine_tuned_model: string or null`
 
     The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
 
-  - `finished_at: number`
+  - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
@@ -6140,7 +5162,7 @@ Resume a fine-tune job.
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
-    - `batch_size: optional "auto" or number`
+    - `batch_size: optional "auto" or number or null`
 
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
@@ -6211,7 +5233,7 @@ Resume a fine-tune job.
 
     - `"cancelled"`
 
-  - `trained_tokens: number`
+  - `trained_tokens: number or null`
 
     The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
 
@@ -6219,15 +5241,15 @@ Resume a fine-tune job.
 
     The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `validation_file: string`
+  - `validation_file: string or null`
 
     The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `estimated_finish: optional number`
+  - `estimated_finish: optional number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
-  - `integrations: optional array of FineTuningJobWandbIntegrationObject`
+  - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
 
@@ -6247,12 +5269,12 @@ Resume a fine-tune job.
 
         The name of the project that the new run will be created under.
 
-      - `entity: optional string`
+      - `entity: optional string or null`
 
         The entity to use for the run. This allows you to set the team or username of the WandB user that you would
         like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -6261,7 +5283,7 @@ Resume a fine-tune job.
         A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
         default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -6633,11 +5655,11 @@ Resume a fine-tune job.
 
             The sampling parameters for the model.
 
-            - `max_completions_tokens: optional number`
+            - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
 
-            - `reasoning_effort: optional ReasoningEffort`
+            - `reasoning_effort: optional ReasoningEffort or null`
 
               Constrains effort on reasoning for reasoning models. Currently supported
               values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -6661,15 +5683,15 @@ Resume a fine-tune job.
 
               - `"max"`
 
-            - `seed: optional number`
+            - `seed: optional number or null`
 
               A seed value to initialize the randomness, during sampling.
 
-            - `temperature: optional number`
+            - `temperature: optional number or null`
 
               A higher temperature increases randomness in the outputs.
 
-            - `top_p: optional number`
+            - `top_p: optional number or null`
 
               An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -7043,9 +6065,19 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 }
 ```
 
-## Domain Types
+## Retrieve fine-tuning job
 
-### Fine Tuning Job
+**get** `/fine_tuning/jobs/{fine_tuning_job_id}`
+
+Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](/docs/guides/model-optimization)
+
+### Path Parameters
+
+- `fine_tuning_job_id: string`
+
+### Returns
 
 - `FineTuningJob object { id, created_at, error, 16 more }`
 
@@ -7059,7 +6091,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
-  - `error: object { code, message, param }`
+  - `error: object { code, message, param }  or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
 
@@ -7071,15 +6103,15 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
       A human-readable error message.
 
-    - `param: string`
+    - `param: string or null`
 
       The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
 
-  - `fine_tuned_model: string`
+  - `fine_tuned_model: string or null`
 
     The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
 
-  - `finished_at: number`
+  - `finished_at: number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
@@ -7087,7 +6119,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
-    - `batch_size: optional "auto" or number`
+    - `batch_size: optional "auto" or number or null`
 
       Number of examples in each batch. A larger batch size means that model parameters
       are updated less frequently, but with lower variance.
@@ -7158,7 +6190,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
     - `"cancelled"`
 
-  - `trained_tokens: number`
+  - `trained_tokens: number or null`
 
     The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
 
@@ -7166,15 +6198,15 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
     The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `validation_file: string`
+  - `validation_file: string or null`
 
     The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
 
-  - `estimated_finish: optional number`
+  - `estimated_finish: optional number or null`
 
     The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
-  - `integrations: optional array of FineTuningJobWandbIntegrationObject`
+  - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
     A list of integrations to enable for this fine-tuning job.
 
@@ -7194,12 +6226,12 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
         The name of the project that the new run will be created under.
 
-      - `entity: optional string`
+      - `entity: optional string or null`
 
         The entity to use for the run. This allows you to set the team or username of the WandB user that you would
         like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-      - `name: optional string`
+      - `name: optional string or null`
 
         A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -7208,7 +6240,7 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
         A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
         default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -7580,11 +6612,11 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
             The sampling parameters for the model.
 
-            - `max_completions_tokens: optional number`
+            - `max_completions_tokens: optional number or null`
 
               The maximum number of tokens the grader model may generate in its response.
 
-            - `reasoning_effort: optional ReasoningEffort`
+            - `reasoning_effort: optional ReasoningEffort or null`
 
               Constrains effort on reasoning for reasoning models. Currently supported
               values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -7608,15 +6640,983 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
               - `"max"`
 
-            - `seed: optional number`
+            - `seed: optional number or null`
 
               A seed value to initialize the randomness, during sampling.
 
-            - `temperature: optional number`
+            - `temperature: optional number or null`
 
               A higher temperature increases randomness in the outputs.
 
-            - `top_p: optional number`
+            - `top_p: optional number or null`
+
+              An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
+
+        - `MultiGrader object { calculate_output, graders, name, type }`
+
+          A MultiGrader object combines the output of multiple graders to produce a single score.
+
+          - `calculate_output: string`
+
+            A formula to calculate the output based on grader results.
+
+          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
+
+            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+            - `StringCheckGrader object { input, name, operation, 2 more }`
+
+              A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+            - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
+
+              A TextSimilarityGrader object which grades text based on similarity metrics.
+
+            - `PythonGrader object { name, source, type, image_tag }`
+
+              A PythonGrader object that runs a python script on the input.
+
+            - `ScoreModelGrader object { input, model, name, 3 more }`
+
+              A ScoreModelGrader object that uses a model to assign a score to the input.
+
+            - `LabelModelGrader object { input, labels, model, 3 more }`
+
+              A LabelModelGrader object which uses a model to assign labels to each item
+              in the evaluation.
+
+              - `input: array of object { content, role, type }`
+
+                - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+                  Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+                  - `TextInput = string`
+
+                    A text input to the model.
+
+                  - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+                    A text input to the model.
+
+                  - `OutputText object { text, type }`
+
+                    A text output from the model.
+
+                    - `text: string`
+
+                      The text output from the model.
+
+                    - `type: "output_text"`
+
+                      The type of the output text. Always `output_text`.
+
+                      - `"output_text"`
+
+                  - `InputImage object { image_url, type, detail }`
+
+                    An image input block used within EvalItem content arrays.
+
+                    - `image_url: string`
+
+                      The URL of the image input.
+
+                    - `type: "input_image"`
+
+                      The type of the image input. Always `input_image`.
+
+                      - `"input_image"`
+
+                    - `detail: optional string`
+
+                      The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                  - `ResponseInputAudio object { input_audio, type }`
+
+                    An audio input to the model.
+
+                  - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                    A list of inputs, each of which may be either an input text, output text, input
+                    image, or input audio object.
+
+                - `role: "user" or "assistant" or "system" or "developer"`
+
+                  The role of the message input. One of `user`, `assistant`, `system`, or
+                  `developer`.
+
+                  - `"user"`
+
+                  - `"assistant"`
+
+                  - `"system"`
+
+                  - `"developer"`
+
+                - `type: optional "message"`
+
+                  The type of the message input. Always `message`.
+
+                  - `"message"`
+
+              - `labels: array of string`
+
+                The labels to assign to each item in the evaluation.
+
+              - `model: string`
+
+                The model to use for the evaluation. Must support structured outputs.
+
+              - `name: string`
+
+                The name of the grader.
+
+              - `passing_labels: array of string`
+
+                The labels that indicate a passing result. Must be a subset of labels.
+
+              - `type: "label_model"`
+
+                The object type, which is always `label_model`.
+
+                - `"label_model"`
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `type: "multi"`
+
+            The object type, which is always `multi`.
+
+            - `"multi"`
+
+      - `hyperparameters: optional ReinforcementHyperparameters`
+
+        The hyperparameters used for the reinforcement fine-tuning job.
+
+        - `batch_size: optional "auto" or number`
+
+          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `compute_multiplier: optional "auto" or number`
+
+          Multiplier on amount of compute used for exploring search space during training.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `eval_interval: optional "auto" or number`
+
+          The number of training steps between evaluation runs.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `eval_samples: optional "auto" or number`
+
+          Number of evaluation samples to generate per training step.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `learning_rate_multiplier: optional "auto" or number`
+
+          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `n_epochs: optional "auto" or number`
+
+          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `reasoning_effort: optional "default" or "low" or "medium" or "high"`
+
+          Level of reasoning effort.
+
+          - `"default"`
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+    - `supervised: optional SupervisedMethod`
+
+      Configuration for the supervised fine-tuning method.
+
+      - `hyperparameters: optional SupervisedHyperparameters`
+
+        The hyperparameters used for the fine-tuning job.
+
+        - `batch_size: optional "auto" or number`
+
+          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `learning_rate_multiplier: optional "auto" or number`
+
+          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `n_epochs: optional "auto" or number`
+
+          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "created_at": 0,
+  "error": {
+    "code": "code",
+    "message": "message",
+    "param": "param"
+  },
+  "fine_tuned_model": "fine_tuned_model",
+  "finished_at": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
+  "model": "model",
+  "object": "fine_tuning.job",
+  "organization_id": "organization_id",
+  "result_files": [
+    "file-abc123"
+  ],
+  "seed": 0,
+  "status": "validating_files",
+  "trained_tokens": 0,
+  "training_file": "training_file",
+  "validation_file": "validation_file",
+  "estimated_finish": 0,
+  "integrations": [
+    {
+      "type": "wandb",
+      "wandb": {
+        "project": "my-wandb-project",
+        "entity": "entity",
+        "name": "name",
+        "tags": [
+          "custom-tag"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "foo": "string"
+  },
+  "method": {
+    "type": "supervised",
+    "dpo": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "beta": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    },
+    "reinforcement": {
+      "grader": {
+        "input": "input",
+        "name": "name",
+        "operation": "eq",
+        "reference": "reference",
+        "type": "string_check"
+      },
+      "hyperparameters": {
+        "batch_size": "auto",
+        "compute_multiplier": "auto",
+        "eval_interval": "auto",
+        "eval_samples": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto",
+        "reasoning_effort": "default"
+      }
+    },
+    "supervised": {
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      }
+    }
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "object": "fine_tuning.job",
+  "id": "ftjob-abc123",
+  "model": "davinci-002",
+  "created_at": 1692661014,
+  "finished_at": 1692661190,
+  "fine_tuned_model": "ft:davinci-002:my-org:custom_suffix:7q8mpxmy",
+  "organization_id": "org-123",
+  "result_files": [
+      "file-abc123"
+  ],
+  "status": "succeeded",
+  "validation_file": null,
+  "training_file": "file-abc123",
+  "hyperparameters": {
+      "n_epochs": 4,
+      "batch_size": 1,
+      "learning_rate_multiplier": 1.0
+  },
+  "trained_tokens": 5768,
+  "integrations": [],
+  "seed": 0,
+  "estimated_finish": 0,
+  "method": {
+    "type": "supervised",
+    "supervised": {
+      "hyperparameters": {
+        "n_epochs": 4,
+        "batch_size": 1,
+        "learning_rate_multiplier": 1.0
+      }
+    }
+  }
+}
+```
+
+## Domain Types
+
+### Fine Tuning Job
+
+- `FineTuningJob object { id, created_at, error, 16 more }`
+
+  The `fine_tuning.job` object represents a fine-tuning job that has been created through the API.
+
+  - `id: string`
+
+    The object identifier, which can be referenced in the API endpoints.
+
+  - `created_at: number`
+
+    The Unix timestamp (in seconds) for when the fine-tuning job was created.
+
+  - `error: object { code, message, param }  or null`
+
+    For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
+
+    - `code: string`
+
+      A machine-readable error code.
+
+    - `message: string`
+
+      A human-readable error message.
+
+    - `param: string or null`
+
+      The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
+
+  - `fine_tuned_model: string or null`
+
+    The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running.
+
+  - `finished_at: number or null`
+
+    The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
+
+  - `hyperparameters: object { batch_size, learning_rate_multiplier, n_epochs }`
+
+    The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
+
+    - `batch_size: optional "auto" or number or null`
+
+      Number of examples in each batch. A larger batch size means that model parameters
+      are updated less frequently, but with lower variance.
+
+      - `"auto"`
+
+        - `"auto"`
+
+      - `number`
+
+    - `learning_rate_multiplier: optional "auto" or number`
+
+      Scaling factor for the learning rate. A smaller learning rate may be useful to avoid
+      overfitting.
+
+      - `"auto"`
+
+        - `"auto"`
+
+      - `number`
+
+    - `n_epochs: optional "auto" or number`
+
+      The number of epochs to train the model for. An epoch refers to one full cycle
+      through the training dataset.
+
+      - `"auto"`
+
+        - `"auto"`
+
+      - `number`
+
+  - `model: string`
+
+    The base model that is being fine-tuned.
+
+  - `object: "fine_tuning.job"`
+
+    The object type, which is always "fine_tuning.job".
+
+    - `"fine_tuning.job"`
+
+  - `organization_id: string`
+
+    The organization that owns the fine-tuning job.
+
+  - `result_files: array of string`
+
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents).
+
+  - `seed: number`
+
+    The seed used for the fine-tuning job.
+
+  - `status: "validating_files" or "queued" or "running" or 3 more`
+
+    The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`.
+
+    - `"validating_files"`
+
+    - `"queued"`
+
+    - `"running"`
+
+    - `"succeeded"`
+
+    - `"failed"`
+
+    - `"cancelled"`
+
+  - `trained_tokens: number or null`
+
+    The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
+
+  - `training_file: string`
+
+    The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents).
+
+  - `validation_file: string or null`
+
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents).
+
+  - `estimated_finish: optional number or null`
+
+    The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
+
+  - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
+
+    A list of integrations to enable for this fine-tuning job.
+
+    - `type: "wandb"`
+
+      The type of the integration being enabled for the fine-tuning job
+
+      - `"wandb"`
+
+    - `wandb: FineTuningJobWandbIntegration`
+
+      The settings for your integration with Weights and Biases. This payload specifies the project that
+      metrics will be sent to. Optionally, you can set an explicit display name for your run, add tags
+      to your run, and set a default entity (team, username, etc) to be associated with your run.
+
+      - `project: string`
+
+        The name of the project that the new run will be created under.
+
+      - `entity: optional string or null`
+
+        The entity to use for the run. This allows you to set the team or username of the WandB user that you would
+        like associated with the run. If not set, the default entity for the registered WandB API key is used.
+
+      - `name: optional string or null`
+
+        A display name to set for the run. If not set, we will use the Job ID as the name.
+
+      - `tags: optional array of string`
+
+        A list of tags to be attached to the newly created run. These tags are passed through directly to WandB. Some
+        default tags are generated by OpenAI: "openai/finetune", "openai/{base-model}", "openai/{ftjob-abcdef}".
+
+  - `metadata: optional Metadata or null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
+  - `method: optional object { type, dpo, reinforcement, supervised }`
+
+    The method used for fine-tuning.
+
+    - `type: "supervised" or "dpo" or "reinforcement"`
+
+      The type of method. Is either `supervised`, `dpo`, or `reinforcement`.
+
+      - `"supervised"`
+
+      - `"dpo"`
+
+      - `"reinforcement"`
+
+    - `dpo: optional DpoMethod`
+
+      Configuration for the DPO fine-tuning method.
+
+      - `hyperparameters: optional DpoHyperparameters`
+
+        The hyperparameters used for the DPO fine-tuning job.
+
+        - `batch_size: optional "auto" or number`
+
+          Number of examples in each batch. A larger batch size means that model parameters are updated less frequently, but with lower variance.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `beta: optional "auto" or number`
+
+          The beta value for the DPO method. A higher beta value will increase the weight of the penalty between the policy and reference model.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `learning_rate_multiplier: optional "auto" or number`
+
+          Scaling factor for the learning rate. A smaller learning rate may be useful to avoid overfitting.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+        - `n_epochs: optional "auto" or number`
+
+          The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+
+          - `"auto"`
+
+            - `"auto"`
+
+          - `number`
+
+    - `reinforcement: optional ReinforcementMethod`
+
+      Configuration for the reinforcement fine-tuning method.
+
+      - `grader: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
+
+        The grader used for the fine-tuning job.
+
+        - `StringCheckGrader object { input, name, operation, 2 more }`
+
+          A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+
+          - `input: string`
+
+            The input text. This may include template strings.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `operation: "eq" or "ne" or "like" or "ilike"`
+
+            The string check operation to perform. One of `eq`, `ne`, `like`, or `ilike`.
+
+            - `"eq"`
+
+            - `"ne"`
+
+            - `"like"`
+
+            - `"ilike"`
+
+          - `reference: string`
+
+            The reference text. This may include template strings.
+
+          - `type: "string_check"`
+
+            The object type, which is always `string_check`.
+
+            - `"string_check"`
+
+        - `TextSimilarityGrader object { evaluation_metric, input, name, 2 more }`
+
+          A TextSimilarityGrader object which grades text based on similarity metrics.
+
+          - `evaluation_metric: "cosine" or "fuzzy_match" or "bleu" or 8 more`
+
+            The evaluation metric to use. One of `cosine`, `fuzzy_match`, `bleu`,
+            `gleu`, `meteor`, `rouge_1`, `rouge_2`, `rouge_3`, `rouge_4`, `rouge_5`,
+            or `rouge_l`.
+
+            - `"cosine"`
+
+            - `"fuzzy_match"`
+
+            - `"bleu"`
+
+            - `"gleu"`
+
+            - `"meteor"`
+
+            - `"rouge_1"`
+
+            - `"rouge_2"`
+
+            - `"rouge_3"`
+
+            - `"rouge_4"`
+
+            - `"rouge_5"`
+
+            - `"rouge_l"`
+
+          - `input: string`
+
+            The text being graded.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `reference: string`
+
+            The text being graded against.
+
+          - `type: "text_similarity"`
+
+            The type of grader.
+
+            - `"text_similarity"`
+
+        - `PythonGrader object { name, source, type, image_tag }`
+
+          A PythonGrader object that runs a python script on the input.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `source: string`
+
+            The source code of the python script.
+
+          - `type: "python"`
+
+            The object type, which is always `python`.
+
+            - `"python"`
+
+          - `image_tag: optional string`
+
+            The image tag to use for the python script.
+
+        - `ScoreModelGrader object { input, model, name, 3 more }`
+
+          A ScoreModelGrader object that uses a model to assign a score to the input.
+
+          - `input: array of object { content, role, type }`
+
+            The input messages evaluated by the grader. Supports text, output text, input image, and input audio content blocks, and may include template strings.
+
+            - `content: string or ResponseInputText or object { text, type }  or 3 more`
+
+              Inputs to the model - can contain template strings. Supports text, output text, input images, and input audio, either as a single item or an array of items.
+
+              - `TextInput = string`
+
+                A text input to the model.
+
+              - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+                A text input to the model.
+
+                - `text: string`
+
+                  The text input to the model.
+
+                - `type: "input_text"`
+
+                  The type of the input item. Always `input_text`.
+
+                  - `"input_text"`
+
+                - `prompt_cache_breakpoint: optional object { mode }`
+
+                  Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                  - `mode: "explicit"`
+
+                    The breakpoint mode. Always `explicit`.
+
+                    - `"explicit"`
+
+              - `OutputText object { text, type }`
+
+                A text output from the model.
+
+                - `text: string`
+
+                  The text output from the model.
+
+                - `type: "output_text"`
+
+                  The type of the output text. Always `output_text`.
+
+                  - `"output_text"`
+
+              - `InputImage object { image_url, type, detail }`
+
+                An image input block used within EvalItem content arrays.
+
+                - `image_url: string`
+
+                  The URL of the image input.
+
+                - `type: "input_image"`
+
+                  The type of the image input. Always `input_image`.
+
+                  - `"input_image"`
+
+                - `detail: optional string`
+
+                  The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+              - `ResponseInputAudio object { input_audio, type }`
+
+                An audio input to the model.
+
+                - `input_audio: object { data, format }`
+
+                  - `data: string`
+
+                    Base64-encoded audio data.
+
+                  - `format: "mp3" or "wav"`
+
+                    The format of the audio data. Currently supported formats are `mp3` and
+                    `wav`.
+
+                    - `"mp3"`
+
+                    - `"wav"`
+
+                - `type: "input_audio"`
+
+                  The type of the input item. Always `input_audio`.
+
+                  - `"input_audio"`
+
+              - `GraderInputs = array of string or ResponseInputText or object { text, type }  or 2 more`
+
+                A list of inputs, each of which may be either an input text, output text, input
+                image, or input audio object.
+
+                - `TextInput = string`
+
+                  A text input to the model.
+
+                - `ResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+                  A text input to the model.
+
+                - `OutputText object { text, type }`
+
+                  A text output from the model.
+
+                  - `text: string`
+
+                    The text output from the model.
+
+                  - `type: "output_text"`
+
+                    The type of the output text. Always `output_text`.
+
+                    - `"output_text"`
+
+                - `InputImage object { image_url, type, detail }`
+
+                  An image input block used within EvalItem content arrays.
+
+                  - `image_url: string`
+
+                    The URL of the image input.
+
+                  - `type: "input_image"`
+
+                    The type of the image input. Always `input_image`.
+
+                    - `"input_image"`
+
+                  - `detail: optional string`
+
+                    The detail level of the image to be sent to the model. One of `high`, `low`, or `auto`. Defaults to `auto`.
+
+                - `ResponseInputAudio object { input_audio, type }`
+
+                  An audio input to the model.
+
+            - `role: "user" or "assistant" or "system" or "developer"`
+
+              The role of the message input. One of `user`, `assistant`, `system`, or
+              `developer`.
+
+              - `"user"`
+
+              - `"assistant"`
+
+              - `"system"`
+
+              - `"developer"`
+
+            - `type: optional "message"`
+
+              The type of the message input. Always `message`.
+
+              - `"message"`
+
+          - `model: string`
+
+            The model to use for the evaluation.
+
+          - `name: string`
+
+            The name of the grader.
+
+          - `type: "score_model"`
+
+            The object type, which is always `score_model`.
+
+            - `"score_model"`
+
+          - `range: optional array of number`
+
+            The range of the score. Defaults to `[0, 1]`.
+
+          - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
+
+            The sampling parameters for the model.
+
+            - `max_completions_tokens: optional number or null`
+
+              The maximum number of tokens the grader model may generate in its response.
+
+            - `reasoning_effort: optional ReasoningEffort or null`
+
+              Constrains effort on reasoning for reasoning models. Currently supported
+              values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
+              Reducing reasoning effort can result in faster responses and fewer tokens
+              used on reasoning in a response. Not all reasoning models support every
+              value. See the
+              [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
+              for model-specific support.
+
+              - `"none"`
+
+              - `"minimal"`
+
+              - `"low"`
+
+              - `"medium"`
+
+              - `"high"`
+
+              - `"xhigh"`
+
+              - `"max"`
+
+            - `seed: optional number or null`
+
+              A seed value to initialize the randomness, during sampling.
+
+            - `temperature: optional number or null`
+
+              A higher temperature increases randomness in the outputs.
+
+            - `top_p: optional number or null`
 
               An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
@@ -7931,12 +7931,12 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
     The name of the project that the new run will be created under.
 
-  - `entity: optional string`
+  - `entity: optional string or null`
 
     The entity to use for the run. This allows you to set the team or username of the WandB user that you would
     like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -7965,12 +7965,12 @@ curl -X POST https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/resume \
 
       The name of the project that the new run will be created under.
 
-    - `entity: optional string`
+    - `entity: optional string or null`
 
       The entity to use for the run. This allows you to set the team or username of the WandB user that you would
       like associated with the run. If not set, the default entity for the registered WandB API key is used.
 
-    - `name: optional string`
+    - `name: optional string or null`
 
       A display name to set for the run. If not set, we will use the Job ID as the name.
 
@@ -8055,9 +8055,9 @@ List checkpoints for a fine-tuning job.
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 

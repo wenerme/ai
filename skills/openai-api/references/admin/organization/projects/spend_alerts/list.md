@@ -66,7 +66,7 @@ Lists project spend alerts.
 
       - `"email"`
 
-    - `subject_prefix: optional string`
+    - `subject_prefix: optional string or null`
 
       Optional subject prefix for alert emails.
 
@@ -80,7 +80,7 @@ Lists project spend alerts.
 
     The alert threshold amount, in cents.
 
-- `first_id: string`
+- `first_id: string or null`
 
   The ID of the first spend alert in this page.
 
@@ -88,7 +88,7 @@ Lists project spend alerts.
 
   Whether more spend alerts are available when paginating.
 
-- `last_id: string`
+- `last_id: string or null`
 
   The ID of the last spend alert in this page.
 

@@ -2,7 +2,7 @@ In a typical AI workflow, you might pass the same input tokens over and over to
 a model. The Gemini API offers implicit caching to optimize performance and costs.
 
 > [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** , which only supports implicit caching. Explicit caching (manually creating and managing cache objects) is not supported in the Interactions API. You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/caching).
+> **Note:** The **Interactions API** only supports implicit caching. Explicit caching (manually creating and managing cache objects) is not supported in the Interactions API. To use explicit caching, switch to the [generateContent API](https://ai.google.dev/gemini-api/docs/generate-content/caching).
 
 ## Implicit caching
 

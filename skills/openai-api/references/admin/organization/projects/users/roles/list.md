@@ -38,7 +38,7 @@ Lists the project roles assigned to a user within a project.
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -46,23 +46,23 @@ Lists the project roles assigned to a user within a project.
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -82,7 +82,7 @@ Lists the project roles assigned to a user within a project.
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
@@ -90,7 +90,7 @@ Lists the project roles assigned to a user within a project.
 
   Whether additional assignments are available when paginating.
 
-- `next: string`
+- `next: string or null`
 
   Cursor to fetch the next page of results, or `null` when there are no more assignments.
 

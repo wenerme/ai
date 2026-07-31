@@ -24,7 +24,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
     - `"babbage-002"`
 
-- `prompt: string or array of string or array of number or array of array of number`
+- `prompt: string or array of string or array of number or array of array of number or null`
 
   The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.
 
@@ -38,7 +38,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   - `array of array of number`
 
-- `best_of: optional number`
+- `best_of: optional number or null`
 
   Generates `best_of` completions server-side and returns the "best" (the one with the highest log probability per token). Results cannot be streamed.
 
@@ -46,17 +46,17 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   **Note:** Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for `max_tokens` and `stop`.
 
-- `echo: optional boolean`
+- `echo: optional boolean or null`
 
   Echo back the prompt in addition to the completion
 
-- `frequency_penalty: optional number`
+- `frequency_penalty: optional number or null`
 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
 
   [See more information about frequency and presence penalties.](/docs/guides/text-generation)
 
-- `logit_bias: optional map[number]`
+- `logit_bias: optional map[number] or null`
 
   Modify the likelihood of specified tokens appearing in the completion.
 
@@ -64,37 +64,37 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   As an example, you can pass `{"50256": -100}` to prevent the <|endoftext|> token from being generated.
 
-- `logprobs: optional number`
+- `logprobs: optional number or null`
 
   Include the log probabilities on the `logprobs` most likely output tokens, as well the chosen tokens. For example, if `logprobs` is 5, the API will return a list of the 5 most likely tokens. The API will always return the `logprob` of the sampled token, so there may be up to `logprobs+1` elements in the response.
 
   The maximum value for `logprobs` is 5.
 
-- `max_tokens: optional number`
+- `max_tokens: optional number or null`
 
   The maximum number of [tokens](/tokenizer) that can be generated in the completion.
 
   The token count of your prompt plus `max_tokens` cannot exceed the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.
 
-- `n: optional number`
+- `n: optional number or null`
 
   How many completions to generate for each prompt.
 
   **Note:** Because this parameter generates many completions, it can quickly consume your token quota. Use carefully and ensure that you have reasonable settings for `max_tokens` and `stop`.
 
-- `presence_penalty: optional number`
+- `presence_penalty: optional number or null`
 
   Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
 
   [See more information about frequency and presence penalties.](/docs/guides/text-generation)
 
-- `seed: optional number`
+- `seed: optional number or null`
 
   If specified, our system will make a best effort to sample deterministically, such that repeated requests with the same `seed` and parameters should return the same result.
 
   Determinism is not guaranteed, and you should refer to the `system_fingerprint` response parameter to monitor changes in the backend.
 
-- `stop: optional string or array of string`
+- `stop: optional string or array of string or null`
 
   Not supported with latest reasoning models `o3` and `o4-mini`.
 
@@ -105,11 +105,11 @@ Returns a completion object, or a sequence of completion objects if the request 
 
   - `array of string`
 
-- `stream: optional boolean`
+- `stream: optional boolean or null`
 
   Whether to stream back partial progress. If set, tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions).
 
-- `stream_options: optional ChatCompletionStreamOptions`
+- `stream_options: optional ChatCompletionStreamOptions or null`
 
   Options for streaming response. Only set this when you set `stream: true`.
 
@@ -134,19 +134,19 @@ Returns a completion object, or a sequence of completion objects if the request 
     value. **NOTE:** If the stream is interrupted, you may not receive the
     final usage chunk which contains the total token usage for the request.
 
-- `suffix: optional string`
+- `suffix: optional string or null`
 
   The suffix that comes after a completion of inserted text.
 
   This parameter is only supported for `gpt-3.5-turbo-instruct`.
 
-- `temperature: optional number`
+- `temperature: optional number or null`
 
   What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 
   We generally recommend altering this or `top_p` but not both.
 
-- `top_p: optional number`
+- `top_p: optional number or null`
 
   An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
 
@@ -184,7 +184,7 @@ Returns a completion object, or a sequence of completion objects if the request 
 
     - `index: number`
 
-    - `logprobs: object { text_offset, token_logprobs, tokens, top_logprobs }`
+    - `logprobs: object { text_offset, token_logprobs, tokens, top_logprobs }  or null`
 
       - `text_offset: optional array of number`
 

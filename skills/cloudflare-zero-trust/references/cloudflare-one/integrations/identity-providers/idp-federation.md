@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # IdP federation
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 IdP federation allows organizations with multiple Cloudflare accounts to use a single identity provider (IdP) configuration across accounts. Instead of configuring the same IdP (for example, Okta or Entra ID) separately in every account, you configure it once in a source account and share it with the other accounts in your organization.
 
@@ -30,8 +30,8 @@ When a user in a recipient account authenticates, the request is routed through 
 ## Prerequisites
 
 * You must have permission to edit the source IdP in the source account.
-* You must be a member of a Cloudflare organization.
-* The source account must belong to a Cloudflare organization.
+* You must be a member of a [Cloudflare Organization](https://developers.cloudflare.com/fundamentals/organizations/).
+* The source account must belong to a Cloudflare Organization.
 
 ## Share an IdP
 
@@ -68,12 +68,12 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_feder
 
 #### 2\. Share the grant
 
-You can share the grant with specific accounts or with your entire Cloudflare organization. In the `recipients` array, target each recipient with one of the following fields:
+You can share the grant with specific accounts or with your entire Cloudflare Organization. In the `recipients` array, target each recipient with one of the following fields:
 
 * `recipient_account_id`: Shares the IdP with a single account. Repeat the field for each account you want to add.
-* `organization_id`: Shares the IdP with every account in your Cloudflare organization.
+* `organization_id`: Shares the IdP with every account in your Cloudflare Organization.
 
-Specify only one of these fields per recipient. If you provide neither, the grant is shared with your entire organization by default.
+Specify only one of these fields per recipient. If you provide neither, the grant is shared with your entire Organization by default.
 
 To share the grant with one or more specific accounts:
 
@@ -99,7 +99,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \
 	}'
 ```
 
-To share the grant with every account in your organization, replace the `recipients` array with your organization ID:
+To share the grant with every account in your Organization, replace the `recipients` array with your Organization ID:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \
@@ -123,7 +123,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/shares" \
 	}'
 ```
 
-Each recipient account is automatically provisioned with a read-only IdP connection that points to the bridge. When you share with an organization, every account in the organization receives the connection.
+Each recipient account is automatically provisioned with a read-only IdP connection that points to the bridge. When you share with an Organization, every account in the Organization receives the connection.
 
 ## Stop Sharing an IdP
 
@@ -172,5 +172,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/#page","headline":"IdP federation · Cloudflare One docs","description":"Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/#page","headline":"IdP federation · Cloudflare One docs","description":"Share an identity provider across multiple Cloudflare accounts in your organization using IdP federation.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/idp-federation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}
 ```

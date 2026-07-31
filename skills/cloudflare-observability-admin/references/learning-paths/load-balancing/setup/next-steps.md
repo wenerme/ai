@@ -48,6 +48,7 @@ You may want to further customize how your load balancer routes traffic or integ
 * [DNS persistence](https://developers.cloudflare.com/load-balancing/additional-options/dns-persistence/)
 * [Load Balancing with the China Network](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/)
 * [Override HTTP Host headers](https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/)
+* [CNAME flattening for endpoints](https://developers.cloudflare.com/load-balancing/additional-options/cname-flattening/)
 * [Custom load balancing rules](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/)
 * [Integrate with PagerDuty](https://developers.cloudflare.com/load-balancing/additional-options/pagerduty-integration/)
 * [Additional DNS records](https://developers.cloudflare.com/load-balancing/additional-options/additional-dns-records/)

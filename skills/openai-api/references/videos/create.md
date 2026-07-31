@@ -70,7 +70,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Unique identifier for the video job.
 
-  - `completed_at: number`
+  - `completed_at: number or null`
 
     Unix timestamp (seconds) for when the job completed, if finished.
 
@@ -78,7 +78,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Unix timestamp (seconds) for when the job was created.
 
-  - `error: VideoCreateError`
+  - `error: VideoCreateError or null`
 
     Error payload that explains why generation failed, if applicable.
 
@@ -90,7 +90,7 @@ Create a new video generation job from a prompt and optional reference assets.
 
       A human-readable description of the error that was returned.
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     Unix timestamp (seconds) for when the downloadable assets expire, if set.
 
@@ -122,11 +122,11 @@ Create a new video generation job from a prompt and optional reference assets.
 
     Approximate completion percentage for the generation task.
 
-  - `prompt: string`
+  - `prompt: string or null`
 
     The prompt that was used to generate the video.
 
-  - `remixed_from_video_id: string`
+  - `remixed_from_video_id: string or null`
 
     Identifier of the source video if this video is a remix.
 

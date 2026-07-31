@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Check the logs
 
@@ -28,6 +28,16 @@ To enable debug logging, use a command similar to the following.
 ```sh
 cd /etc/keyless
 sudo -u keyless gokeyless --loglevel 0
+```
+
+When running in a container, `gokeyless` is the container's main process (PID 1), so the host/systemd command above does not apply. Instead, set the log level when you start the container and read logs from the container runtime:
+
+```sh
+# Set verbosity via environment variable
+docker run ... -e KEYLESS_LOGLEVEL=0 ghcr.io/cloudflare/gokeyless:latest
+
+# Read logs
+docker logs -f <CONTAINER>   # or: kubectl logs -f <POD>
 ```
 
 ## Browsers are seeing a TLS connection failure after trying to connect
@@ -109,5 +119,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/#page","headline":"Troubleshooting Keyless SSL · Cloudflare SSL/TLS docs","description":"Review how to troubleshoot issues when using Cloudflare Keyless SSL.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/#page","headline":"Troubleshooting Keyless SSL · Cloudflare SSL/TLS docs","description":"Review how to troubleshoot issues when using Cloudflare Keyless SSL.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

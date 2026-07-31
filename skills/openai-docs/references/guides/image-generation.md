@@ -13,8 +13,6 @@ Starting with `gpt-image-1` and later models, the [Image API](https://developers
 - **Generations**: [Generate images](#generate-images) from scratch based on a text prompt
 - **Edits**: [Modify existing images](#edit-images) using a new prompt, either partially or entirely
 
-The Image API also includes a variations endpoint for models that support it, such as DALL·E 2.
-
 ### Responses API
 
 The [Responses API](https://developers.openai.com/api/reference/resources/responses/methods/create#responses-create-tools) allows you to generate images as part of conversations or multi-step flows. It supports image generation as a [built-in tool](https://developers.openai.com/api/docs/guides/tools?api-mode=responses), and accepts image inputs and outputs within context.

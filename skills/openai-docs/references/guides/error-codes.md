@@ -14,7 +14,7 @@ This guide includes an overview on error codes you might see from both the [API]
 | 401 - IP not authorized                                          | **Cause:** Your request IP does not match the configured IP allowlist for your project or organization. <br /> **Solution:** Send the request from the correct IP, or update your [IP allowlist settings](https://platform.openai.com/settings/organization/security/ip-allowlist).               |
 | 403 - Country, region, or territory not supported                | **Cause:** You are accessing the API from an unsupported country, region, or territory. <br /> **Solution:** Please see [this page](https://developers.openai.com/api/docs/supported-countries) for more information.                                                                                                          |
 | 429 - Credit balance exhausted                                   | **Code:** `credit_balance_exhausted` <br /> **Cause:** Your organization has no prepaid credits remaining. <br /> **Solution:** [Add credits](https://platform.openai.com/settings/organization/billing) to continue using the API.                                                               |
-| 429 - Rate limit reached for requests                            | **Cause:** You are sending requests too quickly. <br /> **Solution:** Pace your requests. Read the [Rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).                                                                                                                                              |
+| 429 - Rate limit reached for requests                            | **Cause:** You are sending requests too quickly. <br /> **Solution:** Pace your requests and follow the `Retry-After` header when it's present. Read the [Rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).                                                                                        |
 | 429 - Organization spend limit reached                           | **Code:** `organization_spend_limit_exceeded` <br /> **Cause:** Your organization reached its enforced spend limit. <br /> **Solution:** Increase or remove your [organization spend limit](https://platform.openai.com/settings/organization/limits).                                            |
 | 429 - Project spend limit reached                                | **Code:** `project_spend_limit_exceeded` <br /> **Cause:** Your project reached its enforced spend limit. <br /> **Solution:** Increase or remove the spend limit in your [project settings](https://platform.openai.com/settings/).                                                              |
 | 429 - Organization usage limit reached                           | **Code:** `organization_usage_limit_exceeded` <br /> **Cause:** Your organization reached its OpenAI-assigned usage limit. <br /> **Solution:** Request a higher [approved usage limit](https://platform.openai.com/settings/organization/limits) or [contact support](https://help.openai.com/). |
@@ -23,6 +23,8 @@ This guide includes an overview on error codes you might see from both the [API]
 | 503 - Slow Down                                                  | **Cause:** A sudden increase in your request rate is impacting service reliability. <br /> **Solution:** Please reduce your request rate to its original level, maintain a consistent rate for at least 15 minutes, and then gradually increase it.                                               |
 
 For billing-related errors, inspect `error.code` to identify the specific cause. The broader `error.type` can still be `insufficient_quota`.
+
+Retrying billing, spend, or quota errors won't restore API access. Update the relevant credits or limits before sending another request.
 
 ## WebSocket mode errors
 
@@ -92,7 +94,7 @@ This error message indicates that you have hit your assigned rate limit for the 
 To resolve this error, please follow these steps:
 
 - Pace your requests and avoid making unnecessary or redundant calls.
-- If you are using a loop or a script, make sure to implement a backoff mechanism or a retry logic that respects the rate limit and the response headers. You can read more about our rate limiting policy and best practices in our [rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).
+- If a `Retry-After` header is present, wait at least as long as it specifies before trying again. If it's missing, use exponential backoff with jitter and limit the number of retries. Each official SDK already honors this header for eligible retries. Read more in our [rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).
 - If you are sharing your organization with other users, note that limits are applied per organization and not per user. It is worth checking on the usage of the rest of your team as this will contribute to the limit.
 - If you are using a free or low-tier plan, consider upgrading to a pay-as-you-go plan that offers a higher rate limit. You can compare the restrictions of each plan in our [rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).
 - Reach out to your organization owner to increase the rate limits on your project
@@ -151,7 +153,7 @@ To resolve this error, please follow these steps:
 | InternalServerError      | **Cause:** Issue on our side. <br /> **Solution:** Retry your request after a brief wait and contact us if the issue persists.                                                                                                                                                                                                                                                                                                           |
 | NotFoundError            | **Cause:** Requested resource does not exist. <br /> **Solution:** Ensure you are the correct resource identifier.                                                                                                                                                                                                                                                                                                                       |
 | PermissionDeniedError    | **Cause:** You don't have access to the requested resource. <br /> **Solution:** Ensure you are using the correct API key, organization ID, and resource ID.                                                                                                                                                                                                                                                                             |
-| RateLimitError           | **Cause:** You have hit your assigned rate limit. <br /> **Solution:** Pace your requests. Read more in our [Rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).                                                                                                                                                                                                                                                                            |
+| RateLimitError           | **Cause:** You have hit your assigned rate limit. <br /> **Solution:** Pace your requests and follow `Retry-After` when it's present. Each official SDK already honors this header for eligible retries. Read more in our [Rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits).                                                                                                                                                              |
 | UnprocessableEntityError | **Cause:** Unable to process the request despite the format being correct. <br /> **Solution:** Please try the request again.                                                                                                                                                                                                                                                                                                            |
 
 APIConnectionError
@@ -220,8 +222,8 @@ We impose rate limits to ensure fair and efficient use of our resources and to p
 
 If you encounter a `RateLimitError`, please try the following steps:
 
-- Send fewer tokens or requests or slow down. You may need to reduce the frequency or volume of your requests, batch your tokens, or implement exponential backoff. You can read our [Rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits) for more details.
-- Wait until your rate limit resets (one minute) and retry your request. The error message should give you a sense of your usage rate and permitted usage.
+- Send fewer tokens or requests or slow down. You may need to reduce the frequency or volume of your requests, batch your tokens, or use exponential backoff when `Retry-After` isn't present. You can read our [Rate limit guide](https://developers.openai.com/api/docs/guides/rate-limits) for more details.
+- When `Retry-After` is present, wait at least as long as it specifies before retrying. The official Python library already honors this header for eligible retries.
 - You can also check your API usage statistics from your account dashboard.
 
 ### Persistent errors

@@ -1,5 +1,230 @@
 # Threads
 
+## Delete ChatKit thread
+
+**delete** `/chatkit/threads/{thread_id}`
+
+Delete a ChatKit thread along with its items and stored attachments.
+
+### Path Parameters
+
+- `thread_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier of the deleted thread.
+
+- `deleted: boolean`
+
+  Indicates that the thread has been deleted.
+
+- `object: "chatkit.thread.deleted"`
+
+  Type discriminator that is always `chatkit.thread.deleted`.
+
+  - `"chatkit.thread.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
+    -X DELETE \
+    -H 'OpenAI-Beta: chatkit_beta=v1' \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "chatkit.thread.deleted"
+}
+```
+
+## List ChatKit threads
+
+**get** `/chatkit/threads`
+
+List ChatKit threads with optional pagination and user filters.
+
+### Query Parameters
+
+- `after: optional string`
+
+  List items created after this thread item ID. Defaults to null for the first page.
+
+- `before: optional string`
+
+  List items created before this thread item ID. Defaults to null for the newest results.
+
+- `limit: optional number`
+
+  Maximum number of thread items to return. Defaults to 20.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for results by creation time. Defaults to `desc`.
+
+  - `"asc"`
+
+  - `"desc"`
+
+- `user: optional string`
+
+  Filter threads that belong to this user identifier. Defaults to null to return all users.
+
+### Returns
+
+- `data: array of ChatKitThread`
+
+  A list of items
+
+  - `id: string`
+
+    Identifier of the thread.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) for when the thread was created.
+
+  - `object: "chatkit.thread"`
+
+    Type discriminator that is always `chatkit.thread`.
+
+    - `"chatkit.thread"`
+
+  - `status: object { type }  or object { reason, type }  or object { reason, type }`
+
+    Current status for the thread. Defaults to `active` for newly created threads.
+
+    - `Active object { type }`
+
+      Indicates that a thread is active.
+
+      - `type: "active"`
+
+        Status discriminator that is always `active`.
+
+        - `"active"`
+
+    - `Locked object { reason, type }`
+
+      Indicates that a thread is locked and cannot accept new input.
+
+      - `reason: string or null`
+
+        Reason that the thread was locked. Defaults to null when no reason is recorded.
+
+      - `type: "locked"`
+
+        Status discriminator that is always `locked`.
+
+        - `"locked"`
+
+    - `Closed object { reason, type }`
+
+      Indicates that a thread has been closed.
+
+      - `reason: string or null`
+
+        Reason that the thread was closed. Defaults to null when no reason is recorded.
+
+      - `type: "closed"`
+
+        Status discriminator that is always `closed`.
+
+        - `"closed"`
+
+  - `title: string or null`
+
+    Optional human-readable title for the thread. Defaults to null when no title has been generated.
+
+  - `user: string`
+
+    Free-form string that identifies your end user who owns the thread.
+
+- `first_id: string or null`
+
+  The ID of the first item in the list.
+
+- `has_more: boolean`
+
+  Whether there are more items available.
+
+- `last_id: string or null`
+
+  The ID of the last item in the list.
+
+- `object: "list"`
+
+  The type of object returned, must be `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/chatkit/threads \
+    -H 'OpenAI-Beta: chatkit_beta=v1' \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_def456",
+      "created_at": 1712345600,
+      "object": "chatkit.thread",
+      "status": {
+        "type": "active"
+      },
+      "title": "Demo feedback",
+      "user": "user_456"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
+  -H "OpenAI-Beta: chatkit_beta=v1" \
+  -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "cthr_abc123",
+      "object": "chatkit.thread",
+      "title": "Customer escalation"
+    },
+    {
+      "id": "cthr_def456",
+      "object": "chatkit.thread",
+      "title": "Demo feedback"
+    }
+  ],
+  "has_more": false,
+  "object": "list"
+}
+```
+
 ## List ChatKit thread items
 
 **get** `/chatkit/threads/{thread_id}/items`
@@ -66,7 +291,7 @@ List items that belong to a ChatKit thread.
 
           Original display name for the attachment.
 
-        - `preview_url: string`
+        - `preview_url: string or null`
 
           Preview URL for rendering the attachment inline.
 
@@ -114,15 +339,15 @@ List items that belong to a ChatKit thread.
 
         Unix timestamp (in seconds) for when the item was created.
 
-      - `inference_options: object { model, tool_choice }`
+      - `inference_options: object { model, tool_choice }  or null`
 
         Inference overrides applied to the message. Defaults to null when unset.
 
-        - `model: string`
+        - `model: string or null`
 
           Model name that generated the response. Defaults to null when using the session default.
 
-        - `tool_choice: object { id }`
+        - `tool_choice: object { id }  or null`
 
           Preferred tool to invoke. Defaults to null when ChatKit should auto-select.
 
@@ -300,7 +525,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.thread_item"`
 
-      - `output: string`
+      - `output: string or null`
 
         JSON-encoded output captured from the tool. Defaults to null while execution is in progress.
 
@@ -334,7 +559,7 @@ List items that belong to a ChatKit thread.
 
         Unix timestamp (in seconds) for when the item was created.
 
-      - `heading: string`
+      - `heading: string or null`
 
         Optional heading for the task. Defaults to null when not provided.
 
@@ -344,7 +569,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.thread_item"`
 
-      - `summary: string`
+      - `summary: string or null`
 
         Optional summary that describes the task. Defaults to null when omitted.
 
@@ -388,11 +613,11 @@ List items that belong to a ChatKit thread.
 
         Tasks included in the group.
 
-        - `heading: string`
+        - `heading: string or null`
 
           Optional heading for the grouped task. Defaults to null when not provided.
 
-        - `summary: string`
+        - `summary: string or null`
 
           Optional summary that describes the grouped task. Defaults to null when omitted.
 
@@ -414,7 +639,7 @@ List items that belong to a ChatKit thread.
 
         - `"chatkit.task_group"`
 
-  - `first_id: string`
+  - `first_id: string or null`
 
     The ID of the first item in the list.
 
@@ -422,7 +647,7 @@ List items that belong to a ChatKit thread.
 
     Whether there are more items available.
 
-  - `last_id: string`
+  - `last_id: string or null`
 
     The ID of the last item in the list.
 
@@ -571,7 +796,7 @@ Retrieve a ChatKit thread by its identifier.
 
       Indicates that a thread is locked and cannot accept new input.
 
-      - `reason: string`
+      - `reason: string or null`
 
         Reason that the thread was locked. Defaults to null when no reason is recorded.
 
@@ -585,7 +810,7 @@ Retrieve a ChatKit thread by its identifier.
 
       Indicates that a thread has been closed.
 
-      - `reason: string`
+      - `reason: string or null`
 
         Reason that the thread was closed. Defaults to null when no reason is recorded.
 
@@ -595,7 +820,7 @@ Retrieve a ChatKit thread by its identifier.
 
         - `"closed"`
 
-  - `title: string`
+  - `title: string or null`
 
     Optional human-readable title for the thread. Defaults to null when no title has been generated.
 
@@ -672,231 +897,6 @@ curl https://api.openai.com/v1/chatkit/threads/cthr_abc123 \
 }
 ```
 
-## Delete ChatKit thread
-
-**delete** `/chatkit/threads/{thread_id}`
-
-Delete a ChatKit thread along with its items and stored attachments.
-
-### Path Parameters
-
-- `thread_id: string`
-
-### Returns
-
-- `id: string`
-
-  Identifier of the deleted thread.
-
-- `deleted: boolean`
-
-  Indicates that the thread has been deleted.
-
-- `object: "chatkit.thread.deleted"`
-
-  Type discriminator that is always `chatkit.thread.deleted`.
-
-  - `"chatkit.thread.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/threads/$THREAD_ID \
-    -X DELETE \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "chatkit.thread.deleted"
-}
-```
-
-## List ChatKit threads
-
-**get** `/chatkit/threads`
-
-List ChatKit threads with optional pagination and user filters.
-
-### Query Parameters
-
-- `after: optional string`
-
-  List items created after this thread item ID. Defaults to null for the first page.
-
-- `before: optional string`
-
-  List items created before this thread item ID. Defaults to null for the newest results.
-
-- `limit: optional number`
-
-  Maximum number of thread items to return. Defaults to 20.
-
-- `order: optional "asc" or "desc"`
-
-  Sort order for results by creation time. Defaults to `desc`.
-
-  - `"asc"`
-
-  - `"desc"`
-
-- `user: optional string`
-
-  Filter threads that belong to this user identifier. Defaults to null to return all users.
-
-### Returns
-
-- `data: array of ChatKitThread`
-
-  A list of items
-
-  - `id: string`
-
-    Identifier of the thread.
-
-  - `created_at: number`
-
-    Unix timestamp (in seconds) for when the thread was created.
-
-  - `object: "chatkit.thread"`
-
-    Type discriminator that is always `chatkit.thread`.
-
-    - `"chatkit.thread"`
-
-  - `status: object { type }  or object { reason, type }  or object { reason, type }`
-
-    Current status for the thread. Defaults to `active` for newly created threads.
-
-    - `Active object { type }`
-
-      Indicates that a thread is active.
-
-      - `type: "active"`
-
-        Status discriminator that is always `active`.
-
-        - `"active"`
-
-    - `Locked object { reason, type }`
-
-      Indicates that a thread is locked and cannot accept new input.
-
-      - `reason: string`
-
-        Reason that the thread was locked. Defaults to null when no reason is recorded.
-
-      - `type: "locked"`
-
-        Status discriminator that is always `locked`.
-
-        - `"locked"`
-
-    - `Closed object { reason, type }`
-
-      Indicates that a thread has been closed.
-
-      - `reason: string`
-
-        Reason that the thread was closed. Defaults to null when no reason is recorded.
-
-      - `type: "closed"`
-
-        Status discriminator that is always `closed`.
-
-        - `"closed"`
-
-  - `title: string`
-
-    Optional human-readable title for the thread. Defaults to null when no title has been generated.
-
-  - `user: string`
-
-    Free-form string that identifies your end user who owns the thread.
-
-- `first_id: string`
-
-  The ID of the first item in the list.
-
-- `has_more: boolean`
-
-  Whether there are more items available.
-
-- `last_id: string`
-
-  The ID of the last item in the list.
-
-- `object: "list"`
-
-  The type of object returned, must be `list`.
-
-  - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/chatkit/threads \
-    -H 'OpenAI-Beta: chatkit_beta=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "cthr_def456",
-      "created_at": 1712345600,
-      "object": "chatkit.thread",
-      "status": {
-        "type": "active"
-      },
-      "title": "Demo feedback",
-      "user": "user_456"
-    }
-  ],
-  "first_id": "first_id",
-  "has_more": true,
-  "last_id": "last_id",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
-  -H "OpenAI-Beta: chatkit_beta=v1" \
-  -H "Authorization: Bearer $OPENAI_API_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "cthr_abc123",
-      "object": "chatkit.thread",
-      "title": "Customer escalation"
-    },
-    {
-      "id": "cthr_def456",
-      "object": "chatkit.thread",
-      "title": "Demo feedback"
-    }
-  ],
-  "has_more": false,
-  "object": "list"
-}
-```
-
 ## Domain Types
 
 ### Chat Session
@@ -929,11 +929,11 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Indicates if uploads are enabled for the session.
 
-      - `max_file_size: number`
+      - `max_file_size: number or null`
 
         Maximum upload size in megabytes.
 
-      - `max_files: number`
+      - `max_files: number or null`
 
         Maximum number of uploads allowed during the session.
 
@@ -945,7 +945,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Indicates if chat history is persisted for the session.
 
-      - `recent_threads: number`
+      - `recent_threads: number or null`
 
         Number of prior threads surfaced in history views. Defaults to null when all history is retained.
 
@@ -997,7 +997,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
       Identifier of the workflow backing the session.
 
-    - `state_variables: map[string or boolean or number]`
+    - `state_variables: map[string or boolean or number] or null`
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
@@ -1015,7 +1015,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Indicates whether tracing is enabled.
 
-    - `version: string`
+    - `version: string or null`
 
       Specific workflow version used for the session. Defaults to null when using the latest deployment.
 
@@ -1051,11 +1051,11 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
       Indicates if uploads are enabled for the session.
 
-    - `max_file_size: number`
+    - `max_file_size: number or null`
 
       Maximum upload size in megabytes.
 
-    - `max_files: number`
+    - `max_files: number or null`
 
       Maximum number of uploads allowed during the session.
 
@@ -1067,7 +1067,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
       Indicates if chat history is persisted for the session.
 
-    - `recent_threads: number`
+    - `recent_threads: number or null`
 
       Number of prior threads surfaced in history views. Defaults to null when all history is retained.
 
@@ -1139,11 +1139,11 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Indicates if uploads are enabled for the session.
 
-  - `max_file_size: number`
+  - `max_file_size: number or null`
 
     Maximum upload size in megabytes.
 
-  - `max_files: number`
+  - `max_files: number or null`
 
     Maximum number of uploads allowed during the session.
 
@@ -1157,7 +1157,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Indicates if chat history is persisted for the session.
 
-  - `recent_threads: number`
+  - `recent_threads: number or null`
 
     Number of prior threads surfaced in history views. Defaults to null when all history is retained.
 
@@ -1241,7 +1241,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Original display name for the attachment.
 
-  - `preview_url: string`
+  - `preview_url: string or null`
 
     Preview URL for rendering the attachment inline.
 
@@ -1359,7 +1359,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
       Indicates that a thread is locked and cannot accept new input.
 
-      - `reason: string`
+      - `reason: string or null`
 
         Reason that the thread was locked. Defaults to null when no reason is recorded.
 
@@ -1373,7 +1373,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
       Indicates that a thread has been closed.
 
-      - `reason: string`
+      - `reason: string or null`
 
         Reason that the thread was closed. Defaults to null when no reason is recorded.
 
@@ -1383,7 +1383,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"closed"`
 
-  - `title: string`
+  - `title: string or null`
 
     Optional human-readable title for the thread. Defaults to null when no title has been generated.
 
@@ -1521,7 +1521,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
           Original display name for the attachment.
 
-        - `preview_url: string`
+        - `preview_url: string or null`
 
           Preview URL for rendering the attachment inline.
 
@@ -1569,15 +1569,15 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Unix timestamp (in seconds) for when the item was created.
 
-      - `inference_options: object { model, tool_choice }`
+      - `inference_options: object { model, tool_choice }  or null`
 
         Inference overrides applied to the message. Defaults to null when unset.
 
-        - `model: string`
+        - `model: string or null`
 
           Model name that generated the response. Defaults to null when using the session default.
 
-        - `tool_choice: object { id }`
+        - `tool_choice: object { id }  or null`
 
           Preferred tool to invoke. Defaults to null when ChatKit should auto-select.
 
@@ -1755,7 +1755,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"chatkit.thread_item"`
 
-      - `output: string`
+      - `output: string or null`
 
         JSON-encoded output captured from the tool. Defaults to null while execution is in progress.
 
@@ -1789,7 +1789,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Unix timestamp (in seconds) for when the item was created.
 
-      - `heading: string`
+      - `heading: string or null`
 
         Optional heading for the task. Defaults to null when not provided.
 
@@ -1799,7 +1799,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"chatkit.thread_item"`
 
-      - `summary: string`
+      - `summary: string or null`
 
         Optional summary that describes the task. Defaults to null when omitted.
 
@@ -1843,11 +1843,11 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         Tasks included in the group.
 
-        - `heading: string`
+        - `heading: string or null`
 
           Optional heading for the grouped task. Defaults to null when not provided.
 
-        - `summary: string`
+        - `summary: string or null`
 
           Optional summary that describes the grouped task. Defaults to null when omitted.
 
@@ -1869,7 +1869,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
         - `"chatkit.task_group"`
 
-  - `first_id: string`
+  - `first_id: string or null`
 
     The ID of the first item in the list.
 
@@ -1877,7 +1877,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Whether there are more items available.
 
-  - `last_id: string`
+  - `last_id: string or null`
 
     The ID of the last item in the list.
 
@@ -1913,7 +1913,7 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
       Original display name for the attachment.
 
-    - `preview_url: string`
+    - `preview_url: string or null`
 
       Preview URL for rendering the attachment inline.
 
@@ -1961,15 +1961,15 @@ curl "https://api.openai.com/v1/chatkit/threads?limit=2&order=desc" \
 
     Unix timestamp (in seconds) for when the item was created.
 
-  - `inference_options: object { model, tool_choice }`
+  - `inference_options: object { model, tool_choice }  or null`
 
     Inference overrides applied to the message. Defaults to null when unset.
 
-    - `model: string`
+    - `model: string or null`
 
       Model name that generated the response. Defaults to null when using the session default.
 
-    - `tool_choice: object { id }`
+    - `tool_choice: object { id }  or null`
 
       Preferred tool to invoke. Defaults to null when ChatKit should auto-select.
 

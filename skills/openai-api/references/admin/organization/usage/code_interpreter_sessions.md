@@ -78,11 +78,11 @@ Get code interpreter sessions usage details for the organization.
 
         The aggregated number of output tokens used across text, audio, and image outputs. For customers subscribed to Scale Tier, this includes Scale Tier tokens.
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `batch: optional boolean`
+      - `batch: optional boolean or null`
 
         When `group_by=batch`, this field tells whether the grouped usage result is batch or not.
 
@@ -122,7 +122,7 @@ Get code interpreter sessions usage details for the organization.
 
         The aggregated number of uncached input tokens used across text, audio, and image inputs, excluding cache-write tokens.
 
-      - `model: optional string`
+      - `model: optional string or null`
 
         When `group_by=model`, this field provides the model name of the grouped usage result.
 
@@ -138,15 +138,15 @@ Get code interpreter sessions usage details for the organization.
 
         The aggregated number of text output tokens used.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `service_tier: optional string`
+      - `service_tier: optional string or null`
 
         When `group_by=service_tier`, this field provides the service tier of the grouped usage result.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
@@ -166,19 +166,19 @@ Get code interpreter sessions usage details for the organization.
 
         - `"organization.usage.embeddings.result"`
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `model: optional string`
+      - `model: optional string or null`
 
         When `group_by=model`, this field provides the model name of the grouped usage result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
@@ -198,19 +198,19 @@ Get code interpreter sessions usage details for the organization.
 
         - `"organization.usage.moderations.result"`
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `model: optional string`
+      - `model: optional string or null`
 
         When `group_by=model`, this field provides the model name of the grouped usage result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
@@ -230,27 +230,27 @@ Get code interpreter sessions usage details for the organization.
 
         - `"organization.usage.images.result"`
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `model: optional string`
+      - `model: optional string or null`
 
         When `group_by=model`, this field provides the model name of the grouped usage result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `size: optional string`
+      - `size: optional string or null`
 
         When `group_by=size`, this field provides the image size of the grouped usage result.
 
-      - `source: optional string`
+      - `source: optional string or null`
 
         When `group_by=source`, this field provides the source of the grouped usage result, possible values are `image.generation`, `image.edit`, `image.variation`.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
@@ -270,19 +270,19 @@ Get code interpreter sessions usage details for the organization.
 
         - `"organization.usage.audio_speeches.result"`
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `model: optional string`
+      - `model: optional string or null`
 
         When `group_by=model`, this field provides the model name of the grouped usage result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
@@ -302,19 +302,19 @@ Get code interpreter sessions usage details for the organization.
 
         The number of seconds processed.
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `model: optional string`
+      - `model: optional string or null`
 
         When `group_by=model`, this field provides the model name of the grouped usage result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
@@ -330,7 +330,7 @@ Get code interpreter sessions usage details for the organization.
 
         The vector stores usage in bytes.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
@@ -346,7 +346,7 @@ Get code interpreter sessions usage details for the organization.
 
         - `"organization.usage.code_interpreter_sessions.result"`
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
@@ -362,19 +362,19 @@ Get code interpreter sessions usage details for the organization.
 
         - `"organization.usage.file_searches.result"`
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `vector_store_id: optional string`
+      - `vector_store_id: optional string or null`
 
         When `group_by=vector_store_id`, this field provides the vector store ID of the grouped usage result.
 
@@ -394,23 +394,23 @@ Get code interpreter sessions usage details for the organization.
 
         - `"organization.usage.web_searches.result"`
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
-      - `context_level: optional string`
+      - `context_level: optional string or null`
 
         When `group_by=context_level`, this field provides the search context size of the grouped usage result.
 
-      - `model: optional string`
+      - `model: optional string or null`
 
         When `group_by=model`, this field provides the model name of the grouped usage result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped usage result.
 
-      - `user_id: optional string`
+      - `user_id: optional string or null`
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
@@ -434,19 +434,19 @@ Get code interpreter sessions usage details for the organization.
 
           The numeric value of the cost.
 
-      - `api_key_id: optional string`
+      - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
 
-      - `line_item: optional string`
+      - `line_item: optional string or null`
 
         When `group_by=line_item`, this field provides the line item of the grouped costs result.
 
-      - `project_id: optional string`
+      - `project_id: optional string or null`
 
         When `group_by=project_id`, this field provides the project ID of the grouped costs result.
 
-      - `quantity: optional number`
+      - `quantity: optional number or null`
 
         When `group_by=line_item`, this field provides the quantity of the grouped costs result.
 
@@ -454,7 +454,7 @@ Get code interpreter sessions usage details for the organization.
 
 - `has_more: boolean`
 
-- `next_page: string`
+- `next_page: string or null`
 
 - `object: "page"`
 

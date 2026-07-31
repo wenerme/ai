@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build image
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Builds uses a build image with support for a variety of languages and tools such as Node.js, Python, PHP, Ruby, and Go.
 
@@ -29,9 +29,11 @@ The default versions will be updated regularly to the latest minor version. No m
 | Tool        | Default version | Environment variable | File                         |
 | ----------- | --------------- | -------------------- | ---------------------------- |
 | **Go**      | 1.24.3          | GO\_VERSION          |                              |
-| **Node.js** | 22.16.0         | NODE\_VERSION        | .nvmrc, .node-version        |
+| **Node.js** | 24.18.0         | NODE\_VERSION        | .nvmrc, .node-version        |
 | **Python**  | 3.13.3          | PYTHON\_VERSION      | .python-version, runtime.txt |
 | **Ruby**    | 3.4.4           | RUBY\_VERSION        | .ruby-version                |
+
+The build image preinstalls Node.js 22.23.2 and 24.18.0.
 
 ### Tools and languages
 
@@ -128,5 +130,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image · Cloudflare Workers docs","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#page","headline":"Build image · Cloudflare Workers docs","description":"Understand the build image used in Workers Builds.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-image/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

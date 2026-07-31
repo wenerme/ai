@@ -54,7 +54,7 @@ The `service_tier` parameter lets you control cost and latency tradeoffs when se
 
 ### Using Service Tiers
 
-Pass `service_tier` as a top-level parameter in your request body. Supported values are `flex` (lower cost, higher latency) and `priority` (faster, higher cost). The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
+Pass `service_tier` as a top-level parameter in your request body. Supported values are `flex` (lower cost, higher latency) and `priority` (faster, higher cost). `fast` is also accepted as an alias for `priority` — see [The `fast` alias](#the-fast-alias) below. The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
 
 <Template
   data={{
@@ -185,6 +185,12 @@ curl https://openrouter.ai/api/v1/messages \
     ]
   }'
 ```
+
+### The `fast` alias
+
+`service_tier: "fast"` (OpenAI's [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) rename of priority processing) is treated as `"priority"` on all APIs and providers, and the response reports `priority`.
+
+On Anthropic models with a fast sibling (e.g. [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)), it also behaves like Anthropic's native `speed: "fast"` parameter and reroutes to the fast sibling — see [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode).
 
 ### How Routing Works
 

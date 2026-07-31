@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/thinking).
-
 The [Gemini 3 and 2.5 series models](https://ai.google.dev/gemini-api/docs/models) use a
 "thinking process" that significantly improves their reasoning and multi-step
 planning abilities, making them highly effective for complex tasks such as

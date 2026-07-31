@@ -10,15 +10,15 @@ Modifies an assistant.
 
 ### Body Parameters
 
-- `description: optional string`
+- `description: optional string or null`
 
   The description of the assistant. The maximum length is 512 characters.
 
-- `instructions: optional string`
+- `instructions: optional string or null`
 
   The system instructions that the assistant uses. The maximum length is 256,000 characters.
 
-- `metadata: optional Metadata`
+- `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
@@ -121,11 +121,11 @@ Modifies an assistant.
 
     - `"gpt-3.5-turbo-16k-0613"`
 
-- `name: optional string`
+- `name: optional string or null`
 
   The name of the assistant. The maximum length is 256 characters.
 
-- `reasoning_effort: optional ReasoningEffort`
+- `reasoning_effort: optional ReasoningEffort or null`
 
   Constrains effort on reasoning for reasoning models. Currently supported
   values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -149,7 +149,7 @@ Modifies an assistant.
 
   - `"max"`
 
-- `response_format: optional AssistantResponseFormatOption`
+- `response_format: optional AssistantResponseFormatOption or null`
 
   Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
@@ -212,7 +212,7 @@ Modifies an assistant.
         The schema for the response format, described as a JSON Schema object.
         Learn how to build JSON schemas [here](https://json-schema.org/).
 
-      - `strict: optional boolean`
+      - `strict: optional boolean or null`
 
         Whether to enable strict schema adherence when generating the output.
         If set to true, the model will always follow the exact schema defined
@@ -226,11 +226,11 @@ Modifies an assistant.
 
       - `"json_schema"`
 
-- `temperature: optional number`
+- `temperature: optional number or null`
 
   What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 
-- `tool_resources: optional object { code_interpreter, file_search }`
+- `tool_resources: optional object { code_interpreter, file_search }  or null`
 
   A set of resources that are used by the assistant's tools. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
 
@@ -312,7 +312,7 @@ Modifies an assistant.
 
         Omitting `parameters` defines a function with an empty parameter list.
 
-      - `strict: optional boolean`
+      - `strict: optional boolean or null`
 
         Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
@@ -322,7 +322,7 @@ Modifies an assistant.
 
       - `"function"`
 
-- `top_p: optional number`
+- `top_p: optional number or null`
 
   An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
 
@@ -342,15 +342,15 @@ Modifies an assistant.
 
     The Unix timestamp (in seconds) for when the assistant was created.
 
-  - `description: string`
+  - `description: string or null`
 
     The description of the assistant. The maximum length is 512 characters.
 
-  - `instructions: string`
+  - `instructions: string or null`
 
     The system instructions that the assistant uses. The maximum length is 256,000 characters.
 
-  - `metadata: Metadata`
+  - `metadata: Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured
@@ -363,7 +363,7 @@ Modifies an assistant.
 
     ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models) for descriptions of them.
 
-  - `name: string`
+  - `name: string or null`
 
     The name of the assistant. The maximum length is 256 characters.
 
@@ -439,7 +439,7 @@ Modifies an assistant.
 
           Omitting `parameters` defines a function with an empty parameter list.
 
-        - `strict: optional boolean`
+        - `strict: optional boolean or null`
 
           Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
@@ -449,7 +449,7 @@ Modifies an assistant.
 
         - `"function"`
 
-  - `response_format: optional AssistantResponseFormatOption`
+  - `response_format: optional AssistantResponseFormatOption or null`
 
     Specifies the format that the model must output. Compatible with [GPT-4o](/docs/models#gpt-4o), [GPT-4 Turbo](/docs/models#gpt-4-turbo-and-gpt-4), and all GPT-3.5 Turbo models since `gpt-3.5-turbo-1106`.
 
@@ -512,7 +512,7 @@ Modifies an assistant.
           The schema for the response format, described as a JSON Schema object.
           Learn how to build JSON schemas [here](https://json-schema.org/).
 
-        - `strict: optional boolean`
+        - `strict: optional boolean or null`
 
           Whether to enable strict schema adherence when generating the output.
           If set to true, the model will always follow the exact schema defined
@@ -526,11 +526,11 @@ Modifies an assistant.
 
         - `"json_schema"`
 
-  - `temperature: optional number`
+  - `temperature: optional number or null`
 
     What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 
-  - `tool_resources: optional object { code_interpreter, file_search }`
+  - `tool_resources: optional object { code_interpreter, file_search }  or null`
 
     A set of resources that are used by the assistant's tools. The resources are specific to the type of tool. For example, the `code_interpreter` tool requires a list of file IDs, while the `file_search` tool requires a list of vector store IDs.
 
@@ -546,7 +546,7 @@ Modifies an assistant.
 
         The ID of the [vector store](/docs/api-reference/vector-stores/object) attached to this assistant. There can be a maximum of 1 vector store attached to the assistant.
 
-  - `top_p: optional number`
+  - `top_p: optional number or null`
 
     An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass. So 0.1 means only the tokens comprising the top 10% probability mass are considered.
 

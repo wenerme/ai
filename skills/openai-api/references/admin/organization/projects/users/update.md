@@ -12,7 +12,7 @@ Modifies a user's role in the project.
 
 ### Body Parameters
 
-- `role: optional string`
+- `role: optional string or null`
 
   `owner` or `member`
 
@@ -40,11 +40,11 @@ Modifies a user's role in the project.
 
     `owner` or `member`
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 

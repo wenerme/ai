@@ -2,7 +2,7 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Tts
+# TTS
 
 > Text-to-speech endpoints
 
@@ -38,11 +38,11 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Tts.CreateSpeech(ctx, components.SpeechRequest{
+    res, err := s.TTS.CreateSpeech(ctx, components.SpeechRequest{
         Input: "Hello world",
         Model: "mistralai/voxtral-mini-tts-2603",
         Speed: openrouter.Pointer[float64](1.0),
-        Voice: "en_paul_neutral",
+        Voice: openrouter.Pointer("en_paul_neutral"),
     })
     if err != nil {
         log.Fatal(err)

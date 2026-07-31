@@ -87,7 +87,7 @@ Get a list of output items for an evaluation run.
 
       The numeric score produced by the grader.
 
-    - `sample: optional map[unknown]`
+    - `sample: optional map[unknown] or null`
 
       Optional sample or intermediate data produced by the grader.
 
@@ -418,7 +418,7 @@ Get an evaluation run output item by ID.
 
     The numeric score produced by the grader.
 
-  - `sample: optional map[unknown]`
+  - `sample: optional map[unknown] or null`
 
     Optional sample or intermediate data produced by the grader.
 
@@ -707,7 +707,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       The numeric score produced by the grader.
 
-    - `sample: optional map[unknown]`
+    - `sample: optional map[unknown] or null`
 
       Optional sample or intermediate data produced by the grader.
 
@@ -855,7 +855,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
       The numeric score produced by the grader.
 
-    - `sample: optional map[unknown]`
+    - `sample: optional map[unknown] or null`
 
       Optional sample or intermediate data produced by the grader.
 

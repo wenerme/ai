@@ -67,7 +67,7 @@ Returns the Upload object with status `completed`, including an additional `file
 
     - `"expired"`
 
-  - `file: optional FileObject`
+  - `file: optional FileObject or null`
 
     The `File` object represents a document that has been uploaded to OpenAI.
 

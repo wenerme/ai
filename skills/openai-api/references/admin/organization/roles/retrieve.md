@@ -18,7 +18,7 @@ Retrieves an organization role.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 

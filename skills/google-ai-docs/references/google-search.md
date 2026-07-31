@@ -1,6 +1,3 @@
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/google-search).
-
 Grounding with Google Search connects the Gemini model to real-time web content
 and works with all available languages. This allows
 Gemini to provide more accurate answers and cite verifiable sources beyond its

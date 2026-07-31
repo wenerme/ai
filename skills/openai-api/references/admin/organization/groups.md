@@ -1,126 +1,5 @@
 # Groups
 
-## List groups
-
-**get** `/organization/groups`
-
-Lists all groups in the organization.
-
-### Query Parameters
-
-- `after: optional string`
-
-  A cursor for use in pagination. `after` is a group ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with group_abc, your subsequent call can include `after=group_abc` in order to fetch the next page of the list.
-
-- `limit: optional number`
-
-  A limit on the number of groups to be returned. Limit can range between 0 and 1000, and the default is 100.
-
-- `order: optional "asc" or "desc"`
-
-  Specifies the sort order of the returned groups.
-
-  - `"asc"`
-
-  - `"desc"`
-
-### Returns
-
-- `data: array of Group`
-
-  Groups returned in the current page.
-
-  - `id: string`
-
-    Identifier for the group.
-
-  - `created_at: number`
-
-    Unix timestamp (in seconds) when the group was created.
-
-  - `group_type: "group" or "tenant_group"`
-
-    The type of the group.
-
-    - `"group"`
-
-    - `"tenant_group"`
-
-  - `is_scim_managed: boolean`
-
-    Whether the group is managed through SCIM and controlled by your identity provider.
-
-  - `name: string`
-
-    Display name of the group.
-
-- `has_more: boolean`
-
-  Whether additional groups are available when paginating.
-
-- `next: string`
-
-  Cursor to fetch the next page of results, or `null` if there are no more results.
-
-- `object: "list"`
-
-  Always `list`.
-
-  - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "created_at": 0,
-      "group_type": "group",
-      "is_scim_managed": true,
-      "name": "name"
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "list",
-    "data": [
-        {
-            "object": "group",
-            "id": "group_01J1F8ABCDXYZ",
-            "name": "Support Team",
-            "created_at": 1711471533,
-            "is_scim_managed": false
-        }
-    ],
-    "has_more": false,
-    "next": null
-}
-```
-
 ## Create group
 
 **post** `/organization/groups`
@@ -206,6 +85,189 @@ curl -X POST https://api.openai.com/v1/organization/groups \
     "name": "Support Team",
     "created_at": 1711471533,
     "is_scim_managed": false
+}
+```
+
+## Delete group
+
+**delete** `/organization/groups/{group_id}`
+
+Deletes a group from the organization.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier of the deleted group.
+
+- `deleted: boolean`
+
+  Whether the group was deleted.
+
+- `object: "group.deleted"`
+
+  Always `group.deleted`.
+
+  - `"group.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "group.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.deleted",
+    "id": "group_01J1F8ABCDXYZ",
+    "deleted": true
+}
+```
+
+## List groups
+
+**get** `/organization/groups`
+
+Lists all groups in the organization.
+
+### Query Parameters
+
+- `after: optional string`
+
+  A cursor for use in pagination. `after` is a group ID that defines your place in the list. For instance, if you make a list request and receive 100 objects, ending with group_abc, your subsequent call can include `after=group_abc` in order to fetch the next page of the list.
+
+- `limit: optional number`
+
+  A limit on the number of groups to be returned. Limit can range between 0 and 1000, and the default is 100.
+
+- `order: optional "asc" or "desc"`
+
+  Specifies the sort order of the returned groups.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of Group`
+
+  Groups returned in the current page.
+
+  - `id: string`
+
+    Identifier for the group.
+
+  - `created_at: number`
+
+    Unix timestamp (in seconds) when the group was created.
+
+  - `group_type: "group" or "tenant_group"`
+
+    The type of the group.
+
+    - `"group"`
+
+    - `"tenant_group"`
+
+  - `is_scim_managed: boolean`
+
+    Whether the group is managed through SCIM and controlled by your identity provider.
+
+  - `name: string`
+
+    Display name of the group.
+
+- `has_more: boolean`
+
+  Whether additional groups are available when paginating.
+
+- `next: string or null`
+
+  Cursor to fetch the next page of results, or `null` if there are no more results.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "created_at": 0,
+      "group_type": "group",
+      "is_scim_managed": true,
+      "name": "name"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "group",
+            "id": "group_01J1F8ABCDXYZ",
+            "name": "Support Team",
+            "created_at": 1711471533,
+            "is_scim_managed": false
+        }
+    ],
+    "has_more": false,
+    "next": null
 }
 ```
 
@@ -366,68 +428,6 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
 }
 ```
 
-## Delete group
-
-**delete** `/organization/groups/{group_id}`
-
-Deletes a group from the organization.
-
-### Path Parameters
-
-- `group_id: string`
-
-### Returns
-
-- `id: string`
-
-  Identifier of the deleted group.
-
-- `deleted: boolean`
-
-  Whether the group was deleted.
-
-- `object: "group.deleted"`
-
-  Always `group.deleted`.
-
-  - `"group.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "deleted": true,
-  "object": "group.deleted"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "group.deleted",
-    "id": "group_01J1F8ABCDXYZ",
-    "deleted": true
-}
-```
-
 ## Domain Types
 
 ### Group
@@ -460,6 +460,26 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Display name of the group.
 
+### Group Delete Response
+
+- `GroupDeleteResponse object { id, deleted, object }`
+
+  Confirmation payload returned after deleting a group.
+
+  - `id: string`
+
+    Identifier of the deleted group.
+
+  - `deleted: boolean`
+
+    Whether the group was deleted.
+
+  - `object: "group.deleted"`
+
+    Always `group.deleted`.
+
+    - `"group.deleted"`
+
 ### Group Update Response
 
 - `GroupUpdateResponse object { id, created_at, is_scim_managed, name }`
@@ -482,627 +502,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Updated display name for the group.
 
-### Group Delete Response
-
-- `GroupDeleteResponse object { id, deleted, object }`
-
-  Confirmation payload returned after deleting a group.
-
-  - `id: string`
-
-    Identifier of the deleted group.
-
-  - `deleted: boolean`
-
-    Whether the group was deleted.
-
-  - `object: "group.deleted"`
-
-    Always `group.deleted`.
-
-    - `"group.deleted"`
-
-# Users
-
-## List group users
-
-**get** `/organization/groups/{group_id}/users`
-
-Lists the users assigned to a group.
-
-### Path Parameters
-
-- `group_id: string`
-
-### Query Parameters
-
-- `after: optional string`
-
-  A cursor for use in pagination. Provide the ID of the last user from the previous list response to retrieve the next page.
-
-- `limit: optional number`
-
-  A limit on the number of users to be returned. Limit can range between 0 and 1000, and the default is 100.
-
-- `order: optional "asc" or "desc"`
-
-  Specifies the sort order of users in the list.
-
-  - `"asc"`
-
-  - `"desc"`
-
-### Returns
-
-- `data: array of OrganizationGroupUser`
-
-  Users in the current page.
-
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints
-
-  - `email: string`
-
-    The email address of the user.
-
-  - `name: string`
-
-    The name of the user.
-
-- `has_more: boolean`
-
-  Whether more users are available when paginating.
-
-- `next: string`
-
-  Cursor to fetch the next page of results, or `null` when no further users are available.
-
-- `object: "list"`
-
-  Always `list`.
-
-  - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "email": "email",
-      "name": "name"
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "list",
-    "data": [
-        {
-            "id": "user_abc123",
-            "name": "Ada Lovelace",
-            "email": "ada@example.com"
-        }
-    ],
-    "has_more": false,
-    "next": null
-}
-```
-
-## Add group user
-
-**post** `/organization/groups/{group_id}/users`
-
-Adds a user to a group.
-
-### Path Parameters
-
-- `group_id: string`
-
-### Body Parameters
-
-- `user_id: string`
-
-  Identifier of the user to add to the group.
-
-### Returns
-
-- `group_id: string`
-
-  Identifier of the group the user was added to.
-
-- `object: "group.user"`
-
-  Always `group.user`.
-
-  - `"group.user"`
-
-- `user_id: string`
-
-  Identifier of the user that was added.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
-    -H 'Content-Type: application/json' \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-    -d '{
-          "user_id": "user_id"
-        }'
-```
-
-#### Response
-
-```json
-{
-  "group_id": "group_id",
-  "object": "group.user",
-  "user_id": "user_id"
-}
-```
-
-### Example
-
-```http
-curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-      "user_id": "user_abc123"
-  }'
-```
-
-#### Response
-
-```json
-{
-    "object": "group.user",
-    "user_id": "user_abc123",
-    "group_id": "group_01J1F8ABCDXYZ"
-}
-```
-
-## Retrieve group user
-
-**get** `/organization/groups/{group_id}/users/{user_id}`
-
-Retrieves a user in a group.
-
-### Path Parameters
-
-- `group_id: string`
-
-- `user_id: string`
-
-### Returns
-
-- `id: string`
-
-  Identifier for the user.
-
-- `email: string`
-
-  Email address of the user, or `null` for users without an email.
-
-- `is_service_account: boolean`
-
-  Whether the user is a service account.
-
-- `name: string`
-
-  Display name of the user.
-
-- `picture: string`
-
-  URL of the user's profile picture, if available.
-
-- `user_type: "user" or "tenant_user"`
-
-  The type of user.
-
-  - `"user"`
-
-  - `"tenant_user"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "id": "id",
-  "email": "email",
-  "is_service_account": true,
-  "name": "name",
-  "picture": "picture",
-  "user_type": "user"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "id": "user_abc123",
-    "name": "Ada Lovelace",
-    "email": "ada@example.com",
-    "picture": null,
-    "is_service_account": false,
-    "user_type": "user"
-}
-```
-
-## Remove group user
-
-**delete** `/organization/groups/{group_id}/users/{user_id}`
-
-Removes a user from a group.
-
-### Path Parameters
-
-- `group_id: string`
-
-- `user_id: string`
-
-### Returns
-
-- `deleted: boolean`
-
-  Whether the group membership was removed.
-
-- `object: "group.user.deleted"`
-
-  Always `group.user.deleted`.
-
-  - `"group.user.deleted"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "deleted": true,
-  "object": "group.user.deleted"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "group.user.deleted",
-    "deleted": true
-}
-```
-
-## Domain Types
-
-### Organization Group User
-
-- `OrganizationGroupUser object { id, email, name }`
-
-  Represents an individual user returned when inspecting group membership.
-
-  - `id: string`
-
-    The identifier, which can be referenced in API endpoints
-
-  - `email: string`
-
-    The email address of the user.
-
-  - `name: string`
-
-    The name of the user.
-
-### User Create Response
-
-- `UserCreateResponse object { group_id, object, user_id }`
-
-  Confirmation payload returned after adding a user to a group.
-
-  - `group_id: string`
-
-    Identifier of the group the user was added to.
-
-  - `object: "group.user"`
-
-    Always `group.user`.
-
-    - `"group.user"`
-
-  - `user_id: string`
-
-    Identifier of the user that was added.
-
-### User Retrieve Response
-
-- `UserRetrieveResponse object { id, email, is_service_account, 3 more }`
-
-  Details about a user returned from an organization group membership lookup.
-
-  - `id: string`
-
-    Identifier for the user.
-
-  - `email: string`
-
-    Email address of the user, or `null` for users without an email.
-
-  - `is_service_account: boolean`
-
-    Whether the user is a service account.
-
-  - `name: string`
-
-    Display name of the user.
-
-  - `picture: string`
-
-    URL of the user's profile picture, if available.
-
-  - `user_type: "user" or "tenant_user"`
-
-    The type of user.
-
-    - `"user"`
-
-    - `"tenant_user"`
-
-### User Delete Response
-
-- `UserDeleteResponse object { deleted, object }`
-
-  Confirmation payload returned after removing a user from a group.
-
-  - `deleted: boolean`
-
-    Whether the group membership was removed.
-
-  - `object: "group.user.deleted"`
-
-    Always `group.user.deleted`.
-
-    - `"group.user.deleted"`
-
 # Roles
-
-## List group organization role assignments
-
-**get** `/organization/groups/{group_id}/roles`
-
-Lists the organization roles assigned to a group within the organization.
-
-### Path Parameters
-
-- `group_id: string`
-
-### Query Parameters
-
-- `after: optional string`
-
-  Cursor for pagination. Provide the value from the previous response's `next` field to continue listing organization roles.
-
-- `limit: optional number`
-
-  A limit on the number of organization role assignments to return.
-
-- `order: optional "asc" or "desc"`
-
-  Sort order for the returned organization roles.
-
-  - `"asc"`
-
-  - `"desc"`
-
-### Returns
-
-- `data: array of object { id, assignment_sources, created_at, 9 more }`
-
-  Role assignments returned in the current page.
-
-  - `id: string`
-
-    Identifier for the role.
-
-  - `assignment_sources: array of object { principal_id, principal_type }`
-
-    Principals from which the role assignment is inherited, when available.
-
-    - `principal_id: string`
-
-    - `principal_type: string`
-
-  - `created_at: number`
-
-    When the role was created.
-
-  - `created_by: string`
-
-    Identifier of the actor who created the role.
-
-  - `created_by_user_obj: map[unknown]`
-
-    User details for the actor that created the role, when available.
-
-  - `description: string`
-
-    Description of the role.
-
-  - `metadata: map[unknown]`
-
-    Arbitrary metadata stored on the role.
-
-  - `name: string`
-
-    Name of the role.
-
-  - `permissions: array of string`
-
-    Permissions associated with the role.
-
-  - `predefined_role: boolean`
-
-    Whether the role is predefined by OpenAI.
-
-  - `resource_type: string`
-
-    Resource type the role applies to.
-
-  - `updated_at: number`
-
-    When the role was last updated.
-
-- `has_more: boolean`
-
-  Whether additional assignments are available when paginating.
-
-- `next: string`
-
-  Cursor to fetch the next page of results, or `null` when there are no more assignments.
-
-- `object: "list"`
-
-  Always `list`.
-
-  - `"list"`
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "data": [
-    {
-      "id": "id",
-      "assignment_sources": [
-        {
-          "principal_id": "principal_id",
-          "principal_type": "principal_type"
-        }
-      ],
-      "created_at": 0,
-      "created_by": "created_by",
-      "created_by_user_obj": {
-        "foo": "bar"
-      },
-      "description": "description",
-      "metadata": {
-        "foo": "bar"
-      },
-      "name": "name",
-      "permissions": [
-        "string"
-      ],
-      "predefined_role": true,
-      "resource_type": "resource_type",
-      "updated_at": 0
-    }
-  ],
-  "has_more": true,
-  "next": "next",
-  "object": "list"
-}
-```
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "list",
-    "data": [
-        {
-            "id": "role_01J1F8ROLE01",
-            "name": "API Group Manager",
-            "permissions": [
-                "api.groups.read",
-                "api.groups.write"
-            ],
-            "resource_type": "api.organization",
-            "predefined_role": false,
-            "description": "Allows managing organization groups",
-            "created_at": 1711471533,
-            "updated_at": 1711472599,
-            "created_by": "user_abc123",
-            "created_by_user_obj": {
-                "id": "user_abc123",
-                "name": "Ada Lovelace",
-                "email": "ada@example.com"
-            },
-            "metadata": {}
-        }
-    ],
-    "has_more": false,
-    "next": null
-}
-```
 
 ## Assign organization role to group
 
@@ -1162,7 +562,7 @@ Assigns an organization role to a group within the organization.
 
     Identifier for the role.
 
-  - `description: string`
+  - `description: string or null`
 
     Optional description of the role.
 
@@ -1263,6 +663,246 @@ curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/r
 }
 ```
 
+## Unassign organization role from group
+
+**delete** `/organization/groups/{group_id}/roles/{role_id}`
+
+Unassigns an organization role from a group within the organization.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `role_id: string`
+
+### Returns
+
+- `deleted: boolean`
+
+  Whether the assignment was removed.
+
+- `object: string`
+
+  Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "object"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8ROLE01 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.role.deleted",
+    "deleted": true
+}
+```
+
+## List group organization role assignments
+
+**get** `/organization/groups/{group_id}/roles`
+
+Lists the organization roles assigned to a group within the organization.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  Cursor for pagination. Provide the value from the previous response's `next` field to continue listing organization roles.
+
+- `limit: optional number`
+
+  A limit on the number of organization role assignments to return.
+
+- `order: optional "asc" or "desc"`
+
+  Sort order for the returned organization roles.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of object { id, assignment_sources, created_at, 9 more }`
+
+  Role assignments returned in the current page.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number or null`
+
+    When the role was created.
+
+  - `created_by: string or null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown] or null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string or null`
+
+    Description of the role.
+
+  - `metadata: map[unknown] or null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number or null`
+
+    When the role was last updated.
+
+- `has_more: boolean`
+
+  Whether additional assignments are available when paginating.
+
+- `next: string or null`
+
+  Cursor to fetch the next page of results, or `null` when there are no more assignments.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "assignment_sources": [
+        {
+          "principal_id": "principal_id",
+          "principal_type": "principal_type"
+        }
+      ],
+      "created_at": 0,
+      "created_by": "created_by",
+      "created_by_user_obj": {
+        "foo": "bar"
+      },
+      "description": "description",
+      "metadata": {
+        "foo": "bar"
+      },
+      "name": "name",
+      "permissions": [
+        "string"
+      ],
+      "predefined_role": true,
+      "resource_type": "resource_type",
+      "updated_at": 0
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "role_01J1F8ROLE01",
+            "name": "API Group Manager",
+            "permissions": [
+                "api.groups.read",
+                "api.groups.write"
+            ],
+            "resource_type": "api.organization",
+            "predefined_role": false,
+            "description": "Allows managing organization groups",
+            "created_at": 1711471533,
+            "updated_at": 1711472599,
+            "created_by": "user_abc123",
+            "created_by_user_obj": {
+                "id": "user_abc123",
+                "name": "Ada Lovelace",
+                "email": "ada@example.com"
+            },
+            "metadata": {}
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
 ## Retrieve group organization role
 
 **get** `/organization/groups/{group_id}/roles/{role_id}`
@@ -1281,7 +921,7 @@ Retrieves an organization role assigned to a group.
 
   Identifier for the role.
 
-- `assignment_sources: array of object { principal_id, principal_type }`
+- `assignment_sources: array of object { principal_id, principal_type }  or null`
 
   Principals from which the role assignment is inherited, when available.
 
@@ -1289,23 +929,23 @@ Retrieves an organization role assigned to a group.
 
   - `principal_type: string`
 
-- `created_at: number`
+- `created_at: number or null`
 
   When the role was created.
 
-- `created_by: string`
+- `created_by: string or null`
 
   Identifier of the actor who created the role.
 
-- `created_by_user_obj: map[unknown]`
+- `created_by_user_obj: map[unknown] or null`
 
   User details for the actor that created the role, when available.
 
-- `description: string`
+- `description: string or null`
 
   Description of the role.
 
-- `metadata: map[unknown]`
+- `metadata: map[unknown] or null`
 
   Arbitrary metadata stored on the role.
 
@@ -1325,7 +965,7 @@ Retrieves an organization role assigned to a group.
 
   Resource type the role applies to.
 
-- `updated_at: number`
+- `updated_at: number or null`
 
   When the role was last updated.
 
@@ -1396,121 +1036,7 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/rol
 }
 ```
 
-## Unassign organization role from group
-
-**delete** `/organization/groups/{group_id}/roles/{role_id}`
-
-Unassigns an organization role from a group within the organization.
-
-### Path Parameters
-
-- `group_id: string`
-
-- `role_id: string`
-
-### Returns
-
-- `deleted: boolean`
-
-  Whether the assignment was removed.
-
-- `object: string`
-
-  Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
-
-### Example
-
-```http
-curl https://api.openai.com/v1/organization/groups/$GROUP_ID/roles/$ROLE_ID \
-    -X DELETE \
-    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
-```
-
-#### Response
-
-```json
-{
-  "deleted": true,
-  "object": "object"
-}
-```
-
-### Example
-
-```http
-curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles/role_01J1F8ROLE01 \
-  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
-  -H "Content-Type: application/json"
-```
-
-#### Response
-
-```json
-{
-    "object": "group.role.deleted",
-    "deleted": true
-}
-```
-
 ## Domain Types
-
-### Role List Response
-
-- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
-
-  Detailed information about a role assignment entry returned when listing assignments.
-
-  - `id: string`
-
-    Identifier for the role.
-
-  - `assignment_sources: array of object { principal_id, principal_type }`
-
-    Principals from which the role assignment is inherited, when available.
-
-    - `principal_id: string`
-
-    - `principal_type: string`
-
-  - `created_at: number`
-
-    When the role was created.
-
-  - `created_by: string`
-
-    Identifier of the actor who created the role.
-
-  - `created_by_user_obj: map[unknown]`
-
-    User details for the actor that created the role, when available.
-
-  - `description: string`
-
-    Description of the role.
-
-  - `metadata: map[unknown]`
-
-    Arbitrary metadata stored on the role.
-
-  - `name: string`
-
-    Name of the role.
-
-  - `permissions: array of string`
-
-    Permissions associated with the role.
-
-  - `predefined_role: boolean`
-
-    Whether the role is predefined by OpenAI.
-
-  - `resource_type: string`
-
-    Resource type the role applies to.
-
-  - `updated_at: number`
-
-    When the role was last updated.
 
 ### Role Create Response
 
@@ -1558,7 +1084,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
       Identifier for the role.
 
-    - `description: string`
+    - `description: string or null`
 
       Optional description of the role.
 
@@ -1584,9 +1110,23 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
       Resource type the role is bound to (for example `api.organization` or `api.project`).
 
-### Role Retrieve Response
+### Role Delete Response
 
-- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
+- `RoleDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after unassigning a role.
+
+  - `deleted: boolean`
+
+    Whether the assignment was removed.
+
+  - `object: string`
+
+    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+
+### Role List Response
+
+- `RoleListResponse object { id, assignment_sources, created_at, 9 more }`
 
   Detailed information about a role assignment entry returned when listing assignments.
 
@@ -1594,7 +1134,7 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Identifier for the role.
 
-  - `assignment_sources: array of object { principal_id, principal_type }`
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
 
     Principals from which the role assignment is inherited, when available.
 
@@ -1602,23 +1142,23 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     - `principal_type: string`
 
-  - `created_at: number`
+  - `created_at: number or null`
 
     When the role was created.
 
-  - `created_by: string`
+  - `created_by: string or null`
 
     Identifier of the actor who created the role.
 
-  - `created_by_user_obj: map[unknown]`
+  - `created_by_user_obj: map[unknown] or null`
 
     User details for the actor that created the role, when available.
 
-  - `description: string`
+  - `description: string or null`
 
     Description of the role.
 
-  - `metadata: map[unknown]`
+  - `metadata: map[unknown] or null`
 
     Arbitrary metadata stored on the role.
 
@@ -1638,20 +1178,480 @@ curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ
 
     Resource type the role applies to.
 
-  - `updated_at: number`
+  - `updated_at: number or null`
 
     When the role was last updated.
 
-### Role Delete Response
+### Role Retrieve Response
 
-- `RoleDeleteResponse object { deleted, object }`
+- `RoleRetrieveResponse object { id, assignment_sources, created_at, 9 more }`
 
-  Confirmation payload returned after unassigning a role.
+  Detailed information about a role assignment entry returned when listing assignments.
+
+  - `id: string`
+
+    Identifier for the role.
+
+  - `assignment_sources: array of object { principal_id, principal_type }  or null`
+
+    Principals from which the role assignment is inherited, when available.
+
+    - `principal_id: string`
+
+    - `principal_type: string`
+
+  - `created_at: number or null`
+
+    When the role was created.
+
+  - `created_by: string or null`
+
+    Identifier of the actor who created the role.
+
+  - `created_by_user_obj: map[unknown] or null`
+
+    User details for the actor that created the role, when available.
+
+  - `description: string or null`
+
+    Description of the role.
+
+  - `metadata: map[unknown] or null`
+
+    Arbitrary metadata stored on the role.
+
+  - `name: string`
+
+    Name of the role.
+
+  - `permissions: array of string`
+
+    Permissions associated with the role.
+
+  - `predefined_role: boolean`
+
+    Whether the role is predefined by OpenAI.
+
+  - `resource_type: string`
+
+    Resource type the role applies to.
+
+  - `updated_at: number or null`
+
+    When the role was last updated.
+
+# Users
+
+## Add group user
+
+**post** `/organization/groups/{group_id}/users`
+
+Adds a user to a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Body Parameters
+
+- `user_id: string`
+
+  Identifier of the user to add to the group.
+
+### Returns
+
+- `group_id: string`
+
+  Identifier of the group the user was added to.
+
+- `object: "group.user"`
+
+  Always `group.user`.
+
+  - `"group.user"`
+
+- `user_id: string`
+
+  Identifier of the user that was added.
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+    -d '{
+          "user_id": "user_id"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "group_id": "group_id",
+  "object": "group.user",
+  "user_id": "user_id"
+}
+```
+
+### Example
+
+```http
+curl -X POST https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "user_id": "user_abc123"
+  }'
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user",
+    "user_id": "user_abc123",
+    "group_id": "group_01J1F8ABCDXYZ"
+}
+```
+
+## Remove group user
+
+**delete** `/organization/groups/{group_id}/users/{user_id}`
+
+Removes a user from a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `user_id: string`
+
+### Returns
+
+- `deleted: boolean`
+
+  Whether the group membership was removed.
+
+- `object: "group.user.deleted"`
+
+  Always `group.user.deleted`.
+
+  - `"group.user.deleted"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
+    -X DELETE \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "deleted": true,
+  "object": "group.user.deleted"
+}
+```
+
+### Example
+
+```http
+curl -X DELETE https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "group.user.deleted",
+    "deleted": true
+}
+```
+
+## List group users
+
+**get** `/organization/groups/{group_id}/users`
+
+Lists the users assigned to a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  A cursor for use in pagination. Provide the ID of the last user from the previous list response to retrieve the next page.
+
+- `limit: optional number`
+
+  A limit on the number of users to be returned. Limit can range between 0 and 1000, and the default is 100.
+
+- `order: optional "asc" or "desc"`
+
+  Specifies the sort order of users in the list.
+
+  - `"asc"`
+
+  - `"desc"`
+
+### Returns
+
+- `data: array of OrganizationGroupUser`
+
+  Users in the current page.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string or null`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
+
+- `has_more: boolean`
+
+  Whether more users are available when paginating.
+
+- `next: string or null`
+
+  Cursor to fetch the next page of results, or `null` when no further users are available.
+
+- `object: "list"`
+
+  Always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "email": "email",
+      "name": "name"
+    }
+  ],
+  "has_more": true,
+  "next": "next",
+  "object": "list"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users?limit=20 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "id": "user_abc123",
+            "name": "Ada Lovelace",
+            "email": "ada@example.com"
+        }
+    ],
+    "has_more": false,
+    "next": null
+}
+```
+
+## Retrieve group user
+
+**get** `/organization/groups/{group_id}/users/{user_id}`
+
+Retrieves a user in a group.
+
+### Path Parameters
+
+- `group_id: string`
+
+- `user_id: string`
+
+### Returns
+
+- `id: string`
+
+  Identifier for the user.
+
+- `email: string or null`
+
+  Email address of the user, or `null` for users without an email.
+
+- `is_service_account: boolean or null`
+
+  Whether the user is a service account.
+
+- `name: string`
+
+  Display name of the user.
+
+- `picture: string or null`
+
+  URL of the user's profile picture, if available.
+
+- `user_type: "user" or "tenant_user"`
+
+  The type of user.
+
+  - `"user"`
+
+  - `"tenant_user"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/$GROUP_ID/users/$USER_ID \
+    -H "Authorization: Bearer $OPENAI_ADMIN_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "email": "email",
+  "is_service_account": true,
+  "name": "name",
+  "picture": "picture",
+  "user_type": "user"
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/users/user_abc123 \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json"
+```
+
+#### Response
+
+```json
+{
+    "id": "user_abc123",
+    "name": "Ada Lovelace",
+    "email": "ada@example.com",
+    "picture": null,
+    "is_service_account": false,
+    "user_type": "user"
+}
+```
+
+## Domain Types
+
+### Organization Group User
+
+- `OrganizationGroupUser object { id, email, name }`
+
+  Represents an individual user returned when inspecting group membership.
+
+  - `id: string`
+
+    The identifier, which can be referenced in API endpoints
+
+  - `email: string or null`
+
+    The email address of the user.
+
+  - `name: string`
+
+    The name of the user.
+
+### User Create Response
+
+- `UserCreateResponse object { group_id, object, user_id }`
+
+  Confirmation payload returned after adding a user to a group.
+
+  - `group_id: string`
+
+    Identifier of the group the user was added to.
+
+  - `object: "group.user"`
+
+    Always `group.user`.
+
+    - `"group.user"`
+
+  - `user_id: string`
+
+    Identifier of the user that was added.
+
+### User Delete Response
+
+- `UserDeleteResponse object { deleted, object }`
+
+  Confirmation payload returned after removing a user from a group.
 
   - `deleted: boolean`
 
-    Whether the assignment was removed.
+    Whether the group membership was removed.
 
-  - `object: string`
+  - `object: "group.user.deleted"`
 
-    Identifier for the deleted assignment, such as `group.role.deleted` or `user.role.deleted`.
+    Always `group.user.deleted`.
+
+    - `"group.user.deleted"`
+
+### User Retrieve Response
+
+- `UserRetrieveResponse object { id, email, is_service_account, 3 more }`
+
+  Details about a user returned from an organization group membership lookup.
+
+  - `id: string`
+
+    Identifier for the user.
+
+  - `email: string or null`
+
+    Email address of the user, or `null` for users without an email.
+
+  - `is_service_account: boolean or null`
+
+    Whether the user is a service account.
+
+  - `name: string`
+
+    Display name of the user.
+
+  - `picture: string or null`
+
+    URL of the user's profile picture, if available.
+
+  - `user_type: "user" or "tenant_user"`
+
+    The type of user.
+
+    - `"user"`
+
+    - `"tenant_user"`

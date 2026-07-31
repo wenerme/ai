@@ -24,7 +24,7 @@ Retrieve a single organization API key
 
     The Unix timestamp (in seconds) of when the API key was created
 
-  - `expires_at: number`
+  - `expires_at: number or null`
 
     The Unix timestamp (in seconds) of when the API key expires
 
@@ -64,11 +64,11 @@ Retrieve a single organization API key
 
     The redacted value of the API key
 
-  - `last_used_at: optional number`
+  - `last_used_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the API key was last used
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the API key
 

@@ -5,9 +5,6 @@ Description: Learn how to optimize latency with the Priority inference tier in t
 <br />
 
 
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this page](https://ai.google.dev/gemini-api/docs/generate-content/priority-inference).
-
 > [!WARNING]
 > **Preview:** The Gemini Priority API is in [Preview](https://cloud.google.com/products#product-launch-stages).
 

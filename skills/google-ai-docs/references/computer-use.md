@@ -1,9 +1,5 @@
 <br />
 
-> [!NOTE]
-> **Note:** This version of the page covers the **Interactions API** . You can use the toggle on this page to switch to the [generateContent API version of this
-> page](https://ai.google.dev/gemini-api/docs/generate-content/computer-use).
-
 The Computer Use tool lets you build browser, mobile, and desktop control agents
 that interact with and automate tasks. Using screenshots, the model can "see" a
 computer screen, and "act" by generating specific UI actions like mouse clicks

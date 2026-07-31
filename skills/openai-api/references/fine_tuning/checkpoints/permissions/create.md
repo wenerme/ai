@@ -44,9 +44,9 @@ This enables organization owners to share fine-tuned models with other projects 
 
   - `"list"`
 
-- `first_id: optional string`
+- `first_id: optional string or null`
 
-- `last_id: optional string`
+- `last_id: optional string or null`
 
 ### Example
 

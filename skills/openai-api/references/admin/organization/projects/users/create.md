@@ -14,11 +14,11 @@ Adds a user to the project. Users must already be members of the organization to
 
   `owner` or `member`
 
-- `email: optional string`
+- `email: optional string or null`
 
   Email of the user to add.
 
-- `user_id: optional string`
+- `user_id: optional string or null`
 
   The ID of the user.
 
@@ -46,11 +46,11 @@ Adds a user to the project. Users must already be members of the organization to
 
     `owner` or `member`
 
-  - `email: optional string`
+  - `email: optional string or null`
 
     The email address of the user
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the user
 

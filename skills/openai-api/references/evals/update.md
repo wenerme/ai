@@ -10,7 +10,7 @@ Update certain properties of an evaluation.
 
 ### Body Parameters
 
-- `metadata: optional Metadata`
+- `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
@@ -74,7 +74,7 @@ Update certain properties of an evaluation.
 
       - `"logs"`
 
-    - `metadata: optional Metadata`
+    - `metadata: optional Metadata or null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
@@ -98,7 +98,7 @@ Update certain properties of an evaluation.
 
       - `"stored_completions"`
 
-    - `metadata: optional Metadata`
+    - `metadata: optional Metadata or null`
 
       Set of 16 key-value pairs that can be attached to an object. This can be
       useful for storing additional information about the object in a structured
@@ -107,7 +107,7 @@ Update certain properties of an evaluation.
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-- `metadata: Metadata`
+- `metadata: Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured

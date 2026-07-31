@@ -10,11 +10,11 @@ Create a new project in the organization. Projects can be created and archived, 
 
   The friendly name of the project, this name appears in reports.
 
-- `external_key_id: optional string`
+- `external_key_id: optional string or null`
 
   External key ID to associate with the project.
 
-- `geography: optional string`
+- `geography: optional string or null`
 
   Create the project with the specified data residency region. Your organization must have access to Data residency functionality in order to use. See [data residency controls](/docs/guides/your-data#data-residency-controls) to review the functionality and limitations of setting this field.
 
@@ -38,19 +38,19 @@ Create a new project in the organization. Projects can be created and archived, 
 
     - `"organization.project"`
 
-  - `archived_at: optional number`
+  - `archived_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the project was archived or `null`.
 
-  - `external_key_id: optional string`
+  - `external_key_id: optional string or null`
 
     The external key associated with the project.
 
-  - `name: optional string`
+  - `name: optional string or null`
 
     The name of the project. This appears in reporting.
 
-  - `status: optional string`
+  - `status: optional string or null`
 
     `active` or `archived`
 

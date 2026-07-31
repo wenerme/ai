@@ -62,4 +62,4 @@ keywords: ultralytics, plotting, utilities, documentation, data visualization, a
 
 <hr>
 
-## ::: ultralytics.utils.plotting.feature_visualization
+## ::: ultralytics.utils.plotting.class_activation_map

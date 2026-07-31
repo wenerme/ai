@@ -102,19 +102,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"stored_completions"`
 
-        - `created_after: optional number`
+        - `created_after: optional number or null`
 
           An optional Unix timestamp to filter items created after this time.
 
-        - `created_before: optional number`
+        - `created_before: optional number or null`
 
           An optional Unix timestamp to filter items created before this time.
 
-        - `limit: optional number`
+        - `limit: optional number or null`
 
           An optional maximum number of items to return.
 
-        - `metadata: optional Metadata`
+        - `metadata: optional Metadata or null`
 
           Set of 16 key-value pairs that can be attached to an object. This can be
           useful for storing additional information about the object in a structured
@@ -123,7 +123,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           Keys are strings with a maximum length of 64 characters. Values are strings
           with a maximum length of 512 characters.
 
-        - `model: optional string`
+        - `model: optional string or null`
 
           An optional model to filter by (e.g., 'gpt-4o').
 
@@ -211,11 +211,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_image"`
 
-                  - `file_id: optional string`
+                  - `file_id: optional string or null`
 
                     The ID of the file to be sent to the model.
 
-                  - `image_url: optional string`
+                  - `image_url: optional string or null`
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -253,7 +253,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The content of the file to be sent to the model.
 
-                  - `file_id: optional string`
+                  - `file_id: optional string or null`
 
                     The ID of the file to be sent to the model.
 
@@ -288,7 +288,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"developer"`
 
-            - `phase: optional "commentary" or "final_answer"`
+            - `phase: optional "commentary" or "final_answer" or null`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
@@ -477,7 +477,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort`
+      - `reasoning_effort: optional ReasoningEffort or null`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -548,7 +548,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               The schema for the response format, described as a JSON Schema object.
               Learn how to build JSON schemas [here](https://json-schema.org/).
 
-            - `strict: optional boolean`
+            - `strict: optional boolean or null`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -603,7 +603,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Omitting `parameters` defines a function with an empty parameter list.
 
-          - `strict: optional boolean`
+          - `strict: optional boolean or null`
 
             Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
@@ -663,27 +663,27 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"responses"`
 
-        - `created_after: optional number`
+        - `created_after: optional number or null`
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
-        - `created_before: optional number`
+        - `created_before: optional number or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
 
-        - `instructions_search: optional string`
+        - `instructions_search: optional string or null`
 
           Optional string to search the 'instructions' field. This is a query parameter used to select responses.
 
-        - `metadata: optional unknown`
+        - `metadata: optional unknown or null`
 
           Metadata filter for the responses. This is a query parameter used to select responses.
 
-        - `model: optional string`
+        - `model: optional string or null`
 
           The name of the model to find responses for. This is a query parameter used to select responses.
 
-        - `reasoning_effort: optional ReasoningEffort`
+        - `reasoning_effort: optional ReasoningEffort or null`
 
           Constrains effort on reasoning for reasoning models. Currently supported
           values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -693,19 +693,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
           for model-specific support.
 
-        - `temperature: optional number`
+        - `temperature: optional number or null`
 
           Sampling temperature. This is a query parameter used to select responses.
 
-        - `tools: optional array of string`
+        - `tools: optional array of string or null`
 
           List of tool names. This is a query parameter used to select responses.
 
-        - `top_p: optional number`
+        - `top_p: optional number or null`
 
           Nucleus sampling parameter. This is a query parameter used to select responses.
 
-        - `users: optional array of string`
+        - `users: optional array of string or null`
 
           List of user identifiers. This is a query parameter used to select responses.
 
@@ -843,7 +843,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort`
+      - `reasoning_effort: optional ReasoningEffort or null`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -915,7 +915,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               A description of what the response format is for, used by the model to
               determine how to respond in the format.
 
-            - `strict: optional boolean`
+            - `strict: optional boolean or null`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -953,11 +953,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The name of the function to call.
 
-          - `parameters: map[unknown]`
+          - `parameters: map[unknown] or null`
 
             A JSON schema object describing the parameters of the function.
 
-          - `strict: boolean`
+          - `strict: boolean or null`
 
             Whether strict parameter validation is enforced for this function tool.
 
@@ -967,7 +967,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"function"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -979,11 +979,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Whether this function is deferred and loaded via tool search.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-          - `output_schema: optional map[unknown]`
+          - `output_schema: optional map[unknown] or null`
 
             A JSON schema object describing the JSON value encoded in string outputs for this function.
 
@@ -1001,7 +1001,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The IDs of the vector stores to search.
 
-          - `filters: optional ComparisonFilter or CompoundFilter`
+          - `filters: optional ComparisonFilter or CompoundFilter or null`
 
             A filter to apply.
 
@@ -1167,11 +1167,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"web_search_2025_08_26"`
 
-          - `filters: optional object { allowed_domains }`
+          - `filters: optional object { allowed_domains }  or null`
 
             Filters for the search.
 
-            - `allowed_domains: optional array of string`
+            - `allowed_domains: optional array of string or null`
 
               Allowed domains for the search. If not provided, all domains are allowed.
               Subdomains of the provided domains are allowed as well.
@@ -1188,23 +1188,23 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"high"`
 
-          - `user_location: optional object { city, country, region, 2 more }`
+          - `user_location: optional object { city, country, region, 2 more }  or null`
 
             The approximate location of the user.
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -1229,7 +1229,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -1237,7 +1237,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -1302,12 +1302,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -1397,7 +1397,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of uploaded files to make available to your code.
 
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
 
@@ -1455,7 +1455,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"code_interpreter"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -1502,7 +1502,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-          - `input_fidelity: optional "high" or "low"`
+          - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
 
@@ -1617,7 +1617,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"shell"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -1625,7 +1625,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"programmatic"`
 
-          - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
+          - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference or null`
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
@@ -1639,7 +1639,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of uploaded files to make available to your code.
 
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the container.
 
@@ -1765,7 +1765,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"custom"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -1841,7 +1841,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"function"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -1853,15 +1853,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Whether this function should be deferred and discovered via tool search.
 
-              - `description: optional string`
+              - `description: optional string or null`
 
-              - `output_schema: optional map[unknown]`
+              - `output_schema: optional map[unknown] or null`
 
                 A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
 
-              - `parameters: optional unknown`
+              - `parameters: optional unknown or null`
 
-              - `strict: optional boolean`
+              - `strict: optional boolean or null`
 
                 Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
@@ -1879,7 +1879,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"custom"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -1915,7 +1915,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"tool_search"`
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             Description shown to the model for a client-executed tool search tool.
 
@@ -1927,7 +1927,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"client"`
 
-          - `parameters: optional unknown`
+          - `parameters: optional unknown or null`
 
             Parameter schema for a client-executed tool search tool.
 
@@ -1959,7 +1959,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"high"`
 
-          - `user_location: optional object { type, city, country, 2 more }`
+          - `user_location: optional object { type, city, country, 2 more }  or null`
 
             The user's location.
 
@@ -1969,19 +1969,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -1995,7 +1995,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"apply_patch"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2007,7 +2007,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         An alternative to temperature for nucleus sampling; 1.0 includes all tokens.
 
-- `metadata: optional Metadata`
+- `metadata: optional Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured
@@ -2122,19 +2122,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"stored_completions"`
 
-        - `created_after: optional number`
+        - `created_after: optional number or null`
 
           An optional Unix timestamp to filter items created after this time.
 
-        - `created_before: optional number`
+        - `created_before: optional number or null`
 
           An optional Unix timestamp to filter items created before this time.
 
-        - `limit: optional number`
+        - `limit: optional number or null`
 
           An optional maximum number of items to return.
 
-        - `metadata: optional Metadata`
+        - `metadata: optional Metadata or null`
 
           Set of 16 key-value pairs that can be attached to an object. This can be
           useful for storing additional information about the object in a structured
@@ -2143,7 +2143,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           Keys are strings with a maximum length of 64 characters. Values are strings
           with a maximum length of 512 characters.
 
-        - `model: optional string`
+        - `model: optional string or null`
 
           An optional model to filter by (e.g., 'gpt-4o').
 
@@ -2231,11 +2231,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     - `"input_image"`
 
-                  - `file_id: optional string`
+                  - `file_id: optional string or null`
 
                     The ID of the file to be sent to the model.
 
-                  - `image_url: optional string`
+                  - `image_url: optional string or null`
 
                     The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
 
@@ -2273,7 +2273,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                     The content of the file to be sent to the model.
 
-                  - `file_id: optional string`
+                  - `file_id: optional string or null`
 
                     The ID of the file to be sent to the model.
 
@@ -2308,7 +2308,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"developer"`
 
-            - `phase: optional "commentary" or "final_answer"`
+            - `phase: optional "commentary" or "final_answer" or null`
 
               Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
               For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
@@ -2497,7 +2497,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort`
+      - `reasoning_effort: optional ReasoningEffort or null`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -2568,7 +2568,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               The schema for the response format, described as a JSON Schema object.
               Learn how to build JSON schemas [here](https://json-schema.org/).
 
-            - `strict: optional boolean`
+            - `strict: optional boolean or null`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -2623,7 +2623,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Omitting `parameters` defines a function with an empty parameter list.
 
-          - `strict: optional boolean`
+          - `strict: optional boolean or null`
 
             Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the `parameters` field. Only a subset of JSON Schema is supported when `strict` is `true`. Learn more about Structured Outputs in the [function calling guide](/docs/guides/function-calling).
 
@@ -2683,27 +2683,27 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
           - `"responses"`
 
-        - `created_after: optional number`
+        - `created_after: optional number or null`
 
           Only include items created after this timestamp (inclusive). This is a query parameter used to select responses.
 
-        - `created_before: optional number`
+        - `created_before: optional number or null`
 
           Only include items created before this timestamp (inclusive). This is a query parameter used to select responses.
 
-        - `instructions_search: optional string`
+        - `instructions_search: optional string or null`
 
           Optional string to search the 'instructions' field. This is a query parameter used to select responses.
 
-        - `metadata: optional unknown`
+        - `metadata: optional unknown or null`
 
           Metadata filter for the responses. This is a query parameter used to select responses.
 
-        - `model: optional string`
+        - `model: optional string or null`
 
           The name of the model to find responses for. This is a query parameter used to select responses.
 
-        - `reasoning_effort: optional ReasoningEffort`
+        - `reasoning_effort: optional ReasoningEffort or null`
 
           Constrains effort on reasoning for reasoning models. Currently supported
           values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -2713,19 +2713,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
           [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
           for model-specific support.
 
-        - `temperature: optional number`
+        - `temperature: optional number or null`
 
           Sampling temperature. This is a query parameter used to select responses.
 
-        - `tools: optional array of string`
+        - `tools: optional array of string or null`
 
           List of tool names. This is a query parameter used to select responses.
 
-        - `top_p: optional number`
+        - `top_p: optional number or null`
 
           Nucleus sampling parameter. This is a query parameter used to select responses.
 
-        - `users: optional array of string`
+        - `users: optional array of string or null`
 
           List of user identifiers. This is a query parameter used to select responses.
 
@@ -2863,7 +2863,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
         The maximum number of tokens in the generated output.
 
-      - `reasoning_effort: optional ReasoningEffort`
+      - `reasoning_effort: optional ReasoningEffort or null`
 
         Constrains effort on reasoning for reasoning models. Currently supported
         values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
@@ -2935,7 +2935,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
               A description of what the response format is for, used by the model to
               determine how to respond in the format.
 
-            - `strict: optional boolean`
+            - `strict: optional boolean or null`
 
               Whether to enable strict schema adherence when generating the output.
               If set to true, the model will always follow the exact schema defined
@@ -2973,11 +2973,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The name of the function to call.
 
-          - `parameters: map[unknown]`
+          - `parameters: map[unknown] or null`
 
             A JSON schema object describing the parameters of the function.
 
-          - `strict: boolean`
+          - `strict: boolean or null`
 
             Whether strict parameter validation is enforced for this function tool.
 
@@ -2987,7 +2987,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"function"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -2999,11 +2999,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Whether this function is deferred and loaded via tool search.
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             A description of the function. Used by the model to determine whether or not to call the function.
 
-          - `output_schema: optional map[unknown]`
+          - `output_schema: optional map[unknown] or null`
 
             A JSON schema object describing the JSON value encoded in string outputs for this function.
 
@@ -3021,7 +3021,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             The IDs of the vector stores to search.
 
-          - `filters: optional ComparisonFilter or CompoundFilter`
+          - `filters: optional ComparisonFilter or CompoundFilter or null`
 
             A filter to apply.
 
@@ -3187,11 +3187,11 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"web_search_2025_08_26"`
 
-          - `filters: optional object { allowed_domains }`
+          - `filters: optional object { allowed_domains }  or null`
 
             Filters for the search.
 
-            - `allowed_domains: optional array of string`
+            - `allowed_domains: optional array of string or null`
 
               Allowed domains for the search. If not provided, all domains are allowed.
               Subdomains of the provided domains are allowed as well.
@@ -3208,23 +3208,23 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"high"`
 
-          - `user_location: optional object { city, country, region, 2 more }`
+          - `user_location: optional object { city, country, region, 2 more }  or null`
 
             The approximate location of the user.
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -3249,7 +3249,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"mcp"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3257,7 +3257,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"programmatic"`
 
-          - `allowed_tools: optional array of string or object { read_only, tool_names }`
+          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
 
             List of allowed tool names or a filter object.
 
@@ -3322,12 +3322,12 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             Whether this MCP tool is deferred and discovered via tool search.
 
-          - `headers: optional map[string]`
+          - `headers: optional map[string] or null`
 
             Optional HTTP headers to send to the MCP server. Use for authentication
             or other purposes.
 
-          - `require_approval: optional object { always, never }  or "always" or "never"`
+          - `require_approval: optional object { always, never }  or "always" or "never" or null`
 
             Specify which of the MCP server's tools require approval.
 
@@ -3417,7 +3417,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of uploaded files to make available to your code.
 
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the code interpreter container.
 
@@ -3475,7 +3475,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"code_interpreter"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3522,7 +3522,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"auto"`
 
-          - `input_fidelity: optional "high" or "low"`
+          - `input_fidelity: optional "high" or "low" or null`
 
             Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
 
@@ -3637,7 +3637,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"shell"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3645,7 +3645,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"programmatic"`
 
-          - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference`
+          - `environment: optional ContainerAuto or LocalEnvironment or ContainerReference or null`
 
             - `ContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
@@ -3659,7 +3659,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 An optional list of uploaded files to make available to your code.
 
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g"`
+              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
 
                 The memory limit for the container.
 
@@ -3785,7 +3785,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"custom"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -3861,7 +3861,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"function"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -3873,15 +3873,15 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 Whether this function should be deferred and discovered via tool search.
 
-              - `description: optional string`
+              - `description: optional string or null`
 
-              - `output_schema: optional map[unknown]`
+              - `output_schema: optional map[unknown] or null`
 
                 A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
 
-              - `parameters: optional unknown`
+              - `parameters: optional unknown or null`
 
-              - `strict: optional boolean`
+              - `strict: optional boolean or null`
 
                 Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
 
@@ -3899,7 +3899,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                 - `"custom"`
 
-              - `allowed_callers: optional array of "direct" or "programmatic"`
+              - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
                 The tool invocation context(s).
 
@@ -3935,7 +3935,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"tool_search"`
 
-          - `description: optional string`
+          - `description: optional string or null`
 
             Description shown to the model for a client-executed tool search tool.
 
@@ -3947,7 +3947,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"client"`
 
-          - `parameters: optional unknown`
+          - `parameters: optional unknown or null`
 
             Parameter schema for a client-executed tool search tool.
 
@@ -3979,7 +3979,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"high"`
 
-          - `user_location: optional object { type, city, country, 2 more }`
+          - `user_location: optional object { type, city, country, 2 more }  or null`
 
             The user's location.
 
@@ -3989,19 +3989,19 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               - `"approximate"`
 
-            - `city: optional string`
+            - `city: optional string or null`
 
               Free text input for the city of the user, e.g. `San Francisco`.
 
-            - `country: optional string`
+            - `country: optional string or null`
 
               The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
 
-            - `region: optional string`
+            - `region: optional string or null`
 
               Free text input for the region of the user, e.g. `California`.
 
-            - `timezone: optional string`
+            - `timezone: optional string or null`
 
               The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
 
@@ -4015,7 +4015,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
             - `"apply_patch"`
 
-          - `allowed_callers: optional array of "direct" or "programmatic"`
+          - `allowed_callers: optional array of "direct" or "programmatic" or null`
 
             The tool invocation context(s).
 
@@ -4043,7 +4043,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
   The identifier of the associated evaluation.
 
-- `metadata: Metadata`
+- `metadata: Metadata or null`
 
   Set of 16 key-value pairs that can be attached to an object. This can be
   useful for storing additional information about the object in a structured

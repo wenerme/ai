@@ -92,11 +92,11 @@ Create an invite for a user to the organization. The invite must be accepted by 
 
     - `"pending"`
 
-  - `accepted_at: optional number`
+  - `accepted_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite was accepted.
 
-  - `expires_at: optional number`
+  - `expires_at: optional number or null`
 
     The Unix timestamp (in seconds) of when the invite expires.
 

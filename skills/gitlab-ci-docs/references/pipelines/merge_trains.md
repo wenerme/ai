@@ -309,15 +309,23 @@ You can also use the [projects API](../../api/projects.md), or the
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/597962) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `merge_train_enforcement`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245861) in GitLab 19.3. Feature flag `merge_train_enforcement` removed.
 
-By default, users with permission to merge can bypass the merge train and merge directly,
-for example with **Merge immediately** or a direct API request.
-Merge train enforcement requires all changes to go through the train.
+By default, if you have permission to merge, you can bypass the merge train. Enforcement
+requires every merge request to go through the train.
 
 When enforcement is enabled:
 
 - GitLab hides the **Merge immediately** options, including **Merge now and don't restart train**.
-- GitLab rejects direct merges through the REST API and GraphQL API.
-- GitLab routes all merges through auto-merge, which adds the merge request to the train.
+- The REST API and GraphQL API reject direct merges.
+- Auto-merge routes all merges to the train.
+
+Merge train enforcement has three levels:
+
+- **Allow bypass** (default): Users with permission to merge can bypass the merge train
+  through the UI or API.
+- **Enforce for all users**: All merge requests must go through the merge train.
+  No one can bypass the merge train, including Owners and administrators.
+- **Enforce with Owner override**: All merge requests must go through the merge train,
+  but Owners and administrators can bypass the merge train for individual merge requests.
 
 Prerequisites:
 
@@ -328,13 +336,7 @@ To configure merge train enforcement:
 
 1. In the top bar, select **Search or go to** and find your project.
 1. In the left sidebar, select **Settings** > **Merge requests**.
-1. In the **Merge options** section, under **Merge train enforcement**, select one of:
-   - **Allow bypass**: Users with permission to merge can bypass the merge train through the UI or API.
-     This is the default.
-   - **Enforce for all users**: All merge requests must go through the merge train.
-     No one can bypass the merge train. This applies to Owners and administrators.
-   - **Enforce with Owner override**: All merge requests must go through the merge train,
-     but Owners and administrators can bypass the merge train for individual merge requests.
+1. In the **Merge options** section, under **Merge train enforcement**, select an enforcement level.
 1. Select **Save changes**.
 
 ## Troubleshooting
@@ -349,7 +351,7 @@ the merge train drops your merge request automatically. Common causes include:
 - A new conversation thread that is unresolved, when [all threads must be resolved](../../user/project/merge_requests/_index.md#prevent-merge-unless-all-threads-are-resolved)
   is enabled.
 
-You can find reason the merge request was dropped from the merge train in the system
+You can find the reason the merge request was dropped from the merge train in the system
 notes. Check the **Activity** section in the **Overview** tab for a message similar to:
 `User removed this merge request from the merge train because ...`
 
@@ -387,5 +389,15 @@ Before you can re-add a merge request to a merge train, you can try to:
 - Rerun the whole pipeline. On the **Pipelines** tab, select **Run pipeline**.
 - Push a new commit that fixes the issue, which also triggers a new pipeline.
 
-See [the related issue](https://gitlab.com/gitlab-org/gitlab/-/issues/35135)
-for more information.
+For more information, see [issue 35135](https://gitlab.com/gitlab-org/gitlab/-/issues/35135).
+
+### Automation tools fail to merge with a 405 error
+
+If merge train enforcement is enabled, any tool that calls the
+[merge requests API](../../api/merge_requests.md#merge-a-merge-request) without `auto_merge=true`
+receives a `405 Method Not Allowed` response. This includes scripts, CI/CD jobs, and bots.
+
+To resolve this, update the tool to pass `auto_merge=true`, which adds the merge request to
+the merge train instead of merging it directly. For example, if you use
+[Renovate](https://docs.renovatebot.com/configuration-options/#platformautomerge), enable the
+`platformAutomerge` configuration option.

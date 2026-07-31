@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting a live stream
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/stream-live/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In addition to following the live stream troubleshooting steps in this guide, make sure that your video settings align with [Cloudflare live stream recommendations](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations). If you use OBS, you can also check these [OBS-specific recommendations](https://developers.cloudflare.com/stream/examples/obs-from-scratch/#6-optional-optimize-settings).
 
@@ -47,20 +47,7 @@ The upload-to-duration ratio is a measurement of how long it takes to upload a p
 If your encoder shows a connection error such as "Failed to connect to server" or repeatedly disconnects shortly after starting, try the following:
 
 * Verify that your RTMPS URL, stream key, and encoder software are copied correctly into your broadcasting software.
-* Verify that the live input is enabled. A live input that is _disabled_ will reject all incoming connections. You can enable or disable a live input from the **Live inputs** page in the Dashboard or via the API using the `enabled` property.
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)
-```bash
-curl -X GET \
---header "Authorization: Bearer <API_TOKEN>" \
-https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id}
-```
-If `enabled` is `false` in the response, update the live input to enable it:
-```bash
-curl --request PUT \
-https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{input_id} \
---header "Authorization: Bearer <API_TOKEN>" \
---data '{"enabled": true}'
-```
+* If the connection fails, check whether the live input is [disabled](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#enable-or-disable-a-live-input) or its [broadcast keys have been rotated](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#rotate-broadcast-keys).
 * If you use [Live Webhooks](https://developers.cloudflare.com/stream/stream-live/webhooks/), check for a `live_input.errored` event. The webhook payload includes an [error code](https://developers.cloudflare.com/stream/stream-live/webhooks/#error-codes) that can help you troubleshoot the specific cause.
 
 ## Connecting but the player says "Stream has not started yet"
@@ -70,7 +57,7 @@ If your encoder is connected and the dashboard shows a green **Connected** statu
 * Wait thirty seconds. There is a brief delay between when your encoder connects and the stream becomes playable.
 * Restart the stream to clear any bad state from the initial connection.
 * Verify that your encoder is sending [AAC audio](https://developers.cloudflare.com/stream/stream-live/start-stream-live/#recommendations-requirements-and-limitations). If it is not, set your encoder's settings to AAC explicitly.
-* Verify that your encoder is sending keyframes at a fixed interval between two and eight seconds. If the keyframe interval is set to _variable_ or _automatic_, change it to a specific value such as four seconds. For more details, refer to the keyframe information in the [Buffering, freezing, and latency](#buffering-freezing-and-latency) section above.
+* Verify that your encoder is sending keyframes at a fixed interval between two and eight seconds. If the keyframe interval is set to _variable_ or _automatic_, change it to a specific value such as four seconds. For more details, refer to the keyframe information in [Buffering, freezing, and latency](#buffering-freezing-and-latency).
 
 Was this helpful?
 
@@ -81,5 +68,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/#page","headline":"Troubleshooting a live stream · Cloudflare Stream docs","description":"Diagnose and resolve buffering, freezing, latency, and other Cloudflare Stream Live issues.","url":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/#page","headline":"Troubleshooting a live stream · Cloudflare Stream docs","description":"Diagnose and resolve buffering, freezing, latency, and other Cloudflare Stream Live issues.","url":"https://developers.cloudflare.com/stream/stream-live/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

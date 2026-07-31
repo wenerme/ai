@@ -25,6 +25,7 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 * [Default password](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/default-password/)
 * [Heartbeat](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/heartbeat/)
 * [Interrupt window](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/interrupt-service-window/)
+* [Appliance operations](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/maintenance/appliance-operations/)
 
 Was this helpful?
 

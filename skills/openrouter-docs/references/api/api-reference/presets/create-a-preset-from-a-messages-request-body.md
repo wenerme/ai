@@ -76,6 +76,8 @@ tags:
     name: Rerank
   - description: OpenAI-compatible Responses API endpoints
     name: Responses
+  - description: SCIM endpoints
+    name: SCIM
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
@@ -1242,9 +1244,11 @@ components:
       example:
         allowed_models:
           - anthropic/*
-          - openai/gpt-4o
+          - openai/*
         cost_tier: low
         enabled: true
+        excluded_models:
+          - openai/gpt-4o
         id: auto-beta-router
       properties:
         allowed_models:
@@ -1295,6 +1299,18 @@ components:
             Set to false to disable the auto-beta-router plugin for this
             request. Defaults to true.
           type: boolean
+        excluded_models:
+          description: >-
+            List of model patterns to exclude from auto-beta-router selection.
+            Supports wildcards (e.g., "meta-llama/*" excludes all Llama models).
+            Applied after allowed_models, so an excluded pattern always wins
+            over an allowed one.
+          example:
+            - openai/gpt-4o
+            - meta-llama/*
+          items:
+            type: string
+          type: array
         id:
           enum:
             - auto-beta-router
@@ -1306,9 +1322,11 @@ components:
       example:
         allowed_models:
           - anthropic/*
-          - openai/gpt-4o
+          - openai/*
         cost_tier: medium
         enabled: true
+        excluded_models:
+          - openai/gpt-4o
         id: auto-router
         pin_model: false
       properties:
@@ -1357,6 +1375,18 @@ components:
             Set to false to disable the auto-router plugin for this request.
             Defaults to true.
           type: boolean
+        excluded_models:
+          description: >-
+            List of model patterns to exclude from auto-router selection.
+            Supports wildcards (e.g., "meta-llama/*" excludes all Llama models).
+            Applied after allowed_models, so an excluded pattern always wins
+            over an allowed one.
+          example:
+            - openai/gpt-4o
+            - meta-llama/*
+          items:
+            type: string
+          type: array
         id:
           enum:
             - auto-router
@@ -2795,6 +2825,7 @@ components:
         - Switchpoint
         - Tencent
         - Tenstorrent
+        - Thinking Machines
         - Together
         - Upstage
         - Venice

@@ -80,7 +80,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
         An error code identifying the error type.
 
-      - `line: optional number`
+      - `line: optional number or null`
 
         The line number of the input file where the error occurred, if applicable.
 
@@ -88,7 +88,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
         A human-readable message providing more details about the error.
 
-      - `param: optional string`
+      - `param: optional string or null`
 
         The name of the parameter that caused the error, if applicable.
 
@@ -116,7 +116,7 @@ Cancels an in-progress batch. The batch will be in status `cancelling` for up to
 
     The Unix timestamp (in seconds) for when the batch started processing.
 
-  - `metadata: optional Metadata`
+  - `metadata: optional Metadata or null`
 
     Set of 16 key-value pairs that can be attached to an object. This can be
     useful for storing additional information about the object in a structured

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Public DNS
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you cannot use a [Cloudflare Tunnel setup](https://developers.cloudflare.com/ssl/keyless-ssl/configuration/cloudflare-tunnel/), you can also create a public DNS record for your key server.
 
@@ -50,6 +50,25 @@ We strongly recommend that you use an operating system still supported by the ve
 Caution
 
 As a security measure, you should hide the hostname of your key server.
+
+Note
+
+If your key server hostname is on a Cloudflare zone, you must create a DNS-only (grey cloud) record for it — do not proxy it. If the record is proxied, the hostname resolves to Cloudflare's edge IP addresses instead of your key server, so Cloudflare's keyless client cannot reach it. If the record is missing, resolution fails with NXDOMAIN. Either way, the Keyless SSL handshake fails. The fix is the DNS-only record — not adding the hostname to a certificate Subject Alternative Name (SAN).
+
+---
+
+## Certificates used in Keyless SSL
+
+Keyless SSL involves **two different certificates**. Confusing them is the most common setup error.
+
+| Certificate                               | What it is                                                          | SAN should contain                                      |
+| ----------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------- |
+| **Edge (Keyless SSL) certificate**        | The public certificate Cloudflare serves for your site.             | Your site hostnames only (for example, www.example.com) |
+| **Key server authentication certificate** | The certificate your key server uses to prove itself to Cloudflare. | The key server hostname only                            |
+
+Caution
+
+Do **not** add your key server hostname to the SAN of your public edge certificate. It is not required, and it leaks internal hostnames into the public certificate and Certificate Transparency logs.
 
 ---
 
@@ -180,7 +199,22 @@ Add your Cloudflare account details to the configuration file located at `/etc/k
 
 1. Set the hostname of the key server, for example, `11aa40b4a5db06d4889e48e2f.example.com`. This is also the value you entered when you uploaded your keyless certificate and is the hostname of your key server that holds the key for this certificate.
 2. Set the Zone ID (found on **Overview** tab of the Cloudflare dashboard).
-3. [Set the Origin CA API key](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys).
+3. Set the authentication credential for server certificate enrollment. gokeyless supports two options:
+
+  * **API Token (recommended):** [Create an API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with the **Zone > SSL and Certificates > Edit** permission. Set it in your configuration:
+  ```yaml
+  api_token: "<YOUR_API_TOKEN>"
+  ```
+  Or use the environment variable `KEYLESS_API_TOKEN`.
+  * **Origin CA API key (deprecated):** [Set the Origin CA API key](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/). This option will stop working on September 30, 2026.
+
+Origin CA Service Keys are removed September 30, 2026
+
+The Origin CA API key (Service Key) used for Keyless SSL enrollment is deprecated and will be removed on **September 30, 2026**. After that date, key server enrollment and certificate refresh using only a Service Key will fail.
+
+**To migrate**, upgrade to gokeyless 1.18.0 or later, create an API Token with **Zone > SSL and Certificates > Edit**, and set the `api_token` value in `/etc/keyless/gokeyless.yaml` (or the `KEYLESS_API_TOKEN` environment variable). You can then remove the `origin_ca_api_key` value.
+
+Refer to the [gokeyless 1.18.0 release notes ↗](https://github.com/cloudflare/gokeyless/releases/tag/v1.18.0) and the [Origin CA keys deprecation notice](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/) for details.
 
 ### Populate keys
 
@@ -203,6 +237,10 @@ To activate, restart your keyless instance:
 * systemd: `sudo service gokeyless restart`
 * upstart/sysvinit: `sudo /etc/init.d/gokeyless restart`
 
+Note
+
+The first time the key server starts with the hostname, Zone ID, and Origin CA API key set, it automatically generates its own private key and certificate signing request (CSR), submits the CSR to Cloudflare, and saves the signed authentication certificate it presents for mutual TLS. You do not need to create this certificate manually. If those three values are not set, the key server will not start and will ask you to set them — or to run it with `--config-only` or `--manual-activation` to generate the key and CSR interactively.
+
 If this command fails, try troubleshooting by [checking the logs](https://developers.cloudflare.com/ssl/keyless-ssl/troubleshooting/).
 
 ### Allow incoming connections from Cloudflare
@@ -220,5 +258,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/#page","headline":"Public DNS setup - Keyless SSL · Cloudflare SSL/TLS docs","description":"Deploy Keyless SSL with public DNS resolution.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/#page","headline":"Public DNS setup - Keyless SSL · Cloudflare SSL/TLS docs","description":"Deploy Keyless SSL with public DNS resolution.","url":"https://developers.cloudflare.com/ssl/keyless-ssl/configuration/public-dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}
 ```

@@ -541,8 +541,9 @@ When you use tool search, `tool_choice` still applies to the tools that are curr
 
 ### Parallel function calling
 
-Parallel function calling is not possible when using [built-in
-  tools](https://developers.openai.com/api/docs/guides/tools).
+On supported models beginning with GPT-5, functions can be called in parallel
+  when [built-in tools](https://developers.openai.com/api/docs/guides/tools) are also available. Built-in
+  tools cannot be included in a parallel function-call batch.
 
 The model may choose to call multiple functions in a single turn. You can prevent this by setting `parallel_tool_calls` to `false`, which ensures exactly zero or one tool is called.
 

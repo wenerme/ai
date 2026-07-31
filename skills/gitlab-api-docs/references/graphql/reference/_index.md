@@ -31787,6 +31787,7 @@ Fields:
 | <a id="aiusermetrics-duomessaging"></a>`duoMessaging` | [`duoMessagingUserMetrics`](#duomessagingusermetrics) | Duo Messaging metrics for the user. |
 | <a id="aiusermetrics-duoworkflow"></a>`duoWorkflow` | [`duoWorkflowUserMetrics`](#duoworkflowusermetrics) | Duo Workflow metrics for the user. |
 | <a id="aiusermetrics-explainvulnerability"></a>`explainVulnerability` | [`explainVulnerabilityUserMetrics`](#explainvulnerabilityusermetrics) | Explain Vulnerability metrics for the user. |
+| <a id="aiusermetrics-featurediscovery"></a>`featureDiscovery` | [`featureDiscoveryUserMetrics`](#featurediscoveryusermetrics) | Feature Discovery metrics for the user. |
 | <a id="aiusermetrics-fixpipeline"></a>`fixPipeline` | [`fixPipelineUserMetrics`](#fixpipelineusermetrics) | Fix Pipeline metrics for the user. |
 | <a id="aiusermetrics-generatemergecommitmessage"></a>`generateMergeCommitMessage` | [`generateMergeCommitMessageUserMetrics`](#generatemergecommitmessageusermetrics) | Generate Merge Commit Message metrics for the user. |
 | <a id="aiusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Duo activity across all features for the user. |
@@ -32036,7 +32037,7 @@ Fields:
 
 ### `Analytics`
 
-ClickHouse-based analytics endpoints. Data can be delayed by 10 minutes.
+ClickHouse-based analytics endpoints aggregating data across groups and projects. Data can be delayed by 10 minutes.
 
 #### Fields with arguments
 
@@ -32053,6 +32054,8 @@ Arguments:
 | <a id="analytics-agentplatformsessions-createdeventatfrom"></a>`createdEventAtFrom` | [`Time`](#time) | Filter by session creation timestamp. Start of the range. |
 | <a id="analytics-agentplatformsessions-createdeventatto"></a>`createdEventAtTo` | [`Time`](#time) | Filter by session creation timestamp. End of the range. |
 | <a id="analytics-agentplatformsessions-flowtype"></a>`flowType` | [`[String!]`](#string) | Filter by one or many flow types. |
+| <a id="analytics-agentplatformsessions-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-agentplatformsessions-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-agentplatformsessions-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
 
 ##### `Analytics.contributions`
@@ -32071,6 +32074,8 @@ Arguments:
 | <a id="analytics-contributions-authorid"></a>`authorId` | [`[String!]`](#string) | Filter by one or many author Global IDs. |
 | <a id="analytics-contributions-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by contribution timestamp. Start of the range. |
 | <a id="analytics-contributions-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by contribution timestamp. End of the range. |
+| <a id="analytics-contributions-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-contributions-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 
 ##### `Analytics.deployments`
 
@@ -32090,6 +32095,8 @@ Arguments:
 | <a id="analytics-deployments-environmentid"></a>`environmentId` | [`[String!]`](#string) | Filter by one or many environment Global IDs. |
 | <a id="analytics-deployments-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by deployment finish timestamp. Start of the range. |
 | <a id="analytics-deployments-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by deployment finish timestamp. End of the range. |
+| <a id="analytics-deployments-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-deployments-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-deployments-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many deployment refs. |
 | <a id="analytics-deployments-status"></a>`status` | [`[String!]`](#string) | Filter by one or many deployment statuses. |
 
@@ -32103,8 +32110,10 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="analytics-duocodesuggestions-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-duocodesuggestions-idename"></a>`ideName` | [`[String!]`](#string) | Filter by IDE name. |
 | <a id="analytics-duocodesuggestions-language"></a>`language` | [`[String!]`](#string) | Filter by suggestion language. |
+| <a id="analytics-duocodesuggestions-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-duocodesuggestions-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by suggestion timestamp. Start of the range. |
 | <a id="analytics-duocodesuggestions-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by suggestion timestamp. End of the range. |
 | <a id="analytics-duocodesuggestions-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
@@ -32121,6 +32130,8 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-duousageevents-event"></a>`event` | [`[String!]`](#string) | Filter by one or many events. |
 | <a id="analytics-duousageevents-feature"></a>`feature` | [`[String!]`](#string) | Filter by one or many features. |
+| <a id="analytics-duousageevents-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-duousageevents-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-duousageevents-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by event timestamp. Start of the range. |
 | <a id="analytics-duousageevents-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by event timestamp. End of the range. |
 | <a id="analytics-duousageevents-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
@@ -32140,6 +32151,8 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-finishedpipelines-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by pipeline finish timestamp. Start of the range. |
 | <a id="analytics-finishedpipelines-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by pipeline finish timestamp. End of the range. |
+| <a id="analytics-finishedpipelines-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-finishedpipelines-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-finishedpipelines-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many pipeline refs. |
 | <a id="analytics-finishedpipelines-source"></a>`source` | [`[String!]`](#string) | Filter by one or many pipeline sources. |
 | <a id="analytics-finishedpipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
@@ -32161,8 +32174,10 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-mergerequests-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by merge request creation timestamp. Start of the range. |
 | <a id="analytics-mergerequests-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by merge request creation timestamp. End of the range. |
+| <a id="analytics-mergerequests-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-mergerequests-metricmergedatfrom"></a>`metricMergedAtFrom` | [`Time`](#time) | Filter by merge timestamp. Start of the range. |
 | <a id="analytics-mergerequests-metricmergedatto"></a>`metricMergedAtTo` | [`Time`](#time) | Filter by merge timestamp. End of the range. |
+| <a id="analytics-mergerequests-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-mergerequests-stateid"></a>`stateId` | [`[String!]`](#string) | Filter by one or many states (opened, closed, merged, locked). |
 | <a id="analytics-mergerequests-targetbranch"></a>`targetBranch` | [`[String!]`](#string) | Filter by one or many target branches. |
 
@@ -32181,6 +32196,8 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-pipelines-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by pipeline finish timestamp. Start of the range. |
 | <a id="analytics-pipelines-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by pipeline finish timestamp. End of the range. |
+| <a id="analytics-pipelines-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-pipelines-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-pipelines-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many pipeline refs. |
 | <a id="analytics-pipelines-source"></a>`source` | [`[String!]`](#string) | Filter by one or many pipeline sources. |
 | <a id="analytics-pipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
@@ -33891,6 +33908,19 @@ Fields:
 | <a id="cdrollouttransition-reason"></a>`reason` | [`String`](#string) | Reason for the transition. |
 | <a id="cdrollouttransition-tostate"></a>`toState` | [`CdRolloutTransitionState!`](#cdrollouttransitionstate) | State the rollout transitioned to. |
 | <a id="cdrollouttransition-triggeredby"></a>`triggeredBy` | [`String`](#string) | Identifier of what triggered the transition. |
+
+### `CdRolloutUpdate`
+
+Live rollout update pushed to the client: new deployment status, and a Duo session to open when one applies.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cdrolloutupdate-reason"></a>`reason` | [`CdRolloutUpdateReason`](#cdrolloutupdatereason) | Why Duo should engage for the update (failed or created); null for a plain status update. |
+| <a id="cdrolloutupdate-rollout"></a>`rollout` | [`CdRollout!`](#cdrollout) | Rollout the update is for. |
+| <a id="cdrolloutupdate-rolloutenvironment"></a>`rolloutEnvironment` | [`CdRolloutEnvironment`](#cdrolloutenvironment) | Rollout environment whose state changed. Read its state and environment.tier to color the stage dot. |
+| <a id="cdrolloutupdate-thread"></a>`thread` | [`AiConversationsThread`](#aiconversationsthread) | Duo session to open in the sidebar for the update, when one applies. |
 
 ### `CdService`
 
@@ -39721,6 +39751,7 @@ Fields:
 | <a id="epicissue-alertmanagementalert"></a>`alertManagementAlert`  | [`AlertManagementAlert`](#alertmanagementalert) | Deprecated in GitLab 15.6. Use `alert_management_alerts`. |
 | <a id="epicissue-assignees"></a>`assignees` | [`UserCoreConnection`](#usercoreconnection) | Assignees of the issue. (see [Connections](#connections)) |
 | <a id="epicissue-author"></a>`author` | [`UserCore!`](#usercore) | User that created the issue. |
+| <a id="epicissue-availablequickactions"></a>`availableQuickActions` | [`[QuickActionCommand!]`](#quickactioncommand) | Quick actions available to the current user on the issue. |
 | <a id="epicissue-blocked"></a>`blocked` | [`Boolean!`](#boolean) | Indicates the issue is blocked. |
 | <a id="epicissue-blockedbycount"></a>`blockedByCount` | [`Int`](#int) | Count of issues blocking the issue. |
 | <a id="epicissue-blockedbyissues"></a>`blockedByIssues` | [`IssueConnection`](#issueconnection) | Issues blocking the issue. (see [Connections](#connections)) |
@@ -44965,6 +44996,7 @@ Fields:
 | <a id="issue-alertmanagementalert"></a>`alertManagementAlert`  | [`AlertManagementAlert`](#alertmanagementalert) | Deprecated in GitLab 15.6. Use `alert_management_alerts`. |
 | <a id="issue-assignees"></a>`assignees` | [`UserCoreConnection`](#usercoreconnection) | Assignees of the issue. (see [Connections](#connections)) |
 | <a id="issue-author"></a>`author` | [`UserCore!`](#usercore) | User that created the issue. |
+| <a id="issue-availablequickactions"></a>`availableQuickActions` | [`[QuickActionCommand!]`](#quickactioncommand) | Quick actions available to the current user on the issue. |
 | <a id="issue-blocked"></a>`blocked` | [`Boolean!`](#boolean) | Indicates the issue is blocked. |
 | <a id="issue-blockedbycount"></a>`blockedByCount` | [`Int`](#int) | Count of issues blocking the issue. |
 | <a id="issue-blockedbyissues"></a>`blockedByIssues` | [`IssueConnection`](#issueconnection) | Issues blocking the issue. (see [Connections](#connections)) |
@@ -49473,6 +49505,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="organization-analytics"></a>`analytics`  | [`Analytics`](#analytics) | Introduced in GitLab 19.3. Status: Experiment. Analytics aggregation endpoints scoped to groups and projects of the organization. |
 | <a id="organization-avatarurl"></a>`avatarUrl`  | [`String`](#string) | Introduced in GitLab 16.7. Status: Experiment. Avatar URL of the organization. |
 | <a id="organization-cdavailableagents"></a>`cdAvailableAgents`  | [`ClusterAgentConnection`](#clusteragentconnection) | Introduced in GitLab 19.2. Status: Experiment. GitLab agents for Kubernetes available in the organization. |
 | <a id="organization-cdavailabledeploydrivers"></a>`cdAvailableDeployDrivers`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Reference of continuous deployment deploy drivers available in the organization. |
@@ -59729,6 +59762,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="workitem-archived"></a>`archived`  | [`Boolean!`](#boolean) | Introduced in GitLab 16.5. Status: Experiment. Whether the work item belongs to an archived project or group. |
 | <a id="workitem-author"></a>`author`  | [`UserCore`](#usercore) | Introduced in GitLab 15.9. Status: Experiment. User that created the work item. |
+| <a id="workitem-availablequickactions"></a>`availableQuickActions` | [`[QuickActionCommand!]`](#quickactioncommand) | Quick actions available to the current user on the work item. |
 | <a id="workitem-closedat"></a>`closedAt` | [`Time`](#time) | Timestamp of when the work item was closed. |
 | <a id="workitem-commenttemplatespaths"></a>`commentTemplatesPaths` | [`[CommentTemplatePathType!]!`](#commenttemplatepathtype) | Paths of the comment templates. |
 | <a id="workitem-confidential"></a>`confidential` | [`Boolean!`](#boolean) | Indicates the work item is confidential. |
@@ -61149,6 +61183,18 @@ Fields:
 | <a id="explainvulnerabilityusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Explain Vulnerability activity for the user. |
 | <a id="explainvulnerabilityusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Explain Vulnerability events for the user. |
 
+### `featureDiscoveryUserMetrics`
+
+Feature Discovery user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="featurediscoveryusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Feature Discovery activity for the user. |
+| <a id="featurediscoveryusermetrics-resolvefeaturediscoverysearcheventcount"></a>`resolveFeatureDiscoverySearchEventCount` | [`Int`](#int) | Total count of `resolve_feature_discovery_search` event. |
+| <a id="featurediscoveryusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Feature Discovery events for the user. |
+
 ### `fixPipelineUserMetrics`
 
 Fix Pipeline user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
@@ -61729,6 +61775,7 @@ Type of AI usage event.
 | <a id="aiusageeventtype-request_duo_vulnerability_resolution"></a>`REQUEST_DUO_VULNERABILITY_RESOLUTION` | An AI vulnerability resolution was requested with GitLab Duo. |
 | <a id="aiusageeventtype-request_review_duo_code_review_on_mr_by_author"></a>`REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_AUTHOR` | MR author requested Duo Code Review. |
 | <a id="aiusageeventtype-request_review_duo_code_review_on_mr_by_non_author"></a>`REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_NON_AUTHOR` | Non-author requested Duo Code Review on MR. |
+| <a id="aiusageeventtype-resolve_feature_discovery_search"></a>`RESOLVE_FEATURE_DISCOVERY_SEARCH` | Feature discovery search was resolved. |
 | <a id="aiusageeventtype-restore_ai_catalog_item"></a>`RESTORE_AI_CATALOG_ITEM` | AI Catalog item version was restored as new latest version. |
 | <a id="aiusageeventtype-start_mcp_tool_call"></a>`START_MCP_TOOL_CALL` | MCP tool call was started. |
 | <a id="aiusageeventtype-summarize_new_merge_request"></a>`SUMMARIZE_NEW_MERGE_REQUEST` | Merge request summary was generated. |
@@ -61798,6 +61845,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-explain_vulnerability_desc"></a>`EXPLAIN_VULNERABILITY_DESC` | Explain Vulnerability event count in descending order. |
 | <a id="aiusermetricssort-explain_vulnerability_total_count_asc"></a>`EXPLAIN_VULNERABILITY_TOTAL_COUNT_ASC` | Explain Vulnerability total event count in ascending order. |
 | <a id="aiusermetricssort-explain_vulnerability_total_count_desc"></a>`EXPLAIN_VULNERABILITY_TOTAL_COUNT_DESC` | Explain Vulnerability total event count in descending order. |
+| <a id="aiusermetricssort-feature_discovery_total_count_asc"></a>`FEATURE_DISCOVERY_TOTAL_COUNT_ASC` | Feature Discovery total event count in ascending order. |
+| <a id="aiusermetricssort-feature_discovery_total_count_desc"></a>`FEATURE_DISCOVERY_TOTAL_COUNT_DESC` | Feature Discovery total event count in descending order. |
 | <a id="aiusermetricssort-find_nothing_to_review_duo_code_review_on_mr_asc"></a>`FIND_NOTHING_TO_REVIEW_DUO_CODE_REVIEW_ON_MR_ASC` | Find Nothing To Review Duo Code Review On Mr event count in ascending order. |
 | <a id="aiusermetricssort-find_nothing_to_review_duo_code_review_on_mr_desc"></a>`FIND_NOTHING_TO_REVIEW_DUO_CODE_REVIEW_ON_MR_DESC` | Find Nothing To Review Duo Code Review On Mr event count in descending order. |
 | <a id="aiusermetricssort-find_no_issues_duo_code_review_after_review_asc"></a>`FIND_NO_ISSUES_DUO_CODE_REVIEW_AFTER_REVIEW_ASC` | Find No Issues Duo Code Review After Review event count in ascending order. |
@@ -61834,6 +61883,8 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-request_review_duo_code_review_on_mr_by_author_desc"></a>`REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_AUTHOR_DESC` | Request Review Duo Code Review On Mr By Author event count in descending order. |
 | <a id="aiusermetricssort-request_review_duo_code_review_on_mr_by_non_author_asc"></a>`REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_NON_AUTHOR_ASC` | Request Review Duo Code Review On Mr By Non Author event count in ascending order. |
 | <a id="aiusermetricssort-request_review_duo_code_review_on_mr_by_non_author_desc"></a>`REQUEST_REVIEW_DUO_CODE_REVIEW_ON_MR_BY_NON_AUTHOR_DESC` | Request Review Duo Code Review On Mr By Non Author event count in descending order. |
+| <a id="aiusermetricssort-resolve_feature_discovery_search_asc"></a>`RESOLVE_FEATURE_DISCOVERY_SEARCH_ASC` | Resolve Feature Discovery Search event count in ascending order. |
+| <a id="aiusermetricssort-resolve_feature_discovery_search_desc"></a>`RESOLVE_FEATURE_DISCOVERY_SEARCH_DESC` | Resolve Feature Discovery Search event count in descending order. |
 | <a id="aiusermetricssort-restore_ai_catalog_item_asc"></a>`RESTORE_AI_CATALOG_ITEM_ASC` | Restore Ai Catalog Item event count in ascending order. |
 | <a id="aiusermetricssort-restore_ai_catalog_item_desc"></a>`RESTORE_AI_CATALOG_ITEM_DESC` | Restore Ai Catalog Item event count in descending order. |
 | <a id="aiusermetricssort-start_mcp_tool_call_asc"></a>`START_MCP_TOOL_CALL_ASC` | Start Mcp Tool Call event count in ascending order. |
@@ -62295,6 +62346,15 @@ State recorded in a continuous deployment rollout transition.
 | <a id="cdrollouttransitionstate-in_progress"></a>`IN_PROGRESS` | Rollout transition state in progress. |
 | <a id="cdrollouttransitionstate-paused"></a>`PAUSED` | Rollout transition state paused. |
 | <a id="cdrollouttransitionstate-pending"></a>`PENDING` | Rollout transition state pending. |
+
+### `CdRolloutUpdateReason`
+
+Reason a rollout update was pushed to the client.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="cdrolloutupdatereason-deployment_created"></a>`DEPLOYMENT_CREATED` | New rollout was created and Duo opened a session for it. |
+| <a id="cdrolloutupdatereason-deployment_failed"></a>`DEPLOYMENT_FAILED` | Rollout failed and Duo opened an investigation session. |
 
 ### `CdServiceHealth`
 
@@ -64433,6 +64493,7 @@ Licensed features that can be checked for availability on a namespace or project
 | <a id="licensedfeature-package_forwarding"></a>`PACKAGE_FORWARDING` | Package forwarding feature. |
 | <a id="licensedfeature-pages_multiple_versions"></a>`PAGES_MULTIPLE_VERSIONS` | Pages multiple versions feature. |
 | <a id="licensedfeature-personal_access_token_expiration_policy"></a>`PERSONAL_ACCESS_TOKEN_EXPIRATION_POLICY` | Personal access token expiration policy feature. |
+| <a id="licensedfeature-prevent_enterprise_user_account_deletion"></a>`PREVENT_ENTERPRISE_USER_ACCOUNT_DELETION` | Prevent enterprise user account deletion feature. |
 | <a id="licensedfeature-productivity_analytics"></a>`PRODUCTIVITY_ANALYTICS` | Productivity analytics feature. |
 | <a id="licensedfeature-product_analytics"></a>`PRODUCT_ANALYTICS` | Product analytics feature. |
 | <a id="licensedfeature-project_level_analytics_dashboard"></a>`PROJECT_LEVEL_ANALYTICS_DASHBOARD` | Project level analytics dashboard feature. |

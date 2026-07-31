@@ -10,7 +10,7 @@ To use this plugin, first create an [OpenAPI Generator](/docs/openapi/specificat
 
 ```ts
 import { OpenAPIGenerator } from '@orpc/openapi'
-import { OpenAPIReferencePlugin } from '@orpc/openapi/plugins'
+import { OpenAPIReferenceHandlerPlugin } from '@orpc/openapi/plugins'
 
 const generator = new OpenAPIGenerator({
   converters: [
@@ -20,15 +20,17 @@ const generator = new OpenAPIGenerator({
 
 const handler = new OpenAPIHandler(router, {
   plugins: [
-    new OpenAPIReferencePlugin({
-      spec: () => generator.generateSpec(router, {
-        info: {
-          title: 'ORPC Playground',
-          version: '1.0.0',
+    new OpenAPIReferenceHandlerPlugin({
+      spec: () => generator.generate(router, {
+        base: {
+          info: {
+            title: 'ORPC Playground',
+            version: '1.0.0',
+          },
+          servers: [
+            { url: 'https://api.example.com/v1', },
+          ],
         },
-        servers: [
-          { url: 'https://api.example.com/v1', },
-        ],
       }),
     }),
   ]
@@ -44,7 +46,7 @@ const handler = new OpenAPIHandler(router, {
 ```ts
 const handler = new OpenAPIHandler(router, {
   plugins: [
-    new OpenAPIReferencePlugin({
+    new OpenAPIReferenceHandlerPlugin({
       provider: 'swagger',
       providerConfig: {
         // Swagger UI specific configuration

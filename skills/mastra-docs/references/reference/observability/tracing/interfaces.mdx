@@ -608,6 +608,7 @@ interface ToolCallAttributes {
   toolId?: string
   toolType?: string
   toolDescription?: string
+  toolCallId?: string
   success?: boolean
 }
 ```
@@ -629,6 +630,8 @@ interface MCPToolCallAttributes {
 
   /** Tool description */
   toolDescription?: string
+
+  toolCallId?: string
 
   /** Whether tool execution was successful */
   success?: boolean

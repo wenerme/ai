@@ -14,7 +14,7 @@ Creates a new service account in the project. By default, this also returns an u
 
   The name of the service account being created.
 
-- `create_service_account_only: optional boolean`
+- `create_service_account_only: optional boolean or null`
 
   Create the service account without default roles or an API key.
 
@@ -22,7 +22,7 @@ Creates a new service account in the project. By default, this also returns an u
 
 - `id: string`
 
-- `api_key: object { id, created_at, name, 2 more }`
+- `api_key: object { id, created_at, name, 2 more }  or null`
 
   - `id: string`
 

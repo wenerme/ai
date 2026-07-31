@@ -42,11 +42,11 @@ Cancelling prevents new requests from using the issued client secret.
 
         Indicates if uploads are enabled for the session.
 
-      - `max_file_size: number`
+      - `max_file_size: number or null`
 
         Maximum upload size in megabytes.
 
-      - `max_files: number`
+      - `max_files: number or null`
 
         Maximum number of uploads allowed during the session.
 
@@ -58,7 +58,7 @@ Cancelling prevents new requests from using the issued client secret.
 
         Indicates if chat history is persisted for the session.
 
-      - `recent_threads: number`
+      - `recent_threads: number or null`
 
         Number of prior threads surfaced in history views. Defaults to null when all history is retained.
 
@@ -110,7 +110,7 @@ Cancelling prevents new requests from using the issued client secret.
 
       Identifier of the workflow backing the session.
 
-    - `state_variables: map[string or boolean or number]`
+    - `state_variables: map[string or boolean or number] or null`
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
@@ -128,7 +128,7 @@ Cancelling prevents new requests from using the issued client secret.
 
         Indicates whether tracing is enabled.
 
-    - `version: string`
+    - `version: string or null`
 
       Specific workflow version used for the session. Defaults to null when using the latest deployment.
 
@@ -345,11 +345,11 @@ Create a ChatKit session.
 
         Indicates if uploads are enabled for the session.
 
-      - `max_file_size: number`
+      - `max_file_size: number or null`
 
         Maximum upload size in megabytes.
 
-      - `max_files: number`
+      - `max_files: number or null`
 
         Maximum number of uploads allowed during the session.
 
@@ -361,7 +361,7 @@ Create a ChatKit session.
 
         Indicates if chat history is persisted for the session.
 
-      - `recent_threads: number`
+      - `recent_threads: number or null`
 
         Number of prior threads surfaced in history views. Defaults to null when all history is retained.
 
@@ -413,7 +413,7 @@ Create a ChatKit session.
 
       Identifier of the workflow backing the session.
 
-    - `state_variables: map[string or boolean or number]`
+    - `state_variables: map[string or boolean or number] or null`
 
       State variable key-value pairs applied when invoking the workflow. Defaults to null when no overrides were provided.
 
@@ -431,7 +431,7 @@ Create a ChatKit session.
 
         Indicates whether tracing is enabled.
 
-    - `version: string`
+    - `version: string or null`
 
       Specific workflow version used for the session. Defaults to null when using the latest deployment.
 
