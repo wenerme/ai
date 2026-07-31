@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers API reference
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The in-Worker R2 API is accessed by binding an R2 bucket to a [Worker](https://developers.cloudflare.com/workers). The Worker you write can expose external access to buckets via a route or manipulate R2 objects internally.
 
@@ -240,9 +240,9 @@ A multipart upload can be completed or aborted at any time, either through the S
 * `onlyIf` `R2Conditional | Headers`
 
   * Specifies that the object should only be returned given satisfaction of certain conditions in the `R2Conditional` or in the conditional Headers. Refer to [Conditional operations](#conditional-operations).
-* `range` `R2Range`
+* `range` `R2Range | Headers`
 
-  * Specifies that only a specific length (from an optional offset) or suffix of bytes from the object should be returned. Refer to [Ranged reads](#ranged-reads).
+  * Specifies that only a specific length (from an optional offset) or suffix of bytes from the object should be returned given the range in the `R2Range` or in the range `Headers`. Refer to [Ranged reads](#ranged-reads).
 * `ssecKey` `ArrayBuffer | string`
 
   * Specifies a key to be used for [SSE-C](https://developers.cloudflare.com/r2/examples/ssec). Key must be 32 bytes in length, in the form of a hex-encoded string or an ArrayBuffer.
@@ -492,5 +492,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/#page","headline":"Workers API reference · Cloudflare R2 docs","description":"Complete reference for the R2 in-Worker API, including bucket and object operations.","url":"https://developers.cloudflare.com/r2/api/workers/workers-api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

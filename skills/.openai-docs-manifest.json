@@ -130,10 +130,10 @@
   "openai-docs/deprecations.md": {
     "url": "https://developers.openai.com/api/docs/deprecations.md",
     "skill": "openai-docs",
-    "etag": "W/\"bdb94d469376d27791dcf6fc6270375d\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:15 GMT",
-    "size": 36231,
-    "updatedAt": "2026-07-28T03:28:15.154Z"
+    "etag": "W/\"381e57e0b3389b14b7388b4be45b8d31\"",
+    "lastModified": "Fri, 31 Jul 2026 06:59:02 GMT",
+    "size": 36461,
+    "updatedAt": "2026-07-31T12:13:23.224Z"
   },
   "openai-docs/gpts/release-notes.md": {
     "url": "https://developers.openai.com/api/docs/gpts/release-notes.md",
@@ -474,10 +474,10 @@
   "openai-docs/guides/fast-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/fast-mode.md",
     "skill": "openai-docs",
-    "etag": "W/\"20b2f7802bb2359e77ae16a185224d25\"",
-    "lastModified": "Fri, 31 Jul 2026 00:38:54 GMT",
-    "size": 6392,
-    "updatedAt": "2026-07-31T03:44:45.059Z"
+    "etag": "W/\"34c566734e962226280596a683b674ac\"",
+    "lastModified": "Fri, 31 Jul 2026 06:52:02 GMT",
+    "size": 6388,
+    "updatedAt": "2026-07-31T12:13:33.759Z"
   },
   "openai-docs/guides/file-inputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/file-inputs.md",
@@ -1266,10 +1266,10 @@
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "W/\"b9dec8b7ce6590b60c7cfb287db16d15\"",
-    "lastModified": "Fri, 31 Jul 2026 00:51:14 GMT",
-    "size": 72204,
-    "updatedAt": "2026-07-31T03:45:06.953Z"
+    "etag": "W/\"3ed408f5bb14b67d4f942a635aa11051\"",
+    "lastModified": "Fri, 31 Jul 2026 08:27:32 GMT",
+    "size": 67680,
+    "updatedAt": "2026-07-31T12:13:57.434Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
@@ -1316,10 +1316,10 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"8c611473d845aa678b25dc9de19baf01\"",
-    "lastModified": "Fri, 31 Jul 2026 00:38:21 GMT",
-    "size": 22472,
-    "updatedAt": "2026-07-31T03:45:08.689Z"
+    "etag": "W/\"749b96649913fb0e6afcd4a8c80dbc44\"",
+    "lastModified": "Fri, 31 Jul 2026 06:51:39 GMT",
+    "size": 19459,
+    "updatedAt": "2026-07-31T12:13:59.192Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",

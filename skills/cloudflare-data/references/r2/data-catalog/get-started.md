@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/data-catalog/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/data-catalog/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
@@ -49,10 +49,9 @@ When you run this command, take note of the **Warehouse** and **Catalog URI**. Y
 1. In the Cloudflare dashboard, go to the **R2 Data Catalog** page.
 [Go to **R2 Data Catalog** ↗](https://dash.cloudflare.com/?to=/:account/data-catalog/overview)
 2. Select **Create catalog**.
-3. Enter the bucket name `r2-data-catalog-tutorial`. Since this bucket does not exist yet, the wizard will create it for you. Optionally choose a location hint.
-4. Enter the bucket name `r2-data-catalog-tutorial`. The wizard creates the bucket automatically if it does not already exist. Optionally choose a location hint.
-5. Review the configuration and select **Create catalog**.
-6. Once created, the catalog detail page displays your **Catalog URI** and **Warehouse name**. Note these values for later.
+3. Enter the bucket name `r2-data-catalog-tutorial`. The wizard creates the bucket automatically if it does not already exist. Optionally choose a location hint.
+4. Review the configuration and select **Create catalog**.
+5. Once created, the catalog detail page displays your **Catalog URI** and **Warehouse name**. Note these values for later.
 
 ## 2\. Create an API token
 
@@ -217,5 +216,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/get-started/#page","headline":"Getting started · Cloudflare R2 docs","description":"Learn how to enable the R2 Data Catalog on your bucket, load sample data, and run your first query.","url":"https://developers.cloudflare.com/r2/data-catalog/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/data-catalog/get-started/#page","headline":"Getting started · Cloudflare R2 docs","description":"Learn how to enable the R2 Data Catalog on your bucket, load sample data, and run your first query.","url":"https://developers.cloudflare.com/r2/data-catalog/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

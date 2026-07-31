@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33215 files, 390 MiB total
+> 123 skills, 33218 files, 390 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1418,9 +1418,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | 59 | 493 KiB |
 | [duckdb-ops](./skills/duckdb-ops/SKILL.md) | 14 | 40 KiB |
 | [duckdb-quack](./skills/duckdb-quack/SKILL.md) | 9 | 44 KiB |
-| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 127 | 911 KiB |
+| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 127 | 913 KiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
-| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 306 | 1.9 MiB |
+| [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 308 | 1.9 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
 | [gemini-cli-docs](./skills/gemini-cli-docs/SKILL.md) | 90 | 802 KiB |
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
@@ -1446,7 +1446,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [lark-node-sdk](./skills/lark-node-sdk/SKILL.md) | 1 | 5.8 KiB |
 | [linear-docs](./skills/linear-docs/SKILL.md) | 137 | 2.0 MiB |
 | [litellm-docs](./skills/litellm-docs/SKILL.md) | 1 | 2.8 KiB |
-| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 50 | 436 KiB |
+| [llamacpp-docs](./skills/llamacpp-docs/SKILL.md) | 50 | 437 KiB |
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 157 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
@@ -1485,7 +1485,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [threejs-guide](./skills/threejs-guide/SKILL.md) | 11 | 134 KiB |
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 169 | 1.2 MiB |
-| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 43 | 1.7 MiB |
+| [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 44 | 1.7 MiB |
 | [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 528 | 4.4 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 543 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 223 | 1.3 MiB |

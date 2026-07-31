@@ -52,21 +52,12 @@ Standard
 | o3 | $2.00 | $0.50 | - | $8.00 | - | - | - | - |
 | o4-mini | $1.10 | $0.275 | - | $4.40 | - | - | - | - |
 | o3-mini | $1.10 | $0.55 | - | $4.40 | - | - | - | - |
-| o1-mini | $1.10 | $0.55 | - | $4.40 | - | - | - | - |
 | gpt-4-turbo-2024-04-09 | $10.00 | - | - | $30.00 | - | - | - | - |
-| gpt-4-0125-preview | $10.00 | - | - | $30.00 | - | - | - | - |
-| gpt-4-1106-preview | $10.00 | - | - | $30.00 | - | - | - | - |
-| gpt-4-1106-vision-preview | $10.00 | - | - | $30.00 | - | - | - | - |
 | gpt-4-0613 | $30.00 | - | - | $60.00 | - | - | - | - |
-| gpt-4-0314 | $30.00 | - | - | $60.00 | - | - | - | - |
-| gpt-4-32k | $60.00 | - | - | $120.00 | - | - | - | - |
 | gpt-3.5-turbo | $0.50 | - | - | $1.50 | - | - | - | - |
 | gpt-3.5-turbo-0125 | $0.50 | - | - | $1.50 | - | - | - | - |
 | gpt-3.5-turbo-1106 | $1.00 | - | - | $2.00 | - | - | - | - |
-| gpt-3.5-turbo-0613 | $1.50 | - | - | $2.00 | - | - | - | - |
-| gpt-3.5-0301 | $1.50 | - | - | $2.00 | - | - | - | - |
 | gpt-3.5-turbo-instruct | $1.50 | - | - | $2.00 | - | - | - | - |
-| gpt-3.5-turbo-16k-0613 | $3.00 | - | - | $4.00 | - | - | - | - |
 | davinci-002 | $2.00 | - | - | $2.00 | - | - | - | - |
 | babbage-002 | $0.40 | - | - | $0.40 | - | - | - | - |
 
@@ -113,19 +104,10 @@ Batch
 | o3 | $1.00 | - | - | $4.00 | - | - | - | - |
 | o4-mini | $0.55 | - | - | $2.20 | - | - | - | - |
 | o3-mini | $0.55 | - | - | $2.20 | - | - | - | - |
-| o1-mini | $0.55 | - | - | $2.20 | - | - | - | - |
 | gpt-4-turbo-2024-04-09 | $5.00 | - | - | $15.00 | - | - | - | - |
-| gpt-4-0125-preview | $5.00 | - | - | $15.00 | - | - | - | - |
-| gpt-4-1106-preview | $5.00 | - | - | $15.00 | - | - | - | - |
-| gpt-4-1106-vision-preview | $5.00 | - | - | $15.00 | - | - | - | - |
 | gpt-4-0613 | $15.00 | - | - | $30.00 | - | - | - | - |
-| gpt-4-0314 | $15.00 | - | - | $30.00 | - | - | - | - |
-| gpt-4-32k | $30.00 | - | - | $60.00 | - | - | - | - |
 | gpt-3.5-turbo-0125 | $0.25 | - | - | $0.75 | - | - | - | - |
 | gpt-3.5-turbo-1106 | $1.00 | - | - | $2.00 | - | - | - | - |
-| gpt-3.5-turbo-0613 | $1.50 | - | - | $2.00 | - | - | - | - |
-| gpt-3.5-0301 | $1.50 | - | - | $2.00 | - | - | - | - |
-| gpt-3.5-turbo-16k-0613 | $1.50 | - | - | $2.00 | - | - | - | - |
 | davinci-002 | $1.00 | - | - | $1.00 | - | - | - | - |
 | babbage-002 | $0.20 | - | - | $0.20 | - | - | - | - |
 
@@ -251,20 +233,12 @@ Prices per 1M tokens unless noted.
 | gpt-realtime | Audio | $32.00 | $0.40 | $64.00 |
 | gpt-realtime | Text | $4.00 | $0.40 | $16.00 |
 | gpt-realtime | Image | $5.00 | $0.50 | - |
-| gpt-4o-realtime-preview | Audio | $40.00 | $2.50 | $80.00 |
-| gpt-4o-realtime-preview | Text | $5.00 | $2.50 | $20.00 |
-| gpt-4o-mini-realtime-preview | Audio | $10.00 | $0.30 | $20.00 |
-| gpt-4o-mini-realtime-preview | Text | $0.60 | $0.30 | $2.40 |
 | gpt-audio-1.5 | Audio | $32.00 | - | $64.00 |
 | gpt-audio-1.5 | Text | $2.50 | - | $10.00 |
 | gpt-audio-mini | Audio | $10.00 | - | $20.00 |
 | gpt-audio-mini | Text | $0.60 | - | $2.40 |
 | gpt-audio | Audio | $32.00 | - | $64.00 |
 | gpt-audio | Text | $2.50 | - | $10.00 |
-| gpt-4o-audio-preview | Audio | $40.00 | - | $80.00 |
-| gpt-4o-audio-preview | Text | $2.50 | - | $10.00 |
-| gpt-4o-mini-audio-preview | Audio | $10.00 | - | $20.00 |
-| gpt-4o-mini-audio-preview | Text | $0.15 | - | $0.60 |
 | gpt-4o-mini-tts | Audio | - | - | $12.00 |
 | gpt-4o-mini-tts | Text | $0.60 | - | - |
 | tts-1 | Text | $15.00 / 1M characters | - | - |
@@ -470,47 +444,14 @@ Standard
 | ChatGPT | chat-latest | $5.00 | $0.50 | $30.00 |
 | ChatGPT | gpt-5.3-chat-latest | $1.75 | $0.175 | $14.00 |
 | ChatGPT | gpt-5.2-chat-latest | $1.75 | $0.175 | $14.00 |
-| ChatGPT | gpt-5.1-chat-latest | $1.25 | $0.125 | $10.00 |
-| ChatGPT | gpt-5-chat-latest | $1.25 | $0.125 | $10.00 |
-| ChatGPT | chatgpt-4o-latest | $5.00 | - | $15.00 |
 | Codex | gpt-5.3-codex | $1.75 | $0.175 | $14.00 |
-| Codex | gpt-5.2-codex | $1.75 | $0.175 | $14.00 |
-| Codex | gpt-5.1-codex-max | $1.25 | $0.125 | $10.00 |
-| Codex | gpt-5.1-codex | $1.25 | $0.125 | $10.00 |
-| Codex | gpt-5-codex | $1.25 | $0.125 | $10.00 |
-| Codex | gpt-5.1-codex-mini | $0.25 | $0.025 | $2.00 |
-| Codex | codex-mini-latest | $1.50 | $0.375 | $6.00 |
 | Cyber | gpt-5.4-cyber | - | - | - |
 | Cyber | gpt-5.5-cyber | $12.50 | $1.25 | $75.00 |
 | Search | gpt-5-search-api | $1.25 | $0.125 | $10.00 |
-| Search | gpt-4o-search-preview | $2.50 | - | $10.00 |
-| Search | gpt-4o-mini-search-preview | $0.15 | - | $0.60 Web search tool call charges also apply. |
-| Deep research | o3-deep-research | $10.00 | $2.50 | $40.00 |
-| Deep research | o4-mini-deep-research | $2.00 | $0.50 | $8.00 |
-| Computer use | computer-use-preview | $3.00 | - | $12.00 |
 | Embedding | text-embedding-3-small | $0.02 | - | - |
 | Embedding | text-embedding-3-large | $0.13 | - | - |
 | Embedding | text-embedding-ada-002 | $0.10 | - | - |
 | Moderation | omni-moderation-latest | Free | - | - |
-
-$0.60 Web search tool call charges also apply.
-
-    
-
-    
-
-      
-Batch
-
-
-      
-### Grouped Pricing Table data
-
-| Category | Model | Input | Cached input | Output |
-| --- | --- | --- | --- | --- |
-| Deep research | o3-deep-research | $5.00 | - | $20.00 |
-| Deep research | o4-mini-deep-research | $1.00 | - | $4.00 |
-| Computer use | computer-use-preview | $1.50 | - | $6.00 |
 
     
 
@@ -526,10 +467,6 @@ Fast mode
 | Category | Model | Input | Cached input | Output |
 | --- | --- | --- | --- | --- |
 | Codex | gpt-5.3-codex | $3.50 | $0.35 | $28.00 |
-| Codex | gpt-5.2-codex | $3.50 | $0.35 | $28.00 |
-| Codex | gpt-5.1-codex-max | $2.50 | $0.25 | $20.00 |
-| Codex | gpt-5.1-codex | $2.50 | $0.25 | $20.00 |
-| Codex | gpt-5-codex | $2.50 | $0.25 | $20.00 |
 
 
 

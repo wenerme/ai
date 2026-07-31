@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error codes
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/error-codes/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page documents error codes returned by R2 when using the [Workers API](https://developers.cloudflare.com/r2/api/workers/) or the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/), along with recommended fixes to help with troubleshooting.
 
@@ -47,7 +47,7 @@ For the **S3-compatible API**, errors are returned as XML in the response body:
 | ---------- | --------------------- | ----------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | 10002      | Unauthorized          | 401         | Missing or invalid authentication credentials.         | Verify your [API token](https://developers.cloudflare.com/r2/api/tokens/) or access key credentials are correct and have not expired.    |
 | 10003      | AccessDenied          | 403         | Insufficient permissions for the requested operation.  | Check that your [API token](https://developers.cloudflare.com/r2/api/tokens/) has the required permissions for the bucket and operation. |
-| 10018      | ExpiredRequest        | 400         | Presigned URL or request signature has expired.        | Regenerate the [presigned URL](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) or signature.                                |
+| 10018      | ExpiredRequest        | 403         | Presigned URL or request signature has expired.        | Regenerate the [presigned URL](https://developers.cloudflare.com/r2/api/s3/presigned-urls/) or signature.                                |
 | 10035      | SignatureDoesNotMatch | 403         | Request signature does not match calculated signature. | Verify your secret key and signing algorithm. Check for URL encoding issues.                                                             |
 | 10042      | NotEntitled           | 403         | Account not entitled to this feature.                  | Ensure your account has an [R2 subscription](https://developers.cloudflare.com/r2/pricing/).                                             |
 
@@ -109,5 +109,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/error-codes/#page","headline":"Error codes · Cloudflare R2 docs","description":"Reference of R2 error codes returned by the Workers API and S3-compatible API.","url":"https://developers.cloudflare.com/r2/api/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/error-codes/#page","headline":"Error codes · Cloudflare R2 docs","description":"Reference of R2 error codes returned by the Workers API and S3-compatible API.","url":"https://developers.cloudflare.com/r2/api/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
