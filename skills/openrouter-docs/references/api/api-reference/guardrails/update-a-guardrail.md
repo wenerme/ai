@@ -4,7 +4,7 @@
 
 # Update a guardrail
 
-> Update an existing guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Update an existing guardrail, or materialize an unconfigured workspace default guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -100,8 +100,9 @@ paths:
         - Guardrails
       summary: Update a guardrail
       description: >-
-        Update an existing guardrail. Collection fields use replace semantics:
-        send the full desired set on every update. [Management
+        Update an existing guardrail, or materialize an unconfigured workspace
+        default guardrail. Collection fields use replace semantics: send the
+        full desired set on every update. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       operationId: updateGuardrail
       parameters:
@@ -163,7 +164,10 @@ paths:
                   message: Invalid request parameters
               schema:
                 $ref: '#/components/schemas/BadRequestResponse'
-          description: Bad Request - Invalid request parameters or malformed input
+          description: >-
+            Invalid request, or an attempt to change a workspace default
+            guardrail's name (which is derived from its workspace and not
+            editable).
         '401':
           content:
             application/json:

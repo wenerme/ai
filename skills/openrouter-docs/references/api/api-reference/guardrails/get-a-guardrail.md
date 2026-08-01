@@ -158,7 +158,9 @@ paths:
                   message: Resource not found
               schema:
                 $ref: '#/components/schemas/NotFoundResponse'
-          description: Not Found - Resource does not exist
+          description: >-
+            Guardrail not found, or the workspace default guardrail has not been
+            configured yet.
         '500':
           content:
             application/json:

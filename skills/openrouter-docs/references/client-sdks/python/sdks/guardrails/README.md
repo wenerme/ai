@@ -249,7 +249,7 @@ with OpenRouter(
 
 ## update
 
-Update an existing guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Update an existing guardrail, or materialize an unconfigured workspace default guardrail. Collection fields use replace semantics: send the full desired set on every update. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 

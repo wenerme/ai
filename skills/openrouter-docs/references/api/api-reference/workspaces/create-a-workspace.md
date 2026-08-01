@@ -408,8 +408,8 @@ components:
             - 'null'
         default_guardrail_id:
           description: >-
-            Deterministic ID of the workspace's implicitly-created default
-            guardrail
+            Deterministic ID derived from the workspace ID. The default
+            guardrail is materialized when its configuration is first written.
           example: 595d5849-7e86-51fd-a7c0-705c34e4afff
           format: uuid
           type: string
