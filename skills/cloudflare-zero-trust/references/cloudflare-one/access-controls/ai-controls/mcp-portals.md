@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP server portals
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -43,7 +43,7 @@ The following diagram shows how requests flow through an MCP server portal.
 4. When the user calls a tool, the portal identifies the target server from the [tool namespace](#tool-namespacing), attaches the appropriate credentials, and proxies the request. If [Gateway routing](#route-portal-traffic-through-gateway) is turned on, the request passes through Cloudflare Gateway for HTTP logging and DLP inspection.
 5. The upstream server processes the request and returns a response through the same path.
 
-Background synchronization of tools and prompts runs approximately every two hours using admin credentials. This sync connects directly to upstream servers and does not route through Gateway.
+For servers that use automatic OAuth registration, background synchronization of tools and prompts runs approximately every two hours using admin credentials. This sync connects directly to upstream servers and does not route through Gateway.
 
 ### Transport
 
@@ -110,6 +110,33 @@ Blocked users can still connect to the server (and bypass your Access policies) 
 
 Cloudflare Access will validate the server connection and retrieve a list of resources, prompts, and tools. Once the server is successfully connected, the [server status](#server-status) will change to **Ready**. You can now add the MCP server to an [MCP server portal](#create-a-portal).
 
+### Configure manual OAuth credentials
+
+Use manual OAuth credentials when the upstream provider does not support [OAuth Dynamic Client Registration ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration). This flow uses an OAuth application that you register with the upstream provider.
+
+1. Add the MCP server with **OAuth** as its authentication method.
+2. In **Zero Trust** \> **Access controls** \> **AI controls**, go to the **MCP servers** tab.
+3. Find the server, select the three dots > **Edit**, and go to **Authentication**.
+4. Under **OAuth credentials**, select **Manual credentials**.
+5. Copy the displayed **Redirect URI to register at the upstream provider**. Add it to the OAuth application's allowed redirect URIs.
+6. Select **Discover OAuth endpoints**. If discovery fails, expand **Show OAuth endpoints (advanced)** and enter the **Authorization endpoint** and **Token endpoint**. You can also enter an optional **Revocation endpoint** and **Issuer**.
+7. Enter the OAuth application's **Client ID** and **Client secret**.
+8. (Optional) Enter the space-separated **Scope** values requested from users.
+9. (Optional) Enter the **Token endpoint auth method** expected by the provider. Supported values are `client_secret_post` and `client_secret_basic`.
+10. Select **Save server**.
+
+The dashboard uses the [shared Cloudflare callback URL](#shared-cloudflare-callback-url-opt-in) when you switch a server from automatic to manual credentials:
+
+```txt
+https://oauth-callbacks.cloudflareaccess.com/cdn-cgi/access/outbound-oauth-callback
+```
+
+Always register the redirect URI displayed in the dashboard. OAuth providers typically require an exact URI match.
+
+Cloudflare stores the client secret encrypted and does not return it through the dashboard or API. When editing the server, leave **Client secret** blank to keep the existing value. To rotate the secret, create or activate the replacement at the upstream provider, enter the new value, and save the server.
+
+Manual credentials require per-user authentication. Leave **Require user auth** enabled when you add the server to a portal. The server remains in **Waiting** status until the first user completes upstream OAuth. Cloudflare then retrieves the server capabilities and changes its status to **Ready**.
+
 ### MCP Apps
 
 [MCP Apps ↗](https://modelcontextprotocol.io/extensions/apps/overview) — tools that declare a UI resource in their description — will also be available after successfully connecting to an MCP server. A list of MCP clients that support MCP Apps is available in the [Extension Support Matrix ↗](https://modelcontextprotocol.io/extensions/client-matrix).
@@ -122,7 +149,7 @@ The MCP server status indicates the synchronization status of the MCP server to 
 | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Error         | The server could not be reached or returned an error. Refer to [error details](#error-details) for more information. To fix the issue, [reauthenticate the server](#reauthenticate-the-mcp-server). |
 | Sync Required | The server's OAuth credentials can no longer be refreshed and the server needs to be reauthenticated. To fix the issue, [reauthenticate the server](#reauthenticate-the-mcp-server).                |
-| Waiting       | The server's tools, prompts, and resources are being synchronized.                                                                                                                                  |
+| Waiting       | The server's tools, prompts, and resources are being synchronized. A server with manual OAuth credentials remains in this state until its first user completes upstream OAuth.                      |
 | Ready         | The server was successfully synchronized and all tools, prompts, and resources are available.                                                                                                       |
 
 #### Error details
@@ -151,7 +178,7 @@ You will be redirected to log in to your OAuth provider. The account used to aut
 
 ### Synchronize the MCP server
 
-Cloudflare Access automatically synchronizes tools and prompts from your MCP server approximately every two hours. During synchronization, Cloudflare connects to your MCP server using the [admin credential](#reauthenticate-the-mcp-server) and fetches the current list of tools and prompts. If the admin credential's OAuth access token has expired, Cloudflare refreshes it automatically using the stored refresh token before connecting.
+For servers that use automatic OAuth registration, Cloudflare Access synchronizes tools and prompts approximately every two hours. During synchronization, Cloudflare connects to your MCP server using the [admin credential](#reauthenticate-the-mcp-server) and fetches the current list of tools and prompts. If the admin credential's OAuth access token has expired, Cloudflare refreshes it automatically using the stored refresh token before connecting.
 
 Note
 
@@ -972,7 +999,7 @@ MCP server portals have the following known limitations:
 
 * **Only remote HTTP MCP servers are supported.** MCP servers that use [stdio transport only ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) (for example, `github/github-mcp-server`) do not expose a remote HTTP endpoint and cannot be added to an MCP server portal. To use a stdio-only server, you must self-host it behind an HTTP endpoint and authenticate with a [bearer token or custom headers](#create-an-mcp-server).
 * **Some MCP servers block proxy-based clients.** Certain MCP servers reject requests from proxy-based clients like MCP server portals, returning a `403` error on the registration endpoint. These servers are not compatible with MCP server portals until those providers add Cloudflare as a supported MCP client.
-* **Not all MCP servers support OAuth dynamic client registration.** MCP servers that do not support [OAuth dynamic client registration ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration) cannot use the portal's OAuth authentication flow. For these servers, select **Custom Headers** as the authentication method and provide static credentials (for example, API keys or personal access tokens) instead.
+* **Manual OAuth capabilities are captured during the first user authorization.** Servers configured with [manual OAuth credentials](#configure-manual-oauth-credentials) remain in **Waiting** status until a user completes upstream OAuth. Cloudflare stores the tools and prompts returned during that connection. Background and manual capability synchronization do not refresh them.
 * **Admin OAuth tokens can expire silently.** The admin credential used to [authenticate an MCP server](#reauthenticate-the-mcp-server) is subject to the upstream provider's token expiration policy. When the token expires, the server status changes to **Error** or **Sync Required** and the server will not appear in the portal for end users. Admins are not notified when this happens. Periodically check the [server status](#server-status) and [reauthenticate](#reauthenticate-the-mcp-server) servers that show an error.
 * **Each portal supports up to 40 MCP servers.** If you need to aggregate more than 40 servers into a single portal, contact your Cloudflare account team to request a higher limit. The dashboard displays a warning as you approach the limit.
 
@@ -1064,5 +1091,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

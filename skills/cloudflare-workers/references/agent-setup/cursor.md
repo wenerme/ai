@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Cloudflare platform access
@@ -79,7 +79,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * Digital Experience Monitoring serverGet quick insight on critical applications for your organizationhttps://dex.mcp.cloudflare.com/mcp
 * DNS Analytics serverOptimize DNS performance and debug issues based on current setuphttps://dns-analytics.mcp.cloudflare.com/mcp
 * Documentation serverGet up-to-date reference information on Cloudflarehttps://docs.mcp.cloudflare.com/mcp
-* GraphQL serverGet analytics data using Cloudflare’s GraphQL APIhttps://graphql.mcp.cloudflare.com/mcp
 * Logpush serverGet quick summaries for Logpush job healthhttps://logs.mcp.cloudflare.com/mcp
 * Observability serverDebug and get insight into your application's logs and analyticshttps://observability.mcp.cloudflare.com/mcp
 * Radar serverExplore Cloudflare Radar internet insightshttps://radar.mcp.cloudflare.com/mcp
@@ -113,23 +112,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Tips

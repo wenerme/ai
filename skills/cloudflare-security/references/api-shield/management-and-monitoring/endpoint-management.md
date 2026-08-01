@@ -1,5 +1,5 @@
 ---
-description: Save, organize, and monitor API endpoints in API Shield.
+description: Promote, learn, and monitor API endpoints with API Shield and Web Assets.
 title: Endpoint Management
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,62 +12,48 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Endpoint Management
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on all plans
 
-Monitor the health of your API endpoints by saving, updating, and monitoring performance metrics using API Shield’s Endpoint Management.
+Web Assets provides a unified inventory for managing API endpoints. In Web Assets, an **operation** represents an endpoint by its HTTP method, hostname pattern, and path pattern.
 
-**Add endpoints** allows customers to save endpoints directly from [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/) or manually by method, path, and host.
-
-This will add the specified endpoints to your list of managed endpoints. You can view your list of saved endpoints in the **Endpoint Management** page.
-
-Cloudflare will start collecting [performance data](https://developers.cloudflare.com/api-shield/management-and-monitoring/#endpoint-analysis) on your endpoint when you save an endpoint.
+Promote an API endpoint to move its operation into the `full` state. Promotion starts collecting data for profile learning and [performance analysis](#endpoint-analysis).
 
 Note
 
-When an endpoint is using [Cloudflare Workers](https://developers.cloudflare.com/workers/), the metrics data will not be populated.
+When an endpoint uses [Cloudflare Workers](https://developers.cloudflare.com/workers/), some metrics are not populated.
 
 ## Access
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page.
 [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Endpoints** tab.
-3. Select **Add endpoints**.
-4. Add your endpoints [manually](#add-endpoints-manually), from [Schema validation](#add-endpoints-from-schema-validation), or from [API Discovery](#add-endpoints-from-api-discovery).
+2. Go to the **Operations** tab.
 
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Select **Security** \> **API Shield**.
-3. Add your endpoints [manually](#add-endpoints-manually), from [Schema validation](#add-endpoints-from-schema-validation), or from [API Discovery](#add-endpoints-from-api-discovery).
+2. Go to **Security** \> **API Shield** \> **Endpoint Management**.
 
 ### Add endpoints from API Discovery
 
-There are two ways to add API endpoints from Discovery.
+The **Learn profile** action is available to API Shield customers using unified operation discovery and other customers with access to profile learning.
 
-#### Add from the Endpoints tab
+In the new dashboard, this workflow promotes an existing discovered operation. In the old dashboard, it adds a discovered endpoint to Endpoint Management.
 
-1. From **Endpoints**, go to **Add endpoints** \> **Select from Discovery** tab.
-2. Select the discovered endpoints you would like to add.
-3. Select **Add endpoints**.
+1. From **Web Assets** \> **Operations**, open the row actions for a candidate or shadow operation.
+2. Select **Learn profile**.
 
 1. From **Endpoint Management**, select **Add endpoints** \> **Select from Discovery** tab.
 2. Select the discovered endpoints you would like to add.
 3. Select **Add endpoints**.
 
-#### Add from the Discovery tab
+Cloudflare promotes the operation to the `full` state. The row action then changes to **Profile learned**. For more information, refer to [Promote an operation](https://developers.cloudflare.com/security/web-assets/manage-operations/#promote-an-operation).
 
-1. From **Web assets**, go to the **Discovery** tab.
-2. Select the discovered endpoints you would like to add.
-3. Select **Save selected endpoints**.
-
-1. From Endpoint Management, select the **Discovery** tab.
-2. Select the discovered endpoints you would like to add.
-3. Select **Save selected endpoints**.
+You do not need to promote every discovered operation. Candidate operations can provide context for matching, edge security detections, and [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) without promotion. Persisted API profiles and [risk findings](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#risk-labels) require operations in the `full` state.
 
 ### Add endpoints from Schema validation
 
-1. From **Web assets**, go to the **Endpoints** tab.
-2. Select **Add endpoints** \> **Upload Schema**.
+1. From **Web Assets** \> **Operations**, select **Add operation**.
+2. Select **Upload schema**.
 3. Upload a schema file.
 4. Select **Add schema and endpoints**.
 
@@ -75,28 +61,24 @@ There are two ways to add API endpoints from Discovery.
 2. On **Review schema endpoints**, save new endpoints to endpoint management by checking the box.
 3. Select **Save as draft** or **Save and Deploy**. Endpoints will be saved regardless of whether the schema is saved as a draft or published.
 
-API Shield will look for duplicate endpoints that have the same host, method, and path. Duplicate endpoints will not be saved to endpoint management.
+API Shield looks for duplicate operations with the same hostname, method, and path. Duplicate operations are not added.
 
 Note
 
-If you deselect **Save new endpoints to endpoint management**, the endpoints will not be added.
+In the old dashboard, endpoints are not added if you deselect **Save new endpoints to endpoint management**.
 
 ### Add endpoints manually
 
-1. From **Web assets**, go to the **Endpoints** tab.
-2. Select **Add endpoints** \> **Manually add**.
-3. Choose the method from the dropdown menu and add the path and hostname for the endpoint.
-4. Select **Add endpoints**.
+1. From **Web Assets** \> **Operations**, select **Add operation**.
+2. Select **Manually add**.
+3. Select the method and enter the hostname pattern and path pattern.
+4. Select **Add operation**.
 
 1. From Endpoint Management, select **Add endpoints** \> **Manually add**.
 2. Choose the method from the dropdown menu and add the path and hostname for the endpoint.
 3. Select **Add endpoints**.
 
-Note
-
-By selecting multiple checkboxes, you can add several endpoints from Discovery at once instead of individually.
-
-When adding an endpoint manually, you can specify variable fields in the path or host by enclosing them in braces, `/api/user/{var1}/details` or `{hostVar1}.example.com`.
+When adding an operation manually, you can specify variable fields in the path or hostname. Enclose variables in braces, such as `/api/user/{var1}/details` or `{hostVar1}.example.com`.
 
 Cloudflare supports hostname variables in the following formats:
 
@@ -120,55 +102,69 @@ foo-{hostVar1}.example.com
 
 For more information on how Cloudflare uses variables in API Shield, refer to the examples from [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/).
 
+### Edit operations
+
+In the new dashboard, you can edit the identity of an operation.
+
+1. From **Web Assets** \> **Operations**, open the row actions for the operation.
+2. Select **Edit operation**.
+3. Update the HTTP method, hostname pattern, or path pattern.
+4. Select **Save**.
+
+Editing a candidate or shadow operation promotes it to the `full` state with the edited values.
+
+Editing this operation will change its ID
+
+Cloudflare computes operation IDs from the HTTP method, hostname, and path. Cloudflare relearns labels, schemas, and rate limiting recommendations for an operation with a new ID.
+
 ### Delete endpoints manually
 
 You can delete endpoints one at a time or in bulk.
 
-1. From **Web assets**, go to the **Endpoints** tab.
-2. Select the checkboxes for the endpoints that you want to delete.
-3. Select **Delete endpoints**.
+1. From **Web Assets** \> **Operations**, select the operations that you want to delete.
+2. Select **Delete operations**.
 
 1. From Endpoint Management, select the checkboxes for the endpoints that you want to delete.
 2. Select **Delete endpoints**.
 
 Caution
 
-When you delete an endpoint from Endpoint Management, Cloudflare immediately stops tracking all associated performance and analytics data. The endpoint's previous historical metrics are permanently removed and cannot be restored. If you later save this endpoint again, metric tracking will resume, starting from the point the endpoint is re-saved.
+When you delete a full operation, Cloudflare stops tracking its associated performance and analytics data. Its previous historical metrics cannot be restored. If the operation returns to the `full` state, metric tracking restarts from that point.
 
-## Endpoint Analysis
+## Endpoint analysis
 
-For each saved endpoint, customers can view:
+For each operation in the `full` state, you can view:
 
-* **Request count**: The total number of requests to the endpoint over time.
+* **Request count**: The total number of requests to the operation over time.
 * **Rate limiting recommendation**: per 10 minutes. This is guided by the request count.
 * **Latency**: The average origin response time in milliseconds (ms). This metric shows how long it takes from the moment a visitor makes a request to the moment the visitor gets a response back from the origin.
 * **Error rate** vs. overall traffic: grouped by 4xx, 5xx, and their sum.
 * **Response size**: The average size of the response (in bytes) returned to the request.
-* **Labels**: The current [labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) assigned to the endpoint.
-* **[Authentication status](https://developers.cloudflare.com/api-shield/security/authentication-posture/)**: The breakdown of which [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers) were seen on successful requests to this endpoint.
-* **Sequences**: The number of [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) sequences the endpoint was found in.
+* **Labels**: The current [labels](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/) assigned to the operation.
+* **[Authentication status](https://developers.cloudflare.com/api-shield/security/authentication-posture/)**: The session identifiers observed on successful requests to this operation.
+* **Sequences**: The number of [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) sequences containing the operation.
 
 Note
 
-Customers viewing analytics have the ability to toggle detailed metrics view between the last 24 hours and 7 days.
+You can view detailed metrics from the last 24 hours or seven days.
 
 ## Using the Cloudflare API
 
-You can interact with Endpoint Management through the Cloudflare API. Refer to [Endpoint Management’s API documentation](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/discovery/subresources/operations/methods/list/) for more information.
+You can manage operations through the Cloudflare API. For more information, refer to the [operations API documentation](https://developers.cloudflare.com/api/resources/api%5Fgateway/subresources/discovery/subresources/operations/methods/list/).
 
 ## Sensitive Data Detection
 
 Sensitive data comprises various personally identifiable information and financial data. Cloudflare created this ruleset to address common data loss threats, and the WAF can search for this data in HTTP response bodies from your origin.
 
-API Shield will alert users to the presence of sensitive data in the response body of API endpoints listed in Endpoint Management if the zone is also subscribed to the [Sensitive Data Detection managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/).
+API Shield alerts you to sensitive data in responses from full operations. Your zone must also have the [Sensitive Data Detection managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/).
 
 Sensitive Data Detection is available to Enterprise customers on our Advanced application security plan.
 
-Once Sensitive Data Detection is enabled for your zone, API Shield queries firewall events from the WAF for the last seven days and places a notification icon on the Endpoint Management table row if there are any matched sensitive responses for your endpoint.
+After you turn on Sensitive Data Detection, API Shield queries WAF events from the last seven days. Web Assets marks operations that have matched sensitive responses.
 
-API Shield displays the types of sensitive data found if you expand the Endpoint Management table row to view further details. Select **Explore Events** to view the matched events in Security Events.
+Open the operation details to review the detected sensitive data types. Select **Explore Events** to view matched events in Security Events.
 
-After Sensitive Data Detection is enabled for your zone, you can [browse the Sensitive Data Detection ruleset ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/data/ruleset/e22d83c647c64a3eae91b71b499d988e/rules). The link will not work if Sensitive Data Detection is not enabled.
+After you turn on Sensitive Data Detection for your zone, you can [browse the Sensitive Data Detection ruleset ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/data/ruleset/e22d83c647c64a3eae91b71b499d988e/rules). The link will not work if Sensitive Data Detection is not turned on.
 
 ## Limitations
 
@@ -190,5 +186,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Save, organize, and monitor API endpoints in API Shield.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Promote, learn, and monitor API endpoints with API Shield and Web Assets.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

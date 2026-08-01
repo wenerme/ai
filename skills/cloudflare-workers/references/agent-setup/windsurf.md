@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access
@@ -91,7 +91,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * Digital Experience Monitoring serverGet quick insight on critical applications for your organizationhttps://dex.mcp.cloudflare.com/mcp
 * DNS Analytics serverOptimize DNS performance and debug issues based on current setuphttps://dns-analytics.mcp.cloudflare.com/mcp
 * Documentation serverGet up-to-date reference information on Cloudflarehttps://docs.mcp.cloudflare.com/mcp
-* GraphQL serverGet analytics data using Cloudflare’s GraphQL APIhttps://graphql.mcp.cloudflare.com/mcp
 * Logpush serverGet quick summaries for Logpush job healthhttps://logs.mcp.cloudflare.com/mcp
 * Observability serverDebug and get insight into your application's logs and analyticshttps://observability.mcp.cloudflare.com/mcp
 * Radar serverExplore Cloudflare Radar internet insightshttps://radar.mcp.cloudflare.com/mcp
@@ -125,15 +124,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
@@ -141,7 +136,11 @@ Deploy a globally distributed REST API on Workers with automatic scaling and zer
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips

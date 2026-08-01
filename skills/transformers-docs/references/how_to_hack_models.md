@@ -90,7 +90,7 @@ class SamVisionAttentionSplit(SamVisionAttention, nn.Module):
         return outputs
 ```
 
-Assign the custom `SamVisionAttentionSplit` class to the original models `SamVisionAttention` module to replace it. All instances of `SamVisionAttention` in the model is replaced with the split attention version.
+Assign the custom `SamVisionAttentionSplit` class to the original models `SamVisionAttention` module to replace it. All instances of `SamVisionAttention` in the model are replaced with the split attention version.
 
 Load the model with [`~PreTrainedModel.from_pretrained`].
 

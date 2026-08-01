@@ -16,6 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 * [Wrangler KV commands](https://developers.cloudflare.com/kv/reference/kv-commands/)
 * [Environments](https://developers.cloudflare.com/kv/reference/environments/)
+* [Data location](https://developers.cloudflare.com/kv/reference/data-location/)
 * [Data security](https://developers.cloudflare.com/kv/reference/data-security/)
 * [FAQ](https://developers.cloudflare.com/kv/reference/faq/)
 

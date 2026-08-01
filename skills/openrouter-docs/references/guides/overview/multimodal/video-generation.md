@@ -48,6 +48,21 @@ export const Template = ({children, data}) => {
 
 OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/docs/guides/overview/models?output_modalities=video).
 
+<Frame caption="Generated with minimax/hailuo-3 — 2K, 5s, 16:9, with audio">
+  <video controls loop playsInline preload="metadata" style={{ width: '100%' }}>
+    <source src="https://model-assets.openrouter.ai/model-examples/minimax/hailuo-3/docs-hero/original-0.mp4?v=1" type="video/mp4" />
+  </video>
+</Frame>
+
+<Accordion title="Prompt and parameters">
+  > a slow cinematic push-in on a glowing neon sign that reads "OpenRouter" in the window of a cozy coffee shop on a rainy night, rain streaking down the glass, reflections rippling on wet pavement
+
+  * **Model**: `minimax/hailuo-3`
+  * **Output**: one 5-second `2K` `16:9` clip with audio
+
+  See [Request Parameters](#request-parameters) for the full set of options.
+</Accordion>
+
 <Tip>
   Adding video generation to an app? The
   [Video Generation Cookbook](/docs/cookbook/video-generation/choose-video-model)

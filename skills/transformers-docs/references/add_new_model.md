@@ -92,7 +92,7 @@ In addition to learning more about your model, use the tips below to help you ad
 > Each contributor has a unique style and workflow for adding models to Transformers. For an example, take a look at how [Gemma](https://github.com/huggingface/transformers/pull/29167) was added.
 
 - Don't reinvent the wheel! Take your time to explore existing models and tokenizers to see what you can copy and reuse. [Grep](https://www.gnu.org/software/grep/) and [ripgrep](https://github.com/BurntSushi/ripgrep) are great tools for this.
-- This is more of an engineering than a science challenge. Focus on the more practical (setting up an efficient debugging environment for example) instead of the theorertical aspects of the model.
+- This is more of an engineering than a science challenge. Focus on the more practical (setting up an efficient debugging environment for example) instead of the theoretical aspects of the model.
 - Don't be shy to ask for help! We are here to support you. 🤗
 
 ## Dev environment
@@ -194,7 +194,7 @@ This can be difficult if the original model repository is lacking documentation 
 Orient yourself with the original repository by doing the following.
 
 - Locate the pretrained weights.
-- Figure out how to the load pretrained weights into the model.
+- Figure out how to load pretrained weights into the model.
 - Figure out how to run the tokenizer independently of the model.
 - Trace one forward pass to understand which classes and functions are required. These are probably the only classes and functions you'll have to implement.
 - Locate all the important components (model class, model subclasses, self-attention layer, etc.) of the model.
@@ -288,7 +288,7 @@ The automatically generated code in the `modeling.py` file has the same architec
 
 ### Model initialization
 
-At this point, your code doesn't have to be clean or even fully correct, It is more efficient to quickly create a first draft and then iteratively improve on it. The most important thing is that your model can be instantiated from Transformers. The command below creates a model from the configuration with random weights, verifying that the `__init__` method works.
+At this point, your code doesn't have to be clean or even fully correct. It is more efficient to quickly create a first draft and then iteratively improve on it. The most important thing is that your model can be instantiated from Transformers. The command below creates a model from the configuration with random weights, verifying that the `__init__` method works.
 
 ```py
 from transformers import BrandNewLlama, BrandNewLlamaConfig
@@ -494,7 +494,7 @@ SET RUN_SLOW=1 pytest -sv tests/models/brand_new_llama/test_modeling_brand_new_l
 
 All features unique to BrandNewLlama should be tested in a separate test under `BrandNewLlamaModelTester/BrandNewLlamaModelTest`. This test is often overlooked, but it is extremely important because:
 
-- it helps transfer knowledge you acquired during the process to the community by showing how the models novel features work
+- it helps transfer knowledge you acquired during the process to the community by showing how the model's novel features work
 - future contributors can quickly test changes to the model by running these special tests
 
 ## Implement tokenizer

@@ -221,9 +221,12 @@ The following legacy example sets the retention policy for a `gpt-5.5` request:
 
 ## Requirements
 
-Caching is available for prompts containing 1024 tokens or more.
+The minimum prefix length required for caching depends on the model:
 
-All requests, including those with fewer than 1024 tokens, display a `cached_tokens` field in the usage token details. Responses API returns this field in `usage.input_tokens_details` on the [Response object](https://developers.openai.com/api/reference/resources/responses); Chat Completions API returns it in `usage.prompt_tokens_details` on the [Chat object](https://developers.openai.com/api/reference/resources/chat). The field indicates how many input tokens were read from cache. For requests under 1024 tokens, `cached_tokens` is zero.
+- **GPT-5.6 and later models:** Caching is available for prefixes containing at least 1,024 tokens. This is a strict minimum.
+- **GPT-5.5 and earlier models:** The minimum cacheable prefix length varies by model and can range from 1,024 to 2,048 tokens. Prompts just above 1,024 tokens may not be cached consistently.
+
+All requests, including those with fewer than 1,024 tokens, display a `cached_tokens` field in the usage token details. Responses API returns this field in `usage.input_tokens_details` on the [Response object](https://developers.openai.com/api/reference/resources/responses); Chat Completions API returns it in `usage.prompt_tokens_details` on the [Chat object](https://developers.openai.com/api/reference/resources/chat). The field indicates how many input tokens were read from cache. For requests under 1,024 tokens, `cached_tokens` is zero.
 
 For GPT-5.6 models and later model families, `cache_write_tokens` reports the number of prompt tokens written to cache. Cache write billing uses this value at 1.25× the uncached input token rate.
 
@@ -250,7 +253,7 @@ The following Chat Completions usage example shows both fields. In this response
 
 - **Messages:** The complete messages array, encompassing system, user, and assistant interactions.
 - **Images:** Images included in user messages, either as links or as base64-encoded data, as well as multiple images can be sent. Ensure the detail parameter is set identically, as it impacts image tokenization.
-- **Tool use:** Both the messages array and the list of available `tools` can be cached, contributing to the minimum 1024 token requirement.
+- **Tool use:** Both the messages array and the list of available `tools` can be cached, contributing to the model's minimum cacheable prefix length.
 - **Structured outputs:** The structured output schema serves as a prefix to the system message and can be cached.
 
 ## Best practices

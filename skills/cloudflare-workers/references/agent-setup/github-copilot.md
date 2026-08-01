@@ -50,7 +50,7 @@ In Visual Studio Code, `.vscode/mcp.json` uses `servers` as the root key instead
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Cloudflare platform access
@@ -93,7 +93,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 * Digital Experience Monitoring serverGet quick insight on critical applications for your organizationhttps://dex.mcp.cloudflare.com/mcp
 * DNS Analytics serverOptimize DNS performance and debug issues based on current setuphttps://dns-analytics.mcp.cloudflare.com/mcp
 * Documentation serverGet up-to-date reference information on Cloudflarehttps://docs.mcp.cloudflare.com/mcp
-* GraphQL serverGet analytics data using Cloudflare’s GraphQL APIhttps://graphql.mcp.cloudflare.com/mcp
 * Logpush serverGet quick summaries for Logpush job healthhttps://logs.mcp.cloudflare.com/mcp
 * Observability serverDebug and get insight into your application's logs and analyticshttps://observability.mcp.cloudflare.com/mcp
 * Radar serverExplore Cloudflare Radar internet insightshttps://radar.mcp.cloudflare.com/mcp
@@ -127,23 +126,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

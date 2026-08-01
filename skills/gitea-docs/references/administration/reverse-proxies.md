@@ -13,6 +13,7 @@ aliases:
 3. Make sure the reverse-proxy does not decode the URI. The request `https://git.example.com/a%2Fb` should be passed as `http://gitea:3000/a%2Fb`.
 4. Make sure `Host` and `X-Forwarded-Proto` headers are correctly passed to Gitea to make Gitea see the real URL being visited.
 5. Make sure your webserver has a certificate, including all intermediate and RootCA certificates, for `git clone` and `git pull` to work.
+6. Gitea uses a WebSocket connection at `/-/ws` for real-time updates like the notification counter. Make sure the reverse-proxy talks HTTP/1.1 and forwards the `Upgrade` and `Connection` headers, see the examples below. Without it, Gitea falls back to periodic polling.
 
 ### Use a sub-path
 
@@ -39,6 +40,7 @@ server {
     location / {
         client_max_body_size 512M;
         proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
         proxy_set_header Connection $http_connection;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Host $host;
@@ -65,6 +67,7 @@ server {
         rewrite ^ $request_uri;
         rewrite ^/(gitea($|/))?(.*) /$3 break;
         proxy_pass http://127.0.0.1:3000$uri;
+        proxy_http_version 1.1;
 
         # other common HTTP headers, see the "Nginx" config section above
         proxy_set_header Connection $http_connection;
@@ -111,6 +114,7 @@ server {
     }
 
     location / {
+        # other directives, see the "Nginx" config section above
         proxy_pass http://localhost:3000;
     }
 }
@@ -127,6 +131,7 @@ server {
     server_name git.example.com;
 
     location / {
+        # other directives, see the "Nginx" config section above
         proxy_pass http://localhost:3000;
     }
 }
@@ -154,13 +159,13 @@ If you are using Nginx Proxy Manager to serve your Gitea instance it differs sli
 
 It is [adding some directives](https://github.com/NginxProxyManager/nginx-proxy-manager/blob/master/docker/rootfs/etc/nginx/conf.d/include/proxy.conf) for a custom location by default, so you have to skip these from the above mentioned Nginx config. Otherwise Nginx will produce `400 bad request` error due to duplicated directives (`proxy_set_header Host $host` is the particularly problematic one).
 
-So while creating the `/` Custom location, just add the following lines to it's configuration:
+So while creating the `/` Custom location, just add the following line to it's configuration:
 
 ```nginx
 client_max_body_size 512M;
-proxy_set_header Connection $http_connection;
-proxy_set_header Upgrade $http_upgrade;
 ```
+
+Enable `Websockets Support` on the proxy host, Nginx Proxy Manager then adds the WebSocket directives itself. Adding `proxy_http_version` on top of that makes Nginx refuse to start.
 
 ## Apache HTTPD
 
@@ -172,12 +177,14 @@ If you want Apache HTTPD to serve your Gitea instance, you can add the following
     ProxyPreserveHost On
     ProxyRequests off
     AllowEncodedSlashes NoDecode
-    ProxyPass / http://localhost:3000/ nocanon
+    ProxyPass / http://localhost:3000/ nocanon upgrade=websocket
     RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
 </VirtualHost>
 ```
 
 > **note**: The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`.
+
+`upgrade=websocket` requires Apache HTTPD 2.4.48 or later. On older versions you **MUST** remove it, otherwise Apache HTTPD will not start.
 
 If you wish to use Let's Encrypt with webroot validation, add the line `ProxyPass /.well-known !` before `ProxyPass` to disable proxying these requests to Gitea.
 
@@ -194,7 +201,7 @@ In case you already have a site, and you want Gitea to share the domain name, yo
     </Proxy>
     AllowEncodedSlashes NoDecode
     # Note: no trailing slash after either /git or port
-    ProxyPass /git http://localhost:3000 nocanon
+    ProxyPass /git http://localhost:3000 nocanon upgrade=websocket
     ProxyPreserveHost On
     RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
 </VirtualHost>
@@ -202,7 +209,7 @@ In case you already have a site, and you want Gitea to share the domain name, yo
 
 Then you **MUST** set something like `[server] ROOT_URL = http://git.example.com/git/` correctly in your configuration.
 
-> **note**: The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`.
+> **note**: The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`. `upgrade=websocket` requires Apache HTTPD 2.4.48 or later, remove it on older versions.
 
 ## Apache HTTPD and serve static resources directly
 
@@ -242,11 +249,13 @@ Set `[server] STATIC_URL_PREFIX = /_/static` in your configuration.
 
     AllowEncodedSlashes NoDecode
     # Note: no trailing slash after either /git or port
-    ProxyPass / http://localhost:3000/ nocanon
+    ProxyPass / http://localhost:3000/ nocanon upgrade=websocket
     ProxyPreserveHost On
     RequestHeader set "X-Forwarded-Proto" expr=%{REQUEST_SCHEME}
 </VirtualHost>
 ```
+
+> **note**: The following Apache HTTPD mods must be enabled: `proxy`, `proxy_http`. `upgrade=websocket` requires Apache HTTPD 2.4.48 or later, remove it on older versions.
 
 ## Caddy
 
@@ -282,6 +291,7 @@ If you wish to run Gitea with IIS. You will need to setup IIS with URL Rewrite a
 
 - Install Application Request Routing (ARR for short) either by using the Microsoft Web Platform Installer 5.1 (WebPI) or downloading the extension from [IIS.net](https://www.iis.net/downloads/microsoft/application-request-routing)
 - Once the module is installed in IIS, you will see a new Icon in the IIS Administration Console called URL Rewrite.
+- Install the `WebSocket Protocol` Windows feature, otherwise ARR cannot proxy Gitea's WebSocket endpoint.
 - Open the IIS Manager Console and click on the `Gitea Proxy` Website from the tree view on the left. Select and double click the URL Rewrite Icon from the middle pane to load the URL Rewrite interface.
 - Choose the `Add Rule` action from the right pane of the management console and select the `Reverse Proxy Rule` from the `Inbound and Outbound Rules` category.
 - In the Inbound Rules section, set the server name to be the host that Gitea is running on with its port. e.g. if you are running Gitea on the localhost with port 3000, the following should work: `127.0.0.1:3000`

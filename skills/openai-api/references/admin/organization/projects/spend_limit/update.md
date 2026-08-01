@@ -40,6 +40,8 @@ Create or replace a project's hard spend limit.
 
     - `"USD"`
 
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
       - `"USD"`
 
   - `enforcement: object { status }`
@@ -67,6 +69,8 @@ Create or replace a project's hard spend limit.
     - `string`
 
     - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
 
