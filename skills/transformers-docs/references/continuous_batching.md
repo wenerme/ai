@@ -27,7 +27,7 @@ model = AutoModelForCausalLM.from_pretrained(
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-4B")
 
 prompts = [
-    "Whats up?",
+    "What's up?",
     "Name a cat breed.",
     "Write a detailed history of quantum mechanics.",
 ]
@@ -417,7 +417,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen3-32B")
 
-inputs = [tokenizer.encode(p) for p in ["Whats up?", "Name a cat breed."]]
+inputs = [tokenizer.encode(p) for p in ["What's up?", "Name a cat breed."]]
 generation_config = GenerationConfig(max_new_tokens=64, eos_token_id=tokenizer.eos_token_id)
 
 outputs = model.generate_batch(inputs=inputs, generation_config=generation_config)

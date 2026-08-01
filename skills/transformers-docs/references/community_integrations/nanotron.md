@@ -22,5 +22,5 @@ Nanotron also relies on [`AutoTokenizer`] for turning text into token ids during
 
 ## Resources
 
-- [Nanontron](https://github.com/huggingface/nanotron) repository
+- [Nanotron](https://github.com/huggingface/nanotron) repository
 - [Ultrascale Playbook](https://huggingface.co/spaces/nanotron/ultrascale-playbook) describes how to efficiently scale training with Nanotron

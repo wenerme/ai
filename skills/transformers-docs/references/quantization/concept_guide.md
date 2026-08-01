@@ -48,7 +48,7 @@ $$
 > [!TIP]
 > In symmetric quantization, Z would typically be fixed at 0.
 
-With these parameters, a float32 value, $x$. can be quantized to int8 ( $q$ ) with the formula below.
+With these parameters, a float32 value, $x$ can be quantized to int8 ( $q$ ) with the formula below.
 
 $$
 q = round\left(\frac{x}{S} + Z\right)

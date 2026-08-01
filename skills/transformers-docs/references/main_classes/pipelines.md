@@ -154,7 +154,7 @@ Streaming batch_size=256
 (diminishing returns, saturated the GPU)
 ```
 
-Example where it's most a slowdown:
+Example where it's mostly a slowdown:
 
 ```python
 class MyDataset(Dataset):
@@ -240,7 +240,7 @@ outputs = pipe.postprocess(all_model_outputs)
 This should be very transparent to your code because the pipelines are used in
 the same way.
 
-This is a simplified view, since the pipeline can handle automatically the batch to ! Meaning you don't have to care
+This is a simplified view, since the pipeline can handle automatically the batch to you! Meaning you don't have to care
 about how many forward passes you inputs are actually going to trigger, you can optimize the `batch_size`
 independently of the inputs. The caveats from the previous section still apply.
 

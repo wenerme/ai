@@ -10351,9 +10351,9 @@
   },
   "api/api-reference/presets/create-a-preset-from-a-responses-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body.md",
-    "lastModified": "Fri, 31 Jul 2026 04:07:03 GMT",
-    "size": 211676,
-    "updatedAt": "2026-07-31T04:07:03.503Z"
+    "lastModified": "Sat, 01 Aug 2026 04:04:32 GMT",
+    "size": 211848,
+    "updatedAt": "2026-08-01T04:04:33.015Z"
   },
   "api/api-reference/presets/get-a-preset.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/get-a-preset.md",
@@ -10393,9 +10393,9 @@
   },
   "api/api-reference/responses/create-a-response.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/responses/create-a-response.md",
-    "lastModified": "Fri, 31 Jul 2026 04:07:09 GMT",
-    "size": 324454,
-    "updatedAt": "2026-07-31T04:07:09.728Z"
+    "lastModified": "Sat, 01 Aug 2026 04:04:35 GMT",
+    "size": 324626,
+    "updatedAt": "2026-08-01T04:04:35.597Z"
   },
   "api/api-reference/scim/create-a-scim-group-mapping.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/scim/create-a-scim-group-mapping.md",
@@ -10567,9 +10567,9 @@
   },
   "api_reference/parameters.md": {
     "url": "https://openrouter.ai/docs/api_reference/parameters.md",
-    "lastModified": "Wed, 29 Jul 2026 03:52:14 GMT",
-    "size": 9308,
-    "updatedAt": "2026-07-29T03:52:14.511Z"
+    "lastModified": "Sat, 01 Aug 2026 04:04:46 GMT",
+    "size": 9602,
+    "updatedAt": "2026-08-01T04:04:46.742Z"
   },
   "api_reference/responses/basic-usage.md": {
     "url": "https://openrouter.ai/docs/api_reference/responses/basic-usage.md",
@@ -12007,9 +12007,9 @@
   },
   "guides/overview/multimodal/video-generation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/video-generation.md",
-    "lastModified": "Fri, 31 Jul 2026 04:09:29 GMT",
-    "size": 22437,
-    "updatedAt": "2026-07-31T04:09:29.676Z"
+    "lastModified": "Sat, 01 Aug 2026 04:06:18 GMT",
+    "size": 23174,
+    "updatedAt": "2026-08-01T04:06:18.313Z"
   },
   "guides/overview/multimodal/videos.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/videos.md",

@@ -200,8 +200,8 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 158974,
-    "updatedAt": "2026-07-30T03:25:05.990Z"
+    "size": 136166,
+    "updatedAt": "2026-08-01T04:06:47.512Z"
   },
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",

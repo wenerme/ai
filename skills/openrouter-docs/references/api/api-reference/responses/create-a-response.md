@@ -1111,6 +1111,11 @@ components:
                             type: array
                           - type: string
                           - type: 'null'
+                      type:
+                        default: message
+                        enum:
+                          - message
+                        type: string
                     type: object
                 description: An output message item
                 example:

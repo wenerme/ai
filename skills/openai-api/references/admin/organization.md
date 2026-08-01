@@ -13378,6 +13378,8 @@ Get a project's hard spend limit.
 
     - `"USD"`
 
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
       - `"USD"`
 
   - `enforcement: object { status }`
@@ -13405,6 +13407,8 @@ Get a project's hard spend limit.
     - `string`
 
     - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
 
@@ -13503,6 +13507,8 @@ Create or replace a project's hard spend limit.
 
     - `"USD"`
 
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
       - `"USD"`
 
   - `enforcement: object { status }`
@@ -13530,6 +13536,8 @@ Create or replace a project's hard spend limit.
     - `string`
 
     - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
 
@@ -13613,6 +13621,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
 
     - `"USD"`
 
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
       - `"USD"`
 
   - `enforcement: object { status }`
@@ -13640,6 +13650,8 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc/spend_limi
     - `string`
 
     - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
 
@@ -16517,6 +16529,8 @@ Get the organization's hard spend limit.
 
     - `"USD"`
 
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
       - `"USD"`
 
   - `enforcement: object { status }`
@@ -16544,6 +16558,8 @@ Get the organization's hard spend limit.
     - `string`
 
     - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
 
@@ -16638,6 +16654,8 @@ Create or replace the organization's hard spend limit.
 
     - `"USD"`
 
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
       - `"USD"`
 
   - `enforcement: object { status }`
@@ -16665,6 +16683,8 @@ Create or replace the organization's hard spend limit.
     - `string`
 
     - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
 
@@ -16748,6 +16768,8 @@ curl -X POST https://api.openai.com/v1/organization/spend_limit \
 
     - `"USD"`
 
+      The currency for the threshold amount. Currently, only `USD` is supported.
+
       - `"USD"`
 
   - `enforcement: object { status }`
@@ -16775,6 +16797,8 @@ curl -X POST https://api.openai.com/v1/organization/spend_limit \
     - `string`
 
     - `"month"`
+
+      The time interval for evaluating spend against the threshold. Currently, only `month` is supported.
 
       - `"month"`
 

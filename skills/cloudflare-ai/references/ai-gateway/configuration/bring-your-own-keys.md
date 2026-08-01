@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # BYOK (Store Keys)
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -140,6 +140,10 @@ Each API key can be assigned an alias to identify it. When you add a key, you ca
 
 When making requests, AI Gateway uses the key with the `default` alias by default. To use a different key, include the `cf-aig-byok-alias` header with the alias of the key you want to use.
 
+Note
+
+The `cf-aig-byok-alias` header applies to [direct provider-passthrough](https://developers.cloudflare.com/ai-gateway/usage/providers/) requests. On requests routed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) endpoints (for example, `env.AI.run()` or `/ai/v1/chat/completions`), only the `default` alias is consulted — if the `default` key is missing, the request falls through to Unified Billing. See [Credential precedence](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#credential-precedence) for the full order.
+
 ### Example: Using a specific key alias
 
 If you have multiple OpenAI keys configured with different aliases (for example, `default`, `production`, and `testing`), you can specify which one to use:
@@ -179,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/#page","headline":"BYOK (Store Keys) · Cloudflare AI Gateway docs","description":"Securely store AI provider API keys in AI Gateway and reference them in your gateway configuration.","url":"https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/#page","headline":"BYOK (Store Keys) · Cloudflare AI Gateway docs","description":"Securely store AI provider API keys in AI Gateway and reference them in your gateway configuration.","url":"https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

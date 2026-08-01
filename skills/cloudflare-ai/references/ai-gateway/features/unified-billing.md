@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Unified Billing
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/unified-billing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/unified-billing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Unified Billing allows users to connect to various AI providers (such as OpenAI, Anthropic, and Google AI Studio) and receive a single Cloudflare bill. To use Unified Billing, you must purchase and load credits into your Cloudflare account in the Cloudflare dashboard, which you can then spend with AI Gateway.
 
@@ -50,6 +50,20 @@ You can configure AI Gateway to automatically replenish your credits when they f
 4. Choose a threshold and a recharge amount for auto top-up.
 
 When your balance falls below the set threshold, AI Gateway will automatically apply the auto top-up amount to your account.
+
+## Credential precedence
+
+When a request reaches AI Gateway, credentials are resolved in this order:
+
+1. **Provider key on the request** — if the request carries provider authentication (for example, an `Authorization` header), AI Gateway forwards it to the provider unchanged. BYOK and Unified Billing are not consulted.
+2. **BYOK (stored key)** — if no provider key is on the request and the gateway has a [stored key](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) for the provider under the `default` alias, that key is used.
+3. **Unified Billing** — if neither of the above applies, the request is served with Cloudflare-managed credentials and billed against your Cloudflare credit balance.
+
+Note
+
+On requests routed through Unified Billing endpoints (for example, `env.AI.run()` or `/ai/v1/chat/completions`), only the BYOK key stored under the `default` alias prevents fall-through to Unified Billing. Keys stored under other aliases are not consulted on this path — a request will fall through to Unified Billing even if you have a key stored under, for example, `production` or `testing`.
+
+The `cf-aig-byok-alias` header selects a non-default alias only on [direct provider-passthrough](https://developers.cloudflare.com/ai-gateway/usage/providers/) requests.
 
 ## Use Unified Billing
 
@@ -177,5 +191,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/#page","headline":"Unified Billing · Cloudflare AI Gateway docs","description":"Use the Cloudflare billing to pay for and authenticate your inference requests.","url":"https://developers.cloudflare.com/ai-gateway/features/unified-billing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

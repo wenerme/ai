@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 186 models available."
+description: "Use LLM Gateway models with Mastra. 187 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 186 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 187 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -1044,8 +1044,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 1,
-    "outputCost": 6
+    "inputCost": 0.2,
+    "outputCost": 1.2
   },
   {
     "model": "llmgateway/gpt-5.6-sol",
@@ -1068,8 +1068,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2.5,
-    "outputCost": 15
+    "inputCost": 2,
+    "outputCost": 12
   },
   {
     "model": "llmgateway/gpt-oss-120b",
@@ -1238,6 +1238,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.13,
     "outputCost": 0.4
+  },
+  {
+    "model": "llmgateway/hy3",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 64000,
+    "inputCost": 0.14,
+    "outputCost": 0.58
   },
   {
     "model": "llmgateway/kimi-k2",
