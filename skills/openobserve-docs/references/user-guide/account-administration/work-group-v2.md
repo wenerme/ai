@@ -1,11 +1,12 @@
 ---
+title: work-group-v2
 description: Manage query performance in enterprise with Work Group settings—optimize CPU, memory, concurrency, and slot-based admission for queries in OpenObserve.
 ---
 
 Work groups control how OpenObserve allocates CPU, memory, and concurrency for different types of search tasks. They help maintain consistent performance when multiple users and system processes run searches at the same time.
 
-!!! note "Note"
-    This feature is available in the Enterprise Edition.
+:::note[Note]
+This feature is available in the Enterprise Edition.
 
 ## Overview
 OpenObserve evaluates each search task and assigns it to a work group. Each group receives its own resource share and concurrency limits. When many tasks run at the same time, work groups prevent heavy tasks from slowing down interactive user queries.
@@ -16,8 +17,8 @@ OpenObserve uses three work groups:
 - Long
 - Background
 
-!!! note "Note"
-    Short and long groups manage user queries. The background group handles system tasks.
+:::note[Note]
+Short and long groups manage user queries. The background group handles system tasks.
 
 Work groups apply admission control at two levels:
 
@@ -33,8 +34,8 @@ The background work group handles system tasks that run independently of user ac
 
 The background group uses its own queue and resource limits. This ensures that system tasks do not interfere with user query performance.
 
-!!! note "Note"
-    On nodes that run in the `background` role group, the background work group is always allowed to use 100 percent of the node resources, regardless of `O2_WORK_GROUP_BACKGROUND_MAX_PERCENT`.
+:::note[Note]
+On nodes that run in the `background` role group, the background work group is always allowed to use 100 percent of the node resources, regardless of `O2_WORK_GROUP_BACKGROUND_MAX_PERCENT`.
 
 ## Environment variables
 Work groups rely on the following environment variables for resource management and concurrency limits.
@@ -102,7 +103,7 @@ The estimation uses the following values:
 
 OpenObserve uses the following logic:
 
-```rust linenums="1"
+```rust lineNumbers
 let cpu_cores = max(1, CLUSTER_TOTAL_CPU_CORES * O2_WORK_GROUP_SHORT_MAX_PERCENT);
 let predict_secs = scan_size / O2_WORK_GROUP_BASE_SPEED / cpu_cores;
 if predict_secs > O2_WORK_GROUP_BASE_SECS {
@@ -170,11 +171,11 @@ How the share is divided among queries depends on `O2_WORK_GROUP_DYNAMIC_RESOURC
 - When `true` (default), the group's share is divided among the queries currently running in the group. Each query receives at least `O2_WORK_GROUP_x_MAX_PERCENT / O2_WORK_GROUP_x_MAX_CONCURRENCY`.
 - When `false`, each query receives the group's full share.
 
-!!! note "Example"
+:::note[Example]
 
-    - If total system memory is `10GB` and DataFusion can use `50%`, DataFusion has `5GB`.
-    - If the long group has `O2_WORK_GROUP_LONG_MAX_PERCENT = 0.4`, it can use `2GB`.
-    - With `O2_WORK_GROUP_LONG_MAX_CONCURRENCY = 5`, each long query is guaranteed at least `0.4GB` of memory, and receives more when fewer long queries are running.
+- If total system memory is `10GB` and DataFusion can use `50%`, DataFusion has `5GB`.
+- If the long group has `O2_WORK_GROUP_LONG_MAX_PERCENT = 0.4`, it can use `2GB`.
+- With `O2_WORK_GROUP_LONG_MAX_CONCURRENCY = 5`, each long query is guaranteed at least `0.4GB` of memory, and receives more when fewer long queries are running.
 
 ## Slot-based distributed admission
 Fixed concurrency limits do not scale automatically when you add querier nodes: capacity stays capped by `MAX_CONCURRENCY`, and a single query may fan out to every node in the cluster, so adding nodes improves single-query latency more than overall concurrency. Slot-based admission solves this by limiting the fanout of each query and admitting queries based on resource slots, so cluster capacity grows with the number of nodes, CPU, and memory.
