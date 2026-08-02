@@ -48,7 +48,7 @@ Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`
 4. **Try a prompt**
 Open Cascade and try a prompt — for example:
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Cloudflare platform access
@@ -124,7 +124,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -132,15 +140,7 @@ Add a D1 database to my Worker and create a users table with full CRUD endpoints
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips
