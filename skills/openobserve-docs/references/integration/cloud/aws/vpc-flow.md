@@ -1,6 +1,7 @@
 ---
-title: AWS VPC Flow Logs Monitoring - Network Traffic and Security Analysis | OpenObserve
-description: Complete AWS VPC Flow Logs monitoring guide for network traffic analysis, security monitoring, and network visibility using Kinesis Firehose for AWS network monitoring and cloud security.
+title: Amazon Virtual Private Cloud
+metaTitle: AWS VPC Flow Logs Monitoring - Network Traffic and Security Analysis
+description: "Send AWS VPC Flow Logs to OpenObserve with Kinesis Firehose for network traffic analysis, security monitoring, and cloud network visibility."
 ---
 
 # AWS VPC Flow Logs Monitoring - Network Traffic & Security Analysis
@@ -12,53 +13,53 @@ Capture and forward AWS VPC Flow Logs to OpenObserve via Kinesis Firehose for re
 
 ## Steps to Integrate
 
-??? "Prerequisites"
-    - OpenObserve account ([Cloud](https://cloud.openobserve.ai/web/) or [Self-Hosted](../../../getting-started.md#self-hosted-installation))
-    - AWS account with access to VPC and Firehose
-    - S3 bucket for failed log backup (recommended)
+:::accordion[Prerequisites]
+- OpenObserve account ([Cloud](https://cloud.openobserve.ai/web/) or [Self-Hosted](../../../getting-started.md#self-hosted-installation))
+- AWS account with access to VPC and Firehose
+- S3 bucket for failed log backup (recommended)
 
-??? "Step 1: Get OpenObserve Ingestion URL and Access Key"
+:::accordion[Step 1: Get OpenObserve Ingestion URL and Access Key]
 
-    1. In OpenObserve: go to **Data Sources → Recommended → AWS**
-    2. Copy the ingestion URL and Access Key
+1. In OpenObserve: go to **Data Sources → Recommended → AWS**
+2. Copy the ingestion URL and Access Key
 
-    [Get OpenObserve Ingestion URL and Access Key]
-    
-    > Update the URL to have the stream name of your choice:
-        ```
-        https://<your-openobserve-domain>/aws/default/<stream_name>/_kinesis_firehose
-        ```
+[Get OpenObserve Ingestion URL and Access Key]
 
-??? "Step 2: Create Firehose Delivery Stream"
-    
-    1. In AWS Kinesis Firehose, Create delivery stream with Source: `Direct PUT` and Destination: `HTTP Endpoint`.
-    2. Provide OpenObserve's HTTP Endpoint URL and Access Key, and set an S3 backup bucket.
-    3. Give the stream a meaningful name and Create it.
+> Update the URL to have the stream name of your choice:
+    ```
+    https://<your-openobserve-domain>/aws/default/<stream_name>/_kinesis_firehose
+    ```
 
-    [Create Firehose Delivery Stream]{: style="height:800px"}
-   
-??? "Step 3: Enable VPC Flow Logs"
+:::accordion[Step 2: Create Firehose Delivery Stream]
 
-    1. Go to **VPC → Your VPC → Flow Logs → Create Flow Log**
-    2. Set:
-        - Filter: `All`
-        - Destination: `Kinesis Data Firehose`
-        - Delivery stream: Select the stream you created in step 2
-        - Log format: `All fields`
-    3. Create the flow log
+1. In AWS Kinesis Firehose, Create delivery stream with Source: `Direct PUT` and Destination: `HTTP Endpoint`.
+2. Provide OpenObserve's HTTP Endpoint URL and Access Key, and set an S3 backup bucket.
+3. Give the stream a meaningful name and Create it.
 
-        [Create Flow Log]{: style="height:800px"}
+[Create Firehose Delivery Stream]
 
-??? "Step 4: Verify Logs in OpenObserve"
+:::accordion[Step 3: Enable VPC Flow Logs]
 
-    1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
+1. Go to **VPC → Your VPC → Flow Logs → Create Flow Log**
+2. Set:
+    - Filter: `All`
+    - Destination: `Kinesis Data Firehose`
+    - Delivery stream: Select the stream you created in step 2
+    - Log format: `All fields`
+3. Create the flow log
 
-        [Verify Logs in OpenObserve]
+    [Create Flow Log]
 
-??? "Troubleshooting"
+:::accordion[Step 4: Verify Logs in OpenObserve]
 
-    **No logs?**
+1. Go to **Logs** → select your log stream → Set time range → Click **Run Query**
 
-    - Ensure Firehose is `ACTIVE` and logs are reaching it
-    - Check S3 bucket for failed deliveries
-    - Confirm URL and Access Key are correct
+    [Verify Logs in OpenObserve]
+
+:::accordion[Troubleshooting]
+
+**No logs?**
+
+- Ensure Firehose is `ACTIVE` and logs are reaching it
+- Check S3 bucket for failed deliveries
+- Confirm URL and Access Key are correct

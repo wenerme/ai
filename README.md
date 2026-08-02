@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33215 files, 390 MiB total
+> 123 skills, 33214 files, 390 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1461,9 +1461,9 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 464 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 457 | 2.5 MiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 456 | 2.4 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2372 | 15 MiB |
-| [orpc-docs](./skills/orpc-docs/SKILL.md) | 86 | 359 KiB |
+| [orpc-docs](./skills/orpc-docs/SKILL.md) | 86 | 360 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |

@@ -1,5 +1,6 @@
 ---
-title: Oracle WebLogic Integration Guide
+title: Oracle Weblogic
+metaTitle: Oracle WebLogic Integration Guide
 description: Forward and parse Oracle WebLogic Server logs with Fluent Bit and OpenObserve for structured observability.
 ---
 
@@ -21,125 +22,125 @@ While rich in detail, native WebLogic logging was built for **manual inspection*
 
 By combining **Fluent Bit** for collection with **OpenObserve VRL pipelines** for parsing, you can transform these raw logs into structured, searchable, and actionable data.
 
-??? "Prerequisites"
+:::accordion[Prerequisites]
 
-    - An **OpenObserve account** (self-hosted or cloud)  
-    - A running **Oracle WebLogic Server** (AdminServer or ManagedServer)  
-    - Access to log files (`AdminServer.log`, `access.log`, etc.)  
-    - **Fluent Bit installed** on the WebLogic host ([installation guide](https://docs.fluentbit.io/manual/installation))  
+- An **OpenObserve account** (self-hosted or cloud)  
+- A running **Oracle WebLogic Server** (AdminServer or ManagedServer)  
+- Access to log files (`AdminServer.log`, `access.log`, etc.)  
+- **Fluent Bit installed** on the WebLogic host ([installation guide](https://docs.fluentbit.io/manual/installation))  
 
-??? "Step 1: Collect OpenObserve Credentials"
+:::accordion[Step 1: Collect OpenObserve Credentials]
 
-    1. Move to **Data Sources** page.
-    2. Under Custom tab → Logs → Fluentbit
-    3. Copy the entire **output section** snippet for Fluent Bit.
-    
-        [Collect OpenObserve Credentials]
+1. Move to **Data Sources** page.
+2. Under Custom tab → Logs → Fluentbit
+3. Copy the entire **output section** snippet for Fluent Bit.
 
-??? "Step 2: Configure Fluent Bit"
+    [Collect OpenObserve Credentials]
 
-    1. Create or edit `/etc/fluent-bit/fluent-bit.conf`:
+:::accordion[Step 2: Configure Fluent Bit]
 
-        ```ini
-        [SERVICE]
-            Flush        5
-            Log_Level    info
+1. Create or edit `/etc/fluent-bit/fluent-bit.conf`:
 
-        [INPUT]
-            Name         tail
-            Path         /opt/weblogic/user_projects/domains/base_domain/servers/AdminServer/logs/AdminServer.log
-            Tag          weblogic
-            DB           /var/log/flb_adminserver.db
+    ```ini
+    [SERVICE]
+        Flush        5
+        Log_Level    info
 
-        [OUTPUT]
-            Name http
-            Match *
-            URI /api/<org_name>/<stream_name>/_json
-            Host <host>
-            Port 5080
-            tls Off
-            Format json
-            Json_date_key    _timestamp
-            Json_date_format iso8601
-            HTTP_User <openobserve_username>
-            HTTP_Passwd <openobserve_password>
-            compress gzip
-        ```
+    [INPUT]
+        Name         tail
+        Path         /opt/weblogic/user_projects/domains/base_domain/servers/AdminServer/logs/AdminServer.log
+        Tag          weblogic
+        DB           /var/log/flb_adminserver.db
 
-        Replace:
-
-        * `<org_name>` → your OpenObserve organization
-        * `<stream_name>` → stream name (e.g. `weblogic-logs`)
-        * `<host>` → OpenObserve hostname
-        * `<openobserve_username>/<openobserve_password>` → your credentials
-
-    2. Start Fluent Bit:
-
-    ```bash
-    fluent-bit -c /etc/fluent-bit/fluent-bit.conf
+    [OUTPUT]
+        Name http
+        Match *
+        URI /api/<org_name>/<stream_name>/_json
+        Host <host>
+        Port 5080
+        tls Off
+        Format json
+        Json_date_key    _timestamp
+        Json_date_format iso8601
+        HTTP_User <openobserve_username>
+        HTTP_Passwd <openobserve_password>
+        compress gzip
     ```
 
-    Trigger WebLogic events (restart server, deploy app, etc.) to generate logs.
+    Replace:
 
-??? "Step 3: Verify Logs in OpenObserve"
+    * `<org_name>` → your OpenObserve organization
+    * `<stream_name>` → stream name (e.g. `weblogic-logs`)
+    * `<host>` → OpenObserve hostname
+    * `<openobserve_username>/<openobserve_password>` → your credentials
 
-    1. Navigate to **Streams → weblogic-logs** in OpenObserve.
-    2. You should see raw entries like:
+2. Start Fluent Bit:
 
-        ```json
-        {
-        "_timestamp": "2025-08-04T09:00:00.123+0530",
-        "log": "####<2025-08-04T09:00:00.123+0530> <Error> <Thread-12> <weblogic.servlet.internal.WebAppServletContext> <BEA-000000> <Failed to load class com.example.MyClass>"
-        }
-        ```
+```bash
+fluent-bit -c /etc/fluent-bit/fluent-bit.conf
+```
 
-    [Verify Logs in OpenObserve]
+Trigger WebLogic events (restart server, deploy app, etc.) to generate logs.
 
-??? "Step 4: Parse Logs with VRL"
+:::accordion[Step 3: Verify Logs in OpenObserve]
 
-    To make logs searchable, parse them using **VRL (Vector Remap Language)**:
+1. Navigate to **Streams → weblogic-logs** in OpenObserve.
+2. You should see raw entries like:
 
-    1. Go to **Streams → weblogic-logs → VRL Function Editor**
-    2. Add the following VRL mapping:
+    ```json
+    {
+    "_timestamp": "2025-08-04T09:00:00.123+0530",
+    "log": "####<2025-08-04T09:00:00.123+0530> <Error> <Thread-12> <weblogic.servlet.internal.WebAppServletContext> <BEA-000000> <Failed to load class com.example.MyClass>"
+    }
+    ```
 
-        ```vrl
-        .match = parse_regex!(
-        .log,
-        r'^####<(?P<timestamp>[^>]+)>\s+<(?P<level>[^>]+)>\s+<(?P<component>[^>]+)>\s+(?P<message>.*)$'
-        )
+[Verify Logs in OpenObserve]
 
-        .level = .match.level
-        .component = .match.component
-        .timestamp = .match.timestamp
-        .message = .match.message
-        del(.match)
-        ```
+:::accordion[Step 4: Parse Logs with VRL]
 
-    Example
+To make logs searchable, parse them using **VRL (Vector Remap Language)**:
 
-    - **Input:**
+1. Go to **Streams → weblogic-logs → VRL Function Editor**
+2. Add the following VRL mapping:
 
-        ```
-        ####<2025-08-04T09:00:00.123+0530> <Error> <Thread-12> <Failed to load class com.example.MyClass>
-        ```
+    ```vrl
+    .match = parse_regex!(
+    .log,
+    r'^####<(?P<timestamp>[^>]+)>\s+<(?P<level>[^>]+)>\s+<(?P<component>[^>]+)>\s+(?P<message>.*)$'
+    )
 
-    - **Parsed Output:**
+    .level = .match.level
+    .component = .match.component
+    .timestamp = .match.timestamp
+    .message = .match.message
+    del(.match)
+    ```
 
-        ```json
-        {
-        "timestamp": "2025-08-04T09:00:00.123+0530",
-        "level": "Error",
-        "component": "Thread-12",
-        "message": "Failed to load class com.example.MyClass"
-        }
-        ```
+Example
 
-    [Parse Logs with VRL]
-    Next you can:
+- **Input:**
 
-    * Search by **level**, **component**, or **message**
-    * Build dashboards (e.g., error rates, slow components)
-    * Configure alerts (e.g., trigger on `Error` in specific component)
+    ```
+    ####<2025-08-04T09:00:00.123+0530> <Error> <Thread-12> <Failed to load class com.example.MyClass>
+    ```
+
+- **Parsed Output:**
+
+    ```json
+    {
+    "timestamp": "2025-08-04T09:00:00.123+0530",
+    "level": "Error",
+    "component": "Thread-12",
+    "message": "Failed to load class com.example.MyClass"
+    }
+    ```
+
+[Parse Logs with VRL]
+Next you can:
+
+* Search by **level**, **component**, or **message**
+* Build dashboards (e.g., error rates, slow components)
+* Configure alerts (e.g., trigger on `Error` in specific component)
 
 ## Troubleshooting
 
