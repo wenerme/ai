@@ -16,30 +16,30 @@ Last updated May 19, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 View tutorials to help you get started with Workers.
 
-| Name                                                                                                                                                                               | Last Updated | Difficulty   |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------ |
-| [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/)                                                                                   | 9 months ago | Advanced     |
-| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)                                               | 9 months ago | Beginner     |
-| [Connect to a PostgreSQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/postgres/)                                                          | last year    | Beginner     |
-| [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/)                                                    | last year    | Beginner     |
-| [Migrate from Vercel to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)                                                      | last year    | Beginner     |
-| [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/)                                                                                | last year    | Beginner     |
-| [Connect to a MySQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/mysql/)                                                                  | last year    | Beginner     |
-| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)                                               | last year    | Beginner     |
-| [Create a fine-tuned OpenAI model with R2](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/)                                        | 2 years ago  | Intermediate |
-| [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/)                                                                                          | 2 years ago  | Beginner     |
-| [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/)                                                                     | 2 years ago  | Intermediate |
-| [Build a todo list Jamstack application](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/)                                                                | 2 years ago  | Beginner     |
-| [Send Emails With Postmark](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/)                                                                        | 2 years ago  | Beginner     |
-| [Send Emails With Resend](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/)                                                                            | 2 years ago  | Beginner     |
-| [GitHub SMS notifications using Twilio](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/)                                                | 3 years ago  | Beginner     |
-| [Deploy a real-time chat application](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/)                                                             | 3 years ago  | Intermediate |
-| [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)                                                                        | 3 years ago  | Beginner     |
-| [Securely access and upload assets with Cloudflare R2](https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/)                                                 | 3 years ago  | Beginner     |
-| [OpenAI GPT function calling with JavaScript and Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/)                           | 3 years ago  | Beginner     |
-| [Handle form submissions with Airtable](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/)                                                | 3 years ago  | Beginner     |
-| [Connect to and query your Turso database using Workers](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/)                                      | 3 years ago  | Beginner     |
-| [Generate YouTube thumbnails with Workers and Cloudflare Image Resizing](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/) | 3 years ago  | Intermediate |
+| Name                                                                                                                                                                               | Last Updated  | Difficulty   |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------ |
+| [Build an Interactive ChatGPT App](https://developers.cloudflare.com/workers/demos/chatgpt-app/)                                                                                   | 9 months ago  | Advanced     |
+| [Deploy an Express.js application on Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)                                               | 10 months ago | Beginner     |
+| [Connect to a PostgreSQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/postgres/)                                                          | last year     | Beginner     |
+| [Migrate from Netlify to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/netlify-to-workers/)                                                    | last year     | Beginner     |
+| [Migrate from Vercel to Workers](https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/)                                                      | last year     | Beginner     |
+| [Tutorial - React SPA with an API](https://developers.cloudflare.com/workers/vite-plugin/tutorial/)                                                                                | last year     | Beginner     |
+| [Connect to a MySQL database with Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/mysql/)                                                                  | last year     | Beginner     |
+| [Set up and use a Prisma Postgres database](https://developers.cloudflare.com/workers/tutorials/using-prisma-postgres-with-workers/)                                               | last year     | Beginner     |
+| [Create a fine-tuned OpenAI model with R2](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/)                                        | 2 years ago   | Intermediate |
+| [Build a Slackbot](https://developers.cloudflare.com/workers/tutorials/build-a-slackbot/)                                                                                          | 2 years ago   | Beginner     |
+| [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/)                                                                     | 2 years ago   | Intermediate |
+| [Build a todo list Jamstack application](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/)                                                                | 2 years ago   | Beginner     |
+| [Send Emails With Postmark](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/)                                                                        | 2 years ago   | Beginner     |
+| [Send Emails With Resend](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/)                                                                            | 2 years ago   | Beginner     |
+| [GitHub SMS notifications using Twilio](https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/)                                                | 3 years ago   | Beginner     |
+| [Deploy a real-time chat application](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/)                                                             | 3 years ago   | Intermediate |
+| [Build a QR code generator](https://developers.cloudflare.com/workers/tutorials/build-a-qr-code-generator/)                                                                        | 3 years ago   | Beginner     |
+| [Securely access and upload assets with Cloudflare R2](https://developers.cloudflare.com/workers/tutorials/upload-assets-with-r2/)                                                 | 3 years ago   | Beginner     |
+| [OpenAI GPT function calling with JavaScript and Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/)                           | 3 years ago   | Beginner     |
+| [Handle form submissions with Airtable](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/)                                                | 3 years ago   | Beginner     |
+| [Connect to and query your Turso database using Workers](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/)                                      | 3 years ago   | Beginner     |
+| [Generate YouTube thumbnails with Workers and Cloudflare Image Resizing](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/) | 3 years ago   | Intermediate |
 
 Was this helpful?
 

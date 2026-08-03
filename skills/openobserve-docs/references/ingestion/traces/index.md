@@ -48,3 +48,7 @@ Authorization: Basic cm9vdEBleGFtcGxlLmNvbTpDb21wbGV4cGFzcyMxMjM=
 ## GRPC
 
 OpenObserve also supports sending traces with gRPC as explained in the [OTLP ingestion guide](../logs/otlp.md).
+
+## In this section
+
+::child-pages

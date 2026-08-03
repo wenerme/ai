@@ -4,7 +4,7 @@
 
 # Get user activity grouped by endpoint
 
-> Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. Pass `workspace_id` to scope the response to a single workspace. Pass `group_by=workspace` to split each row per workspace and include `workspace_id` on every item; by default rows are aggregated across workspaces and `workspace_id` is not returned. Activity recorded before workspace resolution existed is permanently attributed to the account default workspace (no backfill is possible). [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -101,8 +101,14 @@ paths:
       summary: Get user activity grouped by endpoint
       description: >-
         Returns user activity data grouped by endpoint for the last 30
-        (completed) UTC days. [Management
-        key](/docs/guides/overview/auth/management-api-keys) required.
+        (completed) UTC days. Pass `workspace_id` to scope the response to a
+        single workspace. Pass `group_by=workspace` to split each row per
+        workspace and include `workspace_id` on every item; by default rows are
+        aggregated across workspaces and `workspace_id` is not returned.
+        Activity recorded before workspace resolution existed is permanently
+        attributed to the account default workspace (no backfill is possible).
+        [Management key](/docs/guides/overview/auth/management-api-keys)
+        required.
       operationId: getUserActivity
       parameters:
         - description: Filter by a single UTC date in the last 30 days (YYYY-MM-DD format).
@@ -138,6 +144,40 @@ paths:
               Filter by org member user ID. Only applicable for organization
               accounts.
             example: user_abc123
+            type: string
+        - description: >-
+            Set to 'workspace' to split each row per workspace and include
+            `workspace_id` on every item. Omitted by default, in which case rows
+            are aggregated across workspaces (by date, model, and endpoint) and
+            `workspace_id` is not returned — preserving the historical response
+            shape.
+          in: query
+          name: group_by
+          required: false
+          schema:
+            description: >-
+              Set to 'workspace' to split each row per workspace and include
+              `workspace_id` on every item. Omitted by default, in which case
+              rows are aggregated across workspaces (by date, model, and
+              endpoint) and `workspace_id` is not returned — preserving the
+              historical response shape.
+            enum:
+              - workspace
+            example: workspace
+            type: string
+        - description: >-
+            Filter by workspace ID (UUID). Returns only activity attributed to
+            that workspace. The workspace must belong to the authenticated
+            account.
+          in: query
+          name: workspace_id
+          required: false
+          schema:
+            description: >-
+              Filter by workspace ID (UUID). Returns only activity attributed to
+              that workspace. The workspace must belong to the authenticated
+              account.
+            example: 550e8400-e29b-41d4-a716-446655440000
             type: string
       responses:
         '200':
@@ -399,6 +439,14 @@ components:
           example: 0.015
           format: double
           type: number
+        workspace_id:
+          description: >-
+            ID of the workspace this activity is attributed to. Only present
+            when `group_by=workspace` is passed; the response is then split per
+            workspace. Activity recorded before workspace resolution existed is
+            attributed to the account default workspace.
+          example: 550e8400-e29b-41d4-a716-446655440000
+          type: string
       required:
         - date
         - model

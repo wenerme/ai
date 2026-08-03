@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Cloudflare platform access
@@ -132,23 +132,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips

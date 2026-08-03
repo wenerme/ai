@@ -12,43 +12,35 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Find account and zone IDs
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once you [set up a new account](https://developers.cloudflare.com/fundamentals/account/) and [add your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, you may need access to your zone and account IDs for API operations.
 
-## Copy your Account ID
+## Copy your account ID
 
-1. In the Cloudflare dashboard, go to the **Account home** page.
+1. Open the Cloudflare dashboard.
 [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-2. Select the menu button at the end of the account row. ![Screenshot of the Overview page with the API section highlighted](https://developers.cloudflare.com/_astro/overview-account-id.0vaDbwHf_Z21Ejkq.webp)
-3. Select **Copy account ID**.
+2. Select **Search** (or press `CMD/CTRL + K` from any page).
+3. Enter `Copy account ID` and select the result to copy.
+![Search results showing the Copy account ID command](https://developers.cloudflare.com/_astro/quick-search-account-id.n1JgrcIV_1hD9vK.webp)
 
-### Users with a single account
+## Copy your zone ID
 
-To copy the account ID when you only have one account:
+1. In the Cloudflare dashboard, select the domain you want the zone ID for.
+[Go to **Domains** ↗](https://dash.cloudflare.com/?to=/:account/domains/overview)
+2. On the domain **Overview** page, locate the **API** section towards the bottom of the page.
+![Domain Overview page with the API section highlighted](https://developers.cloudflare.com/_astro/dash-overview-api-highlighted.uHQaRqfT_A0K0E.webp)
+3. Select the copy button next to **Zone ID**. You can also copy **Account ID** from this section.
 
-1. In the Cloudflare dashboard, go to the **Account home** page and locate your account.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-2. Select the menu button next to your account name.
-3. From the list that appears, select **Copy account ID**. ![Screenshot of the Overview page with the API section highlighted](https://developers.cloudflare.com/_astro/single-account-id.D7jBJK09_Z29PioK.webp)
-
-## Copy your Zone ID
-
-1. In the Cloudflare dashboard, go to the **Account** home and locate your account.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-2. From the **Overview** page for your account, locate the **API** section towards the bottom of the page.
-![Screenshot of the Overview page with the API section highlighted](https://developers.cloudflare.com/_astro/dash-overview-api-highlighted.BUg6qi1p_IpAUW.webp)
-1. Under **Zone ID** select **Click to copy**. You can also find your **Account ID** under the **API** section.
-
-## Find account ID (Workers and Pages)
+## Find account ID in Workers & Pages
 
 You can also find your account ID from the **Workers & Pages** section of your account.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
+1. In the Cloudflare dashboard, go to **Workers & Pages**.
 [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. The **Account details** section contains your **Account ID**.
-3. To copy the Account ID, select **Click to copy**.
-![Screenshot of the Workers & Pages Overview page with the account ID section highlighted](https://developers.cloudflare.com/_astro/workers-account-id.BrhDn1KP_1SxaIU.webp)
+2. Locate the **Account Details** section.
+3. Select the copy button next to **Account ID**.
+![Workers & Pages Overview page with the Account ID section highlighted](https://developers.cloudflare.com/_astro/workers-account-id.BndMHhMr_xGL5F.webp)
 
 Was this helpful?
 
@@ -59,5 +51,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#page","headline":"Find account and zone IDs · Cloudflare Fundamentals docs","description":"Locate your Cloudflare account ID and zone ID in the dashboard for use with the API.","url":"https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/#page","headline":"Find account and zone IDs · Cloudflare Fundamentals docs","description":"Locate your Cloudflare account ID and zone ID in the dashboard for use with the API.","url":"https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

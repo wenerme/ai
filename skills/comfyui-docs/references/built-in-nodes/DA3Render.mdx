@@ -11,7 +11,7 @@ This node renders a visualization from Depth Anything 3 geometry data. It can ou
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
 | `da3_geometry` | The Depth Anything 3 geometry data packet containing depth, and optionally sky and confidence tensors | DA3_GEOMETRY | Yes | - |
-| `output` | The type of visualization to render. Options include depth, depth_colored, sky_mask, and confidence. Each option has its own set of sub-parameters. | COMBO | Yes | `"depth"``"depth_colored"``"sky_mask"``"confidence"` |
+| `output` | The type of visualization to render.- depth: normalised greyscale depth image.- depth_colored: depth mapped through the Turbo colormap.- sky_mask: sky probability in [0, 1] (for Mono/Metric models only).- confidence: normalised depth confidence (for Small/Base models only). | COMBO | Yes | "depth""depth_colored""sky_mask""confidence" |
 
 ### Sub-parameters for `output` options
 
@@ -19,8 +19,8 @@ When `output` is set to `"depth"` or `"depth_colored"`:
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `normalization` | The depth normalization method. v2_style uses mean/std normalization for perceptually balanced results (default). min_max stretches the full depth range to [0, 1] for maximum contrast. raw preserves metric units for Metric model without scaling. | COMBO | Yes | `"v2_style"``"min_max"``"raw"` |
-| `apply_sky_clip` | Clip sky-region depth to the 99th percentile of foreground depth before normalization. Requires a sky key in the da3_geometry input (for Mono/Metric models only). Default: False | BOOLEAN | Yes | TrueFalse |
+| `normalization` | Depth normalization method.- v2_style: mean/std normalisation for perceptually balanced results (default).- min_max: stretches the full depth range to [0, 1] for maximum contrast.- raw: no scaling, preserves metric units for Metric model. | COMBO | Yes | "v2_style""min_max""raw" |
+| `apply_sky_clip` | Clip sky-region depth to the 99th percentile of foreground depth before normalisation. Requires a sky key in the da3_geometry input (for Mono/Metric models only). Default: False | BOOLEAN | Yes | TrueFalse |
 
 When `output` is set to `"sky_mask"`:
 

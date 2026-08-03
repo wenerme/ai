@@ -164,7 +164,7 @@ The Free Models Router is completely free. There is no charge for:
 
 ## Limitations
 
-* **Rate limits**: Free models may have lower rate limits than paid models
+* **Rate limits**: Requests routed through `openrouter/free` count toward the same account-wide free-model rate limits as the [`:free` variant](/docs/guides/routing/model-variants/free#rate-limits). The daily cap depends on whether you have ever purchased credits — see [Rate limits](/docs/api_reference/limits#rate-limits) for the exact numbers and how they scale.
 * **Availability**: Free model availability can vary; some may be temporarily unavailable
 * **Performance**: Free models may have higher latency during peak usage
 * **Model selection**: You cannot control which specific model is selected (use the `:free` variant suffix on a specific model if you need a particular free model)
