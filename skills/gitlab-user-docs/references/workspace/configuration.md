@@ -94,7 +94,7 @@ To choose a method that fits your platform requirements, see [configure sudo acc
 
 ## Build and run containers in a workspace
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13983) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13983) in GitLab 17.4.
 
 Development environments often require building and running containers to manage and use dependencies
 during runtime.
@@ -113,7 +113,7 @@ For more information, see [`image_pull_secrets`](settings.md#image_pull_secrets)
 
 ## Configure sudo access for a workspace
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13983) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13983) in GitLab 17.4.
 
 Development environments often require sudo permissions to install, configure, and use dependencies
 during runtime. Choose the method that fits your platform requirements:

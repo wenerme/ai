@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 The [certificate-based Kubernetes integration with GitLab](../_index.md)
-was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/epics/8)
+was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/work_items/8)
 in GitLab 14.5. To connect your clusters, use the [GitLab agent for Kubernetes](../../../clusters/agent/_index.md).
 
 ## Cluster levels (deprecated)

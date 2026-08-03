@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/21212) in GitLab 19.2.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.2.
 
 Contributions is a data source that provides aggregated metrics about
 contribution activity (such as commits, issues, and merge requests) across

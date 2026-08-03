@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed
 
 > [!warning]
-> This feature was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/epics/8)
+> This feature was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/work_items/8)
 > in GitLab 14.5. To connect clusters to GitLab, use the
 > [GitLab agent for Kubernetes](../../clusters/agent/_index.md).
 

@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 > [!warning]
-> This feature was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/epics/8) in GitLab 14.5.
+> This feature was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/work_items/8) in GitLab 14.5.
 
 Users need the Maintainer or Owner role to use these endpoints.
 
@@ -301,7 +301,7 @@ Parameters:
 | `environment_scope`                         | string  | no       | The associated environment to the cluster                                                  |
 
 > [!note]
-> `name`, `api_url`, `ca_cert` and `token` can only be updated if the cluster was added
+> `name`, `api_url`, `ca_cert`, and `token` can only be updated if the cluster was added
 > through the ["Add existing Kubernetes cluster"](../user/project/clusters/add_existing_cluster.md) option or
 > through the ["Add existing cluster to project"](#add-a-cluster-to-a-project) endpoint.
 

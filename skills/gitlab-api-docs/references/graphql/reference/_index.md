@@ -2029,6 +2029,12 @@ Information about the complexity of the GraphQL query.
 
 Returns [`QueryComplexity`](#querycomplexity).
 
+### `Query.restrictedVisibilityLevels`
+
+Visibility levels that are restricted on the instance. Non-administrators cannot use restricted visibility levels for groups, projects, or snippets.
+
+Returns [`[VisibilityLevelsEnum!]`](#visibilitylevelsenum).
+
 ### `Query.runner`
 
 Find a runner.
@@ -3197,8 +3203,9 @@ Arguments:
 | <a id="mutation-aicatalogitemconsumerbulkcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-itemid"></a>`itemId` | [`AiCatalogItemID!`](#aicatalogitemid) | Global ID of the catalog item to enable. |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-projectids"></a>`projectIds` | [`[ProjectID!]!`](#projectid) | Global IDs of the projects to enable the catalog item in (maximum 100). |
-| <a id="mutation-aicatalogitemconsumerbulkcreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Introduced in GitLab 19.1. Status: Experiment. Filter conditions for the auto-created flow triggers, keyed by event type. |
-| <a id="mutation-aicatalogitemconsumerbulkcreate-triggertypes"></a>`triggerTypes` | [`[String!]`](#string) | List of event types to create flow triggers for. |
+| <a id="mutation-aicatalogitemconsumerbulkcreate-triggerconditions"></a>`triggerConditions`  | [`AiCatalogTriggerConditionsInput`](#aicatalogtriggerconditionsinput) | Introduced in GitLab 19.3. Status: Experiment. Filter conditions for the auto-created AI Catalog triggers, keyed by event type. |
+| <a id="mutation-aicatalogitemconsumerbulkcreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Deprecated in GitLab 19.3. Use `triggerConditions`. |
+| <a id="mutation-aicatalogitemconsumerbulkcreate-triggertypes"></a>`triggerTypes` | [`[String!]`](#string) | List of event types to create AI Catalog triggers for. |
 
 Fields:
 
@@ -3223,8 +3230,9 @@ Arguments:
 | <a id="mutation-aicatalogitemconsumercreate-parentitemconsumerid"></a>`parentItemConsumerId` | [`AiCatalogItemConsumerID`](#aicatalogitemconsumerid) | Parent item consumer belonging to the top-level group. |
 | <a id="mutation-aicatalogitemconsumercreate-pinnedversion"></a>`pinnedVersion` | [`AiCatalogPinnedVersion`](#aicatalogpinnedversion) | Version to pin the item to, in the format `n.n.n`. Must be a released version. Defaults to the latest released version. Ignored when enabling within the item's managing project, which always tracks the latest released version. |
 | <a id="mutation-aicatalogitemconsumercreate-target"></a>`target` | [`ItemConsumerTargetInput!`](#itemconsumertargetinput) | Target project or top-level group in which the catalog item is configured. |
-| <a id="mutation-aicatalogitemconsumercreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Introduced in GitLab 19.1. Status: Experiment. Filter conditions for the auto-created flow triggers, keyed by event type. |
-| <a id="mutation-aicatalogitemconsumercreate-triggertypes"></a>`triggerTypes` | [`[String!]`](#string) | List of event types to create flow triggers for (values can be mention, assign or assign_reviewer). |
+| <a id="mutation-aicatalogitemconsumercreate-triggerconditions"></a>`triggerConditions`  | [`AiCatalogTriggerConditionsInput`](#aicatalogtriggerconditionsinput) | Introduced in GitLab 19.3. Status: Experiment. Filter conditions for the auto-created AI Catalog triggers, keyed by event type. |
+| <a id="mutation-aicatalogitemconsumercreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Deprecated in GitLab 19.3. Use `triggerConditions`. |
+| <a id="mutation-aicatalogitemconsumercreate-triggertypes"></a>`triggerTypes` | [`[String!]`](#string) | List of event types to create AI Catalog triggers for (values can be mention, assign or assign_reviewer). |
 
 Fields:
 
@@ -3567,6 +3575,7 @@ Arguments:
 | <a id="mutation-aiduoworkflowcreate-namespaceid"></a>`namespaceId` | [`NamespaceID`](#namespaceid) | Global ID of the namespace the user is acting on. |
 | <a id="mutation-aiduoworkflowcreate-preapprovedagentprivileges"></a>`preApprovedAgentPrivileges` | [`[Int!]`](#int) | Actions the agent can perform without asking for approval. |
 | <a id="mutation-aiduoworkflowcreate-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project the user is acting on. |
+| <a id="mutation-aiduoworkflowcreate-websearchenabled"></a>`webSearchEnabled` | [`Boolean`](#boolean) | Enable web search for the session. |
 | <a id="mutation-aiduoworkflowcreate-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | Workflow type based on its capability. |
 
 Fields:
@@ -5330,6 +5339,31 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-bulkupdatesecurityattributes-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-bulkupdatesecurityattributes-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered while initiating the bulk update operation. |
+
+### `Mutation.cancelVulnerabilityWorkflow`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Cancels a vulnerability workflow execution.
+
+Input type: `CancelVulnerabilityWorkflowInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cancelvulnerabilityworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cancelvulnerabilityworkflow-projectid"></a>`projectId` | [`ProjectID!`](#projectid) | Global ID of the project. |
+| <a id="mutation-cancelvulnerabilityworkflow-workflow"></a>`workflow` | [`VulnerabilityDuoWorkflow!`](#vulnerabilityduoworkflow) | Workflow to cancel. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cancelvulnerabilityworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cancelvulnerabilityworkflow-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-cancelvulnerabilityworkflow-execution"></a>`execution` | [`VulnerabilityWorkflowExecution`](#vulnerabilityworkflowexecution) | Workflow execution. |
 
 ### `Mutation.catalogResourcesCreate`
 
@@ -9443,6 +9477,29 @@ Fields:
 | <a id="mutation-groupsecretspermissionupdate-reason"></a>`reason`  | [`SecretsManagerWriteDenialReason`](#secretsmanagerwritedenialreason) | Introduced in GitLab 19.2. Status: Experiment. Reason the write was denied due to entitlement; null when not denied for that reason. |
 | <a id="mutation-groupsecretspermissionupdate-secretspermission"></a>`secretsPermission` | [`GroupSecretsPermission`](#groupsecretspermission) | Secrets Permission that was created. |
 
+### `Mutation.groupTransfer`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Input type: `GroupTransferInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-grouptransfer-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-grouptransfer-id"></a>`id` | [`GroupID!`](#groupid) | Global ID of the group to transfer. |
+| <a id="mutation-grouptransfer-targetid"></a>`targetId` | [`GroupID`](#groupid) | Global ID of the target parent group. Omit to make group top-level. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-grouptransfer-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-grouptransfer-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-grouptransfer-group"></a>`group` | [`Group`](#group) | Group after mutation. |
+
 ### `Mutation.groupUpdate`
 
 Input type: `GroupUpdateInput`
@@ -13527,6 +13584,29 @@ Fields:
 | <a id="mutation-projecttextreplace-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-projecttextreplace-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
+### `Mutation.projectTransfer`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Input type: `ProjectTransferInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-projecttransfer-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-projecttransfer-id"></a>`id` | [`ProjectID!`](#projectid) | Global ID of the project to transfer. |
+| <a id="mutation-projecttransfer-namespaceid"></a>`namespaceId` | [`NamespaceID!`](#namespaceid) | Global ID of the target namespace. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-projecttransfer-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-projecttransfer-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-projecttransfer-project"></a>`project` | [`Project`](#project) | Project after mutation. |
+
 ### `Mutation.projectUpdateComplianceFrameworks`
 
 Update compliance frameworks for a project.
@@ -15176,6 +15256,33 @@ Fields:
 | <a id="mutation-starproject-count"></a>`count` | [`String!`](#string) | Number of stars for the project. |
 | <a id="mutation-starproject-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
+### `Mutation.startVulnerabilityWorkflow`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Creates and starts a vulnerability workflow execution.
+
+Input type: `StartVulnerabilityWorkflowInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-startvulnerabilityworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-startvulnerabilityworkflow-findinguuids"></a>`findingUuids` | [`[String!]`](#string) | Finding UUIDs to process, up to 1000. If omitted, all project findings are processed. |
+| <a id="mutation-startvulnerabilityworkflow-projectid"></a>`projectId` | [`ProjectID!`](#projectid) | Global ID of the project. |
+| <a id="mutation-startvulnerabilityworkflow-severities"></a>`severities` | [`[VulnerabilitySeverity!]`](#vulnerabilityseverity) | Severities to process. If omitted, all severities are processed. |
+| <a id="mutation-startvulnerabilityworkflow-workflow"></a>`workflow` | [`VulnerabilityDuoWorkflow!`](#vulnerabilityduoworkflow) | Workflow to execute. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-startvulnerabilityworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-startvulnerabilityworkflow-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-startvulnerabilityworkflow-execution"></a>`execution` | [`VulnerabilityWorkflowExecution`](#vulnerabilityworkflowexecution) | Workflow execution. |
+
 ### `Mutation.tagCreate`
 
 Input type: `TagCreateInput`
@@ -16115,6 +16222,29 @@ Fields:
 | <a id="mutation-updateduoworkflowtoolcallapprovals-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-updateduoworkflowtoolcallapprovals-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during update. |
 | <a id="mutation-updateduoworkflowtoolcallapprovals-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Updated workflow with new tool approvals. |
+
+### `Mutation.updateDuoWorkflowWebSearch`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Input type: `UpdateDuoWorkflowWebSearchInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-updateduoworkflowwebsearch-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-updateduoworkflowwebsearch-websearchenabled"></a>`webSearchEnabled` | [`Boolean!`](#boolean) | Whether web search should be enabled for the session. |
+| <a id="mutation-updateduoworkflowwebsearch-workflowid"></a>`workflowId` | [`AiDuoWorkflowsWorkflowID!`](#aiduoworkflowsworkflowid) | Global ID of the workflow to update. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-updateduoworkflowwebsearch-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-updateduoworkflowwebsearch-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during update. |
+| <a id="mutation-updateduoworkflowwebsearch-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Updated workflow. |
 
 ### `Mutation.updateEpic`
 
@@ -33905,6 +34035,7 @@ Fields:
 | <a id="cdrollouttransition-id"></a>`id` | [`CdRolloutTransitionID!`](#cdrollouttransitionid) | Global ID of the rollout transition. |
 | <a id="cdrollouttransition-onbehalfof"></a>`onBehalfOf` | [`String`](#string) | Originating principal a composite-identity action was performed on behalf of. |
 | <a id="cdrollouttransition-principal"></a>`principal` | [`String!`](#string) | Identity reference of the principal that triggered the transition, for example `user:1234`. |
+| <a id="cdrollouttransition-principaluser"></a>`principalUser`  | [`UserCore`](#usercore) | Introduced in GitLab 19.3. Status: Experiment. User that triggered the transition, when the principal identifies a user that still exists; null for other principal kinds or a deleted user. |
 | <a id="cdrollouttransition-reason"></a>`reason` | [`String`](#string) | Reason for the transition. |
 | <a id="cdrollouttransition-tostate"></a>`toState` | [`CdRolloutTransitionState!`](#cdrollouttransitionstate) | State the rollout transitioned to. |
 | <a id="cdrollouttransition-triggeredby"></a>`triggeredBy` | [`String`](#string) | Identifier of what triggered the transition. |
@@ -36666,6 +36797,7 @@ Fields:
 | <a id="currentlicense-name"></a>`name` | [`String`](#string) | Name of the licensee. |
 | <a id="currentlicense-plan"></a>`plan` | [`String!`](#string) | Name of the subscription plan. |
 | <a id="currentlicense-startsat"></a>`startsAt` | [`Date`](#date) | Date when the license started. |
+| <a id="currentlicense-subscriptionname"></a>`subscriptionName` | [`String`](#string) | Name of the subscription in the Customers Portal. |
 | <a id="currentlicense-trial"></a>`trial` | [`Boolean`](#boolean) | Indicates if the license is a trial. |
 | <a id="currentlicense-type"></a>`type` | [`String!`](#string) | Type of the license. |
 | <a id="currentlicense-usersinlicensecount"></a>`usersInLicenseCount` | [`Int`](#int) | Number of paid users in the license. |
@@ -39151,6 +39283,7 @@ Fields:
 | <a id="duoworkflow-user"></a>`user` | [`UserCore`](#usercore) | User who created the session. |
 | <a id="duoworkflow-userid"></a>`userId` | [`UserID!`](#userid) | ID of the user. |
 | <a id="duoworkflow-userpermissions"></a>`userPermissions` | [`DuoWorkflowPermissions`](#duoworkflowpermissions) | Permissions of the current user for the workflow. |
+| <a id="duoworkflow-websearchenabled"></a>`webSearchEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether web search is enabled for the session. |
 | <a id="duoworkflow-weburl"></a>`webUrl` | [`String`](#string) | URL of the object. |
 | <a id="duoworkflow-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Associated work item (issue or epic), if any. |
 | <a id="duoworkflow-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | GitLab Duo Agent Platform flow type based on its capabilities. |
@@ -41815,6 +41948,7 @@ Fields:
 | <a id="group-toolapprovalforsessionenabled"></a>`toolApprovalForSessionEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.11. Status: Experiment. Indicates whether tool approval for session is enabled for the group. |
 | <a id="group-totalrepositorysize"></a>`totalRepositorySize` | [`Float`](#float) | Total repository size of all projects in the root namespace in bytes. |
 | <a id="group-totalrepositorysizeexcess"></a>`totalRepositorySizeExcess` | [`Float`](#float) | Total excess repository size of all projects in the root namespace in bytes. This only applies to namespaces under Project limit enforcement. |
+| <a id="group-transferinprogress"></a>`transferInProgress`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates if the group is currently being transferred. |
 | <a id="group-twofactorgraceperiod"></a>`twoFactorGracePeriod` | [`Int`](#int) | Time before two-factor authentication is enforced. |
 | <a id="group-updatedat"></a>`updatedAt` | [`Time`](#time) | Timestamp of when the group was last updated. |
 | <a id="group-userpermissions"></a>`userPermissions` | [`GroupPermissions!`](#grouppermissions) | Permissions for the current user on the resource. |
@@ -51552,6 +51686,7 @@ Fields:
 | <a id="project-timelogcategories"></a>`timelogCategories`  | [`TimeTrackingTimelogCategoryConnection`](#timetrackingtimelogcategoryconnection) | Introduced in GitLab 15.3. Status: Experiment. Timelog categories for the project. |
 | <a id="project-topics"></a>`topics` | [`[String!]`](#string) | List of project topics. |
 | <a id="project-trackingkey"></a>`trackingKey`  | [`String`](#string) | Introduced in GitLab 16.0. Status: Experiment. Tracking key assigned to the project. |
+| <a id="project-transferinprogress"></a>`transferInProgress`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates if the project is currently being transferred. |
 | <a id="project-updatedat"></a>`updatedAt` | [`Time`](#time) | Timestamp of when the project was last updated. |
 | <a id="project-useraccessauthorizedagents"></a>`userAccessAuthorizedAgents` | [`ClusterAgentAuthorizationUserAccessConnection`](#clusteragentauthorizationuseraccessconnection) | Authorized cluster agents for the project through user_access keyword. (see [Connections](#connections)) |
 | <a id="project-userpermissions"></a>`userPermissions` | [`ProjectPermissions!`](#projectpermissions) | Permissions for the current user on the resource. |
@@ -54024,6 +54159,22 @@ Arguments:
 | <a id="project-vulnerabilityseveritiescount-trackedrefids"></a>`trackedRefIds`  | [`[SecurityProjectTrackedContextID!]`](#securityprojecttrackedcontextid) | Introduced in GitLab 18.11. Status: Experiment. Filter vulnerabilities by tracked ref IDs. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
 | <a id="project-vulnerabilityseveritiescount-trackedrefsscope"></a>`trackedRefsScope`  | [`SecurityTrackedRefScope`](#securitytrackedrefscope) | Introduced in GitLab 18.11. Status: Experiment. Filter by tracked ref scope. To use this argument, you must have advanced search configured, advanced vulnerability management set up and `vulnerabilities_across_contexts` feature flag enabled. |
 | <a id="project-vulnerabilityseveritiescount-validitycheck"></a>`validityCheck`  | [`[VulnerabilityFindingTokenStatusState!]`](#vulnerabilityfindingtokenstatusstate) | Introduced in GitLab 18.5. Status: Experiment. Filter vulnerabilities by token status. |
+
+##### `Project.vulnerabilityWorkflowExecution`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Returns a vulnerability workflow execution.
+
+Returns [`VulnerabilityWorkflowExecution`](#vulnerabilityworkflowexecution).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="project-vulnerabilityworkflowexecution-executionid"></a>`executionId` | [`String`](#string) | Execution identifier. When omitted, returns the active execution. |
+| <a id="project-vulnerabilityworkflowexecution-workflow"></a>`workflow` | [`VulnerabilityDuoWorkflow!`](#vulnerabilityduoworkflow) | Duo workflow associated with the execution. |
 
 ##### `Project.webhook`
 
@@ -59613,6 +59764,65 @@ Fields:
 | <a id="vulnerabilitytriggeredworkflow-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Associated workflow details. |
 | <a id="vulnerabilitytriggeredworkflow-workflowname"></a>`workflowName` | [`VulnerabilityWorkflowName!`](#vulnerabilityworkflowname) | Name of the workflow. |
 
+### `VulnerabilityWorkflowExecution`
+
+Represents a bulk Duo workflow execution.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="vulnerabilityworkflowexecution-batchsize"></a>`batchSize` | [`Int!`](#int) | Maximum number of vulnerabilities processed per batch. |
+| <a id="vulnerabilityworkflowexecution-cancelrequested"></a>`cancelRequested` | [`Boolean!`](#boolean) | Whether cancellation has been requested. |
+| <a id="vulnerabilityworkflowexecution-createdat"></a>`createdAt` | [`Time!`](#time) | Time the execution was created. |
+| <a id="vulnerabilityworkflowexecution-currentstage"></a>`currentStage` | [`VulnerabilityWorkflowStage`](#vulnerabilityworkflowstage) | Current workflow stage. |
+| <a id="vulnerabilityworkflowexecution-endedat"></a>`endedAt` | [`Time`](#time) | Time the execution completed. |
+| <a id="vulnerabilityworkflowexecution-executionid"></a>`executionId` | [`ID!`](#id) | Execution identifier. |
+| <a id="vulnerabilityworkflowexecution-itemstates"></a>`itemStates` | [`[VulnerabilityWorkflowItem!]!`](#vulnerabilityworkflowitem) | Current workflow state for vulnerabilities in the execution. |
+| <a id="vulnerabilityworkflowexecution-progress"></a>`progress` | [`VulnerabilityWorkflowProgress!`](#vulnerabilityworkflowprogress) | Current execution progress. |
+| <a id="vulnerabilityworkflowexecution-stages"></a>`stages` | [`[VulnerabilityWorkflowStage!]!`](#vulnerabilityworkflowstage) | Workflow stages in execution order. |
+| <a id="vulnerabilityworkflowexecution-startedat"></a>`startedAt` | [`Time`](#time) | Time the execution started. |
+| <a id="vulnerabilityworkflowexecution-status"></a>`status` | [`VulnerabilityWorkflowStatus!`](#vulnerabilityworkflowstatus) | Current execution status. |
+| <a id="vulnerabilityworkflowexecution-workflow"></a>`workflow` | [`VulnerabilityDuoWorkflow!`](#vulnerabilityduoworkflow) | Duo workflow being executed. |
+
+### `VulnerabilityWorkflowItem`
+
+Workflow state of a vulnerability.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="vulnerabilityworkflowitem-state"></a>`state` | [`VulnerabilityWorkflowItemState!`](#vulnerabilityworkflowitemstate) | Current workflow state. |
+| <a id="vulnerabilityworkflowitem-vulnerability"></a>`vulnerability` | [`Vulnerability`](#vulnerability) | Vulnerability. |
+
+### `VulnerabilityWorkflowProgress`
+
+Progress information for a bulk Duo workflow execution.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="vulnerabilityworkflowprogress-cancelled"></a>`cancelled` | [`Int!`](#int) | Number of cancelled vulnerabilities. |
+| <a id="vulnerabilityworkflowprogress-completed"></a>`completed` | [`Int!`](#int) | Number of completed vulnerabilities. |
+| <a id="vulnerabilityworkflowprogress-failed"></a>`failed` | [`Int!`](#int) | Number of failed vulnerabilities. |
+| <a id="vulnerabilityworkflowprogress-pending"></a>`pending` | [`Int!`](#int) | Number of pending vulnerabilities. |
+| <a id="vulnerabilityworkflowprogress-percentage"></a>`percentage` | [`Float!`](#float) | Execution completion percentage. |
+| <a id="vulnerabilityworkflowprogress-processing"></a>`processing` | [`Int!`](#int) | Number of vulnerabilities currently being processed. |
+| <a id="vulnerabilityworkflowprogress-total"></a>`total` | [`Int!`](#int) | Total number of vulnerabilities. |
+
+### `VulnerabilityWorkflowStage`
+
+A stage within a bulk Duo workflow.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="vulnerabilityworkflowstage-name"></a>`name` | [`String!`](#string) | Stage name. |
+| <a id="vulnerabilityworkflowstage-order"></a>`order` | [`Int!`](#int) | Execution order. |
+
 ### `VulnerableDependency`
 
 Represents a vulnerable dependency. Used in vulnerability location data.
@@ -61521,6 +61731,30 @@ Transport types for MCP servers.
 | Value | Description |
 | ----- | ----------- |
 | <a id="aicatalogmcpservertransport-http"></a>`HTTP` | HTTP transport. |
+
+### `AiCatalogTriggerConditionsMatch`
+
+Match strategy for a trigger conditions group.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aicatalogtriggerconditionsmatch-all"></a>`ALL` | All rules in the group must match. |
+| <a id="aicatalogtriggerconditionsmatch-any"></a>`ANY` | Any rule in the group must match. |
+
+### `AiCatalogTriggerConditionsOperator`
+
+Operators for a trigger condition rule.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aicatalogtriggerconditionsoperator-contains"></a>`CONTAINS` | Contains the value. |
+| <a id="aicatalogtriggerconditionsoperator-eq"></a>`EQ` | Equal to the value. |
+| <a id="aicatalogtriggerconditionsoperator-gt"></a>`GT` | Greater than the value. |
+| <a id="aicatalogtriggerconditionsoperator-in"></a>`IN` | Included in the value. |
+| <a id="aicatalogtriggerconditionsoperator-lt"></a>`LT` | Less than the value. |
+| <a id="aicatalogtriggerconditionsoperator-ne"></a>`NE` | Not equal to the value. |
+| <a id="aicatalogtriggerconditionsoperator-not_contains"></a>`NOT_CONTAINS` | Does not contain the value. |
+| <a id="aicatalogtriggerconditionsoperator-not_in"></a>`NOT_IN` | Not included in the value. |
 
 ### `AiCatalogVersionBump`
 
@@ -65512,6 +65746,7 @@ State of a policy schedule test run.
 | Value | Description |
 | ----- | ----------- |
 | <a id="policyscheduletestrunstate-complete"></a>`COMPLETE` | Test run completed successfully. |
+| <a id="policyscheduletestrunstate-creating"></a>`CREATING` | Test run is creating the pipeline. |
 | <a id="policyscheduletestrunstate-failed"></a>`FAILED` | Test run failed. |
 | <a id="policyscheduletestrunstate-pending"></a>`PENDING` | Test run is pending and waiting for pipeline creation. |
 | <a id="policyscheduletestrunstate-running"></a>`RUNNING` | Test run is in progress. |
@@ -66757,6 +66992,16 @@ The dismissal reason of the Vulnerability.
 | <a id="vulnerabilitydismissalreason-not_applicable"></a>`NOT_APPLICABLE` | The vulnerability is known, and has not been remediated or mitigated, but is considered to be in a part of the application that will not be updated. |
 | <a id="vulnerabilitydismissalreason-used_in_tests"></a>`USED_IN_TESTS` | The finding is not a vulnerability because it is part of a test or is test data. |
 
+### `VulnerabilityDuoWorkflow`
+
+Bulk Duo workflows.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="vulnerabilityduoworkflow-resolve_sast_vulnerability_v1"></a>`RESOLVE_SAST_VULNERABILITY_V1` | Generate AI-assisted vulnerability resolutions. |
+| <a id="vulnerabilityduoworkflow-sast_fp_detection_v1"></a>`SAST_FP_DETECTION_V1` | Detect false positive SAST vulnerabilities. |
+| <a id="vulnerabilityduoworkflow-secrets_fp_detection_v1"></a>`SECRETS_FP_DETECTION_V1` | Detect false positive secret detection vulnerabilities. |
+
 ### `VulnerabilityExternalIssueLinkExternalTracker`
 
 The external tracker of the external issue link related to a vulnerability.
@@ -66943,6 +67188,18 @@ The state of the vulnerability.
 | <a id="vulnerabilitystate-dismissed"></a>`DISMISSED` | For details, see [vulnerability status values](https://docs.gitlab.com/user/application_security/vulnerabilities/#vulnerability-status-values). |
 | <a id="vulnerabilitystate-resolved"></a>`RESOLVED` | For details, see [vulnerability status values](https://docs.gitlab.com/user/application_security/vulnerabilities/#vulnerability-status-values). |
 
+### `VulnerabilityWorkflowItemState`
+
+Processing state of a vulnerability within a bulk Duo workflow.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="vulnerabilityworkflowitemstate-cancelled"></a>`CANCELLED` | Processing was cancelled. |
+| <a id="vulnerabilityworkflowitemstate-completed"></a>`COMPLETED` | Processed successfully. |
+| <a id="vulnerabilityworkflowitemstate-failed"></a>`FAILED` | Processing failed. |
+| <a id="vulnerabilityworkflowitemstate-pending"></a>`PENDING` | Waiting to be processed. |
+| <a id="vulnerabilityworkflowitemstate-processing"></a>`PROCESSING` | Currently being processed. |
+
 ### `VulnerabilityWorkflowName`
 
 Workflow name for vulnerability triggered workflows.
@@ -66952,6 +67209,18 @@ Workflow name for vulnerability triggered workflows.
 | <a id="vulnerabilityworkflowname-resolve_sast_vulnerability"></a>`RESOLVE_SAST_VULNERABILITY` | Workflow name is resolve sast vulnerability. |
 | <a id="vulnerabilityworkflowname-sast_fp_detection"></a>`SAST_FP_DETECTION` | Workflow name is sast fp detection. |
 | <a id="vulnerabilityworkflowname-secrets_fp_detection"></a>`SECRETS_FP_DETECTION` | Workflow name is secrets fp detection. |
+
+### `VulnerabilityWorkflowStatus`
+
+Execution status of a bulk Duo workflow.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="vulnerabilityworkflowstatus-cancelled"></a>`CANCELLED` | Execution was cancelled. |
+| <a id="vulnerabilityworkflowstatus-completed"></a>`COMPLETED` | Execution completed successfully. |
+| <a id="vulnerabilityworkflowstatus-created"></a>`CREATED` | Execution has been created. |
+| <a id="vulnerabilityworkflowstatus-failed"></a>`FAILED` | Execution failed. |
+| <a id="vulnerabilityworkflowstatus-running"></a>`RUNNING` | Execution is running. |
 
 ### `WebhookAlertStatus`
 
@@ -70986,6 +71255,49 @@ Arguments:
 | <a id="aiagenticchatinput-currentfile"></a>`currentFile` | [`AiCurrentFileInput`](#aicurrentfileinput) | Information about currently selected text which can be passed for additional context. |
 | <a id="aiagenticchatinput-namespaceid"></a>`namespaceId` | [`NamespaceID`](#namespaceid) | Global ID of the namespace the user is acting on. |
 | <a id="aiagenticchatinput-resourceid"></a>`resourceId` | [`AiModelID!`](#aimodelid) | Global ID of the resource to mutate. |
+
+### `AiCatalogTriggerConditionsGroupInput`
+
+Group of rules for a set of trigger conditions.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogtriggerconditionsgroupinput-match"></a>`match` | [`AiCatalogTriggerConditionsMatch`](#aicatalogtriggerconditionsmatch) | Strategy used to match the rules in the group. |
+| <a id="aicatalogtriggerconditionsgroupinput-rules"></a>`rules` | [`[AiCatalogTriggerConditionsRuleItemInput!]!`](#aicatalogtriggerconditionsruleiteminput) | Rules in the group. |
+
+### `AiCatalogTriggerConditionsInput`
+
+Conditions for AI Catalog triggers.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogtriggerconditionsinput-assign"></a>`assign` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the assign event. |
+| <a id="aicatalogtriggerconditionsinput-assignreviewer"></a>`assignReviewer` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the assign_reviewer event. |
+| <a id="aicatalogtriggerconditionsinput-committodefaultbranch"></a>`commitToDefaultBranch` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the commit_to_default_branch event. |
+| <a id="aicatalogtriggerconditionsinput-mention"></a>`mention` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the mention event. |
+| <a id="aicatalogtriggerconditionsinput-mergerequest"></a>`mergeRequest` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the merge_request event. |
+| <a id="aicatalogtriggerconditionsinput-mergerequestcodeconflict"></a>`mergeRequestCodeConflict` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the merge_request_code_conflict event. |
+| <a id="aicatalogtriggerconditionsinput-mergerequestready"></a>`mergeRequestReady` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the merge_request_ready event. |
+| <a id="aicatalogtriggerconditionsinput-pipelinehooks"></a>`pipelineHooks` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the pipeline_hooks event. |
+| <a id="aicatalogtriggerconditionsinput-workitem"></a>`workItem` | [`AiCatalogTriggerConditionsGroupInput`](#aicatalogtriggerconditionsgroupinput) | Trigger condition rules for the work_item event. |
+
+### `AiCatalogTriggerConditionsRuleItemInput`
+
+Item within a trigger conditions group. Provide either the rule fields (`field`, `operator`, `value`) or `rules` for a nested group, but not both. `match` can only be provided with `rules`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogtriggerconditionsruleiteminput-field"></a>`field` | [`String`](#string) | Field the rule applies to. |
+| <a id="aicatalogtriggerconditionsruleiteminput-match"></a>`match` | [`AiCatalogTriggerConditionsMatch`](#aicatalogtriggerconditionsmatch) | Strategy used to match the rules in the nested group. |
+| <a id="aicatalogtriggerconditionsruleiteminput-operator"></a>`operator` | [`AiCatalogTriggerConditionsOperator`](#aicatalogtriggerconditionsoperator) | Operator used to compare the field to the value. |
+| <a id="aicatalogtriggerconditionsruleiteminput-rules"></a>`rules` | [`[AiCatalogTriggerConditionsRuleItemInput!]`](#aicatalogtriggerconditionsruleiteminput) | Rules in the nested group. |
+| <a id="aicatalogtriggerconditionsruleiteminput-value"></a>`value` | [`JSON`](#json) | Value to compare the field against. |
 
 ### `AiChatInput`
 

@@ -52,7 +52,7 @@ If you do not have access to Agentic Chat and therefore the GitLab Duo Agent Pla
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/451215) ability to ask doc-related questions on GitLab Self-Managed in GitLab 17.0 [with a feature flag](../../administration/feature_flags/_index.md) named `ai_gateway_docs_search`. Enabled by default.
 - [Generally available and feature flag removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/154876) in GitLab 17.1.
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 You can ask questions about how GitLab works. Things like:
@@ -76,7 +76,7 @@ To keep Chat up to date with the documentation, its knowledge base is updated da
 - GitLab Duo Non-Agentic Chat: GitLab UI, Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include Premium in GitLab 18.0.
 
 You can ask about a specific GitLab issue. For example:
@@ -100,7 +100,7 @@ For tips on how GitLab Duo Chat can improve your productivity with issues and ep
 - GitLab Duo Non-Agentic Chat: GitLab UI, Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include Premium in GitLab 18.0.
 
 You can ask about a specific GitLab epic. For example:
@@ -203,7 +203,7 @@ You can ask about a specific GitLab work item. For example:
 - Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
 
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 You can ask GitLab Duo Chat to explain selected code:
@@ -244,7 +244,7 @@ In the GitLab UI, you can also explain code in:
 - GitLab Duo Non-Agentic Chat: GitLab UI, Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 You can ask GitLab Duo Chat questions about code by pasting that code into
@@ -272,7 +272,7 @@ You can also ask Chat to generate code. For example:
 
 - GitLab Duo Non-Agentic Chat: GitLab UI, Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 You can ask follow-up questions to delve deeper into the topic or task at hand.
@@ -295,7 +295,7 @@ A follow-up to the question `How to start a C# project?` could be:
 
 - GitLab Duo Non-Agentic Chat: GitLab UI, the Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 Programming languages that require compiling the source code may throw cryptic error messages. Similarly, a script or a web application could throw a stack trace. You can ask GitLab Duo Chat by prefixing the copied error message with, for example, `Explain this error message:`. Add the specific context, like the programming language.
@@ -315,7 +315,7 @@ Programming languages that require compiling the source code may throw cryptic e
 - GitLab Duo Non-Agentic Chat: VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/477258) in GitLab 17.7 [with feature flags](../../administration/feature_flags/_index.md) named `duo_additional_context` and `duo_include_context_file`. Disabled by default.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - [Enabled on GitLab.com and GitLab Self-Managed](https://gitlab.com/groups/gitlab-org/-/epics/15183) in GitLab 17.9.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/188613) in GitLab 18.0. All feature flags removed.
 - Changed to include the GitLab Duo Core add-on in GitLab 18.0.
@@ -354,7 +354,7 @@ For example, if you are developing an e-commerce app, you can add the `cart_serv
 - Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
 
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 You can ask GitLab Duo Chat to refactor selected code:
@@ -391,7 +391,7 @@ For more information, see:
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/429915) for GitLab.com, GitLab Self-Managed, and GitLab Dedicated in GitLab 17.3.
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 You can ask GitLab Duo Chat to fix selected code:
@@ -420,7 +420,7 @@ You can include additional instructions to be considered. For example:
 - Available on [GitLab Duo with self-hosted models](../../administration/gitlab_duo_self_hosted/_index.md)
 
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 You can ask GitLab Duo Chat to create tests for the selected code:
@@ -452,7 +452,7 @@ For more information, see [Use GitLab Duo Chat in VS Code](_index.md#use-gitlab-
 - [Updated LLM](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/149619) from Claude 2.1 to Claude 3 Sonnet in GitLab 17.2.
 - [Updated LLM](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/157696) from Claude 3 Sonnet to Claude 3.5 Sonnet in GitLab 17.2.
 - Changed to require GitLab Duo add-on in GitLab 17.6.
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - [Updated LLM](https://gitlab.com/gitlab-org/gitlab/-/issues/521034) from Claude 3.5 Sonnet to Claude 4.0 Sonnet in GitLab 17.10.
 
 You can ask GitLab Duo Chat to create a CI/CD configuration:
@@ -576,7 +576,7 @@ Use the commands to quickly accomplish specific tasks.
 
 - GitLab Duo Non-Agentic Chat: GitLab UI, Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 | Command | Purpose                                                                                                                       |
@@ -611,7 +611,7 @@ These commands are dynamic and are available only in the GitLab UI when using Gi
 
 - GitLab Duo Non-Agentic Chat: Web IDE, VS Code, JetBrains IDEs, Visual Studio, and Eclipse
 
-- [Enabled](https://gitlab.com/groups/gitlab-org/-/epics/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
+- [Enabled](https://gitlab.com/groups/gitlab-org/-/work_items/15227) for [self-hosted model configuration](../../administration/gitlab_duo_self_hosted/_index.md#self-hosted-ai-gateway-and-llms) as well as the [default GitLab external AI vendor configuration](../../administration/gitlab_duo_self_hosted/_index.md#gitlabcom-ai-gateway-with-default-gitlab-external-vendor-llms) in GitLab 17.9.
 - Changed to include GitLab Duo Core add-on in GitLab 18.0.
 
 These commands work only when using GitLab Duo Chat in supported IDEs:

@@ -236,7 +236,7 @@ To leave a group:
 
 ## Schedule a group for deletion
 
-- [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
+- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 By default, when you delete a group for the first time, it enters a pending deletion state.
 Delete a group again to remove it immediately.
@@ -273,7 +273,7 @@ the deletion job instead restores the group, and the group is no longer schedule
 
 ## Delete a group immediately
 
-- [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
+- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 If you don't want to wait, you can delete a group immediately.
 

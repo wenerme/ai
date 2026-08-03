@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/21212) in GitLab 19.1.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.1.
 
 Code suggestions is a data source that provides aggregated metrics about
 [GitLab Duo Code Suggestions](../../project/repository/code_suggestions/_index.md)
