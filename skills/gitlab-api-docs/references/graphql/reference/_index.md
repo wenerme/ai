@@ -39254,6 +39254,9 @@ Fields:
 | <a id="duoworkflow-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the session was created. |
 | <a id="duoworkflow-environment"></a>`environment` | [`WorkflowEnvironment`](#workflowenvironment) | Environment, like IDE or web. |
 | <a id="duoworkflow-firstcheckpoint"></a>`firstCheckpoint` | [`DuoWorkflowEvent`](#duoworkflowevent) | First checkpoint of the session. |
+| <a id="duoworkflow-flowmetadataid"></a>`flowMetadataId`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Identifier of the flow that was executed in the session. |
+| <a id="duoworkflow-flowmetadataschemaversion"></a>`flowMetadataSchemaVersion`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Schema version of the flow metadata for the session. |
+| <a id="duoworkflow-flowmetadataversion"></a>`flowMetadataVersion`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Version of the flow that was executed in the session. |
 | <a id="duoworkflow-goal"></a>`goal` | [`String`](#string) | Goal of the session. |
 | <a id="duoworkflow-humanstatus"></a>`humanStatus` | [`String!`](#string) | Human-readable status of the session. |
 | <a id="duoworkflow-id"></a>`id` | [`ID!`](#id) | ID of the session. |

@@ -16,7 +16,7 @@ Analytics and usage endpoints
 
 ## get\_user\_activity
 
-Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+Returns user activity data grouped by endpoint for the last 30 (completed) UTC days. Pass `workspace_id` to scope the response to a single workspace. Pass `group_by=workspace` to split each row per workspace and include `workspace_id` on every item; by default rows are aggregated across workspaces and `workspace_id` is not returned. Activity recorded before workspace resolution existed is permanently attributed to the account default workspace (no backfill is possible). [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -41,15 +41,10 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                 | Example         |
-| -------------------------- | ------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- |
-| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                 |
-| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                 |
-| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                 |
-| `date_`                    | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Filter by a single UTC date in the last 30 days (YYYY-MM-DD format).                                                                                        | 2025-08-24      |
-| `api_key_hash`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Filter by API key hash (SHA-256 hex string, as returned by the keys API).                                                                                   | abc123def456... |
-| `user_id`                  | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Filter by org member user ID. Only applicable for organization accounts.                                                                                    | user\_abc123    |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                 |
+| Parameter | Type                                                                             | Required             | Description                                                         |
+| --------- | -------------------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------- |
+| `request` | [operations.GetUserActivityRequest](../../operations/getuseractivityrequest.mdx) | :heavy\_check\_mark: | The request object to use for the request.                          |
+| `retries` | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)              | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client. |
 
 ### Response
 

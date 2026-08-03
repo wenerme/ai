@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Remote-procedure call (RPC)
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/rpc/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -134,7 +134,7 @@ from workers import WorkerEntrypoint, Response
 class Default(WorkerEntrypoint):
     async def fetch(self, request):
         result = await self.env.WORKER_B.add(1, 2)
-		return Response(f"Result: {result}")
+        return Response(f"Result: {result}")
 ```
 
 The client, in this case Worker A, calls Worker B and tells it to execute a specific procedure using specific arguments that the client provides. This is accomplished with standard JavaScript classes.
@@ -219,6 +219,22 @@ export default class extends WorkerEntrypoint {
 }
 ```
 
+```python
+from workers import WorkerEntrypoint, Response
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        return Response("Hello from counter-service")
+
+    async def new_counter(self):
+        value = 0
+        def increment(amount=0):
+            nonlocal value
+            value += amount
+            return value
+        return increment
+```
+
 This function can then be called by the client Worker:
 
 ```jsonc
@@ -269,6 +285,19 @@ export default {
 		return new Response(count);
 	},
 };
+```
+
+```python
+from workers import WorkerEntrypoint, Response
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        counter = await self.env.COUNTER_SERVICE.new_counter()
+        await counter(2)  # returns 2
+        await counter(1)  # returns 3
+        count = await counter(-5)  # returns -2
+
+        return Response(str(count))
 ```
 
 Note
@@ -423,9 +452,25 @@ export default {
 };
 ```
 
+```python
+from workers import WorkerEntrypoint, Response
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        counter = await self.env.COUNTER_SERVICE.new_counter()
+
+        await counter.increment(2)  # returns 2
+        await counter.increment(1)  # returns 3
+        await counter.increment(-5)  # returns -2
+
+        count = await counter.value  # returns -2
+
+        return Response(str(count))
+```
+
 Note
 
-Refer to [Explicit Resource Management](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle) to learn more about the `using` declaration shown in the example above.
+Refer to [Explicit Resource Management](https://developers.cloudflare.com/workers/runtime-apis/rpc/lifecycle) to learn more about the `using` declaration shown in the JavaScript/TypeScript example above.
 
 Classes that extend `RpcTarget` work a lot like functions: the object itself is not serialized, but is instead replaced by a stub. In this case, the stub itself is not callable, but its methods are. Calling any method on the stub actually makes an RPC back to the original object, where it was created.
 
@@ -455,6 +500,12 @@ using counter = await env.COUNTER_SERVICE.getCounter();
 await counter.increment();
 ```
 
+```python
+# Two round trips.
+counter = await self.env.COUNTER_SERVICE.get_counter()
+await counter.increment()
+```
+
 But consider the case where the Worker service that you are calling may be far away across the network, as in the case of [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) or [Durable Objects](https://developers.cloudflare.com/durable-objects). The code above makes two round trips, once when calling `getCounter()`, and again when calling `.increment()`. We'd like to avoid this.
 
 With most RPC systems, the only way to avoid the problem would be to combine the two calls into a single "batch" call, perhaps called `getCounterAndIncrement()`. However, this makes the interface worse. You wouldn't design a local interface this way.
@@ -471,6 +522,12 @@ await promiseForCounter.increment();
 // Only one round trip! Note the missing `await`.
 using promiseForCounter = env.COUNTER_SERVICE.getCounter();
 await promiseForCounter.increment();
+```
+
+```python
+# Only one round trip! Note the missing await.
+promise_for_counter = self.env.COUNTER_SERVICE.get_counter()
+await promise_for_counter.increment()
 ```
 
 In this code, `getCounter()` returns a promise for a counter. Normally, the only thing you would do with a promise is `await` it. However, Workers RPC promises are special: they also allow you to initiate speculative calls on the future result of the promise. These calls are sent to the server immediately, without waiting for the initial call to complete. Thus, multiple chained calls can be completed in a single round trip.
@@ -507,6 +564,18 @@ export class MyService extends WorkerEntrypoint {
 }
 ```
 
+```python
+from workers import WorkerEntrypoint
+
+class MyService(WorkerEntrypoint):
+    async def foo(self):
+        return {
+            "bar": {
+                "baz": lambda: "qux",
+            },
+        }
+```
+
 ```js
 export default {
 	async fetch(request, env) {
@@ -525,6 +594,16 @@ export default {
 		return new Response(baz);
 	},
 };
+```
+
+```python
+from workers import WorkerEntrypoint, Response
+
+class Default(WorkerEntrypoint):
+    async def fetch(self, request):
+        foo = self.env.MY_SERVICE.foo()
+        baz = await foo.bar.baz()
+        return Response(baz)
 ```
 
 If the initial RPC ends up throwing an exception, then any pipelined calls will also fail with the same exception
@@ -549,6 +628,11 @@ await env.ANOTHER_SERVICE.useCounter(counter);
 ```ts
 using counter = env.COUNTER_SERVICE.getCounter();
 await env.ANOTHER_SERVICE.useCounter(counter);
+```
+
+```python
+counter = self.env.COUNTER_SERVICE.get_counter()
+await self.env.ANOTHER_SERVICE.use_counter(counter)
 ```
 
 Here, three different workers are involved:
@@ -623,5 +707,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/#page","headline":"Remote-procedure call (RPC) · Cloudflare Workers docs","description":"The built-in, JavaScript-native RPC system built into Workers and Durable Objects.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/rpc/#page","headline":"Remote-procedure call (RPC) · Cloudflare Workers docs","description":"The built-in, JavaScript-native RPC system built into Workers and Durable Objects.","url":"https://developers.cloudflare.com/workers/runtime-apis/rpc/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["RPC"]}
 ```

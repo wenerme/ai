@@ -14,7 +14,7 @@ This node re-renders an existing video under a new prompt using Luma Ray 3.2, al
 |-----------|-------------|-----------|----------|-------|
 | `video` | Source video to edit. Up to 18 seconds. | VIDEO | Yes | - |
 | `prompt` | Describes the desired edit. | STRING | Yes | - |
-| `resolution` | The output resolution for the edited video. | COMBO | Yes | `"360p"``"540p"``"720p"``"1080p"` |
+| `resolution` | The output resolution for the edited video. (default: "720p") | COMBO | Yes | `"360p"``"540p"``"720p"``"1080p"` |
 | `strength` | How strongly to preserve vs. reimagine the source. "auto" lets Ray 3.2 choose; adhere_* preserves the most, flex_* is balanced, reimagine_* changes the most. (default: "auto") | COMBO | Yes | `"auto"``"adhere_1"``"adhere_2"``"adhere_3"``"flex_1"``"flex_2"``"flex_3"``"reimagine_1"``"reimagine_2"``"reimagine_3"` |
 | `seed` | Seed for reproducibility. | INT | Yes | - |
 

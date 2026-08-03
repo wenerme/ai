@@ -251,12 +251,15 @@ paths:
                           generation metadata) or key hash (64-char hex from GET
                           /api/v1/keys, resolved server-side); `user` — Clerk
                           user ID (e.g. "user_abc123"), not the display name;
-                          `workspace` — workspace UUID, not the workspace name;
-                          `app` — numeric app ID, not the app title; `model` —
-                          permaslug (e.g. "openai/gpt-4o"), not the display
-                          name. Other dimensions (provider, origin, country,
-                          etc.) are not enriched and accept the value as
-                          returned.
+                          `workspace` — workspace UUID, not the workspace name
+                          (filtering or grouping by the account default
+                          workspace also covers activity recorded before
+                          workspace resolution existed, which is attributed to
+                          that default workspace); `app` — numeric app ID, not
+                          the app title; `model` — permaslug (e.g.
+                          "openai/gpt-4o"), not the display name. Other
+                          dimensions (provider, origin, country, etc.) are not
+                          enriched and accept the value as returned.
                     required:
                       - field
                       - operator
