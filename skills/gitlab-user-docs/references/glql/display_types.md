@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14767) in GitLab 17.4 [with a feature flag](../../administration/feature_flags/_index.md) named `glql_integration`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14767) in GitLab 17.4 [with a feature flag](../../administration/feature_flags/_index.md) named `glql_integration`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/554870) in GitLab 18.3. Feature flag `glql_integration` removed.
 
 A display type controls how an [embedded view](_index.md#embedded-views) renders the results of a
@@ -127,7 +127,7 @@ metrics: totalCount
 
 ## Column chart
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/21212) in GitLab 19.1.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.1.
 
 A column chart visualizes aggregated data from [analytics mode](_index.md#analytics-mode).
 Use a column chart to compare metrics across the categories defined by your dimensions.
@@ -175,7 +175,7 @@ metrics: acceptedCount, rejectedCount
 
 ## Bar chart
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/21212) in GitLab 19.2.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.2.
 
 A bar chart visualizes aggregated data from [analytics mode](_index.md#analytics-mode) as
 horizontal bars. Use a bar chart to compare metrics across the categories defined by your

@@ -287,7 +287,7 @@ remote_development:
 
 ### `use_kubernetes_user_namespaces`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13983) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13983) in GitLab 17.4.
 
 Use this setting to specify whether to use the user namespaces feature in Kubernetes.
 
@@ -310,7 +310,7 @@ For more information about `use_kubernetes_user_namespaces`, see
 
 ### `default_runtime_class`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13983) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13983) in GitLab 17.4.
 
 Use this setting to select the container runtime configuration used to run the containers in the workspace.
 
@@ -337,7 +337,7 @@ For more information about `default_runtime_class`, see
 
 ### `allow_privilege_escalation`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13983) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13983) in GitLab 17.4.
 
 Use this setting to control whether a process can gain more privileges than its parent process.
 
@@ -395,7 +395,7 @@ in all the namespaces of the workspaces where the secret is referenced.
 
 ### `annotations`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13983) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13983) in GitLab 17.4.
 
 Use this setting to attach arbitrary non-identifying metadata to the Kubernetes objects.
 
@@ -426,7 +426,7 @@ For more information about `annotations`, see
 
 ### `labels`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13983) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13983) in GitLab 17.4.
 
 Use this setting to attach arbitrary identifying metadata to the Kubernetes objects.
 

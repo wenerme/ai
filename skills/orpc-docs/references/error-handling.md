@@ -131,6 +131,7 @@ const RateLimitedError = error('RATE_LIMITED', {
   message: 'You are being rate limited',
   /**
    * Optional schema used to type and validate the error data.
+   * Must be a synchronous schema.
    */
   data: z.object({
     retryAfter: z.number(),
@@ -161,8 +162,6 @@ if (err instanceof RateLimitedError) {
   console.log(err.data.retryAfter)
 }
 ```
-
-> **warning**: `instanceof` validates `data` synchronously. An error factory with an async data schema throws a `TypeError` when used in an `instanceof` check.
 
 ## ORPC Error Codes
 

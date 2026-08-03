@@ -206,9 +206,7 @@ You can also [use the API](../../api/graphql/reference/_index.md#mutationmemberr
 
 - Support for custom roles for invited groups [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/443369) in GitLab 17.4 behind a feature flag named `assign_custom_roles_to_group_links_sm`. Disabled by default.
 - [Enabled on GitLab Self-Managed and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/471999) in GitLab 17.4.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag. For more information, see the history.
+- [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/225008) in GitLab 18.10. Feature flag `assign_custom_roles_to_group_links_sm` removed.
 
 When you [invite a group to a group](../project/members/sharing_projects_groups.md#invite-a-group-to-a-group)
 you can assign a custom role to every user in the group.

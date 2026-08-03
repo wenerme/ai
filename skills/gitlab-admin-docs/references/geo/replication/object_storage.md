@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-- Object storage verification [introduced](https://gitlab.com/groups/gitlab-org/-/epics/8056) in GitLab 16.4 [with a feature flag](../../feature_flags/_index.md) named `geo_object_storage_verification`. Enabled by default.
+- Object storage verification [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/8056) in GitLab 16.4 [with a feature flag](../../feature_flags/_index.md) named `geo_object_storage_verification`. Enabled by default.
 
 Geo can be used in combination with Object Storage (AWS S3, or other compatible object storage).
 

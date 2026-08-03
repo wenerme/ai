@@ -17,7 +17,7 @@ Updates group security settings for a specified group.
 
 Prerequisites:
 
-- You must have the Security Manager, Maintainer or Owner role for the group.
+- You must have the Security Manager, Maintainer, or Owner role for the group.
 
 ```plaintext
 PUT /groups/:id/security_settings

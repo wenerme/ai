@@ -21,7 +21,7 @@ can be used in similar ways, but have different benefits:
 
 Inputs:
 
-- **Purpose**: Defined in CI configurations (templates, components or `.gitlab-ci.yml`) and assigned values
+- **Purpose**: Defined in CI/CD configurations (templates, components, or `.gitlab-ci.yml`) and assigned values
   when a pipeline is triggered, allowing consumers to customize reusable CI configurations.
 - **Modification**: Once passed at pipeline initialization, input values are interpolated in the CI/CD
   configuration and remain fixed for the entire pipeline run.
@@ -560,7 +560,7 @@ include:
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16321) in GitLab 17.11.
 
-Inputs provide advantages over variables including type checking, validation and a clear contract.
+Inputs provide advantages over variables including type checking, validation, and a clear contract.
 Unexpected inputs are rejected.
 Inputs for pipelines must be defined in the [`spec:inputs` header](#define-input-parameters-with-specinputs)
 of the main `.gitlab-ci.yml` file. You cannot use inputs defined in included files for pipeline-level configuration.

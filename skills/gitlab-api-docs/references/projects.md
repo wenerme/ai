@@ -2835,7 +2835,7 @@ Example response:
 
 ### Delete a project
 
-- [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
+- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 Prerequisites:
 

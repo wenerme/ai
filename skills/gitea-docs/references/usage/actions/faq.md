@@ -146,22 +146,26 @@ In case you fork Gitea Runner to create your own version: Please contribute the 
 All events listed in this table are supported events and are compatible with GitHub.
 For events supported only by GitHub, see GitHub's [documentation](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows).
 
-| trigger event               | activity types                                                                                                           |
-|-----------------------------|--------------------------------------------------------------------------------------------------------------------------|
-| create                      | not applicable                                                                                                           |
-| delete                      | not applicable                                                                                                           |
-| fork                        | not applicable                                                                                                           |
-| gollum                      | not applicable                                                                                                           |
-| push                        | not applicable                                                                                                           |
-| issues                      | `opened`, `edited`, `closed`, `reopened`, `assigned`, `unassigned`, `milestoned`, `demilestoned`, `labeled`, `unlabeled` |
-| issue_comment               | `created`, `edited`, `deleted`                                                                                           |
-| pull_request                | `opened`, `edited`, `closed`, `reopened`, `assigned`, `unassigned`, `synchronized`, `labeled`, `unlabeled`                |
-| pull_request_review         | `submitted`, `edited`                                                                                                    |
-| pull_request_review_comment | `created`, `edited`                                                                                                      |
-| release                     | `published`, `edited`                                                                                                    |
-| registry_package            | `published`                                                                                                              |
-| workflow_dispatch           | not applicable                                                                                                           |
-| workflow_run                | `requested`, `completed`                                                                                                 |
+| trigger event                                | activity types                                                                                                                                                             |
+|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| create                                       | not applicable                                                                                                                                                             |
+| delete                                       | not applicable                                                                                                                                                             |
+| fork                                         | not applicable                                                                                                                                                             |
+| gollum                                       | not applicable                                                                                                                                                             |
+| push                                         | not applicable                                                                                                                                                             |
+| schedule                                     | not applicable                                                                                                                                                             |
+| workflow_dispatch                            | not applicable                                                                                                                                                             |
+| workflow_call                                | not applicable                                                                                                                                                             |
+| issues                                       | `opened`, `edited`, `closed`, `reopened`, `assigned`, `unassigned`, `milestoned`, `demilestoned`, `labeled`, `unlabeled`                                                    |
+| issue_comment                                | `created`, `edited`, `deleted`                                                                                                                                             |
+| pull_requestpull_request_target         | `opened`, `edited`, `closed`, `reopened`, `assigned`, `unassigned`, `synchronize`, `labeled`, `unlabeled`, `milestoned`, `demilestoned`, `review_requested`, `review_request_removed` |
+| pull_request_review                          | `submitted`, `edited`                                                                                                                                                      |
+| pull_request_review_comment                  | `created`, `edited`                                                                                                                                                        |
+| release                                      | `published`, `edited`                                                                                                                                                      |
+| registry_package                             | `published`                                                                                                                                                                |
+| workflow_run                                 | `requested`, `in_progress`, `completed`                                                                                                                                    |
+
+> Without an explicit `types:` filter, `pull_request` and `pull_request_target` only run on `opened`, `reopened` and `synchronize`, matching GitHub. All other events run on every activity type they support.
 
 > For `pull_request` events, in [GitHub Actions](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request), the `ref` is `refs/pull/:prNumber/merge`, which is a reference to the merge commit preview. However, Gitea has no such reference.
 > Therefore, the `ref` in Gitea Actions is `refs/pull/:prNumber/head`, which points to the head of pull request rather than the preview of the merge commit.

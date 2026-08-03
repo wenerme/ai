@@ -122,7 +122,7 @@ You can also view your starred and personal projects from your personal profile:
 
 - [Changed](https://gitlab.com/groups/gitlab-org/-/epics/13066) tab label from "Pending deletion" to "Inactive" in GitLab 17.9 [with a feature flag](../../administration/feature_flags/_index.md) named `your_work_projects_vue`. Disabled by default.
 - [Changed tab label generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/465889) in GitLab 17.10. Feature flag `your_work_projects_vue` removed.
-- [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in 18.0.
+- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in 18.0.
 - [Enabled for projects in personal namespaces](https://gitlab.com/gitlab-org/gitlab/-/issues/536244) in GitLab 18.0.
 
 A project is inactive when it is either pending deletion or it has been archived.
@@ -308,7 +308,7 @@ To upload an avatar in your project settings:
 ## Delete a project
 
 - Default behavior [changed](https://gitlab.com/gitlab-org/gitlab/-/issues/389557) to delayed project deletion for Premium and Ultimate tiers on [GitLab.com](https://gitlab.com/gitlab-org/gitlab/-/issues/393622) and [GitLab Self-Managed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/119606) in 16.0.
-- Default behavior changed to delayed project deletion for [GitLab Free](https://gitlab.com/groups/gitlab-org/-/epics/17208) and [personal projects](https://gitlab.com/gitlab-org/gitlab/-/issues/536244) in 18.0.
+- Default behavior changed to delayed project deletion for [GitLab Free](https://gitlab.com/groups/gitlab-org/-/work_items/17208) and [personal projects](https://gitlab.com/gitlab-org/gitlab/-/issues/536244) in 18.0.
 
 By default, when you delete a project for the first time, it enters a pending deletion state.
 Delete a project again to remove it immediately.
@@ -341,7 +341,7 @@ You can also [delete projects using the Rails console](troubleshooting.md#delete
 
 ## Delete a project immediately
 
-- [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
+- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in GitLab 18.0.
 
 If you do not want to wait for the configured retention period to delete a project,
 you can delete the project immediately.
@@ -362,7 +362,7 @@ This action deletes the project and all related resources, including issues and 
 
 ### Restore a project
 
-- [Moved](https://gitlab.com/groups/gitlab-org/-/epics/17208) from GitLab Premium to GitLab Free in 18.0.
+- [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in 18.0.
 - [Enabled for projects in personal namespaces](https://gitlab.com/gitlab-org/gitlab/-/issues/536244) in GitLab 18.0.
 
 Prerequisites:

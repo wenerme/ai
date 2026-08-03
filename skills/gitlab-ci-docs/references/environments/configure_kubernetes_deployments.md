@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 > [!warning]
-> This feature was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/epics/8) in GitLab 14.5.
+> This feature was [deprecated](https://gitlab.com/groups/gitlab-org/configure/-/work_items/8) in GitLab 14.5.
 
 If you are deploying to a [Kubernetes cluster](../../user/infrastructure/clusters/_index.md)
 associated with your project, you can configure these deployments from your

@@ -2785,7 +2785,7 @@ stop_review_app:
 
 #### `environment:auto_stop_in`
 
-- [Updated](https://gitlab.com/gitlab-org/gitlab/-/issues/437133) to support `prepare`, `access` and `verify` environment actions in GitLab 17.7.
+- [Updated](https://gitlab.com/gitlab-org/gitlab/-/issues/437133) to support `prepare`, `access`, and `verify` environment actions in GitLab 17.7.
 
 The `auto_stop_in` keyword specifies the lifetime of the environment. When an environment expires, GitLab
 automatically stops it.
@@ -6786,9 +6786,13 @@ unless the nested downstream trigger job also uses `trigger:forward`.
 **Supported values**:
 
 - `yaml_variables`: `true` (default), or `false`. When `true`, variables defined
-  in the trigger job are passed to downstream pipelines.
-- `pipeline_variables`: `true` or `false` (default). When `true`, [pipeline variables](../variables/_index.md#cicd-variable-precedence)
-  are passed to the downstream pipeline.
+  in the trigger job are passed to downstream pipelines. This includes both
+  [default variables](#default-variables) that jobs inherit, and variables defined directly
+  in the trigger job's `variables` block.
+- `pipeline_variables`: `true` or `false` (default). When `true`, [pipeline variables](../variables/_index.md#use-pipeline-variables)
+  are passed to the downstream pipeline. This includes variables from manual pipeline runs,
+  scheduled pipelines, and dotenv variables
+  from jobs listed in `needs`.
 
 **Example of `trigger:forward`**:
 
