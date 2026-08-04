@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure a PAC file on your device
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you [create a proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) and [create a PAC file](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#2-create-a-pac-file), configure your devices to use the PAC file URL. You can configure system-level proxy settings (which apply to most browsers) or configure individual browsers separately.
 
-Chromium-based browsers (Google Chrome, Microsoft Edge, Brave) and Safari use the operating system proxy settings. Firefox uses its own proxy settings by default and must be configured separately.
+Chromium-based browsers (Google Chrome, Microsoft Edge, Brave) use the operating system proxy settings. Firefox uses its own proxy settings by default and must be configured separately. Safari and iOS/iPadOS do not support the HTTPS proxy type required by proxy endpoints.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Before you configure a PAC file on your device, make sure you have:
 
 ## Configure system proxy settings
 
-Configure your operating system to use the PAC file. This applies the proxy to all browsers that use system proxy settings (Chrome, Edge, Brave, Safari).
+Configure your operating system to use the PAC file. This applies the proxy to all browsers that use system proxy settings (Chrome, Edge, Brave).
 
 For more information, refer to [Use a proxy server in Windows ↗](https://support.microsoft.com/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1).
 
@@ -51,7 +51,11 @@ For more information, refer to [Change proxy settings on Mac ↗](https://suppor
 5. Turn on **Automatic proxy configuration**.
 6. In the **URL** field, enter your PAC file URL.
 
-The setting saves automatically. Chromium-based browsers and Safari will now route traffic through your proxy endpoint.
+The setting saves automatically. Chromium-based browsers will now route traffic through your proxy endpoint.
+
+Note
+
+Safari does not support the HTTPS proxy type required by Cloudflare proxy endpoints. Use a Chromium-based browser (Chrome, Edge, Brave) or [Firefox](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/#configure-firefox-separately) on macOS instead.
 
 Steps vary depending on your desktop environment.
 
@@ -74,17 +78,9 @@ Note
 
 Most Linux command-line tools (such as `curl` and `wget`) do not natively support PAC files. The system proxy settings apply to GUI browsers only. For command-line tools, configure the `http_proxy` and `https_proxy` environment variables with your proxy endpoint address directly.
 
-iOS does not have a global proxy setting. You must configure the proxy for each Wi-Fi network. Cellular connections do not support PAC files without MDM.
+Caution
 
-1. Open **Settings** \> **Wi-Fi**.
-2. Tap the info button next to your connected network.
-3. Scroll to **HTTP Proxy** and tap **Configure Proxy**.
-4. Select **Automatic**.
-5. In the **URL** field, enter your PAC file URL.
-
-Note
-
-No official Apple Support page exists for iOS proxy configuration. For enterprise deployment, refer to [Network Proxy Configuration settings ↗](https://support.apple.com/guide/deployment/network-proxy-configuration-settings-depb27492e34/web) in the Apple Platform Deployment guide.
+iOS and iPadOS do not support the HTTPS proxy settings which are used by Gateway proxy endpoints. iOS and iPadOS are not supported at this time. Cloudflare recommends installing the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) where possible.
 
 Android does not have a global proxy setting. You must configure the proxy for each Wi-Fi network. Steps vary by device manufacturer and Android version.
 
@@ -216,5 +212,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/#page","headline":"Configure a PAC file on your device · Cloudflare One docs","description":"Configure your operating system or browser to use a Proxy Auto-Configuration (PAC) file with Cloudflare Gateway. Includes steps for Windows, macOS, Linux, iOS, Android, ChromeOS, and enterprise deployment.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/#page","headline":"Configure a PAC file on your device · Cloudflare One docs","description":"Configure your operating system or browser to use a Proxy Auto-Configuration (PAC) file with Cloudflare Gateway. Includes steps for Windows, macOS, Linux, iOS, Android, ChromeOS, and enterprise deployment.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Proxy endpoints
 
-Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -302,7 +302,9 @@ Firefox uses its own proxy settings and does not inherit the operating system pr
 
 Safari
 
-Safari relies on your operating system's proxy server settings. Configure the PAC file URL in your [macOS proxy settings](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/configure-pac-file-on-device/#configure-system-proxy-settings).
+Caution
+
+Safari does not support the HTTPS proxy type required by Cloudflare proxy endpoints. Apple has confirmed that Safari (on both macOS and iOS/iPadOS) does not support HTTPS proxies. Use a [Chromium-based browser](#chromium-based-browsers) or [Firefox](#mozilla-firefox) instead.
 
 ## 4\. Test your HTTP policy
 
@@ -451,6 +453,10 @@ To filter this traffic, you have two options:
 * Set up an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) to block or allow all traffic matching the `auth-proxy-non-identity@<your-team-name>.cloudflareaccess.com` email address.
 * To restrict non-identity traffic to specific source IPs, create a [network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) that matches both the source IP and the proxy endpoint.
 
+### Safari and iOS not supported
+
+Safari (on macOS) and all browsers on iOS/iPadOS do not support the HTTPS proxy type that Cloudflare proxy endpoints require. This is a platform-level limitation confirmed by Apple. On macOS, use a Chromium-based browser or Firefox instead. On iOS/iPadOS, proxy endpoints cannot be used.
+
 ### Traffic limitations
 
 Each type of proxy endpoint supports the following features:
@@ -489,5 +495,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#page","headline":"Proxy endpoints · Cloudflare One docs","description":"Proxy endpoints in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/#page","headline":"Proxy endpoints · Cloudflare One docs","description":"Proxy endpoints in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

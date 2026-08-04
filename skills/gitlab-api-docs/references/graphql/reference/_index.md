@@ -3388,6 +3388,33 @@ Fields:
 | <a id="mutation-aicatalogmcpservercreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-aicatalogmcpservercreate-mcpserver"></a>`mcpServer` | [`AiCatalogMcpServer`](#aicatalogmcpserver) | MCP server created. |
 
+### `Mutation.aiCatalogMcpServerSetBlock`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Blocks or allows an external MCP server for a group or project (kill-switch).
+
+Input type: `AiCatalogMcpServerSetBlockInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aicatalogmcpserversetblock-blocked"></a>`blocked` | [`Boolean!`](#boolean) | Set to true to block the MCP server, false to allow it. |
+| <a id="mutation-aicatalogmcpserversetblock-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aicatalogmcpserversetblock-groupfullpath"></a>`groupFullPath` | [`ID`](#id) | Full path of the group to block or allow the MCP server for. Provide exactly one of `groupFullPath` or `projectFullPath`. |
+| <a id="mutation-aicatalogmcpserversetblock-id"></a>`id` | [`AiCatalogMcpServerID!`](#aicatalogmcpserverid) | Global ID of the MCP server. |
+| <a id="mutation-aicatalogmcpserversetblock-projectfullpath"></a>`projectFullPath` | [`ID`](#id) | Full path of the project to block or allow the MCP server for. Provide exactly one of `groupFullPath` or `projectFullPath`. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-aicatalogmcpserversetblock-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aicatalogmcpserversetblock-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-aicatalogmcpserversetblock-mcpserver"></a>`mcpServer` | [`AiCatalogMcpServer`](#aicatalogmcpserver) | MCP server with its updated block status. |
+
 ### `Mutation.aiCatalogMcpServerUpdate`
 
 - Introduced in GitLab 18.10.
@@ -39271,7 +39298,7 @@ Fields:
 | <a id="duoworkflow-auditevents"></a>`auditEvents`  | [`AiAuditEventConnection`](#aiauditeventconnection) | Introduced in GitLab 19.0. Status: Experiment. Audit events recorded for the session. Requires `read_agent_artifacts` on the workflow's project or namespace. Returns no events when the `agent_artifacts_page` feature flag is disabled. |
 | <a id="duoworkflow-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the session was created. |
 | <a id="duoworkflow-environment"></a>`environment` | [`WorkflowEnvironment`](#workflowenvironment) | Environment, like IDE or web. |
-| <a id="duoworkflow-firstcheckpoint"></a>`firstCheckpoint` | [`DuoWorkflowEvent`](#duoworkflowevent) | First checkpoint of the session. |
+| <a id="duoworkflow-externalmcpblocked"></a>`externalMcpBlocked`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether the workflow's external MCP server tools are currently blocked for the namespace (group-level kill-switch). Checked per tool call so blocking takes effect mid-session. |
 | <a id="duoworkflow-flowmetadataid"></a>`flowMetadataId`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Identifier of the flow that was executed in the session. |
 | <a id="duoworkflow-flowmetadataschemaversion"></a>`flowMetadataSchemaVersion`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Schema version of the flow metadata for the session. |
 | <a id="duoworkflow-flowmetadataversion"></a>`flowMetadataVersion`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Version of the flow that was executed in the session. |
@@ -39280,7 +39307,6 @@ Fields:
 | <a id="duoworkflow-id"></a>`id` | [`ID!`](#id) | ID of the session. |
 | <a id="duoworkflow-incrementalcheckpointsenabled"></a>`incrementalCheckpointsEnabled` | [`Boolean`](#boolean) | Indicates incremental checkpoints were enabled for the session at creation. |
 | <a id="duoworkflow-lastexecutorlogsurl"></a>`lastExecutorLogsUrl` | [`String`](#string) | URL to the latest executor logs of the workflow. |
-| <a id="duoworkflow-latestcheckpoint"></a>`latestCheckpoint` | [`DuoWorkflowEvent`](#duoworkflowevent) | Latest checkpoint of the session. |
 | <a id="duoworkflow-mcpenabled"></a>`mcpEnabled` | [`Boolean`](#boolean) | Has MCP been enabled for the namespace. |
 | <a id="duoworkflow-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Associated merge request, if any. |
 | <a id="duoworkflow-modelmetadataidentifier"></a>`modelMetadataIdentifier`  | [`String`](#string) | Introduced in GitLab 19.2. Status: Experiment. Provider model identifier used for the session. |
@@ -39310,6 +39336,30 @@ Fields:
 | <a id="duoworkflow-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | GitLab Duo Agent Platform flow type based on its capabilities. |
 
 #### Fields with arguments
+
+##### `DuoWorkflow.firstCheckpoint`
+
+First checkpoint of the session.
+
+Returns [`DuoWorkflowEvent`](#duoworkflowevent).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-firstcheckpoint-checkpointns"></a>`checkpointNs`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. LangGraph checkpoint namespace to scope the lookup to. Omit (or pass an empty string) for the session's own top-level checkpoint lineage; used internally to resolve one nested subgraph invocation, e.g. a delegated subagent. |
+
+##### `DuoWorkflow.latestCheckpoint`
+
+Latest checkpoint of the session.
+
+Returns [`DuoWorkflowEvent`](#duoworkflowevent).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-latestcheckpoint-checkpointns"></a>`checkpointNs`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. LangGraph checkpoint namespace to scope the lookup to. Omit (or pass an empty string) for the session's own top-level checkpoint lineage; used internally to resolve one nested subgraph invocation, e.g. a delegated subagent. |
 
 ##### `DuoWorkflow.mergeRequestLinks`
 
@@ -39372,6 +39422,22 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-workitemlinks-linktype"></a>`linkType` | [`DuoWorkflowWorkItemLinkType`](#duoworkflowworkitemlinktype) | Filter links by their link type. |
 
+### `DuoWorkflowCheckpointWrite`
+
+A pending write associated with a Duo Workflow checkpoint.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowcheckpointwrite-channel"></a>`channel` | [`String!`](#string) | LangGraph channel the write was made to. |
+| <a id="duoworkflowcheckpointwrite-data"></a>`data` | [`String!`](#string) | Write data. |
+| <a id="duoworkflowcheckpointwrite-id"></a>`id` | [`ID!`](#id) | ID of the checkpoint write. |
+| <a id="duoworkflowcheckpointwrite-idx"></a>`idx` | [`Int`](#int) | Index of the write within the task. |
+| <a id="duoworkflowcheckpointwrite-task"></a>`task` | [`String!`](#string) | LangGraph task identifier the write was made for. |
+| <a id="duoworkflowcheckpointwrite-threadts"></a>`threadTs` | [`String!`](#string) | LangGraph thread timestamp identifier the write belongs to. |
+| <a id="duoworkflowcheckpointwrite-writetype"></a>`writeType` | [`String!`](#string) | Serialization type of the write data. |
+
 ### `DuoWorkflowEnablement`
 
 Duo Agent Platform enablement status checks.
@@ -39408,6 +39474,8 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duoworkflowevent-checkpoint"></a>`checkpoint`  | [`JsonString`](#jsonstring) | Deprecated in GitLab 18.7. Checkpoints are big & contain internal langgraph details. |
+| <a id="duoworkflowevent-checkpointns"></a>`checkpointNs`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. LangGraph checkpoint namespace this checkpoint belongs to. Blank for the session's own top-level checkpoint lineage; this field only ever surfaces that lineage (via first_checkpoint/latest_checkpoint), never a nested subgraph invocation's own. |
+| <a id="duoworkflowevent-checkpointwrites"></a>`checkpointWrites`  | [`[DuoWorkflowCheckpointWrite!]`](#duoworkflowcheckpointwrite) | Introduced in GitLab 19.3. Status: Experiment. Pending writes associated with the checkpoint, e.g. interrupts awaiting resumption. |
 | <a id="duoworkflowevent-compressedcheckpoint"></a>`compressedCheckpoint` | [`String`](#string) | Checkpoint of the event, zlib-compressed and Base64-encoded. |
 | <a id="duoworkflowevent-duomessages"></a>`duoMessages` | [`[DuoMessage!]`](#duomessage) | Messages from the ui_chat_log for the checkpoint. |
 | <a id="duoworkflowevent-errors"></a>`errors` | [`[String!]`](#string) | Message errors. |
@@ -40416,6 +40484,8 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="geonode-checksummismatchreportthreshold"></a>`checksumMismatchReportThreshold` | [`Int`](#int) | Number of consecutive checksum mismatches on a secondary before it reports the resource to the primary for self-heal re-verification. |
+| <a id="geonode-checksummismatchselfhealcooldownminutes"></a>`checksumMismatchSelfHealCooldownMinutes` | [`Int`](#int) | Minimum time (in minutes) between self-heal re-verification triggers for the same resource on the primary. |
 | <a id="geonode-containerrepositoriesmaxcapacity"></a>`containerRepositoriesMaxCapacity` | [`Int`](#int) | Maximum concurrency of container repository sync for the secondary node. |
 | <a id="geonode-enabled"></a>`enabled` | [`Boolean`](#boolean) | Indicates whether the Geo node is enabled. |
 | <a id="geonode-filesmaxcapacity"></a>`filesMaxCapacity` | [`Int`](#int) | Maximum concurrency of LFS/attachment backfill for the secondary node. |
@@ -59372,6 +59442,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="vulnerabilityfunnelstep-canenable"></a>`canEnable` | [`Boolean`](#boolean) | Whether the current user can enable the setting that would make this step available. Null when there is no single setting the user can act on, such as an aggregated group view. |
 | <a id="vulnerabilityfunnelstep-count"></a>`count` | [`Int`](#int) | Count for the step. Null when status is not AVAILABLE. |
 | <a id="vulnerabilityfunnelstep-status"></a>`status` | [`VulnerabilityFunnelStepStatus!`](#vulnerabilityfunnelstepstatus) | Whether the step's data can be shown, and if not, why. |
 
@@ -66784,7 +66855,6 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-vulnerability_report_limited_experience"></a>`VULNERABILITY_REPORT_LIMITED_EXPERIENCE` | Callout feature name for vulnerability_report_limited_experience. |
 | <a id="usercalloutfeaturenameenum-web_ide_alert_dismissed"></a>`WEB_IDE_ALERT_DISMISSED` | Callout feature name for web_ide_alert_dismissed. |
 | <a id="usercalloutfeaturenameenum-web_ide_ci_environments_guidance"></a>`WEB_IDE_CI_ENVIRONMENTS_GUIDANCE` | Callout feature name for web_ide_ci_environments_guidance. |
-| <a id="usercalloutfeaturenameenum-work_items_onboarding_modal"></a>`WORK_ITEMS_ONBOARDING_MODAL` | Callout feature name for work_items_onboarding_modal. |
 | <a id="usercalloutfeaturenameenum-work_item_epic_feedback"></a>`WORK_ITEM_EPIC_FEEDBACK` | Callout feature name for work_item_epic_feedback. |
 
 ### `UserEventFilter`
@@ -67081,8 +67151,8 @@ Status of a step in the vulnerability resolution funnel.
 | Value | Description |
 | ----- | ----------- |
 | <a id="vulnerabilityfunnelstepstatus-available"></a>`AVAILABLE` | Data is available and count is populated. |
-| <a id="vulnerabilityfunnelstepstatus-unavailable_disabled"></a>`UNAVAILABLE_DISABLED` | Licensed but the underlying feature is disabled in settings. |
-| <a id="vulnerabilityfunnelstepstatus-unavailable_no_license"></a>`UNAVAILABLE_NO_LICENSE` | User's plan does not include the required capability. |
+| <a id="vulnerabilityfunnelstepstatus-unavailable_disabled"></a>`UNAVAILABLE_DISABLED` | Feature is disabled in settings. |
+| <a id="vulnerabilityfunnelstepstatus-unavailable_duo_disabled"></a>`UNAVAILABLE_DUO_DISABLED` | GitLab Duo is not enabled, so the AI-derived data for the step cannot be shown. |
 | <a id="vulnerabilityfunnelstepstatus-unavailable_upstream_disabled"></a>`UNAVAILABLE_UPSTREAM_DISABLED` | An earlier step in the funnel is unavailable, so no data can be shown for the step. |
 
 ### `VulnerabilityGrade`

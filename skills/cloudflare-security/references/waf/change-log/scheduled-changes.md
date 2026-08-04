@@ -16,18 +16,16 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-07-21
+## 2026-08-04
 
 
-**WAF Release - Scheduled changes for 2026-07-27**
+**WAF Release - Scheduled changes for 2026-08-10**
 
-| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                       | Comments                        |
-| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------------------------- | ------------------------------- |
-| 2026-07-28        | 2026-08-03   | Log              | N/A            | ...01a076eb | SSRF - Cloud - Beta                                               | This detection will be removed. |
-| 2026-07-28        | 2026-08-03   | Log              | N/A            | ...743a63ec | SSRF - Local - 2 - Beta                                           | This detection will be removed. |
-| 2026-07-28        | 2026-08-03   | Log              | N/A            | ...c2e84e2d | SSRF - Cloud - Beta                                               | This detection will be removed. |
-| 2026-07-28        | 2026-08-03   | Log              | N/A            | ...ab8af26f | SSRF - Cloud - 2 - Beta                                           | This detection will be removed. |
-| 2026-07-28        | 2026-08-03   | Log              | N/A            | ...90dcdb0a | Microsoft SharePoint - Remote Code Execution - CVE:CVE-2026-50522 | This is a new detection.        |
+| Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID     | Description                                                                   | Comments                                                                                                                                                              |
+| ----------------- | ------------ | ---------------- | -------------- | ----------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-08-04        | 2026-08-10   | Log              | N/A            | ...94f3006b | vBulletin - Remote Code Execution - CVE:CVE-2026-61511                        | This is a new detection.                                                                                                                                              |
+| 2026-08-04        | 2026-08-10   | Log              | N/A            | ...098b749e | Version Control - Information Disclosure - Beta                               | This is a beta detection and will replace the action on original detection "Version Control - Information Disclosure" (ID: ...0550c529)                               |
+| 2026-08-04        | 2026-08-10   | Log              | N/A            | ...d56225d8 | vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132 - Beta | This is a beta detection and will replace the action on original detection "vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132" (ID: ...8fe9f1c7) |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

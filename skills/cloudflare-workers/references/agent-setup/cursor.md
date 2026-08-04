@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Cloudflare platform access
@@ -112,11 +112,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
@@ -124,11 +120,15 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Tips

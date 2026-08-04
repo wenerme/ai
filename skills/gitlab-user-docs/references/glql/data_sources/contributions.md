@@ -4,6 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.2.
+- Configurable `granularity` parameter [introduced](https://gitlab.com/gitlab-org/glql/-/issues/130) in GitLab 19.3.
 
 Contributions is a data source that provides aggregated metrics about
 contribution activity (such as commits, issues, and merge requests) across
@@ -57,7 +58,7 @@ your projects or groups.
 
 | Dimension  | Name      | Description                                          |
 | ---------- | --------- | ----------------------------------------------------- |
-| Created at | `created` | Group by contribution creation date, in monthly buckets. |
+| Created at | `created` | Group by contribution creation date. Accepts a [`granularity` parameter](../_index.md#field-parameters) of `daily`, `weekly`, or `monthly` (default: `monthly`). For example, `created(weekly)`. |
 
 ## Metrics
 

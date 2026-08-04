@@ -5,9 +5,9 @@ Learn how to manage compliance frameworks across your entire GitLab instance fro
 - Tier: Ultimate
 - Offering: GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/15864) in GitLab 18.3 [with feature flags](../../../administration/feature_flags/_index.md) named `security_policies_csp` and `include_csp_frameworks`. Enabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/15864) in GitLab 18.3 [with feature flags](../../../administration/feature_flags/_index.md) named `security_policies_csp` and `include_csp_frameworks`. Enabled by default.
 - Feature flag `security_policies_csp` [removed](https://gitlab.com/groups/gitlab-org/-/work_items/17392) in GitLab 18.5.
-- [Generally available](https://gitlab.com/groups/gitlab-org/-/epics/15864) in GitLab 18.6. Feature flag `include_csp_frameworks` removed.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/15864) in GitLab 18.6. Feature flag `include_csp_frameworks` removed.
 
 Centralized security compliance frameworks management allows GitLab administrators to centrally manage and enforce
 compliance requirements across all groups and projects in a GitLab instance.

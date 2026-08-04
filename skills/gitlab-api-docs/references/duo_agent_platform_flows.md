@@ -10,11 +10,11 @@ Use this API to create and manage [flows](../user/duo_agent_platform/flows/_inde
 Flows are combinations of AI agents that work together to complete developer tasks,
 such as fixing bugs, writing code, or resolving vulnerabilities.
 
-## Create a flow
+## Trigger a flow
 
 - Status: Experiment
 
-Creates and starts a new flow.
+Triggers and starts a new flow.
 
 ```plaintext
 POST /ai/duo_workflows/workflows
@@ -155,7 +155,7 @@ Example response:
 
 Registers an HTTPS endpoint that receives flow lifecycle events (`flow.started`, `flow.completed`,
 and `flow.failed`). Reference the returned `id` as the `callback_hook_id` attribute when you
-[create a flow](#create-a-flow) to receive lifecycle notifications instead of polling for status.
+[trigger a flow](#trigger-a-flow) to receive lifecycle notifications instead of polling for status.
 
 The URL and secrets are encrypted at rest and are never returned by the API after registration.
 

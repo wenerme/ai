@@ -45,7 +45,7 @@ In Claude Code, run these two slash commands. This installs Cloudflare Skills an
 4. **Try a prompt**
 For example:
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Cloudflare platform access
@@ -121,15 +121,11 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -137,7 +133,11 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

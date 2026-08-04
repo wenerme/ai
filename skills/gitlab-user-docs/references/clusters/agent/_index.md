@@ -98,7 +98,7 @@ For detailed information about channel routing, see [Routing KAS requests in the
 - Tier: Ultimate
 - Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/12180) in GitLab 17.4.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/12180) in GitLab 17.4.
 
 Receptive agents allow GitLab to integrate with Kubernetes clusters that cannot establish a network connection
 to the GitLab instance, but can be connected to by GitLab. For example, this can occur when:
