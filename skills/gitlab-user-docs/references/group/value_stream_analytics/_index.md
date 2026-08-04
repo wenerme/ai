@@ -548,7 +548,7 @@ Value stream analytics offers features for projects and groups, with availabilit
 | Cycle time and lead time summary (Lifecycle metrics) | Yes                                                                                           | Yes                             | No                   |
 | New issues, commits, and deploys (Lifecycle metrics) | Yes Excluding commits                                                                        | Yes                             | Yes                  |
 | Uses aggregated backend                              | Yes                                                                                           | Yes                             | No                   |
-| Date filter behavior                                 | Filters items [finished in the date range](https://gitlab.com/groups/gitlab-org/-/epics/6046) | Filters items by creation date. | Filters items by creation date. |
+| Date filter behavior                                 | Filters items [finished in the date range](https://gitlab.com/groups/gitlab-org/-/work_items/6046) | Filters items by creation date. | Filters items by creation date. |
 | Authorization                                        | At least reporter                                                                             | At least reporter               | Can be public        |
 
 ## Troubleshooting

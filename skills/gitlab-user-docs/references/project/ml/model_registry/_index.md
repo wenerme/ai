@@ -3,8 +3,8 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/9423) in GitLab 16.8 as an [experiment](../../../../policy/development_stages_support.md#experiment) release [with a feature flag](../../../../administration/feature_flags/_index.md) named `model_registry`. Disabled by default. To enable the feature, an administrator can [enable the feature flag](../../../../administration/feature_flags/_index.md) named `model_registry`.
-- [Changed](https://gitlab.com/groups/gitlab-org/-/epics/9423) to beta in GitLab 17.1.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/9423) in GitLab 16.8 as an [experiment](../../../../policy/development_stages_support.md#experiment) release [with a feature flag](../../../../administration/feature_flags/_index.md) named `model_registry`. Disabled by default. To enable the feature, an administrator can [enable the feature flag](../../../../administration/feature_flags/_index.md) named `model_registry`.
+- [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/9423) to beta in GitLab 17.1.
 - [Changed](https://gitlab.com/groups/gitlab-org/-/epics/14998) to general availability in GitLab 17.6.
 
 A machine learning model registry serves as a centralized repository for managing machine learning
@@ -19,7 +19,7 @@ Use GitLab model registries to:
 - Compare model versions and monitor their evolution over time
 - Maintain clear documentation of model behavior and requirements
 
-For more information about model registry features and capabilities, see [epic 9423](https://gitlab.com/groups/gitlab-org/-/epics/9423).
+For more information about model registry features and capabilities, see [epic 9423](https://gitlab.com/groups/gitlab-org/-/work_items/9423).
 
 ## Access the model registry
 

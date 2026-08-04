@@ -19,6 +19,7 @@ Workspaces endpoints
 * [update](#update) - Update a workspace
 * [list\_budgets](#list_budgets) - List workspace budgets
 * [delete\_budget](#delete_budget) - Delete a workspace budget
+* [get\_budget](#get_budget) - Get a workspace budget
 * [set\_budget](#set_budget) - Create or update a workspace budget
 * [list\_members](#list_members) - List workspace members
 * [bulk\_add\_members](#bulk_add_members) - Bulk add members to a workspace
@@ -384,6 +385,57 @@ with OpenRouter(
 
 | Error Type                         | Status Code | Content Type     |
 | ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
+| errors.UnauthorizedResponseError   | 401         | application/json |
+| errors.NotFoundResponseError       | 404         | application/json |
+| errors.InternalServerResponseError | 500         | application/json |
+| errors.OpenRouterDefaultError      | 4XX, 5XX    | \*/\*            |
+
+## get\_budget
+
+Retrieve the budget for a given interval. [Management key](/docs/client-sdks/python/docs/guides/overview/auth/management-api-keys) required.
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.workspaces.get_budget(id="production", interval="monthly")
+
+    # Handle response
+    print(res)
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                               | Required             | Description                                                                                                                                                 | Example    |
+| -------------------------- | ---------------------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| `id`                       | *str*                                                                              | :heavy\_check\_mark: | The workspace ID (UUID) or slug                                                                                                                             | production |
+| `interval`                 | [components.WorkspaceBudgetInterval](../../components/workspacebudgetinterval.mdx) | :heavy\_check\_mark: | Budget reset interval. Use "lifetime" for a one-time budget that never resets.                                                                              | monthly    |
+| `http_referer`             | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |            |
+| `x_open_router_title`      | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |            |
+| `x_open_router_categories` | *Optional\[str]*                                                                   | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |            |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)                | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |            |
+
+### Response
+
+**[components.GetWorkspaceBudgetResponse](../../components/getworkspacebudgetresponse.mdx)**
+
+### Errors
+
+| Error Type                         | Status Code | Content Type     |
+| ---------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError     | 400         | application/json |
 | errors.UnauthorizedResponseError   | 401         | application/json |
 | errors.NotFoundResponseError       | 404         | application/json |
 | errors.InternalServerResponseError | 500         | application/json |

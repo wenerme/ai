@@ -150,7 +150,7 @@ model.predict(data=sample_input)
 ### Associating a run to a CI/CD job
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/119454) in GitLab 16.1.
-- [Changed](https://gitlab.com/groups/gitlab-org/-/epics/9423) to beta in GitLab 17.1.
+- [Changed](https://gitlab.com/groups/gitlab-org/-/work_items/9423) to beta in GitLab 17.1.
 
 If your training code is being run from a CI/CD job, GitLab can use that information to enhance
 run metadata. To associate a run to a CI/CD job:

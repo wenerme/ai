@@ -242,7 +242,7 @@ To promote a project milestone:
 
 ## Assign a milestone to an item
 
-- Ability to assign milestones to epics [introduced](https://gitlab.com/groups/gitlab-org/-/epics/329) in GitLab 18.2.
+- Ability to assign milestones to epics [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/329) in GitLab 18.2.
 
 Every issue, epic, or merge request can be assigned one milestone.
 The milestones are visible on every issue and merge request page, on the right sidebar.

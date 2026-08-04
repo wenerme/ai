@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authenticated Origin Pulls (mTLS)
 
-Last updated Jun 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Authenticated Origin Pulls (AOP) helps ensure requests to your origin server come from the Cloudflare network, which provides an additional layer of security on top of [Full](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full/) or [Full (strict)](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) encryption modes.
 
@@ -21,6 +21,10 @@ Check your encryption mode
 Authenticated Origin Pulls does not apply when your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is set to **Off** or **Flexible**.
 
 Without AOP, anyone who discovers your origin server's IP address can send requests directly, bypassing Cloudflare and all its protections. When you combine AOP with the [Cloudflare Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/), your origin only accepts requests that have passed through Cloudflare, which means every request is evaluated by the WAF before reaching your server.
+
+Not compatible with Cloudflare Tunnel
+
+AOP is not compatible with origins connected through [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). Tunnel uses outbound-only connections from your origin, so there is no inbound listener for Cloudflare to present a client certificate to. If your origin is reachable through Cloudflare Tunnel, origin traffic is already authenticated using the tunnel's connector credentials, and AOP settings have no effect on that hostname.
 
 ## Availability
 
@@ -53,7 +57,6 @@ Zone-level and per-hostname AOP support ML-DSA (FIPS 204) post-quantum client ce
 ## Related topics
 
 * [SSL/TLS Encryption Modes](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/)
-* [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
 
 Was this helpful?
 
@@ -64,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/#page","headline":"Authenticated Origin Pulls (mTLS) · Cloudflare SSL/TLS docs","description":"Authenticated Origin Pulls helps ensure requests to your origin server come from the Cloudflare network.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/#page","headline":"Authenticated Origin Pulls (mTLS) · Cloudflare SSL/TLS docs","description":"Authenticated Origin Pulls helps ensure requests to your origin server come from the Cloudflare network.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}
 ```

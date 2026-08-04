@@ -1495,7 +1495,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_66ff509e3374"
+              "$ref": "#/components/schemas/RequestBody_c3a5d8790936"
     get:
       operationId: getApiV4AiDuoWorkflowsWorkflowsIdCheckpoints
       summary: List all workflow checkpoints
@@ -1522,6 +1522,17 @@ paths:
         schema:
           type: boolean
           nullable: true
+        in: query
+      - name: checkpoint_ns
+        required: false
+        description: 'Only return checkpoints belonging to this LangGraph checkpoint
+          namespace (the flow''s own top-level lineage if omitted or blank). Unset
+          (the default): return checkpoints from every lineage, unfiltered, preserving
+          prior behavior.'
+        schema:
+          type: string
+          nullable: true
+          maxLength: 255
         in: query
   "/api/v4/ai/duo_workflows/workflows/{id}/checkpoints/{checkpoint_id}":
     get:
@@ -8052,7 +8063,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_0547387828a9"
+              "$ref": "#/components/schemas/RequestBody_b85115ec6b7f"
     get:
       operationId: getApiV4GeoSites
       summary: List all Geo sites
@@ -8190,7 +8201,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_8420106513ed"
+              "$ref": "#/components/schemas/RequestBody_f1ca644921ba"
     delete:
       operationId: deleteApiV4GeoSitesId
       summary: Delete a Geo site
@@ -8304,7 +8315,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_5acd407be8fe"
+              "$ref": "#/components/schemas/RequestBody_d46c6d1b5ffd"
     get:
       operationId: getApiV4GeoNodes
       summary: List all Geo nodes
@@ -8442,7 +8453,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_ed161d2436c1"
+              "$ref": "#/components/schemas/RequestBody_ca570d552a23"
     delete:
       operationId: deleteApiV4GeoNodesId
       summary: Delete a Geo node
@@ -17689,7 +17700,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_e431b88ea4c1"
+              "$ref": "#/components/schemas/RequestBody_3dc15d3c2ef0"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -56349,6 +56360,27 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/RequestBody_d02bf987c989"
+  "/api/v4/geo/failures":
+    post:
+      operationId: postApiV4GeoFailures
+      summary: Reports resources that persistently fail verification on a secondary
+      tags:
+      - Geo
+      responses:
+        '202':
+          description: Accepted
+        '401':
+          description: 401 Unauthorized
+        '404':
+          description: 404 Not found
+        '400':
+          description: 400 Bad request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/RequestBody_c16df62e1c21"
   "/api/v4/geo/proxy_git_ssh/info_refs_upload_pack":
     post:
       operationId: postApiV4GeoProxyGitSshInfoRefsUploadPack
@@ -78865,6 +78897,10 @@ components:
           type: integer
         blob_download_timeout:
           type: integer
+        checksum_mismatch_report_threshold:
+          type: integer
+        checksum_mismatch_self_heal_cooldown_minutes:
+          type: integer
         sync_object_storage:
           type: boolean
         web_edit_url:
@@ -80167,6 +80203,10 @@ components:
         selective_sync_organization_ids:
           type: array
         minimum_reverification_interval:
+          type: integer
+        checksum_mismatch_report_threshold:
+          type: integer
+        checksum_mismatch_self_heal_cooldown_minutes:
           type: integer
         sync_object_storage:
           type: boolean
@@ -85037,6 +85077,10 @@ components:
         allow_s3_compatible_storage_for_offline_transfer:
           type: string
         allow_application_default_credentials_for_offline_transfer:
+          type: string
+        offline_transfer_exports_enabled:
+          type: string
+        offline_transfer_imports_enabled:
           type: string
         allow_runner_registration_token:
           type: string
@@ -94503,7 +94547,7 @@ components:
           nullable: true
       required:
       - status_event
-    RequestBody_66ff509e3374:
+    RequestBody_c3a5d8790936:
       type: object
       properties:
         thread_ts:
@@ -94514,6 +94558,14 @@ components:
           type: string
           description: The parent ts
           nullable: true
+        checkpoint_ns:
+          type: string
+          description: LangGraph checkpoint namespace this checkpoint belongs to.
+            Omitted (or blank) for the flow's own top-level checkpoint lineage; set
+            to LangGraph's namespace string for one nested subgraph invocation, e.g.
+            a delegated subagent dispatched by DelegationNode.
+          nullable: true
+          maxLength: 255
         checkpoint:
           type: object
           description: Checkpoint content
@@ -96851,7 +96903,7 @@ components:
       required:
       - group_access
       - provider
-    RequestBody_0547387828a9:
+    RequestBody_b85115ec6b7f:
       type: object
       properties:
         primary:
@@ -96933,6 +96985,20 @@ components:
             is valid. Once expired, it will be reverified. This has no effect when
             set on a secondary site.
           nullable: true
+        checksum_mismatch_report_threshold:
+          type: integer
+          description: The number of consecutive checksum mismatches on a secondary
+            before it reports the resource to the primary for self-heal re-verification.
+            Read from the secondary site; has no effect when set on the primary.
+          nullable: true
+        checksum_mismatch_self_heal_cooldown_minutes:
+          type: integer
+          description: 'The minimum time (in minutes) between self-heal re-verification
+            triggers for the same resource. Both the primary and each secondary use
+            their own value: secondaries use it to throttle re-reporting the same
+            resource, and the primary uses it to throttle re-verifying an already-verified
+            resource.'
+          nullable: true
         blob_download_timeout:
           type: integer
           description: Maximum time (in seconds) for blob downloads during Geo sync.
@@ -96941,7 +97007,7 @@ components:
       required:
       - name
       - url
-    RequestBody_8420106513ed:
+    RequestBody_f1ca644921ba:
       type: object
       properties:
         enabled:
@@ -97019,12 +97085,26 @@ components:
             is valid. Once expired, it will be reverified. This has no effect when
             set on a secondary site.
           nullable: true
+        checksum_mismatch_report_threshold:
+          type: integer
+          description: The number of consecutive checksum mismatches on a secondary
+            before it reports the resource to the primary for self-heal re-verification.
+            Read from the secondary site; has no effect when set on the primary.
+          nullable: true
+        checksum_mismatch_self_heal_cooldown_minutes:
+          type: integer
+          description: 'The minimum time (in minutes) between self-heal re-verification
+            triggers for the same resource. Both the primary and each secondary use
+            their own value: secondaries use it to throttle re-reporting the same
+            resource, and the primary uses it to throttle re-verifying an already-verified
+            resource.'
+          nullable: true
         blob_download_timeout:
           type: integer
           description: Maximum time (in seconds) for blob downloads during Geo sync.
             Defaults to 28800 (8 hours). Maximum is 86400 (24 hours).
           nullable: true
-    RequestBody_5acd407be8fe:
+    RequestBody_d46c6d1b5ffd:
       type: object
       properties:
         primary:
@@ -97106,10 +97186,24 @@ components:
             is valid. Once expired, it will be reverified. This has no effect when
             set on a secondary node.
           nullable: true
+        checksum_mismatch_report_threshold:
+          type: integer
+          description: The number of consecutive checksum mismatches on a secondary
+            before it reports the resource to the primary for self-heal re-verification.
+            Read from the secondary node; has no effect when set on the primary.
+          nullable: true
+        checksum_mismatch_self_heal_cooldown_minutes:
+          type: integer
+          description: 'The minimum time (in minutes) between self-heal re-verification
+            triggers for the same resource. Both the primary and each secondary use
+            their own value: secondaries use it to throttle re-reporting the same
+            resource, and the primary uses it to throttle re-verifying an already-verified
+            resource.'
+          nullable: true
       required:
       - name
       - url
-    RequestBody_ed161d2436c1:
+    RequestBody_ca570d552a23:
       type: object
       properties:
         enabled:
@@ -97186,6 +97280,20 @@ components:
           description: The interval (in days) in which the repository verification
             is valid. Once expired, it will be reverified. This has no effect when
             set on a secondary node.
+          nullable: true
+        checksum_mismatch_report_threshold:
+          type: integer
+          description: The number of consecutive checksum mismatches on a secondary
+            before it reports the resource to the primary for self-heal re-verification.
+            Read from the secondary node; has no effect when set on the primary.
+          nullable: true
+        checksum_mismatch_self_heal_cooldown_minutes:
+          type: integer
+          description: 'The minimum time (in minutes) between self-heal re-verification
+            triggers for the same resource. Both the primary and each secondary use
+            their own value: secondaries use it to throttle re-reporting the same
+            resource, and the primary uses it to throttle re-verifying an already-verified
+            resource.'
           nullable: true
     RequestBody_bddd5de04ffa:
       type: object
@@ -99073,7 +99181,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_e431b88ea4c1:
+    RequestBody_3dc15d3c2ef0:
       type: object
       properties:
         admin_mode:
@@ -100975,6 +101083,12 @@ components:
           type: string
           nullable: true
         allow_application_default_credentials_for_offline_transfer:
+          type: string
+          nullable: true
+        offline_transfer_exports_enabled:
+          type: string
+          nullable: true
+        offline_transfer_imports_enabled:
           type: string
           nullable: true
         user_defaults_to_private_profile:
@@ -113070,6 +113184,50 @@ components:
           required:
           - geo_node_id
           nullable: true
+    RequestBody_c16df62e1c21:
+      type: object
+      properties:
+        geo_node_id:
+          type: integer
+          description: The Geo node ID of the reporting secondary
+          nullable: true
+        failures:
+          type: array
+          description: Persistent verification failures reported by the secondary
+          items:
+            type: object
+            properties:
+              error_type:
+                type: string
+                description: The type of verification error being reported
+                example: checksum_mismatch
+                nullable: true
+              replicable_name:
+                type: string
+                description: The replicable name of a replicator instance
+                example: upload
+                nullable: true
+              replicable_id:
+                type: integer
+                description: The model record ID
+                nullable: true
+              verification_retry_count:
+                type: integer
+                description: The number of consecutive verification failures
+                nullable: true
+              context:
+                type: object
+                description: Additional error-type-specific data
+                nullable: true
+            required:
+            - error_type
+            - replicable_name
+            - replicable_id
+            - verification_retry_count
+          nullable: true
+      required:
+      - geo_node_id
+      - failures
     RequestBody_4fa5ffbaad65:
       type: object
       properties:

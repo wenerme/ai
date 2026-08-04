@@ -1049,7 +1049,7 @@ Merge the changes.
 
 ### `milestone`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/329) for epics in GitLab 18.2.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/329) for epics in GitLab 18.2.
 
 Set the milestone.
 
@@ -1585,7 +1585,7 @@ Remove the iteration.
 
 ### `remove_milestone`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/329) for epics in GitLab 18.2.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/329) for epics in GitLab 18.2.
 
 Remove the milestone.
 
