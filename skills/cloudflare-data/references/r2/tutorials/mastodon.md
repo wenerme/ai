@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Mastodon
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/tutorials/mastodon/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/tutorials/mastodon/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Mastodon ↗](https://joinmastodon.org/) is a popular [fediverse ↗](https://en.wikipedia.org/wiki/Fediverse) software. This guide will explain how to configure R2 to be the object storage for a self hosted Mastodon instance, for either [a new instance](#set-up-a-new-instance) or [an existing instance](#migrate-to-r2).
 
@@ -53,8 +53,10 @@ S3_ENDPOINT=https://{{unique-id}}.r2.cloudflarestorage.com/   # Change the {{uni
 AWS_ACCESS_KEY_ID={{your-access-key-id}}                      # Change to the Access Key ID retrieved in step 2
 AWS_SECRET_ACCESS_KEY={{your-secret-access-key}}              # Change to the Secret Access Key retrieved in step 2
 S3_PROTOCOL=https
-S3_PERMISSION=private
+S3_PERMISSION=
 ```
+
+Leave `S3_PERMISSION` empty. This prevents Mastodon from sending ACL headers, which R2 does not support.
 
 After configuration, you can run your instance. After the instance is running, upload a media attachment and verify the attachment is retrieved from the hostname set above. When navigating back to the bucket's page in R2, you should see the following structure.
 
@@ -82,7 +84,7 @@ If you had the media files hosted locally, you will likely need to set up redire
 
 ### 3\. Verify bucket and redirects
 
-Depending on your migration plan, you can verify if the bucket is accessible publicly and the redirects work correctly. To verify, open an existing uploaded media file with a path like `https://mastodon.example.com/cache/...` and replace the hostname from `mastodon.example.com` to `mastocon-files.example.com` and visit the new path. If the file opened correctly, proceed to the final step.
+Depending on your migration plan, you can verify if the bucket is accessible publicly and the redirects work correctly. To verify, open an existing uploaded media file with a path like `https://mastodon.example.com/cache/...` and replace the hostname from `mastodon.example.com` to `mastodon-files.example.com` and visit the new path. If the file opened correctly, proceed to the final step.
 
 ### 4\. Finalize migration
 
@@ -99,5 +101,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/mastodon/#page","headline":"Mastodon · Cloudflare R2 docs","description":"This guide explains how to configure R2 to be the object storage for a self hosted Mastodon instance. You can set up a self-hosted instance in multiple ways.","url":"https://developers.cloudflare.com/r2/tutorials/mastodon/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/mastodon/#page","headline":"Mastodon · Cloudflare R2 docs","description":"This guide explains how to configure R2 to be the object storage for a self hosted Mastodon instance. You can set up a self-hosted instance in multiple ways.","url":"https://developers.cloudflare.com/r2/tutorials/mastodon/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

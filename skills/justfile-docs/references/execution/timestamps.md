@@ -35,7 +35,7 @@ the
 [`chrono` library docs](https://docs.rs/chrono/latest/chrono/format/strftime/index.html)
 for details.
 
-The `[timestamp]` attribute<sup>master</sup> can be used to enable timestamps
+The `[timestamp]` attribute<sup>1.58.0</sup> can be used to enable timestamps
 for a specific recipe:
 
 ```just

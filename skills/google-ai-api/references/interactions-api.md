@@ -335,26 +335,6 @@ Always set to `"dynamic"`.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 labels object (optional) The labels with user-defined metadata for the request.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
-response_modalities array (ResponseModality) (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
 safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
 A safety setting that affects the safety-blocking behavior.
 
@@ -1220,26 +1200,6 @@ Always set to `"video"`.
 uri string (optional) The URI of the video.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
-response_modalities array (ResponseModality) (optional) The requested modalities of the response (TEXT, IMAGE, AUDIO).
-<br />
-
-#### Possible values
-
-- `text`
-
-  Indicates the model should return text.
-- `image`
-
-  Indicates the model should return images.
-- `audio`
-
-  Indicates the model should return audio.
-- `video`
-
-  Indicates the model should return video.
-- `document`
-
-  Indicates the model should return documents.
 safety_settings array (SafetySetting) (optional) Safety settings for the interaction.
 A safety setting that affects the safety-blocking behavior.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Schema learning
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Schema learning observes live API traffic for operations in the `full` state. It discovers the parameters, headers, and body formats that your API endpoints accept. You can export learned schemas in OpenAPI `v3.0.0` format by hostname.
 
@@ -27,12 +27,6 @@ To protect your API with a learned schema, refer to [Schema validation](https://
 2. Go to the **Operations** tab.
 3. Select **Export schema** and choose a hostname to export.
 4. Select whether to include learned parameters and rate limit recommendations.
-5. Select **Export schema** and choose a location to save the file.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Select **Security** \> **API Shield** \> **Endpoint Management**.
-3. Select **Export schema** and choose a hostname to export.
-4. Select whether to include [learned parameters](#learned-schema-contents) and [rate limit recommendations](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/).
 5. Select **Export schema** and choose a location to save the file.
 
 Note
@@ -73,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#page","headline":"Schema learning · Cloudflare API Shield docs","description":"Automatically learn API schema parameters from traffic and export in OpenAPI format.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#page","headline":"Schema learning · Cloudflare API Shield docs","description":"Automatically learn API schema parameters from traffic and export in OpenAPI format.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

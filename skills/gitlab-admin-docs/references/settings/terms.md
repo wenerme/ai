@@ -30,6 +30,6 @@ GitLab records which version they accepted or declined.
 Existing users must accept the terms on their next GitLab interaction.
 If an authenticated user declines the terms, they are signed out.
 
-When enabled, it adds a mandatory checkbox to the sign up page for new users:
+When enabled, it adds a mandatory checkbox to the new user account page:
 
 [New account form with a mandatory terms acceptance checkbox]

@@ -20,6 +20,7 @@ class User {
 export default User;
 ```
 
+
 Most of the file will be unchanged, except for line 4 above. If you use the current text of the code file as your prediction, you can regenerate the entire file with lower latency. These time savings add up quickly for larger files.
 
 Below is an example of using the `prediction` parameter in our SDKs to predict that the final output of the model will be very similar to our original code file, which we use as the prediction text.
@@ -127,28 +128,27 @@ curl https://api.openai.com/v1/chat/completions \
 ```
 
 
-In addition to the refactored code, the model response will contain data that looks something like this:
+In addition to the refactored code, an abridged model response without the `choices` field contains usage data like this:
 
-```javascript
+```json
 {
-  id: 'chatcmpl-xxx',
-  object: 'chat.completion',
-  created: 1730918466,
-  model: 'gpt-4o-2024-08-06',
-  choices: [ /* ...actual text response here... */],
-  usage: {
-    prompt_tokens: 81,
-    completion_tokens: 39,
-    total_tokens: 120,
-    prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
-    completion_tokens_details: {
-      reasoning_tokens: 0,
-      audio_tokens: 0,
-      accepted_prediction_tokens: 18,
-      rejected_prediction_tokens: 10
+  "id": "chatcmpl-xxx",
+  "object": "chat.completion",
+  "created": 1730918466,
+  "model": "gpt-4o-2024-08-06",
+  "usage": {
+    "prompt_tokens": 81,
+    "completion_tokens": 39,
+    "total_tokens": 120,
+    "prompt_tokens_details": { "cached_tokens": 0, "audio_tokens": 0 },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 18,
+      "rejected_prediction_tokens": 10
     }
   },
-  system_fingerprint: 'fp_159d8341cc'
+  "system_fingerprint": "fp_159d8341cc"
 }
 ```
 
@@ -251,9 +251,9 @@ for chunk in stream:
 When providing prediction text, your prediction can appear anywhere within the generated response, and still provide latency reduction for the response. Let's say your predicted text is the simple [Hono](https://hono.dev/) server shown below:
 
 ```typescript
-
-
-
+import { serve } from "@hono/node-server";
+import { serveStatic } from "@hono/node-server/serve-static";
+import { Hono } from "hono";
 
 const app = new Hono();
 
@@ -261,7 +261,7 @@ app.get("/api", (c) => {
   return c.text("Hello Hono!");
 });
 
-// You will need to build the client code first `pnpm run ui:build`
+// You will need to build the client code first: `pnpm run ui:build`.
 app.use(
   "/*",
   serveStatic({
@@ -277,6 +277,7 @@ serve({
   port,
 });
 ```
+
 
 You could prompt the model to regenerate the file with a prompt like:
 
@@ -290,9 +291,9 @@ markdown formatting.
 The response to the prompt might look something like this:
 
 ```typescript
-
-
-
+import { serve } from "@hono/node-server";
+import { serveStatic } from "@hono/node-server/serve-static";
+import { Hono } from "hono";
 
 const app = new Hono();
 
@@ -304,7 +305,7 @@ app.get("/hello", (c) => {
   return c.text("hello world");
 });
 
-// You will need to build the client code first `pnpm run ui:build`
+// You will need to build the client code first: `pnpm run ui:build`.
 app.use(
   "/*",
   serveStatic({
@@ -321,28 +322,28 @@ serve({
 });
 ```
 
-You would still see accepted prediction tokens in the response, even though the prediction text appeared both before and after the new content added to the response:
 
-```javascript
+An abridged model response without the `choices` field would still show accepted prediction tokens, even though the prediction text appeared both before and after the new content added to the response:
+
+```json
 {
-  id: 'chatcmpl-xxx',
-  object: 'chat.completion',
-  created: 1731014771,
-  model: 'gpt-4o-2024-08-06',
-  choices: [ /* completion here... */],
-  usage: {
-    prompt_tokens: 203,
-    completion_tokens: 159,
-    total_tokens: 362,
-    prompt_tokens_details: { cached_tokens: 0, audio_tokens: 0 },
-    completion_tokens_details: {
-      reasoning_tokens: 0,
-      audio_tokens: 0,
-      accepted_prediction_tokens: 60,
-      rejected_prediction_tokens: 0
+  "id": "chatcmpl-xxx",
+  "object": "chat.completion",
+  "created": 1731014771,
+  "model": "gpt-4o-2024-08-06",
+  "usage": {
+    "prompt_tokens": 203,
+    "completion_tokens": 159,
+    "total_tokens": 362,
+    "prompt_tokens_details": { "cached_tokens": 0, "audio_tokens": 0 },
+    "completion_tokens_details": {
+      "reasoning_tokens": 0,
+      "audio_tokens": 0,
+      "accepted_prediction_tokens": 60,
+      "rejected_prediction_tokens": 0
     }
   },
-  system_fingerprint: 'fp_9ee9e968ea'
+  "system_fingerprint": "fp_9ee9e968ea"
 }
 ```
 

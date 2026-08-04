@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # User Agent Blocking
 
-Last updated Apr 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/user-agent-blocking/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/user-agent-blocking/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 User Agent Blocking allows you to block specific browser or web application [User-Agent request headers ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). User agent rules apply to the entire domain instead of individual subdomains.
 
@@ -29,7 +29,7 @@ For example, a custom rule equivalent to the user agent [example rule](#create-a
 
 ## Availability
 
-Cloudflare User Agent Blocking is available on all plans. However, this feature is only available in the [new security dashboard](https://developers.cloudflare.com/security/) if you have configured at least one user agent rule.
+Cloudflare User Agent Blocking is available on all plans. The **User agent rules** option appears only if you have configured at least one user agent rule.
 
 The number of available user agent rules depends on your Cloudflare plan.
 
@@ -42,7 +42,7 @@ The number of available user agent rules depends on your Cloudflare plan.
 
 Note
 
-User Agent Blocking is only available in the new security dashboard if you have configured at least one user agent rule. Cloudflare recommends that you use [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of user agent rules.
+The **User agent rules** option appears only if you have configured at least one user agent rule. Cloudflare recommends that you use [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of user agent rules.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
@@ -51,14 +51,6 @@ User Agent Blocking is only available in the new security dashboard if you have 
 4. In **Action**, select the action to perform: _Block_, _Non-Interactive Challenge_, _Managed Challenge_, or _Interactive Challenge_.
 5. Enter a user agent value in **User Agent** (wildcards such as `*` are not supported). For example, to block the Bad Bot web spider, enter `BadBot/1.0.2 (+http://bad.bot)`.
 6. Select **Save and Deploy blocking rule**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
-2. Go to **Security** \> **WAF**, and select the **Tools** tab.
-3. Under **User Agent Blocking**, select **Create blocking rule**.
-4. Enter a descriptive name for the rule in **Name/Description**.
-5. In **Action**, select the action to perform: _Block_, _Non-Interactive Challenge_, _Managed Challenge_, or _Interactive Challenge_.
-6. Enter a user agent value in **User Agent** (wildcards such as `*` are not supported). For example, to block the Bad Bot web spider, enter `BadBot/1.0.2 (+http://bad.bot)`.
-7. Select **Save and Deploy blocking rule**.
 
 Issue a `POST` request for the [Create a User Agent Blocking rule](https://developers.cloudflare.com/api/resources/firewall/subresources/ua%5Frules/methods/create/) operation similar to the following:
 
@@ -99,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/#page","headline":"User Agent Blocking · Cloudflare Web Application Firewall (WAF) docs","description":"Block or challenge requests based on User-Agent header values.","url":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/#page","headline":"User Agent Blocking · Cloudflare Web Application Firewall (WAF) docs","description":"Block or challenge requests based on User-Agent header values.","url":"https://developers.cloudflare.com/waf/tools/user-agent-blocking/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

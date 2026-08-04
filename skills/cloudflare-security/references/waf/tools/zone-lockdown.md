@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Zone Lockdown
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/zone-lockdown/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Zone Lockdown specifies a list of one or more IP addresses, CIDR ranges, or networks that are the only IPs allowed to access a domain, subdomain, or URL. You can configure multiple destinations, including IPv4/IPv6 addresses, in a single zone lockdown rule.
 
@@ -29,7 +29,7 @@ For examples of using custom rules for this purpose, refer to the following use 
 
 ## Availability
 
-Cloudflare Zone Lockdown is available on paid plans. However, this feature is only available in the [new security dashboard](https://developers.cloudflare.com/security/) if you have configured at least one zone lockdown rule.
+Cloudflare Zone Lockdown is available on paid plans. The **Zone lockdown rules** option appears only if you have configured at least one zone lockdown rule.
 
 The number of available zone lockdown rules depends on your Cloudflare plan.
 
@@ -42,7 +42,7 @@ The number of available zone lockdown rules depends on your Cloudflare plan.
 
 Note
 
-Zone Lockdown is only available in the [new security dashboard](https://developers.cloudflare.com/security/) if you have configured at least one zone lockdown rule.
+The **Zone lockdown rules** option appears only if you have configured at least one zone lockdown rule.
 
 **If you have access to Zone Lockdown rules**
 
@@ -64,15 +64,6 @@ Create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/create
 [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. Select **Templates**, and then select the template **Allow only specified IP addresses**.
 3. Fill in the required fields and select **Deploy**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
-2. Go to **Security** \> **WAF**, and select the **Tools** tab.
-3. Under **Zone Lockdown**, select **Create lockdown rule**.
-4. Enter a descriptive name for the rule in **Name**.
-5. For **URLs**, enter the domains, subdomains, or URLs you wish to protect from unauthorized IPs. You can use wildcards such as `*`. Enter one item per line.
-6. For **IP Range**, enter one or more allowed IPv4/IPv6 addresses or CIDR ranges, one per line. Only these IP addresses and ranges will be able to access the resources you entered in **URLs**.
-7. (Optional) If you are creating a zone lockdown rule that overlaps with an existing rule, expand **Advanced Options** and enter a priority for the rule in **Priority**. The lower the number, the higher the priority. Higher priority rules take precedence.
-8. Select **Save and Deploy lockdown rule**.
 
 Issue a `POST` request for the [Create a Zone Lockdown rule](https://developers.cloudflare.com/api/resources/firewall/subresources/lockdowns/methods/create/) operation similar to the following:
 
@@ -168,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/zone-lockdown/#page","headline":"Zone Lockdown · Cloudflare Web Application Firewall (WAF) docs","description":"Restrict access to specific URLs by allowlisted IP addresses.","url":"https://developers.cloudflare.com/waf/tools/zone-lockdown/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/zone-lockdown/#page","headline":"Zone Lockdown · Cloudflare Web Application Firewall (WAF) docs","description":"Restrict access to specific URLs by allowlisted IP addresses.","url":"https://developers.cloudflare.com/waf/tools/zone-lockdown/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

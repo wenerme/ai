@@ -28,8 +28,7 @@ responses are **not** used to improve Google products^\*^, you can
 [link a billing account](https://ai.google.dev/gemini-api/docs/billing#setup-billing) and [Prepay](https://ai.google.dev/gemini-api/docs/billing#prepay) to move to the
 Paid Tiers.
 Then, you'll move through higher tiers based on cumulative spend and account
-age. At Tier 3, you may have the option to switch to [Postpay](https://ai.google.dev/gemini-api/docs/billing#postpay)
-billing.
+age.
 
 Tiers, rate limits, and billing account caps are all determined at the [billing
 account](https://ai.google.dev/gemini-api/docs/billing#cloud-billing) level.
@@ -178,19 +177,9 @@ In the Postpay billing plan, your Cloud Billing account accrues costs and you
 are automatically charged at the end of the month, or when your costs reach an
 [automatically assigned spend cap](https://ai.google.dev/gemini-api/docs/billing#tier-spend-caps) based on your account tier.
 The payment is charged to the payment method attached to your Postpay payments
-account, which you can manage on the [AI Studio Billing](https://aistudio.google.com/billing) page.
-
-When you meet the [Tier 3 criteria](https://ai.google.dev/gemini-api/docs/billing#about-billing), you can
-manually switch from the Prepay plan to Postpay. To change plans, you will
-need to click the **Switch to postpay** button that appears in the top right of
-the [AI Studio Billing](https://aistudio.google.com/billing) page when your
-account becomes eligible.
-
-> [!NOTE]
-> **Note:** The option to manually switch to Postpay billing is temporarily disabled.
-
-Then, on the **Billing** page you'll be able to view your balance, due dates,
-and past payments, as well as make payments and manage payment methods.
+account, which you can manage on the [AI Studio Billing](https://aistudio.google.com/billing) page. On the **Billing** page you'll be able
+to view your balance, due dates, and past payments, as well as make payments and
+manage payment methods.
 
 When [setting up billing](https://ai.google.dev/gemini-api/docs/billing#setup-billing) for a new project, if you are eligible
 for Postpay, you will have the option to choose between Prepay and Postpay in
@@ -542,12 +531,9 @@ No, Prepay credits are strictly locked to Gemini API usage. Any
 other Google Cloud services you use (Compute, Storage, Gemini Enterprise Agent Platform) are billed using
 the standard [Cloud charging cycle](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle).
 
-### Can I switch to a Postpay billing plan?
+### Can I switch from Prepay to Postpay billing?
 
-When you establish a payment history and [reach a tier eligible](https://ai.google.dev/gemini-api/docs/billing#about-billing)
-for the Postpay billing plan, you can optionally choose to transition all your
-future Gemini API usage costs to a standard, consolidated Google Cloud
-[Postpay charging cycle](https://docs.cloud.google.com/billing/docs/how-to/billing-cycle#view-your-charging-cycle).
+No, switching from a Prepay billing plan to a Postpay billing plan is not supported.
 
 ### What happens to my Prepaid credits if I switch to Postpay?
 

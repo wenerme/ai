@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Endpoint Management
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on all plans
 
@@ -30,21 +30,14 @@ When an endpoint uses [Cloudflare Workers](https://developers.cloudflare.com/wor
 [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Operations** tab.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **API Shield** \> **Endpoint Management**.
-
 ### Add endpoints from API Discovery
 
 The **Learn profile** action is available to API Shield customers using unified operation discovery and other customers with access to profile learning.
 
-In the new dashboard, this workflow promotes an existing discovered operation. In the old dashboard, it adds a discovered endpoint to Endpoint Management.
+This workflow promotes an existing discovered operation.
 
 1. From **Web Assets** \> **Operations**, open the row actions for a candidate or shadow operation.
 2. Select **Learn profile**.
-
-1. From **Endpoint Management**, select **Add endpoints** \> **Select from Discovery** tab.
-2. Select the discovered endpoints you would like to add.
-3. Select **Add endpoints**.
 
 Cloudflare promotes the operation to the `full` state. The row action then changes to **Profile learned**. For more information, refer to [Promote an operation](https://developers.cloudflare.com/security/web-assets/manage-operations/#promote-an-operation).
 
@@ -57,15 +50,7 @@ You do not need to promote every discovered operation. Candidate operations can 
 3. Upload a schema file.
 4. Select **Add schema and endpoints**.
 
-1. Add a schema by [configuring Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/).
-2. On **Review schema endpoints**, save new endpoints to endpoint management by checking the box.
-3. Select **Save as draft** or **Save and Deploy**. Endpoints will be saved regardless of whether the schema is saved as a draft or published.
-
 API Shield looks for duplicate operations with the same hostname, method, and path. Duplicate operations are not added.
-
-Note
-
-In the old dashboard, endpoints are not added if you deselect **Save new endpoints to endpoint management**.
 
 ### Add endpoints manually
 
@@ -73,10 +58,6 @@ In the old dashboard, endpoints are not added if you deselect **Save new endpoin
 2. Select **Manually add**.
 3. Select the method and enter the hostname pattern and path pattern.
 4. Select **Add operation**.
-
-1. From Endpoint Management, select **Add endpoints** \> **Manually add**.
-2. Choose the method from the dropdown menu and add the path and hostname for the endpoint.
-3. Select **Add endpoints**.
 
 When adding an operation manually, you can specify variable fields in the path or hostname. Enclose variables in braces, such as `/api/user/{var1}/details` or `{hostVar1}.example.com`.
 
@@ -104,7 +85,7 @@ For more information on how Cloudflare uses variables in API Shield, refer to th
 
 ### Edit operations
 
-In the new dashboard, you can edit the identity of an operation.
+You can edit the identity of an operation.
 
 1. From **Web Assets** \> **Operations**, open the row actions for the operation.
 2. Select **Edit operation**.
@@ -123,9 +104,6 @@ You can delete endpoints one at a time or in bulk.
 
 1. From **Web Assets** \> **Operations**, select the operations that you want to delete.
 2. Select **Delete operations**.
-
-1. From Endpoint Management, select the checkboxes for the endpoints that you want to delete.
-2. Select **Delete endpoints**.
 
 Caution
 
@@ -186,5 +164,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Promote, learn, and monitor API endpoints with API Shield and Web Assets.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management · Cloudflare API Shield docs","description":"Promote, learn, and monitor API endpoints with API Shield and Web Assets.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

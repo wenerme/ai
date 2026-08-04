@@ -30,7 +30,7 @@ Please bear in mind that indexing the contents can consume a lot of system resou
 
 ### Choosing the files for indexing by size
 
-The `MAX_FILE_SIZE` option will make the indexer skip all files larger than the specified value.
+The `MAX_FILE_SIZE` option will make the indexer skip all files larger than the specified value in bytes.
 
 ### Choosing the files for indexing by path
 

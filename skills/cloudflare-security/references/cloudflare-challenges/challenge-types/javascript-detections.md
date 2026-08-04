@@ -55,11 +55,6 @@ For Super Bot Fight Mode and Bot Management for Enterprise customers, [JavaScrip
 [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Under your bot traffic plan configurations, select the edit icon for **JS detections** and turn **JavaScript Detections** on.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Bots**.
-3. Select **Configure Bot Management**.
-4. For **JavaScript Detections**, switch the toggle to **On**.
-
 For more details on how to set up bot protection, refer to the [Bots documentation](https://developers.cloudflare.com/bots/get-started/).
 
 ## 2\. Enforce execution of JavaScript Detections

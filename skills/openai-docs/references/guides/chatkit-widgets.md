@@ -22,7 +22,7 @@ Widget actions allow users to trigger logic from the UI. Actions can be bound to
 
 Capture widget events with the `onAction` callback from `WidgetsOption` or equivalent React hook. Forward the action payload to your backend to handle actions.
 
-```ts
+```typescript
 chatkit.setOptions({
   widgets: {
     async onAction(action, item) {
@@ -35,6 +35,7 @@ chatkit.setOptions({
   },
 });
 ```
+
 
 Looking for a full server example? See the [ChatKit Python SDK
   docs](https://openai.github.io/chatkit-python-sdk/guides/widget-actions) for

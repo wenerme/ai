@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JSON Web Tokens validation
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token’s integrity is important.
 
@@ -34,13 +34,6 @@ A JWT validation configuration has two parts: a token validation configuration t
 5. Choose where Cloudflare can locate the JWT for this configuration on incoming requests, such as a header or cookie and its name.
 6. Copy and paste your JWT issuer's public key(s) (JWKS).
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **API Shield** \> **Settings**.
-3. Under **JSON Web Token Settings**, select **Add configuration**.
-4. Add a name for your configuration.
-5. Choose where Cloudflare can locate the JWT for this configuration on incoming requests, such as a header or cookie and its name.
-6. Copy and paste your JWT issuer's public key(s) (JWKS).
-
 Each JWT issuer typically publishes public keys (JWKS) for verification at a known URL on the Internet. If you do not know where to get them, contact your identity administrator.
 
 To automatically keep your JWKS up to date when your identity provider refreshes them, you can use a Worker. Refer to [Configure Workers to automatically update keys](https://developers.cloudflare.com/api-shield/security/jwt-validation/jwt-worker/) to learn more about setting up the Worker.
@@ -56,18 +49,6 @@ To automatically keep your JWKS up to date when your identity provider refreshes
 6. Select the token validation configuration that corresponds to the incoming requests.
 7. Choose whether to strictly enforce token presence on these endpoints.
 
-  * You may not expect 100% of clients to send in JWTs with their requests. If this is the case, choose _Ignore_. JWT validation will still validate JWTs that are present.
-  * You may otherwise expect all requests to the selected hostname and endpoints to contain JWTs. If this is the case, choose _Mark as non-compliant_.
-8. Choose an action to take for non-compliant requests. For example, JWTs that do not pass validation (expired, tampered with, or bad signature tokens) or requests with missing JWTs when _Mark as non-compliant_ is selected in the previous step.
-9. Select **Save**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **API Shield** \> **API Rules**.
-3. Add a name for your rule.
-4. Select a hostname to protect requests with saved endpoints using the rule.
-5. Deselect any endpoints that you want JWT validation to ignore (for example, an endpoint used to generate a JWT).
-6. Select the token validation configuration that corresponds to the incoming requests.
-7. Choose whether to strictly enforce token presence on these endpoints.
   * You may not expect 100% of clients to send in JWTs with their requests. If this is the case, choose _Ignore_. JWT validation will still validate JWTs that are present.
   * You may otherwise expect all requests to the selected hostname and endpoints to contain JWTs. If this is the case, choose _Mark as non-compliant_.
 8. Choose an action to take for non-compliant requests. For example, JWTs that do not pass validation (expired, tampered with, or bad signature tokens) or requests with missing JWTs when _Mark as non-compliant_ is selected in the previous step.
@@ -150,5 +131,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation · Cloudflare API Shield docs","description":"Verify incoming JWTs to prevent replay attacks and token tampering at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation · Cloudflare API Shield docs","description":"Verify incoming JWTs to prevent replay attacks and token tampering at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

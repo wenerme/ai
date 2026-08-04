@@ -28,9 +28,10 @@ assistant = client.beta.assistants.create(
 
 ```javascript
 const assistant = await openai.beta.assistants.create({
-  instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  instructions:
+    "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
   model: "gpt-4o",
-  tools: [{"type": "code_interpreter"}]
+  tools: [{ type: "code_interpreter" }],
 });
 ```
 
@@ -77,14 +78,15 @@ const file = await openai.files.create({
 
 // Create an assistant using the file ID
 const assistant = await openai.beta.assistants.create({
-  instructions: "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  instructions:
+    "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
   model: "gpt-4o",
-  tools: [{"type": "code_interpreter"}],
+  tools: [{ type: "code_interpreter" }],
   tool_resources: {
-    "code_interpreter": {
-      "file_ids": [file.id]
-    }
-  }
+    code_interpreter: {
+      file_ids: [file.id],
+    },
+  },
 });
 ```
 
@@ -133,16 +135,16 @@ thread = client.beta.threads.create(
 const thread = await openai.beta.threads.create({
   messages: [
     {
-      "role": "user",
-      "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
-      "attachments": [
+      role: "user",
+      content: "I need to solve the equation `3x + 11 = 14`. Can you help me?",
+      attachments: [
         {
           file_id: file.id,
-          tools: [{type: "code_interpreter"}]
-        }
-      ]
-    }
-  ]
+          tools: [{ type: "code_interpreter" }],
+        },
+      ],
+    },
+  ],
 });
 ```
 
@@ -284,10 +286,9 @@ run_steps = client.beta.threads.runs.steps.list(
 ```
 
 ```javascript
-const runSteps = await openai.beta.threads.runs.steps.list(
-  thread.id,
-  run.id
-);
+const runSteps = await openai.beta.threads.runs.steps.list(run.id, {
+  thread_id: thread.id,
+});
 ```
 
 ```bash

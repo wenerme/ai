@@ -26,11 +26,6 @@ To enable auto-updates:
 3. Go to **Bot Management**.
 4. Under **Configurations**, select the edit icon for **Auto-updates to the Machine Learning Model** and turn it on.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Bots**.
-3. Select **Configure Bot Management**.
-4. Enable **Auto-updates to the Machine Learning Model**.
-
 ### What will change
 
 If you are on an older Machine Learning model, you will see a score change to requests scored by the **Machine Learning** source instantly. If you are already on the latest model, you will see changes only after a new Machine Learning model becomes the global default.

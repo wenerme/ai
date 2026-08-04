@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started with AI Security for Apps
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Turn on AI Security for Apps
 
 Note
 
-AI Security for Apps (formerly Firewall for AI) is only available in the new [application security dashboard](https://developers.cloudflare.com/security/).
+AI Security for Apps (formerly Firewall for AI) is only available in the [application security dashboard](https://developers.cloudflare.com/security/).
 
 1. In the Cloudflare dashboard, go to the Security **Settings** page.
 [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -45,19 +45,9 @@ Save the relevant endpoint receiving LLM-related traffic to [Endpoint Management
 2. Go to the **Discovery** tab.
 3. Find the endpoint receiving requests with LLM prompts in the list and select **Save** next to the endpoint.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **API Shield**.
-3. Go to the **Discovery** tab.
-4. Find the endpoint receiving requests with LLM prompts in the list and select **Save** next to the endpoint.
-
 If you did not find the endpoint in the **Discovery** tab, you can add it manually:
 
 1. Go to the **Endpoints** tab.
-2. Select **Add endpoints** \> **Manually add**.
-3. Choose the method from the dropdown menu and add the path and hostname for the endpoint.
-4. Select **Add endpoints**.
-
-1. Go to the **Endpoint Management** tab.
 2. Select **Add endpoints** \> **Manually add**.
 3. Choose the method from the dropdown menu and add the path and hostname for the endpoint.
 4. Select **Add endpoints**.
@@ -81,13 +71,6 @@ Add the `cf-llm` label to the endpoint you added:
 4. Add the `cf-llm` label to the endpoint.
 5. Select **Save labels**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **API Shield**.
-3. In the **Endpoint Management** tab, choose the endpoint that you want to label.
-4. Select **Edit labels**.
-5. Add the `cf-llm` label to the endpoint.
-6. Select **Save labels**.
-
 Once you add a label to the endpoint, Cloudflare will start labeling incoming traffic for the endpoint with the label you selected.
 
 ## 4\. (Optional) Generate API traffic
@@ -106,7 +89,7 @@ The PII category for this request would be `EMAIL_ADDRESS`.
 
 ## 5\. Review labeled traffic and detection behavior
 
-Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) in the new application security dashboard to validate that Cloudflare is correctly labeling traffic for the endpoint.
+Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) to validate that Cloudflare is correctly labeling traffic for the endpoint.
 
 1. In the Cloudflare dashboard, go to the **Analytics** page.
 [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
@@ -173,5 +156,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/#page","headline":"Get started with AI Security for Apps · Cloudflare Web Application Firewall (WAF) docs","description":"Enable AI Security for Apps to scan requests to AI-powered endpoints.","url":"https://developers.cloudflare.com/waf/detections/ai-security-for-apps/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

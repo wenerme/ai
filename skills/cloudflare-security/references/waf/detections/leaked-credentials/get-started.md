@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Turn on the detection
 
@@ -22,10 +22,6 @@ On Free plans, the leaked credentials detection is enabled by default, and no ac
 [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Turn on **Leaked credential detection**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Settings**.
-3. Under **Incoming traffic detections**, turn on **Leaked credentials**.
 
 Use a `POST` request similar to the following:
 
@@ -67,10 +63,7 @@ Alternatively, create a custom rule like the one described in the next step usin
 
 ## 3\. Mitigate requests with leaked credentials
 
-If you are on a Free plan, deploy the suggested [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) template available in:
-
-* Old dashboard: **WAF** \> **Rate limiting rules**
-* New security dashboard: **Security** \> **Security rules**
+If you are on a Free plan, deploy the suggested [rate limiting rule](https://developers.cloudflare.com/waf/rate-limiting-rules/) template available in **Security** \> **Security rules**.
 
 When you deploy a rule using this template, you get instant protection against IPs attempting to access your application with a leaked password more than five times per 10 seconds. This rule can delay attacks by blocking them for a period of time. Alternatively, you can create a custom rule.
 
@@ -146,22 +139,6 @@ This configuration will scan incoming HTTP requests containing a JSON body with 
 Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) documentation for more information on this function.
 6. Select **Save**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Settings**.
-3. Under **Incoming traffic detections**, select **Leaked credentials** and then select **Add custom username and password location**.
-4. In **Username location** and **Password location** (optional), enter expressions for obtaining the username and the password from the HTTP request. For example, you could use the following expressions:
-
-  * Username location:
-  `lookup_json_string(http.request.body.raw, "user")`
-  * Password location:
-  `lookup_json_string(http.request.body.raw, "secret")`
-This configuration will scan incoming HTTP requests containing a JSON body with a structure similar to the following:
-```js
-{"user": "<USERNAME>", "secret": "<PASSWORD>"}
-```
-Refer to the [lookup\_json\_string()](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup%5Fjson%5Fstring) documentation for more information on this function.
-5. Select **Save**.
-
 Use a `POST` request similar to the following:
 
 Required API token permissions
@@ -233,5 +210,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#page","headline":"Get started with leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Enable leaked credentials detection and configure custom or managed detections.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/#page","headline":"Get started with leaked credentials detection · Cloudflare Web Application Firewall (WAF) docs","description":"Enable leaked credentials detection and configure custom or managed detections.","url":"https://developers.cloudflare.com/waf/detections/leaked-credentials/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover","Authentication"]}
 ```

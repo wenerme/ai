@@ -18,8 +18,8 @@ response = client.completions.create(
 
 ```javascript
 const completion = await openai.completions.create({
-model: 'gpt-3.5-turbo-instruct',
-prompt: 'Write a tagline for an ice cream shop.'
+  model: "gpt-3.5-turbo-instruct",
+  prompt: "Write a tagline for an ice cream shop.",
 });
 ```
 

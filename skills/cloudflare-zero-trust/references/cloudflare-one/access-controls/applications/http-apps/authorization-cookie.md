@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authorization cookie
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you protect a site with Cloudflare Access, Cloudflare checks every HTTP request bound for that site to ensure that the request has a valid `CF_Authorization` cookie. If a request does not include the cookie, Access will block the request.
 
@@ -29,9 +29,13 @@ Access generates two separate `CF_Authorization` tokens depending on the domain:
 
 Cloudflare Access allows you to protect and manage multiple domains in a single [self-hosted application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/). After a user has successfully authenticated to one domain, Access will automatically issue a `CF_Authorization` cookie when they go to another domain in the same Access application. This means that users only need to authenticate once to a multi-domain application.
 
-For Access applications with five or fewer domains, Access preemptively sets the cookie for all domains through a series of redirects when the user first authenticates. This allows single-page applications (SPAs) to retrieve data from other subdomains without requiring the user to visit each subdomain individually. Wildcarded subdomains (for example, `*.example.com`) cannot receive preemptive cookies because Access does not know which concrete subdomain to redirect to. Wildcarded paths are supported.
+Access can preemptively set the cookie for every domain through a series of redirects when the user first authenticates. This allows single-page applications (SPAs) to retrieve data from other subdomains before the user visits each subdomain. Wildcarded subdomains (for example, `*.example.com`) cannot receive preemptive cookies because Access does not know which concrete subdomain to redirect to. Wildcarded paths are supported.
 
-For Access applications with more than five domains, Access does not preemptively set cookies. Instead, cookies are issued as the user visits each domain. This avoids the latency that would result from redirecting through a large number of domains during authentication.
+Use the [Eager redirect cookie](#eager-redirect-cookie) setting to control this behavior.
+
+Note
+
+Access previously chose the cookie behavior based on the number of domains. It preemptively set cookies for applications with five or fewer domains and issued cookies as users visited each domain for applications with more than five domains. Applications without a saved setting retain this behavior. Administrators can override it by turning the Eager redirect cookie setting on or off.
 
 ## Access cookies
 
@@ -81,6 +85,7 @@ Cloudflare Access provides optional security settings that can be added to the b
 * [HttpOnly flag](#httponly)
 * [Binding cookie](#binding-cookie)
 * [Cookie path](#cookie-path-attribute)
+* [Eager redirect cookie](#eager-redirect-cookie)
 
 To enable these settings:
 
@@ -139,6 +144,14 @@ Do not enable Binding Cookie if:
 
 The Cookie Path Attribute adds the application's path URL to the `CF_Authorization` cookie. When enabled, a user who logs in to `example.com/path1` must re-authenticate to access `example.com/path2`. When disabled, the `CF_Authorization` cookie is only scoped to the domain and subdomain.
 
+### Eager redirect cookie
+
+When turned on, the Eager redirect cookie setting preemptively sets a `CF_Authorization` cookie for every concrete domain in a multi-domain application. Access redirects the browser through each domain after the user first authenticates. This setting is turned on by default for new applications.
+
+Caution
+
+Browser behavior can become unreliable when the redirect chain exceeds 10 redirects. If your application has more than 10 domains, turn off this setting or thoroughly test the authentication flow before you deploy it. When turned off, Access sets the cookie as a user visits each domain.
+
 ## Allow third-party cookies in the browser
 
 By default, some browsers block all third-party cookies in private browsing mode, including the `CF_Authorization` cookie. For XHR requests to work in private windows, you will need to exempt your application and team domain from the browser's tracking protection system.
@@ -182,5 +195,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#page","headline":"Authorization cookie · Cloudflare One docs","description":"Learn how Cloudflare Access uses CF\\_Authorization cookies to secure self-hosted web applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/#page","headline":"Authorization cookie · Cloudflare One docs","description":"Learn how Cloudflare Access uses CF\\_Authorization cookies to secure self-hosted web applications.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies","JSON web token (JWT)"]}
 ```

@@ -684,6 +684,32 @@ pnpm create cloudflare@latest --template=cloudflare/templates/react-router-start
 ---
 
 
+### react-starter-template
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/react-starter-template)
+
+A template for building a React application with Vite and Cloudflare Workers
+
+Explore on [GitHub ↗](https://github.com/cloudflare/templates/tree/main/react-starter-template)
+
+npmyarnpnpm
+
+```
+npm create cloudflare@latest -- --template=cloudflare/templates/react-starter-template
+```
+
+```
+yarn create cloudflare --template=cloudflare/templates/react-starter-template
+```
+
+```
+pnpm create cloudflare@latest --template=cloudflare/templates/react-starter-template
+```
+
+
+---
+
+
 ### remix-starter-template
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/remix-starter-template)

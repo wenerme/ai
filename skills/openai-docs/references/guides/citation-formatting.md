@@ -325,7 +325,7 @@ function extractCitations(text, { families = ["cite"] } = {}) {
     .join("|");
 
   const tokenRe = new RegExp(
-    `\uE200(?<family>${familyPattern})\uE202(?<body>[\\s\\S]*?)\uE201`,
+    `${CITATION_START}(?<family>${familyPattern})${CITATION_DELIMITER}(?<body>[\\s\\S]*?)${CITATION_STOP}`,
     "g"
   );
 
@@ -378,7 +378,8 @@ function stripCitations(text, citations) {
   );
 
   for (const citation of sortedCitations) {
-    cleanText = cleanText.slice(0, citation.start) + cleanText.slice(citation.end);
+    cleanText =
+      cleanText.slice(0, citation.start) + cleanText.slice(citation.end);
   }
 
   return cleanText;

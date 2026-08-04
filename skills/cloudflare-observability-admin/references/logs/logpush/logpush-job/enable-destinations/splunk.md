@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Splunk
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [HTTP Event Collector (HEC) ↗](https://dev.splunk.com/enterprise/docs/devtools/httpeventcollector/) is a reliable method to receive data from Splunk Enterprise or Splunk Cloud Platform. Cloudflare Logpush supports pushing logs directly to Splunk HEC via the Cloudflare dashboard or API.
 
@@ -176,26 +176,6 @@ If your logpush destination hostname is proxied through Cloudflare, and you have
 7. Under **WAF components to skip**, select _All managed rules_.
 8. Select **Deploy**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account. Go to **Security** \> **WAF** \> **Custom rules**.
-2. Select **Create rule** and enter a descriptive name for it (for example, `Splunk`).
-3. Under **When incoming requests match**, use the **Field**, **Operator**, and **Value** dropdowns to create a rule. After finishing each row, select **And** to create the next row of rules. Refer to the table below for the values you should input:
-
-| Field            | Operator | Value                                                               |
-| ---------------- | -------- | ------------------------------------------------------------------- |
-| Request Method   | equals   | POST                                                                |
-| Hostname         | equals   | Your Splunk endpoint hostname. For example: splunk.cf-analytics.com |
-| URI Path         | equals   | /services/collector/raw                                             |
-| URI Query String | contains | channel                                                             |
-| AS Num           | is in    | 13335, 132892, 202623                                               |
-| User Agent       | equals   | Go-http-client/2.0                                                  |
-4. After inputting the values as shown in the table, you should have an Expression Preview with the values you added for your specific rule. The example below reflects the hostname `splunk.cf-analytics.com`.
-```txt
-(http.request.method eq "POST" and http.host eq "splunk.cf-analytics.com" and http.request.uri.path eq "/services/collector/raw" and http.request.uri.query contains "channel" and ip.geoip.asnum in {13335 132892 202623} and http.user_agent eq "Go-http-client/2.0")
-```
-5. Under the **Then** \> **Choose an action** dropdown, select _Skip_.
-6. Under **WAF components to skip**, select _All managed rules_.
-7. Select **Deploy**.
-
 The WAF should now ignore requests made to Splunk HEC by Cloudflare.
 
 Note
@@ -257,5 +237,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/#page","headline":"Enable Logpush to Splunk · Cloudflare Logs docs","description":"Push Cloudflare logs to Splunk via HEC.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/#page","headline":"Enable Logpush to Splunk · Cloudflare Logs docs","description":"Push Cloudflare logs to Splunk via HEC.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

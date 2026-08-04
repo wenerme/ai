@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Review changed scripts
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -24,15 +24,10 @@ You can configure a notification for [code change alerts](https://developers.clo
 
 When you receive such a notification:
 
-1. Go to the client-side resources page:
-
-  1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-  2. Select the **Client-side resources** tab.
-
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-  2. Go to **Security** \> **Client-side security**.
-2. Check the details of each changed script and validate if it is an expected change.
+1. In the Cloudflare dashboard, go to the **Web assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Select the **Client-side resources** tab.
+3. Check the details of each changed script and validate if it is an expected change.
 
 Was this helpful?
 
@@ -43,5 +38,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/#page","headline":"Review changed scripts · Client-side security docs","description":"Learn how to review scripts on your domain after receiving a code change alert.","url":"https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/#page","headline":"Review changed scripts · Client-side security docs","description":"Learn how to review scripts on your domain after receiving a code change alert.","url":"https://developers.cloudflare.com/client-side-security/detection/review-changed-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

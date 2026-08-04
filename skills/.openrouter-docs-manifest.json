@@ -295,9 +295,9 @@
   },
   "agent-sdk/typescript/api-reference/models/activityitem.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/models/activityitem.md",
-    "lastModified": "Mon, 06 Jul 2026 14:13:54 GMT",
-    "size": 2841,
-    "updatedAt": "2026-07-06T14:13:54.565Z"
+    "lastModified": "Tue, 04 Aug 2026 03:35:12 GMT",
+    "size": 5709,
+    "updatedAt": "2026-08-04T03:35:12.709Z"
   },
   "agent-sdk/typescript/api-reference/models/activityresponse.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/api-reference/models/activityresponse.md",
@@ -9697,15 +9697,21 @@
   },
   "agent-sdk/typescript/operations/getuseractivityrequest.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/operations/getuseractivityrequest.md",
-    "lastModified": "Mon, 06 Jul 2026 14:27:47 GMT",
-    "size": 999,
-    "updatedAt": "2026-07-06T14:27:47.231Z"
+    "lastModified": "Tue, 04 Aug 2026 03:53:49 GMT",
+    "size": 3741,
+    "updatedAt": "2026-08-04T03:53:49.192Z"
   },
   "agent-sdk/typescript/operations/getuseractivityresponse.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/operations/getuseractivityresponse.md",
     "lastModified": "Tue, 21 Jul 2026 06:45:14 GMT",
     "size": 1433,
     "updatedAt": "2026-07-21T06:45:14.672Z"
+  },
+  "agent-sdk/typescript/operations/groupby.md": {
+    "url": "https://openrouter.ai/docs/agent-sdk/typescript/operations/groupby.md",
+    "lastModified": "Tue, 04 Aug 2026 03:53:50 GMT",
+    "size": 886,
+    "updatedAt": "2026-08-04T03:53:50.340Z"
   },
   "agent-sdk/typescript/operations/imageurl.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/typescript/operations/imageurl.md",
@@ -10999,9 +11005,9 @@
   },
   "client-sdks/python/sdks/tts/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/tts/README.md",
-    "lastModified": "Mon, 13 Jul 2026 04:13:19 GMT",
-    "size": 6232,
-    "updatedAt": "2026-07-13T04:13:19.922Z"
+    "lastModified": "Tue, 04 Aug 2026 03:55:47 GMT",
+    "size": 9768,
+    "updatedAt": "2026-08-04T03:55:47.875Z"
   },
   "client-sdks/python/sdks/videogeneration/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/videogeneration/README.md",
@@ -11933,6 +11939,12 @@
     "size": 2583,
     "updatedAt": "2026-07-30T03:24:31.694Z"
   },
+  "guides/ori/eval.md": {
+    "url": "https://openrouter.ai/docs/guides/ori/eval.md",
+    "lastModified": "Tue, 04 Aug 2026 03:56:45 GMT",
+    "size": 11290,
+    "updatedAt": "2026-08-04T03:56:45.148Z"
+  },
   "guides/ori/files.md": {
     "url": "https://openrouter.ai/docs/guides/ori/files.md",
     "lastModified": "Sat, 01 Aug 2026 11:45:33 GMT",
@@ -12007,9 +12019,9 @@
   },
   "guides/overview/multimodal/tts.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/tts.md",
-    "lastModified": "Fri, 31 Jul 2026 04:09:29 GMT",
-    "size": 15233,
-    "updatedAt": "2026-07-31T04:09:29.256Z"
+    "lastModified": "Tue, 04 Aug 2026 03:56:50 GMT",
+    "size": 16870,
+    "updatedAt": "2026-08-04T03:56:50.214Z"
   },
   "guides/overview/multimodal/video-generation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/multimodal/video-generation.md",

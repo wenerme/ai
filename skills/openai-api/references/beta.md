@@ -13210,14 +13210,14 @@ the `background` parameter set to `true` can be cancelled.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -13229,6 +13229,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-5.6-terra"`
 
       - `"gpt-5.6-luna"`
+
+      - `"gpt-5.5"`
 
       - `"gpt-5.4"`
 
@@ -19351,11 +19353,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
-- `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string or null`
+- `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string or null`
 
   Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
-  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
     Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
@@ -19364,6 +19366,8 @@ Learn when and how to compact long-running conversations in the [conversation st
     - `"gpt-5.6-terra"`
 
     - `"gpt-5.6-luna"`
+
+    - `"gpt-5.5"`
 
     - `"gpt-5.4"`
 
@@ -34211,14 +34215,14 @@ as input for the model's response.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+- `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
   Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/docs/models)
   to browse and compare available models.
 
-  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -34230,6 +34234,8 @@ as input for the model's response.
     - `"gpt-5.6-terra"`
 
     - `"gpt-5.6-luna"`
+
+    - `"gpt-5.5"`
 
     - `"gpt-5.4"`
 
@@ -40891,14 +40897,14 @@ as input for the model's response.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -40910,6 +40916,8 @@ as input for the model's response.
       - `"gpt-5.6-terra"`
 
       - `"gpt-5.6-luna"`
+
+      - `"gpt-5.5"`
 
       - `"gpt-5.4"`
 
@@ -52710,14 +52718,14 @@ Retrieves a model response with the given ID.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -52729,6 +52737,8 @@ Retrieves a model response with the given ID.
       - `"gpt-5.6-terra"`
 
       - `"gpt-5.6-luna"`
+
+      - `"gpt-5.5"`
 
       - `"gpt-5.4"`
 
@@ -69359,14 +69369,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -69378,6 +69388,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"gpt-5.6-terra"`
 
       - `"gpt-5.6-luna"`
+
+      - `"gpt-5.5"`
 
       - `"gpt-5.4"`
 
@@ -80401,14 +80413,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -80420,6 +80432,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-terra"`
 
         - `"gpt-5.6-luna"`
+
+        - `"gpt-5.5"`
 
         - `"gpt-5.4"`
 
@@ -91904,14 +91918,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -91923,6 +91937,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-terra"`
 
         - `"gpt-5.6-luna"`
+
+        - `"gpt-5.5"`
 
         - `"gpt-5.4"`
 
@@ -102854,14 +102870,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -102873,6 +102889,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-terra"`
 
         - `"gpt-5.6-luna"`
+
+        - `"gpt-5.5"`
 
         - `"gpt-5.4"`
 
@@ -114101,14 +114119,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -114120,6 +114138,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-terra"`
 
         - `"gpt-5.6-luna"`
+
+        - `"gpt-5.5"`
 
         - `"gpt-5.4"`
 
@@ -124920,14 +124940,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -124939,6 +124959,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-terra"`
 
         - `"gpt-5.6-luna"`
+
+        - `"gpt-5.5"`
 
         - `"gpt-5.4"`
 
@@ -160757,14 +160779,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -160776,6 +160798,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-terra"`
 
         - `"gpt-5.6-luna"`
+
+        - `"gpt-5.5"`
 
         - `"gpt-5.4"`
 
@@ -172169,14 +172193,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
 
-      - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+      - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
 
-        - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+        - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
           Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
           offers a wide range of models with different capabilities, performance
@@ -172188,6 +172212,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-5.6-terra"`
 
           - `"gpt-5.6-luna"`
+
+          - `"gpt-5.5"`
 
           - `"gpt-5.4"`
 
@@ -184983,14 +185009,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+    - `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -185002,6 +185028,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-terra"`
 
         - `"gpt-5.6-luna"`
+
+        - `"gpt-5.5"`
 
         - `"gpt-5.4"`
 
@@ -195867,14 +195895,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
 
-      - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more or string`
+      - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more or string`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
 
-        - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 92 more`
+        - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 93 more`
 
           Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
           offers a wide range of models with different capabilities, performance
@@ -195886,6 +195914,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-5.6-terra"`
 
           - `"gpt-5.6-luna"`
+
+          - `"gpt-5.5"`
 
           - `"gpt-5.4"`
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Adaptive DDoS Protection
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Adaptive DDoS Protection learns your unique traffic patterns and adapts to them to provide better protection against sophisticated DDoS attacks on layer 7 and layers 3/4, depending on your subscribed Cloudflare services.
 
@@ -65,20 +65,12 @@ To view traffic flagged by HTTP Adaptive DDoS Protection rules:
 2. Go to **Events**.
 3. Filter by `Service equals HTTP DDoS` and by rule ID.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Events**.
-3. Filter by `Service equals HTTP DDoS` and by rule ID.
-
 To view traffic flagged by L3/4 Adaptive DDoS Protection rules:
 
 1. In the Cloudflare dashboard, go to the **Security Analytics** page.
 [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Go to **Events**.
 3. Filter by rule ID.
-
-1. In the Cloudflare dashboard, go to the **Network analytics** page.
-[Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
-2. Filter by rule ID.
 
 You may also obtain information about flagged traffic through [Logpush](https://developers.cloudflare.com/logs/logpush/) or the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/).
 
@@ -121,5 +113,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/#page","headline":"Adaptive DDoS Protection · Cloudflare DDoS Protection docs","description":"Explore Cloudflare's Adaptive DDoS Protection, which learns traffic patterns to defend against sophisticated DDoS attacks on layers 3/4 and 7.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/#page","headline":"Adaptive DDoS Protection · Cloudflare DDoS Protection docs","description":"Explore Cloudflare's Adaptive DDoS Protection, which learns traffic patterns to defend against sophisticated DDoS attacks on layers 3/4 and 7.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/adaptive-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

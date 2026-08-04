@@ -82,51 +82,51 @@ assistant = client.beta.assistants.create(
 
 ```javascript
 const assistant = await client.beta.assistants.create({
-model: "gpt-4o",
-instructions:
-"You are a weather bot. Use the provided functions to answer questions.",
-tools: [
-{
-type: "function",
-function: {
-name: "getCurrentTemperature",
-description: "Get the current temperature for a specific location",
-parameters: {
-type: "object",
-properties: {
-location: {
-type: "string",
-description: "The city and state, e.g., San Francisco, CA",
-},
-unit: {
-type: "string",
-enum: ["Celsius", "Fahrenheit"],
-description:
-"The temperature unit to use. Infer this from the user's location.",
-},
-},
-required: ["location", "unit"],
-},
-},
-},
-{
-type: "function",
-function: {
-name: "getRainProbability",
-description: "Get the probability of rain for a specific location",
-parameters: {
-type: "object",
-properties: {
-location: {
-type: "string",
-description: "The city and state, e.g., San Francisco, CA",
-},
-},
-required: ["location"],
-},
-},
-},
-],
+  model: "gpt-4o",
+  instructions:
+    "You are a weather bot. Use the provided functions to answer questions.",
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "getCurrentTemperature",
+        description: "Get the current temperature for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+            unit: {
+              type: "string",
+              enum: ["Celsius", "Fahrenheit"],
+              description:
+                "The temperature unit to use. Infer this from the user's location.",
+            },
+          },
+          required: ["location", "unit"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "getRainProbability",
+        description: "Get the probability of rain for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+          },
+          required: ["location"],
+        },
+      },
+    },
+  ],
 });
 ```
 
@@ -148,7 +148,8 @@ message = client.beta.threads.messages.create(
 const thread = await client.beta.threads.create();
 const message = client.beta.threads.messages.create(thread.id, {
   role: "user",
-  content: "What's the weather in San Francisco today and the likelihood it'll rain?",
+  content:
+    "What's the weather in San Francisco today and the likelihood it'll rain?",
 });
 ```
 
@@ -267,74 +268,71 @@ class EventHandler extends EventEmitter {
     this.client = client;
   }
 
-async onEvent(event) {
-try {
-console.log(event);
-// Retrieve events that are denoted with 'requires_action'
-// since these will have our tool_calls
-if (event.event === "thread.run.requires_action") {
-await this.handleRequiresAction(
-event.data,
-event.data.id,
-event.data.thread_id,
-);
-}
-} catch (error) {
-console.error("Error handling event:", error);
-}
-}
+  async onEvent(event) {
+    try {
+      console.log(event);
+      // Retrieve events that are denoted with 'requires_action'
+      // since these will have our tool_calls
+      if (event.event === "thread.run.requires_action") {
+        await this.handleRequiresAction(
+          event.data,
+          event.data.id,
+          event.data.thread_id
+        );
+      }
+    } catch (error) {
+      console.error("Error handling event:", error);
+    }
+  }
 
-async handleRequiresAction(data, runId, threadId) {
-try {
-const toolOutputs =
-data.required_action.submit_tool_outputs.tool_calls.map((toolCall) => {
-if (toolCall.function.name === "getCurrentTemperature") {
-return {
-tool_call_id: toolCall.id,
-output: "57",
-};
-} else if (toolCall.function.name === "getRainProbability") {
-return {
-tool_call_id: toolCall.id,
-output: "0.06",
-};
-}
-});
-// Submit all the tool outputs at the same time
-await this.submitToolOutputs(toolOutputs, runId, threadId);
-} catch (error) {
-console.error("Error processing required action:", error);
-}
-}
+  async handleRequiresAction(data, runId, threadId) {
+    try {
+      const toolOutputs =
+        data.required_action.submit_tool_outputs.tool_calls.map((toolCall) => {
+          if (toolCall.function.name === "getCurrentTemperature") {
+            return {
+              tool_call_id: toolCall.id,
+              output: "57",
+            };
+          } else if (toolCall.function.name === "getRainProbability") {
+            return {
+              tool_call_id: toolCall.id,
+              output: "0.06",
+            };
+          }
+        });
+      // Submit all the tool outputs at the same time
+      await this.submitToolOutputs(toolOutputs, runId, threadId);
+    } catch (error) {
+      console.error("Error processing required action:", error);
+    }
+  }
 
-async submitToolOutputs(toolOutputs, runId, threadId) {
-try {
-// Use the submitToolOutputsStream helper
-const stream = this.client.beta.threads.runs.submitToolOutputsStream(
-threadId,
-runId,
-{ tool_outputs: toolOutputs },
-);
-for await (const event of stream) {
-this.emit("event", event);
-}
-} catch (error) {
-console.error("Error submitting tool outputs:", error);
-}
-}
+  async submitToolOutputs(toolOutputs, runId, threadId) {
+    try {
+      // Use the submitToolOutputsStream helper
+      const stream = this.client.beta.threads.runs.submitToolOutputsStream(
+        runId,
+        { thread_id: threadId, tool_outputs: toolOutputs }
+      );
+      for await (const event of stream) {
+        this.emit("event", event);
+      }
+    } catch (error) {
+      console.error("Error submitting tool outputs:", error);
+    }
+  }
 }
 
 const eventHandler = new EventHandler(client);
 eventHandler.on("event", eventHandler.onEvent.bind(eventHandler));
 
-const stream = await client.beta.threads.runs.stream(
-threadId,
-{ assistant_id: assistantId },
-eventHandler,
-);
+const stream = await client.beta.threads.runs.stream(threadId, {
+  assistant_id: assistantId,
+});
 
 for await (const event of stream) {
-eventHandler.emit("event", event);
+  eventHandler.emit("event", event);
 }
 ```
 
@@ -418,16 +416,15 @@ const handleRequiresAction = async (run) => {
             output: "0.06",
           };
         }
-      },
+      }
     );
 
     // Submit all tool outputs at once after collecting them in a list
     if (toolOutputs.length > 0) {
-      run = await client.beta.threads.runs.submitToolOutputsAndPoll(
-        thread.id,
-        run.id,
-        { tool_outputs: toolOutputs },
-      );
+      run = await client.beta.threads.runs.submitToolOutputsAndPoll(run.id, {
+        thread_id: thread.id,
+        tool_outputs: toolOutputs,
+      });
       console.log("Tool outputs submitted successfully.");
     } else {
       console.log("No tool outputs to submit.");
@@ -435,27 +432,26 @@ const handleRequiresAction = async (run) => {
 
     // Check status after submitting tool outputs
     return handleRunStatus(run);
-
-}
+  }
 };
 
 const handleRunStatus = async (run) => {
-// Check if the run is completed
-if (run.status === "completed") {
-let messages = await client.beta.threads.messages.list(thread.id);
-console.log(messages.data);
-return messages.data;
-} else if (run.status === "requires_action") {
-console.log(run.status);
-return await handleRequiresAction(run);
-} else {
-console.error("Run did not complete:", run);
-}
+  // Check if the run is completed
+  if (run.status === "completed") {
+    let messages = await client.beta.threads.messages.list(thread.id);
+    console.log(messages.data);
+    return messages.data;
+  } else if (run.status === "requires_action") {
+    console.log(run.status);
+    return await handleRequiresAction(run);
+  } else {
+    console.error("Run did not complete:", run);
+  }
 };
 
 // Create and poll run
 let run = await client.beta.threads.runs.createAndPoll(thread.id, {
-assistant_id: assistant.id,
+  assistant_id: assistant.id,
 });
 
 handleRunStatus(run);
@@ -533,62 +529,62 @@ assistant = client.beta.assistants.create(
 
 ```javascript
 const assistant = await client.beta.assistants.create({
-model: "gpt-4o-2024-08-06",
-instructions:
-"You are a weather bot. Use the provided functions to answer questions.",
-tools: [
-{
-type: "function",
-function: {
-name: "getCurrentTemperature",
-description: "Get the current temperature for a specific location",
-parameters: {
-type: "object",
-properties: {
-location: {
-type: "string",
-description: "The city and state, e.g., San Francisco, CA",
-},
-unit: {
-type: "string",
-enum: ["Celsius", "Fahrenheit"],
-description:
-"The temperature unit to use. Infer this from the user's location.",
-},
-},
-required: ["location", "unit"],
-// highlight-start
-additionalProperties: false
-// highlight-end
-},
-// highlight-start
-strict: true
-// highlight-end
-},
-},
-{
-type: "function",
-function: {
-name: "getRainProbability",
-description: "Get the probability of rain for a specific location",
-parameters: {
-type: "object",
-properties: {
-location: {
-type: "string",
-description: "The city and state, e.g., San Francisco, CA",
-},
-},
-required: ["location"],
-// highlight-start
-additionalProperties: false
-// highlight-end
-},
-// highlight-start
-strict: true
-// highlight-end
-},
-},
-],
+  model: "gpt-4o-2024-08-06",
+  instructions:
+    "You are a weather bot. Use the provided functions to answer questions.",
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "getCurrentTemperature",
+        description: "Get the current temperature for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+            unit: {
+              type: "string",
+              enum: ["Celsius", "Fahrenheit"],
+              description:
+                "The temperature unit to use. Infer this from the user's location.",
+            },
+          },
+          required: ["location", "unit"],
+          // highlight-start
+          additionalProperties: false,
+          // highlight-end
+        },
+        // highlight-start
+        strict: true,
+        // highlight-end
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "getRainProbability",
+        description: "Get the probability of rain for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+          },
+          required: ["location"],
+          // highlight-start
+          additionalProperties: false,
+          // highlight-end
+        },
+        // highlight-start
+        strict: true,
+        // highlight-end
+      },
+    },
+  ],
 });
 ```

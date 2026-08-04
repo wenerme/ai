@@ -74,7 +74,7 @@ curl https://api.openai.com/v1/audio/speech \
   --output speech.mp3
 ```
 
-```cli
+```bash
 openai audio:speech create \
   --model gpt-4o-mini-tts \
   --voice coral \
@@ -334,6 +334,7 @@ const sessionConfig = JSON.stringify({
   },
 });
 ```
+
 
 ## Related guides
 

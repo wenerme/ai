@@ -23,12 +23,13 @@ button = Button(
 
 Actions can also be sent imperatively by your frontend with `sendAction()`. This is probably most useful when you need ChatKit to respond to interaction happening outside ChatKit, but it can also be used to chain actions when you need to respond on both the client and the server (more on that below).
 
-```tsx
+```typescript
 await chatKit.sendAction({
   type: "example",
   payload: { id: 123 },
 });
 ```
+
 
 ## Handling actions
 
@@ -83,25 +84,26 @@ button = Button(
 
 Then, when the action is triggered, it will then be passed to a callback that you provide when instantiating ChatKit.
 
-```ts
-async function handleWidgetAction(action: {type: string, Record<string, unknown>}) {
+```typescript
+async function handleWidgetAction(action: WidgetAction) {
   if (action.type === "example") {
-    const res = await doSomething(action)
+    const res = await doSomething(action);
 
     // You can fire off actions to your server from here as well.
-    // e.g. if you want to stream new thread items or update a widget.
+    // For example, stream new thread items or update a widget.
     await chatKit.sendAction({
       type: "example_complete",
-      payload: res
-    })
+      payload: res,
+    });
   }
 }
 
 chatKit.setOptions({
-  // other options...
-  widgets: { onAction: handleWidgetAction }
-})
+  // Other options...
+  widgets: { onAction: handleWidgetAction },
+});
 ```
+
 
 ## Strongly typed actions
 

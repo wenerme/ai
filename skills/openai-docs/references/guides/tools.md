@@ -48,7 +48,7 @@ curl "https://api.openai.com/v1/responses" \
 }'
 ```
 
-```cli
+```bash
 openai responses create \
   --model gpt-5.6 \
   --raw-output \
