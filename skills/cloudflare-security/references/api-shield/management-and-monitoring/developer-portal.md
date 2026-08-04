@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build developer portals
 
-Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once your endpoints are saved, API Shield doubles as an API catalog. API Shield can build an interactive documentation portal with the knowledge it has of your APIs, or you can upload a new OpenAPI schema file to build a documentation portal ad-hoc.
 
@@ -22,17 +22,6 @@ To create a developer portal:
 [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **API abuse**.
 3. On **Create a developer portal**, select **Create site**.
-4. Upload an OpenAPI v3.0 schema file or choose to select an existing schema from API Shield.
-Note
-If you do not have a schema to upload or to select from a pre-existing schema, export your Endpoint Management schema. For best results, include the learned parameters.
-Only API schemas uploaded to Schema validation 2.0 are available when selecting existing schemas.
-5. Select **Download project files** to save a local copy of the files that will be uploaded to Cloudflare Pages. Downloading the project files can be helpful if you wish to modify the project in any way and then upload the new version manually to Pages.
-6. Select **Create pages project** to begin project creation. A new Pages project will be automatically created and your API schema will be automatically uploaded to the project along with other supporting static content.
-7. Select **Deploy site**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **API Shield** \> **Settings**.
-3. Under **Create a developer portal**, select **Create site**.
 4. Upload an OpenAPI v3.0 schema file or choose to select an existing schema from API Shield.
 Note
 If you do not have a schema to upload or to select from a pre-existing schema, export your Endpoint Management schema. For best results, include the learned parameters.
@@ -64,5 +53,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/#page","headline":"Build developer portals · Cloudflare API Shield docs","description":"Create interactive API documentation portals from saved endpoints or schemas.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/#page","headline":"Build developer portals · Cloudflare API Shield docs","description":"Create interactive API documentation portals from saved endpoints or schemas.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/developer-portal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

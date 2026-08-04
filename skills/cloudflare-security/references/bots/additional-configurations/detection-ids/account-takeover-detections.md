@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Account takeover detections
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Using the detection IDs below, you can detect and mitigate account takeover attacks. You can monitor the number of login requests for a given software and network combination, as well as the percentage of login errors. When it reaches a suspicious level, you can prevent these attacks by using [custom rules](https://developers.cloudflare.com/waf/custom-rules/), [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/), and [Workers](https://developers.cloudflare.com/workers/).
 
@@ -42,12 +42,6 @@ To access account takeover detections:
 3. Fill out the form using **Bot Detection IDs** along with other necessary information.
 4. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **WAF**.
-3. Under **Custom rules**, select **Create rule**.
-4. Fill out the form using **Bot Detection IDs** along with other necessary information.
-5. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.
-
 ```js
 
 (any(cf.bot_management.detection_ids[*] eq 201326593))
@@ -65,12 +59,6 @@ To use rate limiting rules with account takeover detections:
 3. Fill out the form using the **Custom expression builder** and `cf.bot_management_detection_ids` along with other necessary information.
 4. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **WAF**.
-3. Under **Rate limiting rules**, select **Create rule**.
-4. Fill out the form using the **Custom expression builder** and `cf.bot_management_detection_ids` along with other necessary information.
-5. Select **Save as draft** to return to the rule later, or **Deploy** to deploy the rule.
-
 Enhanced with leaked credential detections
 
 The rule can be enhanced with Leaked Credential Checks. Refer to the [WAF documentation](https://developers.cloudflare.com/waf/detections/leaked-credentials/) for more information on how to include leaked credentials and account takeover detections in a rate limiting rule.
@@ -84,5 +72,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/#page","headline":"Account takeover detections · Cloudflare bot solutions docs","description":"Detection IDs for identifying and mitigating automated account takeover attacks.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/#page","headline":"Account takeover detections · Cloudflare bot solutions docs","description":"Detection IDs for identifying and mitigating automated account takeover attacks.","url":"https://developers.cloudflare.com/bots/additional-configurations/detection-ids/account-takeover-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Account takeover"]}
 ```

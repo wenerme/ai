@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser Integrity Check
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/browser-integrity-check/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/tools/browser-integrity-check/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Browser Integrity Check (BIC) looks for common HTTP headers abused most commonly by spammers and denies access to your page.
 
@@ -31,11 +31,6 @@ To disable BIC globally for your zone:
 2. (Optional) Filter by **DDoS attacks**.
 3. Turn off **Browser integrity check**.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-2. Select your account and zone.
-3. Go to **Security** \> **Settings**.
-4. Turn off **Browser Integrity Check**.
-
 ### Disable selectively
 
 To disable BIC selectively, you can skip Browser Integrity Check using a [custom rule with a skip action](https://developers.cloudflare.com/waf/custom-rules/skip/).
@@ -51,5 +46,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/browser-integrity-check/#page","headline":"Browser Integrity Check · Cloudflare Web Application Firewall (WAF) docs","description":"Block requests with suspicious HTTP headers using Browser Integrity Check.","url":"https://developers.cloudflare.com/waf/tools/browser-integrity-check/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/browser-integrity-check/#page","headline":"Browser Integrity Check · Cloudflare Web Application Firewall (WAF) docs","description":"Block requests with suspicious HTTP headers using Browser Integrity Check.","url":"https://developers.cloudflare.com/waf/tools/browser-integrity-check/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

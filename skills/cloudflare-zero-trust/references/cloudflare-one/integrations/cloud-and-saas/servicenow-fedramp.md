@@ -25,6 +25,10 @@ The ServiceNow (FedRAMP) integration detects a variety of data loss prevention, 
 * `admin` access to a ServiceNow (FedRAMP) instance
 * Ability to [create an OAuth API endpoint for external clients ↗](https://docs.servicenow.com/csh?topicname=t%5FCreateEndpointforExternalClients)
 
+Note
+
+If a **Scope Restriction** field appears, set it to **Broadly scoped**.
+
 ## Integration permissions
 
 For the ServiceNow (FedRAMP) integration to function, Cloudflare CASB requires the following permissions:

@@ -35,14 +35,16 @@ client.vector_stores.files.upload_and_poll(        # Upload file
 import OpenAI from "openai";
 const client = new OpenAI();
 
-const vector_store = await client.vectorStores.create({   // Create vector store
-    name: "Support FAQ",
+const vector_store = await client.vectorStores.create({
+  // Create vector store
+  name: "Support FAQ",
 });
 
-await client.vector_stores.files.upload_and_poll({         // Upload file
-    vector_store_id: vector_store.id,
-    file: fs.createReadStream("customer_policies.txt"),
-});
+await client.vectorStores.files.uploadAndPoll(
+  vector_store.id,
+  // Upload file
+  fs.createReadStream("customer_policies.txt")
+);
 ```
 
 
@@ -64,9 +66,8 @@ results = client.vector_stores.search(
 ```javascript
 const userQuery = "What is the return policy?";
 
-const results = await client.vectorStores.search({
-    vector_store_id: vector_store.id,
-    query: userQuery,
+const results = await client.vectorStores.search(vector_store.id, {
+  query: userQuery,
 });
 ```
 
@@ -106,9 +107,8 @@ results = client.vector_stores.search(
 ```
 
 ```javascript
-const results = await client.vectorStores.search({
-    vector_store_id: vector_store.id,
-    query: "How many woodchucks are allowed per passenger?",
+const results = await client.vectorStores.search(vector_store.id, {
+  query: "How many woodchucks are allowed per passenger?",
 });
 ```
 
@@ -371,9 +371,9 @@ client.vector_stores.create(
 ```
 
 ```javascript
-await client.vector_stores.create({
-    name: "Support FAQ",
-    file_ids: ["file_123"]
+await client.vectorStores.create({
+  name: "Support FAQ",
+  file_ids: ["file_123"],
 });
 ```
 
@@ -393,9 +393,7 @@ client.vector_stores.retrieve(
 ```
 
 ```javascript
-await client.vector_stores.retrieve({
-    vector_store_id: "vs_123"
-});
+await client.vectorStores.retrieve("vs_123");
 ```
 
   
@@ -415,9 +413,8 @@ client.vector_stores.update(
 ```
 
 ```javascript
-await client.vector_stores.update({
-    vector_store_id: "vs_123",
-    name: "Support FAQ Updated"
+await client.vectorStores.update("vs_123", {
+  name: "Support FAQ Updated",
 });
 ```
 
@@ -437,9 +434,7 @@ client.vector_stores.delete(
 ```
 
 ```javascript
-await client.vector_stores.delete({
-    vector_store_id: "vs_123"
-});
+await client.vectorStores.delete("vs_123");
 ```
 
   
@@ -456,7 +451,7 @@ client.vector_stores.list()
 ```
 
 ```javascript
-await client.vector_stores.list();
+await client.vectorStores.list();
 ```
 
 
@@ -481,9 +476,8 @@ client.vector_stores.files.create_and_poll(
 ```
 
 ```javascript
-await client.vector_stores.files.create_and_poll({
-    vector_store_id: "vs_123",
-    file_id: "file_123"
+await client.vectorStores.files.createAndPoll("vs_123", {
+  file_id: "file_123",
 });
 ```
 
@@ -504,10 +498,10 @@ client.vector_stores.files.upload_and_poll(
 ```
 
 ```javascript
-await client.vector_stores.files.upload_and_poll({
-    vector_store_id: "vs_123",
-    file: fs.createReadStream("customer_policies.txt"),
-});
+await client.vectorStores.files.uploadAndPoll(
+  "vs_123",
+  fs.createReadStream("customer_policies.txt")
+);
 ```
 
   
@@ -527,9 +521,8 @@ client.vector_stores.files.retrieve(
 ```
 
 ```javascript
-await client.vector_stores.files.retrieve({
-    vector_store_id: "vs_123",
-    file_id: "file_123"
+await client.vectorStores.files.retrieve("file_123", {
+  vector_store_id: "vs_123",
 });
 ```
 
@@ -551,10 +544,9 @@ client.vector_stores.files.update(
 ```
 
 ```javascript
-await client.vector_stores.files.update({
-    vector_store_id: "vs_123",
-    file_id: "file_123",
-    attributes: { key: "value" }
+await client.vectorStores.files.update("file_123", {
+  vector_store_id: "vs_123",
+  attributes: { key: "value" },
 });
 ```
 
@@ -575,9 +567,8 @@ client.vector_stores.files.delete(
 ```
 
 ```javascript
-await client.vector_stores.files.delete({
-    vector_store_id: "vs_123",
-    file_id: "file_123"
+await client.vectorStores.files.delete("file_123", {
+  vector_store_id: "vs_123",
 });
 ```
 
@@ -597,9 +588,7 @@ client.vector_stores.files.list(
 ```
 
 ```javascript
-await client.vector_stores.files.list({
-    vector_store_id: "vs_123"
-});
+await client.vectorStores.files.list("vs_123");
 ```
 
 
@@ -633,22 +622,23 @@ client.vector_stores.file_batches.create_and_poll(
 ```
 
 ```javascript
-await client.vector_stores.file_batches.create_and_poll({
-    vector_store_id: "vs_123",
-    files: [
-        {
-            file_id: "file_123",
-            attributes: { department: "finance" }
+await client.vectorStores.fileBatches.createAndPoll("vs_123", {
+  files: [
+    {
+      file_id: "file_123",
+      attributes: { department: "finance" },
+    },
+    {
+      file_id: "file_456",
+      chunking_strategy: {
+        type: "static",
+        static: {
+          max_chunk_size_tokens: 1200,
+          chunk_overlap_tokens: 200,
         },
-        {
-            file_id: "file_456",
-            chunking_strategy: {
-                type: "static",
-                max_chunk_size_tokens: 1200,
-                chunk_overlap_tokens: 200
-            }
-        }
-    ]
+      },
+    },
+  ],
 });
 ```
 
@@ -669,9 +659,8 @@ client.vector_stores.file_batches.retrieve(
 ```
 
 ```javascript
-await client.vector_stores.file_batches.retrieve({
-    vector_store_id: "vs_123",
-    batch_id: "vsfb_123"
+await client.vectorStores.fileBatches.retrieve("vsfb_123", {
+  vector_store_id: "vs_123",
 });
 ```
 
@@ -692,9 +681,8 @@ client.vector_stores.file_batches.cancel(
 ```
 
 ```javascript
-await client.vector_stores.file_batches.cancel({
-    vector_store_id: "vs_123",
-    batch_id: "vsfb_123"
+await client.vectorStores.fileBatches.cancel("vsfb_123", {
+  vector_store_id: "vs_123",
 });
 ```
 
@@ -716,7 +704,7 @@ client.vector_stores.file_batches.list_files(
 
 ```javascript
 await client.vectorStores.fileBatches.listFiles("vsfb_123", {
-    vector_store_id: "vs_123"
+  vector_store_id: "vs_123",
 });
 ```
 
@@ -745,13 +733,13 @@ client.vector_stores.files.create(
 ```
 
 ```javascript
-await client.vector_stores.files.create(<vector_store_id>, {
-    file_id: "file_123",
-    attributes: {
-        region: "US",
-        category: "Marketing",
-        date: 1672531200, // Jan 1, 2023
-    },
+await client.vectorStores.files.create("<vector_store_id>", {
+  file_id: "file_123",
+  attributes: {
+    region: "US",
+    category: "Marketing",
+    date: 1672531200, // Jan 1, 2023
+  },
 });
 ```
 
@@ -773,12 +761,11 @@ client.vector_stores.update(
 ```
 
 ```javascript
-await client.vector_stores.update({
-    vector_store_id: "vs_123",
-    expires_after: {
-        anchor: "last_active_at",
-        days: 7,
-    },
+await client.vectorStores.update("vs_123", {
+  expires_after: {
+    anchor: "last_active_at",
+    days: 7,
+  },
 });
 ```
 
@@ -853,9 +840,8 @@ const client = new OpenAI();
 
 const userQuery = "What is the return policy?";
 
-const results = await client.vectorStores.search({
-    vector_store_id: vector_store.id,
-    query: userQuery,
+const results = await client.vectorStores.search(vector_store.id, {
+  query: userQuery,
 });
 ```
 
@@ -887,20 +873,23 @@ print(completion.choices[0].message.content)
 ```javascript
 const formattedResults = formatResults(results.data);
 // Join the text content of all results
-const textSources = results.data.map(result => result.content.map(c => c.text).join('\n')).join('\n');
+const textSources = results.data
+  .map((result) => result.content.map((c) => c.text).join("\n"))
+  .join("\n");
 
 const completion = await client.chat.completions.create({
-    model: "gpt-5.6",
-    messages: [
-        {
-            role: "developer",
-            content: "Produce a concise answer to the query based on the provided sources."
-        },
-        {
-            role: "user",
-            content: `Sources: ${formattedResults}\n\nQuery: 'What is the return policy?'`
-        }
-    ],
+  model: "gpt-5.6",
+  messages: [
+    {
+      role: "developer",
+      content:
+        "Produce a concise answer to the query based on the provided sources.",
+    },
+    {
+      role: "user",
+      content: `Sources: ${formattedResults}\n\nQuery: '${userQuery}'`,
+    },
+  ],
 });
 
 console.log(completion.choices[0].message.content);
@@ -931,14 +920,14 @@ def format_results(results):
 
 ```javascript
 function formatResults(results) {
-    let formattedResults = '';
-    for (const result of results.data) {
-        let formattedResult = `<result file_id='${result.file_id}' file_name='${result.file_name}'>`;
-        for (const part of result.content) {
-            formattedResult += `<content>${part.text}</content>`;
-        }
-        formattedResults += formattedResult + "</result>";
+  let formattedResults = "";
+  for (const result of results.data) {
+    let formattedResult = `<result file_id='${result.file_id}' file_name='${result.file_name}'>`;
+    for (const part of result.content) {
+      formattedResult += `<content>${part.text}</content>`;
     }
-    return `<sources>${formattedResults}</sources>`;
+    formattedResults += formattedResult + "</result>";
+  }
+  return `<sources>${formattedResults}</sources>`;
 }
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Discover and secure your API endpoints (Free, Pro, and Business)
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once your API is in production and receiving traffic, you need to decide which endpoints to protect first, what restrictions to apply, and how to monitor for abuse without blocking legitimate clients. This guide walks through that process in five stages: inventory your endpoints, enforce encrypted connections, restrict access to expected traffic patterns, block automated abuse, and monitor the results.
 
@@ -118,17 +118,6 @@ The following custom security rule blocks requests to `/api/` paths that are mis
 5. For **Choose action**, select **Block**.
 6. Select **Deploy**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account and domain.
-2. Go to **Security** \> **WAF** \> **Custom rules**.
-3. Select **Create rule**.
-4. Define the rule name. For example, `Block API requests missing Content-Type`.
-5. In the expression editor, enter:
-```txt
-(starts_with(http.request.uri.path, "/api/") and not len(http.request.headers["content-type"][0]) > 0)
-```
-6. For **Choose action**, select **Block**.
-7. Select **Deploy**.
-
 ### Restrict HTTP methods per endpoint
 
 If your `/api/users` endpoint only accepts `GET` and `POST` requests, block all other HTTP methods on that path. This prevents attackers from probing with `PUT`, `DELETE`, or `PATCH` requests against endpoints that do not support them.
@@ -144,18 +133,6 @@ If your `/api/users` endpoint only accepts `GET` and `POST` requests, block all 
 Adjust the path and allowed methods to match your endpoint.
 5. For **Choose action**, select **Block**.
 6. Select **Deploy**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account and domain.
-2. Go to **Security** \> **WAF** \> **Custom rules**
-3. Select **Create rule**.
-4. Define the rule name. For example, `Block unexpected methods on /api/users`.
-5. In the expression editor, enter:
-```txt
-(http.request.uri.path eq "/api/users" and http.request.method ne "GET" and http.request.method ne "POST")
-```
-Adjust the path and allowed methods to match your endpoint.
-6. For **Choose action**, select **Block**.
-7. Select **Deploy**.
 
 Repeat this pattern for each endpoint with restricted methods. You can combine multiple paths into a single rule using [or operators](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#logical-operators) if they share the same allowed methods.
 
@@ -184,17 +161,6 @@ The following example limits requests to `/api/auth/login` to 10 per minute per 
 7. Under **Then take action**, select **Block**.
 8. Set the **Duration** (mitigation timeout) to **1 minute**.
 9. Select **Deploy**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and zone.
-2. Go to **Security** \> **WAF** \> **Rate limiting rules**.
-3. Select **Create rule**.
-4. Enter a descriptive name. For example, `Rate limit login endpoint`.
-5. In the **Field** drop-down, select **URI Path**. Set **Operator** to **equals** and **Value** to `/api/auth/login`.
-6. Under **With the same characteristics**, add **IP**.
-7. Under **When rate exceeds**, set **Requests** to `10` and **Period** to **1 minute**.
-8. Under **Then take action**, select **Block**.
-9. Set the **Duration** (mitigation timeout) to **1 minute**.
-10. Select **Deploy**.
 
 For more information on rate limiting parameters and counting characteristics, refer to [Rate limiting parameters](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/).
 
@@ -228,10 +194,6 @@ Bot Fight Mode challenges requests that match known bot patterns. It applies to 
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **Bots**.
-3. For **Bot Fight Mode**, select **On**.
-
 Bot Fight Mode may interfere with legitimate automated traffic to your API, such as monitoring tools, CI/CD pipelines, or partner integrations. If you have legitimate bot clients, create an exception rule before turning on Bot Fight Mode (see the next section).
 
 For more information on Bot Fight Mode behavior and limitations, refer to [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/).
@@ -252,18 +214,6 @@ Replace the IP range and User-Agent with values that match your legitimate bot c
 5. For **Choose action**, select _Skip_ and then select **All Super Bot Fight Mode rules**.
 6. Select **Deploy**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account and domain.
-2. Go to **Security** \> **WAF** \> **Custom rules**
-3. Select **Create rule**.
-4. Define the rule name. For example, `Skip bot protections for monitoring service`.
-5. Build an expression that matches your known bot traffic. For example, to skip protections for requests from a specific IP range with a known User-Agent:
-```txt
-(ip.src in {203.0.113.0/24} and http.user_agent contains "MonitoringBot")
-```
-Replace the IP range and User-Agent with values that match your legitimate bot clients.
-6. For **Choose action**, select _Skip_ and then select **All Super Bot Fight Mode rules**.
-7. Select **Deploy**.
-
 Note
 
 Place exception rules above (before) enforcement rules in your rule list. Cloudflare evaluates custom rules in order, and the first matching rule with a terminating action stops evaluation. For more information, refer to [Rule execution order](https://developers.cloudflare.com/waf/concepts/#rule-execution-order).
@@ -274,10 +224,7 @@ Place exception rules above (before) enforcement rules in your rule list. Cloudf
 
 Note
 
-If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disable Bot Fight Mode in your Bot settings.
-
-* Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
-* New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
+If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** \> **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
 
 To configure Super Bot Fight Mode:
 
@@ -287,16 +234,6 @@ To configure Super Bot Fight Mode:
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
 5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
-
-  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
-  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
-  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
-  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **Bots**.
-3. Select **Configure Super Bot Fight Mode**.
-4. Choose how your domain should respond to various types of traffic:
 
   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
@@ -358,14 +295,6 @@ After deploying your security rules, review the results to identify false positi
   * Requests with valid API keys or authorization headers
   * Requests from monitoring services with known User-Agent strings
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and zone.
-2. Go to **Security** \> **Events**.
-3. Add a filter for **URI Path** starts with `/api/`.
-4. Review the events. Look for legitimate clients that are being blocked (false positives). Common indicators of false positives:
-  * Requests from known partner IP addresses
-  * Requests with valid API keys or authorization headers
-  * Requests from monitoring services with known User-Agent strings
-
 If you find false positives, update your custom rules to exclude the affected traffic. Refer to the [exception rule procedure](#create-exception-rules-for-legitimate-bot-clients-pro-business) in an earlier section.
 
 ### Tune rate limiting thresholds
@@ -375,13 +304,6 @@ Rate limiting thresholds that are too tight block legitimate clients. Thresholds
 1. In the Cloudflare dashboard, go to the **Analytics** page.
 [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
-3. Filter by **Action** equals **Block** and **Service** equals **Rate limiting**.
-4. Check whether blocked requests come from legitimate clients or abusive traffic.
-5. If legitimate clients are being rate limited, edit the relevant rate limiting rule to increase the request threshold or widen the time period for the affected rule.
-6. If abusive traffic is getting through, lower the rule threshold or narrow the time period.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and zone.
-2. Go to **Security** \> **Events**.
 3. Filter by **Action** equals **Block** and **Service** equals **Rate limiting**.
 4. Check whether blocked requests come from legitimate clients or abusive traffic.
 5. If legitimate clients are being rate limited, edit the relevant rate limiting rule to increase the request threshold or widen the time period for the affected rule.
@@ -456,5 +378,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/#page","headline":"Discover and secure your API endpoints (Free, Pro, and Business) · Cloudflare use cases","description":"Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.","url":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Security"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/#page","headline":"Discover and secure your API endpoints (Free, Pro, and Business) · Cloudflare use cases","description":"Block API abuse, restrict unauthorized access, and monitor endpoint traffic using layered Cloudflare security features.","url":"https://developers.cloudflare.com/use-cases/solutions/discover-secure-api-endpoints/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Security"]}
 ```

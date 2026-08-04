@@ -102,6 +102,20 @@ app.use(
 )
 ```
 
+###  realm: `string`
+
+The protection space described by the `realm` parameter of the `WWW-Authenticate` challenge header returned on `401` responses. The default is the request URL.
+
+```ts
+app.use(
+  '/auth/*',
+  jwt({
+    secret: 'it-is-very-secret',
+    realm: 'my-protected-api',
+  })
+)
+```
+
 ###  verification: `VerifyOptions`
 
 Options controlling verification of the token.

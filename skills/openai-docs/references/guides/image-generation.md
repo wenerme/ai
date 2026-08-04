@@ -120,7 +120,7 @@ curl -X POST "https://api.openai.com/v1/images/generations" \
     }' | jq -r '.data[0].b64_json' | base64 --decode > otter.png
 ```
 
-```cli
+```bash
 openai images generate \
   --model gpt-image-2 \
   --prompt "A children's book drawing of a veterinarian using a stethoscope to listen to the heartbeat of a baby otter." \
@@ -1002,7 +1002,7 @@ curl -s -D >(grep -i x-request-id >&2) \
   -F 'prompt=Generate a photorealistic image of a gift basket on a white background labeled "Relax & Unwind" with a ribbon and handwriting-like font, containing all the items in the reference pictures'
 ```
 
-```cli
+```bash
 openai images edit \
   --model gpt-image-2 \
   --image body-lotion.png \
@@ -1209,7 +1209,7 @@ curl -s -D >(grep -i x-request-id >&2) \
   -F 'prompt=A sunlit indoor lounge area with a pool containing a flamingo'
 ```
 
-```cli
+```bash
 openai images edit \
   --model gpt-image-2 \
   --image sunlit_lounge.png \

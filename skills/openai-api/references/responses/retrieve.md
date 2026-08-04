@@ -4207,13 +4207,15 @@ Retrieves a model response with the given ID.
 
     - `string`
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 78 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 79 more`
 
       - `"gpt-5.6-sol"`
 
       - `"gpt-5.6-terra"`
 
       - `"gpt-5.6-luna"`
+
+      - `"gpt-5.5"`
 
       - `"gpt-5.4"`
 

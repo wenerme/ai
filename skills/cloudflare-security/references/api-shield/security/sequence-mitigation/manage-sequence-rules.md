@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage sequence rules
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare recommends creating sequence rules using WAF custom rules. Refer to the [sequence custom rules documentation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/) for more information.
 
@@ -40,31 +40,9 @@ Sequence mitigation is currently in a closed beta and is only available for Ente
 
   * **Allow**: This will create a positive security model by defining approved sequences on your API.
   * **Log** / **Block**: This will test or enforce a negative security model defining known bad sequences on your API.
-  Note
-  If you chose **Allow**, select whether to log or block the request to the final endpoint when users do not first request the starting endpoint in the sequence.
+Note
+If you chose **Allow**, select whether to log or block the request to the final endpoint when users do not first request the starting endpoint in the sequence.
 7. Select **Create rule**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **API Shield** \> **API Rules**.
-3. Select **Create sequence rule**.
-4. Name your rule.
-5. Select a starting endpoint. This is the endpoint that you expect users to hit first in their request flow when using your API.
-
-  * Choose a hostname to display the list of endpoints for that hostname.
-  * Choose an endpoint.
-  * Select **Set as starting endpoint**.
-6. Select a final endpoint. This is the endpoint you are targeting for protection.
-
-  * Choose a hostname to display the list of endpoints for that hostname.
-  * Choose an endpoint.
-  * Select **Set as ending endpoint**.
-7. Choose an action that corresponds to the security model type:
-
-  * **Allow**: This will create a positive security model by defining approved sequences on your API.
-  * **Log** / **Block**: This will test or enforce a negative security model defining known bad sequences on your API.
-  Note
-  If you chose **Allow**, select whether to log or block the request to the final endpoint when users do not first request the starting endpoint in the sequence.
-8. Select **Create rule**.
 
 ## Edit a sequence rule
 
@@ -85,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/#page","headline":"Manage sequence rules · Cloudflare API Shield docs","description":"Create and manage sequence rules in the dashboard or via WAF custom rules.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/#page","headline":"Manage sequence rules · Cloudflare API Shield docs","description":"Create and manage sequence rules in the dashboard or via WAF custom rules.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -197,16 +197,43 @@ MODEL: 'openai/gpt-4o-mini-tts-2025-12-15'
 
 ### Request Parameters
 
-| Parameter         | Type   | Required           | Description                                                                                                                                                                                                                                                            |
-| ----------------- | ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `model`           | string | Yes                | The TTS model to use (e.g., `openai/gpt-4o-mini-tts-2025-12-15`, `mistralai/voxtral-mini-tts-2603`)                                                                                                                                                                    |
-| `input`           | string | Yes                | The text to synthesize into speech                                                                                                                                                                                                                                     |
-| `voice`           | string | Provider-dependent | Voice identifier. Available voices vary by model — check each model's page on the [Models page](/docs/guides/overview/models) for supported voices. Omit this parameter only when the selected provider documents a default voice; otherwise an explicit voice is required. |
-| `response_format` | string | No                 | Audio output format: `mp3` or `pcm`. Defaults to `pcm`                                                                                                                                                                                                                 |
-| `speed`           | number | No                 | Playback speed multiplier. Only used by models that support it (e.g., OpenAI TTS). Ignored by other providers. Defaults to `1.0`                                                                                                                                       |
-| `provider`        | object | No                 | Provider-specific passthrough configuration                                                                                                                                                                                                                            |
+| Parameter          | Type   | Required           | Description                                                                                                                                                                                                                                                            |
+| ------------------ | ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `model`            | string | Yes                | The TTS model to use (e.g., `openai/gpt-4o-mini-tts-2025-12-15`, `mistralai/voxtral-mini-tts-2603`)                                                                                                                                                                    |
+| `input`            | string | Yes                | The text to synthesize into speech                                                                                                                                                                                                                                     |
+| `voice`            | string | Provider-dependent | Voice identifier. Available voices vary by model — check each model's page on the [Models page](/docs/guides/overview/models) for supported voices. Omit this parameter only when the selected provider documents a default voice; otherwise an explicit voice is required. |
+| `response_format`  | string | No                 | Audio output format: `mp3` or `pcm`. Defaults to `pcm`                                                                                                                                                                                                                 |
+| `speed`            | number | No                 | Playback speed multiplier. Only used by models that support it (e.g., OpenAI TTS). Ignored by other providers. Defaults to `1.0`                                                                                                                                       |
+| `input_references` | array  | No                 | Reference content for stateless voice cloning: one `input_audio` part carrying the voice sample, optionally accompanied by one `text` part with its transcript. See [Voice Cloning](#voice-cloning) below                                                              |
+| `provider`         | object | No                 | Provider-specific passthrough configuration                                                                                                                                                                                                                            |
 
 When `voice` is omitted, OpenRouter only forwards the request to providers whose adapter supports a provider-side default voice. For other providers, the request is rejected with a validation error.
+
+### Voice Cloning
+
+Some models support **stateless voice cloning**: you send a short sample of reference audio directly with the TTS request, and the generated speech mimics that voice. No separate voice-creation or upload step is required.
+
+Pass the reference audio as a base64 `input_audio` part in `input_references` (a `data:audio/...;base64,` URI also works), and optionally include its transcript as a `text` part:
+
+```json lines theme={null}
+{
+  "model": "fish-audio/s2.1-pro",
+  "input": "Hello from my cloned voice!",
+  "response_format": "mp3",
+  "input_references": [
+    { "type": "input_audio", "input_audio": { "data": "data:audio/wav;base64,UklGRuQXDAB..." } },
+    { "type": "text", "text": "This is the transcript of the reference audio." }
+  ]
+}
+```
+
+Note: some providers for a voice-cloning model may not support voice cloning — check the `supports_voice_cloning` field on the [endpoints API](/docs/api/api-reference/endpoints/list-all-endpoints-for-a-model).
+
+Limits and requirements:
+
+* Supported audio formats for the reference sample are provider-specific.
+* `input_references` accepts at most one `input_audio` part and one `text` part, and requires `input_audio`.
+* The reference audio is limited to 20 MiB of base64 (15 MiB of decoded audio); larger requests are rejected with a 400.
 
 ### Provider-Specific Options
 

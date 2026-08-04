@@ -178,10 +178,6 @@ Bot Fight Mode challenges requests that match known bot patterns across your ent
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **Bots**.
-3. For **Bot Fight Mode**, select **On**.
-
 Bot Fight Mode protects your entire domain without endpoint restrictions. You cannot create exceptions using custom rules to bypass Bot Fight Mode.
 
 Pro, Business, and Enterprise

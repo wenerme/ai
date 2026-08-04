@@ -59,14 +59,15 @@ assistant = client.beta.assistants.create(
 ```javascript
 const assistant = await openai.beta.assistants.create({
   name: "Data visualizer",
-  description: "You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
+  description:
+    "You are great at creating beautiful data visualizations. You analyze data present in .csv files, understand trends, and come up with data visualizations relevant to those trends. You also share a brief text summary of the trends observed.",
   model: "gpt-4o",
-  tools: [{"type": "code_interpreter"}],
+  tools: [{ type: "code_interpreter" }],
   tool_resources: {
-    "code_interpreter": {
-      "file_ids": [file.id]
-    }
-  }
+    code_interpreter: {
+      file_ids: [file.id],
+    },
+  },
 });
 ```
 
@@ -117,16 +118,16 @@ thread = client.beta.threads.create(
 const thread = await openai.beta.threads.create({
   messages: [
     {
-      "role": "user",
-      "content": "Create 3 data visualizations based on the trends in this file.",
-      "attachments": [
+      role: "user",
+      content: "Create 3 data visualizations based on the trends in this file.",
+      attachments: [
         {
           file_id: file.id,
-          tools: [{type: "code_interpreter"}]
-        }
-      ]
-    }
-  ]
+          tools: [{ type: "code_interpreter" }],
+        },
+      ],
+    },
+  ],
 });
 ```
 
@@ -194,23 +195,25 @@ const file = await openai.files.create({
 const thread = await openai.beta.threads.create({
   messages: [
     {
-      "role": "user",
-      "content": [
+      role: "user",
+      content: [
         {
-          "type": "text",
-          "text": "What is the difference between these images?"
+          type: "text",
+          text: "What is the difference between these images?",
         },
         {
-          "type": "image_url",
-          "image_url": {"url": "https://openai-documentation.vercel.app/images/cat_and_otter.png"}
+          type: "image_url",
+          image_url: {
+            url: "https://openai-documentation.vercel.app/images/cat_and_otter.png",
+          },
         },
         {
-          "type": "image_file",
-          "image_file": {"file_id": file.id}
+          type: "image_file",
+          image_file: { file_id: file.id },
         },
-      ]
-    }
-  ]
+      ],
+    },
+  ],
 });
 ```
 
@@ -282,22 +285,22 @@ thread = client.beta.threads.create(
 const thread = await openai.beta.threads.create({
   messages: [
     {
-      "role": "user",
-      "content": [
-          {
-            "type": "text",
-            "text": "What is this an image of?"
+      role: "user",
+      content: [
+        {
+          type: "text",
+          text: "What is this an image of?",
+        },
+        {
+          type: "image_url",
+          image_url: {
+            url: "https://openai-documentation.vercel.app/images/cat_and_otter.png",
+            detail: "high",
           },
-          {
-            "type": "image_url",
-            "image_url": {
-              "url": "https://openai-documentation.vercel.app/images/cat_and_otter.png",
-              "detail": "high"
-            }
-          },
-      ]
-    }
-  ]
+        },
+      ],
+    },
+  ],
 });
 ```
 
@@ -420,10 +423,9 @@ run = client.beta.threads.runs.create(
 ```
 
 ```javascript
-const run = await openai.beta.threads.runs.create(
-  thread.id,
-  { assistant_id: assistant.id }
-);
+const run = await openai.beta.threads.runs.create(thread.id, {
+  assistant_id: assistant.id,
+});
 ```
 
 ```bash
@@ -450,15 +452,12 @@ run = client.beta.threads.runs.create(
 ```
 
 ```javascript
-const run = await openai.beta.threads.runs.create(
-  thread.id,
-  {
-    assistant_id: assistant.id,
-    model: "gpt-4o",
-    instructions: "New instructions that override the Assistant instructions",
-    tools: [{"type": "code_interpreter"}, {"type": "file_search"}]
-  }
-);
+const run = await openai.beta.threads.runs.create(thread.id, {
+  assistant_id: assistant.id,
+  model: "gpt-4o",
+  instructions: "New instructions that override the Assistant instructions",
+  tools: [{ type: "code_interpreter" }, { type: "file_search" }],
+});
 ```
 
 ```bash

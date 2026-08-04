@@ -61,7 +61,7 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-```cli
+```bash
 openai responses:input-tokens count \
   --model gpt-5.6 \
   --input "Tell me a joke." \
@@ -121,7 +121,7 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-```cli
+```bash
 openai responses:input-tokens count \
   --raw-output \
   --transform input_tokens <<'YAML'
@@ -179,7 +179,7 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-```cli
+```bash
 openai responses:input-tokens count \
   --raw-output \
   --transform input_tokens <<'YAML'
@@ -261,7 +261,7 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-```cli
+```bash
 openai responses:input-tokens count \
   --raw-output \
   --transform input_tokens <<'YAML'
@@ -356,7 +356,7 @@ curl https://api.openai.com/v1/responses/input_tokens \
   }'
 ```
 
-```cli
+```bash
 openai responses:input-tokens count \
   --raw-output \
   --transform input_tokens <<'YAML'

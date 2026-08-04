@@ -46,7 +46,7 @@ transcription = client.audio.transcriptions.create(
 print(transcription.text)
 ```
 
-```cli
+```bash
 openai audio:transcriptions create \
   --model gpt-transcribe \
   --file /path/to/file/audio.mp3 \

@@ -206,7 +206,7 @@ Use the following resources and reference to complete your integration.
 
 ChatKit emits `CustomEvent` instances from the Web Component. The payload shapes are:
 
-```ts
+```typescript
 type Events = {
   "chatkit.error": CustomEvent<{ error: Error }>;
   "chatkit.response.start": CustomEvent<void>;
@@ -215,6 +215,7 @@ type Events = {
   "chatkit.log": CustomEvent<{ name: string; data?: Record<string, unknown> }>;
 };
 ```
+
 
 ### Options reference
 

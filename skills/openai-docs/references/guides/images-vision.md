@@ -86,7 +86,7 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
-```cli
+```bash
 openai responses create \
   --model gpt-5.6 \
   --raw-output \
@@ -230,7 +230,7 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```cli
+```bash
 openai responses create \
   --model gpt-5.6 \
   --raw-output \

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitor resources and cookies
 
-Last updated Jul 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Once you [activate client-side security's resource monitoring](https://developers.cloudflare.com/client-side-security/get-started/), the main client-side resources dashboard will show which resources (scripts and connections) are running on your domain, as well as the cookies recently detected in HTTP traffic.
 
@@ -27,15 +27,10 @@ Notes
 
 To review the resources detected by Cloudflare:
 
-1. Go to the client-side resources page:
-
-  1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-  2. Select the **Client-side resources** tab.
-
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-  2. Go to **Security** \> **Client-side security**.
-2. Review the list of scripts, connections, and cookies for your domain, depending on your Cloudflare plan. To apply a filter, select **Add filter** and use one or more of the available options.
+1. In the Cloudflare dashboard, go to the **Web assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Select the **Client-side resources** tab.
+3. Review the list of scripts, connections, and cookies for your domain, depending on your Cloudflare plan. To apply a filter, select **Add filter** and use one or more of the available options.
 Available filters
   * **Status**: Filter scripts or connections by [status](https://developers.cloudflare.com/client-side-security/reference/script-statuses/).
   * **Script URL**: Filter scripts by their URL.
@@ -44,7 +39,7 @@ Available filters
   * **Seen on page** (requires a Business or Enterprise plan): Look for scripts appearing in a specific page, or for connections made in a specific page. Searches the first page where the script was loaded (or where the connection was made) and the latest occurrences list.
   * **Type**: Filter cookies according to their type: first-party cookies or unknown.
   * Cookie property: Filter by a cookie property such as **Name**, **Domain**, **Path**, **Same site**, **HTTP only**, and **Secure**.
-3. Depending on your plan, you may be able to [view the details of each item](#view-details).
+4. Depending on your plan, you may be able to [view the details of each item](#view-details).
 
 ## View all reported scripts or connections
 
@@ -54,17 +49,12 @@ Note
 
 Scripts blocked by a [content security rule](https://developers.cloudflare.com/client-side-security/rules/) continue to appear in your monitored scripts list for as long as the browser keeps loading them. A blocked script is only removed after it has not been detected for 30 consecutive days.
 
-1. Go to the client-side resources page:
-
-  1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-  2. Select the **Client-side resources** tab.
-
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-  2. Go to **Security** \> **Client-side security**.
-2. Select **Scripts** or **Connections**.
-3. Select **View all scripts** or **View all connections**.
-4. Review the information displayed in the dashboard.
+1. In the Cloudflare dashboard, go to the **Web assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Select the **Client-side resources** tab.
+3. Select **Scripts** or **Connections**.
+4. Select **View all scripts** or **View all connections**.
+5. Review the information displayed in the dashboard.
 
 You can filter the data in these dashboards using different criteria, and print a report with the displayed records.
 
@@ -74,16 +64,11 @@ Note
 
 Only available to customers on Business and Enterprise plans.
 
-1. Go to the client-side resources page:
-
-  1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-  2. Select the **Client-side resources** tab.
-
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-  2. Go to **Security** \> **Client-side security**.
-2. Select **Scripts**, **Connections**, or **Cookies** (the available options depend on your plan).
-3. Next to a script, connection, or cookie in the list, select **Details**.
+1. In the Cloudflare dashboard, go to the **Web assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Select the **Client-side resources** tab.
+3. Select **Scripts**, **Connections**, or **Cookies** (the available options depend on your plan).
+4. Next to a script, connection, or cookie in the list, select **Details**.
 Script and connection details
 
   * **Last seen**: How long ago the resource was last detected (in the last 30 days).
@@ -126,17 +111,12 @@ Use this feature to extract data for review and annotation. The data in the expo
 
 To export script, connection, or cookie information in CSV format:
 
-1. Go to the client-side resources page:
-
-  1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-  2. Select the **Client-side resources** tab.
-
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-  2. Go to **Security** \> **Client-side security**.
-2. Select **Scripts**, **Connections**, or **Cookies**.
-3. (Optional) Apply any filters to the displayed data.
-4. Select **Download CSV**.
+1. In the Cloudflare dashboard, go to the **Web assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Select the **Client-side resources** tab.
+3. Select **Scripts**, **Connections**, or **Cookies**.
+4. (Optional) Apply any filters to the displayed data.
+5. Select **Download CSV**.
 
 Was this helpful?
 
@@ -147,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#page","headline":"Monitor resources and cookies · Client-side security docs","description":"View and filter scripts, connections, and cookies detected on your domain.","url":"https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Cookies"]}
 ```

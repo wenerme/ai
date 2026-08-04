@@ -132,7 +132,7 @@ The data is encoded and sent to the PlantUML server which generates the picture.
 demo server at http://www.plantuml.com/plantuml, but if you (or your users) have sensitive data you
 can set up your own [PlantUML server](https://plantuml.com/server) instead. To set up PlantUML rendering,
 copy JavaScript files from https://gitea.com/davidsvantesson/plantuml-code-highlight and put them in your
-`$GITEA_CUSTOM/public/assets/` folder. Then add the following to `custom/footer.tmpl`:
+`$GITEA_CUSTOM/public/assets/` folder. Then add the following to `$GITEA_CUSTOM/templates/custom/footer.tmpl`:
 
 ```html
 <script>

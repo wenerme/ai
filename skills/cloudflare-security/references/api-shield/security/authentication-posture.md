@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authentication Posture
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/authentication-posture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/authentication-posture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Authentication Posture detects API endpoints with missing or inconsistent authentication and alerts you to potential misconfigurations.
 
@@ -35,12 +35,6 @@ After configuring [session identifiers](https://developers.cloudflare.com/api-sh
 [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Endpoints** tab.
 3. Filter your endpoints by the `cf-risk-missing-auth` or `cf-risk-mixed-auth` labels.
-4. Select an endpoint to see its authentication posture details on the endpoint details page.
-5. Choose between the 24-hour and 7-day view options, and note any authentication changes over time.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **API Shield** \> **Endpoint Management**.
-3. Filter Endpoint Management by the `cf-risk-missing-auth` or `cf-risk-mixed-auth` labels.
 4. Select an endpoint to see its authentication posture details on the endpoint details page.
 5. Choose between the 24-hour and 7-day view options, and note any authentication changes over time.
 
@@ -71,5 +65,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/authentication-posture/#page","headline":"Authentication Posture · Cloudflare API Shield docs","description":"Identify authentication misconfigurations for API endpoints with Authentication Posture.","url":"https://developers.cloudflare.com/api-shield/security/authentication-posture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/authentication-posture/#page","headline":"Authentication Posture · Cloudflare API Shield docs","description":"Identify authentication misconfigurations for API endpoints with Authentication Posture.","url":"https://developers.cloudflare.com/api-shield/security/authentication-posture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 ```

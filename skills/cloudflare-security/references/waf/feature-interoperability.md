@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security features interoperability
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/feature-interoperability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/feature-interoperability/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare applies multiple security features to every incoming request. Each feature runs at a specific stage, and the order determines which feature acts first. Understanding this order helps you avoid conflicts and reduce false positives.
 
@@ -138,11 +138,6 @@ Use [Security Events](https://developers.cloudflare.com/waf/analytics/security-e
 3. Find the blocked request in the log.
 4. Check the **Service** field to determine which product took the action. This field tells you which feature to adjust.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account and domain.
-2. Go to **Security** \> **Events**.
-3. Find the blocked request in the log.
-4. Check the **Service** field to determine which product took the action. This field tells you which feature to adjust.
-
 ### Resolve Bot Fight Mode false positives
 
 Bot Fight Mode does not support exceptions. You have two options:
@@ -161,12 +156,6 @@ Create a custom rule with the _Skip_ action to bypass SBFM for the affected traf
 2. Select **Create rule** \> **Custom rules**.
 3. Define an expression that matches the legitimate traffic (for example, a specific IP range or user agent).
 4. Set the action to _Skip_ and select **Super Bot Fight Mode**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account and domain.
-2. Go to **Security** \> **WAF** \> **Custom rules**.
-3. Select **Create rule**.
-4. Define an expression that matches the legitimate traffic (for example, a specific IP range or user agent).
-5. Set the action to _Skip_ and select **Super Bot Fight Mode**.
 
 For more information, refer to [Handle false positives from Bot Fight Mode or Super Bot Fight Mode](https://developers.cloudflare.com/bots/troubleshooting/false-positives/).
 
@@ -192,5 +181,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/feature-interoperability/#page","headline":"Security features interoperability · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare security features interact and execute in order.","url":"https://developers.cloudflare.com/waf/feature-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/feature-interoperability/#page","headline":"Security features interoperability · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare security features interact and execute in order.","url":"https://developers.cloudflare.com/waf/feature-interoperability/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

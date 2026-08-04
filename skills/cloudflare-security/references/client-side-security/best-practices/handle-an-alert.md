@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Handle a client-side resource alert
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you receive a [client-side resource alert](https://developers.cloudflare.com/client-side-security/alerts/alert-types/), sometimes you need to perform some manual investigation to confirm the nature of the script. Use the guidance provided in this page as a starting point for your investigation.
 
@@ -20,16 +20,11 @@ If you receive a [client-side resource alert](https://developers.cloudflare.com/
 
 Start by identifying the [detection system](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/) that triggered the alert. A link is provided in the alert that will send you directly to the Cloudflare dashboard to the relevant resource that needs reviewing. Alternatively, do the following:
 
-1. Navigate to the client-side resources page:
-
-  1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-  2. Select the **Client-side resources** tab.
-
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-  2. Go to **Security** \> **Client-side security**.
-2. Select **Scripts** or **Connections** and search for the resource mentioned on the alert you received.
-3. Select **Details** next to the resource you identified. The example screenshot below shows a malicious script resource.
+1. In the Cloudflare dashboard, go to the **Web assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Select the **Client-side resources** tab.
+3. Select **Scripts** or **Connections** and search for the resource mentioned on the alert you received.
+4. Select **Details** next to the resource you identified. The example screenshot below shows a malicious script resource.
 ![Dialog box showing the details of a script considered malicious.](https://developers.cloudflare.com/_astro/handle-alert-malicious-script-example.DqLS6vtx_ZFsQFA.webp)
 
 The details page will specify which detection system triggered the alert. Check the values of the following fields:
@@ -103,5 +98,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/#page","headline":"Handle a client-side resource alert · Client-side security docs","description":"If you receive a client-side resource alert, sometimes you need to perform some manual investigation to confirm the nature of the script. Use the guidance provided in this page as a starting point for your investigation.","url":"https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/#page","headline":"Handle a client-side resource alert · Client-side security docs","description":"If you receive a client-side resource alert, sometimes you need to perform some manual investigation to confirm the nature of the script. Use the guidance provided in this page as a starting point for your investigation.","url":"https://developers.cloudflare.com/client-side-security/best-practices/handle-an-alert/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

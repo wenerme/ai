@@ -34,12 +34,13 @@ import OpenAI from "openai";
 const openai = new OpenAI();
 
 async function main() {
-const assistant = await openai.beta.assistants.create({
-name: "Financial Analyst Assistant",
-instructions: "You are an expert financial analyst. Use you knowledge base to answer questions about audited financial statements.",
-model: "gpt-4o",
-tools: [{ type: "file_search" }],
-});
+  const assistant = await openai.beta.assistants.create({
+    name: "Financial Analyst Assistant",
+    instructions:
+      "You are an expert financial analyst. Use you knowledge base to answer questions about audited financial statements.",
+    model: "gpt-4o",
+    tools: [{ type: "file_search" }],
+  });
 }
 
 main();
@@ -92,16 +93,19 @@ print(file_batch.file_counts)
 ```
 
 ```javascript
-const fileStreams = ["edgar/goog-10k.pdf", "edgar/brka-10k.txt"].map((path) =>
-fs.createReadStream(path),
-);
+const fileStreams = [
+  fs.createReadStream("edgar/goog-10k.pdf"),
+  fs.createReadStream("edgar/brka-10k.txt"),
+];
 
 // Create a vector store including our two files.
 let vectorStore = await openai.vectorStores.create({
-name: "Financial Statement",
+  name: "Financial Statement",
 });
 
-await openai.vectorStores.fileBatches.uploadAndPoll(vectorStore.id, fileStreams)
+await openai.vectorStores.fileBatches.uploadAndPoll(vectorStore.id, {
+  files: fileStreams,
+});
 ```
 
 
@@ -157,20 +161,20 @@ print(thread.tool_resources.file_search)
 ```javascript
 // A user wants to attach a file to a specific message, let's upload it.
 const aapl10k = await openai.files.create({
-file: fs.createReadStream("edgar/aapl-10k.pdf"),
-purpose: "assistants",
+  file: fs.createReadStream("edgar/aapl-10k.pdf"),
+  purpose: "assistants",
 });
 
 const thread = await openai.beta.threads.create({
-messages: [
-{
-role: "user",
-content:
-"How many shares of AAPL were outstanding at the end of of October 2023?",
-// Attach the new file to the message.
-attachments: [{ file_id: aapl10k.id, tools: [{ type: "file_search" }] }],
-},
-],
+  messages: [
+    {
+      role: "user",
+      content:
+        "How many shares of AAPL were outstanding at the end of October 2023?",
+      // Attach the new file to the message.
+      attachments: [{ file_id: aapl10k.id, tools: [{ type: "file_search" }] }],
+    },
+  ],
 });
 
 // The thread now has a vector store in its tool resources.
@@ -235,26 +239,27 @@ with client.beta.threads.runs.stream(
     stream.until_done()
 ```
 
-```javascript
+```typescript
 const stream = openai.beta.threads.runs
-.stream(thread.id, {
-assistant_id: assistant.id,
-})
-.on("textCreated", () => console.log("assistant >"))
-.on("toolCallCreated", (event) => console.log("assistant " + event.type))
-.on("messageDone", async (event) => {
-if (event.content[0].type === "text") {
-const { text } = event.content[0];
-const { annotations } = text;
-const citations: string[] = [];
+  .stream(thread.id, {
+    assistant_id: assistant.id,
+  })
+  .on("textCreated", () => console.log("assistant >"))
+  .on("toolCallCreated", (event) => console.log("assistant " + event.type))
+  .on("messageDone", async (event) => {
+    if (event.content[0].type === "text") {
+      const { text } = event.content[0];
+      const { annotations } = text;
+      const citations: string[] = [];
 
       let index = 0;
-      for (let annotation of annotations) {
-        text.value = text.value.replace(annotation.text, "[" + index + "]");
-        const { file_citation } = annotation;
-        if (file_citation) {
-          const citedFile = await openai.files.retrieve(file_citation.file_id);
-          citations.push("[" + index + "]" + citedFile.filename);
+      for (const annotation of annotations) {
+        text.value = text.value.replace(annotation.text, `[${index}]`);
+        if (annotation.type === "file_citation") {
+          const citedFile = await openai.files.retrieve(
+            annotation.file_citation.file_id
+          );
+          citations.push(`[${index}]${citedFile.filename}`);
         }
         index++;
       }
@@ -262,6 +267,7 @@ const citations: string[] = [];
       console.log(text.value);
       console.log(citations.join("\n"));
     }
+  });
 ```
 
   
@@ -299,34 +305,35 @@ print(message_content.value)
 print("\n".join(citations))
 ```
 
-```javascript
+```typescript
 const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
-assistant_id: assistant.id,
+  assistant_id: assistant.id,
 });
 
 const messages = await openai.beta.threads.messages.list(thread.id, {
-run_id: run.id,
+  run_id: run.id,
 });
 
 const message = messages.data.pop()!;
 if (message.content[0].type === "text") {
-const { text } = message.content[0];
-const { annotations } = text;
-const citations: string[] = [];
+  const { text } = message.content[0];
+  const { annotations } = text;
+  const citations: string[] = [];
 
-let index = 0;
-for (let annotation of annotations) {
-text.value = text.value.replace(annotation.text, "[" + index + "]");
-const { file_citation } = annotation;
-if (file_citation) {
-const citedFile = await openai.files.retrieve(file_citation.file_id);
-citations.push("[" + index + "]" + citedFile.filename);
-}
-index++;
-}
+  let index = 0;
+  for (const annotation of annotations) {
+    text.value = text.value.replace(annotation.text, `[${index}]`);
+    if (annotation.type === "file_citation") {
+      const citedFile = await openai.files.retrieve(
+        annotation.file_citation.file_id
+      );
+      citations.push(`[${index}]${citedFile.filename}`);
+    }
+    index++;
+  }
 
-console.log(text.value);
-console.log(citations.join("\n"));
+  console.log(text.value);
+  console.log(citations.join("\n"));
 }
 ```
 
@@ -389,7 +396,13 @@ vector_store = client.vector_stores.create(
 ```javascript
 const vectorStore = await openai.vectorStores.create({
   name: "Product Documentation",
-  file_ids: ['file_1', 'file_2', 'file_3', 'file_4', 'file_5']
+  file_ids: [
+    "file_1",
+    "file_2",
+    "file_3",
+    "file_4",
+    "file_5",
+  ],
 });
 ```
 
@@ -409,7 +422,9 @@ file = client.vector_stores.files.create_and_poll(
 ```javascript
 const file = await openai.vectorStores.files.createAndPoll(
   "vs_abc123",
-  { file_id: "file-abc123" }
+  {
+    file_id: "file-abc123",
+  }
 );
 ```
 
@@ -450,12 +465,14 @@ const batch = await openai.vectorStores.fileBatches.createAndPoll(
         file_id: "file_2",
         chunking_strategy: {
           type: "static",
-          max_chunk_size_tokens: 1000,
-          chunk_overlap_tokens: 200,
+          static: {
+            max_chunk_size_tokens: 1000,
+            chunk_overlap_tokens: 200,
+          },
         },
       },
     ],
-  },
+  }
 );
 ```
 
@@ -489,23 +506,24 @@ thread = client.beta.threads.create(
 
 ```javascript
 const assistant = await openai.beta.assistants.create({
-instructions: "You are a helpful product support assistant and you answer questions based on the files provided to you.",
-model: "gpt-4o",
-tools: [{"type": "file_search"}],
-tool_resources: {
-"file_search": {
-"vector_store_ids": ["vs_1"]
-}
-}
+  instructions:
+    "You are a helpful product support assistant and you answer questions based on the files provided to you.",
+  model: "gpt-4o",
+  tools: [{ type: "file_search" }],
+  tool_resources: {
+    file_search: {
+      vector_store_ids: ["vs_1"],
+    },
+  },
 });
 
 const thread = await openai.beta.threads.create({
-messages: [ { role: "user", content: "How do I cancel my subscription?"} ],
-tool_resources: {
-"file_search": {
-"vector_store_ids": ["vs_2"]
-}
-}
+  messages: [{ role: "user", content: "How do I cancel my subscription?" }],
+  tool_resources: {
+    file_search: {
+      vector_store_ids: ["vs_2"],
+    },
+  },
 });
 ```
 
@@ -573,14 +591,11 @@ import OpenAI from "openai";
 
 const openai = new OpenAI();
 
-const runStep = await openai.beta.threads.runs.steps.retrieve(
-"thread_abc123",
-"run_abc123",
-"step_abc123",
-{
-include: ["step_details.tool_calls[*].file_search.results[*].content"]
-}
-);
+const runStep = await openai.beta.threads.runs.steps.retrieve("step_abc123", {
+  thread_id: "thread_abc123",
+  run_id: "run_abc123",
+  include: ["step_details.tool_calls[*].file_search.results[*].content"],
+});
 
 console.log(runStep);
 ```
@@ -633,11 +648,17 @@ vector_store = client.vector_stores.create(
 ```javascript
 let vectorStore = await openai.vectorStores.create({
   name: "rag-store",
-  file_ids: ['file_1', 'file_2', 'file_3', 'file_4', 'file_5'],
+  file_ids: [
+    "file_1",
+    "file_2",
+    "file_3",
+    "file_4",
+    "file_5",
+  ],
   expires_after: {
     anchor: "last_active_at",
-    days: 7
-  }
+    days: 7,
+  },
 });
 ```
 
@@ -667,22 +688,22 @@ for file_batch in chunked(all_files, 100):
 ```javascript
 const fileIds = [];
 for await (const file of openai.vectorStores.files.list(
-"vs_expired",
+  "vs_expired"
 )) {
-fileIds.push(file.id);
+  fileIds.push(file.id);
 }
 
 const vectorStore = await openai.vectorStores.create({
-name: "rag-store",
+  name: "rag-store",
 });
 await openai.beta.threads.update("thread_abc123", {
-tool_resources: { file_search: { vector_store_ids: [vectorStore.id] } },
+  tool_resources: { file_search: { vector_store_ids: [vectorStore.id] } },
 });
 
 for (const fileBatch of _.chunk(fileIds, 100)) {
-await openai.vectorStores.fileBatches.create(vectorStore.id, {
-file_ids: fileBatch,
-});
+  await openai.vectorStores.fileBatches.create(vectorStore.id, {
+    file_ids: fileBatch,
+  });
 }
 ```
 

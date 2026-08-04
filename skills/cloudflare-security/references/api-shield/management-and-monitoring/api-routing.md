@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API Routing
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API Shield Routing allows you to expose a single external API that routes requests to different back-end services, even when those services use different paths or hostnames than your zone.
 
@@ -32,12 +32,6 @@ To create a route, you will need the operation ID of the Source Endpoint. To fin
 3. Expand the row for your Source Endpoint and note the **operation ID** field.
 4. Select the copy icon to copy the operation ID to your clipboard.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Select **Security** \> **API Shield**.
-3. Filter the endpoints to find your **Source Endpoint**.
-4. Expand the row for your Source Endpoint and note the **operation ID** field.
-5. Select the copy icon to copy the operation ID to your clipboard.
-
 Once your Source Endpoints are added to Endpoint Management, use the following steps to create and verify routes on any given operation ID:
 
 ### Create a route
@@ -48,13 +42,6 @@ Once your Source Endpoints are added to Endpoint Management, use the following s
 3. Under **Routing**, select **Create route**.
 4. Enter the target URL or IP address to route your endpoint to.
 5. Select **Deploy route**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **API Shield**.
-3. In **Endpoint Management**, select an existing endpoint and expand its details.
-4. Under **Routing**, select **Create route**.
-5. Enter the target URL or IP address to route your endpoint to.
-6. Select **Deploy route**.
 
 Note
 
@@ -93,5 +80,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/#page","headline":"API Routing · Cloudflare API Shield docs","description":"Route API requests to different back-end services using API Shield Routing.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/#page","headline":"API Routing · Cloudflare API Shield docs","description":"Route API requests to different back-end services using API Shield Routing.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

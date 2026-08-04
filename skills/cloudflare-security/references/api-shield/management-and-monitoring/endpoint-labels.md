@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Endpoint labeling service
 
-Last updated May 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API Shield's labeling service will help you organize your endpoints and address vulnerabilities in your API. The labeling service comes with managed and user-defined labels.
 
@@ -178,23 +178,6 @@ Alternatively, you can create a user-defined label via **Security** \> **Web Ass
 6. Enter the label name.
 7. Select **Create**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Settings** \> **Labels**.
-3. Under **Security labels**, select **Create label**.
-4. Name the label and add an optional label description.
-5. Apply the label to your selected endpoints.
-6. Select **Create label**.
-
-Alternatively, you can create a user-defined label via Endpoint Management in API Shield:
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Settings** \> **Labels**.
-3. Choose the endpoint that you want to label.
-4. Select **Edit labels**.
-5. Under **User**, select **Create user label**.
-6. Enter the label name.
-7. Select **Create**.
-
 ## Apply a label to an individual endpoint
 
 1. In the Cloudflare dashboard, go to the **Web assets** page.
@@ -203,13 +186,6 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 3. Select **Edit endpoint labels**.
 4. Add the label(s) that you want to use for the endpoint from the list of managed and user-defined labels.
 5. Select **Save labels**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **API Shield**.
-3. In the **Endpoint Management** tab, choose the endpoint that you want to label.
-4. Select **Edit labels**.
-5. Add the label(s) that you want to use for the endpoint from the list of managed and user-defined labels.
-6. Select **Save labels**.
 
 ## Bulk apply labels to multiple endpoints
 
@@ -220,12 +196,6 @@ Alternatively, you can create a user-defined label via Endpoint Management in AP
 4. On the existing label that you want to apply to multiple endpoints, select **Bulk apply**.
 5. Choose the endpoints that you want to label by selecting its checkbox.
 6. Select **Apply label**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Settings** \> **Labels**.
-3. On the existing label that you want to apply to multiple endpoints, select **Bulk apply**.
-4. Choose the endpoints that you want to label by selecting its checkbox.
-5. Select **Save label**.
 
 ## Availability
 
@@ -240,5 +210,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service · Cloudflare API Shield docs","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service · Cloudflare API Shield docs","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

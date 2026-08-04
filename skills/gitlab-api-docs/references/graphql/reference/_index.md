@@ -14893,6 +14893,32 @@ Fields:
 | <a id="mutation-securityscanprofileattach-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-securityscanprofileattach-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
+### `Mutation.securityScanProfileCreate`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Input type: `SecurityScanProfileCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-securityscanprofilecreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-securityscanprofilecreate-description"></a>`description` | [`String!`](#string) | Description of the scan profile. |
+| <a id="mutation-securityscanprofilecreate-name"></a>`name` | [`String!`](#string) | Name of the scan profile. |
+| <a id="mutation-securityscanprofilecreate-namespaceid"></a>`namespaceId` | [`NamespaceID!`](#namespaceid) | Global ID of the top level namespace to create the scan profile for. |
+| <a id="mutation-securityscanprofilecreate-scantype"></a>`scanType` | [`SecurityScanProfileType!`](#securityscanprofiletype) | Type of the scan profile. |
+| <a id="mutation-securityscanprofilecreate-triggers"></a>`triggers` | [`[SecurityScanProfileTriggerInput!]!`](#securityscanprofiletriggerinput) | Triggers with optional configuration for the scan profile. At least one is required. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-securityscanprofilecreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-securityscanprofilecreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-securityscanprofilecreate-scanprofile"></a>`scanProfile` | [`ScanProfileType`](#scanprofiletype) | Created scan profile. |
+
 ### `Mutation.securityScanProfileDetach`
 
 - Introduced in GitLab 18.9.
@@ -32183,9 +32209,8 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-agentplatformsessions-createdeventatfrom"></a>`createdEventAtFrom` | [`Time`](#time) | Filter by session creation timestamp. Start of the range. |
 | <a id="analytics-agentplatformsessions-createdeventatto"></a>`createdEventAtTo` | [`Time`](#time) | Filter by session creation timestamp. End of the range. |
+| <a id="analytics-agentplatformsessions-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-agentplatformsessions-flowtype"></a>`flowType` | [`[String!]`](#string) | Filter by one or many flow types. |
-| <a id="analytics-agentplatformsessions-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
-| <a id="analytics-agentplatformsessions-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-agentplatformsessions-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
 
 ##### `Analytics.contributions`
@@ -32204,8 +32229,7 @@ Arguments:
 | <a id="analytics-contributions-authorid"></a>`authorId` | [`[String!]`](#string) | Filter by one or many author Global IDs. |
 | <a id="analytics-contributions-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by contribution timestamp. Start of the range. |
 | <a id="analytics-contributions-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by contribution timestamp. End of the range. |
-| <a id="analytics-contributions-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
-| <a id="analytics-contributions-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-contributions-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 
 ##### `Analytics.deployments`
 
@@ -32222,11 +32246,10 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-deployments-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by deployment creation timestamp. Start of the range. |
 | <a id="analytics-deployments-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by deployment creation timestamp. End of the range. |
+| <a id="analytics-deployments-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-deployments-environmentid"></a>`environmentId` | [`[String!]`](#string) | Filter by one or many environment Global IDs. |
 | <a id="analytics-deployments-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by deployment finish timestamp. Start of the range. |
 | <a id="analytics-deployments-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by deployment finish timestamp. End of the range. |
-| <a id="analytics-deployments-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
-| <a id="analytics-deployments-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-deployments-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many deployment refs. |
 | <a id="analytics-deployments-status"></a>`status` | [`[String!]`](#string) | Filter by one or many deployment statuses. |
 
@@ -32240,10 +32263,9 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="analytics-duocodesuggestions-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-duocodesuggestions-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-duocodesuggestions-idename"></a>`ideName` | [`[String!]`](#string) | Filter by IDE name. |
 | <a id="analytics-duocodesuggestions-language"></a>`language` | [`[String!]`](#string) | Filter by suggestion language. |
-| <a id="analytics-duocodesuggestions-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-duocodesuggestions-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by suggestion timestamp. Start of the range. |
 | <a id="analytics-duocodesuggestions-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by suggestion timestamp. End of the range. |
 | <a id="analytics-duocodesuggestions-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
@@ -32258,10 +32280,9 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="analytics-duousageevents-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-duousageevents-event"></a>`event` | [`[String!]`](#string) | Filter by one or many events. |
 | <a id="analytics-duousageevents-feature"></a>`feature` | [`[String!]`](#string) | Filter by one or many features. |
-| <a id="analytics-duousageevents-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
-| <a id="analytics-duousageevents-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-duousageevents-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by event timestamp. Start of the range. |
 | <a id="analytics-duousageevents-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by event timestamp. End of the range. |
 | <a id="analytics-duousageevents-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
@@ -32279,10 +32300,9 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="analytics-finishedpipelines-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-finishedpipelines-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by pipeline finish timestamp. Start of the range. |
 | <a id="analytics-finishedpipelines-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by pipeline finish timestamp. End of the range. |
-| <a id="analytics-finishedpipelines-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
-| <a id="analytics-finishedpipelines-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-finishedpipelines-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many pipeline refs. |
 | <a id="analytics-finishedpipelines-source"></a>`source` | [`[String!]`](#string) | Filter by one or many pipeline sources. |
 | <a id="analytics-finishedpipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
@@ -32304,10 +32324,9 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-mergerequests-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by merge request creation timestamp. Start of the range. |
 | <a id="analytics-mergerequests-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by merge request creation timestamp. End of the range. |
-| <a id="analytics-mergerequests-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
+| <a id="analytics-mergerequests-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-mergerequests-metricmergedatfrom"></a>`metricMergedAtFrom` | [`Time`](#time) | Filter by merge timestamp. Start of the range. |
 | <a id="analytics-mergerequests-metricmergedatto"></a>`metricMergedAtTo` | [`Time`](#time) | Filter by merge timestamp. End of the range. |
-| <a id="analytics-mergerequests-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-mergerequests-stateid"></a>`stateId` | [`[String!]`](#string) | Filter by one or many states (opened, closed, merged, locked). |
 | <a id="analytics-mergerequests-targetbranch"></a>`targetBranch` | [`[String!]`](#string) | Filter by one or many target branches. |
 
@@ -32324,10 +32343,9 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="analytics-pipelines-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-pipelines-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by pipeline finish timestamp. Start of the range. |
 | <a id="analytics-pipelines-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by pipeline finish timestamp. End of the range. |
-| <a id="analytics-pipelines-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. All groups must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `projectFullPaths`, at most 20 sources can be requested. Not supported at project level. |
-| <a id="analytics-pipelines-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. All projects must belong to the parent organization or group hierarchy and be accessible to the current user. Combined with `groupFullPaths`, at most 20 sources can be requested. Not supported at project level. |
 | <a id="analytics-pipelines-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many pipeline refs. |
 | <a id="analytics-pipelines-source"></a>`source` | [`[String!]`](#string) | Filter by one or many pipeline sources. |
 | <a id="analytics-pipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
@@ -39394,6 +39412,7 @@ Fields:
 | <a id="duoworkflowevent-duomessages"></a>`duoMessages` | [`[DuoMessage!]`](#duomessage) | Messages from the ui_chat_log for the checkpoint. |
 | <a id="duoworkflowevent-errors"></a>`errors` | [`[String!]`](#string) | Message errors. |
 | <a id="duoworkflowevent-executionstatus"></a>`executionStatus`  | [`String!`](#string) | Introduced in GitLab 17.10. Status: Experiment. Granular status of the session's execution. |
+| <a id="duoworkflowevent-lastduomessage"></a>`lastDuoMessage`  | [`DuoMessage`](#duomessage) | Introduced in GitLab 19.3. Status: Experiment. Most recent message from the ui_chat_log for the checkpoint. Cheaper than duoMessages for list previews: it reads only the latest message instead of the full chat log. |
 | <a id="duoworkflowevent-metadata"></a>`metadata` | [`JsonString`](#jsonstring) | Metadata associated with the event. |
 | <a id="duoworkflowevent-parentts"></a>`parentTs` | [`String`](#string) | UUID v7 timestamp identifier of the parent message for branched conversations or responses. |
 | <a id="duoworkflowevent-threadts"></a>`threadTs` | [`String`](#string) | UUID v7 timestamp identifier for the conversation thread/session in LangGraph state management. |
@@ -64927,6 +64946,7 @@ Member role permission.
 | <a id="memberrolepermission-admin_web_hook"></a>`ADMIN_WEB_HOOK` | Manage webhooks. |
 | <a id="memberrolepermission-apply_security_scan_profiles"></a>`APPLY_SECURITY_SCAN_PROFILES` | Apply security scan profiles. |
 | <a id="memberrolepermission-archive_project"></a>`ARCHIVE_PROJECT` | Allows archiving of projects. |
+| <a id="memberrolepermission-create_security_scan_profiles"></a>`CREATE_SECURITY_SCAN_PROFILES` | Create security scan profiles. |
 | <a id="memberrolepermission-destroy_package"></a>`DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
 | <a id="memberrolepermission-manage_deploy_tokens"></a>`MANAGE_DEPLOY_TOKENS` | Manage deploy tokens at the group or project level. |
 | <a id="memberrolepermission-manage_group_access_tokens"></a>`MANAGE_GROUP_ACCESS_TOKENS` | Create, read, update, and delete group access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
@@ -64976,6 +64996,7 @@ Member role standard permission.
 | <a id="memberrolestandardpermission-admin_web_hook"></a>`ADMIN_WEB_HOOK` | Manage webhooks. |
 | <a id="memberrolestandardpermission-apply_security_scan_profiles"></a>`APPLY_SECURITY_SCAN_PROFILES` | Apply security scan profiles. |
 | <a id="memberrolestandardpermission-archive_project"></a>`ARCHIVE_PROJECT` | Allows archiving of projects. |
+| <a id="memberrolestandardpermission-create_security_scan_profiles"></a>`CREATE_SECURITY_SCAN_PROFILES` | Create security scan profiles. |
 | <a id="memberrolestandardpermission-destroy_package"></a>`DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
 | <a id="memberrolestandardpermission-manage_deploy_tokens"></a>`MANAGE_DEPLOY_TOKENS` | Manage deploy tokens at the group or project level. |
 | <a id="memberrolestandardpermission-manage_group_access_tokens"></a>`MANAGE_GROUP_ACCESS_TOKENS` | Create, read, update, and delete group access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
@@ -66300,6 +66321,16 @@ Scan profile type.
 | <a id="securityscanprofiletype-dependency_scanning_post_processing"></a>`DEPENDENCY_SCANNING_POST_PROCESSING`  | Introduced in GitLab 19.2. Status: Experiment. Dependency scanning post processing. |
 | <a id="securityscanprofiletype-sast"></a>`SAST` | Sast. |
 | <a id="securityscanprofiletype-secret_detection"></a>`SECRET_DETECTION` | Secret detection. |
+
+### `SecurityScanProfileUpgradePolicy`
+
+Highest version bump allowed when remediating a dependency.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="securityscanprofileupgradepolicy-major"></a>`MAJOR`  | Introduced in GitLab 19.3. Status: Experiment. Allow any upgrade. |
+| <a id="securityscanprofileupgradepolicy-minor"></a>`MINOR`  | Introduced in GitLab 19.3. Status: Experiment. Allow patch and minor upgrades. |
+| <a id="securityscanprofileupgradepolicy-patch"></a>`PATCH`  | Introduced in GitLab 19.3. Status: Experiment. Allow patch upgrades only. |
 
 ### `SecurityScannerType`
 
@@ -71236,6 +71267,15 @@ Arguments:
 | <a id="aggregationorder-identifier"></a>`identifier` | [`String!`](#string) | Dimension or metric identifier. |
 | <a id="aggregationorder-parameters"></a>`parameters` | [`JSON`](#json) | Parameters for parameterized dimensions. |
 
+### `AggregationScopeInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aggregationscopeinput-groupfullpaths"></a>`groupFullPaths` | [`[ID!]`](#id) | Full paths of groups to aggregate data for. Combined with `projectFullPaths`, at most 20 sources can be requested. |
+| <a id="aggregationscopeinput-projectfullpaths"></a>`projectFullPaths` | [`[ID!]`](#id) | Full paths of projects to aggregate data for. Combined with `groupFullPaths`, at most 20 sources can be requested. |
+
 ### `AiAdditionalContextInput`
 
 Arguments:
@@ -72495,6 +72535,51 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="securityrefinput-name"></a>`name` | [`String!`](#string) | Name of the ref. |
 | <a id="securityrefinput-reftype"></a>`refType` | [`SecurityTrackedRefType!`](#securitytrackedreftype) | Type of ref (branch or tag). |
+
+### `SecurityScanProfileAutoRemediationInput`
+
+Auto-remediation configuration for a dependency scanning post-processing scan profile.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securityscanprofileautoremediationinput-cooldown"></a>`cooldown`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Minimum number of days after a package is released before it can be used. |
+| <a id="securityscanprofileautoremediationinput-enabled"></a>`enabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether auto-remediation is enabled. |
+| <a id="securityscanprofileautoremediationinput-openmergerequestslimit"></a>`openMergeRequestsLimit`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Maximum number of open auto-remediation merge requests at once. |
+| <a id="securityscanprofileautoremediationinput-severitylevel"></a>`severityLevel`  | [`VulnerabilitySeverity`](#vulnerabilityseverity) | Introduced in GitLab 19.3. Status: Experiment. Minimum vulnerability severity that triggers an automated upgrade. Findings below this threshold are skipped. |
+| <a id="securityscanprofileautoremediationinput-upgradepolicy"></a>`upgradePolicy`  | [`SecurityScanProfileUpgradePolicy`](#securityscanprofileupgradepolicy) | Introduced in GitLab 19.3. Status: Experiment. Highest version bump allowed when remediating. |
+
+### `SecurityScanProfileConfigurationInput`
+
+Typed configuration for a scan profile trigger. Exactly one member may be set, and it must match the scan profile type.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securityscanprofileconfigurationinput-dependencyscanningpostprocessing"></a>`dependencyScanningPostProcessing`  | [`SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`](#securityscanprofiledependencyscanningpostprocessingconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration for a dependency scanning post-processing scan profile. |
+
+### `SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`
+
+Configuration for a dependency scanning post-processing scan profile.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securityscanprofiledependencyscanningpostprocessingconfigurationinput-autoremediation"></a>`autoRemediation`  | [`SecurityScanProfileAutoRemediationInput`](#securityscanprofileautoremediationinput) | Introduced in GitLab 19.3. Status: Experiment. Auto-remediation configuration. |
+
+### `SecurityScanProfileTriggerInput`
+
+A trigger, with optional configuration, for a scan profile.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securityscanprofiletriggerinput-configuration"></a>`configuration`  | [`SecurityScanProfileConfigurationInput`](#securityscanprofileconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration attached to the trigger. When set, exactly one member must be present and it must match the scan profile type. |
+| <a id="securityscanprofiletriggerinput-triggertype"></a>`triggerType` | [`ScanProfileTriggerType!`](#scanprofiletriggertype) | Type of the trigger. |
 
 ### `SnippetBlobActionInputType`
 

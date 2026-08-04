@@ -33,7 +33,7 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```cli
+```bash
 openai responses create \
   --model "gpt-5.6" \
   --input "Write a one-sentence bedtime story about a unicorn." \

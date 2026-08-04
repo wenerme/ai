@@ -63,10 +63,6 @@ Bot Fight Mode challenges requests that match known bot patterns. It applies to 
 3. Go to **Bot fight mode**.
 4. Turn **Bot fight mode** on.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **Bots**.
-3. For **Bot Fight Mode**, select **On**.
-
 Note
 
 Bot Fight Mode cannot be skipped by custom rules because it does not run inside the Ruleset Engine. If you need to exempt specific traffic (monitoring tools, partner APIs), upgrade to Super Bot Fight Mode on the Pro plan.
@@ -77,10 +73,7 @@ Super Bot Fight Mode identifies traffic matching patterns of known bots, can cha
 
 Note
 
-If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disable Bot Fight Mode in your Bot settings.
-
-* Old dashboard: **Security** \> **Bots**, and select **Configure Bot Fight Mode**.
-* New dashboard: **Security** \> **Settings**. Filter by **Bot traffic** and turn **Bot fight mode** off.
+If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, go to **Security** \> **Settings**, filter by **Bot traffic**, and turn **Bot fight mode** off.
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page.
 [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
@@ -88,16 +81,6 @@ If you are upgrading from Bot Fight Mode to Super Bot Fight Mode, you must disab
 3. Go to **Super Bot fight mode**.
 4. Turn **Super Bot fight mode** on.
 5. Choose how your domain should respond to various types of traffic by selecting the associated edit icon:
-
-  * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
-  * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
-  * For more details on invisible code injection, refer to [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/).
-  * For more details on WordPress optimization, refer to [Super Bot Fight Mode for WordPress](https://developers.cloudflare.com/bots/troubleshooting/wordpress-loopback-issue/).
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and select your account and domain.
-2. Go to **Security** \> **Bots**.
-3. Select **Configure Super Bot Fight Mode**.
-4. Choose how your domain should respond to various types of traffic:
 
   * For more details on verified bots, refer to [Verified Bots](https://developers.cloudflare.com/bots/concepts/bot/verified-bots/).
   * For more details on supported file types, refer to [Static resource protection](https://developers.cloudflare.com/bots/additional-configurations/static-resources/).
@@ -281,10 +264,6 @@ On Free plans, the leaked credentials detection is enabled by default, and no ac
 [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. (Optional) Filter by **Detection tools**.
 3. Turn on **Leaked credential detection**.
-
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Settings**.
-3. Under **Incoming traffic detections**, turn on **Leaked credentials**.
 
 Use a `POST` request similar to the following:
 

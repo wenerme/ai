@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started with client-side security
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/client-side-security/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 1\. Activate client-side resource monitoring
 
@@ -23,11 +23,6 @@ To enable client-side resource monitoring:
 2. (Optional) Filter by **Client-side abuse**.
 3. Turn on **Continuous script monitoring**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-2. Go to **Security** \> **Client-side security**.
-3. Go to the **Settings** tab.
-4. Next to **Continuous monitoring and alerting**, select **Enable**.
-
 If you do not have access to client-side security settings in the Cloudflare dashboard, check if your user has one of the [necessary roles](https://developers.cloudflare.com/client-side-security/reference/roles-and-permissions/).
 
 ## 2\. Review detected resources
@@ -36,15 +31,10 @@ When you enable client-side resource monitoring, it may take a while to get the 
 
 To review the scripts detected by Cloudflare:
 
-1. Go to the client-side resources page:
-
-  1. In the Cloudflare dashboard, go to the **Web assets** page.
-  [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-  2. Select the **Client-side resources** tab.
-
-  1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
-  2. Go to **Security** \> **Client-side security**.
-2. Review the list of detected scripts, checking for any unknown or unexpected scripts. [Depending on your plan and subscriptions](https://developers.cloudflare.com/client-side-security/#availability), Cloudflare will also:
+1. In the Cloudflare dashboard, go to the **Web assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Select the **Client-side resources** tab.
+3. Review the list of detected scripts, checking for any unknown or unexpected scripts. [Depending on your plan and subscriptions](https://developers.cloudflare.com/client-side-security/#availability), Cloudflare will also:
 
   * Inform you if a script is [considered malicious](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
   * [Show the details](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details) about each detected script.
@@ -98,20 +88,6 @@ Only available to customers with Client-Side Security Advanced.
 6. Under **Then take action**, select _Log_.
 7. To save and deploy your rule, select **Deploy**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
-2. Go to **Security** \> **Client-side security** \> **Rules**.
-3. Select **Create rule**.
-4. Enter a descriptive name for the rule in **Description**.
-5. Under **If incoming requests match**, define the rule scope. You can use the Expression Builder (specifying one or more values for **Field**, **Operator**, and **Value**) or manually enter an expression using the Expression Editor. For more information, refer to [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
-6. Under **Allow these directives**, select the desired [CSP directives](https://developers.cloudflare.com/client-side-security/rules/csp-directives/) for the rule by enabling one or more checkboxes.
-
-  * To manually enter an allowed source, select **Add source**.
-  * To refresh the displayed sources based on detected resources, select **Refresh suggestions**.
-  Note
-  Cloudflare provides suggestions for **Default**, **Scripts**, and **Connections** directives. For the **Default** directive, suggestions are based on monitored scripts and connections resources.
-7. Under **Then take action**, select _Log_.
-8. To save and deploy your rule, select **Deploy**.
-
 ### 4.2\. Review rule violations
 
 Resources not covered by the content security rule you created will be reported as [rule violations](https://developers.cloudflare.com/client-side-security/rules/violations/). After some time, review the list of rule violations to make sure the rule is correct.
@@ -121,8 +97,6 @@ To view rule violation information:
 1. In the Cloudflare dashboard, go to the **Security rules** page.
 [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Content security rules**.
-
-* In the Cloudflare dashboard, go to **Security** \> **Client-side security** \> **Rules**.
 
 The displayed information includes the following:
 
@@ -150,5 +124,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/get-started/#page","headline":"Get started with client-side security · Client-side security docs","description":"Learn how to get started with Cloudflare's client-side security.","url":"https://developers.cloudflare.com/client-side-security/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/client-side-security/get-started/#page","headline":"Get started with client-side security · Client-side security docs","description":"Learn how to get started with Cloudflare's client-side security.","url":"https://developers.cloudflare.com/client-side-security/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

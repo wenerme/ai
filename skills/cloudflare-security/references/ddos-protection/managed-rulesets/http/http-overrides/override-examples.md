@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Override examples
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Use cases
 
@@ -52,24 +52,6 @@ For Magic Transit and Spectrum customers
 3. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
 4. Copy the rule name.
 5. Go to your zone > **Security** \> **Security rules** \> **DDoS protection** tab and select **Create override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
-6. Select **Browse rules** and paste the rule name in the search field.
-7. Decrease the rule's **Sensitivity Level** to _Essentially Off_ or change the rule action to _Log_ (if supported by your current plan and subscriptions).
-8. Select **Next** and then select **Save**.
-
-1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
-2. Apply filters to the displayed data.
-For WAF/CDN customers
-
-  1. Select the zone that is experiencing DDoS attack false positives.
-  2. Go to **Security** \> **Events**.
-  3. Select **Add filter** and filter by `Service equals HTTP DDoS`.
-For Magic Transit and Spectrum customers
-
-  1. Go to Account Home > **Analytics & Logs** \> **Network Analytics**.
-  2. Identify the legitimate traffic that is causing the false positives. Use the Attack ID number included in the DDoS alert (if you received one), or apply dashboard filters such as destination IP address and port.
-3. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
-4. Copy the rule name.
-5. Go to your zone > **Security** \> **DDoS** and select **Deploy a DDoS override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
 6. Select **Browse rules** and paste the rule name in the search field.
 7. Decrease the rule's **Sensitivity Level** to _Essentially Off_ or change the rule action to _Log_ (if supported by your current plan and subscriptions).
 8. Select **Next** and then select **Save**.
@@ -134,24 +116,6 @@ For Magic Transit and Spectrum customers
 7. Change the rule's **Action** to _Block_.
 8. Select **Next** and then select **Save**.
 
-1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
-2. Apply filters to the displayed data.
-For WAF/CDN customers
-
-  1. Select the zone that is experiencing an incomplete mitigation of a DDoS attack.
-  2. Go to **Security** \> **Events**.
-  3. Select **Add filter** and filter by `Service equals HTTP DDoS`.
-For Magic Transit and Spectrum customers
-
-  1. Go to Account Home > **Analytics & Logs** \> **Network Analytics**.
-  2. Identify the DDoS attack that is having incomplete mitigations. Use the Attack ID number included in the DDoS alert (if you received one), or apply dashboard filters such as destination IP address and port.
-3. Scroll down to **Top events by source** \> **HTTP DDoS rules**.
-4. Copy the rule name.
-5. Go to your zone > **Security** \> **DDoS** and select **Deploy a DDoS override**. If you cannot deploy any additional overrides, edit an existing override to adjust rule configuration.
-6. Select **Browse rules** and paste the rule name in the search field.
-7. Change the rule's **Action** to _Block_.
-8. Select **Next** and then select **Save**.
-
 Once saved, the rule takes effect within one or two minutes. The rule adjustment should provide immediate remedy, which you can view in the [analytics dashboard](https://developers.cloudflare.com/ddos-protection/reference/analytics/).
 
 #### Alternate procedure
@@ -173,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/#page","headline":"Override examples for HTTP DDoS Attack Protection · Cloudflare DDoS Protection docs","description":"Example override configurations for HTTP DDoS Attack Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/#page","headline":"Override examples for HTTP DDoS Attack Protection · Cloudflare DDoS Protection docs","description":"Example override configurations for HTTP DDoS Attack Protection rules.","url":"https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/http-overrides/override-examples/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

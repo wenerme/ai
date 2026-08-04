@@ -137,7 +137,7 @@ curl https://api.openai.com/v1/files \
   -F file="@batchinput.jsonl"
 ```
 
-```cli
+```bash
 openai files create \
   --file batchinput.jsonl \
   --purpose batch
@@ -184,7 +184,7 @@ curl https://api.openai.com/v1/batches \
   }'
 ```
 
-```cli
+```bash
 openai batches create \
   --input-file-id file-abc123 \
   --endpoint /v1/chat/completions \
@@ -245,7 +245,7 @@ curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Content-Type: application/json"
 ```
 
-```cli
+```bash
 openai batches retrieve \
   --batch-id batch_abc123
 ```
@@ -297,7 +297,7 @@ curl https://api.openai.com/v1/files/file-xyz123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > batch_output.jsonl
 ```
 
-```cli
+```bash
 openai files content \
   --file-id file-xyz123 \
   --output batch_output.jsonl
@@ -352,7 +352,7 @@ curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -X POST
 ```
 
-```cli
+```bash
 openai batches cancel \
   --batch-id batch_abc123
 ```
@@ -389,7 +389,7 @@ curl https://api.openai.com/v1/batches?limit=10 \
   -H "Content-Type: application/json"
 ```
 
-```cli
+```bash
 openai batches list \
   --limit 10
 ```

@@ -483,7 +483,7 @@ The Responses API function example on the right is functionally equivalent to th
 
 #### Chat Completions API
 
-```javascript
+```json
 {
     "type": "function",
     "function": {
@@ -494,8 +494,8 @@ The Responses API function example on the right is functionally equivalent to th
         "type": "object",
         "properties": {
           "location": {
-            "type": "string",
-          },
+            "type": "string"
+          }
         },
         "additionalProperties": false,
         "required": [
@@ -508,7 +508,7 @@ The Responses API function example on the right is functionally equivalent to th
 
 #### Responses API
 
-```javascript
+```json
 {
     "type": "function",
     "name": "get_weather",
@@ -517,8 +517,8 @@ The Responses API function example on the right is functionally equivalent to th
       "type": "object",
       "properties": {
         "location": {
-          "type": "string",
-        },
+          "type": "string"
+        }
       },
       "additionalProperties": false,
       "required": [

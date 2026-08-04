@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security Events
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/analytics/security-events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/analytics/security-events/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security Events allows you to review mitigated requests and helps you tailor your security configurations. Use Security Events to investigate requests that Cloudflare security products acted on or flagged, identify false positives, and fine-tune your security rules.
 
@@ -49,8 +49,6 @@ To open Security Events for a given zone:
 [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 2. Select the **Events** tab.
 
-* In the Cloudflare dashboard, go to **Security** \> **Events**.
-
 Additionally, Enterprise customers have access to the account-level dashboard:
 
 [Go to **Security events** ↗](https://dash.cloudflare.com/?to=/:account/security-center/events)
@@ -85,10 +83,7 @@ The available report duration values depend on your Cloudflare plan. Refer to [A
 
 ## Create security rule from current filters
 
-To create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) based on your current filters and exclusions:
-
-* Old dashboard: Select **Create custom rule**.
-* New security dashboard: Select **Create custom security rule**.
+To create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) based on your current filters and exclusions, select **Create custom security rule**.
 
 ## Events summary
 
@@ -159,10 +154,7 @@ For example, after adding a filter for `Action equals Managed Challenge` and set
 
 ## Print or download PDF report
 
-To print or download a snapshot report:
-
-* Old dashboard: Select **Print report**.
-* New security dashboard: Select the three dots > **Print report**.
+To print or download a snapshot report, select the three dots > **Print report**.
 
 Your web browser's printing interface will present you with options for printing or downloading the PDF report.
 
@@ -211,5 +203,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-events/#page","headline":"Security Events · Cloudflare Web Application Firewall (WAF) docs","description":"Review individual security events triggered by WAF rules.","url":"https://developers.cloudflare.com/waf/analytics/security-events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-events/#page","headline":"Security Events · Cloudflare Web Application Firewall (WAF) docs","description":"Review individual security events triggered by WAF rules.","url":"https://developers.cloudflare.com/waf/analytics/security-events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}
 ```

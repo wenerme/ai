@@ -32,8 +32,6 @@ To view rule violation information:
 [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. (Optional) Filter by **Content security rules**.
 
-* In the Cloudflare dashboard, go to **Security** \> **Client-side security** \> **Rules**.
-
 The displayed information includes the following:
 
 * A sparkline next to the rule name, showing violations in the past seven days.
