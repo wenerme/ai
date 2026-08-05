@@ -48,7 +48,7 @@ For more information, see [scopes](_index.md#scopes).
 ### Assignees {#workitem-assignees}
 
 - Alias `assignees` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
-- Support for querying epics by assignees [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/222) in GitLab 18.3.
+- Support for querying epics by assignees [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/222) in GitLab 18.3.
 
 **Description**: Query work items by one or more users who are assigned to them.
 
@@ -92,7 +92,7 @@ For more information, see [scopes](_index.md#scopes).
 
 - Alias `closedAt` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Operators `>=` and `<=` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/work_items/58) in GitLab 18.0.
-- Support for querying epics by closed date [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/222) in GitLab 18.3.
+- Support for querying epics by closed date [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/222) in GitLab 18.3.
 
 **Description**: Query work items by the date when they were closed.
 
@@ -142,7 +142,7 @@ For more information, see [scopes](_index.md#scopes).
 
 - Tier: Premium, Ultimate
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/233) in GitLab 18.3.
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/233) in GitLab 18.3.
 
 **Description**: Query work items by [custom fields](../../work_items/custom_fields.md).
 
@@ -159,7 +159,7 @@ For more information, see [scopes](_index.md#scopes).
 
 - Alias `dueDate` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Operators `>=` and `<=` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/work_items/58) in GitLab 18.0.
-- Support for querying epics by due date [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/222) in GitLab 18.3.
+- Support for querying epics by due date [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/222) in GitLab 18.3.
 
 **Description**: Query work items by the date when they are due.
 
@@ -192,7 +192,7 @@ For more information, see [scopes](_index.md#scopes).
 - Tier: Ultimate
 
 - Alias `healthStatus` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
-- Support for querying epics by health status [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/222) in GitLab 18.3.
+- Support for querying epics by health status [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/222) in GitLab 18.3.
 
 **Description**: Query work items by their health status.
 
@@ -203,7 +203,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### ID {#workitem-identifier}
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/92) in GitLab 17.8.
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/92) in GitLab 17.8.
 - Support for querying epics by ID [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 
 **Description**: Query work items by their IDs.
@@ -215,7 +215,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### Include subgroups {#workitem-include-subgroups}
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/106) in GitLab 17.10.
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/106) in GitLab 17.10.
 - Support for this field to be used with epics [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 
 **Description**: Query work items in the entire hierarchy of a group.
@@ -234,7 +234,7 @@ For more information, see [scopes](_index.md#scopes).
 - Tier: Premium, Ultimate
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-haskell/-/issues/74) in GitLab 17.6.
-- Support for iteration value types [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/79) in GitLab 17.8.
+- Support for iteration value types [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/79) in GitLab 17.8.
 
 **Description**: Query work items, except epics, by their associated [iteration](../../group/iterations/_index.md).
 
@@ -252,7 +252,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### Labels {#workitem-labels}
 
-- Support for label value types [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/79) in GitLab 17.8.
+- Support for label value types [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/79) in GitLab 17.8.
 - Alias `labels` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
 - Support for querying epics by labels [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 
@@ -271,7 +271,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### Milestone {#workitem-milestone}
 
-- Support for milestone value types [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/77) in GitLab 17.8.
+- Support for milestone value types [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/77) in GitLab 17.8.
 - Support for querying epics by milestone [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 
 **Description**: Query work items by their associated milestone.
@@ -291,7 +291,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### My reaction emoji {#workitem-my-reaction-emoji}
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/223) in GitLab 18.3.
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/223) in GitLab 18.3.
 
 **Description**: Query work items by the current user's [emoji reaction](../../emoji_reactions.md) on it.
 
@@ -310,7 +310,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### State {#workitem-state}
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/96) in GitLab 17.8.
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/96) in GitLab 17.8.
 - Support for querying epics by state [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 
 **Description**: Query work items by state.
@@ -335,7 +335,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### Subscribed {#workitem-subscribed}
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/223) in GitLab 18.3.
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/223) in GitLab 18.3.
 
 **Description**: Query work items by whether the current user has
 [set notifications](../../profile/notifications.md) on or off.
@@ -381,7 +381,7 @@ For more information, see [scopes](_index.md#scopes).
 - Field `lastComment` [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/512154) in GitLab 17.11.
 - Support for epics [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/192680) in GitLab 18.1.
 - Field `status` [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/197407) in GitLab 18.2.
-- Fields `health` and `type` in epics [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/222) in GitLab 18.3.
+- Fields `health` and `type` in epics [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/222) in GitLab 18.3.
 
 | Field            | Name or alias                         | Types           | Description |
 | ---------------- | ------------------------------------- | --------------- | ----------- |
@@ -416,8 +416,8 @@ For more information, see [scopes](_index.md#scopes).
 
 ## Sort fields
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/178) in GitLab 18.2.
-- Support for sorting epics by health status [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/222) in GitLab 18.3.
+- [Introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/178) in GitLab 18.2.
+- Support for sorting epics by health status [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/222) in GitLab 18.3.
 
 | Field         | Name (and alias)         | Types           | Description                                     |
 |---------------|--------------------------|-----------------|------------------------------------------------ |

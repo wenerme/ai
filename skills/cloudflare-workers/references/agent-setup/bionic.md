@@ -39,7 +39,7 @@ https://mcp.cloudflare.com/mcp
 Ask Bionic to investigate a task, make changes, and run relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Cloudflare platform access
@@ -115,23 +115,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
 Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

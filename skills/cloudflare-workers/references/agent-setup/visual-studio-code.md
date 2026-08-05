@@ -46,7 +46,7 @@ After you save `mcp.json`, Visual Studio Code shows a **Start** CodeLens on the 
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 For a screenshot-by-screenshot walkthrough — including the OAuth authorization page, verifying the server is running, and using natural language to create and delete DNS records — refer to the [detailed walkthrough](https://developers.cloudflare.com/agent-setup/visual-studio-code/detailed-walkthrough/).
@@ -124,23 +124,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Tips

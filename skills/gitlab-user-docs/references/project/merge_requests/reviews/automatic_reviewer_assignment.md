@@ -53,7 +53,7 @@ GitLab skips auto-assignment when:
 > For more information, see the history.
 > This feature is available for testing, but not ready for production use.
 
-When [GitLab Duo Agent Platform](../../../../user/duo_agent_platform/_index.md) is available for
+When [GitLab Duo Agent Platform](../../../duo_agent_platform/_index.md) is available for
 your project, the **Automatic reviewer assignment** section shows a **Reviewer assignment strategy**
 setting in place of the single checkbox. Select one of these options:
 
@@ -77,6 +77,10 @@ following for each approver:
 - Review workload, based on the number of open merge requests waiting for their review.
 - Local time, based on the time zone in their profile.
 - Most recent activity.
+
+For the default **All Members** rule, which lists no approvers, GitLab Duo Agent Platform chooses
+from the project members who can both approve the merge request and merge into the target branch.
+When no role can merge into the target branch, the candidates are all members who can approve.
 
 GitLab assigns reviewers when the merge request becomes ready, the same as the code owners strategy.
 The recommendation runs in the background, so the reviewers might take a moment to appear. GitLab

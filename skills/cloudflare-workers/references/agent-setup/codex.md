@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 1. **Download Codex**
@@ -126,23 +126,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API configuration
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Endpoints
 
@@ -314,6 +314,10 @@ Note
 
 These settings influence upload size, not delivery latency. Logpush processes data approximately once per minute, regardless of these parameter values. Adjusting these settings results in smaller or larger uploads per batch, which can help you avoid overloading destinations that have memory or request-size constraints.
 
+Note
+
+When a Logpush job is catching up after a period of buffering (for example, after a destination outage), Cloudflare limits each upload to at most 2 minutes of log data. Very large `max_upload_bytes` or `max_upload_records` values will not produce a single oversized batch during catch-up.
+
 ### When to adjust these parameters
 
 * Reduce `max_upload_records` if your destination struggles with large payloads or runs out of memory processing big batches.
@@ -341,5 +345,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#page","headline":"API configuration · Cloudflare Logs docs","description":"Configure Logpush jobs via the API.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#page","headline":"API configuration · Cloudflare Logs docs","description":"Configure Logpush jobs via the API.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33256 files, 390 MiB total
+> 123 skills, 33251 files, 390 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1410,15 +1410,15 @@ Use when implementing React state management with Zustand, including context-sco
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4917 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1588 | 9.5 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1589 | 9.5 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 60 | 1.2 MiB |
 | [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 144 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
 | [duckdb-docs](./skills/duckdb-docs/SKILL.md) | 100 | 439 KiB |
-| [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | 59 | 493 KiB |
+| [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | 59 | 497 KiB |
 | [duckdb-ops](./skills/duckdb-ops/SKILL.md) | 14 | 40 KiB |
 | [duckdb-quack](./skills/duckdb-quack/SKILL.md) | 9 | 44 KiB |
-| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 127 | 913 KiB |
+| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 127 | 928 KiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 309 | 1.9 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
@@ -1450,7 +1450,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 157 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 853 | 6.8 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 847 | 6.8 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 181 | 533 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |

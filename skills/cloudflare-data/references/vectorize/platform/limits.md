@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/vectorize/platform/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following limits apply to accounts, indexes, and vectors:
 
@@ -32,7 +32,7 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 | Maximum upsert batch size (per batch)                       | 1000 (Workers) / 5000 (HTTP API)    |
 | Maximum vectors in a list-vectors page                      | 1000                                |
 | Maximum index name length                                   | 64 bytes                            |
-| Maximum vectors per index                                   | 10,000,000                          |
+| Maximum vectors per index                                   | 20,000,000                          |
 | Maximum namespaces per index                                | 50,000 (Workers Paid) / 1000 (Free) |
 | Maximum namespace name length                               | 64 bytes                            |
 | Maximum vectors upload size                                 | 100 MB                              |
@@ -63,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/platform/limits/#page","headline":"Limits · Cloudflare Vectorize docs","description":"Account, index, and vector limits for Vectorize on Free and Paid plans.","url":"https://developers.cloudflare.com/vectorize/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/vectorize/platform/limits/#page","headline":"Limits · Cloudflare Vectorize docs","description":"Account, index, and vector limits for Vectorize on Free and Paid plans.","url":"https://developers.cloudflare.com/vectorize/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
