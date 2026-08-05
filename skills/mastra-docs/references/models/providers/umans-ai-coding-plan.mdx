@@ -1,11 +1,11 @@
 ---
 title: "Umans AI Coding Plan | Models"
-description: "Use Umans AI Coding Plan models with Mastra. 6 models available."
+description: "Use Umans AI Coding Plan models with Mastra. 8 models available."
 ---
 
 # [Umans AI Coding Plan logo]Umans AI Coding Plan
 
-Access 6 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
+Access 8 Umans AI Coding Plan models through Mastra's model router. Authentication is handled automatically using the `UMANS_AI_CODING_PLAN_API_KEY` environment variable.
 
 Learn more in the [Umans AI Coding Plan documentation](https://app.umans.ai/offers/code/docs).
 
@@ -48,6 +48,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "umans-ai-coding-plan/umans-deepseek-v4-flash-0731",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 393215,
     "inputCost": null,
     "outputCost": null
   },
@@ -96,6 +108,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "umans-ai-coding-plan/umans-kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

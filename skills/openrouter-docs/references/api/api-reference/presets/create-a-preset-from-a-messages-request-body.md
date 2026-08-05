@@ -698,6 +698,7 @@ components:
                 type: object
               - $ref: '#/components/schemas/AnthropicToolSearchToolBm25'
               - $ref: '#/components/schemas/AnthropicToolSearchToolRegex'
+              - $ref: '#/components/schemas/ShellServerTool_OpenRouter'
           type: array
         top_k:
           type: integer
@@ -1159,6 +1160,8 @@ components:
                   - $ref: '#/components/schemas/MessagesAdvisorToolResultBlock'
                   - $ref: '#/components/schemas/MessagesToolAdditionBlock'
                   - $ref: '#/components/schemas/MessagesToolRemovalBlock'
+                  - $ref: '#/components/schemas/MessagesShellToolResultBlock'
+                  - $ref: '#/components/schemas/MessagesBashToolResultBlock'
               type: array
         role:
           enum:
@@ -2204,6 +2207,27 @@ components:
         - type
         - name
       type: object
+    ShellServerTool_OpenRouter:
+      description: >-
+        OpenRouter built-in server tool: runs shell commands server-side in a
+        sandboxed container (a sandbox-backed clone of OpenAI's hosted shell
+        tool)
+      example:
+        parameters:
+          engine: openrouter
+          environment:
+            type: container_auto
+        type: openrouter:shell
+      properties:
+        parameters:
+          $ref: '#/components/schemas/ShellServerToolConfig'
+        type:
+          enum:
+            - openrouter:shell
+          type: string
+      required:
+        - type
+      type: object
     TraceConfig:
       additionalProperties: {}
       description: >-
@@ -2676,6 +2700,66 @@ components:
       required:
         - type
         - tool
+      type: object
+    MessagesShellToolResultBlock:
+      description: >-
+        Output of an `openrouter:shell` call from a prior assistant turn.
+        Accepted on replay and dropped before the provider request — Anthropic
+        has no equivalent block.
+      example:
+        content:
+          output:
+            - outcome:
+                exit_code: 0
+                type: exit
+              stderr: ''
+              stdout: |
+                README.md
+        tool_use_id: srvtoolu_01abc
+        type: openrouter_shell_tool_result
+      properties:
+        content:
+          additionalProperties: {}
+          type: object
+        tool_use_id:
+          type: string
+        type:
+          enum:
+            - openrouter_shell_tool_result
+          type: string
+      required:
+        - type
+        - tool_use_id
+        - content
+      type: object
+    MessagesBashToolResultBlock:
+      description: >-
+        Output of a sandbox-executed `openrouter:bash` call from a prior
+        assistant turn. Accepted on replay and dropped before the provider
+        request — Anthropic has no equivalent block.
+      example:
+        content:
+          command: ls
+          exitCode: 0
+          stderr: ''
+          stdout: |
+            README.md
+        tool_use_id: srvtoolu_01abc
+        type: openrouter_bash_tool_result
+      properties:
+        content:
+          additionalProperties: {}
+          type: object
+        tool_use_id:
+          type: string
+        type:
+          enum:
+            - openrouter_bash_tool_result
+          type: string
+      required:
+        - type
+        - tool_use_id
+        - content
       type: object
     ContextCompressionEngine:
       description: The compression engine to use. Defaults to "middle-out".
@@ -3269,6 +3353,20 @@ components:
         user_location:
           $ref: '#/components/schemas/WebSearchUserLocationServerTool'
       type: object
+    ShellServerToolConfig:
+      description: Configuration for the openrouter:shell server tool
+      example:
+        engine: openrouter
+        environment:
+          type: container_auto
+      properties:
+        engine:
+          $ref: '#/components/schemas/ShellServerToolEngine'
+        environment:
+          $ref: '#/components/schemas/ShellServerToolEnvironment'
+        sleep_after_seconds:
+          $ref: '#/components/schemas/SandboxSleepAfterSeconds'
+      type: object
     Preset:
       description: A preset without version details.
       example:
@@ -3758,6 +3856,33 @@ components:
             - approximate
           type: string
       type: object
+    ShellServerToolEngine:
+      description: >-
+        Which shell engine to use. "openrouter" runs commands server-side in the
+        OpenRouter sandbox. "auto" (default) keeps the provider's native hosted
+        shell when available (OpenAI); on other providers the call is routed to
+        the OpenRouter sandbox.
+      enum:
+        - auto
+        - openrouter
+      example: openrouter
+      type: string
+    ShellServerToolEnvironment:
+      description: >-
+        Server-side execution environment for the shell tool. Only
+        container-backed environments are supported; "local" shells are not.
+      discriminator:
+        mapping:
+          container_auto:
+            $ref: '#/components/schemas/ContainerAutoEnvironment'
+          container_reference:
+            $ref: '#/components/schemas/ContainerReferenceEnvironment'
+        propertyName: type
+      example:
+        type: container_auto
+      oneOf:
+        - $ref: '#/components/schemas/ContainerAutoEnvironment'
+        - $ref: '#/components/schemas/ContainerReferenceEnvironment'
     PresetStatus:
       description: The status of a preset.
       enum:

@@ -245,6 +245,21 @@ components:
           description: Text to synthesize
           example: Hello world
           type: string
+        input_references:
+          description: >-
+            Reference content for stateless voice cloning: one `input_audio`
+            part carrying the voice sample, optionally accompanied by one `text`
+            part with its transcript. Only routed to endpoints that support
+            voice cloning.
+          example:
+            - input_audio:
+                data: data:audio/wav;base64,UklGRuQXDABXQVZF...
+              type: input_audio
+            - text: I used to rule the world.
+              type: text
+          items:
+            $ref: '#/components/schemas/SpeechInputReference'
+          type: array
         model:
           description: TTS model identifier
           example: mistralai/voxtral-mini-tts-2603
@@ -489,6 +504,18 @@ components:
       required:
         - error
       type: object
+    SpeechInputReference:
+      description: Reference content part for stateless voice cloning
+      discriminator:
+        mapping:
+          input_audio:
+            $ref: '#/components/schemas/SpeechInputReferenceAudio'
+          text:
+            $ref: '#/components/schemas/SpeechInputReferenceText'
+        propertyName: type
+      oneOf:
+        - $ref: '#/components/schemas/SpeechInputReferenceAudio'
+        - $ref: '#/components/schemas/SpeechInputReferenceText'
     ProviderOptions:
       description: >-
         Provider-specific options keyed by provider slug. Only options for the
@@ -1084,6 +1111,63 @@ components:
       required:
         - code
         - message
+      type: object
+    SpeechInputReferenceAudio:
+      description: Reference audio input for stateless voice cloning
+      example:
+        input_audio:
+          data: data:audio/wav;base64,UklGRuQXDABXQVZF...
+        type: input_audio
+      properties:
+        input_audio:
+          $ref: '#/components/schemas/SpeechInputReferenceAudioInput'
+        type:
+          enum:
+            - input_audio
+          type: string
+      required:
+        - type
+        - input_audio
+      type: object
+    SpeechInputReferenceText:
+      description: Transcript of the accompanying reference audio
+      example:
+        text: I used to rule the world.
+        type: text
+      properties:
+        text:
+          description: Transcript of the accompanying reference audio.
+          example: I used to rule the world.
+          maxLength: 10000
+          type: string
+        type:
+          enum:
+            - text
+          type: string
+      required:
+        - type
+        - text
+      type: object
+    SpeechInputReferenceAudioInput:
+      description: Reference audio input object
+      properties:
+        data:
+          description: >-
+            Base64-encoded reference audio (optionally a data URI). Supported
+            audio formats are provider-specific. Limited to 20 MiB of base64 (15
+            MiB of decoded audio).
+          example: data:audio/wav;base64,UklGRuQXDABXQVZF...
+          maxLength: 20971520
+          minLength: 1
+          type: string
+        format:
+          description: >-
+            Audio format of the reference audio (e.g., wav, mp3). Optional; most
+            providers detect the format from the audio bytes.
+          example: wav
+          type: string
+      required:
+        - data
       type: object
   securitySchemes:
     apiKey:

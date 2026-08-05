@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Think
 
-Last updated Jul 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 `@cloudflare/think` lets you build a stateful AI chat agent — one that streams replies, remembers the conversation, and calls tools — by extending a single base class. You provide a model with `getModel()`, and Think wires up the rest of the chat lifecycle for you: the agentic loop (the model calls tools, reads the results, and keeps going until it has an answer), message persistence, streaming, client tools, stream resumption, and extensions — all backed by Durable Object SQLite.
 
@@ -176,7 +176,7 @@ function Chat() {
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-23",
+  "compatibility_date": "2026-08-05",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -204,7 +204,7 @@ function Chat() {
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-23"
+compatibility_date = "2026-08-05"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -218,6 +218,30 @@ name = "MyAgent"
 new_sqlite_classes = ["MyAgent"]
 tag = "v1"
 ```
+
+### Tracing
+
+Think uses `wrapAISDK()` internally to instrument model turns, tool calls, and approval lifecycle segments. You do not need to wrap the AI SDK or configure an adapter. To send `invoke_agent`, `chat`, `execute_tool`, and `tool_approval` spans to Workers Observability, turn on Workers traces:
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "observability": {
+    "traces": {
+      "enabled": true
+    }
+  }
+}
+```
+
+```toml
+[observability.traces]
+enabled = true
+```
+
+Traces appear in the Agents view in the Cloudflare Dashboard. You can inspect conversations and trace timelines. To turn tracing off, set `observability.traces.enabled` to `false`. You do not need to change the Think agent class.
+
+For span attributes, payload controls, exporting traces, and direct AI SDK v6 or v7 setup, refer to [Tracing](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/).
 
 ## Think vs AIChatAgent
 
@@ -501,5 +525,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/think/#page","headline":"Think · Cloudflare Agents docs","description":"Opinionated chat agent framework with built-in tools, persistent memory, lifecycle hooks, streaming, messengers, scheduled tasks, Workflows, and sub-agent RPC.","url":"https://developers.cloudflare.com/agents/harnesses/think/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

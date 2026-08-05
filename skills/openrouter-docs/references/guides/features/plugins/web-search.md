@@ -41,10 +41,10 @@ You can also append `:online` to `:free` model variants like so:
 }
 ```
 
-The web search plugin is powered by native search for Anthropic, Google, OpenAI, Perplexity, and xAI models. See the [server tools web search docs](/docs/guides/features/server-tools/web-search#native-search-providers) for the full list of supported model families per provider.
+The web search plugin is powered by native search for Anthropic, Google, OpenAI, Perplexity, and SpaceXAI models. See the [server tools web search docs](/docs/guides/features/server-tools/web-search#native-search-providers) for the full list of supported model families per provider.
 
 <Note>
-  For xAI models, the web search plugin enables both Web Search and X Search.
+  For SpaceXAI models, the web search plugin enables both Web Search and X Search.
 </Note>
 
 For other models, the web search plugin is powered by [Exa](https://exa.ai). It uses their ["auto"](https://docs.exa.ai/reference/how-exa-search-works#combining-neural-and-keyword-the-best-of-both-worlds-through-exa-auto-search) method (a combination of keyword search and embeddings-based web search) to find the most relevant results and augment/ground your prompt. For each result, OpenRouter requests Exa [highlights](https://docs.exa.ai/reference/contents-retrieval-with-exa-api#highlights) — extractive excerpts drawn from the page that Exa selects as most relevant to the search query, sized adaptively (typically \~2,000–4,000 characters per result). These are returned to the model and surfaced via `url_citation` annotations, with Exa's `[...]` markers separating excerpts that come from different parts of the same page.
@@ -139,11 +139,13 @@ When using native search, domain filter support depends on the provider:
 * **Anthropic**: Supports both `include_domains` and `exclude_domains`, but they are mutually exclusive — you cannot use both at once
 * **Google**: Domain filtering is not supported. With the default engine (auto), OpenRouter falls back to Exa when filters are set. With `"engine": "native"`, returns a 400 error
 * **OpenAI**: Supports `include_domains` only; `exclude_domains` is silently ignored
-* **xAI**: Supports both, but they are mutually exclusive with a maximum of 5 domains each
+* **SpaceXAI**: Supports both, but they are mutually exclusive with a maximum of 5 domains each
 
-## X Search Filters (xAI only)
+<span id="x-search-filters-xai-only" />
 
-When using xAI models with web search enabled,
+## X Search Filters (SpaceXAI only)
+
+When using SpaceXAI models with web search enabled,
 OpenRouter automatically adds the `x_search` tool
 alongside `web_search`. You can pass filter
 parameters to control X/Twitter search results
@@ -201,7 +203,7 @@ The web search plugin supports the following options for the `engine` parameter:
 
 When the `engine` parameter is not specified:
 
-* **Native search is used by default** for OpenAI, Anthropic, Google, Perplexity, and xAI models that support it
+* **Native search is used by default** for OpenAI, Anthropic, Google, Perplexity, and SpaceXAI models that support it
 * **Exa search is used** for all other models or when native search is not supported
 
 When you explicitly specify `"engine": "native"`, it will always attempt to use the provider's native search, even if the model doesn't support it (which may result in an error).
@@ -336,7 +338,7 @@ You can specify the search context size in your API request using the `web_searc
   * [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
   * [Google Pricing](https://ai.google.dev/pricing)
   * [Perplexity Pricing](https://docs.perplexity.ai/getting-started/pricing)
-  * [xAI Pricing](https://docs.x.ai/docs/models#tool-invocation-costs)
+  * [SpaceXAI Pricing](https://docs.x.ai/docs/models#tool-invocation-costs)
 
   Native web search pricing only applies when using `"engine": "native"` or when native search is used by default for supported models. When using `"engine": "exa"`, the Exa search pricing applies instead.
 </Note>

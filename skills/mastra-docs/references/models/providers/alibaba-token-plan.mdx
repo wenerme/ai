@@ -1,11 +1,11 @@
 ---
 title: "Alibaba Token Plan | Models"
-description: "Use Alibaba Token Plan models with Mastra. 22 models available."
+description: "Use Alibaba Token Plan models with Mastra. 24 models available."
 ---
 
 # [Alibaba Token Plan logo]Alibaba Token Plan
 
-Access 22 Alibaba Token Plan models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
+Access 24 Alibaba Token Plan models through Mastra's model router. Authentication is handled automatically using the `ALIBABA_TOKEN_PLAN_API_KEY` environment variable.
 
 Learn more in the [Alibaba Token Plan documentation](https://www.alibabacloud.com/help/en/model-studio/token-plan-overview).
 
@@ -53,6 +53,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "alibaba-token-plan/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "alibaba-token-plan/deepseek-v4-flash-0731",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -264,6 +276,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 65536,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "alibaba-token-plan/qwen3.8-max",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
     "inputCost": null,
     "outputCost": null
   },

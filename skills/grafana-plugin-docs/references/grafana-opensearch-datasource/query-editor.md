@@ -251,7 +251,7 @@ Find documents where a field contains a specific word:
 [Copy code to clipboard] Copy
 
 ```none
-SOURCE = my_index | WHERE LIKE(title, '%wind%') LIMIT 10
+SOURCE = my_index | WHERE LIKE(title, '%wind%') | HEAD 10
 ```
 
 Aggregate data for time-series visualization (use with **Time series** format):

@@ -16,21 +16,6 @@ The Retrieval API is powered by [**vector stores**](#vector-stores), which serve
 
 Create vector store with files
 
-```python
-from openai import OpenAI
-
-client = OpenAI()
-
-vector_store = client.vector_stores.create(        # Create vector store
-    name="Support FAQ",
-)
-
-client.vector_stores.files.upload_and_poll(        # Upload file
-    vector_store_id=vector_store.id,
-    file=open("customer_policies.txt", "rb")
-)
-```
-
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -47,12 +32,35 @@ await client.vectorStores.files.uploadAndPoll(
 );
 ```
 
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+vector_store = client.vector_stores.create(        # Create vector store
+    name="Support FAQ",
+)
+
+client.vector_stores.files.upload_and_poll(        # Upload file
+    vector_store_id=vector_store.id,
+    file=open("customer_policies.txt", "rb")
+)
+```
+
 
 <li className={s.StandaloneLi} data-number={2}>
   **Send search query** to get relevant results.
 </li>
 
 Search query
+
+```javascript
+const userQuery = "What is the return policy?";
+
+const results = await client.vectorStores.search(vector_store.id, {
+  query: userQuery,
+});
+```
 
 ```python
 user_query = "What is the return policy?"
@@ -61,14 +69,6 @@ results = client.vector_stores.search(
     vector_store_id=vector_store.id,
     query=user_query,
 )
-```
-
-```javascript
-const userQuery = "What is the return policy?";
-
-const results = await client.vectorStores.search(vector_store.id, {
-  query: userQuery,
-});
 ```
 
 
@@ -99,17 +99,17 @@ You can query a vector store using the `search` function and specifying a `query
 
 Search query
 
+```javascript
+const results = await client.vectorStores.search(vector_store.id, {
+  query: "How many woodchucks are allowed per passenger?",
+});
+```
+
 ```python
 results = client.vector_stores.search(
     vector_store_id=vector_store.id,
     query="How many woodchucks are allowed per passenger?",
 )
-```
-
-```javascript
-const results = await client.vectorStores.search(vector_store.id, {
-  query: "How many woodchucks are allowed per passenger?",
-});
 ```
 
 
@@ -197,7 +197,7 @@ Compound filter
 ```json
 {
   "type": "and" | "or",                                // logical operators
-  "filters": [...]                                   
+  "filters": [...]
 }
 ```
 
@@ -363,18 +363,18 @@ Create
 
     Create vector store
 
-```python
-client.vector_stores.create(
-    name="Support FAQ",
-    file_ids=["file_123"]
-)
-```
-
 ```javascript
 await client.vectorStores.create({
   name: "Support FAQ",
   file_ids: ["file_123"],
 });
+```
+
+```python
+client.vector_stores.create(
+    name="Support FAQ",
+    file_ids=["file_123"]
+)
 ```
 
   
@@ -386,14 +386,14 @@ Retrieve
 
     Retrieve vector store
 
+```javascript
+await client.vectorStores.retrieve("vs_123");
+```
+
 ```python
 client.vector_stores.retrieve(
     vector_store_id="vs_123"
 )
-```
-
-```javascript
-await client.vectorStores.retrieve("vs_123");
 ```
 
   
@@ -405,17 +405,17 @@ Update
 
     Update vector store
 
+```javascript
+await client.vectorStores.update("vs_123", {
+  name: "Support FAQ Updated",
+});
+```
+
 ```python
 client.vector_stores.update(
     vector_store_id="vs_123",
     name="Support FAQ Updated"
 )
-```
-
-```javascript
-await client.vectorStores.update("vs_123", {
-  name: "Support FAQ Updated",
-});
 ```
 
   
@@ -427,14 +427,14 @@ Delete
 
     Delete vector store
 
+```javascript
+await client.vectorStores.delete("vs_123");
+```
+
 ```python
 client.vector_stores.delete(
     vector_store_id="vs_123"
 )
-```
-
-```javascript
-await client.vectorStores.delete("vs_123");
 ```
 
   
@@ -446,12 +446,12 @@ List
 
     List vector stores
 
-```python
-client.vector_stores.list()
-```
-
 ```javascript
 await client.vectorStores.list();
+```
+
+```python
+client.vector_stores.list()
 ```
 
 
@@ -468,17 +468,17 @@ Create
 
     Create vector store file
 
+```javascript
+await client.vectorStores.files.createAndPoll("vs_123", {
+  file_id: "file_123",
+});
+```
+
 ```python
 client.vector_stores.files.create_and_poll(
     vector_store_id="vs_123",
     file_id="file_123"
 )
-```
-
-```javascript
-await client.vectorStores.files.createAndPoll("vs_123", {
-  file_id: "file_123",
-});
 ```
 
   
@@ -490,18 +490,18 @@ Upload
 
     Upload vector store file
 
-```python
-client.vector_stores.files.upload_and_poll(
-    vector_store_id="vs_123",
-    file=open("customer_policies.txt", "rb")
-)
-```
-
 ```javascript
 await client.vectorStores.files.uploadAndPoll(
   "vs_123",
   fs.createReadStream("customer_policies.txt")
 );
+```
+
+```python
+client.vector_stores.files.upload_and_poll(
+    vector_store_id="vs_123",
+    file=open("customer_policies.txt", "rb")
+)
 ```
 
   
@@ -513,17 +513,17 @@ Retrieve
 
     Retrieve vector store file
 
+```javascript
+await client.vectorStores.files.retrieve("file_123", {
+  vector_store_id: "vs_123",
+});
+```
+
 ```python
 client.vector_stores.files.retrieve(
     vector_store_id="vs_123",
     file_id="file_123"
 )
-```
-
-```javascript
-await client.vectorStores.files.retrieve("file_123", {
-  vector_store_id: "vs_123",
-});
 ```
 
   
@@ -535,19 +535,19 @@ Update
 
     Update vector store file
 
+```javascript
+await client.vectorStores.files.update("file_123", {
+  vector_store_id: "vs_123",
+  attributes: { key: "value" },
+});
+```
+
 ```python
 client.vector_stores.files.update(
     vector_store_id="vs_123",
     file_id="file_123",
     attributes={"key": "value"}
 )
-```
-
-```javascript
-await client.vectorStores.files.update("file_123", {
-  vector_store_id: "vs_123",
-  attributes: { key: "value" },
-});
 ```
 
   
@@ -559,17 +559,17 @@ Delete
 
     Delete vector store file
 
+```javascript
+await client.vectorStores.files.delete("file_123", {
+  vector_store_id: "vs_123",
+});
+```
+
 ```python
 client.vector_stores.files.delete(
     vector_store_id="vs_123",
     file_id="file_123"
 )
-```
-
-```javascript
-await client.vectorStores.files.delete("file_123", {
-  vector_store_id: "vs_123",
-});
 ```
 
   
@@ -581,14 +581,14 @@ List
 
     List vector store files
 
+```javascript
+await client.vectorStores.files.list("vs_123");
+```
+
 ```python
 client.vector_stores.files.list(
     vector_store_id="vs_123"
 )
-```
-
-```javascript
-await client.vectorStores.files.list("vs_123");
 ```
 
 
@@ -600,26 +600,6 @@ await client.vectorStores.files.list("vs_123");
 Create
 
     Batch create operation
-
-```python
-client.vector_stores.file_batches.create_and_poll(
-    vector_store_id="vs_123",
-    files=[
-        {
-            "file_id": "file_123",
-            "attributes": {"department": "finance"}
-        },
-        {
-            "file_id": "file_456",
-            "chunking_strategy": {
-                "type": "static",
-                "max_chunk_size_tokens": 1200,
-                "chunk_overlap_tokens": 200
-            }
-        }
-    ]
-)
-```
 
 ```javascript
 await client.vectorStores.fileBatches.createAndPoll("vs_123", {
@@ -642,6 +622,26 @@ await client.vectorStores.fileBatches.createAndPoll("vs_123", {
 });
 ```
 
+```python
+client.vector_stores.file_batches.create_and_poll(
+    vector_store_id="vs_123",
+    files=[
+        {
+            "file_id": "file_123",
+            "attributes": {"department": "finance"}
+        },
+        {
+            "file_id": "file_456",
+            "chunking_strategy": {
+                "type": "static",
+                "max_chunk_size_tokens": 1200,
+                "chunk_overlap_tokens": 200
+            }
+        }
+    ]
+)
+```
+
   
 
   
@@ -651,17 +651,17 @@ Retrieve
 
     Batch retrieve operation
 
+```javascript
+await client.vectorStores.fileBatches.retrieve("vsfb_123", {
+  vector_store_id: "vs_123",
+});
+```
+
 ```python
 client.vector_stores.file_batches.retrieve(
     vector_store_id="vs_123",
     batch_id="vsfb_123"
 )
-```
-
-```javascript
-await client.vectorStores.fileBatches.retrieve("vsfb_123", {
-  vector_store_id: "vs_123",
-});
 ```
 
   
@@ -673,17 +673,17 @@ Cancel
 
     Batch cancel operation
 
+```javascript
+await client.vectorStores.fileBatches.cancel("vsfb_123", {
+  vector_store_id: "vs_123",
+});
+```
+
 ```python
 client.vector_stores.file_batches.cancel(
     vector_store_id="vs_123",
     batch_id="vsfb_123"
 )
-```
-
-```javascript
-await client.vectorStores.fileBatches.cancel("vsfb_123", {
-  vector_store_id: "vs_123",
-});
 ```
 
   
@@ -695,17 +695,17 @@ List
 
     List files in a batch
 
+```javascript
+await client.vectorStores.fileBatches.listFiles("vsfb_123", {
+  vector_store_id: "vs_123",
+});
+```
+
 ```python
 client.vector_stores.file_batches.list_files(
     "vsfb_123",
     vector_store_id="vs_123"
 )
-```
-
-```javascript
-await client.vectorStores.fileBatches.listFiles("vsfb_123", {
-  vector_store_id: "vs_123",
-});
 ```
 
 
@@ -720,6 +720,17 @@ Each `vector_store.file` can have associated `attributes`, a dictionary of value
 
 Create vector store file with attributes
 
+```javascript
+await client.vectorStores.files.create("<vector_store_id>", {
+  file_id: "file_123",
+  attributes: {
+    region: "US",
+    category: "Marketing",
+    date: 1672531200, // Jan 1, 2023
+  },
+});
+```
+
 ```python
 client.vector_stores.files.create(
     vector_store_id="<vector_store_id>",
@@ -732,23 +743,21 @@ client.vector_stores.files.create(
 )
 ```
 
-```javascript
-await client.vectorStores.files.create("<vector_store_id>", {
-  file_id: "file_123",
-  attributes: {
-    region: "US",
-    category: "Marketing",
-    date: 1672531200, // Jan 1, 2023
-  },
-});
-```
-
 
 ### Expiration policies
 
 You can set an expiration policy on `vector_store` objects with `expires_after`. Once a vector store expires, all associated `vector_store.file` objects will be deleted and you'll no longer be charged for them.
 
 Set expiration policy for vector store
+
+```javascript
+await client.vectorStores.update("vs_123", {
+  expires_after: {
+    anchor: "last_active_at",
+    days: 7,
+  },
+});
+```
 
 ```python
 client.vector_stores.update(
@@ -758,15 +767,6 @@ client.vector_stores.update(
         "days": 7
     }
 )
-```
-
-```javascript
-await client.vectorStores.update("vs_123", {
-  expires_after: {
-    anchor: "last_active_at",
-    days: 7,
-  },
-});
 ```
 
 
@@ -820,6 +820,18 @@ After performing a query you may want to synthesize a response based on the resu
 
 Perform search query to get results
 
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+const userQuery = "What is the return policy?";
+
+const results = await client.vectorStores.search(vector_store.id, {
+  query: userQuery,
+});
+```
+
 ```python
 from openai import OpenAI
 
@@ -833,42 +845,8 @@ results = client.vector_stores.search(
 )
 ```
 
-```javascript
-import OpenAI from "openai";
-
-const client = new OpenAI();
-
-const userQuery = "What is the return policy?";
-
-const results = await client.vectorStores.search(vector_store.id, {
-  query: userQuery,
-});
-```
-
 
 Synthesize a response based on results
-
-```python
-formatted_results = format_results(results.data)
-
-"\n".join("\n".join(c.text for c in result.content) for result in results.data)
-
-completion = client.chat.completions.create(
-    model="gpt-5.6",
-    messages=[
-        {
-            "role": "developer",
-            "content": "Produce a concise answer to the query based on the provided sources.",
-        },
-        {
-            "role": "user",
-            "content": f"Sources: {formatted_results}\n\nQuery: '{user_query}'",
-        },
-    ],
-)
-
-print(completion.choices[0].message.content)
-```
 
 ```javascript
 const formattedResults = formatResults(results.data);
@@ -895,6 +873,28 @@ const completion = await client.chat.completions.create({
 console.log(completion.choices[0].message.content);
 ```
 
+```python
+formatted_results = format_results(results.data)
+
+"\n".join("\n".join(c.text for c in result.content) for result in results.data)
+
+completion = client.chat.completions.create(
+    model="gpt-5.6",
+    messages=[
+        {
+            "role": "developer",
+            "content": "Produce a concise answer to the query based on the provided sources.",
+        },
+        {
+            "role": "user",
+            "content": f"Sources: {formatted_results}\n\nQuery: '{user_query}'",
+        },
+    ],
+)
+
+print(completion.choices[0].message.content)
+```
+
 
 ```json
 "Our return policy allows returns within 30 days of purchase."
@@ -904,19 +904,6 @@ This uses a sample `format_results` function, which could be implemented like
 so:
 
 Sample result formatting function
-
-```python
-def format_results(results):
-    formatted_results = ""
-    for result in results.data:
-        formatted_result = (
-            f"<result file_id='{result.file_id}' file_name='{result.file_name}'>"
-        )
-        for part in result.content:
-            formatted_result += f"<content>{part.text}</content>"
-        formatted_results += formatted_result + "</result>"
-    return f"<sources>{formatted_results}</sources>"
-```
 
 ```javascript
 function formatResults(results) {
@@ -930,4 +917,17 @@ function formatResults(results) {
   }
   return `<sources>${formattedResults}</sources>`;
 }
+```
+
+```python
+def format_results(results):
+    formatted_results = ""
+    for result in results.data:
+        formatted_result = (
+            f"<result file_id='{result.file_id}' file_name='{result.file_name}'>"
+        )
+        for part in result.content:
+            formatted_result += f"<content>{part.text}</content>"
+        formatted_results += formatted_result + "</result>"
+    return f"<sources>{formatted_results}</sources>"
 ```

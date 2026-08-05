@@ -86,9 +86,9 @@ Configure web search behavior:
 
 See the [Web Search plugin docs](/docs/guides/features/plugins/web-search) for full details on engine selection, domain filter compatibility, and pricing.
 
-## X Search Filters (xAI only)
+## X Search Filters (SpaceXAI only)
 
-When using xAI models (e.g. `x-ai/grok-4.1-fast`),
+When using SpaceXAI models (e.g. `x-ai/grok-4.1-fast`),
 you can pass `x_search_filter` as a top-level
 request parameter to filter X/Twitter search
 results:
@@ -118,7 +118,7 @@ results:
 <Warning>
   `allowed_x_handles` and `excluded_x_handles` are
   mutually exclusive. See the
-  [Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-filters-xai-only)
+  [Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-filters-spacexai-only)
   for full details.
 </Warning>
 

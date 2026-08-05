@@ -20,13 +20,62 @@ San Francisco is like today and the chances of rain. We also show how to output 
 With the launch of Structured Outputs, you can now use the parameter `strict:
   true` when using function calling with the Assistants API. For more
   information, refer to the [Function calling
-  guide](https://developers.openai.com/api/docs/guides/function-calling#function-calling-with-structured-outputs).
-  Please note that Structured Outputs are not supported in the Assistants API
-  when using vision.
+  guide](https://developers.openai.com/api/docs/guides/function-calling#strict-mode). Please note that
+  Structured Outputs are not supported in the Assistants API when using vision.
 
 ### Step 1: Define functions
 
 When creating your assistant, you will first define the functions under the `tools` param of the assistant.
+
+```javascript
+const assistant = await client.beta.assistants.create({
+  model: "gpt-4o",
+  instructions:
+    "You are a weather bot. Use the provided functions to answer questions.",
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "getCurrentTemperature",
+        description: "Get the current temperature for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+            unit: {
+              type: "string",
+              enum: ["Celsius", "Fahrenheit"],
+              description:
+                "The temperature unit to use. Infer this from the user's location.",
+            },
+          },
+          required: ["location", "unit"],
+        },
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "getRainProbability",
+        description: "Get the probability of rain for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+          },
+          required: ["location"],
+        },
+      },
+    },
+  ],
+});
+```
 
 ```python
 from openai import OpenAI
@@ -80,69 +129,10 @@ assistant = client.beta.assistants.create(
 )
 ```
 
-```javascript
-const assistant = await client.beta.assistants.create({
-  model: "gpt-4o",
-  instructions:
-    "You are a weather bot. Use the provided functions to answer questions.",
-  tools: [
-    {
-      type: "function",
-      function: {
-        name: "getCurrentTemperature",
-        description: "Get the current temperature for a specific location",
-        parameters: {
-          type: "object",
-          properties: {
-            location: {
-              type: "string",
-              description: "The city and state, e.g., San Francisco, CA",
-            },
-            unit: {
-              type: "string",
-              enum: ["Celsius", "Fahrenheit"],
-              description:
-                "The temperature unit to use. Infer this from the user's location.",
-            },
-          },
-          required: ["location", "unit"],
-        },
-      },
-    },
-    {
-      type: "function",
-      function: {
-        name: "getRainProbability",
-        description: "Get the probability of rain for a specific location",
-        parameters: {
-          type: "object",
-          properties: {
-            location: {
-              type: "string",
-              description: "The city and state, e.g., San Francisco, CA",
-            },
-          },
-          required: ["location"],
-        },
-      },
-    },
-  ],
-});
-```
-
 
 ### Step 2: Create a Thread and add Messages
 
 Create a Thread when a user starts a conversation and add Messages to the Thread as the user asks questions.
-
-```python
-thread = client.beta.threads.create()
-message = client.beta.threads.messages.create(
-    thread_id=thread.id,
-    role="user",
-    content="What's the weather in San Francisco today and the likelihood it'll rain?",
-)
-```
 
 ```javascript
 const thread = await client.beta.threads.create();
@@ -151,6 +141,15 @@ const message = client.beta.threads.messages.create(thread.id, {
   content:
     "What's the weather in San Francisco today and the likelihood it'll rain?",
 });
+```
+
+```python
+thread = client.beta.threads.create()
+message = client.beta.threads.messages.create(
+    thread_id=thread.id,
+    role="user",
+    content="What's the weather in San Francisco today and the likelihood it'll rain?",
+)
 ```
 
 
@@ -215,51 +214,6 @@ With streaming
     
 
 For the streaming case, we create an EventHandler class to handle events in the response stream and submit all tool outputs at once with the “submit tool outputs stream” helper in the Python and Node SDKs.
-
-```python
-from typing_extensions import override
-from openai import AssistantEventHandler
-
-class EventHandler(AssistantEventHandler):
-    @override
-    def on_event(self, event):
-        # Retrieve events that are denoted with 'requires_action'
-        # since these will have our tool_calls
-        if event.event == "thread.run.requires_action":
-            run_id = event.data.id  # Retrieve the run ID from the event data
-            self.handle_requires_action(event.data, run_id)
-
-    def handle_requires_action(self, data, run_id):
-        tool_outputs = []
-
-        for tool in data.required_action.submit_tool_outputs.tool_calls:
-            if tool.function.name == "get_current_temperature":
-                tool_outputs.append({"tool_call_id": tool.id, "output": "57"})
-            elif tool.function.name == "get_rain_probability":
-                tool_outputs.append({"tool_call_id": tool.id, "output": "0.06"})
-
-        # Submit all tool_outputs at the same time
-        self.submit_tool_outputs(tool_outputs, run_id)
-
-    def submit_tool_outputs(self, tool_outputs, run_id):
-        # Use the submit_tool_outputs_stream helper
-        with client.beta.threads.runs.submit_tool_outputs_stream(
-            thread_id=self.current_run.thread_id,
-            run_id=self.current_run.id,
-            tool_outputs=tool_outputs,
-            event_handler=EventHandler(),
-        ) as stream:
-            for text in stream.text_deltas:
-                print(text, end="", flush=True)
-            print()
-
-with client.beta.threads.runs.stream(
-    thread_id=thread.id,
-    assistant_id=assistant.id,
-    event_handler=EventHandler(),
-) as stream:
-    stream.until_done()
-```
 
 ```javascript
 class EventHandler extends EventEmitter {
@@ -336,6 +290,51 @@ for await (const event of stream) {
 }
 ```
 
+```python
+from typing_extensions import override
+from openai import AssistantEventHandler
+
+class EventHandler(AssistantEventHandler):
+    @override
+    def on_event(self, event):
+        # Retrieve events that are denoted with 'requires_action'
+        # since these will have our tool_calls
+        if event.event == "thread.run.requires_action":
+            run_id = event.data.id  # Retrieve the run ID from the event data
+            self.handle_requires_action(event.data, run_id)
+
+    def handle_requires_action(self, data, run_id):
+        tool_outputs = []
+
+        for tool in data.required_action.submit_tool_outputs.tool_calls:
+            if tool.function.name == "get_current_temperature":
+                tool_outputs.append({"tool_call_id": tool.id, "output": "57"})
+            elif tool.function.name == "get_rain_probability":
+                tool_outputs.append({"tool_call_id": tool.id, "output": "0.06"})
+
+        # Submit all tool_outputs at the same time
+        self.submit_tool_outputs(tool_outputs, run_id)
+
+    def submit_tool_outputs(self, tool_outputs, run_id):
+        # Use the submit_tool_outputs_stream helper
+        with client.beta.threads.runs.submit_tool_outputs_stream(
+            thread_id=self.current_run.thread_id,
+            run_id=self.current_run.id,
+            tool_outputs=tool_outputs,
+            event_handler=EventHandler(),
+        ) as stream:
+            for text in stream.text_deltas:
+                print(text, end="", flush=True)
+            print()
+
+with client.beta.threads.runs.stream(
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+    event_handler=EventHandler(),
+) as stream:
+    stream.until_done()
+```
+
 
   
 
@@ -351,48 +350,6 @@ Runs are asynchronous, which means you'll want to monitor their `status` by poll
 creating the run and then polling for its completion. Once the Run completes, you can list the
 Messages added to the Thread by the Assistant. Finally, you would retrieve all the `tool_outputs` from
 `required_action` and submit them at the same time to the 'submit tool outputs and poll' helper.
-
-```python
-run = client.beta.threads.runs.create_and_poll(
-    thread_id=thread.id,
-    assistant_id=assistant.id,
-)
-
-if run.status == "completed":
-    messages = client.beta.threads.messages.list(thread_id=thread.id)
-    print(messages)
-
-# Define the list to store tool outputs
-tool_outputs = []
-
-# Loop through each tool in the required action section
-if run.required_action:
-    for tool in run.required_action.submit_tool_outputs.tool_calls:
-        if tool.function.name == "get_current_temperature":
-            tool_outputs.append({"tool_call_id": tool.id, "output": "57"})
-        elif tool.function.name == "get_rain_probability":
-            tool_outputs.append({"tool_call_id": tool.id, "output": "0.06"})
-
-# Submit all tool outputs at once after collecting them in a list
-if tool_outputs:
-    try:
-        run = client.beta.threads.runs.submit_tool_outputs_and_poll(
-            thread_id=thread.id,
-            run_id=run.id,
-            tool_outputs=tool_outputs,
-        )
-        print("Tool outputs submitted successfully.")
-    except Exception as e:
-        print("Failed to submit tool outputs:", e)
-else:
-    print("No tool outputs to submit.")
-
-if run.status == "completed":
-    messages = client.beta.threads.messages.list(thread_id=thread.id)
-    print(messages)
-else:
-    print(run.status)
-```
 
 ```javascript
 const handleRequiresAction = async (run) => {
@@ -457,11 +414,115 @@ let run = await client.beta.threads.runs.createAndPoll(thread.id, {
 handleRunStatus(run);
 ```
 
+```python
+run = client.beta.threads.runs.create_and_poll(
+    thread_id=thread.id,
+    assistant_id=assistant.id,
+)
+
+if run.status == "completed":
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    print(messages)
+
+# Define the list to store tool outputs
+tool_outputs = []
+
+# Loop through each tool in the required action section
+if run.required_action:
+    for tool in run.required_action.submit_tool_outputs.tool_calls:
+        if tool.function.name == "get_current_temperature":
+            tool_outputs.append({"tool_call_id": tool.id, "output": "57"})
+        elif tool.function.name == "get_rain_probability":
+            tool_outputs.append({"tool_call_id": tool.id, "output": "0.06"})
+
+# Submit all tool outputs at once after collecting them in a list
+if tool_outputs:
+    try:
+        run = client.beta.threads.runs.submit_tool_outputs_and_poll(
+            thread_id=thread.id,
+            run_id=run.id,
+            tool_outputs=tool_outputs,
+        )
+        print("Tool outputs submitted successfully.")
+    except Exception as e:
+        print("Failed to submit tool outputs:", e)
+else:
+    print("No tool outputs to submit.")
+
+if run.status == "completed":
+    messages = client.beta.threads.messages.list(thread_id=thread.id)
+    print(messages)
+else:
+    print(run.status)
+```
+
 
 
 ### Using Structured Outputs
 
 When you enable [Structured Outputs](https://developers.openai.com/api/docs/guides/structured-outputs) by supplying `strict: true`, the OpenAI API will pre-process your supplied schema on your first request, and then use this artifact to constrain the model to your schema.
+
+```javascript
+const assistant = await client.beta.assistants.create({
+  model: "gpt-4o-2024-08-06",
+  instructions:
+    "You are a weather bot. Use the provided functions to answer questions.",
+  tools: [
+    {
+      type: "function",
+      function: {
+        name: "getCurrentTemperature",
+        description: "Get the current temperature for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+            unit: {
+              type: "string",
+              enum: ["Celsius", "Fahrenheit"],
+              description:
+                "The temperature unit to use. Infer this from the user's location.",
+            },
+          },
+          required: ["location", "unit"],
+          // highlight-start
+          additionalProperties: false,
+          // highlight-end
+        },
+        // highlight-start
+        strict: true,
+        // highlight-end
+      },
+    },
+    {
+      type: "function",
+      function: {
+        name: "getRainProbability",
+        description: "Get the probability of rain for a specific location",
+        parameters: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g., San Francisco, CA",
+            },
+          },
+          required: ["location"],
+          // highlight-start
+          additionalProperties: false,
+          // highlight-end
+        },
+        // highlight-start
+        strict: true,
+        // highlight-end
+      },
+    },
+  ],
+});
+```
 
 ```python
 from openai import OpenAI
@@ -525,66 +586,4 @@ assistant = client.beta.assistants.create(
         },
     ],
 )
-```
-
-```javascript
-const assistant = await client.beta.assistants.create({
-  model: "gpt-4o-2024-08-06",
-  instructions:
-    "You are a weather bot. Use the provided functions to answer questions.",
-  tools: [
-    {
-      type: "function",
-      function: {
-        name: "getCurrentTemperature",
-        description: "Get the current temperature for a specific location",
-        parameters: {
-          type: "object",
-          properties: {
-            location: {
-              type: "string",
-              description: "The city and state, e.g., San Francisco, CA",
-            },
-            unit: {
-              type: "string",
-              enum: ["Celsius", "Fahrenheit"],
-              description:
-                "The temperature unit to use. Infer this from the user's location.",
-            },
-          },
-          required: ["location", "unit"],
-          // highlight-start
-          additionalProperties: false,
-          // highlight-end
-        },
-        // highlight-start
-        strict: true,
-        // highlight-end
-      },
-    },
-    {
-      type: "function",
-      function: {
-        name: "getRainProbability",
-        description: "Get the probability of rain for a specific location",
-        parameters: {
-          type: "object",
-          properties: {
-            location: {
-              type: "string",
-              description: "The city and state, e.g., San Francisco, CA",
-            },
-          },
-          required: ["location"],
-          // highlight-start
-          additionalProperties: false,
-          // highlight-end
-        },
-        // highlight-start
-        strict: true,
-        // highlight-end
-      },
-    },
-  ],
-});
 ```

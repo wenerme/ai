@@ -17,6 +17,7 @@ Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers
 Observability is the practice of instrumenting systems to collect metrics, and logs enabling better monitoring, troubleshooting, and optimization of applications.
 
 * [Costs](https://developers.cloudflare.com/ai-gateway/observability/costs/)
+* [User Insights](https://developers.cloudflare.com/ai-gateway/observability/user-insights/)
 * [Custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/)
 * [OpenTelemetry](https://developers.cloudflare.com/ai-gateway/observability/otel-integration/)
 * [Analytics](https://developers.cloudflare.com/ai-gateway/observability/analytics/)

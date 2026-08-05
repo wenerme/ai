@@ -54,7 +54,7 @@ The `service_tier` parameter lets you control cost and latency tradeoffs when se
 
 ### Using Service Tiers
 
-Pass `service_tier` as a top-level parameter in your request body. Supported values are `flex` (lower cost, higher latency) and `priority` (faster, higher cost). `fast` is also accepted as an alias for `priority` — see [The `fast` alias](#the-fast-alias) below. The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
+Pass `service_tier` as a top-level parameter in your request body. Supported values are `flex` (lower cost, higher latency) and `priority` (faster, higher cost). `fast` is also accepted as an alias for `priority` — see [Fast mode](#fast-mode) below. The example below requests the `flex` tier from OpenAI's `gpt-5` for a 50% discount in exchange for higher latency and lower availability.
 
 <Template
   data={{
@@ -186,11 +186,13 @@ curl https://openrouter.ai/api/v1/messages \
   }'
 ```
 
-### The `fast` alias
+### Fast mode
 
-`service_tier: "fast"` (OpenAI's [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) rename of priority processing) is treated as `"priority"` on all APIs and providers, and the response reports `priority`.
+`service_tier: "fast"` (OpenAI's [Fast mode](https://developers.openai.com/api/docs/guides/fast-mode) rename of priority processing), `service_tier: "priority"`, and Anthropic's native `speed: "fast"` parameter are fully interchangeable on all APIs and providers. Any of the three requests the priority tier (the response reports `priority`), and on Anthropic models with a fast sibling (e.g. [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)) reroutes to the fast sibling — see [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode).
 
-On Anthropic models with a fast sibling (e.g. [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)), it also behaves like Anthropic's native `speed: "fast"` parameter and reroutes to the fast sibling — see [Fast Mode](/docs/cookbook/coding-agents/claude-code-integration#fast-mode).
+If you set conflicting values explicitly (e.g. `speed: "standard"` with `service_tier: "priority"`), both are honored as written and neither is derived from the other.
+
+Anthropic itself has deprecated its priority tier — per [Anthropic's service tiers documentation](https://platform.claude.com/docs/en/api/service-tiers): "Priority Tier capacity commitments are no longer available for purchase. Organizations with an existing commitment can continue to use Priority Tier through their contract end date."
 
 ### How Routing Works
 
@@ -213,7 +215,7 @@ The following providers support `flex` and `priority` service tiers for select m
 * **OpenAI**
 * **Google Vertex**
 * **Google AI Studio**
-* **xAI** (`priority` only)
+* **SpaceXAI** (`priority` only)
 
 The response's `service_tier` field reports which tier was actually used. Possible response values are `default`, `flex`, `priority`, or `null` when no service tier is available from upstream. Note that OpenRouter normalizes provider-equivalent base tier labels, such as Google's `standard`, to `default` — except in the Anthropic Messages API, which preserves `standard` to match Anthropic's spec (see [API Response Differences](#api-response-differences) below).
 
@@ -222,7 +224,7 @@ Provider documentation:
 * **OpenAI**: [Chat Completions](https://developers.openai.com/api/reference/resources/chat/subresources/completions/methods/create#\(resource\)%20chat.completions%20%3E%20\(method\)%20create%20%3E%20\(params\)%200.non_streaming%20%3E%20\(param\)%20service_tier%20%3E%20\(schema\)), [Responses](https://developers.openai.com/api/reference/resources/responses/methods/create#\(resource\)%20responses%20%3E%20\(method\)%20create%20%3E%20\(params\)%200.non_streaming%20%3E%20\(param\)%20service_tier%20%3E%20\(schema\)), and [pricing](https://developers.openai.com/api/docs/pricing)
 * **Google Vertex**: [Flex](https://cloud.google.com/vertex-ai/generative-ai/docs/flex-paygo) and [Priority](https://cloud.google.com/vertex-ai/generative-ai/docs/priority-paygo)
 * **Google AI Studio**: [Flex](https://ai.google.dev/gemini-api/docs/flex-inference) and [Priority](https://ai.google.dev/gemini-api/docs/priority-inference)
-* **xAI**: [Priority Processing](https://docs.x.ai/developers/advanced-api-usage/priority-processing)
+* **SpaceXAI**: [Priority Processing](https://docs.x.ai/developers/advanced-api-usage/priority-processing)
 
 ### API Response Differences
 

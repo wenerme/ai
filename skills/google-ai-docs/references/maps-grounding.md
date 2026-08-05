@@ -427,8 +427,11 @@ The following models support Grounding with Google Maps:
 
 ## Supported tool combinations
 
-Gemini 3 models support combining built-in tools (like Grounding with Google
-Maps) with custom tools (function calling). Learn more on the
+You can use Grounding with Google Maps with other built-in tools like
+[Grounding with Google Search](https://ai.google.dev/gemini-api/docs/google-search) (supported on
+Gemini 3.5 Flash and later models) to power more complex use cases. Gemini 3
+models also support combining these built-in tools with custom tools (function
+calling). Learn more on the
 [tool combinations](https://ai.google.dev/gemini-api/docs/tool-combination) page.
 
 ## What's next

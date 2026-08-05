@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom metadata
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Custom metadata in AI Gateway allows you to tag requests with user IDs or other identifiers, enabling better tracking and analysis of your requests. Metadata values can be strings, numbers, or booleans, and will appear in your logs, making it easy to search and filter through your data.
 
@@ -35,6 +35,14 @@ AI Gateway allows you to pass up to five custom metadata entries per request. If
 Note
 
 Objects are not supported as metadata values.
+
+## Reserved metadata
+
+Metadata keys that begin with `cf.` are reserved for metadata added by Cloudflare. Do not send your own `cf.*` metadata keys. AI Gateway removes customer-supplied `cf.*` keys before saving request metadata.
+
+When a request reaches AI Gateway through a custom domain protected by [Cloudflare Access](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/), AI Gateway adds the authenticated Access user ID to request metadata as `cf.user_id`. This value is the verified Access JWT `sub` claim, not the user's email address.
+
+AI Gateway guarantees that `cf.user_id` is saved when a valid Access user ID is present. If the request already has five custom metadata entries, AI Gateway may remove the last custom entry so `cf.user_id` can be saved. Service-token requests and requests without a user subject do not receive `cf.user_id` metadata.
 
 ## Implementations
 
@@ -164,5 +172,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#page","headline":"Custom metadata · Cloudflare AI Gateway docs","description":"Tag AI Gateway requests with custom metadata such as user IDs to improve log filtering and analysis.","url":"https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#page","headline":"Custom metadata · Cloudflare AI Gateway docs","description":"Tag AI Gateway requests with custom metadata such as user IDs to improve log filtering and analysis.","url":"https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

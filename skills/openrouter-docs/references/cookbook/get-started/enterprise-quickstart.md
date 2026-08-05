@@ -76,9 +76,19 @@ Guardrails can be assigned at the workspace level (applying to all traffic in th
 
 See [Guardrails](/docs/guides/features/guardrails) for configuration details and the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for programmatic management.
 
+### Coding Agent Rollout
+
+Employees who use coding agent CLIs can run them through [Ori Harness](/docs/guides/ori/harness). Install it once:
+
+```sh theme={null}
+curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
+```
+
+Then sign in with OAuth on your company OpenRouter organization—there are no API keys to distribute. Employees can run `ori claude`, `ori codex`, `ori hermes`, or `ori opencode`; your organization's allowlists, budgets, and workspace permissions apply to every agent, with usage on one bill.
+
 ### Zero Data Retention (ZDR)
 
-Zero Data Retention ensures providers do not store your prompts or responses. ZDR can be enforced per model group (Anthropic, OpenAI, Google, xAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request using the `zdr` parameter.
+Zero Data Retention ensures providers do not store your prompts or responses. ZDR can be enforced per model group (Anthropic, OpenAI, Google, SpaceXAI, and non-frontier) in your [privacy settings](https://openrouter.ai/settings/privacy), via [guardrails](/docs/guides/features/guardrails), or per-request using the `zdr` parameter.
 
 OpenRouter itself has a ZDR policy and does not retain your prompts unless you explicitly opt in to prompt logging.
 
@@ -176,5 +186,6 @@ Once your organization is configured, explore these additional resources:
 * [Tool Calling](/docs/guides/features/tool-calling) for function calling capabilities
 * [Prompt Caching](/docs/guides/best-practices/prompt-caching) for cost optimization
 * [Latency and Performance](/docs/guides/best-practices/latency-and-performance) for performance tuning
+* [Ori Harness](/docs/guides/ori/harness) for running coding agent CLIs on your organization
 
 For enterprise sales inquiries or custom requirements, contact our sales team at [openrouter.ai/enterprise](https://openrouter.ai/enterprise).

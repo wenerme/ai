@@ -1,11 +1,11 @@
 ---
 title: "Mistral | Models"
-description: "Use Mistral models with Mastra. 30 models available."
+description: "Use Mistral models with Mastra. 33 models available."
 ---
 
 # [Mistral logo]Mistral
 
-Access 30 Mistral models through Mastra's model router. Authentication is handled automatically using the `MISTRAL_API_KEY` environment variable.
+Access 33 Mistral models through Mastra's model router. Authentication is handled automatically using the `MISTRAL_API_KEY` environment variable.
 
 Learn more in the [Mistral documentation](https://docs.mistral.ai/getting-started/models/).
 
@@ -300,6 +300,42 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 2,
     "outputCost": 6
+  },
+  {
+    "model": "mistral/voxtral-mini-latest",
+    "imageInput": false,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "mistral/voxtral-mini-tts-latest",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": null,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "mistral/voxtral-small-latest",
+    "imageInput": false,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 32000,
+    "maxOutput": 32000,
+    "inputCost": 0.1,
+    "outputCost": 0.3
   }
 ]}
 />
@@ -332,7 +368,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "mistral/pixtral-large-latest"
+      ? "mistral/voxtral-small-latest"
       : "mistral/codestral-latest";
   }
 });

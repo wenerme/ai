@@ -23,6 +23,8 @@ Configure your AI Gateway with multiple options and customizations.
 * [Request handling](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/)
 * [Fallbacks](https://developers.cloudflare.com/ai-gateway/configuration/fallbacks/)
 * [Authenticated Gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/)
+* [Custom domains](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/)
+* [Cloudflare Access](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/)
 
 Was this helpful?
 

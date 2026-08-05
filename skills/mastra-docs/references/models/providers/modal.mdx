@@ -1,11 +1,11 @@
 ---
 title: "Modal | Models"
-description: "Use Modal models with Mastra. 1 model available."
+description: "Use Modal models with Mastra. 2 models available."
 ---
 
 # [Modal logo]Modal
 
-Access 1 Modal model through Mastra's model router. Authentication is handled automatically using the `MODAL_PROXY_TOKEN` environment variable.
+Access 2 Modal models through Mastra's model router. Authentication is handled automatically using the `MODAL_PROXY_TOKEN` environment variable.
 
 Learn more in the [Modal documentation](https://modal.com/docs/guide/endpoints).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "modal/thinkingmachines/Inkling-NVFP4"
+  model: "modal/moonshotai/Kimi-K3"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "modal/moonshotai/Kimi-K3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3,
+    "outputCost": 15
+  },
   {
     "model": "modal/thinkingmachines/Inkling-NVFP4",
     "imageInput": true,
@@ -64,7 +76,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://inference.us-west.modal.direct/v1",
-    id: "modal/thinkingmachines/Inkling-NVFP4",
+    id: "modal/moonshotai/Kimi-K3",
     apiKey: process.env.MODAL_PROXY_TOKEN,
     headers: {
       "X-Custom-Header": "value"
@@ -83,7 +95,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "modal/thinkingmachines/Inkling-NVFP4"
-      : "modal/thinkingmachines/Inkling-NVFP4";
+      : "modal/moonshotai/Kimi-K3";
   }
 });
 ```

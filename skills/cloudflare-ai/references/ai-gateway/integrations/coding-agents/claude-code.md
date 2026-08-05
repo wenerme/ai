@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Claude Code
 
-Last updated Jun 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Claude Code ↗](https://docs.anthropic.com/en/docs/claude-code/overview) reads its endpoint and credentials from environment variables. This configuration sends requests to AI Gateway's [Anthropic endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/), authenticated with your Cloudflare gateway token. The Anthropic endpoint exposes the same `/v1/messages` API that Claude Code expects. When AI Gateway supplies the Anthropic credentials for you — using either an Anthropic API key you [store as a provider key (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) or [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) credits — the `ANTHROPIC_API_KEY` that Claude Code requires can be any placeholder value.
+[Claude Code ↗](https://docs.anthropic.com/en/docs/claude-code/overview) reads its endpoint and credentials from environment variables. If your gateway is protected by Cloudflare Access, refer to [Use with Cloudflare Access](#use-with-cloudflare-access). This configuration sends requests to AI Gateway's [Anthropic endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/), authenticated with your Cloudflare gateway token. The Anthropic endpoint exposes the same `/v1/messages` API that Claude Code expects. When AI Gateway supplies the Anthropic credentials for you — using either an Anthropic API key you [store as a provider key (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) or [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) credits — the `ANTHROPIC_API_KEY` that Claude Code requires can be any placeholder value.
 
 ## Prerequisites
 
@@ -96,6 +96,23 @@ $env:ANTHROPIC_CUSTOM_HEADERS = "cf-aig-authorization: Bearer <CF_AIG_TOKEN>"
 claude
 ```
 
+## Use with Cloudflare Access
+
+If your gateway is protected by [Cloudflare Access](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/), Claude Code can authenticate with a short-lived Access token instead of a gateway token. Point `ANTHROPIC_BASE_URL` at your [custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/) and use Claude Code's `apiKeyHelper` to fetch the token with [cloudflared](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#make-requests-with-cloudflared-access-curl). Claude Code sends the token as the API key, and Access verifies it at the edge.
+
+Add the following to Claude Code's [settings.json ↗](https://docs.anthropic.com/en/docs/claude-code/settings#settings-files), replacing `ai-gateway.example.com` with your custom domain:
+
+```json
+{
+	"apiKeyHelper": "cloudflared access login --no-verbose https://ai-gateway.example.com",
+	"env": {
+		"ANTHROPIC_BASE_URL": "https://ai-gateway.example.com/anthropic"
+	}
+}
+```
+
+The first request opens your identity provider's login flow. After you authenticate, requests route through AI Gateway with your Access identity attached as [cf.user\_id](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#reserved-metadata).
+
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
 Was this helpful?
@@ -107,5 +124,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#page","headline":"Claude Code · Cloudflare AI Gateway docs","description":"Route Claude Code through AI Gateway using your Cloudflare gateway token.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#page","headline":"Claude Code · Cloudflare AI Gateway docs","description":"Route Claude Code through AI Gateway using your Cloudflare gateway token.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

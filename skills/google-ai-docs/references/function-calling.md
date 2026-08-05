@@ -97,7 +97,7 @@ This example shows how to define a function that schedules a meeting with attend
             "parameters": {
               "type": "object",
               "properties": {
-                "attendees": {"type": "array", "items": {"type&quot;: "string"}},
+                "attendees": {"type": "array", "items": {"type": "string"}},
                 "date": {"type": "string"},
                 "time": {"type": "string"},
                 "topic": {"type": "string"}
@@ -192,7 +192,7 @@ This example shows how to define a function that retrieves temperature data for 
           "name": "get_current_temperature",
           "description": "Gets the current temperature for a given location.",
           "parameters": {
-            "type";: "object",
+            "type": "object",
             "properties": {
               "location": {"type": "string", "description": "The city name"}
             },
@@ -227,7 +227,7 @@ This example shows how to define a function that generates a bar chart from stru
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model=";gemini-3.6-flash",
+        model="gemini-3.6-flash",
         input="Create a bar chart titled 'Quarterly Sales' with Q1: 50000, Q2: 75000, Q3: 60000.",
         tools=[create_chart_function],
     )
@@ -326,7 +326,7 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
                 },
                 "color_temp": {
                     "type": "string",
-                    "enum": ["daylight", "cool&>quot;, "warm"],
+                    "enum": ["daylight", "cool", "warm"],
                     "description": "Color temperature",
                 },
             },
@@ -334,7 +334,7 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
         },
     }
 
-    def set_light_values(brightness: int, color_temp: str) - dict:
+    def set_light_values(brightness: int, color_temp: str) -> dict:
         """Set the brightness and color temperature of a room light."""
         return {"brightness": brightness, "colorTemperature": color_temp}
 
@@ -387,14 +387,14 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
       tools: [setLightValuesTool],
     });
 
-    const fcStep = in>teraction.steps.find(s = s.type === 'function_call');
+    const fcStep = interaction.steps.find(s => s.type === 'function_call');
     console.log(fcStep);
 
 The model returns a `function_call` step with `type`, `name`, and `arguments`:
 
     type='function_call'
     name='set_light_values'
-    arguments={'color_temp': &#39;warm', 'brightness': 25}
+    arguments={'color_temp': 'warm', 'brightness': 25}
 
 ### Step 3: Execute the function
 
@@ -526,9 +526,9 @@ In stateless mode, you must pass the full history of the conversation in the `in
         tools: [setLightValuesTool],
       });
 
-      history.push(...interaction.st>eps);
+      history.push(...interaction.steps);
 
-      const fcStep = interaction.steps.find(s = s.type === 'function_call');
+      const fcStep = interaction.steps.find(s => s.type === 'function_call');
       let result;
       if (fcStep.name === 'set_light_values') {
         result = setLightValues(fcStep.arguments.brightness, fcStep.arguments.color_temp);
@@ -719,7 +719,7 @@ Call multiple functions at once when they are independent:
               "type": "object",
               "properties": {
                 "energetic": {"type": "boolean"},
-                "loud": {"type": "boolean&quot;}
+                "loud": {"type": "boolean"}
               },
               "required": ["energetic", "loud"]
             }
@@ -875,7 +875,7 @@ first, then get weather for that location).
           },
           {
             "type": "function",
-            "name": "set_thermostat_temperature&quot;,
+            "name": "set_thermostat_temperature",
             "description": "Sets the thermostat to a desired temperature.",
             "parameters": {
               "type": "object",
@@ -903,7 +903,7 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
         "tool_choice": {
             "allowed_tools": {
                 "mode": "any",
-                "tools&quot;: ["get_current_temperature"]
+                "tools": ["get_current_temperature"]
             }
         }
     }
@@ -914,7 +914,7 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
       tool_choice: {
         allowed_tools: {
           mode: 'any',
-          tools: ['get_current_temperature';]
+          tools: ['get_current_temperature']
         }
       }
     };
@@ -1098,7 +1098,7 @@ automatically circulates the built-in tool context.
             "name": "get_weather",
             "description": "Gets the weather for a given location.",
             "parameters": {
-              &quot;type": "object",
+              "type": "object",
               "properties": {
                 "location": {"type": "string", "description": "The city and state, e.g. San Francisco, CA"}
               },
@@ -1169,7 +1169,7 @@ The following example shows how to send a function response containing image dat
 
     const client = new GoogleGenAI({});
 
-    const toolCall = interaction.step>s.find(s = s.type === 'function_call');
+    const toolCall = interaction.steps.find(s => s.type === 'function_call');
 
     const base64ImageData = "BASE64_IMAGE_DATA";
 
@@ -1256,7 +1256,7 @@ When using Remote MCP, be aware of the following constraints:
             {
                 "type": "mcp_server",
                 "name": "weather",
-                "url";: "https://gemini-api-demos.uc.r.appspot.com/mcp",
+                "url": "https://gemini-api-demos.uc.r.appspot.com/mcp",
             }
         ]
     )
@@ -1290,7 +1290,7 @@ When using Remote MCP, be aware of the following constraints:
         "tools": [
             {
                 "type": "mcp_server",
-                &quot;name": "weather",
+                "name": "weather",
                 "url": "https://gemini-api-demos.uc.r.appspot.com/mcp"
             }
         ]
@@ -1425,8 +1425,8 @@ reconstruct the complete tool calls before executing them.
             } else if (event.delta.type === 'text') {
                 process.stdout.write(event.delta.text);
             }
-        } else if (evT>ype === 'interaction.completed' || evType === 'interaction.complete') {
-            toolCalls = Array.from(currentCalls.values()).map(call = ({
+        } else if (evType === 'interaction.completed' || evType === 'interaction.complete') {
+            toolCalls = Array.from(currentCalls.values()).map(call => ({
                 type: 'function_call',
                 id: call.id,
                 name: call.name,
@@ -1451,7 +1451,7 @@ reconstruct the complete tool calls before executing them.
             "description": "Gets the weather for a given location.",
             "parameters": {
                 "type": "object",
-                "properties&quot;: {
+                "properties": {
                     "location": {"type": "string", "description": "The city and state"}
                 },
                 "required": ["location"]
@@ -1485,7 +1485,7 @@ reconstruct the complete tool calls before executing them.
 
 Instead of the original instruction:
 
-    Before calling a tool, in every response you MUST first output a single `<UPDATE>` part as specified, don't skip this part or any of required sub-tags with<in `UP>DATE`.
+    Before calling a tool, in every response you MUST first output a single `<UPDATE>` part as specified, don't skip this part or any of required sub-tags within `<UPDATE>`.
 
 Use this updated instruction:
 
@@ -1512,7 +1512,7 @@ And update all references to the old `<UPDATE>` XML format in the customer reque
             "description": "Brief explanation of the immediate next action according to the plan."
           },
           "external": {
-            ";type": "STRING",
+            "type": "STRING",
             "description": "A short, plain-language note shown to the User about what you are ABOUT TO DO next."
           }
         },

@@ -124,7 +124,7 @@ Put simply:
   The remainder of this guide will focus on non-function calling use cases in
     the Responses API. To learn more about how to use Structured Outputs with
     function calling, check out the 
-    [Function Calling](https://developers.openai.com/api/docs/guides/function-calling#function-calling-with-structured-outputs) 
+    [Function Calling](https://developers.openai.com/api/docs/guides/function-calling#strict-mode) 
     guide.
 
 
@@ -913,48 +913,6 @@ For example:
 
 
 
-```python
-response = client.responses.create(
-    model="gpt-5.6",
-    input=[
-        {
-            "role": "system",
-            "content": "You are a helpful math tutor. Guide the user through the solution step by step.",
-        },
-        {"role": "user", "content": "how can I solve 8x + 7 = -23"},
-    ],
-    text={
-        "format": {
-            "type": "json_schema",
-            "name": "math_response",
-            "schema": {
-                "type": "object",
-                "properties": {
-                    "steps": {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "explanation": {"type": "string"},
-                                "output": {"type": "string"},
-                            },
-                            "required": ["explanation", "output"],
-                            "additionalProperties": False,
-                        },
-                    },
-                    "final_answer": {"type": "string"},
-                },
-                "required": ["steps", "final_answer"],
-                "additionalProperties": False,
-            },
-            "strict": True,
-        },
-    },
-)
-
-print(response.output_text)
-```
-
 ```javascript
 const response = await openai.responses.create({
   model: "gpt-5.6",
@@ -996,6 +954,48 @@ const response = await openai.responses.create({
 });
 
 console.log(response.output_text);
+```
+
+```python
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "system",
+            "content": "You are a helpful math tutor. Guide the user through the solution step by step.",
+        },
+        {"role": "user", "content": "how can I solve 8x + 7 = -23"},
+    ],
+    text={
+        "format": {
+            "type": "json_schema",
+            "name": "math_response",
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "steps": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "explanation": {"type": "string"},
+                                "output": {"type": "string"},
+                            },
+                            "required": ["explanation", "output"],
+                            "additionalProperties": False,
+                        },
+                    },
+                    "final_answer": {"type": "string"},
+                },
+                "required": ["steps", "final_answer"],
+                "additionalProperties": False,
+            },
+            "strict": True,
+        },
+    },
+)
+
+print(response.output_text)
 ```
 
 ```bash
@@ -1218,45 +1218,6 @@ When the `refusal` property appears in your output object, you might present the
 
 
 
-```python
-class Step(BaseModel):
-    explanation: str
-    output: str
-
-
-class MathReasoning(BaseModel):
-    steps: list[Step]
-    final_answer: str
-
-
-response = client.responses.parse(
-    model="gpt-5.6",
-    input=[
-        {
-            "role": "system",
-            "content": "You are a helpful math tutor. Guide the user through the solution step by step.",
-        },
-        {"role": "user", "content": "how can I solve 8x + 7 = -23"},
-    ],
-    text_format=MathReasoning,
-)
-
-for output in response.output:
-    if output.type != "message":
-        continue
-
-    for item in output.content:
-        if item.type == "refusal":
-            # If the model refuses to respond, you will get a refusal message
-            print(item.refusal)
-            continue
-
-        if not item.parsed:
-            raise Exception("Could not parse response")
-
-        print(item.parsed)
-```
-
 ```javascript
 const Step = z.object({
   explanation: z.string(),
@@ -1302,6 +1263,45 @@ for (const output of response.output) {
     console.log(item.parsed);
   }
 }
+```
+
+```python
+class Step(BaseModel):
+    explanation: str
+    output: str
+
+
+class MathReasoning(BaseModel):
+    steps: list[Step]
+    final_answer: str
+
+
+response = client.responses.parse(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "system",
+            "content": "You are a helpful math tutor. Guide the user through the solution step by step.",
+        },
+        {"role": "user", "content": "how can I solve 8x + 7 = -23"},
+    ],
+    text_format=MathReasoning,
+)
+
+for output in response.output:
+    if output.type != "message":
+        continue
+
+    for item in output.content:
+        if item.type == "refusal":
+            # If the model refuses to respond, you will get a refusal message
+            print(item.refusal)
+            continue
+
+        if not item.parsed:
+            raise Exception("Could not parse response")
+
+        print(item.parsed)
 ```
 
 
@@ -1387,46 +1387,6 @@ We recommend relying on the SDKs to handle streaming with Structured Outputs.
 
 
 
-```python
-from typing import List
-
-from openai import OpenAI
-from pydantic import BaseModel
-
-
-class EntitiesModel(BaseModel):
-    attributes: List[str]
-    colors: List[str]
-    animals: List[str]
-
-
-client = OpenAI()
-
-with client.responses.stream(
-    model="gpt-5.6",
-    input=[
-        {"role": "system", "content": "Extract entities from the input text"},
-        {
-            "role": "user",
-            "content": "The quick brown fox jumps over the lazy dog with piercing blue eyes",
-        },
-    ],
-    text_format=EntitiesModel,
-) as stream:
-    for event in stream:
-        if event.type == "response.refusal.delta":
-            print(event.delta, end="")
-        elif event.type == "response.output_text.delta":
-            print(event.delta, end="")
-        elif event.type == "response.error":
-            print(event.error, end="")
-        elif event.type == "response.completed":
-            print("Completed")  # print(event.response.output)
-
-    final_response = stream.get_final_response()
-    print(final_response)
-```
-
 ```javascript
 import { OpenAI } from "openai";
 import { zodTextFormat } from "openai/helpers/zod";
@@ -1465,6 +1425,46 @@ const stream = openai.responses
 const result = await stream.finalResponse();
 
 console.log(result);
+```
+
+```python
+from typing import List
+
+from openai import OpenAI
+from pydantic import BaseModel
+
+
+class EntitiesModel(BaseModel):
+    attributes: List[str]
+    colors: List[str]
+    animals: List[str]
+
+
+client = OpenAI()
+
+with client.responses.stream(
+    model="gpt-5.6",
+    input=[
+        {"role": "system", "content": "Extract entities from the input text"},
+        {
+            "role": "user",
+            "content": "The quick brown fox jumps over the lazy dog with piercing blue eyes",
+        },
+    ],
+    text_format=EntitiesModel,
+) as stream:
+    for event in stream:
+        if event.type == "response.refusal.delta":
+            print(event.delta, end="")
+        elif event.type == "response.output_text.delta":
+            print(event.delta, end="")
+        elif event.type == "response.error":
+            print(event.error, end="")
+        elif event.type == "response.completed":
+            print("Completed")  # print(event.response.output)
+
+    final_response = stream.get_final_response()
+    print(final_response)
 ```
 
 

@@ -609,4 +609,4 @@ To ensure reliable, scalable operation:
 
 ## What's next?
 
-- [Batch API](https://ai.google.dev/gemini-api/docs/batch): Utilize webhooks to automate high volume endpoints.
+- [Batch API](https://ai.google.dev/gemini-api/docs/batch-api): Utilize webhooks to automate high volume endpoints.
