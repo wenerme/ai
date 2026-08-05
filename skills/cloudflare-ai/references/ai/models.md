@@ -12,7 +12,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 214 modelsClear filters
+We found 216 modelsClear filters
 
 No models found
 
@@ -64,6 +64,8 @@ Try a different search term, or broaden your search by removing filters.
 
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-2-pro-previewBlack Forest LabsText-to-ImageFLUX.2 \[pro\] Preview is Black Forest Labs' recommended default for production image generation and editing — tracks the latest \[pro\] weights with strong multi-reference support.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-2-pro-preview/)
 
+[![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)flux-3-videoBlack Forest LabsText-to-VideoFLUX 3 Video is Black Forest Labs' video generation model. It generates video from a text prompt (t2v), animates one or more reference images (i2v), or continues an existing clip (v2v), with synchronized audio, up to fhd resolution, and 5-20 second durations.Third-party](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-3-video/)
+
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedance-2.0ByteDanceText-to-VideoByteDance's next-generation video model with a unified multimodal architecture. Generates high-quality video with synchronized audio from text, images, video clips, and audio inputs. Supports multimodal references (up to 9 images, 3 videos, 3 audio files), native audio generation, video editing, video extension, intelligent duration, and adaptive aspect ratio.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0/)
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedance-2.0-fastByteDanceText-to-VideoFaster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/)
@@ -85,6 +87,8 @@ Try a different search term, or broaden your search by removing filters.
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)eleven-multilingual-v2ElevenLabsText-to-SpeechElevenLabs' multilingual text-to-speech model for generating natural speech across many languages with ElevenLabs voices.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-multilingual-v2/)
 
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)eleven-turbo-v2-5ElevenLabsText-to-SpeechElevenLabs' Turbo v2.5 text-to-speech model balancing high-quality voice generation with low latency across 32 languages.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-turbo-v2-5/)
+
+[![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)eleven-v3ElevenLabsText-to-SpeechElevenLabs' latest text-to-speech model for highly expressive, natural speech generation with advanced voice control.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/eleven-v3/)
 
 [![ElevenLabs logo](https://developers.cloudflare.com/_astro/elevenlabs.0RXw7U95.svg)music-v2ElevenLabsMusic GenerationElevenLabs Music v2 composes songs and instrumental tracks from a prompt or detailed composition plan.Third-party](https://developers.cloudflare.com/ai/models/elevenlabs/music-v2/)
 

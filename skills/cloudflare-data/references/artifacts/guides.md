@@ -20,6 +20,7 @@ In-depth guides for using Artifacts in production, including how Artifacts authe
 * [Import repositories](https://developers.cloudflare.com/artifacts/guides/import-repositories/)
 * [ArtifactFS](https://developers.cloudflare.com/artifacts/guides/artifact-fs/)
 * [Event subscriptions](https://developers.cloudflare.com/artifacts/guides/event-subscriptions/)
+* [Build and deploy Artifacts repos](https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/)
 
 Was this helpful?
 

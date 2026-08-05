@@ -197,7 +197,7 @@ For a full breakdown of routing options, see the [Provider Routing docs](/docs/g
 
 ### Access to Hundreds of Models
 
-Switch between any model available on OpenRouter — Anthropic, OpenAI, Google, xAI, Meta, DeepSeek, and many more — without managing separate API keys for each provider.
+Switch between any model available on OpenRouter — Anthropic, OpenAI, Google, SpaceXAI, Meta, DeepSeek, and many more — without managing separate API keys for each provider.
 
 ### Provider Failover
 

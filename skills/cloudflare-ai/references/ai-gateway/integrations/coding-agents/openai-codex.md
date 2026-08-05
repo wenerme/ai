@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # OpenAI Codex
 
-Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[OpenAI Codex ↗](https://developers.openai.com/codex/) is a coding agent you run in your terminal. It supports [custom model providers ↗](https://developers.openai.com/codex/config-advanced#custom-model-providers) defined in `config.toml`. This configuration adds a provider that points at AI Gateway's [OpenAI endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/), so Codex sends its requests through AI Gateway. AI Gateway authenticates the model provider for you through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you pass a Cloudflare API token instead of an OpenAI API key.
+[OpenAI Codex ↗](https://developers.openai.com/codex/) is a coding agent you run in your terminal. It supports [custom model providers ↗](https://developers.openai.com/codex/config-advanced#custom-model-providers) defined in `config.toml`. This configuration adds a provider that points at AI Gateway's [OpenAI endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/), so Codex sends its requests through AI Gateway. AI Gateway authenticates the model provider for you through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you pass a Cloudflare API token instead of an OpenAI API key. If your gateway is protected by Cloudflare Access, refer to [Use with Cloudflare Access](#use-with-cloudflare-access).
 
 Note
 
@@ -56,10 +56,43 @@ export CLOUDFLARE_API_KEY="<CLOUDFLARE_API_KEY>"
 # Run `wrangler auth token` to get an auth token.
 $env:CLOUDFLARE_API_KEY = "<CLOUDFLARE_API_KEY>"
 ```
-3. Start Codex with the profile and send a prompt. Requests now route through AI Gateway.
+3. Start Codex with the profile and send a prompt. Requests now route through AI Gateway. The `cloudflare-aig` profile name matches the `cloudflare-aig.config.toml` file you created.
 ```bash
 codex --profile cloudflare-aig
 ```
+
+## Use with Cloudflare Access
+
+If your gateway is protected by [Cloudflare Access](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/), Codex can authenticate with a short-lived Access token instead of a Cloudflare API token. Point the provider at your [custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/), and configure the provider's `auth` command to fetch the token with [cloudflared](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#make-requests-with-cloudflared-access-curl) instead of passing a token through an environment variable.
+
+Update the same `~/.codex/cloudflare-aig.config.toml` profile from the Unified Billing setup so the provider points at your custom domain and uses `cloudflared` for authentication. The `cloudflare-aig` in `codex --profile cloudflare-aig` refers to this file's name. Replace `ai-gateway.example.com` with your custom domain.
+
+```toml
+model_provider = "cloudflare-ai-gateway"
+model = "gpt-5.5"
+model_reasoning_effort = "medium"
+
+[model_providers.cloudflare-ai-gateway]
+name = "Cloudflare AI Gateway"
+base_url = "https://ai-gateway.example.com/openai"
+wire_api = "responses"
+
+[model_providers.cloudflare-ai-gateway.auth]
+command = "cloudflared"
+args = ["access", "login", "--no-verbose", "https://ai-gateway.example.com"]
+timeout_ms = 30000
+refresh_interval_ms = 0
+```
+
+Compared to the Unified Billing setup in the previous section, the custom domain replaces the account ID and gateway ID in `base_url`, and the `auth` block replaces `env_key`.
+
+Start Codex with the profile:
+
+```bash
+codex --profile cloudflare-aig
+```
+
+The first request opens your identity provider's login flow. After you authenticate, requests route through AI Gateway with your Access identity attached as [cf.user\_id](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/#reserved-metadata).
 
 To confirm traffic reaches AI Gateway, refer to [Verify it works](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/#verify-it-works).
 
@@ -72,5 +105,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/#page","headline":"OpenAI Codex · Cloudflare AI Gateway docs","description":"Route OpenAI Codex through AI Gateway using a custom model provider that points at the OpenAI endpoint.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/#page","headline":"OpenAI Codex · Cloudflare AI Gateway docs","description":"Route OpenAI Codex through AI Gateway using a custom model provider that points at the OpenAI endpoint.","url":"https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

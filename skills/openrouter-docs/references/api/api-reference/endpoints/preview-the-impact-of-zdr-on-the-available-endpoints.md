@@ -128,6 +128,7 @@ paths:
                       - top_p
                       - max_tokens
                     supports_implicit_caching: true
+                    supports_voice_cloning: false
                     tag: openai
                     throughput_last_30m:
                       p50: 45.2
@@ -164,6 +165,7 @@ paths:
                         - top_p
                         - max_tokens
                       supports_implicit_caching: true
+                      supports_voice_cloning: false
                       tag: openai
                       throughput_last_30m:
                         p50: 45.2
@@ -231,6 +233,7 @@ components:
           - top_p
           - max_tokens
         supports_implicit_caching: true
+        supports_voice_cloning: false
         tag: openai
         throughput_last_30m:
           p50: 45.2
@@ -347,6 +350,13 @@ components:
             $ref: '#/components/schemas/Parameter'
           type: array
         supports_implicit_caching:
+          type: boolean
+        supports_voice_cloning:
+          default: false
+          description: >-
+            Whether this TTS endpoint accepts inline reference audio
+            (`input_references`) for stateless voice cloning. Requests carrying
+            reference audio are only routed to endpoints where this is true.
           type: boolean
         tag:
           type: string

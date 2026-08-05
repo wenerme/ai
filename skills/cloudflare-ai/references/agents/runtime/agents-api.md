@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agents API
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/agents-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/agents-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides an overview of the Agents SDK. For detailed documentation on each feature, refer to the linked reference pages.
 
@@ -91,28 +91,29 @@ flowchart TD
 
 ## Server-side API reference
 
-| Feature               | Methods                                                                              | Documentation                                                                                          |
-| --------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| **State**             | setState(), onStateChanged(), initialState                                           | [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)              |
-| **Callable methods**  | @callable() decorator                                                                | [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)       |
-| **Scheduling**        | schedule(), scheduleEvery(), getScheduleById(), listSchedules()                      | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)           |
-| **Durable execution** | runFiber(), startFiber(), stash(), onFiberRecovered(), keepAlive(), keepAliveWhile() | [Durable execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)     |
-| **Queue**             | queue(), dequeue(), dequeueAll(), getQueue()                                         | [Queue tasks](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)                 |
-| **WebSockets**        | onConnect(), onMessage(), onClose(), broadcast()                                     | [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)               |
-| **HTTP/SSE**          | onRequest()                                                                          | [HTTP and SSE](https://developers.cloudflare.com/agents/runtime/communication/http-sse/)               |
-| **Email**             | onEmail(), replyToEmail()                                                            | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/)                |
-| **Workflows**         | runWorkflow(), waitForApproval()                                                     | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)             |
-| **MCP Client**        | addMcpServer(), removeMcpServer(), getMcpServers()                                   | [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)     |
-| **AI Models**         | Workers AI, OpenAI, Anthropic bindings                                               | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)        |
-| **Protocol messages** | shouldSendProtocolMessages(), isConnectionProtocolEnabled()                          | [Protocol messages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/) |
-| **Context**           | getCurrentAgent()                                                                    | [getCurrentAgent()](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/)     |
-| **Observability**     | subscribe(), diagnostics channels, Tail Workers                                      | [Observability](https://developers.cloudflare.com/agents/runtime/operations/observability/)            |
-| **Sub-agents**        | subAgent(), abortSubAgent(), deleteSubAgent()                                        | [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)                   |
-| **Agents as tools**   | runAgentTool(), clearAgentToolRuns(), hasAgentToolRun()                              | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)             |
-| **Agent Skills**      | skills registry, bundled skill sources, script runners                               | [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)               |
-| **Sessions**          | Session.create(), context blocks, compaction, search                                 | [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)                       |
-| **Think**             | Think base class, workspace tools, lifecycle hooks, extensions                       | [Think](https://developers.cloudflare.com/agents/harnesses/think/)                                     |
-| **Chat SDK**          | createChatSdkState(), ChatSdkStateAgent                                              | [Chat SDK](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/)                   |
+| Feature                  | Methods                                                                              | Documentation                                                                                                           |
+| ------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| **State**                | setState(), onStateChanged(), initialState                                           | [Store and sync state](https://developers.cloudflare.com/agents/runtime/lifecycle/state/)                               |
+| **Callable methods**     | @callable() decorator                                                                | [Callable methods](https://developers.cloudflare.com/agents/runtime/lifecycle/callable-methods/)                        |
+| **Scheduling**           | schedule(), scheduleEvery(), getScheduleById(), listSchedules()                      | [Schedule tasks](https://developers.cloudflare.com/agents/runtime/execution/schedule-tasks/)                            |
+| **Durable execution**    | runFiber(), startFiber(), stash(), onFiberRecovered(), keepAlive(), keepAliveWhile() | [Durable execution](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/)                      |
+| **Queue**                | queue(), dequeue(), dequeueAll(), getQueue()                                         | [Queue tasks](https://developers.cloudflare.com/agents/runtime/execution/queue-tasks/)                                  |
+| **WebSockets**           | onConnect(), onMessage(), onClose(), broadcast()                                     | [WebSockets](https://developers.cloudflare.com/agents/runtime/communication/websockets/)                                |
+| **HTTP/SSE**             | onRequest()                                                                          | [HTTP and SSE](https://developers.cloudflare.com/agents/runtime/communication/http-sse/)                                |
+| **Email**                | onEmail(), replyToEmail()                                                            | [Email routing](https://developers.cloudflare.com/agents/communication-channels/email/)                                 |
+| **Workflows**            | runWorkflow(), waitForApproval()                                                     | [Run Workflows](https://developers.cloudflare.com/agents/runtime/execution/run-workflows/)                              |
+| **MCP Client**           | addMcpServer(), removeMcpServer(), getMcpServers()                                   | [MCP Client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)                      |
+| **AI Models**            | Workers AI, OpenAI, Anthropic bindings                                               | [Using AI models](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/)                         |
+| **Protocol messages**    | shouldSendProtocolMessages(), isConnectionProtocolEnabled()                          | [Protocol messages](https://developers.cloudflare.com/agents/runtime/communication/protocol-messages/)                  |
+| **Context**              | getCurrentAgent()                                                                    | [getCurrentAgent()](https://developers.cloudflare.com/agents/runtime/lifecycle/get-current-agent/)                      |
+| **Tracing**              | wrapAISDK()                                                                          | [Tracing](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/)                           |
+| **Diagnostics channels** | subscribe(), diagnostics channels                                                    | [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/operations/observability/diagnostics-channels/) |
+| **Sub-agents**           | subAgent(), abortSubAgent(), deleteSubAgent()                                        | [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/)                                    |
+| **Agents as tools**      | runAgentTool(), clearAgentToolRuns(), hasAgentToolRun()                              | [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/)                              |
+| **Agent Skills**         | skills registry, bundled skill sources, script runners                               | [Agent Skills](https://developers.cloudflare.com/agents/runtime/execution/agent-skills/)                                |
+| **Sessions**             | Session.create(), context blocks, compaction, search                                 | [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/)                                        |
+| **Think**                | Think base class, workspace tools, lifecycle hooks, extensions                       | [Think](https://developers.cloudflare.com/agents/harnesses/think/)                                                      |
+| **Chat SDK**             | createChatSdkState(), ChatSdkStateAgent                                              | [Chat SDK](https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/)                                    |
 
 ## SQL API
 
@@ -238,5 +239,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/agents-api/#page","headline":"Agents API · Cloudflare Agents docs","description":"Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/agents-api/#page","headline":"Agents API · Cloudflare Agents docs","description":"Reference for the Agent base class, lifecycle hooks, SQL storage, and error handling in the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/agents-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

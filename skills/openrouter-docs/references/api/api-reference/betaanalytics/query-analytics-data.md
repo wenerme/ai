@@ -228,6 +228,12 @@ paths:
                           available dimensions.
                         example: model
                         type: string
+                      include_unset:
+                        description: >-
+                          Include rows where the dimension has no value. Applies
+                          only to the `in` and `not_in` operators and dimensions
+                          that have an unset bucket.
+                        type: boolean
                       operator:
                         description: Filter operator
                         example: eq

@@ -4,7 +4,7 @@
 
 # Shell
 
-> Give any model a sandboxed hosted shell on the Responses API
+> Give any model a sandboxed hosted shell on the Responses and Messages APIs
 
 export const Template = ({children, data}) => {
   const replace = s => s.replace(/\{\{(\w+)\}\}/g, (_, k) => (k in data) ? data[k] : `{{${k}}}`);
@@ -55,9 +55,11 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 </Note>
 
 <Warning>
-  **Responses API only**
+  **Responses and Messages APIs only**
 
-  The shell server tool is only available through the [Responses API](/docs/api_reference/responses/overview). Requesting it on the Chat Completions or Messages API returns a `400` error. On the Messages API, use [Bash](/docs/guides/features/server-tools/bash) instead.
+  The shell server tool is available through the [Responses API](/docs/api_reference/responses/overview) and the [Messages API](/docs/api_reference/messages/overview). Requesting it on the Chat Completions API returns a `400` error.
+
+  The two APIs surface a shell run differently. On the Responses API the call becomes an `openrouter:shell` output item (or a native `shell_call` when you send OpenAI's tool shape). On the Messages API it becomes a `server_tool_use` content block named `openrouter:shell`, paired with an `openrouter_shell_tool_result` block carrying each command's output — Anthropic defines no native shell result block, so this OpenRouter-namespaced one is where the output arrives.
 </Warning>
 
 The `openrouter:shell` server tool gives a model a hosted shell — a sandbox-backed clone of OpenAI's hosted `shell` tool that works with any model. When the model needs to run commands, it emits a shell call; OpenRouter executes the commands server-side in an isolated Linux container and returns each command's `stdout`, `stderr`, and exit or timeout outcome.
@@ -66,7 +68,7 @@ Unlike the [Bash](/docs/guides/features/server-tools/bash) tool, the shell tool 
 
 ## How It Works
 
-1. You include `{ "type": "openrouter:shell" }` in your `tools` array on a Responses API request. You can also send OpenAI's native `shell` tool shape — on non-OpenAI models it is routed to the OpenRouter sandbox automatically.
+1. You include `{ "type": "openrouter:shell" }` in your `tools` array on a Responses or Messages API request. On the Responses API you can also send OpenAI's native `shell` tool shape — on non-OpenAI models it is routed to the OpenRouter sandbox automatically.
 2. Based on the prompt, the model decides to run one or more shell commands and emits a shell call.
 3. OpenRouter executes the commands in order, each in its own invocation, inside a sandboxed container.
 4. Each command's `stdout`, `stderr`, and outcome (exit code or timeout) are returned to the model.

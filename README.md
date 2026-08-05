@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33238 files, 390 MiB total
+> 123 skills, 33256 files, 390 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1397,10 +1397,10 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 129 | 5.3 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 128 | 5.4 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
-| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1557 | 16 MiB |
-| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 396 | 2.9 MiB |
+| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1564 | 17 MiB |
+| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 397 | 2.9 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 31 KiB |
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 834 | 4.9 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.1 MiB |
@@ -1410,7 +1410,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4917 | 15 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 60 KiB |
-| [doris-docs](./skills/doris-docs/SKILL.md) | 1587 | 9.5 MiB |
+| [doris-docs](./skills/doris-docs/SKILL.md) | 1588 | 9.5 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 60 | 1.2 MiB |
 | [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 144 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 135 KiB |
@@ -1450,7 +1450,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 20 | 157 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 846 | 6.8 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 853 | 6.8 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 181 | 533 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
@@ -1462,8 +1462,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 464 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 456 | 2.4 MiB |
-| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2375 | 15 MiB |
-| [orpc-docs](./skills/orpc-docs/SKILL.md) | 89 | 378 KiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2377 | 15 MiB |
+| [orpc-docs](./skills/orpc-docs/SKILL.md) | 90 | 417 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |
 | [peekaboo](./skills/peekaboo/SKILL.md) | 1 | 15 KiB |
@@ -1491,7 +1491,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 223 | 1.3 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 160 | 1.4 MiB |
 | [wails-docs](./skills/wails-docs/SKILL.md) | 56 | 314 KiB |
-| [waku-docs](./skills/waku-docs/SKILL.md) | 35 | 200 KiB |
+| [waku-docs](./skills/waku-docs/SKILL.md) | 35 | 201 KiB |
 | [wode-db-schema-pattern](./skills/wode-db-schema-pattern/SKILL.md) | 2 | 8.8 KiB |
 | [wode-emittery-pattern](./skills/wode-emittery-pattern/SKILL.md) | 2 | 9.8 KiB |
 | [writing-skills](./skills/writing-skills/SKILL.md) | 7 | 105 KiB |

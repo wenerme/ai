@@ -1,11 +1,11 @@
 ---
 title: "DigitalOcean | Models"
-description: "Use DigitalOcean models with Mastra. 82 models available."
+description: "Use DigitalOcean models with Mastra. 89 models available."
 ---
 
 # [DigitalOcean logo]DigitalOcean
 
-Access 82 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
+Access 89 DigitalOcean models through Mastra's model router. Authentication is handled automatically using the `DIGITALOCEAN_ACCESS_TOKEN` environment variable.
 
 Learn more in the [DigitalOcean documentation](https://docs.digitalocean.com/products/gradient-ai-platform/details/models/).
 
@@ -46,8 +46,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131000,
-    "maxOutput": 40960,
+    "contextWindow": 32768,
+    "maxOutput": 6554,
     "inputCost": 0.25,
     "outputCost": 0.55
   },
@@ -71,7 +71,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 32000,
+    "maxOutput": 8192,
     "inputCost": 15,
     "outputCost": 75
   },
@@ -94,7 +94,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 200000,
     "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
@@ -106,10 +106,22 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 64000,
+    "contextWindow": 200000,
+    "maxOutput": 8192,
     "inputCost": 3,
     "outputCost": 15
+  },
+  {
+    "model": "digitalocean/anthropic-claude-5-sonnet",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
   },
   {
     "model": "digitalocean/anthropic-claude-fable-5",
@@ -120,8 +132,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 10,
+    "outputCost": 50
   },
   {
     "model": "digitalocean/anthropic-claude-haiku-4.5",
@@ -131,7 +143,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 64000,
+    "maxOutput": 8192,
     "inputCost": 1,
     "outputCost": 5
   },
@@ -155,7 +167,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 200000,
-    "maxOutput": 64000,
+    "maxOutput": 8192,
     "inputCost": 5,
     "outputCost": 25
   },
@@ -166,13 +178,25 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 128000,
+    "contextWindow": 200000,
+    "maxOutput": 8192,
     "inputCost": 5,
     "outputCost": 25
   },
   {
     "model": "digitalocean/anthropic-claude-opus-4.7",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 8192,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "digitalocean/anthropic-claude-opus-4.8",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -184,7 +208,7 @@ for await (const chunk of stream) {
     "outputCost": 25
   },
   {
-    "model": "digitalocean/anthropic-claude-opus-4.8",
+    "model": "digitalocean/anthropic-claude-opus-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -214,8 +238,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 128000,
+    "contextWindow": 128000,
+    "maxOutput": 32000,
     "inputCost": 0.25,
     "outputCost": 0.9
   },
@@ -250,10 +274,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 64000,
-    "inputCost": 0.5,
-    "outputCost": 1.6
+    "contextWindow": 163840,
+    "maxOutput": 32768,
+    "inputCost": 0.425,
+    "outputCost": 1.36
   },
   {
     "model": "digitalocean/deepseek-4-flash",
@@ -262,10 +286,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.112,
+    "outputCost": 0.224
   },
   {
     "model": "digitalocean/deepseek-r1-distill-llama-70b",
@@ -274,8 +298,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 32768,
+    "contextWindow": 32678,
+    "maxOutput": 8192,
     "inputCost": 0.99,
     "outputCost": 0.99
   },
@@ -298,10 +322,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 1.74,
-    "outputCost": 3.48
+    "contextWindow": 262144,
+    "maxOutput": 52429,
+    "inputCost": 1.392,
+    "outputCost": 2.784
   },
   {
     "model": "digitalocean/e5-large-v2",
@@ -367,7 +391,7 @@ for await (const chunk of stream) {
     "model": "digitalocean/gemma-4-31B-it",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 256000,
@@ -382,10 +406,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 128000,
-    "inputCost": 1,
-    "outputCost": 3.2
+    "contextWindow": 64000,
+    "maxOutput": 12800,
+    "inputCost": 0.75,
+    "outputCost": 2.4
   },
   {
     "model": "digitalocean/glm-5.1",
@@ -394,8 +418,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 200000,
-    "maxOutput": 131072,
+    "contextWindow": 163840,
+    "maxOutput": 32768,
     "inputCost": 0.975,
     "outputCost": 4.3
   },
@@ -406,8 +430,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 131072,
+    "contextWindow": 262144,
+    "maxOutput": 52429,
     "inputCost": 1.05,
     "outputCost": 4.4
   },
@@ -425,15 +449,15 @@ for await (const chunk of stream) {
   },
   {
     "model": "digitalocean/kimi-k2.5",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 32768,
-    "inputCost": 0.5,
-    "outputCost": 2.7
+    "maxOutput": 52429,
+    "inputCost": 0.375,
+    "outputCost": 2.025
   },
   {
     "model": "digitalocean/kimi-k2.6",
@@ -443,9 +467,21 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.95,
-    "outputCost": 4
+    "maxOutput": 52429,
+    "inputCost": 0.76,
+    "outputCost": 3.2
+  },
+  {
+    "model": "digitalocean/kimi-k3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3,
+    "outputCost": 15
   },
   {
     "model": "digitalocean/llama-4-maverick",
@@ -454,7 +490,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1000000,
+    "contextWindow": 128000,
     "maxOutput": 16384,
     "inputCost": 0.25,
     "outputCost": 0.87
@@ -479,21 +515,33 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
-    "maxOutput": 128000,
+    "maxOutput": 4096,
     "inputCost": 0.65,
     "outputCost": 0.65
   },
   {
-    "model": "digitalocean/minimax-m2.5",
+    "model": "digitalocean/mimo-v2.5-pro",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 204800,
-    "maxOutput": 128000,
-    "inputCost": 0.3,
-    "outputCost": 1.2
+    "contextWindow": 262144,
+    "maxOutput": 52429,
+    "inputCost": 0.6,
+    "outputCost": 3
+  },
+  {
+    "model": "digitalocean/minimax-m2.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 65536,
+    "maxOutput": 13107,
+    "inputCost": 0.225,
+    "outputCost": 0.9
   },
   {
     "model": "digitalocean/ministral-3-8b-instruct-2512",
@@ -558,12 +606,12 @@ for await (const chunk of stream) {
   {
     "model": "digitalocean/nemotron-3-nano-omni",
     "imageInput": true,
-    "audioInput": true,
+    "audioInput": false,
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 65536,
-    "maxOutput": 65536,
+    "maxOutput": 13107,
     "inputCost": 0.5,
     "outputCost": 0.9
   },
@@ -575,15 +623,15 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 131072,
-    "maxOutput": 8192,
-    "inputCost": null,
-    "outputCost": null
+    "maxOutput": 26214,
+    "inputCost": 0.9,
+    "outputCost": 1.7
   },
   {
     "model": "digitalocean/nemotron-nano-12b-v2-vl",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
@@ -598,10 +646,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 256000,
+    "contextWindow": 1000000,
     "maxOutput": 32768,
-    "inputCost": 0.3,
-    "outputCost": 0.65
+    "inputCost": 0.21,
+    "outputCost": 0.455
   },
   {
     "model": "digitalocean/openai-gpt-4.1",
@@ -633,7 +681,7 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
-    "reasoning": false,
+    "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 16384,
     "inputCost": 0.15,
@@ -730,7 +778,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 400000,
     "maxOutput": 128000,
     "inputCost": 2.5,
     "outputCost": 15
@@ -766,7 +814,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 400000,
+    "contextWindow": 1050000,
     "maxOutput": 128000,
     "inputCost": 30,
     "outputCost": 180
@@ -782,6 +830,42 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 5,
     "outputCost": 30
+  },
+  {
+    "model": "digitalocean/openai-gpt-5.6-luna",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 0.2,
+    "outputCost": 1.2
+  },
+  {
+    "model": "digitalocean/openai-gpt-5.6-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 30
+  },
+  {
+    "model": "digitalocean/openai-gpt-5.6-terra",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 12
   },
   {
     "model": "digitalocean/openai-gpt-image-1",
@@ -803,7 +887,7 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": null,
-    "maxOutput": null,
+    "maxOutput": 16384,
     "inputCost": 5,
     "outputCost": 10
   },
@@ -815,9 +899,9 @@ for await (const chunk of stream) {
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": null,
-    "maxOutput": null,
-    "inputCost": null,
-    "outputCost": null
+    "maxOutput": 16384,
+    "inputCost": 8,
+    "outputCost": 30
   },
   {
     "model": "digitalocean/openai-gpt-oss-120b",
@@ -826,10 +910,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
-    "inputCost": 0.1,
-    "outputCost": 0.7
+    "contextWindow": 128000,
+    "maxOutput": 4096,
+    "inputCost": 0.07,
+    "outputCost": 0.49
   },
   {
     "model": "digitalocean/openai-gpt-oss-20b",
@@ -838,8 +922,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 131072,
+    "contextWindow": 128000,
+    "maxOutput": 4096,
     "inputCost": 0.05,
     "outputCost": 0.45
   },
@@ -869,7 +953,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "digitalocean/openai-o3-mini",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -899,7 +983,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": false,
     "contextWindow": 262144,
-    "maxOutput": 65536,
+    "maxOutput": 52429,
     "inputCost": 0.45,
     "outputCost": 1.7
   },
@@ -929,15 +1013,15 @@ for await (const chunk of stream) {
   },
   {
     "model": "digitalocean/qwen3.5-397b-a17b",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
-    "videoInput": false,
+    "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 81920,
-    "inputCost": 0.55,
-    "outputCost": 3.5
+    "contextWindow": 131072,
+    "maxOutput": 26214,
+    "inputCost": 0.385,
+    "outputCost": 2.45
   },
   {
     "model": "digitalocean/stable-diffusion-3.5-large",

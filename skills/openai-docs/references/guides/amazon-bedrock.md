@@ -220,7 +220,8 @@ The information below represents feature availability as of July 13, 2026.
 | Function calling          | Available                     | Available                                         |
 | Streaming responses       | Available                     | Available                                         |
 | WebSocket connections     | Available                     | Not available                                     |
-| Context window            | Model-dependent               | 272,000 tokens for GPT-5.4, GPT-5.5, and GPT-5.6  |
+| Context window            | Model-dependent               | 272,000 tokens for GPT-5.4 and GPT-5.5            |
+| Context window            | Model-dependent               | 1,050,000 tokens for GPT-5.6 Sol, Terra, and Luna |
 | Reasoning effort          | Available                     | Available, including `max` on supported models    |
 | Pro mode                  | Available on supported models | Not available                                     |
 | Persisted reasoning       | Available on supported models | Available on supported models                     |
@@ -229,7 +230,7 @@ The information below represents feature availability as of July 13, 2026.
 | Multi-agent               | Beta on supported models      | Not available                                     |
 | Custom tools              | Available                     | Available                                         |
 | Client-side `tool_search` | Available                     | Available                                         |
-| Hosted web search         | Available                     | Not available                                     |
+| Hosted web search         | Available                     | Available                                         |
 | Hosted file search        | Available                     | Not available                                     |
 | Computer use              | Available                     | Not available                                     |
 | Shell tool                | Available                     | Not available                                     |
@@ -238,11 +239,12 @@ The information below represents feature availability as of July 13, 2026.
 | Service tiers             | Available where supported     | On-demand inference only                          |
 
 Client-side `tool_search` is distinct from hosted tools and remote MCP server
-support. Hosted tools run through OpenAI-operated service infrastructure and
-are unavailable on Amazon Bedrock.
+support. Hosted web search is available on Amazon Bedrock, but hosted file
+search and remote MCP servers are unavailable.
 
-GPT-5.4, GPT-5.5, and GPT-5.6 have a 272,000-token context window on Amazon
-Bedrock. Amazon Bedrock rejects requests that exceed this limit. See the AWS
+GPT-5.4 and GPT-5.5 have a 272,000-token context window on Amazon Bedrock.
+GPT-5.6 Sol, Terra, and Luna have a 1,050,000-token context window. Amazon
+Bedrock rejects requests that exceed the applicable model limit. See the AWS
 model cards for current model-specific limits.
 
 Treat feature parity as workload-specific. If your application depends on a

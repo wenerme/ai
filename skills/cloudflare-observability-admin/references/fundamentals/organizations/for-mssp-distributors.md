@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Organizations for MSSP and Distributors
 
-Last updated Jul 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -129,7 +129,7 @@ Move customer accounts from one MSSP Organization to another when ownership chan
 
 ## Manage members
 
-Distributor and MSSP Organization admins can add and manage Organization members directly from the Cloudflare dashboard. No support ticket is required.
+Distributor and MSSP Organization Super Administrators can add and manage Organization members directly from the Cloudflare dashboard. No support ticket is required.
 
 ### Organization Super Administrator
 
@@ -263,5 +263,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/#page","headline":"Organizations for MSSP and Distributors · Cloudflare Fundamentals docs","description":"Set up and manage an MSSP or Distributor Organization to manage customer accounts and partner sub-organizations.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/#page","headline":"Organizations for MSSP and Distributors · Cloudflare Fundamentals docs","description":"Set up and manage an MSSP or Distributor Organization to manage customer accounts and partner sub-organizations.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

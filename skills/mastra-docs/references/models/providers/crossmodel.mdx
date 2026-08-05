@@ -1,11 +1,11 @@
 ---
 title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 47 models available."
+description: "Use CrossModel models with Mastra. 50 models available."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 47 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 50 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -218,6 +218,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 1.5,
     "outputCost": 9
+  },
+  {
+    "model": "crossmodel/gemini/gemini-3.5-flash-lite",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.3,
+    "outputCost": 2.5
   },
   {
     "model": "crossmodel/gemini/gemini-3.6-flash",
@@ -436,6 +448,18 @@ for await (const chunk of stream) {
     "outputCost": 1.88
   },
   {
+    "model": "crossmodel/qwen/qwen3.7-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 65536,
+    "inputCost": 0.04,
+    "outputCost": 0.13
+  },
+  {
     "model": "crossmodel/qwen/qwen3.7-max",
     "imageInput": false,
     "audioInput": false,
@@ -458,6 +482,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 0.288,
     "outputCost": 1.125
+  },
+  {
+    "model": "crossmodel/qwen/qwen3.8-max",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 1.88,
+    "outputCost": 5.63
   },
   {
     "model": "crossmodel/tencent/hy3",

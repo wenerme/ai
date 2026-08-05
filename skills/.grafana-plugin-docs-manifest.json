@@ -1081,8 +1081,8 @@
   },
   "grafana-mongodb-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mongodb-datasource/latest/troubleshooting.md",
-    "size": 28285,
-    "updatedAt": "2026-07-03T04:15:29.696Z"
+    "size": 29584,
+    "updatedAt": "2026-08-05T03:44:10.597Z"
   },
   "grafana-mqtt-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-mqtt-datasource/latest/configure.md",
@@ -1181,8 +1181,8 @@
   },
   "grafana-opensearch-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/query-editor.md",
-    "size": 16277,
-    "updatedAt": "2026-06-25T05:42:50.741Z"
+    "size": 16278,
+    "updatedAt": "2026-08-05T03:44:14.166Z"
   },
   "grafana-opensearch-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-opensearch-datasource/latest/template-variables.md",
@@ -1466,8 +1466,8 @@
   },
   "grafana-sentry-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/annotations.md",
-    "size": 4540,
-    "updatedAt": "2026-06-26T18:54:12.224Z"
+    "size": 5114,
+    "updatedAt": "2026-08-05T03:44:24.866Z"
   },
   "grafana-sentry-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/configure.md",
@@ -1481,13 +1481,13 @@
   },
   "grafana-sentry-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/query-editor.md",
-    "size": 15972,
-    "updatedAt": "2026-06-26T18:54:12.633Z"
+    "size": 16988,
+    "updatedAt": "2026-08-05T03:44:25.489Z"
   },
   "grafana-sentry-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/template-variables.md",
-    "size": 4095,
-    "updatedAt": "2026-06-26T18:54:12.761Z"
+    "size": 4904,
+    "updatedAt": "2026-08-05T03:44:25.688Z"
   },
   "grafana-sentry-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-sentry-datasource/latest/troubleshooting.md",

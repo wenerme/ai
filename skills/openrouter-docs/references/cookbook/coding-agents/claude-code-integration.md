@@ -207,7 +207,7 @@ For each supported Opus version, there are three ways to request fast mode on Op
 
 1. Send `speed: "fast"` with [`anthropic/claude-opus-5`](https://openrouter.ai/anthropic/claude-opus-5), [`anthropic/claude-opus-4.8`](https://openrouter.ai/anthropic/claude-opus-4.8), [`anthropic/claude-opus-4.7`](https://openrouter.ai/anthropic/claude-opus-4.7), or [`anthropic/claude-opus-4.6`](https://openrouter.ai/anthropic/claude-opus-4.6) — OpenRouter reroutes the request to the matching `*-fast` model (for example, `anthropic/claude-opus-5` → [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast)).
 2. Call the `*-fast` model directly — [`anthropic/claude-opus-5-fast`](https://openrouter.ai/anthropic/claude-opus-5-fast), [`anthropic/claude-opus-4.8-fast`](https://openrouter.ai/anthropic/claude-opus-4.8-fast), [`anthropic/claude-opus-4.7-fast`](https://openrouter.ai/anthropic/claude-opus-4.7-fast), or [`anthropic/claude-opus-4.6-fast`](https://openrouter.ai/anthropic/claude-opus-4.6-fast).
-3. Send `service_tier: "fast"` — the [`fast` service-tier alias](/docs/guides/features/service-tiers#the-fast-alias) behaves like `speed: "fast"` on these models, and additionally requests the priority service tier (including its provider sorting and pricing) where available.
+3. Send `service_tier: "fast"` or `service_tier: "priority"` — fully interchangeable with `speed: "fast"` on all APIs (see [Fast mode](/docs/guides/features/service-tiers#fast-mode)). All three spellings also request the priority service tier (including its provider sorting and pricing) where available.
 
 All options route through the Anthropic first-party provider, and the required beta header is injected automatically.
 
@@ -228,7 +228,7 @@ export CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK=1
 Fast mode is priced at a premium over the underlying Claude Opus model's standard token rates. See [Anthropic's fast mode pricing](https://platform.claude.com/docs/en/build-with-claude/fast-mode#pricing) for current rates. When fast mode is active, the response's `usage` object includes `"speed": "fast"` to confirm the request was processed at the higher speed tier.
 
 <Note>
-  If `speed: "fast"` is sent for a model that does not support fast mode, OpenRouter silently drops the parameter and the request proceeds at standard speed with standard pricing.
+  If `speed: "fast"` is sent for a model that does not support fast mode, it still requests the [priority service tier](/docs/guides/features/service-tiers#fast-mode) where a provider offers one (at priority pricing); otherwise the request proceeds at standard speed with standard pricing.
 </Note>
 
 ### Routing behavior

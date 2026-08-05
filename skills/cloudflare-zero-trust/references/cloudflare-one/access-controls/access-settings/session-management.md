@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session management
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A user session determines how long a user can access an Access application without re-authenticating.
 
@@ -103,6 +103,14 @@ If you use [independent multi-factor authentication (MFA)](https://developers.cl
 
 The following flowchart illustrates how Access enforces user sessions for a self-hosted application.
 
+| Flowchart setting                       | Dashboard location                                                                                                                                    |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Authenticate with Cloudflare One Client | **Access controls** \> **Applications** \> select an application > **Configure** \> **Authentication** \> **Authenticate with Cloudflare One Client** |
+| Cloudflare One Client session duration  | **Access controls** \> **Access settings** \> **Cloudflare One Client authentication** \> **Session duration**                                        |
+| Policy session duration                 | **Access controls** \> **Policies** \> select a policy > **Configure** \> **Session duration**                                                        |
+| Application session duration            | **Access controls** \> **Applications** \> select an application > **Configure** \> **Overview** \> **Session Duration**                              |
+| Global session duration                 | **Access controls** \> **Access settings** \> **Set your global session duration**                                                                    |
+
 flowchart TB
     %% Accessibility
     accTitle: Access session durations
@@ -110,8 +118,8 @@ flowchart TB
 
     %% In with user traffic
     start["User goes to Access application"]
-    start--"Authenticate with Cloudflare One Client enabled" -->warpsession[Device client session expired?]
-    start-- "Authenticate with Cloudflare One Client disabled" --> policysession[Policy session expired?]
+    start--"Enabled for this application" -->warpsession[Cloudflare One Client session expired?]
+    start-- "Disabled for this application" --> policysession[Policy session expired?]
 
 		warpsession--"Yes"-->idp[Prompt to log in to IdP]
 		warpsession--"No"-->accessgranted[Access granted]
@@ -190,5 +198,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#page","headline":"Session management · Cloudflare One docs","description":"Session management in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/#page","headline":"Session management · Cloudflare One docs","description":"Session management in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 ```

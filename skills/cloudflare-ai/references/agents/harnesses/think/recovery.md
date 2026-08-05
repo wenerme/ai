@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Durable recovery
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/harnesses/think/recovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Think wraps chat turns in recoverable [fibers](https://developers.cloudflare.com/agents/runtime/execution/durable-execution/) by default (`chatRecovery = true`). If the Durable Object is evicted mid-stream, Think reconstructs any buffered chunks, persists partial output, and schedules either a continuation of the assistant turn or a retry of the unanswered user turn.
 
@@ -62,7 +62,7 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-The same recovery events are available through `agents/observability` on the `chat` channel; transcript repairs are emitted on the `transcript` channel. Refer to [Observability](https://developers.cloudflare.com/agents/runtime/operations/observability/#chat-recovery-events).
+The same recovery events are available through `agents/observability` on the `chat` channel; transcript repairs are emitted on the `transcript` channel. Refer to [Diagnostics channels](https://developers.cloudflare.com/agents/runtime/operations/observability/diagnostics-channels/#chat-recovery-events).
 
 ## onChatRecovery
 
@@ -305,7 +305,7 @@ export class MyAgent extends Think<Env> {
 }
 ```
 
-Use either layer alone, or both together: the proactive guard avoids most overflows, and the reactive backstop catches any that still slip through (for example, a turn that starts already over budget, or a single tool result so large that compaction cannot help — in which case it terminalizes cleanly). Both apply to every turn entry path (WebSocket, sub-agent `chat()`, and programmatic `saveMessages()` / `submitMessages()`), and both emit a `chat:context:compacted` [observability event](https://developers.cloudflare.com/agents/runtime/operations/observability/#chat-context-events).
+Use either layer alone, or both together: the proactive guard avoids most overflows, and the reactive backstop catches any that still slip through (for example, a turn that starts already over budget, or a single tool result so large that compaction cannot help — in which case it terminalizes cleanly). Both apply to every turn entry path (WebSocket, sub-agent `chat()`, and programmatic `saveMessages()` / `submitMessages()`), and both emit a `chat:context:compacted` [diagnostics channel event](https://developers.cloudflare.com/agents/runtime/operations/observability/diagnostics-channels/#chat-context-events).
 
 Note
 
@@ -364,5 +364,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery · Cloudflare Agents docs","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/harnesses/think/recovery/#page","headline":"Durable recovery · Cloudflare Agents docs","description":"Bounded chat recovery, the stream-stall watchdog, repairing interrupted tool calls, and stability detection for Think agents.","url":"https://developers.cloudflare.com/agents/harnesses/think/recovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

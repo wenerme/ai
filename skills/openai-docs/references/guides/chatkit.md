@@ -191,35 +191,6 @@ async
 
    Your frontend code
 
-```react
-import { ChatKit, useChatKit } from '@openai/chatkit-react';
-
-   export function MyChat({ getAppAuthToken }) {
-     const { control } = useChatKit({
-       api: {
-         async getClientSecret(existing) {
-           if (existing) {
-             // implement session refresh
-            }
-
-           const appAuthToken = await getAppAuthToken();
-           const res = await fetch('/api/chatkit/session', {
-             method: 'POST',
-             headers: {
-               'Authorization': 'Bearer ' + appAuthToken,
-               'Content-Type': 'application/json',
-             },
-           });
-           const { client_secret } = await res.json();
-           return client_secret;
-         },
-       },
-     });
-
-     return ;
-   }
-```
-
 ```javascript
 const chatkit = document.getElementById("my-chat");
 if (
@@ -249,6 +220,35 @@ chatkit.setOptions({
     },
   },
 });
+```
+
+```tsx
+import { ChatKit, useChatKit } from '@openai/chatkit-react';
+
+   export function MyChat({ getAppAuthToken }) {
+     const { control } = useChatKit({
+       api: {
+         async getClientSecret(existing) {
+           if (existing) {
+             // implement session refresh
+            }
+
+           const appAuthToken = await getAppAuthToken();
+           const res = await fetch('/api/chatkit/session', {
+             method: 'POST',
+             headers: {
+               'Authorization': 'Bearer ' + appAuthToken,
+               'Content-Type': 'application/json',
+             },
+           });
+           const { client_secret } = await res.json();
+           return client_secret;
+         },
+       },
+     });
+
+     return ;
+   }
 ```
 
 

@@ -433,6 +433,32 @@ my_db.my_collection.aggregate([
 >
 > The `allowDiskUse` option must be passed as an options object after the pipeline array, not within the pipeline stages. If you experience issues with `allowDiskUse` on complex pipelines, verify that your MongoDB user has the required privileges and that your MongoDB server version supports this option for the specific operations in your pipeline.
 
+### Supported aggregate options
+
+Pass options as a second argument to `aggregate`, after the pipeline array:
+
+JavaScript [Copy code to clipboard] Copy
+
+```javascript
+my_db.my_collection.aggregate([
+  { $match: { "status": "active" } }
+], { allowDiskUse: true, maxTimeMS: 5000 })
+```
+
+Expand table
+
+| Option             | Effect                                                                          |
+|--------------------|---------------------------------------------------------------------------------|
+| `allowDiskUse`     | Allows MongoDB to use disk storage for operations that exceed the memory limit. |
+| `maxTimeMS`        | Limits how long the aggregation may run, in milliseconds.                       |
+| `collation`        | Sets language-specific string comparison rules.                                 |
+| `hint`             | Names the index to use.                                                         |
+| `cursor.batchSize` | Sets the number of documents returned per batch.                                |
+
+> Note
+>
+> `maxTimeMS` sets a deadline on the query. The datasource sends it to MongoDB as a server-side limit and also stops waiting for the response when the deadline passes, so a query that exceeds it fails with a timeout rather than returning partial results.
+
 ### Queries not saving
 
 If your dashboard reports “saved successfully” but the query reverts to the previous version on refresh:

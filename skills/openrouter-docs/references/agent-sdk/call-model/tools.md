@@ -987,6 +987,8 @@ const longRunningTool = tool({
 
 ## Next Steps
 
+* **[Async Tools](/docs/agent-sdk/call-model/async-tools)** - Background and deferred
+  execution, task check-ins, steering, and subagent tools
 * **[Lifecycle Hooks](/docs/agent-sdk/call-model/lifecycle-hooks)** - Observe or
   control tool execution, approvals, prompts, and sessions
 * **[Tool Approval & State](/docs/agent-sdk/call-model/tool-approval-state)** - Human-in-the-loop approval and conversation persistence

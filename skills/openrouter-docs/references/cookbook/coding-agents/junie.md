@@ -12,7 +12,7 @@
 
 ### Why Use OpenRouter with Junie?
 
-* **Access to hundreds of models** -- Use models from Anthropic, OpenAI, Google, xAI, Meta, and many more through a single API key
+* **Access to hundreds of models** -- Use models from Anthropic, OpenAI, Google, SpaceXAI, Meta, and many more through a single API key
 * **Provider failover** -- If one provider is unavailable or rate-limited, OpenRouter automatically routes to another
 * **Centralized billing** -- Track and manage spending across all models from your [OpenRouter dashboard](https://openrouter.ai/activity)
 * **Team controls** -- Set budgets and monitor usage across your organization

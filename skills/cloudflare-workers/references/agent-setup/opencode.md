@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Cloudflare platform access
@@ -132,11 +132,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -144,11 +140,15 @@ Add real-time collaboration to my app using Durable Objects with WebSocket hiber
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips

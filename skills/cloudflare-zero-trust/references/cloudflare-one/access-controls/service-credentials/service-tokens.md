@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Service tokens
 
-Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can provide automated systems with service tokens to authenticate against your Cloudflare One policies. Cloudflare Access will generate service tokens that consist of a Client ID and a Client Secret. Automated systems or applications can then use these values to reach an application protected by Access.
 
@@ -112,7 +112,7 @@ You can now configure your Access applications and [device enrollment permission
 
 ## Connect your service to Access
 
-### Initial request
+### Request
 
 To authenticate to an Access application using your service token, add the following to the headers of any HTTP request:
 
@@ -125,8 +125,6 @@ For example,
 ```sh
 curl -H "CF-Access-Client-Id: <CLIENT_ID>" -H "CF-Access-Client-Secret: <CLIENT_SECRET>" https://app.example.com
 ```
-
-If the service token is valid, Access generates a JWT scoped to the application in the form of a [CF\_Authorization cookie](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/). You can use this cookie to authenticate [subsequent requests](#subsequent-requests) to the application.
 
 #### Authenticate with a single header
 
@@ -162,26 +160,6 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/apps/$APP
 ```sh
 curl -H "Authorization: {\"cf-access-client-id\": \"<CLIENT_ID>\", \"cf-access-client-secret\": \"<CLIENT_SECRET>\"}" https://app.example.com
 ```
-
-### Subsequent requests
-
-After you have [authenticated to the application](#initial-request) using the service token, add the resulting `CF_Authorization` cookie to the headers of all subsequent requests:
-
-```sh
-curl -H "cookie: CF_Authorization=<CF_AUTHORIZATION_COOKIE>" https://app.example.com
-```
-
-If you prefer to use a raw header, send the value as `cf-access-token`:
-
-```sh
-curl -H "cf-access-token: <CF_AUTHORIZATION_COOKIE>" https://app.example.com
-```
-
-All requests with this cookie will succeed until the JWT expires.
-
-Note
-
-If your Access application only has Service Auth policies, you must send the service token on every subsequent request. You can only use the JWT if the application has at least one Allow policy.
 
 ## Renew service tokens
 
@@ -310,5 +288,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens · Cloudflare One docs","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens · Cloudflare One docs","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 ```

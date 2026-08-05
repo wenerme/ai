@@ -16,6 +16,7 @@ provider, follow the instructions below.
 Start by creating a [webhook](https://developers.openai.com/api/docs/guides/webhooks) for incoming calls, through your **platform.openai.com** [settings](https://platform.openai.com/settings) > Project > **Webhooks**.
 Then, point your SIP trunk at the OpenAI SIP endpoint, using the project ID
 for which you configured the webhook, e.g., `sip:$PROJECT_ID@sip.api.openai.com;transport=tls`.
+For European data residency, use `sip:$PROJECT_ID@sip-eu.api.openai.com;transport=tls` instead.
 To find your `$PROJECT_ID`, visit [settings](https://platform.openai.com/settings) > Project > **General**. That page will display the project ID, which
 will have a `proj_` prefix.
 
@@ -180,15 +181,27 @@ curl -X POST "https://api.openai.com/v1/realtime/calls/$CALL_ID/hangup" \
 
 The API responds with `200 OK` when it starts tearing down the call.
 
-## Dedicated SIP IP ranges
+<a id="dedicated-sip-ip-ranges"></a>
 
-If you need to allowlist OpenAI SIP traffic. `sip.api.openai.com` does GeoIP routing, you
-will be connected to the closest region.
+## SIP signaling and media IP ranges
 
-- `13.79.45.80/28` for `northeurope`
-- `23.98.140.64/28` for `southcentralus`
-- `40.67.149.176/28` for `eastus2`
-- `40.83.204.240/28` for `westus`
+Realtime SIP calls use separate network paths for signaling and media. To ensure proper operation,
+configure your network to allow signaling and media traffic as described below.
+
+### SIP signaling
+
+`sip.api.openai.com` and `sip-eu.api.openai.com` are GeoIP-routed endpoints. Your network must allow
+outbound TCP/TLS traffic to the addresses returned by DNS on port `5061`.
+
+### SRTP media
+
+The API specifies a separate media IP address and UDP port in the negotiated SDP. Your network must
+allow bidirectional SRTP traffic over UDP to and from the following CIDRs:
+
+- `13.79.45.80/28`
+- `23.98.140.64/28`
+- `40.67.149.176/28`
+- `40.83.204.240/28`
 
 ## Python example
 
