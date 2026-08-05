@@ -200,13 +200,6 @@ Service discovery:
 
 - [`gitlab-cookbooks` / `gitlab_consul` · GitLab](https://gitlab.com/gitlab-cookbooks/gitlab_consul)
 
-### Elastic cluster
-
-We use Elasticsearch and Kibana for part of our monitoring solution:
-
-- [`gitlab-cookbooks` / `gitlab-elk` · GitLab](https://gitlab.com/gitlab-cookbooks/gitlab-elk)
-- [`gitlab-cookbooks` / `gitlab_elasticsearch` · GitLab](https://gitlab.com/gitlab-cookbooks/gitlab_elasticsearch)
-
 ### Fluentd
 
 We use Fluentd to unify our GitLab logs:
@@ -355,7 +348,7 @@ Settings related to the deletion of projects and groups.
 ### Delayed group deletion
 
 - [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in 18.0.
-- [Increased deletion period](https://gitlab.com/groups/gitlab-org/-/epics/17375) from seven days to 30 days in 18.0.2.
+- [Increased deletion period](https://gitlab.com/groups/gitlab-org/-/work_items/17375) from seven days to 30 days in 18.0.2.
 
 Groups are permanently deleted after a 30-day delay.
 
@@ -364,7 +357,7 @@ See how to [view and restore groups marked for deletion](../group/_index.md#rest
 ### Delayed project deletion
 
 - [Moved](https://gitlab.com/groups/gitlab-org/-/work_items/17208) from GitLab Premium to GitLab Free in 18.0.
-- [Increased deletion period](https://gitlab.com/groups/gitlab-org/-/epics/17375) from seven-days to 30 days in 18.0.2.
+- [Increased deletion period](https://gitlab.com/groups/gitlab-org/-/work_items/17375) from seven-days to 30 days in 18.0.2.
 
 Projects are permanently deleted after a 30-day delay.
 

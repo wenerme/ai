@@ -103,7 +103,7 @@ solutions level to avoid import problems.
 
 Resources:
 
-- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat/gitlab-duo-coffee-chat-2024-01-29)
+- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat-2024/gitlab-duo-coffee-chat-2024-01-29)
 
 ### Improve a C++ application
 
@@ -143,7 +143,7 @@ To refactor the source code into reusable and testable functions:
 
 Resources:
 
-- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat/gitlab-duo-coffee-chat-2024-01-09)
+- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat-2024/gitlab-duo-coffee-chat-2024-01-09)
 
 #### Refactor C++ functions into object-oriented code
 
@@ -251,11 +251,11 @@ After refactoring the source code, the foundation for more database types is bui
 
 Resources:
 
-- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat/gitlab-duo-coffee-chat-2024-01-23)
+- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat-2024/gitlab-duo-coffee-chat-2024-01-23)
 
 ### Explain, test, and refactor a Kotlin application
 
-In this example, the adventure application from the [Kotlin code generation prompts](use_cases.md#kotlin-code-generation-prompts)
+In this example, the adventure application from the [Kotlin code generation prompts](#kotlin-code-generation-prompts)
 must be analyzed, and improved with refactoring and tests.
 
 The current source code looks like this:
@@ -532,7 +532,7 @@ In this example, detected security vulnerabilities in C should be fixed with the
 <i class="fa-youtube-play" aria-hidden="true"></i>
 Watch the walkthrough of these steps [GitLab Duo Coffee Chat: Vulnerability Resolution Challenge #1](https://www.youtube.com/watch?v=Ypwx4lFnHP0)
 
-[This source code snippet](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat/gitlab-duo-coffee-chat-2024-01-30/-/blob/4685e4e1c658565ae956ad9befdfcc128e60c6cf/src/main-vulnerable-source.c)
+[This source code snippet](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat-2024/gitlab-duo-coffee-chat-2024-01-30/-/blob/4685e4e1c658565ae956ad9befdfcc128e60c6cf/src/main-vulnerable-source.c)
 introduces a security vulnerability with a [buffer overflow](https://en.wikipedia.org/wiki/Buffer_overflow):
 
 ```c
@@ -576,7 +576,7 @@ If the suggested changes do not fit requirements, or might lead to problems, you
 
 Resources:
 
-- Project with source code: [GitLab Duo Coffee Chat 2024-01-30 - Vulnerability Resolution Challenge](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat/gitlab-duo-coffee-chat-2024-01-30)
+- Project with source code: [GitLab Duo Coffee Chat 2024-01-30 - Vulnerability Resolution Challenge](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat-2024/gitlab-duo-coffee-chat-2024-01-30)
 
 ## Answer questions about GitLab
 
@@ -609,7 +609,7 @@ Watch the walkthrough of these steps in [GitLab Duo Coffee Chat: Solve problems 
 
 Resources:
 
-- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat/gitlab-duo-coffee-chat-2024-02-01)
+- [Project with source code](https://gitlab.com/gitlab-da/use-cases/ai/gitlab-duo-coffee-chat-2024/gitlab-duo-coffee-chat-2024-02-01)
 
 ## Root Cause Analysis use cases
 
@@ -635,7 +635,7 @@ it might be due to multiple reasons:
 - The job uses the shell executor instead of the container image. The host operating
   system is broken, doesn't have the Go language runtime installed, or is not configured.
 
-The project [Challenge: Root Cause Analysis - Go GitLab Release Fetcher](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-challenges/root-cause-analysis/challenge-root-cause-analysis-go-gitlab-release-fetcher)
+The project [Challenge: Root Cause Analysis - Go GitLab Release Fetcher](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-challenges/root-cause-analysis/challenge-root-cause-analysis-go-gitlab-release-fetcher)
 provides an exercise to analyze and fix CI/CD problems with a Go Tanuki app. In this exercise,
 the `build` and `docker-build` jobs are failing. When you have fixed
 the problem, the CI/CD pipeline succeeds and the `build` job prints an output.
@@ -683,7 +683,7 @@ The following examples provide [code generation](../project/repository/code_sugg
 prompts for the [supported languages](../project/repository/code_suggestions/supported_extensions.md) in GitLab Duo.
 You can use multi-line comments to refine code generation prompts.
 
-The examples are stored in the [GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts),
+The examples are stored in the [GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts),
 maintained by the Developer Relations team. These examples are tested working. You should review and adapt them for your environment.
 
 ### C code generation prompts
@@ -722,7 +722,7 @@ int main() {
 
 ```
 
-The AI-generated source code examples are available in the [`c` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/c?ref_type=heads).
+The AI-generated source code examples are available in the [`c` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/c).
 
 ### C++ code generation prompts
 
@@ -848,7 +848,7 @@ int xdp_prog(struct xdp_md *ctx) {
 }
 ```
 
-The AI-generated source code examples are available in the [`c++` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/c%2B%2B?ref_type=heads).
+The AI-generated source code examples are available in the [`c++` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/c++).
 
 ### `C#` code generation prompts
 
@@ -900,7 +900,7 @@ namespace MedicalAnalyzer
 }
 ```
 
-The AI-generated source code examples are available in the [`c#` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/c%23?ref_type=heads).
+The AI-generated source code examples are available in the [`c#` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/c%23).
 
 ### CSS code generation prompts
 
@@ -926,7 +926,7 @@ The AI-generated source code examples are available in the [`c#` directory in th
 }
 ```
 
-The AI-generated source code examples are available in the [`css` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/css?ref_type=heads).
+The AI-generated source code examples are available in the [`css` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/css).
 
 ### Go code generation prompts
 
@@ -1040,7 +1040,7 @@ blog post.
 // Use BoltDB as external library
 ```
 
-The AI-generated source code examples are available in the [`go` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/go?ref_type=heads).
+The AI-generated source code examples are available in the [`go` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/go).
 
 ### Java code generation prompts
 
@@ -1054,7 +1054,7 @@ Provide an API for data queries and aggregation.
 // Provide an API to query and aggregate data
 ```
 
-The AI-generated source code examples are available in the [`java` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/java?ref_type=heads).
+The AI-generated source code examples are available in the [`java` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/java).
 
 ### JavaScript code generation prompts
 
@@ -1068,7 +1068,7 @@ Create a paid-time-off application for employees in ReactJS, with a date-time pi
 // Send the request to a server API
 ```
 
-The AI-generated source code examples are available in the [`javascript` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/javascript).
+The AI-generated source code examples are available in the [`javascript` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/javascript).
 
 ### HTML code generation prompts
 
@@ -1092,7 +1092,7 @@ Add a table with one Dev, one Ops, one Sec example.
 </table>
 ```
 
-The AI-generated source code examples are available in the [`html` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/html).
+The AI-generated source code examples are available in the [`html` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/html).
 
 ### Kotlin code generation prompts
 
@@ -1149,7 +1149,7 @@ fun main() {
 }
 ```
 
-The AI-generated source code examples are available in the [`kotlin` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/kotlin?ref_type=heads).
+The AI-generated source code examples are available in the [`kotlin` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/kotlin).
 
 ### PHP code generation prompts
 
@@ -1178,7 +1178,7 @@ echo '</ul>';
 
 ```
 
-The AI-generated source code examples are available in the [`php` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/php).
+The AI-generated source code examples are available in the [`php` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/php).
 
 ### PowerShell code generation prompts
 
@@ -1214,7 +1214,7 @@ $fileData | ConvertTo-Json | Out-File -FilePath $jsonFile
 Write-Host "File sizes saved to $jsonFile"
 ```
 
-The AI-generated source code examples are available in the [`powershell` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/powershell?ref_type=heads).
+The AI-generated source code examples are available in the [`powershell` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/powershell).
 
 ### Python code generation prompts
 
@@ -1276,7 +1276,7 @@ if __name__ == '__main__':
 
 ```
 
-The AI-generated source code examples are available in the [`python` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/python?ref_type=heads).
+The AI-generated source code examples are available in the [`python` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/python).
 
 ### Ruby code generation prompts
 
@@ -1358,7 +1358,7 @@ logger.log(:fatal, 'MyApp', 'Application started - fatal')
 logger.log(:warn, 'MyApp', 'Application started - warn')
 ```
 
-The AI-generated source code examples are available in the [`ruby` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/ruby).
+The AI-generated source code examples are available in the [`ruby` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/ruby).
 
 ### Rust code generation prompts
 
@@ -1395,7 +1395,7 @@ Create an RSS feed reader app, example from the blog post [Learn advanced Rust p
     // Print the hash map to the terminal.
 ```
 
-The AI-generated source code examples are available in the [`rust` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/rust?ref_type=heads).
+The AI-generated source code examples are available in the [`rust` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/rust).
 
 ### Scala code generation prompts
 
@@ -1426,7 +1426,7 @@ object NewtonsMethod {
 }
 ```
 
-The AI-generated source code examples are available in the [`scala` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/scala?ref_type=heads).
+The AI-generated source code examples are available in the [`scala` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/scala).
 
 ### Shell scripts code generation prompts
 
@@ -1450,7 +1450,7 @@ top -b -n 1 | head -n 11 | awk '{print $1, $2, $10, $11}' | column -t
 
 ```
 
-The AI-generated source code examples are available in the [`shell` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/shell?ref_type=heads).
+The AI-generated source code examples are available in the [`shell` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/shell).
 
 ### TypeScript code generation prompts
 
@@ -1496,7 +1496,7 @@ for (const input of testInputs) {
 }
 ```
 
-The AI-generated source code examples are available in the [`typescript` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows/gitlab-duo-prompts/-/tree/main/code-suggestions/typescript?ref_type=heads).
+The AI-generated source code examples are available in the [`typescript` directory in the GitLab Duo Prompts project](https://gitlab.com/gitlab-da/use-cases/ai/ai-workflows-2024/gitlab-duo-prompts/-/tree/main/code-suggestions/typescript).
 
 ## Resources
 

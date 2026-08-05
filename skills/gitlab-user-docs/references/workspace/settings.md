@@ -364,7 +364,7 @@ For more information about `allow_privilege_escalation`, see
 
 ### `image_pull_secrets`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14664) in GitLab 17.6.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14664) in GitLab 17.6.
 
 Use this setting to specify existing Kubernetes secrets of the type `kubernetes.io/dockercfg`
 or `kubernetes.io/dockerconfigjson` required by workspaces to pull private images.

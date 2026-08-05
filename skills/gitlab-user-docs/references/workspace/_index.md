@@ -351,7 +351,7 @@ events:
 > [!note]
 > This container `image` is for demonstration purposes only.
 
-For other examples, see the [`examples` projects](https://gitlab.com/gitlab-org/remote-development/examples).
+For other examples, see the [`examples` projects](https://gitlab.com/gitlab-org/workspaces/examples).
 
 ## Workspace container requirements
 

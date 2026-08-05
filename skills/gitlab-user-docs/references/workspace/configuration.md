@@ -102,7 +102,7 @@ To build and run containers in a workspace, see [configure sudo access for a wor
 
 ## Configure support for private container registries
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14664) in GitLab 17.6.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14664) in GitLab 17.6.
 
 To use images from private container registries:
 
@@ -267,7 +267,6 @@ USER gitlab-workspaces
 
 - [Tutorial: Set up the GitLab agent for Kubernetes](set_up_gitlab_agent_and_proxies.md)
 - [Workspace settings](settings.md)
-- [Workspace configuration](configuration.md)
 - [Troubleshooting Workspaces](workspaces_troubleshooting.md)
 - [Quickstart guide for GitLab remote development workspaces](https://go.gitlab.com/AVKFvy)
 - [Set up your infrastructure for on-demand, cloud-based development environments in GitLab](https://go.gitlab.com/dp75xo)

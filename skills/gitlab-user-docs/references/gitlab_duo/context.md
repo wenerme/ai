@@ -51,7 +51,7 @@ are also available when you refer to them explicitly by their ID or URL.
 - Tier: Premium, Ultimate
 - Add-on: GitLab Duo Pro or Enterprise
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/17124) in GitLab 18.2 [with a feature flag](../../administration/feature_flags/_index.md) named `use_duo_context_exclusion`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17124) in GitLab 18.2 [with a feature flag](../../administration/feature_flags/_index.md) named `use_duo_context_exclusion`. Disabled by default.
 - Changed to beta in GitLab 18.4.
 - Enabled by default in GitLab 18.5.
 

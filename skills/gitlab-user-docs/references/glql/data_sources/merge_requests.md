@@ -43,8 +43,8 @@ For more information, see [scopes](_index.md#scopes).
 ### Approved by user {#mr-approved-by-user}
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
-- Aliases `approvedBy` and `approvers` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
-- Support for `Nullable` values [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/221) in GitLab 18.3.
+- Aliases `approvedBy` and `approvers` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
+- Support for `Nullable` values [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/221) in GitLab 18.3.
 
 **Description**: Query merge requests by one or more users who approved the merge request.
 
@@ -182,7 +182,7 @@ For more information, see [scopes](_index.md#scopes).
 ### Merged at {#mr-merged-at}
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
-- Alias `mergedAt` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
+- Alias `mergedAt` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
 - Operators `>=` and `<=` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/work_items/58) in GitLab 18.0.
 
 **Description**: Query merge requests by the date when they were merged.
@@ -200,7 +200,7 @@ For more information, see [scopes](_index.md#scopes).
 ### Merged by user {#mr-merged-by-user}
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/491246) in GitLab 17.8.
-- Alias `mergedBy` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
+- Alias `mergedBy` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
 
 **Description**: Query merge requests by the user that merged the merge request.
 
@@ -232,7 +232,7 @@ For more information, see [scopes](_index.md#scopes).
 
 ### Reviewers {#mr-reviewers}
 
-- Aliases `reviewers` and `reviewedBy` [introduced](https://gitlab.com/gitlab-org/gitlab-query-language/glql-rust/-/merge_requests/137) in GitLab 18.0.
+- Aliases `reviewers` and `reviewedBy` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/137) in GitLab 18.0.
 
 **Description**: Query merge requests that were reviewed by one or more users.
 
