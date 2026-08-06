@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Cloudflare platform access
@@ -132,15 +132,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+```
+
+```txt
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
 Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt

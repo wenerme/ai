@@ -3,8 +3,8 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/9341) in GitLab 15.11.
-- [Generally available](https://gitlab.com/groups/gitlab-org/-/epics/9341) in GitLab 17.8.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/9341) in GitLab 15.11.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/9341) in GitLab 17.8.
 
 As you create machine learning models, you likely experiment with different parameters, configurations,
 and feature engineering to improve the model's performance. To replicate your experiments later, you need

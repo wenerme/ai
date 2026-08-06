@@ -315,15 +315,15 @@ These are the same metrics available in your provider dashboard. Once onboarded,
 
 #### How deprioritization thresholds work
 
-Throughput and tool-calling success rate compare current signal values against the live group of providers serving each model using a **median + MAD** (median absolute deviation) approach. Benchmark accuracy instead uses a fixed historical baseline, so its cutoff does not move with the current peer group.
+Throughput and tool-calling success rate compare current signal values against the live group of providers serving each model using a **median + MAD** (median absolute deviation) approach. Benchmark accuracy instead uses a historical baseline from the model's early benchmarking window, so once that window closes its cutoff does not move with the current peer group.
 
 Each signal has a different sensitivity:
 
-* **Benchmark accuracy** -- the cutoff is a fixed baseline computed from the model's first approximately 21 days of benchmarking: the median of per-endpoint scores over that window minus **2 standard deviations** (median − 2σ). Later changes in another provider's score do not move this cutoff. An endpoint scoring below the cutoff, or missing benchmark data entirely, is deprioritized.
+* **Benchmark accuracy** -- the cutoff is a baseline computed from the first approximately 21 days of benchmarking for that model and benchmark type: the median of per-endpoint scores over that window minus **2 standard deviations** (median − 2σ). Each window opens with the first qualifying result for that model and benchmark type. While a window is still in progress, the baseline is periodically recomputed from all qualifying results collected so far, so a new qualifying result for that benchmark type from any provider can shift the cutoff; after the window closes, the baseline as currently constituted admits no results from later benchmark runs and later changes in another provider's score do not move the cutoff. An endpoint scoring below the cutoff, or missing benchmark data entirely, is deprioritized.
 * **Throughput** -- providers falling more than **1.5 standard deviations** below the median are deprioritized. The wider margin accounts for natural throughput variance caused by time-of-day load patterns.
 * **Tool-calling success rate** -- providers falling more than **2 standard deviations** below the median are deprioritized. Success rates cluster near 100%, so this wider margin avoids penalizing normal noise while catching genuinely broken endpoints.
 
-A minimum of **4 providers** is required before statistical thresholds are computed for live signals; benchmark thresholds require **4 endpoints** within the model's first-21-day baseline window. Below the applicable count, no deprioritization is applied for that signal.
+A minimum of **4 providers** is required before statistical thresholds are computed for live signals; benchmark thresholds require **4 endpoints** within the applicable baseline window. Below the applicable count, no deprioritization is applied for that signal.
 
 Endpoints are placed into one of three tiers:
 

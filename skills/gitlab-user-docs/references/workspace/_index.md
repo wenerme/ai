@@ -474,7 +474,7 @@ To delete the provisioned volume, you must terminate the workspace.
 
 ## Automatic workspace stop and termination
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14910) in GitLab 17.6.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14910) in GitLab 17.6.
 
 By default, a workspace automatically:
 

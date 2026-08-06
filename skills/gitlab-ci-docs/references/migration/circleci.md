@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-If you are currently using CircleCI, you can migrate your CI/CD pipelines to [GitLab CI/CD](../_index.md),
+If you are using CircleCI, you can migrate your CI/CD pipelines to [GitLab CI/CD](../_index.md),
 and start making use of all its powerful features.
 
 We have collected several resources that you may find useful before starting to migrate.

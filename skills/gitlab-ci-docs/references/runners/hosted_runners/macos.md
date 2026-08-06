@@ -1,5 +1,7 @@
 # Hosted runners on macOS
 
+Learn how to use hosted runners on macOS for GitLab.com to run CI/CD jobs, build macOS and iOS applications, and configure pre-installed build tools for your apps.
+
 - Tier: Premium, Ultimate
 - Offering: GitLab.com
 - Status: Beta

@@ -29,10 +29,10 @@ Entries on this page are generated automatically from [OpenAPI specification](/d
 <Update label="July 28, 2026" tags={["Breaking","Files","Responses","Schemas"]} rss="2 breaking changes, 5 modified endpoints, 22 modified schemas.">
   ## Breaking changes
 
-  * `FusionCallAnalysisInProgressEvent` — required `analyst_model` property added
+  * `FusionCallAnalysisInProgressEvent` — required `analyst_model` property added<Badge stroke color="gray" className="changelog-status-badge">No action needed</Badge>
     * **No action required for existing consumers.** `analyst_model` replaces `judge_model` in this streaming event; `judge_model` is retained as a deprecated alias that always carries the same value.
     * Used by [`POST /responses`](/docs/api/api-reference/responses/create-a-response)
-  * \$.tags: responses object removed
+  * \$.tags: responses object removed<Badge stroke color="gray" className="changelog-status-badge">No action needed</Badge>
     * **No action required.** The `responses` OpenAPI tag was renamed to `Responses` for consistent Title Case across the API Reference. This is a documentation-grouping change only: `POST /api/v1/responses` and its schemas are unchanged, SDK namespaces are unchanged (`client.responses.send()` in TypeScript and Python, `Sdk.Responses.Send()` in Go), and endpoint documentation URLs are unchanged.
 
   ## Modified endpoints

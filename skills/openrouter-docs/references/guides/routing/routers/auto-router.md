@@ -250,6 +250,10 @@ The exact model pool may be updated as new models become available.
 
 You can restrict which models the Auto Router can select from using the `plugins` parameter. This is useful when you want to limit routing to specific providers or model families.
 
+<Warning>
+  Each router only reads configuration sent under its own plugin id: use `id: 'auto-beta-router'` with `openrouter/auto-beta`, and `id: 'auto-router'` with the deprecated `openrouter/auto`. Configuration sent under the other router's plugin id is accepted but silently ignored — `allowed_models`, `excluded_models`, `cost_tier`, and `cost_quality_tradeoff` will have no effect on the request.
+</Warning>
+
 ### Via API Request
 
 Use wildcard patterns to filter models. For example, `anthropic/*` matches all Anthropic models:
@@ -266,7 +270,7 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
     ],
     plugins: [
       {
-        id: 'auto-router',
+        id: 'auto-beta-router',
         allowed_models: ['anthropic/*', 'openai/gpt-5.1'],
       },
     ],
@@ -290,7 +294,7 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
       ],
       plugins: [
         {
-          id: 'auto-router',
+          id: 'auto-beta-router',
           allowed_models: ['anthropic/*', 'openai/gpt-5.1'],
         },
       ],
@@ -315,7 +319,7 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
       ],
       "plugins": [
         {
-          "id": "auto-router",
+          "id": "auto-beta-router",
           "allowed_models": ["anthropic/*", "openai/gpt-5.1"]
         }
       ]
@@ -333,7 +337,7 @@ You can also configure default allowed models in your [Plugin Settings](https://
 3. Enter model patterns (one per line)
 4. Save your settings
 
-These defaults apply to all your API requests unless overridden per-request.
+These defaults configure the `auto-router` plugin, so they apply to `openrouter/auto` requests unless overridden per-request. To restrict models for `openrouter/auto-beta`, send `allowed_models` under `id: 'auto-beta-router'` in the request.
 
 ### Pattern Syntax
 
@@ -368,6 +372,10 @@ For the recommended named setting, use the `cost_tier` plugin parameter. On Auto
 | `max`       |        1 |          \[80, 100] | Highest-cost, highest-quality models |
 
 ```typescript theme={null}
+// openrouter/auto-beta
+plugins: [{ id: 'auto-beta-router', cost_tier: 'medium' }]
+
+// openrouter/auto (deprecated)
 plugins: [{ id: 'auto-router', cost_tier: 'medium' }]
 ```
 
@@ -397,7 +405,7 @@ When `cost_tier` is supplied without a numeric `cost_quality_tradeoff`, Auto Bet
     ],
     plugins: [
       {
-        id: 'auto-router',
+        id: 'auto-beta-router',
         cost_quality_tradeoff: 3, // Favor quality over cost
       },
     ],
@@ -421,7 +429,7 @@ When `cost_tier` is supplied without a numeric `cost_quality_tradeoff`, Auto Bet
       ],
       plugins: [
         {
-          id: 'auto-router',
+          id: 'auto-beta-router',
           cost_quality_tradeoff: 3,
         },
       ],
@@ -446,7 +454,7 @@ When `cost_tier` is supplied without a numeric `cost_quality_tradeoff`, Auto Bet
       ],
       "plugins": [
         {
-          "id": "auto-router",
+          "id": "auto-beta-router",
           "cost_quality_tradeoff": 3
         }
       ]
@@ -457,11 +465,21 @@ When `cost_tier` is supplied without a numeric `cost_quality_tradeoff`, Auto Bet
 
 ### Via Settings UI
 
-You can also set a default tradeoff in your [Plugin Settings](https://openrouter.ai/settings/plugins) under **Auto Router**. The per-request value overrides this default.
+You can also set a default tradeoff in your [Plugin Settings](https://openrouter.ai/settings/plugins) under **Auto Router**. This default configures the `auto-router` plugin (`openrouter/auto`); the per-request value overrides it. For `openrouter/auto-beta`, set the tradeoff per-request under `id: 'auto-beta-router'`.
 
 ## Pricing
 
 You pay the standard rate for whichever model is selected. There is no additional fee for using the Auto Router.
+
+Because the router can select premium models, the cost of a request depends on which model it picks. The response `model` field shows the selected model, and the [Logs page](https://openrouter.ai/logs) shows per-request token counts and cost.
+
+### Controlling Costs
+
+Use these controls to keep spend within expectations:
+
+* **[`cost_tier` / `cost_quality_tradeoff`](#cost--quality-tradeoff)** — choose how much the router favors cheaper models: `cost_tier: 'low'` (or a high numeric `cost_quality_tradeoff`) selects the cheapest band, while higher tiers like `max` select the most expensive, highest-quality models. The dial filters the ranked candidate pool; when task classification or rankings are unavailable, the router falls back to a default model set that the dial does not filter.
+* **[`allowed_models` / `excluded_models`](#configuring-allowed-models)** — hard limits on which models can be selected. These patterns are enforced on every routing path, including fallbacks. Send them under the plugin id that matches your router (`auto-beta-router` for `openrouter/auto-beta`); under any other plugin id they are silently ignored.
+* **[`provider.max_price`](/docs/guides/routing/provider-selection#max-price)** — a per-request price ceiling. The Auto Router resolves models before provider routing runs, so the selected models' endpoints are still filtered by `max_price`; if no endpoint satisfies the ceiling, the request fails instead of exceeding it.
 
 ## Use Cases
 

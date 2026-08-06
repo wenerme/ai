@@ -461,7 +461,7 @@ For more information about `labels`, see
 
 ### `max_active_hours_before_stop`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14910) in GitLab 17.6.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14910) in GitLab 17.6.
 
 This setting automatically stops the agent's workspaces after they have been active for the specified
 number of hours. An active state is any non-stopped or non-terminated state.
@@ -494,7 +494,7 @@ This means that the workspace might be active for up to one hour longer than the
 
 ### `max_stopped_hours_before_termination`
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14910) in GitLab 17.6.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14910) in GitLab 17.6.
 
 Use this setting to automatically terminate the agent's workspaces after they have been in the stopped
 state for the specified number of hours.
