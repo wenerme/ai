@@ -10651,9 +10651,9 @@
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
-    "lastModified": "Wed, 29 Jul 2026 03:52:19 GMT",
-    "size": 25270,
-    "updatedAt": "2026-07-29T03:52:19.928Z"
+    "lastModified": "Thu, 06 Aug 2026 12:31:01 GMT",
+    "size": 25442,
+    "updatedAt": "2026-08-06T12:31:01.034Z"
   },
   "client-sdks/agent-migration.md": {
     "url": "https://openrouter.ai/docs/client-sdks/agent-migration.md",
@@ -11311,9 +11311,9 @@
   },
   "cookbook/coding-agents/claude-code-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-code-integration.md",
-    "lastModified": "Wed, 05 Aug 2026 03:41:08 GMT",
-    "size": 17092,
-    "updatedAt": "2026-08-05T03:41:08.171Z"
+    "lastModified": "Thu, 06 Aug 2026 12:31:31 GMT",
+    "size": 17928,
+    "updatedAt": "2026-08-06T12:31:31.533Z"
   },
   "cookbook/coding-agents/claude-desktop-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-desktop-integration.md",
@@ -11539,9 +11539,9 @@
   },
   "guides/community/for-providers.md": {
     "url": "https://openrouter.ai/docs/guides/community/for-providers.md",
-    "lastModified": "Wed, 29 Jul 2026 03:53:48 GMT",
-    "size": 16717,
-    "updatedAt": "2026-07-29T03:53:48.199Z"
+    "lastModified": "Thu, 06 Aug 2026 12:31:41 GMT",
+    "size": 17198,
+    "updatedAt": "2026-08-06T12:31:42.004Z"
   },
   "guides/community/frameworks-and-integrations-overview.md": {
     "url": "https://openrouter.ai/docs/guides/community/frameworks-and-integrations-overview.md",
@@ -12085,9 +12085,9 @@
   },
   "guides/routing/auto-exacto.md": {
     "url": "https://openrouter.ai/docs/guides/routing/auto-exacto.md",
-    "lastModified": "Wed, 29 Jul 2026 03:54:26 GMT",
-    "size": 7933,
-    "updatedAt": "2026-07-29T03:54:26.543Z"
+    "lastModified": "Thu, 06 Aug 2026 12:32:07 GMT",
+    "size": 8482,
+    "updatedAt": "2026-08-06T12:32:07.783Z"
   },
   "guides/routing/model-fallbacks.md": {
     "url": "https://openrouter.ai/docs/guides/routing/model-fallbacks.md",
@@ -12145,9 +12145,9 @@
   },
   "guides/routing/routers/auto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router.md",
-    "lastModified": "Thu, 06 Aug 2026 03:45:40 GMT",
-    "size": 19575,
-    "updatedAt": "2026-08-06T03:45:40.490Z"
+    "lastModified": "Thu, 06 Aug 2026 12:32:10 GMT",
+    "size": 21914,
+    "updatedAt": "2026-08-06T12:32:10.654Z"
   },
   "guides/routing/routers/body-builder.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/body-builder.md",

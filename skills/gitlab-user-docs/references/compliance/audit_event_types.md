@@ -614,6 +614,7 @@ Audit event types belong to the following product categories.
 | [`project_security_exclusion_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/166511) | A project security exclusion is updated | Yes | GitLab [17.5](https://gitlab.com/gitlab-org/gitlab/-/issues/492464) | Project |
 | [`project_security_setting_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/150767) | A project's security setting is updated | Yes | GitLab [17.0](https://gitlab.com/gitlab-org/gitlab/-/issues/457024) | Project |
 | [`skip_secret_push_protection`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/147855) | Secret push protection is skipped by the user | Yes | GitLab [16.11](https://gitlab.com/gitlab-org/gitlab/-/issues/441185) | Project |
+| [`spp_invalid_input`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243985) | Secret push protection is skipped due to invalid input | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/604787) | Project |
 | [`spp_ruleset_error`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243975) | Secret push protection encounters a ruleset parse or compile error | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/604787) | Project |
 | [`spp_scan_timeout`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243984) | Secret push protection scan timed out causing the push to be accepted | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/604787) | Project |
 | [`spp_too_many_changed_paths`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/243977) | Secret push protection skips scanning because the push contains too many changed paths | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/604787) | Project |
@@ -681,7 +682,9 @@ Audit event types belong to the following product categories.
 | [`security_category_deleted`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209118) | A security category is deleted | Yes | GitLab [18.6](https://gitlab.com/gitlab-org/gitlab/-/issues/568959) | Group |
 | [`security_category_updated`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/209118) | A security category is updated | Yes | GitLab [18.6](https://gitlab.com/gitlab-org/gitlab/-/issues/568959) | Group |
 | [`security_scan_profile_attached_to_project`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219378) | A security scan profile is attached to a project | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/issues/582824) | Project |
+| [`security_scan_profile_create`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248106) | A security scan profile is created | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/606347) | Group |
 | [`security_scan_profile_detached_from_project`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/219378) | A security scan profile is detached from a project | Yes | GitLab [18.9](https://gitlab.com/gitlab-org/gitlab/-/issues/582824) | Project |
+| [`security_scan_profile_update`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248106) | A security scan profile is updated | Yes | GitLab [19.3](https://gitlab.com/gitlab-org/gitlab/-/work_items/606347) | Group |
 
 ### Security testing configuration
 

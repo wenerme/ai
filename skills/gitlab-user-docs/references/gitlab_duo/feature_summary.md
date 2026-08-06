@@ -12,25 +12,26 @@ They require a Premium or Ultimate subscription and one of the available add-ons
 The GitLab Duo with Amazon Q features are available as a separate add-on, and
 are available on GitLab Self-Managed only.
 
-| Feature | GitLab Duo Core | GitLab Duo Pro | GitLab Duo Enterprise | GitLab Duo with Amazon Q |
-|---------|----------|---------|----------------|--------------------------|
-| [Code Suggestions](../project/repository/code_suggestions/_index.md) | Yes | Yes | Yes | Yes |
-| [GitLab Duo Non-Agentic Chat](../gitlab_duo_chat/_index.md) | No | Yes | Yes | Yes |
-| [Code Explanation](../gitlab_duo_chat/examples.md#explain-selected-code) in IDEs | No | Yes | Yes | Yes |
-| [Refactor Code](../gitlab_duo_chat/examples.md#refactor-code-in-the-ide) in IDEs | No | Yes | Yes | Yes |
-| [Fix Code](../gitlab_duo_chat/examples.md#fix-code-in-the-ide) in IDEs | No | Yes | Yes | Yes |
-| [Test Generation](../gitlab_duo_chat/examples.md#write-tests-in-the-ide) in IDEs | No | Yes | Yes | Yes |
-| [Code Explanation](../project/repository/code_explain.md) in GitLab UI | No | Yes | Yes | Yes |
-| [Discussion Summary](../discussions/_index.md#summarize-issue-discussions-with-gitlab-duo-chat) | No | No | Yes | Yes |
-| [Code Review](code_review.md) <sup>1</sup> | No | No | Yes | Yes |
-| [Root Cause Analysis](../gitlab_duo_chat/examples.md#troubleshoot-failed-cicd-jobs-with-root-cause-analysis) | No | No | Yes | Yes |
-| [Vulnerability Explanation](../application_security/analyze/duo.md) | No | No | Yes | Yes |
-| [Vulnerability Resolution](../application_security/remediate/duo.md) | No | No | Yes | Yes |
-| [GitLab Duo and SDLC trends](../analytics/duo_and_sdlc_trends.md) | No | No | Yes | Yes |
-| [Merge Commit Message Generation](../project/merge_requests/duo_in_merge_requests.md#generate-a-merge-commit-message) | No | No | Yes | Yes |
+| Feature | GitLab Duo Pro | GitLab Duo Enterprise | GitLab Duo with Amazon Q |
+|---------|----------------|----------------------|--------------------------|
+| [Code Suggestions](../project/repository/code_suggestions/_index.md) <sup>1</sup> | Yes | Yes | Yes |
+| [GitLab Duo Non-Agentic Chat](../gitlab_duo_chat/_index.md) | Yes | Yes | Yes |
+| [Code Explanation](../gitlab_duo_chat/examples.md#explain-selected-code) in IDEs | Yes | Yes | Yes |
+| [Refactor Code](../gitlab_duo_chat/examples.md#refactor-code-in-the-ide) in IDEs | Yes | Yes | Yes |
+| [Fix Code](../gitlab_duo_chat/examples.md#fix-code-in-the-ide) in IDEs | Yes | Yes | Yes |
+| [Test Generation](../gitlab_duo_chat/examples.md#write-tests-in-the-ide) in IDEs | Yes | Yes | Yes |
+| [Code Explanation](../project/repository/code_explain.md) in GitLab UI | Yes | Yes | Yes |
+| [Discussion Summary](../discussions/_index.md#summarize-issue-discussions-with-gitlab-duo-chat) | No | Yes | Yes |
+| [Code Review](code_review.md) <sup>2</sup> | No | Yes | Yes |
+| [Root Cause Analysis](../gitlab_duo_chat/examples.md#troubleshoot-failed-cicd-jobs-with-root-cause-analysis) | No | Yes | Yes |
+| [Vulnerability Explanation](../application_security/analyze/duo.md) | No | Yes | Yes |
+| [Vulnerability Resolution](../application_security/remediate/duo.md) | No | Yes | Yes |
+| [Merge Commit Message Generation](../project/merge_requests/duo_in_merge_requests.md#generate-a-merge-commit-message) | No | Yes | Yes |
 
 **Footnotes**:
 
+1. Code Suggestions is also available as part of the GitLab Duo Agent Platform, without an
+   additional add-on.
 1. Amazon Q supports a different version of this feature.
    [View how to use Amazon Q to review code](../duo_amazon_q/_index.md#review-a-merge-request).
 
@@ -40,11 +41,11 @@ The following features are not yet generally available.
 
 They require a Premium or Ultimate subscription and the GitLab Duo Enterprise add-on.
 
-| Feature | GitLab Duo Core | GitLab Duo Pro | GitLab Duo Enterprise | GitLab Duo with Amazon Q |
-|---------|-----------------|----------------|-----------------------|--------------------------|
-| [Merge Request Summary](../project/merge_requests/duo_in_merge_requests.md#generate-a-description-by-summarizing-code-changes) | No | No | Yes | No |
-| [Code Review Summary](../project/merge_requests/duo_in_merge_requests.md#summarize-a-code-review) | No | No | Yes | No |
-| [Issue Description Generation](../project/issues/managing_issues.md#populate-an-issue-with-issue-description-generation) | No | No | Yes | No |
+| Feature | GitLab Duo Pro | GitLab Duo Enterprise | GitLab Duo with Amazon Q |
+|---------|----------------|----------------------|--------------------------|
+| [Merge Request Summary](../project/merge_requests/duo_in_merge_requests.md#generate-a-description-by-summarizing-code-changes) | No | Yes | No |
+| [Code Review Summary](../project/merge_requests/duo_in_merge_requests.md#summarize-a-code-review) | No | Yes | No |
+| [Issue Description Generation](../project/issues/managing_issues.md#populate-an-issue-with-issue-description-generation) | No | Yes | No |
 
 ## Features available in GitLab Duo Self-Hosted
 

@@ -77,7 +77,9 @@ GPQA option shuffling deliberately differs from openbench: openbench reseeds per
 
 ### How the benchmark threshold is set
 
-Each model and benchmark type has a fixed baseline: the median of per-endpoint scores during the model's first approximately 21 days of benchmarking. The derank threshold is that baseline minus **2σ**. An endpoint's current rolling score is compared against this fixed threshold, which does not move when another provider's current score changes.
+Each model and benchmark type has a baseline: the median of per-endpoint scores during the first approximately 21 days of benchmarking for that model and benchmark type. The derank threshold is that baseline minus **2σ**. An endpoint's current rolling score is compared against this threshold.
+
+Each window opens with the first qualifying result for that model and benchmark type, so different benchmark types for the same model can have different windows. While a window is still in progress, its baseline is provisional: it is recomputed from all qualifying results collected so far, so each new qualifying result for that benchmark type -- including one from another provider -- can shift the threshold. Once that window closes, the baseline as currently constituted admits no results from later benchmark runs, and the threshold no longer moves when another provider's current score changes.
 
 ## Where to Find the Scores
 

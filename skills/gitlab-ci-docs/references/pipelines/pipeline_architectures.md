@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-Pipelines are the fundamental building blocks for CI/CD in GitLab. This page documents
+Pipelines are the fundamental building blocks for CI/CD in GitLab. The following are
 some of the important concepts related to them.
 
 You can structure your pipelines with different methods, each with their

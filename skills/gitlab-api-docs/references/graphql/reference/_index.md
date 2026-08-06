@@ -3065,7 +3065,7 @@ Arguments:
 | <a id="mutation-aicatalogagentcreate-systemprompt"></a>`systemPrompt` | [`String!`](#string) | System prompt for the agent. |
 | <a id="mutation-aicatalogagentcreate-tools"></a>`tools` | [`[AiCatalogBuiltInToolID!]`](#aicatalogbuiltintoolid) | List of GitLab built-in tools enabled for the agent. |
 | <a id="mutation-aicatalogagentcreate-userprompt"></a>`userPrompt` | [`String`](#string) | User prompt for the agent. |
-| <a id="mutation-aicatalogagentcreate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the agent in the catalog. Only available when the `ai_catalog_internal_visibility` feature flag is enabled. |
+| <a id="mutation-aicatalogagentcreate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the agent in the catalog. |
 
 Fields:
 
@@ -3121,7 +3121,7 @@ Arguments:
 | <a id="mutation-aicatalogagentupdate-tools"></a>`tools` | [`[AiCatalogBuiltInToolID!]`](#aicatalogbuiltintoolid) | List of GitLab built-in tools enabled for the agent. |
 | <a id="mutation-aicatalogagentupdate-userprompt"></a>`userPrompt` | [`String`](#string) | User prompt for the agent. |
 | <a id="mutation-aicatalogagentupdate-versionbump"></a>`versionBump` | [`AiCatalogVersionBump`](#aicatalogversionbump) | Bump version, calculated from the last released version name. |
-| <a id="mutation-aicatalogagentupdate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the agent in the catalog. Only available when the `ai_catalog_internal_visibility` feature flag is enabled. |
+| <a id="mutation-aicatalogagentupdate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the agent in the catalog. |
 
 Fields:
 
@@ -3149,7 +3149,7 @@ Arguments:
 | <a id="mutation-aicatalogflowcreate-projectid"></a>`projectId` | [`ProjectID!`](#projectid) | Project for the flow. |
 | <a id="mutation-aicatalogflowcreate-public"></a>`public`  | [`Boolean`](#boolean) | Deprecated in GitLab 19.2. Use `visibility`. |
 | <a id="mutation-aicatalogflowcreate-release"></a>`release` | [`Boolean`](#boolean) | Whether to release the latest version of the flow. |
-| <a id="mutation-aicatalogflowcreate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the flow in the catalog. Only available when the `ai_catalog_internal_visibility` feature flag is enabled. |
+| <a id="mutation-aicatalogflowcreate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the flow in the catalog. |
 
 Fields:
 
@@ -3201,7 +3201,7 @@ Arguments:
 | <a id="mutation-aicatalogflowupdate-public"></a>`public`  | [`Boolean`](#boolean) | Deprecated in GitLab 19.2. Use `visibility`. |
 | <a id="mutation-aicatalogflowupdate-release"></a>`release` | [`Boolean`](#boolean) | Whether to release the latest version of the flow. |
 | <a id="mutation-aicatalogflowupdate-versionbump"></a>`versionBump` | [`AiCatalogVersionBump`](#aicatalogversionbump) | Bump version, calculated from the last released version name. |
-| <a id="mutation-aicatalogflowupdate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the flow in the catalog. Only available when the `ai_catalog_internal_visibility` feature flag is enabled. |
+| <a id="mutation-aicatalogflowupdate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the flow in the catalog. |
 
 Fields:
 
@@ -3485,7 +3485,7 @@ Arguments:
 | <a id="mutation-aicatalogthirdpartyflowcreate-projectid"></a>`projectId` | [`ProjectID!`](#projectid) | Project for the Flow. |
 | <a id="mutation-aicatalogthirdpartyflowcreate-public"></a>`public`  | [`Boolean`](#boolean) | Deprecated in GitLab 19.2. Use `visibility`. |
 | <a id="mutation-aicatalogthirdpartyflowcreate-release"></a>`release` | [`Boolean`](#boolean) | Whether to release the latest version of the Flow. |
-| <a id="mutation-aicatalogthirdpartyflowcreate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the Flow in the catalog. Only available when the `ai_catalog_internal_visibility` feature flag is enabled. |
+| <a id="mutation-aicatalogthirdpartyflowcreate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the Flow in the catalog. |
 
 Fields:
 
@@ -3537,7 +3537,7 @@ Arguments:
 | <a id="mutation-aicatalogthirdpartyflowupdate-public"></a>`public`  | [`Boolean`](#boolean) | Deprecated in GitLab 19.2. Use `visibility`. |
 | <a id="mutation-aicatalogthirdpartyflowupdate-release"></a>`release` | [`Boolean`](#boolean) | Whether to release the latest version of the Flow. |
 | <a id="mutation-aicatalogthirdpartyflowupdate-versionbump"></a>`versionBump` | [`AiCatalogVersionBump`](#aicatalogversionbump) | Bump version, calculated from the last released version name. |
-| <a id="mutation-aicatalogthirdpartyflowupdate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the Flow in the catalog. Only available when the `ai_catalog_internal_visibility` feature flag is enabled. |
+| <a id="mutation-aicatalogthirdpartyflowupdate-visibility"></a>`visibility`  | [`AiCatalogItemVisibility`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the Flow in the catalog. |
 
 Fields:
 
@@ -5786,7 +5786,7 @@ Arguments:
 | <a id="mutation-cdversionsetcreate-applicationid"></a>`applicationId` | [`CdApplicationID!`](#cdapplicationid) | Global ID of the application to create the version set in. |
 | <a id="mutation-cdversionsetcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-cdversionsetcreate-description"></a>`description` | [`String`](#string) | Description of the version set. |
-| <a id="mutation-cdversionsetcreate-name"></a>`name` | [`String!`](#string) | Name of the version set. |
+| <a id="mutation-cdversionsetcreate-name"></a>`name` | [`CdSemVer!`](#cdsemver) | Name of the version set. |
 | <a id="mutation-cdversionsetcreate-versionids"></a>`versionIds` | [`[CdVersionID!]!`](#cdversionid) | Global IDs of the versions that make up the version set, one per service. A version set must contain at least one version. |
 
 Fields:
@@ -14958,6 +14958,7 @@ Arguments:
 | <a id="mutation-securityscanprofilecreate-name"></a>`name` | [`String!`](#string) | Name of the scan profile. |
 | <a id="mutation-securityscanprofilecreate-namespaceid"></a>`namespaceId` | [`NamespaceID!`](#namespaceid) | Global ID of the top level namespace to create the scan profile for. |
 | <a id="mutation-securityscanprofilecreate-scantype"></a>`scanType` | [`SecurityScanProfileType!`](#securityscanprofiletype) | Type of the scan profile. |
+| <a id="mutation-securityscanprofilecreate-stripdefaults"></a>`stripDefaults` | [`Boolean`](#boolean) | When true, trigger configuration values equal to the defaults are removed before storage so only overrides are persisted. When false, the configuration is stored as provided, ignoring defaults. |
 | <a id="mutation-securityscanprofilecreate-triggers"></a>`triggers` | [`[SecurityScanProfileTriggerInput!]!`](#securityscanprofiletriggerinput) | Triggers with optional configuration for the scan profile. At least one is required. |
 
 Fields:
@@ -16782,9 +16783,6 @@ Fields:
 
 ### `Mutation.upsertFlatUserCap`
 
-- Introduced in GitLab 18.11.
-- Status: Experiment.
-
 Update the flat per-user budget cap for a subscription.
 
 Input type: `UpsertFlatUserCapInput`
@@ -16808,9 +16806,6 @@ Fields:
 | <a id="mutation-upsertflatusercap-flatusercapenabled"></a>`flatUserCapEnabled` | [`Boolean`](#boolean) | Whether the flat per-user budget cap is enabled. |
 
 ### `Mutation.upsertUserBudgetCapOverrides`
-
-- Introduced in GitLab 18.11.
-- Status: Experiment.
 
 Bulk upsert per-user budget cap overrides.
 
@@ -31155,7 +31150,7 @@ Fields:
 | <a id="aicatalogagent-last30dayusagecount"></a>`last30DayUsageCount` | [`Int!`](#int) | Number of projects using the item in the last 30 days. |
 | <a id="aicatalogagent-name"></a>`name` | [`String!`](#string) | Name of the item. |
 | <a id="aicatalogagent-project"></a>`project` | [`Project`](#project) | Project for the item. |
-| <a id="aicatalogagent-public"></a>`public` | [`Boolean!`](#boolean) | Whether the item is publicly visible in the catalog. |
+| <a id="aicatalogagent-public"></a>`public`  | [`Boolean!`](#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
 | <a id="aicatalogagent-softdeleted"></a>`softDeleted` | [`Boolean`](#boolean) | Indicates if the item has been soft deleted. |
 | <a id="aicatalogagent-softdeletedat"></a>`softDeletedAt` | [`Time`](#time) | Timestamp of when the item was soft deleted. |
 | <a id="aicatalogagent-starcount"></a>`starCount` | [`Int!`](#int) | Number of stars for the item. |
@@ -31282,7 +31277,7 @@ Fields:
 | <a id="aicatalogflow-last30dayusagecount"></a>`last30DayUsageCount` | [`Int!`](#int) | Number of projects using the item in the last 30 days. |
 | <a id="aicatalogflow-name"></a>`name` | [`String!`](#string) | Name of the item. |
 | <a id="aicatalogflow-project"></a>`project` | [`Project`](#project) | Project for the item. |
-| <a id="aicatalogflow-public"></a>`public` | [`Boolean!`](#boolean) | Whether the item is publicly visible in the catalog. |
+| <a id="aicatalogflow-public"></a>`public`  | [`Boolean!`](#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
 | <a id="aicatalogflow-softdeleted"></a>`softDeleted` | [`Boolean`](#boolean) | Indicates if the item has been soft deleted. |
 | <a id="aicatalogflow-softdeletedat"></a>`softDeletedAt` | [`Time`](#time) | Timestamp of when the item was soft deleted. |
 | <a id="aicatalogflow-starcount"></a>`starCount` | [`Int!`](#int) | Number of stars for the item. |
@@ -31499,7 +31494,7 @@ Fields:
 | <a id="aicatalogthirdpartyflow-last30dayusagecount"></a>`last30DayUsageCount` | [`Int!`](#int) | Number of projects using the item in the last 30 days. |
 | <a id="aicatalogthirdpartyflow-name"></a>`name` | [`String!`](#string) | Name of the item. |
 | <a id="aicatalogthirdpartyflow-project"></a>`project` | [`Project`](#project) | Project for the item. |
-| <a id="aicatalogthirdpartyflow-public"></a>`public` | [`Boolean!`](#boolean) | Whether the item is publicly visible in the catalog. |
+| <a id="aicatalogthirdpartyflow-public"></a>`public`  | [`Boolean!`](#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
 | <a id="aicatalogthirdpartyflow-softdeleted"></a>`softDeleted` | [`Boolean`](#boolean) | Indicates if the item has been soft deleted. |
 | <a id="aicatalogthirdpartyflow-softdeletedat"></a>`softDeletedAt` | [`Time`](#time) | Timestamp of when the item was soft deleted. |
 | <a id="aicatalogthirdpartyflow-starcount"></a>`starCount` | [`Int!`](#int) | Number of stars for the item. |
@@ -33893,6 +33888,7 @@ Fields:
 | <a id="cdapplication-links"></a>`links`  | [`CdApplicationLinkConnection`](#cdapplicationlinkconnection) | Introduced in GitLab 19.2. Status: Experiment. Links belonging to the application. |
 | <a id="cdapplication-name"></a>`name` | [`String!`](#string) | Name of the application. |
 | <a id="cdapplication-organization"></a>`organization` | [`Organization`](#organization) | Organization the application belongs to. |
+| <a id="cdapplication-suggestednextversionsetname"></a>`suggestedNextVersionSetName`  | [`CdSemVer!`](#cdsemver) | Introduced in GitLab 19.3. Status: Experiment. Suggested name for the application's next version set, derived from its latest release. |
 | <a id="cdapplication-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the application was last updated. |
 | <a id="cdapplication-userpermissions"></a>`userPermissions`  | [`CdApplicationPermissions`](#cdapplicationpermissions) | Introduced in GitLab 19.2. Status: Experiment. Permissions of the current user for the application. |
 
@@ -66505,6 +66501,15 @@ Template type for predefined security categories.
 | <a id="securityreporttypeenum-sast_iac"></a>`SAST_IAC` | SAST IAC scan report. |
 | <a id="securityreporttypeenum-secret_detection"></a>`SECRET_DETECTION` | SECRET DETECTION scan report. |
 
+### `SecurityScanProfileImageSuffix`
+
+Suffix appended to the analyzer image name.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="securityscanprofileimagesuffix-default"></a>`DEFAULT`  | Introduced in GitLab 19.3. Status: Experiment. No suffix; use the standard analyzer image. |
+| <a id="securityscanprofileimagesuffix-fips"></a>`FIPS`  | Introduced in GitLab 19.3. Status: Experiment. Use the FIPS-compliant analyzer image. |
+
 ### `SecurityScanProfileType`
 
 Scan profile type.
@@ -68054,6 +68059,12 @@ An example `CdRolloutID` is: `"gid://gitlab/Cd::Rollout/1"`.
 A `CdRolloutTransitionID` is a global ID. It is encoded as a string.
 
 An example `CdRolloutTransitionID` is: `"gid://gitlab/Cd::RolloutTransition/1"`.
+
+### `CdSemVer`
+
+Semantic version string, optionally prefixed with `v`.
+
+For example: `1.2.3` or `v1.2.3-rc.1`.
 
 ### `CdServiceEnvironmentHealthID`
 
@@ -69801,7 +69812,7 @@ Fields:
 | <a id="aicatalogitem-last30dayusagecount"></a>`last30DayUsageCount` | [`Int!`](#int) | Number of projects using the item in the last 30 days. |
 | <a id="aicatalogitem-name"></a>`name` | [`String!`](#string) | Name of the item. |
 | <a id="aicatalogitem-project"></a>`project` | [`Project`](#project) | Project for the item. |
-| <a id="aicatalogitem-public"></a>`public` | [`Boolean!`](#boolean) | Whether the item is publicly visible in the catalog. |
+| <a id="aicatalogitem-public"></a>`public`  | [`Boolean!`](#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
 | <a id="aicatalogitem-softdeleted"></a>`softDeleted` | [`Boolean`](#boolean) | Indicates if the item has been soft deleted. |
 | <a id="aicatalogitem-softdeletedat"></a>`softDeletedAt` | [`Time`](#time) | Timestamp of when the item was soft deleted. |
 | <a id="aicatalogitem-starcount"></a>`starCount` | [`Int!`](#int) | Number of stars for the item. |
@@ -72761,6 +72772,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="securityscanprofileconfigurationinput-dependencyscanningpostprocessing"></a>`dependencyScanningPostProcessing`  | [`SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`](#securityscanprofiledependencyscanningpostprocessingconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration for a dependency scanning post-processing scan profile. |
+| <a id="securityscanprofileconfigurationinput-secretdetection"></a>`secretDetection`  | [`SecurityScanProfileSecretDetectionConfigurationInput`](#securityscanprofilesecretdetectionconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration for a secret detection scan profile. |
 
 ### `SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`
 
@@ -72771,6 +72783,21 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="securityscanprofiledependencyscanningpostprocessingconfigurationinput-autoremediation"></a>`autoRemediation`  | [`SecurityScanProfileAutoRemediationInput`](#securityscanprofileautoremediationinput) | Introduced in GitLab 19.3. Status: Experiment. Auto-remediation configuration. |
+
+### `SecurityScanProfileSecretDetectionConfigurationInput`
+
+Configuration for a secret detection scan profile.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securityscanprofilesecretdetectionconfigurationinput-excludedpaths"></a>`excludedPaths`  | [`[String!]`](#string) | Introduced in GitLab 19.3. Status: Experiment. Glob paths excluded from the scan. |
+| <a id="securityscanprofilesecretdetectionconfigurationinput-historicscan"></a>`historicScan`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Whether to scan the full git history instead of only the current state. |
+| <a id="securityscanprofilesecretdetectionconfigurationinput-imagesuffix"></a>`imageSuffix`  | [`SecurityScanProfileImageSuffix`](#securityscanprofileimagesuffix) | Introduced in GitLab 19.3. Status: Experiment. Suffix appended to the analyzer image name. |
+| <a id="securityscanprofilesecretdetectionconfigurationinput-logoptions"></a>`logOptions`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Options passed to git log to control the commit range scanned. |
+| <a id="securityscanprofilesecretdetectionconfigurationinput-rulesetgitreference"></a>`rulesetGitReference`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Git reference of the remote ruleset configuration to use. |
+| <a id="securityscanprofilesecretdetectionconfigurationinput-secureanalyzersprefix"></a>`secureAnalyzersPrefix`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Prefix for the container registry from which the analyzer image is pulled. |
 
 ### `SecurityScanProfileTriggerInput`
 

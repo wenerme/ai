@@ -1,5 +1,7 @@
 # Migrating to the new runner registration workflow
 
+Learn about the new GitLab Runner creation workflow that uses the runner authentication tokens instead of legacy registration tokens to improve CI/CD runner security.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

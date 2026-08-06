@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-This guide covers basic building instructions for PHP projects.
+Build PHP projects with GitLab CI/CD using these basic instructions.
 
 Two testing scenarios are covered: using the Docker executor and
 using the Shell executor.
@@ -182,7 +182,7 @@ phpenv config-add my_config.ini
 ### Install custom extensions
 
 Because this is a pretty bare installation of the PHP environment, you may need
-some extensions that are not currently present on the build machine.
+some extensions that are not present on the build machine.
 
 To install additional extensions, execute:
 

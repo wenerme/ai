@@ -141,7 +141,7 @@ Keep in mind that:
 
 The following diagram illustrates the underlying architecture of Geo.
 
-[Geo architecture]
+[Architecture diagram of Geo showing database replication through PostgreSQL streaming and file replication through Git HTTP and private APIs between the primary and secondary sites.]
 
 In this diagram:
 

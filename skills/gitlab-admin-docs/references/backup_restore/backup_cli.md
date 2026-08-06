@@ -6,7 +6,7 @@
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/11908) in GitLab 17.0. This feature is an [experiment](../../policy/development_stages_support.md) and subject to the [GitLab Testing Agreement](https://handbook.gitlab.com/handbook/legal/testing-agreement/).
 
-This tool is under development and is ultimately meant to replace [the Rake tasks used for backing up and restoring GitLab](backup_gitlab.md). You can follow the development of this tool in the epic: [Next Gen Scalable Backup and Restore](https://gitlab.com/groups/gitlab-org/-/epics/11577).
+This tool is under development and is ultimately meant to replace [the Rake tasks used for backing up and restoring GitLab](backup_gitlab.md). You can follow the development of this tool in the epic: [Next Gen Scalable Backup and Restore](https://gitlab.com/groups/gitlab-org/-/work_items/11577).
 
 Feedback on the tool is welcome in [the feedback issue](https://gitlab.com/gitlab-org/gitlab/-/issues/457155).
 
@@ -20,7 +20,7 @@ sudo gitlab-backup-cli backup all
 
 ### Backing up object storage
 
-Only Google Cloud is supported. See [epic 11577](https://gitlab.com/groups/gitlab-org/-/epics/11577) for the plan to add more vendors.
+Only Google Cloud is supported. See [epic 11577](https://gitlab.com/groups/gitlab-org/-/work_items/11577) for the plan to add more vendors.
 
 #### GCP
 
@@ -152,7 +152,7 @@ To restore a backup of the current GitLab installation:
 
 ### Restore object storage data
 
-You can restore data from Google Cloud Storage. [Epic 11577](https://gitlab.com/groups/gitlab-org/-/epics/11577) proposes to add support for other vendors.
+You can restore data from Google Cloud Storage. [Epic 11577](https://gitlab.com/groups/gitlab-org/-/work_items/11577) proposes to add support for other vendors.
 
 Prerequisites:
 
