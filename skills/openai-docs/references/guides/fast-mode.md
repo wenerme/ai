@@ -17,17 +17,6 @@ To opt in to Fast mode for an individual request, set the [`service_tier` parame
 
 Create a response with Fast mode
 
-```bash
-curl https://api.openai.com/v1/responses \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-5.6-sol",
-    "input": "What does 'fit check for my napalm era' mean?",
-    "service_tier": "fast"
-  }'
-```
-
 ```javascript
 import OpenAI from "openai";
 
@@ -53,6 +42,42 @@ response = client.responses.create(
     service_tier="fast",
 )
 print(response)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:       "gpt-5.6-sol",
+		ServiceTier: "fast",
+		Input:       responses.ResponseNewParamsInputUnion{OfString: openai.String("What does 'fit check for my napalm era' mean?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
+```
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.6-sol",
+    "input": "What does 'fit check for my napalm era' mean?",
+    "service_tier": "fast"
+  }'
 ```
 
 
@@ -82,7 +107,7 @@ To avoid triggering the ramp rate limit:
 - Cached input discounts still apply to Fast mode requests.
 - Fast mode supports multimodal requests, including image inputs.
 - To view Fast mode requests in the usage dashboard, select the option to group by service tier. For GPT-5.6 and earlier models, these requests appear as `priority` even when you specify `fast`.
-- Long context, fine-tuned models, and embeddings are not supported.
+- GPT-5.6 models support long context. Fast mode doesn't support fine-tuned models or embeddings.
 
 ## Frequently asked questions
 
@@ -104,7 +129,7 @@ To review usage, open the usage dashboard, select Responses or Chat Completions,
 
 ### Which models and modalities support Fast mode?
 
-Fast mode supports the multimodal capabilities available with Standard processing, including image inputs. Long context, fine-tuned models, and embeddings aren't supported. Future GPT models may support Fast mode, but support isn't guaranteed for every model.
+Fast mode supports the multimodal capabilities available with Standard processing, including image inputs. GPT-5.6 models support long context. Fast mode doesn't support fine-tuned models or embeddings. Future GPT models may support Fast mode, but support isn't guaranteed for every model.
 
 ### Are ramp rate limits shared across projects or organizations?
 

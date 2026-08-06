@@ -46,6 +46,36 @@ transcription = client.audio.transcriptions.create(
 print(transcription.text)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	file, err := os.Open("fixtures/audio.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	client := openai.NewClient()
+	transcription, err := client.Audio.Transcriptions.New(context.Background(), openai.AudioTranscriptionNewParams{
+		File:  file,
+		Model: "gpt-transcribe",
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(transcription.Text)
+}
+```
+
 ```bash
 openai audio:transcriptions create \
   --model gpt-transcribe \
@@ -121,6 +151,42 @@ with open("meeting.wav", "rb") as audio_file:
     )
 
 print(transcription.text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	file, err := os.Open("fixtures/audio.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	parameters := openai.AudioTranscriptionNewParams{
+		File:   file,
+		Model:  "gpt-transcribe",
+		Prompt: openai.String("A customer support call about a premium plan and account AC-42."),
+	}
+	parameters.SetExtraFields(map[string]any{
+		"keywords":  []string{"premium plan", "AC-42", "billing"},
+		"languages": []string{"en", "fr"},
+	})
+	client := openai.NewClient()
+	transcription, err := client.Audio.Transcriptions.New(context.Background(), parameters)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(transcription.Text)
+}
 ```
 
 ```bash
@@ -214,6 +280,64 @@ for segment in transcript.segments:
     print(segment.speaker, segment.text, segment.start, segment.end)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/shared/constant"
+)
+
+type diarizedTranscript struct {
+	Segments []struct {
+		Speaker string  `json:"speaker"`
+		Text    string  `json:"text"`
+		Start   float64 `json:"start"`
+		End     float64 `json:"end"`
+	} `json:"segments"`
+}
+
+func main() {
+	agentAudio, err := os.ReadFile("fixtures/agent.wav")
+	if err != nil {
+		panic(err)
+	}
+	meeting, err := os.Open("fixtures/meeting.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer meeting.Close()
+
+	client := openai.NewClient()
+	transcription, err := client.Audio.Transcriptions.New(context.Background(), openai.AudioTranscriptionNewParams{
+		File:           meeting,
+		Model:          "gpt-4o-transcribe-diarize",
+		ResponseFormat: openai.AudioResponseFormatDiarizedJSON,
+		ChunkingStrategy: openai.AudioTranscriptionNewParamsChunkingStrategyUnion{
+			OfAuto: constant.ValueOf[constant.Auto](),
+		},
+		KnownSpeakerNames:      []string{"agent"},
+		KnownSpeakerReferences: []string{"data:audio/wav;base64," + base64.StdEncoding.EncodeToString(agentAudio)},
+	})
+	if err != nil {
+		panic(err)
+	}
+	var result diarizedTranscript
+	if err := json.Unmarshal([]byte(transcription.RawJSON()), &result); err != nil {
+		panic(err)
+	}
+	for _, segment := range result.Segments {
+		fmt.Println(segment.Speaker+":", segment.Text, segment.Start, segment.End)
+	}
+}
+```
+
 ```bash
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -265,6 +389,36 @@ translation = client.audio.translations.create(
 )
 
 print(translation.text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	file, err := os.Open("fixtures/german.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	client := openai.NewClient()
+	translation, err := client.Audio.Translations.New(context.Background(), openai.AudioTranslationNewParams{
+		File:  file,
+		Model: openai.AudioModelWhisper1,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(translation.Text)
+}
 ```
 
 ```bash
@@ -333,6 +487,38 @@ transcription = client.audio.transcriptions.create(
 )
 
 print(transcription.words)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	file, err := os.Open("fixtures/audio.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	client := openai.NewClient()
+	transcription, err := client.Audio.Transcriptions.New(context.Background(), openai.AudioTranscriptionNewParams{
+		File:                   file,
+		Model:                  openai.AudioModelWhisper1,
+		ResponseFormat:         openai.AudioResponseFormatVerboseJSON,
+		TimestampGranularities: []string{"word"},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(transcription.Words)
+}
 ```
 
 ```bash
@@ -440,6 +626,38 @@ for event in stream:
 # highlight-end
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	file, err := os.Open("fixtures/speech.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	client := openai.NewClient()
+	stream := client.Audio.Transcriptions.NewStreaming(context.Background(), openai.AudioTranscriptionNewParams{
+		File:  file,
+		Model: "gpt-transcribe",
+	})
+	for stream.Next() {
+		fmt.Println(stream.Current().Type)
+	}
+	if err := stream.Err(); err != nil {
+		panic(err)
+	}
+}
+```
+
 ```bash
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -515,6 +733,39 @@ transcription = client.audio.transcriptions.create(
 )
 
 print(transcription.text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	file, err := os.Open("fixtures/speech.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	client := openai.NewClient()
+	var transcription []byte
+	err = client.Post(context.Background(), "audio/transcriptions", openai.AudioTranscriptionNewParams{
+		File:           file,
+		Model:          openai.AudioModelWhisper1,
+		ResponseFormat: openai.AudioResponseFormatText,
+		Prompt:         openai.String("ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T."),
+	}, &transcription)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(transcription))
+}
 ```
 
 ```bash
@@ -594,6 +845,58 @@ def generate_corrected_transcript(temperature, system_prompt, audio_file):
 
 
 corrected_text = generate_corrected_transcript(0, system_prompt, fake_company_filepath)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+const systemPrompt = `
+You are a helpful assistant for the company ZyntriQix. Your task is
+to correct any spelling discrepancies in the transcribed text. Make
+sure that the names of the following products are spelled correctly:
+ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array,
+OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K.,
+Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary punctuation such as
+periods, commas, and capitalization, and use only the context provided.
+`
+
+func main() {
+	file, err := os.Open("fixtures/speech.wav")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	client := openai.NewClient()
+	transcription, err := client.Audio.Transcriptions.New(context.Background(), openai.AudioTranscriptionNewParams{
+		File:  file,
+		Model: openai.AudioModelGPT4oTranscribe,
+	})
+	if err != nil {
+		panic(err)
+	}
+	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model:       "gpt-4.1",
+		Temperature: openai.Float(0),
+		Messages: []openai.ChatCompletionMessageParamUnion{
+			openai.SystemMessage(systemPrompt),
+			openai.UserMessage(transcription.Text),
+		},
+		Store: openai.Bool(true),
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(completion.Choices[0].Message.Content)
+}
 ```
 
 

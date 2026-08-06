@@ -131,6 +131,35 @@ job = client.fine_tuning.jobs.create(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	job, err := client.FineTuning.Jobs.New(context.Background(), openai.FineTuningJobNewParams{
+		TrainingFile: "file-all-about-the-weather",
+		Model:        "gpt-4o-2024-08-06",
+		Method: openai.FineTuningJobNewParamsMethod{
+			Type: "dpo",
+			Dpo: openai.DpoMethodParam{Hyperparameters: openai.DpoHyperparameters{
+				Beta: openai.DpoHyperparametersBetaUnion{OfFloat: openai.Float(0.1)},
+			}},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(job.ID)
+}
+```
+
 
 ## Use SFT and DPO together
 

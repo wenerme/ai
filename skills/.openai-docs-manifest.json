@@ -58,18 +58,18 @@
   "openai-docs/assistants/deep-dive.md": {
     "url": "https://developers.openai.com/api/docs/assistants/deep-dive.md",
     "skill": "openai-docs",
-    "etag": "W/\"6f64798a59d5d23bbdfa7763b0cfd803\"",
-    "lastModified": "Tue, 04 Aug 2026 02:02:58 GMT",
-    "size": 27401,
-    "updatedAt": "2026-08-04T03:32:36.806Z"
+    "etag": "W/\"1ea248a4be5fdb055d59c6f9f31723f1\"",
+    "lastModified": "Wed, 05 Aug 2026 21:11:09 GMT",
+    "size": 32965,
+    "updatedAt": "2026-08-06T03:27:08.569Z"
   },
   "openai-docs/assistants/migration.md": {
     "url": "https://developers.openai.com/api/docs/assistants/migration.md",
     "skill": "openai-docs",
-    "etag": "W/\"004178dc1421c736555ec96cdc2d36f0\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:13 GMT",
-    "size": 11780,
-    "updatedAt": "2026-07-28T03:28:13.067Z"
+    "etag": "W/\"52a9ddccdb5130039ab420f08c54f524\"",
+    "lastModified": "Wed, 05 Aug 2026 21:13:32 GMT",
+    "size": 11824,
+    "updatedAt": "2026-08-06T03:27:08.794Z"
   },
   "openai-docs/assistants/tools.md": {
     "url": "https://developers.openai.com/api/docs/assistants/tools.md",
@@ -82,26 +82,26 @@
   "openai-docs/assistants/tools/code-interpreter.md": {
     "url": "https://developers.openai.com/api/docs/assistants/tools/code-interpreter.md",
     "skill": "openai-docs",
-    "etag": "W/\"f0fb279fb6ba446e940e434bb3c15468\"",
-    "lastModified": "Tue, 04 Aug 2026 03:32:37 GMT",
-    "size": 13480,
-    "updatedAt": "2026-08-04T03:32:37.561Z"
+    "etag": "W/\"5a69259864dc182cdbbadb82558bf884\"",
+    "lastModified": "Thu, 06 Aug 2026 02:11:45 GMT",
+    "size": 15918,
+    "updatedAt": "2026-08-06T03:27:09.232Z"
   },
   "openai-docs/assistants/tools/file-search.md": {
     "url": "https://developers.openai.com/api/docs/assistants/tools/file-search.md",
     "skill": "openai-docs",
-    "etag": "W/\"b255814922add7886112948b73e53dd8\"",
-    "lastModified": "Tue, 04 Aug 2026 02:02:58 GMT",
-    "size": 30969,
-    "updatedAt": "2026-08-04T03:32:37.791Z"
+    "etag": "W/\"b64074f04b8b8df016be64255fa7e6e3\"",
+    "lastModified": "Thu, 06 Aug 2026 00:25:09 GMT",
+    "size": 35675,
+    "updatedAt": "2026-08-06T03:27:09.457Z"
   },
   "openai-docs/assistants/tools/function-calling.md": {
     "url": "https://developers.openai.com/api/docs/assistants/tools/function-calling.md",
     "skill": "openai-docs",
-    "etag": "W/\"ef4c4cde1f78613a4250883971df4f3b\"",
-    "lastModified": "Wed, 05 Aug 2026 03:25:37 GMT",
-    "size": 19526,
-    "updatedAt": "2026-08-05T03:25:37.093Z"
+    "etag": "W/\"0bf617c54ce5fbdc91b026ea5a37b4d8\"",
+    "lastModified": "Thu, 06 Aug 2026 00:37:21 GMT",
+    "size": 25072,
+    "updatedAt": "2026-08-06T03:27:09.693Z"
   },
   "openai-docs/bots.md": {
     "url": "https://developers.openai.com/api/docs/bots.md",
@@ -114,10 +114,10 @@
   "openai-docs/changelog.md": {
     "url": "https://developers.openai.com/api/docs/changelog.md",
     "skill": "openai-docs",
-    "etag": "W/\"30270d087d6ba8bc2b51569c1ae601ea\"",
-    "lastModified": "Fri, 31 Jul 2026 00:37:37 GMT",
-    "size": 56032,
-    "updatedAt": "2026-07-31T03:44:35.206Z"
+    "etag": "W/\"505b9842f765907fbcd87e5a92461271\"",
+    "lastModified": "Wed, 05 Aug 2026 21:00:21 GMT",
+    "size": 57124,
+    "updatedAt": "2026-08-06T03:27:10.129Z"
   },
   "openai-docs/concepts.md": {
     "url": "https://developers.openai.com/api/docs/concepts.md",
@@ -282,26 +282,26 @@
   "openai-docs/guides/audio.md": {
     "url": "https://developers.openai.com/api/docs/guides/audio.md",
     "skill": "openai-docs",
-    "etag": "W/\"7bbc9ba1bcc18ba8a15f2328609094ed\"",
-    "lastModified": "Tue, 04 Aug 2026 02:23:38 GMT",
-    "size": 10298,
-    "updatedAt": "2026-08-04T03:32:43.253Z"
+    "etag": "W/\"75594850a6be372a41cf689a5a3784bc\"",
+    "lastModified": "Wed, 05 Aug 2026 22:13:55 GMT",
+    "size": 12234,
+    "updatedAt": "2026-08-06T03:27:14.784Z"
   },
   "openai-docs/guides/background.md": {
     "url": "https://developers.openai.com/api/docs/guides/background.md",
     "skill": "openai-docs",
-    "etag": "W/\"e1407fce7e9e6d415012021fe562c97b\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:20 GMT",
-    "size": 6568,
-    "updatedAt": "2026-07-28T03:28:20.413Z"
+    "etag": "W/\"bededff089ecdb45a51cad17d319fd36\"",
+    "lastModified": "Wed, 05 Aug 2026 21:00:31 GMT",
+    "size": 9372,
+    "updatedAt": "2026-08-06T03:27:15.005Z"
   },
   "openai-docs/guides/batch.md": {
     "url": "https://developers.openai.com/api/docs/guides/batch.md",
     "skill": "openai-docs",
-    "etag": "W/\"065bc6f6da025ca5ccc868f1ddfb5b5a\"",
-    "lastModified": "Tue, 04 Aug 2026 01:33:42 GMT",
-    "size": 16640,
-    "updatedAt": "2026-08-04T03:32:43.681Z"
+    "etag": "W/\"00dd2dbf162cc2834fd359a3054524db\"",
+    "lastModified": "Wed, 05 Aug 2026 20:59:04 GMT",
+    "size": 18791,
+    "updatedAt": "2026-08-06T03:27:15.223Z"
   },
   "openai-docs/guides/chatkit-actions.md": {
     "url": "https://developers.openai.com/api/docs/guides/chatkit-actions.md",
@@ -346,26 +346,26 @@
   "openai-docs/guides/code-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/code-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"6d02f52e089fa8fbc6e9e078fd909fb5\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:22 GMT",
-    "size": 4209,
-    "updatedAt": "2026-07-28T03:28:22.196Z"
+    "etag": "W/\"e03afdbed9a26d6e1265511a0a8561f9\"",
+    "lastModified": "Wed, 05 Aug 2026 21:50:47 GMT",
+    "size": 4888,
+    "updatedAt": "2026-08-06T03:27:16.572Z"
   },
   "openai-docs/guides/compaction.md": {
     "url": "https://developers.openai.com/api/docs/guides/compaction.md",
     "skill": "openai-docs",
-    "etag": "W/\"e25d7858e984147e46a9f36a647c5c12\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:22 GMT",
-    "size": 5156,
-    "updatedAt": "2026-07-28T03:28:22.434Z"
+    "etag": "W/\"ce62962f8e1de16103a011cd2fe33584\"",
+    "lastModified": "Wed, 05 Aug 2026 21:32:35 GMT",
+    "size": 8332,
+    "updatedAt": "2026-08-06T03:27:16.791Z"
   },
   "openai-docs/guides/completions.md": {
     "url": "https://developers.openai.com/api/docs/guides/completions.md",
     "skill": "openai-docs",
-    "etag": "W/\"11dee6b2a4e74d99c65b33a219e10aaf\"",
-    "lastModified": "Tue, 04 Aug 2026 03:32:45 GMT",
-    "size": 8878,
-    "updatedAt": "2026-08-04T03:32:45.981Z"
+    "etag": "W/\"5e11b4c5bbab85bd1472117150fb1b76\"",
+    "lastModified": "Wed, 05 Aug 2026 21:15:30 GMT",
+    "size": 9333,
+    "updatedAt": "2026-08-06T03:27:17.026Z"
   },
   "openai-docs/guides/content-provenance.md": {
     "url": "https://developers.openai.com/api/docs/guides/content-provenance.md",
@@ -378,10 +378,10 @@
   "openai-docs/guides/conversation-state.md": {
     "url": "https://developers.openai.com/api/docs/guides/conversation-state.md",
     "skill": "openai-docs",
-    "etag": "W/\"7f6d4857b544260ad143cb83aaf2ddff\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:22 GMT",
-    "size": 13157,
-    "updatedAt": "2026-07-28T03:28:22.989Z"
+    "etag": "W/\"700f2a493c14552b5febf47ef242bd9e\"",
+    "lastModified": "Wed, 05 Aug 2026 21:18:52 GMT",
+    "size": 17611,
+    "updatedAt": "2026-08-06T03:27:17.472Z"
   },
   "openai-docs/guides/cost-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/cost-optimization.md",
@@ -402,18 +402,18 @@
   "openai-docs/guides/deep-research.md": {
     "url": "https://developers.openai.com/api/docs/guides/deep-research.md",
     "skill": "openai-docs",
-    "etag": "W/\"578b76733cd02d2c044010f68cdbfb0f\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:23 GMT",
-    "size": 32761,
-    "updatedAt": "2026-07-28T03:28:23.765Z"
+    "etag": "W/\"c78db5a6a88d095955d1b72cf6baab74\"",
+    "lastModified": "Wed, 05 Aug 2026 21:11:10 GMT",
+    "size": 40083,
+    "updatedAt": "2026-08-06T03:27:18.133Z"
   },
   "openai-docs/guides/deployment-checklist.md": {
     "url": "https://developers.openai.com/api/docs/guides/deployment-checklist.md",
     "skill": "openai-docs",
-    "etag": "W/\"00bf14caa19b4aeb0cb3329a8c92b6be\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:24 GMT",
-    "size": 34210,
-    "updatedAt": "2026-07-28T03:28:24.011Z"
+    "etag": "W/\"2cedadb36e787b4dea0079a028e6381e\"",
+    "lastModified": "Wed, 05 Aug 2026 21:03:52 GMT",
+    "size": 43204,
+    "updatedAt": "2026-08-06T03:27:18.353Z"
   },
   "openai-docs/guides/developer-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/developer-mode.md",
@@ -426,34 +426,34 @@
   "openai-docs/guides/direct-preference-optimization.md": {
     "url": "https://developers.openai.com/api/docs/guides/direct-preference-optimization.md",
     "skill": "openai-docs",
-    "etag": "W/\"9fe17e32856963859bd25780acf693d5\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:24 GMT",
-    "size": 11448,
-    "updatedAt": "2026-07-28T03:28:24.498Z"
+    "etag": "W/\"2a416ae24885e0f38c6d5b164d0f4993\"",
+    "lastModified": "Thu, 06 Aug 2026 02:12:49 GMT",
+    "size": 12041,
+    "updatedAt": "2026-08-06T03:27:18.793Z"
   },
   "openai-docs/guides/embeddings.md": {
     "url": "https://developers.openai.com/api/docs/guides/embeddings.md",
     "skill": "openai-docs",
-    "etag": "W/\"c0b081f1dde8d3d6a87a3161e89afb94\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:24 GMT",
-    "size": 21936,
-    "updatedAt": "2026-07-28T03:28:24.776Z"
+    "etag": "W/\"3704aec340b80644533ae7f665109ab7\"",
+    "lastModified": "Wed, 05 Aug 2026 21:03:03 GMT",
+    "size": 22409,
+    "updatedAt": "2026-08-06T03:27:19.010Z"
   },
   "openai-docs/guides/error-codes.md": {
     "url": "https://developers.openai.com/api/docs/guides/error-codes.md",
     "skill": "openai-docs",
-    "etag": "W/\"fe5e12b198aa4c7332e2610e1345c16b\"",
-    "lastModified": "Fri, 31 Jul 2026 00:46:49 GMT",
-    "size": 27993,
-    "updatedAt": "2026-07-31T03:44:43.975Z"
+    "etag": "W/\"7f10280606135bd6c9d281f2737e066b\"",
+    "lastModified": "Wed, 05 Aug 2026 22:03:46 GMT",
+    "size": 28643,
+    "updatedAt": "2026-08-06T03:27:19.228Z"
   },
   "openai-docs/guides/evals.md": {
     "url": "https://developers.openai.com/api/docs/guides/evals.md",
     "skill": "openai-docs",
-    "etag": "W/\"3f06d55a40b814c8e1dfb577081a25f4\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:25 GMT",
-    "size": 22248,
-    "updatedAt": "2026-07-28T03:28:25.311Z"
+    "etag": "W/\"fb292ceff4113e0f30939e0693b1111d\"",
+    "lastModified": "Wed, 05 Aug 2026 20:58:57 GMT",
+    "size": 23579,
+    "updatedAt": "2026-08-06T03:27:19.442Z"
   },
   "openai-docs/guides/evaluation-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/evaluation-best-practices.md",
@@ -482,10 +482,10 @@
   "openai-docs/guides/fast-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/fast-mode.md",
     "skill": "openai-docs",
-    "etag": "W/\"34c566734e962226280596a683b674ac\"",
-    "lastModified": "Fri, 31 Jul 2026 06:52:02 GMT",
-    "size": 6388,
-    "updatedAt": "2026-07-31T12:13:33.759Z"
+    "etag": "W/\"d96b4d0b562bf6e9d149d02f2f0b019a\"",
+    "lastModified": "Wed, 05 Aug 2026 21:15:29 GMT",
+    "size": 6971,
+    "updatedAt": "2026-08-06T03:27:20.317Z"
   },
   "openai-docs/guides/file-inputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/file-inputs.md",
@@ -498,18 +498,18 @@
   "openai-docs/guides/fine-tuning-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/fine-tuning-best-practices.md",
     "skill": "openai-docs",
-    "etag": "W/\"096601dc7edaf4cf436d35108569a1b0\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:26 GMT",
-    "size": 9933,
-    "updatedAt": "2026-07-28T03:28:26.686Z"
+    "etag": "W/\"c4cab9d3a770e503b791401ca7c058de\"",
+    "lastModified": "Thu, 06 Aug 2026 01:30:25 GMT",
+    "size": 10551,
+    "updatedAt": "2026-08-06T03:27:20.760Z"
   },
   "openai-docs/guides/flex-processing.md": {
     "url": "https://developers.openai.com/api/docs/guides/flex-processing.md",
     "skill": "openai-docs",
-    "etag": "W/\"227f1ae37ffc12cef154e444243d6f53\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:26 GMT",
-    "size": 4173,
-    "updatedAt": "2026-07-28T03:28:26.930Z"
+    "etag": "W/\"f89fe493c4a25b5f81d143f098d69564\"",
+    "lastModified": "Wed, 05 Aug 2026 22:58:59 GMT",
+    "size": 4897,
+    "updatedAt": "2026-08-06T03:27:20.979Z"
   },
   "openai-docs/guides/frontend-prompt.md": {
     "url": "https://developers.openai.com/api/docs/guides/frontend-prompt.md",
@@ -522,10 +522,10 @@
   "openai-docs/guides/function-calling.md": {
     "url": "https://developers.openai.com/api/docs/guides/function-calling.md",
     "skill": "openai-docs",
-    "etag": "W/\"9ee81608b53af5808dbaed3305e7ba8f\"",
-    "lastModified": "Fri, 31 Jul 2026 00:37:27 GMT",
-    "size": 45644,
-    "updatedAt": "2026-07-31T03:44:46.136Z"
+    "etag": "W/\"7b6fc5a76f566285e115c5c856942c88\"",
+    "lastModified": "Wed, 05 Aug 2026 21:01:53 GMT",
+    "size": 53959,
+    "updatedAt": "2026-08-06T03:27:21.427Z"
   },
   "openai-docs/guides/graders.md": {
     "url": "https://developers.openai.com/api/docs/guides/graders.md",
@@ -538,18 +538,18 @@
   "openai-docs/guides/image-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/image-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"69f35e1074b00774567cc10208b13da5\"",
-    "lastModified": "Tue, 04 Aug 2026 01:42:46 GMT",
-    "size": 52614,
-    "updatedAt": "2026-08-04T03:32:50.795Z"
+    "etag": "W/\"1a1842c16e3d17e5f3f464ba0958e1aa\"",
+    "lastModified": "Wed, 05 Aug 2026 21:02:26 GMT",
+    "size": 71779,
+    "updatedAt": "2026-08-06T03:27:21.860Z"
   },
   "openai-docs/guides/images-vision.md": {
     "url": "https://developers.openai.com/api/docs/guides/images-vision.md",
     "skill": "openai-docs",
-    "etag": "W/\"b2f4707cdf1acc4e25c797fd778ebc36\"",
-    "lastModified": "Tue, 04 Aug 2026 01:34:39 GMT",
-    "size": 27238,
-    "updatedAt": "2026-08-04T03:32:51.007Z"
+    "etag": "W/\"b6f73d7b633f67f5a5a40451a042655b\"",
+    "lastModified": "Wed, 05 Aug 2026 20:58:19 GMT",
+    "size": 31394,
+    "updatedAt": "2026-08-06T03:27:22.079Z"
   },
   "openai-docs/guides/ip-addresses.md": {
     "url": "https://developers.openai.com/api/docs/guides/ip-addresses.md",
@@ -578,10 +578,10 @@
   "openai-docs/guides/migrate-to-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/migrate-to-responses.md",
     "skill": "openai-docs",
-    "etag": "W/\"cb549ca5e0a63d1182e13d51fda83999\"",
-    "lastModified": "Tue, 04 Aug 2026 01:42:32 GMT",
-    "size": 30296,
-    "updatedAt": "2026-08-04T03:32:51.917Z"
+    "etag": "W/\"82248196ccffe895693a3e44fcaadd28\"",
+    "lastModified": "Wed, 05 Aug 2026 20:59:02 GMT",
+    "size": 39145,
+    "updatedAt": "2026-08-06T03:27:22.969Z"
   },
   "openai-docs/guides/model-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/model-guidance.md",
@@ -610,10 +610,10 @@
   "openai-docs/guides/moderation.md": {
     "url": "https://developers.openai.com/api/docs/guides/moderation.md",
     "skill": "openai-docs",
-    "etag": "W/\"89de38bd83c950e8e25472f65f743de8\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:30 GMT",
-    "size": 14757,
-    "updatedAt": "2026-07-28T03:28:30.340Z"
+    "etag": "W/\"52b9550e6871f09a82b9290e3744fcee\"",
+    "lastModified": "Wed, 05 Aug 2026 22:01:49 GMT",
+    "size": 17286,
+    "updatedAt": "2026-08-06T03:27:23.887Z"
   },
   "openai-docs/guides/node-reference.md": {
     "url": "https://developers.openai.com/api/docs/guides/node-reference.md",
@@ -634,10 +634,10 @@
   "openai-docs/guides/predicted-outputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/predicted-outputs.md",
     "skill": "openai-docs",
-    "etag": "W/\"918eac6eacc02c92fe8f46e7dca05742\"",
-    "lastModified": "Tue, 04 Aug 2026 02:19:38 GMT",
-    "size": 10400,
-    "updatedAt": "2026-08-04T03:32:53.432Z"
+    "etag": "W/\"d9c190febe2e1b9a0e6cce986412af3c\"",
+    "lastModified": "Wed, 05 Aug 2026 23:20:59 GMT",
+    "size": 12560,
+    "updatedAt": "2026-08-06T03:27:24.610Z"
   },
   "openai-docs/guides/private-link.md": {
     "url": "https://developers.openai.com/api/docs/guides/private-link.md",
@@ -666,10 +666,10 @@
   "openai-docs/guides/prompt-engineering.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-engineering.md",
     "skill": "openai-docs",
-    "etag": "W/\"50d18b4c79ee251652d779a3ee5d5019\"",
-    "lastModified": "Tue, 04 Aug 2026 01:29:22 GMT",
-    "size": 31527,
-    "updatedAt": "2026-08-04T03:32:54.299Z"
+    "etag": "W/\"3a94c30e6fd2875326512833db020d86\"",
+    "lastModified": "Wed, 05 Aug 2026 21:34:01 GMT",
+    "size": 31412,
+    "updatedAt": "2026-08-06T03:27:25.496Z"
   },
   "openai-docs/guides/prompt-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-generation.md",
@@ -706,10 +706,10 @@
   "openai-docs/guides/prompting/migrate-from-prompt-object.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompting/migrate-from-prompt-object.md",
     "skill": "openai-docs",
-    "etag": "W/\"e4c6e5592c841f3f7f5bfca5586e7801\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:33 GMT",
-    "size": 6209,
-    "updatedAt": "2026-07-28T03:28:33.753Z"
+    "etag": "W/\"b4891f970392b812ef51bdc01eea9dd7\"",
+    "lastModified": "Thu, 06 Aug 2026 02:13:37 GMT",
+    "size": 8622,
+    "updatedAt": "2026-08-06T03:27:26.734Z"
   },
   "openai-docs/guides/rate-limits.md": {
     "url": "https://developers.openai.com/api/docs/guides/rate-limits.md",
@@ -834,10 +834,10 @@
   "openai-docs/guides/reasoning.md": {
     "url": "https://developers.openai.com/api/docs/guides/reasoning.md",
     "skill": "openai-docs",
-    "etag": "W/\"8fd2f2f2c95981b81bf1375d327d6d21\"",
-    "lastModified": "Wed, 29 Jul 2026 02:01:38 GMT",
-    "size": 32759,
-    "updatedAt": "2026-07-29T03:29:22.279Z"
+    "etag": "W/\"57274a6091456bf814ebb95793c9f138\"",
+    "lastModified": "Wed, 05 Aug 2026 20:59:53 GMT",
+    "size": 41151,
+    "updatedAt": "2026-08-06T03:27:30.315Z"
   },
   "openai-docs/guides/red-teaming.md": {
     "url": "https://developers.openai.com/api/docs/guides/red-teaming.md",
@@ -866,10 +866,10 @@
   "openai-docs/guides/retrieval.md": {
     "url": "https://developers.openai.com/api/docs/guides/retrieval.md",
     "skill": "openai-docs",
-    "etag": "W/\"800a4dac39d8446aa5e51bd86d093f09\"",
-    "lastModified": "Wed, 05 Aug 2026 01:18:33 GMT",
-    "size": 25253,
-    "updatedAt": "2026-08-05T03:25:58.199Z"
+    "etag": "W/\"3e16130d7df3337309679302395cdcc1\"",
+    "lastModified": "Wed, 05 Aug 2026 22:08:40 GMT",
+    "size": 35928,
+    "updatedAt": "2026-08-06T03:27:31.201Z"
   },
   "openai-docs/guides/rft-use-cases.md": {
     "url": "https://developers.openai.com/api/docs/guides/rft-use-cases.md",
@@ -882,18 +882,18 @@
   "openai-docs/guides/safety-best-practices.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-best-practices.md",
     "skill": "openai-docs",
-    "etag": "W/\"e56f490b744d339f4aa3eeecac0fc9cf\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:39 GMT",
-    "size": 6775,
-    "updatedAt": "2026-07-28T03:28:39.410Z"
+    "etag": "W/\"2dddf58c159be41ae85ef2e9df7a73ce\"",
+    "lastModified": "Wed, 05 Aug 2026 21:52:52 GMT",
+    "size": 7326,
+    "updatedAt": "2026-08-06T03:27:31.646Z"
   },
   "openai-docs/guides/safety-checks.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks.md",
     "skill": "openai-docs",
-    "etag": "W/\"acfeb4daec6ae9fba819c0fe73f10b14\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:39 GMT",
-    "size": 6472,
-    "updatedAt": "2026-07-28T03:28:39.660Z"
+    "etag": "W/\"7dc764a90c4f5b00294eed4765667166\"",
+    "lastModified": "Wed, 05 Aug 2026 21:52:41 GMT",
+    "size": 7514,
+    "updatedAt": "2026-08-06T03:27:31.871Z"
   },
   "openai-docs/guides/safety-checks/cybersecurity.md": {
     "url": "https://developers.openai.com/api/docs/guides/safety-checks/cybersecurity.md",
@@ -922,10 +922,10 @@
   "openai-docs/guides/speech-to-text.md": {
     "url": "https://developers.openai.com/api/docs/guides/speech-to-text.md",
     "skill": "openai-docs",
-    "etag": "W/\"5b7460c88e730d76b55fbe500938df5d\"",
-    "lastModified": "Tue, 04 Aug 2026 02:11:23 GMT",
-    "size": 20062,
-    "updatedAt": "2026-08-04T03:33:01.582Z"
+    "etag": "W/\"274b2c2427c340ba65160c8805bb8b8e\"",
+    "lastModified": "Wed, 05 Aug 2026 21:00:03 GMT",
+    "size": 26434,
+    "updatedAt": "2026-08-06T03:27:32.741Z"
   },
   "openai-docs/guides/spend-limits.md": {
     "url": "https://developers.openai.com/api/docs/guides/spend-limits.md",
@@ -938,18 +938,18 @@
   "openai-docs/guides/streaming-responses.md": {
     "url": "https://developers.openai.com/api/docs/guides/streaming-responses.md",
     "skill": "openai-docs",
-    "etag": "W/\"c34cf9cf8d08bbd94cd4047e07ec8366\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:41 GMT",
-    "size": 4904,
-    "updatedAt": "2026-07-28T03:28:41.225Z"
+    "etag": "W/\"238410ae9b6354a579a33e3722a22006\"",
+    "lastModified": "Wed, 05 Aug 2026 21:00:21 GMT",
+    "size": 5500,
+    "updatedAt": "2026-08-06T03:27:33.176Z"
   },
   "openai-docs/guides/structured-outputs.md": {
     "url": "https://developers.openai.com/api/docs/guides/structured-outputs.md",
     "skill": "openai-docs",
-    "etag": "W/\"59e3ebfd6a95c082ad6d578713af1304\"",
-    "lastModified": "Wed, 05 Aug 2026 02:56:43 GMT",
-    "size": 59685,
-    "updatedAt": "2026-08-05T03:26:00.346Z"
+    "etag": "W/\"5381076e531e6f8282e5f9d6463a9af0\"",
+    "lastModified": "Wed, 05 Aug 2026 21:04:10 GMT",
+    "size": 76777,
+    "updatedAt": "2026-08-06T03:27:33.398Z"
   },
   "openai-docs/guides/supervised-fine-tuning.md": {
     "url": "https://developers.openai.com/api/docs/guides/supervised-fine-tuning.md",
@@ -1010,74 +1010,74 @@
   "openai-docs/guides/text-to-speech.md": {
     "url": "https://developers.openai.com/api/docs/guides/text-to-speech.md",
     "skill": "openai-docs",
-    "etag": "W/\"700a170fcf0aab2a219155c352bed170\"",
-    "lastModified": "Tue, 04 Aug 2026 01:38:54 GMT",
-    "size": 15873,
-    "updatedAt": "2026-08-04T03:33:03.926Z"
+    "etag": "W/\"bd285e29980def758ac3217c7042be8a\"",
+    "lastModified": "Wed, 05 Aug 2026 21:00:19 GMT",
+    "size": 17436,
+    "updatedAt": "2026-08-06T03:27:35.224Z"
   },
   "openai-docs/guides/text.md": {
     "url": "https://developers.openai.com/api/docs/guides/text.md",
     "skill": "openai-docs",
-    "etag": "W/\"0e1d2534b7fa9ddfab425842405c0a1f\"",
-    "lastModified": "Tue, 04 Aug 2026 03:33:04 GMT",
-    "size": 14885,
-    "updatedAt": "2026-08-04T03:33:04.258Z"
+    "etag": "W/\"cba7184a061e7733817f0a5cbed0d91f\"",
+    "lastModified": "Wed, 05 Aug 2026 21:37:09 GMT",
+    "size": 14770,
+    "updatedAt": "2026-08-06T03:27:35.451Z"
   },
   "openai-docs/guides/token-counting.md": {
     "url": "https://developers.openai.com/api/docs/guides/token-counting.md",
     "skill": "openai-docs",
-    "etag": "W/\"863af7c25d6b8d99a4b586d6aac60a85\"",
-    "lastModified": "Tue, 04 Aug 2026 01:38:53 GMT",
-    "size": 11407,
-    "updatedAt": "2026-08-04T03:33:04.474Z"
+    "etag": "W/\"4974e5ff8e4b1522c4fac48c2becfa17\"",
+    "lastModified": "Wed, 05 Aug 2026 21:06:36 GMT",
+    "size": 15195,
+    "updatedAt": "2026-08-06T03:27:35.671Z"
   },
   "openai-docs/guides/tools-apply-patch.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-apply-patch.md",
     "skill": "openai-docs",
-    "etag": "W/\"965743ed57f6e85109474aea97d988d2\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:42 GMT",
-    "size": 14375,
-    "updatedAt": "2026-07-28T03:28:42.796Z"
+    "etag": "W/\"81f0796a83f6049ef156660b9e9b89f4\"",
+    "lastModified": "Wed, 05 Aug 2026 23:59:04 GMT",
+    "size": 15676,
+    "updatedAt": "2026-08-06T03:27:35.888Z"
   },
   "openai-docs/guides/tools-code-interpreter.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-code-interpreter.md",
     "skill": "openai-docs",
-    "etag": "W/\"2495c1228ca069544b1c8e9d8690bc58\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:43 GMT",
-    "size": 14248,
-    "updatedAt": "2026-07-28T03:28:43.119Z"
+    "etag": "W/\"ed5e15c862e5b91acb8da2e002682e67\"",
+    "lastModified": "Wed, 05 Aug 2026 21:11:08 GMT",
+    "size": 16237,
+    "updatedAt": "2026-08-06T03:27:36.107Z"
   },
   "openai-docs/guides/tools-computer-use.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-computer-use.md",
     "skill": "openai-docs",
-    "etag": "W/\"2d978b65682c190323b6a99df73875a6\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:43 GMT",
-    "size": 84327,
-    "updatedAt": "2026-07-28T03:28:43.373Z"
+    "etag": "W/\"8ab0bbc01362121f0596deb56947674e\"",
+    "lastModified": "Wed, 05 Aug 2026 22:11:35 GMT",
+    "size": 86841,
+    "updatedAt": "2026-08-06T03:27:36.333Z"
   },
   "openai-docs/guides/tools-connectors-mcp.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-connectors-mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"151faecd16efe3dd2a683cb9061019c5\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:43 GMT",
-    "size": 43890,
-    "updatedAt": "2026-07-28T03:28:43.628Z"
+    "etag": "W/\"f741312a90cc22f92d2e063bce607eb0\"",
+    "lastModified": "Wed, 05 Aug 2026 21:10:29 GMT",
+    "size": 50254,
+    "updatedAt": "2026-08-06T03:27:36.556Z"
   },
   "openai-docs/guides/tools-file-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-file-search.md",
     "skill": "openai-docs",
-    "etag": "W/\"ddb41c18bc5c1d685c11163732cee009\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:43 GMT",
-    "size": 14375,
-    "updatedAt": "2026-07-28T03:28:43.890Z"
+    "etag": "W/\"10e3f909bc018a2b63d23c0d7125930c\"",
+    "lastModified": "Wed, 05 Aug 2026 21:13:55 GMT",
+    "size": 18739,
+    "updatedAt": "2026-08-06T03:27:36.789Z"
   },
   "openai-docs/guides/tools-image-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-image-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"332aa53e66ff30881c0892c940496566\"",
-    "lastModified": "Tue, 28 Jul 2026 03:27:56 GMT",
-    "size": 12744,
-    "updatedAt": "2026-07-28T03:28:44.120Z"
+    "etag": "W/\"a10c9ee1452805157359467cc6f0ce39\"",
+    "lastModified": "Wed, 05 Aug 2026 21:17:28 GMT",
+    "size": 19209,
+    "updatedAt": "2026-08-06T03:27:37.018Z"
   },
   "openai-docs/guides/tools-local-shell.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-local-shell.md",
@@ -1098,42 +1098,42 @@
   "openai-docs/guides/tools-shell.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-shell.md",
     "skill": "openai-docs",
-    "etag": "W/\"72de0d926de61bd96c08316ce373b3fb\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:44 GMT",
-    "size": 31083,
-    "updatedAt": "2026-07-28T03:28:44.869Z"
+    "etag": "W/\"19e3e8e691f3afe22344d84b5b73126b\"",
+    "lastModified": "Wed, 05 Aug 2026 22:11:24 GMT",
+    "size": 39405,
+    "updatedAt": "2026-08-06T03:27:37.792Z"
   },
   "openai-docs/guides/tools-skills.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-skills.md",
     "skill": "openai-docs",
-    "etag": "W/\"12bee34f8c06c812fabb21d740a3af3b\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:45 GMT",
-    "size": 11728,
-    "updatedAt": "2026-07-28T03:28:45.157Z"
+    "etag": "W/\"cec3e8ab6d5c02918c3ec2fde4983d61\"",
+    "lastModified": "Wed, 05 Aug 2026 22:12:48 GMT",
+    "size": 13703,
+    "updatedAt": "2026-08-06T03:27:38.023Z"
   },
   "openai-docs/guides/tools-tool-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-tool-search.md",
     "skill": "openai-docs",
-    "etag": "W/\"370b1b75b65229c6a93a23784878c7bb\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:45 GMT",
-    "size": 17966,
-    "updatedAt": "2026-07-28T03:28:45.400Z"
+    "etag": "W/\"68dfb50dc1506bd521cc60fab8f8372d\"",
+    "lastModified": "Wed, 05 Aug 2026 22:11:40 GMT",
+    "size": 21896,
+    "updatedAt": "2026-08-06T03:27:38.326Z"
   },
   "openai-docs/guides/tools-web-search.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools-web-search.md",
     "skill": "openai-docs",
-    "etag": "W/\"bbade76c69d670639ef78ff54f0b2a61\"",
-    "lastModified": "Tue, 04 Aug 2026 01:48:51 GMT",
-    "size": 29711,
-    "updatedAt": "2026-08-04T03:33:07.129Z"
+    "etag": "W/\"593aa8167ab961879d497974cc752ff7\"",
+    "lastModified": "Wed, 05 Aug 2026 20:57:26 GMT",
+    "size": 36122,
+    "updatedAt": "2026-08-06T03:27:38.552Z"
   },
   "openai-docs/guides/tools.md": {
     "url": "https://developers.openai.com/api/docs/guides/tools.md",
     "skill": "openai-docs",
-    "etag": "W/\"ed61ea1f7abfbbdcaf5ef27662d9be7e\"",
-    "lastModified": "Tue, 04 Aug 2026 01:59:23 GMT",
-    "size": 19289,
-    "updatedAt": "2026-08-04T03:33:07.360Z"
+    "etag": "W/\"590e5539a67d096be3b00cfdcad6ab7d\"",
+    "lastModified": "Wed, 05 Aug 2026 21:25:36 GMT",
+    "size": 23857,
+    "updatedAt": "2026-08-06T03:27:38.774Z"
   },
   "openai-docs/guides/trace-grading.md": {
     "url": "https://developers.openai.com/api/docs/guides/trace-grading.md",
@@ -1170,10 +1170,10 @@
   "openai-docs/guides/video-generation.md": {
     "url": "https://developers.openai.com/api/docs/guides/video-generation.md",
     "skill": "openai-docs",
-    "etag": "W/\"258ec7c8397e61110472c2ed4d5be0df\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:46 GMT",
-    "size": 23672,
-    "updatedAt": "2026-07-28T03:28:46.972Z"
+    "etag": "W/\"5d7de31781dba7bfdf9b7ed0e8c187c5\"",
+    "lastModified": "Wed, 05 Aug 2026 21:31:40 GMT",
+    "size": 25530,
+    "updatedAt": "2026-08-06T03:27:39.868Z"
   },
   "openai-docs/guides/vision-fine-tuning.md": {
     "url": "https://developers.openai.com/api/docs/guides/vision-fine-tuning.md",
@@ -1194,10 +1194,10 @@
   "openai-docs/guides/webhooks.md": {
     "url": "https://developers.openai.com/api/docs/guides/webhooks.md",
     "skill": "openai-docs",
-    "etag": "W/\"00ac2b0d239300fbaf08d2d7e0189e6d\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:47 GMT",
-    "size": 10143,
-    "updatedAt": "2026-07-28T03:28:47.713Z"
+    "etag": "W/\"91e163a9c5cc63b5a69196de15955bc9\"",
+    "lastModified": "Wed, 05 Aug 2026 22:25:46 GMT",
+    "size": 10671,
+    "updatedAt": "2026-08-06T03:27:40.523Z"
   },
   "openai-docs/guides/websocket-mode.md": {
     "url": "https://developers.openai.com/api/docs/guides/websocket-mode.md",
@@ -1282,10 +1282,10 @@
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
     "skill": "openai-docs",
-    "etag": "W/\"c0200343fa68e89a3851147d393c5509\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:50 GMT",
-    "size": 12325,
-    "updatedAt": "2026-07-28T03:28:50.603Z"
+    "etag": "W/\"ec4c83b8bf67cc3ef32c5524760aba96\"",
+    "lastModified": "Wed, 05 Aug 2026 23:28:41 GMT",
+    "size": 12210,
+    "updatedAt": "2026-08-06T03:27:43.026Z"
   },
   "openai-docs/libraries/openai-cli.md": {
     "url": "https://developers.openai.com/api/docs/libraries/openai-cli.md",
@@ -1298,10 +1298,10 @@
   "openai-docs/mcp.md": {
     "url": "https://developers.openai.com/api/docs/mcp.md",
     "skill": "openai-docs",
-    "etag": "W/\"34a022d75430d4291aff059226e3da6c\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:51 GMT",
-    "size": 30646,
-    "updatedAt": "2026-07-28T03:28:51.141Z"
+    "etag": "W/\"457a4651ad4b51aaa223d8fa3f0da712\"",
+    "lastModified": "Wed, 05 Aug 2026 21:03:25 GMT",
+    "size": 30782,
+    "updatedAt": "2026-08-06T03:27:43.465Z"
   },
   "openai-docs/models.md": {
     "url": "https://developers.openai.com/api/docs/models.md",
@@ -1324,18 +1324,18 @@
   "openai-docs/pricing.md": {
     "url": "https://developers.openai.com/api/docs/pricing.md",
     "skill": "openai-docs",
-    "etag": "W/\"749b96649913fb0e6afcd4a8c80dbc44\"",
-    "lastModified": "Fri, 31 Jul 2026 06:51:39 GMT",
-    "size": 19459,
-    "updatedAt": "2026-07-31T12:13:59.192Z"
+    "etag": "W/\"bda10773447a488b7d9122f933b2eb68\"",
+    "lastModified": "Wed, 05 Aug 2026 20:57:44 GMT",
+    "size": 19923,
+    "updatedAt": "2026-08-06T03:27:44.459Z"
   },
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",
     "skill": "openai-docs",
-    "etag": "W/\"d6f3c5884c8014d2f9770c97e165e52c\"",
-    "lastModified": "Tue, 04 Aug 2026 01:42:19 GMT",
-    "size": 37876,
-    "updatedAt": "2026-08-04T03:33:13.362Z"
+    "etag": "W/\"07f124bb4c5d60dd2792f3c54ba635e3\"",
+    "lastModified": "Wed, 05 Aug 2026 21:13:21 GMT",
+    "size": 43096,
+    "updatedAt": "2026-08-06T03:27:44.693Z"
   },
   "openai-docs/supported-countries.md": {
     "url": "https://developers.openai.com/api/docs/supported-countries.md",

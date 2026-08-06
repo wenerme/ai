@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # R2 SQL
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
-R2 SQL is in **open beta**, and any developer with an [R2 subscription](https://developers.cloudflare.com/r2/pricing/) can start using it. Currently, outside of standard R2 storage and operations, you will not be billed for your use of R2 SQL. We will update [the pricing page](https://developers.cloudflare.com/r2-sql/platform/pricing) and provide at least 30 days notice before enabling billing.
+R2 SQL is in **open beta**, and any developer with an [R2 subscription](https://developers.cloudflare.com/r2/pricing/) can start using it.
 
 Query Apache Iceberg tables managed by R2 Data Catalog using SQL.
 
@@ -67,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/#page","headline":"R2 SQL · R2 SQL docs","description":"A distributed SQL engine for R2 Data Catalog","url":"https://developers.cloudflare.com/r2-sql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/#page","headline":"R2 SQL · R2 SQL docs","description":"A distributed SQL engine for R2 Data Catalog","url":"https://developers.cloudflare.com/r2-sql/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

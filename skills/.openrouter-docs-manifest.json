@@ -10645,9 +10645,9 @@
   },
   "batch-quickstart.md": {
     "url": "https://openrouter.ai/docs/batch-quickstart.md",
-    "lastModified": "Fri, 31 Jul 2026 04:07:33 GMT",
-    "size": 13386,
-    "updatedAt": "2026-07-31T04:07:33.774Z"
+    "lastModified": "Thu, 06 Aug 2026 03:44:25 GMT",
+    "size": 13945,
+    "updatedAt": "2026-08-06T03:44:25.342Z"
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
@@ -10747,9 +10747,9 @@
   },
   "client-sdks/go/sdks/files/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/files/README.md",
-    "lastModified": "Thu, 30 Jul 2026 03:23:16 GMT",
-    "size": 18623,
-    "updatedAt": "2026-07-30T03:23:16.947Z"
+    "lastModified": "Thu, 06 Aug 2026 03:44:34 GMT",
+    "size": 18997,
+    "updatedAt": "2026-08-06T03:44:34.726Z"
   },
   "client-sdks/go/sdks/generations/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/go/sdks/generations/README.md",
@@ -10933,9 +10933,9 @@
   },
   "client-sdks/python/sdks/files/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/files/README.md",
-    "lastModified": "Thu, 30 Jul 2026 03:23:28 GMT",
-    "size": 24266,
-    "updatedAt": "2026-07-30T03:23:28.449Z"
+    "lastModified": "Thu, 06 Aug 2026 03:44:43 GMT",
+    "size": 24640,
+    "updatedAt": "2026-08-06T03:44:43.512Z"
   },
   "client-sdks/python/sdks/generations/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/python/sdks/generations/README.md",
@@ -11113,9 +11113,9 @@
   },
   "client-sdks/typescript/sdks/files/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/files/README.md",
-    "lastModified": "Thu, 30 Jul 2026 03:23:39 GMT",
-    "size": 21554,
-    "updatedAt": "2026-07-30T03:23:39.364Z"
+    "lastModified": "Thu, 06 Aug 2026 03:44:52 GMT",
+    "size": 21928,
+    "updatedAt": "2026-08-06T03:44:52.123Z"
   },
   "client-sdks/typescript/sdks/generations/README.md": {
     "url": "https://openrouter.ai/docs/client-sdks/typescript/sdks/generations/README.md",
@@ -11827,9 +11827,9 @@
   },
   "guides/features/server-tools.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools.md",
-    "lastModified": "Tue, 28 Jul 2026 03:47:42 GMT",
-    "size": 12184,
-    "updatedAt": "2026-07-28T03:47:42.130Z"
+    "lastModified": "Thu, 06 Aug 2026 03:45:25 GMT",
+    "size": 12280,
+    "updatedAt": "2026-08-06T03:45:25.645Z"
   },
   "guides/features/server-tools/advisor.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/advisor.md",
@@ -11983,9 +11983,9 @@
   },
   "guides/overview/auth/oauth.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/oauth.md",
-    "lastModified": "Mon, 03 Aug 2026 13:54:02 GMT",
-    "size": 7403,
-    "updatedAt": "2026-08-03T13:54:02.875Z"
+    "lastModified": "Thu, 06 Aug 2026 03:45:32 GMT",
+    "size": 7552,
+    "updatedAt": "2026-08-06T03:45:32.912Z"
   },
   "guides/overview/mcp-server.md": {
     "url": "https://openrouter.ai/docs/guides/overview/mcp-server.md",
@@ -12145,9 +12145,9 @@
   },
   "guides/routing/routers/auto-router.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/auto-router.md",
-    "lastModified": "Wed, 29 Jul 2026 03:54:30 GMT",
-    "size": 19284,
-    "updatedAt": "2026-07-29T03:54:30.789Z"
+    "lastModified": "Thu, 06 Aug 2026 03:45:40 GMT",
+    "size": 19575,
+    "updatedAt": "2026-08-06T03:45:40.490Z"
   },
   "guides/routing/routers/body-builder.md": {
     "url": "https://openrouter.ai/docs/guides/routing/routers/body-builder.md",

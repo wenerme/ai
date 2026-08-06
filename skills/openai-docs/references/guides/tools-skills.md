@@ -136,6 +136,39 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	tool := responses.ToolUnionParam{OfShell: &responses.FunctionShellToolParam{
+		Environment: responses.FunctionShellToolEnvironmentUnionParam{OfContainerAuto: &responses.ContainerAutoParam{
+			Skills: []responses.ContainerAutoSkillUnionParam{
+				{OfSkillReference: &responses.SkillReferenceParam{SkillID: "<skill_id>"}},
+				{OfSkillReference: &responses.SkillReferenceParam{SkillID: "<skill_id>", Version: openai.String("2")}},
+			},
+		}},
+	}}
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Tools: []responses.ToolUnionParam{tool},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Use the skills to add 144 and 377, then compute triangle area with base 9 height 13.")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
+```
+
 
 ### Prompting behavior
 
@@ -228,6 +261,40 @@ response = client.responses.create(
 )
 
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	tool := responses.ToolUnionParam{OfShell: &responses.FunctionShellToolParam{
+		Environment: responses.FunctionShellToolEnvironmentUnionParam{OfLocal: &responses.LocalEnvironmentParam{
+			Skills: []responses.LocalSkillParam{{
+				Name:        "csv-insights",
+				Description: "Summarize CSV files and produce a markdown report.",
+				Path:        "<path-to-skill-folder>",
+			}},
+		}},
+	}}
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Tools: []responses.ToolUnionParam{tool},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Use the csv-insights skill and run locally to summarize today's CSV reports in this repo.")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 

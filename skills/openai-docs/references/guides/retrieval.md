@@ -47,6 +47,39 @@ client.vector_stores.files.upload_and_poll(        # Upload file
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	vectorStore, err := client.VectorStores.New(context.Background(), openai.VectorStoreNewParams{Name: openai.String("Support FAQ")})
+	if err != nil {
+		panic(err)
+	}
+	file, err := os.Open("customer_policies.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	_, err = client.VectorStores.Files.UploadAndPoll(context.Background(), vectorStore.ID, openai.FileNewParams{
+		File:    openai.File(file, "customer_policies.txt", "text/plain"),
+		Purpose: openai.FilePurposeAssistants,
+	}, 1000)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(vectorStore.ID)
+}
+```
+
 
 <li className={s.StandaloneLi} data-number={2}>
   **Send search query** to get relevant results.
@@ -69,6 +102,28 @@ results = client.vector_stores.search(
     vector_store_id=vector_store.id,
     query=user_query,
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	results, err := client.VectorStores.Search(context.Background(), "vs_123", openai.VectorStoreSearchParams{
+		Query: openai.VectorStoreSearchParamsQueryUnion{OfString: openai.String("What is the return policy?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(results.Data)
+}
 ```
 
 
@@ -110,6 +165,28 @@ results = client.vector_stores.search(
     vector_store_id=vector_store.id,
     query="How many woodchucks are allowed per passenger?",
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	results, err := client.VectorStores.Search(context.Background(), "vs_123", openai.VectorStoreSearchParams{
+		Query: openai.VectorStoreSearchParamsQueryUnion{OfString: openai.String("How many woodchucks are allowed per passenger?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(results.Data)
+}
 ```
 
 
@@ -377,6 +454,29 @@ client.vector_stores.create(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	vectorStore, err := client.VectorStores.New(context.Background(), openai.VectorStoreNewParams{
+		Name:    openai.String("Support FAQ"),
+		FileIDs: []string{"file_123"},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(vectorStore.ID)
+}
+```
+
   
 
   
@@ -394,6 +494,26 @@ await client.vectorStores.retrieve("vs_123");
 client.vector_stores.retrieve(
     vector_store_id="vs_123"
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	vectorStore, err := client.VectorStores.Get(context.Background(), "vs_123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(vectorStore.ID)
+}
 ```
 
   
@@ -418,6 +538,28 @@ client.vector_stores.update(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	vectorStore, err := client.VectorStores.Update(context.Background(), "vs_123", openai.VectorStoreUpdateParams{
+		Name: openai.String("Support FAQ Updated"),
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(vectorStore.Name)
+}
+```
+
   
 
   
@@ -437,6 +579,26 @@ client.vector_stores.delete(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	deleted, err := client.VectorStores.Delete(context.Background(), "vs_123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(deleted.Deleted)
+}
+```
+
   
 
   
@@ -452,6 +614,26 @@ await client.vectorStores.list();
 
 ```python
 client.vector_stores.list()
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	vectorStores, err := client.VectorStores.List(context.Background(), openai.VectorStoreListParams{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(vectorStores.Data)
+}
 ```
 
 
@@ -481,6 +663,28 @@ client.vector_stores.files.create_and_poll(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	file, err := client.VectorStores.Files.NewAndPoll(context.Background(), "vs_123", openai.VectorStoreFileNewParams{
+		FileID: "file_123",
+	}, 1000)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(file.ID)
+}
+```
+
   
 
   
@@ -504,6 +708,35 @@ client.vector_stores.files.upload_and_poll(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	file, err := os.Open("customer_policies.txt")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+	result, err := client.VectorStores.Files.UploadAndPoll(context.Background(), "vs_123", openai.FileNewParams{
+		File:    openai.File(file, "customer_policies.txt", "text/plain"),
+		Purpose: openai.FilePurposeAssistants,
+	}, 1000)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(result.ID)
+}
+```
+
   
 
   
@@ -524,6 +757,26 @@ client.vector_stores.files.retrieve(
     vector_store_id="vs_123",
     file_id="file_123"
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	file, err := client.VectorStores.Files.Get(context.Background(), "vs_123", "file_123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(file.ID)
+}
 ```
 
   
@@ -550,6 +803,30 @@ client.vector_stores.files.update(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	file, err := client.VectorStores.Files.Update(context.Background(), "vs_123", "file_123", openai.VectorStoreFileUpdateParams{
+		Attributes: map[string]openai.VectorStoreFileUpdateParamsAttributeUnion{
+			"key": {OfString: openai.String("value")},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(file.ID)
+}
+```
+
   
 
   
@@ -572,6 +849,26 @@ client.vector_stores.files.delete(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	deleted, err := client.VectorStores.Files.Delete(context.Background(), "vs_123", "file_123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(deleted.Deleted)
+}
+```
+
   
 
   
@@ -589,6 +886,26 @@ await client.vectorStores.files.list("vs_123");
 client.vector_stores.files.list(
     vector_store_id="vs_123"
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	files, err := client.VectorStores.Files.List(context.Background(), "vs_123", openai.VectorStoreFileListParams{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(files.Data)
+}
 ```
 
 
@@ -642,6 +959,41 @@ client.vector_stores.file_batches.create_and_poll(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	batch, err := client.VectorStores.FileBatches.NewAndPoll(context.Background(), "vs_123", openai.VectorStoreFileBatchNewParams{
+		Files: []openai.VectorStoreFileBatchNewParamsFile{
+			{
+				FileID: "file_123",
+				Attributes: map[string]openai.VectorStoreFileBatchNewParamsFileAttributeUnion{
+					"department": {OfString: openai.String("finance")},
+				},
+			},
+			{
+				FileID: "file_456",
+				ChunkingStrategy: openai.FileChunkingStrategyParamUnion{OfStatic: &openai.StaticFileChunkingStrategyObjectParam{
+					Static: openai.StaticFileChunkingStrategyParam{MaxChunkSizeTokens: 1200, ChunkOverlapTokens: 200},
+				}},
+			},
+		},
+	}, 1000)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(batch.ID)
+}
+```
+
   
 
   
@@ -662,6 +1014,26 @@ client.vector_stores.file_batches.retrieve(
     vector_store_id="vs_123",
     batch_id="vsfb_123"
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	batch, err := client.VectorStores.FileBatches.Get(context.Background(), "vs_123", "vsfb_123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(batch.ID)
+}
 ```
 
   
@@ -686,6 +1058,26 @@ client.vector_stores.file_batches.cancel(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	batch, err := client.VectorStores.FileBatches.Cancel(context.Background(), "vs_123", "vsfb_123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(batch.Status)
+}
+```
+
   
 
   
@@ -706,6 +1098,26 @@ client.vector_stores.file_batches.list_files(
     "vsfb_123",
     vector_store_id="vs_123"
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	files, err := client.VectorStores.FileBatches.ListFiles(context.Background(), "vs_123", "vsfb_123", openai.VectorStoreFileBatchListFilesParams{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(files.Data)
+}
 ```
 
 
@@ -743,6 +1155,33 @@ client.vector_stores.files.create(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	file, err := client.VectorStores.Files.New(context.Background(), "<vector_store_id>", openai.VectorStoreFileNewParams{
+		FileID: "file_123",
+		Attributes: map[string]openai.VectorStoreFileNewParamsAttributeUnion{
+			"region":   {OfString: openai.String("US")},
+			"category": {OfString: openai.String("Marketing")},
+			"date":     {OfFloat: openai.Float(1672531200)},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(file.ID)
+}
+```
+
 
 ### Expiration policies
 
@@ -767,6 +1206,28 @@ client.vector_stores.update(
         "days": 7
     }
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	vectorStore, err := client.VectorStores.Update(context.Background(), "vs_123", openai.VectorStoreUpdateParams{
+		ExpiresAfter: openai.VectorStoreUpdateParamsExpiresAfter{Days: 7},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(vectorStore.ExpiresAfter)
+}
 ```
 
 
@@ -845,6 +1306,28 @@ results = client.vector_stores.search(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	results, err := client.VectorStores.Search(context.Background(), "vs_123", openai.VectorStoreSearchParams{
+		Query: openai.VectorStoreSearchParamsQueryUnion{OfString: openai.String("What is the return policy?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(results.Data)
+}
+```
+
 
 Synthesize a response based on results
 
@@ -895,6 +1378,55 @@ completion = client.chat.completions.create(
 print(completion.choices[0].message.content)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"strings"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	userQuery := "What is the return policy?"
+	results, err := client.VectorStores.Search(context.Background(), "vs_123", openai.VectorStoreSearchParams{
+		Query: openai.VectorStoreSearchParamsQueryUnion{OfString: openai.String(userQuery)},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model: "gpt-5.6",
+		Messages: []openai.ChatCompletionMessageParamUnion{
+			openai.DeveloperMessage("Produce a concise answer to the query based on the provided sources."),
+			openai.UserMessage(fmt.Sprintf("Sources: %s\n\nQuery: %q", formatResults(results.Data), userQuery)),
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(completion.Choices[0].Message.Content)
+}
+
+func formatResults(results []openai.VectorStoreSearchResponse) string {
+	var sources strings.Builder
+	sources.WriteString("<sources>")
+	for _, result := range results {
+		fmt.Fprintf(&sources, "<result file_id=%q file_name=%q>", result.FileID, result.Filename)
+		for _, content := range result.Content {
+			fmt.Fprintf(&sources, "<content>%s</content>", content.Text)
+		}
+		sources.WriteString("</result>")
+	}
+	sources.WriteString("</sources>")
+	return sources.String()
+}
+```
+
 
 ```json
 "Our return policy allows returns within 30 days of purchase."
@@ -930,4 +1462,38 @@ def format_results(results):
             formatted_result += f"<content>{part.text}</content>"
         formatted_results += formatted_result + "</result>"
     return f"<sources>{formatted_results}</sources>"
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	results := []openai.VectorStoreSearchResponse{{
+		FileID:   "file-12345",
+		Filename: "woodchuck_policy.txt",
+		Content:  []openai.VectorStoreSearchResponseContent{{Text: "Each passenger may carry up to two woodchucks."}},
+	}}
+	fmt.Println(formatResults(results))
+}
+
+func formatResults(results []openai.VectorStoreSearchResponse) string {
+	var sources strings.Builder
+	sources.WriteString("<sources>")
+	for _, result := range results {
+		fmt.Fprintf(&sources, "<result file_id=%q file_name=%q>", result.FileID, result.Filename)
+		for _, content := range result.Content {
+			fmt.Fprintf(&sources, "<content>%s</content>", content.Text)
+		}
+		sources.WriteString("</result>")
+	}
+	sources.WriteString("</sources>")
+	return sources.String()
+}
 ```

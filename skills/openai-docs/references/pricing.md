@@ -156,26 +156,26 @@ Fast mode
       
 ### Fast pricing data
 
-| Model | Short context input | Short context cached input | Short context cache writes | Short context output |
-| --- | --- | --- | --- | --- |
-| gpt-5.6-sol | $10.00 | $1.00 | $12.50 | $60.00 |
-| gpt-5.6-terra | $4.00 | $0.40 | $5.00 | $24.00 |
-| gpt-5.6-luna | $0.40 | $0.04 | $0.50 | $2.40 |
-| gpt-5.5 (<272K context length) | $12.50 | $1.25 | - | $75.00 |
-| gpt-5.4 (<272K context length) | $5.00 | $0.50 | - | $30.00 |
-| gpt-5.4-mini | $1.50 | $0.15 | - | $9.00 |
-| gpt-5.2 | $3.50 | $0.35 | - | $28.00 |
-| gpt-5.1 | $2.50 | $0.25 | - | $20.00 |
-| gpt-5 | $2.50 | $0.25 | - | $20.00 |
-| gpt-5-mini | $0.45 | $0.045 | - | $3.60 |
-| gpt-4.1 | $3.50 | $0.875 | - | $14.00 |
-| gpt-4.1-mini | $0.70 | $0.175 | - | $2.80 |
-| gpt-4.1-nano | $0.20 | $0.05 | - | $0.80 |
-| gpt-4o | $4.25 | $2.125 | - | $17.00 |
-| gpt-4o-2024-05-13 | $8.75 | - | - | $26.25 |
-| gpt-4o-mini | $0.25 | $0.125 | - | $1.00 |
-| o3 | $3.50 | $0.875 | - | $14.00 |
-| o4-mini | $2.00 | $0.50 | - | $8.00 |
+| Model | Short context input | Short context cached input | Short context cache writes | Short context output | Long context input | Long context cached input | Long context cache writes | Long context output |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-5.6-sol | $10.00 | $1.00 | $12.50 | $60.00 | $20.00 | $2.00 | $25.00 | $90.00 |
+| gpt-5.6-terra | $4.00 | $0.40 | $5.00 | $24.00 | $8.00 | $0.80 | $10.00 | $36.00 |
+| gpt-5.6-luna | $0.40 | $0.04 | $0.50 | $2.40 | $0.80 | $0.08 | $1.00 | $3.60 |
+| gpt-5.5 (<272K context length) | $12.50 | $1.25 | - | $75.00 | - | - | - | - |
+| gpt-5.4 (<272K context length) | $5.00 | $0.50 | - | $30.00 | - | - | - | - |
+| gpt-5.4-mini | $1.50 | $0.15 | - | $9.00 | - | - | - | - |
+| gpt-5.2 | $3.50 | $0.35 | - | $28.00 | - | - | - | - |
+| gpt-5.1 | $2.50 | $0.25 | - | $20.00 | - | - | - | - |
+| gpt-5 | $2.50 | $0.25 | - | $20.00 | - | - | - | - |
+| gpt-5-mini | $0.45 | $0.045 | - | $3.60 | - | - | - | - |
+| gpt-4.1 | $3.50 | $0.875 | - | $14.00 | - | - | - | - |
+| gpt-4.1-mini | $0.70 | $0.175 | - | $2.80 | - | - | - | - |
+| gpt-4.1-nano | $0.20 | $0.05 | - | $0.80 | - | - | - | - |
+| gpt-4o | $4.25 | $2.125 | - | $17.00 | - | - | - | - |
+| gpt-4o-2024-05-13 | $8.75 | - | - | $26.25 | - | - | - | - |
+| gpt-4o-mini | $0.25 | $0.125 | - | $1.00 | - | - | - | - |
+| o3 | $3.50 | $0.875 | - | $14.00 | - | - | - | - |
+| o4-mini | $2.00 | $0.50 | - | $8.00 | - | - | - | - |
 
 Regional processing (data residency) endpoints are charged a 10% uplift for models released on or after March 5, 2026, that are eligible for data residency. See our [Your data](https://developers.openai.com/api/docs/guides/your-data) guide for supported regions and processing details.
 

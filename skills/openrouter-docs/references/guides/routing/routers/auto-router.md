@@ -24,6 +24,8 @@ Auto Beta routes on evidence: what thousands of developers, in aggregate, keep u
 3. **Apply your cost / quality dial.** The [`cost_quality_tradeoff`](#cost--quality-tradeoff) setting filters the candidate pool by cost, so you choose how much to favor cheaper models.
 4. **Route with fallbacks.** The top surviving models (in spend-share order) become the primary pick plus fallbacks, after honoring your `allowed_models` restrictions and output-modality requirements. If classification or rankings are ever unavailable, the router degrades gracefully to a default model set — a request never fails because routing infrastructure hiccuped.
 
+When you opt in with the `X-OpenRouter-Metadata: enabled` header, the Auto Beta router stage in `openrouter_metadata.pipeline` includes the task-type tag from the classification taxonomy at `data.task_type`, such as `code:debugging`. The field is absent when classification is unavailable.
+
 ## Benchmarks
 
 We benchmarked Auto Beta against the current Auto router on three very different workloads: GPQA Diamond (198 PhD-level science questions), τ-bench Verified Airline (50 multi-turn agentic customer-service tasks with tool use), and DRACO (20 deep-research report tasks across 10 domains, LLM-judged). Claude Opus 4.8 and GLM 5.2 were run as fixed-model reference points on GPQA and τ-bench. `cqt` is the [`cost_quality_tradeoff`](#cost--quality-tradeoff) setting: 0 is the high-quality end and higher values favor cheaper models. The rows below were measured at `cqt=0` and `cqt=7` (Auto Beta now defaults to `cqt=9`).

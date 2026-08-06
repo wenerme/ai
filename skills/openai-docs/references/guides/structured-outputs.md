@@ -76,6 +76,54 @@ response = client.responses.parse(
 event = response.output_parsed
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	schema := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"name":         map[string]any{"type": "string"},
+			"date":         map[string]any{"type": "string"},
+			"participants": map[string]any{"type": "array", "items": map[string]any{"type": "string"}},
+		},
+		"required":             []string{"name", "date", "participants"},
+		"additionalProperties": false,
+	}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("Extract the event information.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("Alice and Bob are going to a science fair on Friday.")},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "event", Schema: schema, Strict: openai.Bool(true)},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
 
 
 ### Supported models
@@ -229,6 +277,62 @@ response = client.responses.parse(
 )
 
 math_reasoning = response.output_parsed
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	step := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"explanation": map[string]any{"type": "string"},
+			"output":      map[string]any{"type": "string"},
+		},
+		"required":             []string{"explanation", "output"},
+		"additionalProperties": false,
+	}
+	schema := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"steps":        map[string]any{"type": "array", "items": step},
+			"final_answer": map[string]any{"type": "string"},
+		},
+		"required":             []string{"steps", "final_answer"},
+		"additionalProperties": false,
+	}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("You are a helpful math tutor. Guide the user through the solution step by step.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("how can I solve 8x + 7 = -23")},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "math_reasoning", Schema: schema, Strict: openai.Bool(true)},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```bash
@@ -396,6 +500,61 @@ response = client.responses.parse(
 )
 
 research_paper = response.output_parsed
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+const researchPaperText = "Attention Is All You Need by Ashish Vaswani, Noam Shazeer, " +
+	"Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, " +
+	"Łukasz Kaiser, and Illia Polosukhin. We propose the Transformer, " +
+	"a sequence transduction architecture based entirely on attention. " +
+	"Keywords: transformers, attention, sequence transduction."
+
+func main() {
+	client := openai.NewClient()
+	schema := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"title":    map[string]any{"type": "string"},
+			"authors":  map[string]any{"type": "array", "items": map[string]any{"type": "string"}},
+			"abstract": map[string]any{"type": "string"},
+			"keywords": map[string]any{"type": "array", "items": map[string]any{"type": "string"}},
+		},
+		"required":             []string{"title", "authors", "abstract", "keywords"},
+		"additionalProperties": false,
+	}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("You are an expert at structured data extraction. You will be given unstructured text from a research paper and should convert it into the given structure.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText(researchPaperText)},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "research_paper_extraction", Schema: schema, Strict: openai.Bool(true)},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```bash
@@ -572,6 +731,55 @@ response = client.responses.parse(
 )
 
 ui = response.output_parsed
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	schema := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"type":       map[string]any{"type": "string", "enum": []string{"div", "button", "header", "section", "field", "form"}},
+			"label":      map[string]any{"type": "string"},
+			"children":   map[string]any{"type": "array", "items": map[string]any{"$ref": "#"}},
+			"attributes": map[string]any{"type": "array", "items": map[string]any{"type": "object", "properties": map[string]any{"name": map[string]any{"type": "string"}, "value": map[string]any{"type": "string"}}, "required": []string{"name", "value"}, "additionalProperties": false}},
+		},
+		"required":             []string{"type", "label", "children", "attributes"},
+		"additionalProperties": false,
+	}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("You are a UI generator AI. Convert the user input into a UI.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("Make a User Profile Form")},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "ui", Description: openai.String("Dynamically generated UI"), Schema: schema, Strict: openai.Bool(true)},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```bash
@@ -810,6 +1018,52 @@ response = client.responses.parse(
 compliance = response.output_parsed
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	schema := contentComplianceSchema()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage("Determine if the user input violates specific guidelines and explain if they do.", responses.EasyInputMessageRoleSystem),
+			responses.ResponseInputItemParamOfMessage("How do I prepare for a job interview?", responses.EasyInputMessageRoleUser),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{
+				Name: "content_compliance", Description: openai.String("Determines if content is violating specific moderation rules"), Schema: schema, Strict: openai.Bool(true),
+			},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
+
+func contentComplianceSchema() map[string]any {
+	return map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"is_violating":             map[string]any{"type": "boolean", "description": "Indicates if the content is violating guidelines"},
+			"category":                 map[string]any{"type": []string{"string", "null"}, "description": "Type of violation, if the content is violating guidelines. Null otherwise.", "enum": []any{"violence", "sexual", "self_harm", nil}},
+			"explanation_if_violating": map[string]any{"type": []string{"string", "null"}, "description": "Explanation of why the content is violating"},
+		},
+		"required":             []string{"is_violating", "category", "explanation_if_violating"},
+		"additionalProperties": false,
+	}
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -996,6 +1250,54 @@ response = client.responses.create(
 )
 
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("You are a helpful math tutor. Guide the user through the solution step by step.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("how can I solve 8x + 7 = -23")},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "math_response", Schema: mathSchema(), Strict: openai.Bool(true)},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
+
+func mathSchema() map[string]any {
+	return map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"steps":        map[string]any{"type": "array", "items": map[string]any{"type": "object", "properties": map[string]any{"explanation": map[string]any{"type": "string"}, "output": map[string]any{"type": "string"}}, "required": []string{"explanation", "output"}, "additionalProperties": false}},
+			"final_answer": map[string]any{"type": "string"},
+		},
+		"required":             []string{"steps", "final_answer"},
+		"additionalProperties": false,
+	}
+}
 ```
 
 ```bash
@@ -1201,6 +1503,75 @@ except Exception as e:
     print(e)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("You are a helpful math tutor. Guide the user through the solution step by step.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("how can I solve 8x + 7 = -23")},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		MaxOutputTokens: openai.Int(1024),
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "math_response", Schema: mathSchema(), Strict: openai.Bool(true)},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	if response.Status == "incomplete" {
+		panic(errors.New("incomplete response"))
+	}
+
+	for _, output := range response.Output {
+		if output.Type != "message" {
+			continue
+		}
+		for _, content := range output.AsMessage().Content {
+			if content.Type == "refusal" {
+				fmt.Println(content.AsRefusal().Refusal)
+				return
+			}
+			if content.Type == "output_text" {
+				fmt.Println(content.AsOutputText().Text)
+				return
+			}
+		}
+	}
+	panic(errors.New("no response content"))
+}
+
+func mathSchema() map[string]any {
+	return map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"steps":        map[string]any{"type": "array", "items": map[string]any{"type": "object", "properties": map[string]any{"explanation": map[string]any{"type": "string"}, "output": map[string]any{"type": "string"}}, "required": []string{"explanation", "output"}, "additionalProperties": false}},
+			"final_answer": map[string]any{"type": "string"},
+		},
+		"required":             []string{"steps", "final_answer"},
+		"additionalProperties": false,
+	}
+}
+```
+
 
 
 
@@ -1302,6 +1673,66 @@ for output in response.output:
             raise Exception("Could not parse response")
 
         print(item.parsed)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("You are a helpful math tutor. Guide the user through the solution step by step.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("how can I solve 8x + 7 = -23")},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONSchema: &responses.ResponseFormatTextJSONSchemaConfigParam{Name: "math_response", Schema: mathSchema(), Strict: openai.Bool(true)},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	for _, output := range response.Output {
+		if output.Type != "message" {
+			continue
+		}
+		for _, content := range output.AsMessage().Content {
+			if content.Type == "refusal" {
+				fmt.Println(content.AsRefusal().Refusal)
+				continue
+			}
+			fmt.Println(content.AsOutputText().Text)
+		}
+	}
+}
+
+func mathSchema() map[string]any {
+	return map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"steps":        map[string]any{"type": "array", "items": map[string]any{"type": "object", "properties": map[string]any{"explanation": map[string]any{"type": "string"}, "output": map[string]any{"type": "string"}}, "required": []string{"explanation", "output"}, "additionalProperties": false}},
+			"final_answer": map[string]any{"type": "string"},
+		},
+		"required":             []string{"steps", "final_answer"},
+		"additionalProperties": false,
+	}
+}
 ```
 
 
@@ -2103,6 +2534,66 @@ try:
 except Exception as e:
     # Your code should handle errors here, for example a network error calling the API
     print(e)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+	"github.com/openai/openai-go/v3/shared"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("You are a helpful assistant designed to output JSON.")},
+				responses.EasyInputMessageRoleSystem,
+			),
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("Who won the world series in 2020? Please respond in the format {winner: ...}")},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+		Text: responses.ResponseTextConfigParam{Format: responses.ResponseFormatTextConfigUnionParam{
+			OfJSONObject: &shared.ResponseFormatJSONObjectParam{},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	if response.Status == "incomplete" {
+		fmt.Println("The JSON response is incomplete.")
+		return
+	}
+	for _, output := range response.Output {
+		if output.Type != "message" {
+			continue
+		}
+		for _, content := range output.AsMessage().Content {
+			if content.Type == "refusal" {
+				fmt.Println(content.AsRefusal().Refusal)
+				return
+			}
+		}
+	}
+	if response.Status == "completed" {
+		var value map[string]any
+		if err := json.Unmarshal([]byte(response.OutputText()), &value); err != nil {
+			panic(err)
+		}
+		fmt.Println(value)
+	}
+}
 ```
 
 ## Resources

@@ -162,6 +162,8 @@ performed.
 
 Our low-latency, real-time speech to speech translation model that supports 70+ languages.
 
+### Standard
+
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
 | Input price | Free of charge | $3.50 or $0.0053/min^\*^ (audio) |

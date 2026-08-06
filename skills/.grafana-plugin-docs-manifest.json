@@ -696,13 +696,13 @@
   },
   "grafana-github-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest.md",
-    "size": 5785,
-    "updatedAt": "2026-06-25T05:42:06.683Z"
+    "size": 5380,
+    "updatedAt": "2026-08-06T03:47:33.382Z"
   },
   "grafana-github-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/query-editor.md",
-    "size": 58852,
-    "updatedAt": "2026-06-25T05:42:07.101Z"
+    "size": 60473,
+    "updatedAt": "2026-08-06T03:47:33.588Z"
   },
   "grafana-github-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-github-datasource/latest/template-variables.md",
@@ -986,8 +986,8 @@
   },
   "grafana-metricsdrilldown-app/drill-down-metrics.md": {
     "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/drill-down-metrics.md",
-    "size": 5932,
-    "updatedAt": "2026-06-25T05:42:27.782Z"
+    "size": 6434,
+    "updatedAt": "2026-08-06T03:47:45.263Z"
   },
   "grafana-metricsdrilldown-app/get-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-metricsdrilldown-app/latest/get-started.md",

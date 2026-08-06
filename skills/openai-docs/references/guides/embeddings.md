@@ -48,6 +48,33 @@ response = client.embeddings.create(
 print(response.data[0].embedding)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	embedding, err := client.Embeddings.New(context.Background(), openai.EmbeddingNewParams{
+		Model: openai.EmbeddingModelTextEmbedding3Small,
+		Input: openai.EmbeddingNewParamsInputUnion{
+			OfString: openai.String("Your text string goes here."),
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(len(embedding.Data[0].Embedding))
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/embeddings \
   -H "Content-Type: application/json" \

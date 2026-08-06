@@ -45,6 +45,31 @@ response = client.responses.create(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:            "gpt-5.6-terra",
+		Input:            responses.ResponseNewParamsInputUnion{OfString: openai.String("This is a test")},
+		SafetyIdentifier: openai.String("user_123456"),
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -75,6 +100,30 @@ response = client.chat.completions.create(
     messages=[{"role": "user", "content": "This is a test"}],
     safety_identifier="user_123456",
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model:            "gpt-5.6-terra",
+		Messages:         []openai.ChatCompletionMessageParamUnion{openai.UserMessage("This is a test")},
+		SafetyIdentifier: openai.String("user_123456"),
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Choices[0].Message.Content)
+}
 ```
 
 ```bash

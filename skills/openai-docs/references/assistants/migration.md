@@ -81,6 +81,10 @@ A thread was a collection of messages stored server-side. Threads could _only_ s
 
 ### Request example
 
+#### Python
+
+#### Go
+
 ### Response example
 
 
@@ -123,6 +127,10 @@ Runs were asynchronous processes that executed against threads. See the example 
 Responses are designed to be used alone, but you can also use them with prompt and conversation objects for storing context and configuration.
 
 ### Request example
+
+#### Python
+
+#### Go
 
 ### Response example
 

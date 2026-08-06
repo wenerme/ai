@@ -37,26 +37,31 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-        "model": "gpt-5.6",
-        "tools": [{"type": "web_search"}],
-        "input": "what was a positive news story from today?"
-}'
-```
+```go
+package main
 
-```bash
-openai responses create \
-  --model gpt-5.6 \
-  --raw-output \
-  --transform 'output.#(type=="message").content.0.text' <<'YAML'
-tools:
-  - type: web_search
-input: What was a positive news story from today?
-YAML
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Tools: []responses.ToolUnionParam{
+			responses.ToolParamOfWebSearch(responses.WebSearchToolTypeWebSearch),
+		},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What was a positive news story from today?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```csharp
@@ -91,6 +96,28 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "tools": [{"type": "web_search"}],
+        "input": "what was a positive news story from today?"
+}'
+```
+
+```bash
+openai responses create \
+  --model gpt-5.6 \
+  --raw-output \
+  --transform 'output.#(type=="message").content.0.text' <<'YAML'
+tools:
+  - type: web_search
+input: What was a positive news story from today?
+YAML
+```
+
   
 
   
@@ -99,19 +126,6 @@ puts(response.output_text)
 File search
 
     Search your files in a response
-
-```python
-from openai import OpenAI
-
-client = OpenAI()
-
-response = client.responses.create(
-    model="gpt-5.6",
-    input="What is deep research by OpenAI?",
-    tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
-)
-print(response)
-```
 
 ```javascript
 import OpenAI from "openai";
@@ -128,6 +142,44 @@ const response = await openai.responses.create({
   ],
 });
 console.log(response);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input="What is deep research by OpenAI?",
+    tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
+)
+print(response)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What is deep research by OpenAI?")},
+		Tools: []responses.ToolUnionParam{responses.ToolParamOfFileSearch([]string{"<vector_store_id>"})},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response)
+}
 ```
 
 ```csharp
@@ -177,6 +229,61 @@ puts(response)
 Tool search
 
     Load deferred tools at runtime
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+/** @type {OpenAI.Responses.NamespaceTool} */
+const crmNamespace = {
+  type: "namespace",
+  name: "crm",
+  description: "CRM tools for customer lookup and order management.",
+  tools: [
+    {
+      type: "function",
+      name: "get_customer_profile",
+      description: "Fetch a customer profile by customer ID.",
+      parameters: {
+        type: "object",
+        properties: {
+          customer_id: { type: "string" },
+        },
+        required: ["customer_id"],
+        additionalProperties: false,
+      },
+    },
+    {
+      type: "function",
+      name: "list_open_orders",
+      description: "List open orders for a customer ID.",
+      // highlight-start:subtle
+      defer_loading: true,
+      // highlight-end
+      parameters: {
+        type: "object",
+        properties: {
+          customer_id: { type: "string" },
+        },
+        required: ["customer_id"],
+        additionalProperties: false,
+      },
+    },
+  ],
+};
+
+const response = await client.responses.create({
+  model: "gpt-5.6",
+  input: "List open orders for customer CUST-12345.",
+  // highlight-start:subtle
+  tools: [crmNamespace, { type: "tool_search" }],
+  // highlight-end
+  parallel_tool_calls: false,
+});
+
+console.log(response.output);
+```
 
 ```python
 from openai import OpenAI
@@ -235,59 +342,48 @@ response = client.responses.create(
 print(response.output)
 ```
 
-```javascript
-import OpenAI from "openai";
+```go
+package main
 
-const client = new OpenAI();
+import (
+	"context"
+	"fmt"
 
-/** @type {OpenAI.Responses.NamespaceTool} */
-const crmNamespace = {
-  type: "namespace",
-  name: "crm",
-  description: "CRM tools for customer lookup and order management.",
-  tools: [
-    {
-      type: "function",
-      name: "get_customer_profile",
-      description: "Fetch a customer profile by customer ID.",
-      parameters: {
-        type: "object",
-        properties: {
-          customer_id: { type: "string" },
-        },
-        required: ["customer_id"],
-        additionalProperties: false,
-      },
-    },
-    {
-      type: "function",
-      name: "list_open_orders",
-      description: "List open orders for a customer ID.",
-      // highlight-start:subtle
-      defer_loading: true,
-      // highlight-end
-      parameters: {
-        type: "object",
-        properties: {
-          customer_id: { type: "string" },
-        },
-        required: ["customer_id"],
-        additionalProperties: false,
-      },
-    },
-  ],
-};
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
 
-const response = await client.responses.create({
-  model: "gpt-5.6",
-  input: "List open orders for customer CUST-12345.",
-  // highlight-start:subtle
-  tools: [crmNamespace, { type: "tool_search" }],
-  // highlight-end
-  parallel_tool_calls: false,
-});
-
-console.log(response.output);
+func main() {
+	client := openai.NewClient()
+	parameters := map[string]any{
+		"type":                 "object",
+		"properties":           map[string]any{"customer_id": map[string]any{"type": "string"}},
+		"required":             []string{"customer_id"},
+		"additionalProperties": false,
+	}
+	namespace := responses.ToolParamOfNamespace(
+		"CRM tools for customer lookup and order management.",
+		"crm",
+		[]responses.NamespaceToolToolUnionParam{
+			{OfFunction: &responses.NamespaceToolToolFunctionParam{
+				Name: "get_customer_profile", Description: openai.String("Fetch a customer profile by customer ID."), Parameters: parameters,
+			}},
+			{OfFunction: &responses.NamespaceToolToolFunctionParam{
+				Name: "list_open_orders", Description: openai.String("List open orders for a customer ID."), DeferLoading: openai.Bool(true), Parameters: parameters,
+			}},
+		},
+	)
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:             "gpt-5.6",
+		Input:             responses.ResponseNewParamsInputUnion{OfString: openai.String("List open orders for customer CUST-12345.")},
+		Tools:             []responses.ToolUnionParam{namespace, {OfToolSearch: &responses.ToolSearchToolParam{}}},
+		ParallelToolCalls: openai.Bool(false),
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Output)
+}
 ```
 
   
@@ -371,6 +467,47 @@ response = client.responses.create(
 print(response.output[0].to_json())
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	parameters := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"location": map[string]any{
+				"type":        "string",
+				"description": "City and country e.g. Bogotá, Colombia",
+			},
+		},
+		"required":             []string{"location"},
+		"additionalProperties": false,
+	}
+	tool := responses.ToolParamOfFunction("get_weather", parameters, true)
+	tool.OfFunction.Description = openai.String("Get current temperature for a given location.")
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage("What is the weather like in Paris today?", responses.EasyInputMessageRoleUser),
+		}},
+		Tools: []responses.ToolUnionParam{tool},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Output)
+}
+```
+
 ```csharp
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
@@ -420,37 +557,6 @@ Console.WriteLine(
 );
 ```
 
-```bash
-curl -X POST https://api.openai.com/v1/responses \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-5.6",
-    "input": [
-      {"role": "user", "content": "What is the weather like in Paris today?"}
-    ],
-    "tools": [
-      {
-        "type": "function",
-        "name": "get_weather",
-        "description": "Get current temperature for a given location.",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "location": {
-              "type": "string",
-              "description": "City and country e.g. Bogotá, Colombia"
-            }
-          },
-          "required": ["location"],
-          "additionalProperties": false
-        },
-        "strict": true
-      }
-    ]
-  }'
-```
-
 ```ruby
 require "openai"
 
@@ -485,6 +591,37 @@ response = openai.responses.create(
 )
 
 puts(response.output.first.to_json)
+```
+
+```bash
+curl -X POST https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.6",
+    "input": [
+      {"role": "user", "content": "What is the weather like in Paris today?"}
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get current temperature for a given location.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "City and country e.g. Bogotá, Colombia"
+            }
+          },
+          "required": ["location"],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ]
+  }'
 ```
 
   
@@ -557,6 +694,36 @@ resp = client.responses.create(
 )
 
 print(resp.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	tool := responses.ToolParamOfMcp("dmcp")
+	tool.OfMcp.ServerDescription = openai.String("A Dungeons and Dragons MCP server to assist with dice rolling.")
+	tool.OfMcp.ServerURL = openai.String("https://dmcp-server.deno.dev/mcp")
+	tool.OfMcp.RequireApproval = responses.ToolMcpRequireApprovalUnionParam{OfMcpToolApprovalSetting: openai.String("never")}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Tools: []responses.ToolUnionParam{tool},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Roll 2d4+1")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```csharp

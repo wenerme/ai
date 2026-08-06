@@ -42,16 +42,19 @@ New Preview](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 | Model | Endpoint |
 |---|---|
-| [Gemini 3.1 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ``` gemini-3.1-pro-preview ``` |
+| [Gemini 3.6 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) | ``` gemini-3.6-flash ``` |
 | [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ``` gemini-3.5-flash ``` |
-| [Gemini 3 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ``` gemini-3-flash-preview ``` |
+| [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) | ``` gemini-3.5-flash-lite ``` |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ``` gemini-3.1-flash-lite ``` |
 | [Nano Banana 2](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) | ``` gemini-3.1-flash-image ``` |
 | [Nano Banana 2 Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) | ``` gemini-3.1-flash-lite-image ``` |
 | [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) | ``` gemini-3-pro-image ``` |
+| [Gemini 3.1 Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | ``` gemini-3.1-pro-preview ``` |
+| [Gemini 3 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) | ``` gemini-3-flash-preview ``` |
 | [Gemini 3.5 Live Translate](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-preview) | ``` gemini-3.5-live-translate-preview ``` |
 | [Gemini 3.1 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) | ``` gemini-3.1-flash-live-preview ``` |
 | [Gemini 3.1 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) | ``` gemini-3.1-flash-tts-preview ``` |
+| [Gemini Omni Flash](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash) | ``` gemini-omni-flash ``` |
 
 ## Gemini 2.5 Flash
 

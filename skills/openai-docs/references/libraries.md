@@ -244,14 +244,11 @@ import (
 	"fmt"
 
 	"github.com/openai/openai-go/v3"
-	"github.com/openai/openai-go/v3/option"
 	"github.com/openai/openai-go/v3/responses"
 )
 
 func main() {
-	client := openai.NewClient(
-		option.WithAPIKey("My API Key"), // or set OPENAI_API_KEY in your env
-	)
+	client := openai.NewClient()
 
 	resp, err := client.Responses.New(context.TODO(), responses.ResponseNewParams{
 		Model: "gpt-5.6",

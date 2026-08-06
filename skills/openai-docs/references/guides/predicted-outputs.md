@@ -104,6 +104,51 @@ print(completion)
 print(completion.choices[0].message.content)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"strings"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/shared"
+)
+
+func main() {
+	client := openai.NewClient()
+	code := strings.TrimSpace(`
+class User {
+  firstName: string = "";
+  lastName: string = "";
+  username: string = "";
+}
+
+export default User;
+`)
+	refactorPrompt := strings.TrimSpace(`
+Replace the "username" property with an "email" property. Respond only
+with code, and with no markdown formatting.
+`)
+	completion, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model: shared.ChatModelGPT4_1,
+		Messages: []openai.ChatCompletionMessageParamUnion{
+			openai.UserMessage(refactorPrompt),
+			openai.UserMessage(code),
+		},
+		Store: openai.Bool(true),
+		Prediction: openai.ChatCompletionPredictionContentParam{
+			Content: openai.ChatCompletionPredictionContentContentUnionParam{OfString: openai.String(code)},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(completion.Choices[0].Message.Content)
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -243,6 +288,55 @@ stream = client.chat.completions.create(
 for chunk in stream:
     if chunk.choices[0].delta.content is not None:
         print(chunk.choices[0].delta.content, end="")
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"strings"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/shared"
+)
+
+func main() {
+	client := openai.NewClient()
+	code := strings.TrimSpace(`
+class User {
+  firstName: string = "";
+  lastName: string = "";
+  username: string = "";
+}
+
+export default User;
+`)
+	refactorPrompt := strings.TrimSpace(`
+Replace the "username" property with an "email" property. Respond only
+with code, and with no markdown formatting.
+`)
+	stream := client.Chat.Completions.NewStreaming(context.Background(), openai.ChatCompletionNewParams{
+		Model: shared.ChatModelGPT4_1,
+		Messages: []openai.ChatCompletionMessageParamUnion{
+			openai.UserMessage(refactorPrompt),
+			openai.UserMessage(code),
+		},
+		Store: openai.Bool(true),
+		Prediction: openai.ChatCompletionPredictionContentParam{
+			Content: openai.ChatCompletionPredictionContentContentUnionParam{OfString: openai.String(code)},
+		},
+	})
+	for stream.Next() {
+		if len(stream.Current().Choices) > 0 {
+			fmt.Print(stream.Current().Choices[0].Delta.Content)
+		}
+	}
+	if err := stream.Err(); err != nil {
+		panic(err)
+	}
+}
 ```
 
 

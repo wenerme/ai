@@ -61,6 +61,43 @@ with client.audio.speech.with_streaming_response.create(
     response.stream_to_file(speech_file_path)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"io"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Audio.Speech.New(context.Background(), openai.AudioSpeechNewParams{
+		Model:        openai.SpeechModelGPT4oMiniTTS,
+		Voice:        openai.AudioSpeechNewParamsVoiceUnion{OfAudioSpeechNewsVoiceString2: openai.String("coral")},
+		Input:        "Today is a wonderful day to build something people love!",
+		Instructions: openai.String("Speak in a cheerful and positive tone."),
+	})
+	if err != nil {
+		panic(err)
+	}
+	defer response.Body.Close()
+
+	file, err := os.Create("speech.mp3")
+	if err != nil {
+		panic(err)
+	}
+	if _, err := io.Copy(file, response.Body); err != nil {
+		panic(err)
+	}
+	if err := file.Close(); err != nil {
+		panic(err)
+	}
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/audio/speech \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -169,6 +206,36 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
+```
+
+```go
+package main
+
+import (
+	"context"
+	"io"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Audio.Speech.New(context.Background(), openai.AudioSpeechNewParams{
+		Model:          openai.SpeechModelGPT4oMiniTTS,
+		Voice:          openai.AudioSpeechNewParamsVoiceUnion{OfAudioSpeechNewsVoiceString2: openai.String("coral")},
+		Input:          "Today is a wonderful day to build something people love!",
+		Instructions:   openai.String("Speak in a cheerful and positive tone."),
+		ResponseFormat: openai.AudioSpeechNewParamsResponseFormatWAV,
+	})
+	if err != nil {
+		panic(err)
+	}
+	defer response.Body.Close()
+	if _, err := io.Copy(os.Stdout, response.Body); err != nil {
+		panic(err)
+	}
+}
 ```
 
 ```bash

@@ -74,12 +74,6 @@ To import the dashboard from within Grafana:
 
 You can also import the [GitHub Default dashboard from grafana.com](/grafana/dashboards/14000) (dashboard ID `14000`). For instructions, refer to [Import a dashboard](/docs/grafana/latest/dashboards/build-dashboards/import-dashboards/).
 
-Give it a try using Grafana Play
-
-With Grafana Play, you can explore and see how it works, learning from practical examples to accelerate your development. This feature can be seen on [GitHub data source plugin demo](https://play.grafana.org/dashboards/f/bb613d16-7ee5-4cf4-89ac-60dd9405fdd7/demo-github).
-
-[Try it](https://play.grafana.org/dashboards/f/bb613d16-7ee5-4cf4-89ac-60dd9405fdd7/demo-github)
-
 ## Caching
 
 Caching is always enabled for this plugin.

@@ -16,6 +16,14 @@ The Batch API supports several OpenRouter API shapes, including chat completions
 
 ***
 
+## Limitations
+
+The Batch API is currently text-only. On `/v1/chat/completions`, `/v1/responses`, and `/v1/messages`, a request carrying image, audio, video, or file content parts is rejected during validation, including the Responses `input_image` and `input_file` parts and the Anthropic `image` and `document` blocks. On `/v1/chat/completions`, asking for non-text output through `modalities`, `audio`, or `image_config` is rejected as well. For embeddings, `input` must be strings or token arrays.
+
+Send multimodal requests to the sync API instead.
+
+***
+
 ## Pricing
 
 Batch requests are typically billed at 50% of the model's standard per-token pricing, mirroring the batch discounts offered by [OpenAI](https://developers.openai.com/api/docs/guides/batch) and [Anthropic](https://platform.claude.com/docs/en/build-with-claude/batch-processing). For a completed batch, `usage.cost` reports the amount OpenRouter charges; for BYOK-routed batches, this is only the OpenRouter BYOK fee because provider inference is billed directly by the provider.

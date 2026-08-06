@@ -130,6 +130,36 @@ batch_input_file = client.files.create(
 print(batch_input_file)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	file, err := os.Open("batchinput.jsonl")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	uploaded, err := client.Files.New(context.Background(), openai.FileNewParams{
+		File:    file,
+		Purpose: openai.FilePurposeBatch,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(uploaded.ID)
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -171,6 +201,30 @@ batch = client.batches.create(
     metadata={"description": "nightly eval job"},
 )
 print(batch)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	batch, err := client.Batches.New(context.Background(), openai.BatchNewParams{
+		InputFileID:      "file-abc123",
+		Endpoint:         openai.BatchNewParamsEndpointV1ChatCompletions,
+		CompletionWindow: openai.BatchNewParamsCompletionWindow24h,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(batch.ID)
+}
 ```
 
 ```bash
@@ -239,6 +293,26 @@ batch = client.batches.retrieve(batch.id)
 print(batch)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	batch, err := client.Batches.Get(context.Background(), "batch_abc123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(batch.Status)
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -290,6 +364,32 @@ client = OpenAI()
 
 file_response = client.files.content(output_file_id)
 print(file_response.text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"io"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Files.Content(context.Background(), "file-xyz123")
+	if err != nil {
+		panic(err)
+	}
+	defer response.Body.Close()
+	contents, err := io.ReadAll(response.Body)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(string(contents))
+}
 ```
 
 ```bash
@@ -345,6 +445,26 @@ client = OpenAI()
 client.batches.cancel(batch_id)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	batch, err := client.Batches.Cancel(context.Background(), "batch_abc123")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(batch.Status)
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -381,6 +501,28 @@ from openai import OpenAI
 client = OpenAI()
 
 client.batches.list(limit=10)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	list := client.Batches.ListAutoPaging(context.Background(), openai.BatchListParams{Limit: openai.Int(10)})
+	for list.Next() {
+		fmt.Println(list.Current().ID)
+	}
+	if err := list.Err(); err != nil {
+		panic(err)
+	}
+}
 ```
 
 ```bash

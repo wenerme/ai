@@ -54,6 +54,34 @@ response = client.with_options(timeout=900.0).responses.create(
 print(response.output_text)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"time"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/option"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient(option.WithRequestTimeout(15 * time.Minute))
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:        "gpt-5.6",
+		Instructions: openai.String("List and describe all the metaphors used in this book."),
+		Input:        responses.ResponseNewParamsInputUnion{OfString: openai.String("<very long text of book here>")},
+		ServiceTier:  responses.ResponseNewParamsServiceTierFlex,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \

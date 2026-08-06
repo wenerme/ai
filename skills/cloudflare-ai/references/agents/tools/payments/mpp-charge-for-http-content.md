@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Charge for HTTP content
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [mpp-proxy ↗](https://github.com/cloudflare/mpp-proxy) template is a Cloudflare Worker that sits in front of any HTTP backend. When a request hits a protected route, the proxy returns a `402` response with an MPP payment challenge. After the client pays, the proxy verifies the payment, forwards the request to your origin, and issues a 1-hour session cookie.
 
@@ -84,31 +84,7 @@ For full configuration options, proxy modes, and Bot Management examples, refer 
 
 ## Custom Worker endpoints
 
-For more control, add MPP middleware directly to your Worker using Hono:
-
-```ts
-import { Hono } from "hono";
-import { Mppx, tempo } from "mppx/hono";
-
-const app = new Hono();
-
-const mppx = Mppx.create({
-	methods: [
-		tempo({
-			currency: "0x20c0000000000000000000000000000000000000",
-			recipient: "0xYourWalletAddress",
-		}),
-	],
-});
-
-app.get("/premium", mppx.charge({ amount: "0.10" }), (c) =>
-	c.json({ data: "Thanks for paying!" }),
-);
-
-export default app;
-```
-
-Refer to the [Hono middleware reference ↗](https://mpp.dev/sdk/typescript/middlewares/hono) for the full API, including session payments and payer identification.
+To add MPP middleware directly to a Worker, refer to [Accept payments with MPP](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/#charge-for-a-worker-route).
 
 ## Related
 
@@ -124,5 +100,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/#page","headline":"Charge for HTTP content · Cloudflare Agents docs","description":"Gate HTTP endpoints with MPP payments using the mpp-proxy template on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/#page","headline":"Charge for HTTP content · Cloudflare Agents docs","description":"Gate HTTP endpoints with MPP payments using the mpp-proxy template on Cloudflare Workers.","url":"https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -6,6 +6,20 @@
 
 Upcoming deprecations are listed on the [deprecations page](/api/docs/deprecations).
 
+## August, 2026
+
+### Aug 5
+
+Update · Model: gpt-5.6-sol · Model: gpt-5.6-terra · Model: gpt-5.6-luna
+
+Fast mode now supports long-context requests for GPT-5.6 Sol, GPT-5.6 Terra, and GPT-5.6 Luna. As of today, long-context prompts exceeding 272K tokens can run in [Fast mode](https://developers-site-git-agent-add-gpt-5-6-fast-long-c-d938fe-openai.vercel.app/api/docs/guides/fast-mode), delivering speeds up to 2.5× faster than the Standard tier. See [pricing details](https://developers-site-git-agent-add-gpt-5-6-fast-long-c-d938fe-openai.vercel.app/api/docs/pricing?latest-pricing=fast).
+
+### Aug 4
+
+Feature
+
+Customers can now filter and group data by API key in the [Usage and Costs dashboards](https://platform.openai.com/settings/organization/usage). The [Usage API](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/usage) and [Costs API](https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/usage/methods/costs) also support the API key dimension for programmatic reporting and analysis.
+
 ## July, 2026
 
 ### Jul 30

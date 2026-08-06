@@ -191,6 +191,7 @@ Store the API key securely within the user's browser or in your own database, an
 
 * `400 Invalid code_challenge_method`: Make sure you're using the same code challenge method in step 1 as in step 2.
 * `403 Invalid code or code_verifier`: Make sure your user is logged in to OpenRouter, and that `code_verifier` and `code_challenge_method` are correct.
+* `403 Authorization code expired`: Authorization codes expire 10 minutes after issuance. Restart the OAuth flow and exchange the new code promptly.
 * `405 Method Not Allowed`: Make sure you're using `POST` and `HTTPS` for your request.
 
 ## External Tools

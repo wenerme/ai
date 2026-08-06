@@ -134,6 +134,43 @@ with open("dog.wav", "wb") as f:
     f.write(wav_bytes)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model:      "gpt-audio-1.5",
+		Modalities: []string{"text", "audio"},
+		Audio: openai.ChatCompletionAudioParam{
+			Voice:  openai.ChatCompletionAudioParamVoiceUnion{OfString: openai.String("alloy")},
+			Format: openai.ChatCompletionAudioParamFormatWAV,
+		},
+		Messages: []openai.ChatCompletionMessageParamUnion{openai.UserMessage("Is a golden retriever a good family dog?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Choices[0])
+	audio, err := base64.StdEncoding.DecodeString(response.Choices[0].Message.Audio.Data)
+	if err != nil {
+		panic(err)
+	}
+	if err := os.WriteFile("dog.wav", audio, 0o600); err != nil {
+		panic(err)
+	}
+}
+```
+
 ```bash
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
@@ -225,6 +262,46 @@ completion = client.chat.completions.create(
 )
 
 print(completion.choices[0].message)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	audio, err := os.ReadFile("fixtures/audio.wav")
+	if err != nil {
+		panic(err)
+	}
+	client := openai.NewClient()
+	response, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model:      "gpt-audio-1.5",
+		Modalities: []string{"text", "audio"},
+		Audio: openai.ChatCompletionAudioParam{
+			Voice:  openai.ChatCompletionAudioParamVoiceUnion{OfString: openai.String("alloy")},
+			Format: openai.ChatCompletionAudioParamFormatWAV,
+		},
+		Messages: []openai.ChatCompletionMessageParamUnion{openai.UserMessage([]openai.ChatCompletionContentPartUnionParam{
+			openai.TextContentPart("What is in this recording?"),
+			openai.InputAudioContentPart(openai.ChatCompletionContentPartInputAudioInputAudioParam{
+				Data:   base64.StdEncoding.EncodeToString(audio),
+				Format: "wav",
+			}),
+		})},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Choices[0])
+}
 ```
 
 ```bash

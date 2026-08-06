@@ -259,3 +259,34 @@ except openai.APIError as e:
 else:
     print(response.output_text)
 ```
+
+```go
+package main
+
+import (
+	"context"
+	"errors"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Hello world")},
+	})
+	if err != nil {
+		var apiError *openai.Error
+		if errors.As(err, &apiError) {
+			fmt.Println("OpenAI API returned an API error:", apiError)
+			return
+		}
+		fmt.Println("Failed to connect to OpenAI API:", err)
+		return
+	}
+	fmt.Println(response.OutputText())
+}
+```

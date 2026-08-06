@@ -50,7 +50,7 @@ In Visual Studio Code, `.vscode/mcp.json` uses `servers` as the root key instead
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Cloudflare platform access
@@ -126,11 +126,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
@@ -138,11 +134,15 @@ Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips
