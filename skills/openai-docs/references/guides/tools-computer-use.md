@@ -125,28 +125,6 @@ Create a helper for shelling into the container:
 
 Execute commands on the container
 
-```python
-import subprocess
-
-
-def docker_exec(cmd: str, container_name: str, decode: bool = True):
-    safe_cmd = cmd.replace('"', '\\"')
-    docker_cmd = f'docker exec {container_name} sh -c "{safe_cmd}"'
-    output = subprocess.check_output(docker_cmd, shell=True)
-    if decode:
-        return output.decode("utf-8", errors="ignore")
-    return output
-
-
-class VM:
-    def __init__(self, display: str, container_name: str):
-        self.display = display
-        self.container_name = container_name
-
-
-vm = VM(display=":99", container_name="cua-image")
-```
-
 ```javascript
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
@@ -184,6 +162,28 @@ const vm = {
   display: ":99",
   containerName: "cua-image",
 };
+```
+
+```python
+import subprocess
+
+
+def docker_exec(cmd: str, container_name: str, decode: bool = True):
+    safe_cmd = cmd.replace('"', '\\"')
+    docker_cmd = f'docker exec {container_name} sh -c "{safe_cmd}"'
+    output = subprocess.check_output(docker_cmd, shell=True)
+    if decode:
+        return output.decode("utf-8", errors="ignore")
+    return output
+
+
+class VM:
+    def __init__(self, display: str, container_name: str):
+        self.display = display
+        self.container_name = container_name
+
+
+vm = VM(display=":99", container_name="cua-image")
 ```
 
 
@@ -248,6 +248,31 @@ response = client.responses.create(
 )
 
 print(response.output)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Tools: []responses.ToolUnionParam{{OfComputer: &responses.ComputerToolParam{}}},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Check whether the Filters panel is open. If it is not open, click Show filters. Then type penguin in the search box. Use the computer tool for UI interaction.")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Output)
+}
 ```
 
 
@@ -1637,6 +1662,42 @@ def send_computer_screenshot(response, call_id, screenshot_base64):
     )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := sendComputerScreenshot(client, "resp_abc123", "call_abc123", "<base64 bytes here>")
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Output)
+}
+
+func sendComputerScreenshot(client openai.Client, responseID string, callID string, screenshotBase64 string) (*responses.Response, error) {
+	screenshot := responses.ResponseComputerToolCallOutputScreenshotParam{
+		ImageURL: openai.String("data:image/png;base64," + screenshotBase64),
+	}
+	screenshot.SetExtraFields(map[string]any{"detail": "original"})
+	return client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:              "gpt-5.6",
+		Tools:              []responses.ToolUnionParam{{OfComputer: &responses.ComputerToolParam{}}},
+		PreviousResponseID: openai.String(responseID),
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfComputerCallOutput(callID, screenshot),
+		}},
+	})
+}
+```
+
 
 ### 5. Repeat until the tool stops calling
 
@@ -1775,7 +1836,7 @@ If you want visual interaction in this setup, make sure your harness can capture
 
 ### Code-execution harness examples
 
-These minimal JavaScript and Python implementations demonstrate a code-execution harness. They give the model a code-execution tool, keep Playwright objects available to the runtime, return text and screenshots back to the model, and let the model ask the user clarifying questions when it gets blocked.
+These minimal TypeScript and Python implementations demonstrate a code-execution harness. They give the model a code-execution tool, keep Playwright objects available to the runtime, return text and screenshots back to the model, and let the model ask the user clarifying questions when it gets blocked.
 
 Run model-generated code only inside a disposable, least-privilege container or VM with resource and network limits. Language-level sandboxes such as Node.js `vm` and restricted Python global variables are not security boundaries. Keep the sandbox in a separate process and security boundary from the API client, with no shared credentials or host mounts. Enforce time and resource limits inside the sandbox, and terminate the runtime when it exceeds them.
 
@@ -1783,11 +1844,11 @@ The examples below do not run generated code in the API client. They send each a
 
 
 
-JavaScript
+TypeScript
 
     Code-execution harness
 
-```javascript
+```typescript
 // Run with:
 //   pnpm example -- tools/cua/015-code-execution-harness-example.ts
 // Override the user prompt with:
@@ -2519,6 +2580,32 @@ response = client.responses.create(
     input="Check whether the Filters panel is open.",
     truncation="auto",
 )
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:      "computer-use-preview",
+		Tools:      []responses.ToolUnionParam{responses.ToolParamOfComputerUsePreview(768, 1024, responses.ComputerUsePreviewToolEnvironmentBrowser)},
+		Input:      responses.ResponseNewParamsInputUnion{OfString: openai.String("Check whether the Filters panel is open.")},
+		Truncation: responses.ResponseNewParamsTruncationAuto,
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Output)
+}
 ```
 
 

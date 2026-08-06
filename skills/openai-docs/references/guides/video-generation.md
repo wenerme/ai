@@ -80,6 +80,29 @@ video = openai.videos.create(
 print("Video generation started:", video)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	video, err := client.Videos.New(context.Background(), openai.VideoNewParams{
+		Model:  openai.VideoModelSora2,
+		Prompt: "A video of the words 'Thank you' in sparkling letters",
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Video generation started:", video)
+}
+```
+
 ```bash
 curl -X POST "https://api.openai.com/v1/videos" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -201,6 +224,33 @@ async def main() -> None:
 asyncio.run(main())
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	video, err := client.Videos.NewAndPoll(context.Background(), openai.VideoNewParams{
+		Model:  openai.VideoModelSora2,
+		Prompt: "A video of the words 'Thank you' in sparkling letters",
+	}, 2000)
+	if err != nil {
+		panic(err)
+	}
+	if video.Status == openai.VideoStatusCompleted {
+		fmt.Println("Video successfully completed:", video)
+		return
+	}
+	fmt.Println("Video creation failed. Status:", video.Status)
+}
+```
+
 
 Response example:
 
@@ -297,12 +347,6 @@ writeFileSync("video.mp4", buffer);
 console.log("Wrote video.mp4");
 ```
 
-```bash
-curl -L "https://api.openai.com/v1/videos/video_abc123/content" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  --output video.mp4
-```
-
 ```python
 from openai import OpenAI
 import sys
@@ -350,6 +394,56 @@ content = openai.videos.download_content(video.id, variant="video")
 content.write_to_file("video.mp4")
 
 print("Wrote video.mp4")
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"io"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	video, err := client.Videos.NewAndPoll(context.Background(), openai.VideoNewParams{
+		Model:  openai.VideoModelSora2,
+		Prompt: "A video of the words 'Thank you' in sparkling letters",
+	}, 2000)
+	if err != nil {
+		panic(err)
+	}
+	if video.Status != openai.VideoStatusCompleted {
+		panic(fmt.Errorf("video generation failed with status %s", video.Status))
+	}
+
+	response, err := client.Videos.DownloadContent(context.Background(), video.ID, openai.VideoDownloadContentParams{})
+	if err != nil {
+		panic(err)
+	}
+	defer response.Body.Close()
+	file, err := os.Create("video.mp4")
+	if err != nil {
+		panic(err)
+	}
+	if _, err := io.Copy(file, response.Body); err != nil {
+		panic(err)
+	}
+	if err := file.Close(); err != nil {
+		panic(err)
+	}
+	fmt.Println("Wrote video.mp4")
+}
+```
+
+```bash
+curl -L "https://api.openai.com/v1/videos/video_abc123/content" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  --output video.mp4
 ```
 
 

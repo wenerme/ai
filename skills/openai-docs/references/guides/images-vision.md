@@ -86,6 +86,52 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Generate an image of a gray tabby cat hugging an otter with an orange scarf."),
+		},
+		Tools: []responses.ToolUnionParam{{
+			OfImageGeneration: &responses.ToolImageGenerationParam{},
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	for _, output := range response.Output {
+		if output.Type != "image_generation_call" {
+			continue
+		}
+		image, err := base64.StdEncoding.DecodeString(output.AsImageGenerationCall().Result)
+		if err != nil {
+			panic(err)
+		}
+		if err := os.WriteFile("cat_and_otter.png", image, 0o600); err != nil {
+			panic(err)
+		}
+		return
+	}
+
+	panic("response did not include an image generation call")
+}
+```
+
 ```bash
 openai responses create \
   --model gpt-5.6 \
@@ -181,6 +227,45 @@ response = client.responses.create(
 )
 
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(
+					responses.ResponseInputMessageContentListParam{
+						responses.ResponseInputContentParamOfInputText("What's in this image?"),
+						{OfInputImage: &responses.ResponseInputImageParam{
+							Detail:   responses.ResponseInputImageDetailAuto,
+							ImageURL: openai.String("https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg"),
+						}},
+					},
+					responses.EasyInputMessageRoleUser,
+				),
+			},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```csharp
@@ -322,6 +407,52 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	image, err := os.ReadFile("image.png")
+	if err != nil {
+		panic(err)
+	}
+	imageURL := "data:image/png;base64," + base64.StdEncoding.EncodeToString(image)
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(
+					responses.ResponseInputMessageContentListParam{
+						responses.ResponseInputContentParamOfInputText("What's in this image?"),
+						{OfInputImage: &responses.ResponseInputImageParam{
+							Detail:   responses.ResponseInputImageDetailAuto,
+							ImageURL: openai.String(imageURL),
+						}},
+					},
+					responses.EasyInputMessageRoleUser,
+				),
+			},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
+```
+
 ```csharp
 using OpenAI.Responses;
 #pragma warning disable OPENAI001
@@ -456,6 +587,59 @@ response = client.responses.create(
 )
 
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	file, err := os.Open("image.png")
+	if err != nil {
+		panic(err)
+	}
+	defer file.Close()
+
+	uploaded, err := client.Files.New(context.Background(), openai.FileNewParams{
+		File:    file,
+		Purpose: openai.FilePurposeVision,
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfInputItemList: responses.ResponseInputParam{
+				responses.ResponseInputItemParamOfMessage(
+					responses.ResponseInputMessageContentListParam{
+						responses.ResponseInputContentParamOfInputText("What's in this image?"),
+						{OfInputImage: &responses.ResponseInputImageParam{
+							Detail: responses.ResponseInputImageDetailAuto,
+							FileID: openai.String(uploaded.ID),
+						}},
+					},
+					responses.EasyInputMessageRoleUser,
+				),
+			},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```csharp

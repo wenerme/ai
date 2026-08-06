@@ -89,6 +89,35 @@ client.fine_tuning.jobs.create(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	job, err := client.FineTuning.Jobs.New(context.Background(), openai.FineTuningJobNewParams{
+		TrainingFile: "file-abc123",
+		Model:        "gpt-4o-mini-2024-07-18",
+		Method: openai.FineTuningJobNewParamsMethod{
+			Type: "supervised",
+			Supervised: openai.SupervisedMethodParam{Hyperparameters: openai.SupervisedHyperparameters{
+				NEpochs: openai.SupervisedHyperparametersNEpochsUnion{OfInt: openai.Int(2)},
+			}},
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(job.ID)
+}
+```
+
 
 ## Adjust your dataset
 

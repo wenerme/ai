@@ -63,6 +63,51 @@ if image_data:
         f.write(base64.b64decode(image_base64))
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Generate an image of gray tabby cat hugging an otter with an orange scarf"),
+		},
+		Tools: []responses.ToolUnionParam{{OfImageGeneration: &responses.ToolImageGenerationParam{}}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	saveFirstGeneratedImage(response, "otter.png")
+}
+
+func saveFirstGeneratedImage(response *responses.Response, filename string) {
+	for _, output := range response.Output {
+		if output.Type != "image_generation_call" {
+			continue
+		}
+		image, err := base64.StdEncoding.DecodeString(output.AsImageGenerationCall().Result)
+		if err != nil {
+			panic(err)
+		}
+		if err := os.WriteFile(filename, image, 0o600); err != nil {
+			panic(err)
+		}
+		return
+	}
+	panic("response did not include an image generation call")
+}
+```
+
 
 You can [provide input images](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=gpt-image#edit-images) using file IDs or base64 data.
 
@@ -209,6 +254,64 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	first, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Generate an image of gray tabby cat hugging an otter with an orange scarf"),
+		},
+		Tools: []responses.ToolUnionParam{{OfImageGeneration: &responses.ToolImageGenerationParam{}}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	saveFirstGeneratedImage(first, "cat_and_otter.png")
+
+	followUp, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:              "gpt-5.6",
+		PreviousResponseID: openai.String(first.ID),
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Now make it look realistic"),
+		},
+		Tools: []responses.ToolUnionParam{{OfImageGeneration: &responses.ToolImageGenerationParam{}}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	saveFirstGeneratedImage(followUp, "cat_and_otter_realistic.png")
+}
+
+func saveFirstGeneratedImage(response *responses.Response, filename string) {
+	for _, output := range response.Output {
+		if output.Type != "image_generation_call" {
+			continue
+		}
+		image, err := base64.StdEncoding.DecodeString(output.AsImageGenerationCall().Result)
+		if err != nil {
+			panic(err)
+		}
+		if err := os.WriteFile(filename, image, 0o600); err != nil {
+			panic(err)
+		}
+		return
+	}
+	panic("response did not include an image generation call")
+}
+```
+
   
 
   
@@ -324,6 +427,82 @@ if image_data_fwup:
         f.write(base64.b64decode(image_base64))
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"encoding/json"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	first, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Generate an image of gray tabby cat hugging an otter with an orange scarf"),
+		},
+		Tools: []responses.ToolUnionParam{{OfImageGeneration: &responses.ToolImageGenerationParam{}}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	call := firstImageGenerationCall(first)
+	saveImage("cat_and_otter.png", call.Result)
+	input := outputAsInput(first.Output)
+	input = append(input, responses.ResponseInputItemParamOfMessage(
+		responses.ResponseInputMessageContentListParam{responses.ResponseInputContentParamOfInputText("Now make it look realistic")},
+		responses.EasyInputMessageRoleUser,
+	))
+
+	followUp, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: input},
+		Tools: []responses.ToolUnionParam{{OfImageGeneration: &responses.ToolImageGenerationParam{}}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	saveImage("cat_and_otter_realistic.png", firstImageGenerationCall(followUp).Result)
+}
+
+func firstImageGenerationCall(response *responses.Response) responses.ResponseOutputItemImageGenerationCall {
+	for _, output := range response.Output {
+		if output.Type == "image_generation_call" {
+			return output.AsImageGenerationCall()
+		}
+	}
+	panic("response did not include an image generation call")
+}
+
+func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.ResponseInputItemUnionParam {
+	input := make([]responses.ResponseInputItemUnionParam, 0, len(output))
+	for _, item := range output {
+		var converted responses.ResponseInputItemUnion
+		if err := json.Unmarshal([]byte(item.RawJSON()), &converted); err != nil {
+			panic(err)
+		}
+		input = append(input, converted.ToParam())
+	}
+	return input
+}
+
+func saveImage(filename, encoded string) {
+	image, err := base64.StdEncoding.DecodeString(encoded)
+	if err != nil {
+		panic(err)
+	}
+	if err := os.WriteFile(filename, image, 0o600); err != nil {
+		panic(err)
+	}
+}
+```
+
 
 
 ## Streaming
@@ -401,6 +580,58 @@ for event in stream:
 
         if image_data:
             save_base64_image("river-final.png", image_data[0])
+```
+
+```go
+package main
+
+import (
+	"context"
+	"encoding/base64"
+	"fmt"
+	"os"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	stream := client.Responses.NewStreaming(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Draw a gorgeous image of a river made of white owl feathers, snaking its way through a serene winter landscape"),
+		},
+		Tools: []responses.ToolUnionParam{{OfImageGeneration: &responses.ToolImageGenerationParam{PartialImages: openai.Int(2)}}},
+	})
+	for stream.Next() {
+		event := stream.Current()
+		if event.Type == "response.image_generation_call.partial_image" {
+			partial := event.AsResponseImageGenerationCallPartialImage()
+			saveImage(fmt.Sprintf("river-partial-%d.png", partial.PartialImageIndex), partial.PartialImageB64)
+		}
+		if event.Type == "response.completed" {
+			for _, output := range event.AsResponseCompleted().Response.Output {
+				if output.Type == "image_generation_call" {
+					saveImage("river-final.png", output.AsImageGenerationCall().Result)
+				}
+			}
+		}
+	}
+	if err := stream.Err(); err != nil {
+		panic(err)
+	}
+}
+
+func saveImage(filename, encoded string) {
+	image, err := base64.StdEncoding.DecodeString(encoded)
+	if err != nil {
+		panic(err)
+	}
+	if err := os.WriteFile(filename, image, 0o600); err != nil {
+		panic(err)
+	}
+}
 ```
 
 

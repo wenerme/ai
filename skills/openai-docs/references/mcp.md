@@ -26,7 +26,10 @@ In this example, we are going to build our MCP server using Python and [FastMCP]
 
 Note that there are a number of other MCP server frameworks you can use in a variety of programming languages. Whichever framework you use though, the tool definitions in your server will need to conform to the shape described here.
 
-To work with ChatGPT deep research and company knowledge (and deep research via API), your MCP server should implement two read-only tools: `search` and `fetch`, using the compatibility schema in [Company knowledge compatibility](https://developers.openai.com/plugins/build/mcp-server#company-knowledge-compatibility).
+To work with ChatGPT deep research and company knowledge, your MCP server
+should implement two read-only tools: `search` and `fetch`, using the
+compatibility schema in [Company knowledge compatibility](https://developers.openai.com/plugins/build/mcp-server#company-knowledge-compatibility).
+The same interface is useful for research workflows via API.
 
 Declare an output schema for each tool so clients can validate the result shape.
 In FastMCP, typed return models can generate this schema automatically; the
@@ -397,7 +400,7 @@ https://777xxx.janeway.replit.dev/sse/
 
 ## Test and connect your MCP server
 
-You can test your MCP server with a deep research model [in the prompts dashboard](https://platform.openai.com/chat). Create a new prompt, or edit an existing one, and add a new MCP tool to the prompt configuration. Remember that MCP servers used via API for deep research have to be configured with no approval required.
+You can test your MCP server with a deep research model [in the prompts dashboard](https://platform.openai.com/chat). Create a new prompt, or edit an existing one, and add a new MCP tool to the prompt configuration. This compatibility example exposes only read-only `search` and `fetch` tools, so its API request skips approval for those tools. Keep approval enabled for tools that can modify data or take other consequential actions.
 
 If you are testing this server as part of a plugin, follow [Connect and test your plugin](https://developers.openai.com/plugins/deploy/connect-chatgpt).
 
@@ -414,7 +417,7 @@ curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-  "model": "o4-mini-deep-research",
+  "model": "gpt-5.6-sol",
   "input": [
     {
       "role": "developer",

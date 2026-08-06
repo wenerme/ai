@@ -75,6 +75,31 @@ response = client.chat.completions.create(
 )
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Chat.Completions.New(context.Background(), openai.ChatCompletionNewParams{
+		Model:               "gpt-5.6",
+		Messages:            []openai.ChatCompletionMessageParamUnion{openai.UserMessage("This is a test")},
+		MaxCompletionTokens: openai.Int(5),
+		SafetyIdentifier:    openai.String("user_123456"),
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Choices[0].Message.Content)
+}
+```
+
 ```bash
 curl https://api.openai.com/v1/chat/completions \
 -H "Content-Type: application/json" \

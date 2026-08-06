@@ -77,6 +77,33 @@ resp = client.responses.create(
 print(resp.output)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	tool := responses.ToolParamOfCodeInterpreter(responses.ToolCodeInterpreterContainerCodeInterpreterContainerAutoParam{MemoryLimit: "4g"})
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:        "gpt-5.6",
+		Tools:        []responses.ToolUnionParam{tool},
+		Instructions: openai.String("You are a personal math tutor. When asked a math question, write and run code using the python tool to answer the question."),
+		Input:        responses.ResponseNewParamsInputUnion{OfString: openai.String("I need to solve the equation 3x + 11 = 14. Can you help me?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Output)
+}
+```
+
 
 While we call this tool Code Interpreter, the model knows it as the "python
   tool". Models usually understand prompts that refer to the code interpreter
@@ -118,23 +145,6 @@ curl https://api.openai.com/v1/responses \
   }'
 ```
 
-```python
-from openai import OpenAI
-
-client = OpenAI()
-
-container = client.containers.create(name="test-container", memory_limit="4g")
-
-response = client.responses.create(
-    model="gpt-5.6",
-    tools=[{"type": "code_interpreter", "container": container.id}],
-    tool_choice="required",
-    input="use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result",
-)
-
-print(response.output_text)
-```
-
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -158,6 +168,62 @@ const resp = await client.responses.create({
 });
 
 console.log(resp.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+container = client.containers.create(name="test-container", memory_limit="4g")
+
+response = client.responses.create(
+    model="gpt-5.6",
+    tools=[{"type": "code_interpreter", "container": container.id}],
+    tool_choice="required",
+    input="use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result",
+)
+
+print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	container, err := client.Containers.New(context.Background(), openai.ContainerNewParams{
+		Name:        "test-container",
+		MemoryLimit: openai.ContainerNewParamsMemoryLimit4g,
+	})
+	if err != nil {
+		panic(err)
+	}
+	defer func() {
+		if err := client.Containers.Delete(context.Background(), container.ID); err != nil {
+			panic(err)
+		}
+	}()
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:      "gpt-5.6",
+		Tools:      []responses.ToolUnionParam{responses.ToolParamOfCodeInterpreter(container.ID)},
+		ToolChoice: responses.ResponseNewParamsToolChoiceUnion{OfToolChoiceMode: openai.Opt(responses.ToolChoiceOptionsRequired)},
+		Input:      responses.ResponseNewParamsInputUnion{OfString: openai.String("use the python tool to calculate what is 4 * 3.82. and then find its square root and then find the square root of that result")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 

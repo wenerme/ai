@@ -74,18 +74,18 @@ Server tools are specialized tools operated by OpenRouter that any model can cal
 
 ## Available Server Tools
 
-| Tool                                                                   | Type                                     | Description                                                     |
-| ---------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------- |
-| [**Web Search**](/docs/guides/features/server-tools/web-search)             | `openrouter:web_search`                  | Search the web for current information                          |
-| [**Datetime**](/docs/guides/features/server-tools/datetime)                 | `openrouter:datetime`                    | Get the current date and time                                   |
-| [**Image Generation**](/docs/guides/features/server-tools/image-generation) | `openrouter:image_generation`            | Generate images from text prompts                               |
-| [**Web Fetch**](/docs/guides/features/server-tools/web-fetch)               | `openrouter:web_fetch`                   | Fetch and extract content from URLs                             |
-| [**Apply Patch**](/docs/guides/features/server-tools/apply-patch)           | `openrouter:apply_patch`                 | Propose file edits via V4A diff patches (Responses API only)    |
-| [**Shell**](/docs/guides/features/server-tools/shell)                       | `openrouter:shell`                       | Run commands in a hosted, sandboxed shell (Responses API only)  |
-| [**Fusion**](/docs/guides/features/server-tools/fusion)                     | `openrouter:fusion`                      | Run a panel of models and an analyst for multi-model analysis   |
-| [**Advisor**](/docs/guides/features/server-tools/advisor)                   | `openrouter:advisor`                     | Consult a stronger model for guidance mid-generation            |
-| [**Subagent**](/docs/guides/features/server-tools/subagent)                 | `openrouter:subagent`                    | Delegate self-contained tasks to a smaller, faster worker model |
-| [**Search Models**](/docs/guides/features/server-tools/search-models)       | `openrouter:experimental__search_models` | Search and filter the OpenRouter model catalog                  |
+| Tool                                                                   | Type                                     | Description                                                             |
+| ---------------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------- |
+| [**Web Search**](/docs/guides/features/server-tools/web-search)             | `openrouter:web_search`                  | Search the web for current information                                  |
+| [**Datetime**](/docs/guides/features/server-tools/datetime)                 | `openrouter:datetime`                    | Get the current date and time                                           |
+| [**Image Generation**](/docs/guides/features/server-tools/image-generation) | `openrouter:image_generation`            | Generate images from text prompts                                       |
+| [**Web Fetch**](/docs/guides/features/server-tools/web-fetch)               | `openrouter:web_fetch`                   | Fetch and extract content from URLs                                     |
+| [**Apply Patch**](/docs/guides/features/server-tools/apply-patch)           | `openrouter:apply_patch`                 | Propose file edits via V4A diff patches (Responses API only)            |
+| [**Shell**](/docs/guides/features/server-tools/shell)                       | `openrouter:shell`                       | Run commands in a hosted, sandboxed shell (Responses and Messages APIs) |
+| [**Fusion**](/docs/guides/features/server-tools/fusion)                     | `openrouter:fusion`                      | Run a panel of models and an analyst for multi-model analysis           |
+| [**Advisor**](/docs/guides/features/server-tools/advisor)                   | `openrouter:advisor`                     | Consult a stronger model for guidance mid-generation                    |
+| [**Subagent**](/docs/guides/features/server-tools/subagent)                 | `openrouter:subagent`                    | Delegate self-contained tasks to a smaller, faster worker model         |
+| [**Search Models**](/docs/guides/features/server-tools/search-models)       | `openrouter:experimental__search_models` | Search and filter the OpenRouter model catalog                          |
 
 ## How Server Tools Work
 

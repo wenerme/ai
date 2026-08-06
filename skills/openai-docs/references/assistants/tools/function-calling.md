@@ -129,6 +129,47 @@ assistant = client.beta.assistants.create(
 )
 ```
 
+```go
+assistant, err := client.Beta.Assistants.New(context.Background(), openai.BetaAssistantNewParams{
+	Model:        shared.ChatModelGPT4o,
+	Instructions: openai.String("You are a weather bot. Use the provided functions to answer questions."),
+	Tools:        weatherTools(false),
+})
+if err != nil {
+	panic(err)
+}
+
+func weatherTools(strict bool) []openai.AssistantToolUnionParam {
+	return []openai.AssistantToolUnionParam{
+		openai.AssistantToolParamOfFunction(shared.FunctionDefinitionParam{
+			Name:        "get_current_temperature",
+			Description: openai.String("Get the current temperature for a specific location"),
+			Parameters: map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"location": map[string]any{"type": "string", "description": "The city and state, e.g., San Francisco, CA"},
+					"unit":     map[string]any{"type": "string", "enum": []string{"Celsius", "Fahrenheit"}, "description": "The temperature unit to use. Infer this from the user's location."},
+				},
+				"required": []string{"location", "unit"},
+			},
+			Strict: openai.Bool(strict),
+		}),
+		openai.AssistantToolParamOfFunction(shared.FunctionDefinitionParam{
+			Name:        "get_rain_probability",
+			Description: openai.String("Get the probability of rain for a specific location"),
+			Parameters: map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"location": map[string]any{"type": "string", "description": "The city and state, e.g., San Francisco, CA"},
+				},
+				"required": []string{"location"},
+			},
+			Strict: openai.Bool(strict),
+		}),
+	}
+}
+```
+
 
 ### Step 2: Create a Thread and add Messages
 
@@ -150,6 +191,22 @@ message = client.beta.threads.messages.create(
     role="user",
     content="What's the weather in San Francisco today and the likelihood it'll rain?",
 )
+```
+
+```go
+thread, err := client.Beta.Threads.New(context.Background(), openai.BetaThreadNewParams{})
+if err != nil {
+	panic(err)
+}
+_, err = client.Beta.Threads.Messages.New(context.Background(), thread.ID, openai.BetaThreadMessageNewParams{
+	Role: "user",
+	Content: openai.BetaThreadMessageNewParamsContentUnion{
+		OfString: openai.String("What's the weather in San Francisco today and the likelihood it'll rain?"),
+	},
+})
+if err != nil {
+	panic(err)
+}
 ```
 
 
@@ -346,8 +403,8 @@ Without streaming
     
 
 Runs are asynchronous, which means you'll want to monitor their `status` by polling the Run object until a
-[terminal status](https://developers.openai.com/api/docs/assistants/deep-dive#runs-and-run-steps) is reached. For convenience, the 'create and poll' SDK helpers assist both in
-creating the run and then polling for its completion. Once the Run completes, you can list the
+[terminal status](https://developers.openai.com/api/docs/assistants/deep-dive#runs-and-run-steps) is reached. For convenience, where available, the 'create and poll' SDK helpers assist both in
+creating the run and then polling for its completion. The Go tab shows the equivalent workflow with manual polling. Once the Run completes, you can list the
 Messages added to the Thread by the Assistant. Finally, you would retrieve all the `tool_outputs` from
 `required_action` and submit them at the same time to the 'submit tool outputs and poll' helper.
 
@@ -454,6 +511,62 @@ if run.status == "completed":
     print(messages)
 else:
     print(run.status)
+```
+
+```go
+run, err := client.Beta.Threads.Runs.New(context.Background(), thread.ID, openai.BetaThreadRunNewParams{
+	AssistantID: assistant.ID,
+})
+if err != nil {
+	panic(err)
+}
+run = pollRun(client, thread.ID, run)
+if run.Status == openai.RunStatusRequiresAction {
+	outputs := make([]openai.BetaThreadRunSubmitToolOutputsParamsToolOutput, 0)
+	for _, toolCall := range run.RequiredAction.SubmitToolOutputs.ToolCalls {
+		switch toolCall.Function.Name {
+		case "get_current_temperature":
+			outputs = append(outputs, openai.BetaThreadRunSubmitToolOutputsParamsToolOutput{
+				ToolCallID: openai.String(toolCall.ID), Output: openai.String("57"),
+			})
+		case "get_rain_probability":
+			outputs = append(outputs, openai.BetaThreadRunSubmitToolOutputsParamsToolOutput{
+				ToolCallID: openai.String(toolCall.ID), Output: openai.String("0.06"),
+			})
+		}
+	}
+	if len(outputs) > 0 {
+		run, err = client.Beta.Threads.Runs.SubmitToolOutputs(
+			context.Background(), thread.ID, run.ID,
+			openai.BetaThreadRunSubmitToolOutputsParams{ToolOutputs: outputs},
+		)
+		if err != nil {
+			panic(err)
+		}
+		run = pollRun(client, thread.ID, run)
+	}
+}
+if run.Status == openai.RunStatusCompleted {
+	messages, err := client.Beta.Threads.Messages.List(context.Background(), thread.ID, openai.BetaThreadMessageListParams{})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(messages.Data)
+} else {
+	fmt.Println(run.Status)
+}
+
+func pollRun(client openai.Client, threadID string, run *openai.Run) *openai.Run {
+	for run.Status == openai.RunStatusQueued || run.Status == openai.RunStatusInProgress {
+		time.Sleep(time.Second)
+		next, err := client.Beta.Threads.Runs.Get(context.Background(), threadID, run.ID)
+		if err != nil {
+			panic(err)
+		}
+		run = next
+	}
+	return run
+}
 ```
 
 
@@ -586,4 +699,47 @@ assistant = client.beta.assistants.create(
         },
     ],
 )
+```
+
+```go
+assistant, err := client.Beta.Assistants.New(context.Background(), openai.BetaAssistantNewParams{
+	Model:        shared.ChatModelGPT4o2024_08_06,
+	Instructions: openai.String("You are a weather bot. Use the provided functions to answer questions."),
+	Tools:        weatherTools(),
+})
+if err != nil {
+	panic(err)
+}
+
+func weatherTools() []openai.AssistantToolUnionParam {
+	return []openai.AssistantToolUnionParam{
+		openai.AssistantToolParamOfFunction(shared.FunctionDefinitionParam{
+			Name:        "get_current_temperature",
+			Description: openai.String("Get the current temperature for a specific location"),
+			Parameters: map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"location": map[string]any{"type": "string", "description": "The city and state, e.g., San Francisco, CA"},
+					"unit":     map[string]any{"type": "string", "enum": []string{"Celsius", "Fahrenheit"}, "description": "The temperature unit to use. Infer this from the user's location."},
+				},
+				"required":             []string{"location", "unit"},
+				"additionalProperties": false,
+			},
+			Strict: openai.Bool(true),
+		}),
+		openai.AssistantToolParamOfFunction(shared.FunctionDefinitionParam{
+			Name:        "get_rain_probability",
+			Description: openai.String("Get the probability of rain for a specific location"),
+			Parameters: map[string]any{
+				"type": "object",
+				"properties": map[string]any{
+					"location": map[string]any{"type": "string", "description": "The city and state, e.g., San Francisco, CA"},
+				},
+				"required":             []string{"location"},
+				"additionalProperties": false,
+			},
+			Strict: openai.Bool(true),
+		}),
+	}
+}
 ```

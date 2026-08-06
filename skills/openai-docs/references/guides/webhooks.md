@@ -14,36 +14,6 @@ Below are examples of simple servers capable of ingesting webhooks from OpenAI, 
 
 Webhooks server
 
-```python
-import os
-from openai import OpenAI, InvalidWebhookSignatureError
-from flask import Flask, request, Response
-
-app = Flask(__name__)
-client = OpenAI(webhook_secret=os.environ["OPENAI_WEBHOOK_SECRET"])
-
-
-@app.route("/webhook", methods=["POST"])
-def webhook():
-    try:
-        # with webhook_secret set above, unwrap will raise an error if the signature is invalid
-        event = client.webhooks.unwrap(request.data, request.headers)
-
-        if event.type == "response.completed":
-            response_id = event.data.id
-            response = client.responses.retrieve(response_id)
-            print("Response output:", response.output_text)
-
-        return Response(status=200)
-    except InvalidWebhookSignatureError as e:
-        print("Invalid signature", e)
-        return Response("Invalid signature", status=400)
-
-
-if __name__ == "__main__":
-    app.run(port=8000)
-```
-
 ```javascript
 import OpenAI from "openai";
 import express from "express";
@@ -84,6 +54,36 @@ app.post("/webhook", async (req, res) => {
 app.listen(8000, () => {
   console.log("Webhook server is running on port 8000");
 });
+```
+
+```python
+import os
+from openai import OpenAI, InvalidWebhookSignatureError
+from flask import Flask, request, Response
+
+app = Flask(__name__)
+client = OpenAI(webhook_secret=os.environ["OPENAI_WEBHOOK_SECRET"])
+
+
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    try:
+        # with webhook_secret set above, unwrap will raise an error if the signature is invalid
+        event = client.webhooks.unwrap(request.data, request.headers)
+
+        if event.type == "response.completed":
+            response_id = event.data.id
+            response = client.responses.retrieve(response_id)
+            print("Response output:", response.output_text)
+
+        return Response(status=200)
+    except InvalidWebhookSignatureError as e:
+        print("Invalid signature", e)
+        return Response("Invalid signature", status=400)
+
+
+if __name__ == "__main__":
+    app.run(port=8000)
 ```
 
 
@@ -129,6 +129,35 @@ resp = client.responses.create(
 )
 
 print(resp.status)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:      "gpt-5.6",
+		Background: openai.Bool(true),
+		Input: responses.ResponseNewParamsInputUnion{
+			OfString: openai.String("Write a very long novel about otters in space."),
+		},
+	})
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(response.Status)
+}
 ```
 
 
@@ -200,6 +229,19 @@ The simplest way to verify webhook signatures is by using the `unwrap()` method 
 
 Signature verification with the OpenAI SDK
 
+```javascript
+const client = new OpenAI();
+const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
+if (!webhook_secret) throw new Error("Set OPENAI_WEBHOOK_SECRET.");
+
+// will throw if the signature is invalid
+const event = await client.webhooks.unwrap(
+  req.body,
+  req.headers,
+  webhook_secret
+);
+```
+
 ```python
 import os
 
@@ -215,19 +257,6 @@ event = client.webhooks.unwrap(
     request.headers,
     secret=webhook_secret,
 )
-```
-
-```javascript
-const client = new OpenAI();
-const webhook_secret = process.env.OPENAI_WEBHOOK_SECRET;
-if (!webhook_secret) throw new Error("Set OPENAI_WEBHOOK_SECRET.");
-
-// will throw if the signature is invalid
-const event = await client.webhooks.unwrap(
-  req.body,
-  req.headers,
-  webhook_secret
-);
 ```
 
 

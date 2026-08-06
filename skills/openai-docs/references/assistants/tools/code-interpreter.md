@@ -18,6 +18,15 @@ Code Interpreter is charged at $0.03 per session. If your Assistant calls Code I
 
 Pass `code_interpreter` in the `tools` parameter of the Assistant object to enable Code Interpreter:
 
+```javascript
+const assistant = await openai.beta.assistants.create({
+  instructions:
+    "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+  model: "gpt-4o",
+  tools: [{ type: "code_interpreter" }],
+});
+```
+
 ```python
 assistant = client.beta.assistants.create(
     instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
@@ -26,13 +35,15 @@ assistant = client.beta.assistants.create(
 )
 ```
 
-```javascript
-const assistant = await openai.beta.assistants.create({
-  instructions:
-    "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-  model: "gpt-4o",
-  tools: [{ type: "code_interpreter" }],
-});
+```go
+assistant, err := client.Beta.Assistants.New(context.Background(), openai.BetaAssistantNewParams{
+	Instructions: openai.String("You are a personal math tutor. When asked a math question, write and run code to answer the question."),
+	Model:        shared.ChatModelGPT4o,
+	Tools:        []openai.AssistantToolUnionParam{{OfCodeInterpreter: &openai.CodeInterpreterToolParam{}}},
+})
+if err != nil {
+	panic(err)
+}
 ```
 
 ```bash
@@ -56,19 +67,6 @@ The model then decides when to invoke Code Interpreter in a Run based on the nat
 
 Files that are passed at the Assistant level are accessible by all Runs with this Assistant:
 
-```python
-# Upload a file with an "assistants" purpose
-file = client.files.create(file=open("mydata.csv", "rb"), purpose="assistants")
-
-# Create an assistant using the file ID
-assistant = client.beta.assistants.create(
-    instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-    model="gpt-4o",
-    tools=[{"type": "code_interpreter"}],
-    tool_resources={"code_interpreter": {"file_ids": [file.id]}},
-)
-```
-
 ```javascript
 // Upload a file with an "assistants" purpose
 const file = await openai.files.create({
@@ -88,6 +86,45 @@ const assistant = await openai.beta.assistants.create({
     },
   },
 });
+```
+
+```python
+# Upload a file with an "assistants" purpose
+file = client.files.create(file=open("mydata.csv", "rb"), purpose="assistants")
+
+# Create an assistant using the file ID
+assistant = client.beta.assistants.create(
+    instructions="You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+    model="gpt-4o",
+    tools=[{"type": "code_interpreter"}],
+    tool_resources={"code_interpreter": {"file_ids": [file.id]}},
+)
+```
+
+```go
+input, err := os.Open("mydata.csv")
+if err != nil {
+	panic(err)
+}
+defer input.Close()
+file, err := client.Files.New(context.Background(), openai.FileNewParams{
+	File:    input,
+	Purpose: openai.FilePurposeAssistants,
+})
+if err != nil {
+	panic(err)
+}
+assistant, err := client.Beta.Assistants.New(context.Background(), openai.BetaAssistantNewParams{
+	Instructions: openai.String("You are a personal math tutor. When asked a math question, write and run code to answer the question."),
+	Model:        shared.ChatModelGPT4o,
+	Tools:        []openai.AssistantToolUnionParam{{OfCodeInterpreter: &openai.CodeInterpreterToolParam{}}},
+	ToolResources: openai.BetaAssistantNewParamsToolResources{
+		CodeInterpreter: openai.BetaAssistantNewParamsToolResourcesCodeInterpreter{FileIDs: []string{file.ID}},
+	},
+})
+if err != nil {
+	panic(err)
+}
 ```
 
 ```bash
@@ -117,20 +154,6 @@ curl https://api.openai.com/v1/assistants \
 
 Files can also be passed at the Thread level. These files are only accessible in the specific Thread. Upload the File using the [File upload](https://developers.openai.com/api/reference/resources/files/methods/create) endpoint and then pass the File ID as part of the Message creation request:
 
-```python
-thread = client.beta.threads.create(
-    messages=[
-        {
-            "role": "user",
-            "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
-            "attachments": [
-                {"file_id": file.id, "tools": [{"type": "code_interpreter"}]}
-            ],
-        }
-    ]
-)
-```
-
 ```javascript
 const thread = await openai.beta.threads.create({
   messages: [
@@ -146,6 +169,36 @@ const thread = await openai.beta.threads.create({
     },
   ],
 });
+```
+
+```python
+thread = client.beta.threads.create(
+    messages=[
+        {
+            "role": "user",
+            "content": "I need to solve the equation `3x + 11 = 14`. Can you help me?",
+            "attachments": [
+                {"file_id": file.id, "tools": [{"type": "code_interpreter"}]}
+            ],
+        }
+    ]
+)
+```
+
+```go
+thread, err := client.Beta.Threads.New(context.Background(), openai.BetaThreadNewParams{
+	Messages: []openai.BetaThreadNewParamsMessage{{
+		Role:    "user",
+		Content: openai.BetaThreadNewParamsMessageContentUnion{OfString: openai.String("I need to solve the equation `3x + 11 = 14`. Can you help me?")},
+		Attachments: []openai.BetaThreadNewParamsMessageAttachment{{
+			FileID: openai.String("file-ACq8OjcLQm2eIG0BvRM4z5qX"),
+			Tools:  []openai.BetaThreadNewParamsMessageAttachmentToolUnion{{OfCodeInterpreter: &openai.CodeInterpreterToolParam{}}},
+		}},
+	}},
+})
+if err != nil {
+	panic(err)
+}
 ```
 
 ```bash
@@ -198,21 +251,6 @@ When Code Interpreter generates an image, you can look up and download this file
 
 The file content can then be downloaded by passing the file ID to the Files API:
 
-```python
-import os
-
-from openai import OpenAI
-
-file_id = os.environ["OPENAI_FILE_ID"]
-client = OpenAI()
-
-image_data = client.files.content(file_id)
-image_data_bytes = image_data.read()
-
-with open("./my-image.png", "wb") as file:
-    file.write(image_data_bytes)
-```
-
 ```javascript
 import fs from "fs";
 import OpenAI from "openai";
@@ -233,6 +271,40 @@ async function main() {
 }
 
 main();
+```
+
+```python
+import os
+
+from openai import OpenAI
+
+file_id = os.environ["OPENAI_FILE_ID"]
+client = OpenAI()
+
+image_data = client.files.content(file_id)
+image_data_bytes = image_data.read()
+
+with open("./my-image.png", "wb") as file:
+    file.write(image_data_bytes)
+```
+
+```go
+response, err := client.Files.Content(context.Background(), "file-abc123")
+if err != nil {
+	panic(err)
+}
+defer response.Body.Close()
+output, err := os.Create("./my-image.png")
+if err != nil {
+	panic(err)
+}
+if _, err := io.Copy(output, response.Body); err != nil {
+	output.Close()
+	panic(err)
+}
+if err := output.Close(); err != nil {
+	panic(err)
+}
 ```
 
 ```bash
@@ -273,6 +345,12 @@ When Code Interpreter references a file path (e.g., ”Download this csv file”
 
 By listing the steps of a Run that called Code Interpreter, you can inspect the code `input` and `outputs` logs of Code Interpreter:
 
+```javascript
+const runSteps = await openai.beta.threads.runs.steps.list(run.id, {
+  thread_id: thread.id,
+});
+```
+
 ```python
 import os
 
@@ -285,10 +363,12 @@ run_steps = client.beta.threads.runs.steps.list(
 )
 ```
 
-```javascript
-const runSteps = await openai.beta.threads.runs.steps.list(run.id, {
-  thread_id: thread.id,
-});
+```go
+runSteps, err := client.Beta.Threads.Runs.Steps.List(context.Background(), "thread_abc123", "run_abc123", openai.BetaThreadRunStepListParams{})
+if err != nil {
+	panic(err)
+}
+fmt.Println(runSteps.Data)
 ```
 
 ```bash

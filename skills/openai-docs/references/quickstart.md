@@ -261,14 +261,11 @@ import (
 	"fmt"
 
 	"github.com/openai/openai-go/v3"
-	"github.com/openai/openai-go/v3/option"
 	"github.com/openai/openai-go/v3/responses"
 )
 
 func main() {
-	client := openai.NewClient(
-		option.WithAPIKey("My API Key"), // or set OPENAI_API_KEY in your env
-	)
+	client := openai.NewClient()
 
 	resp, err := client.Responses.New(context.TODO(), responses.ResponseNewParams{
 		Model: "gpt-5.6",
@@ -425,45 +422,6 @@ const response = await client.responses.create({
 console.log(response.output_text);
 ```
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-        "model": "gpt-5.6",
-        "input": [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "input_text",
-                        "text": "What is in this image?"
-                    },
-                    {
-                        "type": "input_image",
-                        "image_url": "https://openai-documentation.vercel.app/images/cat_and_otter.png"
-                    }
-                ]
-            }
-        ]
-}'
-```
-
-```bash
-openai responses create \
-  --model gpt-5.6 \
-  --raw-output \
-  --transform 'output.#(type=="message").content.0.text' <<'YAML'
-input:
-  - role: user
-    content:
-      - type: input_text
-        text: What is in this image?
-      - type: input_image
-        image_url: https://openai-documentation.vercel.app/images/cat_and_otter.png
-YAML
-```
-
 ```python
 from openai import OpenAI
 
@@ -489,6 +447,41 @@ response = client.responses.create(
 )
 
 print(response.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage(
+				responses.ResponseInputMessageContentListParam{
+					responses.ResponseInputContentParamOfInputText("What is in this image?"),
+					{OfInputImage: &responses.ResponseInputImageParam{
+						Detail:   responses.ResponseInputImageDetailAuto,
+						ImageURL: openai.String("https://openai-documentation.vercel.app/images/cat_and_otter.png"),
+					}},
+				},
+				responses.EasyInputMessageRoleUser,
+			),
+		}},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```csharp
@@ -544,15 +537,6 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-  
-
-  
-
-    
-File URL
-
-    Use a file URL as input
-
 ```bash
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -565,17 +549,41 @@ curl "https://api.openai.com/v1/responses" \
                 "content": [
                     {
                         "type": "input_text",
-                        "text": "Analyze the letter and provide a summary of the key points."
+                        "text": "What is in this image?"
                     },
                     {
-                        "type": "input_file",
-                        "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+                        "type": "input_image",
+                        "image_url": "https://openai-documentation.vercel.app/images/cat_and_otter.png"
                     }
                 ]
             }
         ]
-    }'
+}'
 ```
+
+```bash
+openai responses create \
+  --model gpt-5.6 \
+  --raw-output \
+  --transform 'output.#(type=="message").content.0.text' <<'YAML'
+input:
+  - role: user
+    content:
+      - type: input_text
+        text: What is in this image?
+      - type: input_image
+        image_url: https://openai-documentation.vercel.app/images/cat_and_otter.png
+YAML
+```
+
+  
+
+  
+
+    
+File URL
+
+    Use a file URL as input
 
 ```javascript
 import OpenAI from "openai";
@@ -601,6 +609,33 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_text",
+                    "text": "Analyze the letter and provide a summary of the key points.",
+                },
+                {
+                    "type": "input_file",
+                    "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
+                },
+            ],
+        },
+    ],
+)
+
+print(response.output_text)
 ```
 
 ```go
@@ -647,31 +682,32 @@ func main() {
 }
 ```
 
-```python
-from openai import OpenAI
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
-client = OpenAI()
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
 
-response = client.responses.create(
-    model="gpt-5.6",
-    input=[
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_text",
-                    "text": "Analyze the letter and provide a summary of the key points.",
-                },
-                {
-                    "type": "input_file",
-                    "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
-                },
-            ],
-        },
-    ],
-)
+Uri fileUrl = new(
+    "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+);
 
-print(response.output_text)
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart(
+                    "Analyze the letter and provide a summary of the key points."
+                ),
+                ResponseContentPart.CreateInputFilePart(fileUrl),
+            ]
+        ),
+    ]
+);
+
+Console.WriteLine(response.GetOutputText());
 ```
 
 ```ruby
@@ -701,49 +737,7 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-```csharp
-using OpenAI.Responses;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-ResponsesClient client = new(key);
-
-Uri fileUrl = new(
-    "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
-);
-
-ResponseResult response = await client.CreateResponseAsync(
-    "gpt-5.6",
-    [
-        ResponseItem.CreateUserMessageItem(
-            [
-                ResponseContentPart.CreateInputTextPart(
-                    "Analyze the letter and provide a summary of the key points."
-                ),
-                ResponseContentPart.CreateInputFilePart(fileUrl),
-            ]
-        ),
-    ]
-);
-
-Console.WriteLine(response.GetOutputText());
-```
-
-  
-
-  
-
-    
-Upload file
-
-    Upload a file and use it as input
-
 ```bash
-curl https://api.openai.com/v1/files \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F purpose="user_data" \
-    -F file="@draconomicon.pdf"
-
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -754,18 +748,27 @@ curl "https://api.openai.com/v1/responses" \
                 "role": "user",
                 "content": [
                     {
-                        "type": "input_file",
-                        "file_id": "file-6F2ksmvXxt4VdoqmHRw6kL"
+                        "type": "input_text",
+                        "text": "Analyze the letter and provide a summary of the key points."
                     },
                     {
-                        "type": "input_text",
-                        "text": "What is the first dragon in the book?"
+                        "type": "input_file",
+                        "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
                     }
                 ]
             }
         ]
     }'
 ```
+
+  
+
+  
+
+    
+Upload file
+
+    Upload a file and use it as input
 
 ```javascript
 import fs from "fs";
@@ -797,6 +800,35 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+file = client.files.create(file=open("draconomicon.pdf", "rb"), purpose="user_data")
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_file",
+                    "file_id": file.id,
+                },
+                {
+                    "type": "input_text",
+                    "text": "What is the first dragon in the book?",
+                },
+            ],
+        }
+    ],
+)
+
+print(response.output_text)
 ```
 
 ```go
@@ -856,61 +888,6 @@ func main() {
 }
 ```
 
-```python
-from openai import OpenAI
-
-client = OpenAI()
-
-file = client.files.create(file=open("draconomicon.pdf", "rb"), purpose="user_data")
-
-response = client.responses.create(
-    model="gpt-5.6",
-    input=[
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_file",
-                    "file_id": file.id,
-                },
-                {
-                    "type": "input_text",
-                    "text": "What is the first dragon in the book?",
-                },
-            ],
-        }
-    ],
-)
-
-print(response.output_text)
-```
-
-```ruby
-require "openai"
-
-openai = OpenAI::Client.new
-
-file = openai.files.create(
-  file: File.open("draconomicon.pdf", "rb"),
-  purpose: "user_data"
-)
-
-response = openai.responses.create(
-  model: "gpt-5.6",
-  input: [
-    {
-      role: "user",
-      content: [
-        {type: "input_file", file_id: file.id},
-        {type: "input_text", text: "What is the first dragon in the book?"}
-      ]
-    }
-  ]
-)
-
-puts(response.output_text)
-```
-
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -941,6 +918,61 @@ ResponseResult response = await client.CreateResponseAsync(
 );
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new
+
+file = openai.files.create(
+  file: File.open("draconomicon.pdf", "rb"),
+  purpose: "user_data"
+)
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
+        {type: "input_file", file_id: file.id},
+        {type: "input_text", text: "What is the first dragon in the book?"}
+      ]
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
+```bash
+curl https://api.openai.com/v1/files \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -F purpose="user_data" \
+    -F file="@draconomicon.pdf"
+
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "input": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "input_file",
+                        "file_id": "file-6F2ksmvXxt4VdoqmHRw6kL"
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "What is the first dragon in the book?"
+                    }
+                ]
+            }
+        ]
+    }'
 ```
 
 
@@ -994,26 +1026,31 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-        "model": "gpt-5.6",
-        "tools": [{"type": "web_search"}],
-        "input": "what was a positive news story from today?"
-}'
-```
+```go
+package main
 
-```bash
-openai responses create \
-  --model gpt-5.6 \
-  --raw-output \
-  --transform 'output.#(type=="message").content.0.text' <<'YAML'
-tools:
-  - type: web_search
-input: What was a positive news story from today?
-YAML
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Tools: []responses.ToolUnionParam{
+			responses.ToolParamOfWebSearch(responses.WebSearchToolTypeWebSearch),
+		},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What was a positive news story from today?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```csharp
@@ -1048,6 +1085,28 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "tools": [{"type": "web_search"}],
+        "input": "what was a positive news story from today?"
+}'
+```
+
+```bash
+openai responses create \
+  --model gpt-5.6 \
+  --raw-output \
+  --transform 'output.#(type=="message").content.0.text' <<'YAML'
+tools:
+  - type: web_search
+input: What was a positive news story from today?
+YAML
+```
+
   
 
   
@@ -1056,19 +1115,6 @@ puts(response.output_text)
 File search
 
     Search your files in a response
-
-```python
-from openai import OpenAI
-
-client = OpenAI()
-
-response = client.responses.create(
-    model="gpt-5.6",
-    input="What is deep research by OpenAI?",
-    tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
-)
-print(response)
-```
 
 ```javascript
 import OpenAI from "openai";
@@ -1085,6 +1131,44 @@ const response = await openai.responses.create({
   ],
 });
 console.log(response);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input="What is deep research by OpenAI?",
+    tools=[{"type": "file_search", "vector_store_ids": ["<vector_store_id>"]}],
+)
+print(response)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("What is deep research by OpenAI?")},
+		Tools: []responses.ToolUnionParam{responses.ToolParamOfFileSearch([]string{"<vector_store_id>"})},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response)
+}
 ```
 
 ```csharp
@@ -1170,21 +1254,32 @@ response = client.responses.create(
 print(response.output_text)
 ```
 
-```bash
-curl https://api.openai.com/v1/responses \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -d '{
-    "model": "gpt-5.6",
-    "instructions": "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
-    "tools": [
-      {
-        "type": "code_interpreter",
-        "container": { "type": "auto" }
-      }
-    ],
-    "input": "I need to solve the equation 3x + 11 = 14. Can you help me?"
-  }'
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model:        "gpt-5.6",
+		Instructions: openai.String("You are a personal math tutor. When asked a math question, write and run code to answer the question."),
+		Tools: []responses.ToolUnionParam{
+			responses.ToolParamOfCodeInterpreter(responses.ToolCodeInterpreterContainerCodeInterpreterContainerAutoParam{}),
+		},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("I need to solve the equation 3x + 11 = 14. Can you help me?")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```ruby
@@ -1205,6 +1300,23 @@ response = openai.responses.create(
 )
 
 puts(response.output_text)
+```
+
+```bash
+curl https://api.openai.com/v1/responses \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-5.6",
+    "instructions": "You are a personal math tutor. When asked a math question, write and run code to answer the question.",
+    "tools": [
+      {
+        "type": "code_interpreter",
+        "container": { "type": "auto" }
+      }
+    ],
+    "input": "I need to solve the equation 3x + 11 = 14. Can you help me?"
+  }'
 ```
 
   
@@ -1288,6 +1400,47 @@ response = client.responses.create(
 print(response.output[0].to_json())
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	parameters := map[string]any{
+		"type": "object",
+		"properties": map[string]any{
+			"location": map[string]any{
+				"type":        "string",
+				"description": "City and country e.g. Bogotá, Colombia",
+			},
+		},
+		"required":             []string{"location"},
+		"additionalProperties": false,
+	}
+	tool := responses.ToolParamOfFunction("get_weather", parameters, true)
+	tool.OfFunction.Description = openai.String("Get current temperature for a given location.")
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfInputItemList: responses.ResponseInputParam{
+			responses.ResponseInputItemParamOfMessage("What is the weather like in Paris today?", responses.EasyInputMessageRoleUser),
+		}},
+		Tools: []responses.ToolUnionParam{tool},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.Output)
+}
+```
+
 ```csharp
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
@@ -1337,37 +1490,6 @@ Console.WriteLine(
 );
 ```
 
-```bash
-curl -X POST https://api.openai.com/v1/responses \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-5.6",
-    "input": [
-      {"role": "user", "content": "What is the weather like in Paris today?"}
-    ],
-    "tools": [
-      {
-        "type": "function",
-        "name": "get_weather",
-        "description": "Get current temperature for a given location.",
-        "parameters": {
-          "type": "object",
-          "properties": {
-            "location": {
-              "type": "string",
-              "description": "City and country e.g. Bogotá, Colombia"
-            }
-          },
-          "required": ["location"],
-          "additionalProperties": false
-        },
-        "strict": true
-      }
-    ]
-  }'
-```
-
 ```ruby
 require "openai"
 
@@ -1402,6 +1524,37 @@ response = openai.responses.create(
 )
 
 puts(response.output.first.to_json)
+```
+
+```bash
+curl -X POST https://api.openai.com/v1/responses \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-5.6",
+    "input": [
+      {"role": "user", "content": "What is the weather like in Paris today?"}
+    ],
+    "tools": [
+      {
+        "type": "function",
+        "name": "get_weather",
+        "description": "Get current temperature for a given location.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "City and country e.g. Bogotá, Colombia"
+            }
+          },
+          "required": ["location"],
+          "additionalProperties": false
+        },
+        "strict": true
+      }
+    ]
+  }'
 ```
 
   
@@ -1474,6 +1627,36 @@ resp = client.responses.create(
 )
 
 print(resp.output_text)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	tool := responses.ToolParamOfMcp("dmcp")
+	tool.OfMcp.ServerDescription = openai.String("A Dungeons and Dragons MCP server to assist with dice rolling.")
+	tool.OfMcp.ServerURL = openai.String("https://dmcp-server.deno.dev/mcp")
+	tool.OfMcp.RequireApproval = responses.ToolMcpRequireApprovalUnionParam{OfMcpToolApprovalSetting: openai.String("never")}
+
+	response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Tools: []responses.ToolUnionParam{tool},
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Roll 2d4+1")},
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(response.OutputText())
+}
 ```
 
 ```csharp
@@ -1578,6 +1761,32 @@ stream = client.responses.create(
 
 for event in stream:
     print(event)
+```
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	stream := client.Responses.NewStreaming(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say 'double bubble bath' ten times fast.")},
+	})
+	for stream.Next() {
+		fmt.Println(stream.Current().Type)
+	}
+	if err := stream.Err(); err != nil {
+		panic(err)
+	}
+}
 ```
 
 ```csharp

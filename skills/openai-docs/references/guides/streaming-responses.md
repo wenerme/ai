@@ -51,6 +51,32 @@ for event in stream:
     print(event)
 ```
 
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/openai/openai-go/v3"
+	"github.com/openai/openai-go/v3/responses"
+)
+
+func main() {
+	client := openai.NewClient()
+	stream := client.Responses.NewStreaming(context.Background(), responses.ResponseNewParams{
+		Model: "gpt-5.6",
+		Input: responses.ResponseNewParamsInputUnion{OfString: openai.String("Say 'double bubble bath' ten times fast.")},
+	})
+	for stream.Next() {
+		fmt.Println(stream.Current().Type)
+	}
+	if err := stream.Err(); err != nil {
+		panic(err)
+	}
+}
+```
+
 ```csharp
 using OpenAI.Responses;
 #pragma warning disable OPENAI001
@@ -124,6 +150,10 @@ StreamingEvent = (
     | ResponseCodeInterpreterCallCompleted
     | Error
 )
+```
+
+```go
+type StreamingEvent = responses.ResponseStreamEventUnion
 ```
 
 

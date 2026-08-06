@@ -3,7 +3,7 @@
 This guide gets you started with the Gemini API using the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview). You'll make your first API call in under a minute and explore text generation, multimodal understanding, image generation, structured output, tools, function calling, agents, and background execution.
 
 > [!NOTE]
-> **Using a coding agent?** Install the skill so your agent stays current with Interactions API patterns:
+> **Building with an AI coding agent?** Install the skill and then paste the prompt to get started with the Gemini API using Interactions:
 >
 > ```
 > npx skills add google-gemini/gemini-skills --skill gemini-interactions-api

@@ -444,42 +444,10 @@ The following configuration set `Content-Type: application/vnd.android.package-a
 - `REDIRECT_OTHER_PORT`: **false**: If true and `PROTOCOL` is https, allows redirecting http requests on `PORT_TO_REDIRECT` to the https port Gitea listens on.
 - `REDIRECTOR_USE_PROXY_PROTOCOL`: **`{USE_PROXY_PROTOCOL}`**: expect PROXY protocol header on connections to https redirector.
 - `PORT_TO_REDIRECT`: **80**: Port for the http redirection service to listen on. Used when `REDIRECT_OTHER_PORT` is true.
-- `SSL_MIN_VERSION`: **TLSv1.2**: Set the minimum version of ssl support.
-- `SSL_MAX_VERSION`: **_empty_**: Set the maximum version of ssl support.
-- `SSL_CURVE_PREFERENCES`: **X25519,P256**: Set the preferred curves,
-- `SSL_CIPHER_SUITES`: **ecdhe_ecdsa_with_aes_256_gcm_sha384,ecdhe_rsa_with_aes_256_gcm_sha384,ecdhe_ecdsa_with_aes_128_gcm_sha256,ecdhe_rsa_with_aes_128_gcm_sha256,ecdhe_ecdsa_with_chacha20_poly1305,ecdhe_rsa_with_chacha20_poly1305**: Set the preferred cipher suites.
-  - If there is no hardware support for AES suites, by default the ChaCha suites will be preferred over the AES suites.
-  - supported suites as of Go 1.18 are:
-    - TLS 1.0 - 1.2 cipher suites
-      - "rsa_with_rc4_128_sha"
-      - "rsa_with_3des_ede_cbc_sha"
-      - "rsa_with_aes_128_cbc_sha"
-      - "rsa_with_aes_256_cbc_sha"
-      - "rsa_with_aes_128_cbc_sha256"
-      - "rsa_with_aes_128_gcm_sha256"
-      - "rsa_with_aes_256_gcm_sha384"
-      - "ecdhe_ecdsa_with_rc4_128_sha"
-      - "ecdhe_ecdsa_with_aes_128_cbc_sha"
-      - "ecdhe_ecdsa_with_aes_256_cbc_sha"
-      - "ecdhe_rsa_with_rc4_128_sha"
-      - "ecdhe_rsa_with_3des_ede_cbc_sha"
-      - "ecdhe_rsa_with_aes_128_cbc_sha"
-      - "ecdhe_rsa_with_aes_256_cbc_sha"
-      - "ecdhe_ecdsa_with_aes_128_cbc_sha256"
-      - "ecdhe_rsa_with_aes_128_cbc_sha256"
-      - "ecdhe_rsa_with_aes_128_gcm_sha256"
-      - "ecdhe_ecdsa_with_aes_128_gcm_sha256"
-      - "ecdhe_rsa_with_aes_256_gcm_sha384"
-      - "ecdhe_ecdsa_with_aes_256_gcm_sha384"
-      - "ecdhe_rsa_with_chacha20_poly1305_sha256"
-      - "ecdhe_ecdsa_with_chacha20_poly1305_sha256"
-    - TLS 1.3 cipher suites
-      - "aes_128_gcm_sha256"
-      - "aes_256_gcm_sha384"
-      - "chacha20_poly1305_sha256"
-    - Aliased names
-      - "ecdhe_rsa_with_chacha20_poly1305" is an alias for "ecdhe_rsa_with_chacha20_poly1305_sha256"
-      - "ecdhe_ecdsa_with_chacha20_poly1305" is alias for "ecdhe_ecdsa_with_chacha20_poly1305_sha256"
+- `SSL_MIN_VERSION`: **_empty_**: Minimum supported TLS version, one of TLSv1.0, TLSv1.1, TLSv1.2, TLSv1.3. Unset uses Go's default.
+- `SSL_MAX_VERSION`: **_empty_**: Maximum supported TLS version, one of TLSv1.0, TLSv1.1, TLSv1.2, TLSv1.3. Unset uses Go's default.
+- `SSL_CURVE_PREFERENCES`: **_empty_**: Comma-separated list of SSL curve preferences. Unset uses Go's default.
+- `SSL_CIPHER_SUITES`: **_empty_**: Comma-separated list of SSL cipher suites. Unset uses Go's default.
 - `ENABLE_ACME`: **false**: Flag to enable automatic certificate management via an ACME capable Certificate Authority (CA) server (default: Lets Encrypt). If enabled, `CERT_FILE` and `KEY_FILE` are ignored, and the CA must resolve `DOMAIN` to this gitea server. Ensure that DNS records are set and either port `80` or port `443` are accessible by the CA server (the public internet by default), and redirected to the appropriate ports `PORT_TO_REDIRECT` or `HTTP_PORT` respectively.
 - `ACME_URL`: **_empty_**: The CA's ACME directory URL, e.g. for a self-hosted [smallstep CA server](https://github.com/smallstep/certificates), it can look like `https://ca.example.com/acme/acme/directory`. If left empty, it defaults to using Let's Encerypt's production CA (check `LETSENCRYPT_ACCEPTTOS` as well).
 - `ACME_ACCEPTTOS`: **false**: This is an explicit check that you accept the terms of service of the ACME provider. The default is Lets Encrypt [terms of service](https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf).

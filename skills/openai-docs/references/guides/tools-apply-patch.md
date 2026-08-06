@@ -89,6 +89,23 @@ patch_calls = [
 ]
 ```
 
+```go
+response, err := client.Responses.New(context.Background(), responses.ResponseNewParams{
+	Model: "gpt-5.6",
+	Input: responses.ResponseNewParamsInputUnion{OfString: openai.String(responseInput)},
+	Tools: []responses.ToolUnionParam{{OfApplyPatch: &responses.ApplyPatchToolParam{}}},
+})
+if err != nil {
+	panic(err)
+}
+patchCalls := make([]responses.ResponseOutputItemUnion, 0)
+for _, item := range response.Output {
+	if item.Type == "apply_patch_call" {
+		patchCalls = append(patchCalls, item)
+	}
+}
+```
+
 
 **Example `apply_patch_call` object**
 
@@ -145,6 +162,29 @@ followup = client.responses.create(
 )
 ```
 
+```go
+results := make(responses.ResponseInputParam, 0, len(patchCalls))
+for _, call := range patchCalls {
+	success, logOutput := applyOperation(call.Operation)
+	status := "completed"
+	if !success {
+		status = "failed"
+	}
+	result := responses.ResponseInputItemParamOfApplyPatchCallOutput(call.CallID, status)
+	result.OfApplyPatchCallOutput.Output = openai.String(logOutput)
+	results = append(results, result)
+}
+_, err = client.Responses.New(context.Background(), responses.ResponseNewParams{
+	Model:              "gpt-5.6",
+	PreviousResponseID: openai.String(response.ID),
+	Input:              responses.ResponseNewParamsInputUnion{OfInputItemList: results},
+	Tools:              []responses.ToolUnionParam{{OfApplyPatch: &responses.ApplyPatchToolParam{}}},
+})
+if err != nil {
+	panic(err)
+}
+```
+
 
 If a patch fails (for example, file not found), set `status: "failed"` and include a helpful `output` string so the model can recover:
 
@@ -199,7 +239,7 @@ Alternatively, you can use the [Agents SDK](https://developers.openai.com/api/do
 
 Use the apply patch tool with the Agents SDK
 
-```javascript
+```typescript
 import {
   applyDiff,
   Agent,

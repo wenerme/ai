@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # R2 Data Catalog
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/data-catalog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/data-catalog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
-R2 Data Catalog is in **public beta**, and any developer with an [R2 subscription](https://developers.cloudflare.com/r2/pricing/) can start using it. Currently, outside of standard R2 storage and operations, you will not be billed for your use of R2 Data Catalog.
+R2 Data Catalog is in **public beta**, and any developer with an [R2 subscription](https://developers.cloudflare.com/r2/pricing/) can start using it.
 
 R2 Data Catalog is a managed [Apache Iceberg ↗](https://iceberg.apache.org/) data catalog built directly into your R2 bucket. It exposes a standard Iceberg REST catalog interface, so you can connect the engines you already use, like [Spark](https://developers.cloudflare.com/r2/data-catalog/config-examples/spark-scala/), [Snowflake](https://developers.cloudflare.com/r2/data-catalog/config-examples/snowflake/), and [PyIceberg](https://developers.cloudflare.com/r2/data-catalog/config-examples/pyiceberg/).
 
@@ -65,5 +65,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/data-catalog/#page","headline":"R2 Data Catalog · Cloudflare R2 docs","description":"A managed Apache Iceberg data catalog built directly into R2 buckets.","url":"https://developers.cloudflare.com/r2/data-catalog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2/data-catalog/#page","headline":"R2 Data Catalog · Cloudflare R2 docs","description":"A managed Apache Iceberg data catalog built directly into R2 buckets.","url":"https://developers.cloudflare.com/r2/data-catalog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
