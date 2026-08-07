@@ -211,47 +211,46 @@ The data source location. For `r2` type, this is the R2 bucket name. For `web-cr
 Additional parameters for the data source.
 
 * `prefix` `string`optional
-
   * For R2 sources, limits indexing to objects with this key prefix.
 * `r2_jurisdiction` `string`optional
-
   * The jurisdiction for the R2 bucket, for example `eu`.
 * `include_items` `array`optional
-
   * Glob patterns for paths to include in indexing. For example: `["/blog/**", "/docs/**/*.html"]`.
 * `exclude_items` `array`optional
-
   * Glob patterns for paths to exclude from indexing. For example: `["/admin/**", "/private/**"]`.
 * `web_crawler` `object`optional
-
   * Configuration for web crawler sources.
   * `parse_type` `string`optional
-
-    * The parsing method. Valid value: `sitemap`.
+    * How pages are discovered. Valid values: `sitemap` (reads XML sitemaps), `discover` (starts at the source URL and, by default, uses both sitemaps and links found on crawled pages). Defaults to `sitemap`. Refer to [Parse types](https://developers.cloudflare.com/ai-search/configuration/data-source/website/parse-types/).
   * `parse_options` `object`optional
-
     * `include_headers` `object`optional
-
       * Custom HTTP headers to include when crawling.
     * `include_images` `boolean`optional
-
       * Whether to include images in the index.
     * `specific_sitemaps` `array`optional
-
-      * Specific sitemap URLs to crawl. For example: `["https://example.com/sitemap.xml"]`.
+      * Specific sitemap URLs to crawl. For example: `["https://example.com/sitemap.xml"]`. Only valid when `parse_type` is `sitemap`.
     * `use_browser_rendering` `boolean`optional
-
       * Use Browser Run (formerly Browser Rendering) to crawl JavaScript-rendered pages.
+  * `discover_options` `object`optional
+    * Crawl settings that apply when `parse_type` is `discover`.
+    * `source` `string`optional
+      * Where the crawler looks for candidate URLs. Valid values: `all`, `sitemaps`, `links`. Defaults to `all`.
+    * `limit` `number`optional
+      * Maximum number of pages to crawl. Valid values: `1` to `100000`. Defaults to `100000`.
+    * `depth` `number`optional
+      * Maximum number of link hops to follow from the source URL. Valid values: `1` to `100000`. Defaults to `5`.
+    * `max_age` `number`optional
+      * How long, in seconds, the crawler reuses cached page content before it re-fetches from the origin. Valid values: `0` to `604800`. Defaults to `86400`.
+    * `include_external_links` `boolean`optional
+      * Whether to follow links that point to other domains. Defaults to `false`.
+    * `include_subdomains` `boolean`optional
+      * Whether to follow links that point to subdomains of the source URL. Defaults to `false`.
   * `store_options` `object`optional
-
     * `storage_type` `string`optional
-
       * The storage type. Valid value: `r2`.
     * `storage_id` `string`optional
-
       * The storage bucket ID.
     * `r2_jurisdiction` `string`optional
-
       * The jurisdiction for the storage bucket.
 
 ---
@@ -261,10 +260,8 @@ Additional parameters for the data source.
 Configures which indexing methods are enabled for the instance. Determines whether vector (semantic) search, keyword search, or both are available. At least one must be `true`.
 
 * `vector` `boolean`optional
-
   * Enable vector-based semantic search. Defaults to `true`.
 * `keyword` `boolean`optional
-
   * Enable keyword-based search. Defaults to `false`.
 
 Set both to `true` for hybrid search.
@@ -291,10 +288,8 @@ Configuration for how content is indexed.
 Default retrieval configuration for the instance. These defaults can be overridden per-request using `ai_search_options`.
 
 * `keyword_match_mode` `string`optional
-
   * Controls how keyword (BM25) matching selects candidate documents. `and` requires all terms to match. `or` requires any term to match. Defaults to `and`.
 * `boost_by` `array`optional
-
   * Default boost fields applied to all search queries. Maximum 3 items. Each item has:
     * `field` `string`required \- The metadata field name to boost by. Maximum 64 characters.
     * `direction` `string`optional \- The boost direction. Valid values: `asc`, `desc`, `exists`, `not_exists`.
@@ -402,10 +397,8 @@ The cache entry TTL in seconds. Valid values are `600`, `1800`, `3600`, `7200`, 
 Custom metadata fields to extract and index from documents.
 
 * `field_name` `string`required
-
   * The name of the metadata field.
 * `data_type` `string`required
-
   * The data type of the field. Valid values: `text`, `number`, `boolean`, `datetime`.
 
 ---

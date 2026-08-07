@@ -184,18 +184,26 @@ OpenRouter exposes an input that is compatible with the Anthropic Messages API.
 Claude Code uses several environment variables to determine which models to use for different tasks. You can override these to route each role through a specific model:
 
 ```bash lines theme={null}
+export ANTHROPIC_DEFAULT_FABLE_MODEL="~anthropic/claude-fable-latest"
 export ANTHROPIC_DEFAULT_OPUS_MODEL="~anthropic/claude-opus-latest"
 export ANTHROPIC_DEFAULT_SONNET_MODEL="~anthropic/claude-sonnet-latest"
 export ANTHROPIC_DEFAULT_HAIKU_MODEL="~anthropic/claude-haiku-latest"
 export CLAUDE_CODE_SUBAGENT_MODEL="~anthropic/claude-opus-latest"
 ```
 
-| Variable                         | Description                                                   |
-| -------------------------------- | ------------------------------------------------------------- |
-| `ANTHROPIC_DEFAULT_OPUS_MODEL`   | The model used for Opus-class tasks (e.g. complex reasoning)  |
-| `ANTHROPIC_DEFAULT_SONNET_MODEL` | The model used for Sonnet-class tasks (e.g. general coding)   |
-| `ANTHROPIC_DEFAULT_HAIKU_MODEL`  | The model used for Haiku-class tasks (e.g. quick completions) |
-| `CLAUDE_CODE_SUBAGENT_MODEL`     | The model used for sub-agent tasks spawned by Claude Code     |
+| Variable                         | Description                                                                               |
+| -------------------------------- | ----------------------------------------------------------------------------------------- |
+| `ANTHROPIC_DEFAULT_FABLE_MODEL`  | The model used for Fable-class tasks (the most demanding reasoning and long-horizon work) |
+| `ANTHROPIC_DEFAULT_OPUS_MODEL`   | The model used for Opus-class tasks (e.g. complex reasoning)                              |
+| `ANTHROPIC_DEFAULT_SONNET_MODEL` | The model used for Sonnet-class tasks (e.g. general coding)                               |
+| `ANTHROPIC_DEFAULT_HAIKU_MODEL`  | The model used for Haiku-class tasks (e.g. quick completions)                             |
+| `CLAUDE_CODE_SUBAGENT_MODEL`     | The model used for sub-agent tasks spawned by Claude Code                                 |
+
+<Warning>
+  Claude Code 2.1.x added Fable as a fourth model class. When Claude Code points at OpenRouter, Fable is **not** offered in `/model` by default — setting `ANTHROPIC_DEFAULT_FABLE_MODEL` is the only way to make it selectable.
+</Warning>
+
+After setting the overrides, open `/model` inside Claude Code to confirm every model class you expect is listed, and check the model column in your [Activity Dashboard](https://openrouter.ai/activity) to confirm requests route to the models you configured.
 
 Add these to the same shell profile or project settings file where you set `ANTHROPIC_BASE_URL` and `ANTHROPIC_API_KEY`.
 
@@ -229,12 +237,16 @@ export CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK=1
   Requires Claude Code v2.1.96 or newer.
 </Note>
 
+<Warning>
+  Claude Code only attaches `speed: "fast"` when the resolved model ID matches a supported Opus version (e.g. `anthropic/claude-opus-5`). With `ANTHROPIC_DEFAULT_OPUS_MODEL` set to the `~anthropic/claude-opus-latest` alias — including the example in [Configuring Models](#configuring-models) above — `/fast` reports "Fast mode ON" but requests are sent without the `speed` parameter: standard speed, standard pricing. To actually use fast mode, pin the variable to a specific Opus ID such as `anthropic/claude-opus-5`.
+</Warning>
+
 ### Pricing
 
 Fast mode is priced at a premium over the underlying Claude Opus model's standard token rates. See [Anthropic's fast mode pricing](https://platform.claude.com/docs/en/build-with-claude/fast-mode#pricing) for current rates. When fast mode is active, the response's `usage` object includes `"speed": "fast"` to confirm the request was processed at the higher speed tier.
 
 <Note>
-  If `speed: "fast"` is sent for a model that does not support fast mode, it still requests the [priority service tier](/docs/guides/features/service-tiers#fast-mode) where a provider offers one (at priority pricing); otherwise the request proceeds at standard speed with standard pricing.
+  If `speed: "fast"` is sent for a model that does not support fast mode, it still requests the [priority service tier](/docs/guides/features/service-tiers#fast-mode) where a provider offers one (at priority pricing); otherwise the request proceeds at standard speed with standard pricing. **Claude Fable has no fast tier** — toggling `/fast` while on a Fable model does not speed Fable up. Instead, Claude Code switches your session to your configured Opus model, so subsequent requests run (and bill) on Opus rather than Fable.
 </Note>
 
 ### Routing behavior

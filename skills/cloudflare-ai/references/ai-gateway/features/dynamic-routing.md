@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dynamic routing
 
-Last updated Jun 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -59,7 +59,11 @@ Ensure your gateway has [authentication](https://developers.cloudflare.com/ai-ga
   * Click **Save** to save the state. You can always roll back to earlier versions from **Versions**.
   * Deploy the version to make it live.
 5. Call the route from your code.
-  * Use the [OpenAI compatible](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) endpoint, and use the route name in place of the model, for example, `dynamic/support`.
+  * Use the [OpenAI compatible](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/) endpoint (`/compat/chat/completions`), and use the route name in place of the model, for example, `dynamic/support`. See [Using a dynamic route](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/) for examples.
+
+Note
+
+The OpenAI-compatible endpoint is marked **Deprecated** for standard single-model chat completions, but it remains the required way to call dynamic routes. Dynamic routing is not currently available on the [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/).
 
 Was this helpful?
 
@@ -70,5 +74,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/#page","headline":"Dynamic routing · Cloudflare AI Gateway docs","description":"Route AI Gateway requests based on conditions, quotas, and fallbacks using a visual interface or JSON configuration.","url":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/#page","headline":"Dynamic routing · Cloudflare AI Gateway docs","description":"Route AI Gateway requests based on conditions, quotas, and fallbacks using a visual interface or JSON configuration.","url":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

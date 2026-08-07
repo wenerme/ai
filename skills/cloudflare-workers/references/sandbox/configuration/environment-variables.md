@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Environment variables
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/environment-variables/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pass configuration, secrets, and runtime settings to your sandboxes using environment variables.
 
@@ -22,26 +22,26 @@ These environment variables configure how the Sandbox SDK behaves. Set these as 
 
 ### SANDBOX\_TRANSPORT
 
-| **Type**    | "http" \| "websocket" |
-| ----------- | --------------------- |
-| **Default** | "http"                |
+| **Type**    | "http" \| "websocket" | "rpc" |
+| ----------- | --------------------- | ----- |
+| **Default** | "http"                |       |
 
-Controls the transport protocol for SDK-to-container communication. WebSocket transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
+Controls the transport protocol for SDK-to-container communication. RPC transport multiplexes all operations over a single persistent connection, avoiding [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when performing many SDK operations per request.
 
 ```jsonc
 {
 	"vars": {
-		"SANDBOX_TRANSPORT": "websocket"
+		"SANDBOX_TRANSPORT": "rpc"
 	}
 }
 ```
 
 ```toml
 [vars]
-SANDBOX_TRANSPORT = "websocket"
+SANDBOX_TRANSPORT = "rpc"
 ```
 
-See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) for a complete guide including when to use each transport, performance considerations, and migration instructions.
+For a complete guide including valid transport modes, performance considerations, and migration instructions, refer to [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/).
 
 ### COMMAND\_TIMEOUT\_MS
 
@@ -284,7 +284,7 @@ await Promise.all([
 
 ### Configure transport mode
 
-Set `SANDBOX_TRANSPORT` in your Worker's `vars` to switch between HTTP and WebSocket transport. See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) for details on when and how to configure each transport.
+Set `SANDBOX_TRANSPORT` in your Worker's `vars` to switch between HTTP, WebSocket, and RPC transport. For details on when and how to configure each transport, refer to [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/).
 
 ### Bucket mounting credentials
 
@@ -381,12 +381,12 @@ await sandbox.exec("node app.js", {
 
 ## Related resources
 
-* [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) \- Configure HTTP vs WebSocket transport
+* [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) \- Configure HTTP, WebSocket, and RPC transport
 * [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) \- Setting Worker-level environment
 * [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) \- Managing sensitive data
 * [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) \- Session-level environment variables
 * [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Understanding data isolation
-* [Proxy requests to external APIs](https://developers.cloudflare.com/sandbox/guides/proxy-requests/) \- Keep credentials out of the sandbox entirely using a Worker proxy
+* [Handle outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) \- Keep credentials out of the sandbox entirely using outbound handlers
 
 Was this helpful?
 
@@ -397,5 +397,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Sandbox SDK docs","description":"Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.","url":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/#page","headline":"Environment variables · Cloudflare Sandbox SDK docs","description":"Pass configuration, secrets, and runtime settings to Sandbox SDK containers using environment variables.","url":"https://developers.cloudflare.com/sandbox/configuration/environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

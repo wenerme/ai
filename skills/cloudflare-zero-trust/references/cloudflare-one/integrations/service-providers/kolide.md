@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Kolide
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare One can integrate with Kolide to require that users connect to certain applications from managed devices. This service-to-service posture check uses the Cloudflare One Client to read endpoint data from Kolide. Devices are identified by their serial numbers. If multiple devices have the same serial number, Cloudflare cannot accurately match a device with a third-party provider device. You must ensure that each of your devices has a unique serial number.
 
@@ -55,11 +55,11 @@ You can now use this posture check in a [device posture policy](https://develope
 
 ## Device posture attributes
 
-Device posture data is gathered from the [Kolide K2 API ↗](https://kolidek2.readme.io/reference/get%5Fissues).
+Device posture data is gathered from the [Kolide API ↗](https://kolideapi.readme.io/reference/get%5Fdevices-id).
 
-| Selector    | Description                                   |
-| ----------- | --------------------------------------------- |
-| Issue count | Total number of issues detected on the device |
+| Selector   | Description                                                                                    |
+| ---------- | ---------------------------------------------------------------------------------------------- |
+| Auth state | The authorization status of the device, one of: 'Good', 'Notified', 'Will Block', or 'Blocked' |
 
 Was this helpful?
 
@@ -70,5 +70,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/#page","headline":"Kolide · Cloudflare One docs","description":"Kolide in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/#page","headline":"Kolide · Cloudflare One docs","description":"Kolide in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/kolide/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture"]}
 ```

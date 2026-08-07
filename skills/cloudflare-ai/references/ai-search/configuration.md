@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Jul 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can customize how your AI Search instance indexes your data, retrieves results, and generates responses. Some settings can be updated after the instance is created, while others are fixed at creation time.
 
@@ -39,17 +39,20 @@ You can customize how your AI Search instance indexes your data, retrieves resul
 
 ## Retrieval
 
-| Configuration                                                                                             | Editable after creation | Description                                                   |
-| --------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------- |
-| [Result controls](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/)   | yes                     | Match threshold and maximum number of results                 |
-| [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)               | yes                     | Filter results by metadata attributes                         |
-| [Relevance boosting](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/)       | yes                     | Bias results by metadata characteristics                      |
-| [Reranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)               | yes                     | Reorder results by semantic relevance using a reranking model |
-| [Query rewriting](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)   | yes                     | Rewrite follow-up queries using conversation context          |
-| [System prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)       | yes                     | Guide query rewriting and response generation behavior        |
-| [Similarity caching](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/)          | yes                     | Cache responses for similar prompts                           |
-| [Public endpoint](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)   | yes                     | Enable public access to search, chat, and MCP endpoints       |
-| [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/) | yes                     | Embed pre-built search and chat components in your website    |
+| Configuration                                                                                                                | Editable after creation | Description                                                   |
+| ---------------------------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------- |
+| [Result controls](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/)                      | yes                     | Match threshold and maximum number of results                 |
+| [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/)                                  | yes                     | Filter results by metadata attributes                         |
+| [Relevance boosting](https://developers.cloudflare.com/ai-search/configuration/retrieval/boosting/)                          | yes                     | Bias results by metadata characteristics                      |
+| [Reranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/)                                  | yes                     | Reorder results by semantic relevance using a reranking model |
+| [Query rewriting](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/)                      | yes                     | Rewrite follow-up queries using conversation context          |
+| [System prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/)                          | yes                     | Guide query rewriting and response generation behavior        |
+| [Similarity caching](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/)                             | yes                     | Cache responses for similar prompts                           |
+| [Public endpoint](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)                      | yes                     | Enable public access to search, chat, and MCP endpoints       |
+| [Custom domains](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/)        | yes                     | Serve a public endpoint from a hostname that you own          |
+| [Cloudflare Access](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/cloudflare-access/)  | yes                     | Require callers to authenticate before they can search        |
+| [Namespace public endpoints](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/namespace/) | yes                     | Search across several instances from a single public endpoint |
+| [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/embed-search-snippets/)    | yes                     | Embed pre-built search and chat components in your website    |
 
 ## Models
 
@@ -70,5 +73,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/configuration/#page","headline":"Configuration · Cloudflare AI Search docs","description":"Customize how your AI Search instance indexes data, retrieves results, and generates responses.","url":"https://developers.cloudflare.com/ai-search/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/configuration/#page","headline":"Configuration · Cloudflare AI Search docs","description":"Customize how your AI Search instance indexes data, retrieves results, and generates responses.","url":"https://developers.cloudflare.com/ai-search/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

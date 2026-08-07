@@ -45,7 +45,7 @@ This is especially useful for bulk operations that don't require immediate resul
 * Batch results are available for 29 days after creation. After that, you may still view the Batch, but its results will no longer be available for download.
 * Batches are scoped to a [Workspace](/settings/workspaces). You may view all batches (and their results) that were created within the Workspace that your API key belongs to.
 * Rate limits apply to both Batches API HTTP requests and the number of requests within a batch waiting to be processed. See [Message Batches API rate limits](/docs/en/api/rate-limits#message-batches-api). Additionally, processing may be slowed down based on current demand and your request volume. In that case, you may see more requests expiring after 24 hours.
-* Because of high throughput and concurrent processing, batches may go slightly over your Workspace's configured [spend limit](/settings/limits).
+* Because of high throughput and concurrent processing, batches may go slightly over your Workspace's configured [spend limit](/settings/billing).
 * Each batched request must have `max_tokens` of at least `1`. `max_tokens: 0` ([cache pre-warming](/docs/en/build-with-claude/prompt-caching#pre-warming-the-cache)) is not supported inside a batch, because an ephemeral cache entry written during batch processing would likely expire before the follow-up request runs.
 
 ### Supported models
@@ -93,7 +93,7 @@ The Batches API offers significant cost savings. All usage is charged at 50% of 
 | Claude Opus 4.7                                                                                               | $2.50 / MTok | $12.50 / MTok |
 | Claude Opus 4.6                                                                                               | $2.50 / MTok | $12.50 / MTok |
 | Claude Opus 4.5                                                                                               | $2.50 / MTok | $12.50 / MTok |
-| Claude Opus 4.1 ([deprecated](/docs/en/about-claude/model-deprecations))                                      | $7.50 / MTok | $37.50 / MTok |
+| Claude Opus 4.1 ([retired, except on Bedrock and Google Cloud](/docs/en/about-claude/model-deprecations))     | $7.50 / MTok | $37.50 / MTok |
 | Claude Opus 4 ([retired, except on Google Cloud](/docs/en/about-claude/model-deprecations))                   | $7.50 / MTok | $37.50 / MTok |
 | Claude Sonnet 5 [through August 31, 2026](/docs/en/about-claude/pricing#claude-sonnet-5-introductory-pricing) | $1 / MTok    | $5 / MTok     |
 | Claude Sonnet 5 starting September 1, 2026                                                                    | $1.50 / MTok | $7.50 / MTok  |

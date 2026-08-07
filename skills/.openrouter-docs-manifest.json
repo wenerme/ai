@@ -17,6 +17,12 @@
     "size": 16287,
     "updatedAt": "2026-08-05T03:27:46.960Z"
   },
+  "agent-sdk/call-model/doom-loop-detection.md": {
+    "url": "https://openrouter.ai/docs/agent-sdk/call-model/doom-loop-detection.md",
+    "lastModified": "Fri, 07 Aug 2026 03:18:37 GMT",
+    "size": 9404,
+    "updatedAt": "2026-08-07T03:18:37.904Z"
+  },
   "agent-sdk/call-model/dynamic-parameters.md": {
     "url": "https://openrouter.ai/docs/agent-sdk/call-model/dynamic-parameters.md",
     "lastModified": "Tue, 21 Jul 2026 06:30:32 GMT",
@@ -10645,9 +10651,9 @@
   },
   "batch-quickstart.md": {
     "url": "https://openrouter.ai/docs/batch-quickstart.md",
-    "lastModified": "Thu, 06 Aug 2026 03:44:25 GMT",
-    "size": 13945,
-    "updatedAt": "2026-08-06T03:44:25.342Z"
+    "lastModified": "Fri, 07 Aug 2026 03:35:39 GMT",
+    "size": 14382,
+    "updatedAt": "2026-08-07T03:35:39.635Z"
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
@@ -11311,9 +11317,9 @@
   },
   "cookbook/coding-agents/claude-code-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-code-integration.md",
-    "lastModified": "Thu, 06 Aug 2026 12:31:31 GMT",
-    "size": 17928,
-    "updatedAt": "2026-08-06T12:31:31.533Z"
+    "lastModified": "Fri, 07 Aug 2026 03:36:29 GMT",
+    "size": 19581,
+    "updatedAt": "2026-08-07T03:36:29.486Z"
   },
   "cookbook/coding-agents/claude-desktop-integration.md": {
     "url": "https://openrouter.ai/docs/cookbook/coding-agents/claude-desktop-integration.md",

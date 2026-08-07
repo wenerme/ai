@@ -44,8 +44,6 @@ These guides show you how to solve specific problems and implement features with
 
 [**Deploy to production**Set up custom domains for preview URLs in production.](https://developers.cloudflare.com/sandbox/guides/production-deployment/)
 
-[**Proxy requests to external APIs**Keep credentials secure by routing sandbox requests through a Worker proxy that injects authentication at request time.](https://developers.cloudflare.com/sandbox/guides/proxy-requests/)
-
 [**Stream output**Handle real-time output from commands and processes.](https://developers.cloudflare.com/sandbox/guides/streaming-output/)
 
 [**WebSocket connections**Connect to WebSocket servers running in sandboxes.](https://developers.cloudflare.com/sandbox/guides/websocket-connections/)

@@ -2,7 +2,7 @@
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
-Workload identity federation lets trusted workloads exchange externally issued identity tokens for short-lived OpenAI access tokens. Use these guides to configure your external identity provider, create OpenAI service account mappings, and authenticate workloads without storing long-lived API keys.
+Workload identity federation lets trusted workloads exchange an externally issued identity token for a short-lived OpenAI access token. X.509 workload identity federation is also available in beta, allowing workloads to exchange a verified certificate identity. Use these guides to configure your external identity provider, create OpenAI service account mappings, and authenticate workloads without storing long-lived API keys.
 
 For token exchange request and response details, authorization behavior, and current limitations, see the [workload identity token exchange reference](https://developers.openai.com/api/reference/workload-identity-federation).
 
@@ -10,20 +10,21 @@ For token exchange request and response details, authorization behavior, and cur
 
 Workload identity federation has four parts:
 
-1. A **workload identity provider** describes the trusted issuer. It stores the expected OIDC issuer, audience, and key source used to verify external subject tokens.
-2. A **service account mapping** authorizes specific external token attributes to mint tokens for a particular OpenAI service account within a project.
-3. A **token exchange** request sends the external subject token to OpenAI and returns a short-lived OpenAI access token.
-4. The workload uses the OpenAI-issued access token as a bearer credential to authenticate requests to the OpenAI API.
+1. A **workload identity provider** describes the external identity. An OIDC provider stores the issuer, audience, and key source used to verify external subject tokens. An X.509 provider derives identity attributes from a client certificate verified against existing Mutual TLS roots.
+2. A **service account mapping** authorizes specific external identity attributes to mint tokens for a particular OpenAI service account within a project.
+3. A **token exchange** request sends an external subject token or presents a client certificate to OpenAI and returns a short-lived OpenAI access token.
+4. The workload uses the OpenAI-issued access token as a bearer credential to authenticate requests to the OpenAI API. For X.509 federation, the API request also presents an accepted client certificate.
 
-You must be an organization owner to configure this feature. To access it, go to [Organization Settings > Security > Workload Identity Provider](https://platform.openai.com/settings/organization/security/workload-identity-provider). Configure service account mappings from the workload identity provider details page.
+You must be an organization owner to configure this feature. Go to [Organization Settings > Security > Workload Identity Provider](https://platform.openai.com/settings/organization/security/workload-identity-provider), then configure service account mappings from the workload identity provider details page. The X.509 provider option is available in beta. If it doesn't appear, contact your system administrator; your administrator can work with OpenAI to enable the beta for your organization.
 
 ## Choose a setup guide
 
-Start with the guide that matches where your workload runs:
+Start with the guide that matches your workload environment or identity source:
 
 
 
-  - **[Kubernetes](https://developers.openai.com/api/docs/guides/workload-identity-federation/kubernetes)**: Use projected service account tokens in self-managed clusters.
+  - **[X.509 certificates (beta)](https://developers.openai.com/api/docs/guides/workload-identity-federation/x509)**: Configure certificate-backed exchange with the X.509 beta.
+- **[Kubernetes](https://developers.openai.com/api/docs/guides/workload-identity-federation/kubernetes)**: Use projected service account tokens in self-managed clusters.
 - **[AWS](https://developers.openai.com/api/docs/guides/workload-identity-federation/aws)**: Use outbound identity federation or Amazon EKS projected tokens.
 - **[Microsoft Azure](https://developers.openai.com/api/docs/guides/workload-identity-federation/microsoft-azure)**: Use managed identity tokens or AKS projected service account tokens.
 - **[Google Cloud](https://developers.openai.com/api/docs/guides/workload-identity-federation/google-cloud)**: Use metadata server identity tokens or GKE projected service account tokens.
@@ -35,11 +36,27 @@ Start with the guide that matches where your workload runs:
 
 OpenAI supports OIDC-compatible JWT subject tokens in the documented configurations, including SPIFFE JWT-SVIDs. If you need an OIDC provider that isn't listed, contact us.
 
-Each provider guide shows how to issue and inspect a subject token on that platform, and how to configure the OpenAI SDK to exchange it for a short-lived OpenAI access token.
+Each OIDC provider guide shows how to issue and inspect a subject token on that platform, and how to configure the OpenAI SDK to exchange it for a short-lived OpenAI access token.
 
-## Configure a Workload Identity Provider
+## X.509 providers (beta)
+
+X.509 workload identity federation is available in beta. If X.509 doesn't
+  appear as a provider type, contact your system administrator. Your
+  administrator can work with OpenAI to enable the beta for your organization.
+
+An X.509 provider derives workload identity attributes from a client certificate that OpenAI verifies against your organization's existing Mutual TLS configuration. It doesn't store certificates or maintain a separate trust store.
+
+Before creating the provider, configure and activate the trusted CA certificate that anchors your client certificate in [Organization Settings > Security > Mutual TLS](https://platform.openai.com/settings/organization/security/mtls). The [OpenAI Mutual TLS Beta Program](https://help.openai.com/en/articles/10876024-openai-mutual-tls-beta-program) explains certificate requirements, activation scope, supported API endpoints, certificate-chain behavior, and client configuration restrictions.
+
+Next, create the X.509 provider, derive one non-empty `openai.subject` value, and map that identity to a project service account with only the permissions the workload needs. The workload presents its certificate to the X.509 token endpoint to obtain a short-lived bearer token, then sends the bearer token and an accepted client certificate to the API mTLS endpoint.
+
+Follow the [X.509 certificate setup guide](https://developers.openai.com/api/docs/guides/workload-identity-federation/x509) for the complete dashboard and request flow.
+
+## Configure an OIDC Workload Identity Provider
 
 Create a Workload Identity Provider for each external issuer you trust. Workload identity federation supports OIDC JWT subject tokens.
+
+For certificate-backed workloads, follow the [X.509 certificate guide](https://developers.openai.com/api/docs/guides/workload-identity-federation/x509). X.509 providers reuse active Mutual TLS roots and don't use OIDC issuer, audience, discovery, or JWKS settings.
 
 Workload Identity Provider configuration includes these dashboard options:
 
@@ -117,6 +134,8 @@ During signing-key rotation, publish both old and new public keys in the issuer 
 
 A service account mapping defines which external identities can mint access tokens for an OpenAI service account.
 
+For X.509 providers, mapping keys use derived `openai.*` attributes. Prefer an exact `openai.subject` mapping. Raw JWT claims such as `sub`, `aud`, and `iss` apply only to OIDC providers.
+
 Mapping configuration includes these dashboard options:
 
 | Option          | Description                                                                                                                                                  |
@@ -146,7 +165,7 @@ The dashboard shows mapping-level restrictions as **Permissions**. Token exchang
 
 ### Mapping resolution example
 
-Mapping resolution starts after OpenAI verifies the external subject token. OpenAI looks up mappings for the requested `identity_provider_id` and `service_account_id`, skips disabled mappings, evaluates only the attributes needed by each mapping, and issues a token only if exactly one enabled mapping matches all configured attributes.
+Mapping resolution starts after OpenAI verifies the external identity. OpenAI looks up mappings for the requested `identity_provider_id` and `service_account_id`, skips disabled mappings, evaluates only the attributes needed by each mapping, and issues a token only if exactly one enabled mapping matches all configured attributes.
 
 For example, a GitHub Actions token might contain these claims:
 

@@ -56,6 +56,8 @@ The request body has three required top-level fields:
 
 The batch-level `model` applies to every request. A request body can omit `model` to inherit the batch-level value. If a request body sets its own `model`, it must match the batch-level `model` or the submission is rejected.
 
+On Google models, every request in a batch must ask for the same `response_format`: either all requests omit it, all use `json_object`, or all use `json_schema` with the same schema. Google's batch service derives one output schema for the whole batch, so requests that disagree fail there. A batch that disagrees is failed at validation, naming the first request that conflicts, so send one batch per `response_format` and per schema.
+
 <CodeGroup>
   ```python title="Python" lines theme={null}
   import json

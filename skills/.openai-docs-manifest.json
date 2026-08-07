@@ -1210,10 +1210,10 @@
   "openai-docs/guides/workload-identity-federation.md": {
     "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation.md",
     "skill": "openai-docs",
-    "etag": "W/\"69661fb41a1e225b0beb4d1bab9434d5\"",
-    "lastModified": "Tue, 28 Jul 2026 03:28:48 GMT",
-    "size": 14885,
-    "updatedAt": "2026-07-28T03:28:48.274Z"
+    "etag": "W/\"f8b712f7b79b0cdc71016d4446fc3122\"",
+    "lastModified": "Fri, 07 Aug 2026 02:45:18 GMT",
+    "size": 17601,
+    "updatedAt": "2026-08-07T03:16:47.614Z"
   },
   "openai-docs/guides/workload-identity-federation/aws.md": {
     "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/aws.md",
@@ -1271,13 +1271,21 @@
     "size": 19684,
     "updatedAt": "2026-07-28T03:28:50.099Z"
   },
+  "openai-docs/guides/workload-identity-federation/x509.md": {
+    "url": "https://developers.openai.com/api/docs/guides/workload-identity-federation/x509.md",
+    "skill": "openai-docs",
+    "etag": "W/\"6f28c1214e4d17642c6744b12602c2ee\"",
+    "lastModified": "Fri, 07 Aug 2026 03:16:49 GMT",
+    "size": 12294,
+    "updatedAt": "2026-08-07T03:16:49.691Z"
+  },
   "openai-docs/guides/your-data.md": {
     "url": "https://developers.openai.com/api/docs/guides/your-data.md",
     "skill": "openai-docs",
-    "etag": "W/\"3ed408f5bb14b67d4f942a635aa11051\"",
-    "lastModified": "Fri, 31 Jul 2026 08:27:32 GMT",
-    "size": 67680,
-    "updatedAt": "2026-07-31T12:13:57.434Z"
+    "etag": "W/\"25f5d1c8adf0bec5c89dbf13aa112c20\"",
+    "lastModified": "Fri, 07 Aug 2026 02:13:01 GMT",
+    "size": 67004,
+    "updatedAt": "2026-08-07T03:16:49.937Z"
   },
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
