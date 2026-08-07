@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare Mesh
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Mesh connects your services and devices with post-quantum encrypted networking. Route traffic privately between servers, laptops, and phones without VPNs or bastion hosts.
 
@@ -104,10 +104,11 @@ Key differences:
 
 1. [**Create your first Mesh node**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/) — The dashboard wizard handles provisioning. Install the client on a Linux server with two commands.
 2. [**Connect client devices**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/client-devices/) — Install the Cloudflare One Client on laptops and phones. They can reach each other and any Mesh node by Mesh IP.
-3. [**Add routes**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) (optional) — Make subnets behind a Mesh node reachable from any device.
-4. [**Enable high availability**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) (optional) — Run multiple replicas of a node for failover.
-5. [**Connect from Workers**](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) (optional) — Use VPC Network bindings to reach private services from Cloudflare Workers.
-6. [**Delegate access**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) (optional) — Scope member permissions to specific Mesh nodes instead of granting account-wide control.
+3. [**Run in Docker / Kubernetes**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/) — Deploy a Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD environments.
+4. [**Add routes**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/) (optional) — Make subnets behind a Mesh node reachable from any device.
+5. [**Enable high availability**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) (optional) — Run multiple replicas of a node for failover.
+6. [**Connect from Workers**](https://developers.cloudflare.com/workers-vpc/examples/connect-to-cloudflare-mesh/) (optional) — Use VPC Network bindings to reach private services from Cloudflare Workers.
+7. [**Delegate access**](https://developers.cloudflare.com/cloudflare-one/networks/connectors/granular-permissions/) (optional) — Scope member permissions to specific Mesh nodes instead of granting account-wide control.
 
 Was this helpful?
 
@@ -118,5 +119,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#page","headline":"Cloudflare Mesh - Private networking · Cloudflare One docs","description":"How Cloudflare Mesh works in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#page","headline":"Cloudflare Mesh - Private networking · Cloudflare One docs","description":"How Cloudflare Mesh works in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

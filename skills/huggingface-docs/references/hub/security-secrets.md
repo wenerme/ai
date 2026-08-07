@@ -26,3 +26,5 @@ You'll only receive emails for verified secrets, which are the ones that have be
 TruffleHog can verify secrets that work across multiple services, it is not restricted to Hugging Face tokens.
 
 You can opt-out from those email notifications from [your settings](https://huggingface.co/settings/notifications).
+
+If the leaked secret is a Hugging Face access token, you can invalidate it right away — including a token that is not yours — see [Revoking a leaked token](./security-tokens#revoking-a-leaked-token).

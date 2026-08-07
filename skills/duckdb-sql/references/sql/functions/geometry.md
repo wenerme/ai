@@ -1,6 +1,6 @@
 # Geometry Functions
 
-This section describes the functions for for examining and manipulating [`GEOMETRY`](https://duckdb.org/docs/current/sql/data_types/geometry.html) values.
+This section describes the functions for examining and manipulating [`GEOMETRY`](https://duckdb.org/docs/current/sql/data_types/geometry.html) values.
 
 > The `spatial` extension provides additional functions for working with `GEOMETRY` values, which are documented in the [Spatial Functions](https://duckdb.org/docs/current/core_extensions/spatial/functions.html) section.
 

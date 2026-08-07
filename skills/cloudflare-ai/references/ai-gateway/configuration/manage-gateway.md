@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage gateways
 
-Last updated May 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You have several different options for managing an AI Gateway.
 
@@ -28,12 +28,13 @@ The request that triggers auto-creation must be authenticated. When using the [R
 
 The auto-created default gateway uses the following settings:
 
-| Setting        | Default value  |
-| -------------- | -------------- |
-| Authentication | On             |
-| Log collection | On             |
-| Caching        | Off (TTL of 0) |
-| Rate limiting  | Off            |
+| Setting            | Default value    |
+| ------------------ | ---------------- |
+| Authentication     | On               |
+| Log collection     | On               |
+| Caching            | Off (TTL of 0)   |
+| Rate limiting      | Off              |
+| Workers AI billing | Standard billing |
 
 After creation, you can edit the default gateway settings like any other gateway. If you delete the default gateway, sending a new authenticated request to the `default` gateway ID auto-creates it again.
 
@@ -48,7 +49,10 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 2. Go to **AI** \> **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
-5. Select **Create**.
+5. In **Workers AI Billing**, choose how Workers AI requests through this gateway are billed:
+  * **Standard billing** charges your Cloudflare account at the end of each billing cycle.
+  * **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
+6. Select **Create**.
 
 To set up an AI Gateway using the API:
 
@@ -73,6 +77,20 @@ To edit an AI Gateway, send a [PUT request](https://developers.cloudflare.com/ap
 Note
 
 For more details about what settings are available for editing, refer to [Configuration](https://developers.cloudflare.com/ai-gateway/configuration/).
+
+### Configure Workers AI billing
+
+By default, Workers AI requests use **Standard billing**, which charges your Cloudflare account at the end of each billing cycle.
+
+To use prepaid AI Gateway credits for Workers AI requests:
+
+1. [Load credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) into your Cloudflare account.
+2. In the Cloudflare dashboard, go to **AI** \> **AI Gateway** and select your gateway.
+3. Go to **Settings** and find **Workers AI Billing**.
+4. Select **Unified billing**.
+5. Select **Save**.
+
+Workers AI requests routed through this gateway will deduct from your AI Gateway credit balance in real time.
 
 ## Retry requests
 
@@ -118,5 +136,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

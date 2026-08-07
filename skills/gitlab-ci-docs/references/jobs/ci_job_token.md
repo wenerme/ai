@@ -239,8 +239,8 @@ the [projects API](../../api/projects.md#update-a-project).
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/597258) in GitLab 19.1. Feature flag `allow_push_to_allowlisted_projects` removed.
 
 You can allow CI/CD job tokens from allowlisted projects to push to your project repository.
-This is useful for GitOps workflows, submodule tagging, and cross-repository CI/CD pipelines
-without long-lived access tokens.
+A cross-project push avoids long-lived access tokens for GitOps workflows, submodule tagging,
+and cross-repository CI/CD pipelines.
 
 When a job token push succeeds, no CI/CD pipelines are triggered in the target project.
 

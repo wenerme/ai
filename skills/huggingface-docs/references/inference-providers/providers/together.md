@@ -59,15 +59,6 @@ Find out more about Feature Extraction [here](../tasks/feature-extraction).
     providersMapping={ {"together":{"modelId":"intfloat/multilingual-e5-large-instruct","providerModelId":"intfloat/multilingual-e5-large-instruct"} } }
 />
 
-### Image To Image
-
-Find out more about Image To Image [here](../tasks/image-to-image).
-
-<InferenceSnippet
-    pipeline=image-to-image
-    providersMapping={ {"together":{"modelId":"black-forest-labs/FLUX.2-dev","providerModelId":"black-forest-labs/FLUX.2-dev"} } }
-/>
-
 ### Text To Image
 
 Find out more about Text To Image [here](../tasks/text-to-image).

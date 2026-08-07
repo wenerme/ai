@@ -39,7 +39,7 @@ CI/CD Variables:
   conditional rules, or directly in job scripts.
 - **Scope**: Can be defined globally (affecting all jobs), at the job level (affecting only specific jobs),
   or for the entire project or group through the GitLab UI.
-- **Validation**: Simple key-value pairs with minimal built-in validation, though you can add some controls through
+- **Validation**: Key-value pairs with minimal built-in validation, though you can add some controls through
   the GitLab UI for project variables.
 
 ## Define input parameters with `spec:inputs`
@@ -444,9 +444,8 @@ In this example, the `requires_approval` input is set to `true` when `deployment
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/218804) in GitLab 18.9.
 
-Use `spec:inputs:rules` with `default: null` and without `options` to allow users to enter
-their own value for an input. This is useful for workflow-specific values like environment names
-or test configurations.
+Use `spec:inputs:rules` with `default: null` and without `options`
+so users can enter their own value, such as environment names or test configurations.
 
 For example:
 
@@ -468,8 +467,8 @@ deploy:
   script: echo "Config: $[[ inputs.custom_config ]]"
 ```
 
-In this example, when `deployment_type` is `custom`, the `custom_config` input is listed on the run pipeline page
-and users must enter a value for the input.
+In this example, when `deployment_type` is `custom`, the `custom_config` input appears on
+the **Run new pipeline** page and users must enter a value for it.
 
 ### Use boolean inputs with `spec:inputs:rules`
 

@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Cloudflare platform access
@@ -112,23 +112,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

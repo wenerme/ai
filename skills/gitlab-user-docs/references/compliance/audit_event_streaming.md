@@ -1,5 +1,7 @@
 # Audit event streaming for top-level groups
 
+Learn how to configure and manage audit event streaming in GitLab to export audit logs to external destinations for compliance monitoring.
+
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

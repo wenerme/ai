@@ -773,6 +773,19 @@ CI related settings that apply to the entire instance.
 
 Returns [`CiApplicationSettings`](#ciapplicationsettings).
 
+### `Query.ciCatalogBundledResources`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+GitLab-maintained bundled CI/CD Catalog resources available on the current cell.
+
+Returns [`CiCatalogBundledResourceConnection`](#cicatalogbundledresourceconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
 ### `Query.ciCatalogResource`
 
 - Introduced in GitLab 16.1.
@@ -1658,6 +1671,65 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="query-mergerequest-id"></a>`id` | [`MergeRequestID!`](#mergerequestid) | Global ID of the merge request. |
+
+### `Query.mergeRequests`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Find merge requests visible to the current user. At least one filter must be provided.
+
+Returns [`MergeRequestConnection`](#mergerequestconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="query-mergerequests-approvedby"></a>`approvedBy` | [`[String!]`](#string) | Usernames of the approvers. |
+| <a id="query-mergerequests-approver"></a>`approver` | [`[String!]`](#string) | Usernames of possible approvers. |
+| <a id="query-mergerequests-assigneeusername"></a>`assigneeUsername` | [`String`](#string) | Username of the assignee. |
+| <a id="query-mergerequests-assigneeusernames"></a>`assigneeUsernames` | [`[String!]`](#string) | Usernames of users assigned to the merge request. |
+| <a id="query-mergerequests-assigneewildcardid"></a>`assigneeWildcardId` | [`AssigneeWildcardId`](#assigneewildcardid) | Filter by assignee presence. Incompatible with assigneeUsernames and assigneeUsername. |
+| <a id="query-mergerequests-authorusername"></a>`authorUsername` | [`String`](#string) | Username of the author. |
+| <a id="query-mergerequests-blobpath"></a>`blobPath`  | [`String`](#string) | Introduced in GitLab 17.7. Status: Experiment. Path of the blob changed in merge request. Requires state, targetBranches, and createdAfter arguments. |
+| <a id="query-mergerequests-closedafter"></a>`closedAfter` | [`Time`](#time) | Merge requests closed after the date. |
+| <a id="query-mergerequests-closedbefore"></a>`closedBefore` | [`Time`](#time) | Merge requests closed before the date. |
+| <a id="query-mergerequests-createdafter"></a>`createdAfter` | [`Time`](#time) | Merge requests created after the timestamp. |
+| <a id="query-mergerequests-createdbefore"></a>`createdBefore` | [`Time`](#time) | Merge requests created before the timestamp. |
+| <a id="query-mergerequests-deployedafter"></a>`deployedAfter` | [`Time`](#time) | Merge requests deployed after the timestamp. |
+| <a id="query-mergerequests-deployedbefore"></a>`deployedBefore` | [`Time`](#time) | Merge requests deployed before the timestamp. |
+| <a id="query-mergerequests-deploymentid"></a>`deploymentId` | [`String`](#string) | ID of the deployment. |
+| <a id="query-mergerequests-draft"></a>`draft` | [`Boolean`](#boolean) | Limit result to draft merge requests. |
+| <a id="query-mergerequests-environmentname"></a>`environmentName` | [`String`](#string) | Environment merge requests have been deployed to. |
+| <a id="query-mergerequests-ignoredreviewerusername"></a>`ignoredReviewerUsername`  | [`String`](#string) | Introduced in GitLab 18.0. Status: Experiment. Username of the reviewer to ignore when searching by reviewer state. |
+| <a id="query-mergerequests-iids"></a>`iids` | [`[String!]`](#string) | Array of IIDs of merge requests, for example `[1, 2]`. |
+| <a id="query-mergerequests-includearchived"></a>`includeArchived` | [`Boolean`](#boolean) | Whether to include merge requests from archived projects. Defaults to `false`. |
+| <a id="query-mergerequests-labelname"></a>`labelName` | [`[String]`](#string) | Labels applied to the merge request. |
+| <a id="query-mergerequests-labels"></a>`labels`  | [`[String!]`](#string) | Deprecated in GitLab 17.1. Use `labelName`. |
+| <a id="query-mergerequests-mergedafter"></a>`mergedAfter` | [`Time`](#time) | Merge requests merged after the date. |
+| <a id="query-mergerequests-mergedbefore"></a>`mergedBefore` | [`Time`](#time) | Merge requests merged before the date. |
+| <a id="query-mergerequests-mergedby"></a>`mergedBy` | [`String`](#string) | Username of the merger. |
+| <a id="query-mergerequests-milestonetitle"></a>`milestoneTitle` | [`String`](#string) | Title of the milestone. Incompatible with milestoneWildcardId. |
+| <a id="query-mergerequests-milestonewildcardid"></a>`milestoneWildcardId` | [`MilestoneWildcardId`](#milestonewildcardid) | Filter issues by milestone ID wildcard. Incompatible with milestoneTitle. |
+| <a id="query-mergerequests-myreactionemoji"></a>`myReactionEmoji` | [`String`](#string) | Filter by your reaction emoji. |
+| <a id="query-mergerequests-not"></a>`not` | [`MergeRequestsResolverNegatedParams`](#mergerequestsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
+| <a id="query-mergerequests-or"></a>`or` | [`UnionedMergeRequestFilterInput`](#unionedmergerequestfilterinput) | List of arguments with inclusive OR. |
+| <a id="query-mergerequests-releasetag"></a>`releaseTag` | [`String`](#string) | Filter by release tag. |
+| <a id="query-mergerequests-reviewstate"></a>`reviewState`  | [`MergeRequestReviewState`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer state of the merge request. |
+| <a id="query-mergerequests-reviewstates"></a>`reviewStates`  | [`[MergeRequestReviewState!]`](#mergerequestreviewstate) | Introduced in GitLab 17.0. Status: Experiment. Reviewer states of the merge request. |
+| <a id="query-mergerequests-reviewerusername"></a>`reviewerUsername` | [`String`](#string) | Username of the reviewer. |
+| <a id="query-mergerequests-reviewerwildcardid"></a>`reviewerWildcardId` | [`ReviewerWildcardId`](#reviewerwildcardid) | Filter by reviewer presence. Incompatible with reviewerUsername. |
+| <a id="query-mergerequests-sort"></a>`sort` | [`MergeRequestSort`](#mergerequestsort) | Sort merge requests by the criteria. |
+| <a id="query-mergerequests-sourcebranches"></a>`sourceBranches` | [`[String!]`](#string) | Array of source branch names. All resolved merge requests will have one of these branches as their source. |
+| <a id="query-mergerequests-state"></a>`state` | [`MergeRequestState`](#mergerequeststate) | Merge request state. If provided, all resolved merge requests will have the state. |
+| <a id="query-mergerequests-subscribed"></a>`subscribed` | [`SubscriptionStatus`](#subscriptionstatus) | Merge requests the current user is subscribed to. |
+| <a id="query-mergerequests-targetbranches"></a>`targetBranches` | [`[String!]`](#string) | Array of target branch names. All resolved merge requests will have one of these branches as their target. |
+| <a id="query-mergerequests-updatedafter"></a>`updatedAfter` | [`Time`](#time) | Merge requests updated after the timestamp. |
+| <a id="query-mergerequests-updatedbefore"></a>`updatedBefore` | [`Time`](#time) | Merge requests updated before the timestamp. |
 
 ### `Query.metadata`
 
@@ -3021,7 +3093,6 @@ Arguments:
 | <a id="mutation-aiaction-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aiaction-clientsubscriptionid"></a>`clientSubscriptionId` | [`String`](#string) | Client generated ID that can be subscribed to, to receive a response for the mutation. |
 | <a id="mutation-aiaction-conversationtype"></a>`conversationType` | [`AiConversationsThreadsConversationType`](#aiconversationsthreadsconversationtype) | Conversation type of the thread. |
-| <a id="mutation-aiaction-descriptioncomposer"></a>`descriptionComposer` | [`AiDescriptionComposerInput`](#aidescriptioncomposerinput) | Input for description_composer AI action. |
 | <a id="mutation-aiaction-explainvulnerability"></a>`explainVulnerability` | [`AiExplainVulnerabilityInput`](#aiexplainvulnerabilityinput) | Input for explain_vulnerability AI action. |
 | <a id="mutation-aiaction-generatecommitmessage"></a>`generateCommitMessage` | [`AiGenerateCommitMessageInput`](#aigeneratecommitmessageinput) | Input for generate_commit_message AI action. |
 | <a id="mutation-aiaction-generatedescription"></a>`generateDescription` | [`AiGenerateDescriptionInput`](#aigeneratedescriptioninput) | Input for generate_description AI action. |
@@ -3224,6 +3295,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-itemid"></a>`itemId` | [`AiCatalogItemID!`](#aicatalogitemid) | Global ID of the catalog item to enable. |
+| <a id="mutation-aicatalogitemconsumerbulkcreate-pinnedversion"></a>`pinnedVersion` | [`AiCatalogPinnedVersion`](#aicatalogpinnedversion) | Version to pin the item to, in the format `n.n.n`. Must be a released version. Defaults to the latest released version. Ignored when enabling within the item's managing project, which always tracks the latest released version. |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-projectids"></a>`projectIds` | [`[ProjectID!]!`](#projectid) | Global IDs of the projects to enable the catalog item in (maximum 100). |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-triggerconditions"></a>`triggerConditions`  | [`AiCatalogTriggerConditionsInput`](#aicatalogtriggerconditionsinput) | Introduced in GitLab 19.3. Status: Experiment. Filter conditions for the auto-created AI Catalog triggers, keyed by event type. |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Deprecated in GitLab 19.3. Use `triggerConditions`. |
@@ -16882,8 +16954,9 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mutation-userachievementsupdate-awardmessage"></a>`awardMessage` | [`String`](#string) | Message to associate with the awarded achievement. |
 | <a id="mutation-userachievementsupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-userachievementsupdate-showonprofile"></a>`showOnProfile` | [`Boolean!`](#boolean) | Indicates whether or not the user achievement is visible on the profile. |
+| <a id="mutation-userachievementsupdate-showonprofile"></a>`showOnProfile` | [`Boolean`](#boolean) | Indicates whether or not the user achievement is visible on the profile. |
 | <a id="mutation-userachievementsupdate-userachievementid"></a>`userAchievementId` | [`AchievementsUserAchievementID!`](#achievementsuserachievementid) | Global ID of the user achievement being updated. |
 
 Fields:
@@ -19694,6 +19767,29 @@ Fields:
 | <a id="approvalprojectruleedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="approvalprojectruleedge-node"></a>`node` | [`ApprovalProjectRule`](#approvalprojectrule) | The item at the end of the edge. |
 
+#### `ArtifactRegistryRepositoryConnection`
+
+The connection type for [`ArtifactRegistryRepository`](#artifactregistryrepository).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepositoryconnection-edges"></a>`edges` | [`[ArtifactRegistryRepositoryEdge]`](#artifactregistryrepositoryedge) | A list of edges. |
+| <a id="artifactregistryrepositoryconnection-nodes"></a>`nodes` | [`[ArtifactRegistryRepository]`](#artifactregistryrepository) | A list of nodes. |
+| <a id="artifactregistryrepositoryconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `ArtifactRegistryRepositoryEdge`
+
+The edge type for [`ArtifactRegistryRepository`](#artifactregistryrepository).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepositoryedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="artifactregistryrepositoryedge-node"></a>`node` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | The item at the end of the edge. |
+
 #### `ArtifactRegistryRoleAssignmentConnection`
 
 The connection type for [`ArtifactRegistryRoleAssignment`](#artifactregistryroleassignment).
@@ -20695,6 +20791,43 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="cibuildneededge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="cibuildneededge-node"></a>`node` | [`CiBuildNeed`](#cibuildneed) | The item at the end of the edge. |
+
+#### `CiCatalogBundledResourceConnection`
+
+The connection type for [`CiCatalogBundledResource`](#cicatalogbundledresource).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cicatalogbundledresourceconnection-edges"></a>`edges` | [`[CiCatalogBundledResourceEdge]`](#cicatalogbundledresourceedge) | A list of edges. |
+| <a id="cicatalogbundledresourceconnection-nodes"></a>`nodes` | [`[CiCatalogBundledResource]`](#cicatalogbundledresource) | A list of nodes. |
+| <a id="cicatalogbundledresourceconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+##### Fields with arguments
+
+###### `CiCatalogBundledResourceConnection.count`
+
+Total count of collection. Returns limit + 1 for counts greater than the limit.
+
+Returns [`Int!`](#int).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cicatalogbundledresourceconnection-count-limit"></a>`limit` | [`Int`](#int) | Limit applied to the count query, returns limit + 1. When not provided, returns the exact count. |
+
+#### `CiCatalogBundledResourceEdge`
+
+The edge type for [`CiCatalogBundledResource`](#cicatalogbundledresource).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cicatalogbundledresourceedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="cicatalogbundledresourceedge-node"></a>`node` | [`CiCatalogBundledResource`](#cicatalogbundledresource) | The item at the end of the edge. |
 
 #### `CiCatalogResourceComponentConnection`
 
@@ -32031,7 +32164,6 @@ Fields:
 | <a id="aiusermetrics-codereview"></a>`codeReview` | [`codeReviewUserMetrics`](#codereviewusermetrics) | Code Review metrics for the user. |
 | <a id="aiusermetrics-codesuggestions"></a>`codeSuggestions` | [`codeSuggestionsUserMetrics`](#codesuggestionsusermetrics) | Code Suggestions metrics for the user. |
 | <a id="aiusermetrics-codesuggestionsacceptedcount"></a>`codeSuggestionsAcceptedCount`  | [`Int`](#int) | Deprecated in GitLab 18.7. Use `codeSuggestions.codeSuggestionAcceptedInIdeEventCount` instead. |
-| <a id="aiusermetrics-composemergerequestdescription"></a>`composeMergeRequestDescription` | [`composeMergeRequestDescriptionUserMetrics`](#composemergerequestdescriptionusermetrics) | Compose Merge Request Description metrics for the user. |
 | <a id="aiusermetrics-duochatinteractionscount"></a>`duoChatInteractionsCount`  | [`Int`](#int) | Deprecated in GitLab 18.7. Use `chat.requestDuoChatResponseEventCount` instead. |
 | <a id="aiusermetrics-duomessaging"></a>`duoMessaging` | [`duoMessagingUserMetrics`](#duomessagingusermetrics) | Duo Messaging metrics for the user. |
 | <a id="aiusermetrics-duoworkflow"></a>`duoWorkflow` | [`duoWorkflowUserMetrics`](#duoworkflowusermetrics) | Duo Workflow metrics for the user. |
@@ -32636,6 +32768,22 @@ Fields:
 | <a id="approvalscanresultpolicy-approvalsrequired"></a>`approvalsRequired` | [`Int!`](#int) | Represents the required approvals defined in the policy. |
 | <a id="approvalscanresultpolicy-name"></a>`name` | [`String!`](#string) | Represents the name of the policy. |
 | <a id="approvalscanresultpolicy-reporttype"></a>`reportType` | [`ApprovalReportType!`](#approvalreporttype) | Represents the report_type of the approval rule. |
+
+### `ArtifactRegistryRepository`
+
+Repository in Artifact Registry.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepository-downloadscount"></a>`downloadsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Number of artifact downloads from the repository. Buffered, so it can lag. |
+| <a id="artifactregistryrepository-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Package format the repository holds. |
+| <a id="artifactregistryrepository-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind!`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. How the repository sources its artifacts. |
+| <a id="artifactregistryrepository-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
+| <a id="artifactregistryrepository-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
+| <a id="artifactregistryrepository-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
+| <a id="artifactregistryrepository-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
 
 ### `ArtifactRegistryRoleAssignment`
 
@@ -34302,6 +34450,22 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="cibuildneed-id"></a>`id` | [`ID!`](#id) | ID of the BuildNeed. |
 | <a id="cibuildneed-name"></a>`name` | [`String`](#string) | Name of the job we need to complete. |
+
+### `CiCatalogBundledResource`
+
+A GitLab-maintained bundled CI/CD catalog resource on the current cell.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="cicatalogbundledresource-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Description of the bundled catalog resource. |
+| <a id="cicatalogbundledresource-fullpath"></a>`fullPath`  | [`ID`](#id) | Introduced in GitLab 19.3. Status: Experiment. Full path of the bundled catalog resource (for example, `components/sast`). |
+| <a id="cicatalogbundledresource-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.3. Status: Experiment. ID of the bundled catalog resource. |
+| <a id="cicatalogbundledresource-latestreleasedat"></a>`latestReleasedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Release date of the bundled catalog resource's latest version. |
+| <a id="cicatalogbundledresource-latestversionname"></a>`latestVersionName`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the latest version of the bundled catalog resource (for example, `v1.2.3`). |
+| <a id="cicatalogbundledresource-name"></a>`name`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the bundled catalog resource. |
+| <a id="cicatalogbundledresource-serverfqdn"></a>`serverFqdn`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. FQDN of the GitLab instance that maintains the bundled catalog resource. |
 
 ### `CiCatalogResource`
 
@@ -39620,7 +39784,7 @@ Fields:
 | <a id="duoworkflowsessionartifact-downloadpath"></a>`downloadPath` | [`String`](#string) | Path to download the session artifact as a JSON file. |
 | <a id="duoworkflowsessionartifact-id"></a>`id` | [`ID!`](#id) | Global ID of the session, as an `Ai::DuoWorkflows::Workflow`. |
 | <a id="duoworkflowsessionartifact-project"></a>`project` | [`Project`](#project) | Project the session belongs to. |
-| <a id="duoworkflowsessionartifact-user"></a>`user` | [`UserCore`](#usercore) | User who initiated the session. |
+| <a id="duoworkflowsessionartifact-triggeredby"></a>`triggeredBy` | [`UserCore`](#usercore) | User who initiated the session. |
 | <a id="duoworkflowsessionartifact-webpath"></a>`webPath` | [`String`](#string) | Path of the session. |
 | <a id="duoworkflowsessionartifact-workflowcreatedat"></a>`workflowCreatedAt` | [`Time!`](#time) | Timestamp of when the session was created. |
 | <a id="duoworkflowsessionartifact-workflowdefinition"></a>`workflowDefinition` | [`String!`](#string) | Workflow definition type of the session. |
@@ -42805,6 +42969,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="group-duoworkflowsessionartifacts-not"></a>`not` | [`DuoWorkflowSessionArtifactNegatedFilterInput`](#duoworkflowsessionartifactnegatedfilterinput) | Negated filter conditions. |
 | <a id="group-duoworkflowsessionartifacts-projectpath"></a>`projectPath` | [`String`](#string) | Filter by project full path. |
+| <a id="group-duoworkflowsessionartifacts-triggeredbyuserid"></a>`triggeredByUserId` | [`UserID`](#userid) | Filter to sessions triggered by the user with the given global ID. |
 | <a id="group-duoworkflowsessionartifacts-workflowcreatedafter"></a>`workflowCreatedAfter` | [`Time`](#time) | Return sessions created after the timestamp. |
 | <a id="group-duoworkflowsessionartifacts-workflowcreatedbefore"></a>`workflowCreatedBefore` | [`Time`](#time) | Return sessions created before the timestamp. |
 | <a id="group-duoworkflowsessionartifacts-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | Filter by workflow definition. |
@@ -46234,7 +46399,7 @@ Fields:
 | <a id="mergerequest-squash"></a>`squash` | [`Boolean!`](#boolean) | Indicates if the merge request is set to be squashed when merged. [Project settings](https://docs.gitlab.com/user/project/merge_requests/squash_and_merge/#configure-squash-options-for-a-project) may override this value. Use `squash_on_merge` instead to take project squash options into account. |
 | <a id="mergerequest-squashonmerge"></a>`squashOnMerge` | [`Boolean!`](#boolean) | Indicates if the merge request will be squashed when merged. |
 | <a id="mergerequest-squashreadonly"></a>`squashReadOnly` | [`Boolean!`](#boolean) | Indicates if `squashReadOnly` is enabled. |
-| <a id="mergerequest-stack"></a>`stack` | [`[MergeRequest!]`](#mergerequest) | Other open merge requests in the same stack as this merge request, ordered from the top of the stack to the bottom. Returns null if this merge request is not part of a stack. |
+| <a id="mergerequest-stack"></a>`stack` | [`[MergeRequest!]`](#mergerequest) | Other open merge requests in the same stack as this merge request, ordered from the top of the stack to the bottom. Returns null if this merge request is not part of a stack, or if the stack contains more than 20 merge requests. |
 | <a id="mergerequest-state"></a>`state` | [`MergeRequestState!`](#mergerequeststate) | State of the merge request. |
 | <a id="mergerequest-subscribed"></a>`subscribed` | [`Boolean!`](#boolean) | Indicates if the currently logged in user is subscribed to the merge request. |
 | <a id="mergerequest-suggestedreviewers"></a>`suggestedReviewers` | [`SuggestedReviewersType`](#suggestedreviewerstype) | Suggested reviewers for merge request. |
@@ -49869,6 +50034,26 @@ Fields:
 
 #### Fields with arguments
 
+##### `Organization.artifactRegistryRepositories`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Artifact Registry repositories in the organization. Returns `null` when the `artifact_registry_ui` feature flag is disabled.
+
+Returns [`ArtifactRegistryRepositoryConnection`](#artifactregistryrepositoryconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="organization-artifactregistryrepositories-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Return only repositories holding the given package format. |
+| <a id="organization-artifactregistryrepositories-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. Return only repositories sourcing their artifacts the given way. |
+
 ##### `Organization.cdApplication`
 
 - Introduced in GitLab 19.2.
@@ -49902,6 +50087,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-cdapplications-search"></a>`search` | [`String`](#string) | Search applications by name or description. |
+| <a id="organization-cdapplications-statuses"></a>`statuses` | [`[CdApplicationStatus!]`](#cdapplicationstatus) | Filter applications by status. An application can match more than one status. |
 
 ##### `Organization.cdEnvironment`
 
@@ -52784,6 +52970,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="project-duoworkflowsessionartifacts-not"></a>`not` | [`DuoWorkflowSessionArtifactNegatedFilterInput`](#duoworkflowsessionartifactnegatedfilterinput) | Negated filter conditions. |
+| <a id="project-duoworkflowsessionartifacts-triggeredbyuserid"></a>`triggeredByUserId` | [`UserID`](#userid) | Filter to sessions triggered by the user with the given global ID. |
 | <a id="project-duoworkflowsessionartifacts-workflowcreatedafter"></a>`workflowCreatedAfter` | [`Time`](#time) | Return sessions created after the timestamp. |
 | <a id="project-duoworkflowsessionartifacts-workflowcreatedbefore"></a>`workflowCreatedBefore` | [`Time`](#time) | Return sessions created before the timestamp. |
 | <a id="project-duoworkflowsessionartifacts-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | Filter by workflow definition. |
@@ -61546,18 +61733,6 @@ Fields:
 | <a id="codesuggestionsusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Code Suggestions activity for the user. |
 | <a id="codesuggestionsusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Code Suggestions events for the user. |
 
-### `composeMergeRequestDescriptionUserMetrics`
-
-Compose Merge Request Description user metrics for a user. Requires ClickHouse. Premium and Ultimate with GitLab Duo Enterprise only.
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="composemergerequestdescriptionusermetrics-composemergerequestdescriptioneventcount"></a>`composeMergeRequestDescriptionEventCount` | [`Int`](#int) | Total count of `compose_merge_request_description` event. |
-| <a id="composemergerequestdescriptionusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Compose Merge Request Description activity for the user. |
-| <a id="composemergerequestdescriptionusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Compose Merge Request Description events for the user. |
-
 ### `duoChatMetrics`
 
 Requires ClickHouse. Premium and Ultimate only.
@@ -62201,7 +62376,6 @@ Type of AI usage event.
 | <a id="aiusageeventtype-code_suggestion_direct_access_token_refresh"></a>`CODE_SUGGESTION_DIRECT_ACCESS_TOKEN_REFRESH` | Code Suggestion token was refreshed. Old data only. |
 | <a id="aiusageeventtype-code_suggestion_rejected_in_ide"></a>`CODE_SUGGESTION_REJECTED_IN_IDE` | Code Suggestion was rejected in IDE. |
 | <a id="aiusageeventtype-code_suggestion_shown_in_ide"></a>`CODE_SUGGESTION_SHOWN_IN_IDE` | Code Suggestion was shown in IDE. |
-| <a id="aiusageeventtype-compose_merge_request_description"></a>`COMPOSE_MERGE_REQUEST_DESCRIPTION` | A merge request description was composed with GitLab Duo. |
 | <a id="aiusageeventtype-duo_workflow_workload_completed"></a>`DUO_WORKFLOW_WORKLOAD_COMPLETED` | Duo Workflow workload was completed. |
 | <a id="aiusageeventtype-encounter_duo_code_review_error_during_review"></a>`ENCOUNTER_DUO_CODE_REVIEW_ERROR_DURING_REVIEW` | Duo Code Review encountered an error. |
 | <a id="aiusageeventtype-excluded_files_from_duo_code_review"></a>`EXCLUDED_FILES_FROM_DUO_CODE_REVIEW` | Files were excluded from Duo Code Review. |
@@ -62272,10 +62446,6 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-code_suggestion_rejected_in_ide_desc"></a>`CODE_SUGGESTION_REJECTED_IN_IDE_DESC` | Code Suggestion Rejected In Ide event count in descending order. |
 | <a id="aiusermetricssort-code_suggestion_shown_in_ide_asc"></a>`CODE_SUGGESTION_SHOWN_IN_IDE_ASC` | Code Suggestion Shown In Ide event count in ascending order. |
 | <a id="aiusermetricssort-code_suggestion_shown_in_ide_desc"></a>`CODE_SUGGESTION_SHOWN_IN_IDE_DESC` | Code Suggestion Shown In Ide event count in descending order. |
-| <a id="aiusermetricssort-compose_merge_request_description_asc"></a>`COMPOSE_MERGE_REQUEST_DESCRIPTION_ASC` | Compose Merge Request Description event count in ascending order. |
-| <a id="aiusermetricssort-compose_merge_request_description_desc"></a>`COMPOSE_MERGE_REQUEST_DESCRIPTION_DESC` | Compose Merge Request Description event count in descending order. |
-| <a id="aiusermetricssort-compose_merge_request_description_total_count_asc"></a>`COMPOSE_MERGE_REQUEST_DESCRIPTION_TOTAL_COUNT_ASC` | Compose Merge Request Description total event count in ascending order. |
-| <a id="aiusermetricssort-compose_merge_request_description_total_count_desc"></a>`COMPOSE_MERGE_REQUEST_DESCRIPTION_TOTAL_COUNT_DESC` | Compose Merge Request Description total event count in descending order. |
 | <a id="aiusermetricssort-duo_messaging_total_count_asc"></a>`DUO_MESSAGING_TOTAL_COUNT_ASC` | Duo Messaging total event count in ascending order. |
 | <a id="aiusermetricssort-duo_messaging_total_count_desc"></a>`DUO_MESSAGING_TOTAL_COUNT_DESC` | Duo Messaging total event count in descending order. |
 | <a id="aiusermetricssort-duo_workflow_total_count_asc"></a>`DUO_WORKFLOW_TOTAL_COUNT_ASC` | Duo Workflow total event count in ascending order. |
@@ -62556,6 +62726,37 @@ The kind of an approval rule.
 | <a id="approvalruletype-regular"></a>`REGULAR` | A `regular` approval rule. |
 | <a id="approvalruletype-report_approver"></a>`REPORT_APPROVER` | A `report_approver` approval rule. |
 
+### `ArtifactRegistryRepositoryFormat`
+
+Package format an Artifact Registry repository holds.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="artifactregistryrepositoryformat-docker"></a>`DOCKER` | Docker images. |
+| <a id="artifactregistryrepositoryformat-maven"></a>`MAVEN` | Maven packages. |
+| <a id="artifactregistryrepositoryformat-npm"></a>`NPM` | npm packages. |
+| <a id="artifactregistryrepositoryformat-oci"></a>`OCI` | OCI artifacts. |
+
+### `ArtifactRegistryRepositoryKind`
+
+How an Artifact Registry repository sources its artifacts.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="artifactregistryrepositorykind-hosted"></a>`HOSTED` | Stores artifacts published to GitLab. |
+| <a id="artifactregistryrepositorykind-remote"></a>`REMOTE` | Proxies and caches an upstream registry. |
+| <a id="artifactregistryrepositorykind-virtual"></a>`VIRTUAL` | Serves other repositories through a single endpoint. |
+
+### `ArtifactRegistryRepositoryVisibility`
+
+Who can read an Artifact Registry repository.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="artifactregistryrepositoryvisibility-internal"></a>`INTERNAL` | Readable by any authenticated user. |
+| <a id="artifactregistryrepositoryvisibility-private"></a>`PRIVATE` | Readable only by users holding an Artifact Registry role. |
+| <a id="artifactregistryrepositoryvisibility-public"></a>`PUBLIC` | Readable by anyone. |
+
 ### `ArtifactRegistryRole`
 
 Artifact Registry role that can be assigned to a user.
@@ -62694,6 +62895,17 @@ Type of a continuous deployment application link.
 | <a id="cdapplicationlinktype-other"></a>`OTHER` | Other link. |
 | <a id="cdapplicationlinktype-repository"></a>`REPOSITORY` | Repository link. |
 | <a id="cdapplicationlinktype-runbook"></a>`RUNBOOK` | Runbook link. |
+
+### `CdApplicationStatus`
+
+Status used to filter the continuous deployment applications list. An application can match more than one status.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="cdapplicationstatus-awaiting_approval"></a>`AWAITING_APPROVAL` | Application has a rollout waiting on an approval. Not recorded on the backend yet, so this always matches no applications for now. |
+| <a id="cdapplicationstatus-degraded"></a>`DEGRADED` | Worst service health across the application is degraded. |
+| <a id="cdapplicationstatus-deploying"></a>`DEPLOYING` | Application has a rollout in progress. |
+| <a id="cdapplicationstatus-healthy"></a>`HEALTHY` | Worst service health across the application is healthy. |
 
 ### `CdDeploymentState`
 
@@ -64828,7 +65040,6 @@ Licensed features that can be checked for availability on a namespace or project
 | <a id="licensedfeature-dependency_firewall"></a>`DEPENDENCY_FIREWALL` | Dependency firewall feature. |
 | <a id="licensedfeature-dependency_proxy_for_packages"></a>`DEPENDENCY_PROXY_FOR_PACKAGES` | Dependency proxy for packages feature. |
 | <a id="licensedfeature-dependency_scanning"></a>`DEPENDENCY_SCANNING` | Dependency scanning feature. |
-| <a id="licensedfeature-description_composer"></a>`DESCRIPTION_COMPOSER` | Description composer feature. |
 | <a id="licensedfeature-description_diffs"></a>`DESCRIPTION_DIFFS` | Description diffs feature. |
 | <a id="licensedfeature-devops_adoption"></a>`DEVOPS_ADOPTION` | Devops adoption feature. |
 | <a id="licensedfeature-disable_deleting_account_for_users"></a>`DISABLE_DELETING_ACCOUNT_FOR_USERS` | Disable deleting account for users feature. |
@@ -71570,21 +71781,6 @@ Arguments:
 | <a id="aicurrentfileinput-filename"></a>`fileName` | [`String!`](#string) | File name. |
 | <a id="aicurrentfileinput-selectedtext"></a>`selectedText` | [`String!`](#string) | Selected text. |
 
-### `AiDescriptionComposerInput`
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="aidescriptioncomposerinput-description"></a>`description` | [`String!`](#string) | Current description. |
-| <a id="aidescriptioncomposerinput-previousresponse"></a>`previousResponse` | [`String`](#string) | Previously AI-generated description content used for context in iterative refinements or follow-up prompts. |
-| <a id="aidescriptioncomposerinput-resourceid"></a>`resourceId` | [`AiModelID!`](#aimodelid) | Global ID of the resource to mutate. |
-| <a id="aidescriptioncomposerinput-sourcebranch"></a>`sourceBranch` | [`String`](#string) | Source branch of the changes. |
-| <a id="aidescriptioncomposerinput-sourceprojectid"></a>`sourceProjectId` | [`ID`](#id) | ID of the project where the changes are from. |
-| <a id="aidescriptioncomposerinput-targetbranch"></a>`targetBranch` | [`String`](#string) | Target branch of where the changes will be merged into. |
-| <a id="aidescriptioncomposerinput-title"></a>`title` | [`String!`](#string) | Current merge request title. |
-| <a id="aidescriptioncomposerinput-userprompt"></a>`userPrompt` | [`String!`](#string) | Prompt from user. |
-
 ### `AiExplainVulnerabilityInput`
 
 Arguments:
@@ -72259,6 +72455,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsessionartifactnegatedfilterinput-projectpath"></a>`projectPath` | [`String`](#string) | Exclude session artifacts belonging to the project full path. |
+| <a id="duoworkflowsessionartifactnegatedfilterinput-triggeredbyuserid"></a>`triggeredByUserId` | [`UserID`](#userid) | Exclude session artifacts triggered by the user with the given global ID. |
 | <a id="duoworkflowsessionartifactnegatedfilterinput-workflowdefinition"></a>`workflowDefinition` | [`String`](#string) | Exclude session artifacts with the workflow definition. |
 
 ### `EpicFilters`

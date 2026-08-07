@@ -9,7 +9,7 @@ your group's members made in the last week, month, or three months.
 Interactive bar charts and a detailed table show contribution events
 (push events, issues, and merge requests) by group member.
 
-[Contribution analytics bar graphs]
+[Contribution analytics bar chart showing the number of pushes by user for last week.]
 
 Use contribution analytics to get insights into team activity and individual performance, and use this information for:
 

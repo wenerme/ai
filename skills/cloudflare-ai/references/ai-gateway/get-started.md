@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Jun 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will learn how to set up and use your first AI Gateway.
 
@@ -45,6 +45,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
   }'
 ```
 
+The `cf-aig-gateway-id: default` header routes this Workers AI request through your account's default gateway. If the gateway does not exist, AI Gateway creates it on the first authenticated request. Routing through the gateway provides unified logging, analytics, caching, rate limiting, and security controls. The auto-created gateway uses **Standard billing** by default. To pay with prepaid AI Gateway credits, [set its Workers AI billing setting to **Unified billing**](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#configure-workers-ai-billing).
+
 Note
 
 For third-party models, you do not need to specify a gateway — AI Gateway uses `default` as the gateway ID and automatically creates it on the first authenticated request. Workers AI requests always require the `cf-aig-gateway-id` header. For more details, refer to [Default gateway](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#default-gateway).
@@ -58,7 +60,10 @@ You can also create gateways manually with a custom name and configuration throu
 2. Go to **AI** \> **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
-5. Select **Create**.
+5. In **Workers AI Billing**, choose how Workers AI requests through this gateway are billed:
+  * **Standard billing** charges your Cloudflare account at the end of each billing cycle.
+  * **Unified billing** deducts from your prepaid AI Gateway credit balance in real time.
+6. Select **Create**.
 
 To set up an AI Gateway using the API:
 
@@ -73,7 +78,7 @@ To set up an AI Gateway using the API:
 
 Authenticate with your upstream AI provider using one of the following options:
 
-* **Unified Billing:** Use the AI Gateway billing to pay for and authenticate your inference requests. Refer to [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/).
+* **Unified Billing:** Use prepaid AI Gateway credits for Workers AI and supported third-party model providers. Refer to [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/).
 * **BYOK (Store Keys):** Store your own provider API Keys with Cloudflare, and AI Gateway will include them at runtime. Refer to [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
 * **Request headers:** Include your provider API Key in the request headers as you normally would (for example, `Authorization: Bearer <OPENAI_API_KEY>`).
 
@@ -130,5 +135,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/get-started/#page","headline":"Getting started · Cloudflare AI Gateway docs","description":"Set up AI Gateway and send your first request to observe and control AI API traffic.","url":"https://developers.cloudflare.com/ai-gateway/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/get-started/#page","headline":"Getting started · Cloudflare AI Gateway docs","description":"Set up AI Gateway and send your first request to observe and control AI API traffic.","url":"https://developers.cloudflare.com/ai-gateway/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -11423,6 +11423,12 @@
     "size": 2188,
     "updatedAt": "2026-07-21T06:47:32.614Z"
   },
+  "cookbook/get-started/enterprise-onboarding-journey.md": {
+    "url": "https://openrouter.ai/docs/cookbook/get-started/enterprise-onboarding-journey.md",
+    "lastModified": "Fri, 07 Aug 2026 11:26:59 GMT",
+    "size": 16294,
+    "updatedAt": "2026-08-07T11:26:59.822Z"
+  },
   "cookbook/get-started/enterprise-quickstart.md": {
     "url": "https://openrouter.ai/docs/cookbook/get-started/enterprise-quickstart.md",
     "lastModified": "Wed, 05 Aug 2026 03:41:14 GMT",
@@ -11989,9 +11995,9 @@
   },
   "guides/overview/auth/oauth.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/oauth.md",
-    "lastModified": "Thu, 06 Aug 2026 03:45:32 GMT",
-    "size": 7552,
-    "updatedAt": "2026-08-06T03:45:32.912Z"
+    "lastModified": "Fri, 07 Aug 2026 11:27:33 GMT",
+    "size": 8363,
+    "updatedAt": "2026-08-07T11:27:33.857Z"
   },
   "guides/overview/mcp-server.md": {
     "url": "https://openrouter.ai/docs/guides/overview/mcp-server.md",

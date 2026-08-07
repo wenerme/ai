@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Jun 18, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 How can I generate the Cloudflare API Token?
 
@@ -142,6 +142,16 @@ If this does not solve the issue, check if your framework is blocking the UI. Fr
 
 If you are still unable to send a message, please contact support.
 
+### Recording
+
+Watermark images appear broken in recordings
+
+When you pass a watermark image URL via the [Start Recording](https://developers.cloudflare.com/api/resources/realtime%5Fkit/subresources/recordings/methods/start%5Frecordings/) API, the recorder loads that image inside a browser running in a Cloudflare container. If the image appears broken, check the following:
+
+* **CORS headers**: The image URL must return proper CORS headers (for example, `Access-Control-Allow-Origin: *`) in the HTTP response. Without these headers, the browser blocks the image from loading.
+* **Direct image URL**: The URL must point directly to the image file (for example, `https://example.com/logo.png`), not to an HTML page that embeds the image.
+* **No redirects**: The URL must not redirect to another location. The recorder fetches the URL as-is, so redirects may cause the image to fail to load.
+
 ### Demo App
 
 Can I use the Cloudflare hosted demo app or examples in my website as an iframe?
@@ -165,5 +175,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ · Cloudflare Realtime docs","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

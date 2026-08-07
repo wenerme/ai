@@ -947,7 +947,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 65535,
+    "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 3
   },
@@ -1282,13 +1282,13 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
+    "contextWindow": 262144,
     "maxOutput": 32768,
-    "inputCost": 0.075,
-    "outputCost": 0.22
+    "inputCost": 0.06,
+    "outputCost": 0.18
   },
   {
-    "model": "kilo/inclusionai/ling-3.0-flash:free",
+    "model": "kilo/inclusionai/ling-3.0-tiny:free",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -3419,7 +3419,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 65536,
+    "maxOutput": 81920,
     "inputCost": 0.26,
     "outputCost": 2.08
   },
@@ -4186,8 +4186,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1024000,
-    "maxOutput": 128000,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
   },
