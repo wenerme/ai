@@ -220,6 +220,8 @@ tags:
   description: Operations related to migrations.
 - name: Milestones
   description: Operations related to milestones.
+- name: Mobile push subscriptions
+  description: Operations related to mobile push subscriptions.
 - name: Namespace projects
   description: Operations related to namespace projects.
 - name: Namespaces
@@ -1542,7 +1544,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_c3a5d8790936"
+              "$ref": "#/components/schemas/RequestBody_ae660d4bfe67"
     get:
       operationId: getApiV4AiDuoWorkflowsWorkflowsIdCheckpoints
       summary: List all workflow checkpoints
@@ -1579,7 +1581,7 @@ paths:
         schema:
           type: string
           nullable: true
-          maxLength: 255
+          maxLength: 4096
         in: query
   "/api/v4/ai/duo_workflows/workflows/{id}/checkpoints/{checkpoint_id}":
     get:
@@ -1866,7 +1868,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_6bc874fddbf3"
+              "$ref": "#/components/schemas/RequestBody_96013d8cf931"
       x-gitlab-lifecycle: experiment
   "/api/v4/ai/duo_workflows/workflows/agent_privileges":
     get:
@@ -38572,7 +38574,8 @@ paths:
     post:
       operationId: postApiV4OfflineExports
       summary: Start a new offline transfer export
-      description: Initiates a new offline transfer export
+      description: Initiates a new offline transfer export. For more information,
+        see https://docs.gitlab.com/user/group/import/offline_transfer_migrations/
       tags:
       - Offline transfers
       responses:
@@ -38589,7 +38592,7 @@ paths:
     get:
       operationId: getApiV4OfflineExports
       summary: List all offline transfer exports
-      description: Lists all offline transfer exports
+      description: Lists all offline transfer exports. For more information, see https://docs.gitlab.com/user/group/import/offline_transfer_migrations/
       tags:
       - Offline transfers
       responses:
@@ -38644,7 +38647,8 @@ paths:
     get:
       operationId: getApiV4OfflineExportsId
       summary: Get offline transfer export details
-      description: Retrieves details of an offline transfer export
+      description: Retrieves details of an offline transfer export. For more information,
+        see https://docs.gitlab.com/user/group/import/offline_transfer_migrations/
       tags:
       - Offline transfers
       responses:
@@ -38665,7 +38669,8 @@ paths:
     post:
       operationId: postApiV4OfflineImports
       summary: Start a new offline transfer import
-      description: Initiates a new offline transfer import from object storage
+      description: Initiates a new offline transfer import from object storage. For
+        more information, see https://docs.gitlab.com/user/group/import/offline_transfer_migrations/
       tags:
       - Offline transfers
       responses:
@@ -39681,6 +39686,58 @@ paths:
           namespaces are considered.
         schema:
           type: integer
+          nullable: true
+        in: query
+  "/api/v4/user/push_subscriptions":
+    post:
+      operationId: postApiV4UserPushSubscriptions
+      summary: Register a mobile device for push notifications
+      description: Idempotently registers the calling user's device token for APNs
+        push notifications. Re-registering an existing token refreshes its attributes;
+        a token previously owned by another user is reassigned to the calling user.
+      tags:
+      - Mobile push subscriptions
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/APIEntitiesMobilePushSubscription"
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/RequestBody_0b4a46acc458"
+    delete:
+      operationId: deleteApiV4UserPushSubscriptions
+      summary: Unregister a mobile device from push notifications
+      description: Removes the calling user's push subscriptions for the given device
+        token.
+      tags:
+      - Mobile push subscriptions
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+      parameters:
+      - name: device_token
+        required: true
+        description: The hexadecimal APNs device token
+        schema:
+          type: string
           nullable: true
         in: query
   "/api/v4/metadata":
@@ -89914,6 +89971,17 @@ components:
           - my-group1
           items:
             type: string
+    APIEntitiesMobilePushSubscription:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        created_at:
+          type: string
+          format: date-time
+          example: '2026-07-30T12:00:00.000Z'
     APIEntitiesMetadata:
       type: object
       properties:
@@ -94625,7 +94693,7 @@ components:
           nullable: true
       required:
       - status_event
-    RequestBody_c3a5d8790936:
+    RequestBody_ae660d4bfe67:
       type: object
       properties:
         thread_ts:
@@ -94643,7 +94711,7 @@ components:
             to LangGraph's namespace string for one nested subgraph invocation, e.g.
             a delegated subagent dispatched by DelegationNode.
           nullable: true
-          maxLength: 255
+          maxLength: 4096
         checkpoint:
           type: object
           description: Checkpoint content
@@ -94812,7 +94880,7 @@ components:
           description: The ID or path of the project
           example: '1'
           nullable: true
-    RequestBody_6bc874fddbf3:
+    RequestBody_96013d8cf931:
       type: object
       properties:
         project_id:
@@ -94939,9 +95007,9 @@ components:
           - merge_request_dependency_bump
           - merge_request_fix_pipeline
           - merge_request_resolve_discussion
-          - work_item_to_mr
+          - work_item_to_merge_request
           - fix_pipeline
-          - convert_plateform_ci_pipeline
+          - convert_platform_ci_pipeline
           description: Where the session was triggered from
           nullable: true
     RequestBody_7139042d9372:
@@ -109051,6 +109119,52 @@ components:
           nullable: true
       required:
       - reason
+    RequestBody_0b4a46acc458:
+      type: object
+      properties:
+        device_token:
+          type: string
+          description: The hexadecimal APNs device token
+          nullable: true
+        platform:
+          type: string
+          enum:
+          - ios
+          description: The device platform
+          nullable: true
+        apns_environment:
+          type: string
+          enum:
+          - production
+          - sandbox
+          default: production
+          description: The APNs environment the token was issued for
+          nullable: true
+        bundle_id:
+          type: string
+          description: The application bundle identifier
+          nullable: true
+        device_name:
+          type: string
+          description: A human-readable device name
+          nullable: true
+        app_version:
+          type: string
+          description: The installed application version
+          nullable: true
+        locale:
+          type: string
+          description: The device locale
+          nullable: true
+        payload_mode:
+          type: string
+          enum:
+          - full
+          - id_only
+          description: Whether notifications carry the full content or only identifiers
+          nullable: true
+      required:
+      - device_token
     RequestBody_8fcd74eb78f4:
       type: object
       properties:

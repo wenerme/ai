@@ -47,7 +47,6 @@ depending on the specific model and feature combination.
 | GPT | [GPT-5.2](https://learn.microsoft.com/en-us/azure/ai-foundry/foundry-models/concepts/models-sold-directly-by-azure?view=foundry-classic&pivots=azure-openai&tabs=global-standard-aoai%2Cglobal-standard#gpt-52) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | GPT | [GPT-oss-120B](https://huggingface.co/openai/gpt-oss-120b) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
 | Mistral Medium 3.5 | [Mistral Medium 3.5 128B](https://huggingface.co/mistralai/Mistral-Medium-3.5-128B) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
-| Mistral Devstral | [Devstral 2 123B](https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | Mistral Codestral | [Codestral 22B v0.1](https://huggingface.co/mistralai/Codestral-22B-v0.1) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |
 | Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
 | GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |

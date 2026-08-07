@@ -16,9 +16,11 @@ Migration by direct transfer creates a new copy of the group. If you want to mov
 can [transfer groups](../manage.md#transfer-a-group) if the groups are in the same GitLab instance. Transferring groups
 instead of migrating them is a faster and more complete option.
 
-You can migrate groups in two ways:
+You can migrate groups in the following ways:
 
 - By direct transfer (recommended).
+- By [offline transfer](../../import/gitlab_instances/offline-transfer-migrations.md) through object storage when the
+  destination instance has no direct network connection to the source instance.
 - By [uploading an export file](../../project/settings/import_export.md).
 
 If you migrate from GitLab.com to a GitLab Self-Managed or GitLab Dedicated instance, an administrator can create users on the instance.

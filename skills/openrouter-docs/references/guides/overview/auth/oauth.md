@@ -76,6 +76,18 @@ Localhost callbacks are supported on **any port**. This is useful for CLI tools 
 
 When moving to production, replace the localhost callback URL with a public URL (your project website or a GitHub repo link) to get full app attribution.
 
+#### Headless Apps (SSH Servers, Containers)
+
+If your app runs where a localhost callback can't be reached — an SSH session, a remote dev box, a container — omit `callback_url` entirely:
+
+```txt title="Headless (No Callback)" wrap lines theme={null}
+https://openrouter.ai/auth?code_challenge=<CODE_CHALLENGE>&code_challenge_method=S256&key_label=<YOUR_APP_NAME>
+```
+
+After the user authorizes, the page displays the authorization code on screen instead of redirecting. The user copies it and pastes it into your app (e.g. at a terminal prompt), and you exchange it in Step 2 exactly as usual.
+
+A `code_challenge` is **required** in this mode: because the code is displayed on screen, PKCE ensures it is useless to anyone without your app's `code_verifier`. The code is single-use and expires after 10 minutes.
+
 ### Step 2: Exchange the code for a user-controlled API key
 
 After the user logs in with OpenRouter, they are redirected back to your site with a `code` parameter in the URL:

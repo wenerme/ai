@@ -1,5 +1,7 @@
 # Group wikis
 
+Create, edit, and manage group wikis to share documentation across all projects in a group.
+
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

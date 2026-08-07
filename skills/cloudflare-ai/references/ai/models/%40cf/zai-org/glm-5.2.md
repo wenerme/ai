@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
 
 # glm-5.2
 
@@ -26,9 +26,9 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Z.ai's flagship agentic coding model
 
-Requires Workers Paid
+Paid access required
 
-This model is not available on the [Workers Free plan](https://developers.cloudflare.com/workers/platform/pricing/#workers). To use it, upgrade to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers).
+This model is not available through standard Workers Free billing. To use it, upgrade to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers) or use prepaid [AI Gateway credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/).
 
 | Model Info                                                                            |                                                                                      |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |

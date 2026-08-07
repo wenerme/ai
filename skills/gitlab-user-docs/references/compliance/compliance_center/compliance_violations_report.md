@@ -1,5 +1,7 @@
 # Compliance violations report
 
+Explore the GitLab compliance violations report to view and manage non-compliance issues across your projects and groups.
+
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

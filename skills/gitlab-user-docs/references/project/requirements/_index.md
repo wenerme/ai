@@ -49,7 +49,7 @@ list being sorted by creation date, in descending order.
 
 You can view a requirement from the list by selecting it.
 
-[requirement view]
+[An example of a selected requirement]
 
 To edit a requirement while viewing it, select the **Edit** icon ()
 next to the requirement title.

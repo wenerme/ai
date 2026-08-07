@@ -27,9 +27,9 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Kimi K2.6 is a frontier-scale open-source 1T parameter model with a 262.1k context window, multi-turn tool calling, vision inputs, and structured outputs for agentic workloads.
 
-Requires Workers Paid
+Paid access required
 
-This model is not available on the [Workers Free plan](https://developers.cloudflare.com/workers/platform/pricing/#workers). To use it, upgrade to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers).
+This model is not available through standard Workers Free billing. To use it, upgrade to the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers) or use prepaid [AI Gateway credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/).
 
 | Model Info                                                                            |                                                                                      |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |

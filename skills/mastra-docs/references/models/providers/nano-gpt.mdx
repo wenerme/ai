@@ -1,11 +1,11 @@
 ---
 title: "NanoGPT | Models"
-description: "Use NanoGPT models with Mastra. 617 models available."
+description: "Use NanoGPT models with Mastra. 618 models available."
 ---
 
 # [NanoGPT logo]NanoGPT
 
-Access 617 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 618 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -5793,9 +5793,9 @@ for await (const chunk of stream) {
     "audioInput": false,
     "videoInput": true,
     "toolUsage": true,
-    "reasoning": true,
+    "reasoning": false,
     "contextWindow": 991000,
-    "maxOutput": 131072,
+    "maxOutput": 65536,
     "inputCost": 2,
     "outputCost": 6
   },
@@ -5810,6 +5810,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 1.5,
     "outputCost": 5
+  },
+  {
+    "model": "nano-gpt/qwen3.8-max:thinking",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 991000,
+    "maxOutput": 131072,
+    "inputCost": 2,
+    "outputCost": 6
   },
   {
     "model": "nano-gpt/ReadyArt/MS3.2-The-Omega-Directive-24B-Unslop-v2.0",

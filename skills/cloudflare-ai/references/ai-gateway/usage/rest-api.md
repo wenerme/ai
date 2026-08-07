@@ -16,7 +16,7 @@ Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 The REST API lets you call any model — whether hosted on Cloudflare or by a third-party provider like OpenAI, Anthropic, or Google — through the same Cloudflare API, with all AI Gateway features — logging, caching, rate limiting, and more — applied automatically.
 
-No provider SDKs or API keys are needed. Authentication and billing are handled through your Cloudflare account. Third-party models are billed via [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), while Workers AI models follow [Workers AI pricing](https://developers.cloudflare.com/workers-ai/platform/pricing/).
+No provider SDKs or API keys are needed. Authentication and billing are handled through your Cloudflare account. Third-party models are billed via [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/). Workers AI models can use prepaid AI Gateway credits or [Workers AI billing](https://developers.cloudflare.com/workers-ai/platform/pricing/).
 
 ## Endpoints
 
@@ -43,7 +43,7 @@ The `AI Gateway` permissions apply to the `/accounts/{account_id}/ai-gateway/*` 
 
 Note
 
-Ensure your Cloudflare account has [sufficient credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) before calling third-party models.
+Ensure your Cloudflare account has [sufficient credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) before calling third-party models or using prepaid credits for Workers AI.
 
 ## Model naming
 
@@ -113,6 +113,7 @@ The existing Workers AI endpoint with the model ID in the URL path also continue
 # and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
 curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run/@cf/moonshotai/kimi-k2.6" \
   --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "cf-aig-gateway-id: default" \
   --header "Content-Type: application/json" \
   --data '{
     "messages": [
@@ -123,6 +124,8 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
     ]
   }'
 ```
+
+To use prepaid AI Gateway credits for Workers AI, use the model-in-path endpoint shown above, set the gateway's [Workers AI billing setting](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#configure-workers-ai-billing) to **Unified billing**, and include its ID in the `cf-aig-gateway-id` header. Requests to frontier models billed with prepaid credits receive [higher rate limits](https://developers.cloudflare.com/workers-ai/platform/limits/#frontier-models).
 
 ## `/ai/v1/chat/completions` — OpenAI compatible
 

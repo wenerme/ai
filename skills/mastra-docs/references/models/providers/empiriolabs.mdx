@@ -1,11 +1,11 @@
 ---
 title: "EmpirioLabs AI | Models"
-description: "Use EmpirioLabs AI models with Mastra. 40 models available."
+description: "Use EmpirioLabs AI models with Mastra. 42 models available."
 ---
 
 # [EmpirioLabs AI logo]EmpirioLabs AI
 
-Access 40 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
+Access 42 EmpirioLabs AI models through Mastra's model router. Authentication is handled automatically using the `EMPIRIOLABS_API_KEY` environment variable.
 
 Learn more in the [EmpirioLabs AI documentation](https://docs.empiriolabs.ai).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "empiriolabs/deepseek-v4-flash"
+  model: "empiriolabs/deepseek-v3-2"
 });
 
 // Generate a response
@@ -39,6 +39,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "empiriolabs/deepseek-v3-2",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 128000,
+    "maxOutput": 32768,
+    "inputCost": 0.57,
+    "outputCost": 1.71
+  },
   {
     "model": "empiriolabs/deepseek-v4-flash",
     "imageInput": false,
@@ -352,6 +364,18 @@ for await (const chunk of stream) {
     "outputCost": 0.13
   },
   {
+    "model": "empiriolabs/qwen3-5-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 32768,
+    "inputCost": 0.09,
+    "outputCost": 0.368
+  },
+  {
     "model": "empiriolabs/qwen3-5-plus",
     "imageInput": true,
     "audioInput": false,
@@ -532,7 +556,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.empiriolabs.ai/v1",
-    id: "empiriolabs/deepseek-v4-flash",
+    id: "empiriolabs/deepseek-v3-2",
     apiKey: process.env.EMPIRIOLABS_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -551,7 +575,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "empiriolabs/step-3-7-flash"
-      : "empiriolabs/deepseek-v4-flash";
+      : "empiriolabs/deepseek-v3-2";
   }
 });
 ```

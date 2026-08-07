@@ -87,7 +87,8 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/1/merge_trains"
 ```
 
@@ -199,7 +200,8 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/597/merge_trains/main"
 ```
 
@@ -308,7 +310,8 @@ If successful, returns [`200 OK`](rest/troubleshooting.md#status-codes) and the 
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/597/merge_trains/merge_requests/1"
 ```
 
