@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Architecture
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sandbox SDK lets you execute untrusted code safely from your Workers. It combines three Cloudflare technologies to provide secure, stateful, and isolated execution:
 
@@ -92,7 +92,7 @@ Executes code in isolation with full Linux capabilities.
 
 ## Communication transports
 
-The SDK supports two transport protocols for communication between the Durable Object and container:
+The SDK supports three transport protocols for communication between the Durable Object and container:
 
 ### HTTP transport (default)
 
@@ -104,26 +104,30 @@ const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 await sandbox.exec("python script.py");
 ```
 
-### WebSocket transport
+### RPC transport
 
-Multiplexes all SDK calls over a single persistent WebSocket connection. Avoids [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when making many concurrent operations.
+Multiplexes all SDK calls over a single persistent connection. It avoids [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) when making many concurrent operations.
 
-Enable WebSocket transport by setting the `SANDBOX_TRANSPORT` variable in your Worker's configuration:
+Enable RPC transport by setting the `SANDBOX_TRANSPORT` variable in your Worker's configuration:
 
 ```jsonc
 {
 	"vars": {
-		"SANDBOX_TRANSPORT": "websocket"
+		"SANDBOX_TRANSPORT": "rpc"
 	},
 }
 ```
 
 ```toml
 [vars]
-SANDBOX_TRANSPORT = "websocket"
+SANDBOX_TRANSPORT = "rpc"
 ```
 
-The transport layer is transparent to your application code - all SDK methods work identically regardless of transport. See [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/) for details on when to use each transport and configuration examples.
+### WebSocket transport
+
+WebSocket transport is deprecated. Use RPC transport for new applications.
+
+The transport layer is transparent to your application code — all SDK methods work identically regardless of transport. For details on when to use each transport and configuration examples, refer to [Transport modes](https://developers.cloudflare.com/sandbox/configuration/transport/).
 
 ## Request flow
 
@@ -140,14 +144,14 @@ await sandbox.exec("python script.py");
 3. **Container Runtime** validates inputs, executes command, captures output
 4. **Response flows back** through all layers with proper error transformation
 
-**WebSocket transport flow**:
+**RPC transport flow**:
 
-1. **Client SDK** validates parameters and sends request over persistent WebSocket connection
-2. **Durable Object** maintains WebSocket connection, multiplexes concurrent requests
-3. **Container Runtime** adapts WebSocket messages to HTTP-style request/response
-4. **Response flows back** over same WebSocket connection with proper error transformation
+1. **Client SDK** validates parameters and sends the request to the Durable Object
+2. **Durable Object** maintains the persistent connection to the container and multiplexes concurrent requests
+3. **Container Runtime** adapts RPC messages to HTTP-style request and response handling
+4. **Response flows back** over the same connection with proper error transformation
 
-The WebSocket connection is established on first SDK call and reused for all subsequent operations, reducing overhead for high-frequency operations.
+The Durable Object establishes the persistent connection to the container on first SDK call and reuses it for all subsequent operations, reducing overhead for high-frequency operations.
 
 ## Related resources
 
@@ -165,5 +169,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/architecture/#page","headline":"Architecture · Cloudflare Sandbox SDK docs","description":"Sandbox SDK combines Workers, Durable Objects, and Containers for secure code execution.","url":"https://developers.cloudflare.com/sandbox/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/architecture/#page","headline":"Architecture · Cloudflare Sandbox SDK docs","description":"Sandbox SDK combines Workers, Durable Objects, and Containers for secure code execution.","url":"https://developers.cloudflare.com/sandbox/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

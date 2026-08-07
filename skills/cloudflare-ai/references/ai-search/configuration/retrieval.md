@@ -22,7 +22,6 @@ Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers
 * [Result controls](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/)
 * [Similarity cache](https://developers.cloudflare.com/ai-search/configuration/retrieval/cache/)
 * [Public endpoint settings](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/)
-* [UI snippets](https://developers.cloudflare.com/ai-search/configuration/retrieval/embed-search-snippets/)
 
 Was this helpful?
 

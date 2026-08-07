@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure custom headers
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/aws/custom-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/examples/aws/custom-header/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Some of R2's [extensions](https://developers.cloudflare.com/r2/api/s3/extensions/) require setting a specific header when using them in the S3 compatible API. For some functionality you may want to set a request header on an entire category of requests. Other times you may want to configure a different header for each individual request. This page contains some examples on how to do so with `boto3` and with `aws-sdk-js-v3`.
 
@@ -43,7 +43,7 @@ def add_custom_header(params, **kwargs):
 
 event_system.register('before-call.s3.PutObject', add_custom_header)
 
-response = client.put_object(Bucket="my_bucket", Key="my_file", Body="file_contents")
+response = client.put_object(Bucket="my-bucket", Key="my_file", Body="file_contents")
 print(response)
 ```
 
@@ -78,7 +78,7 @@ client.middlewareStack.add(
 )
 
 const command = new PutObjectCommand({
-  Bucket: "my_bucket",
+  Bucket: "my-bucket",
   Key: "my_key",
   Body: "my_data"
 });
@@ -125,7 +125,7 @@ event_system.register('before-call.s3.PutObject', add_custom_headers)
 custom_headers = {'If-Match' : '"29d911f495d1ba7cb3a4d7d15e63236a"'}
 
 # Note that boto3 will throw an exception if the precondition failed. Catch this exception if necessary
-response = client.put_object(Bucket="my_bucket", Key="my_key", Body="file_contents", custom_headers=custom_headers)
+response = client.put_object(Bucket="my-bucket", Key="my_key", Body="file_contents", custom_headers=custom_headers)
 print(response)
 ```
 
@@ -151,7 +151,7 @@ const client = new S3Client({
 });
 
 const command = new PutObjectCommand({
-  Bucket: "my_bucket",
+  Bucket: "my-bucket",
   Key: "my_key",
   Body: "my_data"
 });
@@ -186,5 +186,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/custom-header/#page","headline":"Configure custom headers · Cloudflare R2 docs","description":"Set custom request headers for R2 S3 API extensions using boto3 or aws-sdk-js-v3.","url":"https://developers.cloudflare.com/r2/examples/aws/custom-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/examples/aws/custom-header/#page","headline":"Configure custom headers · Cloudflare R2 docs","description":"Set custom request headers for R2 S3 API extensions using boto3 or aws-sdk-js-v3.","url":"https://developers.cloudflare.com/r2/examples/aws/custom-header/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Metadata attributes
 
-Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use metadata attributes to organize your indexed documents and provide context to guide AI responses. This page covers built-in metadata attributes and custom metadata schemas. To filter search results by these attributes at query time, refer to [Filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/).
 
@@ -64,7 +64,7 @@ custom_metadata: [
 How you attach custom metadata attributes depends on your data source:
 
 * **R2 bucket**: Set metadata using S3-compatible custom headers (`x-amz-meta-*`). Refer to [R2 custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/r2/#custom-metadata) for examples.
-* **Website**: Add `<meta>` tags to your HTML pages. Refer to [Website custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#custom-metadata) for details.
+* **Website**: Add `<meta>` tags to your HTML pages. Refer to [Website custom metadata](https://developers.cloudflare.com/ai-search/configuration/data-source/website/custom-metadata/) for details.
 * **Built-in storage**: Attach metadata when uploading files through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/#upload-with-metadata).
 
 ## Re-indexing behavior
@@ -104,5 +104,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#page","headline":"Metadata attributes · Cloudflare AI Search docs","description":"Define built-in and custom metadata attributes on indexed documents.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/#page","headline":"Metadata attributes · Cloudflare AI Search docs","description":"Define built-in and custom metadata attributes on indexed documents.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

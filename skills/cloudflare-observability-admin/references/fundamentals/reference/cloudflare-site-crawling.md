@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare crawlers
 
-Last updated Jun 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare may crawl or make HTTP requests to your site to make sure its protected and performing properly.
 
@@ -60,7 +60,7 @@ The [**Browser Run /crawl endpoint**](https://developers.cloudflare.com/browser-
 
 [**AI Search**](https://developers.cloudflare.com/ai-search/) is a Cloudflare developer product that indexes your website content so it can be searched. The AI Search crawler only crawls a website you own (the domain must exist in the same Cloudflare account) that you select as your data source in AI Search.
 
-The crawler uses a _User-Agent_ of `Cloudflare-AI-Search`. You can allow or block it with WAF rules using its [bot detection ID](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#allow-the-ai-search-crawler-through-waf).
+The crawler uses a _User-Agent_ of `Cloudflare-AI-Search`. You can allow or block it with WAF rules using its [bot detection ID](https://developers.cloudflare.com/ai-search/configuration/data-source/website/#allow-ai-search-through-waf).
 
 Was this helpful?
 
@@ -71,5 +71,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/#page","headline":"Cloudflare crawlers · Cloudflare Fundamentals docs","description":"Review the user agents and situations in which Cloudflare crawls or makes HTTP requests to your site.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/#page","headline":"Cloudflare crawlers · Cloudflare Fundamentals docs","description":"Review the user agents and situations in which Cloudflare crawls or makes HTTP requests to your site.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-site-crawling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

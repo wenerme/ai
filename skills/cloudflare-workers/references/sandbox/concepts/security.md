@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Security model
 
-Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/security/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Sandbox SDK is built on [Containers](https://developers.cloudflare.com/containers/), which run each sandbox in its own VM for strong isolation.
 
@@ -127,7 +127,7 @@ def get_data():
 
 ## Secrets management
 
-Use environment variables, not hardcoded secrets:
+Use environment variables, not hardcoded secrets, for values the sandbox process must consume directly:
 
 ```typescript
 // Bad - hardcoded in file
@@ -135,13 +135,15 @@ await sandbox.writeFile('/workspace/config.js', `
   const API_KEY = 'sk_live_abc123';
 `);
 
-// Good - use environment variables
+// Good - use environment variables for values the sandbox process needs
 await sandbox.startProcess('node app.js', {
   env: {
     API_KEY: env.API_KEY,  // From Worker environment binding
   }
 });
 ```
+
+For external API credentials that the sandbox does not need to read directly, keep the credential in the Worker and inject it with an outbound handler.
 
 Clean up temporary sensitive data:
 
@@ -154,19 +156,19 @@ try {
 }
 ```
 
-## Proxying external API requests
+## Handle outbound traffic
 
-Passing credentials directly to a sandbox — via environment variables or files — means the sandbox process holds a live credential that any code running inside it can read. A Worker proxy removes that exposure by keeping credentials exclusively in the Worker and giving the sandbox a short-lived JWT instead.
+Passing external API credentials directly to a sandbox — via environment variables or files — means the sandbox process holds a live credential that any code running inside it can read. Outbound handlers remove that exposure by keeping credentials in the Worker and injecting them into outbound requests.
 
 The flow works as follows:
 
-```plaintext
-Sandbox (short-lived JWT) → Worker proxy (validates JWT, injects real credentials) → External API
+```txt
+Sandbox request → Outbound handler (injects real credentials) → External API
 ```
 
-The sandbox never sees the real credential. If the JWT is compromised, it expires after a short window and cannot be reused.
+The sandbox never sees the real credential. Rotate the secret in your Worker's environment and every request uses the updated value.
 
-This pattern is useful when accessing GitHub for private repository operations, AI services, or object storage where you want to keep credentials out of the container entirely. Refer to [Proxy requests to external APIs](https://developers.cloudflare.com/sandbox/guides/proxy-requests/) for a complete implementation.
+This pattern is useful when accessing GitHub for private repository operations, AI services, or object storage where you want to keep credentials out of the container entirely. For implementation details, refer to [Handle outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/).
 
 ## What the SDK protects against
 
@@ -229,5 +231,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/security/#page","headline":"Security model · Cloudflare Sandbox SDK docs","description":"Sandbox SDK uses VM-level isolation, input validation, and network controls to run untrusted code safely.","url":"https://developers.cloudflare.com/sandbox/concepts/security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/security/#page","headline":"Security model · Cloudflare Sandbox SDK docs","description":"Sandbox SDK uses VM-level isolation, input validation, and network controls to run untrusted code safely.","url":"https://developers.cloudflare.com/sandbox/concepts/security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
