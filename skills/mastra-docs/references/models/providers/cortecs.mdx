@@ -1,11 +1,11 @@
 ---
 title: "Cortecs | Models"
-description: "Use Cortecs models with Mastra. 105 models available."
+description: "Use Cortecs models with Mastra. 106 models available."
 ---
 
 # [Cortecs logo]Cortecs
 
-Access 105 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 106 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -314,6 +314,18 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 1.483,
     "outputCost": 8.898
+  },
+  {
+    "model": "cortecs/gemini-3.5-flash-lite",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.33,
+    "outputCost": 2.749
   },
   {
     "model": "cortecs/gemma-3-27b-it",

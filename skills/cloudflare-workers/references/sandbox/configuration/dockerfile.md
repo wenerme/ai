@@ -12,7 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Dockerfile reference
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/dockerfile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/dockerfile/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Coming soon: Sandbox SDK 1.0
+
+Image variant names (`-python`, `-opencode`, `-musl`) still apply on **`@next`**. Pin the container tag to the same preview line as `@cloudflare/sandbox@next` (for example `cloudflare/sandbox:next` or a matching prerelease). Do not mix a preview Worker package with a stable image tag.
 
 Customize the sandbox container image with your own packages, tools, and configurations by extending the base runtime image.
 
@@ -185,5 +189,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/#page","headline":"Dockerfile reference · Cloudflare Sandbox SDK docs","description":"Customize the Sandbox SDK container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/#page","headline":"Dockerfile reference · Cloudflare Sandbox SDK docs","description":"Customize the Sandbox SDK container image with packages, tools, and configurations.","url":"https://developers.cloudflare.com/sandbox/configuration/dockerfile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

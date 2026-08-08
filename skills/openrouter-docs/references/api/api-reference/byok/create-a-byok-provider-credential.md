@@ -4,7 +4,7 @@
 
 # Create a BYOK provider credential
 
-> Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. Treat the raw key as write-only; it is never returned after creation. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. Treat the raw key as write-only; it is never returned after creation. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -101,9 +101,10 @@ paths:
       summary: Create a BYOK provider credential
       description: >-
         Create a new bring-your-own-key (BYOK) provider credential. The raw key
-        is encrypted at rest and never returned in API responses. Defaults to
-        the authenticated entity's default workspace; use the `workspace_id`
-        body field to scope to a different workspace. Treat the raw key as
+        is encrypted at rest and never returned in API responses. When
+        `workspace_id` is omitted, the credential is created in the default
+        workspace; if that default has been deleted, the request returns a 400
+        and you must pass `workspace_id` explicitly. Treat the raw key as
         write-only; it is never returned after creation. [Management
         key](/docs/guides/overview/auth/management-api-keys) required.
       operationId: createBYOKKey
@@ -236,8 +237,10 @@ components:
           $ref: '#/components/schemas/BYOKProviderSlug'
         workspace_id:
           description: >-
-            Optional workspace ID. Defaults to the authenticated entity's
-            default workspace.
+            Optional workspace ID to scope the credential to. When omitted, the
+            credential is created in the account's default workspace; if that
+            default has been deleted, the request returns a 400 and you must
+            pass `workspace_id` explicitly.
           example: 550e8400-e29b-41d4-a716-446655440000
           format: uuid
           type: string
@@ -548,10 +551,15 @@ components:
           example: 0
           type: integer
         workspace_id:
-          description: ID of the workspace this credential belongs to.
+          description: >-
+            The workspace this credential is scoped to, or `null` when it is
+            global — usable across every workspace in the account. A `null`
+            value does not mean the default workspace.
           example: 550e8400-e29b-41d4-a716-446655440000
           format: uuid
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - id
         - provider

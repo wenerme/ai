@@ -131,15 +131,17 @@ paths:
             minimum: 1
             type: integer
         - description: >-
-            Optional workspace ID to filter by. Defaults to the authenticated
-            entity's default workspace.
+            Optional workspace ID to filter by. When omitted, resolves to the
+            account’s default workspace; if that default has been deleted, the
+            request returns a 400 and you must pass `workspace_id` explicitly.
           in: query
           name: workspace_id
           required: false
           schema:
             description: >-
-              Optional workspace ID to filter by. Defaults to the authenticated
-              entity's default workspace.
+              Optional workspace ID to filter by. When omitted, resolves to the
+              account’s default workspace; if that default has been deleted, the
+              request returns a 400 and you must pass `workspace_id` explicitly.
             example: 550e8400-e29b-41d4-a716-446655440000
             format: uuid
             type: string
@@ -492,10 +494,15 @@ components:
           example: 0
           type: integer
         workspace_id:
-          description: ID of the workspace this credential belongs to.
+          description: >-
+            The workspace this credential is scoped to, or `null` when it is
+            global — usable across every workspace in the account. A `null`
+            value does not mean the default workspace.
           example: 550e8400-e29b-41d4-a716-446655440000
           format: uuid
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - id
         - provider

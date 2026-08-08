@@ -12,11 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox SDK
 
-Last updated Aug 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build secure, isolated code execution environments
 
 Available on Workers Paid plan
+
+Sandbox SDK 1.0 preview
+
+These pages document the current stable `@cloudflare/sandbox` package. The next major release is **Sandbox SDK 1.0**, available as a preview on `@cloudflare/sandbox@next`.
+
+We recommend starting new projects on the preview, and migrating existing apps when you can, so you are ready when 1.0 becomes the stable release. Refer to the [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/) section for install, concepts, API reference, and migration.
 
 The Sandbox SDK enables you to run untrusted code securely in isolated environments. Built on [Containers](https://developers.cloudflare.com/containers/), Sandbox SDK provides a simple API for executing commands, managing files, running background processes, and exposing services — all from your [Workers](https://developers.cloudflare.com/workers/) applications.
 
@@ -269,6 +275,10 @@ Stateful coordination layer that enables Sandbox to maintain persistent environm
 
 ## More resources
 
+## Coding agents
+
+Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with the main docs on this site while you are on the current stable package. Use **`sandbox-next`** for `@cloudflare/sandbox@next` (recommended for new projects). When you are ready to port an existing app, use **`sandbox-migrate-to-next`**.
+
 ### [Tutorials](https://developers.cloudflare.com/sandbox/tutorials/)
 
 Explore complete examples including AI code execution, data analysis, and interactive environments.
@@ -276,6 +286,10 @@ Explore complete examples including AI code execution, data analysis, and intera
 ### [How-to Guides](https://developers.cloudflare.com/sandbox/guides/)
 
 Learn how to solve specific problems and implement features with the Sandbox SDK.
+
+### [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/)
+
+Install `@cloudflare/sandbox@next` and prepare for the Sandbox SDK 1.0 release.
 
 ### [API reference](https://developers.cloudflare.com/sandbox/api/)
 
@@ -314,5 +328,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Overview · Cloudflare Sandbox SDK docs","description":"Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Overview · Cloudflare Sandbox SDK docs","description":"Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

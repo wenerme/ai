@@ -12,9 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Use code interpreter
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/code-execution/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/code-execution/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to execute Python and JavaScript code with rich outputs using the Code Interpreter API.
+
+Coming soon: Sandbox SDK 1.0
+
+This page documents the interpreter on today's stable `@cloudflare/sandbox` package.
+
+In the **1.0 preview** (`@next`), the interpreter is an opt-in extension. Refer to [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/) and the [Interpreter API](https://developers.cloudflare.com/sandbox/1-0-preview/api/interpreter/).
 
 ## When to use code interpreter
 
@@ -456,5 +462,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/code-execution/#page","headline":"Use code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python and JavaScript code with rich outputs.","url":"https://developers.cloudflare.com/sandbox/guides/code-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/code-execution/#page","headline":"Use code interpreter · Cloudflare Sandbox SDK docs","description":"Execute Python and JavaScript code with rich outputs.","url":"https://developers.cloudflare.com/sandbox/guides/code-execution/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

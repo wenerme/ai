@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Files
 
-Last updated May 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/files/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/files/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Read, write, and manage files in the sandbox filesystem. All paths are absolute (e.g., `/workspace/app.js`).
 
@@ -276,6 +276,10 @@ await sandbox.moveFile('/tmp/download.txt', '/workspace/data.txt');
 
 ### `gitCheckout()`
 
+Coming soon: Sandbox SDK 1.0
+
+On `@next`, `gitCheckout` is **removed**. Clone and other git operations with argv `exec` (for example `['git', 'clone', url, dir]`). See the [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/) and [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/).
+
 Clone a git repository.
 
 ```ts
@@ -334,5 +338,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/files/#page","headline":"Files · Cloudflare Sandbox SDK docs","description":"Read, write, and manage files in the Sandbox SDK filesystem.","url":"https://developers.cloudflare.com/sandbox/api/files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/files/#page","headline":"Files · Cloudflare Sandbox SDK docs","description":"Read, write, and manage files in the Sandbox SDK filesystem.","url":"https://developers.cloudflare.com/sandbox/api/files/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

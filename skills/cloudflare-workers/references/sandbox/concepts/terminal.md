@@ -12,9 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terminal connections
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/terminal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/terminal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Terminal connections let browser-based UIs interact directly with sandbox shells. Instead of executing discrete commands with `exec()`, a terminal connection opens a persistent, bidirectional channel to a bash shell — the same model as SSH or a local terminal emulator.
+
+Sandbox SDK 1.0 preview
+
+This page describes terminal connections on today's stable `@cloudflare/sandbox` package.
+
+On **`@cloudflare/sandbox@next`**, terminals use `createTerminal`, `getTerminal`, and `terminal.connect`. Refer to [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) and [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/).
 
 ## How terminal connections work
 
@@ -104,5 +110,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/terminal/#page","headline":"Terminal connections · Cloudflare Sandbox SDK docs","description":"Sandbox SDK terminal connections stream bidirectional data between browser UIs and container shells.","url":"https://developers.cloudflare.com/sandbox/concepts/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/terminal/#page","headline":"Terminal connections · Cloudflare Sandbox SDK docs","description":"Sandbox SDK terminal connections stream bidirectional data between browser UIs and container shells.","url":"https://developers.cloudflare.com/sandbox/concepts/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

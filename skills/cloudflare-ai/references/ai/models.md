@@ -12,7 +12,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 216 modelsClear filters
+We found 217 modelsClear filters
 
 No models found
 
@@ -71,6 +71,8 @@ Try a different search term, or broaden your search by removing filters.
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedance-2.0-fastByteDanceText-to-VideoFaster variant of ByteDance's Seedance 2.0 video model. Trades some quality for speed while sharing the same multimodal architecture. Supports text-to-video, image-to-video, native audio generation, multimodal references (images, videos, audio), video editing, and video extension.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-fast/)
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedance-2.0-miniByteDanceText-to-VideoByteDance's compact, cost-efficient video generation model from the Seedance 2.0 family. Supports text-to-video, image-to-video, reference video, and reference audio for background music. Ideal for high-volume workloads where speed and cost matter.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.0-mini/)
+
+[![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedance-2.5ByteDanceText-to-VideoByteDance's audio-video generation model for creating 30-second videos with reference control and editing capabilities. It supports extended storytelling, audio and visual editing, white-model control, and green-screen editing.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedance-2.5/)
 
 [![ByteDance logo](https://developers.cloudflare.com/_astro/bytedance.T1uiROQ6.svg)seedream-4.0ByteDanceText-to-ImageSeedream 4.0 is ByteDance's image creation model that combines text-to-image generation and image editing into a single architecture, offering fast, high-resolution output up to 4K.Third-party](https://developers.cloudflare.com/ai/models/bytedance/seedream-4.0/)
 
@@ -338,9 +340,9 @@ Try a different search term, or broaden your search by removing filters.
 
 [agemma-sea-lion-v4-27b-itaisingaporeText GenerationSEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/aisingapore/gemma-sea-lion-v4-27b-it/)
 
-[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
+[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
 [Pinned![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BI8PEEzI.svg)gpt-oss-120bOpenAIText GenerationOpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/openai/gpt-oss-120b/)
 

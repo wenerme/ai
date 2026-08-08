@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authentication
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/api/tokens/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can generate an API token to serve as the Access Key for usage with existing S3-compatible SDKs or XML APIs.
 
@@ -65,7 +65,7 @@ Jurisdictional buckets can only be accessed via the corresponding jurisdictional
 
 Considerations
 
-* [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/) requires an **Admin Read & Write** or **Admin Read only** permission. Read-only catalog operations (such as listing namespaces, loading tables, and querying data) work with **Admin Read only**, while write operations (such as creating or dropping tables and committing transactions) require **Admin Read & Write**. For details, refer to [Authenticate your Iceberg engine](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/#authenticate-your-iceberg-engine).
+* [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) requires an **Admin Read & Write** or **Admin Read only** permission. Read-only catalog operations (such as listing namespaces, loading tables, and querying data) work with **Admin Read only**, while write operations (such as creating or dropping tables and committing transactions) require **Admin Read & Write**. For details, refer to [Authenticate your Iceberg engine](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#authenticate-your-iceberg-engine).
 * The **Object Read & Write** and **Object Read only** permissions are only supported by the [S3-compatible API](https://developers.cloudflare.com/r2/api/s3/api/), not the [Cloudflare REST API](https://developers.cloudflare.com/api/resources/r2/).
 
 ## Create API tokens via API
@@ -159,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/api/tokens/#page","headline":"Authentication · Cloudflare R2 docs","description":"Generate and manage R2 API tokens for use with S3-compatible SDKs and APIs.","url":"https://developers.cloudflare.com/r2/api/tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

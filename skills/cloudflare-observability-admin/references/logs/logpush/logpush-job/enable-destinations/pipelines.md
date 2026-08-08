@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable Cloudflare Pipelines
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cloudflare Pipelines](https://developers.cloudflare.com/pipelines/) ingests events, transforms them with [SQL](https://developers.cloudflare.com/pipelines/sql-reference/), and delivers them to [R2](https://developers.cloudflare.com/r2/) as [Iceberg](https://developers.cloudflare.com/r2/data-catalog/) tables or as Parquet and JSON files. Logpush can write data to Pipelines as a native destination.
+[Cloudflare Pipelines](https://developers.cloudflare.com/pipelines/) ingests events, transforms them with [SQL](https://developers.cloudflare.com/pipelines/sql-reference/), and delivers them to [R2](https://developers.cloudflare.com/r2/) as [Iceberg](https://developers.cloudflare.com/r2-data-catalog/) tables or as Parquet and JSON files. Logpush can write data to Pipelines as a native destination.
 
-Instead of sending raw logs directly to a storage bucket as JSON, Logpush can route them to a Pipeline to filter, enrich, and transform your data into Parquet or Apache Iceberg tables managed by [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/). This allows the data to be much more compact and optimized for analytics such as querying with [R2 SQL](https://developers.cloudflare.com/r2-sql/).
+Instead of sending raw logs directly to a storage bucket as JSON, Logpush can route them to a Pipeline to filter, enrich, and transform your data into Parquet or Apache Iceberg tables managed by [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). This allows the data to be much more compact and optimized for analytics such as querying with [R2 SQL](https://developers.cloudflare.com/r2-sql/).
 
 The Pipelines destination supports the following Logpush datasets:
 
@@ -38,7 +38,7 @@ For a full list of fields available in each dataset, refer to [Datasets](https:/
   * A Pipeline name is auto-generated, but you can edit it.
 5. In the **Destination** step, configure the destination:
   * Select an existing R2 bucket or type a new name to create one during setup.
-  * Choose the storage format: Parquet, JSON, or [R2 Data Catalog (Apache Iceberg)](https://developers.cloudflare.com/r2/data-catalog/).
+  * Choose the storage format: Parquet, JSON, or [R2 Data Catalog (Apache Iceberg)](https://developers.cloudflare.com/r2-data-catalog/).
   * If you select R2 Data Catalog, enter a catalog namespace and table name.
   * Optionally, expand **Delivery settings** to configure roll size, roll interval, and other destination-specific settings. For more information about these settings, refer to the [Pipelines Sinks documentation](https://developers.cloudflare.com/pipelines/sinks/).
 6. In the **Transform** step, choose how to process logs before they are written to the Sink:
@@ -59,5 +59,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/#page","headline":"Enable Cloudflare Pipelines · Cloudflare Logs docs","description":"Push Cloudflare logs to Cloudflare Pipelines.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/#page","headline":"Enable Cloudflare Pipelines · Cloudflare Logs docs","description":"Push Cloudflare logs to Cloudflare Pipelines.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

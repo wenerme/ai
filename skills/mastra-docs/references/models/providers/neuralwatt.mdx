@@ -1,11 +1,11 @@
 ---
 title: "Neuralwatt | Models"
-description: "Use Neuralwatt models with Mastra. 21 models available."
+description: "Use Neuralwatt models with Mastra. 22 models available."
 ---
 
 # [Neuralwatt logo]Neuralwatt
 
-Access 21 Neuralwatt models through Mastra's model router. Authentication is handled automatically using the `NEURALWATT_API_KEY` environment variable.
+Access 22 Neuralwatt models through Mastra's model router. Authentication is handled automatically using the `NEURALWATT_API_KEY` environment variable.
 
 Learn more in the [Neuralwatt documentation](https://portal.neuralwatt.com/docs).
 
@@ -202,6 +202,18 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
+    "contextWindow": 1048560,
+    "maxOutput": 1048560,
+    "inputCost": 3,
+    "outputCost": 15
+  },
+  {
+    "model": "neuralwatt/kimi-k3-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
     "contextWindow": 1048560,
     "maxOutput": 1048560,
     "inputCost": 3,

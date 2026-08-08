@@ -34,7 +34,16 @@ Write clients defensively: ignore response fields you don't recognize, and don't
 
 * Removing or renaming an endpoint, parameter, or response field
 * Changing a field's type
+* Widening a response field to allow `null` when it was previously always present
 * Making an optional parameter required
+
+## Nullable response fields
+
+A response field that is present but `null` means the value is genuinely absent. Read `null` as "not set" and handle it explicitly — do not substitute a default, and do not assume `null` implies any particular fallback value.
+
+For example, `workspace_id` is `null` on a BYOK credential that is not scoped to any workspace (it applies account-wide), and on a guardrail created before workspace scoping existed. In both cases `null` is a distinct state from being scoped to your default workspace — do not read `null` as the default, and do not assume a `null` guardrail applies to every workspace.
+
+Because a client that assumed the field was always present can break, widening a response field to allow `null` is treated as a breaking change (see the list above) and is announced in the changelog with migration notes.
 
 ## Deprecations
 

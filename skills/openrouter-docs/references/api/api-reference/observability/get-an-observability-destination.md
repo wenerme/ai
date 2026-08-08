@@ -120,6 +120,9 @@ paths:
               example:
                 data:
                   api_key_hashes: null
+                  broadcast_generation_cost: false
+                  broadcast_generation_identity: false
+                  broadcast_generation_request_context: false
                   config:
                     baseUrl: https://us.cloud.langfuse.com
                     publicKey: pk-l...EfGh
@@ -173,6 +176,9 @@ components:
       example:
         data:
           api_key_hashes: null
+          broadcast_generation_cost: false
+          broadcast_generation_identity: false
+          broadcast_generation_request_context: false
           config:
             baseUrl: https://us.cloud.langfuse.com
             publicKey: pk-l...EfGh
@@ -298,6 +304,9 @@ components:
         propertyName: type
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           baseUrl: https://us.cloud.langfuse.com
           publicKey: pk-l...EfGh
@@ -390,6 +399,9 @@ components:
     ObservabilityArizeDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: arize_...AbCd
           baseUrl: https://otlp.arize.com
@@ -417,6 +429,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -495,6 +519,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -506,6 +533,9 @@ components:
     ObservabilityBraintrustDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: sk-...AbCd
           baseUrl: https://api.braintrust.dev
@@ -532,6 +562,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -605,6 +647,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -616,6 +661,9 @@ components:
     ObservabilityClickhouseDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           database: analytics
           host: https://clickhouse.example.com:8123
@@ -644,6 +692,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             database:
@@ -728,6 +788,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -739,6 +802,9 @@ components:
     ObservabilityDatadogDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: '************...AbCd'
           mlApp: my-llm-app
@@ -765,6 +831,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -846,6 +924,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -857,6 +938,9 @@ components:
     ObservabilityGrafanaDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: glc_...AbCd
           baseUrl: https://otlp-gateway-prod-us-west-0.grafana.net
@@ -883,6 +967,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -956,6 +1052,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -967,6 +1066,9 @@ components:
     ObservabilityLangfuseDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           baseUrl: https://us.cloud.langfuse.com
           publicKey: pk-l...EfGh
@@ -993,6 +1095,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             baseUrl:
@@ -1066,6 +1180,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1077,6 +1194,9 @@ components:
     ObservabilityLangsmithDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: lsv2_...AbCd
           endpoint: https://api.smith.langchain.com
@@ -1103,6 +1223,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -1184,6 +1316,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1195,6 +1330,9 @@ components:
     ObservabilityNewrelicDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           licenseKey: '****...AbCd'
           region: us
@@ -1220,6 +1358,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             headers:
@@ -1292,6 +1442,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1303,6 +1456,9 @@ components:
     ObservabilityOpikDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: '****...AbCd'
           projectName: openrouter-prod
@@ -1329,6 +1485,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -1403,6 +1571,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1414,6 +1585,9 @@ components:
     ObservabilityOtelCollectorDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           endpoint: https://otel.example.com:4318
         created_at: '2025-08-24T10:30:00Z'
@@ -1438,6 +1612,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             endpoint:
@@ -1506,6 +1692,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1517,6 +1706,9 @@ components:
     ObservabilityPosthogDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: phc_...AbCd
           endpoint: https://us.i.posthog.com
@@ -1542,6 +1734,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -1611,6 +1815,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1622,6 +1829,9 @@ components:
     ObservabilityRampDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: rmp_...AbCd
           baseUrl: https://api.ramp.com/developer/v1/ai-usage/openrouter
@@ -1647,6 +1857,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -1717,6 +1939,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1728,6 +1953,9 @@ components:
     ObservabilityS3Destination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           accessKeyId: AKIA...AbCd
           bucketName: openrouter-traces
@@ -1754,6 +1982,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             accessKeyId:
@@ -1850,6 +2090,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1861,6 +2104,9 @@ components:
     ObservabilitySentryDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           dsn: https://abc123@o0.ingest.sentry.io/0
           otlpEndpoint: https://o0.ingest.sentry.io/api/0/otlp
@@ -1886,6 +2132,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             dsn:
@@ -1956,6 +2214,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -1967,6 +2228,9 @@ components:
     ObservabilitySnowflakeDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           account: xy12345.us-east-1
           token: '****...AbCd'
@@ -1992,6 +2256,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             account:
@@ -2076,6 +2352,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -2087,6 +2366,9 @@ components:
     ObservabilityWeaveDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           apiKey: '****...AbCd'
           baseUrl: https://trace.wandb.ai
@@ -2114,6 +2396,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             apiKey:
@@ -2191,6 +2485,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules
@@ -2202,6 +2499,9 @@ components:
     ObservabilityWebhookDestination:
       example:
         api_key_hashes: null
+        broadcast_generation_cost: false
+        broadcast_generation_identity: false
+        broadcast_generation_request_context: false
         config:
           url: https://example.com/openrouter-events
         created_at: '2025-08-24T10:30:00Z'
@@ -2226,6 +2526,18 @@ components:
           type:
             - array
             - 'null'
+        broadcast_generation_cost:
+          description: When true, include cost and billing generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_identity:
+          description: When true, include identity generation metadata.
+          example: false
+          type: boolean
+        broadcast_generation_request_context:
+          description: When true, include request-context generation metadata.
+          example: false
+          type: boolean
         config:
           properties:
             headers:
@@ -2296,6 +2608,9 @@ components:
         - name
         - enabled
         - privacy_mode
+        - broadcast_generation_cost
+        - broadcast_generation_identity
+        - broadcast_generation_request_context
         - sampling_rate
         - api_key_hashes
         - filter_rules

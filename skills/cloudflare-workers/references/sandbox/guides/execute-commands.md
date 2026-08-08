@@ -12,9 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Execute commands
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/execute-commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/execute-commands/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to execute commands in the sandbox, handle output, and manage errors effectively.
+
+Coming soon: Sandbox SDK 1.0
+
+This page documents command execution on today's stable `@cloudflare/sandbox` package.
+
+**Sandbox SDK 1.0** (preview on `@cloudflare/sandbox@next`) uses argv `exec()` and process handles instead of string `exec` / `startProcess` / `execStream`. Refer to [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/), the [Processes API](https://developers.cloudflare.com/sandbox/1-0-preview/api/processes/), or [migrate to the preview](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/).
 
 ## Choose the right method
 
@@ -343,5 +349,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/execute-commands/#page","headline":"Execute commands · Cloudflare Sandbox SDK docs","description":"Run commands with streaming output, error handling, and shell access.","url":"https://developers.cloudflare.com/sandbox/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

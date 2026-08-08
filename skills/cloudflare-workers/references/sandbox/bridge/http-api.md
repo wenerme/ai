@@ -12,9 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP API reference
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/bridge/http-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/bridge/http-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This page documents every route exposed by the [sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/).
+Sandbox SDK 1.0 preview
+
+This is the supported bridge HTTP API. The 1.0 preview covers the Worker SDK on `@next`; the bridge stays on this stable template and route surface.
+
+This page documents every route exposed by the [sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/) on the stable template.
 
 ## Authentication
 
@@ -228,5 +232,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/bridge/http-api/#page","headline":"HTTP API reference · Cloudflare Sandbox SDK docs","description":"Complete HTTP API reference for the sandbox bridge Worker.","url":"https://developers.cloudflare.com/sandbox/bridge/http-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/bridge/http-api/#page","headline":"HTTP API reference · Cloudflare Sandbox SDK docs","description":"Complete HTTP API reference for the sandbox bridge Worker.","url":"https://developers.cloudflare.com/sandbox/bridge/http-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

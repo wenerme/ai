@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session management
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/sessions/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sessions are bash shell execution contexts within a sandbox. Think of them as terminal tabs in the same computer.
 
@@ -20,6 +20,12 @@ Sessions are bash shell execution contexts within a sandbox. Think of them as te
 * **Session** \= A shell in that workspace
 
 Sessions are useful for organizing work inside one sandbox. They are not a security boundary between users because sessions share the same filesystem and process space.
+
+Coming soon: Sandbox SDK 1.0
+
+This page documents session behavior on today's stable `@cloudflare/sandbox` package.
+
+**Sandbox SDK 1.0** (preview on `@next`) removes core session execution APIs. Pass `cwd` and `env` on each `exec`, or use one explicit shell argv script. Refer to [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/) or [migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#drop-session-apis).
 
 ## Default session
 
@@ -246,5 +252,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sessions/#page","headline":"Session management · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sessions are shell execution contexts within a single sandbox.","url":"https://developers.cloudflare.com/sandbox/concepts/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/sessions/#page","headline":"Session management · Cloudflare Sandbox SDK docs","description":"Sandbox SDK sessions are shell execution contexts within a single sandbox.","url":"https://developers.cloudflare.com/sandbox/concepts/sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

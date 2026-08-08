@@ -396,8 +396,10 @@ components:
           $ref: '#/components/schemas/GuardrailInterval'
         workspace_id:
           description: >-
-            The workspace to create the guardrail in. Defaults to the default
-            workspace if not provided.
+            The workspace to create the guardrail in. When omitted, the
+            guardrail is created in the default workspace; if that default has
+            been deleted, the request returns a 400 and you must pass
+            `workspace_id` explicitly.
           example: 0df9e665-d932-5740-b2c7-b52af166bc11
           format: uuid
           type: string
@@ -801,9 +803,15 @@ components:
             - string
             - 'null'
         workspace_id:
-          description: The workspace ID this guardrail belongs to.
+          description: >-
+            The workspace this guardrail is scoped to, or `null` for an unscoped
+            legacy guardrail predating workspaces. A `null` value does not mean
+            the default workspace, and does not apply the guardrail across every
+            workspace.
           example: 0df9e665-d932-5740-b2c7-b52af166bc11
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - id
         - name

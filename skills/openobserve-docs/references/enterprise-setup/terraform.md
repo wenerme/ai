@@ -171,7 +171,7 @@ module "openobserve" {
     querier      = 2
     router       = 2
     compactor    = 1
-    alertmanager = 1
+    scheduler = 1
   }
 
   meta_store          = "postgres"
@@ -197,7 +197,7 @@ module "openobserve" {
   persistence = {
     ingester     = { size = "100Gi", storage_class = "gp3" }
     querier      = { size = "100Gi", storage_class = "gp3" }
-    alertmanager = { size = "10Gi",  storage_class = "gp3" }
+    scheduler = { size = "10Gi",  storage_class = "gp3" }
   }
 
   resources = {
@@ -295,7 +295,7 @@ Reference data (256 GB/day):
                      │  ingester ◄────► querier                    │
                      │  (WAL + disk)   (disk cache)                 │
                      │      │              │                        │
-                     │  compactor      alertmanager                 │
+                     │  compactor      scheduler                 │
                      │      │                                        │
                      │  NATS (bundled or external)                  │
                      │      │                                        │

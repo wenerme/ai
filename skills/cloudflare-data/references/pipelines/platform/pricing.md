@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Pipelines charges based on two dimensions:
 
 1. **SQL transforms**: The volume of data processed by stateless SQL.
 2. **Sinks**: The volume of data delivered to each sink destination.
 
-Ingress into a Pipeline stream is free. Standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/) charges apply for data written to R2 buckets. [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/platform/pricing/) charges apply when writing to Iceberg tables.
+Ingress into a Pipeline stream is free. Standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/) charges apply for data written to R2 buckets. [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/platform/pricing/) charges apply when writing to Iceberg tables.
 
 All included usage is on a monthly basis.
 
@@ -84,5 +84,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/platform/pricing/#page","headline":"Cloudflare Pipelines - Pricing · Cloudflare Pipelines Docs","description":"Cloudflare Pipelines pricing for SQL transforms, sinks, and included usage details.","url":"https://developers.cloudflare.com/pipelines/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/platform/pricing/#page","headline":"Cloudflare Pipelines - Pricing · Cloudflare Pipelines Docs","description":"Cloudflare Pipelines pricing for SQL transforms, sinks, and included usage details.","url":"https://developers.cloudflare.com/pipelines/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

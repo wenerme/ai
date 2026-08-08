@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP server portals
 
-Last updated Jul 31, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -29,7 +29,7 @@ MCP server portals provide the following capabilities:
 * **Tool and prompt aliases**: Admins can [rename tools and prompts](#rename-tools-and-prompts-with-aliases) and edit their descriptions at the portal or server level without modifying the upstream MCP server. Aliases help end users find the right tool and help AI agents select the correct one.
 * **Context optimization**: Portals support query parameter options that reduce context window usage by minimizing or hiding tool definitions. Refer to [Optimize context](#optimize-context) for details.
 * **Non-browser client support**: MCP clients authenticate to the portal using a standard OAuth 2.0 authorization code flow via [managed OAuth](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/managed-oauth/). This managed OAuth configuration applies to the portal's Access application. It is separate from upstream OAuth used by individual MCP servers in the portal. Non-browser clients receive a `401` response with a `WWW-Authenticate` header pointing to Access's OAuth discovery endpoints, rather than a browser redirect. You can also connect using [Access service tokens](#connect-with-a-service-token) for machine-to-machine access.
-* **Code Mode**: Code Mode is available by default on all portals. It collapses all upstream tools into a single `code` tool. The AI agent writes JavaScript that calls typed methods for each tool, and the code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. This keeps context window usage fixed regardless of how many tools are available. Refer to [Code Mode](#code-mode) for connection instructions.
+* **Code Mode**: Code Mode collapses all upstream tools into two tools for search and code execution. The AI agent writes JavaScript that calls typed methods for each tool. The code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. Admins can control whether Code Mode is unavailable, optional, on by default, or required. Refer to [Code Mode](#code-mode) for configuration and connection instructions.
 * **Observability**: Once the user's AI agent is connected to the portal, Cloudflare Access logs the individual requests made using the tools in the portal. You can optionally route portal traffic through [Cloudflare Gateway](#route-portal-traffic-through-gateway) for richer HTTP logging and data loss prevention (DLP) scanning.
 
 ## How it works
@@ -510,7 +510,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 	--json '{
 		"name": "Engineering Portal",
 		"hostname": "mcp.example.com",
-		"allow_code_mode": true,
+		"code_mode": "opt_in",
 		"secure_web_gateway": false
 	}'
 ```
@@ -594,17 +594,41 @@ For the full list of supported resource arguments, refer to the [Terraform provi
 
 ## Code Mode
 
-[Code Mode](https://developers.cloudflare.com/agents/tools/codemode/) is turned on by default on all MCP server portals. It reduces context window usage by collapsing all tools in the portal into a single `code` tool. Instead of loading a separate tool definition for each upstream MCP server tool, the connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment, which keeps authentication credentials and environment variables out of the model context.
+[Code Mode](https://developers.cloudflare.com/agents/tools/codemode/) reduces context window usage by replacing upstream tool definitions with two tools for search and code execution. The connected AI agent writes JavaScript that calls typed `codemode.*` methods. The generated code runs in an isolated [Dynamic Worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/) environment. Authentication credentials and environment variables remain outside the model context.
 
-To use Code Mode, the MCP client must request it when connecting to the portal URL. Refer to [Connect with Code Mode](#connect-with-code-mode) for the required query parameter.
+Code Mode is useful for portals with many MCP servers or tools. Context window usage stays fixed as the portal adds tools.
 
-Code Mode is useful for portals that aggregate many MCP servers or servers that expose a large number of tools. Context window usage stays fixed regardless of how many tools are available through the portal.
+### Code Mode policies
+
+Each portal has a Code Mode policy. The default policy is _Opt-in_.
+
+| Policy        | API value   | Default behavior         | Client override                                  |
+| ------------- | ----------- | ------------------------ | ------------------------------------------------ |
+| Off           | off         | Code Mode is unavailable | Query parameters are ignored                     |
+| Opt-in        | opt\_in     | Code Mode is off         | Add ?codemode=search\_and\_execute to turn it on |
+| On by default | default\_on | Code Mode is on          | Add ?codemode=off to turn it off                 |
+| Enforced      | enforced    | Code Mode is on          | Query parameters are ignored                     |
+
+Use _Opt-in_ or _On by default_ if some clients run their own Code Mode implementation. These policies let clients avoid nested code execution.
+
+### Configure a Code Mode policy
+
+1. Get your existing MCP portal configuration:
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \
+	--request GET \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+2. Add `code_mode` to the response body. Set the value to `off`, `opt_in`, `default_on`, or `enforced`.
+3. Send the complete body in a `PUT` request to the [Update a MCP Portal](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/portals/methods/update/) endpoint. Including the complete body prevents other portal settings from being overwritten.
+
+The `allow_code_mode` API field is deprecated. Use `code_mode` for new integrations.
 
 ### Connect with Code Mode
 
-To use Code Mode, append the `?codemode=search_and_execute` query string parameter to your portal URL when [connecting](#connect-to-a-portal) from an MCP client.
+The portal policy determines whether the MCP client needs a query parameter. For _Opt-in_, append `?codemode=search_and_execute` to the portal URL. For _On by default_, clients can append `?codemode=off` instead.
 
-For example, if your portal URL is `https://<subdomain>.<domain>/mcp`, connect to:
+For example, an _Opt-in_ portal at `https://<subdomain>.<domain>/mcp` uses this URL:
 
 ```txt
 https://<subdomain>.<domain>/mcp?codemode=search_and_execute
@@ -627,33 +651,9 @@ For MCP clients with server configuration files, use the portal URL with the que
 }
 ```
 
-When Code Mode is active, the portal advertises a single `code` tool to connected MCP clients. The AI agent discovers available tools by inspecting the typed method signatures in the Dynamic Worker environment and composes multiple tool calls into a single code execution.
+When Code Mode is active, the portal advertises `portal_codemode_search` and `portal_codemode_execute`. The AI agent can discover tools and compose multiple tool calls in one execution.
 
 For more information on building with Code Mode, refer to the [Code Mode SDK reference](https://developers.cloudflare.com/agents/tools/codemode/api-reference/).
-
-### Turn off Code Mode
-
-To turn off Code Mode for a portal:
-
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **AI controls**.
-2. Find the portal you want to configure, then select the three dots > **Edit**.
-3. Under **Basic information**, turn off **Code Mode**.
-
-1. Get your existing MCP portal configuration:
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \
-	--request GET \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
-```
-2. Send a `PUT` request to the [Update a MCP Portal](https://developers.cloudflare.com/api/resources/zero%5Ftrust/subresources/access/subresources/ai%5Fcontrols/subresources/mcp/subresources/portals/methods/update/) endpoint with `allow_code_mode` set to `false`. To avoid overwriting your existing configuration, the `PUT` request body should contain all fields returned by the previous `GET` request.
-```bash
-curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-controls/mcp/portals/%7Bid%7D" \
-	--request PUT \
-	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-	--json '{
-		"allow_code_mode": false
-	}'
-```
 
 ## Route portal traffic through Gateway
 
@@ -1091,5 +1091,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

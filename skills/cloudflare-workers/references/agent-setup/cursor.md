@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Cloudflare platform access
@@ -112,23 +112,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips
