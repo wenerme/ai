@@ -90,7 +90,7 @@ Requirements:
     </Note>
 
     <Warning>
-      **Ordering matters:** `ANTHROPIC_API_KEY="$OPENROUTER_API_KEY"` is expanded when the profile is sourced. If `OPENROUTER_API_KEY` is defined *later* in the file, in a different file, or injected by a secrets manager after your profile runs, the API key silently expands to an empty string and every request fails with an auth error. Ensure the key is defined **before** it is consumed by `ANTHROPIC_API_KEY`, or put it in a file that loads earlier (e.g. `~/.zshenv` for zsh).
+      **Ordering matters:** `ANTHROPIC_API_KEY="$OPENROUTER_API_KEY"` is expanded when the profile is sourced. If `OPENROUTER_API_KEY` is defined *later* in the file, in a different file, or injected by a secrets manager after your profile runs, the API key expands to an empty string and every request fails with an auth error. Ensure the key is defined **before** it is consumed by `ANTHROPIC_API_KEY`, or put it in a file that loads earlier (e.g. `~/.zshenv` for zsh).
     </Warning>
 
     <Note>
