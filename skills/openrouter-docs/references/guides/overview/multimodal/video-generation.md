@@ -48,7 +48,7 @@ export const Template = ({children, data}) => {
 
 OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/docs/guides/overview/models?output_modalities=video).
 
-<Frame caption="Generated with minimax/hailuo-3 — 2K, 5s, 16:9, with audio">
+<Frame caption="Generated with minimax/hailuo-3 (2K, 5s, 16:9, with audio)">
   <video controls loop playsInline preload="metadata" style={{ width: '100%' }}>
     <source src="https://model-assets.openrouter.ai/model-examples/minimax/hailuo-3/docs-hero/original-0.mp4?v=1" type="video/mp4" />
   </video>
@@ -300,26 +300,26 @@ MODEL: 'google/veo-3.1'
 
 ### Supported Aspect Ratios
 
-* `16:9` — Widescreen landscape
-* `9:16` — Vertical/portrait
-* `1:1` — Square
-* `4:3` — Standard landscape
-* `3:4` — Standard portrait
-* `3:2` — Photography landscape
-* `2:3` — Photography portrait
-* `21:9` — Ultra-wide
-* `9:21` — Ultra-tall
+* `16:9`: Widescreen landscape
+* `9:16`: Vertical/portrait
+* `1:1`: Square
+* `4:3`: Standard landscape
+* `3:4`: Standard portrait
+* `3:2`: Photography landscape
+* `2:3`: Photography portrait
+* `21:9`: Ultra-wide
+* `9:21`: Ultra-tall
 
 ### Using Images
 
 There are two ways to provide images, each
 triggering a different generation mode:
 
-* **`frame_images`** — Specifies first or last frame
+* **`frame_images`**: Specifies first or last frame
   images for **image-to-video** generation. Each entry
   must include a `frame_type` of `first_frame` or
   `last_frame`.
-* **`input_references`** — Provides style or content
+* **`input_references`**: Provides style or content
   reference images for **reference-to-video**
   generation. The model uses these as visual guidance
   rather than exact frames.

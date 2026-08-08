@@ -79,9 +79,9 @@
   },
   "changelog.md": {
     "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/CHANGELOG.md",
-    "etag": "W/\"7e885d82ddda180652ff77748be1e45c0f5624d0fca6d231ab5630b97f8fce7d\"",
-    "size": 494771,
-    "updatedAt": "2026-08-08T02:08:20.020Z"
+    "etag": "W/\"b6765daad827ce2329bf1d562dc80d1a3864dfc59fc1ecc83576ea033a226f98\"",
+    "size": 494825,
+    "updatedAt": "2026-08-08T10:44:25.976Z"
   },
   "channels.md": {
     "url": "https://code.claude.com/docs/en/channels",
@@ -535,9 +535,9 @@
   },
   "permission-modes.md": {
     "url": "https://code.claude.com/docs/en/permission-modes",
-    "lastModified": "Sat, 08 Aug 2026 02:07:42 GMT",
-    "size": 49784,
-    "updatedAt": "2026-08-08T02:07:42.378Z"
+    "lastModified": "Sat, 08 Aug 2026 10:43:47 GMT",
+    "size": 50077,
+    "updatedAt": "2026-08-08T10:43:47.634Z"
   },
   "permissions.md": {
     "url": "https://code.claude.com/docs/en/permissions",
