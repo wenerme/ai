@@ -388,7 +388,7 @@ oo-nats-0                                  2/2     Running   0          2m
 oo-nats-1                                  2/2     Running   0          2m
 oo-nats-2                                  2/2     Running   0          2m
 oo-nats-box-...                            1/1     Running   0          2m
-oo-openobserve-alertmanager-0              1/1     Running   0          2m
+oo-openobserve-scheduler-0              1/1     Running   0          2m
 oo-openobserve-compactor-...               1/1     Running   0          2m
 oo-openobserve-dex-...                     1/1     Running   0          2m
 oo-openobserve-ingester-0                  1/1     Running   0          2m
@@ -605,7 +605,7 @@ Issues are grouped by theme. Each entry notes the step where it tends to surface
 
 **Quota and PVCs**
 
-- **Querier and alertmanager pods `Pending`, PVCs stuck `Pending`, events show `QUOTA_EXCEEDED ... SSD_TOTAL_GB`** (Step 7). Your `SSD_TOTAL_GB` quota is exceeded by node boot disks plus the default 100 GiB cache PVCs.
+- **Querier and scheduler pods `Pending`, PVCs stuck `Pending`, events show `QUOTA_EXCEEDED ... SSD_TOTAL_GB`** (Step 7). Your `SSD_TOTAL_GB` quota is exceeded by node boot disks plus the default 100 GiB cache PVCs.
 
     **Fix:** Pick one path.
 
@@ -622,7 +622,7 @@ Issues are grouped by theme. Each entry notes the step where it tends to surface
     In `values.yaml`, change four `size: 100Gi` entries to `size: 20Gi`:
 
     ```yaml
-    alertmanager:
+    scheduler:
       persistence:
         size: 20Gi
 

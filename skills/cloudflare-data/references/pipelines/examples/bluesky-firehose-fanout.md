@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Consume the Bluesky Jetstream firehose in a Durable Object, ingest it into a single Pipelines stream, and use one pipeline with multiple SQL statements to route events into separate R2 Data Catalog tables by type.
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this example, you will consume the public [Bluesky Jetstream ↗](https://github.com/bluesky-social/jetstream) firehose, a live WebSocket stream of every post, like, repost, follow, and block on the network, and land it in [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/) as queryable Apache Iceberg tables.
+In this example, you will consume the public [Bluesky Jetstream ↗](https://github.com/bluesky-social/jetstream) firehose, a live WebSocket stream of every post, like, repost, follow, and block on the network, and land it in [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) as queryable Apache Iceberg tables.
 
 You will learn a core Pipelines pattern: send every event to one stream, then use a single pipeline with multiple SQL statements to route ("fan out") that stream into several destination tables, one per event type, without running a separate pipeline for each.
 
@@ -118,7 +118,7 @@ Create a `schema.json` file in the root of your project:
 
 ## 3\. Create an R2 bucket and enable R2 Data Catalog
 
-Your sinks write to Iceberg tables in [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/), so you need a bucket with the catalog enabled.
+Your sinks write to Iceberg tables in [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/), so you need a bucket with the catalog enabled.
 
 Create an R2 bucket named `bluesky-pipeline`:
 
@@ -242,7 +242,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
   "name": "bluesky-pipeline",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-22",
+  "compatibility_date": "2026-08-07",
   "pipelines": [
     {
       "binding": "BSKY_STREAM",
@@ -277,7 +277,7 @@ Add the stream binding, a Durable Object to hold the WebSocket connection, and a
 name = "bluesky-pipeline"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-07"
 
 [[pipelines]]
 binding = "BSKY_STREAM"
@@ -696,5 +696,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/#page","headline":"Fan out a stream to multiple Iceberg tables · Cloudflare Pipelines Docs","description":"Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.","url":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/#page","headline":"Fan out a stream to multiple Iceberg tables · Cloudflare Pipelines Docs","description":"Route Bluesky Jetstream events into multiple R2 Data Catalog tables using a single Pipelines stream and multiple SQL statements.","url":"https://developers.cloudflare.com/pipelines/examples/bluesky-firehose-fanout/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide will instruct you through:
 
-* Creating your first [R2 bucket](https://developers.cloudflare.com/r2/buckets/) and enabling its [data catalog](https://developers.cloudflare.com/r2/data-catalog/).
+* Creating your first [R2 bucket](https://developers.cloudflare.com/r2/buckets/) and enabling its [data catalog](https://developers.cloudflare.com/r2-data-catalog/).
 * Creating an [API token](https://developers.cloudflare.com/r2/api/tokens/) needed for pipelines to authenticate with your data catalog.
 * Creating your first pipeline with a simple ecommerce schema that writes to an [Apache Iceberg ↗](https://iceberg.apache.org/) table managed by R2 Data Catalog.
 * Sending sample ecommerce data via HTTP endpoint.
@@ -278,11 +278,11 @@ LIMIT 10"
 
 Replace `YOUR_WAREHOUSE_NAME` with the warehouse name from step 2.
 
-You can also query this table with any engine that supports Apache Iceberg. To learn more about connecting other engines to R2 Data Catalog, refer to [Connect to Iceberg engines](https://developers.cloudflare.com/r2/data-catalog/config-examples/).
+You can also query this table with any engine that supports Apache Iceberg. To connect other engines to R2 Data Catalog, refer to [Connect to Iceberg engines](https://developers.cloudflare.com/r2-data-catalog/config-examples/).
 
 ## Learn more
 
-### [Managing R2 Data Catalogs](https://developers.cloudflare.com/r2/data-catalog/manage-catalogs/)
+### [Managing R2 Data Catalogs](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/)
 
 Enable or disable R2 Data Catalog on your bucket, retrieve configuration details, and authenticate your Iceberg engine.
 
@@ -303,5 +303,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/get-started/#page","headline":"Getting started · R2 SQL docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/r2-sql/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/get-started/#page","headline":"Getting started · R2 SQL docs","description":"Create your first pipeline to ingest streaming data and write to R2 Data Catalog as an Apache Iceberg table.","url":"https://developers.cloudflare.com/r2-sql/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

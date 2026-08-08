@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SQL reference
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/sql-reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
 R2 SQL is in public beta. Supported SQL grammar may change over time.
 
-R2 SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/). This page documents the supported SQL syntax.
+R2 SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). This page documents the supported SQL syntax.
 
 ---
 
@@ -935,5 +935,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/#page","headline":"SQL reference · R2 SQL docs","description":"Comprehensive reference for SQL syntax, functions, and data types supported in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/r2-sql/sql-reference/#page","headline":"SQL reference · R2 SQL docs","description":"Comprehensive reference for SQL syntax, functions, and data types supported in R2 SQL.","url":"https://developers.cloudflare.com/r2-sql/sql-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SQL"]}
 ```

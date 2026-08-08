@@ -12,9 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Terminal
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/terminal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/terminal/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect browser-based terminal UIs to sandbox shells via WebSocket. The server-side `terminal()` method proxies WebSocket connections to the container, and the client-side `SandboxAddon` integrates with xterm.js for terminal rendering.
+
+Sandbox SDK 1.0 preview
+
+This page documents terminal helpers on today's stable `@cloudflare/sandbox` package.
+
+On **`@cloudflare/sandbox@next`**, terminals use `createTerminal`, `getTerminal`, and `terminal.connect`, with xterm `terminalId`. Refer to [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) and [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/).
 
 ## Server-side methods
 
@@ -248,5 +254,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/terminal/#page","headline":"Terminal · Cloudflare Sandbox SDK docs","description":"Connect browser-based terminal UIs to sandbox shells via WebSocket.","url":"https://developers.cloudflare.com/sandbox/api/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/api/terminal/#page","headline":"Terminal · Cloudflare Sandbox SDK docs","description":"Connect browser-based terminal UIs to sandbox shells via WebSocket.","url":"https://developers.cloudflare.com/sandbox/api/terminal/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

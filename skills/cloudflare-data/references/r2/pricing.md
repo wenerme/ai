@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 charges based on the total volume of data stored, along with two classes of operations on that data:
 
@@ -101,7 +101,7 @@ For objects stored in Infrequent Access storage, you will be charged for the obj
 
 ## R2 Data Catalog pricing
 
-R2 Data Catalog charges for catalog operations and compaction data processed, in addition to standard R2 storage and operations. For full details, refer to [R2 Data Catalog pricing](https://developers.cloudflare.com/r2/data-catalog/platform/pricing/).
+R2 Data Catalog charges for catalog operations and compaction data processed, in addition to standard R2 storage and operations. For full details, refer to [R2 Data Catalog pricing](https://developers.cloudflare.com/r2-data-catalog/platform/pricing/).
 
 ## Data migration pricing
 
@@ -183,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 pricing for storage, Class A and Class B operations, and free tier details.","url":"https://developers.cloudflare.com/r2/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/pricing/#page","headline":"Pricing · Cloudflare R2 docs","description":"R2 pricing for storage, Class A and Class B operations, and free tier details.","url":"https://developers.cloudflare.com/r2/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

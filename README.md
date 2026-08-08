@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33226 files, 391 MiB total
+> 123 skills, 33253 files, 392 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1390,22 +1390,22 @@ Use when implementing React state management with Zustand, including context-sco
 | [anthropic-sdk-ruby](./skills/anthropic-sdk-ruby/SKILL.md) | 159 | 8.5 MiB |
 | [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | 159 | 8.6 MiB |
 | [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | 2 | 7.5 KiB |
-| [biome-docs](./skills/biome-docs/SKILL.md) | 611 | 7.7 MiB |
+| [biome-docs](./skills/biome-docs/SKILL.md) | 616 | 7.8 MiB |
 | [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
 | [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
 | [bun-docs](./skills/bun-docs/SKILL.md) | 321 | 1.6 MiB |
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 3.6 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 137 | 5.7 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 138 | 5.8 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
-| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1573 | 17 MiB |
-| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 397 | 2.9 MiB |
+| [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1574 | 17 MiB |
+| [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 380 | 2.8 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 31 KiB |
 | [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 835 | 4.9 MiB |
-| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1242 | 8.1 MiB |
+| [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1259 | 8.2 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1007 | 5.3 MiB |
-| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 794 | 7.2 MiB |
+| [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 810 | 7.4 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 934 | 9.4 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
 | [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 4917 | 15 MiB |
@@ -1431,7 +1431,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 172 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 907 | 8.0 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 21 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 300 | 478 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 303 | 480 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 780 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 94 | 2.1 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 629 | 6.2 MiB |
@@ -1462,7 +1462,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
 | [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 464 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 471 | 2.7 MiB |
-| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2379 | 15 MiB |
+| [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2380 | 15 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |
 | [papermc-docs](./skills/papermc-docs/SKILL.md) | 192 | 877 KiB |

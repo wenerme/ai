@@ -12,9 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transport modes
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/transport/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/configuration/transport/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Configure how the Sandbox SDK communicates with containers using transport modes.
+
+Coming soon: Sandbox SDK 1.0
+
+This page documents transport selection on today's stable `@cloudflare/sandbox` package.
+
+**Sandbox SDK 1.0** (preview on `@next`) uses a single RPC control channel. Remove `SANDBOX_TRANSPORT`, the `transport` option on `getSandbox()`, and `setTransport()`. Refer to [Migrate to the 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#remove-transport-selection).
 
 ## Overview
 
@@ -84,7 +90,7 @@ Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 	"name": "my-sandbox-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-07",
 	"vars": {
 		"SANDBOX_TRANSPORT": "rpc"
 	},
@@ -109,7 +115,7 @@ Enable RPC transport by adding `SANDBOX_TRANSPORT` to your Worker's `vars`:
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-07"
 
 [vars]
 SANDBOX_TRANSPORT = "rpc"
@@ -249,5 +255,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/configuration/transport/#page","headline":"Transport modes · Cloudflare Sandbox SDK docs","description":"Configure how Sandbox SDK communicates between Durable Objects and containers.","url":"https://developers.cloudflare.com/sandbox/configuration/transport/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/r2-sql/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 SQL charges based on a single dimension:
 
 * **Data scanned**: The volume of compressed data read from R2 to execute your query.
 
-R2 SQL pricing is additive to standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/) and [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/platform/pricing/) charges. When the query engine reads files, those requests count as R2 Class B (read) operations. R2 does not charge for egress, so there is no additional data transfer cost.
+R2 SQL pricing is additive to standard [R2 storage and operations](https://developers.cloudflare.com/r2/pricing/) and [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/platform/pricing/) charges. When the query engine reads files, those requests count as R2 Class B (read) operations. R2 does not charge for egress, so there is no additional data transfer cost.
 
 All included usage is on a monthly basis.
 
@@ -84,5 +84,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/platform/pricing/#page","headline":"R2 SQL - Pricing · R2 SQL docs","description":"R2 SQL pricing based on data scanned, with included usage details and billing examples.","url":"https://developers.cloudflare.com/r2-sql/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2-sql/platform/pricing/#page","headline":"R2 SQL - Pricing · R2 SQL docs","description":"R2 SQL pricing based on data scanned, with included usage details and billing examples.","url":"https://developers.cloudflare.com/r2-sql/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

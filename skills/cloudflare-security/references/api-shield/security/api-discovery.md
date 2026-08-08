@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API Discovery
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/api-discovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/api-shield/security/api-discovery/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Most development teams struggle to keep track of their APIs. Cloudflare API Discovery helps you map out and understand your API attack surface — the full set of endpoints that could be targeted by attackers.
 
@@ -50,25 +50,21 @@ Cloudflare consolidates these to `{hostVar1}.example.com/api/v1/users/{var1}`.
 
 For more technical details, refer to the [blog post ↗](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
 
-### Inbox view
+### Discovered operations
 
-API Shield first catalogs your discovered API endpoints in an inbox-style view. From API Discovery, you can save endpoints to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) or ignore endpoints to remove them from view.
+Web Assets adds discovered API endpoints to the operation inventory as candidate operations. Candidate operations provide context for matching, logging, detections, and rules before you manually review them.
 
-Save all discovered API endpoints to Endpoint Management. Ignore any false positives by selecting **Save** or **Ignore** on each line, or use bulk selection.
+You do not need to promote every discovered operation. Promote an operation to move it to the `full` state and start profile learning. Full operations support persisted API profiles, risk findings, and protections that require a known API endpoint.
 
-To get started, search for `var1` in the search box to find all endpoints with path variables and save them first. You can examine endpoints without path variables later.
+To promote a discovered operation:
 
-Adding endpoints to Endpoint Management unlocks additional [security](https://developers.cloudflare.com/api-shield/security/), [visibility](https://developers.cloudflare.com/api-shield/management-and-monitoring/#endpoint-analysis), and [management](https://developers.cloudflare.com/api-shield/management-and-monitoring/) features.
+1. In the Cloudflare dashboard, go to the **Web Assets** page.
+[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. Go to the **Operations** tab.
+3. Open the row actions for a candidate or shadow operation.
+4. Select **Learn profile**.
 
-To restore any errantly ignored endpoints, you can filter by **Ignored** and select **Restore**.
-
-API Discovery is an ongoing process. Check back regularly for new results — a badge in the dashboard shows how many endpoints need review.
-
-The **Needs Review** and **Ignored** counts may change over time as your API or traffic patterns change. Discovery results that are not saved can disappear.
-
-Note
-
-Cloudflare will use your feedback on ignored endpoints to improve the API Discovery machine learning model in a future release.
+Cloudflare moves the operation to the `full` state. The row action then changes to **Profile learned**. For more information, refer to [Promote an operation](https://developers.cloudflare.com/security/web-assets/manage-operations/#promote-an-operation).
 
 ### Machine learning-based discovery
 
@@ -102,5 +98,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/api-discovery/#page","headline":"API Discovery · Cloudflare API Shield docs","description":"Map out and understand your API attack surface with API Discovery.","url":"https://developers.cloudflare.com/api-shield/security/api-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/api-discovery/#page","headline":"API Discovery · Cloudflare API Shield docs","description":"Map out and understand your API attack surface with API Discovery.","url":"https://developers.cloudflare.com/api-shield/security/api-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

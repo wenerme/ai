@@ -1372,18 +1372,18 @@
   "openai-api/admin.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/index.md",
     "skill": "openai-api",
-    "etag": "W/\"502d7da89d4b7031b9660b015e9e2aad\"",
-    "lastModified": "Sat, 01 Aug 2026 03:44:42 GMT",
-    "size": 721519,
-    "updatedAt": "2026-08-01T03:44:42.420Z"
+    "etag": "W/\"2ef0695ca5e1a69b9c3e3c32ba90620e\"",
+    "lastModified": "Sat, 08 Aug 2026 02:11:50 GMT",
+    "size": 722634,
+    "updatedAt": "2026-08-08T02:11:50.299Z"
   },
   "openai-api/admin/organization.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/index.md",
     "skill": "openai-api",
-    "etag": "W/\"1b09d46a44d04d3327ace273a6b51baa\"",
-    "lastModified": "Sat, 01 Aug 2026 03:44:42 GMT",
-    "size": 721510,
-    "updatedAt": "2026-08-01T03:44:42.865Z"
+    "etag": "W/\"50783c6db259fd1d9fac6265206a6b5a\"",
+    "lastModified": "Sat, 08 Aug 2026 02:11:50 GMT",
+    "size": 722625,
+    "updatedAt": "2026-08-08T02:11:50.631Z"
   },
   "openai-api/admin/organization/admin_api_keys.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/admin_api_keys/index.md",
@@ -1428,18 +1428,18 @@
   "openai-api/admin/organization/audit_logs.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs/index.md",
     "skill": "openai-api",
-    "etag": "W/\"aba01c187e4f0c2453850af755781ad7\"",
-    "lastModified": "Fri, 31 Jul 2026 01:36:10 GMT",
-    "size": 77260,
-    "updatedAt": "2026-07-31T03:45:11.597Z"
+    "etag": "W/\"10ce49390e708761954438039c426954\"",
+    "lastModified": "Sat, 08 Aug 2026 02:11:52 GMT",
+    "size": 78375,
+    "updatedAt": "2026-08-08T02:11:52.015Z"
   },
   "openai-api/admin/organization/audit_logs/list.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/audit_logs/methods/list/index.md",
     "skill": "openai-api",
-    "etag": "W/\"7469d2d92d0eb4cadd8aa2692cc32cfe\"",
-    "lastModified": "Fri, 31 Jul 2026 03:45:11 GMT",
-    "size": 47939,
-    "updatedAt": "2026-07-31T03:45:11.968Z"
+    "etag": "W/\"659510bc925b1d1003366cc9f121bcda\"",
+    "lastModified": "Sat, 08 Aug 2026 02:11:52 GMT",
+    "size": 48513,
+    "updatedAt": "2026-08-08T02:11:52.336Z"
   },
   "openai-api/admin/organization/certificates.md": {
     "url": "https://developers.openai.com/api/reference/resources/admin/subresources/organization/subresources/certificates/index.md",

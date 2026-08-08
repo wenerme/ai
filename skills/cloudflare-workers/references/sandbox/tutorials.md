@@ -12,7 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Tutorials
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Coming soon: Sandbox SDK 1.0
+
+These tutorials target today's stable `@cloudflare/sandbox` package and may use sessions, string `exec`, `startProcess`, `gitCheckout`, or the stable bridge template.
+
+For **`@next`** Worker SDK work, start from [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/) and [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/). Bridge deployments stay on the [stable bridge](https://developers.cloudflare.com/sandbox/bridge/).
 
 Learn how to build applications with Sandbox SDK through step-by-step tutorials. Each tutorial takes 20-30 minutes.
 
@@ -58,5 +64,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/tutorials/#page","headline":"Tutorials · Cloudflare Sandbox SDK docs","description":"Step-by-step Sandbox SDK tutorials for building AI agents, code executors, and testing pipelines.","url":"https://developers.cloudflare.com/sandbox/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/tutorials/#page","headline":"Tutorials · Cloudflare Sandbox SDK docs","description":"Step-by-step Sandbox SDK tutorials for building AI agents, code executors, and testing pipelines.","url":"https://developers.cloudflare.com/sandbox/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

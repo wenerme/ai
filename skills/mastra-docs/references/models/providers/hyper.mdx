@@ -1,11 +1,11 @@
 ---
 title: "Charm Hyper | Models"
-description: "Use Charm Hyper models with Mastra. 25 models available."
+description: "Use Charm Hyper models with Mastra. 24 models available."
 ---
 
 # [Charm Hyper logo]Charm Hyper
 
-Access 25 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
+Access 24 Charm Hyper models through Mastra's model router. Authentication is handled automatically using the `HYPER_API_KEY` environment variable.
 
 Learn more in the [Charm Hyper documentation](https://hyper.charm.land).
 
@@ -58,10 +58,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 1048576,
     "maxOutput": 384000,
-    "inputCost": 0.2,
-    "outputCost": 0.4
+    "inputCost": 0.152432,
+    "outputCost": 0.304864
   },
   {
     "model": "hyper/deepseek-v4-pro",
@@ -86,18 +86,6 @@ for await (const chunk of stream) {
     "maxOutput": 25600,
     "inputCost": 0.124,
     "outputCost": 0.42
-  },
-  {
-    "model": "hyper/glm-5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 20275,
-    "inputCost": 0.85,
-    "outputCost": 2.742
   },
   {
     "model": "hyper/glm-5.1",
@@ -132,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 131072,
     "maxOutput": 13107,
-    "inputCost": 0.188,
-    "outputCost": 0.73
+    "inputCost": 0.178,
+    "outputCost": 0.71
   },
   {
     "model": "hyper/kimi-k2.5",
@@ -216,8 +204,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262100,
     "maxOutput": 6553,
-    "inputCost": 0.41,
-    "outputCost": 1.52
+    "inputCost": 0.436,
+    "outputCost": 1.72
   },
   {
     "model": "hyper/minimax-m3",

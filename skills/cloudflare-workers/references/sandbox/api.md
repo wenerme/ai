@@ -12,7 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API reference
 
-Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Coming soon: Sandbox SDK 1.0
+
+This is the API hub for today's stable `@cloudflare/sandbox` package.
+
+For **`@cloudflare/sandbox@next`**, use the [1.0 preview API reference](https://developers.cloudflare.com/sandbox/1-0-preview/api/).
 
 The Sandbox SDK provides a comprehensive API for executing code, managing files, running processes, and exposing services in isolated sandboxes.
 
@@ -69,5 +75,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/api/#page","headline":"API reference · Cloudflare Sandbox SDK docs","description":"Sandbox SDK API for executing code, managing files, running processes, and exposing services.","url":"https://developers.cloudflare.com/sandbox/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/api/#page","headline":"API reference · Cloudflare Sandbox SDK docs","description":"Sandbox SDK API for executing code, managing files, running processes, and exposing services.","url":"https://developers.cloudflare.com/sandbox/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

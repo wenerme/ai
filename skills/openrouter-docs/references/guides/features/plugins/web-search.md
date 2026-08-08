@@ -84,7 +84,8 @@ The maximum results allowed by the web plugin and the prompt used to attach them
   "plugins": [
     {
       "id": "web",
-      "engine": "exa", // Optional: "native", "exa", "firecrawl", "parallel", "perplexity", or undefined
+      "engine": "parallel", // Optional: "native", "exa", "firecrawl", "parallel", "perplexity", or undefined
+      "mode": "turbo", // Optional; accepted values depend on the selected engine
       "max_results": 1, // Defaults to 5
       "search_prompt": "Some relevant web results:", // See default below
       "include_domains": ["example.com", "*.substack.com"], // Optional
@@ -268,7 +269,15 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 ### Parallel
 
-[Parallel](https://parallel.ai) is a search engine that supports domain filtering. OpenRouter uses Parallel's Turbo mode at \$0.001 per request, including up to 10 results, then \$0.001 per additional result.
+[Parallel](https://parallel.ai) is a search engine that supports domain filtering. Set `mode` when `engine` is `parallel`. OpenRouter preserves the existing `turbo` default and sends the resolved mode explicitly.
+
+| Mode              | Latency     | Request cost           | Language availability  |
+| ----------------- | ----------- | ---------------------- | ---------------------- |
+| `turbo` (default) | \~200 ms    | \$1 per 1,000 requests | English and Japanese   |
+| `basic`           | \~1 second  | \$5 per 1,000 requests | Broad language support |
+| `advanced`        | \~3 seconds | \$5 per 1,000 requests | Broad language support |
+
+Each mode includes up to 10 results. Additional results cost \$1 per 1,000 results.
 
 ```json lines theme={null}
 {
@@ -277,8 +286,38 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
     {
       "id": "web",
       "engine": "parallel",
+      "mode": "advanced",
       "max_results": 5,
       "include_domains": ["arxiv.org"]
+    }
+  ]
+}
+```
+
+### Exa modes
+
+Exa uses `auto` by default. Choose a mode to trade latency and search depth:
+
+| Mode             | Approximate latency | Request cost            |
+| ---------------- | ------------------- | ----------------------- |
+| `instant`        | \~250 ms            | \$7 per 1,000 requests  |
+| `fast`           | \~450 ms            | \$7 per 1,000 requests  |
+| `auto` (default) | \~1 second          | \$7 per 1,000 requests  |
+| `deep-lite`      | \~4 seconds         | \$12 per 1,000 requests |
+| `deep`           | \~4–15 seconds      | \$12 per 1,000 requests |
+| `deep-reasoning` | \~12–40 seconds     | \$15 per 1,000 requests |
+
+Each mode includes up to 10 results. Additional results cost \$1 per 1,000 results.
+
+```json lines theme={null}
+{
+  "model": "openai/gpt-5.2",
+  "plugins": [
+    {
+      "id": "web",
+      "engine": "exa",
+      "mode": "deep-lite",
+      "max_results": 5
     }
   ]
 }
@@ -287,8 +326,8 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 ### Engine-Specific Pricing
 
 * **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
-* **Exa search**: Uses OpenRouter credits at \$0.005 per request. Includes up to 10 results, then \$0.001 per additional result
-* **Parallel search**: Uses OpenRouter credits at \$0.001 per request. Includes up to 10 results in a request, then \$0.001 per additional result
+* **Exa search**: Instant, Fast, and Auto cost \$0.007 per request; Deep Lite and Deep cost \$0.012; Deep Reasoning costs \$0.015. Includes up to 10 results, then \$0.001 per additional result
+* **Parallel search**: Turbo uses OpenRouter credits at \$0.001 per request; Basic and Advanced use \$0.005 per request. Each includes up to 10 results, then \$0.001 per additional result
 * **Perplexity search**: Uses OpenRouter credits at \$0.005 per request
 * **Firecrawl search**: Uses your Firecrawl credits directly (2 credits per 10 results + 5 per result scraped with highlights). Refill at [Firecrawl.dev](https://www.firecrawl.dev)
 
@@ -296,7 +335,7 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 ### Exa Search Pricing
 
-When using Exa search (either explicitly via `"engine": "exa"` or as fallback), the web plugin uses your OpenRouter credits and charges *\$0.005 per request*. This includes up to 10 results; additional results are charged at \$0.001 each, in addition to the LLM usage for the search result prompt tokens.
+When using Exa search (either explicitly via `"engine": "exa"` or as fallback), the web plugin uses your OpenRouter credits and charges based on the selected Exa mode. Auto remains the default at \$0.007 per request. This includes up to 10 results; additional results are charged at \$0.001 each, in addition to the LLM usage for the search result prompt tokens.
 
 ### Native Search Pricing (Provider Passthrough)
 

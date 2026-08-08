@@ -243,8 +243,9 @@ components:
           description: >-
             Reference assets to guide video generation. Accepts image, audio,
             and video references. Audio and video references are only honored by
-            providers that support them (currently BytePlus Seedance 2.0); other
-            providers use image references and ignore the rest.
+            providers that support them (including BytePlus Seedance generation
+            2 and newer); other providers use image references and ignore the
+            rest.
           items:
             $ref: '#/components/schemas/InputReference'
           type: array
@@ -486,7 +487,8 @@ components:
       description: >-
         A reference asset used to guide video generation. Image references are
         supported by all providers; audio and video references are only honored
-        by providers that support them (currently BytePlus Seedance 2.0).
+        by providers that support them (including BytePlus Seedance generation 2
+        and newer).
       discriminator:
         mapping:
           audio_url:

@@ -1088,7 +1088,7 @@ components:
             Maximum number of tool-calling steps each panelist (analysis model)
             and the analyst model may take during their agentic web-research
             loop. Models with web_search/web_fetch enabled iterate until they
-            produce a text response or hit this ceiling. Defaults to 8. Capped
+            produce a text response or hit this ceiling. Defaults to 4. Capped
             at 16.
           example: 12
           maximum: 16
@@ -1307,6 +1307,8 @@ components:
             turn. Passed through to native providers that support it (e.g.
             Anthropic).
           type: integer
+        mode:
+          $ref: '#/components/schemas/WebSearchMode'
         search_prompt:
           type: string
         user_location:
@@ -1755,6 +1757,8 @@ components:
             equivalent parameter and ignore it.
           example: 3
           type: integer
+        mode:
+          $ref: '#/components/schemas/WebSearchMode'
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -1793,6 +1797,8 @@ components:
             equivalent parameter and ignore it.
           example: 3
           type: integer
+        mode:
+          $ref: '#/components/schemas/WebSearchMode'
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -1835,6 +1841,8 @@ components:
             equivalent parameter and ignore it.
           example: 3
           type: integer
+        mode:
+          $ref: '#/components/schemas/WebSearchMode'
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -1877,6 +1885,8 @@ components:
             equivalent parameter and ignore it.
           example: 3
           type: integer
+        mode:
+          $ref: '#/components/schemas/WebSearchMode'
         search_context_size:
           $ref: '#/components/schemas/SearchContextSizeEnum'
         type:
@@ -2333,8 +2343,9 @@ components:
     FilesServerTool:
       description: >-
         OpenRouter built-in server tool: read, write, edit, and list workspace
-        files via the Files API. Requires the `x-openrouter-file-ids:
-        openrouter` request header.
+        files via the Files API. Requires an authenticated request; files come
+        from the API key's workspace (or the default workspace for keys without
+        one).
       example:
         parameters: {}
         type: openrouter:files
@@ -4534,6 +4545,24 @@ components:
         - perplexity
       example: exa
       type: string
+    WebSearchMode:
+      description: >-
+        Engine-native search mode. Exa supports instant, fast, auto (default),
+        deep-lite, deep, and deep-reasoning. Parallel supports turbo (default),
+        basic, and advanced. Modes unsupported by the selected engine are
+        ignored.
+      enum:
+        - instant
+        - fast
+        - auto
+        - deep-lite
+        - deep
+        - deep-reasoning
+        - turbo
+        - basic
+        - advanced
+      example: auto
+      type: string
     WebSearchUserLocation:
       description: User location information for web search
       example:
@@ -5281,7 +5310,7 @@ components:
             Maximum number of tool-calling steps each panelist (analysis model)
             and the analyst model may take during their agentic web-research
             loop. Models with web_search/web_fetch enabled iterate until they
-            produce a text response or hit this ceiling. Defaults to 8. Capped
+            produce a text response or hit this ceiling. Defaults to 4. Capped
             at 16.
           example: 12
           maximum: 16
@@ -5487,6 +5516,8 @@ components:
             equivalent parameter and ignore it.
           example: 3
           type: integer
+        mode:
+          $ref: '#/components/schemas/WebSearchMode'
         search_context_size:
           $ref: '#/components/schemas/SearchQualityLevel'
         user_location:

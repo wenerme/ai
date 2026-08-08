@@ -46,7 +46,7 @@ After you save `mcp.json`, Visual Studio Code shows a **Start** CodeLens on the 
 4. **Try a prompt**
 Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 For a screenshot-by-screenshot walkthrough — including the OAuth authorization page, verifying the server is running, and using natural language to create and delete DNS records — refer to the [detailed walkthrough](https://developers.cloudflare.com/agent-setup/visual-studio-code/detailed-walkthrough/).
@@ -124,23 +124,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
 Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ## Tips

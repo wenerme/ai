@@ -12,9 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Browser terminals
 
-Last updated May 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/browser-terminals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/guides/browser-terminals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide shows you how to connect a browser-based terminal to a sandbox shell. You can use the `SandboxAddon` with xterm.js, or connect directly over WebSockets.
+
+Sandbox SDK 1.0 preview
+
+This guide documents browser terminals on today's stable `@cloudflare/sandbox` package.
+
+On **`@cloudflare/sandbox@next`**, follow [Terminals](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) and [Terminals API](https://developers.cloudflare.com/sandbox/1-0-preview/api/terminals/).
 
 ## Prerequisites
 
@@ -294,5 +300,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/browser-terminals/#page","headline":"Browser terminals · Cloudflare Sandbox SDK docs","description":"Connect browser-based terminals to sandbox shells using xterm.js or raw WebSockets.","url":"https://developers.cloudflare.com/sandbox/guides/browser-terminals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-27","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/guides/browser-terminals/#page","headline":"Browser terminals · Cloudflare Sandbox SDK docs","description":"Connect browser-based terminals to sandbox shells using xterm.js or raw WebSockets.","url":"https://developers.cloudflare.com/sandbox/guides/browser-terminals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

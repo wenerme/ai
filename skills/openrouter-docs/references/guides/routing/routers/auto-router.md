@@ -330,14 +330,15 @@ Use wildcard patterns to filter models. For example, `anthropic/*` matches all A
 
 ### Via Settings UI
 
-You can also configure default allowed models in your [Plugin Settings](https://openrouter.ai/settings/plugins):
+You can also configure default allowed models in your [Routing Settings](https://openrouter.ai/settings/routing):
 
-1. Navigate to **Settings > Plugins**
-2. Find **Auto Router** and click the configure button
-3. Enter model patterns (one per line)
-4. Save your settings
+1. Navigate to **Settings > Routing**
+2. Find the **Auto Router** section
+3. Enter model patterns in the **Allowed Models** text area, separated by commas or newlines
+4. Click **Save**
 
 These defaults configure the `auto-router` plugin, so they apply to `openrouter/auto` requests unless overridden per-request. To restrict models for `openrouter/auto-beta`, send `allowed_models` under `id: 'auto-beta-router'` in the request.
+With **Prevent overrides** enabled, these saved defaults take precedence and request-level `plugins` configuration for this plugin is ignored.
 
 ### Pattern Syntax
 
@@ -350,6 +351,89 @@ These defaults configure the `auto-router` plugin, so they apply to `openrouter/
 | `*/claude-*`     | Any provider with claude in model name |
 
 When no patterns are configured, the Auto Router uses all supported models.
+
+## Excluding Models
+
+Use `excluded_models` to prevent the Auto Router from selecting specific models for an individual request. It accepts the same wildcard pattern syntax as `allowed_models` described above. Exclusions are applied after `allowed_models`, so an excluded model is never selected even when it matches an allowed pattern.
+
+For example, this request allows Anthropic and OpenAI models but excludes GPT-4o. Set `model` to `openrouter/auto-beta` with the `auto-beta-router` plugin, or use `openrouter/auto` with the `auto-router` plugin:
+
+<CodeGroup>
+  ```typescript title="TypeScript SDK" lines theme={null}
+  const completion = await openRouter.chat.send({
+    model: 'openrouter/auto-beta',
+    messages: [
+      {
+        role: 'user',
+        content: 'Explain quantum entanglement in simple terms',
+      },
+    ],
+    plugins: [
+      {
+        id: 'auto-beta-router',
+        allowed_models: ['anthropic/*', 'openai/*'],
+        excluded_models: ['openai/gpt-4o'],
+      },
+    ],
+  });
+  ```
+
+  ```typescript title="TypeScript (fetch)" expandable lines theme={null}
+  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer <OPENROUTER_API_KEY>',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'openrouter/auto-beta',
+      messages: [
+        {
+          role: 'user',
+          content: 'Explain quantum entanglement in simple terms',
+        },
+      ],
+      plugins: [
+        {
+          id: 'auto-beta-router',
+          allowed_models: ['anthropic/*', 'openai/*'],
+          excluded_models: ['openai/gpt-4o'],
+        },
+      ],
+    }),
+  });
+  ```
+
+  ```python title="Python" expandable lines theme={null}
+  response = requests.post(
+    url="https://openrouter.ai/api/v1/chat/completions",
+    headers={
+      "Authorization": "Bearer <OPENROUTER_API_KEY>",
+      "Content-Type": "application/json",
+    },
+    data=json.dumps({
+      "model": "openrouter/auto-beta",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Explain quantum entanglement in simple terms"
+        }
+      ],
+      "plugins": [
+        {
+          "id": "auto-beta-router",
+          "allowed_models": ["anthropic/*", "openai/*"],
+          "excluded_models": ["openai/gpt-4o"]
+        }
+      ]
+    })
+  )
+  ```
+</CodeGroup>
+
+On the deprecated `openrouter/auto` router, a model excluded by the request is not re-pinned from the conversation history when `pin_model: true` is set. Instead, the router selects a new model through normal resolution.
+
+Use exclusions for compliance restrictions, cost ceilings, or models that underperform for your task. If your restrictions leave no eligible models, the request fails with a `404` error: `No models match your request and model restrictions`.
 
 ## Cost / Quality Tradeoff
 
@@ -465,7 +549,15 @@ When `cost_tier` is supplied without a numeric `cost_quality_tradeoff`, Auto Bet
 
 ### Via Settings UI
 
-You can also set a default tradeoff in your [Plugin Settings](https://openrouter.ai/settings/plugins) under **Auto Router**. This default configures the `auto-router` plugin (`openrouter/auto`); the per-request value overrides it. For `openrouter/auto-beta`, set the tradeoff per-request under `id: 'auto-beta-router'`.
+You can also set a default tradeoff in your [Routing Settings](https://openrouter.ai/settings/routing):
+
+1. Navigate to **Settings > Routing**
+2. Find the **Auto Router** section
+3. Adjust the **Cost / Quality Tradeoff** slider
+4. Click **Save**
+
+This default configures the `auto-router` plugin (`openrouter/auto`); the per-request value overrides it. For `openrouter/auto-beta`, set the tradeoff per-request under `id: 'auto-beta-router'`.
+With **Prevent overrides** enabled, this saved default takes precedence and request-level `plugins` configuration for this plugin is ignored.
 
 ## Pricing
 

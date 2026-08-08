@@ -436,10 +436,15 @@ components:
           example: 0
           type: integer
         workspace_id:
-          description: ID of the workspace this credential belongs to.
+          description: >-
+            The workspace this credential is scoped to, or `null` when it is
+            global — usable across every workspace in the account. A `null`
+            value does not mean the default workspace.
           example: 550e8400-e29b-41d4-a716-446655440000
           format: uuid
-          type: string
+          type:
+            - string
+            - 'null'
       required:
         - id
         - provider

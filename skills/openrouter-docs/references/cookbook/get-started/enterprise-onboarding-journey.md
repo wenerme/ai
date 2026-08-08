@@ -30,17 +30,17 @@ After go-live, the cadence is the monthly and quarterly reviews described under 
 
 ## Milestones at a glance
 
-| Stage      | Milestone                                                         | Typical timing               | Sync or async                |
-| ---------- | ----------------------------------------------------------------- | ---------------------------- | ---------------------------- |
-| Activation | Organization live, your admin signed in                           | Within 4 hours of signature  | Async (Slack)                |
-| Activation | First API key created                                             | Within 24 hours of signature | Async self-serve + sync call |
-| Activation | First inference from your environment                             | Within 48 hours of signature | Async (Slack)                |
-| Onboarding | Workspaces mapped to your teams, budgets set                      | Day 3                        | Async (Slack)                |
-| Onboarding | Governance complete: SSO, SCIM, guardrails, data-retention policy | Day 5                        | Async (Slack)                |
-| Onboarding | Observability live in your own monitoring stack                   | Day 7                        | Async (Slack)                |
-| Onboarding | Rollout beyond the first team                                     | Day 10                       | Async (Slack)                |
-| Onboarding | **Go-live sign-off**                                              | **Day 14**                   | Async (written + Slack)      |
-| Adoption   | Full production pace, confirmed in month-one review               | Day 30                       | Async (written + Slack)      |
+| Stage      | Milestone                                                         | Typical timing               |
+| ---------- | ----------------------------------------------------------------- | ---------------------------- |
+| Activation | Organization live, your admin signed in                           | Within 4 hours of signature  |
+| Activation | First API key created                                             | Within 24 hours of signature |
+| Activation | First inference from your environment                             | Within 48 hours of signature |
+| Onboarding | Workspaces mapped to your teams, budgets set                      | Day 3                        |
+| Onboarding | Governance complete: SSO, SCIM, guardrails, data-retention policy | Day 5                        |
+| Onboarding | Observability live in your own monitoring stack                   | Day 7                        |
+| Onboarding | Rollout beyond the first team                                     | Day 10                       |
+| Onboarding | **Go-live sign-off**                                              | **Day 14**                   |
+| Adoption   | Full production pace, confirmed in month-one review               | Day 30                       |
 
 The two live sessions are the day-one activation call and the day-five-to-seven inference and observability session, while everything else in this window runs asynchronously in the shared channel.
 

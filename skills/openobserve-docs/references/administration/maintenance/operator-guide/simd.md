@@ -47,7 +47,7 @@ nodeSelector:
   querier: *AVX_NODE_SELECTOR
   compactor: *AVX_NODE_SELECTOR
   router: *AVX_NODE_SELECTOR
-  alertmanager: *AVX_NODE_SELECTOR
+  scheduler: *AVX_NODE_SELECTOR
 ```
 
 ### With `openobserve-standalone`

@@ -10,6 +10,7 @@ aliases:
 
 Possible file names for PR default merge message templates:
 
+- `.gitea/default_merge_message/DEFAULT_TEMPLATE.md`: the default message template for all merge styles if they don't have their own templates.
 - `.gitea/default_merge_message/MERGE_TEMPLATE.md`
 - `.gitea/default_merge_message/REBASE_TEMPLATE.md`
 - `.gitea/default_merge_message/REBASE-MERGE_TEMPLATE.md`

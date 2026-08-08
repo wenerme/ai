@@ -2,7 +2,7 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Byok
+# BYOK
 
 > BYOK endpoints
 
@@ -42,7 +42,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Byok.List(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50), nil, nil)
+    res, err := s.BYOK.List(ctx, optionalnullable.From(openrouter.Pointer[int64](0)), openrouter.Pointer[int64](50), nil, nil)
     if err != nil {
         log.Fatal(err)
     }
@@ -66,14 +66,14 @@ func main() {
 
 ### Parameters
 
-| Parameter     | Type                                                          | Required             | Description                                                                                   | Example                              |
-| ------------- | ------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)         | :heavy\_check\_mark: | The context to use for the request.                                                           |                                      |
-| `offset`      | optionalnullable.OptionalNullable\[`int64`]                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                      | 0                                    |
-| `limit`       | `*int64`                                                      | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                 | 50                                   |
-| `workspaceID` | `*string`                                                     | :heavy\_minus\_sign: | Optional workspace ID to filter by. Defaults to the authenticated entity's default workspace. | 550e8400-e29b-41d4-a716-446655440000 |
-| `provider`    | [\*operations.Provider](../../models/operations/provider.mdx) | :heavy\_minus\_sign: | Optional provider slug to filter by (e.g. `openai`, `anthropic`, `amazon-bedrock`).           | openai                               |
-| `opts`        | \[][operations.Option](../../models/operations/option.mdx)    | :heavy\_minus\_sign: | The options for this request.                                                                 |                                      |
+| Parameter     | Type                                                          | Required             | Description                                                                                                                                                                                             | Example                              |
+| ------------- | ------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `ctx`         | [context.Context](https://pkg.go.dev/context#Context)         | :heavy\_check\_mark: | The context to use for the request.                                                                                                                                                                     |                                      |
+| `offset`      | optionalnullable.OptionalNullable\[`int64`]                   | :heavy\_minus\_sign: | Number of records to skip for pagination                                                                                                                                                                | 0                                    |
+| `limit`       | `*int64`                                                      | :heavy\_minus\_sign: | Maximum number of records to return (max 100)                                                                                                                                                           | 50                                   |
+| `workspaceID` | `*string`                                                     | :heavy\_minus\_sign: | Optional workspace ID to filter by. When omitted, resolves to the account’s default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. | 550e8400-e29b-41d4-a716-446655440000 |
+| `provider`    | [\*operations.Provider](../../models/operations/provider.mdx) | :heavy\_minus\_sign: | Optional provider slug to filter by (e.g. `openai`, `anthropic`, `amazon-bedrock`).                                                                                                                     | openai                               |
+| `opts`        | \[][operations.Option](../../models/operations/option.mdx)    | :heavy\_minus\_sign: | The options for this request.                                                                                                                                                                           |                                      |
 
 ### Response
 
@@ -90,7 +90,7 @@ func main() {
 
 ## Create
 
-Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. Defaults to the authenticated entity's default workspace; use the `workspace_id` body field to scope to a different workspace. Treat the raw key as write-only; it is never returned after creation. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
+Create a new bring-your-own-key (BYOK) provider credential. The raw key is encrypted at rest and never returned in API responses. When `workspace_id` is omitted, the credential is created in the default workspace; if that default has been deleted, the request returns a 400 and you must pass `workspace_id` explicitly. Treat the raw key as write-only; it is never returned after creation. [Management key](/docs/client-sdks/go/docs/guides/overview/auth/management-api-keys) required.
 
 ### Example Usage
 
@@ -113,7 +113,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Byok.Create(ctx, components.CreateBYOKKeyRequest{
+    res, err := s.BYOK.Create(ctx, components.CreateBYOKKeyRequest{
         Key: "sk-proj-abc123...",
         Name: optionalnullable.From(openrouter.Pointer("Production OpenAI Key")),
         Provider: components.BYOKProviderSlugOpenai,
@@ -172,7 +172,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Byok.Delete(ctx, "11111111-2222-3333-4444-555555555555")
+    res, err := s.BYOK.Delete(ctx, "11111111-2222-3333-4444-555555555555")
     if err != nil {
         log.Fatal(err)
     }
@@ -226,7 +226,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Byok.Get(ctx, "11111111-2222-3333-4444-555555555555")
+    res, err := s.BYOK.Get(ctx, "11111111-2222-3333-4444-555555555555")
     if err != nil {
         log.Fatal(err)
     }
@@ -282,7 +282,7 @@ func main() {
         openrouter.WithSecurity(os.Getenv("OPENROUTER_API_KEY")),
     )
 
-    res, err := s.Byok.Update(ctx, "11111111-2222-3333-4444-555555555555", components.UpdateBYOKKeyRequest{
+    res, err := s.BYOK.Update(ctx, "11111111-2222-3333-4444-555555555555", components.UpdateBYOKKeyRequest{
         Disabled: openrouter.Pointer(false),
         Name: optionalnullable.From(openrouter.Pointer("Updated OpenAI Key")),
     })
