@@ -307,9 +307,9 @@
   },
   "env-vars.md": {
     "url": "https://code.claude.com/docs/en/env-vars",
-    "lastModified": "Sat, 08 Aug 2026 02:07:20 GMT",
-    "size": 361783,
-    "updatedAt": "2026-08-08T02:07:20.160Z"
+    "lastModified": "Sun, 09 Aug 2026 10:44:30 GMT",
+    "size": 361788,
+    "updatedAt": "2026-08-09T10:44:30.032Z"
   },
   "errors.md": {
     "url": "https://code.claude.com/docs/en/errors",
@@ -415,9 +415,9 @@
   },
   "interactive-mode.md": {
     "url": "https://code.claude.com/docs/en/interactive-mode",
-    "lastModified": "Sat, 08 Aug 2026 02:07:30 GMT",
-    "size": 54895,
-    "updatedAt": "2026-08-08T02:07:30.371Z"
+    "lastModified": "Sun, 09 Aug 2026 10:44:43 GMT",
+    "size": 55493,
+    "updatedAt": "2026-08-09T10:44:43.592Z"
   },
   "jetbrains.md": {
     "url": "https://code.claude.com/docs/en/jetbrains",
@@ -703,9 +703,9 @@
   },
   "settings.md": {
     "url": "https://code.claude.com/docs/en/settings",
-    "lastModified": "Sat, 08 Aug 2026 02:07:59 GMT",
-    "size": 286376,
-    "updatedAt": "2026-08-08T02:07:59.446Z"
+    "lastModified": "Sun, 09 Aug 2026 10:45:17 GMT",
+    "size": 287552,
+    "updatedAt": "2026-08-09T10:45:17.534Z"
   },
   "setup.md": {
     "url": "https://code.claude.com/docs/en/setup",

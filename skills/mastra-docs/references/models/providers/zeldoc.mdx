@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "zeldoc/z-code"
+  model: "zeldoc/zdev"
 });
 
 // Generate a response
@@ -40,8 +40,8 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "zeldoc/z-code",
-    "imageInput": false,
+    "model": "zeldoc/zdev",
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -64,7 +64,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://api.zeldoc.ai/v1",
-    id: "zeldoc/z-code",
+    id: "zeldoc/zdev",
     apiKey: process.env.ZELDOC_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -82,8 +82,8 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "zeldoc/z-code"
-      : "zeldoc/z-code";
+      ? "zeldoc/zdev"
+      : "zeldoc/zdev";
   }
 });
 ```
