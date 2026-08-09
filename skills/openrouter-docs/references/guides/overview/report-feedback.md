@@ -10,13 +10,13 @@ Help us improve OpenRouter by reporting issues with AI generations. You can subm
 
 The Report Feedback feature allows you to flag problematic generations with a category and description. This helps our team identify and address issues with model responses, latency, billing, and more.
 
-### Feedback Categories
+### Feedback categories
 
 When reporting feedback, select the category that best describes the issue:
 
 * **Latency**: Response was slower than expected
 * **Incoherence**: Response didn't make sense or was off-topic
-* **Incorrect Response**: Response contained factual errors or wrong information
+* **Incorrect response**: Response contained factual errors or wrong information
 * **Formatting**: Response had formatting issues (markdown, code blocks, etc.)
 * **Billing**: Unexpected charges or token counts
 * **API Error**: Technical errors or failed requests
@@ -35,7 +35,7 @@ In the Chatroom, you can report feedback on individual assistant messages:
 The generation ID is captured from the message automatically, so you
 don't need to look it up.
 
-## Reporting from the Logs Page
+## Reporting from the Logs page
 
 There are two ways to report, depending on whether the generation is
 already in your logs.
@@ -65,7 +65,7 @@ API response):
 <Note>
   **Finding Your Generation ID**
 
-  You only need to look this up for the **By generation ID** flow — the
+  You only need to look this up for the **By generation ID** flow. The
   log row and Chatroom flows capture it automatically.
 
   The ID is returned in the API response under the `id` field (e.g.
@@ -73,7 +73,7 @@ API response):
   open its detail panel, where it's listed as **Generation ID**.
 </Note>
 
-## What Happens After You Submit
+## What happens after you submit
 
 Your feedback is reviewed by our team to help improve:
 

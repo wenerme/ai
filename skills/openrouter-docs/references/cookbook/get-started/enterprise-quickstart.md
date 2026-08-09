@@ -6,7 +6,7 @@
 
 > Get your organization up and running with OpenRouter
 
-## 1. Set Up Your Organization
+## 1. Set up your organization
 
 Organizations enable teams to collaborate with shared credits, centralized API key management, and unified usage tracking.
 
@@ -16,13 +16,13 @@ Key organization capabilities include shared credit pools for centralized billin
 
 For complete details on organization setup and management, see the [Organization Management](/docs/cookbook/administration/organization-management) guide.
 
-## 2. Set Up Workspaces
+## 2. Set up workspaces
 
 Workspaces let you organize your projects into separate environments, each with its own API keys, routing defaults, guardrails, and observability integrations. Use them to isolate teams, projects, or deployment stages (e.g. staging vs. production) under a single organization.
 
-Your existing setup starts in a **Default workspace** — all organization members are automatically added to it. If you only need one environment, keep working as usual; nothing changes.
+Your existing setup starts in a **Default workspace**, and all organization members are automatically added to it. If you only need one environment, keep working as usual; nothing changes.
 
-### Creating Workspaces
+### Creating workspaces
 
 1. Go to your [home dashboard](https://openrouter.ai/workspaces)
 2. Click the workspace picker and select **[Create Workspace](https://openrouter.ai/workspaces/new)**
@@ -30,35 +30,35 @@ Your existing setup starts in a **Default workspace** — all organization membe
 
 Only organization admins can create and delete workspaces. You can also create and manage workspaces programmatically using the [Workspaces API](/docs/api/api-reference/workspaces/list-workspaces).
 
-### What's Scoped to Each Workspace
+### What's scoped to each workspace
 
 Each workspace has independent settings for:
 
-* **API Keys** — Every key lives in a workspace. Members create keys in any workspace they belong to; admins can create system keys owned by the workspace.
-* **Guardrails** — Each workspace has its own guardrail, inheriting account-level policies with the ability to add stricter rules.
-* **BYOK** — Bring your own provider keys per workspace, or share provider keys across multiple workspaces.
-* **Routing** — Configure provider routing per workspace to optimize for cost, latency, throughput, or tool-calling quality.
-* **Presets** — Organize shortcuts for system prompts, model and provider configurations, and request parameters.
-* **Plugins** — Configure default plugin behavior for API requests in each workspace.
-* **Observability** — Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
-* **Members** — Control which team members have access to each workspace.
-* **[Budgets](/docs/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace.
+* **API Keys**: Every key lives in a workspace. Members create keys in any workspace they belong to; admins can create system keys owned by the workspace.
+* **Guardrails**: Each workspace has its own guardrail, inheriting account-level policies with the ability to add stricter rules.
+* **BYOK**: Bring your own provider keys per workspace, or share provider keys across multiple workspaces.
+* **Routing**: Configure provider routing per workspace to optimize for cost, latency, throughput, or tool-calling quality.
+* **Presets**: Organize shortcuts for system prompts, model and provider configurations, and request parameters.
+* **Plugins**: Configure default plugin behavior for API requests in each workspace.
+* **Observability**: Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
+* **Members**: Control which team members have access to each workspace.
+* **[Budgets](/docs/guides/features/workspaces/workspace-budgets)**: Set daily, weekly, monthly, or lifetime spending limits per workspace.
 
 Account-level settings like billing, activity, logs, management keys, and privacy policies apply globally across all workspaces.
 
 For complete details, see the [Workspaces](/docs/guides/features/workspaces) guide.
 
-## 3. Configure API Key Management
+## 3. Configure API key management
 
 Enterprise deployments typically require programmatic API key management for automated provisioning, rotation, and lifecycle management.
 
-### Management API Keys
+### Management API keys
 
 Create a [Management API key](https://openrouter.ai/settings/management-keys) to manage API keys programmatically. This enables automated key creation for customer instances, programmatic key rotation for security compliance, and usage monitoring with automatic limit enforcement.
 
 See [Management API Keys](/docs/guides/overview/auth/management-api-keys) for the full API reference and code examples.
 
-### API Key Rotation
+### API key rotation
 
 Regular key rotation limits the impact of compromised credentials. OpenRouter's Management API supports zero-downtime rotation: create a new key, update your applications, then delete the old key.
 
@@ -66,7 +66,7 @@ If you use [BYOK (Bring Your Own Key)](/docs/guides/overview/auth/byok), you can
 
 See [API Key Rotation](/docs/cookbook/administration/api-key-rotation) for step-by-step instructions.
 
-## 4. Implement Security Controls
+## 4. Implement security controls
 
 ### Guardrails
 
@@ -76,7 +76,7 @@ Guardrails can be assigned at the workspace level (applying to all traffic in th
 
 See [Guardrails](/docs/guides/features/guardrails) for configuration details and the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for programmatic management.
 
-### Coding Agent Rollout
+### Coding agent rollout
 
 Employees who use coding agent CLIs can run them through [Ori Harness](/docs/guides/ori/harness). Install it once:
 
@@ -84,7 +84,7 @@ Employees who use coding agent CLIs can run them through [Ori Harness](/docs/gui
 curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
 ```
 
-Then sign in with OAuth on your company OpenRouter organization—there are no API keys to distribute. Employees can run `ori claude`, `ori codex`, `ori hermes`, or `ori opencode`; your organization's allowlists, budgets, and workspace permissions apply to every agent, with usage on one bill.
+Then sign in with OAuth on your company OpenRouter organization, and there are no API keys to distribute. Employees can run `ori claude`, `ori codex`, `ori hermes`, or `ori opencode`; your organization's allowlists, budgets, and workspace permissions apply to every agent, with usage on one bill.
 
 ### Zero Data Retention (ZDR)
 
@@ -94,19 +94,19 @@ OpenRouter itself has a ZDR policy and does not retain your prompts unless you e
 
 See [Zero Data Retention](/docs/guides/features/zdr) for the full list of ZDR-compatible endpoints, per-model-group configuration, and request-level options.
 
-### Data Privacy
+### Data privacy
 
 OpenRouter does not store your prompts or responses unless you opt in to prompt logging. Only metadata (token counts, latency, etc.) is stored for reporting and your activity feed.
 
 See [Data Collection](/docs/guides/privacy/data-collection) and [Provider Logging](/docs/guides/privacy/provider-logging) for complete privacy documentation.
 
-## 5. Configure Presets
+## 5. Configure presets
 
 Presets let you separate your LLM configuration from your code. Create named configurations that encapsulate model selection, provider routing, system prompts, and generation parameters, then reference them in API requests using `@preset/your-preset-slug`.
 
-This enables rapid iteration — switch models, adjust prompts, or change provider preferences without deploying code changes.
+This enables rapid iteration: switch models, adjust prompts, or change provider preferences without deploying code changes.
 
-### Creating Presets
+### Creating presets
 
 1. Navigate to your workspace's [Presets](https://openrouter.ai/workspaces/default/presets) page
 2. Click **Create Preset** and configure your model, routing, and parameters
@@ -125,7 +125,7 @@ Presets are scoped to workspaces, so different teams or environments can maintai
 
 See [Presets](/docs/guides/features/presets) for the full guide including creating presets from inference requests and version management.
 
-## 6. Set Up Observability
+## 6. Set up observability
 
 ### Broadcast
 
@@ -143,41 +143,41 @@ Enable it in your workspace's [Observability settings](https://openrouter.ai/wor
 
 See [Input & Output Logging](/docs/guides/features/input-output-logging) for storage details, privacy guarantees, and comparison with Broadcast.
 
-### User Tracking
+### User tracking
 
 Track your end-users by including a `user` parameter in API requests. This improves caching performance (sticky routing per user) and enables user-level analytics in your activity feed and exports.
 
 See [User Tracking](/docs/cookbook/administration/user-tracking) for implementation details.
 
-## 7. Monitor Usage and Costs
+## 7. Monitor usage and costs
 
-### Usage Accounting
+### Usage accounting
 
 Every API response includes detailed usage information: token counts (prompt, completion, reasoning, cached), cost in credits, and timing data. This enables real-time cost tracking without additional API calls.
 
 See [Usage Accounting](/docs/cookbook/administration/usage-accounting) for response format details and code examples.
 
-### Activity Export
+### Activity export
 
 Export aggregated usage data as CSV or PDF from the [Activity page](https://openrouter.ai/activity). Filter by time period and group by Model, API Key, or Creator (organization member) for detailed reporting.
 
 See [Activity Export](/docs/cookbook/administration/activity-export) for export instructions.
 
-## 8. Optimize for Reliability
+## 8. Optimize for reliability
 
-### Provider Routing and Fallbacks
+### Provider routing and fallbacks
 
 OpenRouter monitors provider health in real-time and automatically routes around outages. Configure fallback chains by specifying multiple models, and customize provider selection based on cost, latency, or specific provider preferences.
 
 See [Provider Selection](/docs/guides/routing/provider-selection) and [Model Fallbacks](/docs/guides/routing/model-fallbacks) for configuration options.
 
-### Uptime Optimization
+### Uptime optimization
 
 OpenRouter tracks response times, error rates, and availability across all providers. This data powers intelligent routing decisions and provides transparency about service reliability.
 
 See [Uptime Optimization](/docs/guides/best-practices/uptime-optimization) for details on how OpenRouter maximizes availability.
 
-## Next Steps
+## Next steps
 
 Once your organization is configured, explore these additional resources:
 

@@ -246,7 +246,7 @@ Each destination can optionally enable **Privacy Mode** to exclude prompt and co
 * **Input messages** (prompts sent to the model)
 * **Output choices** (completions returned by the model)
 
-All other trace data — including token counts, costs, timing, model information, and custom metadata — is still sent normally.
+All other trace data (including token counts, costs, timing, model information, and custom metadata) is still sent normally.
 
 This is useful when you want to monitor LLM usage metrics and costs without exposing the actual content of conversations, for example to comply with data privacy regulations or internal policies.
 

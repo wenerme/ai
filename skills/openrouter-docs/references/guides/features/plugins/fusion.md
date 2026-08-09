@@ -52,7 +52,7 @@ The Fusion plugin is a configuration surface for the [`openrouter:fusion` server
 
 ## When to use Fusion
 
-Reach for Fusion when a single model isn't enough — research, expert critique, or tasks that benefit from multiple perspectives. Fusion is overkill for short tactical prompts; use it when the cost of being wrong outweighs the cost of a few extra completions.
+Reach for Fusion when a single model isn't enough, such as for research, expert critique, or tasks that benefit from multiple perspectives. Fusion is overkill for short tactical prompts; use it when the cost of being wrong outweighs the cost of a few extra completions.
 
 ## How it works
 
@@ -67,8 +67,8 @@ flowchart LR
 
 1. The plugin injects the `openrouter:fusion` tool into your request. If you used `model: "openrouter/fusion"`, it also resolves the alias to a real model.
 2. Your model reads the prompt and decides whether to invoke `openrouter:fusion`.
-3. The **panel** — a set of models — answers your prompt in parallel, each with `openrouter:web_search` and `openrouter:web_fetch` enabled.
-4. The **analyst** receives all panel responses, with `openrouter:web_search` and `openrouter:web_fetch` available, and compares them — it doesn't merge them. It returns structured analysis as JSON: consensus (points all or most models agree on, treated as higher-confidence), contradictions, partial coverage, unique insights from individual models, and blind spots none of them addressed.
+3. The **panel** (a set of models) answers your prompt in parallel, each with `openrouter:web_search` and `openrouter:web_fetch` enabled.
+4. The **analyst** receives all panel responses, with `openrouter:web_search` and `openrouter:web_fetch` available, and compares them. It doesn't merge them. It returns structured analysis as JSON: consensus (points all or most models agree on, treated as higher-confidence), contradictions, partial coverage, unique insights from individual models, and blind spots none of them addressed.
 5. Your model receives the structured analysis and writes the final answer.
 
 ## Configuration
@@ -95,7 +95,7 @@ flowchart LR
 | `preset`          | *none*                                                                                              | A curated OpenRouter preset slug (e.g. `general-high`) that expands into a panel + analyst, so you don't have to name models. Explicit `analysis_models` / `model` override it. See [Presets](#presets).                                         |
 | `analysis_models` | Quality preset (`~anthropic/claude-opus-latest`, `~openai/gpt-latest`, `~google/gemini-pro-latest`) | Models that form the panel. Each runs in parallel with `openrouter:web_search` and `openrouter:web_fetch`. 1–8 models allowed.                                                                                                                   |
 | `model`           | First model in the Quality preset (`~anthropic/claude-opus-latest`)                                 | The analyst model that produces the structured analysis. With `model: "openrouter/fusion"`, this also becomes the model that writes your final answer; when you attach the plugin to your own model instead, the analyst defaults to that model. |
-| `max_tool_calls`  | `8`                                                                                                 | Max tool-calling steps each panel model and the analyst may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16.                                                                        |
+| `max_tool_calls`  | `4`                                                                                                 | Max tool-calling steps each panel model and the analyst may take in their `openrouter:web_search` / `openrouter:web_fetch` loop before they must return text. Range 1–16.                                                                        |
 | `enabled`         | `true`                                                                                              | Set to `false` to bypass fusion for a single request.                                                                                                                                                                                            |
 
 When you send `model: "openrouter/fusion"` without a plugin config, the defaults match the **Quality** preset on the [Fusion lab](https://openrouter.ai/fusion/).
@@ -153,7 +153,7 @@ Explicit `analysis_models` or `model` always take precedence over a preset.
   ```
 </CodeGroup>
 
-In both cases, the model decides when to call `openrouter:fusion`. For prompts that don't need deliberation, it answers directly — including invoking any other tools you've defined.
+In both cases, the model decides when to call `openrouter:fusion`. For prompts that don't need deliberation, it answers directly, including invoking any other tools you've defined.
 
 ## Complete example
 
@@ -229,7 +229,7 @@ API_KEY_REF,
 
 ## Recursion protection
 
-Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and analyst models cannot recursively invoke `openrouter:fusion` — the plugin refuses to inject the tool a second time, keeping deliberation bounded to a single level.
+Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and analyst models cannot recursively invoke `openrouter:fusion`. The plugin refuses to inject the tool a second time, keeping deliberation bounded to a single level.
 
 ## Related
 
@@ -237,4 +237,4 @@ Inner fusion calls carry an `x-openrouter-fusion-depth` header. Panel and analys
 * [Fusion Router (`openrouter/fusion`)](/docs/guides/routing/routers/fusion-router)
 * [Web Search server tool](/docs/guides/features/server-tools/web-search)
 * [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)
-* [`/labs/fusion`](https://openrouter.ai/fusion/) — interactive playground
+* [`/labs/fusion`](https://openrouter.ai/fusion/), interactive playground

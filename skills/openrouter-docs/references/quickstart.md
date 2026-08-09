@@ -8,7 +8,7 @@
 
 export const LlmsOnly = ({children}) => null;
 
-OpenRouter provides a unified API that gives you access to hundreds of AI models through a single endpoint, while automatically handling fallbacks and selecting the most cost-effective options.
+OpenRouter gives you access to hundreds of AI models through a single API endpoint. It handles fallbacks automatically and picks the most cost-effective option for each request.
 
 There are three ways to integrate with OpenRouter, depending on how much control you want:
 
@@ -34,14 +34,14 @@ In the examples below, the OpenRouter-specific headers are optional. Setting the
 
 ## Using the OpenRouter API
 
-The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/v1/chat/completions` endpoint — compatible with any language or framework.
+The most direct way to use OpenRouter. Send standard HTTP requests to the `/api/v1/chat/completions` endpoint. It works with any language or framework.
 
 <Tip>
   You can use the interactive [Request Builder](https://openrouter.ai/request-builder) to generate OpenRouter API requests in the language of your choice.
 </Tip>
 
 <Note>
-  The examples below use `~openai/gpt-latest`, a [latest alias](/docs/guides/routing/routers/latest-resolution) that always resolves to the newest OpenAI flagship model — so your code keeps using the freshest version without redeploying. You can substitute any model slug here. Browse the full catalog at [openrouter.ai/models](https://openrouter.ai/models), or list every available slug programmatically via the [`GET /api/v1/models`](/docs/api/api-reference/models/list-all-models-and-their-properties) endpoint.
+  The examples below use `~openai/gpt-latest`, a [latest alias](/docs/guides/routing/routers/latest-resolution) that always resolves to the newest OpenAI flagship model, so your code keeps using the freshest version without redeploying. You can substitute any model slug here. Browse the full catalog at [openrouter.ai/models](https://openrouter.ai/models), or list every available slug programmatically via the [`GET /api/v1/models`](/docs/api/api-reference/models/list-all-models-and-their-properties) endpoint.
 </Note>
 
 <CodeGroup>
@@ -111,7 +111,7 @@ The API also supports [streaming](/docs/api_reference/streaming). You can also u
 
 ## Using the Client SDKs
 
-The [Client SDKs](/docs/client-sdks/overview) wrap the OpenRouter API with full type safety, auto-generated types from the OpenAPI spec, and zero boilerplate. It is intentionally lean — a thin layer over the REST API.
+The [Client SDKs](/docs/client-sdks/overview) wrap the OpenRouter API with full type safety, auto-generated types from the OpenAPI spec, and zero boilerplate. It's intentionally lean, a thin layer over the REST API.
 
 First, install the SDK:
 
@@ -247,7 +247,7 @@ const text = await result.getText();
 console.log(text);
 ```
 
-The SDK sends the prompt, receives a tool call from the model, executes `get_weather`, feeds the result back, and returns the final response — all in one `callModel` invocation.
+The SDK sends the prompt, receives a tool call from the model, executes `get_weather`, feeds the result back, and returns the final response, all in one `callModel` invocation.
 
 See the full [Agent SDK documentation](/docs/agent-sdk/overview) for stop conditions, streaming, dynamic parameters, and more.
 
@@ -329,7 +329,7 @@ For information about using third-party SDKs and frameworks with OpenRouter, ple
 
 ## Building with an AI assistant
 
-If you write code with an AI coding tool (Claude Code, Cursor, Codex, and others), connect the [OpenRouter MCP server](/docs/guides/overview/mcp-server). It's a remote server hosted by OpenRouter — nothing to install — that lets your assistant pull live OpenRouter data (which models exist, what they cost, your credit balance, usage rankings) and search these docs while you build, so its suggestions reflect current data instead of stale training knowledge. Add one URL to your MCP client and approve an OAuth login:
+If you write code with an AI coding tool (Claude Code, Cursor, Codex, and others), connect the [OpenRouter MCP server](/docs/guides/overview/mcp-server). It's a remote server hosted by OpenRouter, so there's nothing to install. Your assistant can pull live OpenRouter data (which models exist, what they cost, your credit balance, usage rankings) and search these docs while you build. That way its suggestions reflect current data instead of stale training knowledge. Add one URL to your MCP client and approve an OAuth login:
 
 ```bash theme={null}
 https://mcp.openrouter.ai/mcp

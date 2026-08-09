@@ -14,15 +14,15 @@ Private Models let you route to your own custom, fine-tuned, or dedicated model 
 
 Your private models and endpoints are only visible to the users and organizations you approve, and they will never show up in public model lists, rankings, search, charts, and benchmarks.
 
-## How It Works
+## How it works
 
 Once your private model endpoint is onboarded:
 
-* Approved users and organizations call it through the standard OpenRouter API — the same endpoints they use for public models (chat completions and responses).
+* Approved users and organizations call it through the standard OpenRouter API, the same endpoints they use for public models (chat completions and responses).
 * The model slug behaves like any other OpenRouter model. It can be used with [Model Fallbacks](/docs/guides/routing/model-fallbacks), [Provider Selection](/docs/guides/routing/provider-selection), and other routing features.
 * Approved private endpoints are prioritized for callers with access, while public fallback candidates remain available if you list them.
 
-## Who It's For
+## Who it's for
 
 Private Models is a good fit if:
 
@@ -31,7 +31,7 @@ Private Models is a good fit if:
 * You want your team or organization to access these models through OpenRouter without exposing them publicly.
 * You're on the Enterprise Plan.
 
-## Requesting an Endpoint
+## Requesting an endpoint
 
 Reach out to your account representative with:
 

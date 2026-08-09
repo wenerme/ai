@@ -4,7 +4,7 @@
 
 # Provider Integration
 
-## For Providers
+## For providers
 
 If you'd like to be a model provider and sell inference on OpenRouter, [fill out our form](https://openrouter.ai/how-to-list) to get started.
 
@@ -16,7 +16,7 @@ If you'd like to be a model provider and sell inference on OpenRouter, [fill out
 
 To be eligible to provide inference on OpenRouter you must have the following:
 
-### 1. List Models Endpoint
+### 1. List models endpoint
 
 You must implement an endpoint that returns all models that should be served by OpenRouter. Each model is described as a set of typed **input and output modality objects**: every modality owns its capabilities, constraints, passthrough parameters, pricing, and capacity. Only request-scoped prices and capacity entries with no owning modality remain at the document root.
 
@@ -146,7 +146,7 @@ The optional `tokenizer` field names the tokenizer family the model uses (for ex
 
 A document must declare at least one input modality and at least one output modality.
 
-#### Input Modalities
+#### Input modalities
 
 Valid input modality types are: `text`, `image`, `video`, `audio`, `file`.
 
@@ -243,13 +243,13 @@ The `supported_inputs` object uses the same [capability descriptor](#capability-
 
 Common constraint fields:
 
-* `sources` — how media may be supplied: `url`, `base64`
-* `formats` — accepted MIME types, e.g. `image/png`, `image/jpeg`, `image/webp`, `image/gif` for images; `video/mp4`, `video/webm` for video; `audio/wav`, `audio/mpeg` for audio; `application/pdf`, `text/plain`, `text/markdown`, `text/html`, `text/csv`, `application/json` for files
-* `detail_levels` (image) — `auto`, `low`, `high`, `original`
-* `role` (image) — the role an image plays in the request: `reference`, `first_frame`, `last_frame`
-* `references` (image, file) — an integer descriptor for how many reference items a request may include, e.g. `{ "type": "integer", "min": 0, "max": 10 }`
-* `max_context_length` (text) — the total context window: input and output tokens combined
-* `max_prompt_length` (text) — the maximum input length alone; declare it only when it differs from the context window
+* `sources`, how media may be supplied: `url`, `base64`
+* `formats`, accepted MIME types, e.g. `image/png`, `image/jpeg`, `image/webp`, `image/gif` for images; `video/mp4`, `video/webm` for video; `audio/wav`, `audio/mpeg` for audio; `application/pdf`, `text/plain`, `text/markdown`, `text/html`, `text/csv`, `application/json` for files
+* `detail_levels` (image): `auto`, `low`, `high`, `original`
+* `role` (image), the role an image plays in the request: `reference`, `first_frame`, `last_frame`
+* `references` (image, file), an integer descriptor for how many reference items a request may include, e.g. `{ "type": "integer", "min": 0, "max": 10 }`
+* `max_context_length` (text), the total context window: input and output tokens combined
+* `max_prompt_length` (text), the maximum input length alone; declare it only when it differs from the context window
 
 Single-value limits (`max_context_length`, `max_prompt_length`, output `max_length`, `max_duration_seconds`, `max_content_size_bytes`) are objects with a `value` and an optional `unit` (`second`, `pixel`, `byte`, `token`, `character`):
 
@@ -257,7 +257,7 @@ Single-value limits (`max_context_length`, `max_prompt_length`, output `max_leng
 { "max_context_length": { "value": 1000000, "unit": "token" } }
 ```
 
-#### Output Modalities
+#### Output modalities
 
 Valid output modality types are: `text`, `image`, `video`, `speech`, `transcription`, `embeddings`, `rerank`, `audio`.
 
@@ -391,7 +391,7 @@ Each output modality entry carries:
 | `capacity`               | No       | Declared throughput limits for this output (see [Capacity](#4-capacity))                      |
 | `passthrough_parameters` | No       | Provider-specific parameters scoped to this output                                            |
 
-#### Capability Descriptors
+#### Capability descriptors
 
 `supported_parameters` and `passthrough_parameters` are maps from parameter name to a typed descriptor describing what the parameter accepts:
 
@@ -411,7 +411,7 @@ Descriptors may carry an optional `default` and, for numeric types, a `unit`. An
 
 Pricing uses **arrays nested on the modality that owns them**. Each pricing entry has a `type` (the billing kind), a `unit` (the billing basis), and a `cost_usd` string. The `unit` is the base billing unit, not a commitment to a flat price: per-image and per-token prices can scale with parameters declared by the owning modality.
 
-Each pricing scope accepts the units it can bill in: input entries take `token`, `image`, `second`, or `character`; output entries additionally take `request`; root `request` entries are always per `request` and `web_search` entries per `search`. Other combinations are rejected at validation time.
+Each pricing scope accepts the units it can bill in. Input entries take `token`, `image`, `second`, or `character`. Output entries take those units plus `request`. Root `request` entries are always per `request` and `web_search` entries per `search`. Other combinations are rejected at validation time.
 
 A document that validates is a valid declaration, not a guarantee that every declared SKU is billed today: OpenRouter bills the SKUs its pipeline supports and records the rest, and billing for newly declared SKU shapes lands as support for them does. Declare what you charge; do not tailor the document to what OpenRouter currently bills.
 
@@ -430,7 +430,7 @@ A document that validates is a valid declaration, not a guarantee that every dec
 | `completion`         | Cost per unit of this output generated     |
 | `internal_reasoning` | Cost per unit of internal reasoning tokens |
 
-**Request pricing types** (root `pricing` array — the only prices at the root):
+**Request pricing types** (root `pricing` array, the only prices at the root):
 
 | Type         | Meaning                       |
 | ------------ | ----------------------------- |
@@ -439,7 +439,7 @@ A document that validates is a valid declaration, not a guarantee that every dec
 
 Do not zero-stuff prices: omit pricing entries for SKUs you don't bill. A genuinely free SKU exposed as a distinct billable line may use `"0"`. A modality with no `pricing` array is simply unpriced.
 
-#### Conditional Pricing with `overrides`
+#### Conditional pricing with `overrides`
 
 Conditional pricing (e.g. long-context tiers) attaches declaratively to the individual pricing entry it modifies, using a `when` predicate:
 
@@ -487,10 +487,10 @@ Override entries are evaluated in order. Among matching predicates, the later en
 
 <Note>
   Override predicates are parameter-based. Time-dependent pricing is not an override, because time
-  is not a request parameter — see [Time-of-Day Pricing](#time-of-day-pricing).
+  is not a request parameter. See [Time-of-Day Pricing](#time-of-day-pricing).
 </Note>
 
-#### Cache Pricing
+#### Cache pricing
 
 Cache prices are first-class SKUs in a modality's `pricing` array. Multiple entries may have the same `type` when their qualifier fields differ. The effective identity of an entry is its `type` together with its qualifiers, so two `cache_write` entries with different TTLs are separate SKUs. Two entries with the same effective identity are invalid.
 
@@ -520,11 +520,11 @@ Cache pricing is per modality, so an image input modality can carry its own cach
 
 The zero cost on the implicit entry is intentional. It represents a genuinely free SKU that the provider exposes as a distinct line. Omit a SKU when the provider does not bill it.
 
-#### Time-of-Day Pricing
+#### Time-of-day pricing
 
 Time-dependent prices (peak and off-peak rates) follow the same pattern as cache lifetimes: the time window is a pair of structured qualifier fields on the pricing entry, not an override. Time is not a request parameter, so an override's `when` predicate has nothing to reference.
 
-`utc_start` and `utc_end` are HHMM values in UTC (`0000`–`2359`; the minute component must be `00`–`59`), declared together, and must differ. The window is half-open — it includes `utc_start` and excludes `utc_end` — and may wrap midnight. An entry without a window is the base rate for all other hours. A text modality billed at a higher rate during a peak window looks like this:
+`utc_start` and `utc_end` are HHMM values in UTC (`0000`–`2359`; the minute component must be `00`–`59`), declared together, and must differ. The window is half-open (it includes `utc_start` and excludes `utc_end`) and may wrap midnight. An entry without a window is the base rate for all other hours. A text modality billed at a higher rate during a peak window looks like this:
 
 ```json lines theme={null}
 {
@@ -611,7 +611,7 @@ Here is a capacity declaration covering text input, text output, image output, a
   ```
 </CodeGroup>
 
-### 5. Passthrough Parameters
+### 5. Passthrough parameters
 
 Passthrough parameters are provider-specific escape hatches that OpenRouter forwards verbatim, distinct from the normalized `supported_parameters`. They are placed by scope:
 
@@ -630,7 +630,7 @@ Each map uses the same [capability descriptor](#capability-descriptors) grammar,
 }
 ```
 
-### 6. Datacenters & Compliance
+### 6. Datacenters and compliance
 
 Declare where each endpoint physically serves from and its data-handling posture:
 
@@ -647,24 +647,24 @@ Declare where each endpoint physically serves from and its data-handling posture
 }
 ```
 
-* `datacenters[].country_code` — ISO 3166-1 alpha-2 country code.
-* `datacenters[].region` — provider-scoped region identifier (e.g. `us-east-1`).
-* `compliance.zdr` — zero data retention: no prompt retention and no training on prompts.
-* `compliance.hipaa` — HIPAA compliance. Additional boolean certification flags (SOC 2, GDPR, FedRAMP, ...) may be added over time.
+* `datacenters[].country_code`: ISO 3166-1 alpha-2 country code.
+* `datacenters[].region`: provider-scoped region identifier (e.g. `us-east-1`).
+* `compliance.zdr`, zero data retention: no prompt retention and no training on prompts.
+* `compliance.hipaa`: HIPAA compliance. Additional boolean certification flags (SOC 2, GDPR, FedRAMP, ...) may be added over time.
 
-### 7. Operational Fields
+### 7. Operational fields
 
 The operational fields control model availability and routing:
 
-| Field              | Description                                                                                                 |
-| ------------------ | ----------------------------------------------------------------------------------------------------------- |
-| `deprecation_date` | ISO 8601 date or UTC hour — see [Deprecation Date](#deprecation-date)                                       |
-| `is_ready`         | Launch control — see [Controlling Launch with `is_ready`](#controlling-launch-with-is_ready)                |
-| `is_free`          | Free variant marker — see [Free Model Variants with `is_free`](#free-model-variants-with-is_free)           |
-| `discount_to_user` | Fractional user-facing discount — see [Discounts with `discount_to_user`](#discounts-with-discount_to_user) |
-| `openrouter.slug`  | The OpenRouter slug this model maps to                                                                      |
+| Field              | Description                                                                                                |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| `deprecation_date` | ISO 8601 date or UTC hour. See [Deprecation Date](#deprecation-date)                                       |
+| `is_ready`         | Launch control. See [Controlling Launch with `is_ready`](#controlling-launch-with-is_ready)                |
+| `is_free`          | Free variant marker. See [Free Model Variants with `is_free`](#free-model-variants-with-is_free)           |
+| `discount_to_user` | Fractional user-facing discount. See [Discounts with `discount_to_user`](#discounts-with-discount_to_user) |
+| `openrouter.slug`  | The OpenRouter slug this model maps to                                                                     |
 
-#### Deprecation Date
+#### Deprecation date
 
 If a model is scheduled for deprecation, include the `deprecation_date` field in ISO 8601 format. OpenRouter accepts either a date-only value or a specific UTC hour:
 
@@ -680,9 +680,9 @@ If a model is scheduled for deprecation, include the `deprecation_date` field in
 
 When OpenRouter's provider monitor detects a deprecation date or time, it will automatically update the endpoint to display deprecation warnings to users. Models past their deprecation time may be automatically hidden from the marketplace.
 
-#### Controlling Launch with `is_ready`
+#### Controlling launch with `is_ready`
 
-By default, when OpenRouter's provider monitor sees a new model in your `/v1/models` response, it auto-stages the endpoint, runs baseline tests, and unhides it (makes it live) once the tests pass and pricing is configured. If you need to upload a model ahead of an announcement — or temporarily take a model offline — set the optional boolean `is_ready` field:
+By default, when OpenRouter's provider monitor sees a new model in your `/v1/models` response, it auto-stages the endpoint, runs baseline tests, and unhides it (makes it live) once the tests pass and pricing is configured. If you need to upload a model ahead of an announcement, or temporarily take a model offline, set the optional boolean `is_ready` field:
 
 ```json lines theme={null}
 {
@@ -696,7 +696,7 @@ Behavior:
 * `is_ready: false` skips baseline tests for newly-staged endpoints, keeping them hidden, and auto-hides any matching endpoint that is currently live. Use this to upload a model in advance of launch, or to take a live model offline coordinated with us.
 * `is_ready: true` and an omitted/absent field both preserve the default auto-stage and auto-unhide behavior.
 
-#### Free Model Variants with `is_free`
+#### Free model variants with `is_free`
 
 If you want to offer a free version of a model, set `is_free: true`:
 
@@ -710,10 +710,10 @@ If you want to offer a free version of a model, set `is_free: true`:
 Behavior:
 
 * `is_free: true` marks the endpoint as a free endpoint (`:free` suffix).
-* Any pricing sent alongside `is_free: true` is ignored — free endpoints always have zero cost.
+* Any pricing sent alongside `is_free: true` is ignored. Free endpoints always have zero cost.
 * `is_free: false` or an omitted field preserves the default behavior (standard paid variant).
 
-You can list both a free and a paid version of the same model — just always set `is_free: true` on the free one.
+You can list both a free and a paid version of the same model. Just always set `is_free: true` on the free one.
 
 #### Discounts with `discount_to_user`
 
@@ -740,17 +740,17 @@ Behavior:
 
 Send `discount_to_user` as a number, not a string. Unlike the `cost_usd` fields, it isn't quoted.
 
-### 8. Schema Download
+### 8. Schema download
 
 The full schema is available as an OpenAPI 3.1 document, in which every closed value domain (modality types, pricing types and units, capacity windows, descriptor types, media sources, formats) surfaces as an explicit `enum`:
 
 [Download the provider schema (OpenAPI 3.1 JSON)](/docs/assets/provider-monitor-schema-v2.openapi.json)
 
-### 9. Auto Top Up or Invoicing
+### 9. Auto top up or invoicing
 
 For OpenRouter to use the provider we must be able to pay for inference automatically. This can be done via auto top up or invoicing.
 
-### 10. Uptime Monitoring & Traffic Routing
+### 10. Uptime monitoring and traffic routing
 
 OpenRouter automatically monitors provider reliability and adjusts traffic routing based on uptime metrics. Your endpoint's uptime is calculated as: **successful requests ÷ total requests** (excluding user errors).
 
@@ -779,7 +779,7 @@ OpenRouter automatically monitors provider reliability and adjusts traffic routi
 
 This system ensures traffic automatically flows to the most reliable providers while giving temporary issues time to resolve.
 
-### 11. Performance Metrics
+### 11. Performance metrics
 
 OpenRouter publicly tracks TTFT (time to first token) and throughput (tokens/second) for all providers on each model page.
 
@@ -791,7 +791,7 @@ To keep your metrics competitive:
 * Stream tokens as soon as they're available
 * If processing takes time (e.g. reasoning models), send SSE comments as keep-alives so we know you're still working on the request. Otherwise we may cancel with a fetch timeout and fallback to another provider
 
-### 12. Auto Exacto: Tool-Calling Traffic Routing
+### 12. Auto Exacto: tool-calling traffic routing
 
 [Auto Exacto](/docs/guides/routing/auto-exacto) is a routing step that automatically reorders providers for all requests that include tools. It runs by default on every tool-calling request and may change how much tool-calling traffic your endpoints receive.
 

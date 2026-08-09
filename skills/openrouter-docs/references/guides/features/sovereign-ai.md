@@ -6,11 +6,11 @@
 
 > Keep AI workloads within national and regional boundaries
 
-Sovereign AI refers to a nation's or region's ability to develop, deploy, and control artificial intelligence systems within its own borders, using local infrastructure and under local regulatory frameworks. As AI becomes critical infrastructure, governments and enterprises increasingly require that AI workloads -- including the data they process -- remain within specific geographic and jurisdictional boundaries.
+Sovereign AI refers to a nation's or region's ability to develop, deploy, and control artificial intelligence systems within its own borders, using local infrastructure and under local regulatory frameworks. As AI becomes critical infrastructure, governments and enterprises increasingly require that AI workloads (including the data they process) remain within specific geographic and jurisdictional boundaries.
 
 OpenRouter offers fully in-region routing in the EU for enterprise customers. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
 
-## Why Sovereign AI Matters
+## Drivers of sovereign AI
 
 Sovereign AI is driven by two converging forces:
 
@@ -20,7 +20,7 @@ Regulations like the EU AI Act, GDPR, and sector-specific rules (healthcare, fin
 
 ### Data Residency and Privacy
 
-Sensitive data -- whether personal, financial, or classified -- may not legally or ethically leave a particular jurisdiction. Sovereign AI ensures that prompts and completions are processed entirely within a designated region, with no cross-border data transfers.
+Sensitive data (whether personal, financial, or classified) may not legally or ethically leave a particular jurisdiction. Sovereign AI ensures that prompts and completions are processed entirely within a designated region, with no cross-border data transfers.
 
 ## How OpenRouter Enables Sovereign AI
 
@@ -28,7 +28,7 @@ OpenRouter provides several features that enable sovereign AI deployments today,
 
 ### EU In-Region Routing
 
-For enterprise customers, OpenRouter supports EU in-region routing. When enabled, your requests are guaranteed to only be decrypted within the designated region, and are only routed to providers operating in that region. This means prompts and completions are processed entirely within the European Union -- they never leave the EU at any point in the request lifecycle.
+For enterprise customers, OpenRouter supports EU in-region routing. When enabled, your requests are guaranteed to only be decrypted within the designated region, and are only routed to providers operating in that region. This means prompts and completions are processed entirely within the European Union. They never leave the EU at any point in the request lifecycle.
 
 To use EU in-region routing, send API requests through the EU-specific base URL:
 
@@ -140,7 +140,7 @@ Combining these features, you can build a fully sovereign AI deployment:
 2. **Enforce ZDR** to prevent any data retention by providers
 3. **Deny data collection** to prevent training on your data
 
-This gives you a single API with unified billing while maintaining full control over data residency, privacy, and compliance -- without the complexity of managing relationships with individual providers in each region.
+This gives you a single API with unified billing while maintaining full control over data residency, privacy, and compliance, without the complexity of managing relationships with individual providers in each region.
 
 ## Getting Started
 

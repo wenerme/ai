@@ -130,7 +130,7 @@ To ensure your request is only routed to endpoints that support structured outpu
 
 1. **Include descriptions**: Add clear descriptions to your schema properties to guide the model
 
-2. **Use strict mode**: Set `strict: true` so that providers with a native strict mode enforce your schema exactly. Enforcement varies by provider: some guarantee schema-conforming output, while others translate your schema into their own structured-output format or treat it as a strong hint, so exact compliance is not guaranteed on every endpoint. Strict modes may also restrict which JSON Schema features you can use — see the provider's documentation for details
+2. **Use strict mode**: Set `strict: true` so that providers with a native strict mode enforce your schema exactly. Enforcement varies by provider: some guarantee schema-conforming output, while others translate your schema into their own structured-output format or treat it as a strong hint, so exact compliance is not guaranteed on every endpoint. Strict modes may also restrict which JSON Schema features you can use. See the provider's documentation for details
 
 ## Example Implementation
 

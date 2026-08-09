@@ -174,7 +174,7 @@ job later completed and downloaded with this final summary:
 ## Step 3: Add more references when consistency matters
 
 Some models can use multiple reference images. Before doing this in production,
-check the current docs or model description for the selected model, then start
+check the current docs or model description for the selected model. Start
 with the smallest number of references that gives you enough consistency.
 
 ```js expandable lines theme={null}

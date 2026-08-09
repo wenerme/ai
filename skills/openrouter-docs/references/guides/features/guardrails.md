@@ -53,7 +53,7 @@ Account-wide privacy and provider settings are always enforced as a default guar
 
 * **Provider allowlists**: Intersection across all guardrails (only providers allowed by all guardrails are available)
 * **Model allowlists**: Intersection across all guardrails (only models allowed by all guardrails are available)
-* **Zero Data Retention**: OR logic per model group (if any guardrail enforces ZDR for a given scope — Anthropic, OpenAI, Google, SpaceXAI, or non-frontier — it is enforced for that scope)
+* **Zero Data Retention**: OR logic per model group (if any guardrail enforces ZDR for a given scope, such as Anthropic, OpenAI, Google, SpaceXAI, or non-frontier, it is enforced for that scope)
 * **Sensitive Info**: Union across all guardrails (filters from all applicable guardrails are combined). If the same entity type or pattern appears with different actions, block takes precedence over redact.
 * **Budget limits**: Each guardrail's budget is checked independently. See [Budget Enforcement](#budget-enforcement) for details.
 
@@ -67,7 +67,7 @@ When viewing a guardrail, you can see an eligibility preview that shows which pr
 
 Guardrail budgets are enforced per-user and per-key, not shared across all users with that guardrail. When an API key makes a request, its usage counts toward both the key's budget and the owning member's budget.
 
-By default, only OpenRouter credit spend counts toward a guardrail's budget. Set `include_byok_in_budgets` to `true` (or toggle **Include BYOK spend** in the dashboard) to also count [BYOK](/docs/guides/overview/auth/byok) inference spend — the amount OpenRouter would have charged had the request not used your own provider key — toward the same limit.
+By default, only OpenRouter credit spend counts toward a guardrail's budget. Set `include_byok_in_budgets` to `true` (or toggle **Include BYOK spend** in the dashboard) to also count [BYOK](/docs/guides/overview/auth/byok) inference spend (the amount OpenRouter would have charged had the request not used your own provider key) toward the same limit.
 
 **Example 1: Member guardrail with \$50/day limit**
 
@@ -128,7 +128,7 @@ on create and on update.
 
 ## When a Request Is Blocked
 
-When a guardrail's runtime checks block a request — for example a content filter or prompt-injection detector — OpenRouter returns an HTTP **403 Forbidden** response. Note that budget limits and allowlist restrictions also produce 403 responses, but only runtime content checks include `openrouter_metadata` stage details.
+When a guardrail's runtime checks block a request (for example a content filter or prompt-injection detector), OpenRouter returns an HTTP **403 Forbidden** response. Note that budget limits and allowlist restrictions also produce 403 responses, but only runtime content checks include `openrouter_metadata` stage details.
 
 ```json lines theme={null}
 {
@@ -185,7 +185,7 @@ If you opt in to [router metadata](/docs/guides/features/router-metadata) via th
 }
 ```
 
-See [Router Metadata — Error Responses](/docs/guides/features/router-metadata#error-responses) and [Errors — Guardrail Errors](/docs/api_reference/errors-and-debugging#guardrail-errors) for the full response shapes and pipeline stage reference.
+See [Router Metadata, Error Responses](/docs/guides/features/router-metadata#error-responses) and [Errors, Guardrail Errors](/docs/api_reference/errors-and-debugging#guardrail-errors) for the full response shapes and pipeline stage reference.
 
 ## API Access
 

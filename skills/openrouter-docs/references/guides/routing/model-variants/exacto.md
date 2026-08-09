@@ -10,7 +10,7 @@ export const LlmsOnly = ({children}) => null;
 
 Exacto is a virtual model variant that explicitly applies quality-first provider sorting. When you add `:exacto` to a model slug, OpenRouter prefers providers with stronger tool-calling quality signals for that model instead of using the default price-weighted ordering.
 
-## Using the Exacto Variant
+## Using the Exacto variant
 
 Add `:exacto` to the end of any supported model slug. This is a shortcut for setting the provider sort to Exacto on that model.
 
@@ -80,29 +80,29 @@ Add `:exacto` to the end of any supported model slug. This is a shortcut for set
   carries the `:exacto` suffix will request Exacto sorting when it is selected.
 </Tip>
 
-## What Is the Exacto Variant?
+## What is the Exacto variant?
 
 Exacto is a routing shortcut for quality-first provider ordering. Unlike standard routing, which primarily favors lower-cost providers, Exacto prefers providers with stronger signals for tool-calling reliability and deprioritizes weaker performers.
 
-## Why Use Exacto?
+## Why use Exacto?
 
-### Why We Built It
+### Why we built it
 
 Providers serving the same model can vary meaningfully in tool-use behavior. Exacto gives you an explicit, request-level way to prefer higher-quality providers when you care more about tool-calling reliability than the default price-weighted route.
 
-### Recommended Use Cases
+### Recommended use cases
 
 Exacto is useful for quality-sensitive, agentic workflows where tool-calling accuracy and reliability matter more than raw cost efficiency.
 
-## How Exacto Works
+## How Exacto works
 
 Exacto uses the same provider-ranking signals as [Auto Exacto](/docs/guides/routing/auto-exacto), but applies them explicitly because you chose the `:exacto` suffix.
 
 We use three classes of signals:
 
-* Tool-calling success and reliability from real traffic -- see [How Tool-Calling Success Rate Is Measured](/docs/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured) for the underlying methodology
+* Tool-calling success and reliability from real traffic (see [How Tool-Calling Success Rate Is Measured](/docs/guides/routing/auto-exacto#how-tool-calling-success-rate-is-measured) for the underlying methodology)
 * Provider performance metrics such as throughput and latency
-* Benchmark data from OpenRouter's benchmark harness -- see [What the Benchmark Harness Runs](/docs/guides/routing/auto-exacto#what-the-benchmark-harness-runs) for the benchmarks and parameters, and [Where to Find the Scores](/docs/guides/routing/auto-exacto#where-to-find-the-scores) for the published results
+* Benchmark data from OpenRouter's benchmark harness (see [What the Benchmark Harness Runs](/docs/guides/routing/auto-exacto#what-the-benchmark-harness-runs) for the benchmarks and parameters, and [Where to Find the Scores](/docs/guides/routing/auto-exacto#where-to-find-the-scores) for the published results)
 
 Providers with strong track records are moved toward the front of the list. Providers with limited data are kept behind well-established performers, and providers with poor quality signals are deprioritized further.
 
@@ -113,7 +113,7 @@ Providers with strong track records are moved toward the front of the list. Prov
 
 If you explicitly sort by price, throughput, or latency, that explicit sort still takes precedence.
 
-## Supported Models
+## Supported models
 
 Exacto is a virtual variant and is not backed by a separate endpoint pool. It can be used anywhere provider sorting is meaningful, especially on models with multiple compatible providers.
 

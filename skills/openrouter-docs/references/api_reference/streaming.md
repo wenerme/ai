@@ -208,7 +208,7 @@ MODEL: Model.GPT_4_Omni
   </CodeGroup>
 </Template>
 
-### Additional Information
+### Additional information
 
 For SSE (Server-Sent Events) streams, OpenRouter occasionally sends comments to prevent connection timeouts. These comments look like:
 
@@ -216,7 +216,7 @@ For SSE (Server-Sent Events) streams, OpenRouter occasionally sends comments to 
 : OPENROUTER PROCESSING
 ```
 
-Comment payload can be safely ignored per the [SSE specs](https://html.spec.whatwg.org/multipage/server-sent-events.html#event-stream-interpretation). However, you can leverage it to improve UX as needed, e.g. by showing a dynamic loading indicator.
+Comment payload can be safely ignored per the [SSE specs](https://html.spec.whatwg.org/multipage/server-sent-events.html#event-stream-interpretation). However, you can use it to improve UX as needed, e.g. by showing a dynamic loading indicator.
 
 <Warning>
   If you parse the stream by hand, skip lines that start with `:` before
@@ -273,7 +273,7 @@ while (true) {
 }
 ```
 
-A parser only handles the SSE framing — errors that occur mid-generation still arrive as regular `data:` events with an `error` field. See [Handling Errors During Streaming](#handling-errors-during-streaming) below.
+A parser only handles the SSE framing. Errors that occur mid-generation still arrive as regular `data:` events with an `error` field. See [Handling Errors During Streaming](#handling-errors-during-streaming) below.
 
 The generation ID is returned in the `X-Generation-Id` response header for all endpoints (chat completions, completions, responses, and messages), which can be useful for debugging and correlating requests.
 
@@ -283,7 +283,7 @@ Some SSE client implementations might not parse the payload according to spec, w
 * [OpenAI SDK](https://www.npmjs.com/package/openai)
 * [Vercel AI SDK](https://www.npmjs.com/package/ai)
 
-### Stream Cancellation
+### Stream cancellation
 
 Streaming requests can be cancelled by aborting the connection. For supported providers, this immediately stops model processing and billing.
 
@@ -430,11 +430,11 @@ MODEL: Model.GPT_4_Omni
   processing and you will be billed for the complete response.
 </Warning>
 
-### Handling Errors During Streaming
+### Handling errors during streaming
 
 OpenRouter handles errors differently depending on when they occur during the streaming process:
 
-#### Errors Before Any Tokens Are Sent
+#### Errors before any tokens are sent
 
 If an error occurs before any tokens have been streamed to the client, OpenRouter returns a standard JSON error response with the appropriate HTTP status code. This follows the standard error format:
 
@@ -456,7 +456,7 @@ Common HTTP status codes include:
 * **502**: Bad Gateway (provider error)
 * **503**: Service Unavailable (no available providers)
 
-#### Errors After Tokens Have Been Sent (Mid-Stream)
+#### Errors after tokens have been sent (mid-stream)
 
 If an error occurs after some tokens have already been streamed to the client, OpenRouter cannot change the HTTP status code (which is already 200 OK). Instead, the error is sent as a Server-Sent Event (SSE) with a unified structure:
 
@@ -471,7 +471,7 @@ Key characteristics of mid-stream errors:
 * The HTTP status remains 200 OK since headers were already sent
 * The stream is terminated after this unified error event
 
-#### Code Examples
+#### Code examples
 
 Here's how to properly handle both types of errors in your streaming implementation:
 
@@ -652,7 +652,7 @@ MODEL: Model.GPT_4_Omni
   </CodeGroup>
 </Template>
 
-#### API-Specific Behavior
+#### API-specific behavior
 
 Different API endpoints may handle streaming errors slightly differently:
 

@@ -6,9 +6,9 @@
 
 > Let your team sign in to OpenRouter through your identity provider
 
-Single sign-on lets members of your organization sign in to OpenRouter through your identity provider — Okta, Microsoft Entra ID, Google Workspace, or any custom SAML provider.
+Single sign-on lets members of your organization sign in to OpenRouter through your identity provider, such as Okta, Microsoft Entra ID, Google Workspace, or any custom SAML provider.
 
-Setup is self-serve: you add your email domain, verify it with a DNS record, connect your identity provider, then test and activate the connection — all from your organization settings.
+Setup is self-serve: you add your email domain, verify it with a DNS record, connect your identity provider, then test and activate the connection, all from your organization settings.
 
 <Info>
   SSO is available for organizations on Enterprise plans. Contact our sales team if you'd like to discuss enterprise options.
@@ -67,7 +67,7 @@ Once SSO is enabled, connect your identity provider from the Security tab:
 </Steps>
 
 <Tip>
-  **DNS verification gotcha:** the **Host** value shown for the TXT record ends with your domain. Many registrars — including GoDaddy, Namecheap, Squarespace Domains, and Porkbun — automatically append your domain to the host name, so paste only the part before your domain. If verification stalls, a doubled domain in the published record (e.g. `…acme.com.acme.com`) is the usual culprit.
+  **DNS verification gotcha:** the **Host** value shown for the TXT record ends with your domain. Many registrars (including GoDaddy, Namecheap, Squarespace Domains, and Porkbun) automatically append your domain to the host name, so paste only the part before your domain. If verification stalls, a doubled domain in the published record (e.g. `…acme.com.acme.com`) is the usual culprit.
 </Tip>
 
 ## Connection Statuses
@@ -93,7 +93,7 @@ With SCIM provisioning connected, your identity provider is the source of truth 
 * Their membership in your organization is deactivated, and they can no longer sign in through the connection
 * API keys they created in your organization are deactivated across all of the organization's workspaces
 
-Deactivation is scoped to your organization: the member's personal OpenRouter account, personal API keys, and memberships in other organizations are not affected. If the user's OpenRouter account itself is deleted, all of their access ends — including their personal account and personal keys.
+Deactivation is scoped to your organization: the member's personal OpenRouter account, personal API keys, and memberships in other organizations are not affected. If the user's OpenRouter account itself is deleted, all of their access ends, including their personal account and personal keys.
 
 <Warning>
   Deactivated keys are **not** automatically re-enabled if the user is later reactivated in your identity provider. An organization admin must re-enable the keys manually.
@@ -114,7 +114,7 @@ Deactivation is scoped to your organization: the member's personal OpenRouter ac
     Only organization admins can enable SSO and access the Security tab. Regular members won't see the SSO management options.
   </Accordion>
 
-  <Accordion title="I don't see the SSO tab — why?">
+  <Accordion title="I don't see the SSO tab, why?">
     The SSO tab is available to organization admins on Enterprise plans. If your organization's SSO was configured directly by OpenRouter, reach out to [support@openrouter.ai](mailto:support@openrouter.ai) for changes.
   </Accordion>
 </AccordionGroup>

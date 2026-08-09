@@ -4,17 +4,17 @@
 
 # MCP tools
 
-> Connect remote Model Context Protocol servers to the Agent SDK with @openrouter/mcp — auth, caching, streaming, resources, and elicitation.
+> Connect remote Model Context Protocol servers to the Agent SDK with @openrouter/mcp (auth, caching, streaming, resources, and elicitation).
 
 `@openrouter/mcp` connects to a remote [Model Context Protocol](https://modelcontextprotocol.io) server (Streamable HTTP or SSE) and exposes its tools as first-class `callModel` tools. You authenticate once, spread the returned tools into `callModel({ tools })`, and the SDK handles discovery, invocation, progress events, cancellation, resources, and elicitation.
 
 <Note>
-  `stdio` MCP servers are intentionally out of scope — this package targets remote servers you can reach over HTTP.
+  `stdio` MCP servers are intentionally out of scope. This package targets remote servers you can reach over HTTP.
 </Note>
 
 ## When to use it
 
-Reach for `@openrouter/mcp` when you want to plug an existing MCP server (Linear, GitHub, an internal tool server) into an Agent SDK loop without hand-rolling the protocol. It complements your own [`tool()`](/docs/agent-sdk/call-model/tools) definitions — MCP tools and locally-defined tools can live in the same `tools` array, and the SDK keeps the two apart with a `source` discriminant so your typed tool results stay typed.
+Reach for `@openrouter/mcp` when you want to plug an existing MCP server (Linear, GitHub, an internal tool server) into an Agent SDK loop without hand-rolling the protocol. It complements your own [`tool()`](/docs/agent-sdk/call-model/tools) definitions. MCP tools and locally-defined tools can live in the same `tools` array, and the SDK keeps the two apart with a `source` discriminant so your typed tool results stay typed.
 
 If you only need a hosted MCP server for your editor or coding assistant, see the [OpenRouter MCP server guide](/docs/guides/overview/mcp-server) instead.
 
@@ -62,9 +62,9 @@ await mcp.close();
 
 `createMCPTools()` returns a handle:
 
-* `mcp.tools` — an array of Agent SDK tools, one per MCP tool the server advertises. Spread them directly into `callModel({ tools })`.
-* `mcp.serialize()` — capture the current tool list (and, optionally, credentials) as JSON for cache reuse.
-* `mcp.close()` — disconnect from the server. Call it when you're done with the handle.
+* `mcp.tools`, an array of Agent SDK tools, one per MCP tool the server advertises. Spread them directly into `callModel({ tools })`.
+* `mcp.serialize()`, capture the current tool list (and, optionally, credentials) as JSON for cache reuse.
+* `mcp.close()`, disconnect from the server. Call it when you're done with the handle.
 
 ## Authentication
 
@@ -133,8 +133,8 @@ for await (const event of result.getToolStream()) {
 
 `ToolExecutionResult` (and the streaming `tool.result` event) carry `source: 'client' | 'mcp'`:
 
-* `source: 'client'` — your own tools. `result` is typed from the tool's `outputSchema`.
-* `source: 'mcp'` — a wrapped MCP tool. `result` is `unknown` because the MCP server describes its output at runtime.
+* `source: 'client'`, your own tools. `result` is typed from the tool's `outputSchema`.
+* `source: 'mcp'`, a wrapped MCP tool. `result` is `unknown` because the MCP server describes its output at runtime.
 
 Narrowing on `source === 'client'` recovers precise, schema-derived results for every locally-defined tool. Without it, a single untyped MCP tool would collapse the entire result union to `unknown`.
 
@@ -142,8 +142,8 @@ Narrowing on `source === 'client'` recovers precise, schema-derived results for 
 
 Two helpers let you interact with the brand directly:
 
-* `isMcpTool(tool)` — runtime type guard for the `_mcp` brand. Useful in lifecycle hooks or custom stop conditions that need to treat MCP tools differently.
-* `markMcp(tool)` — add the brand to an already-built client tool. `@openrouter/mcp` uses this internally on every wrapped tool (including the synthetic resource tools); you rarely need to call it yourself.
+* `isMcpTool(tool)`, runtime type guard for the `_mcp` brand. Useful in lifecycle hooks or custom stop conditions that need to treat MCP tools differently.
+* `markMcp(tool)`, add the brand to an already-built client tool. `@openrouter/mcp` uses this internally on every wrapped tool (including the synthetic resource tools); you rarely need to call it yourself.
 
 ```typescript lines theme={null}
 import { isMcpTool } from '@openrouter/agent';
@@ -198,7 +198,7 @@ const mcp = await createMCPTools({
 Implement `MCPCacheStore` (a small `get` / `set` / `delete` interface) to back the cache with Redis, a database, or any KV store you already run.
 
 <Warning>
-  `cacheCredentials` is `false` by default. When enabled, snapshots contain bearer tokens or headers — treat the store as a secret store and namespace cache keys by principal in multi-tenant setups.
+  `cacheCredentials` is `false` by default. When enabled, snapshots contain bearer tokens or headers, so treat the store as a secret store and namespace cache keys by principal in multi-tenant setups.
 </Warning>
 
 ## Streaming, progress, and cancellation
@@ -215,7 +215,7 @@ for await (const event of result.getToolStream()) {
 
 Pass an `AbortSignal` to `createMCPTools({ signal })` and every in-flight tool call is cancelled when the signal aborts. Individual `callModel` invocations can also be aborted through their own signal.
 
-`autoRefreshOnListChanged` (on by default) keeps `mcp.tools` in sync when the server emits `tools/list_changed` — the next `callModel` step sees the updated list without you reconnecting.
+`autoRefreshOnListChanged` (on by default) keeps `mcp.tools` in sync when the server emits `tools/list_changed`. The next `callModel` step sees the updated list without you reconnecting.
 
 ## Resources and elicitation
 
@@ -223,8 +223,8 @@ Pass an `AbortSignal` to `createMCPTools({ signal })` and every in-flight tool c
   <Accordion title="Resources as synthetic tools">
     When the MCP server advertises resources, `@openrouter/mcp` exposes them as two synthetic tools the model can call directly:
 
-    * `list_resources` — enumerate available resources.
-    * `read_resource` — fetch a resource by URI.
+    * `list_resources`, enumerate available resources.
+    * `read_resource`, fetch a resource by URI.
 
     These are on by default. Set `resources: false` to hide them, or `resources: { mode: 'synthetic-tools' }` to configure future modes.
   </Accordion>
@@ -285,6 +285,6 @@ const result = callModel(client, {
 
 ## Related
 
-* [Tools](/docs/agent-sdk/call-model/tools) — define your own tools with `tool()` and the Zod schema helpers.
-* [Streaming](/docs/agent-sdk/call-model/streaming) — consume `tool.result` and `tool.progress` events, including the `source` discriminant.
-* [OpenRouter MCP server](/docs/guides/overview/mcp-server) — the hosted MCP endpoint for your editor or coding assistant.
+* [Tools](/docs/agent-sdk/call-model/tools), define your own tools with `tool()` and the Zod schema helpers.
+* [Streaming](/docs/agent-sdk/call-model/streaming), consume `tool.result` and `tool.progress` events, including the `source` discriminant.
+* [OpenRouter MCP server](/docs/guides/overview/mcp-server), the hosted MCP endpoint for your editor or coding assistant.

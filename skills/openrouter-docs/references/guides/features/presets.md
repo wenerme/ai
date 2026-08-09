@@ -113,10 +113,10 @@ You can reference the preset as if it was a model by sending requests to `@prese
 
 A preset can store a `tools` array, exactly like the one you would send on a request. This includes:
 
-* **OpenRouter server tools** — for example `openrouter:web_search`, `openrouter:advisor`, and `openrouter:subagent`. The advisor and subagent tools may appear multiple times, one entry per named instance, so a single preset can define a whole roster of named workers (see the [subagent](/docs/guides/features/server-tools/subagent) and [advisor](/docs/guides/features/server-tools/advisor#multiple-advisors) docs).
+* **OpenRouter server tools**, for example `openrouter:web_search`, `openrouter:advisor`, and `openrouter:subagent`. The advisor and subagent tools may appear multiple times, one entry per named instance, so a single preset can define a whole roster of named workers (see the [subagent](/docs/guides/features/server-tools/subagent) and [advisor](/docs/guides/features/server-tools/advisor#multiple-advisors) docs).
 * **Function tools** and other custom tool definitions, which are stored and forwarded verbatim.
 
-For example, a preset can bundle a design assistant with a roster of named subagents — one for creative ideation, one that generates images and mockups, and one for frontend design:
+For example, a preset can bundle a design assistant with a roster of named subagents (one for creative ideation, one that generates images and mockups, and one for frontend design):
 
 ```json lines theme={null}
 {
@@ -154,7 +154,7 @@ For example, a preset can bundle a design assistant with a roster of named subag
 }
 ```
 
-Any client that references `@preset/{slug}` gets these tools applied server-side — no SDK or orchestration code required, and you can add, remove, or retune the tools later without touching the client.
+Any client that references `@preset/{slug}` gets these tools applied server-side, with no SDK or orchestration code required, and you can add, remove, or retune the tools later without touching the client.
 
 ### How preset tools merge with request tools
 
@@ -174,7 +174,7 @@ useful when you want to capture a known-good request as a reusable
 configuration without re-typing it in the UI.
 
 Each inference skin has its own endpoint. Send the same JSON body
-you would send to the matching inference route — OpenRouter
+you would send to the matching inference route. OpenRouter
 persists only the fields that overlap with the preset config
 (e.g. `model`, `temperature`, `provider`, `top_p`, `system`,
 `tools`).
@@ -183,9 +183,9 @@ are silently ignored.
 
 The endpoints are:
 
-* `POST /api/v1/presets/{slug}/chat/completions` — Chat Completions skin
-* `POST /api/v1/presets/{slug}/messages` — Anthropic Messages skin
-* `POST /api/v1/presets/{slug}/responses` — Responses skin
+* `POST /api/v1/presets/{slug}/chat/completions`, Chat Completions skin
+* `POST /api/v1/presets/{slug}/messages`, Anthropic Messages skin
+* `POST /api/v1/presets/{slug}/responses`, Responses skin
 
 The `{slug}` path parameter is a URL-safe identifier for the
 preset. If a preset with that slug already exists in your
@@ -300,5 +300,5 @@ transcription.
 ## Other Notes
 
 1. If you're using an organization account, all members can access organization presets. This is a great way to share best practices across teams.
-2. Version history is kept in order to understand changes that were made, and to be able to roll back. However when addressing a preset through the API, the latest version is always used.
+2. Version history is kept so you can understand changes that were made and roll back. However when addressing a preset through the API, the latest version is always used.
 3. If you provide parameters in the request, they take priority over the preset's values. The two are shallow-merged, meaning request-level fields override matching preset fields, but preset fields not present in the request are preserved.

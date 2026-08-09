@@ -6,7 +6,7 @@
 
 Sampling parameters shape the token generation process of the model. You may send any parameters from the following list, as well as others, to OpenRouter.
 
-When a sampling parameter is absent from your request, OpenRouter omits it upstream rather than substituting a hardcoded value, so the provider applies its own default. The "Default" listed for each parameter below is the conventional value, not one OpenRouter injects — explicitly sending it (e.g. `temperature: 1.0`) is still forwarded and may differ from omitting it (for example, it can affect provider-side cache keys). OpenRouter will also transmit some provider-specific parameters, such as `safe_prompt` for Mistral or `raw_mode` for Hyperbolic directly to the respective providers if specified.
+When a sampling parameter is absent from your request, OpenRouter omits it upstream rather than substituting a hardcoded value, so the provider applies its own default. The "Default" listed for each parameter below is the conventional value, not one OpenRouter injects. Explicitly sending it (e.g. `temperature: 1.0`) is still forwarded and may differ from omitting it (for example, it can affect provider-side cache keys). OpenRouter will also transmit some provider-specific parameters, such as `safe_prompt` for Mistral or `raw_mode` for Hyperbolic directly to the respective providers if specified.
 
 Please refer to the model’s provider section to confirm which parameters are supported. For detailed guidance, see [managing provider-specific parameters](/docs/guides/routing/provider-selection#requiring-providers-to-support-all-parameters).
 

@@ -234,7 +234,7 @@ OpenRouter enforces two kinds of limits:
 | [Credit limits](#credit-limits) | How much you can spend (account balance and per-key credit caps)             | <StatusCode code={HTTPStatus.S402_Payment_Required} />  | `GET /api/v1/key` → `limit_remaining`         |
 | [Rate limits](#rate-limits)     | How many requests you can make (free-model request caps and DDoS protection) | <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> | `X-RateLimit-*` headers on the error response |
 
-## Checking Your Limits
+## Checking your limits
 
 To check the rate limit or credits left on an API key, make a GET request to `https://openrouter.ai/api/v1/key`.
 
@@ -306,12 +306,12 @@ type Key = {
 };
 ```
 
-## Credit Limits
+## Credit limits
 
 Credit limits govern how much you can spend. They come from two places:
 
-1. **Account balance** — your available credits across the account. If your account has a negative credit balance, you may see <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors, including for free models. Adding credits to put your balance above zero allows you to use those models again.
-2. **Per-key credit limits** — an optional spending cap configured on an individual API key. The `limit`, `limit_reset`, and `limit_remaining` fields in the `GET /api/v1/key` response above describe this cap and how much of it remains.
+1. **Account balance**, your available credits across the account. If your account has a negative credit balance, you may see <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors, including for free models. Adding credits to put your balance above zero allows you to use those models again.
+2. **Per-key credit limits**, an optional spending cap configured on an individual API key. The `limit`, `limit_reset`, and `limit_remaining` fields in the `GET /api/v1/key` response above describe this cap and how much of it remains.
 
 ### Handling 402 errors
 
@@ -321,7 +321,7 @@ To resolve <StatusCode code={HTTPStatus.S402_Payment_Required} /> errors:
 * **Check per-key limits.** If `limit_remaining` on the key is exhausted, raise the key's credit limit or wait for it to reset (see `limit_reset`).
 * **Monitor proactively.** Call `GET /api/v1/key` as shown above to track `limit_remaining` and usage before requests start failing.
 
-## Rate Limits
+## Rate limits
 
 Rate limits govern how many requests you can make. There are a few rate limits that apply to certain types of requests, regardless of account status:
 
@@ -352,8 +352,8 @@ Requests rejected with <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> f
 
 A <StatusCode code={HTTPStatus.S429_Too_Many_Requests} /> error can come from two places:
 
-1. **OpenRouter** — you hit one of the platform limits above (free-model requests per minute or per day, or DDoS protection).
-2. **The upstream provider** — the provider serving your request is rate limiting or at capacity. In this case `error.metadata.provider_code` carries the provider's original error code when available, and [fallback routing](/docs/guides/routing/provider-selection) retries other providers for the same model automatically before the error reaches you. You can also specify [fallback models](/docs/guides/routing/model-fallbacks) to try a different model when all providers for the first are exhausted.
+1. **OpenRouter**, when you hit one of the platform limits above (free-model requests per minute or per day, or DDoS protection).
+2. **The upstream provider**, when the provider serving your request is rate limiting or at capacity. In this case `error.metadata.provider_code` carries the provider's original error code when available, and [fallback routing](/docs/guides/routing/provider-selection) retries other providers for the same model automatically before the error reaches you. You can also specify [fallback models](/docs/guides/routing/model-fallbacks) to try a different model when all providers for the first are exhausted.
 
 <Note>
   Successful inference responses do not include `X-RateLimit-*` headers. When

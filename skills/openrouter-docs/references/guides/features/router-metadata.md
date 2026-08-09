@@ -110,7 +110,7 @@ The header accepts the following values, matched case-insensitively:
 | `enabled`  | Surface `openrouter_metadata` on the response.              |
 | `disabled` | Do not surface metadata. Equivalent to omitting the header. |
 
-Any other value (including misspellings, empty strings, and unknown levels) falls back to `disabled`. The default behavior — when the header is absent — is `disabled`.
+Any other value (including misspellings, empty strings, and unknown levels) falls back to `disabled`. The default behavior, when the header is absent, is `disabled`.
 
 ## Supported Endpoints
 
@@ -200,7 +200,7 @@ The `pipeline` array records every plugin that materially affected the request. 
 
 Multiple plugins can share a `type`. To find a specific guardrail (say, the content filter), iterate the array and match on both `type === 'guardrail'` and `name === 'content-filter'`. The full set of guardrail-level plugins emits `type: 'guardrail'` so you can filter all of them together (`pipeline.filter(s => s.type === 'guardrail')`) without enumerating individual plugins.
 
-The list grows over time. Treat unknown stage types as opaque — `data` is a free-form record by design so plugins can attach plugin-specific telemetry without a schema bump.
+The list grows over time. Treat unknown stage types as opaque. `data` is a free-form record by design so plugins can attach plugin-specific telemetry without a schema bump.
 
 ## Cache Hits
 
@@ -208,7 +208,7 @@ Cache hits never include `openrouter_metadata`. Both streaming and non-streaming
 
 ## Error Responses
 
-Opt-in error responses surface `openrouter_metadata` at the **top level** of the error envelope, mirroring the success-path placement (sibling of `error` rather than nested inside it). This applies to all four routes — Chat Completions, Messages, Responses, and legacy Completions — and to both streaming and non-streaming requests. The same opt-in rules apply: send `X-OpenRouter-Metadata: enabled` and the snapshot is included on failure; omit it and it isn't.
+Opt-in error responses surface `openrouter_metadata` at the **top level** of the error envelope, mirroring the success-path placement (sibling of `error` rather than nested inside it). This applies to all four routes (Chat Completions, Messages, Responses, and legacy Completions) and to both streaming and non-streaming requests. The same opt-in rules apply: send `X-OpenRouter-Metadata: enabled` and the snapshot is included on failure; omit it and it isn't.
 
 ### No Providers Available (404)
 
@@ -238,7 +238,7 @@ Opt-in error responses surface `openrouter_metadata` at the **top level** of the
 
 ### Guardrail Blocked (403)
 
-When a request is blocked before reaching a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails) — the response includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran, including the one that blocked:
+When a request is blocked before reaching a provider (for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails)), the response includes the full `openrouter_metadata` object with routing context and a `pipeline` array showing every guardrail stage that ran, including the one that blocked:
 
 ```json expandable lines theme={null}
 {
@@ -285,14 +285,14 @@ Because guardrail blocks happen before a provider call completes, no endpoint is
 
 A few things to know:
 
-* **`attempt` reflects how far the router got.** A value of `0` means the request never reached a provider — typically because every candidate was filtered out before submission (e.g. `provider.only` excluded the last endpoint, or an allowed-providers / max-price filter rejected everything). Values `≥ 1` mean every attempted provider failed and fallbacks were exhausted.
+* **`attempt` reflects how far the router got.** A value of `0` means the request never reached a provider, typically because every candidate was filtered out before submission (e.g. `provider.only` excluded the last endpoint, or an allowed-providers / max-price filter rejected everything). Values `≥ 1` mean every attempted provider failed and fallbacks were exhausted.
 * **No endpoint is marked `selected` on failure.** None of the `endpoints.available[].selected` flags are `true` because no endpoint actually served a 200.
-* **Internal-error masking still applies.** Responses with a `500` status are scrubbed to a generic message, and `openrouter_metadata` is omitted from those envelopes by design — we don't surface internal routing details on errors whose cause is already hidden. Other 5xx classes (`502`, `503`, `504`, `529`) still include the metadata when the client opted in.
+* **Internal-error masking still applies.** Responses with a `500` status are scrubbed to a generic message, and `openrouter_metadata` is omitted from those envelopes by design. We don't surface internal routing details on errors whose cause is already hidden. Other 5xx classes (`502`, `503`, `504`, `529`) still include the metadata when the client opted in.
 * **Some failure modes won't carry it.** Authentication / rate-limit failures and other errors that fire before the router has usable routing state (for example, validation rejections at the API edge) will not include the field. If you need post-mortem routing context for a request that completed past the API edge but before the router materialised state, fetch the generation record via [`GET /api/v1/generation`](/docs/agent-sdk/call-model/api-reference) using the `X-Generation-Id` response header.
 
 ## Stability
 
-The `openrouter_metadata` response shape is additive — new optional fields and pipeline stage types may appear without a deprecation cycle, but existing fields are stable. Decode permissively (ignore unknown fields and stage types) and your integration will be forward-compatible.
+The `openrouter_metadata` response shape is additive. New optional fields and pipeline stage types may appear without a deprecation cycle, but existing fields are stable. Decode permissively (ignore unknown fields and stage types) and your integration will be forward-compatible.
 
 ### Legacy Header
 

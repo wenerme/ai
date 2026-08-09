@@ -54,7 +54,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
   Server tools are currently in beta. The API and behavior may change.
 </Note>
 
-Server tools are specialized tools operated by OpenRouter that any model can call during a request. When a model decides to use a server tool, OpenRouter executes it server-side and returns the result to the model — no client-side implementation needed.
+Server tools are specialized tools operated by OpenRouter that any model can call during a request. When a model decides to use a server tool, OpenRouter executes it server-side and returns the result to the model, so no client-side implementation is needed.
 
 ## Server Tools vs Plugins vs User-Defined Tools
 
@@ -94,7 +94,7 @@ Server tools are specialized tools operated by OpenRouter that any model can cal
 3. OpenRouter intercepts the tool call, executes it server-side, and returns the result to the model.
 4. The model uses the result to formulate its response. It may call the tool again if needed.
 
-Server tools work alongside your own user-defined tools — you can include both in the same request.
+Server tools work alongside your own user-defined tools. You can include both in the same request.
 
 ## Tool Call Limits
 
@@ -105,13 +105,13 @@ Two top-level request fields control the outer loop (both are siblings of `messa
 | Field                    | Default | Max  | Behavior                                                                                                |
 | ------------------------ | ------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | `max_tool_calls`         | `30`    | `30` | Total server-tool steps allowed for the request, across all server tools                                |
-| `stop_server_tools_when` | —       | —    | Array of stop conditions (step count, spend cap, and more). When set, it **overrides** `max_tool_calls` |
+| `stop_server_tools_when` | None    | None | Array of stop conditions (step count, spend cap, and more). When set, it **overrides** `max_tool_calls` |
 
 Tools that run their own inner agent loops have separate, per-tool budgets configured via the tool's `parameters`:
 
 | Tool                                               | Parameter        | Default          | Max  |
 | -------------------------------------------------- | ---------------- | ---------------- | ---- |
-| [Fusion](/docs/guides/features/server-tools/fusion)     | `max_tool_calls` | `8`              | `16` |
+| [Fusion](/docs/guides/features/server-tools/fusion)     | `max_tool_calls` | `4`              | `16` |
 | [Advisor](/docs/guides/features/server-tools/advisor)   | `max_tool_calls` | Provider default | `25` |
 | [Subagent](/docs/guides/features/server-tools/subagent) | `max_tool_calls` | Provider default | `25` |
 
@@ -252,14 +252,14 @@ Server tool usage is tracked in the response `usage` object:
 
 ## Next Steps
 
-* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
-* [Image Generation](/docs/guides/features/server-tools/image-generation) — Generate images from text prompts
-* [Web Fetch](/docs/guides/features/server-tools/web-fetch) — Fetch and extract content from URLs
-* [Apply Patch](/docs/guides/features/server-tools/apply-patch) — Propose file edits via V4A diffs
-* [Shell](/docs/guides/features/server-tools/shell) — Run commands in a hosted, sandboxed shell
-* [Fusion](/docs/guides/features/server-tools/fusion) — Run a panel of models and an analyst for multi-model analysis
-* [Advisor](/docs/guides/features/server-tools/advisor) — Consult a stronger model for guidance mid-generation
-* [Subagent](/docs/guides/features/server-tools/subagent) — Delegate self-contained tasks to a smaller, faster worker model
-* [Search Models](/docs/guides/features/server-tools/search-models) — Search and filter the OpenRouter model catalog
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Web Search](/docs/guides/features/server-tools/web-search). Search the web for real-time information
+* [Datetime](/docs/guides/features/server-tools/datetime). Get the current date and time
+* [Image Generation](/docs/guides/features/server-tools/image-generation). Generate images from text prompts
+* [Web Fetch](/docs/guides/features/server-tools/web-fetch). Fetch and extract content from URLs
+* [Apply Patch](/docs/guides/features/server-tools/apply-patch). Propose file edits via V4A diffs
+* [Shell](/docs/guides/features/server-tools/shell). Run commands in a hosted, sandboxed shell
+* [Fusion](/docs/guides/features/server-tools/fusion). Run a panel of models and an analyst for multi-model analysis
+* [Advisor](/docs/guides/features/server-tools/advisor). Consult a stronger model for guidance mid-generation
+* [Subagent](/docs/guides/features/server-tools/subagent). Delegate self-contained tasks to a smaller, faster worker model
+* [Search Models](/docs/guides/features/server-tools/search-models). Search and filter the OpenRouter model catalog
+* [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined tool calling

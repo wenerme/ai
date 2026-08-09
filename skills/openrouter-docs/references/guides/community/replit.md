@@ -10,8 +10,8 @@
 
 [Replit](https://replit.com/) lets you build, deploy, and host applications directly in the browser. You can use OpenRouter with Replit in two ways:
 
-1. **Replit Agent (BYOK)** — Use your own OpenRouter API key when Replit Agent builds AI features for you, instead of the Replit-managed default.
-2. **Replit Apps (project Secrets)** — Store your OpenRouter API key as a Secret in any Replit App and call OpenRouter from your code.
+1. **Replit Agent (BYOK)**, which lets you use your own OpenRouter API key when Replit Agent builds AI features for you, instead of the Replit-managed default.
+2. **Replit Apps (project Secrets)**, which let you store your OpenRouter API key as a Secret in any Replit App and call OpenRouter from your code.
 
 For background on Replit's managed AI options, see Replit's [AI Integrations documentation](https://docs.replit.com/replitai/replit-ai-integrations).
 
@@ -21,7 +21,7 @@ You'll need an OpenRouter API key. Create one at [openrouter.ai/keys](https://op
 
 ## Using your OpenRouter API key with Replit Agent
 
-By default, when Replit Agent detects that your prompt needs AI functionality, it uses Replit-managed credentials and bills usage to your Replit account. If you'd rather use your own OpenRouter account — for direct billing, a custom rate limit, or access to a wider set of models — you can bring your own API key.
+By default, when Replit Agent detects that your prompt needs AI functionality, it uses Replit-managed credentials and bills usage to your Replit account. If you'd rather use your own OpenRouter account (for direct billing, a custom rate limit, or access to a wider set of models), you can bring your own API key.
 
 ### For new Replit Apps
 
@@ -103,7 +103,7 @@ For framework-specific examples (Vercel AI SDK, LangChain, Anthropic SDK, and mo
 
 When you publish a Replit App as a Deployment, the Secrets you configure in your Replit App carry over to the deployed app. Update the `OPENROUTER_API_KEY` secret in the Deployment's settings if you want to rotate keys without redeploying code.
 
-For Teams and Enterprise organizations on Replit, your organization admin controls whether Replit AI Integrations is enabled. If it's disabled — or if you prefer not to use Replit-managed credentials — every member can still bring their own OpenRouter API key using the steps above.
+For Teams and Enterprise organizations on Replit, your organization admin controls whether Replit AI Integrations is enabled. If it's disabled (or if you prefer not to use Replit-managed credentials), every member can still bring their own OpenRouter API key using the steps above.
 
 ## Resources
 
