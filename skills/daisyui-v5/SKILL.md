@@ -1,6 +1,6 @@
 ---
 name: daisyui-v5
-description: "USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component class names (btn, card, modal, drawer, menu, tab, table, form inputs), color system (primary, secondary, accent, neutral, base, info/success/warning/error), theming with @plugin syntax, config options, and all 53 component APIs with syntax and rules. Triggers on: daisyui, daisyUI, daisy-ui, Tailwind CSS components, btn class, card class."
+description: 'USE THIS SKILL WHEN writing HTML/JSX with daisyUI v5, Tailwind CSS 4 component library. Covers installation, component class names (btn, card, modal, drawer, menu, tab, table, form inputs), color system (primary, secondary, accent, neutral, base, info/success/warning/error), theming with @plugin syntax, config options, and all 53 component APIs with syntax and rules. Triggers on: daisyui, daisyUI, daisy-ui, Tailwind CSS components, btn class, card class.'
 ---
 
 # daisyUI 5
@@ -17,7 +17,7 @@ CRITICAL: grep `references/` for component details before answering.
 Requires **Tailwind CSS 4**. No `tailwind.config.js` — TW4 uses CSS-only config.
 
 ```css
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui";
 ```
 
@@ -26,6 +26,7 @@ npm i -D daisyui@latest
 ```
 
 CDN alternative:
+
 ```html
 <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -42,36 +43,36 @@ CDN alternative:
 
 ### Class Name Categories
 
-| Category    | Purpose                                  | Example              |
-|-------------|------------------------------------------|----------------------|
-| component   | Required base class                      | `btn`, `card`        |
-| part        | Child element within component           | `card-body`          |
-| style       | Visual variant                           | `btn-outline`        |
-| color       | Semantic color                           | `btn-primary`        |
-| size        | Size variant                             | `btn-sm`, `btn-lg`   |
-| behavior    | State modifier                           | `btn-active`         |
-| placement   | Position                                 | `toast-top`          |
-| direction   | Orientation                              | `divider-horizontal` |
-| modifier    | Shape/layout modifier                    | `btn-circle`         |
-| variant     | Conditional prefix                       | `is-drawer-open:`    |
+| Category  | Purpose                        | Example              |
+| --------- | ------------------------------ | -------------------- |
+| component | Required base class            | `btn`, `card`        |
+| part      | Child element within component | `card-body`          |
+| style     | Visual variant                 | `btn-outline`        |
+| color     | Semantic color                 | `btn-primary`        |
+| size      | Size variant                   | `btn-sm`, `btn-lg`   |
+| behavior  | State modifier                 | `btn-active`         |
+| placement | Position                       | `toast-top`          |
+| direction | Orientation                    | `divider-horizontal` |
+| modifier  | Shape/layout modifier          | `btn-circle`         |
+| variant   | Conditional prefix             | `is-drawer-open:`    |
 
 ## Color System
 
 ### Semantic Colors
 
-| Color              | Purpose                              |
-|--------------------|--------------------------------------|
-| `primary`          | Main brand color                     |
-| `secondary`        | Secondary brand color                |
-| `accent`           | Accent brand color                   |
-| `neutral`          | Non-saturated UI elements            |
-| `base-100/200/300` | Surface colors (light→dark)          |
-| `base-content`     | Text on base surfaces                |
-| `info`             | Informational messages               |
-| `success`          | Success/safe messages                |
-| `warning`          | Warning/caution messages             |
-| `error`            | Error/danger messages                |
-| `*-content`        | Foreground text for each color       |
+| Color              | Purpose                        |
+| ------------------ | ------------------------------ |
+| `primary`          | Main brand color               |
+| `secondary`        | Secondary brand color          |
+| `accent`           | Accent brand color             |
+| `neutral`          | Non-saturated UI elements      |
+| `base-100/200/300` | Surface colors (light→dark)    |
+| `base-content`     | Text on base surfaces          |
+| `info`             | Informational messages         |
+| `success`          | Success/safe messages          |
+| `warning`          | Warning/caution messages       |
+| `error`            | Error/danger messages          |
+| `*-content`        | Foreground text for each color |
 
 ### Color Rules
 
@@ -84,12 +85,14 @@ CDN alternative:
 
 ```css
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
-  root: ":root";
-  include: ;
-  exclude: ;
-  prefix: ;
-  logs: true;
+	themes:
+		light --default,
+		dark --prefersdark;
+	root: ':root';
+	include:;
+	exclude:;
+	prefix:;
+	logs: true;
 }
 ```
 
@@ -99,24 +102,29 @@ Switch themes: `data-theme="THEME_NAME"` on `<html>`.
 
 ## Component Quick Reference
 
-| Component | Class | Common Modifiers |
-|-----------|-------|-----------------|
-| Button | `btn` | `btn-primary` `btn-outline` `btn-sm/lg` `btn-circle` |
-| Card | `card` | `card-body` `card-title` `card-border` `card-side` |
-| Modal | `modal` | `modal-box` `modal-action` `modal-open` |
-| Drawer | `drawer` | `drawer-toggle` `drawer-content` `drawer-side` |
-| Navbar | `navbar` | `navbar-start` `navbar-center` `navbar-end` |
-| Menu | `menu` | `menu-horizontal` `menu-sm` `menu-title` |
-| Tab | `tab` | `tab-active` `tab-bordered` `tab-lifted` |
-| Table | `table` | `table-zebra` `table-pin-rows` `table-sm` |
-| Input | `input` | `input-bordered` `input-primary` `input-sm` |
-| Select | `select` | `select-bordered` `select-primary` `select-sm` |
-| Badge | `badge` | `badge-primary` `badge-outline` `badge-sm` |
-| Alert | `alert` | `alert-info` `alert-success` `alert-warning` |
-| Toast | `toast` | `toast-top` `toast-end` |
-| Loading | `loading` | `loading-spinner` `loading-dots` `loading-ring` |
-| Toggle | `toggle` | `toggle-primary` `toggle-sm` |
-| Tooltip | `tooltip` | `tooltip-open` `tooltip-top/bottom/left/right` |
+| Component | Class          | Common Modifiers                                                |
+| --------- | -------------- | --------------------------------------------------------------- |
+| Button    | `btn`          | `btn-primary` `btn-outline` `btn-sm/lg` `btn-circle`            |
+| Card      | `card`         | `card-body` `card-title` `card-border` `card-side`              |
+| Modal     | `modal`        | `modal-box` `modal-action` `modal-open`                         |
+| Drawer    | `drawer`       | `drawer-toggle` `drawer-content` `drawer-side`                  |
+| Navbar    | `navbar`       | `navbar-start` `navbar-center` `navbar-end`                     |
+| Menu      | `menu`         | `menu-horizontal` `menu-sm` `menu-title`                        |
+| Tabs      | `tabs` + `tab` | parent `tabs-box` `tabs-border` `tabs-lift`; child `tab-active` |
+| Table     | `table`        | `table-zebra` `table-pin-rows` `table-sm`                       |
+| Input     | `input`        | `input-primary` `input-sm`                                      |
+| Select    | `select`       | `select-primary` `select-sm`                                    |
+| Textarea  | `textarea`     | `textarea-primary` `textarea-sm`                                |
+| Badge     | `badge`        | `badge-primary` `badge-outline` `badge-sm`                      |
+| Alert     | `alert`        | `alert-info` `alert-success` `alert-warning`                    |
+| Toast     | `toast`        | `toast-top` `toast-end`                                         |
+| Loading   | `loading`      | `loading-spinner` `loading-dots` `loading-ring`                 |
+| Toggle    | `toggle`       | `toggle-primary` `toggle-sm`                                    |
+| Tooltip   | `tooltip`      | `tooltip-open` `tooltip-top/bottom/left/right`                  |
+
+DaisyUI v5 controls already include their base border. Do not use removed v4-style modifiers such as `input-bordered`, `textarea-bordered`, `select-bordered`, `tab-bordered`, or `tab-lifted`; they compile to no component rule and hide migration mistakes.
+
+When a behavior library such as Base UI renders a `span` or `button` instead of DaisyUI's documented native input, checked styles can still work through `aria-checked`, but input-specific size modifiers may not change geometry. Pair each supported size with static `size-*` or `h-*/w-*` utilities and verify computed dimensions in a real browser. For native `<input>` wrappers, do not reuse the native `size?: number` prop for a string variant; use a separate name such as `controlSize`.
 
 ## References
 
