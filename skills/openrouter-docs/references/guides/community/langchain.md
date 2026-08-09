@@ -45,7 +45,7 @@ LangChain provides a standard interface for working with chat models. You can us
   ```
 </CodeGroup>
 
-For full documentation — including streaming, tool calling, structured output, reasoning, multimodal inputs, provider routing, and more — see the LangChain integration guides:
+For full documentation (including streaming, tool calling, structured output, reasoning, multimodal inputs, provider routing, and more), see the LangChain integration guides:
 
 * [Python: ChatOpenRouter](https://docs.langchain.com/oss/python/integrations/chat/openrouter)
 * [JavaScript: ChatOpenRouter](https://docs.langchain.com/oss/javascript/integrations/chat/openrouter)

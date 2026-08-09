@@ -105,7 +105,7 @@ own.
   - Replace server `generateText(...)` calls with `client.callModel(...).getText()` or `getResponse()` while preserving model IDs, instructions/system prompts, messages, tools, telemetry-relevant metadata, and return shape.
   - Replace server `streamText(...)` calls with `client.callModel(...).getTextStream()` or a verified event bridge. Preserve streaming as streaming.
   - Convert AI SDK tools to `tool(...)` from `@openrouter/agent/tool`, keep descriptions and schema fidelity, and add bounded stop conditions such as `stepCountIs(5)` where tool loops could continue.
-  - For structured object routes, preserve the client API shape. Use robust prompt-for-JSON plus parsing and schema validation unless current OpenRouter structured output support is verified for the selected request shape.
+  - For structured object routes, preserve the client API shape. Use prompt-for-JSON with parsing and schema validation unless current OpenRouter structured output support is verified for the selected request shape.
   - If clients consume AI SDK UI message streams, either keep the AI SDK UI protocol and bridge Agent SDK events back to it with tests, or retain `ai`/`@ai-sdk/react` as an explicit UI-protocol dependency. Do not replace complex UI protocol types globally.
   - Add no-network adapter coverage for message conversion and stream/event bridging. Include text deltas, reasoning deltas where relevant, tool-call arguments, tool results or progress events, and completion/turn-boundary events.
 
@@ -278,7 +278,7 @@ own.
   - Replace server `generateText(...)` calls with `client.callModel(...).getText()` or `getResponse()` while preserving model IDs, instructions/system prompts, messages, tools, telemetry-relevant metadata, and return shape.
   - Replace server `streamText(...)` calls with `client.callModel(...).getTextStream()` or a verified event bridge. Preserve streaming as streaming.
   - Convert AI SDK tools to `tool(...)` from `@openrouter/agent/tool`, keep descriptions and schema fidelity, and add bounded stop conditions such as `stepCountIs(5)` where tool loops could continue.
-  - For structured object routes, preserve the client API shape. Use robust prompt-for-JSON plus parsing and schema validation unless current OpenRouter structured output support is verified for the selected request shape.
+  - For structured object routes, preserve the client API shape. Use prompt-for-JSON with parsing and schema validation unless current OpenRouter structured output support is verified for the selected request shape.
   - If clients consume AI SDK UI message streams, either keep the AI SDK UI protocol and bridge Agent SDK events back to it with tests, or retain `ai`/`@ai-sdk/react` as an explicit UI-protocol dependency. Do not replace complex UI protocol types globally.
   - Add no-network adapter coverage for message conversion and stream/event bridging. Include text deltas, reasoning deltas where relevant, tool-call arguments, tool results or progress events, and completion/turn-boundary events.
 

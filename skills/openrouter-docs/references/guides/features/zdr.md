@@ -111,7 +111,7 @@ In the API, these are represented as separate fields on the guardrail object:
 
 In addition to account-level and guardrail-level settings, you can enforce Zero Data Retention on a per-request basis using the `zdr` parameter in your API calls.
 
-The request-level `zdr` parameter operates as an "OR" with your account-wide and guardrail ZDR settings — if any is enabled, ZDR enforcement will be applied. This means the per-request parameter can only be used to ensure ZDR is enabled for a specific request, not to override or disable account-wide or guardrail enforcement.
+The request-level `zdr` parameter operates as an "OR" with your account-wide and guardrail ZDR settings. If any is enabled, ZDR enforcement will be applied. This means the per-request parameter can only be used to ensure ZDR is enabled for a specific request, not to override or disable account-wide or guardrail enforcement.
 
 This is useful for customers who don't want to globally enforce ZDR but need to ensure specific requests only route to ZDR endpoints.
 

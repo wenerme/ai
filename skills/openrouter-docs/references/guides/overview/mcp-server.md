@@ -84,7 +84,7 @@ Not all clients pop up the auth automatically; some need a one-time login step a
 
 ## What you can do
 
-The MCP exposes these tools. Most are read-only lookups against live OpenRouter data. The exceptions: `send-message` and `generate-image` make billable inference calls, and `send-feedback` writes feedback on one of your own generations.
+The MCP exposes these tools. Most are read-only lookups against live OpenRouter data. Two exceptions exist. `send-message` and `generate-image` make billable inference calls, and `send-feedback` writes feedback on one of your own generations.
 
 | Tool                        | What it does                                                                                                                                                                                                                                                                                                                                                                                     |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -102,13 +102,13 @@ The MCP exposes these tools. Most are read-only lookups against live OpenRouter 
 | `list-task-classifications` | What OpenRouter traffic is used for: market share by task type (code generation, web search, summarization, …) with the top models for each and macro-category (Code, Data, Agent, General) aggregates                                                                                                                                                                                           |
 | `search-docs`               | Search the full OpenRouter docs to answer "how do I…" questions                                                                                                                                                                                                                                                                                                                                  |
 | `send-feedback`             | Report a problem with one of your own generations (category + optional comment), sent to the OpenRouter team                                                                                                                                                                                                                                                                                     |
-| `spawn-ori-eval`            | Get the instructions for running a model eval with Ori — your own agent on your own prompts, on a pinned harness and model — and follow them                                                                                                                                                                                                                                                     |
+| `spawn-ori-eval`            | Get the instructions for running a model eval with Ori (your own agent on your own prompts, on a pinned harness and model), then follow them                                                                                                                                                                                                                                                     |
 | `install-ori-harness`       | Get the argument-free recipe for installing the Ori harness and follow it                                                                                                                                                                                                                                                                                                                        |
 | `ping`                      | Health check to verify the connection                                                                                                                                                                                                                                                                                                                                                            |
 
 ## Pick the right model for a task
 
-You describe a task and the assistant recommends a model for it, and the recommendation is backed by live data, not the model's stale training knowledge. `send-message` is grounded so the assistant won't name a model from memory; for any "which model should I use" question it defers to the live `list-benchmarks`, `list-daily-model-rankings`, and `list-models` tools. The right pick might be the cheapest, the smartest, the fastest, a specific modality, or a particular provider.
+You describe a task and the assistant recommends a model for it, with the recommendation backed by live data rather than the model's stale training knowledge. `send-message` is grounded so the assistant won't name a model from memory. For any "which model should I use" question, it defers to the live `list-benchmarks`, `list-daily-model-rankings`, and `list-models` tools. The right pick might be the cheapest, the smartest, the fastest, a specific modality, or a particular provider.
 
 By task and trade-off:
 
@@ -149,4 +149,4 @@ By benchmark and provider:
 ## Troubleshooting
 
 * **Tool calls fail with an auth error.** Re-run the authenticate step for your client. The key may have expired (7-day lifetime) or been disconnected.
-* **The login didn't pop automatically.** That's expected for some clients. Trigger it with the per-client step above.
+* **The login didn't pop automatically.** Some clients require a manual trigger. Use the per-client step above.

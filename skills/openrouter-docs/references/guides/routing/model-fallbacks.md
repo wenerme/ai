@@ -48,7 +48,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 The `models` parameter lets you automatically try other models if the primary model's providers are down, rate-limited, or refuse to reply due to content moderation.
 
-## How It Works
+## How it works
 
 Provide an array of model IDs in priority order. If the first model returns an error, OpenRouter will automatically try the next model in the list.
 
@@ -121,7 +121,7 @@ Provide an array of model IDs in priority order. If the first model returns an e
   ```
 </CodeGroup>
 
-## Fallback Behavior
+## Fallback behavior
 
 If the model you selected returns an error, OpenRouter will try to use the fallback model instead. If the fallback model is down or returns an error, OpenRouter will return that error.
 
@@ -166,7 +166,7 @@ const message = await anthropic.beta.messages.create({
 * `fallbacks` cannot be combined with the `models` parameter; sending both returns a 400 error.
 * `fallbacks` accepts at most 3 entries; longer lists return a 400 error.
 
-## Using with OpenAI SDK
+## Using with the OpenAI SDK
 
 To use the `models` array with the OpenAI SDK, include it in the `extra_body` parameter. In the example below, `~openai/gpt-latest` will be tried first, and the `models` array will be tried in order as fallbacks.
 

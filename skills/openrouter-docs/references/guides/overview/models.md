@@ -27,7 +27,7 @@ Filter models by their output capabilities. Accepts a comma-separated list of mo
 Examples:
 
 ```bash lines theme={null}
-# Default — text models only
+# Default (text models only)
 curl "https://openrouter.ai/api/v1/models"
 
 # Image generation models only
@@ -88,7 +88,7 @@ GET /api/v1/model/{author}/{slug}
 
 The endpoint resolves aliases automatically. For example, `anthropic/claude-3-5-sonnet` redirects to the canonical `anthropic/claude-3.5-sonnet` and returns its data.
 
-Variant suffixes are also supported — append `:free`, `:thinking`, etc. to the slug:
+Variant suffixes are also supported. Append `:free`, `:thinking`, etc. to the slug:
 
 ```bash lines theme={null}
 # Look up a specific model
@@ -196,7 +196,7 @@ All pricing values are in USD per token/request/unit. A value of `"0"` indicates
 
 ##### Pricing Overrides
 
-Some endpoints charge different rates under certain conditions — for example, long-context pricing where requests above a token threshold cost more, or time-based pricing where peak hours have higher rates. These appear in the optional `pricing.overrides` array:
+Some endpoints charge different rates under certain conditions. Examples include long-context pricing above a token threshold, or time-based pricing where peak hours cost more. These appear in the optional `pricing.overrides` array:
 
 ```json lines theme={null}
 {
@@ -205,9 +205,9 @@ Some endpoints charge different rates under certain conditions — for example, 
 
   // Condition: applies when current UTC time is within this daily window
   "utc_start": 1630,  // Inclusive start as HHMM clock (16:30 UTC)
-  "utc_end": 30,      // Exclusive end as HHMM clock (00:30 UTC — the window may wrap past midnight)
+  "utc_end": 30,      // Exclusive end as HHMM clock (00:30 UTC; the window may wrap past midnight)
 
-  // Overridden prices — same keys and units as the base pricing object
+  // Overridden prices, same keys and units as the base pricing object
   "prompt": "0.000005",
   "completion": "0.00002",
   "input_cache_read": "0.0000005",
@@ -233,7 +233,7 @@ For example, a model that charges \$2.50/M input tokens normally and \$5/M beyon
 }
 ```
 
-Time-window conditions express peak/off-peak pricing. The `overrides` array always lists every window — peak and off-peak — tiling the full 24-hour day, so the complete schedule is recoverable regardless of when the response was generated. For example, a model that charges half price between 16:30 and 00:30 UTC:
+Time-window conditions express peak/off-peak pricing. The `overrides` array always lists every window (peak and off-peak), tiling the full 24-hour day. That means the complete schedule is recoverable regardless of when the response was generated. For example, a model that charges half price between 16:30 and 00:30 UTC:
 
 ```json lines theme={null}
 "pricing": {

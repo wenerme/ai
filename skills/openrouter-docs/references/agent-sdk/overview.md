@@ -12,15 +12,15 @@ The Agent SDK is built to work alongside the [Client SDKs](/docs/client-sdks/ove
 
 ## When to use the Agent SDK
 
-Choose the Agent SDK when you need **agentic behavior** — multi-step reasoning where the model calls tools, processes results, and decides what to do next:
+Choose the Agent SDK when you need **agentic behavior**: multi-step reasoning where the model calls tools, processes results, and decides what to do next.
 
-* **Multi-turn agent loops** — `callModel` automatically loops until a stop condition is met
-* **Tool definitions** — define tools with the `tool()` helper and the SDK executes them for you
-* **Stop conditions** — control when the loop ends with `stepCountIs`, `hasToolCall`, `maxCost`, and more
-* **Conversation state** — the SDK tracks messages, tool results, and context across turns
-* **Streaming** — real-time token output within each agent step
-* **Dynamic parameters** — change model, temperature, or tools between turns based on context
-* **MCP tools** — plug in a remote [Model Context Protocol](/docs/agent-sdk/call-model/mcp-tools) server and its tools drop straight into `callModel`
+* **Multi-turn agent loops**: `callModel` automatically loops until a stop condition is met
+* **Tool definitions**: define tools with the `tool()` helper and the SDK executes them for you
+* **Stop conditions**: control when the loop ends with `stepCountIs`, `hasToolCall`, `maxCost`, and more
+* **Conversation state**: the SDK tracks messages, tool results, and context across turns
+* **Streaming**: real-time token output within each agent step
+* **Dynamic parameters**: change model, temperature, or tools between turns based on context
+* **MCP tools**: plug in a remote [Model Context Protocol](/docs/agent-sdk/call-model/mcp-tools) server and its tools drop straight into `callModel`
 
 <Tip>
   If you only need simple request/response calls to a model without agent loops, the [Client SDKs](/docs/client-sdks/overview) are a lighter-weight option.
@@ -83,7 +83,7 @@ const text = await result.getText();
 console.log(text);
 ```
 
-The SDK sends the message to the model, receives a tool call, executes `get_weather`, feeds the result back, and returns the final response — all in one `callModel` invocation.
+The SDK sends the message to the model, receives a tool call, executes `get_weather`, feeds the result back, and returns the final response, all in one `callModel` invocation.
 
 ## Core concepts
 
@@ -138,19 +138,19 @@ const result = openrouter.callModel({
 
 ## Agent SDK vs Client SDKs
 
-|                        | Agent SDK                                                           | Client SDKs                                                   |
-| ---------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------- |
-| **Focus**              | Agentic primitives — multi-turn loops, tools, stop conditions       | Lean API client — mirrors the REST API with full type safety  |
-| **Use when**           | You want built-in agent loops, tool execution, and state management | You want direct model calls and manage orchestration yourself |
-| **Conversation state** | Managed for you via `callModel`                                     | You manage it                                                 |
-| **Tool execution**     | Automatic with the `tool()` helper                                  | You dispatch tool calls                                       |
-| **Languages**          | TypeScript                                                          | TypeScript, Python, Go                                        |
+|                        | Agent SDK                                                           | Client SDKs                                                     |
+| ---------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **Focus**              | Agentic primitives: multi-turn loops, tools, stop conditions        | Lean API client that mirrors the REST API with full type safety |
+| **Use when**           | You want built-in agent loops, tool execution, and state management | You want direct model calls and manage orchestration yourself   |
+| **Conversation state** | Managed for you via `callModel`                                     | You manage it                                                   |
+| **Tool execution**     | Automatic with the `tool()` helper                                  | You dispatch tool calls                                         |
+| **Languages**          | TypeScript                                                          | TypeScript, Python, Go                                          |
 
 ## Next steps
 
-* [Call Model](/docs/agent-sdk/call-model) — the complete `callModel` API reference
-* [Tools](/docs/agent-sdk/call-model/tools) — defining and using tools
-* [Stop Conditions](/docs/agent-sdk/call-model/stop-conditions) — controlling agent loop termination
-* [Streaming](/docs/agent-sdk/call-model/streaming) — real-time token output
-* [DevTools](/docs/agent-sdk/dev-tools/devtools) — telemetry capture and visualization for development
-* [Migrating from @openrouter/sdk](/docs/agent-sdk/agent-migration) — move agent imports to the standalone package
+* [Call Model](/docs/agent-sdk/call-model): the complete `callModel` API reference
+* [Tools](/docs/agent-sdk/call-model/tools): defining and using tools
+* [Stop Conditions](/docs/agent-sdk/call-model/stop-conditions): controlling agent loop termination
+* [Streaming](/docs/agent-sdk/call-model/streaming): real-time token output
+* [DevTools](/docs/agent-sdk/dev-tools/devtools): telemetry capture and visualization for development
+* [Migrating from @openrouter/sdk](/docs/agent-sdk/agent-migration): move agent imports to the standalone package

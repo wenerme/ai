@@ -10,7 +10,7 @@ All Data API endpoints are gated by any valid OpenRouter API key (the same key y
 
 ## Rankings Daily
 
-The first endpoint — `/api/v1/datasets/rankings-daily` — returns the top 50 public models per day by total token usage, plus a single aggregated `other` row per day summing every model outside that top 50. Each real model row is keyed on `(date, model_permaslug)`. Numbers are token counts (`prompt_tokens + completion_tokens`), matching what is shown on the rankings page.
+The first endpoint, `/api/v1/datasets/rankings-daily`, returns the top 50 public models per day by total token usage, plus a single aggregated `other` row per day summing every model outside that top 50. Each real model row is keyed on `(date, model_permaslug)`. Numbers are token counts (`prompt_tokens + completion_tokens`), matching what is shown on the rankings page.
 
 The endpoint is gated by any valid OpenRouter API key. The same key you use to call `/api/v1/chat/completions` works here.
 
@@ -22,7 +22,7 @@ Host: openrouter.ai
 Authorization: Bearer <YOUR_OPENROUTER_API_KEY>
 ```
 
-The endpoint accepts only `GET` requests. There is no request body — pass the date window via query parameters.
+The endpoint accepts only `GET` requests. There is no request body; pass the date window via query parameters.
 
 ### Headers
 
@@ -56,7 +56,7 @@ Omitting both parameters returns the most recent 30-day window. See the [Example
 | Per API key | 30 requests / minute |
 | Per account | 500 requests / day   |
 
-The dataset updates live as traffic flows through OpenRouter — there is no daily refresh window — so a poll once per minute is more than enough to keep your view fresh. Exceeding either bucket returns `429 Too Many Requests`.
+The dataset updates live as traffic flows through OpenRouter (there is no daily refresh window), so a poll once per minute is more than enough to keep your view fresh. Exceeding either bucket returns `429 Too Many Requests`.
 
 ### Response shape
 
@@ -95,14 +95,14 @@ The dataset updates live as traffic flows through OpenRouter — there is no dai
 
 Notes on the response:
 
-* Up to 51 rows per day — the top 50 public models by total tokens, plus one aggregated `other` row covering every model outside that top 50. The `other` row is omitted on days where there are no models beyond the top 50.
+* Up to 51 rows per day: the top 50 public models by total tokens, plus one aggregated `other` row covering every model outside that top 50. The `other` row is omitted on days where there are no models beyond the top 50.
 * Models whose total tokens on a given day sum to zero are omitted from that day before ranking. This filters out transcription / image / embedding endpoints whose activity is measured in non-token units (audio seconds, image counts) and which would otherwise appear as `"0"` rows or waste rank slots.
-* Rows are sorted by `date` ascending. Within each date, the top 50 are sorted by `total_tokens` descending (ties break alphabetically on `model_permaslug` so two models with identical totals always appear in the same order across requests), and the `other` row is pinned last — even when its total exceeds the top 50 — so downstream charts can rely on it being the trailing series.
+* Rows are sorted by `date` ascending. Within each date, the top 50 are sorted by `total_tokens` descending (ties break alphabetically on `model_permaslug` so two models with identical totals always appear in the same order across requests), and the `other` row is pinned last (even when its total exceeds the top 50) so downstream charts can rely on it being the trailing series.
 * `total_tokens` is returned as a **string** so 64-bit values are not truncated by JSON parsers that fall back to floats.
 * `model_permaslug` matches the canonical permaslug used elsewhere in the OpenRouter API (e.g. `openai/gpt-4o-2024-05-13`). Non-default variants include a `:variant` suffix (e.g. `openai/gpt-4o-2024-05-13:free`) and are ranked as their own entry, matching the rankings page. The reserved value `other` denotes the aggregated long-tail row described above and is the only `model_permaslug` value that is not a real permaslug.
 * `meta.as_of` is the wall-clock time the response was generated. The underlying dataset updates continuously as traffic flows through OpenRouter, so successive calls a few minutes apart can return different totals for the current (in-progress) day.
-* Token counts for each row come from the upstream provider's own tokenizer — Anthropic counts are what Anthropic reports, OpenAI counts are what OpenAI reports, and so on. Tokenizers differ across providers, so a token in one row is *not* directly comparable to a token in another row from a different provider. The `other` row sums tokens across many providers and so should be treated as a coarse magnitude only.
-* The response stays small — at most 51 rows per day × the requested window. The default 30-day window typically returns under 1,600 rows.
+* Token counts for each row come from the upstream provider's own tokenizer. Anthropic counts are what Anthropic reports, OpenAI counts are what OpenAI reports, and so on. Tokenizers differ across providers, so a token in one row is *not* directly comparable to a token in another row from a different provider. The `other` row sums tokens across many providers and so should be treated as a coarse magnitude only.
+* The response stays small, at most 51 rows per day × the requested window. The default 30-day window typically returns under 1,600 rows.
 
 ### Examples
 
@@ -297,7 +297,7 @@ Authorization: Bearer <YOUR_OPENROUTER_API_KEY>
 
 | Parameter     | Type                                  | Required | Default          | Example               |
 | ------------- | ------------------------------------- | -------- | ---------------- | --------------------- |
-| `source`      | `artificial-analysis \| design-arena` | Yes      | —                | `artificial-analysis` |
+| `source`      | `artificial-analysis \| design-arena` | Yes      | None             | `artificial-analysis` |
 | `task_type`   | `coding \| intelligence \| agentic`   | No       | (all tasks)      | `coding`              |
 | `arena`       | `models \| builders \| agents`        | No       | `models`         | `models`              |
 | `category`    | string                                | No       | (all categories) | `codecategories`      |
@@ -441,7 +441,7 @@ When `source=design-arena`, each item carries ELO ratings from head-to-head batt
 
 ## Task Classifications
 
-The `/api/v1/classifications/task` endpoint returns the market-share breakdown of OpenRouter traffic by task classification — code generation, web search, summarization, and so on — over a trailing time window. Each classification reports its share of total requests and token volume as a fraction between 0 and 1.
+The `/api/v1/classifications/task` endpoint returns the market-share breakdown of OpenRouter traffic by task classification (code generation, web search, summarization, and so on) over a trailing time window. Each classification reports its share of total requests and token volume as a fraction between 0 and 1.
 
 The underlying data is sampled, so absolute volumes aren't exposed. What you get is the relative shape of traffic: which tasks account for the most usage and how they compare within their macro-category.
 

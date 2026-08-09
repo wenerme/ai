@@ -48,7 +48,7 @@ Your user will be prompted to log in to OpenRouter and authorize your app. After
 
 #### How to Generate a Code Challenge
 
-The following example leverages the Web Crypto API and the Buffer API to generate a code challenge for the S256 method. You will need a bundler to use the Buffer API in the web browser:
+The following example uses the Web Crypto API and the Buffer API to generate a code challenge for the S256 method. You will need a bundler to use the Buffer API in the web browser:
 
 <CodeGroup>
   ```typescript title="Generate Code Challenge" lines theme={null}
@@ -78,7 +78,7 @@ When moving to production, replace the localhost callback URL with a public URL 
 
 #### Headless Apps (SSH Servers, Containers)
 
-If your app runs where a localhost callback can't be reached — an SSH session, a remote dev box, a container — omit `callback_url` entirely:
+If your app runs where a localhost callback can't be reached (an SSH session, a remote dev box, a container), omit `callback_url` entirely:
 
 ```txt title="Headless (No Callback)" wrap lines theme={null}
 https://openrouter.ai/auth?code_challenge=<CODE_CHALLENGE>&code_challenge_method=S256&key_label=<YOUR_APP_NAME>

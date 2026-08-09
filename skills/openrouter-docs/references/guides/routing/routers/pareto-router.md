@@ -206,9 +206,9 @@ For full details on how sticky routing works, cache key granularity, and the `x-
   ```
 </CodeGroup>
 
-### Why It Matters for the Pareto Router
+### Session stickiness with the Pareto Router
 
-The Pareto Router selects a model based on coding score and cost — different requests could resolve to different models as the shortlist evolves. Session stickiness pins the **model selection** — not just the provider — so your multi-turn coding session stays on the same model throughout. This prevents mid-conversation model switches that could lead to inconsistent code style or lost prompt cache.
+The Pareto Router selects a model based on coding score and cost, so different requests could resolve to different models as the shortlist evolves. Session stickiness pins the **model selection** as well as the provider, so your multi-turn coding session stays on the same model throughout. This prevents mid-conversation model switches that could lead to inconsistent code style or lost prompt cache.
 
 ## Pricing
 

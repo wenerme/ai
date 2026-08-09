@@ -4230,7 +4230,7 @@ components:
             panelist and the analyst model may produce per inner call. Controls
             the total output budget so reasoning-heavy models like GPT-5.5 do
             not exhaust their token allowance before producing visible text.
-            When omitted, panelists default to 32000 and the analyst to 20000.
+            Defaults to 16000 when omitted.
           example: 16384
           type: integer
         max_tool_calls:

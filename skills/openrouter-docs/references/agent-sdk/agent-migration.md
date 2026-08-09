@@ -195,7 +195,7 @@ npm test
 The script below handles **subpath imports** automatically.
 Barrel imports (`from '@openrouter/sdk'`) and client class
 imports (`import OpenRouter from '@openrouter/sdk'`) must
-be updated **manually** — a blanket replacement on the bare
+be updated **manually**. A blanket replacement on the bare
 package name would also match subpath imports and break
 your code. See the [Client class](#client-class) and
 [Conversation state](#conversation-state-and-message-formats)

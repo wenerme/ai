@@ -116,7 +116,7 @@ If you don't explicitly specify an engine, OpenRouter will default first to the 
 
 When the <code>"{PDFParserEngine.MistralOCR}"</code> engine extracts images from a PDF, OpenRouter requests at most **8 images per PDF** from Mistral via the OCR API's `image_limit` parameter, and forwards no more than 8 images per request to the downstream model. Surplus images are dropped while all extracted text is preserved in full.
 
-This cap exists because per-prompt image limits vary significantly across providers — some reject requests with more than 8 images outright, and even providers with higher caps often fail with context-length errors when a long PDF emits one image per page. Capping at 8 keeps requests within the limits of every supported provider.
+This cap exists because per-prompt image limits vary significantly across providers. Some reject requests with more than 8 images outright, and even providers with higher caps often fail with context-length errors when a long PDF emits one image per page. Capping at 8 keeps requests within the limits of every supported provider.
 
 If your downstream model does not accept image input at all, OCR-extracted images are stripped entirely and only the parsed text is forwarded.
 
@@ -718,7 +718,7 @@ This applies to the <code>"{PDFParserEngine.MistralOCR}"</code> and <code>"{PDFP
 }
 ```
 
-When you read annotations from both the success and error paths, dedupe by `file.hash` — the hash is stable across both shapes for the same parsed file:
+When you read annotations from both the success and error paths, dedupe by `file.hash`. The hash is stable across both shapes for the same parsed file:
 
 ```typescript expandable lines theme={null}
 function isFileAnnotation(value: unknown): value is FileAnnotation {

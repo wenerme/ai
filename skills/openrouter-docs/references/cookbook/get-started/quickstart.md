@@ -137,7 +137,7 @@ chatRequest wrapper, streaming delta chunks, and camelCase usage fields.`}
 ## Prerequisites
 
 * **Node.js 18+** installed
-* An **OpenRouter API key** — create one at
+* An **OpenRouter API key**. Create one at
   [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys) or set up
   a new [Stripe project](/docs/guides/overview/stripe-projects)
 
@@ -291,7 +291,7 @@ full `messages` array is sent with each request. Type `exit` to quit.
 ## 5. Swap models
 
 OpenRouter gives you access to hundreds of models through one API. Change the
-`model` string to switch providers — no other code changes needed.
+`model` string to switch providers, no other code changes needed.
 
 ```typescript lines theme={null}
 // Use OpenAI's latest chat model

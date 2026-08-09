@@ -225,9 +225,9 @@ For full details on how sticky routing works, cache key granularity, and the `x-
   ```
 </CodeGroup>
 
-### Why It Matters for the Auto Router
+### Session stickiness with the Auto Router
 
-Unlike using a fixed model, the Auto Router selects a different model each time based on your prompt. Session stickiness is especially important here because it also pins the **model selection** — not just the provider. Without it, you could get different models on each turn of a conversation, leading to inconsistent behavior and wasted prompt cache.
+Unlike using a fixed model, the Auto Router selects a different model each time based on your prompt. Session stickiness pins the **model selection** as well as the provider. Without it, you could get different models on each turn of a conversation, leading to inconsistent behavior and wasted prompt cache.
 
 ## Supported Models
 
@@ -251,7 +251,7 @@ The exact model pool may be updated as new models become available.
 You can restrict which models the Auto Router can select from using the `plugins` parameter. This is useful when you want to limit routing to specific providers or model families.
 
 <Warning>
-  Each router only reads configuration sent under its own plugin id: use `id: 'auto-beta-router'` with `openrouter/auto-beta`, and `id: 'auto-router'` with the deprecated `openrouter/auto`. Configuration sent under the other router's plugin id is accepted but silently ignored — `allowed_models`, `excluded_models`, `cost_tier`, and `cost_quality_tradeoff` will have no effect on the request.
+  Each router only reads configuration sent under its own plugin id: use `id: 'auto-beta-router'` with `openrouter/auto-beta`, and `id: 'auto-router'` with the deprecated `openrouter/auto`. Configuration sent under the other router's plugin id is accepted but ignored: `allowed_models`, `excluded_models`, `cost_tier`, and `cost_quality_tradeoff` will have no effect on the request.
 </Warning>
 
 ### Via API Request
@@ -570,7 +570,7 @@ Because the router can select premium models, the cost of a request depends on w
 Use these controls to keep spend within expectations:
 
 * **[`cost_tier` / `cost_quality_tradeoff`](#cost--quality-tradeoff)** — choose how much the router favors cheaper models: `cost_tier: 'low'` (or a high numeric `cost_quality_tradeoff`) selects the cheapest band, while higher tiers like `max` select the most expensive, highest-quality models. The dial filters the ranked candidate pool; when task classification or rankings are unavailable, the router falls back to a default model set that the dial does not filter.
-* **[`allowed_models` / `excluded_models`](#configuring-allowed-models)** — hard limits on which models can be selected. These patterns are enforced on every routing path, including fallbacks. Send them under the plugin id that matches your router (`auto-beta-router` for `openrouter/auto-beta`); under any other plugin id they are silently ignored.
+* **[`allowed_models` / `excluded_models`](#configuring-allowed-models)** — hard limits on which models can be selected. These patterns are enforced on every routing path, including fallbacks. Send them under the plugin id that matches your router (`auto-beta-router` for `openrouter/auto-beta`); under any other plugin id they are ignored.
 * **[`provider.max_price`](/docs/guides/routing/provider-selection#max-price)** — a per-request price ceiling. The Auto Router resolves models before provider routing runs, so the selected models' endpoints are still filtered by `max_price`; if no endpoint satisfies the ceiling, the request fails instead of exceeding it.
 
 ## Use Cases

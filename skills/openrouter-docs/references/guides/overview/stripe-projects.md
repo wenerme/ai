@@ -6,18 +6,18 @@
 
 > Add OpenRouter to your app with the Stripe Projects CLI
 
-[Stripe Projects](https://projects.dev) is a CLI-based developer tool marketplace that lets you provision production-grade services -- hosting, databases, auth, analytics, AI, and more -- directly from your terminal. OpenRouter is a launch partner, so you can add AI model access to any project with a single command. Browse the full catalog at [projects.dev/providers](https://projects.dev/providers) and read Stripe's docs at [docs.stripe.com/stripe-projects](https://docs.stripe.com/stripe-projects).
+[Stripe Projects](https://projects.dev) is a CLI-based developer tool marketplace that lets you provision production-grade services (hosting, databases, auth, analytics, AI, and more) directly from your terminal. OpenRouter is a launch partner, so you can add AI model access to any project with a single command. Browse the full catalog at [projects.dev/providers](https://projects.dev/providers) and read Stripe's docs at [docs.stripe.com/stripe-projects](https://docs.stripe.com/stripe-projects).
 
 <Frame>
   <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/stripe-projects/projects-dev-home.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=fe49198425fc33f557cd103e013ca3fc" alt="Stripe Projects home page at projects.dev showing stripe projects add openrouter/api provisioning, syncing credentials, and writing env vars to .env" width="960" height="735" data-path="assets/stripe-projects/projects-dev-home.png" />
 </Frame>
 
-## Why Use Stripe Projects with OpenRouter?
+## Why use Stripe Projects with OpenRouter?
 
-* **One command to get started** -- `stripe projects add openrouter/api` provisions an OpenRouter account, generates an API key, and syncs it to your `.env` file automatically.
-* **Unified billing** -- Manage all your infrastructure costs (hosting, database, AI) through a single Stripe account.
-* **Credential management** -- API keys are stored in Stripe's encrypted vault and synced to your local environment. Rotate credentials without touching your codebase.
-* **Agent-friendly** -- Stripe Projects writes skill files into your project directory, so coding agents can provision and configure services on your behalf.
+* **One command to get started.** `stripe projects add openrouter/api` provisions an OpenRouter account, generates an API key, and syncs it to your `.env` file automatically.
+* **Unified billing.** Manage all your infrastructure costs (hosting, database, AI) through a single Stripe account.
+* **Credential management.** API keys are stored in Stripe's encrypted vault and synced to your local environment. Rotate credentials without touching your codebase.
+* **Agent-friendly.** Stripe Projects writes skill files into your project directory, so coding agents can provision and configure services on your behalf.
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@
 stripe plugin install projects
 ```
 
-## Quick Start
+## Quick start
 
 ### Browse the catalog
 
@@ -53,7 +53,7 @@ If you already have a Stripe project initialized, add OpenRouter in one step:
 stripe projects add openrouter/api
 ```
 
-This provisions an OpenRouter account (or links your existing one), generates an API key, and syncs OpenRouter's environment variables to your `.env` file. By default the service is provisioned on the **Free** plan -- see [Plans and billing](#plans-and-billing) below to upgrade.
+This provisions an OpenRouter account (or links your existing one), generates an API key, and syncs OpenRouter's environment variables to your `.env` file. By default the service is provisioned on the **Free** plan. See [Plans and billing](#plans-and-billing) below to upgrade.
 
 ### Start from scratch
 
@@ -85,13 +85,13 @@ curl https://openrouter.ai/api/v1/chat/completions \
   }'
 ```
 
-## What Gets Provisioned
+## What gets provisioned
 
 When you run `stripe projects add openrouter/api`, the following happens:
 
-1. **Account creation or linking** -- Stripe Projects finds your OpenRouter account by email or creates a new one automatically. See [Account linking](#account-linking) for details on each path.
-2. **API key generation** -- A dedicated API key (`sk-or-v1-...`) is minted and labeled **"Provisioned by Stripe"** so it's easy to identify alongside your other keys at [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
-3. **Environment sync** -- The following variables are stored in Stripe's encrypted vault and written to your project's `.env`:
+1. **Account creation or linking.** Stripe Projects finds your OpenRouter account by email or creates a new one automatically. See [Account linking](#account-linking) for details on each path.
+2. **API key generation.** A dedicated API key (`sk-or-v1-...`) is minted and labeled **"Provisioned by Stripe"** so it's easy to identify alongside your other keys at [openrouter.ai/settings/keys](https://openrouter.ai/settings/keys).
+3. **Environment sync.** The following variables are stored in Stripe's encrypted vault and written to your project's `.env`:
 
    ```bash lines theme={null}
    OPENROUTER_API_KEY=sk-or-v1-...
@@ -100,7 +100,7 @@ When you run `stripe projects add openrouter/api`, the following happens:
 
 Your API key works with the full [OpenRouter API](/docs/quickstart), giving you access to 400+ AI models through a single endpoint.
 
-## Service Details
+## Service details
 
 |              |                                                                                |
 | ------------ | ------------------------------------------------------------------------------ |
@@ -122,7 +122,7 @@ stripe projects upgrade openrouter/api
 stripe projects downgrade openrouter/api
 ```
 
-## Managing Your OpenRouter Service
+## Managing your OpenRouter service
 
 Stripe's `remove` and `rotate` commands accept either the local resource name (e.g. `openrouter-api`) or the `<provider>/<service>` reference. Use `stripe projects services list` to see the exact resource names in your project.
 
@@ -168,20 +168,20 @@ Jump straight to your OpenRouter dashboard from the CLI:
 stripe projects open openrouter
 ```
 
-## Account Linking
+## Account linking
 
 Stripe Projects resolves your OpenRouter account by the email on your Stripe account:
 
-* **No existing OpenRouter account** -- A new account is created inline and credentials are returned directly from the provisioning call. No browser pop-up.
-* **Existing OpenRouter account** -- Stripe and OpenRouter complete a headless OAuth 2.0 code exchange (against `POST /api/v1/provisioning/oauth/token`) to link your account. No browser pop-up in the common case.
-* **Fallback** -- In rare cases (for example, an idempotent replay before linking completes), you'll be prompted to open a browser to finish authorizing the connection. Once linked, the association persists across projects in the same Stripe account.
+* **No existing OpenRouter account.** A new account is created inline and credentials are returned directly from the provisioning call. No browser pop-up.
+* **Existing OpenRouter account.** Stripe and OpenRouter complete a headless OAuth 2.0 code exchange (against `POST /api/v1/provisioning/oauth/token`) to link your account. No browser pop-up in the common case.
+* **Fallback.** In rare cases (for example, an idempotent replay before linking completes), you'll be prompted to open a browser to finish authorizing the connection. Once linked, the association persists across projects in the same Stripe account.
 
 ## Plans and billing
 
 OpenRouter ships with two plans through Stripe Projects:
 
-* **Free** -- Access free AI models at zero cost. No payment method required.
-* **Pay-as-you-go** -- Per-token pricing across 400+ models with no minimum commitment. See [openrouter.ai/models](https://openrouter.ai/models) for rates.
+* **Free.** Access free AI models at zero cost. No payment method required.
+* **Pay-as-you-go.** Per-token pricing across 400+ models with no minimum commitment. See [openrouter.ai/models](https://openrouter.ai/models) for rates.
 
 When you choose a paid plan, Stripe tokenizes your Stripe-stored payment credentials into a [Shared Payment Token](https://docs.stripe.com/agentic-commerce/concepts/shared-payment-tokens) and grants OpenRouter a payment credential scoped to that upgrade. Your underlying card/bank details are never shared directly.
 
@@ -195,7 +195,7 @@ stripe projects billing show
 stripe projects billing add
 ```
 
-## Using with Coding Agents
+## Using with coding agents
 
 Stripe Projects is designed to work with coding agents. When you initialize a project, Stripe writes skill files into your project directory so agents can provision and manage services using the same deterministic CLI.
 
@@ -229,10 +229,10 @@ To give your agent a combined, up-to-date context document for every provider in
 stripe projects llm-context
 ```
 
-## Next Steps
+## Next steps
 
-* [Quickstart](/docs/quickstart) -- Learn the basics of calling the OpenRouter API
-* [Models](https://openrouter.ai/models) -- Browse 400+ available models and compare pricing
-* [API Key Rotation](/docs/cookbook/administration/api-key-rotation) -- Best practices for credential management
-* [Guardrails](/docs/guides/features/guardrails) -- Set spending limits and model restrictions
-* [Provider Selection](/docs/guides/routing/provider-selection) -- Control which providers handle your requests
+* [Quickstart](/docs/quickstart). Learn the basics of calling the OpenRouter API.
+* [Models](https://openrouter.ai/models). Browse 400+ available models and compare pricing.
+* [API key rotation](/docs/cookbook/administration/api-key-rotation). Best practices for credential management.
+* [Guardrails](/docs/guides/features/guardrails). Set spending limits and model restrictions.
+* [Provider selection](/docs/guides/routing/provider-selection). Control which providers handle your requests.

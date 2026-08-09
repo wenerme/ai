@@ -258,9 +258,9 @@ Control output dimensions with `resolution`, `aspect_ratio`, or the convenience 
 }
 ```
 
-* `resolution` — normalized tier (`512`, `1K`, `2K`, `4K`). Concrete pixel dimensions are derived per-provider.
-* `aspect_ratio` — normalized ratio. Pass `auto` to let the provider choose. Common values include `1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `3:2`, `2:3`, `4:5`, `5:4`, and extended ratios like `1:2`, `2:1`, `1:4`, `4:1`, `1:8`, `8:1`, `9:21`, `21:9`. Providers clamp to their supported subset — check the model's `supported_parameters` for accepted values.
-* `size` — convenience shorthand. Pass a tier (`"2K"`) or explicit pixels (`"2048x2048"`) and it gets normalized for the provider. A tier size is equivalent to setting `resolution` and combines with `aspect_ratio`. An explicit pixel size is authoritative — a mismatched `resolution` or `aspect_ratio` alongside it is rejected with a 400.
+* `resolution`: normalized tier (`512`, `1K`, `2K`, `4K`). Concrete pixel dimensions are derived per-provider.
+* `aspect_ratio`: normalized ratio. Pass `auto` to let the provider choose. Common values include `1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `3:2`, `2:3`, `4:5`, `5:4`, and extended ratios like `1:2`, `2:1`, `1:4`, `4:1`, `1:8`, `8:1`, `9:21`, `21:9`. Providers clamp to their supported subset. Check the model's `supported_parameters` for accepted values.
+* `size`: convenience shorthand. Pass a tier (`"2K"`) or explicit pixels (`"2048x2048"`) and it gets normalized for the provider. A tier size is equivalent to setting `resolution` and combines with `aspect_ratio`. An explicit pixel size is authoritative. A mismatched `resolution` or `aspect_ratio` alongside it is rejected with a 400.
 
 Check the model's `supported_parameters` to see which values each endpoint accepts.
 
@@ -279,7 +279,7 @@ Check the model's `supported_parameters` to see which values each endpoint accep
 * `quality` — `auto`, `low`, `medium`, or `high`. Providers without a quality knob ignore this.
 * `output_format` — `png`, `jpeg`, `webp`, or `svg` (vectorization models only; SVG markup is base64-encoded in `b64_json`).
 * `background` — `auto`, `transparent`, or `opaque`. `transparent` requires an alpha-capable format (png or webp).
-* `output_compression` — 0–100 for webp/jpeg. Ignored for png.
+* `output_compression` — 0-100 for webp/jpeg. Ignored for png.
 
 ### Multiple Images
 
@@ -495,14 +495,14 @@ For streaming requests, any partial preview images delivered before the stream e
 | -------------------------- | ---------------- | -------- | ---------------------------------------------------------------------- |
 | `model`                    | string           | Yes      | Model slug (e.g. `bytedance-seed/seedream-4.5`)                        |
 | `prompt`                   | string           | Yes      | Text description of the desired image                                  |
-| `n`                        | integer          | No       | Number of images to generate (1–10)                                    |
+| `n`                        | integer          | No       | Number of images to generate (1-10)                                    |
 | `resolution`               | string           | No       | Resolution tier (`512`, `1K`, `2K`, `4K`)                              |
 | `aspect_ratio`             | string           | No       | Aspect ratio (`1:1`, `16:9`, `9:16`, `4:3`, `3:4`, `1:4`, `4:1`, etc.) |
 | `size`                     | string           | No       | Convenience shorthand — a tier or explicit pixels (`"2048x2048"`)      |
 | `quality`                  | string           | No       | `auto`, `low`, `medium`, or `high`                                     |
 | `output_format`            | string           | No       | `png`, `jpeg`, `webp`, or `svg`                                        |
 | `background`               | string           | No       | `auto`, `transparent`, or `opaque`                                     |
-| `output_compression`       | integer          | No       | Compression level (0–100) for webp/jpeg                                |
+| `output_compression`       | integer          | No       | Compression level (0-100) for webp/jpeg                                |
 | `seed`                     | integer          | No       | Seed for deterministic generation (where supported)                    |
 | `stream`                   | boolean          | No       | Stream partial images via SSE                                          |
 | `input_references`         | array            | No       | Reference images for image-to-image generation                         |

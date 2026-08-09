@@ -135,8 +135,8 @@ Submitted video job: y34x1YREG4Pkdcj7f02v
 ## Step 2: Poll until the job finishes
 
 Add polling in a server route, queue worker, or background job. Treat
-`completed` as success, treat `failed`, `cancelled`, and `expired` as terminal
-errors, and keep a bounded retry limit so the worker cannot run forever.
+`completed` as success. Treat `failed`, `cancelled`, and `expired` as terminal
+errors, and keep a bounded retry limit so the worker can't run forever.
 
 Polling logic:
 

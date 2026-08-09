@@ -358,9 +358,9 @@ The per-request `callback_url` takes priority over a workspace-level default cal
 ## Step 5: Handle the completed job
 
 Handle webhook delivery as a terminal job update. The payload is an event
-envelope with the job fields inside `data`; the `data` object includes fields
-such as `id`, `status`, `generation_id`, `model`, `unsigned_urls`, `usage`, and
-`error`, depending on the terminal state. Store the job state in your database,
+envelope with the job fields inside `data`. Depending on the terminal state,
+`data` includes fields such as `id`, `status`, `generation_id`, `model`,
+`unsigned_urls`, `usage`, and `error`. Store the job state in your database,
 deduplicate retries with `X-OpenRouter-Idempotency-Key`, then download the
 video from the first `unsigned_urls` entry or from the content endpoint. If the
 URL points to the OpenRouter API, include the bearer token when downloading it.

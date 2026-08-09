@@ -10,7 +10,7 @@
 
 ## Overview
 
-When a model author ships a new version (for example Anthropic releasing `claude-opus-4.8`), OpenRouter automatically starts routing `~anthropic/claude-opus-latest` to it. Older code calling the alias keeps working — it just runs on the newest version.
+When a model author ships a new version (for example Anthropic releasing `claude-opus-4.8`), OpenRouter automatically starts routing `~anthropic/claude-opus-latest` to it. Older code calling the alias keeps working. It just runs on the newest version.
 
 This is ideal for:
 
@@ -127,7 +127,7 @@ The response's `model` field reflects the concrete model that actually served th
 }
 ```
 
-## How It Works
+## How it works
 
 Each `~author/family-latest` slug is mapped to a model family on OpenRouter. When a request comes in:
 
@@ -136,11 +136,11 @@ Each `~author/family-latest` slug is mapped to a model family on OpenRouter. Whe
 3. **Request forwarding**: Your request is forwarded to the resolved model and routed across providers exactly as if you'd called that concrete slug directly.
 4. **Transparent reporting**: The response's `model` field reports the concrete model that served the request (for example `anthropic/claude-opus-4.8`), so you can always tell which version answered any given call.
 
-If a family has no eligible model available, the request returns an error rather than silently falling back to something unrelated.
+If a family has no eligible model available, the request returns an error rather than falling back to something unrelated.
 
-## Pricing and Capabilities
+## Pricing and capabilities
 
-`~author/family-latest` rows on the [models page](https://openrouter.ai/models) and in `/api/v1/models` responses report the pricing, context length, modalities, and supported parameters of the target they currently resolve to — not a frozen snapshot. This way:
+`~author/family-latest` rows on the [models page](https://openrouter.ai/models) and in `/api/v1/models` responses report the pricing, context length, modalities, and supported parameters of the target they currently resolve to, not a frozen snapshot. This way:
 
 * Clients that list models for their users see accurate per-token prices.
 * Capability-gated flows (for example "only offer this model for vision requests") see up-to-date modalities.
@@ -148,9 +148,9 @@ If a family has no eligible model available, the request returns an error rather
 
 When a new model is promoted to "latest", these fields update automatically.
 
-## Compatibility Contract
+## Compatibility contract
 
-`~latest` slugs trade exactness for continuity: your existing request shape keeps working when the alias retargets, even if the new model doesn't support every parameter you send. Instead of rejecting the request, OpenRouter remaps unsupported reasoning parameters to the nearest supported value.
+`~latest` slugs trade exactness for continuity. Your existing request shape keeps working when the alias retargets, even if the new model doesn't support every parameter you send. Instead of rejecting the request, OpenRouter remaps unsupported reasoning parameters to the nearest supported value.
 
 Concretely, if the alias starts pointing at a model that requires reasoning:
 
@@ -158,11 +158,11 @@ Concretely, if the alias starts pointing at a model that requires reasoning:
 * `reasoning: { enabled: false }` is flipped to enabled, again at the lowest supported effort.
 * `reasoning: { max_tokens: 0 }` is treated the same way, and the zero token budget is dropped.
 
-This remapping only applies to `~latest` slugs. Concrete model slugs keep strict validation: sending `effort: "none"` to a model that mandates reasoning returns a `400`. If you need exact parameter semantics, pin a concrete slug.
+This remapping only applies to `~latest` slugs. Concrete model slugs keep strict validation. Sending `effort: "none"` to a model that mandates reasoning returns a `400`. If you need exact parameter semantics, pin a concrete slug.
 
 Separately from the `~latest` contract, unsupported non-`none` efforts are mapped to the nearest supported level on all slugs (for example `xhigh` → `high` on a model without `xhigh`).
 
-## Use Cases
+## Use cases
 
 * **Always-on assistants**: Point user-facing agents at `~anthropic/claude-sonnet-latest` and get new releases for free.
 * **Evaluation harnesses**: Benchmark "the latest" model per author without editing configs.
@@ -171,10 +171,10 @@ Separately from the `~latest` contract, unsupported non-`none` efforts are mappe
 ## Limitations
 
 * **Versions can change at any time**: When a newer model is rolled in as the latest target, subsequent requests resolve to it. If your application requires a fixed version for reproducibility (for example in regression tests), use the concrete model slug instead.
-* **Only `latest`**: The router always resolves to the newest eligible model. There is no built-in way to pin to "second newest" or to roll back through the alias — to downgrade, switch to a concrete slug.
+* **Only `latest`**: The router always resolves to the newest eligible model. There's no built-in way to pin to "second newest" or to roll back through the alias. To downgrade, switch to a concrete slug.
 * **Aliases and hidden models are excluded**: The router never resolves to another alias slug or to models that have been hidden.
 
-## Pinning to a Specific Version
+## Pinning to a specific version
 
 When you need reproducibility, bypass latest resolution by calling the concrete model slug directly:
 

@@ -12,7 +12,7 @@ OpenRouter uses [Stripe](https://stripe.com) for payments and tax handling. Once
 
 1. Go to [openrouter.ai/settings/credits](https://openrouter.ai/settings/credits) and click **Add Credits**.
 
-2. If you haven't purchased before, the modal walks you through adding a **billing address** and then a **payment method** — both inside the same modal.
+2. If you haven't purchased before, the modal walks you through adding a **billing address** and then a **payment method**, both inside the same modal.
 
 3. Once your billing address and payment method are saved, the main purchase form appears. Expand the **Edit Tax ID** section.
 
@@ -23,7 +23,7 @@ OpenRouter uses [Stripe](https://stripe.com) for payments and tax handling. Once
 That's it. Your tax ID now appears on all invoices going forward.
 
 <Note>
-  You can add multiple tax IDs if needed — for example, an EU VAT number and a local tax registration number. Each saved ID shows as a chip above the input field. Click the trash icon next to any ID to remove it.
+  You can add multiple tax IDs if needed, for example, an EU VAT number and a local tax registration number. Each saved ID shows as a chip above the input field. Click the trash icon next to any ID to remove it.
 </Note>
 
 ## Supported tax ID types

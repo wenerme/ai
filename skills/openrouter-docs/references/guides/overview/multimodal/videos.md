@@ -46,7 +46,7 @@ export const Template = ({children, data}) => {
 
 export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
-OpenRouter supports sending video files to compatible models via the API. This guide will show you how to work with video using our API.
+OpenRouter supports sending video files to compatible models via the API. This guide shows you how to work with video through the API.
 
 OpenRouter supports both **direct URLs** and **base64-encoded data URLs** for videos:
 
@@ -63,7 +63,7 @@ OpenRouter supports both **direct URLs** and **base64-encoded data URLs** for vi
 
 ## Video Inputs
 
-Requests with video files to compatible models are available via the `/api/v1/chat/completions` API with the `video_url` content type. The `url` can either be a URL or a base64-encoded data URL. Note that only models with video processing capabilities will handle these requests.
+You can send video files to compatible models through the `/api/v1/chat/completions` API using the `video_url` content type. The `url` can be either a URL or a base64-encoded data URL. Only models with video processing capabilities handle these requests.
 
 You can search for models that support video by filtering to video input modality on our [Models page](/docs/guides/overview/models).
 
@@ -383,7 +383,7 @@ Balance video quality with practical considerations:
 Video URL support varies significantly by provider:
 
 * **Google Gemini (AI Studio)**: Only supports YouTube links (e.g., `https://www.youtube.com/watch?v=...`)
-* **Google Gemini (Vertex AI)**: Does not support video URLs - use base64-encoded data URLs instead
+* **Google Gemini (Vertex AI)**: Does not support video URLs. Use base64-encoded data URLs instead
 * **Other providers**: Check model-specific documentation for video URL support
 
 ## Troubleshooting

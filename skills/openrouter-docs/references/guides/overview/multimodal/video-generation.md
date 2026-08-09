@@ -46,7 +46,7 @@ export const Template = ({children, data}) => {
   return <>{process(children)}</>;
 };
 
-OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](https://openrouter.ai/docs/guides/overview/models?output_modalities=video).
+OpenRouter supports video generation from text prompts (and optional reference images) via a dedicated asynchronous API. You can find the supported models, their capabilities, and pricing by filtering our [model list by video output](/docs/guides/overview/models?output_modalities=video).
 
 <Frame caption="Generated with minimax/hailuo-3 (2K, 5s, 16:9, with audio)">
   <video controls loop playsInline preload="metadata" style={{ width: '100%' }}>
@@ -452,7 +452,7 @@ Instead of polling for job status, you can receive a webhook notification when a
 
 ### Webhook Payload
 
-When a job reaches a terminal state, a POST request is sent to the callback
+When a job reaches a terminal state, OpenRouter sends a POST request to the callback
 URL with an event envelope. Each delivery also carries an
 `X-OpenRouter-Idempotency-Key` header of the form `<job_id>-<status>` for
 safe retry deduplication.
@@ -604,9 +604,9 @@ function verifyWebhookSignature(
 
 ## Zero Data Retention
 
-Video generation is **not eligible** for [Zero Data Retention (ZDR)](/docs/guides/features/zdr). Because video generation is asynchronous, the generated video output must be retained by the provider for a short period of time so that it can be retrieved after generation is complete. This temporary retention is inherent to the async polling workflow and cannot be bypassed.
+Video generation is **not eligible** for [Zero Data Retention (ZDR)](/docs/guides/features/zdr). Because video generation is asynchronous, the provider must retain the generated video output briefly so you can retrieve it after generation completes. This temporary retention is inherent to the async polling workflow, and you can't bypass it.
 
-If you have ZDR enforcement enabled (either via [account settings](https://openrouter.ai/settings/privacy) or the per-request `zdr` parameter), video generation requests will not be routed.
+If you have ZDR enforcement enabled (either via [account settings](https://openrouter.ai/settings/privacy) or the per-request `zdr` parameter), OpenRouter won't route video generation requests.
 
 ## Troubleshooting
 

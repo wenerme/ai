@@ -32,26 +32,26 @@ For organizations, all members are automatically added to the Default workspace.
 
 Each workspace has independent settings for:
 
-* **[API Keys](https://openrouter.ai/workspaces/default/keys)** — Every API key lives in a workspace. Members can create their own keys in any workspace they belong to. For organizations, admins can create system keys owned by the workspace rather than an individual user.
-* **[Guardrails](https://openrouter.ai/workspaces/default/guardrails)** — Each workspace has its own guardrail to govern API key and member activity. Workspace guardrails inherit account-level policies and can add more restrictive rules within those constraints.
-* **[BYOK](https://openrouter.ai/workspaces/default/byok)** — Bring your own provider keys per workspace, or share the same provider key across multiple workspaces.
-* **[Routing](https://openrouter.ai/workspaces/default/routing)** — Configure provider routing per workspace to optimize for cost, latency, throughput, or tool-calling quality.
-* **[Presets](https://openrouter.ai/workspaces/default/presets)** — Organize shortcuts for system prompts, model and provider configurations, and request parameters.
-* **[Plugins](https://openrouter.ai/workspaces/default/plugins)** — Configure default plugin behavior for API requests in each workspace.
-* **[Observability](https://openrouter.ai/workspaces/default/observability)** — Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
-* **[Members](https://openrouter.ai/workspaces/default/members)** — Control which team members have access to each workspace.
-* **[Budgets](/docs/guides/features/workspaces/workspace-budgets)** — Set daily, weekly, monthly, or lifetime spending limits per workspace (Enterprise plan).
+* **[API Keys](https://openrouter.ai/workspaces/default/keys)**. Every API key lives in a workspace. Members can create their own keys in any workspace they belong to. For organizations, admins can create system keys owned by the workspace rather than an individual user.
+* **[Guardrails](https://openrouter.ai/workspaces/default/guardrails)**. Each workspace has its own guardrail to govern API key and member activity. Workspace guardrails inherit account-level policies and can add more restrictive rules within those constraints.
+* **[BYOK](https://openrouter.ai/workspaces/default/byok)**. Bring your own provider keys per workspace, or share the same provider key across multiple workspaces.
+* **[Routing](https://openrouter.ai/workspaces/default/routing)**. Configure provider routing per workspace to optimize for cost, latency, throughput, or tool-calling quality.
+* **[Presets](https://openrouter.ai/workspaces/default/presets)**. Organize shortcuts for system prompts, model and provider configurations, and request parameters.
+* **[Plugins](https://openrouter.ai/workspaces/default/plugins)**. Configure default plugin behavior for API requests in each workspace.
+* **[Observability](https://openrouter.ai/workspaces/default/observability)**. Connect different observability integrations per workspace, or send traces from all workspaces to the same platform.
+* **[Members](https://openrouter.ai/workspaces/default/members)**. Control which team members have access to each workspace.
+* **[Budgets](/docs/guides/features/workspaces/workspace-budgets)**. Set daily, weekly, monthly, or lifetime spending limits per workspace (Enterprise plan).
 
 ## Account Level Settings
 
 Some settings apply globally across all workspaces:
 
-* **[Activity](https://openrouter.ai/activity) & [Logs](https://openrouter.ai/logs)** — View all account activity and logs, with the option to filter by workspace.
-* **[Credits & Billing](https://openrouter.ai/settings/credits)** — Unified billing across all workspaces.
-* **[Organization](https://openrouter.ai/settings/organization-members)** — Manage organization members, roles, and workspace assignments.
-* **[Management Keys](https://openrouter.ai/settings/management-keys)** — API keys for administrative actions across all workspaces.
-* **[Privacy](https://openrouter.ai/settings/privacy)** — Account-level data policies and provider/model restrictions that apply to all workspaces.
-* **[Preferences](https://openrouter.ai/settings/preferences)** — Account preferences that apply to all workspaces.
+* **[Activity](https://openrouter.ai/activity) & [Logs](https://openrouter.ai/logs)**. View all account activity and logs, with the option to filter by workspace.
+* **[Credits & Billing](https://openrouter.ai/settings/credits)**. Unified billing across all workspaces.
+* **[Organization](https://openrouter.ai/settings/organization-members)**. Manage organization members, roles, and workspace assignments.
+* **[Management Keys](https://openrouter.ai/settings/management-keys)**. API keys for administrative actions across all workspaces.
+* **[Privacy](https://openrouter.ai/settings/privacy)**. Account-level data policies and provider/model restrictions that apply to all workspaces.
+* **[Preferences](https://openrouter.ai/settings/preferences)**. Account preferences that apply to all workspaces.
 
 ## Organization Permissions
 

@@ -67,7 +67,7 @@ Visit the [Models page](/docs/guides/overview/models) and filter by output modal
 
 ## API Usage
 
-Send a `POST` request to `/api/v1/audio/speech` with the text you want to synthesize. The response is a raw audio byte stream — not JSON — so you can pipe it directly to a file or audio player.
+Send a `POST` request to `/api/v1/audio/speech` with the text you want to synthesize. The response is a raw audio byte stream (not JSON), so you can pipe it directly to a file or audio player.
 
 ### Basic Example
 
@@ -197,15 +197,15 @@ MODEL: 'openai/gpt-4o-mini-tts-2025-12-15'
 
 ### Request Parameters
 
-| Parameter          | Type   | Required           | Description                                                                                                                                                                                                                                                            |
-| ------------------ | ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `model`            | string | Yes                | The TTS model to use (e.g., `openai/gpt-4o-mini-tts-2025-12-15`, `mistralai/voxtral-mini-tts-2603`)                                                                                                                                                                    |
-| `input`            | string | Yes                | The text to synthesize into speech                                                                                                                                                                                                                                     |
-| `voice`            | string | Provider-dependent | Voice identifier. Available voices vary by model — check each model's page on the [Models page](/docs/guides/overview/models) for supported voices. Omit this parameter only when the selected provider documents a default voice; otherwise an explicit voice is required. |
-| `response_format`  | string | No                 | Audio output format: `mp3` or `pcm`. Defaults to `pcm`                                                                                                                                                                                                                 |
-| `speed`            | number | No                 | Playback speed multiplier. Only used by models that support it (e.g., OpenAI TTS). Ignored by other providers. Defaults to `1.0`                                                                                                                                       |
-| `input_references` | array  | No                 | Reference content for stateless voice cloning: one `input_audio` part carrying the voice sample, optionally accompanied by one `text` part with its transcript. See [Voice Cloning](#voice-cloning) below                                                              |
-| `provider`         | object | No                 | Provider-specific passthrough configuration                                                                                                                                                                                                                            |
+| Parameter          | Type   | Required           | Description                                                                                                                                                                                                                                                              |
+| ------------------ | ------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `model`            | string | Yes                | The TTS model to use (e.g., `openai/gpt-4o-mini-tts-2025-12-15`, `mistralai/voxtral-mini-tts-2603`)                                                                                                                                                                      |
+| `input`            | string | Yes                | The text to synthesize into speech                                                                                                                                                                                                                                       |
+| `voice`            | string | Provider-dependent | Voice identifier. Available voices vary by model, so check each model's page on the [Models page](/docs/guides/overview/models) for supported voices. Omit this parameter only when the selected provider documents a default voice; otherwise an explicit voice is required. |
+| `response_format`  | string | No                 | Audio output format: `mp3` or `pcm`. Defaults to `pcm`                                                                                                                                                                                                                   |
+| `speed`            | number | No                 | Playback speed multiplier. Only used by models that support it (e.g., OpenAI TTS). Ignored by other providers. Defaults to `1.0`                                                                                                                                         |
+| `input_references` | array  | No                 | Reference content for stateless voice cloning: one `input_audio` part carrying the voice sample, optionally accompanied by one `text` part with its transcript. See [Voice Cloning](#voice-cloning) below                                                                |
+| `provider`         | object | No                 | Provider-specific passthrough configuration                                                                                                                                                                                                                              |
 
 When `voice` is omitted, OpenRouter only forwards the request to providers whose adapter supports a provider-side default voice. For other providers, the request is rejected with a validation error.
 
@@ -227,7 +227,7 @@ Pass the reference audio as a base64 `input_audio` part in `input_references` (a
 }
 ```
 
-Note: some providers for a voice-cloning model may not support voice cloning — check the `supports_voice_cloning` field on the [endpoints API](/docs/api/api-reference/endpoints/list-all-endpoints-for-a-model).
+Note: some providers for a voice-cloning model may not support voice cloning. Check the `supports_voice_cloning` field on the [endpoints API](/docs/docs/api-reference/list-endpoints-for-a-model).
 
 Limits and requirements:
 
@@ -256,7 +256,7 @@ You can pass provider-specific options using the `provider` parameter. Options a
 
 #### Azure (MAI-Voice-2)
 
-Azure TTS uses SSML internally, but this is fully abstracted — you only need the standard parameters. The `voice` parameter takes an Azure voice name (e.g., `en-US-Harper:MAI-Voice-2`), and `speed` is supported (range: 0.5–2.0).
+Azure TTS uses SSML internally, but this is fully abstracted, so you only need the standard parameters. The `voice` parameter takes an Azure voice name (e.g., `en-US-Harper:MAI-Voice-2`), and `speed` is supported (range: 0.5–2.0).
 
 For expressive synthesis, pass `style` and optionally `styledegree` via provider options:
 
@@ -375,7 +375,7 @@ API_KEY_REF,
 **Empty or corrupted audio file?**
 
 * Verify the `response_format` matches how you're saving the file (e.g., don't save `pcm` output with a `.mp3` extension)
-* Check the response status code — non-200 responses return JSON error bodies, not audio
+* Check the response status code, since non-200 responses return JSON error bodies, not audio
 
 **Model not found?**
 
@@ -385,4 +385,4 @@ API_KEY_REF,
 **Voice not available?**
 
 * Available voices vary by provider. Check the provider's documentation for supported voice identifiers
-* Each model has its own set of voices — check the model's page on the [Models page](/docs/guides/overview/models) for the full list
+* Each model has its own set of voices, so check the model's page on the [Models page](/docs/guides/overview/models) for the full list

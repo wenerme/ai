@@ -56,7 +56,7 @@ Note that:
 
 1. The full tool schema is not sent; just the tool names.
 2. Each turn is truncated to a maximum of 5,000 characters. If a turn is truncated, the text will end in `...[truncated]` so that classifier understands the text would have continued.
-3. If the classifier model has a meaningfully shorter context than the prompt in question, the classification will silently fail (without affecting the original request). We recommend selecting a model with a large context window.
+3. If the classifier model has a meaningfully shorter context than the prompt in question, the classification will fail without affecting the original request. We recommend selecting a model with a large context window.
 
 ## How Classification Works
 
@@ -81,8 +81,8 @@ If classification fails (timeout, model error, invalid output), the generation p
 
 Classification tags appear in two places:
 
-* **Log rows** — Classified generations show a tag icon. Hover for a tooltip summary.
-* **Generation detail panel** — Open any classified generation to see a **Classifications** section with the full dimension-to-value breakdown.
+* **Log rows**. Classified generations show a tag icon. Hover for a tooltip summary.
+* **Generation detail panel**. Open any classified generation to see a **Classifications** section with the full dimension-to-value breakdown.
 
 Filter and analyze your classified generations in the [Activity](https://openrouter.ai/activity) and [Logs](https://openrouter.ai/logs) views.
 

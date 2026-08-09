@@ -37,10 +37,10 @@ This fee is waived for the first {BYOK_FEE_MONTHLY_REQUEST_THRESHOLD} BYOK reque
 
 Each BYOK key belongs to one of two sections:
 
-* **Prioritized** — Attempted in order, before falling
+* **Prioritized**, attempted in order, before falling
   back to OpenRouter endpoints. Use this section for your
   primary provider keys.
-* **Fallback** — Tried only after OpenRouter endpoints
+* **Fallback**, tried only after OpenRouter endpoints
   have been attempted, in order. Use this section for
   backup keys you only want used as a last resort.
 
@@ -119,7 +119,7 @@ your BYOK keys in your
 
 ### BYOK with Data Policies
 
-BYOK endpoints are subject to your data policies. Bringing your own key changes which credential authenticates the upstream request — it doesn't change which endpoints you're allowed to route to. Your provider, account, and guardrail data policies are applied **before** BYOK endpoints are created, so BYOK only routes to endpoints that already satisfy them.
+BYOK endpoints are subject to your data policies. Bringing your own key changes which credential authenticates the upstream request. It doesn't change which endpoints you're allowed to route to. Your provider, account, and guardrail data policies are applied **before** BYOK endpoints are created, so BYOK only routes to endpoints that already satisfy them.
 
 This means a BYOK key does not exempt a provider from your [Zero Data Retention](/docs/guides/features/zdr) or `data_collection` restrictions. If you enforce ZDR (via `provider.zdr`, account privacy settings, or a guardrail) and a provider's endpoint retains prompts, that endpoint stays ineligible even when you supply your own key.
 
@@ -133,13 +133,13 @@ For example, if you enforce ZDR and send a request that would otherwise use a BY
 }
 ```
 
-The retaining endpoint is filtered out before your BYOK key is considered, and the request fails if no ZDR-compliant endpoint remains — even though you have a valid key for that provider.
+The retaining endpoint is filtered out before your BYOK key is considered, and the request fails if no ZDR-compliant endpoint remains, even though you have a valid key for that provider.
 
 To use a provider via BYOK, make sure it's permitted by your data policies: the provider's endpoint must satisfy any ZDR or `data_collection` restrictions you've enabled. See [Zero Data Retention](/docs/guides/features/zdr) and [Provider Routing](/docs/guides/routing/provider-selection).
 
 ### BYOK and Guardrail Budgets
 
-By default, BYOK inference spend does **not** count toward [guardrail](/docs/guides/features/guardrails) budgets — only OpenRouter credit spend does. This means a budget limit can appear far from its cap even after significant BYOK usage.
+By default, BYOK inference spend does **not** count toward [guardrail](/docs/guides/features/guardrails) budgets. Only OpenRouter credit spend does. This means a budget limit can appear far from its cap even after significant BYOK usage.
 
 To count BYOK spend toward a guardrail's budget, enable **Include BYOK spend** on the guardrail (or set `include_byok_in_budgets` to `true` via the [management API](/docs/guides/features/guardrails#api-access)). When enabled, the amount OpenRouter would have charged had the request not used your own provider key is added to the budget alongside your credit spend, and the guardrail blocks requests once the combined total reaches the limit.
 
@@ -149,7 +149,7 @@ This toggle is available on all guardrail budgets, including the workspace defau
 
 [Workspace budgets](/docs/guides/features/workspaces/workspace-budgets) behave the same way and are controlled separately from guardrails. By default BYOK spend does **not** count toward them; enable **Include BYOK spend** in the workspace's Budgets settings, or set `include_byok_in_budgets` to `true` on the workspace budget endpoint.
 
-The workspace setting applies to every interval for that workspace at once — daily, weekly, monthly, and lifetime.
+The workspace setting applies to every interval for that workspace at once (daily, weekly, monthly, and lifetime).
 
 ### Multiple BYOK Keys for the Same Provider
 
@@ -178,9 +178,9 @@ then OpenRouter endpoints, then Backup key.
 
 Each BYOK key supports optional filters to control when it is used:
 
-* **Model filter** — Restrict the key to specific models (e.g. only use this key for `openai/gpt-4o`). When set, the key is only used for requests to the listed models. Other models for the same provider will skip this key.
-* **API key filter** — Restrict which of your OpenRouter API keys can use this BYOK key. Useful for isolating BYOK usage to specific applications or environments.
-* **Member filter** — Restrict which workspace members can use this BYOK key. Useful for giving different team members access to different provider accounts.
+* **Model filter**, restrict the key to specific models (e.g. only use this key for `openai/gpt-4o`). When set, the key is only used for requests to the listed models. Other models for the same provider will skip this key.
+* **API key filter**, restrict which of your OpenRouter API keys can use this BYOK key. Useful for isolating BYOK usage to specific applications or environments.
+* **Member filter**, restrict which workspace members can use this BYOK key. Useful for giving different team members access to different provider accounts.
 
 Filters are evaluated before routing. A key is only used when all of its active filters match the current request. If no filters are set, the key is available to all models, API keys, and members.
 
@@ -204,8 +204,8 @@ Each key can be given an optional name (e.g. "Production", "Team A", "GPT-4 only
 
 Azure has two resource types, each using a different domain:
 
-* **Azure AI Foundry** — resources at `*.services.ai.azure.com`. Uses the model catalog and does not require per-model deployments.
-* **Azure OpenAI** — resources at `*.openai.azure.com`. Requires explicit per-model deployments.
+* **Azure AI Foundry**, resources at `*.services.ai.azure.com`. Uses the model catalog and does not require per-model deployments.
+* **Azure OpenAI**, resources at `*.openai.azure.com`. Requires explicit per-model deployments.
 
 #### Foundry Configuration (Recommended)
 
@@ -225,7 +225,7 @@ The simplest way to configure Azure BYOK is with a Foundry configuration. Provid
 * **`resource_name`**: The name of your Azure resource (the subdomain portion of your endpoint URL).
 * **`resource_type`**: Either `"ai_foundry"` for Azure AI Foundry resources (`*.services.ai.azure.com`) or `"openai"` for Azure OpenAI resources (`*.openai.azure.com`). Defaults to `"openai"` if omitted.
 
-This configuration works for all models available in your Azure resource — no per-model setup required.
+This configuration works for all models available in your Azure resource, with no per-model setup required.
 
 #### Per-Deployment Configuration (Legacy)
 
