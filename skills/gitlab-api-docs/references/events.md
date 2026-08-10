@@ -3,7 +3,7 @@
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/13056) `epics` target type in GitLab 17.3.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/13056) `epics` target type in GitLab 17.3.
 
 Use this API to review event activity. Events can include a wide range of actions including things
 like joining projects, commenting on issues, pushing changes to MRs, or closing epics.

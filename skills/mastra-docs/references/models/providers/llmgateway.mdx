@@ -1,11 +1,11 @@
 ---
 title: "LLM Gateway | Models"
-description: "Use LLM Gateway models with Mastra. 189 models available."
+description: "Use LLM Gateway models with Mastra. 187 models available."
 ---
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 189 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 187 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -892,18 +892,6 @@ for await (const chunk of stream) {
     "outputCost": 14
   },
   {
-    "model": "llmgateway/gpt-5.2-chat-latest",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 1.75,
-    "outputCost": 14
-  },
-  {
     "model": "llmgateway/gpt-5.2-codex",
     "imageInput": true,
     "audioInput": false,
@@ -926,18 +914,6 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 21,
     "outputCost": 168
-  },
-  {
-    "model": "llmgateway/gpt-5.3-chat-latest",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 16384,
-    "inputCost": 1.75,
-    "outputCost": 14
   },
   {
     "model": "llmgateway/gpt-5.3-codex",

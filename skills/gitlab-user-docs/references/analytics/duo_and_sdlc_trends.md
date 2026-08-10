@@ -27,12 +27,12 @@ Use GitLab Duo and SDLC trends to:
 
 The following table lists the availability of GitLab Duo and SDLC metrics:
 
-| Feature | Requires GitLab Duo Pro or Enterprise | Requires [ClickHouse](../../integration/clickhouse.md) |
-|---------|:-----------------------:|:-------------------:|
-| GitLab Duo and SDLC trends dashboard | Yes | Yes |
-| `AiMetrics` API | Yes | Yes |
-| `AiUserMetrics` API | Yes | Yes |
-| `AiUsageData` API | No | No (PostgreSQL only) |
+| Feature | Requires [ClickHouse](../../integration/clickhouse.md) |
+|---------|:-------------------:|
+| GitLab Duo and SDLC trends dashboard | Yes |
+| `AiMetrics` API | Yes |
+| `AiUserMetrics` API | Yes |
+| `AiUsageData` API | No (PostgreSQL only) |
 
 To learn how you can optimize your license utilization,
 see [GitLab Duo add-ons](../../subscriptions/subscription-add-ons.md).

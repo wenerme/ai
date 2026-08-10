@@ -4,7 +4,7 @@ Tier: Free, Premium, Ultimate
 
 Offering: GitLab Self-Managed
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/8939) in GitLab 17.0 [with a feature flag](../feature_flags/_index.md) named `gitaly_bundle_uri`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/8939) in GitLab 17.0 [with a feature flag](../feature_flags/_index.md) named `gitaly_bundle_uri`. Disabled by default.
 
 Gitaly supports Git [bundle URIs](https://git-scm.com/docs/bundle-uri). Bundle
 URIs are locations where Git can download one or more bundles to bootstrap the
@@ -208,7 +208,7 @@ go_cloud_url = "s3://<bucket>?region=us-west-1"
 
 #### Configure S3-compatible servers
 
-- `use_path_style` and `disable_https` parameters [introduced](https://gitlab.com/groups/gitlab-org/-/epics/8939) in GitLab 17.4.
+- `use_path_style` and `disable_https` parameters [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/8939) in GitLab 17.4.
 
 S3-compatible servers are configured similarly to S3 with the
 addition of the `endpoint` parameter.
@@ -278,7 +278,7 @@ You can schedule this command with a tool like `cron(8)`.
 
 ### Automatic generation
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16007) in GitLab 18.0 [with a feature flag](../feature_flags/_index.md) named `gitaly_bundle_generation`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16007) in GitLab 18.0 [with a feature flag](../feature_flags/_index.md) named `gitaly_bundle_generation`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.

@@ -6,7 +6,7 @@ Migrate GitLab groups and projects through object storage.
 - Offering: GitLab.com, GitLab Self-Managed
 - Status: Experiment
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/8985) as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3 [with feature flags](../../../administration/feature_flags/_index.md) named `offline_transfer_exports`, `offline_transfer_imports`, and `offline_transfer_ui`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/8985) as an [experiment](../../../policy/development_stages_support.md#experiment) in GitLab 19.3 [with feature flags](../../../administration/feature_flags/_index.md) named `offline_transfer_exports`, `offline_transfer_imports`, and `offline_transfer_ui`. Disabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by feature flags.
@@ -127,7 +127,7 @@ To migrate a group or project:
 
 ## Rate limits
 
-See [offline transfer rate limits](../../../security/rate_limits.md#offline-transfer-exports-and-imports).
+See [offline transfer rate limits](../../../rate_limits/_index.md#offline-transfer-exports-and-imports).
 
 ## Related topics
 

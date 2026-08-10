@@ -1382,7 +1382,7 @@ The following topics explain how to use keywords to configure CI/CD pipelines.
 
 ### `after_script`
 
-- Running `after_script` commands for canceled jobs [introduced](https://gitlab.com/groups/gitlab-org/-/epics/10158) in GitLab 17.0.
+- Running `after_script` commands for canceled jobs [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/10158) in GitLab 17.0.
 
 Use `after_script` to define an array of commands to run last, after a job's `before_script` and
 `script` sections complete. `after_script` commands also run when:
