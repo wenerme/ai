@@ -10,7 +10,7 @@ encryption and storage limits.
 
 ## Terraform state encryption
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19738) in GitLab 18.8.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/19738) in GitLab 18.8.
 
 By default, GitLab encrypts Terraform state files before storing them. You can turn off
 encryption if needed.

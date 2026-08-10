@@ -366,7 +366,7 @@ For more information about language support plans in SAST, see the [category dir
 
 ### Languages with full support
 
-- Support for C/C++ [introduced](https://gitlab.com/groups/gitlab-org/-/epics/14271) in GitLab 18.6.
+- Support for C/C++ [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14271) in GitLab 18.6.
 
 These languages are supported by both GitLab Advanced SAST (Ultimate) and standard analyzers (all tiers):
 

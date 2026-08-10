@@ -63,7 +63,7 @@ depending on the specific model and feature combination.
 
 - Status: Beta
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/18556) in GitLab 18.3 as a [beta](../../policy/development_stages_support.md#beta).
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/18556) in GitLab 18.3 as a [beta](../../policy/development_stages_support.md#beta).
 
 You can use your own compatible models and platform with GitLab Duo Agent Platform and GitLab Duo features. For compatible models not included in supported model families, use the general model family. This includes models that you host yourself (for example, served through vLLM or LiteLLM), with the requirement that they are exposed through an OpenAI API-compatible `/v1` endpoint.
 

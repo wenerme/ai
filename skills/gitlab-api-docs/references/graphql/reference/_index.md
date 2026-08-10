@@ -93,6 +93,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="query-admingroups-active"></a>`active` | [`Boolean`](#boolean) | When `nil` (default value), returns all groups. When `true`, returns only groups that are not pending deletion. When `false`, only returns groups that are pending deletion. |
+| <a id="query-admingroups-aimedfordeletion"></a>`aimedForDeletion` | [`Boolean`](#boolean) | Filter groups that are marked for deletion. |
 | <a id="query-admingroups-allavailable"></a>`allAvailable` | [`Boolean`](#boolean) | When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence. |
 | <a id="query-admingroups-ids"></a>`ids` | [`[ID!]`](#id) | Filter groups by IDs. |
 | <a id="query-admingroups-markedfordeletionon"></a>`markedForDeletionOn` | [`Date`](#date) | Date when the group was marked for deletion. |
@@ -1408,6 +1409,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="query-groups-active"></a>`active` | [`Boolean`](#boolean) | When `nil` (default value), returns all groups. When `true`, returns only groups that are not pending deletion. When `false`, only returns groups that are pending deletion. |
+| <a id="query-groups-aimedfordeletion"></a>`aimedForDeletion` | [`Boolean`](#boolean) | Filter groups that are marked for deletion. |
 | <a id="query-groups-allavailable"></a>`allAvailable` | [`Boolean`](#boolean) | When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence. |
 | <a id="query-groups-ids"></a>`ids` | [`[ID!]`](#id) | Filter groups by IDs. |
 | <a id="query-groups-markedfordeletionon"></a>`markedForDeletionOn` | [`Date`](#date) | Date when the group was marked for deletion. |
@@ -50187,6 +50189,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-groups-active"></a>`active` | [`Boolean`](#boolean) | When `nil` (default value), returns all groups. When `true`, returns only groups that are not pending deletion. When `false`, only returns groups that are pending deletion. |
+| <a id="organization-groups-aimedfordeletion"></a>`aimedForDeletion` | [`Boolean`](#boolean) | Filter groups that are marked for deletion. |
 | <a id="organization-groups-allavailable"></a>`allAvailable` | [`Boolean`](#boolean) | When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence. |
 | <a id="organization-groups-ids"></a>`ids` | [`[ID!]`](#id) | Filter groups by IDs. |
 | <a id="organization-groups-markedfordeletionon"></a>`markedForDeletionOn` | [`Date`](#date) | Date when the group was marked for deletion. |
@@ -50896,6 +50899,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="pathlock-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the path was locked. |
 | <a id="pathlock-id"></a>`id` | [`PathLockID!`](#pathlockid) | ID of the path lock. |
 | <a id="pathlock-path"></a>`path` | [`String`](#string) | Locked path. |
 | <a id="pathlock-user"></a>`user` | [`UserCore`](#usercore) | User that has locked the path. |
@@ -67919,6 +67923,7 @@ The environment of a workflow.
 | <a id="workflowenvironment-ambient"></a>`AMBIENT` | Ambient environment. |
 | <a id="workflowenvironment-chat"></a>`CHAT` | Chat environment. |
 | <a id="workflowenvironment-chat_partial"></a>`CHAT_PARTIAL` | Chat Partial environment. |
+| <a id="workflowenvironment-external"></a>`EXTERNAL` | External environment. |
 | <a id="workflowenvironment-ide"></a>`IDE`  | Deprecated in GitLab 18.6. Renamed. Use `CHAT` instead. |
 | <a id="workflowenvironment-web"></a>`WEB`  | Deprecated in GitLab 18.6. Renamed. Use `AMBIENT` instead. |
 

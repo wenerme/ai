@@ -1146,7 +1146,7 @@ Example response:
 
 ## Discover Job Router information
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/19607) in GitLab 18.7 [with feature flags](../administration/feature_flags/_index.md) named `job_router` and `job_router_instance_runners`. Disabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/19607) in GitLab 18.7 [with feature flags](../administration/feature_flags/_index.md) named `job_router` and `job_router_instance_runners`. Disabled by default.
 
 Get Job Router discovery information for a runner.
 

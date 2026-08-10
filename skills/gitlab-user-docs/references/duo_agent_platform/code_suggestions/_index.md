@@ -11,7 +11,7 @@ Code Suggestions helps you write code in GitLab more efficiently by using AI to 
 - LLM for Amazon Q: Amazon Q Developer
 - Available on [GitLab Duo with self-hosted models](../../../administration/gitlab_duo_self_hosted/_index.md)
 
-- [Introduced support for Gemini Enterprise Agent Platform Codey APIs](https://gitlab.com/groups/gitlab-org/-/epics/10562) in GitLab 16.1.
+- [Introduced support for Gemini Enterprise Agent Platform Codey APIs](https://gitlab.com/groups/gitlab-org/-/work_items/10562) in GitLab 16.1.
 - [Removed support for GitLab native model](https://gitlab.com/groups/gitlab-org/-/work_items/10752) in GitLab 16.2.
 - [Introduced support for code generation](https://gitlab.com/gitlab-org/gitlab/-/issues/415583) in GitLab 16.3.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/435271) in GitLab 16.7.

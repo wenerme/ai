@@ -4,7 +4,7 @@
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 - Status: Beta
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16318) as a [beta](../../../policy/development_stages_support.md#beta) in GitLab 19.3.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16318) as a [beta](../../../policy/development_stages_support.md#beta) in GitLab 19.3.
 
 GitLab Advanced SAST analyzes Swift and Objective-C code by using cross-file, cross-function taint
 analysis, which extends [GitLab Advanced SAST](gitlab_advanced_sast.md) coverage to iOS

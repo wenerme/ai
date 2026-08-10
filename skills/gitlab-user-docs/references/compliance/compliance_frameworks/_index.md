@@ -83,7 +83,7 @@ For API-based creation, see [Create a compliance framework from a template](../.
 
 ## Import a compliance framework
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16499) in GitLab 17.11.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16499) in GitLab 17.11.
 
 With this feature, you can use shared or backed up compliance frameworks. The JSON file must not have the same name as an existing compliance framework.
 
@@ -200,7 +200,7 @@ To remove a compliance framework from one or multiple project in a group, remove
 
 ## Export a compliance framework as a JSON file
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/16499) in GitLab 17.11.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/16499) in GitLab 17.11.
 
 With this feature, you can share and back up compliance frameworks.
 

@@ -22,7 +22,7 @@ Prerequisites:
 
 - In a private project, you must have the Reporter, Developer, Maintainer, or Owner role. See [Environment permissions](#environment-permissions).
 
-There are a few ways to view a list of environments for a given project:
+You can view a list of environments for a given project in a few ways:
 
 - On the project's overview page, if at least one environment is available (that is, not stopped).
 
@@ -194,7 +194,7 @@ You can also combine a static prefix with the variable, for example
 result is `https://example.com`.
 
 <i class="fa-youtube-play" aria-hidden="true"></i>
-For an overview, see [set dynamic URLs after a job finished](https://youtu.be/70jDXtOf4Ig).
+For an overview, see [set dynamic URLs after a job finished](https://www.youtube.com/watch?v=70jDXtOf4Ig).
 
 In the following example a review app creates a new environment for each merge request:
 

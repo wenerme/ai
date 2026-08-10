@@ -24,7 +24,7 @@ If the GitLab instance uses Admin Mode, you must
 
 ## Administering projects
 
-- New look [introduced](https://gitlab.com/groups/gitlab-org/-/epics/17782) in GitLab 18.2 [with a feature flag](feature_flags/_index.md) named `admin_projects_vue`. Disabled by default.
+- New look [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17782) in GitLab 18.2 [with a feature flag](feature_flags/_index.md) named `admin_projects_vue`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/549452) in GitLab 18.3. Feature flag `admin_projects_vue` removed.
 
 To administer all projects in the GitLab instance:
@@ -235,7 +235,7 @@ After you turn off this setting:
 
 ## Administering groups
 
-- New look [introduced](https://gitlab.com/groups/gitlab-org/-/epics/17783) in GitLab 18.2 [with a feature flag](feature_flags/_index.md) named `admin_groups_vue`. Disabled by default.
+- New look [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/17783) in GitLab 18.2 [with a feature flag](feature_flags/_index.md) named `admin_groups_vue`. Disabled by default.
 - [Enabled on GitLab.com, GitLab Self-Managed, and GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/553229) in GitLab 18.5.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/574017) in GitLab 18.6. Feature flag `admin_groups_vue` removed.
 
@@ -565,8 +565,8 @@ The list view displays verification status for a selected component.
 The database diagnostics page consists of a number of checks that
 attempt to flag common problems with the database:
 
-- Index corruption caused by [change in PostgreSQL collations](https://gitlab.com/groups/gitlab-org/-/epics/8573)
-- [Schema discrepancies](https://gitlab.com/groups/gitlab-org/-/epics/3928)
+- Index corruption caused by [change in PostgreSQL collations](https://gitlab.com/groups/gitlab-org/-/work_items/8573)
+- [Schema discrepancies](https://gitlab.com/groups/gitlab-org/-/work_items/3928)
 
 To run each check, select the run button for the check. Selecting the run button
 schedules a background job that will report information from the check to the page.

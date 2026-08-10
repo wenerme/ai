@@ -64,6 +64,7 @@ the related documentation:
 |----------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|-------------------------------|
 | Artifacts maximum size (compressed)                                              | 1 GB                                                                                                       | See [Maximum artifacts size](../../administration/cicd/limits.md#maximum-artifacts-size). |
 | Artifacts [expiry time](../../ci/yaml/_index.md#artifactsexpire_in)              | 30 days unless otherwise specified                                                                         | See [Default artifacts expiration](../../administration/settings/continuous_integration.md#set-default-artifacts-expiration). Artifacts created before June 22, 2020 have no expiry. |
+| Security scan [finding](../application_security/detect/security_scanning_results.md) retention   | 30 days                                                                                                    | See [Security scan retention period](../../administration/settings/security_and_compliance.md#security-scan-retention-period). |
 | Scheduled Pipeline Cron                                                          | `*/5 * * * *`                                                                                              | See [Pipeline schedules advanced configuration](../../administration/cicd/limits.md#maximum-scheduled-pipeline-frequency). |
 | Maximum jobs in a single pipeline                                                | `500` for Free tier, `1000` for all trial tiers, `1500` for Premium, and `2000` for Ultimate.              | See [Maximum number of jobs in a pipeline](../../administration/cicd/limits.md#maximum-number-of-jobs-in-a-pipeline). |
 | Maximum jobs in active pipelines                                                 | `500` for Free tier, `1000` for all trial tiers, `20000` for Premium, and `60000` for Ultimate.            | See [Number of jobs in active pipelines](../../administration/cicd/limits.md#number-of-jobs-in-active-pipelines). |
@@ -392,7 +393,7 @@ GitLab.com uses the default of 60 seconds for [Puma request timeouts](../../admi
 ## Rate limits on GitLab.com
 
 > [!note]
-> See [Rate limits](../../security/rate_limits.md) for administrator
+> See [Rate limits](../../rate_limits/_index.md) for administrator
 > documentation.
 
 When a request is rate limited, GitLab responds with a `429` status
@@ -507,7 +508,7 @@ To resolve this issue, use [SSH keys to communicate with GitLab](../ssh.md).
 ### Non-configurable limits
 
 For more information about non-configurable rate limits used on GitLab.com, see
-[non-configurable limits](../../security/rate_limits.md#non-configurable-limits)
+[non-configurable limits](../../rate_limits/_index.md#non-configurable-limits)
 
 ### Pagination response headers
 

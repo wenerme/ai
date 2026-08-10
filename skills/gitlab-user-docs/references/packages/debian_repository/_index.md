@@ -7,7 +7,7 @@
 - [Deployed behind a feature flag](../../../administration/feature_flags/list.md), disabled by default.
 
 > [!warning]
-> The Debian package registry for GitLab is under development and isn't ready for production use. This [epic](https://gitlab.com/groups/gitlab-org/-/epics/6057) details the remaining
+> The Debian package registry for GitLab is under development and isn't ready for production use. This [epic](https://gitlab.com/groups/gitlab-org/-/work_items/6057) details the remaining
 > work and timelines to make it production ready. Support for [Debian packages is an experiment](../package_registry/supported_functionality.md), and has known security vulnerabilities.
 
 Publish Debian packages in your project's package registry. Then install the

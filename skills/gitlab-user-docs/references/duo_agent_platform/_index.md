@@ -78,16 +78,24 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 
 1. MCP clients do not consume credits directly. However, any Agent Platform usage, such as model requests made through an MCP client, might consume credits.
 
-## Beta and experiment features
+## Beta features that consume credits
 
-These features are either beta or experiment and do not consume GitLab Credits.
+These features are in beta and their usage consumes GitLab Credits.
 
-For [users on the Free](../../subscriptions/gitlab_credits.md#for-the-free-tier) tier, beta and experimental features do not consume credits,
+| Feature | Free | Premium | Ultimate |
+|---------|---|---|---|
+| [Security Review Flow](flows/foundational_flows/security_review.md)  Detects business logic vulnerabilities in merge requests. | No | No | Yes |
+
+## Beta and experimental features that don't consume credits
+
+These features are either beta or experimental and do not consume GitLab Credits.
+
+For [users on the Free](../../subscriptions/gitlab_credits.md#for-the-free-tier) tier, these beta and experimental features do not consume credits,
 but you require credits in your Monthly Commitment Pool to access them.
 
 > [!warning]
 > When a feature becomes generally available, usage of the feature starts to consume GitLab Credits on all GitLab versions and on all offerings.
-> Beta features can change to generally available with usage billing at any time.
+> Beta features that don't consume credits can change to generally available with usage billing at any time.
 
 | Feature | Free | Premium | Ultimate |
 |---------|---|---|---|
@@ -95,6 +103,6 @@ but you require credits in your Monthly Commitment Pool to access them.
 | [AI audit event report](ai-audit-events.md)  Browse and filter a unified record of GitLab Duo agent activity for compliance and governance purposes. | No | Yes | Yes |
 | [Initialize project context](onboarding.md#initialize-project-context)  Automatically generate an `AGENTS.md` file that documents your project conventions for use by AI agents. | Yes | Yes | Yes |
 | [Improve CI/CD setup](onboarding.md#improve-cicd-setup)  Analyze your CI/CD configuration and generate a merge request with suggested improvements. | Yes | Yes | Yes |
-| [CI Expert Agent](agents/foundational_agents/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | No | Yes | Yes |
+| [CI Expert Agent](agents/foundational_agents/ci_expert_agent.md)  Create, debug, and optimize GitLab CI/CD pipelines. | Yes | Yes | Yes |
 | [External MCP servers](../gitlab_duo/model_context_protocol/ai_catalog_mcp_servers.md)  Connect custom agents to external data sources and third-party services using MCP servers. | No | Yes | Yes |
 | [Resolve merge conflicts](../project/merge_requests/conflicts.md#resolve-conflicts-with-gitlab-duo)  Autonomously analyze merge conflicts, edit conflicting files, and push a resolution commit. | No | Yes | Yes |

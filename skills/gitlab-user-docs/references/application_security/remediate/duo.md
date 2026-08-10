@@ -102,7 +102,7 @@ Vulnerability Resolution is available in the following workflows:
 ### Resolve a vulnerability from the vulnerability report
 
 - Resolve a vulnerability from the vulnerability report:
-  - [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/10779) in GitLab 16.7 as an [experiment](../../../policy/development_stages_support.md#experiment) on GitLab.com.
+  - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/10779) in GitLab 16.7 as an [experiment](../../../policy/development_stages_support.md#experiment) on GitLab.com.
   - Changed to beta in GitLab 17.3.
   - Changed to require GitLab Duo add-on in GitLab 17.6 and later.
 - Vulnerability Resolution activity icon:
@@ -147,7 +147,7 @@ then process the merge request according to your standard workflow.
 
 ### Resolve a vulnerability in a merge request
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/epics/14862) in GitLab 17.6.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/14862) in GitLab 17.6.
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/175150) in GitLab 17.7.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/185452) in GitLab 17.11. Feature flag `resolve_vulnerability_in_mr` removed.
 
