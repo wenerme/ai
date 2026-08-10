@@ -1,8 +1,14 @@
 ---
 title: "Meshy 6 API 节点 3D 模型生成 ComfyUI 官方示例"
 description: "本文将介绍如何在 ComfyUI 中使用 Meshy 6 节点的 API 进行 3D 模型生成"
-translationSourceHash: 302cd348
+translationSourceHash: 7e389802
 translationFrom: tutorials/partner-nodes/meshy/meshy-6.mdx
+translationBlockHashes:
+  "_intro": 2dd46cd7
+  "About Meshy 6": bc605135
+  "Text-to-Model Workflow": 4898f71a
+  "Image-to-Model Workflow": 23d84229
+  "Multi-view to Model Workflow": a06016ac
 ---
 
 Meshy 是一个领先的 AI 驱动 3D 生成平台，使用户能够从文本提示、图像或多视角输入创建高质量的 3D 模型。ComfyUI 现已原生集成 Meshy API，让您可以方便地使用相关节点进行 3D 模型生成。
@@ -18,31 +24,45 @@ Meshy 6 是 Meshy 最新一代的 3D 模型生成技术，在几何质量、纹�
 - **多种输入模式**：支持文本到 3D、图像到 3D 和多视角到 3D 生成
 - **PBR 支持**：生成基于物理的渲染贴图，包括金属度、粗糙度和法线贴图
 
-## 文本到模型工作流
+## 文生模型工作流
 
 使用 Meshy 6 直接从文本描述生成 3D 模型。
 
-    在 Comfy Cloud 上即时运行文本到模型工作流。
-  
+  在 Comfy Cloud 上即时运行文生模型工作流。
 
     下载工作流 JSON 文件以供本地使用。
   
 
-## 图像到模型工作流
+![Meshy 6 文生模型工作流预览](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_text_to_model-1.webp)
 
-使用 Meshy 6 的图像到 3D 功能将 2D 图像转换为详细的 3D 模型。
+## 图生模型工作流
 
-    在 Comfy Cloud 上即时运行图像到模型工作流。
+利用 Meshy 6 的图转 3D 功能，将 2D 图像转换为精细的 3D 模型。
+
+  在 Comfy Cloud 上即时运行图生模型工作流。
+
+  下载工作流 JSON 文件以供本地使用。
+
+![Meshy 6 图生模型工作流预览](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_image_to_model-1.webp)
+
+  获取此工作流的示例输入图像。
+
+## 多视图到模型工作流
+
+从多个视角图像生成3D模型，实现更精确的几何和纹理重建。
+
+  立即在Comfy Cloud上运行多视图工作流。
+
+    下载工作流JSON文件供本地使用。
   
 
-    下载工作流 JSON 文件以供本地使用。
+![Meshy 6 多视图到模型工作流预览](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_multi_image_to_model-1.webp)
+
   
-
-## 多视角到模型工作流
-
-从多个视角图像生成 3D 模型，以获得更准确的几何和纹理重建。
-
-    在 Comfy Cloud 上即时运行多视角工作流。
+    获取示例前视图图像。
   
-
-    下载工作流 JSON 文件以供本地使用。
+  
+    获取示例后视图图像。
+  
+  
+    获取示例侧视图图像。

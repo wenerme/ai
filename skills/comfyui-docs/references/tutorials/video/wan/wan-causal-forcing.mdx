@@ -1,6 +1,6 @@
 ---
 title: "Causal Forcing I2V ComfyUI Workflow Example"
-description: "Generate videos from images using Causal Forcing or Causal Forcing++ with Wan2.1 — achieving smooth, temporally consistent video in as few as 1 inference step."
+description: "Generate videos from images using Causal Forcing or Causal Forcing++ with Wan2.1. Achieves smooth, temporally consistent video in as few as 1 inference step."
 ---
 
 **Causal Forcing** is a video generation technique that applies **recurrent conditioning** during inference, where each generated frame is fed back into the model to predict the next frame. This produces smooth, temporally consistent videos from a single start image in as few as **1 to 4 inference steps**.
@@ -10,7 +10,16 @@ This workflow uses **Wan2.1** and supports both **Causal Forcing** (standard) an
 [Causal Forcing I2V workflow]
 
   
+    Open in Comfy Cloud
+  
+  
     Download JSON or search "Causal Forcing" in Template Library
+  
+
+**Input materials**
+
+  
+    Input image for the first frame. Download and use this image, or replace with your own.
   
 
 ## How it works
@@ -22,7 +31,7 @@ Unlike standard video generation which processes all frames in parallel, Causal 
 3. Each new frame becomes the input for the next prediction
 4. This repeats for the desired number of frames
 
-This recurrent approach creates **strong temporal consistency** — each frame naturally follows from the one before it — and can produce high-quality results with very few inference steps (1 to 4).
+This recurrent approach creates **strong temporal consistency**: each frame naturally follows from the one before it. This can produce high-quality results with very few inference steps (1 to 4).
 
   This workflow uses a Subgraph node for modular processing. Check out the Subgraph documentation to learn how to customize and extend the workflow.
 
@@ -50,22 +59,22 @@ The workflow accepts a single input image (the first frame) and a text prompt de
 These are exposed as controls on the blueprint subgraph node:
 
 | Parameter | Default | Description |
-|---|---|---|
-| `unet_name` | — | The Wan2.1 I2V model checkpoint to use |
-| `clip_name` | — | The CLIP / text encoder model for the prompt |
-| `vae_name` | — | The VAE model for encoding/decoding |
-| `width` | — | Output video width |
-| `height` | — | Output video height |
-| `noise_seed` | — | Seed for reproducibility |
+||---|---|---|
+| `unet_name` | - | The Wan2.1 I2V model checkpoint to use |
+| `clip_name` | - | The CLIP / text encoder model for the prompt |
+| `vae_name` | - | The VAE model for encoding/decoding |
+| `width` | - | Output video width |
+| `height` | - | Output video height |
+| `noise_seed` | - | Seed for reproducibility |
 
 ## Steps to run
 
-1. **Load an image** — use the **LoadImage** node to load your starting frame
-2. **Write a prompt** (optional) — describe the desired video content
-3. **Set duration** — how many frames to generate
-4. **Select models** — choose Wan2.1 I2V checkpoint, CLIP, and VAE
-5. **Choose mode** — Causal Forcing or Causal Forcing++ (set via the subgraph's internal configuration or a Causal Forcing-specific input if available)
-6. **Run** — frames will be generated sequentially and saved to `ComfyUI/output/`
+1. **Load an image**: use the **LoadImage** node to load your starting frame
+2. **Write a prompt** (optional): describe the desired video content
+3. **Set duration**: how many frames to generate
+4. **Select models**: choose Wan2.1 I2V checkpoint, CLIP, and VAE
+5. **Choose mode**: Causal Forcing or Causal Forcing++ (set via the subgraph's internal configuration or a Causal Forcing-specific input if available)
+6. **Run**: frames will be generated sequentially and saved to `ComfyUI/output/`
 
 ## Model downloads
 
@@ -74,19 +83,19 @@ Download the Wan2.1 I2V model and required files. Place them in the correspondin
 ### Wan2.1 I2V
 
   
-    wan2.1_i2v_480p_14B_fp16.safetensors — Wan2.1 I2V 14B checkpoint
+    wan2.1_i2v_480p_14B_fp16.safetensors - Wan2.1 I2V 14B checkpoint
   
   
-    wan2.1_t2v_1.3B_fp16.safetensors — Wan2.1 1.3B checkpoint (8GB VRAM minimum)
+    wan2.1_t2v_1.3B_fp16.safetensors - Wan2.1 1.3B checkpoint (8GB VRAM minimum)
   
 
 ### CLIP and VAE
 
   
-    google-bert/bert-base-uncased — CLIP text encoder
+    google-bert/bert-base-uncased - CLIP text encoder
   
   
-    Wan2.1_VAE_bf16.safetensors — Wan2.1 VAE
+    Wan2.1_VAE_bf16.safetensors - Wan2.1 VAE
   
 
 ### Model storage location

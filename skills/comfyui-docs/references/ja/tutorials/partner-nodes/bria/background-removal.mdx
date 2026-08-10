@@ -1,70 +1,129 @@
 ---
-title: "ComfyUIでBriaの背景除去を使用する"
+title: "ComfyUIでBria背景除去を使用する"
 description: "ComfyUIでBriaパートナーノードを使用して、画像・動画の背景除去、グリーンスクリーン、背景置換を行う方法を学びます"
-translationSourceHash: c65b0474
+translationSourceHash: 37ac75ee
 translationFrom: tutorials/partner-nodes/bria/background-removal.mdx
-translationBlockHashes:
-  "_intro": f9000433
-  "Image Background Removal": 14b7eb56
-  "Video Background Processing": 3e621db5
 ---
 
 BriaのAI背景処理モデルがComfyUIでパートナーノードとして利用可能になりました。このページでは**画像背景除去**、**動画背景除去**、**透明動画背景**、**動画グリーンスクリーン**、**動画背景置換**について説明します。
 
-## 画像背景除去
+### Bria: 画像背景除去 {#utility_bria_remove_image_background}
 
-BriaのAIサービスを使用して、任意の画像から背景を除去します。結果は透明背景の画像として返されます。
+画像をアップロードすると、Bria APIを使用して自動的に背景が除去されます。結果は透明背景の画像として返されます。
+
+[Bria: 画像背景除去ワークフローのプレビュー]
 
   
-    ワークフローをダウンロード
+    Comfy Cloudで開く
   
   
-    Comfy Cloudで試す
+    テンプレートライブラリで「Bria: Remove Image Background」を検索するかJSONをダウンロード
   
+
+**入力素材**
+
+このファイルを対応する `LoadImage` ノードにアップロードしてください:
+
+  
+    `LoadImage` ノード 26 · `denim_girl.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [入力画像]
+  [Bria: 画像背景除去の出力例]
+</div>
 
 ## 動画背景処理
 
 Briaの動画背景処理ノードを使用すると、動画の背景の除去、置換、クロマキー効果の適用が可能です。入力動画の長さは60秒以内である必要があります。
 
-### 動画背景の除去
+### Bria: 動画背景除去 {#api_bria_remove_video_background}
 
 動画の背景を任意の単色に置き換えます。
 
+[Bria: 動画背景除去ワークフローのプレビュー]
+
   
-    ワークフローをダウンロード
+    Comfy Cloudで開く
   
   
-    Comfy Cloudで試す
+    テンプレートライブラリで「Bria: Remove Video Background」を検索するかJSONをダウンロード
   
 
-### 透明動画背景
+**入力素材**
+
+このファイルを対応する `LoadVideo` ノードにアップロードしてください:
+
+  
+    `LoadVideo` ノード 4 · `spear_warrior.mp4`
+  
+
+### Bria: 動画背景除去（透明） {#api_bria_remove_video_background_transparent}
 
 動画から背景を除去し、透明背景で出力します。
 
+[Bria: 動画背景除去（透明）ワークフローのプレビュー]
+
   
-    ワークフローをダウンロード
+    Comfy Cloudで開く
   
   
-    Comfy Cloudで試す
+    テンプレートライブラリで「Bria: Remove Video Background (Transparent)」を検索するかJSONをダウンロード
   
 
-### 動画グリーンスクリーン
+**入力素材**
+
+このファイルを対応する `LoadVideo` ノードにアップロードしてください:
+
+  
+    `LoadVideo` ノード 5 · `ad_video_demo.mp4`
+  
+
+### Bria: 動画グリーンスクリーン {#api_bria_video_green_screen}
 
 プロ仕様のクロマキーグリーンまたはブルースクリーン効果を動画に適用します。broadcast_green、chroma_green、blue_screenなどのプリセットオプションがあります。
 
+[Bria: 動画グリーンスクリーンワークフローのプレビュー]
+
   
-    ワークフローをダウンロード
+    Comfy Cloudで開く
   
   
-    Comfy Cloudで試す
+    テンプレートライブラリで「Bria: Video Green Screen」を検索するかJSONをダウンロード
   
 
-### 動画背景の置換
+**入力素材**
+
+このファイルを対応する `LoadVideo` ノードにアップロードしてください:
+
+  
+    `LoadVideo` ノード 5 · `investigator.mp4`
+  
+
+### Bria: 動画背景置換 {#api_bria_video_replace_background}
 
 動画の背景をカスタム画像や別の動画に置き換えます。
 
+[Bria: 動画背景置換ワークフローのプレビュー]
+
   
-    ワークフローをダウンロード
+    Comfy Cloudで開く
   
   
-    Comfy Cloudで試す
+    テンプレートライブラリで「Bria: Video Replace Background」を検索するかJSONをダウンロード
+  
+
+**入力素材**
+
+これらのファイルを対応する `LoadVideo` ノードと `LoadImage` ノードにアップロードしてください:
+
+  
+    `LoadVideo` ノード 4 · `stained_window_vintage_woman.mp4`
+  
+  
+    `LoadImage` ノード 8 · `gothic_hall_light_rays.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [gothic_hall_light_rays.png]
+</div>

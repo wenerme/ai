@@ -5,21 +5,41 @@ description: "Generate high-quality 3D Gaussian splat representations from a sin
 
 **TripoSplat** is an open-source model that generates **3D Gaussian splat** representations directly from a single 2D image. It was developed by VAST-AI and released under an open-source license.
 
-Unlike traditional 3D reconstruction methods that require multiple views or generate meshes as the primary output, TripoSplat creates **Gaussian splat** representations — a rendering technique where thousands of colored 3D Gaussians are placed in space to represent a scene. This approach enables fast, high-quality rendering with controllable density and budget.
+Unlike traditional 3D reconstruction methods that require multiple views or generate meshes as the primary output, TripoSplat creates **Gaussian splat** representations: a rendering technique where thousands of colored 3D Gaussians are placed in space to represent a scene. This approach enables fast, high-quality rendering with controllable density and budget.
 
-[TripoSplat workflow]
+### TripoSplat: Image to Gaussian Splat {#3d_triposplat_image_to_gaussian_splat}
 
-    Download JSON or search "TripoSplat" in Template Library
+Upload a single 2D image. Generate a high-quality 3D Gaussian splat representation with controllable density and budget for rendering.
+
+[TripoSplat workflow preview]
+
   
+    Run this workflow instantly on Comfy Cloud
+  
+  
+    Download JSON or search &quot;TripoSplat: Image to Gaussian Splat&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 99 · `white-hotel-on-rocky-island.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input image]
+</div>
 
 ## How it works
 
 TripoSplat uses a **feed-forward architecture** that takes a single RGB image and directly predicts a set of 3D Gaussian primitives. The pipeline involves:
 
-1. **Image encoding** — the input image is processed by a vision encoder (DINOv2)
-2. **Triplane generation** — features are decoded into a triplane representation
-3. **Gaussian prediction** — the triplane is sampled to produce Gaussian parameters (position, scale, rotation, opacity, color)
-4. **Rendering** — Gaussians are rendered from arbitrary viewpoints using differentiable splatting
+1. **Image encoding**: the input image is processed by a vision encoder (DINOv2)
+2. **Triplane generation**: features are decoded into a triplane representation
+3. **Gaussian prediction**: the triplane is sampled to produce Gaussian parameters (position, scale, rotation, opacity, color)
+4. **Rendering**: Gaussians are rendered from arbitrary viewpoints using differentiable splatting
 
   This workflow uses a Subgraph node for modular processing. Check out the Subgraph documentation to learn how to customize and extend the workflow.
 
@@ -70,10 +90,10 @@ The main subgraph node processes the image and generates the 3D Gaussian splat. 
 
 ## Steps to run
 
-1. **Load an image** — use the **LoadImage** node to load a single 2D image
-2. **Run the TripoSplat subgraph** — the model will generate a Gaussian splat representation
-3. **Choose output format** — export as GLB, SPZ, video, or render to mesh
-4. **View results** — use the created 3D file or rendered preview
+1. **Load an image**: use the **LoadImage** node to load a single 2D image
+2. **Run the TripoSplat subgraph**: the model will generate a Gaussian splat representation
+3. **Choose output format**: export as GLB, SPZ, video, or render to mesh
+4. **View results**: use the created 3D file or rendered preview
 
 ## Output options
 
@@ -88,19 +108,19 @@ The main subgraph node processes the image and generates the 3D Gaussian splat. 
 
 Download the TripoSplat model and required files. Place them in the corresponding `models/` subdirectories.
 
-    triposplat_fp16.safetensors — TripoSplat diffusion model checkpoint
+    triposplat_fp16.safetensors: TripoSplat diffusion model checkpoint
   
 
-    triposplat_vae_decoder_fp16.safetensors — VAE decoder
+    triposplat_vae_decoder_fp16.safetensors: VAE decoder
   
 
-    flux2-vae.safetensors — Flux.2 VAE for latent encoding
+    flux2-vae.safetensors: Flux.2 VAE for latent encoding
   
 
-    dino_v3_vit_h.safetensors — CLIP vision encoder (DINOv2)
+    dino_v3_vit_h.safetensors: CLIP vision encoder (DINOv2)
   
 
-    birefnet.safetensors — Background removal model for preprocessing
+    birefnet.safetensors: Background removal model for preprocessing
   
 
 ### Model storage location

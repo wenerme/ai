@@ -1,15 +1,15 @@
 ---
 title: "OpenAI GPT-Image-2 节点"
 description: "了解如何在 ComfyUI 中使用 OpenAI GPT-Image-2 合作伙伴节点生成图像"
-translationSourceHash: b99cdc88
+translationSourceHash: e612a7cf
 translationFrom: tutorials/partner-nodes/openai/gpt-image-2.mdx
 translationBlockHashes:
   "_intro": 9f80a1fc
   "Node Overview": 84ac2d88
   "Getting Started": ab5a2231
-  "Available workflows": 08afb96c
+  "Available workflows": 1885dd5a
   "Key Capabilities": df71dcca
-  "Hybrid Pipelines": 9c6479f0
+  "Hybrid Pipelines": 7f34a278
 ---
 
 OpenAI GPT-Image-2 (`gpt-image-2`) 是 OpenAI 最新的图像模型,现已通过合作伙伴节点 (Partner Nodes) 在 ComfyUI 中可用。它是 OpenAI 第一个在生成前会进行*推理*的图像模型:模型不会一次性采样,而是先规划画面构图,检查结果,并进行迭代。
@@ -41,6 +41,8 @@ GPT-Image-2 在节点库中通过 **OpenAI GPT Image 1.5** 节点的 `model` 选
     下载工作流 JSON 文件。
   
 
+![GPT-Image-2 文生图工作流预览](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_openai_gpt_image_2_t2i-1.webp)
+
 ![GPT-Image-2 文生图示例](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/openai/gpt_image_2/gpt_image_2_t2i_1.jpg)
 
 ### 图像编辑
@@ -53,6 +55,10 @@ GPT-Image-2 在节点库中通过 **OpenAI GPT Image 1.5** 节点的 `model` 选
     下载工作流 JSON 文件。
   
 
+![GPT-Image-2 图像编辑工作流预览](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_openai_gpt_image_2_image_edit-1.webp)
+
+    获取此工作流的示例输入图像
+  
 ![GPT-Image-2 图生图示例](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/openai/gpt_image_2/gpt_image_2_i2i_1.jpg)
 
 ![GPT-Image-2 图像编辑示例 1](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/openai/gpt_image_2/gpt_image_2_image_edit_1.jpg)
@@ -75,6 +81,6 @@ GPT-Image-2 在执行局部编辑时保持结构一致性,在编辑区域之外�
 
 ![GPT-Image-2 一致性图像示例](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/api_nodes/openai/gpt_image_2/consistent_example.jpg)
 
-## 混合工作流
+## 混合 Pipeline
 
-GPT-Image-2 可以自然嵌入到混合工作流中:用它生成包含大量文字的关键画面,然后交给本地模型进行放大、风格化或视频生成 —— 在同一个工作流中,每个步骤都用最合适的模型。
+GPT-Image-2 可以自然嵌入到混合 Pipeline 中:用它生成包含大量文字的关键画面,然后交给本地模型进行图像放大、风格化或视频生成:在同一个工作流中,每个步骤都用最合适的模型。

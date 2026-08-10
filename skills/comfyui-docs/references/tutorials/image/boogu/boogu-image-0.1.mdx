@@ -25,26 +25,33 @@ description: "Boogu-Image-0.1 is an Apache-2.0 10B parameter unified image gener
 
 ## Boogu-Image-0.1-Turbo text-to-image workflow
 
+### Boogu Turbo: Text to Image {#image_boogu_image_0_1_turbo_t2i}
+
+Generate high-quality images from text prompts using the Boogu Turbo model, a distilled 10B-parameter text-to-image pipeline that produces photorealistic outputs in just 4 steps.
+
+[Boogu Turbo text-to-image workflow preview]
+
   
     Open in Comfy Cloud
   
   
-    Download JSON or search "Boogu image 0.1" in Template Library
+    Download JSON or search &quot;Boogu Turbo&quot; in Template Library
   
 
 The Boogu-Image-0.1-Turbo workflow uses a subgraph that encapsulates the diffusion, text encoding, and VAE decode pipeline. You provide a text prompt and resolution settings, and the subgraph handles the rest.
 
 ### Boogu-Image-0.1-Turbo model downloads
 
+  
     Diffusion model for Boogu-Image-0.1-Turbo.
   
-
+  
     Text encoder for Boogu-Image-0.1-Turbo.
   
-
+  
     VAE for Boogu-Image-0.1-Turbo.
   
-
+  
     LoRA module (rank-128) for Boogu-Image-0.1-Turbo.
   
 
@@ -65,25 +72,40 @@ The Boogu-Image-0.1-Turbo workflow uses a subgraph that encapsulates the diffusi
 
 ## Boogu-Image-0.1-Edit image editing workflow
 
+### Boogu image 0.1 Edit {#image_boogu_image_0_1_edit}
+
+Edit images using Boogu's instruction-driven model, taking one input image and generating an edited output alongside a side-by-side comparison view.
+
+[Boogu image 0.1 Edit workflow preview]
+
   
     Open in Comfy Cloud
   
   
-    Download JSON or search "Boogu image 0.1 Edit" in Template Library
+    Download JSON or search &quot;Boogu image 0.1 Edit&quot; in Template Library
   
 
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
   
-    Get the example input image for this workflow
+    `LoadImage` node 32 · `tech_cowboy.png`
   
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [tech_cowboy.png]
+</div>
 
 ### Boogu-Image-0.1-Edit model downloads
 
+  
     Diffusion model for Boogu-Image-0.1-Edit.
   
-
+  
     Text encoder for Boogu-Image-0.1-Edit.
   
-
+  
     VAE for Boogu-Image-0.1-Edit.
   
 

@@ -33,22 +33,46 @@ Currently, ComfyUI's Partner nodes support the following Hunyuan 3D model genera
 2. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute model generation
 3. After the workflow completes, preview and export your 3D model
 
-## Text-to-3D workflow
+### HunYuan3D: Text to Model {#api_hunyuan3d_text_to_model}
 
-Enter a text description to generate a 3D model in one click. The model accurately follows style, shape, and material details for consistent results.
+Input a text prompt or upload a reference image to generate a detailed 3D model asset.
 
 **Example prompt**: "Mechanical dolphin with gears, steampunk"
 
-  Run on Comfy Cloud
+[HunYuan3D: Text to Model workflow preview]
 
-## Image-to-3D workflow
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;HunYuan3D: Text to Model&quot; in Template Library
+  
 
-Upload one or more images to generate high-quality 3D models. Support for 2–4 multi-view images improves geometry and material fidelity.
+### HY 3D: Image to Model {#api_hunyuan3d_image_to_model}
 
-  Run on Comfy Cloud
+Upload an image to generate a 3D model with geometry and PBR textures. Upload 2–4 multi-view images from different angles for improved geometry and material fidelity.
 
-## Multi-view-to-3D workflow
+[HY 3D: Image to Model workflow preview]
 
-Provide multiple view images (front, back, side) to generate 3D models with improved accuracy and detail. This uses the same workflow as Image-to-3D—simply upload 2–4 images from different angles.
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;HY 3D: Image to Model&quot; in Template Library
+  
 
-  Run on Comfy Cloud
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
+  
+    `LoadImage` node 1 · `pink_robot_front.png`
+  
+  
+    `LoadImage` node 10 · `pink_robot_back.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [pink_robot_front.png]
+  [pink_robot_back.png]
+</div>

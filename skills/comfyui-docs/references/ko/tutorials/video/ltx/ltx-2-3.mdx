@@ -1,6 +1,15 @@
 ---
 title: "LTX-2.3: ComfyUI 워크플로 예제"
 description: "ComfyUI에서 LTX-2.3을 사용하여 텍스트-투-비디오, 이미지-투-비디오, FLF2V, 오디오 기반 비디오, IC-LoRA 제어, ID-LoRA 개인화를 위한 네이티브 워크플로를 활용하는 방법을 알아보세요."
+translationSourceHash: 36378426
+translationFrom: tutorials/video/ltx/ltx-2-3.mdx
+translationBlockHashes:
+  "_intro": 2afce33d
+  "Key features": 3ddea9bd
+  "Getting started": 8bd36b77
+  "ComfyUI Native Workflows": f3645859
+  "Prompting tips": f92227b7
+  "Resources": 3f045765
 ---
 
 [LTX-2.3](https://huggingface.co/Lightricks/LTX-2.3)은 Lightricks의 오픈소스 오디오-비디오 생성 모델의 최신 버전으로, 이제 ComfyUI에서 기본적으로 지원됩니다. LTX-2를 기반으로, 세부 묘사, 인물 비디오, 오디오 품질, 이미지-투-비디오 일관성, 프롬프트 이해도 및 텍스트 렌더링 전반에 걸쳐 주요 품질 개선이 이루어졌습니다.
@@ -39,11 +48,17 @@ LTX-2.3은 ComfyUI에서 기본적으로 지원됩니다. 시작하려면:
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_t2v.mp4"></video>
 
+### LTX-2.3 텍스트-투-비디오 {#video_ltx2_3_t2v}
+
+향상된 프롬프트 이해와 텍스트 렌더링으로 텍스트 프롬프트에서 비디오를 생성합니다.
+
+[LTX-2.3 텍스트-투-비디오 워크플로 미리보기]
+
   
-    Open in Comfy Cloud
+    Comfy Cloud에서 열기
   
   
-    Download JSON or search "LTX-2.3 T2V" in Template Library
+    JSON을 다운로드하거나 템플릿 라이브러리에서 "LTX-2.3 T2V" 검색
   
 
 #### 모델 다운로드
@@ -94,11 +109,17 @@ ComfyUI/
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_i2v.mp4"></video>
 
+### LTX-2.3 이미지-투-비디오 {#video_ltx2_3_i2v}
+
+향상된 움직임 일관성으로 입력 이미지에서 비디오를 생성합니다.
+
+[LTX-2.3 이미지-투-비디오 워크플로 미리보기]
+
   
-    Open in Comfy Cloud
+    Comfy Cloud에서 열기
   
   
-    Download JSON or search "LTX-2.3 I2V" in Template Library
+    JSON을 다운로드하거나 템플릿 라이브러리에서 "LTX-2.3 I2V" 검색
   
 
   
@@ -149,11 +170,17 @@ ComfyUI/
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_flf2v.mp4"></video>
 
+### LTX-2.3 처음-마지막 프레임 투 비디오 {#video_ltx2_3_flf2v}
+
+시작 이미지와 종료 이미지 사이를 보간합니다.
+
+[LTX-2.3 처음-마지막 프레임 투 비디오 워크플로 미리보기]
+
   
-    Open in Comfy Cloud
+    Comfy Cloud에서 열기
   
   
-    Download JSON or search "LTX-2.3 FLF2V" in Template Library
+    JSON을 다운로드하거나 템플릿 라이브러리에서 "LTX-2.3 FLF2V" 검색
   
 
   
@@ -193,11 +220,17 @@ ComfyUI/
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_ia2v.mp4"></video>
 
+### LTX-2.3 이미지-오디오-투-비디오 {#video_ltx2_3_ia2v}
+
+이미지와 오디오에서 립싱크 비디오를 생성합니다.
+
+[LTX-2.3 이미지-오디오-투-비디오 워크플로 미리보기]
+
   
-    Open in Comfy Cloud
+    Comfy Cloud에서 열기
   
   
-    Download JSON or search "LTX-2.3 IA2V" in Template Library
+    JSON을 다운로드하거나 템플릿 라이브러리에서 "LTX-2.3 IA2V" 검색
   
 
   
@@ -252,15 +285,15 @@ ComfyUI/
 ![LTX-2.3 IC-LoRA preview](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_3_ic_lora-1.webp)
 
   
-    Open in Comfy Cloud
+    Comfy Cloud에서 열기
   
   
-    Download JSON or search "LTX-2.3 IC-LoRA" in Template Library
+    JSON을 다운로드하거나 템플릿 라이브러리에서 "LTX-2.3 IC-LoRA" 검색
   
 
   이 워크플로우는 모듈식 처리를 위해 서브그래프 노드를 사용합니다. 서브그래프 문서를 확인하여 워크플로우를 사용자 정의하고 확장하는 방법을 알아보세요.
 
-#### 입력 자료
+**입력 자료**
 
   
     Driving video for control signal extraction.
@@ -311,11 +344,17 @@ ComfyUI/
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_id_lora.mp4"></video>
 
+### LTX-2.3 ID LoRA {#video_ltx2_3_id_lora}
+
+참조 이미지와 오디오 클립으로 동기화된 오디오가 포함된 개인화된 비디오를 생성합니다.
+
+[LTX-2.3 ID LoRA 워크플로 미리보기]
+
   
-    Open in Comfy Cloud
+    Comfy Cloud에서 열기
   
   
-    Download JSON or search "LTX-2.3 ID-LoRA" in Template Library
+    JSON을 다운로드하거나 템플릿 라이브러리에서 "LTX-2.3 ID-LoRA" 검색
   
 
   

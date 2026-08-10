@@ -102,8 +102,8 @@ When you send `model: "openrouter/fusion"` without a plugin config, the defaults
 
 ### Presets
 
-Don't want to pick models? Reference a curated preset by slug with `preset` —
-the panel and analyst are chosen for you:
+Don't want to pick models? Reference a curated preset by slug with `preset`.
+The panel and analyst are chosen for you:
 
 ```json lines theme={null}
 {

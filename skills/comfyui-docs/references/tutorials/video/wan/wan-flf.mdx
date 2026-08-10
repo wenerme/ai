@@ -11,7 +11,7 @@ Users only need to provide two images as the starting and ending frames, and the
 1. **Precise First-Last Frame Control**: The matching rate of first and last frames reaches 98%, defining video boundaries through starting and ending scenes, intelligently filling intermediate dynamic changes to achieve scene transitions and object morphing effects.
 2. **Stable and Smooth Video Generation**: Using CLIP semantic features and cross-attention mechanisms, the video jitter rate is reduced by 37% compared to similar models, ensuring natural and smooth transitions.
 3. **Multi-functional Creative Capabilities**: Supports dynamic embedding of Chinese and English subtitles, generation of anime/realistic/fantasy and other styles, adapting to different creative needs.
-4. **720p HD Output**: Directly generates 1280×720 resolution videos without post-processing, suitable for social media and commercial applications.
+4. **720p HD Output**: Directly generates 1280x720 resolution videos without post-processing, suitable for social media and commercial applications.
 5. **Open-source Ecosystem Support**: Model weights, code, and training framework are fully open-sourced, supporting deployment on mainstream AI platforms.
 
 **Technical Principles and Architecture**
@@ -33,49 +33,68 @@ Users only need to provide two images as the starting and ending frames, and the
 Since this model is trained on high-resolution images, using smaller sizes may not yield good results. In the example, we use a size of 720 * 1280, which may cause users with lower VRAM hard to run smoothly and will take a long time to generate.
 If needed, please adjust the video generation size for testing. A small generation size may not produce good output with this model, please notice that.
 
-Please download the WebP file below, and drag it into ComfyUI to load the corresponding workflow. The workflow has embedded the corresponding model download file information.
+Update your ComfyUI to the latest version, then download and drag the workflow file into ComfyUI, or find "Wan2.1 FLF2V 720P" in the Template Library under `Workflow` → `Browse Templates` → `Video`.
 
-![Wan2.1 FLF2V 720P f16 workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1_flf2v/wan2.1_flf2v_720_f16.webp)
+![Wan2.1 FLF2V 720P Workflow Preview](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/wan2.1_flf2v_720_f16-1.webp)
 
-Please download the two images below, which we will use as the starting and ending frames of the video
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Wan2.1 FLF2V" in Template Library
+  
 
-![start_image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1_flf2v/input/start_image.png)
-![end_image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1_flf2v/input/end_image.png)
+  
+    Starting frame for the video generation (LoadImage node 52). Download and use this image, or replace with your own.
+  
+  
+    Ending frame for the video generation (LoadImage node 72). Download and use this image, or replace with your own.
+  
 
 ### 2. Manual Model Installation
 
-If corresponding
-
 All models involved in this guide can be found [here](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files).
 
-**diffusion_models** Choose one version based on your hardware conditions
-- FP16:[wan2.1_flf2v_720p_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp16.safetensors?download=true)
-- FP8:[wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/blob/main/split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors)
+**Diffusion Models** : Choose one version based on your hardware
+
+  
+    wan2.1_flf2v_720p_14B_fp16.safetensors : Full precision, requires more VRAM. Place in <code>ComfyUI/models/diffusion_models/</code>
+  
+  
+    wan2.1_flf2v_720p_14B_fp8_e4m3fn.safetensors : Quantized version, lower VRAM usage. Place in <code>ComfyUI/models/diffusion_models/</code>
+  
 
 If you have previously tried Wan Video related workflows, you may already have the following files.
 
-Choose one version from **Text encoders** for download,
-- [umt5_xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true)
-- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true)
+**Text Encoders** : Choose one version
+
+  
+    umt5_xxl_fp16.safetensors : Full precision text encoder. Place in <code>ComfyUI/models/text_encoders/</code>
+  
+  
+    umt5_xxl_fp8_e4m3fn_scaled.safetensors : Quantized text encoder. Place in <code>ComfyUI/models/text_encoders/</code>
+  
 
 **VAE**
-- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true)
+
+  wan_2.1_vae.safetensors : Wan2.1 VAE for encoding/decoding. Place in <code>ComfyUI/models/vae/</code>
 
 **CLIP Vision**
-- [clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors?download=true)
+
+  clip_vision_h.safetensors : CLIP Vision encoder. Place in <code>ComfyUI/models/clip_vision/</code>
 
 File Storage Location
 ```
 ComfyUI/
-├── models/
-│   ├── diffusion_models/
+├───📂 models/
+│   ├───📂 diffusion_models/
 │   │   └─── wan2.1_flf2v_720p_14B_fp16.safetensors           # or FP8 version
-│   ├── text_encoders/
+│   ├───📂 text_encoders/
 │   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors           # or your chosen version
-│   ├── vae/
-│   │   └──  wan_2.1_vae.safetensors
-│   └── clip_vision/
-│       └──  clip_vision_h.safetensors   
+│   ├───📂 vae/
+│   │   └─── wan_2.1_vae.safetensors
+│   └───📂 clip_vision/
+│       └─── clip_vision_h.safetensors   
 ```
 
 ### 3. Complete Workflow Execution Step by Step

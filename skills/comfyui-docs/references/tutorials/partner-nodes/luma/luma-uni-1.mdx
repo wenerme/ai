@@ -3,7 +3,7 @@ title: "Luma Uni-1 Guide"
 description: "Use Luma Uni-1 partner nodes in ComfyUI for Create and Modify image workflows."
 ---
 
-In **ComfyUI**, Luma **Uni-1** shows up as **partner Partner Nodes** for unified image work: **Create** graphs generate new images from prompts (with optional references); **Modify** graphs take an existing image as input and edit it in place. You drive both through the usual workflow—wire **Load Image** / **Save Image**, set prompts, seeds, aspect ratio, and reference slots on the Luma node, then queue the graph locally or open a template on **Comfy Cloud**.
+In **ComfyUI**, Luma **Uni-1** shows up as **partner Partner Nodes** for unified image work: **Create** graphs generate new images from prompts (with optional references); **Modify** graphs take an existing image as input and edit it in place. You drive both through the usual workflow: wire **Load Image** / **Save Image**, set prompts, seeds, aspect ratio, and reference slots on the Luma node, then queue the graph locally or open a template on **Comfy Cloud**.
 
 Luma describes Uni-1 as a non-diffusion, decoder-only autoregressive model that reasons over your prompt before drawing. On the canvas, what matters most is choosing **Create vs Modify**, labeling references clearly, and iterating with seeds.
 
@@ -31,10 +31,10 @@ Uni-1 excels across a wide range of tasks:
 - **Illustration & stylized art** with strong aesthetic control
 - **Old photo restoration** and vintage reproduction
 - **Surreal and conceptual** compositions
-- **Text rendering** — readable text inside images, great for infographics and posters
+- **Text rendering**: readable text inside images, great for infographics and posters
 - **Image editing** and multi-turn refinement
 - **Reference-guided generation** with identity preservation
-- **Multi-panel output** — consistent characters/scenes across multiple frames
+- **Multi-panel output**: consistent characters/scenes across multiple frames
 
 ## The core distinction: Create vs Modify
 
@@ -54,18 +54,40 @@ When in doubt:
 
 ### Image Create workflow
 
+[Luma Uni-1 Image Create workflow preview]
+
+  
     Try the Image Create workflow instantly on Comfy Cloud.
   
-
+  
     Download JSON or search "Luma UNI-1 Image Create" in Template Library
+  
+
+Input materials
+
+Download this sample input image to try the workflow:
+
+  
+    Download sample style reference
   
 
 ### Image Edit workflow
 
+[Luma Uni-1 Image Edit workflow preview]
+
+  
     Try the Image Edit workflow instantly on Comfy Cloud.
   
-
+  
     Download JSON or search "Luma UNI-1 Image Edit" in Template Library
+  
+
+Input materials
+
+Download this sample input image to try the workflow:
+
+  
+    Download sample source image
   
 
 The workflow is simple: **prompt → evaluate → refine**. Leave the seed blank while exploring. Once you find something strong, lock the seed and iterate from there.

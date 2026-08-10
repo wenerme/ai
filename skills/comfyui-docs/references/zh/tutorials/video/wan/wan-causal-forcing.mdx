@@ -1,6 +1,14 @@
 ---
 title: "Causal Forcing 图生视频 ComfyUI 工作流示例"
 description: "使用 Wan2.1 的 Causal Forcing 或 Causal Forcing++ 从图片生成视频——只需 1 步推理即可获得流畅、时序一致的视频。"
+translationSourceHash: e94bf5dc
+translationFrom: tutorials/video/wan/wan-causal-forcing.mdx
+translationBlockHashes:
+  "_intro": 3da76367
+  "How it works": a3348b35
+  "Using the workflow": 5e6245a2
+  "Steps to run": 3202924b
+  "Model downloads": c6ce079e
 ---
 
 **Causal Forcing（因果强制）** 是一种视频生成技术，在推理过程中应用 **循环条件控制**：每一帧生成后都会作为输入反馈给模型，用于预测下一帧。通过这种方式，仅需 **1 到 4 步推理**，就能从单张起始图片生成流畅、时序一致的视频。
@@ -10,7 +18,16 @@ description: "使用 Wan2.1 的 Causal Forcing 或 Causal Forcing++ 从图片生
 [Causal Forcing 图生视频工作流]
 
   
+    在 Comfy Cloud 中打开
+  
+  
     下载 JSON 或在模板库中搜索 "Causal Forcing"
+  
+
+**输入素材**
+
+  
+    第一帧的输入图像。下载并使用此图像，或替换为您自己的图像。
   
 
 ## 工作原理
@@ -22,7 +39,7 @@ description: "使用 Wan2.1 的 Causal Forcing 或 Causal Forcing++ 从图片生
 3. 每生成一帧都作为下一帧的输入
 4. 重复此过程直到生成目标帧数
 
-这种循环方法带来了 **很强的时序一致性**——每帧自然地承接前一帧——并且仅需很少的推理步数（1 到 4 步）即可生成高质量结果。
+这种循环方法带来了 **很强的时序一致性**：每帧自然地承接前一帧。这可以通过很少的推理步数（1 到 4 步）生成高质量结果。
 
   本工作流使用子图节点进行模块化处理。查看子图文档了解如何自定义和扩展工作流。
 

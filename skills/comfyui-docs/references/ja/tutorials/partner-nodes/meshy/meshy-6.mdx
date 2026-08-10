@@ -1,8 +1,14 @@
 ---
 title: "Meshy 6 API ノードによる 3D モデル生成 — ComfyUI 公式サンプル"
 description: "本記事では、ComfyUI で Meshy 6 ノードの API を使用して 3D モデルを生成する方法について説明します。"
-translationSourceHash: 302cd348
+translationSourceHash: 7e389802
 translationFrom: tutorials/partner-nodes/meshy/meshy-6.mdx
+translationBlockHashes:
+  "_intro": 2dd46cd7
+  "About Meshy 6": bc605135
+  "Text-to-Model Workflow": 4898f71a
+  "Image-to-Model Workflow": 23d84229
+  "Multi-view to Model Workflow": a06016ac
 ---
 
 Meshy は、テキストプロンプト、画像、または複数視点入力から高品質な 3D モデルを生成できる、業界をリードする AI 搭載 3D 生成プラットフォームです。ComfyUI は現在、Meshy API をネイティブ統合しており、関連ノードを簡単に活用して 3D モデル生成を行うことができます。
@@ -28,6 +34,8 @@ Meshy 6 を使用して、テキストによる記述から直接 3D モデル�
     ローカル環境で使用するためのワークフロー JSON ファイルをダウンロードできます。
   
 
+![Meshy 6 Text-to-Model workflow preview](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_text_to_model-1.webp)
+
 ## 画像→モデル ワークフロー
 
 Meshy 6 の「画像→3D」機能を活用し、2D 画像を詳細な 3D モデルに変換します。
@@ -38,6 +46,10 @@ Meshy 6 の「画像→3D」機能を活用し、2D 画像を詳細な 3D モデ
     ローカル環境で使用するためのワークフロー JSON ファイルをダウンロードできます。
   
 
+![Meshy 6 画像→モデル ワークフロープレビュー](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_image_to_model-1.webp)
+
+    このワークフローのサンプル入力画像を入手できます。
+
 ## マルチビュー→モデル ワークフロー
 
 複数視点の画像から 3D モデルを生成し、より正確なジオメトリおよびテクスチャ再構築を実現します。
@@ -46,3 +58,15 @@ Meshy 6 の「画像→3D」機能を活用し、2D 画像を詳細な 3D モデ
   
 
     ローカル環境で使用するためのワークフロー JSON ファイルをダウンロードできます。
+  
+
+![Meshy 6 マルチビュー→モデル ワークフロープレビュー](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_multi_image_to_model-1.webp)
+
+  
+    フロントビューのサンプル画像を入手します。
+  
+  
+    バックビューのサンプル画像を入手します。
+  
+  
+    サイドビューのサンプル画像を入手します。

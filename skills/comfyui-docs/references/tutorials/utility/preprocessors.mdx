@@ -26,9 +26,32 @@ This workflow emphasizes:
 
 Depth outputs can be reused across multiple passes, making it easier to iterate without re-running expensive upstream steps.
 
-  Run on Comfy Cloud
+### Video to Depth Map {#utility-depthAnything-v2-relative-video}
 
-  Download JSON
+Convert a video to a temporally stable depth map.
+
+[Video to Depth Map workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Video to Depth Map&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `VHS_LoadVideo` node:
+
+  
+    `VHS_LoadVideo` node 6 · `roller_coaster.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  <video controls style={{width: '100%', height: 'auto'}}>
+    <source src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/roller_coaster.mp4" type="video/mp4" />
+  </video>
+</div>
 
 ## Lineart conversion
 
@@ -41,9 +64,32 @@ This workflow is designed to:
 
 Lineart pairs especially well with depth and pose, offering strong structural constraints without overconstraining style.
 
-  Run on Comfy Cloud
+### Video to Lineart / Canny {#utility-lineart-video}
 
-  Download JSON
+Convert a video to lineart or Canny edges for control processors.
+
+[Video to Lineart workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Video to Lineart / Canny&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `VHS_LoadVideo` node:
+
+  
+    `VHS_LoadVideo` node 2 · `utility-lineart-video-input.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  <video controls style={{width: '100%', height: 'auto'}}>
+    <source src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/utility-lineart-video-input.mp4" type="video/mp4" />
+  </video>
+</div>
 
 ## Pose detection
 
@@ -56,13 +102,36 @@ This workflow focuses on:
 
 By isolating pose extraction into a dedicated workflow, pose data becomes easier to inspect, refine, and reuse.
 
-  Run on Comfy Cloud
+### Video to Pose Map - OpenPose {#utility-openpose-video}
 
-  Download JSON
+Convert a video to a temporally stable pose control map.
+
+[Video to Pose Map workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Video to Pose Map - OpenPose&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `VHS_LoadVideo` node:
+
+  
+    `VHS_LoadVideo` node 2 · `pose_input.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  <video controls style={{width: '100%', height: 'auto'}}>
+    <source src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/pose_input.mp4" type="video/mp4" />
+  </video>
+</div>
 
 ## Normals extraction
 
-Normals estimation converts a flat image into a surface normal map—a per-pixel direction field that describes how each part of a surface is oriented (typically encoded as RGB). This signal is useful for relighting, material-aware stylization, and highly structured edits.
+Normals estimation converts a flat image into a surface normal map: a per-pixel direction field that describes how each part of a surface is oriented (typically encoded as RGB). This signal is useful for relighting, material-aware stylization, and highly structured edits.
 
 This workflow emphasizes:
 - Clean, stable normal extraction with minimal speckling
@@ -75,6 +144,29 @@ Normal outputs can be used to:
 - Add a stronger 3D-like structure to stylization and redraw pipelines
 - Improve consistency across frames when paired with pose/depth for animation work
 
-  Run on Comfy Cloud
+### Video to Normal Map {#utility-normal_crafter-video}
 
-  Download JSON
+Convert a video to a temporally stable normal map.
+
+[Video to Normal Map workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Video to Normal Map&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `VHS_LoadVideo` node:
+
+  
+    `VHS_LoadVideo` node 3 · `normals_input.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  <video controls style={{width: '100%', height: 'auto'}}>
+    <source src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/normals_input.mp4" type="video/mp4" />
+  </video>
+</div>

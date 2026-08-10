@@ -24,10 +24,10 @@ You need:
 * A video model slug, such as `google/veo-3.1-lite`
 
 <Tip>
-  If you have not chosen a model yet, read
+  If you haven't chosen a model yet, read
   [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
+  first. It helps you pick one based on clip duration, output shape, input
+  type, audio, provider controls, and cost.
 </Tip>
 
 Use the API reference pages as the source of truth for exact fields:

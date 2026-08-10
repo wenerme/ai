@@ -11,14 +11,14 @@ The Batch API lets you submit many inference requests together and retrieve the 
 The Batch API supports several OpenRouter API shapes, including chat completions, Responses, and Anthropic Messages. You submit requests as an inline JSON `requests` array. You don't upload a JSONL file; OpenRouter handles JSONL persistence internally.
 
 <Note>
-  Batch results are available asynchronously. A successful submission returns `202 Accepted` with `status: "validating"`, which means the request was persisted and queued for validation, not that every request has completed.
+  Batch results are available asynchronously. A successful submission returns `202 Accepted` with `status: "validating"`. That means OpenRouter persisted the batch and queued it for validation; it doesn't mean every request has completed.
 </Note>
 
 ***
 
 ## Limitations
 
-The Batch API is currently text-only. On `/v1/chat/completions`, `/v1/responses`, and `/v1/messages`, a request carrying image, audio, video, or file content parts is rejected during validation, including the Responses `input_image` and `input_file` parts and the Anthropic `image` and `document` blocks. On `/v1/chat/completions`, asking for non-text output through `modalities`, `audio`, or `image_config` is rejected as well. For embeddings, `input` must be strings or token arrays.
+The Batch API is currently text-only. On `/v1/chat/completions`, `/v1/responses`, and `/v1/messages`, validation rejects any request that carries image, audio, video, or file content parts. That includes the Responses `input_image` and `input_file` parts and the Anthropic `image` and `document` blocks. On `/v1/chat/completions`, validation also rejects requests that ask for non-text output through `modalities`, `audio`, or `image_config`. For embeddings, `input` must be strings or token arrays.
 
 Send multimodal requests to the sync API instead.
 
@@ -26,10 +26,10 @@ Send multimodal requests to the sync API instead.
 
 ## Pricing
 
-Batch requests are typically billed at 50% of the model's standard per-token pricing, mirroring the batch discounts offered by [OpenAI](https://developers.openai.com/api/docs/guides/batch) and [Anthropic](https://platform.claude.com/docs/en/build-with-claude/batch-processing). For a completed batch, `usage.cost` reports the amount OpenRouter charges; for BYOK-routed batches, this is only the OpenRouter BYOK fee because provider inference is billed directly by the provider.
+Batch requests are typically billed at 50% of the model's standard per-token pricing, mirroring the batch discounts offered by [OpenAI](https://developers.openai.com/api/docs/guides/batch) and [Anthropic](https://platform.claude.com/docs/en/build-with-claude/batch-processing). For a completed batch, `usage.cost` reports the amount OpenRouter charges. For BYOK-routed batches, that's only the OpenRouter BYOK fee, since the provider bills you directly for inference.
 
 <Note>
-  Non-token pricing components are not uniformly discounted; for example, web-search calls bill at standard rates and prompt-caching rates vary by model, so the pricing shown on each model's page is the source of truth.
+  Non-token pricing components aren't uniformly discounted. Web-search calls bill at standard rates, and prompt-caching rates vary by model. The pricing shown on each model's page is the source of truth.
 </Note>
 
 ***
@@ -56,7 +56,7 @@ The request body has three required top-level fields:
 
 The batch-level `model` applies to every request. A request body can omit `model` to inherit the batch-level value. If a request body sets its own `model`, it must match the batch-level `model` or the submission is rejected.
 
-On Google models, every request in a batch must ask for the same `response_format`: either all requests omit it, all use `json_object`, or all use `json_schema` with the same schema. Google's batch service derives one output schema for the whole batch, so requests that disagree fail there. A batch that disagrees is failed at validation, naming the first request that conflicts, so send one batch per `response_format` and per schema.
+On Google models, every request in a batch must ask for the same `response_format`. Either all requests omit it, all use `json_object`, or all use `json_schema` with the same schema. Google's batch service derives one output schema for the whole batch, so requests that disagree fail there. Validation fails a mismatched batch and names the first request that conflicts, so send one batch per `response_format` and per schema.
 
 <CodeGroup>
   ```python title="Python" lines theme={null}
@@ -431,5 +431,5 @@ Poll for results the same way as any other batch (`GET https://openrouter.ai/api
 ```
 
 <Note>
-  Batch inputs and results are stored as JSONL artifacts in Google Cloud Storage and automatically deleted 30 days after creation, matching the upstream batch retention window. Download any results you need before the 30-day retention window elapses.
+  OpenRouter stores batch inputs and results as JSONL artifacts in Google Cloud Storage and deletes them 30 days after creation, matching the upstream batch retention window. Download any results you need before the 30-day window elapses.
 </Note>

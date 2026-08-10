@@ -27,10 +27,10 @@ You need:
   OpenRouter video docs or model description
 
 <Tip>
-  If you have not chosen a model yet, read
+  If you haven't chosen a model yet, read
   [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
+  first. It helps you pick one based on clip duration, output shape, input
+  type, audio, provider controls, and cost.
 </Tip>
 
 Use the API reference pages as the source of truth for exact fields:
@@ -48,7 +48,7 @@ Use stable, directly downloadable image URLs. Some providers cannot fetch image 
   spend OpenRouter credits.
 </Warning>
 
-The video models endpoint does not expose a dedicated structured reference-image
+The video models endpoint doesn't expose a dedicated structured reference-image
 field for every provider. Confirm reference support from the model description
 or current docs before you submit:
 
@@ -224,9 +224,9 @@ Request shape for the optional multi-reference path:
 
 ## Step 4: Poll and download
 
-After submission, poll from a server route, worker, or job runner instead of the
-browser. Keep the flow explicit: poll with a limit, stop on terminal failure,
-then download the completed video.
+After submission, poll from a server route, worker, or job runner instead of
+the browser. Poll with a limit, stop on terminal failure, then download the
+completed video.
 
 Example polling and download helper:
 

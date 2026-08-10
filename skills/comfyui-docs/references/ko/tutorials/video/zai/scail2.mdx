@@ -1,15 +1,15 @@
 ---
 title: "ComfyUI SCAIL-2 캐릭터 교체 워크플로우 튜토리얼"
 description: "SCAIL-2를 사용해 구동 비디오로 참조 캐릭터 이미지를 구동하여 캐릭터 애니메이션 또는 비디오 내 캐릭터 교체를 구현합니다."
-translationSourceHash: 41f30394
+translationSourceHash: 2ebe58cb
 translationFrom: tutorials/video/zai/scail2.mdx
 translationBlockHashes:
-  "_intro": d534b693
-  "SCAIL-2 Character Replacement Workflow": 8e6c7b2d
-  "How the Workflow Works": cde35738
+  "_intro": a41dfa9a
+  "SCAIL-2 Character Replacement Workflow": b5cdb9a9
+  "How the Workflow Works": fad0cdce
   "Two Modes": 639623de
-  "Inputs and Parameters": e3ced848
-  "Model Installation": d4fa2215
+  "Inputs and Parameters": 5762889f
+  "Model Installation": afc8e5d3
 ---
 
 **SCAIL-2**는 Wan2.1 기반의 엔드투엔드 캐릭터 애니메이션 모델로, 구동 비디오의 움직임을 참조 캐릭터 이미지에 적용하여 캐릭터 애니메이션(캐릭터가 동작을 수행하도록 함)과 비디오 내 캐릭터 교체(추적된 인물을 참조 캐릭터로 대체)를 모두 가능하게 합니다.
@@ -24,13 +24,28 @@ translationBlockHashes:
 - [Hugging Face: SCAIL-2](https://huggingface.co/zai-org/SCAIL-2)
 - [SCAIL-2 확산 모델](https://huggingface.co/Comfy-Org/SCAIL-2)
 
-## SCAIL-2 캐릭터 교체 워크플로우
+## SCAIL-2 캐릭터 교체 워크플로
+
+### SCAIL-2 캐릭터 교체 {#video_wan21_scail2_character_replacement}
+
+모션과 장면 맥락을 유지하면서 비디오의 캐릭터를 교체합니다.
+
+[SCAIL-2 캐릭터 교체 워크플로 미리보기]
 
   
     Comfy Cloud에서 열기
   
   
-    JSON 다운로드 또는 템플릿 라이브러리에서 "SCAIL-2" 검색
+    JSON 다운로드 또는 템플릿 라이브러리에서 "SCAIL-2 Character Replacement" 검색
+  
+
+**입력 자료**
+
+  
+    기본 참조 캐릭터 이미지를 다운로드하거나 자신의 이미지를 사용하세요.
+  
+  
+    기본 구동 비디오를 다운로드하거나 자신의 비디오를 사용하세요.
   
 
 ## 워크플로우 작동 방식

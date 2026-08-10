@@ -6,11 +6,11 @@ description: "Lens is a 3.8B parameter text-to-image model by Microsoft, using d
 **Lens** is an open text-to-image model by **Microsoft**, licensed under MIT. With **3.8 billion** parameters, it uses a **dual-stream MMDiT** architecture with **GPT-OSS-20B** text encoder features and the **FLUX.2 semantic VAE** to deliver competitive image quality with substantially less training compute than larger T2I models.
 
 **Model highlights**:
-- **Dual-stream MMDiT architecture** — joint image-text processing for coherent generation
-- **GPT-OSS-20B multi-layer text features** — rich text understanding for accurate prompt following
-- **FLUX.2 semantic VAE** — high-fidelity latent representation
-- **Mixed-resolution training** — supports various aspect ratios without cropping
-- **Compact 3.8B footprint** — runs on consumer GPUs with 24 GB VRAM
+- **Dual-stream MMDiT architecture**: joint image-text processing for coherent generation
+- **GPT-OSS-20B multi-layer text features**: rich text understanding for accurate prompt following
+- **FLUX.2 semantic VAE**: high-fidelity latent representation
+- **Mixed-resolution training**: supports various aspect ratios without cropping
+- **Compact 3.8B footprint**: runs on consumer GPUs with 24 GB VRAM
 
 **Related links**:
 - [Paper (arXiv)](https://arxiv.org/abs/2605.21573)
@@ -24,15 +24,23 @@ Both the standard and Turbo variants use a **Subgraph** node to manage the text-
 
   This workflow uses Subgraph nodes for modular processing. Check out the Subgraph documentation to learn how to customize and extend the workflow.
 
-### Lens
+### Lens: Text to Image {#image_lens_t2i}
+
+Input a text prompt and select resolution and aspect ratio. Generate a high-quality image using the efficient Lens text-to-image model.
+
+[Lens text-to-image workflow preview]
 
   
-    Download JSON or search "Lens" in Template Library
+    Download JSON or search &quot;Lens&quot; in Template Library
   
   
   
   
   
+
+**Example output**
+
+![Lens text-to-image example output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_lens_t2i.png)
 
 #### Get started
 
@@ -42,21 +50,23 @@ Both the standard and Turbo variants use a **Subgraph** node to manage the text-
 3. Select the **Lens** workflow
 4. Download any missing models (see [model downloads](#lens-model-downloads)), enter your prompt, and click **Queue**
 
-#### Example output
+### Lens Turbo: Text to Image {#image_lens_turbo_t2i}
 
-[Lens text-to-image example output]
+Input a text prompt and select resolution, aspect ratio, and inference steps. Generate a high-quality image using the Lens text-to-image model.
 
-### Lens Turbo
-
-Lens Turbo is a distilled variant that generates images in fewer sampling steps for faster inference.
+[Lens Turbo text-to-image workflow preview]
 
   
-    Download JSON or search "Lens Turbo" in Template Library
+    Download JSON or search &quot;Lens Turbo&quot; in Template Library
   
   
   
   
   
+
+**Example output**
+
+![Lens Turbo text-to-image example output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_lens_turbo_t2i.png)
 
 #### Get started
 
@@ -65,10 +75,6 @@ Lens Turbo is a distilled variant that generates images in fewer sampling steps 
 2. Go to **Template** and search for **Lens Turbo**
 3. Select the **Lens Turbo** workflow
 4. Download any missing models (see [model downloads](#lens-model-downloads)), enter your prompt, and click **Queue**
-
-#### Example output
-
-[Lens Turbo text-to-image example output]
 
 ## Lens model downloads
 
@@ -106,5 +112,5 @@ You can find all model files at [Comfy-Org/Lens](https://huggingface.co/Comfy-Or
 
 | Model | Description | Inference steps | Link |
 |-------|-------------|-----------------|------|
-| Lens | Standard 3.8B model — higher quality, more steps | ~50 | [Hugging Face](https://huggingface.co/microsoft/Lens) |
-| Lens Turbo | Distilled variant — faster generation with fewer steps | ~8 | [Hugging Face](https://huggingface.co/microsoft/Lens) |
+| Lens | Standard 3.8B model: higher quality, more steps | ~50 | [Hugging Face](https://huggingface.co/microsoft/Lens) |
+| Lens Turbo | Distilled variant: faster generation with fewer steps | ~8 | [Hugging Face](https://huggingface.co/microsoft/Lens) |

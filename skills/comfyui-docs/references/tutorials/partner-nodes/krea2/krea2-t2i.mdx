@@ -3,7 +3,7 @@ title: "ComfyUI Krea 2 Partner Nodes Official Example"
 description: "This guide explains how to use the Krea 2 Text to Image Partner node in ComfyUI"
 ---
 
-The [Krea 2 Image Node](/built-in-nodes/Krea2ImageNode) allows you to generate high-quality images from text prompts using Krea AI's next-generation model. It supports two model variants — **Krea 2 Medium** for expressive illustrations and **Krea 2 Large** for expressive photorealism — with optional moodboard and style reference inputs.
+The [Krea 2 Image Node](/built-in-nodes/Krea2ImageNode) allows you to generate high-quality images from text prompts using Krea AI's next-generation model. It supports two model variants, **Krea 2 Medium** for expressive illustrations and **Krea 2 Large** for expressive photorealism, with optional moodboard and style reference inputs.
 
 In this guide, we'll show you how to set up workflows for text-to-image generation using Krea 2.
 
@@ -25,11 +25,11 @@ Check the following documentation for detailed node parameter settings:
     Download JSON or search "Krea2" in Template Library
   
 
-1. **Enter your prompt** — type a text description in the **Krea2ImageNode**
-2. **Select a model variant** — choose between **Krea 2 Medium** (illustrations) or **Krea 2 Large** (photorealism)
-3. **Adjust parameters** — set aspect ratio, resolution, creativity level, and seed
-4. **Click Queue** — press `Ctrl+Enter` or click the Queue button to generate
-5. **View result** — the generated image appears in the **SaveImage** node, saved to `ComfyUI/output/`
+1. **Enter your prompt**: type a text description in the **Krea2ImageNode**
+2. **Select a model variant**: choose between **Krea 2 Medium** (illustrations) or **Krea 2 Large** (photorealism)
+3. **Adjust parameters**: set aspect ratio, resolution, creativity level, and seed
+4. **Click Queue**: press `Ctrl+Enter` or click the Queue button to generate
+5. **View result**: the generated image appears in the **SaveImage** node, saved to `ComfyUI/output/`
 
 ## Krea 2 Style Reference Workflow
 
@@ -44,12 +44,12 @@ The Style Reference workflow adds an extra step: upload one or more reference im
     Download JSON or search "Krea 2: Style Reference" in Template Library
   
 
-1. **Upload reference images** — use the **LoadImage** nodes to load style reference images (supports up to 10)
-2. **Enter your prompt** — describe the scene you want in the **Krea2ImageNode**
-3. **Select a model variant** — choose between Medium and Large
-4. **Adjust style strength** — modify the style reference strength in the **Krea2StyleReferenceNode** nodes
-5. **Click Queue** — press `Ctrl+Enter` to generate
-6. **View result** — the generated image appears in the **SaveImage** node
+1. **Upload reference images**: use the **LoadImage** nodes to load style reference images (supports up to 10)
+2. **Enter your prompt**: describe the scene you want in the **Krea2ImageNode**
+3. **Select a model variant**: choose between Medium and Large
+4. **Adjust style strength**: modify the style reference strength in the **Krea2StyleReferenceNode** nodes
+5. **Click Queue**: press `Ctrl+Enter` to generate
+6. **View result**: the generated image appears in the **SaveImage** node
 
 ## Additional Notes
 

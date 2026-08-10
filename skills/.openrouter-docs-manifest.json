@@ -10651,9 +10651,9 @@
   },
   "batch-quickstart.md": {
     "url": "https://openrouter.ai/docs/batch-quickstart.md",
-    "lastModified": "Fri, 07 Aug 2026 03:35:39 GMT",
-    "size": 14382,
-    "updatedAt": "2026-08-07T03:35:39.635Z"
+    "lastModified": "Mon, 10 Aug 2026 02:45:26 GMT",
+    "size": 14363,
+    "updatedAt": "2026-08-10T02:45:26.192Z"
   },
   "changelog.md": {
     "url": "https://openrouter.ai/docs/changelog.md",
@@ -11467,33 +11467,33 @@
   },
   "cookbook/video-generation/image-to-video.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/image-to-video.md",
-    "lastModified": "Tue, 21 Jul 2026 06:47:35 GMT",
-    "size": 8273,
-    "updatedAt": "2026-07-21T06:47:35.283Z"
+    "lastModified": "Mon, 10 Aug 2026 02:46:47 GMT",
+    "size": 8229,
+    "updatedAt": "2026-08-10T02:46:47.176Z"
   },
   "cookbook/video-generation/provider-specific-video-options.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/provider-specific-video-options.md",
-    "lastModified": "Tue, 21 Jul 2026 06:47:35 GMT",
-    "size": 7100,
-    "updatedAt": "2026-07-21T06:47:35.718Z"
+    "lastModified": "Mon, 10 Aug 2026 02:46:47 GMT",
+    "size": 7087,
+    "updatedAt": "2026-08-10T02:46:47.596Z"
   },
   "cookbook/video-generation/reference-to-video.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/reference-to-video.md",
-    "lastModified": "Sun, 09 Aug 2026 02:40:36 GMT",
-    "size": 8981,
-    "updatedAt": "2026-08-09T02:40:36.052Z"
+    "lastModified": "Mon, 10 Aug 2026 02:46:48 GMT",
+    "size": 8944,
+    "updatedAt": "2026-08-10T02:46:48.123Z"
   },
   "cookbook/video-generation/text-to-video.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/text-to-video.md",
-    "lastModified": "Sun, 09 Aug 2026 02:40:36 GMT",
-    "size": 9828,
-    "updatedAt": "2026-08-09T02:40:36.373Z"
+    "lastModified": "Mon, 10 Aug 2026 02:46:48 GMT",
+    "size": 9816,
+    "updatedAt": "2026-08-10T02:46:48.566Z"
   },
   "cookbook/video-generation/video-generation-webhooks.md": {
     "url": "https://openrouter.ai/docs/cookbook/video-generation/video-generation-webhooks.md",
-    "lastModified": "Sun, 09 Aug 2026 02:40:36 GMT",
-    "size": 11445,
-    "updatedAt": "2026-08-09T02:40:36.917Z"
+    "lastModified": "Mon, 10 Aug 2026 02:46:50 GMT",
+    "size": 11433,
+    "updatedAt": "2026-08-10T02:46:50.562Z"
   },
   "faq.md": {
     "url": "https://openrouter.ai/docs/faq.md",
@@ -11803,9 +11803,9 @@
   },
   "guides/features/plugins/fusion.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/fusion.md",
-    "lastModified": "Sun, 09 Aug 2026 02:41:01 GMT",
-    "size": 11399,
-    "updatedAt": "2026-08-09T02:41:01.391Z"
+    "lastModified": "Mon, 10 Aug 2026 02:47:17 GMT",
+    "size": 11398,
+    "updatedAt": "2026-08-10T02:47:17.072Z"
   },
   "guides/features/plugins/response-healing.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/response-healing.md",
@@ -11869,9 +11869,9 @@
   },
   "guides/features/server-tools/fusion.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/fusion.md",
-    "lastModified": "Tue, 28 Jul 2026 03:47:43 GMT",
-    "size": 11506,
-    "updatedAt": "2026-07-28T03:47:43.223Z"
+    "lastModified": "Mon, 10 Aug 2026 02:47:24 GMT",
+    "size": 11508,
+    "updatedAt": "2026-08-10T02:47:24.450Z"
   },
   "guides/features/server-tools/image-generation.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/image-generation.md",

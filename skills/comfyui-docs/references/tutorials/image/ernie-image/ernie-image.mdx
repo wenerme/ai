@@ -8,12 +8,12 @@ description: "ERNIE-Image is Baidu's open 8B Diffusion Transformer text-to-image
 The model includes a built-in **Prompt Enhancer** (3B) that expands short inputs into richer prompts for better results.
 
 **Model highlights**:
-- **Precise text rendering** — dense and layout-sensitive text in English, Chinese, and more
-- **Strong instruction following** — handles complex prompts, multi-object relations, and knowledge-intensive descriptions
-- **Structured visual generation** — posters, manga/anime storyboards, multi-panel compositions
-- **Broad stylistic range** — realistic photography to cinematic film-like aesthetics
-- **Compact and deployable** — 8B parameters, runs on 24 GB VRAM
-- **Built-in Prompt Enhancer** — 3B model that expands short inputs into richer prompts
+- **Precise text rendering**: dense and layout-sensitive text in English, Chinese, and more
+- **Strong instruction following**: handles complex prompts, multi-object relations, and knowledge-intensive descriptions
+- **Structured visual generation**: posters, manga/anime storyboards, multi-panel compositions
+- **Broad stylistic range**: realistic photography to cinematic film-like aesthetics
+- **Compact and deployable**: 8B parameters, runs on 24 GB VRAM
+- **Built-in Prompt Enhancer**: 3B model that expands short inputs into richer prompts
 
 **Related links**:
 - [Hugging Face (ERNIE-Image)](https://huggingface.co/Baidu/ERNIE-Image)
@@ -21,15 +21,26 @@ The model includes a built-in **Prompt Enhancer** (3B) that expands short inputs
 
 ## ERNIE-Image text-to-image workflow
 
-    Download the ERNIE-Image text-to-image workflow JSON file.
+### Ernie Image: Text to Image {#image_ernie_image}
+
+Generate images from text prompts using the ERNIE-Image model. Input a text description to produce detailed, structured visuals with a broad stylistic range.
+
+[ERNIE-Image text-to-image workflow preview]
+
+  
+    Run this workflow directly on Comfy Cloud
+  
+  
+    Download the ERNIE-Image text-to-image workflow JSON file
   
 
-    Run this workflow directly on Comfy Cloud.
-  
+**Example output**
+
+![ERNIE-Image example output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_ernie_image.png)
 
 ### Get started
 
-1. Update ComfyUI to the latest version or use [Comfy Cloud](https://cloud.comfy.org/?template=image_ernie_image&utm_source=docs)
+1. Update ComfyUI to the latest version or use [Comfy Cloud](https://cloud.comfy.org/?template=image_ernie_image&utm_source=docs&utm_medium=referral&utm_campaign=ernie-image)
 2. Go to **Template** and search for **ERNIE-Image**
 3. Select the **ERNIE-Image** workflow
 4. Download any missing models, update the prompt, and click **Run**
@@ -38,15 +49,16 @@ The model includes a built-in **Prompt Enhancer** (3B) that expands short inputs
 
 You can find all repackaged model files at [Comfy-Org/ERNIE-Image](https://huggingface.co/Comfy-Org/ERNIE-Image) on Hugging Face.
 
+  
     Diffusion model for ERNIE-Image.
   
-
+  
     Text encoder for ERNIE-Image.
   
-
+  
     Prompt Enhancer text encoder for ERNIE-Image.
   
-
+  
     VAE for ERNIE-Image.
   
 
@@ -68,23 +80,35 @@ You can find all repackaged model files at [Comfy-Org/ERNIE-Image](https://huggi
 
 [ERNIE-Image-Turbo](https://huggingface.co/Baidu/ERNIE-Image-Turbo) is a faster variant optimized with DMD and RL, generating images in just **8 steps** compared to the ~50 steps required by the standard model.
 
-    Download the ERNIE-Image-Turbo text-to-image workflow JSON file.
+### Ernie Image Turbo: Text To Image {#image_ernie_image_turbo}
+
+Generate images from text prompts using the ERNIE-Image turbo model. Input a text description and receive a high-quality image with precise text rendering.
+
+[ERNIE-Image-Turbo text-to-image workflow preview]
+
+  
+    Run this workflow directly on Comfy Cloud
+  
+  
+    Download the ERNIE-Image-Turbo text-to-image workflow JSON file
   
 
-    Run this workflow directly on Comfy Cloud.
-  
+**Example output**
+
+![ERNIE-Image-Turbo example output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_ernie_image_turbo.png)
 
 ### ERNIE-Image-Turbo model downloads
 
+  
     Diffusion model for ERNIE-Image-Turbo.
   
-
+  
     Text encoder for ERNIE-Image-Turbo.
   
-
+  
     Prompt Enhancer text encoder for ERNIE-Image-Turbo.
   
-
+  
     VAE for ERNIE-Image-Turbo.
   
 
@@ -106,8 +130,8 @@ You can find all repackaged model files at [Comfy-Org/ERNIE-Image](https://huggi
 
 | Model | Description | Inference steps | Link |
 |-------|-------------|-----------------|------|
-| ERNIE-Image | Main SFT model — stronger quality and instruction fidelity | ~50 | [Hugging Face](https://huggingface.co/Baidu/ERNIE-Image) |
-| ERNIE-Image-Turbo | Turbo model optimized with DMD and RL — faster generation | 8 | [Hugging Face](https://huggingface.co/Baidu/ERNIE-Image-Turbo) |
+| ERNIE-Image | Main SFT model: stronger quality and instruction fidelity | ~50 | [Hugging Face](https://huggingface.co/Baidu/ERNIE-Image) |
+| ERNIE-Image-Turbo | Turbo model optimized with DMD and RL: faster generation | 8 | [Hugging Face](https://huggingface.co/Baidu/ERNIE-Image-Turbo) |
 
 ## Examples
 

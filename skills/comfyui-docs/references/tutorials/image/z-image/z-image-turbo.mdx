@@ -24,11 +24,22 @@ description: "Z-Image-Turbo is a distilled 6B parameter efficient image generati
 
 ## Z-Image-Turbo text-to-image workflow
 
-    Download the Z-Image-Turbo text-to-image workflow JSON file.
+### Z-Image-Turbo: Text to Image {#image_z_image_turbo}
+
+An Efficient Image Generation Foundation Model with Single-Stream Diffusion Transformer, supports English & Chinese.
+
+[Z-Image-Turbo text-to-image workflow preview]
+
+  
+    Run this workflow directly on Comfy Cloud
+  
+  
+    Download the Z-Image-Turbo text-to-image workflow JSON file
   
 
-    Run this workflow directly on ComfyUI Cloud.
-  
+**Example output**
+
+![Z-Image-Turbo example output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_z_image_turbo.png)
 
 ### Z-Image-Turbo model downloads
 
@@ -56,16 +67,35 @@ description: "Z-Image-Turbo is a distilled 6B parameter efficient image generati
 
 ## Z-Image-Turbo Fun Union ControlNet workflow
 
-This workflow uses the Z-Image-Turbo Fun Union ControlNet model to generate images with ControlNet guidance. It applies Canny edge detection to a reference image and uses the ControlNet to guide the generation process.
+### Z-Image-Turbo Fun Union ControlNet {#image_z_image_turbo_fun_union_controlnet}
 
-    Download the Z-Image-Turbo Fun Union ControlNet workflow JSON file.
+Multi-control ControlNet supporting Canny, HED, Depth, Pose, and MLSD for Z-Image-Turbo.
+
+[Z-Image-Turbo Fun Union ControlNet workflow preview]
+
   
+    Run this workflow directly on Comfy Cloud
+  
+  
+    Download the Z-Image-Turbo Fun Union ControlNet workflow JSON file
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 58 · `image_z_image_turbo_fun_union_controlnet_input_image.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [image_z_image_turbo_fun_union_controlnet_input_image.png]
+</div>
 
 ### Additional model for ControlNet
 
     ControlNet model patch for Z-Image-Turbo.
   
-
 **Model Storage Location**
 
 ```

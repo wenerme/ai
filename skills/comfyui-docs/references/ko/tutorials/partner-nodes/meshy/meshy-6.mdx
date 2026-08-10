@@ -1,8 +1,14 @@
 ---
 title: "Meshy 6 파트너 노드 모델 생성 ComfyUI 공식 예제"
 description: "이 기사에서는 ComfyUI에서 Meshy 6 노드의 API를 사용해 3D 모델을 생성하는 방법을 소개합니다."
-translationSourceHash: 302cd348
+translationSourceHash: 7e389802
 translationFrom: tutorials/partner-nodes/meshy/meshy-6.mdx
+translationBlockHashes:
+  "_intro": 2dd46cd7
+  "About Meshy 6": bc605135
+  "Text-to-Model Workflow": 4898f71a
+  "Image-to-Model Workflow": 23d84229
+  "Multi-view to Model Workflow": a06016ac
 ---
 
 Meshy는 사용자가 텍스트 프롬프트, 이미지 또는 다중 뷰 입력을 통해 고품질 3D 모델을 생성할 수 있도록 지원하는 선도적인 AI 기반 3D 생성 플랫폼입니다. 이제 ComfyUI는 Meshy API를 기본적으로 통합하여 관련 노드를 편리하게 사용해 3D 모델을 생성할 수 있게 되었습니다.
@@ -26,18 +32,35 @@ Meshy 6를 사용해 텍스트 설명으로부터 바로 3D 모델을 생성하�
 
     로컬에서 사용할 수 있도록 워크플로우 JSON 파일을 다운로드하세요.
 
-## 이미지 기반 모델 워크플로우
+![Meshy 6 텍스트 기반 모델 워크플로우 미리보기](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_text_to_model-1.webp)
+
+## 이미지 기반 3D 모델 생성 워크플로
 
 Meshy 6의 이미지 기반 3D 생성 기능을 활용해 2D 이미지를 세부적인 3D 모델로 변환하세요.
 
-    Comfy Cloud에서 즉시 이미지 기반 모델 워크플로우를 실행하세요.
+  Comfy Cloud에서 즉시 이미지 기반 3D 모델 생성 워크플로를 실행하세요.
 
-    로컬에서 사용할 수 있도록 워크플로우 JSON 파일을 다운로드하세요.
+  로컬에서 사용할 워크플로 JSON 파일을 다운로드하세요.
+
+![Meshy 6 이미지 기반 3D 모델 생성 워크플로 미리보기](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_image_to_model-1.webp)
+
+  이 워크플로의 예시 입력 이미지를 가져오세요.
 
 ## 다중 뷰 기반 모델 워크플로우
 
 여러 뷰 이미지로부터 3D 모델을 생성해 더욱 정확한 지오메트리와 텍스처 재구성을 실현하세요.
 
-    Comfy Cloud에서 즉시 다중 뷰 워크플로우를 실행하세요.
+  Comfy Cloud에서 다중 뷰 워크플로우를 즉시 실행하세요.
 
-    로컬에서 사용할 수 있도록 워크플로우 JSON 파일을 다운로드하세요.
+  로컬 사용을 위해 워크플로우 JSON 파일을 다운로드하세요.
+
+![Meshy 6 다중 뷰-모델 워크플로우 미리보기](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_meshy_multi_image_to_model-1.webp)
+
+  
+    예제 정면 이미지를 다운로드하세요.
+  
+  
+    예제 후면 이미지를 다운로드하세요.
+  
+  
+    예제 측면 이미지를 다운로드하세요.

@@ -12,26 +12,33 @@ Nano Banana Pro is Google DeepMind's flagship image model (Gemini 3 Pro Image) f
 - **Text and translation**: Renders clean, legible text and supports detection and translation across 10 languages
 - **Multi-image blending**: Blend up to 14 images with precise compositional control
 - **Character and subject consistency**: Maintain character resemblance and object fidelity across complex multi-subject compositions
-- **Advanced reasoning**: Configurable thinking levels — choose Minimal for fast exploration or High/Dynamic for complex layouts and precise control
+- **Advanced reasoning**: Configurable thinking levels. Choose Minimal for fast exploration or High/Dynamic for complex layouts and precise control
 
-## Workflows
+### Nano Banana Pro {#api_nano_banana_pro}
 
-### Image Edit
+Nano-banana Pro (Gemini 3.0 Pro Image) for studio-quality 4K image generation and editing with enhanced text rendering and character consistency.
+
+[Nano Banana Pro workflow preview]
 
   
     Open in Comfy Cloud
   
   
-    Download JSON or search "Nano Banana Pro" in Template Library
-  
-  
-    Get the first example input image
-  
-  
-    Get the second example input image
+    Download JSON or search &quot;Nano Banana Pro&quot; in Template Library
   
 
-Upload images and provide text instructions to generate or edit. The workflow accepts multiple input images and produces a high-fidelity result with precise prompt adherence.
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
+  
+    `LoadImage` node 11 · `api_nano_banana_pro_input_image_1.png`
+  
+  
+    `LoadImage` node 12 · `api_nano_banana_pro_input_image_2.png`
+  
+
+**Example output**
 
 ![Nano Banana Pro example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_nano_banana_pro.png)
 
@@ -39,9 +46,9 @@ Upload images and provide text instructions to generate or edit. The workflow ac
 
 | Model | Best for |
 |-------|----------|
-| **[Nano Banana 2 Lite](/tutorials/partner-nodes/google/nano-banana-2-lite)** | Speed and cost — rapid iteration, high-throughput pipelines, low-latency applications |
-| **[Nano Banana 2](/tutorials/partner-nodes/google/nano-banana-2)** | Most creators — balanced quality and speed for general-purpose image generation and editing |
-| **Nano Banana Pro** | Professional use cases — maximum quality, 4K generation, complex layouts and precise control |
+| **[Nano Banana 2 Lite](/tutorials/partner-nodes/google/nano-banana-2-lite)** | Speed and cost: rapid iteration, high-throughput pipelines, low-latency applications |
+| **[Nano Banana 2](/tutorials/partner-nodes/google/nano-banana-2)** | Most creators: balanced quality and speed for general-purpose image generation and editing |
+| **Nano Banana Pro** | Professional use cases: maximum quality, 4K generation, complex layouts and precise control |
 
 ## Get started
 

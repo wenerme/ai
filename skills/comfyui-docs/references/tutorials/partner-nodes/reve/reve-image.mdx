@@ -13,15 +13,22 @@ Reve is an image generation model available in ComfyUI through Partner Nodes. It
 - **Image editing**: Modifies lighting conditions, color grading, and adds motion effects to existing images
 - **Image remixing**: Combines elements from reference images into a target image while preserving consistency
 
-## Reve Create
+### Reve: Text to Image {#api_reve_image_create}
 
-The Reve Image Create node generates images from text prompts. The model performs well with prompts describing fashion editorial styles, specific lighting conditions, natural textures, and motion.
+Input text prompts to generate high-quality images with detailed aesthetics and accurate text rendering.
 
-    Run the Reve Image Create workflow on Comfy Cloud.
+[Reve: Text to Image workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Reve: Text to Image&quot; in Template Library
   
 
-    Download the workflow JSON file for local use.
-  
+**Example output**
+
+![Reve: Text to Image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_reve_image_create.png)
 
 ### Example outputs
 
@@ -63,15 +70,31 @@ A wide-angle landscape photograph of a solitary Jaguar F-Type car in British gre
 A minimalist wide shot of a vast white sand dune desert during golden hour. A white owl with its wings spread is in the foreground. Soft warm sunlight grazing the tops of the dunes, casting long shadows. Sparse, golden-brown desert shrubs are scattered across the ripples, with a prominent patch of dry, cracked, hexagonal mud in the bottom right foreground. In the far distance, a hazy, ethereal range of mountains rests against a pale, washed-out sky.
 ```
 
-## Reve Edit
+### Reve: Image Edit {#api_reve_image_edit}
 
-The Reve Image Edit node modifies existing images based on text instructions. It supports editing lighting conditions, color grading, and adding motion effects.
+Upload an image and provide text instructions to edit it. Generate a modified output image using Reve's advanced editing model.
 
-    Run the Reve Image Edit workflow on Comfy Cloud.
+[Reve: Image Edit workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Reve: Image Edit&quot; in Template Library
   
 
-    Download the workflow JSON file for local use.
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
   
+    `LoadImage` node 4 · `woman_running_in_field.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input image]
+  [Reve: Image Edit example output]
+</div>
 
 ### Example outputs
 
@@ -93,15 +116,36 @@ The lighting is cold, soft glow emits from the window.
 Side profile shot of the subject, his hand is grabbing the sunglasses.
 ```
 
-## Reve Remix
+### Reve: Image Remix And Edit {#api_reve_image_remix}
 
-The Reve Image Remix node uses elements from reference images as layers and applies them to a target image. This allows you to transfer specific visual properties such as shadows, color grading, or aesthetic styles between images.
+Remix and edit images using Reve's advanced model. Combine multiple reference images into a single output.
 
-    Run the Reve Image Remix workflow on Comfy Cloud.
+[Reve: Image Remix And Edit workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Reve: Image Remix And Edit&quot; in Template Library
   
 
-    Download the workflow JSON file for local use.
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
   
+    `LoadImage` node 2 · `iced_drink_cup.png`
+  
+  
+    `LoadImage` node 4 · `casual_male_portrait.png`
+  
+  
+    `LoadImage` node 5 · `japanese_street_alley.png`
+  
+
+**Example output**
+
+![Reve: Image Remix And Edit example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_reve_image_remix.png)
 
 ### Example outputs
 

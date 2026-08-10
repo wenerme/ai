@@ -21,39 +21,95 @@ description: "This guide provides a brief introduction to the Flux.2 model and g
 
 We are using quantized weights in this workflow. The original FLUX.2 repository is available [here](https://huggingface.co/black-forest-labs/FLUX.2-dev/).
 
-## Single image generation workflow
+## Flux.2 Dev {#image_flux2}
 
-Basic text-to-image workflow for generating single images with FLUX.2 Dev.
+Generate photorealistic images with multi-reference consistency and professional text rendering.
 
+[Flux.2 Dev workflow preview]
+
+  
     Open this workflow directly in Comfy Cloud
   
-
+  
     Download the JSON workflow file for local use
   
 
-## Multi-image reference workflow
+**Input materials**
 
-A 2-image reference workflow example. You can extend this implementation to support more reference images.
+Upload this file to `LoadImage` node **46**:
 
+  
+    `LoadImage` node 46 · `image_flux2_input_image.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input Image for Flux.2 Dev]
+  [Flux.2 Dev example output]
+</div>
+
+## Flux.2 Dev Text to Image {#image_flux2_text_to_image}
+
+Text-to-image with enhanced lighting, materials, and realistic details. No input images are required.
+
+[Flux.2 Dev text-to-image workflow preview]
+
+  
     Open this workflow directly in Comfy Cloud
   
-
+  
     Download the JSON workflow file for local use
   
+
+**Example output**
+
+![Flux.2 Dev text-to-image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_text_to_image.png)
+
+## Product Mockup {#image_flux2_fp8}
+
+Create product mockups by applying design patterns to packaging, mugs, and other products using multi-reference consistency.
+
+[Flux.2 Dev product mockup workflow preview]
+
+  
+    Open this workflow directly in Comfy Cloud
+  
+  
+    Download the JSON workflow file for local use
+  
+
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
+  
+    `LoadImage` node 42 · `image_flux2_input_ref_image.png`
+  
+  
+    `LoadImage` node 46 · `image_flux2_input_Illustration.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input Ref Image for Flux.2 Dev]
+  [Input Illustration for Flux.2 Dev]
+</div>
+
+**Example output**
+
+![Flux.2 Dev product mockup output](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/image_flux2_fp8.png)
 
 ## Model links
 
 **text_encoders**
 
-- [mistral_3_small_flux2_bf16.safetensors](https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors)
+- [mistral_3_small_flux2_bf16.safetensors](https://huggingface.co/Comfy-Org/flux2-dev/blob/main/split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors)
 
 **diffusion_models**
 
-- [flux2_dev_fp8mixed.safetensors](https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/diffusion_models/flux2_dev_fp8mixed.safetensors)
+- [flux2_dev_fp8mixed.safetensors](https://huggingface.co/Comfy-Org/flux2-dev/blob/main/split_files/diffusion_models/flux2_dev_fp8mixed.safetensors)
 
 **vae**
 
-- [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/flux2-dev/resolve/main/split_files/vae/flux2-vae.safetensors)
+- [flux2-vae.safetensors](https://huggingface.co/Comfy-Org/flux2-dev/blob/main/split_files/vae/flux2-vae.safetensors)
 
 **Model Storage Location**
 

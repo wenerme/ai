@@ -1,12 +1,12 @@
 ---
 comments: true
-description: Learn about object detection with YOLO26. Explore pretrained models, training, validation, prediction, and export details for efficient object recognition.
-keywords: object detection, YOLO26, pretrained models, training, validation, prediction, export, machine learning, computer vision
+description: Learn about object detection with Ultralytics YOLO26. Explore pretrained models, training, validation, prediction, and export details for efficient object recognition.
+keywords: object detection, Ultralytics YOLO, YOLO26, pretrained models, training, validation, prediction, export, machine learning, computer vision
 ---
 
-# Object Detection
+# Object Detection with Ultralytics YOLO {#object-detection}
 
-[YOLO object detection with bounding boxes]
+[Ultralytics YOLO object detection with bounding boxes]
 
 [Object detection](https://www.ultralytics.com/glossary/object-detection) is a task that involves identifying the location and class of objects in an image or video stream.
 

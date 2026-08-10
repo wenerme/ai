@@ -1,6 +1,15 @@
 ---
 title: "LTX-2.3：ComfyUIワークフロー例"
 description: "テキストから動画、画像から動画、FLF2V、オーディオ駆動動画、IC-LoRA制御、ID-LoRAパーソナライゼーションまで、ComfyUIのネイティブワークフローでLTX-2.3を使用する方法を学びます。"
+translationSourceHash: 36378426
+translationFrom: tutorials/video/ltx/ltx-2-3.mdx
+translationBlockHashes:
+  "_intro": 2afce33d
+  "Key features": 3ddea9bd
+  "Getting started": 8bd36b77
+  "ComfyUI Native Workflows": f3645859
+  "Prompting tips": f92227b7
+  "Resources": 3f045765
 ---
 
 [LTX-2.3](https://huggingface.co/Lightricks/LTX-2.3)は、Lightricksのオープンソースオーディオ・動画生成モデルの最新進化版であり、ComfyUIでネイティブサポートされています。LTX-2をベースに、本リリースでは細部、ポートレート動画、オーディオ品質、画像から動画への一貫性、プロンプト理解、テキストレンダリングにおいて大幅な品質向上を実現しています。
@@ -38,6 +47,12 @@ LTX-2.3はComfyUIでネイティブサポートされています。開始する
 改善されたプロンプト理解とテキストレンダリングにより、テキストプロンプトから動画を生成します。
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_t2v.mp4"></video>
+
+### LTX-2.3 テキストから動画（`video_ltx2_3_t2v`）
+
+改善されたプロンプト理解とテキストレンダリングにより、テキストプロンプトから動画を生成します。
+
+[LTX-2.3 テキストから動画ワークフロープレビュー]
 
   
     Comfy Cloudで開く
@@ -94,6 +109,12 @@ ComfyUI/
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_i2v.mp4"></video>
 
+### LTX-2.3 画像から動画（`video_ltx2_3_i2v`）
+
+改善されたモーション一貫性で、入力画像から動画を生成します。
+
+[LTX-2.3 画像から動画ワークフロープレビュー]
+
   
     Comfy Cloudで開く
   
@@ -149,6 +170,12 @@ ComfyUI/
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_flf2v.mp4"></video>
 
+### LTX-2.3 最初・最後フレームから動画（`video_ltx2_3_flf2v`）
+
+開始画像と終了画像の間を補間します。
+
+[LTX-2.3 最初・最後フレームから動画ワークフロープレビュー]
+
   
     Comfy Cloudで開く
   
@@ -192,6 +219,12 @@ ComfyUI/
 画像と音声ファイルをアップロードして、同期された口の動きを持つ高品質な動画を生成します。
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_ia2v.mp4"></video>
+
+### LTX-2.3 画像・音声から動画（`video_ltx2_3_ia2v`）
+
+画像と音声からリップシンク動画を生成します。
+
+[LTX-2.3 画像・音声から動画ワークフロープレビュー]
 
   
     Comfy Cloudで開く
@@ -260,7 +293,7 @@ ComfyUI/
 
   このワークフローはモジュラー処理にサブグラフノードを使用しています。サブグラフのドキュメントを参照して、ワークフローのカスタマイズと拡張方法を学んでください。
 
-#### 入力マテリアル
+**入力マテリアル**
 
   
     制御信号抽出用の駆動動画。
@@ -310,6 +343,12 @@ ComfyUI/
 テキストプロンプト、参照画像、および短い音声クリップから、同期オーディオ付きのパーソナライズ動画を生成します。ID-LoRAを使用して、人物の外見と声を単一の生成モデルで適応させます。
 
 <video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/video_ltx2_3_id_lora.mp4"></video>
+
+### LTX-2.3 ID LoRA（`video_ltx2_3_id_lora`）
+
+参照画像と音声クリップから、同期オーディオ付きのパーソナライズ動画を生成します。
+
+[LTX-2.3 ID LoRA ワークフロープレビュー]
 
   
     Comfy Cloudで開く
