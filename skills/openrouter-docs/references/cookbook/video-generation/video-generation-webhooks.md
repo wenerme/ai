@@ -27,10 +27,10 @@ You need:
 * A video model slug for the job you submit with `callback_url`
 
 <Tip>
-  If you have not chosen a model yet, read
+  If you haven't chosen a model yet, read
   [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
+  first. It helps you pick one based on clip duration, output shape, input
+  type, audio, provider controls, and cost.
 </Tip>
 
 Use the API reference pages as the source of truth for exact fields:
@@ -238,7 +238,7 @@ Actual local signature-test output:
 
 You can also use a temporary Webhook.site URL as `CALLBACK_URL` to confirm
 OpenRouter delivers the webhook and includes the expected headers and envelope.
-Webhook.site does not run your signature verifier; use your own public receiver
+Webhook.site doesn't run your signature verifier; use your own public receiver
 with the workspace signing secret for end-to-end signature verification.
 
 Example Webhook.site delivery:
@@ -293,7 +293,7 @@ Example Webhook.site delivery:
 ## Step 4: Submit a video job with `callback_url`
 
 Once the receiver is reachable over public HTTPS, submit the video job with
-`callback_url`. The callback URL can be set per request, which is useful for
+`callback_url`. You can set the callback URL per request, which is useful for
 preview environments or tenant-specific receivers.
 
 Example submit logic:

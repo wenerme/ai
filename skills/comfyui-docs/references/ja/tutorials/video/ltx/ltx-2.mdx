@@ -1,14 +1,14 @@
 ---
 title: "LTX-2.0 ComfyUI ワークフロー例"
-description: "ComfyUI で LTX-2 を使用して同期された音声と動画を生成する方法を学ぶ"
-translationSourceHash: 25857512
+description: "ComfyUI で LTX-2 を使用して同期されたオーディオとビデオを生成する方法を学ぶ"
+translationSourceHash: aec8c4b6
 translationFrom: tutorials/video/ltx/ltx-2.mdx
 translationBlockHashes:
   "_intro": 200008b9
   "Key features": d645e82e
   "Model checkpoints": 5ebb1371
   "Getting started": f4d654f6
-  "Workflows": 04a86005
+  "Workflows": aeae7157
   "Prompting tips": fd6195b0
   "Resources": a5eb906f
 ---
@@ -38,68 +38,136 @@ translationBlockHashes:
 
 ## はじめに
 
-LTX-2 は ComfyUI でネイティブサポートされています。開始するには：
+LTX-2 は ComfyUI でネイティブサポートされています。はじめるには：
 
 1. ComfyUI を最新バージョンに更新
-2. **テンプレートライブラリ** > **動画** > 任意の LTX-2 ワークフローを選択
+2. **テンプレートライブラリ** > **ビデオ** > 任意の LTX-2 ワークフローを選択
 3. ポップアップに従ってモデルをダウンロードし、ワークフローを実行
 
 ## ワークフロー
 
-### テキストから動画
+### テキストから動画へ
 
 テキストプロンプトから動画を生成します。
 
+![ComfyUI ワークフロー - LTX-2 T2V](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_t2v-1.webp)
+
+  
     ワークフローをダウンロード
   
-
+  
     クラウドで開く
   
 
-**蒸留版**（高速、8 ステップ）：
+**蒸留バージョン**（高速、8ステップ）
 
-  ワークフローをダウンロード
+![ComfyUI ワークフロー - LTX-2 T2V 蒸留](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_t2v_distilled-1.webp)
 
-### 画像から動画
+  
+    ワークフローをダウンロード
+  
+  
+    クラウドで開く
+  
+
+### 画像から動画へ
 
 入力画像から動画を生成します。
 
+![ComfyUI ワークフロー - LTX-2 I2V](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_i2v-1.webp)
+
+  
     ワークフローをダウンロード
   
-
+  
     クラウドで開く
   
 
-**蒸留版**（高速、8 ステップ）：
+**入力素材**
 
-  ワークフローをダウンロード
+  
+    デフォルトの入力画像をダウンロードするか、ご自身の画像をご使用ください。
+  
 
-### 制御から動画
+**蒸留版**（より高速、8ステップ）:
 
-IC-LoRAs を使用して構造制御付き動画を生成します。
+![ComfyUI ワークフロー - LTX-2 I2V 蒸留版](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_i2v_distilled-1.webp)
+
+  
+    ワークフローをダウンロード
+  
+  
+    クラウドで開く
+  
+
+**入力素材**
+
+  
+    デフォルトの入力画像をダウンロードするか、ご自身の画像をご使用ください。
+  
+
+### 制御から動画へ
+
+IC-LoRAを使用して、構造制御された動画を生成します。
 
 **深度制御：**
 
+![ComfyUI Workflow - LTX-2 Depth to Video](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_depth_to_video-1.webp)
+
+  
     ワークフローをダウンロード
   
-
+  
     クラウドで開く
   
 
-**キャニー制御：**
+**入力素材**
 
-    ワークフローをダウンロード
+  
+    デフォルトの深度入力画像をダウンロードするか、独自の画像を使用してください。
+  
+  
+    デフォルトの入力ビデオをダウンロードするか、独自のビデオを使用してください。
   
 
+**Canny制御：**
+
+![ComfyUI Workflow - LTX-2 Canny to Video](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_canny_to_video-1.webp)
+
+  
+    ワークフローをダウンロード
+  
+  
     クラウドで開く
+  
+
+**入力素材**
+
+  
+    デフォルトのCanny入力画像をダウンロードするか、独自の画像を使用してください。
+  
+  
+    デフォルトの入力ビデオをダウンロードするか、独自のビデオを使用してください。
   
 
 **ポーズ制御：**
 
+![ComfyUI Workflow - LTX-2 Pose to Video](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_pose_to_video-1.webp)
+
+  
     ワークフローをダウンロード
   
-
+  
     クラウドで開く
+  
+
+**入力素材**
+
+  
+    デフォルトのポーズ入力画像をダウンロードするか、独自の画像を使用してください。
+  
+  
+    デフォルトの入力ビデオをダウンロードするか、独自のビデオを使用してください。
   
 
 ## プロンプトのヒント

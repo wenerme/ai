@@ -21,10 +21,10 @@ ComfyUI now natively supports Depth Anything 3 nodes. Make sure you have updated
 
 Download the Depth Anything 3 checkpoint(s) and save them to the corresponding ComfyUI folder:
 
-- **Small** ([depth_anything_3_small.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_small.safetensors)) — Lightweight, fast inference
-- **Base** ([depth_anything_3_base.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_base.safetensors)) — Balanced performance
-- **Mono-Large** ([depth_anything_3_mono_large.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_mono_large.safetensors)) — Best for monocular depth, includes sky detection
-- **Metric-Large** ([depth_anything_3_metric_large.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/resolve/main/geometry_estimation/depth_anything_3_metric_large.safetensors)) — Metric scale depth in metres, includes sky detection
+- **Small** ([depth_anything_3_small.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/blob/main/geometry_estimation/depth_anything_3_small.safetensors)): Lightweight, fast inference
+- **Base** ([depth_anything_3_base.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/blob/main/geometry_estimation/depth_anything_3_base.safetensors)): Balanced performance
+- **Mono-Large** ([depth_anything_3_mono_large.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/blob/main/geometry_estimation/depth_anything_3_mono_large.safetensors)): Best for monocular depth, includes sky detection
+- **Metric-Large** ([depth_anything_3_metric_large.safetensors](https://huggingface.co/Comfy-Org/Depth-Anything-3/blob/main/geometry_estimation/depth_anything_3_metric_large.safetensors)): Metric scale depth in metres, includes sky detection
 
 ```
 ComfyUI/
@@ -38,58 +38,75 @@ ComfyUI/
 
 ## Example Workflows
 
----
+### Depth Anything 3: Image Depth Estimation {#utility_depth_anything3_image_depth_estimation}
 
-## 1. Image Depth Estimation
+Upload one image and generate a depth map using Depth Anything 3. View a side-by-side comparison of the original image and depth output.
 
-**What it does:** Upload one image and run **Image Depth Estimation (Depth Anything 3)** to produce a depth map. The result is shown in **Depth Preview**, with a side-by-side comparison view of the original image and depth output.
+[Depth Anything 3 image depth estimation workflow preview]
 
   
-    Download JSON or search "Depth Anything 3" in Template Library
+    Open in Comfy Cloud
   
   
-    Get the example input image for this workflow
+    Download JSON or search &quot;Depth Anything 3: Image Depth Estimation&quot; in Template Library
   
 
-<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
-  [Image Depth Estimation output]
-  [Image Depth Estimation comparison]
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 85 · `retro_futuristic_home.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input image]
 </div>
 
 ### Steps to Run
 
-1. **LoadImage** — load your input image
-2. **LoadDA3Model** — select a Depth Anything 3 variant
-3. **Run** — click Queue or use `Cmd+Enter`
+1. **LoadImage**: load your input image
+2. **LoadDA3Model**: select a Depth Anything 3 variant
+3. **Run**: click Queue or use `Cmd+Enter`
 4. The workflow outputs a depth map and side-by-side comparison
 
   This workflow uses Subgraph nodes for modular processing. Check out the Subgraph documentation to learn how to customize and extend the workflow.
 
----
+### Depth Anything 3: Video Depth Estimation {#utility_depth_anything3_video_depth_estimation}
 
-## 2. Video Depth Estimation
+Upload a video to generate a per-frame depth sequence. Inside the subgraph, **GetVideoComponents** splits the input video into frames, **LoadDA3Model** loads the model, and **SetVideoComponents** reassembles the depth frames back into a video output.
 
-**What it does:** Upload a video and run **Video Depth Estimation (Depth Anything 3)** to produce a per-frame depth sequence. Inside the subgraph, **GetVideoComponents** splits the input video into frames, **LoadDA3Model** loads the model, and **SetVideoComponents** reassembles the depth frames back into a video output.
+[Depth Anything 3 video depth estimation workflow preview]
 
-  
-    Download JSON or search "Depth Anything 3" in Template Library
-  
   
     Open in Comfy Cloud
   
+  
+    Download JSON or search &quot;Depth Anything 3: Video Depth Estimation&quot; in Template Library
+  
 
-![Video Depth Estimation preview](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/utility_depth_anything3_video_depth_estimation-1.webp)
+**Input materials**
+
+Upload this file to the matching `LoadVideo` node:
+
+  
+    `LoadVideo` node 87 · `empty_room_assembly.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  <video controls style={{width: '100%', height: 'auto'}}>
+    <source src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/empty_room_assembly.mp4" type="video/mp4" />
+  </video>
+</div>
 
 ### Steps to Run
 
-1. **LoadVideo** — load your input video
-2. **Select Model** — choose between **Small**, **Base**, **Mono-Large**, or **Metric-Large**
-3. **Run** — click Queue or use `Cmd+Enter`
+1. **LoadVideo**: load your input video
+2. **Select Model**: choose between **Small**, **Base**, **Mono-Large**, or **Metric-Large**
+3. **Run**: click Queue or use `Cmd+Enter`
 4. The workflow outputs a video with per-frame depth maps
 
   This workflow uses Subgraph nodes for modular processing. Check out the Subgraph documentation to learn how to customize and extend the workflow.
-
----
 
 ## Model Variants
 
@@ -105,5 +122,5 @@ ComfyUI/
 
 ## Community Resources
 
-- [Depth Anything 3 GitHub (ByteDance-Seed)](https://github.com/ByteDance-Seed/Depth-Anything-3) — Research paper and code
-- [Comfy-Org/Depth-Anything-3](https://huggingface.co/Comfy-Org/Depth-Anything-3) — Official ComfyUI model weights
+- [Depth Anything 3 GitHub (ByteDance-Seed)](https://github.com/ByteDance-Seed/Depth-Anything-3): Research paper and code
+- [Comfy-Org/Depth-Anything-3](https://huggingface.co/Comfy-Org/Depth-Anything-3): Official ComfyUI model weights

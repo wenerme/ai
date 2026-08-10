@@ -19,44 +19,64 @@ With these capabilities, Seed Audio 1.0 fits a wide range of use cases including
 
 ## Available workflows
 
-### Seed Audio 1.0: Text to Audio
+### Seed Audio 1.0: Text to Audio {#api_bytedance_seed_audio1_0_t2a}
 
-Generate audio directly from a text prompt. Describe the voice, ambience, sound effects, and dialogue in the prompt.
+Input a text prompt to generate speech, dialogue, background music, and sound effects in one audio file.
 
-![Seed Audio 1.0 Text to Audio preview](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/api_bytedance_seed_audio1_0_t2a.png)
-
-  
-    Open in Comfy Cloud
-  
-  
-    Download JSON or search "Seed Audio 1.0" in Template Library
-  
-
-### Seed Audio 1.0: Text + Audio to Audio
-
-Generate audio with voice cloning. Connect a reference audio clip and the model clones the voice and style, applying it to your text prompt.
-
-![Seed Audio 1.0 Text + Audio to Audio preview](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/api_bytedance_seed_audio1_0_ta2a.png)
+[Seed Audio 1.0: Text to Audio workflow preview]
 
   
     Open in Comfy Cloud
   
   
-    Download JSON or search "Seed Audio 1.0" in Template Library
+    Download JSON or search &quot;Seed Audio 1.0: Text to Audio&quot; in Template Library
   
 
-### Seed Audio 1.0: Text + Image to Audio
+### Seed Audio 1.0: Text + Audio to Audio {#api_bytedance_seed_audio1_0_ta2a}
 
-Derive a voice from a character image. Connect a character image and the model generates audio with a voice style matching the visual subject.
+Upload a reference audio clip and write a text prompt to clone the voice into a new scene.
 
-![Seed Audio 1.0 Text + Image to Audio preview](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/api_bytedance_seed_audio1_0_ti2a.png)
+[Seed Audio 1.0: Text + Audio to Audio workflow preview]
 
   
     Open in Comfy Cloud
   
   
-    Download JSON or search "Seed Audio 1.0" in Template Library
+    Download JSON or search &quot;Seed Audio 1.0: Text + Audio to Audio&quot; in Template Library
   
+
+**Input materials**
+
+Upload this file to the matching `LoadAudio` node:
+
+  
+    `LoadAudio` node 8 · `seed_audio_ref_audio1.mp3`
+  
+
+### Seed Audio 1.0: Text + Image to Audio {#api_bytedance_seed_audio1_0_ti2a}
+
+Upload a character image and write a text prompt to generate audio with a voice style matching the visual subject.
+
+[Seed Audio 1.0: Text + Image to Audio workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Seed Audio 1.0: Text + Image to Audio&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 6 · `girl_and_fish.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [girl_and_fish.png]
+</div>
 
 ## How to use Seed Audio 1.0 in ComfyUI
 

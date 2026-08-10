@@ -1,5 +1,5 @@
 ---
-title: ComfyUI Wan2.1 Video Examples
+title: "ComfyUI Wan2.1 Video Examples"
 description: "This guide demonstrates how to generate videos with first and last frames using Wan2.1 Video in ComfyUI"
 ---
 
@@ -26,44 +26,60 @@ Please update ComfyUI to the latest version before starting the examples to make
 All models mentioned in this guide can be found [here](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files). Below are the common models you'll need for the examples in this guide, which you can download in advance:
 
 Choose one version from **Text encoders** to download:
-- [umt5_xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true)
-- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true)
+
+  
+    FP16 precision text encoder. Place in <code>ComfyUI/models/text_encoders/</code>
+  
+  
+    FP8 scaled text encoder. Place in <code>ComfyUI/models/text_encoders/</code>
+  
 
 **VAE**
-- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true)
+
+    Wan2.1 VAE model. Place in <code>ComfyUI/models/vae/</code>
 
 **CLIP Vision**
-- [clip_vision_h.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/clip_vision/clip_vision_h.safetensors?download=true)
+
+    CLIP Vision model for image conditioning. Place in <code>ComfyUI/models/clip_vision/</code>
 
 File storage locations:
 ```
 ComfyUI/
 ├── models/
 │   ├── diffusion_models/
-│   ├── ...                  # Let's download the models in the corresponding workflow
+│   │   └── ... (download per workflow below)
 │   ├── text_encoders/
-│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors
-│   └── vae/
-│   │   └──  wan_2.1_vae.safetensors
+│   │   └── umt5_xxl_fp8_e4m3fn_scaled.safetensors
+│   ├── vae/
+│   │   └── wan_2.1_vae.safetensors
 │   └── clip_vision/
-│       └──  clip_vision_h.safetensors   
+│       └── clip_vision_h.safetensors
 ```
 
 For diffusion models, we'll use the fp16 precision models in this guide because we've found that they perform better than the bf16 versions. If you need other precision versions, please visit [here](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files/diffusion_models) to download them.
 
-## Wan2.1 Text-to-Video Workflow
+## Wan2.1 Text-to-Video Workflow (1.3B)
 
-Before starting the workflow, please download [wan2.1_t2v_1.3B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_t2v_1.3B_fp16.safetensors?download=true) and save it to the `ComfyUI/models/diffusion_models/` directory.
+### Wan 2.1 Text to Video {#text_to_video_wan}
+
+Generate videos from text prompts using Wan 2.1.
+
+[Wan 2.1 Text to Video workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Wan 2.1 Text to Video&quot; in Template Library
+  
+
+### Model Downloads
+
+    Diffusion model for Wan2.1 Text-to-Video. Place in <code>ComfyUI/models/diffusion_models/</code>
 
 > If you need other t2v precision versions, please visit [here](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/tree/main/split_files/diffusion_models) to download them.
 
-### 1. Workflow File Download
-
-Download the file below and drag it into ComfyUI to load the corresponding workflow:
-
-![Wan2.1 Text-to-Video Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1/wan2.1_t2v_1.3b.webp)
-
-### 2. Complete the Workflow Step by Step
+### Steps to Run
 
 [ComfyUI Wan2.1 Workflow Steps]
 
@@ -74,25 +90,41 @@ Download the file below and drag it into ComfyUI to load the corresponding workf
 5. (Optional) If you need to modify the prompts (positive and negative), make changes in the `CLIP Text Encoder` node at number `5`
 6. Click the `Run` button or use the shortcut `Ctrl(cmd) + Enter` to execute the video generation
 
-## Wan2.1 Image-to-Video Workflow
+## Wan2.1 Image-to-Video Workflow (14B)
 
 **Since Wan Video separates the 480P and 720P models**, we'll need to provide examples for both resolutions in this guide. In addition to using different models, they also have slight parameter differences.
 
 ### 480P Version
 
-#### 1. Workflow and Input Image
+### Wan 2.1 Image to Video {#image_to_video_wan}
 
-Download the image below and drag it into ComfyUI to load the corresponding workflow:
-![Wan2.1 Image-to-Video Workflow 14B 480P Workflow Example Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1/wan2.1_i2v_14b_480P.webp)
+Generate videos from images using Wan 2.1.
 
-We'll use the following image as input:
+[Wan 2.1 Image to Video workflow preview]
 
-![Wan2.1 Image-to-Video Workflow 14B 480P Workflow Example Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1/input/flux_dev_example.png)
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Wan 2.1 Image to Video&quot; in Template Library
+  
 
-#### 2. Model Download
-Please download [wan2.1_i2v_480p_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_i2v_480p_14B_fp16.safetensors?download=true) and save it to the `ComfyUI/models/diffusion_models/` directory.
+**Input materials**
 
-#### 3. Complete the Workflow Step by Step
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 52 · `image_to_video_wan_start_image.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [image_to_video_wan_start_image.png]
+</div>
+#### Model Downloads
+
+    Diffusion model for Wan2.1 I2V 480P. Place in <code>ComfyUI/models/diffusion_models/</code>
+
+#### Steps to Run
 
 [ComfyUI Wan2.1 Workflow Steps]
 
@@ -107,20 +139,22 @@ Please download [wan2.1_i2v_480p_14B_fp16.safetensors](https://huggingface.co/Co
 
 ### 720P Version
 
-#### 1. Workflow and Input Image
+![Wan2.1 Image-to-Video Workflow 14B 720P](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1/wan2.1_i2v_14b_720P.webp)
 
-Download the image below and drag it into ComfyUI to load the corresponding workflow:
-![Wan2.1 Image-to-Video Workflow 14B 720P Workflow Example Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1/wan2.1_i2v_14b_720P.webp)
+  
+    Open in Comfy Cloud
+  
+  
+    Download the workflow image and drag it into ComfyUI to load the workflow
+  
 
-We'll use the following image as input:
+    Download the default input image, or use your own image.
 
-![Wan2.1 Image-to-Video Workflow 14B 720P Workflow Example Input Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/wan2.1/input/magician.png)
+#### Model Downloads
 
-#### 2. Model Download
+    Diffusion model for Wan2.1 I2V 720P. Place in <code>ComfyUI/models/diffusion_models/</code>
 
-Please download [wan2.1_i2v_720p_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_i2v_720p_14B_fp16.safetensors?download=true) and save it to the `ComfyUI/models/diffusion_models/` directory.
-
-#### 3. Complete the Workflow Step by Step 
+#### Steps to Run
 
 [ComfyUI Wan2.1 Workflow Steps]
 

@@ -1,12 +1,12 @@
 ---
 title: "PixelDiT ComfyUI 工作流示例"
 description: "PixelDiT 是 NVIDIA 的像素空间扩散变换器，用于生成 1024px 文本到图像。它直接在像素空间生成图像，无需 VAE 编解码。"
-translationSourceHash: d5838b66
+translationSourceHash: 92812e84
 translationFrom: tutorials/image/pixeldit/pixeldit.mdx
 translationBlockHashes:
-  "_intro": ef3a0250
-  "PixelDiT text-to-image workflow": 21b069a6
-  "Model downloads": e4bafb0a
+  "_intro": eb9c0ba9
+  "PixelDiT text-to-image workflow": af3a6805
+  "Model downloads": 52281af2
 ---
 
 **PixelDiT** 是 NVIDIA 开发的像素空间扩散变换器，用于 **1024px** 文本到图像生成。与传统在潜空间操作的扩散模型不同，PixelDiT 使用双层 DiT 架构直接在像素空间生成图像——结合了 patch 级 DiT 和像素级 DiT，并通过 MM-DiT 融合实现文本和图像 token 之间的联合注意力。
@@ -26,14 +26,18 @@ translationBlockHashes:
 
 [PixelDiT 文生图工作流]
 
+  
     下载 JSON 或在模板库中搜索 "PixelDiT"
+  
+  
+    在云端打开
   
 
 工作流由三个主要节点组成：
 
-1. **ResolutionSelector** — 选择所需的输出分辨率
-2. **文生图 (PixelDiT) 子图** — 核心生成节点，暴露了提示词、种子、模型选择和分辨率等控制参数
-3. **SaveImage** — 保存生成的图像
+1. **ResolutionSelector**: 选择所需的输出分辨率
+2. **文生图 (PixelDiT) 子图**: 核心生成节点，暴露了提示词、种子、模型选择和分辨率等控制参数
+3. **SaveImage**: 保存已生成的图像
 
   本工作流使用子图节点进行模块化处理。查看子图文档了解如何自定义和扩展工作流。
 
@@ -46,7 +50,7 @@ translationBlockHashes:
 | **Positive Prompt** | 描述你想要生成的图像的文本提示词 |
 | **Negative Prompt** | 描述要避免的内容的文本 |
 | **Seed** | 用于结果可复现的随机种子 |
-| **UNet Model** | PixelDiT 模型检查点选择 |
+| **U-Net Model** | PixelDiT 模型检查点选择 |
 | **CLIP Model** | 文本编码器模型选择 |
 
 ## 模型下载

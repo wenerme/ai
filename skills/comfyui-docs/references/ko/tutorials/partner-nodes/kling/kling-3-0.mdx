@@ -1,15 +1,14 @@
 ---
 title: "ComfyUI에서 Kling 3.0 동영상 및 이미지 생성"
 description: "멀티샷 동영상 생성, 피사체 일관성, 다국어 오디오, 네이티브 텍스트 렌더링을 위해 ComfyUI에서 Kling 3.0 모델을 사용하는 방법을 알아보세요"
-translationSourceHash: 888c48f3
+translationSourceHash: c20691d4
 translationFrom: tutorials/partner-nodes/kling/kling-3-0.mdx
 translationBlockHashes:
   "_intro": 6176006f
-  "About Kling 3.0": 2bae40cd
-  "Kling 3.0 workflows": 383f3e6a
+  "About Kling 3.0": 241f54a8
   "Learn more": 75a02ac4
   "Available models": f566da3f
-  "Legacy Kling models (EOL)": 8364a20e
+  "Legacy Kling models (EOL)": 6b40fd6e
 ---
 
 Kling 3.0은 가장 진보된 멀티모달 생성 시스템 중 하나로, 이제 파트너 노드를 통해 ComfyUI에서 이용할 수 있습니다. 이번 릴리스에는 **Kling Video 3.0**, **Kling Video 3.0 Omni**, **Kling Image 3.0**, 그리고 **Kling Image 3.0 Omni**가 포함되어 있어 동영상, 이미지, 시청각 콘텐츠, 내러티브 생성 기능을 바로 노드 기반 워크플로우에 통합할 수 있습니다.
@@ -22,19 +21,76 @@ Kling 3.0은 가장 진보된 멀티모달 생성 시스템 중 하나로, 이�
 - **캐릭터 인식 가능한 네이티브 오디오**: 정밀한 입술 싱크와 표정 맞춤으로 다국어 대화를 구현합니다.
 - **네이티브 텍스트 렌더링**: 광고, UI 장면, 브랜드 콘텐츠를 위한 명확하고 구조화된 화면 내 텍스트 표현
 
-## Kling 3.0 워크플로우
+### Kling 3.0: 텍스트 기반 이미지 생성 {#api_kling_v3_t2i}
 
-    Kling 3.0 이미지-동영상 워크플로우를 다운로드하세요.
+Kling 3.0 모델을 사용하여 텍스트 프롬프트에서 이미지를 생성합니다.
+
+[Kling 3.0: 텍스트 기반 이미지 생성 워크플로 미리보기]
+
+  
+    Comfy Cloud에서 열기
+  
+  
+    JSON 다운로드 또는 템플릿 라이브러리에서 &quot;Kling 3.0: 텍스트 기반 이미지 생성&quot; 검색
   
 
-    Kling 3.0 Omni 동영상 편집 워크플로우를 다운로드하세요.
+**출력 예시**
+
+![Kling 3.0: 텍스트 기반 이미지 생성 예시](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling_v3_t2i.png)
+
+### Kling 3.0: 비디오 생성 {#api_kling_v3_video}
+
+텍스트 또는 이미지 프롬프트를 입력하여 멀티샷 구성, 복잡한 카메라 움직임, 일관된 피사체가 포함된 15초 비디오 시퀀스를 생성합니다.
+
+[Kling 3.0: 비디오 생성 워크플로 미리보기]
+
+  
+    Comfy Cloud에서 열기
+  
+  
+    JSON 다운로드 또는 템플릿 라이브러리에서 &quot;Kling 3.0: 비디오 생성&quot; 검색
   
 
-    Comfy Cloud에서 즉시 이미지-동영상 워크플로우를 사용해 보세요.
+**입력 자료**
+
+이 파일을 해당 `LoadImage` 노드에 업로드하세요:
+
+  
+    `LoadImage` 노드 1 · `boxing.png`
   
 
-    Comfy Cloud에서 즉시 Omni 동영상 편집 워크플로우를 사용해 보세요.
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [boxing.png]
+</div>
+
+### Kling 3.0: 첫 프레임과 마지막 프레임으로 비디오 생성 {#api_kling_v3_flf2v}
+
+첫 프레임과 마지막 프레임 이미지를 입력하여 멀티샷 생성 및 정밀한 요소 제어가 가능한 연속 비디오 시퀀스를 생성합니다.
+
+[Kling 3.0: 첫 프레임과 마지막 프레임으로 비디오 생성 워크플로 미리보기]
+
   
+    Comfy Cloud에서 열기
+  
+  
+    JSON 다운로드 또는 템플릿 라이브러리에서 &quot;Kling 3.0: 첫 프레임과 마지막 프레임으로 비디오 생성&quot; 검색
+  
+
+**입력 자료**
+
+이 파일들을 해당 `LoadImage` 노드에 업로드하세요:
+
+  
+    `LoadImage` 노드 1 · `goldenfish_in_bag.png`
+  
+  
+    `LoadImage` 노드 13 · `man_in_daydream.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [goldenfish_in_bag.png]
+  [man_in_daydream.png]
+</div>
 
 ## 자세히 알아보기
 
@@ -55,11 +111,11 @@ Kling 3.0의 세부적인 예시, 프롬프트, 동영상 시연을 확인하려
 
   **서비스 종료(EOL)**: 다음 레거시 Kling 모델 및 워크플로 템플릿은 **2026년 9월 15일**에 폐기될 예정입니다: Kling V1.5, V1.6, V2.1, V2.1 Master 및 Kolors 가상 피팅 API. 관련 Partner Nodes는 ComfyUI에 남아 있지만, 이러한 모델 옵션은 폐기일 이후 작동하지 않습니다.
 
-### 제거된 워크플로 템플릿 및 대체안
+### 폐기된 워크플로 템플릿 및 대체안
 
 | 제거된 템플릿 | 권장 대체 |
 | :------------ | :-------- |
-| `api_kling_i2v` (V2.1 Master) | [`api_kling_v3_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_v3_i2v.json) 또는 [`api_kling2_6_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling2_6_i2v.json) |
+| `api_kling_i2v` (V2.1 Master) | [`api_kling_o3_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_o3_i2v.json) 또는 [`api_kling2_6_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling2_6_i2v.json) |
 | `api_kling_effects` (V1.6) | Kling 3.0 이펙트 워크플로 (`api_kling_v3_*`) |
 | `api_kling_flf` (V1.6) | [`api_kling_v3_flf2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_v3_flf2v.json) 또는 [`api_kling_o3_flf2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_o3_flf2v.json) |
 | `api_kling_dual_characters_effects` (V1.6) | Kling 3.0 이펙트 워크플로 (`api_kling_v3_*`) |

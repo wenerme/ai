@@ -18,45 +18,56 @@ USO supports three main approaches:
 
 ## ByteDance USO ComfyUI Native Workflow
 
+### Flux.1 Dev USO Reference Image Generation {#flux1_dev_uso_reference_image_gen}
+
+Use reference images to control both style and subject. Keep your character's face while changing artistic style, or apply artistic styles to new scenes.
+
+[Flux.1 Dev USO reference image workflow preview]
+
+  
+    Run this workflow on Comfy Cloud
+  
+  
+    Download the workflow JSON and drag it into ComfyUI
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 47 · `flux1_dev_uso_reference_image_gen_input_image.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [flux1_dev_uso_reference_image_gen_input_image.png]
+</div>
+
+**Example output**
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input image]
+  [Flux.1 Dev USO example output]
+</div>
+
 ### 1. Workflow and input
-
-Download the image below and drag it into ComfyUI to load the corresponding workflow.
-
-![Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/flux/bytedance-uso/bytedance-uso.png)
-
-<a 
-className="prose"
-target='_blank'
-href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/flux1_dev_uso_reference_image_gen.json"
-style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginRight: '10px'}}
->
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow</p>
-</a>
-
-<a className="prose"  target='_blank'  href="https://cloud.comfy.org/?template=flux1_dev_uso_reference_image_gen&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
-</a>
-
-Use the image below as an input image.
-
-![input](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/flux/bytedance-uso/input.png)
 
 ### 2. Model links
 
 **checkpoints**
 
-- [flux1-dev-fp8.safetensors](https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors)
+- [flux1-dev-fp8.safetensors](https://huggingface.co/Comfy-Org/flux1-dev/blob/main/flux1-dev-fp8.safetensors)
 
 **loras**
 
-- [uso-flux1-dit-lora-v1.safetensors](https://huggingface.co/Comfy-Org/USO_1.0_Repackaged/resolve/main/split_files/loras/uso-flux1-dit-lora-v1.safetensors)
+- [uso-flux1-dit-lora-v1.safetensors](https://huggingface.co/Comfy-Org/USO_1.0_Repackaged/blob/main/split_files/loras/uso-flux1-dit-lora-v1.safetensors)
 
 **model_patches**
 
-- [uso-flux1-projector-v1.safetensors](https://huggingface.co/Comfy-Org/USO_1.0_Repackaged/resolve/main/split_files/model_patches/uso-flux1-projector-v1.safetensors)
+- [uso-flux1-projector-v1.safetensors](https://huggingface.co/Comfy-Org/USO_1.0_Repackaged/blob/main/split_files/model_patches/uso-flux1-projector-v1.safetensors)
 
 **clip_visions**
-- [sigclip_vision_patch14_384.safetensors](https://huggingface.co/Comfy-Org/sigclip_vision_384/resolve/main/sigclip_vision_patch14_384.safetensors)
+- [sigclip_vision_patch14_384.safetensors](https://huggingface.co/Comfy-Org/sigclip_vision_384/blob/main/sigclip_vision_patch14_384.safetensors)
 
 Please download all models and place them in the following directories:
 

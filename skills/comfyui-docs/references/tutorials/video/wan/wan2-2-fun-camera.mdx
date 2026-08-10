@@ -39,31 +39,52 @@ Download the video or JSON file below and drag it into ComfyUI to load the corre
   src="https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/wan2.2_fun_camera/wan2.2_14B_fun_camera.mp4"
 ></video>
 
-<a className="prose"  target='_blank'  href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_wan2_2_14B_fun_camera.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow</p>
-</a>
+[Wan2.2 Fun Camera Control workflow]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search "Wan2.2 Fun Camera" in Template Library
+  
 
 Please download the image below, which we will use as input.
 
-![Input Starting Image](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/video/wan/wan2.2_fun_camera/input.jpg)
+**Input materials**
+
+  
+    Starting frame for the video generation. Download and use this image, or replace with your own.
+  
 
 ### 2. Model Links
 
 The following models can be found in [Wan_2.2_ComfyUI_Repackaged](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged):
 
-**Diffusion Model**
-- [wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors)
-- [wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors)
+**Diffusion Models**
+
+  
+    High noise diffusion model for Wan2.2 Fun Camera
+  
+  
+    Low noise diffusion model for Wan2.2 Fun Camera
+  
 
 **Wan2.2-Lightning LoRA (Optional, for acceleration)**
-- [wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors)
-- [wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors)
+
+  
+    4-step acceleration LoRA for high noise model
+  
+  
+    4-step acceleration LoRA for low noise model
+  
 
 **VAE**
-- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.2_ComfyUI_Repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors)
 
-**Text Encoder**   
-- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors)
+  Wan2.1 VAE for encoding/decoding
+
+**Text Encoder**
+
+  FP8 scaled text encoder
 
 File save location
 
@@ -77,7 +98,7 @@ ComfyUI/
 │   │   ├─── wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors
 │   │   └─── wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors
 │   ├───📂 text_encoders/
-│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors 
+│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors
 │   └───📂 vae/
 │       └── wan_2.1_vae.safetensors
 ```

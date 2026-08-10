@@ -26,10 +26,10 @@ You need:
 * A model that supports `frame_images`, confirmed with `GET /api/v1/videos/models`
 
 <Tip>
-  If you have not chosen a model yet, read
+  If you haven't chosen a model yet, read
   [Choose a Video Generation Model](/docs/cookbook/video-generation/choose-video-model)
-  so you can select one based on your clip duration, output shape, input type,
-  audio, provider controls, and cost requirements.
+  first. It helps you pick one based on clip duration, output shape, input
+  type, audio, provider controls, and cost.
 </Tip>
 
 Use the API reference pages as the source of truth for exact fields:
@@ -88,9 +88,8 @@ containing `first_frame` and `last_frame`.
 ## Step 2: Submit the image-to-video job
 
 Build the video request with `frame_images` when the image should anchor an
-exact frame. This example uses a first frame, but the same request shape
-belongs in whatever server route, queue, or worker owns video generation in your
-app.
+exact frame. This example uses a first frame. Put the same request shape in
+whatever server route, queue, or worker owns video generation in your app.
 
 ```js expandable lines theme={null}
 const apiKey = process.env.OPENROUTER_API_KEY;
@@ -201,9 +200,9 @@ This is useful when you want the video to move from a known starting composition
 
 ## Step 4: Poll and download
 
-After submission, poll from a server route, worker, or job runner instead of the
-browser. Keep the flow explicit: poll with a limit, stop on terminal failure,
-then download the completed video.
+After submission, poll from a server route, worker, or job runner instead of
+the browser. Poll with a limit, stop on terminal failure, then download the
+completed video.
 
 Example polling and download helper:
 

@@ -13,19 +13,76 @@ Kling 3.0 is one of the most advanced multi-modal generation systems, now availa
 - **Native audio with character awareness**: Multilingual dialogue with precise lip sync and facial expression alignment
 - **Native text rendering**: Clear, structured on-screen text for ads, UI scenes, and branded content
 
-## Kling 3.0 workflows
+### Kling 3.0: Text to Image {#api_kling_v3_t2i}
 
-    Download the Kling 3.0 Image-to-Video workflow.
+Generate an image from a text prompt using the Kling 3.0 model.
+
+[Kling 3.0: Text to Image workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 3.0: Text to Image&quot; in Template Library
   
 
-    Download the Kling 3.0 Omni Video Edit workflow.
+**Example output**
+
+![Kling 3.0: Text to Image example](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_kling_v3_t2i.png)
+
+### Kling 3.0: Video Generation {#api_kling_v3_video}
+
+Input text or image prompts to generate 15-second video sequences with multi-shot compositions, complex camera movements, and consistent subjects.
+
+[Kling 3.0: Video Generation workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 3.0: Video Generation&quot; in Template Library
   
 
-    Try the Image-to-Video workflow instantly on Comfy Cloud.
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 1 · `boxing.png`
   
 
-    Try the Omni Video Edit workflow instantly on Comfy Cloud.
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [boxing.png]
+</div>
+
+### Kling 3.0: First Last Frame to Video {#api_kling_v3_flf2v}
+
+Input a first and last frame image to generate a continuous video sequence with multi-shot generation and precise element control.
+
+[Kling 3.0: First Last Frame to Video workflow preview]
+
   
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Kling 3.0: First Last Frame to Video&quot; in Template Library
+  
+
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
+  
+    `LoadImage` node 1 · `goldenfish_in_bag.png`
+  
+  
+    `LoadImage` node 13 · `man_in_daydream.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [goldenfish_in_bag.png]
+  [man_in_daydream.png]
+</div>
 
 ## Learn more
 
@@ -50,7 +107,7 @@ For detailed examples, prompts, and video demonstrations of Kling 3.0's capabili
 
 | Removed template | Suggested replacement |
 | :--------------- | :-------------------- |
-| `api_kling_i2v` (V2.1 Master) | [`api_kling_v3_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_v3_i2v.json) or [`api_kling2_6_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling2_6_i2v.json) |
+| `api_kling_i2v` (V2.1 Master) | [`api_kling_o3_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_o3_i2v.json) or [`api_kling2_6_i2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling2_6_i2v.json) |
 | `api_kling_effects` (V1.6) | Kling 3.0 effect workflows (`api_kling_v3_*`) |
 | `api_kling_flf` (V1.6) | [`api_kling_v3_flf2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_v3_flf2v.json) or [`api_kling_o3_flf2v`](https://github.com/Comfy-Org/workflow_templates/blob/main/templates/api_kling_o3_flf2v.json) |
 | `api_kling_dual_characters_effects` (V1.6) | Kling 3.0 effect workflows (`api_kling_v3_*`) |

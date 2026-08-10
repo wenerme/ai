@@ -1,14 +1,16 @@
 ---
 title: "Grok Imagine Video 1.5 图生视频 ComfyUI 官方示例"
-description: "本指南介绍如何在 ComfyUI 中使用 Grok Imagine Video 1.5 Partner Node，从图片生成带原生音频的高质量视频"
+description: "本指南介绍如何在 ComfyUI 中使用 Grok Imagine Video 1.5 Partner Node，从图像生成带原生音频的高质量视频"
+translationSourceHash: 29ff60fb
+translationFrom: tutorials/partner-nodes/grok/grok-imagine-video-1-5.mdx
 ---
 
-[Grok Imagine Video 1.5](/zh/built-in-nodes/GrokVideoNode) Partner Node 可从单张图片生成带原生音频的高质量视频。由 xAI 最新 Grok 模型驱动，最高支持 **1080p** 分辨率。
+[Grok Imagine Video 1.5](/zh/built-in-nodes/GrokVideoNode) Partner Node 可从单张图像生成带原生音频的高质量视频。由 xAI 最新 Grok 模型驱动，最高支持 **1080p** 分辨率。
 
 节点通过 `model` 参数支持两种模型变体：
 
-- **`grok-imagine-video`** — 上一代模型，图片为可选输入
-- **`grok-imagine-video-1.5`** — 最新模型，**必须**提供输入图片，支持 1080p 输出
+- **`grok-imagine-video`** — 上一代模型，图像为可选输入
+- **`grok-imagine-video-1.5`** — 最新模型，**必须**提供输入图像，支持 1080p 输出
 
 两种变体均生成**原生音频**——音效、环境音和对话在同一推理过程中合成，无需额外音频管线。视频时长范围为 **1 到 15 秒**。
 
@@ -23,16 +25,18 @@ description: "本指南介绍如何在 ComfyUI 中使用 Grok Imagine Video 1.5 
     下载 JSON 或在模板库中搜索 "Grok Imagine Video 1.5"
   
 
+    获取此工作流的示例输入图像。
+
 ### 工作流总览
 
 该工作流使用三个节点：
-- **LoadImage** — 提供起始图片帧
+- **LoadImage** — 提供起始图像帧
 - **GrokVideoNode** — 核心节点，配置为 `grok-imagine-video-1.5` 模型
 - **SaveVideo** — 保存生成的带原生音频的视频
 
 ### 运行步骤
 
-1. **上传起始图片** — 使用 **LoadImage** 节点加载参考图片
+1. **上传起始图像** — 使用 **LoadImage** 节点加载参考图像
 2. **输入提示词** — 在 **GrokVideoNode** 中描述运动效果、氛围和场景动态
 3. **选择模型** — 确保选择了 `grok-imagine-video-1.5`
 4. **设置分辨率** — 选择输出分辨率（推荐 `720p`）
@@ -46,6 +50,6 @@ description: "本指南介绍如何在 ComfyUI 中使用 Grok Imagine Video 1.5 
 
 ### 小贴士
 
-- 使用高质量的输入图片可获得最佳效果
+- 使用高质量的输入图像可获得最佳效果
 - 提示词最好同时描述**视觉场景**和**运动动态**
 - 尝试不同的种子值可获得多样化的结果

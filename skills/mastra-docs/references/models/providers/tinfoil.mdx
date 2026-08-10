@@ -1,11 +1,11 @@
 ---
 title: "Tinfoil | Models"
-description: "Use Tinfoil models with Mastra. 8 models available."
+description: "Use Tinfoil models with Mastra. 7 models available."
 ---
 
 # [Tinfoil logo]Tinfoil
 
-Access 8 Tinfoil models through Mastra's model router. Authentication is handled automatically using the `TINFOIL_API_KEY` environment variable.
+Access 7 Tinfoil models through Mastra's model router. Authentication is handled automatically using the `TINFOIL_API_KEY` environment variable.
 
 Learn more in the [Tinfoil documentation](https://docs.tinfoil.sh).
 
@@ -86,18 +86,6 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 0.6
-  },
-  {
-    "model": "tinfoil/kimi-k2-6",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 256000,
-    "maxOutput": 262144,
-    "inputCost": 1.5,
-    "outputCost": 5.25
   },
   {
     "model": "tinfoil/kimi-k3",

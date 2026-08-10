@@ -1,14 +1,14 @@
 ---
 title: "ComfyUI Flux.1 fill dev 예제"
 description: "이 가이드에서는 Flux.1 fill dev를 사용해 인페인팅 및 아웃페인팅 워크플로우를 만드는 방법을 보여줍니다."
-translationSourceHash: 7774a137
+translationSourceHash: c97e99e7
 translationFrom: tutorials/flux/flux-1-fill-dev.mdx
 translationBlockHashes:
   "_intro": 73fb6ba4
   "Introduction to Flux.1 fill dev Model": 6dfbcfd4
-  "Flux.1 Fill dev and related models installation": f1c9d9b6
-  "Flux.1 Fill dev inpainting workflow": bc39310d
-  "Flux.1 Fill dev Outpainting Workflow": 13a777f6
+  "Flux.1 Fill dev and related models installation": cf7747cd
+  "Flux.1 Fill dev inpainting workflow": 5e743363
+  "Flux.1 Fill dev Outpainting Workflow": b0f0715d
 ---
 
 [Flux.1 fill dev]
@@ -91,13 +91,32 @@ ComfyUI/
 
 ## Flux.1 Fill dev 아웃페인팅 워크플로우
 
+### Flux.1 아웃페인팅 {#flux_fill_outpaint_example}
+
+Flux.1 아웃페인팅으로 이미지를 경계 너머로 확장하세요.
+
+[Flux.1 아웃페인팅 워크플로우 미리보기]
+
+  
+    Comfy Cloud에서 열기
+  
+  
+    JSON 다운로드 또는 템플릿 라이브러리에서 &quot;Flux.1 Outpaint&quot; 검색
+  
+
+**입력 파일**
+
+다음 파일을 해당 `LoadImage` 노드에 업로드하세요:
+
+  
+    `LoadImage` 노드 17 · `flux_fill_outpaint_example_input_image.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [flux_fill_outpaint_example_input_image.png]
+</div>
+
 ### 1. 아웃페인팅 워크플로우 및 자산
-
-아래 이미지를 다운로드해 ComfyUI로 드래그하여 해당 워크플로우를 로드하세요.
-![ComfyUI Flux.1 아웃페인팅](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/outpaint/flux_fill_dev_outpaint.png)
-
-아래 이미지를 다운로드해 입력 이미지로 사용하겠습니다.
-![ComfyUI Flux.1 아웃페인팅 입력](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/outpaint/flux_fill_dev_outpaint_input.png)
 
 ### 2. 워크플로우 실행 단계
 

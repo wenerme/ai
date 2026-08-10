@@ -1,14 +1,14 @@
 ---
 title: "LTX-2.0 ComfyUI 工作流示例"
 description: "学习如何在 ComfyUI 中使用 LTX-2 实现同步音视频生成"
-translationSourceHash: 25857512
+translationSourceHash: aec8c4b6
 translationFrom: tutorials/video/ltx/ltx-2.mdx
 translationBlockHashes:
   "_intro": 200008b9
   "Key features": d645e82e
   "Model checkpoints": 5ebb1371
   "Getting started": f4d654f6
-  "Workflows": 04a86005
+  "Workflows": aeae7157
   "Prompting tips": fd6195b0
   "Resources": a5eb906f
 ---
@@ -48,58 +48,126 @@ LTX-2 已原生支持 ComfyUI。开始使用：
 
 ### 文生视频
 
-从文本提示词生成视频。
+从文本提示生成视频。
 
+![ComfyUI 工作流 - LTX-2 T2V](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_t2v-1.webp)
+
+  
     下载工作流
   
-
+  
     在云端打开
   
 
 **蒸馏版本**（更快，8 步）：
 
-  下载工作流
+![ComfyUI 工作流 - LTX-2 T2V 蒸馏](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_t2v_distilled-1.webp)
+
+  
+    下载工作流
+  
+  
+    在云端打开
+  
 
 ### 图生视频
 
-从输入图像生成视频。
+根据输入图像生成视频。
 
+![ComfyUI 工作流 - LTX-2 图生视频](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_i2v-1.webp)
+
+  
     下载工作流
   
-
+  
     在云端打开
   
 
-**蒸馏版本**（更快，8 步）：
+**输入素材**
 
-  下载工作流
+  
+    下载默认输入图像，或使用自己的图像。
+  
 
-### 控制生成视频
+**蒸馏版**（速度更快，8 步）：
 
-使用 IC-LoRAs 进行结构控制生成视频。
+![ComfyUI 工作流 - LTX-2 图生视频蒸馏版](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_i2v_distilled-1.webp)
+
+  
+    下载工作流
+  
+  
+    在云端打开
+  
+
+**输入素材**
+
+  
+    下载默认输入图像，或使用自己的图像。
+  
+
+### 控制视频生成
+
+使用 IC-LoRAs 通过结构控制生成视频。
 
 **深度控制：**
 
+![ComfyUI 工作流 - LTX-2 深度转视频](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_depth_to_video-1.webp)
+
+  
     下载工作流
   
-
+  
     在云端打开
   
 
-**Canny 边缘控制：**
+**输入素材**
 
-    下载工作流
+  
+    下载默认深度输入图像，或使用你自己的图像。
+  
+  
+    下载默认输入视频，或使用你自己的视频。
   
 
+**Canny 控制：**
+
+![ComfyUI 工作流 - LTX-2 Canny 转视频](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_canny_to_video-1.webp)
+
+  
+    下载工作流
+  
+  
     在云端打开
+  
+
+**输入素材**
+
+  
+    下载默认 Canny 输入图像，或使用你自己的图像。
+  
+  
+    下载默认输入视频，或使用你自己的视频。
   
 
 **姿态控制：**
 
+![ComfyUI 工作流 - LTX-2 姿态转视频](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/video_ltx2_pose_to_video-1.webp)
+
+  
     下载工作流
   
-
+  
     在云端打开
+  
+
+**输入素材**
+
+  
+    下载默认姿态输入图像，或使用你自己的图像。
+  
+  
+    下载默认输入视频，或使用你自己的视频。
   
 
 ## 提示词技巧

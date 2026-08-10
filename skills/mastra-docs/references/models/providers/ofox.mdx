@@ -1,11 +1,11 @@
 ---
 title: "Ofox | Models"
-description: "Use Ofox models with Mastra. 71 models available."
+description: "Use Ofox models with Mastra. 72 models available."
 ---
 
 # [Ofox logo]Ofox
 
-Access 71 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
+Access 72 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
 
 Learn more in the [Ofox documentation](https://ofox.ai/docs).
 
@@ -890,6 +890,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "ofox/z-ai/glm-5v-turbo",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 131072,
+    "inputCost": 1.2,
+    "outputCost": 4
   }
 ]}
 />
@@ -922,7 +934,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "ofox/z-ai/glm-5.2"
+      ? "ofox/z-ai/glm-5v-turbo"
       : "ofox/anthropic/claude-fable-5";
   }
 });

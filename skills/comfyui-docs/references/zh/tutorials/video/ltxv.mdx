@@ -1,8 +1,14 @@
 ---
 title: "LTX-0.9.5 ComfyUI 工作流示例"
 description: "学习如何在 ComfyUI 中使用 LTX-Video 0.9.5 高效生成视频"
-translationSourceHash: 7d8a0192
+translationSourceHash: b4e3cee7
 translationFrom: tutorials/video/ltxv.mdx
+translationBlockHashes:
+  "_intro": 354083fd
+  "Multi Frame Control": 0fe2f937
+  "Image to Video": 1072ef32
+  "Text to Video": 664fc166
+  "Requirements": 4d0884e2
 ---
 
 [LTX-Video](https://huggingface.co/Lightricks/LTX-Video) 是 Lightricks 开发的高效视频生成模型。使用该模型的关键是提供详细的长描述提示词。
@@ -15,30 +21,59 @@ translationFrom: tutorials/video/ltxv.mdx
 
 将任意视频直接拖入 ComfyUI 即可运行工作流。
 
-## 图生视频
+## 图像转视频
 
-通过首帧图像控制视频生成：[示例首帧](https://raw.githubusercontent.com/Comfy-Org/example_workflows/refs/heads/main/ltxv/i2v/girl1.png)。
+### LTXV 图像到视频 {#ltxv_image_to_video}
 
-<a className="prose"  target='_blank'  href="https://cloud.comfy.org/?template=ltxv_image_to_video&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>在 Comfy 云上运行</p>
-</a>
+通过静止图像生成视频。
 
-[LTX-Video 图生视频]
+[LTXV 图像到视频工作流预览]
 
-将任意视频直接拖入 ComfyUI 即可运行工作流。
+  
+    在 Comfy Cloud 中打开
+  
+  
+    下载 JSON，或在模板库中搜索 &quot;LTXV 图像到视频&quot;
+  
 
-## 文生视频
+**输入材料**
 
-[LTX-Video 文生视频]
+将此文件上传到对应的 `LoadImage` 节点：
 
-将任意视频直接拖入 ComfyUI 即可运行工作流。
+  
+    `LoadImage` 节点 78 · `ltxv_image_to_video_input_image.jpg`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [ltxv_image_to_video_input_image.jpg]
+</div>
+
+将视频直接拖入 ComfyUI 即可运行工作流。
+
+## 文本转视频
+
+### LTXV 文本到视频 {#ltxv_text_to_video}
+
+从文本提示词生成视频。
+
+[LTXV 文本到视频工作流预览]
+
+  
+    在 Comfy Cloud 中打开
+  
+  
+    下载 JSON 或在模板库中搜索 &quot;LTXV 文本到视频&quot;
+  
+
+将视频直接拖入 ComfyUI 即可运行工作流。
 
 ## 前提条件
 
 将以下模型下载并放到指定位置：
 
-- [ltx-video-2b-v0.9.5.safetensors](https://huggingface.co/Lightricks/LTX-Video/resolve/main/ltx-video-2b-v0.9.5.safetensors?download=true)
-- [t5xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/mochi_preview_repackaged/resolve/main/split_files/text_encoders/t5xxl_fp16.safetensors?download=true)（如尚未下载）
+  下载并放置到 ComfyUI/models/checkpoints/
+
+  下载并放置到 ComfyUI/models/text_encoders/
 
 ```
 ├── checkpoints/

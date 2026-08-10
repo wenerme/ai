@@ -3,7 +3,7 @@ title: "Bria FIBO Edit Partner Nodes ComfyUI Official Example"
 description: "Learn how to use the Bria FIBO Edit Partner node for precision image editing in ComfyUI"
 ---
 
-FIBO Edit is Bria AI's JSON-native image editing model, now available in ComfyUI through Partner Nodes. It lets you combine images with structured JSON prompts to make precise, targeted edits—no prompt guessing, no unwanted changes to the rest of your image.
+FIBO Edit is Bria AI's JSON-native image editing model, now available in ComfyUI through Partner Nodes. It lets you combine images with structured JSON prompts to make precise, targeted edits: no prompt guessing, no unwanted changes to the rest of your image.
 
 ## About FIBO Edit
 
@@ -14,19 +14,56 @@ FIBO Edit is Bria AI's JSON-native image editing model, now available in ComfyUI
 - **100% licensed data**: Full governance and legal clarity for commercial use
 - **Strong prompt adherence**: Validated on PRISM-style evaluations
 
-## FIBO Edit Workflows
+### Bria: Image Edit {#api_bria_image_edit}
 
-    Download the Bria FIBO Image Edit workflow.
+FIBO enables precise, predictable image editing through structured JSON control over lighting, composition, and camera settings.
+
+[Bria: Image Edit workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Bria: Image Edit&quot; in Template Library
   
 
-    Download the Bria FIBO Image Outpainting workflow.
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 5 · `sunlit_rooftop_capture.png`
   
 
-    Try the Image Edit workflow instantly on Comfy Cloud.
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input image]
+  [Bria: Image Edit example output]
+</div>
+
+### Bria: Image Outpainting {#api_bria_image_outpainting}
+
+A professional Bria-powered outpainting template designed for seamless image extension and edge-aware scene expansion.
+
+[Bria: Image Outpainting workflow preview]
+
+  
+    Open in Comfy Cloud
+  
+  
+    Download JSON or search &quot;Bria: Image Outpainting&quot; in Template Library
   
 
-    Try the Image Outpainting workflow instantly on Comfy Cloud.
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
   
+    `LoadImage` node 11 · `baby_otter.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [Input image]
+</div>
 
 ## Example outputs
 

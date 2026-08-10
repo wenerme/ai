@@ -1,16 +1,14 @@
 ---
 title: "ComfyUI Depth Anything 3 官方示例"
 description: "了解如何在 ComfyUI 中使用 Depth Anything 3 进行单目和多视角深度估计，支持图像和视频输入。"
-translationSourceHash: 39c33c52
+translationSourceHash: 3af6ec89
 translationFrom: tutorials/utility/depth-anything-3.mdx
 translationBlockHashes:
   "_intro": 78aa4267
-  "Model Installation": 63d2533a
-  "Example Workflows": cf2f84c1
-  "1. Image Depth Estimation": 21d2ff11
-  "2. Video Depth Estimation": 4f57ecb8
+  "Model Installation": 42fa683f
+  "Example Workflows": e8325fd8
   "Model Variants": c09e7471
-  "Community Resources": 8c5d05ab
+  "Community Resources": 4ade7e72
 ---
 
 # ComfyUI Depth Anything 3 简介
@@ -48,56 +46,75 @@ ComfyUI/
 
 ## 示例工作流
 
----
+### Depth Anything 3：图像深度估计 {#utility_depth_anything3_image_depth_estimation}
 
-## 1. 图像深度估计
+上传一张图像，使用 Depth Anything 3 生成深度图。并排查看原始图像与深度输出的对比。
 
-**功能说明：** 上传一张图像，使用 **Image Depth Estimation (Depth Anything 3)** 生成深度图。结果在 **Depth Preview** 中显示，提供原始图像与深度输出的并排对比视图。
+[Depth Anything 3 图像深度估计工作流预览]
 
   
-    下载 JSON 或在模板库中搜索 "Depth Anything 3"
+    在 Comfy Cloud 中打开
   
   
-    获取此工作流的示例输入图片
+    下载 JSON，或在模板库中搜索“Depth Anything 3：图像深度估计”
   
 
-<div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
-  [图像深度估计输出]
-  [图像深度估计对比]
+**输入素材**
+
+将此文件上传到对应的 `LoadImage` 节点：
+
+  
+    `LoadImage` 节点 85 · `retro_futuristic_home.png`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  [输入图像]
 </div>
 
 ### 运行步骤
 
-1. **LoadImage** — 加载输入图像
-2. **LoadDA3Model** — 选择 Depth Anything 3 变体
-3. **运行** — 点击 Queue 或使用 `Cmd+Enter`
-4. 工作流输出深度图和并排比较结果
+1. **LoadImage**：加载输入图像
+2. **LoadDA3Model**：选择 Depth Anything 3 变体
+3. **Run**：点击 Queue 或使用 `Cmd+Enter`
+4. 工作流将输出深度图和并排对比图
 
-  此工作流使用子图节点进行模块化处理。查看子图文档了解如何自定义和扩展工作流。
+  此工作流使用 Subgraph 节点进行模块化处理。查看 Subgraph 文档，了解如何自定义和扩展工作流。
 
----
+### Depth Anything 3：视频深度估计 {#utility_depth_anything3_video_depth_estimation}
 
-## 2. 视频深度估计
+上传视频，逐帧生成深度序列。在 Subgraph 内部，**GetVideoComponents** 将输入视频拆分为帧，**LoadDA3Model** 加载模型，**SetVideoComponents** 将深度帧重新组合为视频输出。
 
-**功能说明：** 上传一个视频，运行 **Video Depth Estimation (Depth Anything 3)** 生成逐帧深度序列。在子图内部，**GetVideoComponents** 将输入视频拆分为帧，**LoadDA3Model** 加载模型，**SetVideoComponents** 将深度帧重新组合为视频输出。
+[Depth Anything 3 视频深度估计工作流预览]
 
-  
-    下载 JSON 或在模板库中搜索 "Depth Anything 3"
-  
   
     在 Comfy Cloud 中打开
   
+  
+    下载 JSON，或在模板库中搜索“Depth Anything 3：视频深度估计”
+  
 
-![视频深度估计预览](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/utility_depth_anything3_video_depth_estimation-1.webp)
+**输入素材**
+
+将此文件上传到对应的 `LoadVideo` 节点：
+
+  
+    `LoadVideo` 节点 87 · `empty_room_assembly.mp4`
+  
+
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '1rem', alignItems: 'start'}}>
+  <video controls style={{width: '100%', height: 'auto'}}>
+    <source src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/empty_room_assembly.mp4" type="video/mp4" />
+  </video>
+</div>
 
 ### 运行步骤
 
-1. **LoadVideo** — 加载输入视频
-2. **选择模型** — 在 **Small**、**Base**、**Mono-Large** 或 **Metric-Large** 中选择
-3. **运行** — 点击 Queue 或使用 `Cmd+Enter`
-4. 工作流输出逐帧深度图视频
+1. **LoadVideo**：加载输入视频
+2. **Select Model**：在 **Small**、**Base**、**Mono-Large** 或 **Metric-Large** 之间选择
+3. **Run**：点击 Queue 或使用 `Cmd+Enter`
+4. 工作流将输出包含逐帧深度图的视频
 
-  此工作流使用子图节点进行模块化处理。查看子图文档了解如何自定义和扩展工作流。
+  此工作流使用 Subgraph 节点进行模块化处理。查看 Subgraph 文档，了解如何自定义和扩展工作流。
 
 ## 模型变体
 
@@ -113,5 +130,5 @@ ComfyUI/
 
 ## 社区资源
 
-- [Depth Anything 3 GitHub (ByteDance-Seed)](https://github.com/ByteDance-Seed/Depth-Anything-3) — 研究论文和代码
-- [Comfy-Org/Depth-Anything-3](https://huggingface.co/Comfy-Org/Depth-Anything-3) — 官方 ComfyUI 模型权重
+- [Depth Anything 3 GitHub (ByteDance-Seed)](https://github.com/ByteDance-Seed/Depth-Anything-3): 研究论文和代码
+- [Comfy-Org/Depth-Anything-3](https://huggingface.co/Comfy-Org/Depth-Anything-3): 官方 ComfyUI 模型权重

@@ -39,9 +39,35 @@ This will load the corresponding workflow and prompt you to download the require
 
 In the Hunyuan3D-2mv workflow, we'll use multi-view images to generate a 3D model. Note that multiple view images are not mandatory in this workflow - you can use only the `front` view image to generate a 3D model.
 
-<a className="prose" target='_blank' href="https://cloud.comfy.org/?template=3d_hunyuan3d_multiview_to_model&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
-</a>
+### HY 3D 2.0 MV {#3d_hunyuan3d_multiview_to_model}
+
+Generate 3D models from multiple views using Hunyuan3D 2.0 MV.
+
+[HY 3D 2.0 MV workflow preview]
+
+  
+    Run this workflow instantly on Comfy Cloud
+  
+  
+    Download JSON or search &quot;HY 3D 2.0 MV&quot; in Template Library
+  
+
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
+  
+    `LoadImage` node 56 · front view
+  
+  
+    `LoadImage` node 78 · left view
+  
+  
+    `LoadImage` node 80 · back view
+  
+  
+    `LoadImage` node 87 · right view
+  
 
 ### 1. Workflow
 
@@ -60,7 +86,7 @@ In this example, the input images have already been preprocessed to remove exces
 
 Download the model below and save it to the corresponding ComfyUI folder
 
-- hunyuan3d-dit-v2-mv: [model.fp16.safetensors](https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/main/hunyuan3d-dit-v2-mv/model.fp16.safetensors?download=true) - after downloading, you can rename it to `hunyuan3d-dit-v2-mv.safetensors`
+- hunyuan3d-dit-v2-mv: [model.fp16.safetensors](https://huggingface.co/tencent/Hunyuan3D-2mv/blob/main/hunyuan3d-dit-v2-mv/model.fp16.safetensors?download=true) - after downloading, you can rename it to `hunyuan3d-dit-v2-mv.safetensors`
 
 ```
 ComfyUI/
@@ -83,9 +109,35 @@ If you need to add more views, make sure to load other view images in the `Hunyu
 
 In the Hunyuan3D-2mv-turbo workflow, we'll use the Hunyuan3D-2mv-turbo model to generate 3D models. This model is a step distillation version of Hunyuan3D-2mv, allowing for faster 3D model generation. In this version of the workflow, we set `cfg` to 1.0 and add a `flux guidance` node to control the `distilled cfg` generation.
 
-<a className="prose" target='_blank' href="https://cloud.comfy.org/?template=3d_hunyuan3d_multiview_to_model_turbo&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
-</a>
+### HY 3D 2.0 MV Turbo {#3d_hunyuan3d_multiview_to_model_turbo}
+
+Generate 3D models from multiple views using Hunyuan3D 2.0 MV Turbo.
+
+[HY 3D 2.0 MV Turbo workflow preview]
+
+  
+    Run this workflow instantly on Comfy Cloud
+  
+  
+    Download JSON or search &quot;HY 3D 2.0 MV Turbo&quot; in Template Library
+  
+
+**Input materials**
+
+Upload these files to the matching `LoadImage` nodes:
+
+  
+    `LoadImage` node 56 · front view
+  
+  
+    `LoadImage` node 82 · back view
+  
+  
+    `LoadImage` node 85 · left view
+  
+  
+    `LoadImage` node 87 · right view
+  
 
 ### 1. Workflow
 
@@ -102,7 +154,7 @@ Download the images below we will use them as input images.
 
 Download the model below and save it to the corresponding ComfyUI folder
 
-- hunyuan3d-dit-v2-mv-turbo: [model.fp16.safetensors](https://huggingface.co/tencent/Hunyuan3D-2mv/resolve/main/hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors?download=true) - after downloading, you can rename it to `hunyuan3d-dit-v2-mv-turbo.safetensors`
+- hunyuan3d-dit-v2-mv-turbo: [model.fp16.safetensors](https://huggingface.co/tencent/Hunyuan3D-2mv/blob/main/hunyuan3d-dit-v2-mv-turbo/model.fp16.safetensors?download=true) - after downloading, you can rename it to `hunyuan3d-dit-v2-mv-turbo.safetensors`
 
 ```
 ComfyUI/
@@ -123,9 +175,26 @@ ComfyUI/
 
 In the Hunyuan3D-2 workflow, we'll use the Hunyuan3D-2 model to generate 3D models. This model is not a multi-view model. In this workflow, we use the `Hunyuan3Dv2Conditioning` node instead of the `Hunyuan3Dv2ConditioningMultiView` node.
 
-<a className="prose" target='_blank' href="https://cloud.comfy.org/?template=3d_hunyuan3d_image_to_model&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
-</a>
+### HY 3D 2.0 {#3d_hunyuan3d_image_to_model}
+
+Generate 3D models from single images using Hunyuan3D 2.0.
+
+[HY 3D 2.0 workflow preview]
+
+  
+    Run this workflow instantly on Comfy Cloud
+  
+  
+    Download JSON or search &quot;HY 3D 2.0&quot; in Template Library
+  
+
+**Input materials**
+
+Upload this file to the matching `LoadImage` node:
+
+  
+    `LoadImage` node 56 · `3d_hunyuan3d_image_to_model_input_image.png`
+  
 
 ### 1. Workflow
 
@@ -140,7 +209,7 @@ Download the image below we will use it as input image.
 
 Download the model below and save it to the corresponding ComfyUI folder
 
-- hunyuan3d-dit-v2-0: [model.fp16.safetensors](https://huggingface.co/tencent/Hunyuan3D-2/resolve/main/hunyuan3d-dit-v2-0/model.fp16.safetensors?download=true) - after downloading, you can rename it to `hunyuan3d-dit-v2.safetensors`
+- hunyuan3d-dit-v2-0: [model.fp16.safetensors](https://huggingface.co/tencent/Hunyuan3D-2/blob/main/hunyuan3d-dit-v2-0/model.fp16.safetensors?download=true) - after downloading, you can rename it to `hunyuan3d-dit-v2.safetensors`
 
 ```
 ComfyUI/
