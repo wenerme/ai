@@ -229,9 +229,9 @@
   },
   "costs.md": {
     "url": "https://code.claude.com/docs/en/costs",
-    "lastModified": "Sat, 08 Aug 2026 02:07:12 GMT",
-    "size": 31163,
-    "updatedAt": "2026-08-08T02:07:12.760Z"
+    "lastModified": "Tue, 11 Aug 2026 10:59:00 GMT",
+    "size": 31911,
+    "updatedAt": "2026-08-11T10:59:00.972Z"
   },
   "cross-session-messaging.md": {
     "url": "https://code.claude.com/docs/en/cross-session-messaging",
@@ -265,9 +265,9 @@
   },
   "desktop-ios-simulator.md": {
     "url": "https://code.claude.com/docs/en/desktop-ios-simulator",
-    "lastModified": "Tue, 04 Aug 2026 03:26:11 GMT",
-    "size": 12187,
-    "updatedAt": "2026-08-04T03:26:11.155Z"
+    "lastModified": "Tue, 11 Aug 2026 10:59:04 GMT",
+    "size": 12157,
+    "updatedAt": "2026-08-11T10:59:04.604Z"
   },
   "desktop-linux.md": {
     "url": "https://code.claude.com/docs/en/desktop-linux",
@@ -319,9 +319,9 @@
   },
   "fast-mode.md": {
     "url": "https://code.claude.com/docs/en/fast-mode",
-    "lastModified": "Wed, 05 Aug 2026 03:21:20 GMT",
-    "size": 15689,
-    "updatedAt": "2026-08-05T03:21:20.166Z"
+    "lastModified": "Tue, 11 Aug 2026 10:59:10 GMT",
+    "size": 17831,
+    "updatedAt": "2026-08-11T10:59:10.503Z"
   },
   "feature-availability.md": {
     "url": "https://code.claude.com/docs/en/feature-availability",

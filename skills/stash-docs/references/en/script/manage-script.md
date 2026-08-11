@@ -53,11 +53,10 @@ Stash periodically downloads the script from the specified URL (based on
 
 ---
 
-> [!NOTE]
-> Available only in Stash 3.2.5 and later.
-
 For temporary debugging and testing, you can use the `payload` field to embed a
-script directly in the configuration file. For example:
+script directly in the configuration file.<VersionRequirement ios="3.2.5" />
+
+For example:
 
 ```yaml
 script-providers:

@@ -243,8 +243,9 @@ Responses API and Agents SDK applications don't automatically inherit
 [Codex Auto-review](https://developers.openai.com/codex/sandboxing/auto-review). Add review and enforcement
 to your own harness. The
 [open-source Codex reviewer policy](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md)
-illustrates one approach; [Cyber Safety](https://developers.openai.com/codex/cyber-safety) explains approved
-model access and safe engagement setup.
+illustrates one approach. Review [Models and Trusted Access](https://developers.openai.com/codex/cyber-safety)
+for approved model access and [Recommended configuration](https://developers.openai.com/codex/cyber-safety/recommended-configuration)
+for safe engagement setup.
 
 ## Streaming and delayed review use the same state model
 

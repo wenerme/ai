@@ -1,3 +1,5 @@
+<br />
+
 When creating an Interaction, you can set `stream: true` to incrementally stream the response using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) (SSE).
 
 ### Python
@@ -170,8 +172,7 @@ Marks the end of a step. Contains the step `index`.
     event: step.stop
     data: {"index": 0, "event_type": "step.stop"}
 
-When using the [Antigravity Agent](https://ai.google.dev/gemini-api/docs/antigravity-agent), the
-`step.stop` event may also include usage statistics:
+When using the [Antigravity Agent](https://ai.google.dev/gemini-api/docs/antigravity-agent), the `step.stop` event may also include usage statistics:
 
 - **`usage`**: The accumulated usage (running total) since the start of the interaction.
 - **`step_usage`**: The usage of this specific step.
@@ -195,19 +196,11 @@ Sent when an error occurs during the interaction. Contains an error object with 
 
 ## Streaming with tools
 
-The Interactions API supports streaming with both client-side tools (function
-calling) and server-side tools (Google Search, Code Execution, etc.) in a single
-request. During streaming, tool invocations appear as typed steps in the event
-stream. For function calls, the `step.start` event delivers the function name,
-and `step.delta` events stream the arguments as JSON strings
-(`arguments_delta`). You must accumulate these deltas to get the full arguments.
-Server-side tools like Google Search are executed automatically by the API,
-producing `google_search_call` and `google_search_result` steps.
+The Interactions API supports streaming with both client-side tools (function calling) and server-side tools (Google Search, Code Execution, etc.) in a single request. During streaming, tool invocations appear as typed steps in the event stream. For function calls, the `step.start` event delivers the function name, and `step.delta` events stream the arguments as JSON strings (`arguments_delta`). You must accumulate these deltas to get the full arguments. Server-side tools like Google Search are executed automatically by the API, producing `google_search_call` and `google_search_result` steps.
 
 ### Streaming with function calling
 
-To perform function calling with streaming, the client must handle a multi-turn
-conversation:
+To perform function calling with streaming, the client must handle a multi-turn conversation:
 
 1. **Turn 1 (Function Request):** Call `interactions.create` with `stream: true` and your defined `tools`. The API will stream a `function_call` step. You must accumulate the incremental argument JSON strings (`arguments_delta`) from `step.delta` events until the interaction completes with the status `requires_action`.
 2. **Turn 2 (Sending Result):** Call `interactions.create` again, passing the `previous_interaction_id` (matching the ID of the first interaction) and sending a `function_result` block within the `input` array. This resumes the stream, allowing the model to generate its final response.
@@ -979,5 +972,5 @@ In accordance with the API's versioning policy, new event types and delta types 
 - Learn more about the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview).
 - Explore [Function calling](https://ai.google.dev/gemini-api/docs/function-calling) with tools.
 - Learn about [Thinking](https://ai.google.dev/gemini-api/docs/thinking) for enhanced reasoning.
-- Try the [Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research) for long-running tasks.
+- Try the [Deep Research agent](https://ai.google.dev/gemini-api/docs/deep-research) for long-running tasks.
 - See the [Interactions API reference](https://ai.google.dev/api/interactions-api) for all event types and delta types.

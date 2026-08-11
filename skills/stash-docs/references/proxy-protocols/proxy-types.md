@@ -482,6 +482,44 @@ alpn:
   - h3
 ```
 
+## MASQUE
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+MASQUE 是一种基于 HTTP 的标准化代理机制。Stash 当前支持 Cloudflare WARP 使用的 CONNECT-IP 模式：客户端会建立一条共享的 IP 隧道，通过 HTTP/3 或 HTTP/2 承载经该代理转发的 TCP 和 UDP 流量。
+
+```yaml
+name: WARP-MASQUE
+type: masque
+server: 162.159.198.1
+port: 443
+private-key: EXAMPLE_PRIVATE_KEY
+public-key: 'BASE64_ENCODED_P256_SPKI_PUBLIC_KEY'
+ip: 172.16.0.2/32
+# ipv6: '2606:4700:110:84c0::2/128'
+# dns: [1.1.1.1, '2606:4700:4700::1111']
+# network: h3
+# sni: consumer-masque.cloudflareclient.com
+# connect-uri: https://cloudflareaccess.com
+# mtu: 1280
+# keepalive: 30
+```
+
+支持以下参数：
+
+- `server`：MASQUE 服务器地址。
+- `port`：MASQUE 服务器端口。
+- `private-key`：以 Base64 编码的 P-256 SEC1 私钥 DER。请妥善保管，不要分享给其他人。
+- `public-key`：以 Base64 编码的 MASQUE 端点 P-256 SPKI 公钥 DER，用于验证服务器身份。
+- `ip`：分配给隧道的 IPv4 地址。可以包含 CIDR 前缀。
+- `ipv6`：分配给隧道的 IPv6 地址。可以包含 CIDR 前缀。`ip` 与 `ipv6` 至少需要填写一个。
+- `dns`：通过 MASQUE 隧道使用的 DNS 服务器，可以填写单个 IP 地址或 IP 地址数组。省略时，IPv4 默认使用 `1.1.1.1`，IPv6 默认使用 `2606:4700:4700::1111`。
+- `network`：承载 CONNECT-IP 的网络，可选 `h3` 或 `h2`，默认为 `h3`。
+- `sni`：TLS 握手使用的服务器名称，默认为 `consumer-masque.cloudflareclient.com`。
+- `connect-uri`：CONNECT-IP 请求地址，必须是完整的 HTTPS URL，默认为 `https://cloudflareaccess.com`。
+- `mtu`：隧道 MTU，可设置为 `1280` 至 `1500`，默认为 `1280`。
+- `keepalive`：连接保活间隔，单位为秒，默认为 `30`。
+
 ## WireGuard
 
 [WireGuard](https://www.wireguard.com/) 是一个高效的 Layer 3 的 VPN，Stash 支持将其作为 Layer 4 的代理使用，并支持通过其他协议转发 WireGuard 数据包。

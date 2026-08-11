@@ -43,10 +43,9 @@ Stash 会根据 `interval` 定期从指定 URL 下载脚本并缓存到磁盘。
 
 ---
 
-> [!NOTE]
-> 下述功能仅在 Stash 3.2.5 及更高版本中生效。
+为了临时调试与测试，你可以使用 `payload` 字段将脚本直接写入配置文件。<VersionRequirement ios="3.2.5" />
 
-为了临时调试与测试，你可以使用 `payload` 字段将脚本直接写入配置文件。例如：
+例如：
 
 ```yaml
 script-providers:

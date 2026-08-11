@@ -482,6 +482,44 @@ alpn:
   - h3
 ```
 
+## MASQUE
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+MASQUE is a standardized proxy mechanism built on HTTP. Stash currently supports the CONNECT-IP mode used by Cloudflare WARP: the client establishes a shared IP tunnel that carries TCP and UDP traffic forwarded through the proxy over HTTP/3 or HTTP/2.
+
+```yaml
+name: WARP-MASQUE
+type: masque
+server: 162.159.198.1
+port: 443
+private-key: EXAMPLE_PRIVATE_KEY
+public-key: 'BASE64_ENCODED_P256_SPKI_PUBLIC_KEY'
+ip: 172.16.0.2/32
+# ipv6: '2606:4700:110:84c0::2/128'
+# dns: [1.1.1.1, '2606:4700:4700::1111']
+# network: h3
+# sni: consumer-masque.cloudflareclient.com
+# connect-uri: https://cloudflareaccess.com
+# mtu: 1280
+# keepalive: 30
+```
+
+The following parameters are supported:
+
+- `server`: MASQUE server address.
+- `port`: MASQUE server port.
+- `private-key`: Base64-encoded P-256 SEC1 private key DER. Keep it secure and do not share it.
+- `public-key`: Base64-encoded P-256 SPKI public key DER for the MASQUE endpoint, used to verify the server identity.
+- `ip`: IPv4 address assigned to the tunnel. A CIDR prefix may be included.
+- `ipv6`: IPv6 address assigned to the tunnel. A CIDR prefix may be included. At least one of `ip` and `ipv6` is required.
+- `dns`: DNS servers used through the MASQUE tunnel. It can be a single IP address or an array of IP addresses. When omitted, IPv4 defaults to `1.1.1.1` and IPv6 defaults to `2606:4700:4700::1111`.
+- `network`: Transport for CONNECT-IP. It can be `h3` or `h2` and defaults to `h3`.
+- `sni`: Server name used for the TLS handshake. It defaults to `consumer-masque.cloudflareclient.com`.
+- `connect-uri`: CONNECT-IP request URI. It must be an absolute HTTPS URL and defaults to `https://cloudflareaccess.com`.
+- `mtu`: Tunnel MTU. It can be set from `1280` to `1500` and defaults to `1280`.
+- `keepalive`: Connection keepalive interval in seconds. It defaults to `30`.
+
 ## WireGuard
 
 [WireGuard](https://www.wireguard.com/) is an efficient Layer 3 VPN, Stash supports using it as a Layer 4 proxy and supports forwarding WireGuard packets through other protocols.

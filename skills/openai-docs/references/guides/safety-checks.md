@@ -188,6 +188,6 @@ To help ensure safety in your use of the OpenAI API and tools, we run safety che
 Learn more:
 
 - [Model evaluations hub](https://openai.com/safety/evaluations-hub)
-- [Cyber Safety](https://developers.openai.com/codex/cyber-safety)
+- [Cyber safety models](https://developers.openai.com/codex/cyber-safety)
 - [Fine-tuning safety](https://developers.openai.com/api/docs/guides/supervised-fine-tuning#safety-checks)
 - [Safety checks in computer use](https://developers.openai.com/api/docs/guides/tools-computer-use#handle-user-confirmation-and-consent)

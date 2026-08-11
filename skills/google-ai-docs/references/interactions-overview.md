@@ -1,30 +1,22 @@
-The Interactions API is the best way to build with Gemini models
-and agents. As of June 2026, it is Generally Available and recommended for all
-new projects. While it is now considered legacy, the original
-[`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API
-remains fully supported.
+<br />
+
+The Interactions API is the best way to build with Gemini models and agents. As of June 2026, it is Generally Available and recommended for all new projects. While it is now considered legacy, the original [`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API remains fully supported.
 
 ## Why use the Interactions API?
 
 - **Universal interface for all applications**: Designed as the standard interface for every use case, including single-turn text generation, multimodal understanding, structured outputs, tool orchestration, and agentic workflows.
 - **Single API for models and agents**: One unified endpoint and pattern for calling standard Gemini models as well as specialized agents directly (such as Deep Research and custom managed agents).
-- **New capabilities out of the box** : Features like optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and [background
-  execution](https://ai.google.dev/gemini-api/docs/background-execution) for long-running tasks using `background=true`.
+- **New capabilities out of the box** : Features like optional server-side conversation state using `previous_interaction_id`, observable execution steps for debugging and UI rendering, and [background execution](https://ai.google.dev/gemini-api/docs/background-execution) for long-running tasks using `background=true`.
 - **Lower cost with higher cache hit rates**: When using multi-turn conversations, optional server-side state management enables more efficient context caching across turns, reducing token costs.
 - **Where new features launch**: Going forward, all new models, multimodal capabilities, tools, and agentic features will launch on the Interactions API.
 
-By default, the Interactions API stores requests so you can leverage
-the server-side state management features by using
-`previous_interaction_id`. You can opt into stateless behavior by setting
-`store=false`. See the [data retention](https://ai.google.dev/gemini-api/docs/interactions-overview#data-storage-retention) section for
-details.
+By default, the Interactions API stores requests so you can leverage the server-side state management features by using `previous_interaction_id`. You can opt into stateless behavior by setting `store=false`. See the [data retention](https://ai.google.dev/gemini-api/docs/interactions-overview#data-storage-retention) section for details.
 
 ## Get started
 
 - **Set up your coding agent** : Connect to the **Gemini Docs MCP** and install the `gemini-interactions-api` skill to give your assistant direct access to the latest developer docs and best practices. For detailed steps, see the [Set up your coding agent guide](https://ai.google.dev/gemini-api/docs/coding-agents)
 - **Migrate from `generateContent`** : If you have an existing integration, follow the [Migration guide](https://ai.google.dev/gemini-api/docs/migrate-to-interactions) to transition to the Interactions API.
-- **Get started** : Follow the steps in the [Interactions API Get started
-  guide](https://ai.google.dev/gemini-api/docs/get-started).
+- **Get started** : Follow the steps in the [Interactions API Get started guide](https://ai.google.dev/gemini-api/docs/get-started).
 
 ### Feature guides
 
@@ -38,7 +30,7 @@ Explore the specific capabilities of the Interactions API through these guides. 
 - [Document processing](https://ai.google.dev/gemini-api/docs/document-processing)
 - [Function calling](https://ai.google.dev/gemini-api/docs/function-calling)
 - [Structured output](https://ai.google.dev/gemini-api/docs/structured-output)
-- [Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research)
+- [Deep Research agent](https://ai.google.dev/gemini-api/docs/deep-research)
 - [Flex inference](https://ai.google.dev/gemini-api/docs/flex-inference)
 - [Priority inference](https://ai.google.dev/gemini-api/docs/priority-inference)
 
@@ -46,67 +38,40 @@ Explore the specific capabilities of the Interactions API through these guides. 
 
 The Interactions API centers around a core resource: the [**`Interaction`**](https://ai.google.dev/api/interactions-api#Resource:Interaction). An `Interaction` represents a complete turn in a conversation or task. It acts as a session record, containing the entire history of an interaction as a chronological sequence of **execution steps** . These steps include model thoughts, server-side or client-side tool calls and results (like `function_call` and `function_result`), and the final `model_output`. The stored resource (retrieved via `interactions.get`) also includes `user_input` steps for full context, though the `interactions.create` response only returns model-generated steps.
 
-When you make a call to
-[`interactions.create`](https://ai.google.dev/api/interactions-api#CreateInteraction), you are
-creating a new `Interaction` resource.
+When you make a call to [`interactions.create`](https://ai.google.dev/api/interactions-api#CreateInteraction), you are creating a new `Interaction` resource.
 
 ### Server-side state management
 
-You can use the `id` of a completed interaction in a subsequent call using the
-`previous_interaction_id` parameter to continue the conversation. The server
-uses this ID to retrieve the conversation history, saving you from having to
-resend the entire chat history.
+You can use the `id` of a completed interaction in a subsequent call using the `previous_interaction_id` parameter to continue the conversation. The server uses this ID to retrieve the conversation history, saving you from having to resend the entire chat history.
 
-The `previous_interaction_id` parameter preserves only the conversation history (inputs and outputs)
-using `previous_interaction_id`. The other parameters are **interaction-scoped**
-and apply only to the specific interaction you are currently generating:
+The `previous_interaction_id` parameter preserves only the conversation history (inputs and outputs) using `previous_interaction_id`. The other parameters are **interaction-scoped** and apply only to the specific interaction you are currently generating:
 
 - `tools`
 - `system_instruction`
 - `generation_config` (including `thinking_level`, `temperature`, etc.)
 
-This means you must re-specify these parameters in each new interaction if you
-want them to apply. This server-side state management is optional; you can also
-operate in stateless mode by sending the full conversation history in each
-request.
+This means you must re-specify these parameters in each new interaction if you want them to apply. This server-side state management is optional; you can also operate in stateless mode by sending the full conversation history in each request.
 
 ### Data storage and retention
 
-By default, the API stores all Interaction objects (`store=true`) in order to
-simplify use of server-side state management features (with
-`previous_interaction_id`), [background execution](https://ai.google.dev/gemini-api/docs/background-execution) (using `background=true`) and
-observability purposes.
+By default, the API stores all Interaction objects (`store=true`) in order to simplify use of server-side state management features (with `previous_interaction_id`), [background execution](https://ai.google.dev/gemini-api/docs/background-execution) (using `background=true`) and observability purposes.
 
 - **Paid tier** : The system retains interactions for **55 days**.
 - **Free tier** : The system retains interactions for **1 day**.
 
-If you don't want this, you can
-set `store=false` in your request. This control is separate from state
-management; you can opt out of storage for any interaction. However, note that
-`store=false` is incompatible with [background execution](https://ai.google.dev/gemini-api/docs/background-execution) and prevents using
-`previous_interaction_id` for subsequent turns.
+If you don't want this, you can set `store=false` in your request. This control is separate from state management; you can opt out of storage for any interaction. However, note that `store=false` is incompatible with [background execution](https://ai.google.dev/gemini-api/docs/background-execution) and prevents using `previous_interaction_id` for subsequent turns.
 
-For Paid Tier projects, you can configure the retention window in
-[AI Studio](https://aistudio.google.com/logs) to automatically mark logs for
-deletion from project storage after 7, 14, 28, or 55 days. A shorter retention
-may affect retrieval of past conversations.
+For Paid Tier projects, you can configure the retention window in [AI Studio](https://aistudio.google.com/logs) to automatically mark logs for deletion from project storage after 7, 14, 28, or 55 days. A shorter retention may affect retrieval of past conversations.
 
-You can delete stored interactions at any time using the [`delete`](https://ai.google.dev/api/interactions-api#deleteInteraction) method programmatically, which
-requires the interaction ID. You can also view and manage stored interactions
-logs, including deletion from project storage, in
-[AI Studio](https://aistudio.google.com/logs).
+You can delete stored interactions at any time using the [`delete`](https://ai.google.dev/api/interactions-api#deleteInteraction) method programmatically, which requires the interaction ID. You can also view and manage stored interactions logs, including deletion from project storage, in [AI Studio](https://aistudio.google.com/logs).
 
-After the retention period expires, your data will be
-deleted automatically.
+After the retention period expires, your data will be deleted automatically.
 
 Interactions objects are processed according to the [terms](https://ai.google.dev/gemini-api/terms).
 
 ### View interactions in AI Studio
 
-The API stores Interactions API requests executed with `store=true` for
-projects on the Paid Tier. You can view them directly from the
-[Logs page in Google AI Studio](https://ai.google.dev/gemini-api/docs/www.aistudio.google.com/logs). See the
-[Logs guide](https://ai.google.dev/gemini-api/docs/logs-datasets) for more.
+The API stores Interactions API requests executed with `store=true` for projects on the Paid Tier. You can view them directly from the [Logs page in Google AI Studio](https://ai.google.dev/gemini-api/docs/www.aistudio.google.com/logs). See the [Logs guide](https://ai.google.dev/gemini-api/docs/logs-datasets) for more.
 
 ## Best practices
 
@@ -139,23 +104,19 @@ projects on the Paid Tier. You can view them directly from the
 
 ## SDKs
 
-You can use latest version of the Google GenAI SDKs in order to access
-Interactions API.
+You can use latest version of the Google GenAI SDKs in order to access Interactions API.
 
 - On Python, this is `google-genai` package from `2.3.0` version onwards.
 - On JavaScript, this is `@google/genai` package from `2.3.0` version onwards.
 
-You can learn more about how to install the SDKs on
-[Libraries](https://ai.google.dev/gemini-api/docs/libraries) page.
+You can learn more about how to install the SDKs on [Libraries](https://ai.google.dev/gemini-api/docs/libraries) page.
 
 ## Limitations
 
 - **Remote MCP**: Gemini 3 does not support remote MCP, this is coming soon.
 - **Multi-turn model compatibility** : When mixing different models in a conversation (either stateful or stateless), subsequent models must support the output modalities of the previous models as input. For example, if you generate an image using `gemini-3.1-flash-image`, you cannot continue that conversation with a model that doesn't accept image inputs (such as a text-only model or a music-generation model like Lyria).
 
-The following features are supported by the
-[`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API but are **not yet
-available** in the Interactions API:
+The following features are supported by the [`generateContent`](https://ai.google.dev/gemini-api/docs/generate-content/text-generation) API but are **not yet available** in the Interactions API:
 
 - **[Video metadata](https://ai.google.dev/gemini-api/docs/video-understanding)** : The `video_metadata` field, used to set clipping intervals and custom frame rates for video understanding.
 - **[Batch API](https://ai.google.dev/gemini-api/docs/batch-api)**
@@ -165,11 +126,9 @@ available** in the Interactions API:
 
 ## Feedback
 
-Your feedback is critical to the development of the Interactions API.
-Share your thoughts, report bugs, or request features on our
-[Google AI Developer Community Forum](https://discuss.ai.google.dev/c/gemini-api/4).
+Your feedback is critical to the development of the Interactions API. Share your thoughts, report bugs, or request features on our [Google AI Developer Community Forum](https://discuss.ai.google.dev/c/gemini-api/4).
 
 ## What's next
 
 - Try the [Interactions API quickstart notebook](https://colab.sandbox.google.com/github/google-gemini/cookbook/blob/main/quickstarts/Get_started_interactions_api.ipynb).
-- Learn more about the [Gemini Deep Research Agent](https://ai.google.dev/gemini-api/docs/deep-research).
+- Learn more about the [Gemini Deep Research agent](https://ai.google.dev/gemini-api/docs/deep-research).

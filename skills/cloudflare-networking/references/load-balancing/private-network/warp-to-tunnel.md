@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up Private Network Load Balancing with Client-to-Tunnel
 
-Last updated Apr 30, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can use Private Network Load Balancing to distribute Cloudflare One Client traffic to private hostnames and IPs connected via [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/).
 
@@ -125,7 +125,7 @@ In order for Cloudflare One Clients to connect to your load balancer, the load b
 4. Select **Manage**. Depending on the mode:
   * **Exclude mode**: Delete the IP range that contains your load balancer IP. For example, if your load balancer has a Cloudflare-assigned CGNAT IP, delete `100.64.0.0/10`. We recommend [adding back the IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client) that are not being used by your load balancer.
   Note
-  Some IPs in the `100.64.0.0/10` range may be reserved for other Zero Trust services such as Gateway initial resolved IPs or WARP CGNAT IPs. These IPs should remain deleted from the Exclude list.
+  Some IPs in the `100.64.0.0/10` range may be reserved for other Zero Trust services such as WARP CGNAT IPs, or Gateway initial resolved IPs if your account uses a legacy or custom range within CGNAT space. These IPs should remain deleted from the Exclude list.
   * **Include mode**: Add your load balancer IP.
 
 Cloudflare One Client traffic can now reach your private load balancer. For example, if your load balancer points to a web application, you can test by running `curl <load-balancer-IP>` from the device. This traffic will be distributed over Cloudflare Tunnel to your private endpoints according to your configured steering method.
@@ -152,8 +152,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel · Cloudflare Load Balancing docs","description":"Load balance WARP client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/#page","headline":"Set up Private Network Load Balancing with Client-to-Tunnel · Cloudflare Load Balancing docs","description":"Load balance WARP client traffic to private origins via Tunnel.","url":"https://developers.cloudflare.com/load-balancing/private-network/warp-to-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

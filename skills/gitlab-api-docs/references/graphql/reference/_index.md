@@ -96,6 +96,7 @@ Arguments:
 | <a id="query-admingroups-aimedfordeletion"></a>`aimedForDeletion` | [`Boolean`](#boolean) | Filter groups that are marked for deletion. |
 | <a id="query-admingroups-allavailable"></a>`allAvailable` | [`Boolean`](#boolean) | When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence. |
 | <a id="query-admingroups-ids"></a>`ids` | [`[ID!]`](#id) | Filter groups by IDs. |
+| <a id="query-admingroups-includesubgroups"></a>`includeSubgroups` | [`Boolean`](#boolean) | Include descendant groups of the group given in `parentPath`. Ignored unless `parentPath` is also provided. |
 | <a id="query-admingroups-markedfordeletionon"></a>`markedForDeletionOn` | [`Date`](#date) | Date when the group was marked for deletion. |
 | <a id="query-admingroups-not"></a>`not` | [`BaseGroupsResolverNegatedParams`](#basegroupsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
 | <a id="query-admingroups-ownedonly"></a>`ownedOnly` | [`Boolean`](#boolean) | Only include groups where the current user has an owner role. |
@@ -103,6 +104,7 @@ Arguments:
 | <a id="query-admingroups-search"></a>`search` | [`String`](#string) | Search query for group name or group full path. |
 | <a id="query-admingroups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. |
 | <a id="query-admingroups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
+| <a id="query-admingroups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 
 ### `Query.adminMemberRole`
 
@@ -1412,6 +1414,7 @@ Arguments:
 | <a id="query-groups-aimedfordeletion"></a>`aimedForDeletion` | [`Boolean`](#boolean) | Filter groups that are marked for deletion. |
 | <a id="query-groups-allavailable"></a>`allAvailable` | [`Boolean`](#boolean) | When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence. |
 | <a id="query-groups-ids"></a>`ids` | [`[ID!]`](#id) | Filter groups by IDs. |
+| <a id="query-groups-includesubgroups"></a>`includeSubgroups` | [`Boolean`](#boolean) | Include descendant groups of the group given in `parentPath`. Ignored unless `parentPath` is also provided. |
 | <a id="query-groups-markedfordeletionon"></a>`markedForDeletionOn` | [`Date`](#date) | Date when the group was marked for deletion. |
 | <a id="query-groups-not"></a>`not` | [`BaseGroupsResolverNegatedParams`](#basegroupsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
 | <a id="query-groups-ownedonly"></a>`ownedOnly` | [`Boolean`](#boolean) | Only include groups where the current user has an owner role. |
@@ -1419,6 +1422,7 @@ Arguments:
 | <a id="query-groups-search"></a>`search` | [`String`](#string) | Search query for group name or group full path. |
 | <a id="query-groups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. |
 | <a id="query-groups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
+| <a id="query-groups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 | <a id="query-groups-withknowledgegraphenabled"></a>`withKnowledgeGraphEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Return only groups with Knowledge Graph enabled. |
 
 ### `Query.instanceExternalAuditEventDestinations`
@@ -32753,11 +32757,13 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="artifactregistryrepository-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Human-readable description of the repository. Null when unset. |
 | <a id="artifactregistryrepository-downloadscount"></a>`downloadsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Number of artifact downloads from the repository. Buffered, so it can lag. |
 | <a id="artifactregistryrepository-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Package format the repository holds. |
 | <a id="artifactregistryrepository-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind!`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. How the repository sources its artifacts. |
 | <a id="artifactregistryrepository-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
 | <a id="artifactregistryrepository-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
+| <a id="artifactregistryrepository-settings"></a>`settings`  | [`JSON!`](#json) | Introduced in GitLab 19.3. Status: Experiment. Kind-specific configuration, discriminated by format and kind. Empty for hosted repositories. |
 | <a id="artifactregistryrepository-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
 | <a id="artifactregistryrepository-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility!`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.3. Status: Experiment. Who can read the repository. |
 
@@ -34024,6 +34030,7 @@ Fields:
 | <a id="cdapplication-links"></a>`links`  | [`CdApplicationLinkConnection`](#cdapplicationlinkconnection) | Introduced in GitLab 19.2. Status: Experiment. Links belonging to the application. |
 | <a id="cdapplication-name"></a>`name` | [`String!`](#string) | Name of the application. |
 | <a id="cdapplication-organization"></a>`organization` | [`Organization`](#organization) | Organization the application belongs to. |
+| <a id="cdapplication-status"></a>`status`  | [`CdApplicationStatus`](#cdapplicationstatus) | Introduced in GitLab 19.3. Status: Experiment. Current status of the application, derived from its services' worst health and whether it has a rollout in progress, or null when neither applies. |
 | <a id="cdapplication-suggestednextversionsetname"></a>`suggestedNextVersionSetName`  | [`CdSemVer!`](#cdsemver) | Introduced in GitLab 19.3. Status: Experiment. Suggested name for the application's next version set, derived from its latest release. |
 | <a id="cdapplication-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the application was last updated. |
 | <a id="cdapplication-userpermissions"></a>`userPermissions`  | [`CdApplicationPermissions`](#cdapplicationpermissions) | Introduced in GitLab 19.2. Status: Experiment. Permissions of the current user for the application. |
@@ -50049,6 +50056,21 @@ Arguments:
 | <a id="organization-artifactregistryrepositories-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Return only repositories holding the given package format. |
 | <a id="organization-artifactregistryrepositories-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. Return only repositories sourcing their artifacts the given way. |
 
+##### `Organization.artifactRegistryRepository`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Single Artifact Registry repository in the organization, by name. Returns `null` when not found or when the `artifact_registry_ui` feature flag is disabled.
+
+Returns [`ArtifactRegistryRepository`](#artifactregistryrepository).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="organization-artifactregistryrepository-name"></a>`name` | [`String!`](#string) | Name of the repository to read, unique within its namespace. |
+
 ##### `Organization.cdApplication`
 
 - Introduced in GitLab 19.2.
@@ -50185,6 +50207,7 @@ Arguments:
 | <a id="organization-groups-aimedfordeletion"></a>`aimedForDeletion` | [`Boolean`](#boolean) | Filter groups that are marked for deletion. |
 | <a id="organization-groups-allavailable"></a>`allAvailable` | [`Boolean`](#boolean) | When `true`, returns all accessible groups. When `false`, returns only groups where the user is a member. Unauthenticated requests always return all public groups. The `owned_only` argument takes precedence. |
 | <a id="organization-groups-ids"></a>`ids` | [`[ID!]`](#id) | Filter groups by IDs. |
+| <a id="organization-groups-includesubgroups"></a>`includeSubgroups` | [`Boolean`](#boolean) | Include descendant groups of the group given in `parentPath`. Ignored unless `parentPath` is also provided. |
 | <a id="organization-groups-markedfordeletionon"></a>`markedForDeletionOn` | [`Date`](#date) | Date when the group was marked for deletion. |
 | <a id="organization-groups-not"></a>`not` | [`BaseGroupsResolverNegatedParams`](#basegroupsresolvernegatedparams) | List of negated arguments. Warning: this argument is experimental and a subject to change in future. |
 | <a id="organization-groups-ownedonly"></a>`ownedOnly` | [`Boolean`](#boolean) | Only include groups where the current user has an owner role. |
@@ -50192,6 +50215,7 @@ Arguments:
 | <a id="organization-groups-search"></a>`search` | [`String`](#string) | Search query for group name or group full path. |
 | <a id="organization-groups-sort"></a>`sort` | [`String`](#string) | Sort order of results. Format: `<field_name>_<sort_direction>`, for example: `id_desc` or `name_asc`. |
 | <a id="organization-groups-toplevelonly"></a>`topLevelOnly` | [`Boolean`](#boolean) | Only include top-level groups. |
+| <a id="organization-groups-visibilitylevel"></a>`visibilityLevel` | [`VisibilityLevelsEnum`](#visibilitylevelsenum) | Filter groups by visibility level. |
 | <a id="organization-groups-withknowledgegraphenabled"></a>`withKnowledgeGraphEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Return only groups with Knowledge Graph enabled. |
 
 ##### `Organization.projects`
