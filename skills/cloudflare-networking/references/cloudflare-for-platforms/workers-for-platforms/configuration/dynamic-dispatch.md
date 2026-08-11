@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 A [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) is a specialized routing Worker that directs incoming requests to the appropriate user Workers in your dispatch namespace. Instead of using [Workers Routes](https://developers.cloudflare.com/workers/configuration/routing/routes/), dispatch Workers let you programmatically control request routing through code.
 
-![Figure 1: Workers for Platforms: Main Flow](https://developers.cloudflare.com/_astro/programmable-platforms-1.BCCEhzLr_Z29LwvW.svg)
+![Figure 1: Workers for Platforms: Main Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/programmable-platforms-1.BCCEhzLr.svg)
 
 Note
 
@@ -60,7 +60,7 @@ Once the binding is configured, your dynamic dispatch Worker can route requests 
 
 ### Routing examples
 
-![Figure 2: Workers for Platforms: Main Flow](https://developers.cloudflare.com/_astro/programmable-platforms-2.DGAT6ZDR_Z1H5TbM.svg)
+![Figure 2: Workers for Platforms: Main Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=594,format=svg/_astro/programmable-platforms-2.DGAT6ZDR.svg)
 
 #### KV-Based Routing
 
@@ -205,7 +205,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/#page","headline":"Dynamic dispatch Worker · Cloudflare for Platforms docs","description":"Create a dynamic dispatch Worker to route incoming requests to user Workers in your dispatch namespace.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

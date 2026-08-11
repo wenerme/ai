@@ -22,7 +22,7 @@ Cloudflare Firewall Rules has been deprecated. Cloudflare has moved existing fir
 
 The image below depicts this sequence, which can be applied for creating and editing rules. The reverse would apply for delete operations.
 
-![Recommended flow for calling the Cloudflare Filters API and Firewall Rules API when creating or editing rules](https://developers.cloudflare.com/_astro/recommended-flow.DBuGef-x_Z1MtD3V.webp)
+![Recommended flow for calling the Cloudflare Filters API and Firewall Rules API when creating or editing rules](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=441,height=371,format=webp/_astro/recommended-flow.DBuGef-x.png)
 
 Cloudflare recommends this sequence because it facilitates filter reusability and allows working with either API independently. Thanks to the standalone nature of Cloudflare Filters, the same filter can be shared in multiple firewall rules and in other future Cloudflare products and features.
 
@@ -30,7 +30,7 @@ For example, a filter that matches all traffic for your API (that is, `http.requ
 
 However, for a `POST` operation, the **simplified sequence** — shown below — allows you to create both a filter and rule in the same call. In this case, the filter and rule only refer to each other.
 
-![Basic flow for invoking the Firewall Rules API to create both a filter and a rule in a single call](https://developers.cloudflare.com/_astro/simple-flow.DifdHPUG_Z1uWBix.webp)
+![Basic flow for invoking the Firewall Rules API to create both a filter and a rule in a single call](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=441,height=261,format=webp/_astro/simple-flow.DifdHPUG.png)
 
 In this sequence, a single `POST` request to the `/firewall/rules` endpoint takes the filter object in the JSON to create the filter in the Filters API (also via a `POST` request). If successful, the firewall rule is created.
 
@@ -91,7 +91,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/api/call-sequence/#page","headline":"Call sequence · Cloudflare Firewall Rules (deprecated) docs","description":"Recommended API call sequence for firewall rules.","url":"https://developers.cloudflare.com/firewall/api/call-sequence/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

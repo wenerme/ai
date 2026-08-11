@@ -79,7 +79,7 @@ If you are using **Include** mode:
 
 1. In the Finder menu, select **Go** \> **Connect to Server**.
 2. Enter `smb://<smb-server-ip-address>/sambashare`.
-![Connect to SMB server in macOS](https://developers.cloudflare.com/_astro/smb-connect.C4nMiFKp_Z1namc2.webp)
+![Connect to SMB server in macOS](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1196,height=686,format=webp/_astro/smb-connect.C4nMiFKp.png)
 3. Sign in with the username and password created while setting up the server.
 
 #### Windows
@@ -143,7 +143,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/#page","headline":"SMB · Cloudflare One docs","description":"SMB in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/smb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Windows","MacOS"]}

@@ -303,13 +303,13 @@ Our DLP engine performs deep analysis on each prompt, applying [topic classifica
 
 To help you apply these topics quickly, we have also released five new predefined profiles (for example, AI Prompt: AI Security, AI Prompt: PII) that bundle these new topics.
 
-![DLP](https://developers.cloudflare.com/_astro/ai-prompt-detection-entry.4QmdkAuv_Z14HtSJ.webp)
+![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=439,format=webp/_astro/ai-prompt-detection-entry.4QmdkAuv.png)
 1. **Granular Guardrails**
 You can now build guardrails using Gateway HTTP policies with [application granular controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#granular-controls). Apply a DLP profile containing an [AI prompt topic detection](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics) to individual AI applications (for example, `ChatGPT`) and specific user actions (for example, `SendPrompt`) to block sensitive prompts.
-![DLP](https://developers.cloudflare.com/_astro/ai-prompt-policy.CF3H2rbK_2muoEC.webp)
+![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=731,height=511,format=webp/_astro/ai-prompt-policy.CF3H2rbK.png)
 2. **Full Prompt Logging**
 To aid in incident investigation, an optional setting in your Gateway policy allows you to [capture prompt logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#log-generative-ai-prompt-content) to store the full interaction of prompts that trigger a policy match. To make investigations easier, logs can be filtered by `conversation_id`, allowing you to reconstruct the full context of an interaction that led to a policy violation.
-![DLP](https://developers.cloudflare.com/_astro/ai-prompt-log.ywQDc5qN_2v6nax.webp)
+![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=728,height=444,format=webp/_astro/ai-prompt-log.ywQDc5qN.png)
 
 AI prompt protection is now available in open beta. To learn more about it, read the [blog ↗](https://blog.cloudflare.com/ai-prompt-protection/#closing-the-loop-logging) or refer to [AI prompt topics](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#ai-prompt-topics).
 
@@ -320,7 +320,7 @@ AI prompt protection is now available in open beta. To learn more about it, read
 
 You can now create [document-based](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#document-entries) detection entries in DLP by uploading example documents. Cloudflare will encrypt your documents and create a unique fingerprint of the file. This fingerprint is then used to identify similar documents or snippets within your organization's traffic and stored files.
 
-![DLP](https://developers.cloudflare.com/_astro/document-match.CcN8pGgR_Z1e3PDm.webp)
+![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1356,height=839,format=webp/_astro/document-match.CcN8pGgR.png)
 
 **Key features and benefits:**
 
@@ -353,7 +353,7 @@ The new dashboard includes:
 
   * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
   * See which specific users are responsible for triggering DLP policies.
-![Data Security Analytics](https://developers.cloudflare.com/_astro/cf1-data-security-analytics-v1.BGl6fYXl_H3N0P.webp)
+![Data Security Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3254,height=1580,format=webp/_astro/cf1-data-security-analytics-v1.BGl6fYXl.png)
 
 To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.
 
@@ -364,7 +364,7 @@ To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.clo
 
 You can now configure [custom word lists](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/#custom-wordlist-datasets) to enforce case sensitivity. This setting supports flexibility where needed and aims to reduce false positives where letter casing is critical.
 
-![dlp](https://developers.cloudflare.com/_astro/case-sesitive-cwl.MPuOc_3r_220dca.webp)
+![dlp](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1289,height=910,format=webp/_astro/case-sesitive-cwl.MPuOc_3r.png)
 
 ## 2025-05-07
 
@@ -375,7 +375,7 @@ You can now [send DLP forensic copies](https://developers.cloudflare.com/cloudfl
 
 By default, Gateway will send all matched HTTP requests to your configured DLP Forensic Copy jobs.
 
-![DLP](https://developers.cloudflare.com/_astro/forensic-copies-for-all.fxeFrCY4_Z1rCUy9.webp)
+![DLP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1324,height=636,format=webp/_astro/forensic-copies-for-all.fxeFrCY4.png)
 
 ## 2025-04-14
 
@@ -470,7 +470,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/dlp/#page","headline":"DLP Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare DLP.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

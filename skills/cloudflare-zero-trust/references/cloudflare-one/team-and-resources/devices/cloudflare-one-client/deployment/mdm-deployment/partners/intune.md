@@ -149,9 +149,9 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 #### 1.2 Upload user-side certificate to Intune
 
 1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** \> select **macOS**.
-![Intune admin console where you select macOS before creating a policy](https://developers.cloudflare.com/_astro/devices-macos.CVmp807I_1XNiVg.webp)
+![Intune admin console where you select macOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3754,height=1497,format=webp/_astro/devices-macos.CVmp807I.png)
 2. Under **Manage devices**, select **Configuration**.
-![Intune admin console where you will create a new policy](https://developers.cloudflare.com/_astro/manage-devices-configuration.DAFUmjfO_1ti2RK.webp)
+![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1506,height=892,format=webp/_astro/manage-devices-configuration.DAFUmjfO.png)
 3. Select **Create** \> **New Policy**.
 4. For **Profile Type**, select _Templates_ \> select **Trusted certificate** as the Template name > select **Create**.
 5. In **Basics**, input the necessary field(s) and give your policy a name like `Cloudflare certificate` \> select **Next**.
@@ -178,7 +178,7 @@ Before deploying the Cloudflare One Client, you need to allow its system extensi
 
   * Bundle Identifier: `com.cloudflare.1dot1dot1dot1.macos`
   * Team Identifier: `68WVV388M8`
-![Intune admin console where you enter team identifier and bundle identifier](https://developers.cloudflare.com/_astro/intune-bundle-team-identifier.D4Pncyz9_Z1bD6s7.webp)
+![Intune admin console where you enter team identifier and bundle identifier](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3741,height=1286,format=webp/_astro/intune-bundle-team-identifier.D4Pncyz9.png)
 Running the following command in the terminal will return the verified identifiers. This validation ensures that the values you enter into Intune match the official application signatures guaranteed by Apple.
 ```bash
 codesign -dv --verbose=4 /Applications/Cloudflare\ WARP.app 2>&1 | grep Identifier
@@ -317,9 +317,9 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 #### 1.2 Upload user-side certificate to Intune
 
 1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** \> select **iOS/iPadOS**.
-![Intune admin console where you select iOS/iPadOS before creating a policy](https://developers.cloudflare.com/_astro/devices-iOS.DY1lHEJ0_s7thM.webp)
+![Intune admin console where you select iOS/iPadOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1898,height=747,format=webp/_astro/devices-iOS.DY1lHEJ0.png)
 2. Under **Manage devices**, select **Configuration**.
-![Intune admin console where you will create a new policy](https://developers.cloudflare.com/_astro/manage-devices-configuration-iOS.CAfH5ZA2_1Aa0KU.webp)
+![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1217,height=584,format=webp/_astro/manage-devices-configuration-iOS.CAfH5ZA2.png)
 3. Select **Create** \> **New Policy**.
 4. For **Profile Type**, select _Templates_ \> select **Trusted certificate** as the Template name > select **Create**.
 5. In **Basics**, input the necessary field(s) and give your policy a name like `Cloudflare certificate` \> select **Next**.
@@ -646,7 +646,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/#page","headline":"Intune · Cloudflare One docs","description":"Intune in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/intune/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft","XML","PowerShell"]}

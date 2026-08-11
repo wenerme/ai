@@ -20,7 +20,7 @@ Within Cloudflare data centers, and between the Cloudflare network and your orig
 
 Additionally, all request and response processing within a Cloudflare data center occurs in memory — traffic content is handled by automated systems and is not written to disk, except for eligible content for caching or Cache Rules you have configured. Automated controls prevent Cloudflare personnel from accessing traffic content in the processing pipeline. All cache disks are encrypted at rest (meaning data is encrypted when stored on disk, in addition to being encrypted during transmission).
 
-![HTTP requests flow](https://developers.cloudflare.com/_astro/http-requests-flow.BQhq9Ov4_1odumR.webp)
+![HTTP requests flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=6136,height=4012,format=webp/_astro/http-requests-flow.BQhq9Ov4.png)
 
 At a high level, when an end user's device connects to any Cloudflare data center, the request is processed in the following way:
 
@@ -37,7 +37,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/regional-services/http-requests/#page","headline":"Default HTTP Privacy · Cloudflare Data Localization Suite docs","description":"How Cloudflare encrypts and processes HTTP requests across its global network.","url":"https://developers.cloudflare.com/data-localization/regional-services/http-requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","Privacy"]}

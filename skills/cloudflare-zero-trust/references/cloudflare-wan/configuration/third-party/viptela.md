@@ -37,7 +37,7 @@ Cisco vManage is Cisco's SD-WAN management tool that is used to manage all the S
 
 For this example scenario, a generic template for `SIG-Branch` was created.
 
-![Traffic flow diagram for GRE](https://developers.cloudflare.com/_astro/viptela-flow-diagram-gre.BGa0DR7d_Z22OLwW.webp)
+![Traffic flow diagram for GRE](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=890,height=424,format=webp/_astro/viptela-flow-diagram-gre.BGa0DR7d.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -81,19 +81,19 @@ From vManage, select **Configuration** \> **Templates**. You should see the newl
 
 Because the template was created to add GRE tunnels, you only need to update the device values. Note that **VPN0** is the default, and the WAN interface used to build the tunnel must be part of **VPN0**.
 
-![Update template fields for GRE tunnel](https://developers.cloudflare.com/_astro/viptela-update-device-template-gre.BQZzlgJi_ZBhclR.webp)
+![Update template fields for GRE tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=752,height=865,format=webp/_astro/viptela-update-device-template-gre.BQZzlgJi.png)
 
 ## 3\. Create tunnels in Cloudflare
 
 Refer to [Configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for more information on creating a GRE tunnel.
 
-![Established GRE tunnel in Cloudflare dashboard](https://developers.cloudflare.com/_astro/viptela-gre-tunnel.BI5bFdGE_Z6Jhsy.webp)
+![Established GRE tunnel in Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=847,height=299,format=webp/_astro/viptela-gre-tunnel.BI5bFdGE.png)
 
 ## 4\. Define static routes
 
 Refer to [Configure static routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#create-a-static-route) for more information on configuring your static routes.
 
-![Established GRE static routes in Cloudflare dashboard](https://developers.cloudflare.com/_astro/viptela-gre-static-routes.xe2lnYh6_1WloRk.webp)
+![Established GRE static routes in Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=856,height=312,format=webp/_astro/viptela-gre-static-routes.xe2lnYh6.png)
 
 ## 5\. Validate traffic flow
 
@@ -101,11 +101,11 @@ In the example below, a request for `neverssl.com` was issued, which has a Cloud
 
 On the client VM (192.168.30.3), a blocked response is visible.
 
-![cURL example for a request to neverssl.com](https://developers.cloudflare.com/_astro/viptela-curl-traffic-flow.DiSsMVxM_1eV5rj.webp)
+![cURL example for a request to neverssl.com](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1136,height=380,format=webp/_astro/viptela-curl-traffic-flow.DiSsMVxM.png)
 
 A matching blocked log line is visible from the Cloudflare logs.
 
-![A blocked log from Gateway Activity Log in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/viptela-gre-swg-traffic.DD7CHYgi_ZpbFYr.webp)
+![A blocked log from Gateway Activity Log in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1044,height=1054,format=webp/_astro/viptela-gre-swg-traffic.DD7CHYgi.png)
 
 ## Add new tunnels using IPsec
 
@@ -117,7 +117,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/viptela/#page","headline":"Cisco SD-WAN · Cloudflare WAN docs","description":"Connect Cisco SD-WAN to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/viptela/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

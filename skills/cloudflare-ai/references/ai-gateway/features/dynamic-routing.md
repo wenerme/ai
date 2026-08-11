@@ -24,7 +24,7 @@ Dynamic routing enables you to create request routing flows through a **visual i
 
 while making it accessible to both developers and non-technical team members.
 
-![Dynamic Routing Overview](https://developers.cloudflare.com/_astro/dynamic-routing.BtwkWywo_ZAjPvC.webp)
+![Dynamic Routing Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1814,height=1642,format=webp/_astro/dynamic-routing.BtwkWywo.png)
 
 ## Core Concepts
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/#page","headline":"Dynamic routing · Cloudflare AI Gateway docs","description":"Route AI Gateway requests based on conditions, quotas, and fallbacks using a visual interface or JSON configuration.","url":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

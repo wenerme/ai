@@ -179,9 +179,9 @@ B) If you are using the [new security dashboard](https://developers.cloudflare.c
   [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
   2. Select **Go to upgrade your Managed rules**.
 If you are an Enterprise customer, the dashboard will show the following banner:
-![The upgrade banner displayed to Enterprise customers.](https://developers.cloudflare.com/_astro/waf-migration-ent-banner.aotEhXUu_Z2lILWA.webp)
+![The upgrade banner displayed to Enterprise customers.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1158,height=207,format=webp/_astro/waf-migration-ent-banner.aotEhXUu.png)
 If you are a Professional/Business customer, the dashboard will show the following banner:
-![The upgrade banner displayed to Pro/Business customers.](https://developers.cloudflare.com/_astro/waf-migration-biz-banner.BRfzWtwJ_Z1Fy3fv.webp)
+![The upgrade banner displayed to Pro/Business customers.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1163,height=250,format=webp/_astro/waf-migration-biz-banner.BRfzWtwJ.png)
 3. In the upgrade banner, select **Review configuration**. This banner is only displayed in eligible zones.
 4. Review the proposed WAF configuration. You can adjust configuration, like [editing the WAF Managed Rules configuration](https://developers.cloudflare.com/waf/managed-rules/deploy-zone-dashboard/#configure-a-managed-ruleset) or creating [exceptions](https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/) to skip the execution of rulesets or specific rules.
 5. When you are done reviewing, select **Deploy** to deploy the new WAF Managed Rules configuration.
@@ -515,7 +515,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/#page","headline":"WAF managed rules upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Upgrade from the previous version of WAF managed rules.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

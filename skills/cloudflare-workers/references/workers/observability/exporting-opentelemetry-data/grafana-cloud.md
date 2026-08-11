@@ -21,7 +21,7 @@ Grafana Cloud is a fully managed observability platform that provides visualizat
 
 This guide will walk you through configuring Cloudflare Workers to export OpenTelemetry-compliant traces and logs to your Grafana Cloud stack.
 
-![Grafana Tempo trace view showing a distributed trace for a service with multiple spans including fetch requests, durable object subrequests, and queue operations, with timing information displayed on a timeline](https://developers.cloudflare.com/_astro/grafana-traces.CuFntNVO_1VEu9k.webp)
+![Grafana Tempo trace view showing a distributed trace for a service with multiple spans including fetch requests, durable object subrequests, and queue operations, with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1934,height=714,format=webp/_astro/grafana-traces.CuFntNVO.png)
 
 ## Prerequisites
 
@@ -94,7 +94,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/#page","headline":"Export to Grafana Cloud · Cloudflare Workers docs","description":"Send OpenTelemetry traces and logs from Cloudflare Workers to Grafana Cloud.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

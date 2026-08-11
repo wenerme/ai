@@ -32,11 +32,11 @@ Temporary authentication is now enabled for users who match this policy. You can
 
 ## Temporary authentication requests
 
-When a user accesses the application, they will be prompted to enter a purpose justification and submit an access request. The request is automatically emailed to approvers. Alternatively, the user can manually present the approval link to approvers. ![Temporary authentication request page shown to users](https://developers.cloudflare.com/_astro/temp-auth-request.WnwXx8ul_1vy5pt.webp)
+When a user accesses the application, they will be prompted to enter a purpose justification and submit an access request. The request is automatically emailed to approvers. Alternatively, the user can manually present the approval link to approvers. ![Temporary authentication request page shown to users](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1207,height=1055,format=webp/_astro/temp-auth-request.WnwXx8ul.png)
 
 Approvers will receive a request similar to the example below. The approver can then grant access for a set amount of time, up to a maximum of 24 hours.
 
-![Temporary authentication approval page shown to administrators](https://developers.cloudflare.com/_astro/temp-auth-approval.D0-hjStz_1KlkRx.webp)
+![Temporary authentication approval page shown to administrators](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1233,height=1252,format=webp/_astro/temp-auth-approval.D0-hjStz.png)
 
 Was this helpful?
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/#page","headline":"Temporary authentication · Cloudflare One docs","description":"Temporary authentication in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}

@@ -173,7 +173,7 @@ Select **Save** to apply changes for the Profile.
 ### Additional settings
 
 1. Configure the following settings based on your environment — left blank in the following example.
-![This example was left blank. You should configure this based on your environment.](https://developers.cloudflare.com/_astro/image1.ZgVGq2jm_BVSWv.webp)
+![This example was left blank. You should configure this based on your environment.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=975,format=webp/_astro/image1.ZgVGq2jm.png)
 1. Select **Add Edge** to save changes.
 
 ### Edge — Device Settings
@@ -206,7 +206,7 @@ Once the Edge device is added, you should land on the **Device** tab.
 
 Note the indicator next to **GE3**. The steps in the Profile section disabled **Auto WAN Link Detection**. As a result, the WAN Link must be specified.
 
-![Note the indicator next to GE3.](https://developers.cloudflare.com/_astro/image2.CXnQ2TCU_Z1m3RjI.webp)
+![Note the indicator next to GE3.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=589,format=webp/_astro/image2.CXnQ2TCU.png)
 1. Scroll down to **WAN Link Configuration** \> **Add User Defined WAN Link**, and configure the following options:
   1. **Link Type**: _Public_ (the WAN interface is connected directly to the Internet in this example — you may need to select _Private_ depending on your environment)
   2. **Interfaces**: Check the box for **GE3** (WAN Interface)
@@ -269,7 +269,7 @@ Configure a minimum of three IPsec tunnels. This example demonstrates two routes
   4. Site vc-edge-02:
     1. 172.16.33.0/24 - Primary and Secondary VPN Gateways
 2. The **Site Subnets** tab should look like the following when configured as indicated:
-![An example of how the Site Subnets tab should look like when configured as indicated.](https://developers.cloudflare.com/_astro/image3.CgIDPbhJ_ZsGr1s.webp)
+![An example of how the Site Subnets tab should look like when configured as indicated.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1114,format=webp/_astro/image3.CgIDPbhJ.png)
 1. Select **Save** to commit changes to the Site Subnets.
 
 ## Cloudflare WAN and Cloudflare Gateway
@@ -302,7 +302,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/velocloud/#page","headline":"Velocloud · Cloudflare One docs","description":"Integrate Velocloud with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/velocloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}

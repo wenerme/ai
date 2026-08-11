@@ -221,6 +221,31 @@ Agent-level guardrails don't run everywhere:
 
 If you need checks around every custom tool call in a manager-style workflow, don't rely only on agent-level input or output guardrails. Put validation next to the tool that creates the side effect.
 
+## Review cybersecurity actions before execution
+
+For authorized cybersecurity workflows, evaluate each sensitive tool call
+before it executes. Use tool guardrails and approval interruptions to enforce
+the written engagement scope at the boundary where side effects occur:
+
+1. Check the proposed target, action, tool arguments, calling identity, and
+   engagement window against the approved scope.
+2. Give a separate policy component or reviewer the exact proposed action and
+   only the context needed to evaluate it.
+3. Deny out-of-scope hosts, credential theft, persistence, data exfiltration,
+   destructive changes, production access, and attempts to bypass policy.
+4. Pause ambiguous or high-risk actions for explicit human approval before the
+   tool runs.
+5. Enforce independent filesystem, network, identity, and project boundaries,
+   record decisions and execution outcomes, and fail closed if review times out
+   or becomes unavailable.
+
+Responses API and Agents SDK applications don't automatically inherit
+[Codex Auto-review](https://developers.openai.com/codex/sandboxing/auto-review). Add review and enforcement
+to your own harness. The
+[open-source Codex reviewer policy](https://github.com/openai/codex/blob/main/codex-rs/core/src/guardian/policy.md)
+illustrates one approach; [Cyber Safety](https://developers.openai.com/codex/cyber-safety) explains approved
+model access and safe engagement setup.
+
 ## Streaming and delayed review use the same state model
 
 Streaming doesn't create a separate approval system. If a streamed run pauses, wait for it to settle, inspect `interruptions`, resolve the approvals, and resume from the same `state`. If the review happens later, store the serialized state and continue the same run when the decision arrives.

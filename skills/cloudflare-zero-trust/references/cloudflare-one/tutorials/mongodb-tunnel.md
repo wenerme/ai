@@ -205,7 +205,7 @@ Once you select one of the sites in your account, Cloudflare will download a cer
 
 You can now use `cloudflared` to control Cloudflare Tunnel connections in your Cloudflare account.
 
-![Download Certificate](https://developers.cloudflare.com/_astro/cert-download.CzGYlCAx_Z1IrUwf.webp)
+![Download Certificate](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=682,height=477,format=webp/_astro/cert-download.CzGYlCAx.png)
 
 ### Create a Tunnel
 
@@ -217,7 +217,7 @@ Run the following command to create a Tunnel. You can replace `mongodb` with any
 
 Cloudflare will create the Tunnel with that name and generate an ID and credentials file for that Tunnel.
 
-![New Tunnel](https://developers.cloudflare.com/_astro/create.2q9ua5Ht_18exbR.webp)
+![New Tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1364,height=954,format=webp/_astro/create.2q9ua5Ht.png)
 
 ### Delete the `cert.pem` file
 
@@ -320,7 +320,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/#page","headline":"MongoDB SSH · Cloudflare One docs","description":"You can build Zero Trust rules to secure connections to MongoDB deployments using Cloudflare Access and Cloudflared Tunnel.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/mongodb-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MongoDB","SSH","Kubernetes"]}

@@ -330,11 +330,11 @@ npx wrangler dev
 
 This should spin up a `localhost` instance with the image displayed:
 
-![Run wrangler dev to start a local server for your Worker](https://developers.cloudflare.com/_astro/hello-worker.ot1qb0cF_Z2j0gbO.webp)
+![Run wrangler dev to start a local server for your Worker](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1089,height=804,format=webp/_astro/hello-worker.ot1qb0cF.png)
 
 Adding a query parameter with custom text, you should receive:
 
-![Follow the instructions above to receive an output image](https://developers.cloudflare.com/_astro/build-serverles.BHasze4F_Zc150.webp)
+![Follow the instructions above to receive an output image](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1115,height=662,format=webp/_astro/build-serverles.BHasze4F.png)
 
 To deploy your Worker, open your Wrangler file and update the `name` key with your project's name. Below is an example with this tutorial's project name:
 
@@ -528,7 +528,7 @@ The command deploys your Worker to custom `workers.dev` subdomain. Go to your `.
 
 You should see the resized image with the text `Hello Workers!`.
 
-![Follow the steps above to generate your resized image.](https://developers.cloudflare.com/_astro/thumbnail.z6EOGa1__kzK0u.webp)
+![Follow the steps above to generate your resized image.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=720,format=webp/_astro/thumbnail.z6EOGa1_.png)
 
 You will now make text applied dynamic. Making your text dynamic will allow you change the text and have it update on the image automatically.
 
@@ -570,7 +570,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/#page","headline":"Generate YouTube thumbnails with Workers and Cloudflare Image Resizing · Cloudflare Workers docs","description":"This tutorial explains how to programmatically generate a custom YouTube thumbnail using Cloudflare Workers. You may want to customize the thumbnail's design, call-to-actions and images used to encourage more viewers to watch your video.","url":"https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","Rust"]}

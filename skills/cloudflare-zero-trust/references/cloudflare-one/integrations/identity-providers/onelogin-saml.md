@@ -34,12 +34,12 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 8. Select the **Parameters** tab, select **Add Parameter** and enter your values for **Cloudflare Access Field**.
 9. Select the **Access** tab
 10. In Roles, use the mapping to programmatically and automatically assign users that can access the application.
-![OneLogin SAML Application Access interface with available Roles listed](https://developers.cloudflare.com/_astro/onelogin-saml-6.72q8OCR8_oAFmA.webp)
+![OneLogin SAML Application Access interface with available Roles listed](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=932,format=webp/_astro/onelogin-saml-6.72q8OCR8.png)
 11. Select the **SSO** tab.
 12. Copy the OneLogin **SAML 2.0 Endpoint (HTTP)** to the Cloudflare Single Sign On URL.
 13. Copy the OneLogin **Issuer URL** to the Cloudflare **IdP Entity ID**.
 14. Copy the **X.509 Certificate** to the Cloudflare **Signing Certificate**.
-![OneLogin SAML Application SSO interface with SAML2.0 sign on method, Issuer URL, and X.509 Certificate](https://developers.cloudflare.com/_astro/onelogin-saml-7.DF0eCD1C_216XQ8.webp)
+![OneLogin SAML Application SSO interface with SAML2.0 sign on method, Issuer URL, and X.509 Certificate](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1075,format=webp/_astro/onelogin-saml-7.DF0eCD1C.png)
 
 ### 2\. Add OneLogin to Cloudflare One
 
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-saml/#page","headline":"OneLogin (SAML) · Cloudflare One docs","description":"Integrate OneLogin as a SAML identity provider for Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/onelogin-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}

@@ -20,7 +20,7 @@ Security Insights provides you with a list of insights, covering different areas
 
 Security Insights focuses on your Cloudflare environment by running [security scans](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency) at regular intervals. Instead of navigating through each of your domains to review their security issues, the Security Center aggregates all of them into a single dashboard.
 
-![Security Insights Overview](https://developers.cloudflare.com/_astro/security-insights-overview.lQDBpBkp_1nGdoq.webp)
+![Security Insights Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1007,height=595,format=webp/_astro/security-insights-overview.lQDBpBkp.png)
 
 The list of insights may include potential security threats, vulnerabilities, compliance risks, insecure configurations, or any other identified risks.
 
@@ -39,7 +39,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/security-center/insights/#page","headline":"Security Insights · Cloudflare Learning Paths","description":"Scan and review aggregated security risks.","url":"https://developers.cloudflare.com/learning-paths/application-security/security-center/insights/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

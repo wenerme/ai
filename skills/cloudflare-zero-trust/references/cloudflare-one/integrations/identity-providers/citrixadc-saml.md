@@ -29,7 +29,7 @@ If you do not already have a certificate for signing SAML assertions, you can us
   1. Go to **Traffic Management** \> **SSL**.
   2. Select **Create and Install a Server Test Certificate**.
 2. Select **Configuration** and enter a **Certificate File Name**, **Fully Qualified Domain Name**, and a select a **Country**.
-![Citrix AD Create and Install Test Certificate interface with file name, domain name, and country](https://developers.cloudflare.com/_astro/citrixadc-saml-2.D4502Bei_8Aa5v.webp)
+![Citrix AD Create and Install Test Certificate interface with file name, domain name, and country](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1158,height=567,format=webp/_astro/citrixadc-saml-2.D4502Bei.png)
 3. Create a publicly accessible authentication vServer and configure the user identity source (like, local users, LDAP) by following this [Citrix documentation ↗](https://docs.citrix.com/en-us/citrix-adc/12-1/aaa-tm/authentication-virtual-server/ns-aaa-setup-auth-vserver-tsk.html).
 For the rest of this example, the user refers to the IdP address `idp.yourdomain.com`.
 
@@ -49,7 +49,7 @@ Include the following required configuration details:
 | **Attribute 1**                    | email = AAA.USER.ATTRIBUTE("email")                                                    |
 Cloudflare Access currently sends the IdP address in place of the _Service Provider ID_ for the AuthN request.
 2. Create an Authentication Policy that refers to the Profile just created, and bind it to the authentication vServer mentioned above.
-![Citrix AD Configure Authentication SAML IDP Policy](https://developers.cloudflare.com/_astro/citrixadc-saml-4.Ci1ulauO_1NAuTh.webp)
+![Citrix AD Configure Authentication SAML IDP Policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=777,height=877,format=webp/_astro/citrixadc-saml-4.Ci1ulauO.png)
 To configure all of the above using just the CLI, run the following:
 ```json
 add authentication samlIdPProfile samlProf_CloudflareAccess \
@@ -86,7 +86,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/citrixadc-saml/#page","headline":"Citrix ADC (SAML) · Cloudflare One docs","description":"Citrix ADC (SAML) in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/citrixadc-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}

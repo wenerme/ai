@@ -23,7 +23,7 @@ To create a rule:
 2. Select **Create rule** \> **URL Rewrite Rule**.
 3. (Optional) Select one of the rule templates that address common use cases. Then, review and adjust the proposed rule configuration.
 4. Enter a descriptive name for the rule in **Rule name**.
-![The URL rewrite rule creation page in the Cloudflare dashboard.](https://developers.cloudflare.com/_astro/create-url-rewrite-rule.DIgpB8IB_ZNTjfK.webp)
+![The URL rewrite rule creation page in the Cloudflare dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1158,height=1305,format=webp/_astro/create-url-rewrite-rule.DIgpB8IB.png)
 5. Under **If incoming requests match**, select one of the following options:
 
   * **Wildcard pattern**: The rule will only apply to traffic matching the wildcard pattern in **Request URL**. Refer to [Wildcard pattern parameters](#wildcard-pattern-parameters) for details.
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/#page","headline":"Create a URL rewrite rule in the dashboard · Cloudflare Rules docs","description":"Create URL rewrite rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/rules/transform/url-rewrite/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["URL rewrite"]}

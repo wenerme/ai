@@ -52,7 +52,7 @@ If you are only using one identity provider for device enrollment, turn on **App
 
 You can configure your browser to automatically launch the Cloudflare One Client application after a successful login and skip the **Open Cloudflare WARP.app** popup.
 
-![Browser popup requesting permission to open the Cloudflare One Client](https://developers.cloudflare.com/_astro/warp-protocol-handler.DL1xwNJc_l8Qql.webp)
+![Browser popup requesting permission to open the Cloudflare One Client](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=811,height=423,format=webp/_astro/warp-protocol-handler.DL1xwNJc.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -178,7 +178,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/#page","headline":"Register the Cloudflare One Client with minimal user interaction · Cloudflare One docs","description":"Register the Cloudflare One Client with minimal user interaction in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/protocol-handler/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PowerShell"]}

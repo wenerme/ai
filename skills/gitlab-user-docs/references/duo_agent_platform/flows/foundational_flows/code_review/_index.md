@@ -1,15 +1,15 @@
 # Code Review Flow
 
-- Tier: [Free](../../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
+- Tier: [Free](../../../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 ### Model information
 
 - LLM: Anthropic Claude Sonnet 5 Vertex
-- [Select a different model](../../model_selection.md) using the **Agentic Code Review** setting.
-- Available on [GitLab Duo with self-hosted models](../../../../administration/gitlab_duo_self_hosted/_index.md)
+- [Select a different model](../../../model_selection.md) using the **Agentic Code Review** setting.
+- Available on [GitLab Duo with self-hosted models](../../../../../administration/gitlab_duo_self_hosted/_index.md)
 
-- Introduced as [a beta](../../../../policy/development_stages_support.md) in GitLab [18.7](https://gitlab.com/groups/gitlab-org/-/epics/18645) [with a feature flag](../../../../administration/feature_flags/_index.md) named `duo_code_review_on_agent_platform`. Disabled by default.
+- Introduced as [a beta](../../../../../policy/development_stages_support.md) in GitLab [18.7](https://gitlab.com/groups/gitlab-org/-/epics/18645) [with a feature flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_on_agent_platform`. Disabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8. Feature flag `duo_code_review_on_agent_platform` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/217209).
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
 - LLM [updated](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/236876) to Claude Sonnet 4.6 Vertex in GitLab 19.1.
@@ -24,7 +24,7 @@
 > This page describes the agentic version.
 >
 > For more information about how the two features compare and how to turn on Code Review Flow for GitLab Duo Enterprise seats,
-> see [use GitLab Duo to review your code.](../../../project/merge_requests/duo_in_merge_requests.md#use-gitlab-duo-to-review-your-code).
+> see [use GitLab Duo to review your code.](../../../../project/merge_requests/duo_in_merge_requests.md#use-gitlab-duo-to-review-your-code).
 
 The Code Review Flow helps you streamline code reviews with agentic AI.
 
@@ -39,17 +39,17 @@ This flow is available in the GitLab UI only.
 
 ## Prerequisites
 
-- Meet the [prerequisites for the GitLab Duo Agent Platform](../../_index.md#prerequisites).
-- Turn on **Allow foundational flows** and **Code Review** [for the top-level group](_index.md#turn-foundational-flows-on-or-off).
+- Meet the [prerequisites for the GitLab Duo Agent Platform](../../../_index.md#prerequisites).
+- Turn on **Allow foundational flows** and **Code Review** [for the top-level group](../_index.md#turn-foundational-flows-on-or-off).
 - Have the Developer, Maintainer, or Owner role for the project.
-- If you belong to multiple GitLab Duo namespaces, [set a default GitLab Duo namespace](../../../profile/preferences.md#set-a-default-gitlab-duo-namespace).
-- [Configure your own runners](../execution/_index.md#configure-runners-to-execute-flows) with the `gitlab--duo` tag and
-  an executor that supports Docker images, or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md)
+- If you belong to multiple GitLab Duo namespaces, [set a default GitLab Duo namespace](../../../../profile/preferences.md#set-a-default-gitlab-duo-namespace).
+- [Configure your own runners](../../execution/_index.md#configure-runners-to-execute-flows) with the `gitlab--duo` tag and
+  an executor that supports Docker images, or turn on [GitLab hosted runners](../../../../../ci/runners/hosted_runners/_index.md)
   for your project. Code Review Flow runs as a CI/CD job and requires a runner to execute.
 
 ## Use the flow
 
-- Using a flow in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
+- Using a flow in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -80,7 +80,7 @@ by:
 - Replying to review comments to ask for clarification or alternative approaches.
 - Mentioning `@GitLabDuo` in any discussion thread to ask follow-up questions.
 
-Discussions with GitLab Duo in comments use GitLab Duo Agent Platform and [consume credits](../../../../subscriptions/gitlab_credits.md).
+Discussions with GitLab Duo in comments use GitLab Duo Agent Platform and [consume credits](../../../../../subscriptions/gitlab_credits.md).
 
 Feedback provided to GitLab Duo does not influence later reviews of other merge requests.
 Adding this functionality is proposed in [issue 560116](https://gitlab.com/gitlab-org/gitlab/-/issues/560116).
@@ -104,7 +104,7 @@ Code Review Flow runs in two stages:
    - Custom review instructions.
 
 To specify content to exclude, see
-[exclude context from GitLab Duo](../../context.md#exclude-context-from-gitlab-duo).
+[exclude context from GitLab Duo](../../../context.md#exclude-context-from-gitlab-duo).
 
 ### File and context limits
 
@@ -115,13 +115,13 @@ Code Review Flow applies two limits to keep the prompt within a workable size:
   exceeded, the context is truncated to approximately 800 KiB before the review stage runs.
 
 These limits apply to the data the flow gathers and are separate from the
-[selected model's](../../model_selection.md) context window.
+[selected model's](../../../model_selection.md) context window.
 
 For very large merge requests, the review might miss context that was truncated. To reduce the
 risk:
 
 - Split the merge request into smaller merge requests.
-- [Exclude context](../../context.md#exclude-context-from-gitlab-duo) for files that are not
+- [Exclude context](../../../context.md#exclude-context-from-gitlab-duo) for files that are not
   relevant to the review.
 
 ## Custom code review instructions
@@ -137,12 +137,12 @@ You can guide GitLab Duo with repository-specific review instructions:
 
 Code Review Flow does not reference `AGENTS.md` and `SKILL.md` files.
 
-To configure custom instructions, see [customize review instructions for GitLab Duo](../../customize/review_instructions.md).
+To configure custom instructions, see [customize review instructions for GitLab Duo](../../../customize/review_instructions.md).
 
 ## Automatic reviews
 
 - [Changed](https://gitlab.com/gitlab-org/gitlab/-/issues/506537) automatic reviews for projects to a UI setting in GitLab 18.0.
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/554070) automatic reviews for groups and instances in GitLab 18.4 as a [beta](../../../../policy/development_stages_support.md#beta) [with a feature flag](../../../../administration/feature_flags/_index.md) named `cascading_auto_duo_code_review_settings`. Disabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/554070) automatic reviews for groups and instances in GitLab 18.4 as a [beta](../../../../../policy/development_stages_support.md#beta) [with a feature flag](../../../../../administration/feature_flags/_index.md) named `cascading_auto_duo_code_review_settings`. Disabled by default.
 - Feature flag `cascading_auto_duo_code_review_settings` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/213240) in GitLab 18.7.
 - Automatic reviews for groups and applications [turned on by default](https://gitlab.com/gitlab-org/gitlab/-/work_items/592822) for new GitLab Duo trials on GitLab.com in GitLab 19.1.
 
@@ -206,11 +206,11 @@ Settings cascade from instance to group to project. More specific settings overr
 After you enable automatic reviews, you can specify rules to exclude specific merge requests.
 
 For information on how credit usage is attributed for automatic reviews, see
-[determine which code review feature runs](../../../project/merge_requests/duo_in_merge_requests.md#determine-which-review-feature-runs).
+[determine which code review feature runs](../../../../project/merge_requests/duo_in_merge_requests.md#determine-which-review-feature-runs).
 
 ### Exclude merge requests for a project
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240236) in GitLab 19.2 as a [beta](../../../../policy/development_stages_support.md#beta) [with a flag](../../../../administration/feature_flags/_index.md) named `duo_code_review_automated_rules`. Enabled by default.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/240236) in GitLab 19.2 as a [beta](../../../../../policy/development_stages_support.md#beta) [with a flag](../../../../../administration/feature_flags/_index.md) named `duo_code_review_automated_rules`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/245852) in GitLab 19.3. Feature flag `duo_code_review_automated_rules` removed.
 
 When automatic reviews are turned on for a project,
@@ -277,7 +277,7 @@ When a group and its subgroups each set a template project, GitLab Duo combines 
 every level.
 
 > [!note]
-> If you already configured a project to store [custom review instructions](../../customize/review_instructions.md#configure-custom-review-instructions-for-a-group)
+> If you already configured a project to store [custom review instructions](../../../customize/review_instructions.md#configure-custom-review-instructions-for-a-group)
 > for your group, store your `mr-review-automated-rules.yaml` in the same project.
 > You can only specify a single project to customize code review for a group, so GitLab automatically
 > checks that project for exclusion rules as well. You do not need to follow the steps below again.
@@ -297,145 +297,12 @@ To configure exclusion rules for a group:
 
 ## Troubleshooting
 
-### `Error DCR4000`
+When working with Code Review Flow, you might encounter issues.
 
-You might get an error that states
-`Code Review Flow is not enabled. Contact your group administrator to enable the foundational flow in the top-level group. Error code: DCR4000`.
-
-This error occurs when either [foundational flows](_index.md) or Code Review Flow are turned off.
-
-Contact your administrator and ask them to turn on Code Review Flow for your top-level group.
-
-### `Error DCR4001`
-
-You might get an error that states
-`Code Review Flow is enabled but the service account needs to be verified. Contact your administrator. Error code: DCR4001`.
-
-This error occurs when Code Review Flow is turned on, but the service account for the top-level
-group does not exist or is not ready.
-
-Ask your administrator to [verify that the service account exists](../../troubleshooting.md#foundational-flow-service-account-not-created) and to follow the steps to resolve
-any issues.
-
-### `Error DCR4002`
-
-You might get an error that states
-`No GitLab Credits remain for this billing period. To continue using Code Review Flow, contact your administrator. Error code: DCR4002`.
-
-This error occurs when you have used all of your allocated GitLab Credits for the current billing period.
-
-Contact your administrator to purchase additional credits or wait for your credits to reset at the start of the next billing period.
-
-### `Error DCR4003`
-
-You might get an error that states
-`<User>, you don't have permission to create a pipeline for Code Review Flow in this project. Contact your administrator to update your permissions. Error code: DCR4003`.
-
-This error occurs because Code Review Flow runs on a CI/CD pipeline, and you don't have permission to create pipelines in this project.
-
-Contact your administrator and ask them to give you the required [permissions to execute pipelines](../../../permissions.md).
-
-### `Error DCR4004`
-
-You might get an error that states
-`<User>, you need to set a default GitLab Duo namespace to use Code Review Flow in this project. Please set a default GitLab Duo namespace in your preferences. Error code: DCR4004`.
-
-This error occurs when GitLab Duo cannot identify a default GitLab Duo namespace for the user that started the review.
-
-Set a default GitLab Duo namespace in your [preferences](../../../profile/preferences.md#set-a-default-gitlab-duo-namespace), then request a review again.
-
-### `Error DCR4005`
-
-You might get an error that states
-`Code Review Flow could not obtain the required authentication tokens to connect to the GitLab AI Gateway and the GitLab API. Please request a new review. If the issue persists, contact your administrator. Error code: DCR4005`.
-
-Code Review Flow requires authentication tokens to connect to the GitLab AI Gateway and the GitLab API. This error occurs when those tokens cannot be generated, usually due to an incorrect GitLab Duo setup or a transient infrastructure issue.
-
-For self-managed instances, ask your administrator to verify the [GitLab Duo configuration](../../../../administration/gitlab_duo/configure/_index.md).
-
-### `Error DCR4006`
-
-You might get an error that states
-`Code Review Flow could not add the service account to this project. Contact your administrator to verify that the service account has the required project access. Error code: DCR4006`.
-
-This error occurs when the service account cannot be added as a member of the project. This can happen when a group membership lock is enabled or the service account does not have the required access.
-
-Contact your administrator and ask them to verify that the service account can be added to the project as a developer.
-
-### `Error DCR4007`
-
-You might get an error that states
-`Code Review Flow is not available for this project. Contact your administrator to verify that the flow is enabled and the required configuration is in place. Error code: DCR4007`.
-
-This error occurs when the flow is disabled or the required configuration is missing for the project.
-
-Contact your administrator and ask them to verify that
-[the flow is enabled](_index.md#turn-foundational-flows-on-or-off) for the project.
-
-### `Error DCR4008`
-
-You might get an error that states
-`Code Review Flow could not create the required CI/CD pipeline. Please request a new review. If the problem persists, contact your administrator. Error code: DCR4008`.
-
-This error occurs when Code Review Flow cannot create or configure the CI/CD pipeline to run the review because of runner availability issues or internal configuration problems.
-
-Try to restart the review. If the error persists, contact your administrator.
-
-### `Error DCR4009`
-
-You might get an error that states
-`Code Review Flow could not retrieve the source branch for this merge request. Please request a new review. Error code: DCR4009`.
-
-This error occurs when Code Review Flow is unable to retrieve the source branch for the merge request.
-
-Try to restart the review.
-
-### `Error DCR5000`
-
-You might get an error that states
-`Something went wrong while starting Code Review Flow. Please try again later. Error code: DCR5000`.
-
-This error occurs when GitLab Duo Agent Platform is unable to start Code Review Flow due to an internal error.
-
-Try to restart the review. If the error persists, contact your administrator.
-
-### `Error DCR5001`
-
-You might get an error that states
-`Code Review Flow completed the review but could not post the review comments. Please request a new review to try again. Error code: DCR5001`.
-
-This error occurs when Code Review Flow completes the review but, after several attempts, cannot post the review comments. This is often due to transient infrastructure issues.
-
-Request a new review. If the error persists, contact your administrator.
-
-### Missing context in large merge request reviews
-
-Code Review Flow might miss context when a merge request contains many large changed files.
-
-This can occur when the pre-scan results exceed the
-[file and context limits](#file-and-context-limits) and the data is truncated before the review
-stage runs.
-
-To improve the review:
-
-- Split the merge request into smaller merge requests.
-- [Exclude context](../../context.md#exclude-context-from-gitlab-duo) for files that are not
-  relevant to the review.
-- Ask a Maintainer or Owner to
-  [select a different model](../../model_selection.md) using the **Agentic Code Review** setting.
-
-### Configuration diagnostic script
-
-If you cannot identify the cause of a Code Review Flow issue from the documented error codes, you
-can run a diagnostic script to check your GitLab Duo configuration.
-
-The script checks the full configuration chain required for Code Review Flow, including checks that
-apply to all GitLab Duo Agent Platform features.
-
-For more information, see [run the configuration diagnostic script](../../troubleshooting.md#run-the-configuration-diagnostic-script).
+For information on how to resolve these issues, see [troubleshooting](troubleshooting.md).
 
 ## Related topics
 
-- [GitLab Duo in merge requests](../../../project/merge_requests/duo_in_merge_requests.md)
-- [Agent Platform AI models](../../model_selection.md)
-- [Turn on Code Review Flow for GitLab Duo Enterprise seats](../../../project/merge_requests/duo_in_merge_requests.md#turn-on-code-review-flow-for-gitlab-duo-enterprise-seats).
+- [GitLab Duo in merge requests](../../../../project/merge_requests/duo_in_merge_requests.md)
+- [Agent Platform AI models](../../../model_selection.md)
+- [Turn on Code Review Flow for GitLab Duo Enterprise seats](../../../../project/merge_requests/duo_in_merge_requests.md#turn-on-code-review-flow-for-gitlab-duo-enterprise-seats).

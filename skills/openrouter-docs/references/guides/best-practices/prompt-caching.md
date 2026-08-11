@@ -46,6 +46,7 @@ To maximize cache hit rates, OpenRouter uses **provider sticky routing** to rout
 * Sticky routing only activates when the provider's cache read pricing is cheaper than regular prompt pricing, ensuring you always benefit from cost savings.
 * If the sticky provider becomes unavailable, OpenRouter automatically falls back to the next-best provider.
 * Sticky routing is not used when you specify a manual [provider order](/docs/guides/routing/provider-selection) via `provider.order` — in that case, your explicit ordering takes priority.
+* Sticky sessions expire after **5 minutes** of inactivity. Each successful request resets the timer. If the sticky provider returns an error, the cache is not updated, allowing the next request to be re-routed.
 
 **Sticky routing granularity:**
 
@@ -80,7 +81,7 @@ If neither is set, OpenRouter falls back to the OpenAI-style `prompt_cache_key` 
 When `session_id` is set, sticky routing activates on any successful request — even before cache usage is observed — so that subsequent requests in the same session benefit from prompt caching from the start. Without `session_id`, sticky routing only activates after a cache hit is detected.
 
 <Info>
-  When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
+  When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also reuses the **resolved model** on a best-effort basis when it remains in the current candidate set, not just the provider. The cache hint is ignored when it falls out of that set, so the router may select a different model on a later turn. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
 </Info>
 
 ### Grouping requests across modalities
@@ -107,10 +108,6 @@ To see how much caching saved on each generation, you can:
 3. Check the `prompt_tokens_details` object in the [usage response](/docs/cookbook/administration/usage-accounting) included with every API response
 
 The `cache_discount` field in the response body will tell you how much the response saved on cache usage. Some providers, like Anthropic, will have a negative discount on cache writes, but a positive discount (which reduces total cost) on cache reads.
-
-<Info>
-  When using router models like [Auto Router](/docs/guides/routing/routers/auto-router) or [Pareto Router](/docs/guides/routing/routers/pareto-router), sticky routing also pins the **resolved model** — not just the provider. This prevents the router from selecting a different model on each turn of a conversation. See [Auto Router — Session Stickiness](/docs/guides/routing/routers/auto-router#session-stickiness) for details.
-</Info>
 
 ### Usage object fields
 

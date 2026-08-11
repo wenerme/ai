@@ -63,7 +63,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 ## 3\. Proxy zone setup
 
 1. In your zone, add a DNS record (CNAME or A/AAAA) with **Target** as HTTP destination endpoint.
-![Create a DNS record in the Cloudflare dashboard to define the HTTP destination endpoint](https://developers.cloudflare.com/_astro/endpoint.DmFFJC-j_14G61L.webp)
+![Create a DNS record in the Cloudflare dashboard to define the HTTP destination endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1592,height=268,format=webp/_astro/endpoint.DmFFJC-j.png)
 1. If needed, configure [origin rules](https://developers.cloudflare.com/rules/origin-rules/) to specify a custom port. This is useful if your destination only accepts traffic on a non standard port, for example `12345`. You can configure `logpush.yourdestinationendpoint.com` (without specifying a port, as Cloudflare by default only proxies traffic on HTTP/HTTPS ports) to proxy to `yourdestinationendpoint.com:12345`.
 
 ## 4\. Configure Logpush
@@ -71,7 +71,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 1. Create a Logpush job with the following details:
 * Destination: HTTP
 * Endpoint: Use the domain/path set up (the Cloudflare dashboard will auto-validate the destination). Use the server name specified in the **Name** section in the DNS record. In this case, `logpush.yourdestionationendpoint.com`.
-![Enter destination details when creating a Logpush job in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/destination-details.imLwZlEZ_PT9vI.webp)
+![Enter destination details when creating a Logpush job in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1522,height=342,format=webp/_astro/destination-details.imLwZlEZ.png)
 * Configuration: Select dataset, job name, filters, and fields. Refer to the [Logpush documentation](https://developers.cloudflare.com/logs/logpush/) for more details.
 1. Check destination to confirm if the logs are received.
 
@@ -145,7 +145,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/#page","headline":"Dedicated Egress IP for Logpush · Cloudflare Logs docs","description":"Send Logpush logs via a dedicated egress IP.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

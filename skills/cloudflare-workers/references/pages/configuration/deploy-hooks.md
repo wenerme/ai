@@ -26,7 +26,7 @@ To create a Deploy Hook:
 [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Settings** \> **Builds** and select **Add deploy hook** to start configuration.
-![Add a deploy hook on the Cloudflare dashboard](https://developers.cloudflare.com/_astro/deploy-hooks-add.u1N247wc_Z1kGWSF.webp)
+![Add a deploy hook on the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=322,format=webp/_astro/deploy-hooks-add.u1N247wc.png)
 
 ## Parameters needed
 
@@ -34,17 +34,17 @@ To configure your Deploy Hook, you must enter two key parameters:
 
 1. **Deploy hook name:** a unique identifier for your Deploy Hook (for example, `contentful-site`)
 2. **Branch to build:** the repository branch your Deploy Hook should build
-![Choosing Deploy Hook name and branch to build on Cloudflare dashboard](https://developers.cloudflare.com/_astro/deploy-hooks-configure.C0YoLPl3_1dk1nO.webp)
+![Choosing Deploy Hook name and branch to build on Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=287,format=webp/_astro/deploy-hooks-configure.C0YoLPl3.png)
 
 ## Using your Deploy Hook
 
 Once your configuration is complete, the Deploy Hook’s unique URL is ready to be used. You will see both the URL as well as the POST request snippet available to copy.
 
-![Reviewing the Deploy Hook's newly generated unique URL](https://developers.cloudflare.com/_astro/deploy-hooks-details.COmJrG8a_Z1ELigr.webp)
+![Reviewing the Deploy Hook's newly generated unique URL](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1250,height=703,format=webp/_astro/deploy-hooks-details.COmJrG8a.png)
 
 Every time a request is sent to your Deploy Hook, a new build will be triggered. Review the **Source** column of your deployment log to see which deployment were triggered by a Deploy Hook.
 
-![Reviewing which deployment was triggered by a Deploy Hook](https://developers.cloudflare.com/_astro/deploy-hooks-deployment-logs.yCL-S3AE_Z1S7jVI.webp)
+![Reviewing which deployment was triggered by a Deploy Hook](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1602,height=430,format=webp/_astro/deploy-hooks-deployment-logs.yCL-S3AE.png)
 
 ## Security Considerations
 
@@ -60,7 +60,7 @@ Every CMS provider is different and will offer different pathways in integrating
 
 Contentful supports integration with Cloudflare Pages via its **Webhooks** feature. In your Contentful project settings, go to **Webhooks**, create a new Webhook, and paste in your unique Deploy Hook URL in the **URL** field. Optionally, you can specify events that the Contentful Webhook should forward. By default, Contentful will trigger a Pages deployment on all project activity, which may be a bit too frequent. You can filter for specific events, such as Create, Publish, and many others.
 
-![Configuring Deploy Hooks with Contentful](https://developers.cloudflare.com/_astro/contentful.CE1uZvg8_17Yrle.webp)
+![Configuring Deploy Hooks with Contentful](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1883,height=1303,format=webp/_astro/contentful.CE1uZvg8.png)
 
 ### Ghost
 
@@ -68,19 +68,19 @@ You can configure your Ghost website to trigger Pages deployments by creating a 
 
 Each custom integration created can have multiple **webhooks** attached to it. Create a new webhook by selecting **Add webhook** and **Site changed (rebuild)** as the **Event**. Then paste your unique Deploy Hook URL as the **Target URL** value. After creating this webhook, your Cloudflare Pages application will redeploy whenever your Ghost site changes.
 
-![Configuring Deploy Hooks with Ghost](https://developers.cloudflare.com/_astro/ghost.CT5H6NM7_1OeAYV.webp)
+![Configuring Deploy Hooks with Ghost](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1127,height=883,format=webp/_astro/ghost.CT5H6NM7.png)
 
 ### Sanity
 
 In your Sanity project's Settings page, find the **Webhooks** section, and add the Deploy Hook URL, as seen below. By default, the Webhook will trigger your Pages Deploy Hook for all datasets inside of your Sanity project. You can filter notifications to individual datasets, such as production, using the **Dataset** field:
 
-![Configuring Deploy Hooks with Sanity](https://developers.cloudflare.com/_astro/hooks.CikwC9IO_Zulbfg.webp)
+![Configuring Deploy Hooks with Sanity](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1759,height=1176,format=webp/_astro/hooks.CikwC9IO.png)
 
 ### WordPress
 
 You can configure WordPress to trigger a Pages Deploy Hook by installing the free **WP Webhooks** plugin. The plugin includes a number of triggers, such as **Send Data on New Post, Send Data on Post Update** and **Send Data on Post Deletion**, all of which allow you to trigger new Pages deployments as your WordPress data changes. Select a trigger on the sidebar of the plugin settings and then [**Add Webhook URL** ↗](https://wordpress.org/plugins/wp-webhooks/), pasting in your unique Deploy Hook URL.
 
-![Configuring Deploy Hooks with WordPress](https://developers.cloudflare.com/_astro/wordpress.VDVl6Kuz_Z1lOhUn.webp)
+![Configuring Deploy Hooks with WordPress](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2488,height=1045,format=webp/_astro/wordpress.VDVl6Kuz.png)
 
 ### Strapi
 
@@ -96,7 +96,7 @@ In the Strapi Admin Panel, you can configure your webhook to be triggered based 
 
 Be sure to add the webhook configuration to the [production ↗](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/installation.html) Strapi application that powers your Cloudflare site.
 
-![Configuring Deploy Hooks with Strapi](https://developers.cloudflare.com/_astro/strapi.BuGuUrHn_Sbdkw.webp)
+![Configuring Deploy Hooks with Strapi](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2559,height=1440,format=webp/_astro/strapi.BuGuUrHn.png)
 
 ### Storyblok
 
@@ -110,7 +110,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/deploy-hooks/#page","headline":"Deploy Hooks · Cloudflare Pages docs","description":"Trigger Cloudflare Pages deployments from external event sources using unique webhook URLs.","url":"https://developers.cloudflare.com/pages/configuration/deploy-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -38,7 +38,7 @@ class Default(WorkerEntrypoint):
 	"name": "hello-world-python-worker",
 	"main": "src/entry.py",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22"
+	"compatibility_date": "2026-08-10"
 }
 ```
 
@@ -47,7 +47,7 @@ class Default(WorkerEntrypoint):
 name = "hello-world-python-worker"
 main = "src/entry.py"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 ```
 
 When you run `uv run pywrangler dev` to do local dev, the Workers runtime will:
@@ -73,7 +73,7 @@ To reduce cold start times, when you deploy a Python Worker, Cloudflare performs
 
 When a request comes in to your Worker, we load this snapshot and use it to bootstrap your Worker in an isolate, avoiding expensive initialization time:
 
-![Diagram of how Python Workers are deployed to Cloudflare](https://developers.cloudflare.com/_astro/python-workers-deployment.B83dgcK7_2nS876.webp)
+![Diagram of how Python Workers are deployed to Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2390,height=881,format=webp/_astro/python-workers-deployment.B83dgcK7.png)
 
 Refer to the [blog post introducing Python Workers ↗](https://blog.cloudflare.com/python-workers) for more detail about performance optimizations and how the Workers runtime will reduce cold starts for Python Workers.
 
@@ -89,7 +89,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/#page","headline":"How Python Workers Work · Cloudflare Workers docs","description":"Learn how Python Workers run via Pyodide in V8 isolates and how local development works.","url":"https://developers.cloudflare.com/workers/languages/python/how-python-workers-work/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

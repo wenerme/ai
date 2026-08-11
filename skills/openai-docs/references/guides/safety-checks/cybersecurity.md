@@ -6,6 +6,38 @@ GPT-5.3-Codex and newer models, including GPT-5.4 and GPT-5.5, are classified as
 
 These safeguards monitor for signals of potentially suspicious cybersecurity activity. If certain thresholds are met, access to the model may be temporarily limited while activity is reviewed. Because these systems are still being calibrated, legitimate security research or defensive work may occasionally be flagged. We expect only a small portion of traffic to be impacted, and we’re continuing to refine the overall API experience.
 
+## Authorized access and agentic workflows
+
+[Trusted Access for Cyber](https://developers.openai.com/codex/cyber-safety#trusted-access-for-cyber) is a
+reviewed access program, not the name of a model. Approval for Daybreak Blue
+applies only to the authorized person or service, workspace or API organization
+and project, model, and product surface. Daybreak Red requires separate
+approval and provisioning; applying, verifying an identity, or receiving
+Daybreak Blue access doesn't grant specialist-model access.
+
+For approved API projects, `gpt-daybreak-blue-latest` resolves to `gpt-5.6-sol`,
+and `gpt-daybreak-red-latest` resolves to `gpt-5.6-cyber`. Use the Daybreak
+alias or, if your project has the required approval, the corresponding
+underlying model ID. Access and model behavior depend on the approved
+organization and project; the model ID alone doesn't grant access.
+
+Trusted Access doesn't automatically grant Zero Data Retention. Confirm any
+separately approved retention controls for the exact API organization and
+applicable endpoint.
+
+Trusted Access governs approved model access; it doesn't configure your tools,
+environment, or engagement scope.
+
+If a Responses API or Agents SDK workflow can take sensitive cybersecurity
+actions, review each proposed tool call against the approved scope before
+execution. Deny unauthorized actions, pause ambiguous or high-risk changes for
+human approval, enforce independent filesystem and network boundaries, keep
+audit logs, and fail closed when review is unavailable. See
+[Guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals#review-cybersecurity-actions-before-execution).
+
+Application-level tool review and Codex product-side sandboxing are separate
+from the API cybersecurity safeguards described on this page.
+
 ## Safeguard actions for non-ZDR Organizations
 
 If our systems detect potentially suspicious cybersecurity activity within your traffic that exceeds defined thresholds, access to these models may be temporarily revoked. In this case, API requests will return an error with the error code `cyber_policy`.

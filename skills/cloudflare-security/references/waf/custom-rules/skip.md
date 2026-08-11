@@ -27,7 +27,7 @@ For more information on the available options, refer to [Available skip options]
 2. [Create a custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/) by selecting **Create rule** \> **Custom rules**, or edit an existing custom rule.
 3. Define the rule name and the rule expression.
 4. Under **Choose action**, select _Skip_ from the dropdown.
-![Available Skip action options when configuring a custom rule](https://developers.cloudflare.com/_astro/skip-action-options.N8Emdhwv_Z1dhCLt.webp)
+![Available Skip action options when configuring a custom rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=670,format=webp/_astro/skip-action-options.N8Emdhwv.png)
 5. Configure the desired [skip options](https://developers.cloudflare.com/waf/custom-rules/skip/options/).
 6. Save your changes.
 
@@ -41,7 +41,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/#page","headline":"Configure a custom rule with the Skip action · Cloudflare Web Application Firewall (WAF) docs","description":"Use the Skip action to bypass security features for matching requests.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

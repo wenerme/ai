@@ -25,7 +25,7 @@ Cloudflare transports IPv6 traffic over an IPv6-over-IPv4 GRE tunnel. Here is ho
 1. The IPv6 packet is encapsulated into an IPv4 GRE packet, with the IP protocol field set to `47` (indicating it is a GRE packet) along with a GRE header.
 2. The IPv4 packet header and GRE header are the additional headers (or encapsulation overhead) that ensure the correct routing of the IPv6 traffic.
 3. On most routers that support this tunneling method, the tunnel mode is set to `gre`.
-![The IPv4 packet header and GRE header are the additional headers \(or encapsulation overhead\) that ensure the correct routing of the IPv6 traffic.](https://developers.cloudflare.com/_astro/ipv6.CBQeelu5_ZBbvw7.webp)
+![The IPv4 packet header and GRE header are the additional headers \(or encapsulation overhead\) that ensure the correct routing of the IPv6 traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=572,height=124,format=webp/_astro/ipv6.CBQeelu5.png)
 
 ## Current known limitations
 
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/#page","headline":"Configure IPv6 (beta) · Cloudflare Magic Transit docs","description":"Configure IPv6 support for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}

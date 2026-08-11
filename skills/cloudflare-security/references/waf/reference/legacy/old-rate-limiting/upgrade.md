@@ -58,7 +58,7 @@ For existing skip rules (custom rules with a _Skip_ action), you will have to ma
 
 If you had access to the previous version of Cloudflare Rate Limiting, you will now find all rate limiting rules in the same list in **Security** \> **WAF** \> **Rate limiting rules**. Rate limiting rules created in the previous version are tagged with `Previous version` in the Cloudflare dashboard.
 
-![Rate limiting rules user interface showing two rules created in the previous version.](https://developers.cloudflare.com/_astro/rate-limiting-rules-upgrade-ui.CyrPwr--_1GM9uQ.webp)
+![Rate limiting rules user interface showing two rules created in the previous version.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1045,height=597,format=webp/_astro/rate-limiting-rules-upgrade-ui.CyrPwr--.png)
 
 If you are using the new [application security dashboard](https://developers.cloudflare.com/security/), only the rate limiting rules that have been upgraded to the new version will be shown at **Security** \> **Security rules**.
 
@@ -190,7 +190,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/#page","headline":"Rate limiting (previous version) upgrade · Cloudflare Web Application Firewall (WAF) docs","description":"Guide on upgrading rate limiting rules from the previous version to the new version.","url":"https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/upgrade/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

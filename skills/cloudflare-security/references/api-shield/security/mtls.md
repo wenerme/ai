@@ -22,7 +22,7 @@ While API Shield is not required to use mTLS, many teams may use mTLS to protect
 
 Use mTLS when you need to verify the identity of API clients, such as mobile applications, IoT devices, or services that connect to your API.
 
-![mTLS sequence diagram](https://developers.cloudflare.com/_astro/api-shield-call-sequence.DjXyNgan_CJbMD.webp)
+![mTLS sequence diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=1256,format=webp/_astro/api-shield-call-sequence.DjXyNgan.png)
 
 mTLS also supports [gRPC ↗](https://grpc.io/docs/what-is-grpc/introduction/)\-based APIs, which use binary formats such as protocol buffers rather than JSON.
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/mtls/#page","headline":"Mutual TLS (mTLS) · Cloudflare API Shield docs","description":"Require client certificates to authenticate API requests with mutual TLS.","url":"https://developers.cloudflare.com/api-shield/security/mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}

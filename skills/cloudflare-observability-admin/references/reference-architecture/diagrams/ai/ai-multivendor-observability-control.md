@@ -34,7 +34,7 @@ Using a forward proxy can mitigate these challenges. Positioned between the serv
 
 The following architecture illustrates the setup of [AI Gateway](https://developers.cloudflare.com/ai-gateway/) as a forward proxy between a service and one or multiple AI inference providers, such as [Workers AI](https://developers.cloudflare.com/workers-ai/)
 
-![Figure 1: Multi-vendor AI architecture](https://developers.cloudflare.com/_astro/ai-multi-vendor-observability-control.DprqSV76_Z1yqSh0.svg "Multi-vendor AI architecture")
+![Figure 1: Multi-vendor AI architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=380,format=svg/_astro/ai-multi-vendor-observability-control.DprqSV76.svg "Multi-vendor AI architecture")
 
 Multi-vendor AI architecture
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/#page","headline":"Multi-vendor AI observability and control · Cloudflare Reference Architecture docs","description":"By shifting features such as rate limiting, caching, and error handling to the proxy layer, organizations can apply unified configurations across services and inference service providers.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-multivendor-observability-control/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

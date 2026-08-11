@@ -54,15 +54,15 @@ From the **Run and Debug** menu in the activity bar, select the `Miniflare`confi
 
 Create a new configuration, by clicking **Add Configuration** in the top right.
 
-![WebStorm add configuration button](https://developers.cloudflare.com/_astro/debugger-webstorm-node-add.1Aka_l-1_1vHfDB.webp)
+![WebStorm add configuration button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=177,height=28,format=webp/_astro/debugger-webstorm-node-add.1Aka_l-1.png)
 
 Click the **plus** button in the top left of the popup and create a new **Node.js/Chrome** configuration. Set the **Host** field to `localhost` and the **Port** field to `9229`. Then click **OK**.
 
-![WebStorm Node.js debug configuration](https://developers.cloudflare.com/_astro/debugger-webstorm-settings.CxmegMYm_Z1NsdxH.webp)
+![WebStorm Node.js debug configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=705,height=531,format=webp/_astro/debugger-webstorm-settings.CxmegMYm.png)
 
 With the new configuration selected, click the green debug button to start debugging.
 
-![WebStorm configuration debug button](https://developers.cloudflare.com/_astro/debugger-webstorm-node-run.BodpA57u_Z1SMC98.webp)
+![WebStorm configuration debug button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=303,height=68,format=webp/_astro/debugger-webstorm-node-run.BodpA57u.png)
 
 ## DevTools
 
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/#page","headline":"Attaching a Debugger · Cloudflare Workers docs","description":"Attach a Node.js debugger to Miniflare for setting breakpoints and inspecting Cloudflare Workers code.","url":"https://developers.cloudflare.com/workers/testing/miniflare/developing/debugger/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

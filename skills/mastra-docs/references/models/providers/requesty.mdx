@@ -33,7 +33,7 @@ for await (const chunk of stream) {
 }
 ```
 
-> **info**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Requesty documentation](https://requesty.ai/solution/llm-routing/models) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Requesty documentation](https://requesty.ai/solution/llm-routing/models) for details.
 
 ## Models
 
@@ -516,8 +516,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 1.1,
-    "outputCost": 6.6
+    "inputCost": 0.22,
+    "outputCost": 1.32
   },
   {
     "model": "requesty/gpt-5.6-sol@eu",
@@ -540,8 +540,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1050000,
     "maxOutput": 128000,
-    "inputCost": 2.75,
-    "outputCost": 16.5
+    "inputCost": 2.2,
+    "outputCost": 13.2
   },
   {
     "model": "requesty/gpt-5@eu",

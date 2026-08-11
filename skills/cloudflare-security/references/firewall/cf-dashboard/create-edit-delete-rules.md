@@ -34,7 +34,7 @@ The maximum length of a rule expression is 4,096 characters.
 4. In the **Create firewall rule** page that displays, use the **Rule name** input to supply a descriptive name.
 5. Under **When incoming requests match**, use the **Field** drop-down list to choose an HTTP property (refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/) for details). For each request, the value of the property you choose for **Field** is compared to the value you specify for **Value**.
 Alternatively, use the [Expression Editor](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-editor) to define the rule expression.
-![Example firewall rule expression with a selected field, operator, and value](https://developers.cloudflare.com/_astro/firewall-rules-expression-builder-value.Cm4ecLGt_Z2889J7.webp)
+![Example firewall rule expression with a selected field, operator, and value](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=983,height=289,format=webp/_astro/firewall-rules-expression-builder-value.Cm4ecLGt.png)
 6. Use the **Operator** drop-down list to choose a comparison operator. For an expression to match, the value of the request **Field** and the value specified in the **Value** input must satisfy the comparison operator.
 7. Next, specify the value to match. If the value is an enumeration, then the **Value** control will be a drop-down list. Otherwise, it will be a text input.
 8. To add a new sub-expression to the rule expression, select **And** or **Or** next to **Value**.
@@ -47,7 +47,7 @@ After you choose an option, you return to the rules list, which displays your ne
 
 Use the available options in the rules list to manage firewall rules.
 
-![The rules list interface in the dashboard where you can manage firewall rules](https://developers.cloudflare.com/_astro/cf-firewall-rules-list.Co9nTUAW_1s39la.webp)
+![The rules list interface in the dashboard where you can manage firewall rules](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1152,height=304,format=webp/_astro/cf-firewall-rules-list.Co9nTUAW.png)
 
 ### Edit rule
 
@@ -82,7 +82,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/#page","headline":"Create, edit, and delete rules · Cloudflare Firewall Rules (deprecated) docs","description":"Create, edit, and delete firewall rules.","url":"https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

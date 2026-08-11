@@ -22,11 +22,11 @@ This tutorial will walk you through extending the single-sign-on (SSO) capabilit
 
 [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is an authentication proxy in charge of validating a user's identity before they connect to your application. As shown in the diagram below, Access inserts a [JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/) into the request, which can then be [verified](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#validate-jwts) by the origin server.
 
-![Standard authentication flow for a request to an Access application](https://developers.cloudflare.com/_astro/access-standard-flow.CLZ6SIBs_EHYYX.webp)
+![Standard authentication flow for a request to an Access application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=931,height=576,format=webp/_astro/access-standard-flow.CLZ6SIBs.png)
 
 You can extend this functionality by using a Cloudflare Worker to insert additional HTTP headers into the request. In this example, we will add the [device posture attributes](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/#enforce-device-posture) `firewall_activated` and `disk_encrypted`, but you can include any attributes that Cloudflare Access collects from the authentication event.
 
-![Extended authentication flow uses a Worker to pass additional request headers to the origin](https://developers.cloudflare.com/_astro/access-extended-flow-serverless.DKpY2r43_1lrFbX.webp)
+![Extended authentication flow uses a Worker to pass additional request headers to the origin](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1008,height=576,format=webp/_astro/access-extended-flow-serverless.DKpY2r43.png)
 
 ## Benefits
 
@@ -233,7 +233,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/#page","headline":"Send SSO attributes to Access-protected origins with Workers · Cloudflare One docs","description":"This tutorial will walk you through extending the single-sign-on (SSO) capabilities of Cloudflare Access with our serverless computing platform, Cloudflare Workers.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/extend-sso-with-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}

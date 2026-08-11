@@ -44,21 +44,21 @@ Open the [Agents tab ↗](https://dash.cloudflare.com/?to=/:account/agents) in t
 
 A session is a conversation made up of one or more turns. A turn is one request to an agent and its response.
 
-![Agents dashboard showing agents with session, run, and token totals](https://developers.cloudflare.com/_astro/agent_overview.DekdbJSd_1RMXSK.webp)
+![Agents dashboard showing agents with session, run, and token totals](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2244,height=1292,format=webp/_astro/agent_overview.DekdbJSd.png)
 
 Select an agent to see its traces. Each trace includes its duration, token breakdown, and status.
 
-![Agent details showing recent traces and token totals](https://developers.cloudflare.com/_astro/agent_tracing_turn_view.BtpgP9sq_Zg9b61.webp)
+![Agent details showing recent traces and token totals](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2054,height=1404,format=webp/_astro/agent_tracing_turn_view.BtpgP9sq.png)
 
 There are two ways to follow what an agent did: **Session replay** and **Trace**.
 
 **Session replay** shows the recorded conversation across turns, including messages, reasoning, tool calls, and subagent activity. What appears depends on your [payload recording settings](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#payload-privacy).
 
-![Session replay showing messages, reasoning, and subagent tool calls](https://developers.cloudflare.com/_astro/agent_tracing_session_replay.uwseMu6e_Z1pWUbk.webp)
+![Session replay showing messages, reasoning, and subagent tool calls](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1980,height=1352,format=webp/_astro/agent_tracing_session_replay.uwseMu6e.png)
 
 **Trace** is a waterfall of the operations performed during one turn. It shows when each operation started, how long it took, and which operation called it.
 
-![Trace waterfall showing nested agent, model, tool, and D1 spans](https://developers.cloudflare.com/_astro/agent_tracing_waterfall.Bw-JYiiV_Z1vq2no.webp)
+![Trace waterfall showing nested agent, model, tool, and D1 spans](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2832,height=1290,format=webp/_astro/agent_tracing_waterfall.Bw-JYiiV.png)
 
 ## Trace structure
 
@@ -343,7 +343,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#page","headline":"Tracing · Cloudflare Agents docs","description":"Trace model calls, tool runs, and approvals with Workers traces.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

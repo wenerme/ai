@@ -23,7 +23,7 @@ In order to use this feature, you will do the following tasks:
 1. Upload a fine-tune document to R2.
 2. Read the R2 file and upload it to OpenAI.
 3. Create a new fine-tuned model based on the document.
-![Demo](https://developers.cloudflare.com/_astro/finetune-example.Df8cOHyQ_1PgFLK.webp)
+![Demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2978,height=1744,format=webp/_astro/finetune-example.Df8cOHyQ.png)
 
 To review the completed code for this application, refer to the [GitHub repository for this tutorial ↗](https://github.com/kristianfreeman/openai-finetune-r2-example).
 
@@ -307,11 +307,11 @@ curl https://your-worker-url.com/models?file_id=file-abc123
 
 Finally, visit `/jobs` to see the status of your fine-tune jobs in OpenAI. Once the fine-tune job has completed, you can see the `fine_tuned_model` value, indicating a fine-tuned model has been created.
 
-![Jobs](https://developers.cloudflare.com/_astro/finetune-jobs.BQ_jbiJu_Z2n2Er.webp)
+![Jobs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1606,height=1144,format=webp/_astro/finetune-jobs.BQ_jbiJu.png)
 
 Visit the [OpenAI Playground ↗](https://platform.openai.com/playground) in order to use your fine-tune model. Select your fine-tune model from the top-left dropdown of the interface.
 
-![Demo](https://developers.cloudflare.com/_astro/finetune-example.Df8cOHyQ_1PgFLK.webp)
+![Demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2978,height=1744,format=webp/_astro/finetune-example.Df8cOHyQ.png)
 
 Use it in any API requests you make to OpenAI's chat completions endpoints. For instance, in the below code example:
 
@@ -334,7 +334,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/#page","headline":"Create a fine-tuned OpenAI model with R2 · Cloudflare Workers docs","description":"In this tutorial, you will use the OpenAI API and Cloudflare R2 to create a fine-tuned model.","url":"https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","Hono","TypeScript"]}

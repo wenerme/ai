@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated Jun 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/durable-objects/platform/pricing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Durable Objects can incur two types of billing: compute and storage.
 
@@ -33,6 +33,8 @@ On Workers Free plan:
 ## Compute billing
 
 Durable Objects are billed for compute duration (wall-clock time) while the Durable Object is actively running or is idle in memory but unable to [hibernate](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/). Durable Objects that are idle and eligible for hibernation are not billed for duration, even before the runtime has hibernated them. Requests to a Durable Object keep it active or create the object if it was inactive.
+
+For each metered dimension, billable usage is the amount consumed in excess of the included monthly allocation. This billable usage is rounded up to the next billable unit before the corresponding rate is applied. For example, 500,000 GB-s of billable compute duration is rounded up to 1,000,000 GB-s and billed accordingly.
 
 |           | Free plan         | Paid plan                                                                                                            |
 | --------- | ----------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -133,14 +135,15 @@ In this scenario, the estimated monthly cost would be calculated as:
 
 **Requests**:
 
-* (1.5 million requests - included 1 million requests) x $0.15 / 1,000,000 = $0.075
+* 1.5 million requests - included 1 million requests = 500,000 billable requests.
+* (rounded) 1,000,000 requests x $0.15 / 1,000,000 = $0.15.
 
 **Compute Duration**:
 
-* 1,000,000 seconds \* 128 MB / 1 GB = 128,000 GB-s
-* (128,000 GB-s - included 400,000 GB-s) x $12.50 / 1,000,000 = $0.00
+* 1,000,000 seconds \* 128 MB / 1 GB = 128,000 GB-s.
+* 128,000 GB-s is within the 400,000 GB-s included allocation = $0.00.
 
-**Estimated total**: \~$0.075 (requests) + $0.00 (compute duration) + minimum $5/mo usage = $5.08 per month
+**Estimated total**: $0.15 (requests) + $0.00 (compute duration) + minimum $5/mo usage = $5.15 per month
 
 ### Example 2
 
@@ -156,15 +159,17 @@ In this scenario, the estimated monthly cost would be calculated as:
 * 50 WebSocket connections \* 100 Durable Objects to establish the WebSockets = 5,000 connections created each day \* 30 days = 150,000 WebSocket connection requests.
 * 50 messages per minute \* 100 Durable Objects \* 60 minutes \* 8 hours \* 30 days = 72,000,000 WebSocket message requests.
 * 150,000 + (72 million requests / 20 for WebSocket message billing ratio) = 3.75 million billing request.
-* (3.75 million requests - included 1 million requests) x $0.15 / 1,000,000 = $0.41.
+* 3.75 million requests - included 1 million requests = 2,750,000 billable requests.
+* (rounded) 3,000,000 requests x $0.15 / 1,000,000 = $0.45.
 
 **Compute Duration**:
 
 * 100 Durable Objects \* 60 seconds \* 60 minutes \* 8 hours \* 30 days = 86,400,000 seconds.
 * 86,400,000 seconds \* 128 MB / 1 GB = 11,059,200 GB-s.
-* (11,059,200 GB-s - included 400,000 GB-s) x $12.50 / 1,000,000 = $133.24.
+* 11,059,200 GB-s - included 400,000 GB-s = 10,659,200 GB-s
+* (rounded) 11,000,000 GB-s x $12.50 / 1,000,000 = $137.50.
 
-**Estimated total**: $0.41 (requests) + $133.24 (compute duration) + minimum $5/mo usage = $138.65 per month.
+**Estimated total**: $0.45 (requests) + $137.50 (compute duration) + minimum $5/mo usage = $142.95 per month.
 
 ### Example 3
 
@@ -180,15 +185,17 @@ In this scenario, the estimated monthly cost would be calculated as:
 * 100 WebSocket connection requests.
 * 1 message per second \* 100 connections \* 60 seconds \* 60 minutes \* 24 hours \* 30 days = 259,200,000 WebSocket message requests.
 * 100 + (259.2 million requests / 20 for WebSocket billing ratio) = 12,960,100 requests.
-* (12.9 million requests - included 1 million requests) x $0.15 / 1,000,000 = $1.79.
+* 12,960,100 requests - included 1 million requests = 11,960,100 billable requests.
+* (rounded) 12,000,000 requests x $0.15 / 1,000,000 = $1.80.
 
 **Compute Duration**:
 
 * 100 Durable Objects \* 60 seconds \* 60 minutes \* 24 hours \* 30 days = 259,200,000 seconds
 * 259,200,000 seconds \* 128 MB / 1 GB = 33,177,600 GB-s
-* (33,177,600 GB-s - included 400,000 GB-s) x $12.50 / 1,000,000 = $409.72
+* 33,177,600 GB-s - included 400,000 GB-s = 32,777,600 GB-s
+* (rounded) 33,000,000 GB-s x $12.50 / 1,000,000 = $412.50
 
-**Estimated total**: $1.79 (requests) + $409.72 (compute duration) + minimum $5/mo usage = $416.51 per month
+**Estimated total**: $1.80 (requests) + $412.50 (compute duration) + minimum $5/mo usage = $419.30 per month
 
 ### Example 4
 
@@ -204,15 +211,17 @@ In this scenario, the estimated monthly cost would be calculated as:
 * 100 WebSocket connections \* 100 Durable Objects to establish the WebSockets = 10,000 initial WebSocket connection requests.
 * 100 messages per minute1 \* 100 Durable Objects \* 60 minutes \* 24 hours \* 30 days = 432,000,000 requests.
 * 10,000 + (432 million requests / 20 for WebSocket billing ratio) = 21,610,000 million requests.
-* (21.6 million requests - included 1 million requests) x $0.15 / 1,000,000 = $3.09.
+* 21,610,000 requests - included 1 million requests = 20,610,000 billable requests.
+* (rounded) 21,000,000 requests x $0.15 / 1,000,000 = $3.15.
 
 **Compute Duration**:
 
 * 100 Durable Objects \* 1 second2 \* 60 minutes \* 24 hours \* 30 days = 4,320,000 seconds
 * 4,320,000 seconds \* 128 MB / 1 GB = 552,960 GB-s
-* (552,960 GB-s - included 400,000 GB-s) x $12.50 / 1,000,000 = $1.91
+* 552,960 GB-s - included 400,000 GB-s = 152,960 GB-s
+* (rounded) 1,000,000 GB-s x $12.50 / 1,000,000 = $12.50
 
-**Estimated total**: $3.09 (requests) + $1.91 (compute duration) + minimum $5/mo usage = $10.00 per month
+**Estimated total**: $3.15 (requests) + $12.50 (compute duration) + minimum $5/mo usage = $20.65 per month
 
 1 100 messages per minute comes from the fact that 100 clients connect to each DO, and each sends 1 message per minute.
 
@@ -246,8 +255,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing · Cloudflare Durable Objects docs","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/platform/pricing/#page","headline":"Pricing · Cloudflare Durable Objects docs","description":"Durable Objects compute and storage billing, including pricing examples and free tier limits.","url":"https://developers.cloudflare.com/durable-objects/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

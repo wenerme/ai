@@ -44,7 +44,7 @@ Once you have created your Worker script, you can edit and deploy your Worker us
 [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your application.
 3. Select **Edit Code**.
-![Edit code directly within the Cloudflare dashboard](https://developers.cloudflare.com/_astro/workers-edit-code.CKxxvQSe_11id2b.webp)
+![Edit code directly within the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=566,height=386,format=webp/_astro/workers-edit-code.CKxxvQSe.png)
 
 ### Wrangler CLI
 
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/get-started/dashboard/#page","headline":"Get started - Dashboard · Cloudflare Workers AI docs","description":"Create and deploy a Workers AI application using the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workers-ai/get-started/dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

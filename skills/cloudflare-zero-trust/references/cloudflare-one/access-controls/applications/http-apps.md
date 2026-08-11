@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Cloudflare Access allows you to secure your web applications by acting as an identity-aware proxy. Access sits in front of your application and checks each request against your [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) before allowing it through. You can use signals from your existing identity providers (IdPs), device posture providers, and [other selectors](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) to control who can reach the application.
 
-![Cloudflare Access verifies a user's identity before granting access to your application.](https://developers.cloudflare.com/_astro/diagram-saas.BmFlwn8e_Z853ac.webp)
+![Cloudflare Access verifies a user's identity before granting access to your application.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3791,height=1399,format=webp/_astro/diagram-saas.BmFlwn8e.jpg)
 
 You can protect the following types of web applications:
 
@@ -34,7 +34,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/#page","headline":"Add web applications · Cloudflare One docs","description":"How Add web applications works in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

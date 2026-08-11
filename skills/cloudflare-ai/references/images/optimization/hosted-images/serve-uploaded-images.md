@@ -22,7 +22,7 @@ To serve images uploaded to Cloudflare Images, you must have:
 
 Assuming you have at least one image uploaded to Images, you will find the basic URL format from the Images dashboard under Developer Resources.
 
-![Developer Resources section within the Images product form the Cloudflare Dashboard.](https://developers.cloudflare.com/_astro/image-delivery-url.D7G6zX-5_o6j6Y.webp)
+![Developer Resources section within the Images product form the Cloudflare Dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2678,height=992,format=webp/_astro/image-delivery-url.D7G6zX-5.png)
 
 A typical image delivery URL looks similar to the example below.
 
@@ -52,7 +52,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/#page","headline":"Serve uploaded images · Cloudflare Images docs","description":"Construct delivery URLs to serve images uploaded to Cloudflare Images using your account hash, image ID, and variant name.","url":"https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -109,7 +109,7 @@ Some Hexo themes or plugins have additional requirements for different Node.js v
 1. Go to your Pages project.
 2. Go to **Settings** \> **Environment variables**.
 3. Set the environment variable `NODE_VERSION` and a value of your required Node.js version (for example, `14.3`).
-![Follow the instructions above to set up an environment variable in the Pages dashboard](https://developers.cloudflare.com/_astro/node-version-pages.19kURO88_2l4njd.webp)
+![Follow the instructions above to set up an environment variable in the Pages dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2121,height=948,format=webp/_astro/node-version-pages.19kURO88.png)
 
 ## Learn more
 
@@ -121,7 +121,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/#page","headline":"Hexo · Cloudflare Pages docs","description":"Deploy a Hexo static site to Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/framework-guides/deploy-a-hexo-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

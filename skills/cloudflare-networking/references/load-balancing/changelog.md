@@ -44,7 +44,7 @@ You can now create more granular, network-aware Custom Rules in Cloudflare Load 
 
 This allows you to steer traffic with greater precision based on the network source of a request. For example, you can route traffic from specific Internet Service Providers (ISPs) or enterprise customers to dedicated infrastructure, optimize performance, or enforce compliance by directing certain networks to preferred data centers.
 
-![Create a Load Balancing Custom Rule using AS Num](https://developers.cloudflare.com/_astro/asnum-custom-rule.CtcHu_zj_Z24vRO0.webp)
+![Create a Load Balancing Custom Rule using AS Num](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2554,height=1472,format=webp/_astro/asnum-custom-rule.CtcHu_zj.png)
 
 To get started, create a [Custom Rule ↗](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) in your Load Balancer and select **AS Num** from the **Field** dropdown.
 
@@ -80,7 +80,7 @@ We've made two large changes to load balancing:
 
 This update streamlines how you manage load balancers across multiple zones and extends robust traffic management to your private network infrastructure.
 
-![Load Balancing UI](https://developers.cloudflare.com/_astro/account-load-balancing-ui.CoCi7gPb_Z2rDoCY.webp)
+![Load Balancing UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=822,format=webp/_astro/account-load-balancing-ui.CoCi7gPb.png)
 
 **Key Enhancements:**
 
@@ -93,7 +93,7 @@ This update streamlines how you manage load balancers across multiple zones and 
   * **Secure Internal Application Access:** Create [**Private Load Balancers**](https://developers.cloudflare.com/load-balancing/private-network/) to distribute traffic to applications hosted within your private network, ensuring they are not exposed to the public Internet.
   * **WARP & Magic WAN Integration:** Effortlessly direct internal traffic from users connected via Cloudflare WARP or through your Magic WAN infrastructure to the appropriate internal endpoint pools.
   * **Enhanced Security for Internal Resources:** Combine reliable Load Balancing with Zero Trust access controls to ensure your internal services are both performant and only accessible by verified users.
-![Private Load Balancers](https://developers.cloudflare.com/_astro/private-load-balancer.yti20m_p_q5zIk.webp)
+![Private Load Balancers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=744,format=webp/_astro/private-load-balancer.yti20m_p.png)
 
 ## 2025-05-06
 
@@ -160,7 +160,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/load-balancing/changelog/#page","headline":"Changelog · Cloudflare Load Balancing docs","description":"Track the latest updates and changes to Load Balancing features.","url":"https://developers.cloudflare.com/load-balancing/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

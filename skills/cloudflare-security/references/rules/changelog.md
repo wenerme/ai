@@ -398,7 +398,7 @@ Learn more in the [Custom Errors](https://developers.cloudflare.com/rules/custom
 
 You can now use the [cf.worker.upstream\_zone](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.worker.upstream%5Fzone/) field in [Transform Rules](https://developers.cloudflare.com/rules/transform/) to control rule execution based on whether a request originates from [Workers](https://developers.cloudflare.com/workers/), including subrequests issued by Workers in other zones.
 
-![Match Workers subrequests by upstream zone in Transform Rules](https://developers.cloudflare.com/_astro/transform-rule-subrequest-matching.BeUBEN67_wWefn.webp)
+![Match Workers subrequests by upstream zone in Transform Rules](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1446,height=988,format=webp/_astro/transform-rule-subrequest-matching.BeUBEN67.png)
 
 **What's new:**
 
@@ -451,7 +451,7 @@ In Snippets, you can now also match on [Bot Score](https://developers.cloudflare
 
 * [Custom lists](https://developers.cloudflare.com/waf/tools/lists/custom-lists/) matching – Snippets and Cloud Connector now support user-created IP, AS, and Hostname lists via dashboard or [Lists API](https://developers.cloudflare.com/api/resources/rules/subresources/lists/methods/list/). Great for shared logic across zones.
 * [Bot Score](https://developers.cloudflare.com/bots/concepts/bot-score/) and [WAF Attack Score](https://developers.cloudflare.com/waf/detections/attack-score/) – Use Cloudflare’s intelligent traffic signals to detect bots or attacks and take advanced, tailored actions with just a few lines of code.
-![New fields in Snippets](https://developers.cloudflare.com/_astro/snippets-lists-scores.D05l6zgc_ZG4Rof.webp)
+![New fields in Snippets](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1383,height=1351,format=webp/_astro/snippets-lists-scores.D05l6zgc.png)
 
 These enhancements unlock new possibilities for building smarter traffic workflows with minimal code and maximum efficiency.
 
@@ -480,7 +480,7 @@ Learn more in the [Custom Errors documentation](https://developers.cloudflare.co
 
 
 **Cloudflare Snippets are now Generally Available**
-![Cloudflare Snippets are now GA](https://developers.cloudflare.com/_astro/snippets-ga.BJr3csvv_Z2q49jT.webp)
+![Cloudflare Snippets are now GA](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1126,format=webp/_astro/snippets-ga.BJr3csvv.png)
 
 [Cloudflare Snippets](https://developers.cloudflare.com/rules/snippets/) are now generally available at no extra cost across all paid plans — giving you a fast, flexible way to programmatically control HTTP traffic using lightweight JavaScript.
 
@@ -492,7 +492,7 @@ What's new:
 * **Ready for production** – Snippets deliver a production-grade experience built for scale.
 * **Part of the Cloudflare Rules platform** – Snippets inherit request modifications from other Cloudflare products and support sequential execution, allowing you to run multiple Snippets on the same request and apply custom modifications step by step.
 * **Trace integration** – Use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to see which Snippets were triggered on a request — helping you understand traffic flow and debug more effectively.
-![Snippets shown in Cloudflare Trace results](https://developers.cloudflare.com/_astro/snippets-ga-trace.WlCshaFo_1WNo07.webp)
+![Snippets shown in Cloudflare Trace results](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=334,format=webp/_astro/snippets-ga-trace.WlCshaFo.gif)
 
 Learn more in the [launch blog post ↗](https://blog.cloudflare.com/snippets/).
 
@@ -585,7 +585,7 @@ curl --request PUT \
 
 The new [Snippets](https://developers.cloudflare.com/rules/snippets/) code editor lets you edit Snippet code and rule in one place, making it easier to test and deploy changes without switching between pages.
 
-![New Snippets code editor](https://developers.cloudflare.com/_astro/snippets-new-editor.CaoIu2_-_Z2rsmyM.webp)
+![New Snippets code editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3446,height=1690,format=webp/_astro/snippets-new-editor.CaoIu2_-.png)
 
 What’s new:
 
@@ -680,7 +680,7 @@ Get started using [Cloud Connector](https://developers.cloudflare.com/rules/clou
 
 It’s now easy to create **wildcard-based [URL Rewrites](https://developers.cloudflare.com/rules/transform/url-rewrite/)**. No need for complex functions—just define your patterns and go.
 
-![Rules Overview Interface](https://developers.cloudflare.com/_astro/create-url-rewrite-rule.DIgpB8IB_ZNTjfK.webp)
+![Rules Overview Interface](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1158,height=1305,format=webp/_astro/create-url-rewrite-rule.DIgpB8IB.png)
 
 What’s improved:
 
@@ -800,7 +800,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/rules/changelog/#page","headline":"Rules changelog · Cloudflare Rules docs","description":"Track the latest updates and changes to Cloudflare Rules features.","url":"https://developers.cloudflare.com/rules/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

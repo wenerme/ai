@@ -205,7 +205,7 @@ By linking your saved views to the Cloudflare Notifications Center, you can ensu
 
 * **Immediate Alerts**: receive real-time notifications the moment a critical event is detected that matches your saved criteria. This is essential for high-priority monitoring, such as tracking active campaigns from specific APT groups.
 * **Daily Digests**: opt for a summarized report delivered once a day. This is ideal for maintaining situational awareness of broader trends, like regional activity shifts or industry-wide threat landscapes, without cluttering your inbox.
-![Threat Events notifications](https://developers.cloudflare.com/_astro/threat-events-notifications.3Fl8LGOn_S9A1r.webp)
+![Threat Events notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2630,height=1424,format=webp/_astro/threat-events-notifications.3Fl8LGOn.png)
 
 #### How to get started
 
@@ -279,9 +279,9 @@ We have introduced dynamic visualizations to the Threat Events dashboard to help
 What's new:
 
 * **Sankey Diagrams**: Trace the flow of attacks from country of origin to target country to identify which regions are being hit hardest and where the threat infrastructure resides.
-![Sankey Diagram](https://developers.cloudflare.com/_astro/2026-02-19-sankey-diagram.VZMSmdZL_Z1dxq3E.webp)
+![Sankey Diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2652,height=1186,format=webp/_astro/2026-02-19-sankey-diagram.VZMSmdZL.png)
 * **Dataset Distribution over time**: Instantly pivot your view to understand if a specific campaign is targeting your sector or if it is a broad-spectrum commodity attack.
-![Events over time](https://developers.cloudflare.com/_astro/2026-02-19-events-over-time.CqD7VKqA_Z20JNi0.webp)
+![Events over time](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2648,height=1176,format=webp/_astro/2026-02-19-events-over-time.CqD7VKqA.png)
 * **Enhanced Filtering**: Use these visual tools to filter and drill down into specific attack vectors directly from the charts.
 
 Cloudforce One subscribers can explore these new views now in [Application Security > Threat Intelligence > Threat Events ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
@@ -386,7 +386,7 @@ Ready to start? Check out the [Brand Protection docs](https://developers.cloudfl
 
 The Requests for Information (RFI) dashboard now shows users the number of tokens used by each submitted RFI to better understand usage of tokens and how they relate to each request submitted.
 
-![Cloudforce One RFI tokens](https://developers.cloudflare.com/_astro/2025-10-24RFITokens.DPm1e8uC_2g3fE3.webp)
+![Cloudforce One RFI tokens](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2380,height=1216,format=webp/_astro/2025-10-24RFITokens.DPm1e8uC.png)
 
 What’s new:
 
@@ -409,13 +409,13 @@ The reports are generated monthly and provide cyber security insights trends for
 
 The reports also include an industry benchmark, comparing your cyber security landscape to peers in your industry.
 
-![Application Security report mock data](https://developers.cloudflare.com/_astro/2025-10-17-application-security-report-mock-data.Cz0-WuoX_15MbLt.webp)
+![Application Security report mock data](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2379,height=3367,format=webp/_astro/2025-10-17-application-security-report-mock-data.Cz0-WuoX.png)
 
 Learn more about the reports by referring to the [Security Reports documentation](https://developers.cloudflare.com/analytics/account-and-zone-analytics/app-security-reports/).
 
 Use the feedback survey link at the top of the page to help us improve the reports.
 
-![Application Security report survey](https://developers.cloudflare.com/_astro/2025-10-17-report-feedback-survey.DPmUlWh2_Z1nYBN6.webp)
+![Application Security report survey](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1126,height=448,format=webp/_astro/2025-10-17-report-feedback-survey.DPmUlWh2.png)
 
 ## 2025-08-15
 
@@ -485,7 +485,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/security-center/changelog/#page","headline":"Changelog · Cloudflare Security Center docs","description":"Track the latest updates and changes to Security Center features.","url":"https://developers.cloudflare.com/security-center/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

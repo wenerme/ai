@@ -66,7 +66,7 @@ In both cases, you will also need your **Unique Customer ID** (refer to [Finding
 [Go to Support](https://dash.cloudflare.com/?to=/:account/support)
 1. Click on the **Emergency hotline** tile.
 2. Click **Get a single-use token**. A pop-up window will appear with your **Unique Customer ID** and **One Time Passcode**. The code automatically refreshes every 30 seconds.
-![](https://developers.cloudflare.com/_astro/Emergency_Phone_Support.IYDzAqH8_Z57Dpr.webp)
+![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=493,height=318,format=webp/_astro/Emergency_Phone_Support.IYDzAqH8.png)
 
 ### Authenticator app (one-time setup)
 
@@ -252,7 +252,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/contacting-cloudflare-support/#page","headline":"Contacting Cloudflare Support · Cloudflare Support docs","description":"Learn how to contact Cloudflare Support via community, chat, or phone. Get help with issues, verify identity, and understand SLAs for different plans.","url":"https://developers.cloudflare.com/support/contacting-cloudflare-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

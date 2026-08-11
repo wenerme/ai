@@ -21,7 +21,7 @@ Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 When you upload a root certificate authority (CA) to Access, only requests from devices with a matching client certificate are allowed through. When a request reaches the application, Access asks the client to present a certificate. If the client cannot present a valid certificate, the request is blocked. If the client presents a valid certificate, Access completes a key exchange to verify.
 
-![mTLS handshake diagram](https://developers.cloudflare.com/_astro/mtls.BbZYLY1o_tux4L.webp)
+![mTLS handshake diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=865,height=1146,format=webp/_astro/mtls.BbZYLY1o.png)
 
 Important
 
@@ -526,7 +526,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#page","headline":"Mutual TLS · Cloudflare One docs","description":"Mutual TLS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}

@@ -18,7 +18,7 @@ With outgoing zone transfers, you can use Cloudflare as your primary DNS provide
 
 When you [make edits](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) to Cloudflare DNS, those DNS records will be transferred from Cloudflare to your secondary provider via zone transfer using [AXFR ↗](https://datatracker.ietf.org/doc/html/rfc5936) or [IXFR ↗](https://datatracker.ietf.org/doc/html/rfc1995)
 
-![With Cloudflare as your primary provider in a multi-provider setup, Cloudflare periodically transfers records to your secondary DNS provider.](https://developers.cloudflare.com/_astro/cloudflare-as-primary.CS_-J48n_Z1u2wbK.webp)
+![With Cloudflare as your primary provider in a multi-provider setup, Cloudflare periodically transfers records to your secondary DNS provider.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1618,height=830,format=webp/_astro/cloudflare-as-primary.CS_-J48n.png)
 
 ## How to
 
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/#page","headline":"Cloudflare as Primary · Cloudflare DNS docs","description":"Use Cloudflare as the primary DNS with zone transfers to secondaries.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-primary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

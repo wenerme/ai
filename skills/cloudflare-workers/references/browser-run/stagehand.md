@@ -32,7 +32,7 @@ See a video of this example
 
 Output:
 
-![Stagehand example result](https://developers.cloudflare.com/_astro/stagehand-example.CsX-7-FC_ZvBkPq.webp)
+![Stagehand example result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3426,height=1174,format=webp/_astro/stagehand-example.CsX-7-FC.png)
 
 If instead you want to skip the steps and get started right away, select **Deploy to Cloudflare** below.
 
@@ -66,7 +66,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
 	"observability": {
 		"enabled": true
 	},
@@ -84,7 +84,7 @@ name = "stagehand-example"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 
 [observability]
 enabled = true
@@ -294,7 +294,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/stagehand/#page","headline":"Stagehand · Cloudflare Browser Run docs","description":"Deploy a Stagehand server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/stagehand/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -38,7 +38,7 @@ To generate an API token:
 4. Name your API Token in the **Token name** field.
 5. Under **Permissions**, select _Account_, _Cloudflare Pages_ and _Edit_:
 6. Select **Continue to summary** \> **Create Token**.
-![Follow the instructions above to create an API token for Cloudflare Pages](https://developers.cloudflare.com/_astro/select-api-token-for-pages.BUXEF2B7_Z2h1Wth.webp)
+![Follow the instructions above to create an API token for Cloudflare Pages](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=964,height=541,format=webp/_astro/select-api-token-for-pages.BUXEF2B7.png)
 
 Now that you have created your API token, you can use it to push your project from continuous integration platforms.
 
@@ -125,7 +125,7 @@ To add environment variables, in the CircleCI web application:
 3. Select the ellipsis (...) button in the project's row. You will see the option to add environment variables.
 4. Select **Environment Variables** \> **Add Environment Variable**.
 5. Enter the name and value of the new environment variable, which is your Cloudflare credentials (`CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN`).
-![Follow the instructions above to add environment variables to your CircleCI settings](https://developers.cloudflare.com/_astro/project-settings-env-var-v2.CMCUnm6I_1iXVA0.webp)
+![Follow the instructions above to add environment variables to your CircleCI settings](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2880,height=1128,format=webp/_astro/project-settings-env-var-v2.CMCUnm6I.png)
 
 ### Set up a workflow
 
@@ -204,7 +204,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/#page","headline":"Use Direct Upload with continuous integration · Cloudflare Pages docs","description":"Deploy prebuilt assets to Cloudflare Pages using Wrangler in your CI/CD pipeline.","url":"https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -6,11 +6,11 @@
 
 > Bring your own provider API keys
 
-export const openRouterBYOKFee = {
-  fraction: '5'
-};
+export const BYOK_PAYG_MONTHLY_LIST_PRICE_THRESHOLD_USD = '$25,000';
 
-export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
+export const BYOK_FEE_PERCENTAGE = '5';
+
+export const BYOK_ENTERPRISE_MONTHLY_LIST_PRICE_THRESHOLD_USD = '$200,000';
 
 ## Bring your own API Keys
 
@@ -27,11 +27,13 @@ Your provider keys are securely encrypted and used for all requests routed throu
 Manage keys in your [workspace BYOK settings](https://openrouter.ai/workspaces/default/byok).
 
 The cost of using custom provider keys on OpenRouter is
-**{openRouterBYOKFee.fraction}%
-of what the same model/provider would cost normally on
-OpenRouter** and will be deducted from your OpenRouter
-credits.
-This fee is waived for the first {BYOK_FEE_MONTHLY_REQUEST_THRESHOLD} BYOK requests per-month.
+**{BYOK_FEE_PERCENTAGE}% of what the same model/provider would cost
+normally on OpenRouter** and will be deducted from your OpenRouter
+credits. The free allowance is plan-dependent and measured by list-price
+inference cost, not request count: Pay-as-you-go includes
+{BYOK_PAYG_MONTHLY_LIST_PRICE_THRESHOLD_USD} per month, while Enterprise
+includes {BYOK_ENTERPRISE_MONTHLY_LIST_PRICE_THRESHOLD_USD}. See the
+[pricing page](https://openrouter.ai/pricing) for details.
 
 ### Key Priority and Fallback
 

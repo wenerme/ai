@@ -21,9 +21,9 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 4. Enter a descriptive name for the rule in **Rule name**.
 5. Under **When incoming requests match**, select **All incoming requests** if you want the rule to apply to all traffic or **Custom filter expression** if you want the rule to only apply to traffic matching the custom expression.
 6. If you selected **Custom filter expression**, under **When incoming requests match**, define the [rule expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#expression-builder). Use the **Field** drop-down list to choose an HTTP property and select an **Operator**. Refer to [Available settings](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/) for the list of available fields and operators.
-![Select fields in the Expression Builder.](https://developers.cloudflare.com/_astro/select-fields.euDkKViI_ZPmSQ0.webp)
+![Select fields in the Expression Builder.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=692,height=686,format=webp/_astro/select-fields.euDkKViI.png)
 7. Following the selection of the field and operator, enter the corresponding value that will trigger the Cache Rule. For example, if the selected field is `Hostname` and the operator is `equals`, a value of `cloudflare.com` would mean the rule matches any request to that hostname.
-![Example rule](https://developers.cloudflare.com/_astro/example-rule.fBosjk1F_ZeT0Gp.webp)
+![Example rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=954,height=444,format=webp/_astro/example-rule.fBosjk1F.png)
 Note
 Rules can be further customized by using the **Edit expression** option. You can find more information in [Edit expressions in the dashboard](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/).
 8. Under **Then**, in the **Cache eligibility** section, select [**Bypass cache**](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#bypass-cache) if you want matching requests to not be cacheable, or **Eligible for cache** if you want Cloudflare to attempt to cache them. Note that [cache-control headers](https://developers.cloudflare.com/cache/concepts/cache-control/) can also impact cache eligibility.
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/#page","headline":"Create a cache rule in the dashboard · Cloudflare Cache (CDN) docs","description":"Create cache rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

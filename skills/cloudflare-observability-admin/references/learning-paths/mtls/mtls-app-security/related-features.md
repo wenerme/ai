@@ -26,7 +26,7 @@ Additionally, ensure to have a WAF [Custom Rule](https://developers.cloudflare.c
 
 Example WAF Custom Rule with action block:
 
-![Example expression for certification revocation using a WAF custom rule in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/certification-revocation-custom-rule.Dl80dwDN_J2GCH.webp)
+![Example expression for certification revocation using a WAF custom rule in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=280,format=webp/_astro/certification-revocation-custom-rule.Dl80dwDN.png)
 
 ```text
 (cf.tls_client_auth.cert_revoked)
@@ -113,7 +113,7 @@ In order to effectively implement mTLS with Cloudflare, it is strongly recommend
 
 Example WAF Custom Rule with action block:
 
-![Example expression for configure a WAF Custom Rule with action block ](https://developers.cloudflare.com/_astro/configure-waf-custom-rule.BGsSBYj1_Otwj6.webp)
+![Example expression for configure a WAF Custom Rule with action block ](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=260,format=webp/_astro/configure-waf-custom-rule.BGsSBYj1.png)
 
 ```txt
 (http.host in {"mtls.example.com" "mtls2.example.com"} and (not cf.tls_client_auth.cert_verified or cf.tls_client_auth.cert_revoked))
@@ -123,7 +123,7 @@ This expression will check if the request is coming from one of the hostnames an
 
 Another example WAF Custom Rule with action block, using the [cf.tls\_client\_auth.cert\_fingerprint\_sha256](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls%5Fclient%5Fauth.cert%5Ffingerprint%5Fsha256/) field, for a specific Client Certificate (replace `ADD_STRING_OF_CLIENT_CERT_SHA256_FINGERPRINT`):
 
-![Example expression of a WAF Custom Rule with action block using the cf.tls_client_auth.cert_fingerprint_sha256 field](https://developers.cloudflare.com/_astro/waf-client-certificates-fingerprint.BqsBG7GT_hgTk0.webp)
+![Example expression of a WAF Custom Rule with action block using the cf.tls_client_auth.cert_fingerprint_sha256 field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=190,format=webp/_astro/waf-client-certificates-fingerprint.BqsBG7GT.png)
 
 ```txt
 (http.request.uri.path in {"/headers"} and http.host in {"mtls.example.com" "mtls2.example.com"} and not cf.tls_client_auth.cert_verified and cf.tls_client_auth.cert_fingerprint_sha256 ne "ADD_STRING_OF_CLIENT_CERT_SHA256_FINGERPRINT")
@@ -131,7 +131,7 @@ Another example WAF Custom Rule with action block, using the [cf.tls\_client\_au
 
 Here is another example of a WAF custom rule to associate a serial number with a hostname:
 
-![Example expression of a WAF Custom Rule to associate a serial number with a hostname](https://developers.cloudflare.com/_astro/waf-custom-rule.BVo7j0Y-_CKTwN.webp)
+![Example expression of a WAF Custom Rule to associate a serial number with a hostname](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=190,format=webp/_astro/waf-custom-rule.BVo7j0Y-.png)
 
 ```txt
 (http.host in {"mtls.example.com" "mtls2.example.com"} and cf.tls_client_auth.cert_serial ne "ADD_STRING_OF_CLIENT_CERT_SERIAL")
@@ -150,7 +150,7 @@ The header `Cf-Client-Cert-Sha256` can be used within the [Rate Limiting charact
 
 Example [Rate Limiting Rule](https://developers.cloudflare.com/waf/rate-limiting-rules/):
 
-![Example exmpression of a rate limiting rule from the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-rule.DDXdodgO_1uReTg.webp)
+![Example exmpression of a rate limiting rule from the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1420,height=720,format=webp/_astro/rate-limiting-rule.DDXdodgO.png)
 
 ```txt
 (http.host in {"mtls.example.com" "mtls2.example.com"} and cf.tls_client_auth.cert_verified)
@@ -175,7 +175,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/#page","headline":"mTLS related features · Cloudflare Learning Paths","description":"Learn about mtls related features in this guide.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/related-features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

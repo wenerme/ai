@@ -30,7 +30,7 @@ You can also use [preview deployments](https://developers.cloudflare.com/pages/c
 
 Every time you open a new pull request on your GitHub repository, Cloudflare Pages will create a unique preview URL, which will stay updated as you continue to push new commits to the branch. Note that preview URLs will not be created for pull requests created from forks of your repository. Learn more in [Preview Deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/).
 
-![GitHub Preview URLs](https://developers.cloudflare.com/_astro/ghpreviewurls.DuZwczMZ_1BvjOw.webp)
+![GitHub Preview URLs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1838,height=724,format=webp/_astro/ghpreviewurls.DuZwczMZ.png)
 
 ### Skipping a build via a commit message
 
@@ -42,11 +42,11 @@ If you have one or multiple projects connected to a repository (i.e. a [monorepo
 
 You can see the checks by selecting the status icon next to a commit within your GitHub repository. In the example below, you can select the green check mark to see the results of the check run.
 
-![GitHub status](https://developers.cloudflare.com/_astro/gh-status-check-runs.DkY_pO9C_1Obpz1.webp)
+![GitHub status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1804,height=122,format=webp/_astro/gh-status-check-runs.DkY_pO9C.png)
 
 Check runs will appear like the following in your repository.
 
-![GitHub check runs](https://developers.cloudflare.com/_astro/ghcheckrun.Cv3SMhfT_xxJai.webp)
+![GitHub check runs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1020,height=316,format=webp/_astro/ghcheckrun.Cv3SMhfT.png)
 
 If a build skips for any reason (i.e. CI Skip, build watch paths, or branch deployment controls), the check run/commit status will not appear.
 
@@ -72,7 +72,7 @@ You can remove Cloudflare Pages' access to your GitHub repository or account by 
 
 To remove access to an individual GitHub repository, you can navigate to **Repository access**. Select the **Only select repositories** option, and configure which repositories you would like Cloudflare to have access to.
 
-![GitHub Repository Access](https://developers.cloudflare.com/_astro/github-repository-access.DGHekBft_ZyV5F2.webp)
+![GitHub Repository Access](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1900,height=810,format=webp/_astro/github-repository-access.DGHekBft.png)
 
 #### Remove Cloudflare access to the entire GitHub account
 
@@ -104,7 +104,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#page","headline":"GitHub integration · Cloudflare Pages docs","description":"Connect a GitHub repository to Cloudflare Pages for automatic deployments, preview URLs, and check runs.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

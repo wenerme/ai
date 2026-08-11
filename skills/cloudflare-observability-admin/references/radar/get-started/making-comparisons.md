@@ -136,7 +136,7 @@ The `result` property should return a response like this:
 
 This shows how traffic dropped to almost zero during the outage. If we chart it and set the end date to January 18 to make it clearer, we get the following:
 
-![Tonga October vs January 2022](https://developers.cloudflare.com/_astro/tonga_outage.DWg4Our9_2cJMzr.webp)
+![Tonga October vs January 2022](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2792,height=974,format=webp/_astro/tonga_outage.DWg4Our9.png)
 
 ## Next steps
 
@@ -148,7 +148,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/radar/get-started/making-comparisons/#page","headline":"Make comparisons · Cloudflare Radar docs","description":"Compare Radar API time series data across locations, date ranges, and autonomous systems in a single request.","url":"https://developers.cloudflare.com/radar/get-started/making-comparisons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

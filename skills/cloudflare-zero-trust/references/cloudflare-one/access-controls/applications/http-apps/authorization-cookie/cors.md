@@ -80,7 +80,7 @@ headers: {
   'Content-Type': 'application/json',
 }
 ```
-then go to `api.mysite.com` in Access and configure **Access-Control-Allow-Origin**, **Access-Control-Allow-Credentials**, **Access-Control-Allow-Methods**, and **Access-Control-Allow-Headers**. ![Example CORS settings configuration in Cloudflare One](https://developers.cloudflare.com/_astro/CORS-settings.C9-43Ja__Zwvcyt.webp)
+then go to `api.mysite.com` in Access and configure **Access-Control-Allow-Origin**, **Access-Control-Allow-Credentials**, **Access-Control-Allow-Methods**, and **Access-Control-Allow-Headers**. ![Example CORS settings configuration in Cloudflare One](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2224,height=1032,format=webp/_astro/CORS-settings.C9-43Ja_.png)
 5. Select **Save**.
 6. (Optional) You can check your configuration by sending an OPTIONS request to the origin with `curl`. For example,
 ```bash
@@ -253,7 +253,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/#page","headline":"CORS · Cloudflare One docs","description":"CORS in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS"]}

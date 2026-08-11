@@ -18,7 +18,7 @@ After a visitor successfully completes a Turnstile challenge, a token is generat
 
 For example, the token validation values in your analytics may look like this:
 
-![Token validation example values](https://developers.cloudflare.com/_astro/token-validation.DRmcNOiF_Z16p8LF.webp "Token validation example")
+![Token validation example values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1019,height=1026,format=webp/_astro/token-validation.DRmcNOiF.png "Token validation example")
 
 Token validation example
 
@@ -42,7 +42,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/turnstile-analytics/token-validation/#page","headline":"Token validation · Cloudflare Turnstile docs","description":"View token validation metrics for your Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/turnstile-analytics/token-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}

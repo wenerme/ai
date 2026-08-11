@@ -42,7 +42,7 @@ The first decision for a Cloudflare One Appliance deployment is its location in 
   * CPE cannot be replaced (yet) because it is part of an active managed service.
   * CPE cannot be replaced because it is a firewall that the organization wants to keep in place for other reasons (technical or contractual).
 
-![Figure 1: Connector location options: \(a\) replacing CPE, \(b\) north of CPE , \(c\) south of CPE.](https://developers.cloudflare.com/_astro/figure01.Dcrrl27C_KWJHE.svg "Figure 1. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE")
+![Figure 1: Connector location options: \(a\) replacing CPE, \(b\) north of CPE , \(c\) south of CPE.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=773,height=654,format=svg/_astro/figure01.Dcrrl27C.svg "Figure 1. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE")
 
 Figure 1\. Connector location options: (a) replacing CPE, (b) north of CPE , (c) south of CPE
 
@@ -56,7 +56,7 @@ In Wide Area Network (WAN) environments, where remote offices, data centers, and
 
 Cloudflare One Appliance can use two or more WAN ports for uplinks, and therefore it can connect to multiple different ISPs for circuit resiliency. One option for a basic level of HA is to use a single Cloudflare One Appliance with two uplinks, while traffic can be load-balanced between them (Figure 2 below). This approach could be used for non-critical branches, small offices, and other similar types of locations, or as an intermediate step towards a full HA deployment.
 
-![Figure 2. Uplink high-availability deployment.](https://developers.cloudflare.com/_astro/figure02.BGru8RdY_Z2dywRJ.svg "Figure 2. Uplink high-availability deployment.")
+![Figure 2. Uplink high-availability deployment.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=408,height=647,format=svg/_astro/figure02.BGru8RdY.svg "Figure 2. Uplink high-availability deployment.")
 
 Figure 2\. Uplink high-availability deployment.
 
@@ -66,7 +66,7 @@ In this type of setup, a redundant device is configured to take over in case of 
 
 Figure 3 below illustrates the deployment topology where Cloudflare One Appliance supports full HA. Using an election process, one device becomes active and the other becomes passive. To achieve this, the two Connectors must connect to a LAN switch on the same Layer 2 domain (like a VLAN) for heartbeat messages to be sent between them. Active/passive means that the active Connector is the only device that propagates traffic at any point in time.
 
-![Figure 3. Full HA with dual Connectors and dual uplinks.](https://developers.cloudflare.com/_astro/figure03.CgaueUuZ_uwLNe.svg "Figure 3. Full HA with dual Connectors and dual uplinks.")
+![Figure 3. Full HA with dual Connectors and dual uplinks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=361,height=628,format=svg/_astro/figure03.CgaueUuZ.svg "Figure 3. Full HA with dual Connectors and dual uplinks.")
 
 Figure 3\. Full HA with dual Connectors and dual uplinks.
 
@@ -83,7 +83,7 @@ The main use case for this type of deployment is based on the fact that many org
 * MPLS service is still in contract, but it is planned to be replaced by Internet connectivity everywhere when the term ends
 * Self-hosted applications might require low latency with agreed SLAs, so a hybrid MPLS/Internet architecture might be required
 
-![Figure 4. Hybrid MPLS/Internet use case.](https://developers.cloudflare.com/_astro/figure04.B7yWVURB_IBeG.svg "Figure 4. Hybrid MPLS/Internet use case.")
+![Figure 4. Hybrid MPLS/Internet use case.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=524,height=617,format=svg/_astro/figure04.B7yWVURB.svg "Figure 4. Hybrid MPLS/Internet use case.")
 
 Figure 4\. Hybrid MPLS/Internet use case.
 
@@ -99,7 +99,7 @@ All traffic towards internal locations and self-hosted applications follows the 
 
 In some deployments, customers might want to protect only specific protocols using Cloudflare security services such as our [secure web gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/), while the rest of the traffic routes through the existing edge device (router or firewall). Figure 5 illustrates such a use case.
 
-![Figure 5. 'Split Tunneling' use case.](https://developers.cloudflare.com/_astro/figure05.BDoVf7qZ_2URyp.svg "Figure 5. 'Split Tunneling' use case.")
+![Figure 5. 'Split Tunneling' use case.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=536,height=617,format=svg/_astro/figure05.BDoVf7qZ.svg "Figure 5. 'Split Tunneling' use case.")
 
 Figure 5\. 'Split Tunneling' use case.
 
@@ -116,7 +116,7 @@ As long as PBR capability exists locally, and the ISP provides at least two publ
 
 Another advanced group of use cases that Cloudflare One Appliance can support is local segmentation, and protection of specific local networks. To achieve that, and depending on an organization's current architecture, line of business, security policies, and compliance requirements, Cloudflare One Appliance can be installed in any location south of the site edge device to provide more granular network security, as illustrated in figure 6 and described in the following paragraphs.
 
-![Figure 6. Segmentation-related use cases.](https://developers.cloudflare.com/_astro/figure06.NzTDAI8s_2lm4Co.svg "Figure 6. Segmentation-related use cases.")
+![Figure 6. Segmentation-related use cases.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=748,height=651,format=svg/_astro/figure06.NzTDAI8s.svg "Figure 6. Segmentation-related use cases.")
 
 Figure 6\. Segmentation-related use cases.
 
@@ -144,7 +144,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/#page","headline":"Cloudflare One Appliance deployment options · Cloudflare Reference Architecture docs","description":"Learn how to deploy Cloudflare One Appliance and evaluate your various deployment options.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/cloudflare-one-appliance-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

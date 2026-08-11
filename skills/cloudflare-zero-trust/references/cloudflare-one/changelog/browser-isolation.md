@@ -86,7 +86,7 @@ A new **Browser Isolation Overview** page is now available in the Cloudflare Zer
 
 This update consolidates previously disparate settings, accelerating deployment, improving visibility into isolation activity, and making it easier to ensure your protections are working effectively.
 
-![Browser Isolation Overview](https://developers.cloudflare.com/_astro/browser-isolation-overview.Ljd5ax_O_Z1SURww.webp)
+![Browser Isolation Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1717,height=1286,format=webp/_astro/browser-isolation-overview.Ljd5ax_O.png)
 
 To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/) and find Browser Isolation in the side navigation bar.
 
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/#page","headline":"Browser Isolation Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/browser-isolation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

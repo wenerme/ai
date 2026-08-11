@@ -16,6 +16,23 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/tunnel.xml)
 
+## 2026-08-10
+
+
+**Stream live logs from Cloudflare Tunnel in the dashboard**
+
+Real-time Tunnel log streaming is now available in the Cloudflare dashboard under **Networking** \> **Tunnels**. This brings the same live debugging capability previously only available in the Cloudflare One dashboard, including multi-connector aggregated streaming for high-availability deployments.
+
+![Stream live logs from a tunnel in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/tunnel-live-logs-core-dashboard.Dtm7Jg51.gif)
+
+In the tunnel detail view, a new **Live logs** tab lets you:
+
+* **Stream logs from single or multiple connectors** — In [highly available](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability) deployments with multiple `cloudflared` replicas, logs from all connectors are merged into a single stream grouped by hostname, making it easy to identify which host machine produced each log entry.
+* **Filter by log level, event type, and HTTP method** — Narrow the stream to only the events you care about (HTTP, TCP, UDP, or `cloudflared` internal), at any log level.
+[Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+
+For more information, refer to [Monitor tunnels](https://developers.cloudflare.com/tunnel/monitoring/#remote-log-streaming) and [Tunnel log streams](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/monitor-tunnels/logs/).
+
 ## 2026-07-09
 
 
@@ -120,7 +137,7 @@ To learn more, refer to the [Zero Trust Networks API](https://developers.cloudfl
 
 The **Routes** page in the Cloudflare dashboard now shows the routes across all of your connectors — [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) and [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) routes alongside [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) and [Magic Transit](https://developers.cloudflare.com/magic-transit/) static routes — in a single table, instead of a separate routes view per product.
 
-![The unified Routes page in the Cloudflare dashboard, showing routes across connectors in a single table](https://developers.cloudflare.com/_astro/2026-06-19-unified-routes.B3igBY20_Z1awHp.webp)
+![The unified Routes page in the Cloudflare dashboard, showing routes across connectors in a single table](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=948,format=webp/_astro/2026-06-19-unified-routes.B3igBY20.gif)
 
 From the unified Routes page you can:
 
@@ -143,7 +160,7 @@ Your existing routes, APIs, and configurations are unchanged — this is a dashb
 
 Starting with [cloudflared version 2026.5.2 ↗](https://github.com/cloudflare/cloudflared/releases), [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) automates the entire [connectivity pre-checks workflow](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/connectivity-prechecks/) directly inside the binary. Previously, customers had to install `dig` and `netcat` and run those commands by hand to verify their environment. Now `cloudflared` does it natively at startup — and surfaces actionable remediation when something is blocked.
 
-![cloudflared connectivity pre-checks output](https://developers.cloudflare.com/_astro/cloudflared-connectivity-prechecks.DRwN6tGe_c1XGu.webp)
+![cloudflared connectivity pre-checks output](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1012,format=webp/_astro/cloudflared-connectivity-prechecks.DRwN6tGe.gif)
 
 On every `cloudflared tunnel run` (and `cloudflared tunnel diag`), the binary now natively checks:
 
@@ -199,7 +216,7 @@ Granular permissions are a parallel layer to existing account-level roles — th
 
 In the Cloudflare One dashboard, the overview page for a specific Cloudflare Tunnel now shows all [replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) of that tunnel and supports streaming logs from multiple replicas at once.
 
-![View replicas and stream logs from multiple connectors](https://developers.cloudflare.com/_astro/tunnel-multiconn.DEOEaLlu_ZDxArh.webp)
+![View replicas and stream logs from multiple connectors](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1040,format=webp/_astro/tunnel-multiconn.DEOEaLlu.gif)
 
 Previously, you could only stream logs from one replica at a time. With this update:
 
@@ -215,7 +232,7 @@ For more information, refer to [Tunnel log streams](https://developers.cloudflar
 
 You can now manage [Cloudflare Tunnels](https://developers.cloudflare.com/tunnel/) directly from [Wrangler](https://developers.cloudflare.com/workers/wrangler/), the CLI for the Cloudflare Developer Platform. The new [wrangler tunnel](https://developers.cloudflare.com/workers/wrangler/commands/tunnel/) commands let you create, run, and manage tunnels without leaving your terminal.
 
-![Wrangler tunnel commands demo](https://developers.cloudflare.com/_astro/wrangler-tunnel.DOqrtGGg_7EDX0.webp)
+![Wrangler tunnel commands demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=1094,format=webp/_astro/wrangler-tunnel.DOqrtGGg.gif)
 
 Available commands:
 
@@ -239,7 +256,7 @@ To get started, refer to the [Wrangler tunnel commands documentation](https://de
 
 [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is now available in the main Cloudflare Dashboard at [Networking > Tunnels ↗](https://dash.cloudflare.com/?to=/:account/tunnels), bringing first-class Tunnel management to developers using Tunnel for securing origin servers.
 
-![Manage Tunnels in the Core Dashboard](https://developers.cloudflare.com/_astro/tunnel-core-dashboard.BGPqaHfo_Pi6HO.webp)
+![Manage Tunnels in the Core Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=894,format=webp/_astro/tunnel-core-dashboard.BGPqaHfo.gif)
 
 This new experience provides everything you need to manage Tunnels for [public applications](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/), including:
 
@@ -316,7 +333,7 @@ You can now route private traffic to [Cloudflare Tunnel](https://developers.clou
 
 Previously, Tunnel routes could only be defined by IP address or [CIDR range](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/). This created a challenge for modern applications with dynamic or ephemeral IP addresses, often forcing administrators to maintain complex and brittle IP lists.
 
-![Hostname-based routing in Cloudflare Tunnel](https://developers.cloudflare.com/_astro/tunnel-hostname-routing.DSi8MP_7_Z1E6Ym4.webp)
+![Hostname-based routing in Cloudflare Tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1990,height=530,format=webp/_astro/tunnel-hostname-routing.DSi8MP_7.webp)
 
 **What’s new:**
 
@@ -416,7 +433,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/tunnel/changelog/#page","headline":"Changelog · Cloudflare Docs","description":"Review recent changes to Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

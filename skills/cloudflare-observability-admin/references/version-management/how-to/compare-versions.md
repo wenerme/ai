@@ -29,7 +29,7 @@ To compare versions:
 
 After a few seconds, the page will update automatically with a comparison on a per-product basis. The lower numbered version will always be presented on the left and the top will show you which environments the versions are assigned to so that you can ensure you are comparing the right versions.
 
-![View changes side-by-side between versions](https://developers.cloudflare.com/_astro/compare-versions.AiuozF29_1XIryy.webp)
+![View changes side-by-side between versions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1224,height=788,format=webp/_astro/compare-versions.AiuozF29.png)
 
 Changes will be highlighted for new additions and removals for that service. Based on the comparison, you can then decide if more changes are necessary or if that new version is ready to be rolled out.
 
@@ -39,7 +39,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/version-management/how-to/compare-versions/#page","headline":"Compare versions · Cloudflare Version Management docs","description":"View differences between configuration versions.","url":"https://developers.cloudflare.com/version-management/how-to/compare-versions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

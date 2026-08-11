@@ -159,7 +159,7 @@ AI Gateway now supports automatic retries at the gateway level. When an upstream
 
 You can configure the retry count (up to 5 attempts), the delay between retries (from 100ms to 5 seconds), and the backoff strategy (Constant, Linear, or Exponential). These defaults apply to all requests through the gateway, and per-request headers can override them.
 
-![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/_astro/auto-retry-changelog.DoCXZnDy_bIipL.webp)
+![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2344,height=502,format=webp/_astro/auto-retry-changelog.DoCXZnDy.png)
 
 This is particularly useful when you do not control the client making the request and cannot implement retry logic on the caller side. For more complex failover scenarios — such as failing across different providers — use [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/).
 
@@ -229,13 +229,13 @@ AI Gateway gives you logging, caching, rate limiting, and access to multiple AI 
 
 AI now has its own top-level section in the Cloudflare dashboard sidebar, so you can find AI features without digging through menus.
 
-![AI sidebar navigation in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/sidebar-navigation.BQNFBmAk_1GqV9H.webp) _The new top-level AI section in the dashboard sidebar._
+![AI sidebar navigation in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2328,height=1140,format=webp/_astro/sidebar-navigation.BQNFBmAk.png) _The new top-level AI section in the dashboard sidebar._
 
 **Onboarding and getting started**
 
 [Getting started](https://developers.cloudflare.com/ai-gateway/get-started/) with AI Gateway is now simpler. When you create your first gateway, we now show your gateway's OpenAI-compatible endpoint and step-by-step guidance to help you configure it. The Playground also includes helpful prompts, and usage pages have clear next steps if you have not made any requests yet.
 
-![AI Gateway onboarding flow](https://developers.cloudflare.com/_astro/onboarding-flow.DZ7aMcHa_Z2hyg1I.webp) _The first-run setup experience for new gateways._
+![AI Gateway onboarding flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2400,height=1232,format=webp/_astro/onboarding-flow.DZ7aMcHa.png) _The first-run setup experience for new gateways._
 
 We've also combined the previously separate code example sections into one view with dropdown selectors for API type, provider, SDK, and authentication method so you can now customize the exact code snippet you need from one place.
 
@@ -265,7 +265,7 @@ Cloudflare Secrets Store is now integrated with AI Gateway, allowing you to stor
 
 You can now create a secret directly from your AI Gateway [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/ai-gateway) by navigating into your gateway -> **Provider Keys** \-> **Add**.
 
-![Import repo or choose template](https://developers.cloudflare.com/_astro/add-secret-ai-gateway.B-SIPr6s_jJjDD.webp)
+![Import repo or choose template](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2410,height=1842,format=webp/_astro/add-secret-ai-gateway.B-SIPr6s.png)
 
 You can also create your secret with the newly available **ai\_gateway** scope via [wrangler ↗](https://developers.cloudflare.com/workers/wrangler/commands/), the [Secrets Store dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), or the [API ↗](https://developers.cloudflare.com/api/resources/secrets%5Fstore/).
 
@@ -380,7 +380,7 @@ Within the AI Gateway settings, you can configure:
 * **Guardrails**: Enable or disable content moderation as needed.
 * **Evaluation scope**: Select whether to moderate user prompts, model responses, or both.
 * **Hazard categories**: Specify which categories to monitor and determine whether detected inappropriate content should be blocked or flagged.
-![Guardrails in AI Gateway](https://developers.cloudflare.com/_astro/Guardrails.BTNc0qeC_Z1HC20z.webp)
+![Guardrails in AI Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2524,height=444,format=webp/_astro/Guardrails.BTNc0qeC.png)
 
 Learn more in the [blog ↗](https://blog.cloudflare.com/guardrails-in-ai-gateway/) or our [documentation](https://developers.cloudflare.com/ai-gateway/features/guardrails/).
 
@@ -423,7 +423,7 @@ To set up request retries directly to a provider, add the following headers:
 * [Cartesia](https://developers.cloudflare.com/ai-gateway/usage/providers/cartesia/) provides text-to-speech models that produce natural-sounding speech with low latency.
 * [Cerebras](https://developers.cloudflare.com/ai-gateway/usage/providers/cerebras/) delivers low-latency AI inference to Meta's Llama 3.1 8B and Llama 3.3 70B models.
 * [ElevenLabs](https://developers.cloudflare.com/ai-gateway/usage/providers/elevenlabs/) offers text-to-speech models with human-like voices in 32 languages.
-![Example of Cerebras log in AI Gateway](https://developers.cloudflare.com/_astro/cerebras2.qHYP0ZnF_XMtnx.webp)
+![Example of Cerebras log in AI Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2278,height=1020,format=webp/_astro/cerebras2.qHYP0ZnF.png)
 
 To get started with AI Gateway, just update the base URL. Here's how you can send a request to [Cerebras](https://developers.cloudflare.com/ai-gateway/usage/providers/cerebras/) using cURL:
 
@@ -451,7 +451,7 @@ We have released new [Workers bindings API methods](https://developers.cloudflar
 
 To add an AI binding to your Worker, include the following in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 
-![Add an AI binding to your Worker.](https://developers.cloudflare.com/_astro/add-binding.BoYTiyon_ZjdDNx.webp)
+![Add an AI binding to your Worker.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=754,height=135,format=webp/_astro/add-binding.BoYTiyon.png)
 
 With the new AI Gateway binding methods, you can now:
 
@@ -461,7 +461,7 @@ With the new AI Gateway binding methods, you can now:
 
 For example, to send feedback and update metadata using `patchLog`:
 
-![Send feedback and update metadata using patchLog:](https://developers.cloudflare.com/_astro/send-feedback.BGRzKmd9_NDVos.webp)
+![Send feedback and update metadata using patchLog:](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=736,height=235,format=webp/_astro/send-feedback.BGRzKmd9.png)
 
 ## 2025-01-02
 
@@ -473,7 +473,7 @@ For example, to send feedback and update metadata using `patchLog`:
 * **Monitor**: Gain actionable insights with analytics and logs.
 * **Control**: Implement caching, rate limiting, and fallbacks.
 * **Optimize**: Improve performance with feedback and evaluations.
-![AI Gateway adds DeepSeek as a provider](https://developers.cloudflare.com/_astro/deepseek.hirkr3rv_CgMEY.webp)
+![AI Gateway adds DeepSeek as a provider](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=131,format=webp/_astro/deepseek.hirkr3rv.png)
 
 To get started, simply update the base URL of your DeepSeek API calls to route through AI Gateway. Here's how you can send a request using cURL:
 
@@ -500,7 +500,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ai-gateway/changelog/#page","headline":"Changelog · Cloudflare AI Gateway docs","description":"Track the latest updates, new features, and fixes for AI Gateway.","url":"https://developers.cloudflare.com/ai-gateway/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

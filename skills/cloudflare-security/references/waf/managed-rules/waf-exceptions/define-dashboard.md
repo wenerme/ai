@@ -32,7 +32,7 @@ To add an exception at the account level (Enterprise plans only):
 ## 2\. Define basic exception parameters
 
 1. In **Exception name**, enter a name for the exception.
-![The Add exception page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/waf-exception-create.DGVMUWUU_Z1xuWkC.webp)
+![The Add exception page in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=952,height=690,format=webp/_astro/waf-exception-create.DGVMUWUU.png)
 2. In **When incoming requests match**, specify a filter expression that defines the conditions for applying the exception. When the expression matches, the WAF will evaluate the exception skipping one or more rules of WAF managed rulesets. The filter expression uses the [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/).
 
 ## 3\. Select the rules to skip
@@ -52,7 +52,7 @@ To add an exception at the account level (Enterprise plans only):
 **B) To skip all the rules in the ruleset:**
 
   1. Select all the rules in the current page by selecting the checkbox in the table header, near **Description/Rule ID**. The table header will display `10 rules selected (of <TOTAL> rules)`.
-  ![Rule selection page showing the option to select all the rules in the ruleset](https://developers.cloudflare.com/_astro/waf-exception-select-all-rules.CBp6LP58_19ddVJ.webp)
+  ![Rule selection page showing the option to select all the rules in the ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=616,height=202,format=webp/_astro/waf-exception-select-all-rules.CBp6LP58.png)
   2. Select **Select all <TOTAL> rules** in the table header to select all the rules across all pages.
 5. Select **Next**.
 
@@ -91,7 +91,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/#page","headline":"Add a WAF exception in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Use the Cloudflare dashboard to create exceptions that skip the execution of WAF managed rulesets or specific ruleset rules.","url":"https://developers.cloudflare.com/waf/managed-rules/waf-exceptions/define-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

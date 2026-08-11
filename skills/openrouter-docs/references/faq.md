@@ -11,17 +11,17 @@ export const getTotalFeeString = (type, value) => {
   if (type === 'coinbase') return '5%';
 };
 
-export const openRouterBYOKFee = {
-  fraction: '5'
-};
-
 export const FREE_MODEL_NO_CREDITS_RPD = 50;
 
 export const FREE_MODEL_HAS_CREDITS_RPD = 1000;
 
 export const FREE_MODEL_CREDITS_THRESHOLD = 10;
 
-export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
+export const BYOK_PAYG_MONTHLY_LIST_PRICE_THRESHOLD_USD = '$25,000';
+
+export const BYOK_FEE_PERCENTAGE = '5';
+
+export const BYOK_ENTERPRISE_MONTHLY_LIST_PRICE_THRESHOLD_USD = '$200,000';
 
 ## Getting started
 
@@ -84,14 +84,16 @@ export const BYOK_FEE_MONTHLY_REQUEST_THRESHOLD = '1M';
   </Accordion>
 
   <Accordion title="Is there a fee for using my own provider keys (BYOK)?">
-    Yes, if you choose to use your own provider API keys (Bring Your Own Key -
-    BYOK), the first {BYOK_FEE_MONTHLY_REQUEST_THRESHOLD} BYOK
-    requests per-month are free, and for all subsequent usage there is a fee
-    of {openRouterBYOKFee.fraction}% of what the same
-    model and provider would normally cost on OpenRouter. This fee is deducted
-    from your OpenRouter credits. This allows you to manage your rate limits and
-    costs directly with the provider while still using OpenRouter's unified
-    interface.
+    Yes. BYOK has a plan-dependent free allowance measured by list-price
+    inference cost, not request count. Pay-as-you-go includes
+    {BYOK_PAYG_MONTHLY_LIST_PRICE_THRESHOLD_USD} per month with no BYOK fee,
+    while Enterprise includes {BYOK_ENTERPRISE_MONTHLY_LIST_PRICE_THRESHOLD_USD}.
+    Usage above the allowance has a fee of {BYOK_FEE_PERCENTAGE}% of what the
+    same model and provider would normally cost on OpenRouter. This fee is
+    deducted from your OpenRouter credits. This allows you to manage your rate
+    limits and costs directly with the provider while still using
+    OpenRouter's unified interface. See the
+    [pricing page](https://openrouter.ai/pricing) for details.
 
     [Learn more about BYOK](/docs/guides/overview/auth/byok).
   </Accordion>

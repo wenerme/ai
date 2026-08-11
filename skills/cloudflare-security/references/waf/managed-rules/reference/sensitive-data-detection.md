@@ -94,11 +94,11 @@ Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy
 2. (Optional) Filter by **Web application exploits**.
 3. For **Sensitive data detection**, select **Configured ruleset: <SCOPE>**, and then select **Next**.
 4. Select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/_astro/rules-config-sdd-ruleset.CggZM4C2_Zu69Mo.webp)
+![The Cloudflare dashboard displaying the list of rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1302,height=838,format=webp/_astro/rules-config-sdd-ruleset.CggZM4C2.png)
 
 1. Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
 If not all the rules are displayed in the current page, extend your selection to all rules with the selected tags across all pages by selecting **Select all <NUMBER> rules**.
-![The Configure deployment page displaying selected rules with the 'encryption' tag in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/_astro/tags-config-sdd-ruleset.DQw7m2sB_nJQp2.webp)
+![The Configure deployment page displaying selected rules with the 'encryption' tag in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1283,height=611,format=webp/_astro/tags-config-sdd-ruleset.DQw7m2sB.png)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
 4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
@@ -120,12 +120,12 @@ Once you have [deployed the Cloudflare Sensitive Data Detection ruleset](#deploy
 2. (Optional) Filter by **Web application exploits**.
 3. For **Sensitive data detection**, select **Configured ruleset: <SCOPE>**, and then select **Next**.
 4. Select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/_astro/rules-config-sdd-ruleset.CggZM4C2_Zu69Mo.webp)
+![The Cloudflare dashboard displaying the list of rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1302,height=838,format=webp/_astro/rules-config-sdd-ruleset.CggZM4C2.png)
 
 1. Search for rules using the available filters.
 2. In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
 To configure multiple rules with the same value, select the checkboxes for all the rules you want to configure. If not all the rules are displayed in the current page, you can extend your selection to all rules across all pages by selecting **Select all <NUMBER> rules**. Then, use the buttons displayed in the top right corner of the table — for example, **Set status** — to update one or more fields for the selected rules.
-![The Configure deployment page displaying selected rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/_astro/tags-config-sdd-ruleset.DQw7m2sB_nJQp2.webp)
+![The Configure deployment page displaying selected rules in the Sensitive Data Detection ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1283,height=611,format=webp/_astro/tags-config-sdd-ruleset.DQw7m2sB.png)
 3. Select **Next**, and then select **Save**.
 
 ## Configure via API
@@ -257,7 +257,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/#page","headline":"Cloudflare Sensitive Data Detection · Cloudflare Web Application Firewall (WAF) docs","description":"Detect sensitive data like credit card numbers in HTTP responses.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/sensitive-data-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

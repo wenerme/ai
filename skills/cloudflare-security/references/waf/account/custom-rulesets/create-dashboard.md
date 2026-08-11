@@ -27,7 +27,7 @@ To create and deploy a custom ruleset at the account level:
 1. In the Cloudflare dashboard, go to the **WAF** page.
 [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Custom rulesets** tab.
-![Custom rulesets page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/custom-rulesets-dashboard.B9PZ8Swr_Z2bAEAh.webp)
+![Custom rulesets page in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=334,format=webp/_astro/custom-rulesets-dashboard.B9PZ8Swr.png)
 3. To create a new empty ruleset, select **Create ruleset**. To duplicate an existing ruleset, select the three dots next to it > **Duplicate**.
 4. In the page that displays, enter a name and (optionally) a description for the custom ruleset.
 5. Under **Scope**, define when the custom ruleset should run.
@@ -50,7 +50,7 @@ Custom rulesets deployed at the account level only apply to incoming traffic of 
 1. In the Cloudflare dashboard, go to the **WAF** page.
 [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Custom rulesets** tab.
-![Custom rulesets page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/custom-rulesets-dashboard.B9PZ8Swr_Z2bAEAh.webp)
+![Custom rulesets page in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=334,format=webp/_astro/custom-rulesets-dashboard.B9PZ8Swr.png)
 3. To edit a custom ruleset, select the three dots next to it > **Edit**.
 4. Make any desired changes to the ruleset by selecting **Edit** next to the items you want to change.
 5. When you are done, select **Back to rulesets list**.
@@ -90,7 +90,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/custom-rulesets/create-dashboard/#page","headline":"Work with WAF custom rulesets in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create and manage account-level custom rulesets in the dashboard.","url":"https://developers.cloudflare.com/waf/account/custom-rulesets/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

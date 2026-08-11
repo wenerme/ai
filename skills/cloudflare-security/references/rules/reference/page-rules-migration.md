@@ -137,9 +137,9 @@ You configured a Page Rule to perform an automatic redirect from HTTP to HTTPS f
 2. Turn off your existing Page Rule and validate the behavior of the redirect you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                | Migrate to a single redirect                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Always Use HTTPS' setting](https://developers.cloudflare.com/_astro/pr-always-use-https.CUl_pNfb_ZwfSLG.webp) | ![Single redirect matching the 'Always Use HTTPS' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-always-use-https-new.BOryxIv0_jNt3t.webp) |
+| Page Rules configuration                                                                                                                                                                        | Migrate to a single redirect                                                                                                                                                                                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Always Use HTTPS' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=650,height=588,format=webp/_astro/pr-always-use-https.CUl_pNfb.png) | ![Single redirect matching the 'Always Use HTTPS' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=1032,format=webp/_astro/pr-always-use-https-new.BOryxIv0.png) |
 
 ### Migrate Automatic HTTPS Rewrites
 
@@ -166,9 +166,9 @@ You configured a Page Rule turning on Automatic HTTPS Rewrites for all subdomain
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                 | Migrate to a configuration rule                                                                                                                                                               |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Automatic HTTPS Rewrites' setting](https://developers.cloudflare.com/_astro/pr-automatic-https-rewrites.CLJyVtYV_Z26qFhi.webp) | ![Configuration rule matching the 'Automatic HTTPS Rewrites' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-automatic-https-rewrites-new.Bkd1FpXw_ZpdWVq.webp) |
+| Page Rules configuration                                                                                                                                                                                        | Migrate to a configuration rule                                                                                                                                                                                                                       |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Automatic HTTPS Rewrites' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=743,height=686,format=webp/_astro/pr-automatic-https-rewrites.CLJyVtYV.png) | ![Configuration rule matching the 'Automatic HTTPS Rewrites' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=852,height=906,format=webp/_astro/pr-automatic-https-rewrites-new.Bkd1FpXw.png) |
 
 ### Migrate Browser Cache TTL
 
@@ -198,9 +198,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                   | Migrate to a cache rule                                                                                                                                                 |
-| ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Browser Cache TTL' setting](https://developers.cloudflare.com/_astro/pr-browser-cache-ttl.BsUhcEXO_Z15nk2E.webp) | ![Cache rule matching the 'Browser Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-browser-cache-ttl-new.CFYgSIfM_28xvmr.webp) |
+| Page Rules configuration                                                                                                                                                                          | Migrate to a cache rule                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Browser Cache TTL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=736,height=676,format=webp/_astro/pr-browser-cache-ttl.BsUhcEXO.png) | ![Cache rule matching the 'Browser Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=1354,format=webp/_astro/pr-browser-cache-ttl-new.CFYgSIfM.png) |
 
 ### Migrate Browser Integrity Check
 
@@ -227,9 +227,9 @@ You configured a Page Rule turning on Browser Integrity Check for all subdomains
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                               | Migrate to a configuration rule                                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Browser Integrity Check' setting](https://developers.cloudflare.com/_astro/pr-browser-integrity-check.0TsdxTXD_Z1Wutmk.webp) | ![Configuration rule matching the 'Browser Integrity Check' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-browser-integrity-check-new.DABehTnG_ZCT1QP.webp) |
+| Page Rules configuration                                                                                                                                                                                      | Migrate to a configuration rule                                                                                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Browser Integrity Check' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=720,format=webp/_astro/pr-browser-integrity-check.0TsdxTXD.png) | ![Configuration rule matching the 'Browser Integrity Check' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1237,height=1377,format=webp/_astro/pr-browser-integrity-check-new.DABehTnG.png) |
 
 ### Migrate Bypass Cache on Cookie
 
@@ -257,9 +257,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                            | Migrate to a cache rule                                                                                                                                                            |
-| --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Bypass Cache on Cookie' setting](https://developers.cloudflare.com/_astro/pr-bypass-cache-on-cookie.h4Mq0pkO_ZS1hzt.webp) | ![Cache rule matching the 'Bypass Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-bypass-cache-on-cookie-new.BeJb7-Bu_Z1vl7rE.webp) |
+| Page Rules configuration                                                                                                                                                                                    | Migrate to a cache rule                                                                                                                                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Example Page Rule with 'Bypass Cache on Cookie' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=688,format=webp/_astro/pr-bypass-cache-on-cookie.h4Mq0pkO.png) | ![Cache rule matching the 'Bypass Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=793,format=webp/_astro/pr-bypass-cache-on-cookie-new.BeJb7-Bu.png) |
 
 ### Migrate Cache By Device Type
 
@@ -289,9 +289,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                        | Migrate to a cache rule                                                                                                                                                      |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Cache By Device Type' setting](https://developers.cloudflare.com/_astro/pr-cache-by-device-type.D_TlBAdc_1ORjXt.webp) | ![Cache rule matching the 'Cache By Device Type' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-by-device-type-new.j6a5kEn__kmLw1.webp) |
+| Page Rules configuration                                                                                                                                                                                | Migrate to a cache rule                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Cache By Device Type' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=688,format=webp/_astro/pr-cache-by-device-type.D_TlBAdc.png) | ![Cache rule matching the 'Cache By Device Type' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=1329,format=webp/_astro/pr-cache-by-device-type-new.j6a5kEn_.png) |
 
 ### Migrate Cache Deception Armor
 
@@ -320,9 +320,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                          | Migrate to a cache rule                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Cache Deception Armor' setting](https://developers.cloudflare.com/_astro/pr-cache-deception-armor.CAh-wrs4_ZaMxP1.webp) | ![Cache rule matching the 'Cache Deception Armor' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-deception-armor-new.BT9l5EUw_Z1UI9gA.webp) |
+| Page Rules configuration                                                                                                                                                                                  | Migrate to a cache rule                                                                                                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Cache Deception Armor' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=679,format=webp/_astro/pr-cache-deception-armor.CAh-wrs4.png) | ![Cache rule matching the 'Cache Deception Armor' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=1174,format=webp/_astro/pr-cache-deception-armor-new.BT9l5EUw.png) |
 
 ### Migrate Cache Level (Cache Everything)
 
@@ -350,9 +350,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                    | Migrate to a cache rule                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Cache Level' set to 'Cache Everything'](https://developers.cloudflare.com/_astro/pr-cache-level-everything.DdVHSP6R_Z1SVoGM.webp) | ![Cache rule matching the 'Cache Level: Cache Everything' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-level-everything-new.CWHQUlgp_Z1GCIwi.webp) |
+| Page Rules configuration                                                                                                                                                                                           | Migrate to a cache rule                                                                                                                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Cache Level' set to 'Cache Everything'](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=691,format=webp/_astro/pr-cache-level-everything.DdVHSP6R.png) | ![Cache rule matching the 'Cache Level: Cache Everything' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=696,format=webp/_astro/pr-cache-level-everything-new.CWHQUlgp.png) |
 
 ### Migrate Cache on Cookie
 
@@ -380,9 +380,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                             | Migrate to a cache rule                                                                                                                                             |
-| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Cache on Cookie' setting](https://developers.cloudflare.com/_astro/pr-cache-on-cookie.ByvIqgIj_NLhPm.webp) | ![Cache rule matching the 'Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-on-cookie-new.PWLmyHmb_Z61apS.webp) |
+| Page Rules configuration                                                                                                                                                                      | Migrate to a cache rule                                                                                                                                                                                                      |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Cache on Cookie' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=693,format=webp/_astro/pr-cache-on-cookie.ByvIqgIj.png) | ![Cache rule matching the 'Cache on Cookie' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=784,format=webp/_astro/pr-cache-on-cookie-new.PWLmyHmb.png) |
 
 ### Migrate Cache TTL by status code
 
@@ -418,9 +418,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                   | Migrate to a cache rule                                                                                                                                                               |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with the 'Cache TTL by status code' setting](https://developers.cloudflare.com/_astro/pr-cache-ttl-by-status-code.BEFPIQlk_gCwHH.webp) | ![Cache rule matching the 'Cache TTL by status code' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-cache-ttl-by-status-code-new.D7fRKD4K_Zkzrqq.webp) |
+| Page Rules configuration                                                                                                                                                                                            | Migrate to a cache rule                                                                                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with the 'Cache TTL by status code' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=862,format=webp/_astro/pr-cache-ttl-by-status-code.BEFPIQlk.png) | ![Cache rule matching the 'Cache TTL by status code' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1412,height=1376,format=webp/_astro/pr-cache-ttl-by-status-code-new.D7fRKD4K.png) |
 
 ### Migrate Custom Cache Key
 
@@ -450,9 +450,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                    | Migrate to a cache rule                                                                                                                                               |
-| ------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with the 'Custom Cache Key' setting](https://developers.cloudflare.com/_astro/pr-custom-cache-key.B4mIYhPL_ZxFokH.webp) | ![Cache rule matching the 'Custom Cache Key' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-custom-cache-key-new.Cgx92M0b_1hvSHD.webp) |
+| Page Rules configuration                                                                                                                                                                             | Migrate to a cache rule                                                                                                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with the 'Custom Cache Key' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=1130,format=webp/_astro/pr-custom-cache-key.B4mIYhPL.png) | ![Cache rule matching the 'Custom Cache Key' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1070,height=1520,format=webp/_astro/pr-custom-cache-key-new.Cgx92M0b.png) |
 
 ### Migrate Disable Apps
 
@@ -477,9 +477,9 @@ You configured a Page Rule turning off Cloudflare Apps (deprecated) for all subd
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                       | Migrate to a configuration rule                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Disable Apps' setting](https://developers.cloudflare.com/_astro/pr-disable-apps.DtWuKgu3_mB9kP.webp) | ![Configuration rule matching the 'Disable Apps' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-disable-apps-new.D0ZGFzGR_Z2cSCu2.webp) |
+| Page Rules configuration                                                                                                                                                                | Migrate to a configuration rule                                                                                                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Disable Apps' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=689,format=webp/_astro/pr-disable-apps.DtWuKgu3.png) | ![Configuration rule matching the 'Disable Apps' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1064,height=1152,format=webp/_astro/pr-disable-apps-new.D0ZGFzGR.png) |
 
 ### Replace Disable Performance
 
@@ -511,9 +511,9 @@ You configured a Page Rule with **Disable Performance** (deprecated) for all sub
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                     | Migrate to a configuration rule                                                                                                                                                               |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Disable Performance' setting](https://developers.cloudflare.com/_astro/pr-disable-performance.Q-fOmuUU_2xk0b.webp) | ![Configuration rule partially matching the 'Disable Performance' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-disable-performance-new.DL9beJ7__2cPCxI.webp) |
+| Page Rules configuration                                                                                                                                                                              | Migrate to a configuration rule                                                                                                                                                                                                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Example Page Rule with 'Disable Performance' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=790,height=714,format=webp/_astro/pr-disable-performance.Q-fOmuUU.png) | ![Configuration rule partially matching the 'Disable Performance' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=1418,format=webp/_astro/pr-disable-performance-new.DL9beJ7_.png) |
 
 ### Replace Disable Security
 
@@ -569,9 +569,9 @@ You configured a Page Rule turning off [Zaraz](https://developers.cloudflare.com
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                           | Migrate to a configuration rule                                                                                                                                         |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Disable Zaraz' setting](https://developers.cloudflare.com/_astro/pr-disable-zaraz.BO7qA0TE_Z1JU8so.webp) | ![Configuration rule matching the 'Disable Zaraz' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-disable-zaraz-new.Cc92OsIN_1gBdti.webp) |
+| Page Rules configuration                                                                                                                                                                  | Migrate to a configuration rule                                                                                                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Disable Zaraz' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=670,format=webp/_astro/pr-disable-zaraz.BO7qA0TE.png) | ![Configuration rule matching the 'Disable Zaraz' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1049,height=1263,format=webp/_astro/pr-disable-zaraz-new.Cc92OsIN.png) |
 
 ### Migrate Edge Cache TTL
 
@@ -602,9 +602,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                | Migrate to a cache rule                                                                                                                                          |
-| --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with the 'Edge Cache TTL' setting](https://developers.cloudflare.com/_astro/pr-edge-cache-ttl.DdpuJjjM_1nFprQ.webp) | ![Cache rule matching the 'Edge Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-edge-cache-ttl-new.CASDurRT_DBFBY.webp) |
+| Page Rules configuration                                                                                                                                                                        | Migrate to a cache rule                                                                                                                                                                                                    |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with the 'Edge Cache TTL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=706,format=webp/_astro/pr-edge-cache-ttl.DdpuJjjM.png) | ![Cache rule matching the 'Edge Cache TTL' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1058,height=906,format=webp/_astro/pr-edge-cache-ttl-new.CASDurRT.png) |
 
 ### Migrate Email Obfuscation
 
@@ -631,9 +631,9 @@ You configured a Page Rule turning off [Email Obfuscation](https://developers.cl
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                  | Migrate to a configuration rule                                                                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Email Obfuscation' setting](https://developers.cloudflare.com/_astro/pr-email-obfuscation.B5bsi7dl_ZmPA2p.webp) | ![Configuration rule matching the 'Email Obfuscation > Off' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-email-obfuscation-new.CV0JNmIj_1a6Vq6.webp) |
+| Page Rules configuration                                                                                                                                                                          | Migrate to a configuration rule                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Email Obfuscation' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=717,format=webp/_astro/pr-email-obfuscation.B5bsi7dl.png) | ![Configuration rule matching the 'Email Obfuscation > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1060,height=1517,format=webp/_astro/pr-email-obfuscation-new.CV0JNmIj.png) |
 
 ### Migrate Forwarding URL
 
@@ -673,9 +673,9 @@ This would require you to also change the **Target URL** to use the second wildc
 
 * **Target URL**: `https://example.com/${2}`
 
-| Page Rules configuration                                                                                                                | Migrate to a single redirect                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule #1 with 'Forwarding URL' setting](https://developers.cloudflare.com/_astro/pr-forwarding-url.DyV2zs8N_Z1PQuiN.webp) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #1](https://developers.cloudflare.com/_astro/pr-forwarding-url-new.FfZIMpof_ZfVgYH.webp) |
+| Page Rules configuration                                                                                                                                                                       | Migrate to a single redirect                                                                                                                                                                                                       |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule #1 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=782,format=webp/_astro/pr-forwarding-url.DyV2zs8N.png) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #1](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=790,height=1031,format=webp/_astro/pr-forwarding-url-new.FfZIMpof.png) |
 
 **Example #2: Redirect all pages under old path to new path**
 
@@ -713,9 +713,9 @@ This would require you to also change the **Target URL** to use the second wildc
 
 * **Target URL**: `https://example.com/new-path/${2}`
 
-| Page Rules configuration                                                                                                                 | Migrate to a single redirect                                                                                                                                               |
-| ---------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule #2 with 'Forwarding URL' setting](https://developers.cloudflare.com/_astro/pr-forwarding-url-2.CNt6YZ_U_ZJCQKH.webp) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #2](https://developers.cloudflare.com/_astro/pr-forwarding-url-2-new.CP3zl46U_W8inj.webp) |
+| Page Rules configuration                                                                                                                                                                         | Migrate to a single redirect                                                                                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Example Page Rule #2 with 'Forwarding URL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=921,format=webp/_astro/pr-forwarding-url-2.CNt6YZ_U.png) | ![Single redirect matching the 'Forwarding URL' setting of the example Page Rule #2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=1032,format=webp/_astro/pr-forwarding-url-2-new.CP3zl46U.png) |
 
 ### Migrate Host Header Override
 
@@ -742,9 +742,9 @@ You configured a Page Rule changing the `Host` HTTP header to `example.saas-prov
 2. Turn off your existing Page Rule and validate the behavior of the origin rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                         | Migrate to an origin rule                                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Host Header Override' setting](https://developers.cloudflare.com/_astro/pr-host-header-override.BXq8XNIs_Z2j1cOS.webp) | ![Origin rule matching the 'Host Header Override' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-host-header-override-new.DUASGBHN_Z2fFGfr.webp) |
+| Page Rules configuration                                                                                                                                                                                | Migrate to an origin rule                                                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Host Header Override' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=772,height=711,format=webp/_astro/pr-host-header-override.BXq8XNIs.png) | ![Origin rule matching the 'Host Header Override' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1053,height=1440,format=webp/_astro/pr-host-header-override-new.DUASGBHN.png) |
 
 ### Migrate IP Geolocation Header
 
@@ -762,9 +762,9 @@ You configured a Page Rule adding a `CF-IPCountry` HTTP header, for all requests
 2. Turn off your existing Page Rule and validate the behavior of the Managed Transform.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                           | Migrate to a Managed Transform                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'IP Geolocation Header' setting](https://developers.cloudflare.com/_astro/pr-ip-geolocation-header._es904nB_Z1kVGHd.webp) | ![The 'Add visitor location headers' Managed Transform matching the 'IP Geolocation Header' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-ip-geolocation-header-new.D3CE9V7z_Z22BvhB.webp) |
+| Page Rules configuration                                                                                                                                                                                  | Migrate to a Managed Transform                                                                                                                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'IP Geolocation Header' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=687,format=webp/_astro/pr-ip-geolocation-header._es904nB.png) | ![The 'Add visitor location headers' Managed Transform matching the 'IP Geolocation Header' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=742,format=webp/_astro/pr-ip-geolocation-header-new.D3CE9V7z.png) |
 
 ### Migrate Opportunistic Encryption
 
@@ -791,9 +791,9 @@ You configured a Page Rule turning off Opportunistic Encryption for all subdomai
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                | Migrate to a configuration rule                                                                                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Opportunistic Encryption' setting](https://developers.cloudflare.com/_astro/pr-opportunistic-encryption.BcbwaI0m_2qECYg.webp) | ![Configuration rule matching the 'Opportunistic Encryption > Off' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-opportunistic-encryption-new.LwpNCqst_Z235yOw.webp) |
+| Page Rules configuration                                                                                                                                                                                        | Migrate to a configuration rule                                                                                                                                                                                                                               |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Opportunistic Encryption' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=717,format=webp/_astro/pr-opportunistic-encryption.BcbwaI0m.png) | ![Configuration rule matching the 'Opportunistic Encryption > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1046,height=1737,format=webp/_astro/pr-opportunistic-encryption-new.LwpNCqst.png) |
 
 ### Migrate Origin Cache Control
 
@@ -823,9 +823,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                         | Migrate to a cache rule                                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Origin Cache Control' setting](https://developers.cloudflare.com/_astro/pr-origin-cache-control.DCUWJE-U_Z2k59Gp.webp) | ![Cache rule matching the 'Origin Cache Control' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-origin-cache-control-new.DqpXz-FD_ZDbSey.webp) |
+| Page Rules configuration                                                                                                                                                                                | Migrate to a cache rule                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Origin Cache Control' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=710,format=webp/_astro/pr-origin-cache-control.DCUWJE-U.png) | ![Cache rule matching the 'Origin Cache Control' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1072,height=1702,format=webp/_astro/pr-origin-cache-control-new.DqpXz-FD.png) |
 
 ### Migrate Origin Error Page Pass-thru
 
@@ -855,9 +855,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                                      | Migrate to a cache rule                                                                                                                                                                         |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Origin Error Page Pass-thru' setting](https://developers.cloudflare.com/_astro/pr-origin-error-page-pass-thru.CaO5dguv_ZTxuQ5.webp) | ![Cache rule matching the 'Origin Error Page Pass-thru > On' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-origin-error-page-pass-thru-new.CEumhpfw_ARQAy.webp) |
+| Page Rules configuration                                                                                                                                                                                              | Migrate to a cache rule                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Origin Error Page Pass-thru' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=710,format=webp/_astro/pr-origin-error-page-pass-thru.CaO5dguv.png) | ![Cache rule matching the 'Origin Error Page Pass-thru > On' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1052,height=1612,format=webp/_astro/pr-origin-error-page-pass-thru-new.CEumhpfw.png) |
 
 ### Migrate Polish
 
@@ -884,9 +884,9 @@ You configured a Page Rule turning off [Polish](https://developers.cloudflare.co
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                             | Migrate to a configuration rule                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Polish' setting](https://developers.cloudflare.com/_astro/pr-polish.BMjezHuI_Z2nbLxT.webp) | ![Configuration rule matching the 'Polish > Off' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-polish-new.BPVnKGv2_Z1vqj8p.webp) |
+| Page Rules configuration                                                                                                                                                    | Migrate to a configuration rule                                                                                                                                                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Example Page Rule with 'Polish' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=527,height=485,format=webp/_astro/pr-polish.BMjezHuI.png) | ![Configuration rule matching the 'Polish > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=705,height=1272,format=webp/_astro/pr-polish-new.BPVnKGv2.png) |
 
 ### Migrate Query String Sort
 
@@ -916,9 +916,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                   | Migrate to a cache rule                                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Query String Sort' setting](https://developers.cloudflare.com/_astro/pr-query-string-sort.C01G9KtA_Z1y5BVz.webp) | ![Cache rule matching the 'Query String Sort > On' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-query-string-sort-new.DhEB-zV8_Z1HxHes.webp) |
+| Page Rules configuration                                                                                                                                                                          | Migrate to a cache rule                                                                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Example Page Rule with 'Query String Sort' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=513,height=481,format=webp/_astro/pr-query-string-sort.C01G9KtA.png) | ![Cache rule matching the 'Query String Sort > On' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=705,height=869,format=webp/_astro/pr-query-string-sort-new.DhEB-zV8.png) |
 
 ### Migrate Resolve Override
 
@@ -944,9 +944,9 @@ You configured a Page Rule changing the origin to `example.saas-provider.com`, f
 2. Turn off your existing Page Rule and validate the behavior of the origin rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                | Migrate to an origin rule                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Resolve Override' setting](https://developers.cloudflare.com/_astro/pr-resolve-override.B4LoxPLL_1wNJPY.webp) | ![Origin rule matching the 'Resolve Override' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-resolve-override-new.CqsoTaU3_ZEBJqh.webp) |
+| Page Rules configuration                                                                                                                                                                        | Migrate to an origin rule                                                                                                                                                                                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Resolve Override' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=750,height=691,format=webp/_astro/pr-resolve-override.B4LoxPLL.png) | ![Origin rule matching the 'Resolve Override' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1052,height=1440,format=webp/_astro/pr-resolve-override-new.CqsoTaU3.png) |
 
 ### Migrate Respect Strong ETags
 
@@ -976,9 +976,9 @@ The default behavior of Cache Rules is different from Page Rules. Refer to [Key 
 2. Turn off your existing Page Rule and validate the behavior of the cache rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                        | Migrate to a cache rule                                                                                                                                                             |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Respect Strong ETags' setting](https://developers.cloudflare.com/_astro/pr-respect-strong-etags.CUOv_EvP_Z3LXqt.webp) | ![Cache rule matching the 'Respect Strong ETags > On' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-respect-strong-etags-new.BnNZFkL6_Z1oczSf.webp) |
+| Page Rules configuration                                                                                                                                                                                | Migrate to a cache rule                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Respect Strong ETags' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=718,format=webp/_astro/pr-respect-strong-etags.CUOv_EvP.png) | ![Cache rule matching the 'Respect Strong ETags > On' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1053,height=1524,format=webp/_astro/pr-respect-strong-etags-new.BnNZFkL6.png) |
 
 ### Migrate Rocket Loader
 
@@ -1005,9 +1005,9 @@ You configured a Page Rule turning off Rocket Loader for all subdomains of `exam
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                          | Migrate to a configuration rule                                                                                                                                              |
-| --------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Rocket Loader' setting](https://developers.cloudflare.com/_astro/pr-rocket-loader.DOfWWA3Z_1LhMmq.webp) | ![Configuration rule matching the 'Rocket Loader > Off' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-rocket-loader-new.CPlD3EdY_PllsY.webp) |
+| Page Rules configuration                                                                                                                                                                  | Migrate to a configuration rule                                                                                                                                                                                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'Rocket Loader' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=523,height=487,format=webp/_astro/pr-rocket-loader.DOfWWA3Z.png) | ![Configuration rule matching the 'Rocket Loader > Off' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=699,height=1329,format=webp/_astro/pr-rocket-loader-new.CPlD3EdY.png) |
 
 ### Migrate Security Level
 
@@ -1034,9 +1034,9 @@ You configured a Page Rule setting Security Level to _I'm Under Attack_ for all 
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                             | Migrate to a configuration rule                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'Security Level' setting](https://developers.cloudflare.com/_astro/pr-security-level.YzQR-68G_Z1bMy81.webp) | ![Configuration rule matching the "Security Level > I'm Under Attack" setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-security-level-new.DP1C5HJ8_1BGLyi.webp) |
+| Page Rules configuration                                                                                                                                                                    | Migrate to a configuration rule                                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Example Page Rule with 'Security Level' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=517,height=480,format=webp/_astro/pr-security-level.YzQR-68G.png) | ![Configuration rule matching the "Security Level > I'm Under Attack" setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=1627,format=webp/_astro/pr-security-level-new.DP1C5HJ8.png) |
 
 ### Migrate True Client IP Header
 
@@ -1054,9 +1054,9 @@ You configured a Page Rule adding a `True-Client-IP` HTTP header for all request
 2. Turn off your existing Page Rule and validate the behavior of the Managed Transform.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                                                         | Migrate to a Managed Transform                                                                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'True Client IP Header' setting](https://developers.cloudflare.com/_astro/pr-true-client-ip-header.h51QIhp7_7UCm4.webp) | ![The 'Add "True-Client-IP" header' Managed Transform matching the 'True Client IP Header' setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-true-client-ip-header-new.DKFw6CYO_Z1SyD08.webp) |
+| Page Rules configuration                                                                                                                                                                                  | Migrate to a Managed Transform                                                                                                                                                                                                                                                    |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ![Example Page Rule with 'True Client IP Header' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=769,height=708,format=webp/_astro/pr-true-client-ip-header.h51QIhp7.png) | ![The 'Add "True-Client-IP" header' Managed Transform matching the 'True Client IP Header' setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1034,height=653,format=webp/_astro/pr-true-client-ip-header-new.DKFw6CYO.png) |
 
 ### Migrate SSL
 
@@ -1083,9 +1083,9 @@ You configured a Page Rule setting SSL to _Strict_ for all subdomains of `exampl
 2. Turn off your existing Page Rule and validate the behavior of the configuration rule you created.
 3. If your tests succeed, delete the existing Page Rule.
 
-| Page Rules configuration                                                                                      | Migrate to a configuration rule                                                                                                                     |
-| ------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![Example Page Rule with 'SSL' setting](https://developers.cloudflare.com/_astro/pr-ssl.pGEGjIS-_ZBAt4W.webp) | ![Configuration rule matching the "SSL" setting of the example Page Rule](https://developers.cloudflare.com/_astro/pr-ssl-new.DjFLYHwZ_1IeMdx.webp) |
+| Page Rules configuration                                                                                                                                              | Migrate to a configuration rule                                                                                                                                                                              |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| ![Example Page Rule with 'SSL' setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=772,height=711,format=webp/_astro/pr-ssl.pGEGjIS-.png) | ![Configuration rule matching the "SSL" setting of the example Page Rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=704,height=1592,format=webp/_astro/pr-ssl-new.DjFLYHwZ.png) |
 
 ## Settings that will not be migrated
 
@@ -1109,7 +1109,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/reference/page-rules-migration/#page","headline":"Page Rules migration guide · Cloudflare Rules docs","description":"Migrate from Page Rules to modern Cloudflare Rules alternatives.","url":"https://developers.cloudflare.com/rules/reference/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -33,7 +33,7 @@ To configure LinkedIn as an IdP:
 7. Select **Create app**.
 8. In the **Products** tab of your LinkedIn application, select **Request Access** next to the **Sign In with LinkedIn using OpenID Connect** option.
 9. In the **Auth** tab of your LinkedIn application, find the **Client ID** and **Client Secret**.
-![LinkedIn account settings where you will copy the Client ID and Client Secret](https://developers.cloudflare.com/_astro/lin5.ovn9KSN7_Z1EBFwv.webp)
+![LinkedIn account settings where you will copy the Client ID and Client Secret](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1796,height=1068,format=webp/_astro/lin5.ovn9KSN7.png)
 10. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 11. Under **Your identity providers**, select **Add new identity provider**.
 12. Select **LinkedIn** as your IdP.
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/linkedin/#page","headline":"LinkedIn · Cloudflare One docs","description":"LinkedIn in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/linkedin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SSO"]}

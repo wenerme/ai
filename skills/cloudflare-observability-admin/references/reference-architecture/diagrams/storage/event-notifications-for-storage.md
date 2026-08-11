@@ -28,7 +28,7 @@ For instance, you can configure a notification to trigger when new images are up
 
 Consider the example below of push-based post-processing: when a user uploads a new object into R2, we want to log and store that event into a separate R2 bucket. You can create this scenario yourself by following this tutorial: [Log and store upload events in R2 with event notifications](https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/).
 
-![Figure 1: Push-Based R2 Event Notifications](https://developers.cloudflare.com/_astro/pushed-based-event-notification.NdMYExDK_KsJeQ.svg "Figure 1: Push-Based R2 Event Notifications")
+![Figure 1: Push-Based R2 Event Notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=912,height=472,format=svg/_astro/pushed-based-event-notification.NdMYExDK.svg "Figure 1: Push-Based R2 Event Notifications")
 
 Figure 1: Push-Based R2 Event Notifications
 
@@ -45,7 +45,7 @@ A pull-based consumer must explicitly make a call to pull (and then acknowledge)
 
 Consider the scenario below: A user initiates a delete from R2\. An external service needs to be informed of the deletion, so a pull-based queue has been established for the external service to retrieve notifications.
 
-![Figure 2: Pull-Based R2 Event Notifications](https://developers.cloudflare.com/_astro/pull-based-event-notification.KnQPn3ra_Z1EaMFa.svg "Figure 2: Pull-Based R2 Event Notifications")
+![Figure 2: Pull-Based R2 Event Notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=856,height=481,format=svg/_astro/pull-based-event-notification.KnQPn3ra.svg "Figure 2: Pull-Based R2 Event Notifications")
 
 Figure 2: Pull-Based R2 Event Notifications
 
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/#page","headline":"Event notifications for storage · Cloudflare Reference Architecture docs","description":"Use Cloudflare Workers or an external service to monitor for notifications about data changes and then handle them appropriately.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

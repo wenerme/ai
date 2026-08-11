@@ -35,7 +35,7 @@ Check the [available fields and functions](https://developers.cloudflare.com/rul
 8. Enter the name of the HTTP request header to modify in **Header name** and the static value or expression in **Value**, if you are setting the header value.
 9. To modify another HTTP request header in the same rule, select **Set new header**. You can modify up to 30 HTTP request headers in a single rule.
 The following example includes the modification of three headers:
-![Example configuration performing three request header modifications: set a dynamic header value, set a static header value, and remove an existing header.](https://developers.cloudflare.com/_astro/request-header-modification-example.CKUUJ7cw_2iC6Rs.webp)
+![Example configuration performing three request header modifications: set a dynamic header value, set a static header value, and remove an existing header.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1045,height=396,format=webp/_astro/request-header-modification-example.CKUUJ7cw.png)
 10. To save and deploy your rule, select **Deploy**. If you are not ready to deploy your rule, select **Save as Draft**.
 If you are matching a hostname in your rule expression, you may be prompted to create a proxied DNS record for that hostname. Refer to [Troubleshooting](https://developers.cloudflare.com/rules/reference/troubleshooting/#this-rule-may-not-apply-to-your-traffic) for more information.
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/create-dashboard/#page","headline":"Create a request header transform rule in the dashboard · Cloudflare Rules docs","description":"Create request header modification rules in the dashboard.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Headers","Request modification"]}

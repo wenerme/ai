@@ -18,7 +18,7 @@ A Tail Worker receives information about the execution of other Workers (known a
 
 Tail Workers are available to all customers on the Workers Paid and Enterprise tiers. Tail Workers are billed by [CPU time](https://developers.cloudflare.com/workers/platform/pricing/#workers), not by the number of requests.
 
-![Tail Worker diagram](https://developers.cloudflare.com/_astro/tail-workers.CaYo-ajt_1Mwmpt.webp)
+![Tail Worker diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=532,format=webp/_astro/tail-workers.CaYo-ajt.png)
 
 A Tail Worker is automatically invoked after the invocation of a producer Worker (the Worker the Tail Worker will track) that contains the application logic. It captures events after the producer has finished executing. Events throughout the request lifecycle, including potential sub-requests via [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) and [Dynamic Dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/), will be included. You can filter, change the format of the data, and send events to any HTTP endpoint. For quick debugging, Tail Workers can be used to send logs to [KV](https://developers.cloudflare.com/kv/api/) or any database.
 
@@ -151,7 +151,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/tail-workers/#page","headline":"Tail Workers · Cloudflare Workers docs","description":"Track and log Workers on invocation by assigning a Tail Worker to your projects.","url":"https://developers.cloudflare.com/workers/observability/logs/tail-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -69,7 +69,7 @@ To test if an IdP is correctly configured:
 
 If your provider is connected, another window will open in your browser, with this message:
 
-!["Your connection works\!" message displayed for a successful IdP test](https://developers.cloudflare.com/_astro/connected-idp.Dc_ZasM0_Z8c4gR.webp)
+!["Your connection works\!" message displayed for a successful IdP test](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1724,height=1020,format=webp/_astro/connected-idp.Dc_ZasM0.png)
 
 ### Your provider is not connected
 
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#page","headline":"Identity providers · Cloudflare One docs","description":"Identity providers in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}

@@ -44,7 +44,7 @@ Configuring Spectrum to protect your FTP server requires creating a set of Spect
 
 The control plane runs on port 21 by default, and there is nothing special that needs to be to protect this part of the FTP server. In the example below, replace 198.51.100.1 with the IP of the origin server.
 
-![Add an application dialog with IP address and port set to 21](https://developers.cloudflare.com/_astro/ftp-control-plane-app.CCDNXmIO_Z1qUJ8V.webp)
+![Add an application dialog with IP address and port set to 21](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=656,height=1153,format=webp/_astro/ftp-control-plane-app.CCDNXmIO.png)
 
 This configuration proxies incoming connections to the origin. However, if clients issue a PASV command, they will still receive the IP of the actual origin for the data connection. This is not preferred, as this exposes the origin's IP to the client instead of being masked behind Spectrum. Steps to prevent this are documented in sections below.
 
@@ -99,7 +99,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/about/ftp/#page","headline":"FTP · Cloudflare Spectrum docs","description":"Enable Spectrum for FTP services and understand protocol limitations.","url":"https://developers.cloudflare.com/spectrum/about/ftp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["FTP"]}

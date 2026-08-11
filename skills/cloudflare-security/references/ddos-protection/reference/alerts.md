@@ -178,7 +178,7 @@ The available alerts depend on your Cloudflare plan and subscribed services:
 
 The following image shows an example notification delivered via email:
 
-![Example notification email of a DDoS attack](https://developers.cloudflare.com/_astro/ddos-notification-example.c2rVlJvC_Z1qrIXz.webp)
+![Example notification email of a DDoS attack](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=326,height=714,format=webp/_astro/ddos-notification-example.c2rVlJvC.png)
 
 To investigate a possibly ongoing attack, select **View Dashboard**. To go to the rule details in the Cloudflare dashboard, select **View Rule**.
 
@@ -196,7 +196,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/reference/alerts/#page","headline":"DDoS alerts · Cloudflare DDoS Protection docs","description":"Configure DDoS attack notifications via email, webhook, or PagerDuty.","url":"https://developers.cloudflare.com/ddos-protection/reference/alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

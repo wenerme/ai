@@ -40,9 +40,9 @@ Your Cloudflare dashboard user must have one of the following [Account Roles](ht
 [Go to **Google Tag Gateway** ↗](https://dash.cloudflare.com/?to=/:account/tag-management/google-tag-gateway)
 2. Select your domain.
 3. Enable the toggle for **Turn on and configure Google tag gateway**.
-![Google tag gateway for advertisers configuration](https://developers.cloudflare.com/_astro/google-tag-configuration.DAsbB12B_Z2mnQya.webp)
+![Google tag gateway for advertisers configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2344,height=1194,format=webp/_astro/google-tag-configuration.DAsbB12B.png)
 1. Add your Google tag ID and the path on your website reserved for the Google tag. The [Google tag ID ↗](https://support.google.com/analytics/answer/9539598?hl=en) can be found in the Google Tag Experience dashboard. The measurement path is an unused path on your site that will load Google Tag Manager and all subsequent measurement requests.
-![Add to ID and path](https://developers.cloudflare.com/_astro/google-tag-id-path.FiWAyHgy_Z1n6SmD.webp)
+![Add to ID and path](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1828,height=1050,format=webp/_astro/google-tag-id-path.FiWAyHgy.png)
 1. Once you click **Save**, Google tag gateway for advertisers will be enabled on your zone. If you already have a GTM script on your website, this First Party Tag will override the existing script.
 
 Now that you have authenticated into your Cloudflare account and configured GTM in first-party mode, your Google Tags will be loaded using `https://your-domain/measurement-path/...`and subsequent measurement requests will be served by Cloudflare.
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/google-tag-gateway/#page","headline":"Google tag gateway for advertisers · Google tag gateway for advertisers docs","description":"Deploy Google measurement tags from your domain for improved ad signal recovery.","url":"https://developers.cloudflare.com/google-tag-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}

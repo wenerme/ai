@@ -24,7 +24,7 @@ Stream handles video streaming end-to-end, from ingestion through delivery.
 2. Each live input has a unique Stream Key, that you provide to the creator who is streaming live video.
 3. Creators use this Stream Key to broadcast live video to Cloudflare Stream, over either RTMPS or SRT.
 4. Cloudflare Stream encodes this live video at multiple resolutions and delivers it to viewers, using Cloudflare's Global Network. You can play video on your website using the [Stream Player](https://developers.cloudflare.com/stream/viewing-videos/using-the-stream-player/) or using [any video player that supports HLS or DASH](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/).
-![Diagram the explains the live stream workflow](https://developers.cloudflare.com/_astro/live-stream-workflow.CRSBhOc-_1CytBG.webp)
+![Diagram the explains the live stream workflow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=691,height=397,format=webp/_astro/live-stream-workflow.CRSBhOc-.png)
 
 ## RTMP reconnections
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/stream/stream-live/#page","headline":"Stream live video · Cloudflare Stream docs","description":"Ingest, encode, and deliver live video to viewers worldwide using Cloudflare Stream.","url":"https://developers.cloudflare.com/stream/stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

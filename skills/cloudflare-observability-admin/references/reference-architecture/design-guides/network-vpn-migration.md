@@ -18,13 +18,13 @@ Last updated Apr 14, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Over the past few years, the traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. Due to an increase in [vulnerabilities ↗](https://www.networkworld.com/article/2114694/new-vpn-risk-report-finds-nearly-half-of-enterprises-attacked-via-vpn-vulnerabilities.html) found in on-premises VPN products, security and IT teams are looking for solutions that don't require teams to monitor for and respond to [CVE alerts ↗](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=vpn). These same systems also limit the user's bandwidth because they route all user Internet traffic through a single infrastructure which results in a poor user experience. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services. User expectations for application performance are exposing limitations in bandwidth constrained, self hosted VPN solutions. In summary, running your own VPN is expensive, high risk and doesn't deliver a great user experience.
 
-![Diagram showing suboptimal traffic paths for traffic to Internet resources.](https://developers.cloudflare.com/_astro/traditional-vpn.BpH8a1pr_1HvEsv.svg "Figure 1: A traditional VPN deployment, where all user traffic destined for the Internet must route through the company hosted and managed VPN service.")
+![Diagram showing suboptimal traffic paths for traffic to Internet resources.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=721,height=680,format=svg/_astro/traditional-vpn.BpH8a1pr.svg "Figure 1: A traditional VPN deployment, where all user traffic destined for the Internet must route through the company hosted and managed VPN service.")
 
 Figure 1: A traditional VPN deployment, where all user traffic destined for the Internet must route through the company hosted and managed VPN service.
 
 As such, many organizations are looking to move to a [zero trust ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) security posture using [Zero Trust Network Access ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) (ZTNA) services as part of a [Secure Access Service Edge ↗](https://www.cloudflare.com/learning/access-management/what-is-sase/) (SASE) architecture to provide remote access to private resources. With all the critical software running as a cloud service, organizations are relieved of the duty of keeping servers and software up to date. Cloud platforms are also architected for massive scale which significantly increases available bandwidth for end users, therefore improving their experience.
 
-![Diagram showing traffic paths directly flowing to Internet resources.](https://developers.cloudflare.com/_astro/sase-remote-access.CybpgS2A_ZCgjYa.svg "Figure 2: SASE platforms do not degrade user Internet access experience, and provide fast, secure global access to self hosted hosted resources.")
+![Diagram showing traffic paths directly flowing to Internet resources.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1004,height=556,format=svg/_astro/sase-remote-access.CybpgS2A.svg "Figure 2: SASE platforms do not degrade user Internet access experience, and provide fast, secure global access to self hosted hosted resources.")
 
 Figure 2: SASE platforms do not degrade user Internet access experience, and provide fast, secure global access to self hosted hosted resources.
 
@@ -107,7 +107,7 @@ This guide will describe the following phases at a high level, if you need help 
 
 Consider an organization with global IT infrastructure. Specifically, three data centers deployed in Europe, USA and Asia with each their own VPN service. To get the best performance, this VPN implementation requires employees to make a conscious decision to connect to one of the VPN clusters depending on their location. In this example all user Internet traffic is routed through the VPN service, where firewalls apply a level of security protecting users from the dangers of the general Internet.
 
-![A traditional VPN deployment using VPN concentrators spread across three DCs.](https://developers.cloudflare.com/_astro/vpn-concentrators.B1KJmuAT_2i5B9P.svg "Figure 3: A traditional VPN deployment using VPN concentrators spread across three DCs.")
+![A traditional VPN deployment using VPN concentrators spread across three DCs.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=874,height=537,format=svg/_astro/vpn-concentrators.B1KJmuAT.svg "Figure 3: A traditional VPN deployment using VPN concentrators spread across three DCs.")
 
 Figure 3: A traditional VPN deployment using VPN concentrators spread across three DCs.
 
@@ -122,7 +122,7 @@ Both employee devices and data center networks will connect to their closest Clo
 
 Figure 4 shows traffic from end user devices to Cloudflare and tunnels routing traffic to private data centers. When user traffic reaches the closest Cloudflare access point, Cloudflare will route traffic destined for private applications directly to the data centers, while processing Internet-bound traffic through Cloudflare's [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) (SWG). It is possible to leverage existing DNS services to resolve requests to private addresses using Cloudflare [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/). [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/on-ramps/) is used to create IPsec tunnels between Cloudflare and data centers and is configured with static routes that determine how traffic reaches each existing network and applications.
 
-![A high level design of Cloudflare traffic routing for phase 1 of the migration.](https://developers.cloudflare.com/_astro/phase-1.ghshUb-E_Z2ivEY6.svg "Figure 4: A high level design of Cloudflare traffic routing for phase 1 of the migration.")
+![A high level design of Cloudflare traffic routing for phase 1 of the migration.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1283,height=564,format=svg/_astro/phase-1.ghshUb-E.svg "Figure 4: A high level design of Cloudflare traffic routing for phase 1 of the migration.")
 
 Figure 4: A high level design of Cloudflare traffic routing for phase 1 of the migration.
 
@@ -191,7 +191,7 @@ Fortunately, most of these applications can be migrated one-by-one to the more s
 2. Add [Private Networks to the tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/) to define routing and access that is scoped more specifically to the network and applications it handles traffic for. For example, expose the 10.20.56.0/24 subnet via the software connector tunnel, instead of the larger 10.20.0.0/16 exposed by the Cloudflare WAN managed IPsec tunnel.
 3. Traffic from employees will now be routed via the software connector tunnel for the /24 subnet instead of the /16 route going over the IPsec tunnel, thereby offloading the reliance on the IPsec termination device.
 
-![An evolved architecture diagram showing software connector based tunnels offloading \(or replacing\) the IPsec tunnels.](https://developers.cloudflare.com/_astro/phase-2.DT29_r7n_1OSTEq.svg "Figure 5: An evolved phase 2 architecture diagram showing software connector based tunnels offloading (or replacing) the IPsec tunnels.")
+![An evolved architecture diagram showing software connector based tunnels offloading \(or replacing\) the IPsec tunnels.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1284,height=562,format=svg/_astro/phase-2.DT29_r7n.svg "Figure 5: An evolved phase 2 architecture diagram showing software connector based tunnels offloading (or replacing) the IPsec tunnels.")
 
 Figure 5: An evolved phase 2 architecture diagram showing software connector based tunnels offloading (or replacing) the IPsec tunnels.
 
@@ -203,7 +203,7 @@ The first two phases of this guide have resulted in a design very similar to tra
 
 This phase is about making the resources exposed behind the tunnels smaller and more isolated to prevent lateral movement within internal networks. You will be able to use the visibility gained in the previous phases to select an application (or set of applications), associated IP addresses and deploy a dedicated software connector instance. See [the documentation on how to deploy connectors and expose private networks](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/create-remote-tunnel/) and in step 3 configure the IP addresses of the application.
 
-![Example architecture of tunnels deployed per application to improve security posture by reducing lateral movement within data centers.](https://developers.cloudflare.com/_astro/phase-3.CMITQCmp_ZegPyu.svg "Figure 6: Example phase 3 architecture of tunnels deployed per application to improve security posture by reducing lateral movement within data centers.")
+![Example architecture of tunnels deployed per application to improve security posture by reducing lateral movement within data centers.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1284,height=563,format=svg/_astro/phase-3.CMITQCmp.svg "Figure 6: Example phase 3 architecture of tunnels deployed per application to improve security posture by reducing lateral movement within data centers.")
 
 Figure 6: Example phase 3 architecture of tunnels deployed per application to improve security posture by reducing lateral movement within data centers.
 
@@ -217,7 +217,7 @@ In addition to routing traffic for private IP addresses, `cloudflared` can expos
 
 In the example below, `erp.example.com` is added as [Public Hostname](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/) to the tunnel, routing traffic to port 80 and/or 443 to a specific IP address on the internal subnet Y. Access to this resource from the Internet is then protected using [Cloudflare Access security policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) which also rely on the IdP connection you've set up for onboarding your employees.
 
-![Adding a public hostname to a tunnel for clientless access to internal applications.](https://developers.cloudflare.com/_astro/clientless-access.Cnw_KhKM_ZegPyu.svg "Figure 7: Adding a public hostname to a tunnel for clientless access to internal applications.")
+![Adding a public hostname to a tunnel for clientless access to internal applications.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1284,height=563,format=svg/_astro/clientless-access.Cnw_KhKM.svg "Figure 7: Adding a public hostname to a tunnel for clientless access to internal applications.")
 
 Figure 7: Adding a public hostname to a tunnel for clientless access to internal applications.
 
@@ -242,7 +242,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/#page","headline":"Network-focused migration from VPN concentrators to Zero Trust Network Access · Cloudflare Reference Architecture docs","description":"The traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/network-vpn-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

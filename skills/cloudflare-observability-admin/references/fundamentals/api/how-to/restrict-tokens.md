@@ -23,7 +23,7 @@ API tokens can be restricted at runtime in two ways:
 
 Client IP address restrictions control which IP addresses can make API requests with this token. By default, if no filtering is applied, all IP addresses can use the token. Once an `Is in` rule is applied, the token can only be used from the defined IP addresses. Define ranges with [CIDR notation ↗](https://en.wikipedia.org/wiki/Classless%5FInter-Domain%5FRouting#CIDR%5Fnotation). To allow an IP range with exceptions, define `Is not in` to exempt specific IPs or smaller ranges.
 
-![IP Address filtering options](https://developers.cloudflare.com/_astro/ip-filter.DbEuurVj_Z2cXw3S.webp)
+![IP Address filtering options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1802,height=442,format=webp/_astro/ip-filter.DbEuurVj.png)
 
 Note
 
@@ -37,7 +37,7 @@ Note
 
 Dates selected are defined as 00:00 UTC of that day. For finer grained time selection, use the [API](https://developers.cloudflare.com/fundamentals/api/).
 
-![Time to Live selection calendar](https://developers.cloudflare.com/_astro/ttl.6XWjuAt__XSIyS.webp)
+![Time to Live selection calendar](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=836,format=webp/_astro/ttl.6XWjuAt_.png)
 
 Was this helpful?
 
@@ -45,7 +45,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/#page","headline":"Restrict tokens · Cloudflare Fundamentals docs","description":"Limit Cloudflare API token usage by client IP address filtering and time-to-live (TTL) constraints.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

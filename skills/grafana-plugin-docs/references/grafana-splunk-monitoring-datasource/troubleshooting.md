@@ -7,7 +7,7 @@ description: "Troubleshoot common issues with the Splunk Infrastructure Monitori
 
 # Troubleshoot the Splunk Infrastructure Monitoring data source
 
-This page provides solutions to common issues you might encounter when configuring or using this data source.
+This document provides solutions to common issues you might encounter when configuring or using this data source.
 
 ## Configuration issues
 

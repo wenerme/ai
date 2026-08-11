@@ -30,7 +30,7 @@ Cloudflare's low-latency, fully serverless compute platform, [Workers](https://d
 
 ## A/B testing using Workers
 
-![Figure 1: A/B testing using Workers](https://developers.cloudflare.com/_astro/a-b-testing-workers.2TNh_6Un_Z29LwvW.svg "Figure 1: A/B testing using Workers")
+![Figure 1: A/B testing using Workers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/a-b-testing-workers.2TNh_6Un.svg "Figure 1: A/B testing using Workers")
 
 Figure 1: A/B testing using Workers
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/#page","headline":"A/B-testing using Workers · Cloudflare Reference Architecture docs","description":"Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/a-b-testing-using-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

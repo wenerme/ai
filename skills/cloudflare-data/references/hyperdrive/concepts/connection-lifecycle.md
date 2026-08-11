@@ -22,7 +22,7 @@ By maintaining a connection pool to your database within Cloudflare's network, H
 
 When you use a database client in a Cloudflare Worker, the connection lifecycle works differently than in traditional server environments. Here's what happens:
 
-![Hyperdrive connection](https://developers.cloudflare.com/_astro/hyperdrive-connection-lifecycle.B2jgT_oK_ZFUUBE.svg)
+![Hyperdrive connection](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=959,height=591,format=svg/_astro/hyperdrive-connection-lifecycle.B2jgT_oK.svg)
 
 Without Hyperdrive, every Worker invocation would need to establish a new connection directly to your origin database. This connection setup process requires multiple roundtrips across the Internet to complete the TCP handshake, TLS negotiation, and database authentication — that's 7x round trips and added latency before your query can even execute.
 
@@ -158,7 +158,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/#page","headline":"Connection lifecycle · Cloudflare Hyperdrive docs","description":"Understand how connections are managed between Workers, Hyperdrive, and your origin database.","url":"https://developers.cloudflare.com/hyperdrive/concepts/connection-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -159,7 +159,7 @@ When a Cloudflare Worker intercepts a visitor request, it can dispatch additiona
 
 Logpush has traditionally been great at delivering Cloudflare logs to a variety of destinations in JSON format. While JSON is flexible and easily readable, it can be inefficient to store and query at scale.
 
-With this release, you can now send your logs directly to [Pipelines](https://developers.cloudflare.com/pipelines/) to ingest, transform, and store your logs in [R2](https://developers.cloudflare.com/r2/) as Parquet files or Apache Iceberg tables managed by [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/). This makes the data footprint more compact and more efficient at querying your logs instantly with [R2 SQL](https://developers.cloudflare.com/r2-sql/) or any other query engine that supports Apache Iceberg or Parquet.
+With this release, you can now send your logs directly to [Pipelines](https://developers.cloudflare.com/pipelines/) to ingest, transform, and store your logs in [R2](https://developers.cloudflare.com/r2/) as Parquet files or Apache Iceberg tables managed by [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). This makes the data footprint more compact and more efficient at querying your logs instantly with [R2 SQL](https://developers.cloudflare.com/r2-sql/) or any other query engine that supports Apache Iceberg or Parquet.
 
 #### Transform logs before storage
 
@@ -313,7 +313,7 @@ We’re excited to introduce **Logpush Health Dashboards**, giving customers rea
 
 * **Upload Health**: See how much data was successfully uploaded, where drops occurred, and how your jobs are performing overall. This includes data completeness, success rate, and upload volume.
 * **Upload Reliability** – Diagnose issues impacting stability, retries, or latency, and monitor key metrics such as retry counts, upload duration, and destination availability.
-![Health Dashboard](https://developers.cloudflare.com/_astro/Health-Dashboard.CP0mV0IW_Z1GdXr6.webp)
+![Health Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1333,height=334,format=webp/_astro/Health-Dashboard.CP0mV0IW.gif)
 
 Health Dashboards can be accessed from the Logpush page in the Cloudflare dashboard at the account or zone level, under the Health tab. For more details, refer to our [**Logpush Health Dashboards**](https://developers.cloudflare.com/logs/logpush/logpush-health) documentation, which includes a comprehensive troubleshooting guide to help interpret and resolve common issues.
 
@@ -426,7 +426,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/logs/changelog/logs/#page","headline":"Logs · Cloudflare Logs docs","description":"View changelog entries for Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/changelog/logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

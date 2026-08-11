@@ -22,7 +22,7 @@ KV supports exceptionally high read volumes with low latency, making it possible
 
 When you write to KV, your data is written to central data stores. Your data is not sent automatically to every location's cache.
 
-![Your data is written to central data stores when you write to KV.](https://developers.cloudflare.com/_astro/kv-write.jjzouJNv_2ae9yh.svg)
+![Your data is written to central data stores when you write to KV.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1236,height=453,format=svg/_astro/kv-write.jjzouJNv.svg)
 
 Initial reads from a location do not have a cached value. Data must be read from the nearest regional tier, followed by a central tier, degrading finally to the central stores for a truly cold global read. While the first access is slow globally, subsequent requests are faster, especially if requests are concentrated in a single region.
 
@@ -30,13 +30,13 @@ Hot and cold read
 
 A hot read means that the data is cached on Cloudflare's edge network using the [CDN ↗](https://developers.cloudflare.com/cache/), whether it is in a local cache or a regional cache. A cold read means that the data is not cached, so the data must be fetched from the central stores.
 
-![Initial reads will miss the cache and go to the nearest central data store first.](https://developers.cloudflare.com/_astro/kv-slow-read.CTQ3d4MF_2ae9yh.svg)
+![Initial reads will miss the cache and go to the nearest central data store first.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1236,height=453,format=svg/_astro/kv-slow-read.CTQ3d4MF.svg)
 
 Frequent reads from the same location return the cached value without reading from anywhere else, resulting in the fastest response times. KV operates diligently to update the cached values by refreshing from upper tier caches and central data stores before cache expires in the background.
 
 Refreshing from upper tiers and the central data stores in the background is done carefully so that assets that are being accessed continue to be kept served from the cache without any stalls.
 
-![As mentioned above, frequent reads will return a cached value.](https://developers.cloudflare.com/_astro/kv-fast-read.Bxp8uFUb_2ae9yh.svg)
+![As mentioned above, frequent reads will return a cached value.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1236,height=453,format=svg/_astro/kv-fast-read.Bxp8uFUb.svg)
 
 KV is optimized for high-read applications. It stores data centrally and uses a hybrid push/pull-based replication to store data in cache. KV is suitable for use cases where you need to write relatively infrequently, but read quickly and frequently. Infrequently read values are pulled from other data centers or the central stores, while more popular values are cached in the data centers they are requested from.
 
@@ -86,7 +86,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/how-kv-works/#page","headline":"How KV works · Cloudflare Workers KV docs","description":"Workers KV stores data centrally and caches it globally, optimizing for high-read, low-latency workloads.","url":"https://developers.cloudflare.com/kv/concepts/how-kv-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -36,11 +36,11 @@ If you have one or multiple projects connected to a repository (i.e. a [monorepo
 
 You can see the statuses by selecting the status icon next to a commit or by going to **Build** \> **Pipelines** within your GitLab repository. In the example below, you can select the green check mark to see the results of the check run.
 
-![GitLab Status](https://developers.cloudflare.com/_astro/gl-status-checks.B9jgSbf7_Z1XRFYR.webp)
+![GitLab Status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2510,height=152,format=webp/_astro/gl-status-checks.B9jgSbf7.png)
 
 Check runs will appear like the following in your repository. You can select one of the statuses to view the [preview URL](https://developers.cloudflare.com/pages/configuration/preview-deployments/) for that deployment.
 
-![GitLab Commit Status](https://developers.cloudflare.com/_astro/glcommitstatus.BXV17OMM_1I3UIK.webp)
+![GitLab Commit Status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=584,height=176,format=webp/_astro/glcommitstatus.BXV17OMM.png)
 
 If a build skips for any reason (i.e. CI Skip, build watch paths, or branch deployment controls), the check run/commit status will not appear.
 
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/#page","headline":"GitLab integration · Cloudflare Pages docs","description":"Connect a GitLab repository to Cloudflare Pages for automatic deployments and commit status checks.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

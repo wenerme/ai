@@ -62,7 +62,7 @@ The Cloudflare dashboard provides the configuration interface for:
 
 ### Authentication and authorization flow
 
-![Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.](https://developers.cloudflare.com/_astro/figure1.DqycNoJs_1CKCxE.svg "Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.")
+![Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=915,height=546,format=svg/_astro/figure1.DqycNoJs.svg "Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.")
 
 Figure 1: SentinelOne is used in Cloudflare policies as part of authorization flow.
 
@@ -102,7 +102,7 @@ SentinelOne provides [endpoint detection and response (EDR) ↗](https://www.sen
 
 ## Core architecture
 
-![Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.](https://developers.cloudflare.com/_astro/figure2.BaY3MgFK_Z25mW9m.svg "Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.")
+![Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1619,height=1082,format=svg/_astro/figure2.BaY3MgFK.svg "Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.")
 
 Figure 2: SentinelOne and Cloudflare Zero Trust technical architecture.
 
@@ -188,7 +188,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/#page","headline":"Enhancing security posture with SentinelOne and Cloudflare One · Cloudflare Reference Architecture docs","description":"The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution. The integration works through a service-to-service posture check that identifies devices based on their serial numbers.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-sentinelone/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

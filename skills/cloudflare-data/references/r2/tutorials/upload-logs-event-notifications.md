@@ -16,7 +16,7 @@ Last updated Mar 20, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 This example provides a step-by-step guide on using [event notifications](https://developers.cloudflare.com/r2/buckets/event-notifications/) to capture and store R2 upload logs in a separate bucket.
 
-![Push-Based R2 Event Notifications](https://developers.cloudflare.com/_astro/pushed-based-event-notification.NdMYExDK_KsJeQ.svg)
+![Push-Based R2 Event Notifications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=912,height=472,format=svg/_astro/pushed-based-event-notification.NdMYExDK.svg)
 
 ## 1\. Install Wrangler
 
@@ -88,7 +88,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 	"name": "event-notification-writer",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -115,7 +115,7 @@ In your Worker project's \[[Wrangler configuration file](https://developers.clou
 name = "event-notification-writer"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.consumers]]
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/#page","headline":"Log and store upload events in R2 with event notifications · Cloudflare R2 docs","description":"This example provides a step-by-step guide on using event notifications to capture and store R2 upload logs in a separate bucket.","url":"https://developers.cloudflare.com/r2/tutorials/upload-logs-event-notifications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}

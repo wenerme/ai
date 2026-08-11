@@ -68,7 +68,7 @@ A **trigger** is a configuration that defines how your Worker gets built and dep
 
 Most Builds API operations follow this pattern: first get your Worker's tag, then get the trigger UUID, then perform build operations.
 
-![Workflow overview: get Worker tag, then get trigger UUID, then perform build operations.](https://developers.cloudflare.com/_astro/workflow-overview.D-gY5w1T_Z1GR2BL.svg)
+![Workflow overview: get Worker tag, then get trigger UUID, then perform build operations.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=760,height=100,format=svg/_astro/workflow-overview.DL8TB_t1.svg)
 
 | Step | Action           | Endpoint                                    |
 | ---- | ---------------- | ------------------------------------------- |
@@ -289,7 +289,7 @@ The following examples show common use cases for the Builds API.
 
 This example walks through the complete process of connecting a GitHub repository to a Worker and setting up automated builds using only the API.
 
-![Setup flow: get GitHub IDs, create repo connection, get Worker tag, create triggers, set env variables, trigger first build.](https://developers.cloudflare.com/_astro/setup-from-scratch.BUpowztp_171tEY.svg)
+![Setup flow: get GitHub IDs, create repo connection, get Worker tag, create triggers, set env variables, trigger first build.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=310,format=svg/_astro/setup-from-scratch.BV6HM_4R.svg)
 
 | Step | Action                      | Endpoint                                                      |
 | ---- | --------------------------- | ------------------------------------------------------------- |
@@ -464,7 +464,7 @@ Your Worker is now connected to GitHub. Future pushes to `main` will automatical
 
 Redeploy your current active deployment to refresh build-time data. This is useful when you need to rebuild without code changes.
 
-![Redeploy flow: get active deployment, find the build for that version, retrigger with same branch and commit.](https://developers.cloudflare.com/_astro/redeploy-flow.WidssEDb_ZM2wet.svg)
+![Redeploy flow: get active deployment, find the build for that version, retrigger with same branch and commit.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=100,format=svg/_astro/redeploy-flow.CJhryiKc.svg)
 
 | Step | Action                            | Endpoint                                       |
 | ---- | --------------------------------- | ---------------------------------------------- |
@@ -535,7 +535,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/#page","headline":"Builds API reference · Cloudflare Workers docs","description":"Learn how to programmatically trigger builds, manage triggers, and monitor your Workers Builds using the API.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

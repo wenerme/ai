@@ -18,7 +18,7 @@ This page outlines the SQL features supported by Log Explorer, including common 
 
 The diagram below illustrates the general shape of a valid query supported in Log Explorer. It shows how standard SQL clauses — such as `SELECT`, `WHERE`, `GROUP BY`, and `ORDER BY` — can be composed to form supported queries.
 
-![Supported SQL grammar](https://developers.cloudflare.com/_astro/supported-sql-grammar-graph.bOILnB7v_1BnHeS.webp)
+![Supported SQL grammar](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=980,height=864,format=webp/_astro/supported-sql-grammar-graph.bOILnB7v.png)
 
 Examples of queries include:
 
@@ -101,7 +101,7 @@ Computes the average origin response time in milliseconds.
 
 The diagram below represents the grammar for SQL expressions including scalar and aggregate functions.
 
-![Scalar and aggregate functions](https://developers.cloudflare.com/_astro/scalar-aggregate-functions.ucmFeJbw_Z172y6U.webp)
+![Scalar and aggregate functions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=392,height=428,format=webp/_astro/scalar-aggregate-functions.ucmFeJbw.png)
 
 ## Expressions
 
@@ -121,11 +121,11 @@ Conditions or logic used in queries:
 
 The diagram below represents the grammar for SQL expressions, detailing the various forms an expression can take, including columns, literals, functions, operators, and aliases.
 
-![SQL expressions](https://developers.cloudflare.com/_astro/expressions.BHSBeoXm_1Sx8ac.webp)
+![SQL expressions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1152,height=714,format=webp/_astro/expressions.BHSBeoXm.png)
 
 The diagram below defines the grammar for unary operators, which operate on a single operand (for example, negation or logical `NOT`):
 
-![Grammar for unary operators](https://developers.cloudflare.com/_astro/not.BmwQbTYc_Z1Idv4u.webp)
+![Grammar for unary operators](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=354,height=264,format=webp/_astro/not.BmwQbTYc.png)
 
 ## Binary Operators
 
@@ -143,7 +143,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/sql-queries/#page","headline":"SQL queries supported · Cloudflare Log Explorer docs","description":"Review SQL syntax supported by Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/sql-queries/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -27,7 +27,7 @@ This reference architecture diagram illustrates the key Cloudflare components an
 
 Devices connect to Cloudflare's anycast network, which inspects and filters incoming data to protect against threats like DDoS attacks, malicious bots, and unauthorised access. Cloudflare's integrated services (including the content delivery network, load balancing, edge computing, and storage solutions), work together seamlessly to enhance data delivery, scalability, and resilience. This ensures that data is processed, optimized, and delivered efficiently to reduce latency, distribute traffic effectively, and handle requests closer to users. Additionally, the routing of data to origins is optimized by the vast global network and smart routing to identify the fastest, most efficient paths. This combination of security, scalability, performance, and routing results in a safer and faster connection between devices and their destination services.
 
-![Figure 1: Optimizing and securing connected transportation systems](https://developers.cloudflare.com/_astro/figure1.FtS8xCcW_1Lu4jP.svg)
+![Figure 1: Optimizing and securing connected transportation systems](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1472,height=783,format=svg/_astro/figure1.D3Kmm-1j.svg)
 1. **Mutual TLS (mTLS)**: To ensure strong authentication, Cloudflare utilizes [mutual TLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) (mTLS) to verify both client and server identities. This adds an initial layer of trust, ensuring only authorized devices can communicate with the application.
 2. **Cloudflare anycast network**: Cloudflare uses [anycast ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) networking and is one of the world's most connected and geographically distributed networks. Traffic is routed to the nearest Cloudflare data center, which reduces the number of network hops, dynamically adapts to changing network conditions, and ensures data takes the shortest path to its destination, minimizing latency and maximizing reliability.
 3. **Security services**:
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/#page","headline":"Optimizing and securing connected transportation systems · Cloudflare Reference Architecture docs","description":"This diagram showcases Cloudflare components optimizing connected transportation systems. It illustrates how their technologies minimize latency, ensure reliability, and strengthen security for critical data flow.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/iot/optimizing-and-securing-connected-transportation-systems/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

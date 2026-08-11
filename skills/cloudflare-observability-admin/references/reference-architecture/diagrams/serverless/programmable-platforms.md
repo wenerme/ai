@@ -34,7 +34,7 @@ The Workers for Platforms architecture consists of several key components that w
 
 ## Main Request Flow
 
-![Figure 1: Workers for Platforms: Main Flow](https://developers.cloudflare.com/_astro/programmable-platforms-1.BCCEhzLr_Z29LwvW.svg "Figure 1: Workers for Platforms: Main Flow")
+![Figure 1: Workers for Platforms: Main Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/programmable-platforms-1.BCCEhzLr.svg "Figure 1: Workers for Platforms: Main Flow")
 
 Figure 1: Workers for Platforms: Main Flow
 
@@ -43,7 +43,7 @@ Figure 1: Workers for Platforms: Main Flow
 
 ## Invocation & Metadata Flow
 
-![Figure 2: Workers for Platforms: Main Flow](https://developers.cloudflare.com/_astro/programmable-platforms-2.DGAT6ZDR_Z1H5TbM.svg "Figure 2: Workers for Platforms: Main Flow")
+![Figure 2: Workers for Platforms: Main Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=594,format=svg/_astro/programmable-platforms-2.DGAT6ZDR.svg "Figure 2: Workers for Platforms: Main Flow")
 
 Figure 2: Workers for Platforms: Main Flow
 
@@ -55,7 +55,7 @@ For many use cases, it makes sense to retrieve additional metadata, user data, o
 
 ## Egress Control Pattern
 
-![Figure 3: Workers for Platforms: Egress Control](https://developers.cloudflare.com/_astro/programmable-platforms-3.C-LkeZtS_Z1H5TbM.svg "Figure 3: Workers for Platforms: Egress Control")
+![Figure 3: Workers for Platforms: Egress Control](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=594,format=svg/_astro/programmable-platforms-3.C-LkeZtS.svg "Figure 3: Workers for Platforms: Egress Control")
 
 Figure 3: Workers for Platforms: Egress Control
 
@@ -67,7 +67,7 @@ Data observability and control is crucial for security. [Outbound Workers](https
 
 ## Metrics & Logging Architecture
 
-![Figure 4: Workers for Platforms: Metrics & Logging](https://developers.cloudflare.com/_astro/programmable-platforms-4.BoFSkvXQ_ZtCqrk.svg "Figure 4: Workers for Platforms: Metrics & Logging")
+![Figure 4: Workers for Platforms: Metrics & Logging](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=755,format=svg/_astro/programmable-platforms-4.BoFSkvXQ.svg "Figure 4: Workers for Platforms: Metrics & Logging")
 
 Figure 4: Workers for Platforms: Metrics & Logging
 
@@ -77,7 +77,7 @@ Figure 4: Workers for Platforms: Metrics & Logging
 
 ## Resource Isolation Model
 
-![Figure 5: Workers for Platforms: Resources](https://developers.cloudflare.com/_astro/programmable-platforms-5.B2yd7IjV_ZFbTas.svg "Figure 5: Workers for Platforms: Resources")
+![Figure 5: Workers for Platforms: Resources](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=585,format=svg/_astro/programmable-platforms-5.B2yd7IjV.svg "Figure 5: Workers for Platforms: Resources")
 
 Figure 5: Workers for Platforms: Resources
 
@@ -92,7 +92,7 @@ Figure 5: Workers for Platforms: Resources
 
 ## Deployment & Management Flow
 
-![Figure 6: Workers for Platforms: Deployment & Management Flow](https://developers.cloudflare.com/_astro/programmable-platforms-6.BfYznbr5_Z29LwvW.svg "Figure 6: Workers for Platforms: Deployment & Management Flow")
+![Figure 6: Workers for Platforms: Deployment & Management Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/programmable-platforms-6.BfYznbr5.svg "Figure 6: Workers for Platforms: Deployment & Management Flow")
 
 Figure 6: Workers for Platforms: Deployment & Management Flow
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/#page","headline":"Programmable Platforms · Cloudflare Reference Architecture docs","description":"Workers for Platforms provide secure, scalable, cost-effective infrastructure for programmable platforms with global reach.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/programmable-platforms/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

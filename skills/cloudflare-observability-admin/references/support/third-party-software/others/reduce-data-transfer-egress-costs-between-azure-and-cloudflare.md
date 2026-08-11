@@ -33,7 +33,7 @@ To lower your data transfer costs from Azure and Cloudflare:
 5. Navigate to **Properties**.
 6. Locate the endpoint values for **Internet Routing**.
 7. Enter these endpoint values in your Cloudflare Dashboard.
-![Example of where to enter endpoint URLs from Microsoft Azure into your Cloudflare dashboard.](https://developers.cloudflare.com/_astro/bandwidth-alliance.BYbPK3YS_Z1hQW7.webp)
+![Example of where to enter endpoint URLs from Microsoft Azure into your Cloudflare dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1279,height=360,format=webp/_astro/bandwidth-alliance.BYbPK3YS.png)
 
 For additional details, refer to [Configure network routing preference for Azure Storage ↗](https://docs.microsoft.com/en-us/azure/storage/common/configure-network-routing-preference?tabs=azure-portal) and [Microsoft Routing Preference ↗](https://docs.microsoft.com/en-us/azure/storage/common/network-routing-preference).
 
@@ -50,7 +50,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/others/reduce-data-transfer-egress-costs-between-azure-and-cloudflare/#page","headline":"Reduce data transfer (egress costs) between Azure and Cloudflare · Cloudflare Support docs","description":"Lower Azure egress costs using Microsoft Routing Preference.","url":"https://developers.cloudflare.com/support/third-party-software/others/reduce-data-transfer-egress-costs-between-azure-and-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

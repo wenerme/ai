@@ -36,12 +36,12 @@ Enable Precursor for your zone:
 2. Go to **Security** \> **Settings**.
 3. Locate **Precursor**.
 4. Turn on Precursor.
-![Security Settings page in the Cloudflare dashboard, showing the Precursor card with the on/off toggle](https://developers.cloudflare.com/_astro/precursor-settings.BYyOtD7e_1qHe9E.webp)
+![Security Settings page in the Cloudflare dashboard, showing the Precursor card with the on/off toggle](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1471,height=748,format=webp/_astro/precursor-settings.BYyOtD7e.png)
 5. **Choose a mode:** To fully verify a user session, visitors may need to complete a lightweight Challenge to establish a valid session. Precursor provides two modes depending on whether you want to prioritize user experience or strict verification:
 
   * **Minimize Friction (default)**Does not show an interstitial Challenge to the visitor. Instead, Precursor attempts to establish session state in the background. This provides a smoother user experience, but cannot guarantee that every session is fully verified.
   * **Maximize Security (recommended)**Shows a lightweight interstitial Challenge to establish a valid session if one does not already exist. This ensures every session is verified before a user can proceed, but may introduce additional friction.
-![Precursor mode selector showing Minimize Friction and Maximize Security options](https://developers.cloudflare.com/_astro/precursor-rules.BEZl5dtE_Z1wxo21.webp)
+![Precursor mode selector showing Minimize Friction and Maximize Security options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1455,height=791,format=webp/_astro/precursor-rules.BEZl5dtE.png)
 
 For most customers, selecting a mode is the only configuration required.
 
@@ -127,7 +127,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/precursor/#page","headline":"Precursor · Cloudflare challenges docs","description":"Client-side, session-based verification that continuously evaluates visitor behavior to identify automation.","url":"https://developers.cloudflare.com/cloudflare-challenges/precursor/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -48,12 +48,12 @@ To remove an endpoint from rotation while still preserving session continuity, s
 
 1. On a new or existing load balancer, go to the **Hostname** step.
 2. Make sure you have enabled **Session Affinity**.
-3. For **Endpoint drain duration**, enter a time in seconds. If this value is less than the **Session TTL** value, you will affect existing sessions. ![Example configuration of session affinity with endpoint drain](https://developers.cloudflare.com/_astro/session-affinity-3.Cv_ZhLzx_27Jgr3.webp)
+3. For **Endpoint drain duration**, enter a time in seconds. If this value is less than the **Session TTL** value, you will affect existing sessions. ![Example configuration of session affinity with endpoint drain](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1002,height=491,format=webp/_astro/session-affinity-3.Cv_ZhLzx.png)
 4. Save your changes to the load balancer.
 5. Click **Manage Pools**.
 6. Disable an endpoint. Your load balancer will gradually drain sessions from that endpoint.
-7. On your load balancer, expand your pools to find the disabled endpoint. You will see the estimated **Drain Time** counting down. ![Example showing load balancer draining in progress](https://developers.cloudflare.com/_astro/session-affinity-4.DC0RLZtj_1H4fqz.webp)
-8. When a drain is **Complete**, there are no longer any connections to that endpoint. ![Example showing load balancer draining complete](https://developers.cloudflare.com/_astro/session-affinity-5.BAgwGz7x_1BV2Ow.webp)
+7. On your load balancer, expand your pools to find the disabled endpoint. You will see the estimated **Drain Time** counting down. ![Example showing load balancer draining in progress](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=802,height=275,format=webp/_astro/session-affinity-4.DC0RLZtj.png)
+8. When a drain is **Complete**, there are no longer any connections to that endpoint. ![Example showing load balancer draining complete](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=802,height=275,format=webp/_astro/session-affinity-5.BAgwGz7x.png)
 9. Perform your required maintenance or upgrades.
 10. To bring your endpoint back online, re-enable the endpoint.
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/#page","headline":"Perform planned maintenance · Cloudflare Load Balancing docs","description":"When you change application settings or add new assets, you will likely want to make these changes on one endpoint at a time. Going endpoint by endpoint reduces the risk of changes and ensures a more consistent user experience.","url":"https://developers.cloudflare.com/load-balancing/additional-options/planned-maintenance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

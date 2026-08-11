@@ -88,13 +88,13 @@ To address these challenges, endpoints can be upgraded with more compute resourc
 
 Figure 1 shows how load might be distributed without a load balancer:
 
-![Endpoint load is not distributed evenly without a load balancer](https://developers.cloudflare.com/_astro/lb-ref-arch-1.D0yttOOR_Z1BNPqF.svg "Figure 1: Endpoint performance can suffer without a load balancer")
+![Endpoint load is not distributed evenly without a load balancer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=791,height=615,format=svg/_astro/lb-ref-arch-1.D0yttOOR.svg "Figure 1: Endpoint performance can suffer without a load balancer")
 
 Figure 1: Endpoint performance can suffer without a load balancer
 
 Load balancers allow organizations to host several endpoints and portion out traffic between them, ensuring no single endpoint gets overwhelmed. The load balancer handles all incoming requests and forwards them to the appropriate endpoint. The client doesn’t need any knowledge of endpoint availability or load — it just needs to send the request to the load balancer and the load balancer handles the rest. Figure 2 shows how a load balancer can evenly distribute traffic from users across a set of endpoints.
 
-![A load balancer helps evenly distribute requests across multiple endpoints](https://developers.cloudflare.com/_astro/lb-ref-arch-2.DiqlVt64_deAt3.svg "Figure 2: Load balancers help distribute load across endpoints")
+![A load balancer helps evenly distribute requests across multiple endpoints](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=917,height=615,format=svg/_astro/lb-ref-arch-2.DiqlVt64.svg "Figure 2: Load balancers help distribute load across endpoints")
 
 Figure 2: Load balancers help distribute load across endpoints
 
@@ -102,7 +102,7 @@ Another performance-related issue has to do with the distance between a client a
 
 RTT becomes important at scale. For example, if a client and endpoint are both located in the United States, it would be reasonable to expect a RTT of 25ms. If the client has 20 requests it needs responses to, the total time required to handle them sequentially (not including compute time) would be 500ms (20 x 25ms). And if the same client connected from the APAC region the RTT might be upwards of 150ms, resulting in an undesirable total loading time of 3000ms (20 x 150ms). (Certainly, request streaming enhancements in HTTP/2 and HTTP/3 might change this math — but in websites with dynamic or interactive content, where a response’s information is used to generate additional requests, the example still holds in general.) Figure 3 illustrates how this happens.
 
-![Latency compounds based on the number of requests](https://developers.cloudflare.com/_astro/lb-ref-arch-3.D0FbXMvI_ZlqHiy.svg "Figure 3: How latency can compound and affect the total time it takes to load a resource")
+![Latency compounds based on the number of requests](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=773,height=458,format=svg/_astro/lb-ref-arch-3.D0FbXMvI.svg "Figure 3: How latency can compound and affect the total time it takes to load a resource")
 
 Figure 3: How latency can compound and affect the total time it takes to load a resource
 
@@ -135,7 +135,7 @@ A Global Traffic Manager is responsible for routing requests, generally from the
 
 Figure 4 shows how a GTM load balancer is used to select a data center based on the client location or region.
 
-![Global traffic management steers traffic to the proper region or data center](https://developers.cloudflare.com/_astro/lb-ref-arch-4.OnwMof7d_CgDS6.svg "Figure 4: Global traffic management load balancer overview")
+![Global traffic management steers traffic to the proper region or data center](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=923,height=494,format=svg/_astro/lb-ref-arch-4.OnwMof7d.svg "Figure 4: Global traffic management load balancer overview")
 
 Figure 4: Global traffic management load balancer overview
 
@@ -145,7 +145,7 @@ Global Traffic Managers can also proxy traffic and perform a variety of inspecti
 
 Private Network Load Balancing steers traffic within a data center or geographic location. A Private Network Load Balancer can be responsible for load balancing, SSL/TLS offloading, content switching, and other application delivery functions. Private Network Load Balancing ensures efficient distribution of client requests across multiple endpoints to improve performance and ensure high availability. Private Network Load Balancers are usually placed inside private networks and are used to load balance publicly or privately accessible resources. In Figure 5 below, the GTM load balancer has selected the Europe data center to direct a request to the Europe data center’s Private Network Load Balancer which will then steer it to the appropriate endpoint.
 
-![Private Network Load Balancing is responsible for steering to the final endpoint or destination](https://developers.cloudflare.com/_astro/lb-ref-arch-5.F19YgVWw_Z2lJkpR.svg "Figure 5: Private Network Load Balancer overview")
+![Private Network Load Balancing is responsible for steering to the final endpoint or destination](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1012,height=321,format=svg/_astro/lb-ref-arch-5.F19YgVWw.svg "Figure 5: Private Network Load Balancer overview")
 
 Figure 5: Private Network Load Balancer overview
 
@@ -182,31 +182,31 @@ By contrast, many other SaaS-based load balancing providers use Unicast routing 
 
 Figure 6 shows how using the Cloudflare network allows geographically disparate users to connect to their resources as fast as possible.
 
-![Cloudflare’s global anycast network ensures that the closest data center is always selected](https://developers.cloudflare.com/_astro/lb-ref-arch-6.Bw_DeAYw_1VJNAW.svg "Figure 6: Load balancers hosted on Cloudflare’s global anycast network")
+![Cloudflare’s global anycast network ensures that the closest data center is always selected](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1171,height=488,format=svg/_astro/lb-ref-arch-6.Bw_DeAYw.svg "Figure 6: Load balancers hosted on Cloudflare’s global anycast network")
 
 Figure 6: Load balancers hosted on Cloudflare’s global anycast network
 
 Figure 6, above, shows other Cloudflare services are also running in each of these data centers since Cloudflare runs every service in every data center so users have a consistent experience everywhere. For example, Cloudflare’s layer 7 load balancer will also be able to take advantage of other services such as DDoS protection, CDN/Cache, Bot Management, or WAF. All of these additional services can help protect your service from unnecessary traffic whether it be malicious requests (blocked by DDoS Protection, Bot Management, or WAF) or requests that can be served via cache rather than a request to endpoint. All of these services can be combined as needed to make a service or offering as protected, resilient, and performant as possible.
 
-![Cloudflare Layer 7 features can be used together to further secure a service](https://developers.cloudflare.com/_astro/lb-ref-arch-7.BB-S-4sn_Z1gYm0e.svg "Figure 7: Some of the processes a HTTP request passes through in the Cloudflare layer 7 stack")
+![Cloudflare Layer 7 features can be used together to further secure a service](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1156,height=123,format=svg/_astro/lb-ref-arch-7.BB-S-4sn.svg "Figure 7: Some of the processes a HTTP request passes through in the Cloudflare layer 7 stack")
 
 Figure 7: Some of the processes a HTTP request passes through in the Cloudflare layer 7 stack
 
 Cloudflare also has a [network optimization service ↗](https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/) that is constantly running at all data centers to ensure that Cloudflare provides the best path between Cloudflare data centers and also track all the available paths to endpoints. This allows Cloudflare to ensure that endpoints can always be reached and reroute traffic to alternate Cloudflare data centers, if necessary, to reach an endpoint. After the load balancer has made a decision on which endpoint to steer the traffic, the traffic is then forwarded to Cloudflare’s network optimization service to determine the best path to reach the destination. The path can be affected by a feature called Argo Smart Routing which, when enabled, uses timed TCP connections to find the Cloudflare data center with the fastest RTT to the endpoint. Figure 8 shows how Argo Smart Routing can help improve connection time to endpoints.
 
-![Argo Smart Routing finds the fastest path between requester and endpoint](https://developers.cloudflare.com/_astro/lb-ref-arch-8.DxPypMMy_2gYWcJ.svg "Figure 8: Argo Smart Routing reduces latency to endpoints")
+![Argo Smart Routing finds the fastest path between requester and endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1177,height=427,format=svg/_astro/lb-ref-arch-8.DxPypMMy.svg "Figure 8: Argo Smart Routing reduces latency to endpoints")
 
 Figure 8: Argo Smart Routing reduces latency to endpoints
 
 Another way traffic flow can be affected is by the use of Cloudflare Tunnels. This document covers Cloudflare Tunnels in depth in the following section. Because Cloudflare Tunnels connect endpoints to specific Cloudflare data centers, traffic destined for those endpoints must traverse those data centers to reach the endpoint. Figure 9 shows how connections to private endpoints connected via Cloudflare Tunnel must pass through the data center where the tunnel terminates.
 
-![Requests take different paths depending on whether the endpoint is public or connected over Cloudflare Tunnel](https://developers.cloudflare.com/_astro/lb-ref-arch-9.coisSp9H_ZqgoYE.svg "Figure 9: Paths to endpoints differ when connecting endpoints via Cloudflare Tunnel")
+![Requests take different paths depending on whether the endpoint is public or connected over Cloudflare Tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1202,height=535,format=svg/_astro/lb-ref-arch-9.coisSp9H.svg "Figure 9: Paths to endpoints differ when connecting endpoints via Cloudflare Tunnel")
 
 Figure 9: Paths to endpoints differ when connecting endpoints via Cloudflare Tunnel
 
 Usually, GTM and Private Network Load Balancers are either separate hardware or separate SaaS (GTM) and hardware Private Network Load Balancing components. Cloudflare’s GTM and Private Network Load Balancing capabilities are combined into a single SaaS offering which greatly simplifies configuration and management. There is no need to create a GTM load balancer and steer traffic to more local Private Network Load Balancers. All endpoints can be directly connected to Cloudflare and traffic is steered to the correct region, data center, and endpoint all from a single load balancer configuration. While the concepts of GTM and Private Network Load Balancing features will persist, their implementation in Cloudflare will be done in a way that keeps load balancer configurations as simple and straightforward as possible. Figure 10 illustrates how global traffic can be steered from any geographic region to a specific endpoint as needed.
 
-![Combining GTM and Private Network Load Balancing functions into a single load balancer configuration](https://developers.cloudflare.com/_astro/lb-ref-arch-10.BICXl4Ld_VTBPd.svg "Figure 10: Cloudflare combines the function of GTM and Private Network Load Balancing")
+![Combining GTM and Private Network Load Balancing functions into a single load balancer configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1184,height=540,format=svg/_astro/lb-ref-arch-10.BICXl4Ld.svg "Figure 10: Cloudflare combines the function of GTM and Private Network Load Balancing")
 
 Figure 10: Cloudflare combines the function of GTM and Private Network Load Balancing
 
@@ -214,7 +214,7 @@ Figure 10: Cloudflare combines the function of GTM and Private Network Load Bala
 
 A Cloudflare Load Balancer, often referred to as a Virtual IP (VIP), is configured with an entrypoint. Typically, this entrypoint is a DNS record. The load balancer first applies a defined traffic steering algorithm to select an endpoint pool, which is a group of endpoints selected based on function, geographic area, or region. A load balancer configuration can have one or multiple endpoint pools, and each endpoint pool can have one or many endpoints. After selecting an endpoint pool, the load balancer applies an endpoint steering algorithm to the list of endpoints and selects an endpoint to steer the traffic towards. Figure 11 shows the basic steps from client request to endpoint within a Cloudflare Load Balancer.
 
-![The steps within a Cloudflare Load Balancer](https://developers.cloudflare.com/_astro/lb-ref-arch-11.Bx2sEYiV_ZyCCtA.svg "Figure 11: The basic process flow through a Cloudflare Load Balancer")
+![The steps within a Cloudflare Load Balancer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1182,height=212,format=svg/_astro/lb-ref-arch-11.Bx2sEYiV.svg "Figure 11: The basic process flow through a Cloudflare Load Balancer")
 
 Figure 11: The basic process flow through a Cloudflare Load Balancer
 
@@ -250,7 +250,7 @@ Weighted steering takes into account the differences in endpoint pools and endpo
 
 Weight influences the randomness of endpoint pool or endpoint selection for a single request or connection within a load balancer. Weight does not consider historical data or current connection information, which means that weight may have variations in distribution over shorter timeframes. However, over longer periods of time and with significant traffic, the distribution will more closely resemble the desired weights applied in configuration. It’s important to note that session affinity will also override weight settings after the initial connection, as session affinity is intended to direct subsequent requests to the same endpoint pool or endpoint. Figure 12 shows a weight example for two endpoint pools with equal capacity and probability of being selected.
 
-![A pair of endpoint pools with equal probability of being selected](https://developers.cloudflare.com/_astro/lb-ref-arch-12.Buje8NxO_Z2ceqpF.svg "Figure 12: A pair of endpoint pools with equal capacity")
+![A pair of endpoint pools with equal probability of being selected](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=454,height=324,format=svg/_astro/lb-ref-arch-12.Buje8NxO.svg "Figure 12: A pair of endpoint pools with equal capacity")
 
 Figure 12: A pair of endpoint pools with equal capacity
 
@@ -269,7 +269,7 @@ Example 1:
 
 Example math for weight of 1: (1) ÷ (1 + 1 + 1) = (.3333) (or 33.33%)
 
-![A set of three endpoint pools all with equal probability](https://developers.cloudflare.com/_astro/lb-ref-arch-13.BIZS6w9__Z9Ph3z.svg "Figure 13: Three endpoint pools with equal weight")
+![A set of three endpoint pools all with equal probability](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=639,height=324,format=svg/_astro/lb-ref-arch-13.BIZS6w9_.svg "Figure 13: Three endpoint pools with equal weight")
 
 Figure 13: Three endpoint pools with equal weight
 
@@ -283,7 +283,7 @@ Example 2
 * Each endpoint pool has a different number of endpoints, but all endpoints have equal capacity
 * To evenly distribute load across endpoints, each endpoint pool needs a different probability
 
-![Three endpoint pools with different numbers of endpoints](https://developers.cloudflare.com/_astro/lb-ref-arch-14.ChU-xE19_Z8iGDJ.svg "Figure 14: Illustrates how to use weight to balance load across endpoint pools with different capacity")
+![Three endpoint pools with different numbers of endpoints](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=641,height=324,format=svg/_astro/lb-ref-arch-14.ChU-xE19.svg "Figure 14: Illustrates how to use weight to balance load across endpoint pools with different capacity")
 
 Figure 14: Illustrates how to use weight to balance load across endpoint pools with different capacity
 
@@ -302,7 +302,7 @@ Example 3
 * The goal is to place double the amount of traffic to endpoint pool 1 per endpoint
 * Endpoint pool 1 has 4 endpoints but with double capacity, the weight of each endpoint will be valued at .2 for a total of .8 for the endpoint pool
 
-![Three endpoint pools with different numbers of endpoints and endpoints of different capacity](https://developers.cloudflare.com/_astro/lb-ref-arch-15.CJwKtgsv_Za4Bul.svg "Figure 15: Using weight to balance load across endpoint pools with different capacities and endpoints")
+![Three endpoint pools with different numbers of endpoints and endpoints of different capacity](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=707,height=332,format=svg/_astro/lb-ref-arch-15.CJwKtgsv.svg "Figure 15: Using weight to balance load across endpoint pools with different capacities and endpoints")
 
 Figure 15: Using weight to balance load across endpoint pools with different capacities and endpoints
 
@@ -411,7 +411,7 @@ The Simulate Zone feature ensures that health monitor probes follow the same pat
 
 The Simulate Zone feature is required for health monitors when certain features are enabled at the zone level, such as [Authenticated Origin Pulls](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) or [Bring your own CA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/), where probes would fail if they weren’t being provided with the proper mTLS certificate or authority for authentication with the origin server. Simulate Zone also ensures health monitor probes use the same path provided by [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) and the same [Dedicated CDN Egress IPs](https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/) when organizations leverage [Smart Shield Advanced](https://developers.cloudflare.com/smart-shield/get-started/#packages-and-availability) to restrict the edge IP addresses that Cloudflare uses to reach their endpoints.
 
-![HTTPS health monitor to monitor the status of an endpoint](https://developers.cloudflare.com/_astro/lb-ref-arch-16.BYSozQzy_Z1LA0T2.webp "Figure 16: HTTPS health monitor configuration")
+![HTTPS health monitor to monitor the status of an endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1570,height=1107,format=webp/_astro/lb-ref-arch-16.BYSozQzy.png "Figure 16: HTTPS health monitor configuration")
 
 Figure 16: HTTPS health monitor configuration
 
@@ -435,7 +435,7 @@ Once a health monitor is defined, it can be assigned to an endpoint and the prob
   * Contains healthy endpoints below the health threshold
   * Not capable of handling traffic; removed from all steering decisions.
 
-![Comparison of three endpoint pools with different numbers of healthy endpoints](https://developers.cloudflare.com/_astro/lb-ref-arch-17.BM3mVtFf_bf7j8.svg "Figure 17: When endpoints pool are considered healthy, degraded, or critical")
+![Comparison of three endpoint pools with different numbers of healthy endpoints](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=553,height=393,format=svg/_astro/lb-ref-arch-17.BM3mVtFf.svg "Figure 17: When endpoints pool are considered healthy, degraded, or critical")
 
 Figure 17: When endpoints pool are considered healthy, degraded, or critical
 
@@ -457,7 +457,7 @@ The second setting after defining the health monitor in the endpoint pool is to 
 * Southeast Asia
 * Northeast Asia
 
-![Endpoint pool settings to further customize the health monitors](https://developers.cloudflare.com/_astro/lb-ref-arch-18.BeeIf21t_16mIgt.webp "Figure 18: Health Threshold and region selection for an endpoint pool configuration")
+![Endpoint pool settings to further customize the health monitors](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1570,height=394,format=webp/_astro/lb-ref-arch-18.BeeIf21t.png "Figure 18: Health Threshold and region selection for an endpoint pool configuration")
 
 Figure 18: Health Threshold and region selection for an endpoint pool configuration
 
@@ -475,7 +475,7 @@ Cloudflare endpoints can be defined in two ways, by IP address or by hostname. I
 
 As mentioned in the “HTTP(S) Load Balancing” section above, load balancing is the very last process run before a request is sent to an endpoint. However, even if an endpoint is proxied via Cloudflare’s edge, after the load balancer, the request is forwarded directly to the endpoint without passing through the layer 7 stack again. This doesn’t mean the endpoint is unprotected or uncached, however. As long as the load balancer itself is proxied then all those protections are provided to the load balancer rather than the endpoints. Any direct communication with the endpoint can still be proxied and treated with Cloudflare’s layer 7 stack, but communication with an endpoint places all the processing in front of the load balancer, not the endpoint. Figure 19 illustrates the difference of where the Cloudflare layer 7 stack is placed in relation to the endpoint(s).
 
-![Load balancing is the last process before dispatching to the endpoint](https://developers.cloudflare.com/_astro/lb-ref-arch-19.CKZfc_hA_Z1agKe2.svg "Figure 19: Differences in the Layer 7 paths between load balancer and endpoint")
+![Load balancing is the last process before dispatching to the endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1144,height=487,format=svg/_astro/lb-ref-arch-19.CKZfc_hA.svg "Figure 19: Differences in the Layer 7 paths between load balancer and endpoint")
 
 Figure 19: Differences in the Layer 7 paths between load balancer and endpoint
 
@@ -489,7 +489,7 @@ Cloudflare Tunnel (cloudflared) can be installed directly on the endpoint or any
 
 Cloudflare Tunnel can be installed on the endpoint itself or on any server with layer 3 (IP) connectivity to the endpoint or endpoints that need to be connected to Cloudflare. The decision to separate cloudflared could be made for many different reasons including but not limited to isolating the endpoint(s) and ensuring their performance, having separate teams that manage network level connectivity and endpoints, or separation for architectural simplicity where servers have segregated roles or responsibilities.
 
-![A single cloudflared instance tunnels traffic for multiple endpoints](https://developers.cloudflare.com/_astro/lb-ref-arch-20.BehqGz1M_1Sue1G.svg "Figure 20: A shared cloudflared deployed on a separate server tunnels traffic for multiple endpoints")
+![A single cloudflared instance tunnels traffic for multiple endpoints](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1165,height=296,format=svg/_astro/lb-ref-arch-20.BehqGz1M.svg "Figure 20: A shared cloudflared deployed on a separate server tunnels traffic for multiple endpoints")
 
 Figure 20: A shared cloudflared deployed on a separate server tunnels traffic for multiple endpoints
 
@@ -561,7 +561,7 @@ For example:
 
 Figure 21 highlights the potential problem of mismatched Host headers:
 
-![Mismatched Host headers may result in the endpoint rejecting the request](https://developers.cloudflare.com/_astro/lb-ref-arch-21.Bs0qP_r-_Z1P4i11.svg "Figure 21: How the load balancer can rewrite the Host header to match the endpoint")
+![Mismatched Host headers may result in the endpoint rejecting the request](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1082,height=454,format=svg/_astro/lb-ref-arch-21.Bs0qP_r-.svg "Figure 21: How the load balancer can rewrite the Host header to match the endpoint")
 
 Figure 21: How the load balancer can rewrite the Host header to match the endpoint
 
@@ -591,7 +591,7 @@ Depending on their specific use case, organizations can leverage different types
 
 Figure 22 highlights all the possible combinations of load balancers and endpoints supported by Cloudflare:
 
-![All the possible combinations of load balancer and endpoint types](https://developers.cloudflare.com/_astro/lb-ref-arch-22-ALT.DPr9OdxY_x2XJX.svg "Figure 22: The combinations of public and private load balancers and endpoints and how they connect")
+![All the possible combinations of load balancer and endpoint types](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1162,height=567,format=svg/_astro/lb-ref-arch-22-ALT.DPr9OdxY.svg "Figure 22: The combinations of public and private load balancers and endpoints and how they connect")
 
 Figure 22: The combinations of public and private load balancers and endpoints and how they connect
 
@@ -615,7 +615,7 @@ Because this same layer 7 security stack also provides WAF, DDoS protection, Bot
 
 In this layer 7 stack, load balancing can further improve the performance, reliability, and reachability of an organization’s public-facing web assets. The endpoints for these load balancers may be deployed in public cloud, private cloud, on-premises, or any combination thereof within the same load balancer. (Please refer to [Connecting endpoints to Cloudflare](#connecting-endpoints-to-cloudflare) for more details about how to connect endpoints to Cloudflare’s edge network).
 
-![Layer 7 load balancing request flow to two different types of endpoints](https://developers.cloudflare.com/_astro/lb-ref-arch-23-ALT.DRZo2XIF_x2XJX.svg "Figure 23: How Cloudflare’s Layer 7 load balancers can steer traffic to both public and private endpoints")
+![Layer 7 load balancing request flow to two different types of endpoints](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1162,height=567,format=svg/_astro/lb-ref-arch-23-ALT.DRZo2XIF.svg "Figure 23: How Cloudflare’s Layer 7 load balancers can steer traffic to both public and private endpoints")
 
 Figure 23: How Cloudflare’s Layer 7 load balancers can steer traffic to both public and private endpoints
 
@@ -639,17 +639,17 @@ Cloudflare’s DNS-only load balancer is an unproxied load balancer. This means 
 
 Because all the traffic between the client and the endpoint will travel directly between the two and not through Cloudflare’s layer 7 stack, any type of IP traffic can be supported by a DNS-only load balancer.
 
-![The orange cloud icon represents a proxied Layer 7 Cloudflare Load Balancer](https://developers.cloudflare.com/_astro/lb-ref-arch-24.Bw_izDOL_114CG5.webp "Figure 24: A proxied load balancer configuration")
+![The orange cloud icon represents a proxied Layer 7 Cloudflare Load Balancer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1543,height=421,format=webp/_astro/lb-ref-arch-24.Bw_izDOL.png "Figure 24: A proxied load balancer configuration")
 
 Figure 24: A proxied load balancer configuration
 
-![The gray cloud icon represents an unproxied \(DNS-only\) load balancer](https://developers.cloudflare.com/_astro/lb-ref-arch-25.Dz4ThM-k_2oDFUF.webp "Figure 25: An unproxied (DNS-only) load balancer configuration")
+![The gray cloud icon represents an unproxied \(DNS-only\) load balancer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1531,height=415,format=webp/_astro/lb-ref-arch-25.Dz4ThM-k.png "Figure 25: An unproxied (DNS-only) load balancer configuration")
 
 Figure 25: An unproxied (DNS-only) load balancer configuration
 
 Even though Cloudflare does not proxy these types of load balancer connections, the health monitor service is still monitoring the health on all the endpoints in the pool. Based on the health or availability of an endpoint, a Cloudflare DNS-only load balancer will either add or remove an applicable endpoint to a DNS response to ensure that traffic is being steered to healthy endpoints.
 
-![DNS-only load balancers only use Cloudflare to respond to a DNS request](https://developers.cloudflare.com/_astro/lb-ref-arch-26.BB1TuXz__Z1s9Owy.svg "Figure 26: How Cloudflare’s DNS-only load balancer functions")
+![DNS-only load balancers only use Cloudflare to respond to a DNS request](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1306,height=361,format=svg/_astro/lb-ref-arch-26.BB1TuXz_.svg "Figure 26: How Cloudflare’s DNS-only load balancer functions")
 
 Figure 26: How Cloudflare’s DNS-only load balancer functions
 
@@ -664,7 +664,7 @@ This gives organizations the flexibility to allow applications to be aware of al
 
 Figure 27 shows how the defined weight within an endpoint pool can affect how a DNS-only load balancer responds.
 
-![DNS-only load balancers can respond to DNS requests with one or many IP addresses](https://developers.cloudflare.com/_astro/lb-ref-arch-27.CJr7dL0T_27zTmS.svg "Figure 27: How weight affects the DNS response from a DNS-only load balancer")
+![DNS-only load balancers can respond to DNS requests with one or many IP addresses](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1367,height=484,format=svg/_astro/lb-ref-arch-27.CJr7dL0T.svg "Figure 27: How weight affects the DNS response from a DNS-only load balancer")
 
 Figure 27: How weight affects the DNS response from a DNS-only load balancer
 
@@ -695,7 +695,7 @@ Where the layer 7 stack only supported HTTP(S) and WebSockets, Spectrum offers s
 
 Given the breadth of services and protocols this represents, the treatment provided is more generalized than what is offered with the layer 7 HTTP(S) stack. For example, Cloudflare Spectrum supports features such as TLS/SSL offloading, DDoS protection, IP Access lists, Argo Smart Routing, and session persistence with our layer 4 load balancers.
 
-![Spectrum-based load balancing supports public endpoints](https://developers.cloudflare.com/_astro/lb-ref-arch-28-ALT.Dwf-s8s__x2XJX.svg "Figure 28: Spectrum Layer 4 load balancers support both TCP and UDP protocols")
+![Spectrum-based load balancing supports public endpoints](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1162,height=567,format=svg/_astro/lb-ref-arch-28-ALT.Dwf-s8s_.svg "Figure 28: Spectrum Layer 4 load balancers support both TCP and UDP protocols")
 
 Figure 28: Spectrum Layer 4 load balancers support both TCP and UDP protocols
 
@@ -750,7 +750,7 @@ Endpoint draining is a subfeature of session affinity. It allows for sessions to
 
 The endpoint drain TTL is the amount of time that endpoints will be allowed to maintain active sessions before being forcefully terminated. Once the endpoint drain TTL is set, endpoint draining is started by disabling an endpoint (or multiple endpoints) within an endpoint pool. As seen in the below image, administrators can monitor the time remaining on an endpoint draining operation from the load balancer UI.
 
-![Endpoint draining in process from web user interface](https://developers.cloudflare.com/_astro/lb-ref-arch-30.todYN9Ax_1LLmJE.webp "Figure 30: Endpoint draining occurring within a Cloudflare Load Balancer")
+![Endpoint draining in process from web user interface](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1872,height=597,format=webp/_astro/lb-ref-arch-30.todYN9Ax.png "Figure 30: Endpoint draining occurring within a Cloudflare Load Balancer")
 
 Figure 30: Endpoint draining occurring within a Cloudflare Load Balancer
 
@@ -849,7 +849,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/#page","headline":"Load Balancing Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture is for organizations looking to deploy both global and local traffic management load balancing solutions. It is designed for IT, web hosting, and network professionals with some responsibility over or familiarity with their organization's existing infrastructure.","url":"https://developers.cloudflare.com/reference-architecture/architectures/load-balancing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

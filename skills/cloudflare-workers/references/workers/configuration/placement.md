@@ -48,11 +48,11 @@ Placement can reduce the overall latency of a Worker request by minimizing round
 
 Consider a user in Sydney, Australia accessing an application running on Workers. This application makes multiple round trips to a database in Frankfurt, Germany.
 
-![A user located in Sydney, AU connecting to a Worker in the same region which then makes multiple round trips to a database located in Frankfurt, DE. ](https://developers.cloudflare.com/_astro/workers-smart-placement-disabled.CgvAE24H_2lFyUf.webp)
+![A user located in Sydney, AU connecting to a Worker in the same region which then makes multiple round trips to a database located in Frankfurt, DE. ](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1292,height=414,format=webp/_astro/workers-smart-placement-disabled.CgvAE24H.png)
 
 The latency from multiple round trips between Sydney and Frankfurt adds up. By placing the Worker near the database, Cloudflare reduces the total request duration.
 
-![A user located in Sydney, AU connecting to a Worker in Frankfurt, DE which then makes multiple round trips to a database also located in Frankfurt, DE. ](https://developers.cloudflare.com/_astro/workers-smart-placement-enabled.D6RN33at_Z2gprT.webp)
+![A user located in Sydney, AU connecting to a Worker in Frankfurt, DE which then makes multiple round trips to a database also located in Frankfurt, DE. ](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1338,height=396,format=webp/_astro/workers-smart-placement-enabled.D6RN33at.png)
 
 ## Enable Smart Placement
 
@@ -259,7 +259,7 @@ The `cf-placement` header may be removed before Smart Placement exits beta.
 
 If you are building full-stack applications on Workers, split your edge logic (authentication, routing) and back-end logic (database queries, API calls) into separate Workers. Use [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to connect them with type-safe RPC.
 
-![Smart Placement and Service Bindings](https://developers.cloudflare.com/_astro/smart-placement-service-bindings.Ce58BYeF_ZmD4l8.webp)
+![Smart Placement and Service Bindings](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1444,height=692,format=webp/_astro/smart-placement-service-bindings.Ce58BYeF.png)
 
 Enable placement on your back-end Worker to invoke it close to your database, while the edge Worker handles authentication close to the user.
 
@@ -419,7 +419,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/placement/#page","headline":"Placement · Cloudflare Workers docs","description":"Control where your Worker runs to reduce latency.","url":"https://developers.cloudflare.com/workers/configuration/placement/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

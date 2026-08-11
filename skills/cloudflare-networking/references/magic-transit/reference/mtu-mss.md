@@ -44,7 +44,7 @@ If you experience issues with fragmentation and cannot set an MSS clamp, Cloudfl
 
 Consider a UDP datagram of size 3,000 bytes (8 bytes for the UDP header + 2,992 bytes for the UDP data). To fit within a standard 1,500-byte MTU, this UDP datagram would be fragmented across three IP packets as follows:
 
-![A diagram showing a UDP datagram and its various components.](https://developers.cloudflare.com/_astro/udp-datagram.CfIb9Urm_ZEnDvy.webp)
+![A diagram showing a UDP datagram and its various components.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=592,height=334,format=webp/_astro/udp-datagram.CfIb9Urm.png)
 
 Suppose that the UDP datagram has source port `389` and is destined for a Magic Transit customer IP address. Suppose also that the Magic Transit customer has a firewall rule in place that drops UDP traffic with source port `389`, a common [Connectionless Lightweight Directory Access Protocol (CLDAP) ↗](https://blog.cloudflare.com/reflections-on-reflections) reflection attack vector.
 
@@ -62,7 +62,7 @@ The following diagram shows how the three UDP fragments in the preceding example
 
 In all cases, Cloudflare sends all fragments to the customer.
 
-![A diagram showing how Cloudflare handles fragmentation.](https://developers.cloudflare.com/_astro/fragmentation.BPC0EONl_15m9OE.webp)
+![A diagram showing how Cloudflare handles fragmentation.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1771,height=2257,format=webp/_astro/fragmentation.BPC0EONl.png)
 
 ## MSS clamping
 
@@ -86,7 +86,7 @@ Asymmetric [routing](https://www.cloudflare.com/learning/network-layer/what-is-r
 
 In an asymmetric scenario, you need to reduce the MSS value of packets sent by Magic Transit users to the Internet to reduce the size of packets sent from the Internet towards their network. To accomplish this, you must configure either the customer's end-hosts or an MSS clamp on an intermediary device on the egress path of traffic leaving their network. The following chart details how MSS values affect payload sizes on both routing paths.
 
-![A diagram showing how MSS works with Magic Transit and Direct Server Return.](https://developers.cloudflare.com/_astro/dsr.Cp2EyoU3_Z1KVUbN.webp)
+![A diagram showing how MSS works with Magic Transit and Direct Server Return.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1034,format=webp/_astro/dsr.Cp2EyoU3.png)
 
 _Key takeaway from the preceding chart: MSS clamping affects TCP packet payload sizes flowing in the opposite direction versus where the clamp is applied._
 
@@ -94,11 +94,11 @@ _Key takeaway from the preceding chart: MSS clamping affects TCP packet payload 
 
 MSS clamping only affects TCP traffic. If, for example, you have a web server on your Magic Transit prefix, then the MSS clamp takes effect on the TCP data from Direct Server Return (DSR) traffic. However, you need to take a different approach for any tunnels inside of your Magic Transit tunnel (tunnel-in-tunnel scenario).
 
-![A diagram showing where the MSS clamp goes with TCP traffic.](https://developers.cloudflare.com/_astro/tcp-mss.BBwnC-w8_v4eqt.webp)
+![A diagram showing where the MSS clamp goes with TCP traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3170,height=1271,format=webp/_astro/tcp-mss.BBwnC-w8.png)
 
 For example, if you have a Magic Transit GRE tunnel set up, and then another IPsec or GRE tunnel running from third-party devices on your premises, MSS clamp has no impact on the outer packets of the encapsulated traffic. This is because MSS clamping affects only TCP traffic, and IPsec/GRE encapsulated traffic is IP. For this scenario, you need to lower the MTU of the internal tunnel interface further, both for your ingress and egress traffic.
 
-![A diagram showing where the MSS clamp goes with an IPsec tunnel inside a GRE tunnel.](https://developers.cloudflare.com/_astro/ipsec-mss.CGZBwxyM_1O0qlM.webp)
+![A diagram showing where the MSS clamp goes with an IPsec tunnel inside a GRE tunnel.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3303,height=1117,format=webp/_astro/ipsec-mss.CGZBwxyM.png)
 
 ## MSS clamping recommendations
 
@@ -134,7 +134,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/#page","headline":"Maximum transmission unit and maximum segment size · Cloudflare Magic Transit docs","description":"MTU and MSS values for Magic Transit tunnels.","url":"https://developers.cloudflare.com/magic-transit/reference/mtu-mss/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TCP","IPsec","UDP"]}

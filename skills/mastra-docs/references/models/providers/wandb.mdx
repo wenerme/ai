@@ -1,11 +1,11 @@
 ---
 title: "Weights & Biases | Models"
-description: "Use Weights & Biases models with Mastra. 27 models available."
+description: "Use Weights & Biases models with Mastra. 28 models available."
 ---
 
 # [Weights & Biases logo]Weights & Biases
 
-Access 27 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
+Access 28 Weights & Biases models through Mastra's model router. Authentication is handled automatically using the `WANDB_API_KEY` environment variable.
 
 Learn more in the [Weights & Biases documentation](https://docs.wandb.ai).
 
@@ -33,7 +33,7 @@ for await (const chunk of stream) {
 }
 ```
 
-> **info**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Weights & Biases documentation](https://docs.wandb.ai) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Weights & Biases documentation](https://docs.wandb.ai) for details.
 
 ## Models
 
@@ -242,6 +242,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.75,
     "outputCost": 2.75
+  },
+  {
+    "model": "wandb/nvidia/NVIDIA-Nemotron-3.5-Lightning-30B-A3B",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.1,
+    "outputCost": 0.25
   },
   {
     "model": "wandb/openai/gpt-oss-120b",

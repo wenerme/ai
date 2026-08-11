@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ddos-protection/about/components/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-![Diagram with the main components providing protection against DDoS attacks at Cloudflare](https://developers.cloudflare.com/_astro/ddos-diagram.DygBAs9m_2nhC7u.webp)
+![Diagram with the main components providing protection against DDoS attacks at Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2495,height=1700,format=webp/_astro/ddos-diagram.DygBAs9m.png)
 
 ## Autonomous Edge
 
@@ -36,7 +36,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/about/components/#page","headline":"Main components · Cloudflare DDoS Protection docs","description":"Key components of Cloudflare DDoS protection, including managed rulesets and advanced systems.","url":"https://developers.cloudflare.com/ddos-protection/about/components/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

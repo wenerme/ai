@@ -49,7 +49,7 @@ struct MyView_Previews: PreviewProvider {
 2. Open and run the app using [Xcode ↗](https://developer.apple.com/xcode/).
 3. Search in Xcode for `m3u8`, and open the `Streams` file
 4. Replace the value of `playlist_url` with the HLS manifest URL for your video.
-![Screenshot of a video with Cloudflare watermark at top right](https://developers.cloudflare.com/_astro/ios-example-screenshot-edit-hls-url.CK2bGBBG_ZFwMz1.webp)
+![Screenshot of a video with Cloudflare watermark at top right](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2928,height=762,format=webp/_astro/ios-example-screenshot-edit-hls-url.CK2bGBBG.png)
 1. Click the Play button in Xcode to run the app, and play your video.
 
 For more, see [read the docs](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/ios/).
@@ -60,7 +60,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/ios/#page","headline":"iOS (AVPlayer) · Cloudflare Stream docs","description":"Example of video playback on iOS using AVPlayer","url":"https://developers.cloudflare.com/stream/examples/ios/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Playback"]}

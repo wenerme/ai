@@ -1,6 +1,6 @@
 
 
-# Caching
+# How caching works
 
 Imagine you're having a conversation with someone, and instead of remembering what they previously said, they have to start from scratch every time you respond. This would be slow and inefficient, right?
 

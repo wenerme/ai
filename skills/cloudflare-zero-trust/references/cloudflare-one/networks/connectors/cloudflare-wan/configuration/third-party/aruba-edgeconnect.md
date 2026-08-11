@@ -41,13 +41,13 @@ There are 2 branch offices each with distinct subnets.
 
 * The east branch office has a `10.3.0.0/16` network with an EdgeConnect terminating the anycast GRE tunnel.
 * The west branch office has a `10.30.0.0/16` network with an EdgeConnect terminating the anycast GRE tunnel.
-![Table of branch subnet information](https://developers.cloudflare.com/_astro/branch-subnets.DXU4G0d8_Z1FO83x.webp)
+![Table of branch subnet information](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=959,height=224,format=webp/_astro/branch-subnets.DXU4G0d8.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
 The following example shows the **east\_branch** deployment on the Orchestrator.
 
-![GCP East deployment configuration](https://developers.cloudflare.com/_astro/east-branch-deployment.C2wtem9-_Z1bNo59.webp)
+![GCP East deployment configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1001,height=405,format=webp/_astro/east-branch-deployment.C2wtem9-.png)
 
 The Deployment screenshot displays several different IP addresses and interfaces. From left to right:
 
@@ -64,13 +64,13 @@ The central branch office has a `10.22.0.0/24` network with an EdgeConnect termi
 
 The west branch office has a `10.77.0.0/24` network with an EdgeConnect terminating the anycast IPsec tunnel.
 
-![IPsec tunnel values for east and west branches](https://developers.cloudflare.com/_astro/central-west-branch-ipsec.CsmmyLAQ_Z1VfNkH.webp)
+![IPsec tunnel values for east and west branches](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1633,height=322,format=webp/_astro/central-west-branch-ipsec.CsmmyLAQ.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
 The following example shows the **central\_branch** deployment on the Orchestrator.
 
-![Values for central branch configuration within Orchestrator](https://developers.cloudflare.com/_astro/orchestrator-ipsec.BroLLE2X_Zrg4dc.webp)
+![Values for central branch configuration within Orchestrator](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1224,height=508,format=webp/_astro/orchestrator-ipsec.BroLLE2X.png)
 
 The Deployment screenshot displays several different IP addresses and interfaces. From left to right:
 
@@ -96,13 +96,13 @@ Cloudflare's [tunnel health checks](https://developers.cloudflare.com/cloudflare
 To create the overlay policy:
 
 1. Create a compound application, which is a combination of all [Cloudflare public IPs ↗](https://www.cloudflare.com/ips/) and ICMP packets.
-![Application definition screen with IP values](https://developers.cloudflare.com/_astro/app-definition.rcGh7Hqx_2gtAxy.webp)
+![Application definition screen with IP values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=660,height=289,format=webp/_astro/app-definition.rcGh7Hqx.png)
 1. Create a breakout Business Intent Overlay (BIO) to bypass the GRE tunnel as the first policy and use this newly created application as the match criteria.
 2. Define at least one additional overlay policy and the traffic you want to send to Cloudflare over the GRE tunnels.
 
 The service name used to send traffic through the tunnel created in the next step is **Cloudflare\_GRE**. The example uses **Match Everything** to send all other traffic through the established tunnel (both private east-west traffic & Internet bound north-south traffic through Cloudflare's Secure Web Gateway).
 
-![Business Intent Overlay screen with breakout and CF overlays](https://developers.cloudflare.com/_astro/biz-intent-overlay.BKoZhAig_Z1M0aj7.webp)
+![Business Intent Overlay screen with breakout and CF overlays](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=956,height=270,format=webp/_astro/biz-intent-overlay.BKoZhAig.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -113,13 +113,13 @@ Cloudflare's [tunnel health checks](https://developers.cloudflare.com/cloudflare
 To create the overlay policy:
 
 1. Create a compound application, which is a combination of all [Cloudflare public IPs ↗](https://www.cloudflare.com/ips/) and ICMP packets.
-![Application definition screen with IP values](https://developers.cloudflare.com/_astro/app-definition.rcGh7Hqx_2gtAxy.webp)
+![Application definition screen with IP values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=660,height=289,format=webp/_astro/app-definition.rcGh7Hqx.png)
 1. Create a breakout Business Intent Overlay (BIO) to bypass the IPsec tunnel as the first policy and use this newly created application as the match criteria.
 2. Define at least one additional overlay policy and the traffic you want to send to Cloudflare over the IPsec tunnels.
 
 The service name used to send traffic through the tunnel created in the next step is **Cloudflare\_IPsec**. The example uses **Match Everything** to send all other traffic through the established tunnel (both private east-west traffic and Internet bound north-south traffic through Cloudflare's Secure Web Gateway).
 
-![Business Intent Overlay screen with breakout and CF overlays for IPsec](https://developers.cloudflare.com/_astro/biz-intent-overlay-ipsec.3QFGazIP_1mWssP.webp)
+![Business Intent Overlay screen with breakout and CF overlays for IPsec](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1151,height=320,format=webp/_astro/biz-intent-overlay-ipsec.3QFGazIP.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -127,19 +127,19 @@ _Note: Labels in this image may reflect a previous product name._
 
 GRE tunnel configuration
 
-![Diagram of GCP, Aruba Orchestratror, and Cloudflare products](https://developers.cloudflare.com/_astro/gcp-edgeconnect-diagram.K9bkvdja_Z1KbiN2.webp)
+![Diagram of GCP, Aruba Orchestratror, and Cloudflare products](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1350,height=655,format=webp/_astro/gcp-edgeconnect-diagram.K9bkvdja.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
 1. Create a tunnel on the EdgeConnect using Cloudflare's assigned public anycast IP and the service used in the overlay policy in the [previous step](#2-configure-overlay-policies).
 2. Create a Virtual Tunnel Interface (VTI) using the private IP pair shared with CF GRE tunnel endpoint and the passthrough tunnel to match the newly created tunnel alias (**CF\_GRE\_east** in our example).
-![Modify Passthrough Tunnel screen](https://developers.cloudflare.com/_astro/modify-passthrough._Sp9J4KQ_1WgQok.webp)![Edit Virtual Tunnel Interface screen](https://developers.cloudflare.com/_astro/edit-vti.BFWttrT1_Z1m7h1H.webp)
+![Modify Passthrough Tunnel screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=352,height=352,format=webp/_astro/modify-passthrough._Sp9J4KQ.png)![Edit Virtual Tunnel Interface screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=362,height=226,format=webp/_astro/edit-vti.BFWttrT1.png)
 1. Define a GRE tunnel on the Cloudflare dashboard using the EdgeConnect appliance's public IP and the private IP pair /31 shared with the appliance.
-![GRE tunnels information for each branch](https://developers.cloudflare.com/_astro/gre-tunnels-edgeconnect.CPxCqhiR_Z1wtVPz.webp)
+![GRE tunnels information for each branch](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=843,height=384,format=webp/_astro/gre-tunnels-edgeconnect.CPxCqhiR.png)
 
 IPsec tunnel configuration
 
-![Diagram of GCP, Aruba Orchestratror, and Cloudflare products for IPsec tunnels](https://developers.cloudflare.com/_astro/gcp-edgeconnect-diagram-ipsec.CZWCUCOA_ZGfyzN.webp)
+![Diagram of GCP, Aruba Orchestratror, and Cloudflare products for IPsec tunnels](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=890,height=422,format=webp/_astro/gcp-edgeconnect-diagram-ipsec.CZWCUCOA.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -246,11 +246,11 @@ curl --request POST \
 
 You can create a tunnel after the Business Intent Overlay policies have been defined. Use the correct policy or service created in [configure overlay policy](#2-configure-overlay-policies). The local IP is the local WAN interface of the EdgeConnect device, and the remote IP is the Cloudflare public IP assigned as the tunnel endpoint.
 
-![Modify Passthrough Tunnel dialog with General values](https://developers.cloudflare.com/_astro/general-modify-passthrough.3ViqT0DH_ZfWR5P.webp)![Modify Passthrough Tunnel dialog with IKE values](https://developers.cloudflare.com/_astro/ike-modify-passthrough.BbQLufk__yvGnM.webp)![Modify Passthrough Tunnel dialog with IPsec values](https://developers.cloudflare.com/_astro/ipsec-modify-passthrough.gtfn_fS__1ek6eo.webp)
+![Modify Passthrough Tunnel dialog with General values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=418,height=522,format=webp/_astro/general-modify-passthrough.3ViqT0DH.png)![Modify Passthrough Tunnel dialog with IKE values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=559,height=496,format=webp/_astro/ike-modify-passthrough.BbQLufk_.png)![Modify Passthrough Tunnel dialog with IPsec values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=550,height=354,format=webp/_astro/ipsec-modify-passthrough.gtfn_fS_.png)
 
 **Create a Virtual Tunnel Interface (VTI) on the EdgeConnect appliance**
 
-![Values for Edit VTI Interface](https://developers.cloudflare.com/_astro/vti-interface-ipsec.R28dnfpw_Z1UiKps.webp)
+![Values for Edit VTI Interface](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=443,height=277,format=webp/_astro/vti-interface-ipsec.R28dnfpw.png)
 
 ## 4\. Create static routes on Cloudflare and EdgeConnect
 
@@ -258,22 +258,22 @@ GRE tunnel configuration
 
 1. Define static routes on the Cloudflare dashboard for the LAN subnet(s) attached to the EdgeConnect appliance. Use the private IP pair for the EdgeConnect tunnel endpoint.
 In this example, the traffic to subnet `10.3.0.0/16` attached to the **east\_branch** EdgeConnect appliance has a next hop of `10.40.8.10`.
-![Static route information for each branch](https://developers.cloudflare.com/_astro/static-routes-cf.7x1mHyLW_ZPbNgG.webp)
+![Static route information for each branch](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=835,height=205,format=webp/_astro/static-routes-cf.7x1mHyLW.png)
 1. Define static routes on the Orchestrator so Cloudflare can route traffic between sites.
 This example creates a route for the subnet `10.30.0.0/24` on the **west\_branch** to route via the established GRE tunnel between the EdgeConnect appliance and Cloudflare.
-![Static route information for each branch](https://developers.cloudflare.com/_astro/static-routes-edgeconnect.UNNAmHeW_Z1L6bfF.webp)
+![Static route information for each branch](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=865,height=227,format=webp/_astro/static-routes-edgeconnect.UNNAmHeW.png)
 
 IPsec tunnel configuration
 
-![Static route values from Cloudflare dashboard](https://developers.cloudflare.com/_astro/static-routes-ipsec.QCWLampc_1jnDF.webp)
+![Static route values from Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=996,height=176,format=webp/_astro/static-routes-ipsec.QCWLampc.png)
 
 **Static routes for central branch on EdgeConnect**
 
-![Static route values from EdgeConnect for central branch](https://developers.cloudflare.com/_astro/static-routes-central-ipsec.DXXq0rMA_Z18rSTN.webp)
+![Static route values from EdgeConnect for central branch](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=267,format=webp/_astro/static-routes-central-ipsec.DXXq0rMA.png)
 
 **Static routes for west branch on EdgeConnect**
 
-![Static route values from EdgeConnect for west branch](https://developers.cloudflare.com/_astro/static-routes-west-ipsec.DEkt69AP_2nnXp7.webp)
+![Static route values from EdgeConnect for west branch](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=267,format=webp/_astro/static-routes-west-ipsec.DEkt69AP.png)
 
 ## 5\. Validate traffic flow
 
@@ -283,17 +283,17 @@ GRE tunnel configuration
 
 To validate traffic flow from the local subnet through Cloudflare's Secure Web Gateway, perform a cURL as shown in this example.
 
-![Curl example for validating Secure Web Gateway](https://developers.cloudflare.com/_astro/validate-swg-curl.K6-tj_O9_1uqxFe.webp)
+![Curl example for validating Secure Web Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=447,height=323,format=webp/_astro/validate-swg-curl.K6-tj_O9.png)
 
 You can validate the request went through Gateway with the presence of the `Cf-Team` response header, or by looking at the logs in the dashboard under **Logs** \> **Gateway** \> **HTTP**.
 
-![Dashboard example for validating Secure Web Gateway](https://developers.cloudflare.com/_astro/dash-validate-swg.CyAEktkx_Z1Ar1ds.webp)
+![Dashboard example for validating Secure Web Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=825,height=621,format=webp/_astro/dash-validate-swg.CyAEktkx.png)
 
 **Validate east-west traffic**
 
 To validate east-west traffic flow, perform a traceroute as shown in the example.
 
-![Traceroute example for verifying east-west traffic](https://developers.cloudflare.com/_astro/validate-traceroute.B1qfKEZn_Z1k8o3c.webp)
+![Traceroute example for verifying east-west traffic](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=635,height=134,format=webp/_astro/validate-traceroute.B1qfKEZn.png)
 
 The example shows a client in GCP East (`10.3.0.3`), which can ping the private IP of a client in GCP West (`10.30.0.4`).
 
@@ -312,17 +312,17 @@ IPsec tunnel configuration
 
 To validate traffic flow from the local subnet through Cloudflare's Secure Web Gateway, perform a cURL as shown in this example.
 
-![cURL example for validating traffic](https://developers.cloudflare.com/_astro/static-routes-west-ipsec.DEkt69AP_2nnXp7.webp)
+![cURL example for validating traffic](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=267,format=webp/_astro/static-routes-west-ipsec.DEkt69AP.png)
 
 You can validate the request went through Secure Web Gateway with the presence of the `Cf-Team` response header or by looking at the logs in the dashboard under **Logs** \> **Gateway** \> **HTTP**.
 
-![Dashboard example for validating Secure Web Gateway](https://developers.cloudflare.com/_astro/dash-validation-ipsec.5ZgrnH6b_ZYuKac.webp)
+![Dashboard example for validating Secure Web Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=897,height=567,format=webp/_astro/dash-validation-ipsec.5ZgrnH6b.png)
 
 **Validate east-west traffic**
 
 To validate east-west traffic flow, perform a traceroute as shown in the example.
 
-![Traceroute example for IPsec validation](https://developers.cloudflare.com/_astro/traceroute-ipsec.DIQvLqN1_jYHbJ.webp)
+![Traceroute example for IPsec validation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=537,height=91,format=webp/_astro/traceroute-ipsec.DIQvLqN1.png)
 
 The example shows a client in GCP Central (`10.22.0.9`), which can ping the private IP of a client in GCP West (`10.77.0.10`).
 
@@ -347,7 +347,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/#page","headline":"Aruba EdgeConnect Enterprise · Cloudflare One docs","description":"Integrate Aruba EdgeConnect Enterprise with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/aruba-edgeconnect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}

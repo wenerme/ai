@@ -60,7 +60,7 @@ Leave `S3_PERMISSION` empty. This prevents Mastodon from sending ACL headers, wh
 
 After configuration, you can run your instance. After the instance is running, upload a media attachment and verify the attachment is retrieved from the hostname set above. When navigating back to the bucket's page in R2, you should see the following structure.
 
-![Mastodon bucket structure after instance is set up and running](https://developers.cloudflare.com/_astro/mastodon-r2-bucket-structure.7kR0_yaf_Z1LeUbC.webp)
+![Mastodon bucket structure after instance is set up and running](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2572,height=540,format=webp/_astro/mastodon-r2-bucket-structure.7kR0_yaf.png)
 
 ## Migrate to R2
 
@@ -80,7 +80,7 @@ If you had the media files hosted locally, you will likely need to set up redire
 
 [Bulk Redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) are available for all plans. Refer to [Create Bulk Redirects in the dashboard](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/create-dashboard/) for more information.
 
-![List of Source URLs and their new Target URLs as part of Bulk Redirects](https://developers.cloudflare.com/_astro/mastodon-r2-bulk-redirects.DECnpzcm_Z14wX6.webp)
+![List of Source URLs and their new Target URLs as part of Bulk Redirects](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1654,height=816,format=webp/_astro/mastodon-r2-bulk-redirects.DECnpzcm.png)
 
 ### 3\. Verify bucket and redirects
 
@@ -98,7 +98,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/tutorials/mastodon/#page","headline":"Mastodon · Cloudflare R2 docs","description":"This guide explains how to configure R2 to be the object storage for a self hosted Mastodon instance. You can set up a self-hosted instance in multiple ways.","url":"https://developers.cloudflare.com/r2/tutorials/mastodon/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

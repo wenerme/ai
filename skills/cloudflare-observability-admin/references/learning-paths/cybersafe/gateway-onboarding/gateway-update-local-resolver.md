@@ -22,11 +22,11 @@ To configure your device to send traffic to Gateway:
 
 macOS
 
-![macOS DNS Resolver Options](https://developers.cloudflare.com/_astro/dns-resolvers-macosx.B1GnFXfW_Z1NldnS.webp)
+![macOS DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1326,height=820,format=webp/_astro/dns-resolvers-macosx.B1GnFXfW.png)
 
 Windows
 
-![Windows DNS Resolver Options](https://developers.cloudflare.com/_astro/dns-resolvers-windows.3Ns9LR4f_Z1qBa8z.webp)
+![Windows DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=622,height=708,format=webp/_astro/dns-resolvers-windows.3Ns9LR4f.png)
 
 Linux
 
@@ -42,11 +42,11 @@ nameserver 172.64.X.X
 
 iPhone
 
-![iPhone DNS Resolver Options](https://developers.cloudflare.com/_astro/dns-resolvers-iphone.BNl5oq1v_Z18cmq9.webp)
+![iPhone DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1125,height=1347,format=webp/_astro/dns-resolvers-iphone.BNl5oq1v.png)
 
 Android
 
-![Android DNS Resolver Options](https://developers.cloudflare.com/_astro/dns-resolvers-android.JkoCH2BP_Z1c3rDf.webp)
+![Android DNS Resolver Options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=770,height=1642,format=webp/_astro/dns-resolvers-android.JkoCH2BP.png)
 
 ## Change DNS resolver in the browser
 
@@ -102,7 +102,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-update-local-resolver/#page","headline":"Update local DNS resolver · Cloudflare Learning Paths","description":"Learn about update local dns resolver in this guide.","url":"https://developers.cloudflare.com/learning-paths/cybersafe/gateway-onboarding/gateway-update-local-resolver/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

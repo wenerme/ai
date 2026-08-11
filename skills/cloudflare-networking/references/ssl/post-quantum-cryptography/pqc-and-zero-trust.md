@@ -33,7 +33,7 @@ For traffic that egresses to the public Internet, [Cloudflare Gateway](https://d
 
 These on-ramps and off-ramps all use [hybrid post-quantum key agreement](https://developers.cloudflare.com/ssl/post-quantum-cryptography/#hybrid-key-agreement).
 
-![Overview diagram of post-quantum Cloudflare One network configurations showing on-ramps and off-ramps](https://developers.cloudflare.com/_astro/pqc-cloudflare-one-overview.CrgyHBvK_1Roi0u.webp)
+![Overview diagram of post-quantum Cloudflare One network configurations showing on-ramps and off-ramps](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1054,format=webp/_astro/pqc-cloudflare-one-overview.CrgyHBvK.png)
 
 The sample configurations below illustrate how Cloudflare One's post-quantum on-ramps and off-ramps fit together for several common use cases. For the broader status of post-quantum support across all Cloudflare products and connections, refer to [PQC in Cloudflare products](https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-cloudflare-products/).
 
@@ -43,7 +43,7 @@ A common configuration is browser access to a [self-hosted application](https://
 
 Even if the application itself has not yet migrated to post-quantum cryptography, traffic to it will be protected against harvest-now, decrypt-later attacks.
 
-![Diagram of how post-quantum cryptography works for browser-based access to a self-hosted application via Cloudflare Tunnel](https://developers.cloudflare.com/_astro/pqc-clientless-access.DXk-bG1f_V78if.webp).
+![Diagram of how post-quantum cryptography works for browser-based access to a self-hosted application via Cloudflare Tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1548,height=525,format=webp/_astro/pqc-clientless-access.DXk-bG1f.png).
 
 Here is how it works today:
 
@@ -65,7 +65,7 @@ This configuration provides end-to-end post-quantum protection for browser acces
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (formerly WARP) tunnels traffic from the end-user device to Cloudflare's global network. The following is an example network configuration with a Cloudflare One Client on-ramp and a Cloudflare Tunnel off-ramp.
 
-![Diagram of post-quantum network configuration using Cloudflare One Client on-ramp and Cloudflare Tunnel off-ramp](https://developers.cloudflare.com/_astro/pqc-cloudflare-one-client.pe3Q9Nr9_24LYKc.webp)
+![Diagram of post-quantum network configuration using Cloudflare One Client on-ramp and Cloudflare Tunnel off-ramp](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1548,height=525,format=webp/_astro/pqc-cloudflare-one-client.pe3Q9Nr9.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -87,7 +87,7 @@ With this network configuration, traffic is encapsulated in tunnels protected wi
 
 The following is a sample network configuration that uses the Cloudflare One Client on-ramp to connect an end-user device to a server behind a [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/) off-ramp. Traffic to the server is protected by post-quantum cryptography as it travels over the public Internet, even if the server itself does not support post-quantum cryptography.
 
-![Diagram of post-quantum network configuration using Cloudflare One Client on-ramp to Cloudflare One Appliance off-ramp](https://developers.cloudflare.com/_astro/pqc-cloudflare-ipsec.5IiyHdoZ_Z94W71.webp)
+![Diagram of post-quantum network configuration using Cloudflare One Client on-ramp to Cloudflare One Appliance off-ramp](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=671,format=webp/_astro/pqc-cloudflare-ipsec.5IiyHdoZ.png)
 
 **1\. Connection via Cloudflare One Client**
 
@@ -131,7 +131,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/#page","headline":"Post-quantum cryptography in Cloudflare One · Cloudflare SSL/TLS docs","description":"Use post-quantum cryptography with Cloudflare One on-ramps and off-ramps.","url":"https://developers.cloudflare.com/ssl/post-quantum-cryptography/pqc-and-zero-trust/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum"]}

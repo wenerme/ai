@@ -350,7 +350,7 @@ List user actions and configuration changes within this organization.
 
 ### Returns
 
-- `data: array of object { id, effective_at, type, 58 more }`
+- `data: array of object { id, effective_at, type, 57 more }`
 
   - `id: string`
 
@@ -1490,26 +1490,6 @@ List user actions and configuration changes within this organization.
 
         The role of the service account. Is either `owner` or `member`.
 
-  - `source: optional "cloud_console" or "adminapi" or "retool" or 5 more`
-
-    The server-derived administrative authorization context recorded for the action, when available. API-key paths identify the authenticated API surface; biscuit-authorized paths identify the permission namespace used for authorization. This does not necessarily identify the literal client software.
-
-    - `"cloud_console"`
-
-    - `"adminapi"`
-
-    - `"retool"`
-
-    - `"glass"`
-
-    - `"managementapi"`
-
-    - `"tenantapi"`
-
-    - `"scim"`
-
-    - `"backfill"`
-
   - `"user.added": optional object { id, data }`
 
     The details for events with this `type`.
@@ -1964,7 +1944,6 @@ curl https://api.openai.com/v1/organization/audit_logs \
           "role": "role"
         }
       },
-      "source": "cloud_console",
       "user.added": {
         "id": "id",
         "data": {

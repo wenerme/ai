@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Deploy an Express.js application on Cloudflare Workers
 
-Last updated Jan 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this tutorial, you will learn how to deploy an [Express.js ↗](https://expressjs.com/) application on Cloudflare Workers using the [Cloudflare Workers platform](https://developers.cloudflare.com/workers/) and [D1 database](https://developers.cloudflare.com/d1/). You will build a Members Registry API with basic Create, Read, Update, and Delete (CRUD) operations. You will use D1 as the database for storing and retrieving member data.
 
@@ -219,7 +219,7 @@ npm run cf-typegen
 
 Add endpoints to retrieve members from the database. Update your `src/index.ts` file by adding the following routes after the health check endpoint:
 
-```typescript
+```ts
 // GET all members
 app.get('/api/members', async (req, res) => {
 	try {
@@ -255,7 +255,7 @@ These routes use the D1 binding (`env.DB`) to prepare SQL statements and execute
 
 Add an endpoint to create new members. Add the following route to your `src/index.ts` file:
 
-```typescript
+```ts
 // POST - Create a new member
 app.post("/api/members", async (req, res) => {
   try {
@@ -316,7 +316,7 @@ This endpoint validates the input, checks the email format, and inserts a new me
 
 Add an endpoint to update existing members. Add the following route to your `src/index.ts` file:
 
-```typescript
+```ts
 app.put("/api/members/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -385,7 +385,7 @@ This endpoint allows updating either the name, email, or both fields of an exist
 
 Add an endpoint to delete members. Add the following route to your `src/index.ts` file:
 
-```typescript
+```ts
 // DELETE - Delete a member
 app.delete("/api/members/:id", async (req, res) => {
   try {
@@ -561,8 +561,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-01-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/#page","headline":"Deploy an Express.js application on Cloudflare Workers · Cloudflare Workers docs","description":"Learn how to deploy an Express.js application on Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript"]}
 ```

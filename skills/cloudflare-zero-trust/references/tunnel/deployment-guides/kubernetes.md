@@ -24,7 +24,7 @@ If you are looking to set up a locally-managed tunnel in Kubernetes, refer to th
 
 ## Architecture
 
-![Diagram showing how a user connects to Kubernetes services through Cloudflare Tunnel](https://developers.cloudflare.com/_astro/kubernetes-tunnel.C8IQcJlu_h8gOW.webp)
+![Diagram showing how a user connects to Kubernetes services through Cloudflare Tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1192,height=635,format=webp/_astro/kubernetes-tunnel.C8IQcJlu.png)
 
 As shown in the diagram, we recommend setting up `cloudflared` as an adjacent [deployment ↗](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) to the application deployments. Having a separate Kubernetes deployment for `cloudflared` allows you to scale `cloudflared` independently of the application. In the `cloudflared` deployment, you can spin up [multiple replicas](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability) running the same Cloudflare Tunnel — there is no need to build a dedicated tunnel for each `cloudflared` pod. Each `cloudflared` replica / pod can reach all Kubernetes services in the cluster.
 
@@ -304,7 +304,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/deployment-guides/kubernetes/#page","headline":"Kubernetes · Cloudflare Docs","description":"Deploy Cloudflare Tunnel on Kubernetes clusters.","url":"https://developers.cloudflare.com/tunnel/deployment-guides/kubernetes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","Integration"]}

@@ -24,7 +24,7 @@ To focus on a specific mitigation system, select one of the [other available tab
 
 To toggle your view of the data, select the **Total packets** or **Total bytes** side panels.
 
-![Network Analytics side panels allowing you to use packets or bits/bytes as the base unit for the dashboard.](https://developers.cloudflare.com/_astro/high-level-metrics.DFUDKbKH_1CcwDD.webp)
+![Network Analytics side panels allowing you to use packets or bits/bytes as the base unit for the dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1440,height=602,format=webp/_astro/high-level-metrics.DFUDKbKH.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -70,7 +70,7 @@ Note that some filters will not be added to the new Network Firewall rule defini
 
 Enable the **Show annotations** toggle to show or hide annotations for advertised/withdrawn IP prefix events in the **Network Analytics** view. Select each annotation to get more details.
 
-![Network Analytics chart displaying IP prefix-related annotations.](https://developers.cloudflare.com/_astro/view-annotations.D18njKAr_Z4472P.webp)
+![Network Analytics chart displaying IP prefix-related annotations.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=785,height=555,format=webp/_astro/view-annotations.D18njKAr.png)
 
 ## View logged or monitored traffic
 
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/#page","headline":"Adjust the data displayed in Network Analytics · Cloudflare Analytics docs","description":"Filter and configure Network Analytics dashboard data.","url":"https://developers.cloudflare.com/analytics/network-analytics/configure/displayed-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

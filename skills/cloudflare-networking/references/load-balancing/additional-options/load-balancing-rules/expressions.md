@@ -82,7 +82,7 @@ Compound expressions are easier to scan when displayed in the Expression Builder
 
 This Expression Builder screenshot shows the example compound expression described earlier. Compound expressions are easier to scan when displayed in the Expression Builder’s visual interface.
 
-![Example rule configuration visible in the Expression Builder](https://developers.cloudflare.com/_astro/rules-builder-1.CBdNVOoP_ZXG1w7.webp)
+![Example rule configuration visible in the Expression Builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=476,format=webp/_astro/rules-builder-1.CBdNVOoP.png)
 
 The **Expression Preview** displays the expression in text:
 
@@ -111,7 +111,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/expressions/#page","headline":"Load Balancing expressions · Cloudflare Load Balancing docs","description":"Expression syntax for custom load balancing rules.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

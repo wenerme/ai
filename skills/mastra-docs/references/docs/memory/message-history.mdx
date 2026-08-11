@@ -14,7 +14,7 @@ Message history is the most basic and important form of memory. It gives the LLM
 
 You can also retrieve message history to display past conversations in your UI.
 
-> **info**: Each message belongs to a thread (the conversation) and a resource (the user or entity it's associated with). See [Threads and resources](#threads-and-resources) for more detail.
+> **note**: Each message belongs to a thread (the conversation) and a resource (the user or entity it's associated with). See [Threads and resources](#threads-and-resources) for more detail.
 
 > **warning**: When you use memory with a client application, send **only the new message** from the client instead of the full conversation history.
 
@@ -101,7 +101,7 @@ When you call the agent, messages are automatically saved to the database. You c
     ```
   
 
-> **info**: Threads and messages are created automatically when you call `agent.generate()` or `agent.stream()`, but you can also create them manually with [`createThread()`](/reference/memory/createThread) and [`saveMessages()`](/reference/memory/memory-class).
+> **note**: Threads and messages are created automatically when you call `agent.generate()` or `agent.stream()`, but you can also create them manually with [`createThread()`](/reference/memory/createThread) and [`saveMessages()`](/reference/memory/memory-class).
 
 You can use this history in two ways:
 

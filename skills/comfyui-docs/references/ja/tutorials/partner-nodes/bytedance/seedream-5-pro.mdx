@@ -1,13 +1,14 @@
 ---
 title: "ByteDance Seedream 5.0 Pro - プロフェッショナルAI画像生成"
 description: "高品質な画像を生成し、強化された指示追従、精密な編集、プロフェッショナルグレードの出力をComfyUIで実現"
-translationSourceHash: 54fccbdb
+translationSourceHash: 3ac4c376
 translationFrom: tutorials/partner-nodes/bytedance/seedream-5-pro.mdx
 translationBlockHashes:
   "_intro": 0b4a40d7
   "What sets Seedream 5.0 Pro apart": e1702d4b
   "Seedream 5.0 Pro text-to-image workflow": 87df7263
   "Seedream 5.0 Pro image edit workflow": faaa6452
+  "Seedream 5.0 Pro layer separation workflow": a6084e3e
   "Get started": 709ac7fd
 ---
 
@@ -61,7 +62,34 @@ Seedream 5.0 Proは、ByteDanceのプロフェッショナルグレードの画�
 
 ![Seedream 5.0 Pro 画像編集出力](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/Seedream5.0_Pro_image_edit.png)
 
+## Seedream 5.0 Pro レイヤー分離ワークフロー
+
+レイヤー分離は、Seedream 5.0 Proのインタラクティブな精密編集におけるレイヤー分解の要となる機能です。単一のフラットな画像を、編集可能なスタックに分割します。1枚のベース画像（背景プレート）と、最大16枚の独立した透明レイヤーで構成され、各レイヤーには重なり順、バウンディングボックス座標、名前、セマンティックな説明が含まれます。抽出された被写体の背後に隠れた領域はシームレスにインペイントされるため、各レイヤーとその下のベースは、ドラッグ、スケーリング、再構成にそのまま使える完全で独立したデザインアセットになります。
+
+プロンプトがまったくなくても、モデルはテキストブロック、被写体、装飾、背景など、主要な要素をすべて自動的に識別します。1枚のポスターから10以上のレイヤーを生成でき、多言語の見出しやCJKフォントに対応したデザイン品質のテキスト分離を実現します。また、要素を自然言語で説明して分離を制御したり、バウンディングボックスタグで正確な領域を指定したりすることもできます。このワークフローは、ブランドデザイン、Eコマース向けアセットの作成、ポスターの反復作業、そしてフラットなビットマップを編集可能なレイヤードドキュメントに変換する必要があるあらゆるタスクに最適です。
+
+[Seedream 5.0 Pro レイヤー分離ワークフローのプレビュー]
+
+  
+    Comfy Cloudで開く
+  
+  
+    JSONをダウンロードするか、テンプレートライブラリで「Seedream 5.0 Pro」を検索してください
+  
+
+入力素材
+
+このワークフローを試すには、サンプル入力画像をダウンロードしてください：
+
+  
+    サンプル入力画像をダウンロード
+  
+
+![Seedream 5.0 Pro レイヤー分離のプレビュー](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/thumbnail/api_bytedance_seedream_5_0_layer_separation.png)
+
+ComfyUIエディタでこのワークフローを使用する際は、Nodes2.0モードに切り替えて、`Open Compositor`をクリックすると、分離されたレイヤーを表示および配置できます。
+
 ## はじめる
 
-1. ComfyUIを最新バージョン（0.15.0以上）にアップデート
-2. テンプレートライブラリに移動し、「Seedream 5.0 Pro」を検索
+1. ComfyUIを最新バージョン（0.15.0+）にアップデートする
+2. テンプレートライブラリに移動し、`Seedream 5.0 Pro` を検索する

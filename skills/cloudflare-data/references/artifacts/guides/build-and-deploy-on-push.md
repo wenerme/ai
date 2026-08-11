@@ -61,7 +61,7 @@ Use the `@cloudflare/ci` SDK to define the CI steps. The SDK provides two tools 
 
 * **Runners** — each `runner()` call spins up an isolated sandbox and executes a shell command. You use the same commands you already run locally or in another CI system. Each runner captures its own logs, status, and output files.
 * **Cache** — the `cache` option on a runner caches installed dependencies so that later runs do not reinstall them. Pass the files that determine the dependencies, such as `pnpm-lock.yaml`, to `cache.inputs`. When those files have not changed, the SDK restores the cached result instead of running the command again.
-![Diagram showing three sequential commits: commit 1 has a cache miss so the install step runs and its sandbox snapshot is cached; commit 2 has an unchanged pnpm-lock.yaml so the cache key matches and the cached snapshot is served, skipping install; commit 3 has a changed pnpm-lock.yaml so the cache key misses and install runs again.](https://developers.cloudflare.com/_astro/snapshot-cache-flow.DuJouCOa_1qBTM9.svg)
+![Diagram showing three sequential commits: commit 1 has a cache miss so the install step runs and its sandbox snapshot is cached; commit 2 has an unchanged pnpm-lock.yaml so the cache key matches and the cached snapshot is served, skipping install; commit 3 has a changed pnpm-lock.yaml so the cache key misses and install runs again.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1500,height=620,format=svg/_astro/snapshot-cache-flow.DfA5jLQM.svg)
 
 A cached runner takes a [snapshot](https://developers.cloudflare.com/sandbox/api/backups/) of its sandbox, which later runners reuse. Multiple runners can branch from the same cached result — for example, lint, type-check, and test runners can all reuse one cached install.
 
@@ -394,7 +394,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/#page","headline":"Build and deploy Artifacts repos · Cloudflare Artifacts docs","description":"Build projects stored in Artifacts repos and deploy them as Workers or Workers for Platforms User Workers.","url":"https://developers.cloudflare.com/artifacts/guides/build-and-deploy-on-push/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

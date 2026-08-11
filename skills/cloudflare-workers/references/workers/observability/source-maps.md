@@ -74,11 +74,11 @@ Consider a simple project. `src/index.ts` serves as the entrypoint of the applic
 
 Let's see how source maps can simplify debugging an error in the ComplexCalculator class.
 
-![Stack Trace without Source Map remapping](https://developers.cloudflare.com/_astro/without-source-map.ByYR83oU_Z1q7wOD.webp)
+![Stack Trace without Source Map remapping](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1908,height=198,format=webp/_astro/without-source-map.ByYR83oU.png)
 
 With **no source maps uploaded**: notice how all the Javascript has been minified to one file, so the stack trace is missing information on file name, shows incorrect line numbers, and incorrectly references `js` instead of `ts`.
 
-![Stack Trace with Source Map remapping](https://developers.cloudflare.com/_astro/with-source-map.PipytmVe_2dYiLI.webp)
+![Stack Trace with Source Map remapping](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1850,height=238,format=webp/_astro/with-source-map.PipytmVe.png)
 
 With **source maps uploaded**: all methods reference the correct files and line numbers.
 
@@ -94,7 +94,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces · Cloudflare Workers docs","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

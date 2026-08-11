@@ -44,14 +44,14 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 1. **Download Codex**
 Follow the download instructions for your operating system at [developers.openai.com/codex/app ↗](https://developers.openai.com/codex/app).
 2. **Install the Cloudflare plugin**
 In the Codex app, go to **Plugins** and install **Cloudflare**.
-![Install the Cloudflare plugin in the Codex desktop app.](https://developers.cloudflare.com/_astro/codex-desktop.6tRb7-2M_iksW8.webp)
+![Install the Cloudflare plugin in the Codex desktop app.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2658,height=1712,format=webp/_astro/codex-desktop.6tRb7-2M.png)
 
 ## Cloudflare platform access
 
@@ -128,23 +128,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

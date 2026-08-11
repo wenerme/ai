@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 With pre-delivery deployment, also known as Inline deployment, Email security evaluates email messages before they reach a user's inbox.
 
-![Inline deployment diagram](https://developers.cloudflare.com/_astro/Email_security_Deployment_Inline.Dsh4g8YD_fMdlm.webp)
+![Inline deployment diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=591,height=252,format=webp/_astro/Email_security_Deployment_Inline.Dsh4g8YD.png)
 
 Before you change your MX records, you will have to set up the [Time to Live (TTL)](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) on your DNS records. If you do not set up the TTL, the DNS propagation will take longer to happen.
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/#page","headline":"MX/Inline deployment · Cloudflare One docs","description":"How MX/Inline deployment works in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}

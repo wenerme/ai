@@ -30,7 +30,7 @@ You will need the email address associated with your Cloudflare account, Cloudfl
 4. On the **Configure Mitigations** page, locate the **Cloudflare** section.
 5. Select **Edit** next to the Cloudflare branded mitigation to edit and review the information.
 In the following example, section 2 uses the Cloudflare email address, Account ID, and API token to send the API call to Cloudflare to begin advertising routes and turn on Magic Transit for the customer's network.
-![Kentik mitigation setup](https://developers.cloudflare.com/_astro/kentik-setup.fAVcBTXq_Z1bMP90.webp)
+![Kentik mitigation setup](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=706,height=729,format=webp/_astro/kentik-setup.fAVcBTXq.png)
 6. After reviewing the information, select **Update Mitigation Platform**.
 7. Select **Menu** \> **Library**.
 8. On the **Library** page, in the search field, enter **Cloudflare**.
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/partners/kentik/#page","headline":"Kentik · Cloudflare Magic Transit docs","description":"Kentik is a network observability company that helps detect attacks on your network and triggers Cloudflare's Magic Transit to begin advertisement. The example scenario includes two mitigations, one which pulls the advertisement from the router and a second mitigation that makes an API call to Cloudflare.","url":"https://developers.cloudflare.com/magic-transit/partners/kentik/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Integration"]}

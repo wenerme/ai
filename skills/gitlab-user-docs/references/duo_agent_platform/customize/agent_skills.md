@@ -215,7 +215,7 @@ To create a user-level skill:
 ### glab
 
    ```shell
-   glab duo cli --enable-global-skills
+   glab duo cli --enable-global-skills true
    ```
 
 
@@ -224,7 +224,7 @@ To create a user-level skill:
 ### duo
 
    ```shell
-   duo --enable-global-skills
+   duo --enable-global-skills true
    ```
 
 

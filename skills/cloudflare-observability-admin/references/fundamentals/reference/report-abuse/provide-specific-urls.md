@@ -24,7 +24,7 @@ To get the URL for a specific piece of content on a webpage:
 2. Go to the web page you want to report.
 3. Right click on the content you wish to report (often a video or image).
 4. Select **Inspect Element**.
-5. In the **DevTools** panel, look for the **src** attribute in the selected the image, video, or iFrame. ![Look for the URL in the src attribute of the video or image](https://developers.cloudflare.com/_astro/identify-url.o_PP6jZ2_1rmxgw.webp)
+5. In the **DevTools** panel, look for the **src** attribute in the selected the image, video, or iFrame. ![Look for the URL in the src attribute of the video or image](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1268,height=322,format=webp/_astro/identify-url.o_PP6jZ2.png)
 6. Copy the URL.
 
 Providing the most specific and helpful URL enables Cloudflare to correctly identify any services it may be providing with respect to that content.
@@ -41,7 +41,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/provide-specific-urls/#page","headline":"Providing specific URLs - Report abuse · Cloudflare Fundamentals docs","description":"Learn how to provide specific asset URLs when submitting an abuse report.","url":"https://developers.cloudflare.com/fundamentals/reference/report-abuse/provide-specific-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

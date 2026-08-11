@@ -139,7 +139,7 @@ To learn more about managing roles and permissions, refer to the [Manage account
 
 [Cloudflare CASB ↗](https://www.cloudflare.com/zero-trust/products/casb/) now supports three of the most widely used GenAI platforms — **OpenAI ChatGPT**, **Anthropic Claude**, and **Google Gemini**. These API-based integrations give security teams agentless visibility into posture, data, and compliance risks across their organization’s use of generative AI.
 
-![Cloudflare CASB showing selection of new findings for ChatGPT, Claude, and Gemini integrations.](https://developers.cloudflare.com/_astro/casb-ai-integrations-preview.B-zsSA1P_Z1wlfJX.webp)
+![Cloudflare CASB showing selection of new findings for ChatGPT, Claude, and Gemini integrations.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2335,height=1776,format=webp/_astro/casb-ai-integrations-preview.B-zsSA1P.png)
 
 #### Key capabilities
 
@@ -175,7 +175,7 @@ The new dashboard includes:
 
   * Identify which of your Data Loss Prevention (DLP) policies are being triggered most often.
   * See which specific users are responsible for triggering DLP policies.
-![Data Security Analytics](https://developers.cloudflare.com/_astro/cf1-data-security-analytics-v1.BGl6fYXl_H3N0P.webp)
+![Data Security Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3254,height=1580,format=webp/_astro/cf1-data-security-analytics-v1.BGl6fYXl.png)
 
 To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.
 
@@ -220,7 +220,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/casb/#page","headline":"CASB Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare CASB.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/casb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

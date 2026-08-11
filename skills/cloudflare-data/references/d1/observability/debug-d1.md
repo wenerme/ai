@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Debug D1
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/d1/observability/debug-d1/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when [debugging Workers](https://developers.cloudflare.com/workers/observability/).
 
@@ -77,6 +77,7 @@ Before retrying any failed operation:
 | D1 DB reset because its code was updated.                                                                    | Cloudflare has updated the code for D1 (or the underlying Durable Object), and the Durable Object which contains the D1 database is restarting.           | Retry the operation.                                                                                                                              |
 | Internal error while starting up D1 DB storage caused object to be reset.                                    | The Durable Object containing the D1 database is failing to start.                                                                                        | Retry the operation.                                                                                                                              |
 | Network connection lost.                                                                                     | A network error.                                                                                                                                          | Retry the operation. Refer to the "Retry operation" note above.                                                                                   |
+| Replica disconnected from primary.                                                                           | A network error between the read replica and its primary instance.                                                                                        | Retry the operation. Refer to the "Retry operation" note above.                                                                                   |
 | Internal error in D1 DB storage caused object to be reset.                                                   | An error has caused the D1 database to restart.                                                                                                           | Retry the operation.                                                                                                                              |
 | Cannot resolve D1 DB due to transient issue on remote node.                                                  | The query cannot reach the Durable Object containing the D1 database.                                                                                     | Retry the operation. Refer to the "Retry operation" note above.                                                                                   |
 | Can't read from request stream because client disconnected.                                                  | A query request was made (e.g. uploading a SQL query), but the connection was closed during the query was fully executed.                                 | App action: Retry the operation, and ensure the connection stays open.                                                                            |
@@ -125,8 +126,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1 · Cloudflare D1 docs","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/d1/observability/debug-d1/#page","headline":"Debug D1 · Cloudflare D1 docs","description":"Capture exceptions and log error messages returned from D1 database queries.","url":"https://developers.cloudflare.com/d1/observability/debug-d1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

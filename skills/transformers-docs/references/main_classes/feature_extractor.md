@@ -1,6 +1,6 @@
 
 
-# Feature Extractor
+# Feature extractor
 
 A feature extractor is in charge of preparing input features for audio models. This includes feature extraction from sequences, e.g., pre-processing audio files to generate Log-Mel Spectrogram features, and conversion to NumPy and PyTorch tensors.
 

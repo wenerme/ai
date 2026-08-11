@@ -64,7 +64,7 @@ The changes visible in your dashboard may vary based on the products you use. Ov
 
 If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI\] Upcoming Network Services Dashboard Navigation Update**.
 
-Preview: ![Networking Navigation](https://developers.cloudflare.com/_astro/networking-overview-and-navigation.CeMgEFaZ_Z20HKl.webp)
+Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3000,height=1052,format=webp/_astro/networking-overview-and-navigation.CeMgEFaZ.png)
 
 ## 2024-09-24
 
@@ -75,7 +75,7 @@ The free version of Magic Network Monitoring (MNM) is now available to everyone 
 
 1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account.
 2. Go to **Analytics & Logs** \> **Magic Monitoring**.
-![Try out the free version of Magic Network Monitoring](https://developers.cloudflare.com/_astro/get-started.D7KXWcs4_Z1KOQrC.webp)
+![Try out the free version of Magic Network Monitoring](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=852,height=666,format=webp/_astro/get-started.D7KXWcs4.png)
 
 For more details, refer to the [Get started guide](https://developers.cloudflare.com/network-flow/get-started/).
 
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/network-flow/changelog/#page","headline":"Changelog · Cloudflare Network Flow docs","description":"Review recent changes to Network Flow (formerly Magic Network Monitoring).","url":"https://developers.cloudflare.com/network-flow/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

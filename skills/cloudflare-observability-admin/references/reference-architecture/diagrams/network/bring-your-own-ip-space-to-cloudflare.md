@@ -33,7 +33,7 @@ There are two different network ranges used in this example:
 * `152.3.15.0/24` \- Customer owned IP range that will be associated with the Cloudflare network.
 * `152.3.14.0/24` \- Customer owned IP range that will continue to be associated with their origin network.
 
-![Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.](https://developers.cloudflare.com/_astro/figure1.BXY13mGX_Z1BjEVf.svg "Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.")
+![Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=911,height=323,format=svg/_astro/figure1.BXY13mGX.svg "Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.")
 
 Figure 1: Cloudflare announces customer IP range and proxies it to the origin server IP.
 
@@ -49,7 +49,7 @@ Figure 1: Cloudflare announces customer IP range and proxies it to the origin se
 
 Cloudflare is well known for its DDoS mitigation services protecting public websites and APIs. The same technologies can also be used to protect entire networks. Cloudflare's [Magic Transit](https://developers.cloudflare.com/magic-transit/) service offers a cloud-based network DDoS mitigation service for our customers' public IP space.
 
-![Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.](https://developers.cloudflare.com/_astro/figure2.D70IrQeq_1apIeL.svg "Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.")
+![Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1006,height=396,format=svg/_astro/figure2.D70IrQeq.svg "Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.")
 
 Figure 2: Protection against DDoS attacks can be placed in front of the BYOIP range in front of your Cloudflare tunneled network.
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/#page","headline":"Bring your own IP space to Cloudflare · Cloudflare Reference Architecture docs","description":"Cloudflare allows enterprises to bring their IP space to the Cloudflare network. This allows them to gain the security and performance of the platform while still appearing to the rest of the world via their own public IP space.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/bring-your-own-ip-space-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

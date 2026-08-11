@@ -26,7 +26,7 @@ You can connect your SonicWall appliance through [IPsec tunnels](https://develop
 
 ## Topology
 
-![Topology diagram showing how to connect SonicWall appliances to Cloudflare WAN](https://developers.cloudflare.com/_astro/topology.Qe7r1Gcs_1503hh.webp)
+![Topology diagram showing how to connect SonicWall appliances to Cloudflare WAN](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1064,format=webp/_astro/topology.Qe7r1Gcs.png)
 
 _Note: Labels in this image may reflect previous product names._
 
@@ -46,7 +46,7 @@ The following instructions show how to set up an IPsec connection on your SonicW
   * **Customer endpoint**: Refers to the SonicWall WAN IP that the VPN policy is bound to (in red).
   * **Cloudflare endpoint**: Refers to the Cloudflare anycast IP address (in blue).
   * **FQDN ID**: The ID used in the VPN policy for the SonicWall's Local IKE ID. Copy this ID and save it. You will need it when configuring the tunnel on your SonicWall (in green).
-![An example of what your IPsec tunnel should look like](https://developers.cloudflare.com/_astro/step3.BQqYLGGy_2mLb4y.webp)
+![An example of what your IPsec tunnel should look like](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1884,height=1554,format=webp/_astro/step3.BQqYLGGy.png)
 
 Note
 
@@ -74,7 +74,7 @@ Static routes are required for any networks that will be reached via the IPsec t
   * **Local IKE ID**: Select _Domain name_ from the drop-down menu, and paste here the **FQDN ID** you saved from step 1, after creating the IPsec tunnel (in green).
   * **Peer IKE IDE**: Select _IPv4_ Address from the drop-down menu, and enter the Cloudflare anycast IP address (in blue).
 
-![Configure a VPN policy on your SonicWall device](https://developers.cloudflare.com/_astro/3-vpn-config.D7Z_hEIs_10weGa.webp)
+![Configure a VPN policy on your SonicWall device](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1269,format=webp/_astro/3-vpn-config.D7Z_hEIs.png)
 
 1. Select **Proposals**. VPN Policy is somewhat flexible. Adjust these settings to match your organization's preferred security policy. As an example, you can use the settings in the examples below.
 2. In the **IKE (Phase 1) Proposal** group, select the following settings:
@@ -95,7 +95,7 @@ Static routes are required for any networks that will be reached via the IPsec t
 6. In **VPN Policy bound to** select your WAN interface from the drop-down menu, to bind it to your VPN.
 7. Select **Save**.
 
-![Enable anti-replay on your SonicWall device](https://developers.cloudflare.com/_astro/5-anti-replay.Dth4Gt_P_Z2gygj4.webp)
+![Enable anti-replay on your SonicWall device](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1757,format=webp/_astro/5-anti-replay.Dth4Gt_P.png)
 
 ## 4\. Add a VPN tunnel interface
 
@@ -110,12 +110,12 @@ You will need to use a different IP pair for each tunnel/site.
 3. For IP Address, use `10.200.1.1`.
 4. Enable **Ping**. This is required so the interface can be pinged for debugging and Cloudflare WAN health checks.
 
-![Enable ping so that your interface can be pinged for debugging and Cloudflare WAN health checks](https://developers.cloudflare.com/_astro/6-vpn-ping.C-1HHDpJ_nDsYq.webp)
+![Enable ping so that your interface can be pinged for debugging and Cloudflare WAN health checks](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1732,height=1516,format=webp/_astro/6-vpn-ping.C-1HHDpJ.png)
 
 1. Select **Advanced**.
 2. Enable the **Enable Asymmetric Route Support** option. This is required for the IPsec tunnel health check.
 
-![Enable Asymmetric Route Support. It is required for Cloudflare WAN health checks](https://developers.cloudflare.com/_astro/6-vpn-assymetric.z4MOIOv3_2x5GDP.webp)
+![Enable Asymmetric Route Support. It is required for Cloudflare WAN health checks](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1740,height=790,format=webp/_astro/6-vpn-assymetric.z4MOIOv3.png)
 
 1. Select **OK**.
 
@@ -130,14 +130,14 @@ To add an address object:
 3. Enter the information for your address object - refer to the topology image for the examples this tutorial is using. Since the addresses are in the VPN zone, set the **Zone Assignment** for the object to _VPN_.
 4. Select **Save**. The window will stay on to facilitate multiple entries. Select **X** to close it.
 
-![Enter the appropriate settings for your object](https://developers.cloudflare.com/_astro/7-address-objects-settings.Dym3UpvD_1yvHEh.webp)
+![Enter the appropriate settings for your object](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=895,height=538,format=webp/_astro/7-address-objects-settings.Dym3UpvD.png)
 
 1. Select **Address Groups** \> **Add** to add a new address group.
 2. Enter a **Name** for your address group.
 3. Select the individual network objects you have created on the left menu, and add them to the group by selecting the right-facing arrow in the middle column.
 4. Select **Save**.
 
-![Copy the individual network objects and add them to your group](https://developers.cloudflare.com/_astro/7-add-objects-group.CYauQpR7_Z1PirkU.webp)
+![Copy the individual network objects and add them to your group](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1340,format=webp/_astro/7-add-objects-group.CYauQpR7.png)
 
 ## 6\. Set up routing
 
@@ -190,7 +190,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/sonicwall/#page","headline":"SonicWall · Cloudflare One docs","description":"Integrate SonicWall with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/sonicwall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}

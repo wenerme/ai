@@ -24,7 +24,7 @@ This document explains how to architect access to a self-hosted VoIP service usi
 
 ## Bi-directional VoIP traffic flow
 
-![Figure 1: Cloudflare facilitates secure connectivity from user devices to the network where the SIP server is running.](https://developers.cloudflare.com/_astro/figure1.lv12Z4R7_2eAXlN.svg "Figure 1: Cloudflare facilitates secure connectivity from user devices to the network where the SIP server is running.")
+![Figure 1: Cloudflare facilitates secure connectivity from user devices to the network where the SIP server is running.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=906,height=491,format=svg/_astro/figure1.lv12Z4R7.svg "Figure 1: Cloudflare facilitates secure connectivity from user devices to the network where the SIP server is running.")
 
 Figure 1: Cloudflare facilitates secure connectivity from user devices to the network where the SIP server is running.
 
@@ -44,7 +44,7 @@ VoIP software running on the remote user's device registers with the VoIP server
 
 When calls are made from user to user, some traffic flows from user devices through Cloudflare to the on-premise server, while other traffic flows through Cloudflare directly to the other user. Note that the device agent is creating a secure tunnel through which the CGNAT addresses are routed. Both users in this flow have registered their SIP clients with the server.
 
-![Figure 2: For remote user to remote user, not all traffic flows over Cloudflare Mesh to the SIP server.](https://developers.cloudflare.com/_astro/figure2.DATzV5BV_vqXaF.svg "Figure 2: For remote user to remote user, not all traffic flows over Cloudflare Mesh to the SIP server.")
+![Figure 2: For remote user to remote user, not all traffic flows over Cloudflare Mesh to the SIP server.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=884,height=641,format=svg/_astro/figure2.DATzV5BV.svg "Figure 2: For remote user to remote user, not all traffic flows over Cloudflare Mesh to the SIP server.")
 
 Figure 2: For remote user to remote user, not all traffic flows over Cloudflare Mesh to the SIP server.
 
@@ -62,13 +62,13 @@ The above diagram shows the high level signaling and media paths.
 
 Calls between remote and on-premise users are very similar, but RTP audio will be sent over Cloudflare Mesh in addition to the SIP signaling.
 
-![Figure 3: Remote user to on-premise user has all traffic routed via Cloudflare to SIP server and client.](https://developers.cloudflare.com/_astro/figure3.Bnu64MY9_2i8AHX.svg "Figure 3: Remote user to on-premise user has all traffic routed via Cloudflare to SIP server and client.")
+![Figure 3: Remote user to on-premise user has all traffic routed via Cloudflare to SIP server and client.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=877,height=565,format=svg/_astro/figure3.Bnu64MY9.svg "Figure 3: Remote user to on-premise user has all traffic routed via Cloudflare to SIP server and client.")
 
 Figure 3: Remote user to on-premise user has all traffic routed via Cloudflare to SIP server and client.
 
 The high-level signaling and media paths are shown below:
 
-![Figure 4: Both signaling and media \(audio, video etc\) travel via secured tunnels from remote devices to on-premise clients.](https://developers.cloudflare.com/_astro/figure4.pvAsOncQ_hu8kd.svg "Figure 4: Both signaling and media (audio, video etc) travel via secured tunnels from remote devices to on-premise clients.")
+![Figure 4: Both signaling and media \(audio, video etc\) travel via secured tunnels from remote devices to on-premise clients.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1049,height=606,format=svg/_astro/figure4.pvAsOncQ.svg "Figure 4: Both signaling and media (audio, video etc) travel via secured tunnels from remote devices to on-premise clients.")
 
 Figure 4: Both signaling and media (audio, video etc) travel via secured tunnels from remote devices to on-premise clients.
 
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/#page","headline":"Deploy self-hosted VoIP services for hybrid users · Cloudflare Reference Architecture docs","description":"Learn how Cloudflare improves over traditional VPN solutions by leveraging its global network.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/deploying-self-hosted-voip-services-for-hybrid-users/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

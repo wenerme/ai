@@ -30,7 +30,7 @@ Here's how Sippy works: it will first attempt to retrieve an object from R2 stor
 
 ## On-demand Object Storage Data Migration with Sippy
 
-![Figure 1: R2 On-demand Object Storage Data Migration with Sippy](https://developers.cloudflare.com/_astro/sippy-migration-diagram.CTGKS9AD_1ScsMw.svg "Figure 1: On-demand Object Storage Data Migration with Sippy")
+![Figure 1: R2 On-demand Object Storage Data Migration with Sippy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=426,format=svg/_astro/sippy-migration-diagram.CTGKS9AD.svg "Figure 1: On-demand Object Storage Data Migration with Sippy")
 
 Figure 1: On-demand Object Storage Data Migration with Sippy
 
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/#page","headline":"On-demand Object Storage Data Migration · Cloudflare Reference Architecture docs","description":"Use Cloudflare migration tools to migrate data between cloud object storage providers.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/on-demand-object-storage-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

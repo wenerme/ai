@@ -30,7 +30,7 @@ The following should be considered an overview of some recommended security acti
 
 The [WAF Managed Rulesets](https://developers.cloudflare.com/waf/managed-rules/) are pre-configured rulesets that provide immediate protection against a variety of attacks, and are regularly updated. Many rules are turned on by default, but not all. It is recommended that you browse the Cloudflare Managed Ruleset to find any additional rules tagged for your content management system not enabled, and enable them:
 
-![Dashboard screenshot filtering for WordPress](https://developers.cloudflare.com/_astro/Wordpress-configure-deployment.BlJp-YAR_Z2mTEVy.webp)
+![Dashboard screenshot filtering for WordPress](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=725,height=406,format=webp/_astro/Wordpress-configure-deployment.BlJp-YAR.png)
 
 ### Managed Rulesets on the Free Plan
 
@@ -53,11 +53,11 @@ Using the principle of least privilege, you can run some test actions from the a
 
 After generating enough requests to have a good sample logged in your Firewall Events, observe the actions that were taken in the Managed rules section:
 
-![](https://developers.cloudflare.com/_astro/Screenshot_2022-12-23_at_16.40.29.CVmDpgm0_Z1g2Yq0.webp)
+![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=439,height=143,format=webp/_astro/Screenshot_2022-12-23_at_16.40.29.CVmDpgm0.png)
 
 Next, you can use this information to create a Skip Rule that excludes only the rules that prevent administrative actions:
 
-![](https://developers.cloudflare.com/_astro/Screenshot_2022-12-22_at_13.49.18.BqRv97eV_2fg3DX.webp)
+![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=947,height=272,format=webp/_astro/Screenshot_2022-12-22_at_13.49.18.BqRv97eV.png)
 
 ### When incoming requests match…
 
@@ -76,7 +76,7 @@ Any of these fields can be spoofed, so this is not a security measure on its own
 
 Next, you want to use the information from your Firewall logs to select which rules to skip by [adding an exception](https://developers.cloudflare.com/waf/custom-rules/skip/). For WordPress, I’ve chosen the following:
 
-![](https://developers.cloudflare.com/_astro/Screenshot_2022-12-23_at_17.08.37.DOHMox3u_Z1RR8gr.webp)
+![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=911,height=614,format=webp/_astro/Screenshot_2022-12-23_at_17.08.37.DOHMox3u.png)
 
 After this is complete, you will want to create a similar rule for any rulesets that prevent you from logging in. In my use case, I only needed to skip “OWASP Core Ruleset 949110.”
 
@@ -96,7 +96,7 @@ Now that you’ve elevated your security to protect the publicly accessible part
 
 After configuring a web application, users will be required to authenticate in some way before they can access the restricted content. The default method is through email multifactor authentication:
 
-![](https://developers.cloudflare.com/_astro/Screenshot_2022-12-22_at_14.39.21.Qh93SiQK_Z2l3sX2.webp)
+![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=500,height=357,format=webp/_astro/Screenshot_2022-12-22_at_14.39.21.Qh93SiQK.png)
 
 ### WAF custom rules with mTLS
 
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/improving-web-security-for-content-management-systems-like-wordpress/#page","headline":"Improving web security for content management systems like WordPress · Cloudflare Support docs","description":"Improve WordPress security with Cloudflare features.","url":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/improving-web-security-for-content-management-systems-like-wordpress/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

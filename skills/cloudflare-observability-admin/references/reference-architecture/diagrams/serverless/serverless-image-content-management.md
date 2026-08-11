@@ -20,7 +20,7 @@ In this reference architecture diagram, we reveal how to leverage various compon
 
 The servicing of images to requesting clients is secured by link signature, resizing based on device type or requested transformations and leveraging Cloudflare’s native security and performance features.
 
-![Figure 1: Serverless image content management](https://developers.cloudflare.com/_astro/diagram.DEMTm7TJ_21mBnF.svg "Figure 1: Serverless image content management reference architecture diagram")
+![Figure 1: Serverless image content management](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1236,height=710,format=svg/_astro/diagram.DEMTm7TJ.svg "Figure 1: Serverless image content management reference architecture diagram")
 
 Figure 1: Serverless image content management reference architecture diagram
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/#page","headline":"Serverless image content management · Cloudflare Reference Architecture docs","description":"Leverage various components of Cloudflare's ecosystem to construct a scalable image management solution","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-image-content-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

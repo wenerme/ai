@@ -23,7 +23,7 @@ Suppose that `example.com` is your domain and uses Email Service. Here is how yo
 1. In the Cloudflare dashboard, go to the **Records** page.
 [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Create a new CNAME record with the name `_mta-sts` that points to Cloudflare's record `_mta-sts.mx.cloudflare.net`. Make sure to disable the proxy mode.
-![MTA-STS CNAME record](https://developers.cloudflare.com/_astro/mta-sts-record.DbwO-t_X_1Mbxza.webp)
+![MTA-STS CNAME record](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1862,height=304,format=webp/_astro/mta-sts-record.DbwO-t_X.png)
 3. Confirm that the record was created:
 ```sh
 dig txt _mta-sts.example.com
@@ -44,7 +44,7 @@ To do this you need to deploy a Worker that allows email clients to pull Cloudfl
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/docs-examples/tree/main/workers/mta-sts-proxy)
 This Worker proxies `https://mta-sts.mx.cloudflare.net/.well-known/mta-sts.txt` to your own domain.
 2. After deploying it, go to the Worker configuration, then **Settings** \> **Domains & Routes** \> **+Add**. Type the subdomain `mta-sts.example.com`.
-![MTA-STS Worker Custom Domain](https://developers.cloudflare.com/_astro/mta-sts-domain.UfZmAoBe_lkXVJ.webp)
+![MTA-STS Worker Custom Domain](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1148,format=webp/_astro/mta-sts-domain.UfZmAoBe.png)
 You can then confirm that your policy file is working with the following:
 ```sh
 curl https://mta-sts.example.com/.well-known/mta-sts.txt
@@ -73,7 +73,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/mta-sts/#page","headline":"Configure MTA-STS · Cloudflare Email Service docs","description":"Enable MTA Strict Transport Security for your Email Service domain to protect against downgrade attacks.","url":"https://developers.cloudflare.com/email-service/configuration/mta-sts/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

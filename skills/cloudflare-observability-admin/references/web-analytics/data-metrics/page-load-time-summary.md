@@ -51,7 +51,7 @@ How long it took to render the page. This includes loading any resources that bl
 
 An event triggered by the browser when a document and its resources finish loading. The Load Event duration may be a useful metric if you have additional functions or any logic for the load event.
 
-![Web Analytics load time summary page](https://developers.cloudflare.com/_astro/dash-web_analytics-page_load_time.CrUXAPNx_Z1RQArK.webp)
+![Web Analytics load time summary page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1910,height=1352,format=webp/_astro/dash-web_analytics-page_load_time.CrUXAPNx.png)
 
 ## Data collected for Paint Timings
 
@@ -71,7 +71,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/#page","headline":"Page load time · Cloudflare Web Analytics docs","description":"Page load time metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/page-load-time-summary/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

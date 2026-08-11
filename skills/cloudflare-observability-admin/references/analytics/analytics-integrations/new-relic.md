@@ -29,7 +29,7 @@ Before sending your Cloudflare log data to New Relic, make sure that you:
 1. Log in to New Relic.
 2. Click the Instant Observability button (top right).
 3. Search for **Cloudflare Network Logs**.
-![Cloudflare Network Logs install screen](https://developers.cloudflare.com/_astro/cloudflare-network-logs.CYJYSb1Z_1A3d0x.webp)
+![Cloudflare Network Logs install screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1030,format=webp/_astro/cloudflare-network-logs.CYJYSb1Z.png)
 1. Click **Install this quickstart**.
 2. Follow the steps to deploy.
 
@@ -41,25 +41,25 @@ You can view your dashboards on the New Relic dashboard page. The dashboards inc
 
 Get a quick overview of the most important metrics from your websites and applications on the Cloudflare network.
 
-![Cloudflare Network Logs install screen](https://developers.cloudflare.com/_astro/dash-1.CTd2mveX_ZpWmkd.webp)
+![Cloudflare Network Logs install screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1407,height=817,format=webp/_astro/dash-1.CTd2mveX.png)
 
 ### Security
 
 Get insights on threats to your websites and applications, including number of threats taken action on by the Web Application Firewall (WAF), threats over time, top threat countries, and more.
 
-![Cloudflare Network security metrics screen](https://developers.cloudflare.com/_astro/dash-2.DpiyWwxC_Z1KLMnK.webp)
+![Cloudflare Network security metrics screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1402,height=511,format=webp/_astro/dash-2.DpiyWwxC.png)
 
 ### Performance
 
 Identify and address performance issues and caching misconfigurations. Metrics include total requests, total versus cached requests, total versus origin requests.
 
-![Cloudflare Network Logs performance metrics screen](https://developers.cloudflare.com/_astro/dash-3.DMdRroU0_ZLKqKd.webp)
+![Cloudflare Network Logs performance metrics screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=609,format=webp/_astro/dash-3.DMdRroU0.png)
 
 ### Reliability
 
 Get insights on the availability of your websites and Applications. Metrics include, edge response status over time, percentage of `3xx`/`4xx`/`5xx` errors over time, and more.
 
-![Cloudflare Network Logs reliability metrics screen](https://developers.cloudflare.com/_astro/dash-4.BIqk6bUl_wxIpq.webp)
+![Cloudflare Network Logs reliability metrics screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=929,height=510,format=webp/_astro/dash-4.BIqk6bUl.png)
 
 Was this helpful?
 
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/#page","headline":"New Relic · Cloudflare Analytics docs","description":"This tutorial explains how to analyze Cloudflare metrics using the New Relic One Cloudflare Quickstart.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/new-relic/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

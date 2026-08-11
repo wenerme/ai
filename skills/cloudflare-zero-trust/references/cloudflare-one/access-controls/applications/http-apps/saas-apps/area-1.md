@@ -52,11 +52,11 @@ Finally, you will need to configure Area 1 to allow users to log in through Clou
 5. Get your Metadata XML file:
 
   1. In Cloudflare One, copy the **SSO Endpoint** for your application.
-  ![Copy SSO settings for a SaaS application from Cloudflare One](https://developers.cloudflare.com/_astro/saas-sso-endpoint.ubdoNRaM_1plwk8.webp)
+  ![Copy SSO settings for a SaaS application from Cloudflare One](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1608,height=925,format=webp/_astro/saas-sso-endpoint.ubdoNRaM.png)
   2. In a new browser tab, paste the **SSO Endpoint** and append `/saml-metadata` to the end of the URL. For example, `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/saml/<app-id>/saml-metadata`.
   3. Copy the resulting metadata.
 6. Return to the Area 1 portal and paste the metadata into **Metadata XML**.
-![Configure SSO in the Area 1 portal](https://developers.cloudflare.com/_astro/area1-sso-config.DWq80iDZ_Z1BhExl.webp)
+![Configure SSO in the Area 1 portal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=685,height=487,format=webp/_astro/area1-sso-config.DWq80iDZ.png)
 7. Select **Update Settings**.
 
 If you added the application to your App Launcher, you can test the integration by going to `<your-team-name>.cloudflareaccess.com`.
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/area-1/#page","headline":"Area 1 · Cloudflare One docs","description":"Integrate Area 1 with Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/area-1/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}

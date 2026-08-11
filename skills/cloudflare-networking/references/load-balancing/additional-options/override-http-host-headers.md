@@ -61,7 +61,7 @@ For a list of endpoints that override a monitor's `Host` header:
 1. On a monitor, select **Edit**.
 2. Select **Advanced health monitor settings**.
 3. If you have endpoint overrides, you will see **Endpoint host header overrides**.
-![Example configuration of endpoint host header overrides](https://developers.cloudflare.com/_astro/origin-host-header-override.CJNvqMtO_RYlCt.webp)
+![Example configuration of endpoint host header overrides](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1906,height=360,format=webp/_astro/origin-host-header-override.CJNvqMtO.png)
 
 Was this helpful?
 
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/#page","headline":"Override HTTP Host headers · Cloudflare Load Balancing docs","description":"Override HTTP Host headers sent to origin servers.","url":"https://developers.cloudflare.com/load-balancing/additional-options/override-http-host-headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

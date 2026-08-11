@@ -269,12 +269,12 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 ### Parallel
 
-[Parallel](https://parallel.ai) is a search engine that supports domain filtering. Set `mode` when `engine` is `parallel`. OpenRouter preserves the existing `turbo` default and sends the resolved mode explicitly.
+[Parallel](https://parallel.ai) is a search engine that supports domain filtering. Set `mode` when `engine` is `parallel`. OpenRouter uses `basic` by default and sends the resolved mode explicitly.
 
 | Mode              | Latency     | Request cost           | Language availability  |
 | ----------------- | ----------- | ---------------------- | ---------------------- |
-| `turbo` (default) | \~200 ms    | \$1 per 1,000 requests | English and Japanese   |
-| `basic`           | \~1 second  | \$5 per 1,000 requests | Broad language support |
+| `turbo`           | \~200 ms    | \$1 per 1,000 requests | English and Japanese   |
+| `basic` (default) | \~1 second  | \$5 per 1,000 requests | Broad language support |
 | `advanced`        | \~3 seconds | \$5 per 1,000 requests | Broad language support |
 
 Each mode includes up to 10 results. Additional results cost \$1 per 1,000 results.

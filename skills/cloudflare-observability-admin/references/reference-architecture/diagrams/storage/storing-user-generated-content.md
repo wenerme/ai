@@ -37,7 +37,7 @@ This approach avoids routing large files through the application backend or Work
 
 And because R2 is natively integrated with Cloudflare's global network, files stored in R2 are accessible with low latency from anywhere in the world—and **without any egress fees**, even as your application scales.
 
-![Use Case 1: Secure User Uploads to R2 via Signed URLs](https://developers.cloudflare.com/_astro/uploads-to-r2-via-signed-urls.ko_gZGAm_ZU4RAz.svg "Use Case 1: Secure User Uploads to R2 via Signed URLs")
+![Use Case 1: Secure User Uploads to R2 via Signed URLs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1023,height=451,format=svg/_astro/uploads-to-r2-via-signed-urls.ko_gZGAm.svg "Use Case 1: Secure User Uploads to R2 via Signed URLs")
 
 Use Case 1: Secure User Uploads to R2 via Signed URLs
 
@@ -60,7 +60,7 @@ Many modern applications utilize AI-generated content, which can include product
 
 This architecture employs [Workers AI](https://developers.cloudflare.com/workers-ai/) to perform inference at the edge and then stores the generated output directly in Cloudflare R2, all within a single Worker.
 
-![Use Case 2: AI-Generated Content Stored in R2](https://developers.cloudflare.com/_astro/ai-generated-content-in-r2.KciiXeXA_ZU4RAz.svg "Use Case 2: AI-Generated Content Stored in R2")
+![Use Case 2: AI-Generated Content Stored in R2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1023,height=451,format=svg/_astro/ai-generated-content-in-r2.KciiXeXA.svg "Use Case 2: AI-Generated Content Stored in R2")
 
 Use Case 2: AI-Generated Content Stored in R2
 
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/#page","headline":"Storing user generated content · Cloudflare Reference Architecture docs","description":"Store user-generated content in R2 for fast, secure, and cost-effective architecture.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/storage/storing-user-generated-content/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

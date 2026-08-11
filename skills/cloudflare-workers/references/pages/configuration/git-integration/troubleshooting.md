@@ -26,7 +26,7 @@ Using the same GitHub/GitLab repository across separate Cloudflare accounts is d
 
 If you run into any issues related to deployments or failing, check your project dashboard to see if there are any SCM installation warnings listed as shown in the screenshot below.
 
-![Pausing a deployment in the Settings of your Pages project](https://developers.cloudflare.com/_astro/git.dashboard-error.z5oiIEkZ_Z1VyhRe.webp)
+![Pausing a deployment in the Settings of your Pages project](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1504,height=168,format=webp/_astro/git.dashboard-error.z5oiIEkZ.png)
 
 To resolve any errors displayed in the Cloudflare Pages dashboard, follow the steps listed below.
 
@@ -74,7 +74,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/#page","headline":"Troubleshooting builds · Cloudflare Pages docs","description":"Resolve common Cloudflare Pages git integration errors related to deployments and installations.","url":"https://developers.cloudflare.com/pages/configuration/git-integration/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

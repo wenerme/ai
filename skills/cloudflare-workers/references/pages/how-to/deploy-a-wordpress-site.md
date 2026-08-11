@@ -31,7 +31,7 @@ To start, install the [Simply Static ↗](https://wordpress.org/plugins/simply-s
 
 Search for `Simply Static` and confirm that the resulting plugin that you will be installing matches the plugin below.
 
-![Simply Static plugin](https://developers.cloudflare.com/_astro/simply-static.B1STKlmC_ZgrRwz.webp)
+![Simply Static plugin](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=762,height=526,format=webp/_astro/simply-static.B1STKlmC.png)
 
 Select **Install** on the plugin. After it has finished installing, select **Activate**.
 
@@ -82,7 +82,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/#page","headline":"Deploy a static WordPress site · Cloudflare Pages docs","description":"Learn how to deploy a static WordPress site using Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}

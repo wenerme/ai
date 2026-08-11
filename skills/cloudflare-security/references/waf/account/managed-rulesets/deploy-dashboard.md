@@ -25,7 +25,7 @@ To deploy a managed ruleset for a single zone, refer to [Deploy a WAF managed ru
 1. In the Cloudflare dashboard, go to the **WAF** page.
 [Go to **WAF** ↗](https://dash.cloudflare.com/?to=/:account/application-security/waf)
 2. Go to the **Managed rulesets** tab.
-![Example WAF Managed Rules configuration in the Managed rulesets tab.](https://developers.cloudflare.com/_astro/managed-rulesets-dashboard.BxgYTxN0_ZfehkH.webp)
+![Example WAF Managed Rules configuration in the Managed rulesets tab.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=896,height=328,format=webp/_astro/managed-rulesets-dashboard.BxgYTxN0.png)
 3. Select **Deploy** \> **Deploy managed ruleset**.
 4. Next to the managed ruleset you want to deploy, select **Select ruleset**.
 5. Give a name to the rule deploying the ruleset in **Execution name**.
@@ -69,7 +69,7 @@ If you have not deployed the managed ruleset yet, do the following:
   2. Next to the managed ruleset you want to deploy and configure, select **Select ruleset**.
 4. In the ruleset configuration section, set one or more rule fields from the available values in the drop-down lists. The exact options vary according to the managed ruleset you are configuring.
 For example, select the action to perform for all the rules in the ruleset from the **Ruleset action** drop-down list.
-![The Configure deployment page displaying the available options to override all the rules in the ruleset. In the displayed managed ruleset you can override the ruleset action.](https://developers.cloudflare.com/_astro/waf-configure-ruleset-account.YSsDcmI__ZvxBqT.webp)
+![The Configure deployment page displaying the available options to override all the rules in the ruleset. In the displayed managed ruleset you can override the ruleset action.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=931,height=793,format=webp/_astro/waf-configure-ruleset-account.YSsDcmI_.png)
 5. If you are editing a deployed managed ruleset, select **Save**. If you have not deployed the managed ruleset yet, select **Deploy** to deploy the ruleset immediately, or **Save as Draft** to save your deployment settings for later.
 
 ### Configure rules in bulk in a managed ruleset
@@ -83,7 +83,7 @@ If you have not deployed the managed ruleset:
   1. Select **Deploy** \> **Deploy managed ruleset**.
   2. Next to the managed ruleset, select **Select ruleset**.
 4. Select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/_astro/waf-browse-rules.lrvrhCdB_gTa6m.webp)
+![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
 
 1. Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
 If not all the rules are displayed in the current page, extend your selection to all rules with the selected tags across all pages by selecting **Select all <NUMBER> rules**.
@@ -106,7 +106,7 @@ If you have not deployed the managed ruleset:
   1. Select **Deploy** \> **Deploy managed ruleset**.
   2. Next to the managed ruleset, select **Select ruleset**.
 4. Select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/_astro/waf-browse-rules.lrvrhCdB_gTa6m.webp)
+![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
 
 1. Search for rules using the available filters.
 2. In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
@@ -126,7 +126,7 @@ If you have not deployed the managed ruleset yet, do the following:
   1. Select **Deploy** \> **Deploy managed ruleset**.
   2. Next to the managed ruleset you want to browse, select **Select ruleset**.
 4. Select **Browse rules**.
-![The Browse rules page displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/_astro/waf-browse-rules.lrvrhCdB_gTa6m.webp)
+![The Browse rules page displaying the list of rules in the Cloudflare Managed Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1067,height=723,format=webp/_astro/waf-browse-rules.lrvrhCdB.png)
 
 ### Delete a managed ruleset deployment rule or an exception
 
@@ -141,7 +141,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/#page","headline":"Deploy a WAF managed ruleset in the dashboard for an account · Cloudflare Web Application Firewall (WAF) docs","description":"Deploy WAF managed rulesets at the account level in the dashboard.","url":"https://developers.cloudflare.com/waf/account/managed-rulesets/deploy-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

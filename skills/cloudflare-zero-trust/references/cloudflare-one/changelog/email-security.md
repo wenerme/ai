@@ -91,12 +91,12 @@ This applies to all Email Security packages:
 
 We have updated the Monitoring page to provide a more streamlined and insightful experience for administrators, improving both data visualization and dashboard accessibility.
 
-* **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis. ![visual-example](https://developers.cloudflare.com/_astro/monitoring-bar-charts.Bi-4BuXC_xiAlF.webp)
+* **Enhanced Visual Layout**: Optimized contrast and the introduction of stacked bar charts for clearer data visualization and trend analysis. ![visual-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3212,height=2344,format=webp/_astro/monitoring-bar-charts.Bi-4BuXC.png)
 * **Improved Accessibility & Usability**:
   * **Widget Search**: Added search functionality to multiple widgets, including Policies, Submitters, and Impersonation.
   * **Actionable UI**: All available actions are now accessible via dedicated buttons.
-  * **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions. ![buttons-example](https://developers.cloudflare.com/_astro/monitoring-buttons.DORPJvP__1JBNhu.webp)
-* **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations. ![monthly-example](https://developers.cloudflare.com/_astro/monitoring-monthly-dispositions.CYuI5d9y_ZSVir3.webp)
+  * **State Indicators**: Improved UI states to clearly communicate loading, empty datasets, and error conditions. ![buttons-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3178,height=664,format=webp/_astro/monitoring-buttons.DORPJvP_.png)
+* **Granular Data Breakdowns**: New views for dispositions by month, malicious email details, link actions, and impersonations. ![monthly-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3202,height=1486,format=webp/_astro/monitoring-monthly-dispositions.CYuI5d9y.png)
 
 This applies to all Email Security packages:
 
@@ -115,7 +115,7 @@ Note
 
 Error messages will vary depending on whether you are using Google Workspace or Microsoft 365.
 
-![failure-log-example](https://developers.cloudflare.com/_astro/enhanced-visibility-post-delivery-actions.BNiyPtJU_GFx2V.webp)
+![failure-log-example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2348,height=1692,format=webp/_astro/enhanced-visibility-post-delivery-actions.BNiyPtJU.png)
 
 This update allows you to see the full lifecycle of a failed action. For instance, if an administrator tries to move an email that has already been deleted or moved manually, the log will now show the multiple retry attempts and the specific destination error.
 
@@ -133,7 +133,7 @@ We have updated the terminology “Reclassify” and “Reclassifications” to 
 
 Submissions are leveraged to tune future variants of campaigns. To respect data sanctity, providing a submission does not change the original disposition of the emails submitted.
 
-![nav_example](https://developers.cloudflare.com/_astro/reclassification-submission.B6nL5Hw7_Z2qliyJ.webp)
+![nav_example](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=756,height=628,format=webp/_astro/reclassification-submission.B6nL5Hw7.png)
 
 This applies to all Email Security packages:
 
@@ -173,7 +173,7 @@ These reports offer several key benefits:
 * **Configuration Transparency:** Gain a clear view of your policy, submission, and domain configurations to ensure optimal setup.
 * **Account Takeover Risks:** Get a snapshot of your M365 risky users (requires a Microsoft Entra ID P2 license and [M365 SaaS integration ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/)).
 
-To get started, refer to [Download a security report](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/#download-a-security-report). ![Report](https://developers.cloudflare.com/_astro/report.CbkPa8Jt_Z1xMpIx.webp)
+To get started, refer to [Download a security report](https://developers.cloudflare.com/cloudflare-one/email-security/monitoring/download-report/#download-a-security-report). ![Report](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1009,height=571,format=webp/_astro/report.CbkPa8Jt.png)
 
 This feature is available across the following Email security packages:
 
@@ -191,9 +191,9 @@ Email security relies on your submissions to continuously improve our detection 
 To ensure all customer feedback is actionable, we have launched two new features to manage invalid submissions sent to our team and user [submission aliases](https://developers.cloudflare.com/cloudflare-one/email-security/settings/phish-submissions/submission-addresses/):
 
 * **Email Notifications:** We now automatically notify users by email when they provide an invalid submission, educating them on the correct format. To disable notifications, go to **[Settings ↗](https://one.dash.cloudflare.com/?to=/:account/email-security/settings)** \> **Invalid submission emails** and turn the feature off.
-![EmailSec-Invalid-Submissions-Toggle](https://developers.cloudflare.com/_astro/EmailSec-Invalid-Submissions-Toggle.DXjbR6aX_ZsxWGB.webp)
+![EmailSec-Invalid-Submissions-Toggle](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=175,format=webp/_astro/EmailSec-Invalid-Submissions-Toggle.DXjbR6aX.png)
 * **Invalid Submission dashboard:** You can quickly identify which users need education to provide valid submissions so Cloudflare can provide continuous protection.
-![EmailSec-Invalid-Submissions-Dashboard](https://developers.cloudflare.com/_astro/EmailSec-Invalid-Submissions-Dashboard.zuf1on2n_2gjnGS.webp)
+![EmailSec-Invalid-Submissions-Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=511,format=webp/_astro/EmailSec-Invalid-Submissions-Dashboard.zuf1on2n.png)
 
 Learn more about this feature on [invalid submissions](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/invalid-submissions/).
 
@@ -275,7 +275,7 @@ When you deploy MX or Inline, not only can you apply email link isolation to sus
 
 For example, you may want to deliver suspicious messages but isolate the links found within them so that users who choose to interact with the links will not accidentally expose your organization to threats. This means your end users are more secure than ever before.
 
-![Expanded Email Link Isolation Configuration](https://developers.cloudflare.com/_astro/expanded-link-actions.DziIg6E8_1Sx0Ar.webp)
+![Expanded Email Link Isolation Configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=497,format=webp/_astro/expanded-link-actions.DziIg6E8.jpg)
 
 To isolate all links within a message based on the disposition, select **Settings** \> **Link Actions** \> **View** and select **Configure**. As with other other links you isolate, an interstitial will be provided to warn users that this site has been isolated and the link will be recrawled live to evaluate if there are any changes in our threat intel. Learn more about this feature on [Configure link actions ↗](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/configure-link-actions/).
 
@@ -293,7 +293,7 @@ You can now safely open email attachments to view and investigate them.
 
 What this means is that messages now have a **Attachments** section. Here, you can view processed attachments and their classifications (for example, _Malicious_, _Suspicious_, _Encrypted_). Next to each attachment, a **Browser Isolation** icon allows your team to safely open the file in a **clientless, isolated browser** with no risk to the analyst or your environment.
 
-![Attachment-RBI](https://developers.cloudflare.com/_astro/Attachment-RBI.U9Dp8dJO_265xjw.webp)
+![Attachment-RBI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=517,height=155,format=webp/_astro/Attachment-RBI.U9Dp8dJO.png)
 
 To use this feature, you must:
 
@@ -317,7 +317,7 @@ This feature is available across these Email security packages:
 
 You can now safely open links in emails to view and investigate them.
 
-![Open links with Browser Isolation](https://developers.cloudflare.com/_astro/investigate-links.pYbpGkt5_Z1DQRHU.webp)
+![Open links with Browser Isolation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=558,height=204,format=webp/_astro/investigate-links.pYbpGkt5.jpg)
 
 From **Investigation**, go to **View details**, and look for the **Links identified** section. Next to each link, the Cloudflare dashboard will display an **Open in Browser Isolation** icon which allows your team to safely open the link in a clientless, isolated browser with no risk to the analyst or your environment. Refer to [Open links](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#open-links) to learn more about this feature.
 
@@ -347,7 +347,7 @@ With the other integration, you can have a separate SaaS integration for CASB fi
 
 Refer to [Add an integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) to learn more about this feature.
 
-![CASB-EmailSecurity](https://developers.cloudflare.com/_astro/CASB-EmailSecurity.B1wd9be2_PR5LD.webp)
+![CASB-EmailSecurity](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=727,height=502,format=webp/_astro/CASB-EmailSecurity.B1wd9be2.png)
 
 This feature is available across these Email security packages:
 
@@ -363,7 +363,7 @@ You can now send detection logs to an endpoint of your choice with Cloudflare Lo
 
 Filter logs matching specific criteria you have set and select from over 25 fields you want to send. When creating a new Logpush job, remember to select **Email security alerts** as the dataset.
 
-![logpush-detections](https://developers.cloudflare.com/_astro/Logpush-Detections.Dc5tHta3_1PsIMk.webp)
+![logpush-detections](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=927,height=688,format=webp/_astro/Logpush-Detections.Dc5tHta3.png)
 
 For more information, refer to [Enable detection logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-detection-logs).
 
@@ -390,7 +390,7 @@ For Area 1, under **Cloudflare Sites and Services**:
 * **Area 1 - Dash** is the dashboard for Cloudflare, including Email security
 * **Email security (Area1)** is the processing of email
 * **Area 1 - API** are the Area 1 endpoints
-![Status-page](https://developers.cloudflare.com/_astro/Status-Page.DcFJ1286_2qTtkN.webp)
+![Status-page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=792,height=348,format=webp/_astro/Status-Page.DcFJ1286.png)
 
 This feature is available across these Email security packages:
 
@@ -411,15 +411,15 @@ Refer to [Outbound Data Loss Prevention](https://developers.cloudflare.com/cloud
 
 In GUI alert:
 
-![DLP-Alert](https://developers.cloudflare.com/_astro/DLP-Alert.5s-fbKn3_1xfB14.webp)
+![DLP-Alert](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1357,height=212,format=webp/_astro/DLP-Alert.5s-fbKn3.png)
 
 Alert before sending:
 
-![DLP-Pop-up](https://developers.cloudflare.com/_astro/DLP-Pop-up.0gkYy7o5_ZgIo8K.webp)
+![DLP-Pop-up](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1362,height=479,format=webp/_astro/DLP-Pop-up.0gkYy7o5.png)
 
 Prevent delivery:
 
-![DLP-Blocked](https://developers.cloudflare.com/_astro/DLP-Blocked.CmQkGrnM_ZewJi3.webp)
+![DLP-Blocked](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1353,height=329,format=webp/_astro/DLP-Blocked.CmQkGrnM.png)
 
 This feature is available across these Email security packages:
 
@@ -433,7 +433,7 @@ This feature is available across these Email security packages:
 
 You can now investigate links in emails with Cloudflare Security Center to generate a report containing a myriad of technical details: a phishing scan, SSL certificate data, HTTP request and response data, page performance data, DNS records, what technologies and libraries the page uses, and more.
 
-![Open links in Security Center](https://developers.cloudflare.com/_astro/Open-Links-Security-Center.b-LJU4YB_2dBHq8.webp)
+![Open links in Security Center](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1118,height=402,format=webp/_astro/Open-Links-Security-Center.b-LJU4YB.png)
 
 From **Investigation**, go to **View details**, and look for the **Links identified** section. Select **Open in Security Center** next to each link. **Open in Security Center** allows your team to quickly generate a detailed report about the link with no risk to the analyst or your environment.
 
@@ -452,7 +452,7 @@ This feature is available across these Email security packages:
 
 After you triage your users' submissions (that are machine reviewed), you can now escalate them to our team for reclassification (which are instead human reviewed). User submissions from the submission alias, PhishNet, and our API can all be escalated.
 
-![Escalate](https://developers.cloudflare.com/_astro/Escalate.CwXPIyM3_ZxuRN6.webp)
+![Escalate](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=897,height=434,format=webp/_astro/Escalate.CwXPIyM3.png)
 
 From **Reclassifications**, go to **User submissions**. Select the three dots next to any of the user submissions, then select **Escalate** to create a team request for reclassification. The Cloudflare dashboard will then show you the submissions on the **Team Submissions** tab.
 
@@ -475,7 +475,7 @@ Reclassifications happen when users or admins [submit a phish](https://developer
 
 This new tab increases your visibility into this process, allowing you to view what submissions you have made and what the outcomes of those submissions are.
 
-![Use the Reclassification area to review submitted phishing emails](https://developers.cloudflare.com/_astro/reclassifications-tab.yDgtjG51_Z1TVbIE.webp)
+![Use the Reclassification area to review submitted phishing emails](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1645,height=758,format=webp/_astro/reclassifications-tab.yDgtjG51.png)
 
 ## 2024-11-07
 
@@ -491,7 +491,7 @@ When creating a new Logpush job, remember to select **Audit logs** as the datase
 * **Field**: `"ResourceType"`
 * **Operator**: `"starts with"`
 * **Value**: `"email_security"`.
-![Logpush-user-actions](https://developers.cloudflare.com/_astro/Logpush-User-Actions.D14fWgmq_CYM35.webp)
+![Logpush-user-actions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=829,height=454,format=webp/_astro/Logpush-User-Actions.D14fWgmq.png)
 
 For more information, refer to [Enable user action logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/email-security-logs/#enable-user-action-logs).
 
@@ -524,7 +524,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/email-security/#page","headline":"Email security · Cloudflare One docs","description":"Track updates and changes to Cloudflare One features.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/email-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

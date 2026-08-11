@@ -49,7 +49,7 @@ If the answer to either of these questions is "No", then the endpoint fails the 
 
 For each option selected in a pool's **Health Monitor Regions**, Cloudflare sends health monitor requests from three separate data centers in that region.
 
-![Health monitor requests come from three data centers within each selected region.](https://developers.cloudflare.com/_astro/health-check-component.wo0_f7k-_Z1C61Ll.webp)
+![Health monitor requests come from three data centers within each selected region.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=467,height=497,format=webp/_astro/health-check-component.wo0_f7k-.png)
 
 If the majority of data centers for that region pass the health monitor requests, that region is considered healthy. If the majority of regions is healthy, then the endpoint itself will be considered healthy.
 
@@ -116,7 +116,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/#page","headline":"How endpoints and pools become unhealthy · Cloudflare Load Balancing docs","description":"How endpoints and pools become unhealthy.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/health-details/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

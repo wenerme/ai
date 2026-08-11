@@ -67,7 +67,7 @@ If you are not receiving emails intended for your new email address, review your
 1. Log into the [Cloudflare dashboard](#log-in-to-cloudflare).
 2. Go to **DNS**.
 3. Your domain should have records similar to the following:
-![Your iCloud custom email domain should have a specific set of records created by default.](https://developers.cloudflare.com/_astro/icloud-custom-domain-dns-example.DXfRAhRV_2nrVJy.webp)
+![Your iCloud custom email domain should have a specific set of records created by default.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=602,format=webp/_astro/icloud-custom-domain-dns-example.DXfRAhRV.png)
 
 If your domain has records similar to those listed above and you are still experiencing problems with your new email address, contact [Apple Support ↗](https://support.apple.com/).
 
@@ -111,7 +111,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/icloud-domains/#page","headline":"iCloud Custom Email Domains · Cloudflare Registrar docs","description":"Set up iCloud custom email domains via Cloudflare.","url":"https://developers.cloudflare.com/registrar/account-options/icloud-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -161,7 +161,7 @@ Depending on your regional settings, you may need to use a semicolon as the argu
 =NSLookup(B1; B2)
 ```
 
-![Google Sheets cell containing the NSLookup formula](https://developers.cloudflare.com/_astro/google-sheet-function.B_K9dB4i_1pUnIa.webp)
+![Google Sheets cell containing the NSLookup formula](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=534,height=424,format=webp/_astro/google-sheet-function.B_K9dB4i.png)
 
 
 Returns the `A` record for that domain:
@@ -170,7 +170,7 @@ Returns the `A` record for that domain:
 198.41.214.162, 198.41.215.162
 ```
 
-![Google Sheets cell displaying the DNS lookup result](https://developers.cloudflare.com/_astro/google-sheet-result.qjsyQyZU_ZJWiV8.webp)
+![Google Sheets cell displaying the DNS lookup result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=698,height=424,format=webp/_astro/google-sheet-result.qjsyQyZU.png)
 
 Was this helpful?
 
@@ -178,7 +178,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/#page","headline":"DNS in Google Sheets · Cloudflare 1.1.1.1 docs","description":"Look up DNS records directly inside Google Sheets using Cloudflare's 1.1.1.1 DNS resolver and a custom Google Apps Script function.","url":"https://developers.cloudflare.com/1.1.1.1/additional-options/dns-in-google-sheets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","JSON","Integration"]}

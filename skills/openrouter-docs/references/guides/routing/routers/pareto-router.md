@@ -136,12 +136,12 @@ The response includes the `model` field showing which coding model was actually 
 
 ## Session Stickiness
 
-The Pareto Router pins both the selected **model** and **provider** so that subsequent requests in the same conversation route to the same place. This ensures consistent behavior within a conversation and maximizes [prompt cache](/docs/guides/best-practices/prompt-caching) hits.
+The Pareto Router reuses the selected **model** and **provider** on a best-effort basis so that subsequent requests in the same conversation route to the same place. This keeps behavior consistent within a conversation and maximizes [prompt cache](/docs/guides/best-practices/prompt-caching) hits. The cached model is promoted only while it remains in the current candidate shortlist; if it drops out (for example after a `min_coding_score` change or a shortlist update), the router selects a different model.
 
 Stickiness applies at two levels:
 
-* **Implicit (automatic)**: OpenRouter derives a conversation fingerprint from your messages (hashing the first system message and first user message). Once the provider reports prompt cache usage, the model and provider are pinned for that conversation. No configuration needed.
-* **Explicit (`session_id`)**: When you include a `session_id`, stickiness kicks in on the first successful response — even before cache usage is observed. This is recommended for multi-turn coding sessions and agent workflows where you want consistent routing from the start.
+* **Implicit (automatic)**: OpenRouter derives a conversation fingerprint from your messages (hashing the first system message and first user message). Once the provider reports prompt cache usage, the model and provider are reused for that conversation while the model remains in the candidate shortlist. No configuration needed.
+* **Explicit (`session_id`)**: When you include a `session_id`, stickiness kicks in on the first successful response — even before cache usage is observed. The same best-effort rule applies: the model is reused only while it stays in the shortlist. This is recommended for multi-turn coding sessions and agent workflows where you want consistent routing from the start.
 
 In both cases, the cache expires after **5 minutes** of inactivity. Each successful request resets the timer. If the cached provider returns an error, the cache is not updated, allowing the next request to be re-routed.
 
@@ -168,7 +168,7 @@ For full details on how sticky routing works, cache key granularity, and the `x-
     ],
   });
 
-  // Subsequent requests with the same session_id will use the same model and provider
+  // Subsequent requests with the same session_id may reuse the same model and provider
   const followUp = await openRouter.chat.send({
     model: 'openrouter/pareto-code',
     session_id: 'my-coding-session-123',
@@ -206,9 +206,9 @@ For full details on how sticky routing works, cache key granularity, and the `x-
   ```
 </CodeGroup>
 
-### Session stickiness with the Pareto Router
+### Why It Matters for the Pareto Router
 
-The Pareto Router selects a model based on coding score and cost, so different requests could resolve to different models as the shortlist evolves. Session stickiness pins the **model selection** as well as the provider, so your multi-turn coding session stays on the same model throughout. This prevents mid-conversation model switches that could lead to inconsistent code style or lost prompt cache.
+The Pareto Router selects a model based on coding score and cost — different requests could resolve to different models as the shortlist evolves. Session stickiness prefers the previously selected **model** — not just the provider — so a multi-turn coding session stays on the same model while that model remains eligible. This avoids unnecessary mid-conversation model switches that could lead to inconsistent code style or lost prompt cache.
 
 ## Pricing
 

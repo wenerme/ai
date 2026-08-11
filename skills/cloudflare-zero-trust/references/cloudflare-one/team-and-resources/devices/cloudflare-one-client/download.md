@@ -39,6 +39,18 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 Latest release
 
+**Version:** Windows2026.6.905.0**Date:** 2026-08-10**Size:** 59.1 MB
+
+[Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.905.0)
+
+#### Release notes
+
+This hotfix addresses an uncommon and intermittent case on Windows devices where the device is unable to reconnect after the device is woken from sleep.
+
+Previous version history (13)
+
+Windows 2026.6.880.0
+
 **Version:** Windows2026.6.880.0**Date:** 2026-07-21**Size:** 59 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.880.0)
@@ -46,8 +58,6 @@ Latest release
 #### Release notes
 
 This hotfix resolves a regression that caused a large increase in DNS-over-TCP queries to fallback and internal DNS servers. The client now sends fallback DNS queries over UDP first, falling back to TCP only when a response is truncated, instead of querying both protocols in parallel.
-
-Previous version history (12)
 
 Windows 2026.6.850.0
 
@@ -1011,7 +1021,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#page","headline":"Download Cloudflare One Client stable releases · Cloudflare One docs","description":"Reference information for Download Cloudflare One Client stable releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

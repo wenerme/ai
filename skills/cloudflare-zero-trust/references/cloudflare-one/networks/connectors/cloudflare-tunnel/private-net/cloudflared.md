@@ -18,7 +18,7 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 On the client side, end users connect to Cloudflare's global network using the Cloudflare One Client. The Cloudflare One Client can be rolled out to your entire organization in just a few minutes using your in-house MDM tooling. When users connect to an IP address or hostname made available through Cloudflare Tunnel, WARP sends their connection through Cloudflare's network and down the corresponding tunnel to the internal service. Traffic to services behind the tunnel will carry the local source IP address of the host machine running the `cloudflared` daemon.
 
-![Diagram displaying connections between a device, Cloudflare, and a private network.](https://developers.cloudflare.com/_astro/private-ips-diagram.BXgaklt9_7ovDi.webp)
+![Diagram displaying connections between a device, Cloudflare, and a private network.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2530,height=1144,format=webp/_astro/private-ips-diagram.BXgaklt9.png)
 
 To enable remote access to your private network, refer to the following guides:
 
@@ -31,7 +31,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/#page","headline":"Connect with cloudflared · Cloudflare One docs","description":"How Connect with cloudflared works in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

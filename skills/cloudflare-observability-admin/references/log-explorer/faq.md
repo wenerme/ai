@@ -72,7 +72,7 @@ Custom Dashboards currently run on [GraphQL](https://developers.cloudflare.com/a
 
 Your monthly usage is displayed at the top of the Log Search and Manage Datasets dashboard sections within Log Explorer.
 
-![Usage display in the dashboard](https://developers.cloudflare.com/_astro/log-explorer-usage.CTcGXtWV_Z1AOepV.webp)
+![Usage display in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1078,height=380,format=webp/_astro/log-explorer-usage.CTcGXtWV.png)
 
 ## How do I turn off Log Explorer?
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/log-explorer/faq/#page","headline":"FAQ · Cloudflare Log Explorer docs","description":"Find answers to common questions about Log Explorer.","url":"https://developers.cloudflare.com/log-explorer/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

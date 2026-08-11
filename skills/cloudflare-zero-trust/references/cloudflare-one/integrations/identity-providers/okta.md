@@ -55,7 +55,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 1. Log in to your Okta admin dashboard and go to **Applications** \> **Applications**.
 2. Select **Create App Integration**.
 3. For the **Sign-in method**, select **OIDC - OpenID Connect**.
-![Creating an OIDC application in Okta](https://developers.cloudflare.com/_astro/okta-1.BlGKmCip_Z24dx2X.webp)
+![Creating an OIDC application in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1332,height=1210,format=webp/_astro/okta-1.BlGKmCip.png)
 4. For the **Application type**, select **Web Application**. Select **Next**.
 5. Enter any name for the application. In the **Sign-in redirect URIs** field, enter the following URL:
 ```txt
@@ -65,7 +65,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 6. Choose the desired **Assignment** option and select **Save**.
 7. From the application view, go to the **Sign On** tab.
 8. Scroll down to **Token claims** and select **Show legacy configuration** \> **Edit**.
-![Configuring the Groups claim filter in Okta](https://developers.cloudflare.com/_astro/okta-2.DrNQXWIc_ZCGOg7.webp)
+![Configuring the Groups claim filter in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=737,height=658,format=webp/_astro/okta-2.DrNQXWIc.png)
 9. Set **Groups claim filter** to _Matches regex_ and its value to `.*`.
 
 Token claim expressions
@@ -74,7 +74,7 @@ Token claim expressions
 * To configure more complex expressions, refer to Okta's [token claims documentation ↗](https://help.okta.com/okta%5Fhelp.htm?type=oie&locale=en&id=federated-claims-overview).
 
 1. In the **General** tab, copy the **Client ID** and **Client secret**.
-![Finding your Client credentials in Okta](https://developers.cloudflare.com/_astro/okta-3.BzGr0OXt_293BnQ.webp)
+![Finding your Client credentials in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=763,height=672,format=webp/_astro/okta-3.BzGr0OXt.png)
 1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Integrations** \> **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**. Select **Okta** as your identity provider.
 3. Fill in the following information:
@@ -138,14 +138,14 @@ The `userName` attribute must match the user's email address in Cloudflare One.
 10. Select **Enable API integration**.
 11. In the **Base URL** field, enter the **SCIM Endpoint** obtained from Cloudflare One.
 12. In the **API Token** field, enter the **SCIM Secret** obtained from Cloudflare One.
-![Enter SCIM values into Okta](https://developers.cloudflare.com/_astro/enter-scim-values.CxQEosHF_1P1ybq.webp)
+![Enter SCIM values into Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1021,height=553,format=webp/_astro/enter-scim-values.CxQEosHF.png)
 13. Select **Test API Credentials** to ensure that the credentials were entered correctly. Select **Save**.
 14. On the **Provisioning** tab, select **Edit** and enable:
 
   * **Create Users**
   * **Update User Attributes**
   * **Deactivate Users**
-![Configure provisioning settings in Okta](https://developers.cloudflare.com/_astro/enable-provisioning.CUZPrFdg_1mHfaq.webp)
+![Configure provisioning settings in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1059,height=685,format=webp/_astro/enable-provisioning.CUZPrFdg.png)
 15. In the **Assignments** tab, add the users you want to synchronize with Cloudflare Access. You can add users in batches by assigning a group. If a user is removed from the application assignment via a either direct user assignment or removed from the group that was assigned to the app, this will trigger a deprovisioning event from Okta to Cloudflare.
 16. In the **Push Groups** tab, add the Okta groups you want to synchronize with Cloudflare Access. These groups will display in the Access policy builder and are the group memberships that will be added and removed upon membership change in Okta.
 Note
@@ -189,7 +189,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/#page","headline":"Okta · Cloudflare One docs","description":"Integrate Okta as an identity provider for Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Okta","SCIM"]}

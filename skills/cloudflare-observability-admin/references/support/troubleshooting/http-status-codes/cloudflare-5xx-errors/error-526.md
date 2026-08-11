@@ -41,7 +41,7 @@ Here are some options to fix or workaround this issue:
   * The certificate chain is complete - the origin server must serve the leaf certificate along with any required intermediate CA certificates so that Cloudflare can build a trusted chain to a root CA.
   * Your origin web server accepts connections over port SSL port `443`.
   * [Temporarily pause Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/pause-cloudflare/) and visit [https://www.sslshopper.com/ssl-checker.html#hostname=www.example.com ↗](https://www.sslshopper.com/ssl-checker.html#hostname=www.example.com) (replace `www.example.com` with your hostname and domain) to verify no issues exists with the origin SSL certificate:
-![Screen showing an SSL certificate with no errors.](https://developers.cloudflare.com/_astro/hc-import-troubleshooting_5xx_errors_sslshopper_output.B54TP_B1_kRIBu.webp)
+![Screen showing an SSL certificate with no errors.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=560,format=webp/_astro/hc-import-troubleshooting_5xx_errors_sslshopper_output.B54TP_B1.png)
 
 ### Error 526 in the Zero Trust context
 
@@ -75,7 +75,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-526/#page","headline":"Error 526 · Cloudflare Support docs","description":"Troubleshoot HTTP 526 error responses.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-526/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

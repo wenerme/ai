@@ -44,7 +44,7 @@ If you experience issues with fragmentation and cannot set an MSS clamp, Cloudfl
 
 Consider a UDP datagram of size 3,000 bytes (8 bytes for the UDP header + 2,992 bytes for the UDP data). To fit within a standard 1,500-byte MTU, this UDP datagram would be fragmented across three IP packets as follows:
 
-![A diagram showing a UDP datagram and its various components.](https://developers.cloudflare.com/_astro/udp-datagram.CfIb9Urm_ZEnDvy.webp)
+![A diagram showing a UDP datagram and its various components.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=592,height=334,format=webp/_astro/udp-datagram.CfIb9Urm.png)
 
 Suppose that the UDP datagram has source port `389` and is destined for a Cloudflare WAN customer IP address. Suppose also that the Cloudflare WAN customer has a firewall rule in place that drops UDP traffic with source port `389`, a common [Connectionless Lightweight Directory Access Protocol (CLDAP) ↗](https://blog.cloudflare.com/reflections-on-reflections) reflection attack vector.
 
@@ -62,7 +62,7 @@ The following diagram shows how the three UDP fragments in the preceding example
 
 In all cases, Cloudflare sends all fragments to the customer.
 
-![A diagram showing how Cloudflare handles fragmentation.](https://developers.cloudflare.com/_astro/fragmentation.BPC0EONl_15m9OE.webp)
+![A diagram showing how Cloudflare handles fragmentation.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1771,height=2257,format=webp/_astro/fragmentation.BPC0EONl.png)
 
 ## MSS clamping
 
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/mtu-mss/#page","headline":"Maximum transmission unit and maximum segment size · Cloudflare WAN docs","description":"MTU and MSS values for WAN tunnels.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/mtu-mss/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

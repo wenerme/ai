@@ -29,13 +29,13 @@ Trying to use a [traditional castle-and-moat security model ↗](https://www.clo
 * One strategy organizations adopt to enhance security involves shielding SaaS applications from the broader Internet by implementing IP allow lists and routing traffic through the organization's data center where traffic can be inspected and filtered according to security policy. However, this method negatively impacts the user experience, leading to increased latency and reduced bandwidth when routing all traffic through a single data center.
 * Conversely, if user traffic is sent directly to the Internet, bypassing a local VPN client by using split tunneling, security and visibility are compromised as enterprise network controls are bypassed (and IP allow lists are no longer feasible).
 
-![Figure 1: Two different routes to a SaaS application, one secure but low performance, the second fast but less security.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-01.exIRfP3T_Z1YHoVz.svg "Figure 1: Two different routes to a SaaS application, one secure but low performance, the second fast but less security.")
+![Figure 1: Two different routes to a SaaS application, one secure but low performance, the second fast but less security.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=665,height=487,format=svg/_astro/zero-trust-saas-image-01.exIRfP3T.svg "Figure 1: Two different routes to a SaaS application, one secure but low performance, the second fast but less security.")
 
 Figure 1: Two different routes to a SaaS application, one secure but low performance, the second fast but less security.
 
 This is where a [SASE (Secure Access Service Edge) architecture implementing a Zero Trust framework](https://developers.cloudflare.com/reference-architecture/architectures/sase/) becomes essential. By centralizing security in a global cloud network, the trade-off between security and performance is eliminated. User traffic no longer needs to be routed through a single remote data center for security. With Cloudflare user traffic is routed into our services at the nearest data center – out of hundreds – where it will undergo the necessary security controls. These security controls are implemented in a single-pass architecture to avoid adding unnecessary latency and are applied consistently across the entire Cloudflare network.
 
-![Figure 2: SASE solutions ensure user traffic is secured and filtered close to the user.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-02.DkyQaTm1_Z1O2NuR.svg "Figure 2: SASE solutions ensure user traffic is secured and filtered close to the user.")
+![Figure 2: SASE solutions ensure user traffic is secured and filtered close to the user.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1185,height=446,format=svg/_astro/zero-trust-saas-image-02.DkyQaTm1.svg "Figure 2: SASE solutions ensure user traffic is secured and filtered close to the user.")
 
 Figure 2: SASE solutions ensure user traffic is secured and filtered close to the user.
 
@@ -98,7 +98,7 @@ There are several advantages to using Cloudflare's dedicated egress IPs when com
 * Dedicated egress IPs are assigned to user traffic using policies that follow zero trust principles. [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) can be defined that will only assign a dedicated egress IP to a user if they belong to the correct IdP group and/or pass [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) checks. Otherwise, traffic will be sourced from Cloudflare's public IP range, which may not be part of the SaaS IP allowlist, preventing access to the SaaS application while still allowing Internet usage.
 * Dedicated egress IPs imply that traffic needs to flow through Cloudflare before reaching the SaaS application. This makes it easy to add secure web gateway policies to protect data in the SaaS applications once users have authenticated.
 
-![Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted by the SaaS application.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-03.DmqMPB93_Z2lOiqv.svg "Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted by the SaaS application.")
+![Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted by the SaaS application.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=621,height=472,format=svg/_astro/zero-trust-saas-image-03.DmqMPB93.svg "Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted by the SaaS application.")
 
 Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted by the SaaS application.
 
@@ -106,7 +106,7 @@ Figure 3: Enforce only traffic that has been secured by Cloudflare is accepted b
 
 With Cloudflare, [Zero Trust Network Access (ZTNA) ↗](https://www.cloudflare.com/en-gb/learning/access-management/what-is-ztna/) can be applied to managed SaaS applications. In this scenario, Cloudflare acts as the [Single Sign-On (SSO) ↗](https://www.cloudflare.com/en-gb/learning/access-management/what-is-sso/) service for an application, proxying user authentication requests to the organization's existing identity providers (IdPs). This allows for additional restrictions to be layered on before granting access, such as requiring [multi-factor authentication ↗](https://www.cloudflare.com/en-gb/learning/access-management/what-is-multi-factor-authentication/), implementing [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/), or [evaluating the country](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) the request is coming from.
 
-![Figure 4: Cloudflare can act as an identity proxy, providing a consistent authentication experience for all SaaS applications.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-04.ayHv4mW0_1GCBEA.svg "Figure 4: Cloudflare can act as an identity proxy, providing a consistent authentication experience for all SaaS applications.")
+![Figure 4: Cloudflare can act as an identity proxy, providing a consistent authentication experience for all SaaS applications.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=931,height=546,format=svg/_astro/zero-trust-saas-image-04.ayHv4mW0.svg "Figure 4: Cloudflare can act as an identity proxy, providing a consistent authentication experience for all SaaS applications.")
 
 Figure 4: Cloudflare can act as an identity proxy, providing a consistent authentication experience for all SaaS applications.
 
@@ -134,7 +134,7 @@ Finally, organizations that have already integrated all their SaaS applications 
 
 While extending ZTNA principles to managed SaaS applications ensures that only the right users and devices can access these applications, it is crucial to address the risk of authorized users leaking data once they have access.
 
-![Figure 5: Cloudflare can also protect data that's downloaded or uploaded to managed SaaS applications.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-05.SnFY_pU3_2oz19p.svg "Figure 5: Cloudflare can also protect data that's downloaded or uploaded to managed SaaS applications.")
+![Figure 5: Cloudflare can also protect data that's downloaded or uploaded to managed SaaS applications.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1148,height=202,format=svg/_astro/zero-trust-saas-image-05.SnFY_pU3.svg "Figure 5: Cloudflare can also protect data that's downloaded or uploaded to managed SaaS applications.")
 
 Figure 5: Cloudflare can also protect data that's downloaded or uploaded to managed SaaS applications.
 
@@ -155,7 +155,7 @@ Cloudflare's [Cloud Access Security Broker (CASB)](https://developers.cloudflare
 
 In addition to the previous measures, IT teams should also consider introducing [User Entity and Behavior Analytics (UEBA) ↗](https://www.cloudflare.com/en-gb/learning/security/what-is-ueba/) controls. Cloudflare can assign a [risk score](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/risk-score/) to users when detecting activities and behaviors that could introduce risks to the organization. These risk behaviors include scenarios where users trigger an unusually high number of DLP policy matches. By implementing these measures, organizations can significantly reduce the risk of data leaks from managed SaaS applications, even by authorized users.
 
-![Figure 6: Cloudflare can secure data traveling over its network, as well as using SaaS application APIs to examine data stored at rest.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-06.ClpGGJtH_2vUi1l.svg "Figure 6: Cloudflare can secure data traveling over its network, as well as using SaaS application APIs to examine data stored at rest.")
+![Figure 6: Cloudflare can secure data traveling over its network, as well as using SaaS application APIs to examine data stored at rest.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1308,height=539,format=svg/_astro/zero-trust-saas-image-06.ClpGGJtH.svg "Figure 6: Cloudflare can secure data traveling over its network, as well as using SaaS application APIs to examine data stored at rest.")
 
 Figure 6: Cloudflare can secure data traveling over its network, as well as using SaaS application APIs to examine data stored at rest.
 
@@ -177,7 +177,7 @@ As described already, implementing ZTNA to secure your email platform offers num
 
 Organizations with stringent requirements about email communications for compliance or regulatory reasons, operational control or accountability, or to reduce the potential for data leaks can block access to email tenants other than the organization's own. This can be achieved by using [Cloudflare Gateway SaaS tenant controls](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/). Cloudflare injects custom HTTP headers into the traffic flow, informing Microsoft 365 and Google Workspace of the specific tenant users are allowed to authenticate into and blocking any access attempts to any other tenant.
 
-![Figure 7: Cloudflare can enforce access to only specific cloud email tenants.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-07.Dp1tEZPu_ZmC3x5.svg "Figure 7: Cloudflare can enforce access to only specific cloud email tenants.")
+![Figure 7: Cloudflare can enforce access to only specific cloud email tenants.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1139,height=317,format=svg/_astro/zero-trust-saas-image-07.Dp1tEZPu.svg "Figure 7: Cloudflare can enforce access to only specific cloud email tenants.")
 
 Figure 7: Cloudflare can enforce access to only specific cloud email tenants.
 
@@ -195,7 +195,7 @@ In an API deployment, Cloudflare's Email security will see the email messages on
 
 These modes can be used concurrently to enhance email security. The inline mode ensures that Cloudflare's Email security scans and filters emails before they reach users' inboxes. For emails that initially pass through without being flagged as threats, Cloudflare [periodically re-evaluates them](https://developers.cloudflare.com/email-security/email-configuration/retract-settings/office365-retraction/#post-delivery-retractions-for-new-threats). If these emails are later identified as part of a phishing campaign, they are automatically retracted with the API. This proactive approach protects organizations against deferred phishing attacks, where attackers send emails with seemingly benign links that are weaponized after delivery to bypass initial detection.
 
-![Figure 8: Cloudflare can protect email services either inline or by API.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-08.CeM49-0Z_Z1gjt3w.svg "Figure 8: Cloudflare can protect email services either inline or by API.")
+![Figure 8: Cloudflare can protect email services either inline or by API.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1022,height=504,format=svg/_astro/zero-trust-saas-image-08.CeM49-0Z.svg "Figure 8: Cloudflare can protect email services either inline or by API.")
 
 Figure 8: Cloudflare can protect email services either inline or by API.
 
@@ -219,7 +219,7 @@ Unmanaged SaaS applications are those used by employees without IT's approval or
 
 To mitigate these risks, the first step is to discover which SaaS applications employees are using. When all traffic from employee devices is routed through Cloudflare, [reports are generated](https://developers.cloudflare.com/cloudflare-one/insights/analytics/shadow-it-discovery/) showing the usage of common SaaS applications.
 
-![Figure 9: When all user traffic bound for the Internet goes through Cloudflare, it allows IT to monitor for unapproved SaaS applications.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-09.DHrIIpJM_Zd0U4M.svg "Figure 9: When all user traffic bound for the Internet goes via Cloudflare, it allows IT to monitor for unapproved SaaS applications.")
+![Figure 9: When all user traffic bound for the Internet goes through Cloudflare, it allows IT to monitor for unapproved SaaS applications.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=737,format=svg/_astro/zero-trust-saas-image-09.DHrIIpJM.svg "Figure 9: When all user traffic bound for the Internet goes via Cloudflare, it allows IT to monitor for unapproved SaaS applications.")
 
 Figure 9: When all user traffic bound for the Internet goes via Cloudflare, it allows IT to monitor for unapproved SaaS applications.
 
@@ -239,7 +239,7 @@ Data protection for unmanaged SaaS applications is similar to that for managed S
 
 In addition to these measures, [remote browser isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/#%5Ftop) can be considered for unmanaged SaaS applications. This approach allows users to access certain unmanaged SaaS applications while [restricting their actions within those applications](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#policy-settings) to prevent misuse.
 
-![Figure 10: DLP policies can be combined with browser isolation, to protect company data.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-10.zOip4DKU_Z647M6.svg "Figure 10: DLP policies can be combined with browser isolation, to protect company data.")
+![Figure 10: DLP policies can be combined with browser isolation, to protect company data.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=354,format=svg/_astro/zero-trust-saas-image-10.zOip4DKU.svg "Figure 10: DLP policies can be combined with browser isolation, to protect company data.")
 
 Figure 10: DLP policies can be combined with browser isolation, to protect company data.
 
@@ -253,7 +253,7 @@ After fully adopting the new SaaS application, access to the consumer version ma
 
 This design guide described how organizations can enhance their SaaS application security by implementing a Zero Trust framework within a SASE architecture. With Cloudflare, organizations gain access to a comprehensive solution that addresses the challenges posed by both managed and unmanaged SaaS applications. By using techniques like ZTNA, dedicated egress IPs, CASB, and robust email security measures, organizations can ensure secure access, protect sensitive data, and gain control over shadow IT, all while maintaining a positive user experience. These techniques and when to apply them are summarized in the diagram below:
 
-![Figure 11: Techniques for enforcing a zero trust approach in SaaS applications.](https://developers.cloudflare.com/_astro/zero-trust-saas-image-11.qEiUE-gW_K9wXv.svg "Figure 11: Techniques for enforcing a zero trust approach in SaaS applications.")
+![Figure 11: Techniques for enforcing a zero trust approach in SaaS applications.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1215,height=741,format=svg/_astro/zero-trust-saas-image-11.qEiUE-gW.svg "Figure 11: Techniques for enforcing a zero trust approach in SaaS applications.")
 
 Figure 11: Techniques for enforcing a zero trust approach in SaaS applications.
 
@@ -268,7 +268,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/#page","headline":"Using a zero trust framework to secure SaaS applications · Cloudflare Reference Architecture docs","description":"Learn how to eliminate the trade-off between security and performance by using Cloudflare's global network.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/zero-trust-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

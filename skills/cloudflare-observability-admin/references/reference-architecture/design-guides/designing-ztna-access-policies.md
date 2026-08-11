@@ -44,7 +44,7 @@ We recommend reading the [SASE reference architecture](https://developers.cloudf
 
 Cloudflare allows organizations to facilitate application access using our [connectivity cloud ↗](https://www.cloudflare.com/connectivity-cloud/), which securely connects users, applications and data regardless of their location. Core to the platform is Cloudflare's [extensive global network ↗](https://www.cloudflare.com/network/) which delivers low-latency connectivity for users worldwide. By running every service in every data center, Cloudflare applies networking, performance and security functions in a single pass, eliminating the need to route traffic through multiple, specialized security servers, and therefore reduces latency and avoids performance bottlenecks.
 
-![Figure 1 shows the basic components involved in remote access with Cloudflare's ZTNA service.](https://developers.cloudflare.com/_astro/figure1.CjKTWbna_ZyEanY.svg "Figure 1 shows the basic components involved in remote access with Cloudflare's ZTNA service.")
+![Figure 1 shows the basic components involved in remote access with Cloudflare's ZTNA service.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1235,height=585,format=svg/_astro/figure1.CjKTWbna.svg "Figure 1 shows the basic components involved in remote access with Cloudflare's ZTNA service.")
 
 Figure 1 shows the basic components involved in remote access with Cloudflare's ZTNA service.
 
@@ -79,7 +79,7 @@ A critical part of application access is authenticating a user. Cloudflare has a
 
 The final prerequisite for building really effective access policies is to configure [device posture](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/). When using the [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), Cloudflare has access to a [variety of information](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/) about the device which can then be used in an access policy. When using an [agentless method](https://developers.cloudflare.com/reference-architecture/diagrams/sase/sase-clientless-access-private-dns/) to access applications, only the user identity information is available. We also support using device posture information from [other vendors](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/), such as Microsoft, Crowdstrike and Sentinel One.
 
-![Figure 2 - two employees with different devices trying to access the same corporate application. Only the user with the device agent can access the SSH service.](https://developers.cloudflare.com/_astro/figure2.BibmIt2I_SNJkC.svg "Figure 2 - two employees with different devices trying to access the same corporate application. Only the user with the device agent can access the SSH service.")
+![Figure 2 - two employees with different devices trying to access the same corporate application. Only the user with the device agent can access the SSH service.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1327,height=696,format=svg/_astro/figure2.BibmIt2I.svg "Figure 2 - two employees with different devices trying to access the same corporate application. Only the user with the device agent can access the SSH service.")
 
 Figure 2 - two employees with different devices trying to access the same corporate application. Only the user with the device agent can access the SSH service.
 
@@ -118,7 +118,7 @@ As mentioned above, Cloudflare can be integrated with all your identity provider
 
 When a user attempts to access an application they will be presented with a sign-in page where they choose which IdP to authenticate with. For applications with only a single IdP, you can automatically redirect the user to that IdP. It is also possible to configure the application to display every possible IdP that has been configured, allowing you to add new providers in the future without the need to update the policy.
 
-![Figure 3 - How employees from different parts of the organization authenticate to the same application.](https://developers.cloudflare.com/_astro/figure3.eRr6LFPW_1dcAVp.svg "Figure 3 - How employees from different parts of the organization authenticate to the same application.")
+![Figure 3 - How employees from different parts of the organization authenticate to the same application.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=909,height=525,format=svg/_astro/figure3.eRr6LFPW.svg "Figure 3 - How employees from different parts of the organization authenticate to the same application.")
 
 Figure 3 - How employees from different parts of the organization authenticate to the same application.
 
@@ -130,7 +130,7 @@ When using our device agent, users must also authenticate and can be presented a
 
 Now we arrive at the main focus of this guide: the policies which define access to applications. This is where the real work is done to define who has access, and how. Before looking at example use cases, here is a breakdown of how policies work.
 
-![Figure 4 - Our ZNTA service Access can use a wide variety of attributes in an access policy.](https://developers.cloudflare.com/_astro/figure4.Hsz5t8u9_ZouzVj.svg "Figure 4 - Our ZNTA service Access can use a wide variety of attributes in an access policy.")
+![Figure 4 - Our ZNTA service Access can use a wide variety of attributes in an access policy.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1016,height=726,format=svg/_astro/figure4.Hsz5t8u9.svg "Figure 4 - Our ZNTA service Access can use a wide variety of attributes in an access policy.")
 
 Figure 4 - Our ZNTA service Access can use a wide variety of attributes in an access policy.
 
@@ -169,7 +169,7 @@ Each rule is a filter to determine which users this policy is going to affect. T
 
 A useful way to imagine how these different types of rules are applied, is to imagine a funnel. Include selectors define what attributes of the user, traffic or device are included in the policy that will be Allowed, Blocked and so on. Require then further filters from that list what attributes must be associated with the user with the Exclude type filtering out users who have matched both the Include and Require.
 
-![Figure 5 - Policies and rules are evaluated in a funnel. With Include rules aggregating all users, Require rules mandating specific requirements and Exclude rules removing user identities from the policy evaluation.](https://developers.cloudflare.com/_astro/figure5.DEijf6Ia_Z2odV2n.svg "Figure 5 - Policies and rules are evaluated in a funnel. With Include rules aggregating all users, Require rules mandating specific requirements and Exclude rules removing user identities from the policy evaluation.")
+![Figure 5 - Policies and rules are evaluated in a funnel. With Include rules aggregating all users, Require rules mandating specific requirements and Exclude rules removing user identities from the policy evaluation.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1573,height=1400,format=svg/_astro/figure5.DEijf6Ia.svg "Figure 5 - Policies and rules are evaluated in a funnel. With Include rules aggregating all users, Require rules mandating specific requirements and Exclude rules removing user identities from the policy evaluation.")
 
 Figure 5 - Policies and rules are evaluated in a funnel. With Include rules aggregating all users, Require rules mandating specific requirements and Exclude rules removing user identities from the policy evaluation.
 
@@ -230,7 +230,7 @@ For example, you can define "Employees" once as an Access Group, and then use th
 
 Below is a diagram featuring an Access Group named "Secure Administrators," which uses a range of attributes to define the characteristics of secure administrators. The diagram shows the addition of two other Access Groups within "Secure Administrators". The groups include devices running on either the latest Windows or macOS, along with the requirement that the device must have either File
 
-![Figure 6 - An access group that matches to IT administrators on secure systems.](https://developers.cloudflare.com/_astro/figure6.aWooHqll_Z1of1wH.svg "Figure 6 - An access group that matches to IT administrators on secure systems.")
+![Figure 6 - An access group that matches to IT administrators on secure systems.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=360,format=svg/_astro/cf1-ref-arch-24.aWooHqll.svg "Figure 6 - An access group that matches to IT administrators on secure systems.")
 
 Figure 6 - An access group that matches to IT administrators on secure systems.
 
@@ -509,7 +509,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/designing-ztna-access-policies/#page","headline":"Designing ZTNA access policies for Cloudflare Access · Cloudflare Reference Architecture docs","description":"This guide is for customers looking to deploy Cloudflare's ZTNA service. It provides best practices and guidelines for how to effectively build the right policies.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/designing-ztna-access-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

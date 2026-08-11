@@ -16,7 +16,7 @@ Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 Cloudflare Tunnel routes traffic from Cloudflare's network to services running behind `cloudflared`. When you [publish an application](https://developers.cloudflare.com/tunnel/setup/#publish-an-application), you map a public hostname to a local service — for example, `app.example.com` to `http://localhost:8080` — and Cloudflare applies CDN caching, WAF, and DDoS protection before forwarding the request to your origin.
 
-![Multiple outbound connections from cloudflared are spread across Cloudflare data centers for reliability and failover.](https://developers.cloudflare.com/_astro/cf1-ref-arch-7.Dk3BnKM8_ZBYAf.svg)
+![Multiple outbound connections from cloudflared are spread across Cloudflare data centers for reliability and failover.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1485,height=734,format=svg/_astro/cf1-ref-arch-7.B8tc4zlE.svg)
 
 ## Published applications
 
@@ -80,7 +80,7 @@ To create a DNS record for a Cloudflare Tunnel:
   * **Name**: Subdomain of your application
   * **Target**: `<UUID>.cfargotunnel.com`
 4. Select **Save**.
-![Example of fields completed to create a new CNAME record.](https://developers.cloudflare.com/_astro/dns-record.B25etJTI_Z1p13KV.webp)
+![Example of fields completed to create a new CNAME record.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2544,height=830,format=webp/_astro/dns-record.B25etJTI.png)
 
 For locally-managed tunnels, run the following command to create a CNAME record pointing to your tunnel subdomain:
 
@@ -202,7 +202,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/routing/#page","headline":"Routing · Cloudflare Docs","description":"Route traffic to private networks and services through Cloudflare Tunnel.","url":"https://developers.cloudflare.com/tunnel/routing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS","WebSockets"]}

@@ -43,7 +43,7 @@ Since `26` \>= `25` — that is, the threat score is greater than the configured
 
 [**Sampled logs** in Security Events](https://developers.cloudflare.com/waf/analytics/security-events/#sampled-logs) would display the following details for the example incoming request handled by the OWASP Core Ruleset:
 
-![Event log for example incoming request mitigated by the OWASP Core Ruleset](https://developers.cloudflare.com/_astro/owasp-example-event-log.B3Lc0T9C_2mq13Y.webp)
+![Event log for example incoming request mitigated by the OWASP Core Ruleset](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1160,height=818,format=webp/_astro/owasp-example-event-log.B3Lc0T9C.png)
 
 In sampled logs, the rule associated with requests mitigated by the Cloudflare OWASP Core Ruleset is the last rule in this managed ruleset: `949110: Inbound Anomaly Score Exceeded`, with rule ID ...843b323c. To get the scores of individual rules contributing to the final request threat score, expand **Additional logs** in the event details.
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/#page","headline":"OWASP evaluation example · Cloudflare Web Application Firewall (WAF) docs","description":"Example of how OWASP paranoia level and score threshold interact.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/example/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -24,7 +24,7 @@ The **Request rate analysis** tab is only available to Enterprise customers.
 
 The **Request rate analysis** tab is available at the zone level in the **Analytics** page.
 
-![Screenshot of the Request rate analysis tab in Security Analytics](https://developers.cloudflare.com/_astro/rate-limit-analytics.B2Hd7wNp_1JEIVb.webp)
+![Screenshot of the Request rate analysis tab in Security Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=602,format=webp/_astro/rate-limit-analytics.B2Hd7wNp.png)
 
 The main chart displays the distribution of request rates for the top 50 unique clients observed during the selected time interval (for example, `1 minute`) in descending order. You can group the request rates by the following unique request properties:
 
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/#page","headline":"Find an appropriate rate limit · Cloudflare Web Application Firewall (WAF) docs","description":"Use Security Analytics request rate data to determine an appropriate rate limit.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

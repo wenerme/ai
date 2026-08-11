@@ -46,7 +46,7 @@ zaraz.set('product_name', 't-shirt', {scope: 'page'})
 
 Keys that are sent using `zaraz.set()` can be used inside tool actions exactly like keys in the `eventProperties` of `zaraz.track()`. So, the above `product` key is accessible through the Cloudflare dashboard with the variable _Track Property name:_, and setting its name as `product_name`. Zaraz will then replace it with `t-shirt`.
 
-![Example of how to create a variable with the Set method, tracking t-shirts](https://developers.cloudflare.com/_astro/set.CkjK1ovh_1bfWp6.webp)
+![Example of how to create a variable with the Set method, tracking t-shirts](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1708,height=927,format=webp/_astro/set.CkjK1ovh.png)
 
 The `[options]` argument is an optional object and can include a `scope` property that has a string value. This property determines the lifetime of this key, meaning for how long Zaraz should keep attaching it to `zaraz.track()` calls. Allowed values are:
 
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/zaraz/web-api/set/#page","headline":"zaraz.set · Cloudflare Zaraz docs","description":"Set key-value pairs in the Zaraz data layer.","url":"https://developers.cloudflare.com/zaraz/web-api/set/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

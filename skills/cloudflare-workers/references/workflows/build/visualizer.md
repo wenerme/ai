@@ -18,7 +18,7 @@ View a visual representation of your parsed Workflow code as a diagram on the Cl
 
 The diagram illustrates your sequenced & parallel steps, conditionals, loops, and nested logic. To see the Workflow at a high level, view the diagram with loops and conditionals collapsed, or expand for a more detailed view.
 
-![Example diagram](https://developers.cloudflare.com/_astro/2026-02-03-workflows-diagram.BfQAnWL3_Z203oFd.webp)
+![Example diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1927,height=1530,format=webp/_astro/2026-02-03-workflows-diagram.BfQAnWL3.png)
 
 Workflow diagrams are currently in beta for all Typescript and Javascript Workers. View your Workflows in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/workflows) to see their diagrams.
 
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/visualizer/#page","headline":"Visualize Workflows · Cloudflare Workflows docs","description":"View a visual diagram of your Workflow steps, conditionals, and parallel logic in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/workflows/build/visualizer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

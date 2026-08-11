@@ -21,7 +21,7 @@ Tracing gives you end-to-end visibility into the life of a request as it travels
 * What is the cause of a long-running request?
 * How long do subrequests from my Worker take?
 * How long are my calls to my KV Namespace or R2 bucket taking?
-![Example trace showing a POST request to a cake shop with multiple spans including fetch requests and durable object operations](https://developers.cloudflare.com/_astro/wobs_waterfall_trace_122.BveqL__z_Q1Dwz.webp)
+![Example trace showing a POST request to a cake shop with multiple spans including fetch requests and durable object operations](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1348,height=414,format=webp/_astro/wobs_waterfall_trace_122.BveqL__z.png)
 
 ### Automatic instrumentation
 
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/#page","headline":"Traces · Cloudflare Workers docs","description":"Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Outbound Workers sit between your customer's Workers and the public Internet. They give you visibility into all outgoing `fetch()` requests from user Workers.
 
-![Outbound Workers diagram information](https://developers.cloudflare.com/_astro/outbound-worker-diagram.BSvN4KG0_YJsgi.webp)
+![Outbound Workers diagram information](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1100,height=400,format=webp/_astro/outbound-worker-diagram.BSvN4KG0.png)
 
 ## General Use Cases
 
@@ -154,7 +154,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/#page","headline":"Outbound Workers · Cloudflare for Platforms docs","description":"Intercept and control outgoing fetch requests from user Workers using Outbound Workers in Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

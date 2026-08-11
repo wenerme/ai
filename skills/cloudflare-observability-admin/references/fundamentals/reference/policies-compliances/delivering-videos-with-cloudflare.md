@@ -57,7 +57,7 @@ If you need more information about the content your zone is serving (for example
 
 * Cache Analytics users: Open the **Caching tab** on the Dashboard to filter by content type and identify the type of traffic you are transferring.
 * Users without Cache Analytics: Open the **Analytics tab** on the Dashboard and select the **Performance** section for information about the content you are serving.
-![Cache Analytics - Identify type of traffic being transferred](https://developers.cloudflare.com/_astro/traffic-types.DW2gSjnB_2uhSj3.webp)
+![Cache Analytics - Identify type of traffic being transferred](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1285,height=695,format=webp/_astro/traffic-types.DW2gSjnB.png)
 
 ## Still have questions? Contact support
 
@@ -73,7 +73,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/#page","headline":"Delivering Videos with Cloudflare · Cloudflare Fundamentals docs","description":"Understand Cloudflare's video delivery policies, resolve Terms of Service redirects, and choose the right paid product for streaming video.","url":"https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

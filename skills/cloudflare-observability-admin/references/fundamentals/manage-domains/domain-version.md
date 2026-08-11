@@ -76,7 +76,7 @@ If you are on a product that is not available for versioning, you will not be ab
 
 The Domain Summary is accessible from all pages and allows you to quickly switch between versions and domains.
 
-![Switch between versions of your configuration](https://developers.cloudflare.com/_astro/configurable-versions.BsHb-j9S_Z1DdDYI.webp)
+![Switch between versions of your configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1688,height=934,format=webp/_astro/configurable-versions.BsHb-j9S.png)
 
 From within a version, you can update configurations just as you would with your normal zone configurations. Any changes are saved automatically.
 
@@ -122,7 +122,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/#page","headline":"Change your domain version · Cloudflare Fundamentals docs","description":"Version Management allows you to safely test, deploy, and roll back changes to your zone configurations. By default, Version Management is not enabled on a zone.","url":"https://developers.cloudflare.com/fundamentals/manage-domains/domain-version/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

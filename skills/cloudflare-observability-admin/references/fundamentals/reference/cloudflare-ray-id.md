@@ -30,11 +30,11 @@ Ray IDs are not guaranteed to be unique for every request. In some situations, d
 
 All customers can view Ray IDs and associated information — IP address, user agent, ASN, etc. — by looking through [sampled logs](https://developers.cloudflare.com/waf/analytics/security-events/#sampled-logs) in Security Events.
 
-![Example list of events in sampled logs, with the Ray ID highlighted from one of the expanded events to show its details](https://developers.cloudflare.com/_astro/ray-id.CkgisnhS_12rad6.webp)
+![Example list of events in sampled logs, with the Ray ID highlighted from one of the expanded events to show its details](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=1367,format=webp/_astro/ray-id.CkgisnhS.png)
 
 Additionally, you can [add filters](https://developers.cloudflare.com/waf/analytics/security-events/#adjust-displayed-data) to look for specific Ray IDs.
 
-![Example of adding a new filter in Security Events for the Block action](https://developers.cloudflare.com/_astro/events-add-filter.DDUuZ0g7_ZC975W.webp)
+![Example of adding a new filter in Security Events for the Block action](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=929,height=281,format=webp/_astro/events-add-filter.DDUuZ0g7.png)
 
 Please note that Security Events may use sampled data to improve performance. If sampled data is applied to your search, you might not see all events, and filters might not return the expected results. To display more events, select a smaller timeframe.
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/#page","headline":"Cloudflare Ray ID · Cloudflare Fundamentals docs","description":"Use Cloudflare Ray IDs to identify and trace individual requests through Security Events, Log Explorer, and server logs.","url":"https://developers.cloudflare.com/fundamentals/reference/cloudflare-ray-id/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

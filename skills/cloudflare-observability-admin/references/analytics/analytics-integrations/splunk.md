@@ -31,7 +31,7 @@ To install the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app
 1. Log in to your Splunk instance.
 2. Under **Apps** \> **Find More Apps**, search for _Cloudflare App for Splunk._
 3. Click **Install**.
-![Splunk website with Apps menu expanded and Search & Reporting menu item along with Cloudflare App for Splunk](https://developers.cloudflare.com/_astro/splunk-cloudflare-app-for-splunk.CSImDJTK_Z1O8qyE.webp)
+![Splunk website with Apps menu expanded and Search & Reporting menu item along with Cloudflare App for Splunk](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2410,height=1174,format=webp/_astro/splunk-cloudflare-app-for-splunk.CSImDJTK.png)
 1. Restart and reopen your Splunk instance.
 2. Edit the `cloudflare:json` source type in the Cloudflare App for Splunk. To edit the source type:
 
@@ -74,13 +74,13 @@ For example: `https://prd-p-0qk3h.splunkcloud.com:8088/services/collector/raw`. 
 
 You can change the **Index Name** after the initial configuration by clicking on the **Settings** dropdown and navigating to **Advanced search**. There you can select **Search macros** and look for the Cloudflare App for Splunk.
 
-![Splunk interface highlighting Apps menu and Manage Apps option along with Enable Acceleration checkbox](https://developers.cloudflare.com/_astro/splunk-settings-advanced-search-search-macros.Bt1szjjM_WDiER.webp)
+![Splunk interface highlighting Apps menu and Manage Apps option along with Enable Acceleration checkbox](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2534,height=1104,format=webp/_astro/splunk-settings-advanced-search-search-macros.Bt1szjjM.png)
 
 The Cloudflare App for Splunk comes with a custom Cloudflare Data Model that has an acceleration time frame of 1 day but is not accelerated by default. If you enable [Data Model acceleration ↗](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Acceleratedatamodels), we recommend that the Data Model is only accelerated for 1 or 7 days to ensure there are no adverse effects within your Splunk environment.
 
 Enable or disable acceleration after the initial configuration by accessing the app Set up page by clicking the **Apps** dropdown, then **Manage Apps** \> **Cloudflare Set Up**.
 
-![Splunk Advanced Search page highlighted Search macros and Advanced search](https://developers.cloudflare.com/_astro/splunk-apps-manage-apps-cloudflare-set-up-enable-data-model-acceleration.KQW0iwYr_4acu7.webp)
+![Splunk Advanced Search page highlighted Search macros and Advanced search](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2522,height=1060,format=webp/_astro/splunk-apps-manage-apps-cloudflare-set-up-enable-data-model-acceleration.KQW0iwYr.png)
 
 You can also manually configure Data Models by going to **Settings** \> **Data models**. Learn more about data model acceleration in the [Splunk documentation ↗](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Acceleratedatamodels).
 
@@ -108,43 +108,43 @@ The following dashboards outlined below are available as part of the Cloudflare 
 
 #### Cloudflare - Snapshot
 
-_Web Traffic Overview_ and _Web Traffic Types_: Get an overview of the most important metrics from your websites and applications on the Cloudflare network. ![Splunk dashboard with Web Traffic Overview metrics](https://developers.cloudflare.com/_astro/splunk-cloudflare-snapshot-dashboard.Du4lsJw__hYMt8.webp)
+_Web Traffic Overview_ and _Web Traffic Types_: Get an overview of the most important metrics from your websites and applications on the Cloudflare network. ![Splunk dashboard with Web Traffic Overview metrics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2770,height=1850,format=webp/_astro/splunk-cloudflare-snapshot-dashboard.Du4lsJw_.png)
 
 #### Cloudflare - Reliability
 
-_Summary_ and _Detailed_: Get insights on the availability of your websites and applications. Metrics include origin response error ratio, origin response status over time, percentage of 3xx/4xx/5xx errors over time, and more. ![Splunk dashboard with a high level summary of Reliability metrics](https://developers.cloudflare.com/_astro/splunk-cloudflare-reliability-summary-dashboard.C1py_8XX_Zupzyv.webp)
+_Summary_ and _Detailed_: Get insights on the availability of your websites and applications. Metrics include origin response error ratio, origin response status over time, percentage of 3xx/4xx/5xx errors over time, and more. ![Splunk dashboard with a high level summary of Reliability metrics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2776,height=1340,format=webp/_astro/splunk-cloudflare-reliability-summary-dashboard.C1py_8XX.png)
 
-![Splunk dashboard with a detailed summary of Reliability metrics](https://developers.cloudflare.com/_astro/splunk-cloudflare-reliability-detailed-dashboard.jeSlAQnq_1qkyMx.webp)
+![Splunk dashboard with a detailed summary of Reliability metrics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2780,height=1398,format=webp/_astro/splunk-cloudflare-reliability-detailed-dashboard.jeSlAQnq.png)
 
 #### Cloudflare - Security
 
-_Overview_: Get insights on threats to your websites and applications, including number of threats stopped, threats over time, top threat countries, and more. ![Splunk dashboard with an overview of Security metrics](https://developers.cloudflare.com/_astro/splunk-cloudflare-security-overview.D-c4Punh_Z1C8EgV.webp)
+_Overview_: Get insights on threats to your websites and applications, including number of threats stopped, threats over time, top threat countries, and more. ![Splunk dashboard with an overview of Security metrics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2780,height=1890,format=webp/_astro/splunk-cloudflare-security-overview.D-c4Punh.png)
 
-_WAF_: Get insights on threat identification and mitigation by our Web Application Firewall, including events like SQL injections, XSS, and more. Use this data to fine tune the firewall to target obvious threats and prevent false positives. ![Splunk dashboard with an overview of Security metrics for WAF](https://developers.cloudflare.com/_astro/splunk-cloudflare-security-waf-dashboard.DTZrF-bl_lB5WH.webp)
+_WAF_: Get insights on threat identification and mitigation by our Web Application Firewall, including events like SQL injections, XSS, and more. Use this data to fine tune the firewall to target obvious threats and prevent false positives. ![Splunk dashboard with an overview of Security metrics for WAF](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2778,height=1788,format=webp/_astro/splunk-cloudflare-security-waf-dashboard.DTZrF-bl.png)
 
-_Rate Limiting_: Get insights on rate limiting protection against denial-of-service attacks, brute-force login attempts, and other types of abusive behavior targeted at your websites or applications. ![Splunk dashboard with an overview of Security metrics for Rate Limiting](https://developers.cloudflare.com/_astro/splunk-cloudflare-security-rate-limiting-dashboard.CRoUKWVc_ZVMcdn.webp)
+_Rate Limiting_: Get insights on rate limiting protection against denial-of-service attacks, brute-force login attempts, and other types of abusive behavior targeted at your websites or applications. ![Splunk dashboard with an overview of Security metrics for Rate Limiting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2772,height=1188,format=webp/_astro/splunk-cloudflare-security-rate-limiting-dashboard.CRoUKWVc.png)
 
-_Bots Summary_ and _Bots Detailed_: Investigate bot activity on your website to prevent content scraping, checkout fraud, spam registration and other malicious activities. ![Splunk dashboard with a high level summary of Security metrics for Bots](https://developers.cloudflare.com/_astro/splunk-cloudflare-security-bot-summary-dashboard.S5k4rphZ_19QyUS.webp)
+_Bots Summary_ and _Bots Detailed_: Investigate bot activity on your website to prevent content scraping, checkout fraud, spam registration and other malicious activities. ![Splunk dashboard with a high level summary of Security metrics for Bots](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2772,height=1304,format=webp/_astro/splunk-cloudflare-security-bot-summary-dashboard.S5k4rphZ.png)
 
-![Splunk dashboard with a detailed summary of Security metrics for Bots](https://developers.cloudflare.com/_astro/splunk-cloudflare-security-bots-detailed-dashboard.x_RSBUYB_T6P0y.webp)
+![Splunk dashboard with a detailed summary of Security metrics for Bots](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2770,height=1622,format=webp/_astro/splunk-cloudflare-security-bots-detailed-dashboard.x_RSBUYB.png)
 
 #### Cloudflare - Performance
 
-_Requests and Cache_ and _Bandwidth_: Identify and address performance issues and caching misconfigurations. Metrics include total vs. cached bandwidth, saved bandwidth, total requests, cache ratio, top uncached requests, and more. ![Splunk dashboard with Performance metrics for Requests and Cache](https://developers.cloudflare.com/_astro/splunk-cloudflare-performance-requests-and-cache-dashboard.CzCMXwsS_Z2rsU7q.webp)
+_Requests and Cache_ and _Bandwidth_: Identify and address performance issues and caching misconfigurations. Metrics include total vs. cached bandwidth, saved bandwidth, total requests, cache ratio, top uncached requests, and more. ![Splunk dashboard with Performance metrics for Requests and Cache](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2772,height=1934,format=webp/_astro/splunk-cloudflare-performance-requests-and-cache-dashboard.CzCMXwsS.png)
 
-![Splunk dashboard with Performance metrics for Bandwidth](https://developers.cloudflare.com/_astro/splunk-cloudflare-performance-bandwidth-dashboard.B0Io0qTc_257Rz.webp)
+![Splunk dashboard with Performance metrics for Bandwidth](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2774,height=1334,format=webp/_astro/splunk-cloudflare-performance-bandwidth-dashboard.B0Io0qTc.png)
 
 _Hostname, Content Type, Request Methods, Connection Type_: Get insights into your most popular hostnames, most requested content types, breakdown of request methods, and connection type.
 
-![Splunk dashboard with Cloudflare Performance metrics including for Hostname, Content Type, Request Methods, Connection Type](https://developers.cloudflare.com/_astro/splunk-cloudflare-performance-hostname-dashboard.BNc0Yvsw_ZRXqjX.webp)
+![Splunk dashboard with Cloudflare Performance metrics including for Hostname, Content Type, Request Methods, Connection Type](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2788,height=1898,format=webp/_astro/splunk-cloudflare-performance-hostname-dashboard.BNc0Yvsw.png)
 
-_Static vs. Dynamic Content_: Get insights into the performance of your static and dynamic content, including slowest URLs. ![Splunk dashboard with Cloudflare Performance metrics for Static vs. Dynamic Content](https://developers.cloudflare.com/_astro/splunk-cloudflare-performance-static-vs-dynamic-dashboard.Dx9F5klY_ZXDTlD.webp)
+_Static vs. Dynamic Content_: Get insights into the performance of your static and dynamic content, including slowest URLs. ![Splunk dashboard with Cloudflare Performance metrics for Static vs. Dynamic Content](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2776,height=1902,format=webp/_astro/splunk-cloudflare-performance-static-vs-dynamic-dashboard.Dx9F5klY.png)
 
 ### Filters
 
 All dashboard have a set of filters that you can apply to the entire dashboard, as shown in the following example. Filters are applied across the entire dashboard.
 
-![Available dashboard filters from the Splunk dashboard](https://developers.cloudflare.com/_astro/splunk-filters.D7I8q-lv_ZQe0Nh.webp)
+![Available dashboard filters from the Splunk dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2792,height=480,format=webp/_astro/splunk-filters.D7I8q-lv.png)
 
 You can use filters to drill down and examine the data at a granular level. Filters include client country, client device type, client IP, client request host, client request URI, client request user agent, edge response status, origin IP, and origin response status.
 
@@ -231,7 +231,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/#page","headline":"Splunk · Cloudflare Analytics docs","description":"This tutorial explains how to analyze Cloudflare Logs using the Cloudflare App for Splunk.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/splunk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

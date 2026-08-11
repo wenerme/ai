@@ -20,11 +20,11 @@ Cloudflare uses a Multi-Factor Email Authentication (MFA) method for increased a
 
 Cloudflare will challenge any login attempt if the user provides the correct credentials from an unrecognized IP address.
 
-![Cloudflare will send an email when your account is logged into from an unknown IP address.](https://developers.cloudflare.com/_astro/hc-import-account_access_email.CGeKtgax_ZmxEnU.webp)
+![Cloudflare will send an email when your account is logged into from an unknown IP address.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1026,height=502,format=webp/_astro/hc-import-account_access_email.CGeKtgax.png)
 
 Cloudflare challenges the login by sending a one-time code that expires in 30 minutes to the email that we have on file for the account. Once the correct code is provided through the dashboard, your IP will be recorded and further login attempts from that IP address will not be challenged for 90 days.
 
-![When your account is logged into from an unknown IP address, you have to enter an authentication token from an email sent to your email address on file.](https://developers.cloudflare.com/_astro/hc-import-login_authentication.B7wAaxsz_gliIl.webp)
+![When your account is logged into from an unknown IP address, you have to enter an authentication token from an email sent to your email address on file.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=426,format=webp/_astro/hc-import-login_authentication.B7wAaxsz.png)
 
 Note
 
@@ -50,7 +50,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/multi-factor-email-authentication/#page","headline":"Multi-Factor Email Authentication · Cloudflare Fundamentals docs","description":"Cloudflare's Multi-Factor Email Authentication prevents unauthorized access by sending one-time codes to your email.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/multi-factor-email-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

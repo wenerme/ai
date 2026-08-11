@@ -49,11 +49,11 @@ export async function onRequest(context) {
 
 After you deploy the code above, run `wrangler pages deployment tail` in your terminal. Then access the route at which your Function lives. Your terminal will display:
 
-![Run wrangler pages deployment tail](https://developers.cloudflare.com/_astro/wrangler-custom-logs.F03OQgj6_1C7gX.webp)
+![Run wrangler pages deployment tail](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1708,height=210,format=webp/_astro/wrangler-custom-logs.F03OQgj6.png)
 
 Your dashboard will display:
 
-![Follow the above steps to access custom logs in the dashboard](https://developers.cloudflare.com/_astro/dash-custom-logs.Csgu9Rye_Z1fqHri.webp)
+![Follow the above steps to access custom logs in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2508,height=1434,format=webp/_astro/dash-custom-logs.Csgu9Rye.png)
 
 ## View logs with Wrangler
 
@@ -129,7 +129,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/#page","headline":"Debugging and logging · Cloudflare Pages docs","description":"Access logs for Pages Functions using the Cloudflare dashboard or Wrangler CLI.","url":"https://developers.cloudflare.com/pages/functions/debugging-and-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -40,7 +40,7 @@ Your domain status is active when your [nameservers are updated](https://develop
 
 A reverse proxy is a network of servers that sits in front of web servers and either forwards requests to those web servers, or handles requests on behalf of the web servers. Reverse proxies are typically implemented to help increase security, performance, and reliability of websites and web applications.
 
-![The flow of a request from a server through Cloudflare to the origin server when Cloudflare is a reverse proxy.](https://developers.cloudflare.com/_astro/reverse-proxy.BUdeHa1B_18p3wj.webp)
+![The flow of a request from a server through Cloudflare to the origin server when Cloudflare is a reverse proxy.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1293,height=305,format=webp/_astro/reverse-proxy.BUdeHa1B.png)
 
 When Cloudflare receives a DNS query for your domain, the response is determined by the configuration [set in your DNS table](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/), including the [type of the record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/), the record's [proxy eligibility](https://developers.cloudflare.com/dns/proxy-status/limitations/#proxy-eligibility), and its [proxy status](https://developers.cloudflare.com/dns/proxy-status/#proxied-records).
 
@@ -59,7 +59,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#page","headline":"How Cloudflare DNS works · Cloudflare Fundamentals docs","description":"Understand how Cloudflare acts as your authoritative DNS provider and reverse proxy to optimize, cache, and protect your web traffic.","url":"https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

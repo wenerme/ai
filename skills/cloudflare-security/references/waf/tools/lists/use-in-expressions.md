@@ -24,7 +24,7 @@ In the Cloudflare dashboard, there are two options for editing [expressions](htt
 To use a list in the Expression Builder:
 
 1. From the **Operator** drop-down list, select _is in list_ or _is not in list_. Note that not all fields support these operators.
-![Selecting an IP list from the Value drop-down list when configuring the expression of a WAF custom rule](https://developers.cloudflare.com/_astro/cf-open-proxies-list.DYcEfIK7_Z2w9oe6.webp)
+![Selecting an IP list from the Value drop-down list when configuring the expression of a WAF custom rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=979,height=739,format=webp/_astro/cf-open-proxies-list.DYcEfIK7.png)
 2. Select a list from the **Value** drop-down list. Depending on your plan, you may be able to select a [Managed IP List](https://developers.cloudflare.com/waf/tools/lists/managed-lists/#managed-ip-lists).
 3. To commit your changes and enable the rule, select **Deploy**. If you are not ready to enable the rule, select **Save as Draft**.
 
@@ -53,7 +53,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/#page","headline":"Use lists in expressions · Cloudflare Web Application Firewall (WAF) docs","description":"Learn how to use lists in rule expressions.","url":"https://developers.cloudflare.com/waf/tools/lists/use-in-expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

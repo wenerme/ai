@@ -33,7 +33,7 @@ You can specify storage configuration details using RealtimeKit Dashboard for al
 1. In the Cloudflare [RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to Recordings tab.
 2. Click **Setup Storage**.
 3. Specify the details for your cloud provider. We support transferring recordings to Cloudflare R2, AWS S3, Azure, DigitalOcean, and Google Cloud Storage (GCS) buckets.
-![Recording Storage Screenshot](https://developers.cloudflare.com/_astro/setup-recording-storage.BToYYU30_Z24vSoi.webp)
+![Recording Storage Screenshot](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=768,height=581,format=webp/_astro/setup-recording-storage.BToYYU30.png)
 
 Note
 
@@ -137,7 +137,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/#page","headline":"Upload Recording to Your Cloud · Cloudflare Realtime docs","description":"Explore how to set up custom cloud storage for RealtimeKit's recording. Follow our guide for effective configuration and integration.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

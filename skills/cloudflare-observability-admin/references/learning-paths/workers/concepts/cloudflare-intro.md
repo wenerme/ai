@@ -44,7 +44,7 @@ And more depending on your use case.
 
 When you add your application to Cloudflare, Cloudflare's global network of servers will sit in between requests to your application and your application's [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
-![Cloudflare sits in between requests and your origin server.](https://developers.cloudflare.com/_astro/website-with-cloudflare.D3VGvGsa_Z1Lp4Et.svg)
+![Cloudflare sits in between requests and your origin server.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1366,height=419,format=svg/_astro/website-with-cloudflare.D3VGvGsa.svg)
 
 After you add your application to [Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), you can:
 
@@ -72,7 +72,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/#page","headline":"Introduction to Cloudflare · Cloudflare Learning Paths","description":"Learn about Cloudflare's network and products.","url":"https://developers.cloudflare.com/learning-paths/workers/concepts/cloudflare-intro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
