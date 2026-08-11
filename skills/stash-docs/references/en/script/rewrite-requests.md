@@ -9,11 +9,30 @@ Parameters:
 - `require-body`: Whether the request body / response body is needed, processing the body in the script requires more memory space, enable only when necessary.
 - `timeout`: The script execution timeout, in seconds.
 - `argument`: The argument when the script is executed, type is `string`.
-- `binary-mode`: Binary mode, `body` will be passed to the script as `Uint8Array` instead of `string`.
+- `engine`: The script engine. Available values are `auto`, `webkit`, and `jsc`. The default is `auto`.
+- `binary-mode`: Binary mode, `body` will be passed to the script as `Uint8Array` instead of `string`.<VersionRequirement ios="2.0.2" />
 - `max-size`: In bytes, requests with a body size exceeding this will not trigger the script.
 
-> [!NOTE]
-> Binary mode is only supported in Stash iOS 2.0.2 and later versions.
+## Script Engine
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+You can select a JavaScript engine for each request or response script:
+
+```yaml
+http:
+  script:
+    - name: your-script-name
+      match: ^https://example\.com/
+      type: response
+      engine: auto
+```
+
+- `auto`: The default. It prefers WebKit on iOS and macOS and uses JavaScriptCore on tvOS.
+- `webkit`: Uses WebKit. Choose it for scripts that depend on browser Web APIs such as `fetch`, `crypto`, or `TextEncoder`.
+- `jsc`: Uses JavaScriptCore. It runs scripts that rely only on the Stash scripting APIs on iOS, tvOS, and macOS.
+
+Keep `auto` for most scripts. Specify `webkit` or `jsc` only when a script depends on a particular runtime environment.
 
 ## Request Object
 

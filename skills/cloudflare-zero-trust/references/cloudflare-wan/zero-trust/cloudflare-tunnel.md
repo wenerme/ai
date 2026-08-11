@@ -34,12 +34,12 @@ To route the same prefix to different destinations, use separate [virtual networ
 
 Cloudflare reserves the following IP ranges for Zero Trust services:
 
-| IP range       | Purpose                                                                                                                               |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| 100.64.0.0/12  | [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/)       |
-| 100.96.0.0/12  | [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) |
-| 100.80.0.0/16  | [Initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/)             |
-| 100.112.0.0/16 | [Private Load Balancers](https://developers.cloudflare.com/load-balancing/private-network/)                                           |
+| IP range        | Purpose                                                                                                                               |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| 100.64.0.0/12   | [Cloudflare Source IPs](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/)       |
+| 100.96.0.0/12   | [Device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) |
+| 172.64.128.0/20 | [Initial resolved IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/)             |
+| 100.112.0.0/16  | [Private Load Balancers](https://developers.cloudflare.com/load-balancing/private-network/)                                           |
 
 Do not configure routes that overlap with these reserved ranges.
 
@@ -71,7 +71,7 @@ ARR requires Unified Routing mode. For more information, refer to [Automatic Ret
 
 When Hostname Routes are enabled:
 
-1. Gateway DNS resolves the hostname to an Initial resolved IP (from `100.80.0.0/16`).
+1. Gateway DNS resolves the hostname to an Initial resolved IP (from `172.64.128.0/20` by default).
 2. The client sends traffic to the Initial resolved IP.
 3. Cloudflare looks up the Initial resolved IP to determine the real destination IP and the assigned next hop (specific tunnel or interconnect).
 4. Traffic is forwarded to the assigned next hop, bypassing route evaluation for next-hop selection.
@@ -98,7 +98,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/#page","headline":"Cloudflare Tunnel · Cloudflare WAN docs","description":"Connect WAN sites with Cloudflare Tunnel.","url":"https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

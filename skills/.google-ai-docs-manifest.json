@@ -152,8 +152,8 @@
   "google-ai-docs/pricing.md": {
     "url": "https://ai.google.dev/gemini-api/docs/pricing",
     "skill": "google-ai-docs",
-    "size": 69169,
-    "updatedAt": "2026-08-06T03:45:57.087Z"
+    "size": 69155,
+    "updatedAt": "2026-08-11T11:25:40.927Z"
   },
   "google-ai-docs/rate-limits.md": {
     "url": "https://ai.google.dev/gemini-api/docs/rate-limits",
@@ -254,14 +254,14 @@
   "google-ai-docs/interactions-overview.md": {
     "url": "https://ai.google.dev/gemini-api/docs/interactions-overview",
     "skill": "google-ai-docs",
-    "size": 11629,
-    "updatedAt": "2026-07-22T03:56:54.572Z"
+    "size": 11633,
+    "updatedAt": "2026-08-11T11:25:58.561Z"
   },
   "google-ai-docs/streaming.md": {
     "url": "https://ai.google.dev/gemini-api/docs/streaming",
     "skill": "google-ai-docs",
-    "size": 39287,
-    "updatedAt": "2026-07-23T04:03:21.725Z"
+    "size": 39295,
+    "updatedAt": "2026-08-11T11:25:59.153Z"
   },
   "google-ai-docs/video-understanding.md": {
     "url": "https://ai.google.dev/gemini-api/docs/video-understanding",
@@ -338,8 +338,8 @@
   "google-ai-docs/antigravity-agent.md": {
     "url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
     "skill": "google-ai-docs",
-    "size": 46773,
-    "updatedAt": "2026-07-24T03:52:07.541Z"
+    "size": 46781,
+    "updatedAt": "2026-08-11T11:26:05.866Z"
   },
   "google-ai-docs/aistudio-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/aistudio-agents",

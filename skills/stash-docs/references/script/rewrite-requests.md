@@ -9,11 +9,30 @@
 - `require-body`: 是否需要请求体 / 响应体，在脚本中处理 body 需要消耗更多的内存空间，仅在必要时启用。
 - `timeout`: 脚本执行超时时间，单位为秒。
 - `argument`: 脚本执行时的参数，类型为 `string`。
-- `binary-mode`：二进制模式，`body` 会以 `Uint8Array` 而不是 `string` 传递给脚本。
+- `engine`：脚本引擎，可选 `auto`、`webkit` 或 `jsc`，默认为 `auto`。
+- `binary-mode`：二进制模式，`body` 会以 `Uint8Array` 而不是 `string` 传递给脚本。<VersionRequirement ios="2.0.2" />
 - `max-size`：单位为字节，body 超过这个大小的请求不会触发脚本。
 
-> [!NOTE]
-> 二进制模式仅在 Stash iOS 2.0.2 以及之后的版本支持。
+## 脚本引擎
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+可以为每条请求或响应脚本选择 JavaScript 引擎：
+
+```yaml
+http:
+  script:
+    - name: your-script-name
+      match: ^https://example\.com/
+      type: response
+      engine: auto
+```
+
+- `auto`：默认选项。iOS 和 macOS 优先使用 WebKit，tvOS 使用 JavaScriptCore。
+- `webkit`：使用 WebKit，适合依赖 `fetch`、`crypto`、`TextEncoder` 等浏览器 Web API 的脚本。
+- `jsc`：使用 JavaScriptCore，可在 iOS、tvOS 和 macOS 上运行仅依赖 Stash 脚本接口的脚本。
+
+通常保留 `auto` 即可；只有脚本明确依赖某个执行环境时，才需要指定 `webkit` 或 `jsc`。
 
 ## Request Object
 

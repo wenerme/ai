@@ -51,8 +51,8 @@ depending on the specific model and feature combination.
 | Mistral | [Mistral Small 24B Instruct 2506](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506) |  Full functionality |  Full functionality |  Full functionality |  Limited functionality |
 | GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
 | Kimi | [Kimi-K2.5](https://huggingface.co/moonshotai/Kimi-K2.5) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
-| Kimi | [Kimi-K2.6](https://huggingface.co/moonshotai/Kimi-K2.6) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
-| MiniMax | [MiniMax-M2.7](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) |  Limited functionality |  Limited functionality |  Partial functionality |  Partial functionality |
+| Kimi | [Kimi-K2.6](https://huggingface.co/moonshotai/Kimi-K2.6) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
+| MiniMax | [MiniMax-M2.7](https://huggingface.co/MiniMaxAI/MiniMax-M2.7) |  Limited functionality |  Limited functionality |  Partial functionality |  Full functionality |
 | Llama | [Llama 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |
 | Llama | [Llama 3.1 8B](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct) |  Partial functionality |  Full functionality |  Partial functionality |  Limited functionality |
 | Llama | [Llama 3 70B](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct) |  Partial functionality |  Full functionality |  Limited functionality |  Limited functionality |

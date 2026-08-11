@@ -1,11 +1,11 @@
 ---
 title: "Kilo Gateway | Models"
-description: "Use Kilo Gateway models with Mastra. 346 models available."
+description: "Use Kilo Gateway models with Mastra. 349 models available."
 ---
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 346 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 349 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -96,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.0798,
-    "outputCost": 0.1596
+    "inputCost": 0.079996,
+    "outputCost": 0.252
   },
   {
     "model": "kilo/~google/gemini-flash-latest",
@@ -851,7 +851,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 384000,
+    "maxOutput": 393216,
     "inputCost": 1.6,
     "outputCost": 3.2
   },
@@ -1498,7 +1498,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1048576,
+    "contextWindow": 128000,
     "maxOutput": 16384,
     "inputCost": 0.2,
     "outputCost": 0.696
@@ -1526,6 +1526,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.18,
     "outputCost": 0.18
+  },
+  {
+    "model": "kilo/meta/muse-glimmer-30b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.35,
+    "outputCost": 1.5
   },
   {
     "model": "kilo/meta/muse-spark-1.1",
@@ -3310,8 +3322,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 32768,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
     "inputCost": 0.15,
     "outputCost": 1.2
   },
@@ -3443,7 +3455,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 65536,
+    "maxOutput": 262144,
     "inputCost": 0.39,
     "outputCost": 2.34
   },
@@ -3662,6 +3674,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 5,
     "outputCost": 30
+  },
+  {
+    "model": "kilo/sakana/sakana-namazu",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.95,
+    "outputCost": 4
   },
   {
     "model": "kilo/sao10k/l3-lunaris-8b",
@@ -3952,6 +3976,18 @@ for await (const chunk of stream) {
     "outputCost": 0.6
   },
   {
+    "model": "kilo/upstage/solar-pro4",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
     "model": "kilo/writer/palmyra-x5",
     "imageInput": false,
     "audioInput": false,
@@ -4174,8 +4210,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
     "inputCost": 1.4,
     "outputCost": 4.4
   },
