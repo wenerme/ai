@@ -20,7 +20,7 @@ The rule below is being created on the `free` plan, which limits configuration o
 
 ---
 
-![rate-limiting-create-account-endpoint](https://developers.cloudflare.com/_astro/rl-create-account-endpoint.BFxHF746_ZuP5Pg.webp)![rate-limiting-create-account-endpoint-block](https://developers.cloudflare.com/_astro/rl-create-account-endpoint-block.DOOFhKll_Z1wTXBj.webp)
+![rate-limiting-create-account-endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1048,height=842,format=webp/_astro/rl-create-account-endpoint.BFxHF746.png)![rate-limiting-create-account-endpoint-block](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=246,format=webp/_astro/rl-create-account-endpoint-block.DOOFhKll.png)
 
 ---
 
@@ -34,7 +34,7 @@ The rule below is being created on the `enterprise` plan, so we are no longer li
 * Requests that do not have a [client certificate (mTLS)](https://developers.cloudflare.com/ssl/client-certificates/), will increment the counter.
 * Requests will be counted using the [IP with NAT support](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#use-cases-of-ip-with-nat-support) characteristic.
 * Within a 1 minute period, for each counted entity, if the number of requests exceeds 10, then the user will be presented with a [Managed Challenge](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/challenge-pages/#managed-challenge) for a custom duration of 1 day.
-![rate-limiting-advanced-config-1](https://developers.cloudflare.com/_astro/rl-advanced-config.CWcevnzk_Z1ixPSR.webp)
+![rate-limiting-advanced-config-1](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=688,height=868,format=webp/_astro/rl-advanced-config.CWcevnzk.png)
 
 ---
 
@@ -48,7 +48,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/rate-limiting/configurations/#page","headline":"Configurations · Cloudflare Learning Paths","description":"Configure rules with advanced settings.","url":"https://developers.cloudflare.com/learning-paths/application-security/rate-limiting/configurations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

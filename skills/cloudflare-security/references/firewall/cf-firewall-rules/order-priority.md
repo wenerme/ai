@@ -16,7 +16,7 @@ Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Cloudflare Firewall Rules, now deprecated, is part of a larger evaluation chain for HTTP requests, as illustrated in the diagram below. For example, Firewall Rules only evaluates requests that first clear IP Access rules. If a request is blocked by a rule at any stage in the chain, Cloudflare does not evaluate the request further.
 
-![Flow chart of request evaluation at Cloudflare for security products that are not powered by the Ruleset Engine](https://developers.cloudflare.com/_astro/firewall-rules-order-and-priority-1.DvL3658y_ZAScv3.webp)
+![Flow chart of request evaluation at Cloudflare for security products that are not powered by the Ruleset Engine](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=858,format=webp/_astro/firewall-rules-order-and-priority-1.DvL3658y.png)
 
 Caution
 
@@ -31,7 +31,7 @@ When **priority ordering** is enabled, Cloudflare evaluates firewall rules in or
 
 Users with relatively small numbers of firewall rules (no more than 200) will find that list ordering is enabled by default. When list ordering is enabled, the rules list allows you to drag and drop firewall rules into position, as shown below:
 
-![Animation of a firewall rule being moved into a new position in the rules list to reorder it](https://developers.cloudflare.com/_astro/firewall-rules-order-and-priority-2.od1TBIqG_191dc1.webp)
+![Animation of a firewall rule being moved into a new position in the rules list to reorder it](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=1163,format=webp/_astro/firewall-rules-order-and-priority-2.od1TBIqG.gif)
 
 Once there are more than 200 total rules, including inactive rules, you must manage evaluation using priority ordering. When you cross this threshold, the firewall rules interface automatically switches to priority ordering.
 
@@ -56,12 +56,12 @@ To set the priority number for a firewall rule:
 
 1. Locate the desired rule in the rules list and select **Edit** (wrench icon).
 2. In the **Edit firewall rule** panel, enter a positive integer value in **Priority**.
-![Editing a firewall rule in the dashboard to define its Priority value](https://developers.cloudflare.com/_astro/firewall-rules-order-and-priority-4.BOS_CRyn_ZJ6D6f.webp)
+![Editing a firewall rule in the dashboard to define its Priority value](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=720,format=webp/_astro/firewall-rules-order-and-priority-4.BOS_CRyn.png)
 3. Select **Save**.
 
 The **Priority** column in the rules list displays the priority value for each rule.
 
-![When using priority order, the Firewall rules tab displays the priority of each rule \(if any\) in the first column of the rules list](https://developers.cloudflare.com/_astro/firewall-rules-order-and-priority-5.DaI_uWtJ_ZAqXM9.webp)
+![When using priority order, the Firewall rules tab displays the priority of each rule \(if any\) in the first column of the rules list](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1410,height=924,format=webp/_astro/firewall-rules-order-and-priority-5.DaI_uWtJ.png)
 
 ## Working with priority ordering
 
@@ -84,7 +84,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/#page","headline":"Order and priority · Cloudflare Firewall Rules (deprecated) docs","description":"Understand firewall rule evaluation order and priority.","url":"https://developers.cloudflare.com/firewall/cf-firewall-rules/order-priority/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

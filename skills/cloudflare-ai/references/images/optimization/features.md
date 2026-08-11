@@ -493,7 +493,7 @@ In the example below, the 1080x720 image is cropped to a 1080x400 area, starting
 
 Sets the focal point (X,Y) so that the relative coordinates of the output image are positioned at the relative coordinates of the original image. Accepts a coordinate pair formatted as `XxY`, where X and Y are decimal values between `0.0` and `1.0`.
 
-![Change the focal point using the relative coordinates](https://developers.cloudflare.com/_astro/xxy.pMA7L7Ny_2dl5dr.webp)
+![Change the focal point using the relative coordinates](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1363,height=904,format=webp/_astro/xxy.pMA7L7Ny.png)
 * **Horizontal value (X)** — `0.0` is the left edge and `1.0` is the right edge of the image.
 * **Vertical value (Y)** — `0.0` is the top edge and `1.0` is the bottom edge of the image.
 
@@ -846,7 +846,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/features/#page","headline":"Features · Cloudflare Images docs","description":"Available Cloudflare Images optimization parameters for resizing, cropping, format conversion, and visual effects.","url":"https://developers.cloudflare.com/images/optimization/features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

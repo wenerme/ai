@@ -26,7 +26,7 @@ SFP+ ports are next to the regular LAN ports. They are represented as follows in
 
 * SFP+ **port 1** is represented by **port 7** in the dashboard
 * SFP+ **port 2** is represented by **port 8** in the dashboard
-![The left port, SFP+ 1, is port 7. The right port, SFP+ 2, is port 8.](https://developers.cloudflare.com/_astro/sfp-ports.B7f8iPPa_ZGbggv.webp)
+![The left port, SFP+ 1, is port 7. The right port, SFP+ 2, is port 8.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1671,height=744,format=webp/_astro/sfp-ports.B7f8iPPa.png)
 
 _The left port, SFP+ 1, is port 7\. The right port, SFP+ 2, is port 8._
 
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/#page","headline":"SFP+ port information · Cloudflare One docs","description":"Reference information for SFP+ port information in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

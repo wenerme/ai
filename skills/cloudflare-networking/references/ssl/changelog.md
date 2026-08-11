@@ -67,7 +67,7 @@ Cloudflare Secrets Store is now integrated with AI Gateway, allowing you to stor
 
 You can now create a secret directly from your AI Gateway [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/ai-gateway) by navigating into your gateway -> **Provider Keys** \-> **Add**.
 
-![Import repo or choose template](https://developers.cloudflare.com/_astro/add-secret-ai-gateway.B-SIPr6s_jJjDD.webp)
+![Import repo or choose template](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2410,height=1842,format=webp/_astro/add-secret-ai-gateway.B-SIPr6s.png)
 
 You can also create your secret with the newly available **ai\_gateway** scope via [wrangler ↗](https://developers.cloudflare.com/workers/wrangler/commands/), the [Secrets Store dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), or the [API ↗](https://developers.cloudflare.com/api/resources/secrets%5Fstore/).
 
@@ -115,7 +115,7 @@ With custom origin server -- previously an enterprise-only feature -- you can ro
 
 You can enable custom origin server on a per-custom hostname basis [via the API ↗](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/) or the UI:
 
-![Import repo or choose template](https://developers.cloudflare.com/_astro/custom-origin-server.B-BXcG-1_ZUd9i6.webp)
+![Import repo or choose template](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1896,height=1636,format=webp/_astro/custom-origin-server.B-BXcG-1.png)
 
 Currently [in beta with a Workers integration ↗](https://blog.cloudflare.com/secrets-store-beta/), [Cloudflare Secrets Store ↗](https://developers.cloudflare.com/secrets-store/) allows you to store, manage, and deploy account level secrets from a secure, centralized platform your [Cloudflare Workers ↗](https://developers.cloudflare.com/workers/). Now, you can create and deploy **100 secrets per account**. Try it out [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), with [Wrangler ↗](https://developers.cloudflare.com/secrets-store/integrations/workers/), or [via the API ↗](https://developers.cloudflare.com/api/resources/secrets%5Fstore/) today.
 
@@ -126,7 +126,7 @@ Currently [in beta with a Workers integration ↗](https://blog.cloudflare.com/s
 
 Cloudflare Secrets Store is available today in Beta. You can now store, manage, and deploy account level secrets from a secure, centralized platform to your Workers.
 
-![Import repo or choose template](https://developers.cloudflare.com/_astro/secrets-store-landing-page.BQoEWsq8_ZUrGq1.webp)
+![Import repo or choose template](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1914,height=1536,format=webp/_astro/secrets-store-landing-page.BQoEWsq8.png)
 
 To spin up your Cloudflare Secrets Store, simply click the new Secrets Store tab [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store) or use this Wrangler command:
 
@@ -205,7 +205,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ssl/changelog/#page","headline":"Changelog · Cloudflare SSL/TLS docs","description":"Track the latest updates and changes to Cloudflare SSL/TLS features.","url":"https://developers.cloudflare.com/ssl/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -20,7 +20,7 @@ Refer to this page for details about how Cloudflare orchestrates VPN connectivit
 
 ### AWS
 
-![Diagram showing how Cloudflare creates on-ramps to AWS](https://developers.cloudflare.com/_astro/aws.CgJf-X-H_wMHrm.webp)
+![Diagram showing how Cloudflare creates on-ramps to AWS](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=687,format=webp/_astro/aws.CgJf-X-H.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -33,7 +33,7 @@ When using Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networkin
 
 ### Azure
 
-![Diagram showing how Cloudflare creates on-ramps to Azure](https://developers.cloudflare.com/_astro/azure.DonEYaVC_HD8Xi.webp)
+![Diagram showing how Cloudflare creates on-ramps to Azure](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=680,format=webp/_astro/azure.DonEYaVC.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -46,7 +46,7 @@ When using Multi-Cloud Networking (beta) to automatically create on-ramps to you
 
 ### GCP
 
-![Diagram showing how Cloudflare creates on-ramps to GCP](https://developers.cloudflare.com/_astro/gcp.CxVSVz5f_Z1c64UL.webp)
+![Diagram showing how Cloudflare creates on-ramps to GCP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2160,height=1016,format=webp/_astro/gcp.CxVSVz5f.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -132,7 +132,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/reference/#page","headline":"Reference · Cloudflare Multi-Cloud Networking docs","description":"Reference information for Multi-Cloud Networking.","url":"https://developers.cloudflare.com/multi-cloud-networking/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -47,7 +47,7 @@ Cloudflare bot score and bot traffic analysis is available in several locations.
 * **Log Push:**Customers can also export logs to a third party SIEM or Analytics platform. Bot score, bot score source, bot detection IDs, and bot detection tags can all be exported as part of the logs.
 ## Bot Management Traffic Flow
 
-![Figure 1: How Cloudflare identifies, scores and processes traffic from bots.](https://developers.cloudflare.com/_astro/bot-management-ra-diagram.D8aExrGs_1FKEKM.svg "Figure 1: How Cloudflare identifies, scores and processes traffic from bots.")
+![Figure 1: How Cloudflare identifies, scores and processes traffic from bots.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1979,height=808,format=svg/_astro/bot-management-ra-diagram.D8aExrGs.svg "Figure 1: How Cloudflare identifies, scores and processes traffic from bots.")
 
 Figure 1: How Cloudflare identifies, scores and processes traffic from bots.
 
@@ -69,7 +69,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/#page","headline":"Bot management · Cloudflare Reference Architecture docs","description":"Cloudflare has bot management capabilities to help identify and mitigate automated traffic to protect domains from bad bots.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/bots/bot-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

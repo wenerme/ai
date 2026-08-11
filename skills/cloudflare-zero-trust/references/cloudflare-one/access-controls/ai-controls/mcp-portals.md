@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP server portals
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
-![MCP clients connect through an MCP portal to access internal MCP servers and SaaS MCP servers.](https://developers.cloudflare.com/_astro/mcp-portal.B5web1ii_2x3Bsf.webp)
+![MCP clients connect through an MCP portal to access internal MCP servers and SaaS MCP servers.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1034,height=600,format=webp/_astro/mcp-portal.B5web1ii.png)
 
 This guide explains how to add MCP servers to Cloudflare Access, create an MCP portal with customized tools and policies, and connect users to the portal using an MCP client.
 
@@ -36,7 +36,7 @@ MCP server portals provide the following capabilities:
 
 The following diagram shows how requests flow through an MCP server portal.
 
-![Request flow diagram showing how an MCP client connects through Cloudflare Access and the MCP server portal to reach upstream MCP servers, with an optional Gateway path for DLP inspection.](https://developers.cloudflare.com/_astro/mcp-portal-request-flow.CybWTaQp_46x1E.svg)
+![Request flow diagram showing how an MCP client connects through Cloudflare Access and the MCP server portal to reach upstream MCP servers, with an optional Gateway path for DLP inspection.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=540,format=svg/_astro/mcp-portal-request-flow.BUmz6ikP.svg)
 1. An MCP client connects to the portal URL and receives a `401` response with OAuth discovery metadata.
 2. The user authenticates through Cloudflare Access via their identity provider or uses [service token](#connect-with-a-service-token) headers.
 3. Access validates the user's identity, and the portal establishes an MCP session and returns the tools available from enabled upstream servers.
@@ -538,11 +538,31 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 
 The `auth_type` field accepts the following values:
 
-| Value           | Description                                                                                                                                          |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| oauth           | The server requires OAuth authentication. After creating the server, you will need to authenticate via the dashboard to establish admin credentials. |
-| bearer          | The server uses a static bearer token for authentication. Provide the token in auth\_credentials.                                                    |
-| unauthenticated | The server does not require authentication.                                                                                                          |
+| Value           | Description                                                                                                                                                                                              |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| oauth           | The server requires OAuth authentication. After creating the server, you will need to authenticate via the dashboard to establish admin credentials.                                                     |
+| bearer          | The server uses a static bearer token or custom authentication headers. Provide the credentials in auth\_credentials (refer to [Bearer authentication credentials](#bearer-authentication-credentials)). |
+| unauthenticated | The server does not require authentication.                                                                                                                                                              |
+
+#### Bearer authentication credentials
+
+The `auth_credentials` field accepts two forms:
+
+* **A raw bearer token** — the portal sends the value as the `Authorization: Bearer <token>` header on requests to the upstream MCP server:
+```json
+{
+  "auth_type": "bearer",
+  "auth_credentials": "your-bearer-token"
+}
+```
+* **A JSON-encoded object of custom headers** — for upstream MCP servers that require multiple headers or a non-standard header name:
+```json
+{
+  "auth_type": "bearer",
+  "auth_credentials": "{\"headers\":{\"X-Api-Key\":\"<api-key>\",\"X-Client-Id\":\"<client-id>\"}}"
+}
+```
+The value of `auth_credentials` must be a JSON string. The parsed object must have a `headers` field mapping header names to string values. The portal forwards all headers verbatim to the upstream MCP server.
 
 ### Force sync an MCP server
 
@@ -1088,8 +1108,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals · Cloudflare One docs","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-10","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

@@ -22,15 +22,15 @@ To move your application to Cloudflare Pages, find your build command and build 
 
 In your Netlify Dashboard, find the project that you want to deploy. It should be configured to deploy from a GitHub repository.
 
-![Selecting a site in the Netlify Dashboard](https://developers.cloudflare.com/_astro/netlify-deploy-1.By04eemW_ZO5oX7.webp)
+![Selecting a site in the Netlify Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2214,height=1194,format=webp/_astro/netlify-deploy-1.By04eemW.png)
 
 Inside of your site dashboard, select **Site Settings**, and then **Build & Deploy**.
 
-![Selecting Site Settings in site dashboard](https://developers.cloudflare.com/_astro/netlify-deploy-2.DmmuPQSt_2pQB5F.webp)![Selecting Build and Deploy in sidebar](https://developers.cloudflare.com/_astro/netlify-deploy-3.BKXJ0OTu_Z1w0CIK.webp)
+![Selecting Site Settings in site dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1924,height=766,format=webp/_astro/netlify-deploy-2.DmmuPQSt.png)![Selecting Build and Deploy in sidebar](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1838,height=1004,format=webp/_astro/netlify-deploy-3.BKXJ0OTu.png)
 
 In the **Build & Deploy** tab, find the **Build settings** panel, which will have the **Build command** and **Publish directory** fields. Save these for deploying to Cloudflare Pages. In the below image, **Build command** is `yarn build`, and **Publish directory** is `build/`.
 
-![Finding the Build command and Publish directory fields](https://developers.cloudflare.com/_astro/netlify-deploy-4.DDil9MXJ_ZREmYR.webp)
+![Finding the Build command and Publish directory fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1890,height=990,format=webp/_astro/netlify-deploy-4.DDil9MXJ.png)
 
 ## Migrating redirects and headers
 
@@ -109,7 +109,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/#page","headline":"Migrating from Netlify to Pages · Cloudflare Pages docs","description":"Learn how to migrate from Netlify to Cloudflare. This guide includes instructions for migrating redirects and headers.","url":"https://developers.cloudflare.com/pages/migrations/migrating-from-netlify/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

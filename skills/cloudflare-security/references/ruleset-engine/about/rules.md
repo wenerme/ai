@@ -23,7 +23,7 @@ Rule expressions are defined using the [Rules language](https://developers.cloud
 
 For example, consider the following ruleset with four rules (R1, R2, R3, and R4). For a given incoming request, the expression of the first two rules matches the request properties. Therefore, the action for these rules runs (_Execute_ and _Log_, respectively). The action of the first rule executes a managed ruleset, which means that every rule in the managed ruleset is evaluated. The action of the second rule logs an event associated with the current phase. There is no match for the expressions of rules 3 and 4, so their actions do not run. Since no rule blocks the request, it proceeds to the next phase.
 
-![Example of a rule execution scenario. Defines a ruleset with four rules, where the first rule executes a managed ruleset.](https://developers.cloudflare.com/_astro/rulesets-rules-example.BDy4co6D_19jiDY.webp)
+![Example of a rule execution scenario. Defines a ruleset with four rules, where the first rule executes a managed ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=663,height=334,format=webp/_astro/rulesets-rules-example.BDy4co6D.png)
 
 Rules can have additional features through specific Cloudflare products. You may have more fields available for rule expressions, perform different actions, or configure additional behavior in a given phase.
 
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/about/rules/#page","headline":"Rules · Cloudflare Ruleset Engine docs","description":"Structure and properties of rules in the Ruleset Engine.","url":"https://developers.cloudflare.com/ruleset-engine/about/rules/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

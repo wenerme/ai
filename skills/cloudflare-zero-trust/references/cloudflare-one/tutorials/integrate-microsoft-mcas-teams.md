@@ -36,7 +36,7 @@ curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=ban
 
 This will return a list of banned hostnames. In this case, Angie's List is the banned application.
 
-![Banned hostnames](https://developers.cloudflare.com/_astro/mcas-domains.CtUPNlL__5tMjF.webp)
+![Banned hostnames](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1766,height=922,format=webp/_astro/mcas-domains.CtUPNlL_.png)
 
 ### Processing the output
 
@@ -84,7 +84,7 @@ Your list is now ready to be referenced by Gateway HTTP policies.
 
 Now when trying to visit one of the MCAS defined sites, the user will be blocked.
 
-![Access Restricted](https://developers.cloudflare.com/_astro/mcas-block-page.Bgzcx6ig_ZPxsLe.webp)
+![Access Restricted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1870,height=1128,format=webp/_astro/mcas-block-page.Bgzcx6ig.png)
 
 Was this helpful?
 
@@ -92,7 +92,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/#page","headline":"Integrate Microsoft MCAS with Cloudflare Zero Trust · Cloudflare One docs","description":"With an MCAS API call, you can manage a URL category that contains the blocked URLs. Use the output to create a Hostname List that can be used by Gateway HTTP policies to block them.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/integrate-microsoft-mcas-teams/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}

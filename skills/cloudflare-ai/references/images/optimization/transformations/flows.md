@@ -82,7 +82,7 @@ In the Cloudflare dashboard, go to [**Images** \> **Transformations** ↗](https
 
 Go to the **Automation** tab and select **Add custom flow** to open the side panel where you can configure your flow.
 
-![Custom flow configuration panel](https://developers.cloudflare.com/_astro/custom-flow.DeAGR8BY_iGLSK.webp)
+![Custom flow configuration panel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1654,height=1398,format=webp/_astro/custom-flow.DeAGR8BY.png)
 
 ### 2\. Configure the conditions
 
@@ -149,7 +149,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/flows/#page","headline":"Create transformation flows · Cloudflare Images docs","description":"Flows let you automatically apply image optimization to requests on your zone.","url":"https://developers.cloudflare.com/images/optimization/transformations/flows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -35,7 +35,7 @@ This setup has three parts:
 * **Worker Loader**: the main Worker you deploy. It receives requests, decides which Dynamic Worker to load, and creates Workflow instances. You write this code.
 * **Dynamic Worker**: the per-tenant code that defines what the Workflow actually does — its steps, sleeps, and event waits. Each Dynamic Worker is loaded on-demand at runtime.
 * **DynamicWorkflow class**: a Workflow entry point created by the library. When the Workflows engine needs to execute a step, this class loads the correct Dynamic Worker for that instance and runs the step inside it.
-![Architecture](https://developers.cloudflare.com/_astro/dynamic-workflows.C7b0JP-O_Z14Bk9g.webp)
+![Architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1910,height=1598,format=webp/_astro/dynamic-workflows.C7b0JP-O.png)
 
 Here is how they work together:
 
@@ -84,7 +84,7 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
   "name": "my-worker-loader",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-07-22",
+  "compatibility_date": "2026-08-10",
   "worker_loaders": [
     {
       "binding": "LOADER"
@@ -104,7 +104,7 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
 name = "my-worker-loader"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 
 [[worker_loaders]]
 binding = "LOADER"
@@ -301,7 +301,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/#page","headline":"Dynamic Workflows · Cloudflare Dynamic Workers docs","description":"Run different Workflow logic for each user or tenant by combining Workflows with Dynamic Workers.","url":"https://developers.cloudflare.com/dynamic-workers/usage/dynamic-workflows/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

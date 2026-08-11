@@ -59,7 +59,7 @@ Once the base IdP integration is tested and working, enable additional permissio
 
 You will see the list of enabled permissions.
 
-![API permissions in Entra ID](https://developers.cloudflare.com/_astro/risky-users-permissions.BXnsnrQO_Zax1Jt.webp)
+![API permissions in Entra ID](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1057,height=628,format=webp/_astro/risky-users-permissions.BXnsnrQO.png)
 
 ## 3\. Add risky users to Entra ID group
 
@@ -85,7 +85,7 @@ cd risky-users
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "risky-users",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
 	"main": "src/index.js",
 	"workers_dev": false,
 	"account_id": "<ACCOUNT-ID>",
@@ -102,7 +102,7 @@ cd risky-users
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "risky-users"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 main = "src/index.js"
 workers_dev = false
 account_id = "<ACCOUNT-ID>"
@@ -135,7 +135,7 @@ wrangler tail --format pretty
 
 After the initial run, the auto-generated groups will appear in the Entra ID dashboard.
 
-![Risky user groups in the Entra ID dashboard](https://developers.cloudflare.com/_astro/risky-users-groups.DdF4Xs9Y_Z2mmVhk.webp)
+![Risky user groups in the Entra ID dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1444,height=432,format=webp/_astro/risky-users-groups.DdF4Xs9Y.png)
 
 ## 4\. Synchronize risky user groups
 
@@ -171,7 +171,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/#page","headline":"Isolate risky Entra ID users · Cloudflare One docs","description":"Microsoft Entra ID (formerly Azure Active Directory) calculates a user's risk level based on the probability that their account has been compromised. With Cloudflare Zero Trust, you can synchronize the Entra ID risky users list with Cloudflare Access and apply more stringent Zero Trust policies to users at higher risk.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/entra-id-risky-users/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID","SCIM"]}

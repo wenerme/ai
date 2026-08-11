@@ -31,7 +31,7 @@ To create a DNS record for a Cloudflare Tunnel:
   * **Name**: Subdomain of your application
   * **Target**: `<UUID>.cfargotunnel.com`
 4. Select **Save**.
-![Example of fields completed to create a new CNAME record.](https://developers.cloudflare.com/_astro/dns-record.B25etJTI_Z1p13KV.webp)
+![Example of fields completed to create a new CNAME record.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2544,height=830,format=webp/_astro/dns-record.B25etJTI.png)
 
 For locally-managed tunnels, run the following command to create a CNAME record pointing to your tunnel subdomain:
 
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/dns/#page","headline":"DNS records · Cloudflare One docs","description":"DNS records in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}

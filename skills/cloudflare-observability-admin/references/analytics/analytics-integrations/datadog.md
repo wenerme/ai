@@ -31,14 +31,14 @@ To install the Cloudflare App for Datadog:
 
 1. Log in to **Datadog**.
 2. Click the **Integrations** tab.
-3. In the **search box**, start typing _Cloudflare_. The app tile should appear below the search box. ![Searching for Cloudflare App in the Datadog Integrations tab](https://developers.cloudflare.com/_astro/datadog-integrations.BJs60jr6_ZMH8eb.webp)
+3. In the **search box**, start typing _Cloudflare_. The app tile should appear below the search box. ![Searching for Cloudflare App in the Datadog Integrations tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1210,height=738,format=webp/_astro/datadog-integrations.BJs60jr6.png)
 4. Click the **Cloudflare** tile to begin the installation.
 5. Next, click **Configuration** and then complete the following:
 
   * **Account name**: (Optional) This can be any value. It has not impact on the site data pulled from Cloudflare.
   * **Email**: This value helps keep your account safe. We recommend creating a dedicated Cloudflare user for analytics with the [_Analytics_ role](https://developers.cloudflare.com/fundamentals/manage-members/roles/) (read-only). Note that the _Analytics_ role is available to Enterprise customers only.
   * **API Key**: Enter your Cloudflare Global API key. For details refer to [API Keys](https://developers.cloudflare.com/fundamentals/api/get-started/keys/).
-6. Click **Install Integration**. ![Configuring and installing the Datadog integration](https://developers.cloudflare.com/_astro/cloudflare-tile-datadog-fill-details.Bd14uPIs_Z1Rb82I.webp)
+6. Click **Install Integration**. ![Configuring and installing the Datadog integration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1324,height=656,format=webp/_astro/cloudflare-tile-datadog-fill-details.Bd14uPIs.png)
 
 The Cloudflare App for Datadog should be installed now and you can view the dashboard.
 
@@ -56,7 +56,7 @@ The dashboard displays the following metrics:
 * **Page views**
 * **Search Engine Bot Traffic**
 * **DNS** (DNS queries, response time, top hostnames, queries by type, stale vs. uncached queries)
-![Dashboard displaying metrics for a site on a Cloudflare account](https://developers.cloudflare.com/_astro/cloudflare-dashboard-datadog.BETjd10H_1ROw9T.webp)
+![Dashboard displaying metrics for a site on a Cloudflare account](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3476,height=1732,format=webp/_astro/cloudflare-dashboard-datadog.BETjd10H.png)
 
 Was this helpful?
 
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/datadog/#page","headline":"Datadog · Cloudflare Analytics docs","description":"This tutorial explains how to analyze Cloudflare metrics using the Cloudflare Integration tile for Datadog","url":"https://developers.cloudflare.com/analytics/analytics-integrations/datadog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

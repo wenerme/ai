@@ -55,7 +55,7 @@ meeting.participants.broadcastMessage(“ID3Data”,”CLOSE_TRANSPORT”)
 If you do not pass this parameter, the ID3 metadata stream will automatically be closed when the recording is stopped.
 
 1. Once the recording is completed, you can retrieve the tar file that contains video segments and a playlist file. The `download_url` provides the link to the tar file. Below is an example screenshot of a tar file:
-![Recording Tar Format](https://developers.cloudflare.com/_astro/interactive-recording-tar-format.JbEcOmI6_ZGSWee.webp)
+![Recording Tar Format](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=744,height=552,format=webp/_astro/interactive-recording-tar-format.JbEcOmI6.png)
 
 It's also important to note that the length of each segment depends on the frames of the video. Therefore, each segment may not have the same length, although it is typically close to the specified segment length when the recording was started. By default, the segment length is set to 10 seconds.
 
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/#page","headline":"Interactive Recordings with Timed Metadata · Cloudflare Realtime docs","description":"Learn how to enable interactive recording with RealtimeKit's capabilities. Follow our guide for effective configuration and management.","url":"https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

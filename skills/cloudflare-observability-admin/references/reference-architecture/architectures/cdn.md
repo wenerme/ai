@@ -65,7 +65,7 @@ From a security perspective, the origin server is also vulnerable to DDoS attack
 
 Further, in terms of resiliency, if the origin server temporarily goes offline, all content is inaccessible to users.
 
-![Figure 1: Diagram of HTTP web requests between DNS and origin server without a CDN.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure1.BH2E9Wnc_Z6NBt9.svg "Figure 1: HTTP Request with no CDN")
+![Figure 1: Diagram of HTTP web requests between DNS and origin server without a CDN.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1128,height=484,format=svg/_astro/ref-arch-cdn-figure1.BH2E9Wnc.svg "Figure 1: HTTP Request with no CDN")
 
 Figure 1: HTTP Request with no CDN
 
@@ -115,7 +115,7 @@ The benefits of the Cloudflare CDN can be attributed to the below two points, di
 
 Figure 2 shows a simplified view of the Cloudflare CDN. Clients are receiving their response back from a server on Cloudflare’s global anycast network closest to where the clients are located, thus drastically reducing the latency and RTT. The diagram depicts a consistent end-user experience regardless of the physical location of the clients and origin.
 
-![Figure 2 is a diagram representing the traffic between a client and a server on Cloudflare's global anycast network at different client locations.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure2.DP9jXMC9_6stiP.svg "Figure 2: HTTP request to Cloudflare CDN with anycast")
+![Figure 2 is a diagram representing the traffic between a client and a server on Cloudflare's global anycast network at different client locations.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1329,height=638,format=svg/_astro/ref-arch-cdn-figure2.DP9jXMC9.svg "Figure 2: HTTP request to Cloudflare CDN with anycast")
 
 Figure 2: HTTP request to Cloudflare CDN with anycast
 
@@ -123,7 +123,7 @@ Figure 2: HTTP request to Cloudflare CDN with anycast
 
 Figure 3 is a view of the Cloudflare CDN on the global anycast network. In addition to using anycast for network performance and resiliency, the Cloudflare CDN leverages Tiered Cache to deliver optimized results while saving costs for customers. Customers can also [enable Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/get-started/) to find the fastest network path to route requests to the origin server. These capabilities are discussed in detail in the remainder of this document.
 
-![Figure 3: Diagram representing requests coming from an end user, protected by Cloudflare products including WAF and DDoS protection, and traveling through the anycast Network to reach the origin server using Smart Tiered Cache.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure3.CcIfEHZq_1TSd7X.svg "Figure 3: Cloudflare CDN with Tiered Cache on global anycast network")
+![Figure 3: Diagram representing requests coming from an end user, protected by Cloudflare products including WAF and DDoS protection, and traveling through the anycast Network to reach the origin server using Smart Tiered Cache.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1283,height=551,format=svg/_astro/ref-arch-cdn-figure3.CcIfEHZq.svg "Figure 3: Cloudflare CDN with Tiered Cache on global anycast network")
 
 Figure 3: Cloudflare CDN with Tiered Cache on global anycast network
 
@@ -162,7 +162,7 @@ The different cache topologies allow customers to control how Cloudflare interac
 
 In Figure 4, Tiered Caching is enabled with Smart Tiered Cache Topology. The diagram depicts two separate traffic flows, summarized below. The first traffic flow (Client 1) is a request from a client that comes into Data Center 1\. The second traffic flow (Client 2) is a subsequent request for the same resource into a different data center, Data Center 2.
 
-![Figure 4: The same diagram as Figure 3 demonstrating requests between end users and origin server over the anycast Network, with bidirectional arrows indicating traffic flow enabled by Smart Tiered Cache.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure4.kIutXMs6_Z12aQPE.svg "Figure 4: HTTP requests and traffic flow through Cloudflare CDN")
+![Figure 4: The same diagram as Figure 3 demonstrating requests between end users and origin server over the anycast Network, with bidirectional arrows indicating traffic flow enabled by Smart Tiered Cache.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1491,height=551,format=svg/_astro/ref-arch-cdn-figure4.kIutXMs6.svg "Figure 4: HTTP requests and traffic flow through Cloudflare CDN")
 
 Figure 4: HTTP requests and traffic flow through Cloudflare CDN
 
@@ -192,7 +192,7 @@ Regional Tiered Caching is recommended for use with Smart Tiered Caching and Cus
 
 In Figure 5, Tiered Caching is enabled with Smart Tiered Cache Topology. The diagram depicts the topology of Smart Tiered Cache with Regional Tiered Cache enabled. Lower tier caches, when they experience a cache `MISS` will first send those requests to a more local, regional hub data center to see if the cache can handle the request. If not, the request will continue on to the upper tier and then origin server, if necessary.
 
-![Figure 5: Diagram illustrating requests between an end user and origin server with lower, regional and upper tiered caching enabled.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure5.B3Tq_F2z_Z12aQPE.svg "Figure 5: Cloudflare CDN with Tiered Cache and Regional Tiered Cache")
+![Figure 5: Diagram illustrating requests between an end user and origin server with lower, regional and upper tiered caching enabled.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1491,height=551,format=svg/_astro/ref-arch-cdn-figure5.B3Tq_F2z.svg "Figure 5: Cloudflare CDN with Tiered Cache and Regional Tiered Cache")
 
 Figure 5: Cloudflare CDN with Tiered Cache and Regional Tiered Cache
 
@@ -208,7 +208,7 @@ Argo Smart Routing accelerates traffic by taking into account real-time data and
 
 Figure 6 details the traffic flow when Tiered Cache and Argo Smart Routing are not enabled. The request comes into the closest data center, and, because content is not locally cached and Tiered Cache is not enabled, the request is sent directly to the origin server for the content. Also, since Argo Smart Routing is not enabled, a reliable, but perhaps not the fastest, path is taken when communicating with the origin server.
 
-![Figure 6: Diagram with bidirectional arrows indicating a request between an end user and origin server without Argo Smart Routing enabled.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure6.CUGfxAW8_Z12aQPE.svg "Figure 6: Cloudflare CDN without Tiered Cache or Argo Smart Routing")
+![Figure 6: Diagram with bidirectional arrows indicating a request between an end user and origin server without Argo Smart Routing enabled.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1491,height=551,format=svg/_astro/ref-arch-cdn-figure6.CUGfxAW8.svg "Figure 6: Cloudflare CDN without Tiered Cache or Argo Smart Routing")
 
 Figure 6: Cloudflare CDN without Tiered Cache or Argo Smart Routing
 
@@ -221,7 +221,7 @@ The fastest path is determined by the Argo network intelligence capabilities, wh
 1. There is a cache miss and the request needs to be sent to the origin server to retrieve the content.
 2. There is a request for non-cacheable content, such as dynamic content (ex: APIs), and the request must go to the origin server.
 
-![Figure 7: Diagram with bidirectional arrows indicating a request between an end user and origin server, with Argo Smart Routing enabled to improve speed.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure7.Cxfbf7KH_ZdpAT1.svg "Figure 7: Cloudflare CDN with Tiered Cache and Argo Smart Routing")
+![Figure 7: Diagram with bidirectional arrows indicating a request between an end user and origin server, with Argo Smart Routing enabled to improve speed.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1523,height=551,format=svg/_astro/ref-arch-cdn-figure7.Cxfbf7KH.svg "Figure 7: Cloudflare CDN with Tiered Cache and Argo Smart Routing")
 
 Figure 7: Cloudflare CDN with Tiered Cache and Argo Smart Routing
 
@@ -249,7 +249,7 @@ Using [Image Resizing](https://developers.cloudflare.com/images/optimization/tra
 
 Figure 8 illustrates how Cache Reserve can help reduce load on an origin server while also helping repopulate cache stores in both upper and lower tier data centers.
 
-![Figure 8: Traffic between end users and an origin server showing Cache Reserve as the final step in the architecture of the Cloudflare CDN solution.](https://developers.cloudflare.com/_astro/ref-arch-cdn-figure8.B8u-UV7X_Z12aQPE.svg "Figure 8: Cloudflare CDN with Tiered Cache and Cache Reserve")
+![Figure 8: Traffic between end users and an origin server showing Cache Reserve as the final step in the architecture of the Cloudflare CDN solution.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1491,height=551,format=svg/_astro/ref-arch-cdn-figure8.B8u-UV7X.svg "Figure 8: Cloudflare CDN with Tiered Cache and Cache Reserve")
 
 Figure 8: Cloudflare CDN with Tiered Cache and Cache Reserve
 
@@ -270,7 +270,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/#page","headline":"Content Delivery Network (CDN) Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture discusses the traditional challenges customers face with web applications, how the Cloudflare CDN resolves these challenges, and CDN architecture and design.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cdn/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

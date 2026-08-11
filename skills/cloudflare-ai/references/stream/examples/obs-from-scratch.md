@@ -63,7 +63,7 @@ When you first launch OBS, the Auto-Configuration Wizard will ask a few question
 
 Add some test content to the stage in OBS. In this example, I have added a background image, a web browser (to show [time.is ↗](https://time.is)), and an overlay of my webcam:
 
-![OBS Stage](https://developers.cloudflare.com/_astro/obs-stage.Dp0DktA1_2eByvj.webp)
+![OBS Stage](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1918,height=1027,format=webp/_astro/obs-stage.Dp0DktA1.png)
 
 OBS offers many different audio, video, still, and generated sources to set up your broadcast content. Use the "+" button in the "Sources" panel to add content. Check out the [OBS Sources Guide ↗](https://obsproject.com/kb/sources-guide) for more information. For an initial test, use a source that will show some motion: try a webcam ("Video Capture Device"), a screen share ("Display Capture"), or a browser with a site that has moving content.
 
@@ -79,9 +79,9 @@ Tweaking some settings in OBS can improve quality, glass-to-glass latency, or st
 
 Return to OBS, click "Stop Streaming." Then click "Settings" and open the "Output" section:
 
-![OBS Output Settings - Simple Mode](https://developers.cloudflare.com/_astro/obs-output-settings-1.Dd36CkGD_1d9NNu.webp)
+![OBS Output Settings - Simple Mode](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=996,height=391,format=webp/_astro/obs-output-settings-1.Dd36CkGD.png)
 * Change **Output Mode** to "Advanced"
-![OBS Output Settings - Advanced Mode](https://developers.cloudflare.com/_astro/obs-output-settings-2.B8WTTxox_jRaL5.webp)
+![OBS Output Settings - Advanced Mode](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=998,height=781,format=webp/_astro/obs-output-settings-2.B8WTTxox.png)
 
 _Your available options in the "Video Encoder" menu, as well as the resulting "Encoder Settings," may look slightly different than these because the options vary by hardware._
 
@@ -110,7 +110,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/obs-from-scratch/#page","headline":"First Live Stream with OBS · Cloudflare Stream docs","description":"Set up and start your first Live Stream using OBS (Open Broadcaster Software) Studio","url":"https://developers.cloudflare.com/stream/examples/obs-from-scratch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

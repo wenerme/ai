@@ -107,7 +107,7 @@ To configure retry settings:
   * **Delay** — the base delay between retries. Available values: 100ms, 500ms, 1 second, 2 seconds, 3 seconds, or 5 seconds.
   * **Backoff** — the backoff strategy for subsequent retries: Constant, Linear, or Exponential.
 6. Select **Save**.
-![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/_astro/auto-retry-settings.UcvmkohL_Z2r7tSz.webp)
+![Retry Requests settings in the AI Gateway dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2344,height=636,format=webp/_astro/auto-retry-settings.UcvmkohL.png)
 
 These gateway-level defaults apply to all requests routed through the gateway. Per-request headers can override these defaults — refer to [Request handling](https://developers.cloudflare.com/ai-gateway/configuration/request-handling/#request-retries) for details.
 
@@ -133,7 +133,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#page","headline":"Manage gateways · Cloudflare AI Gateway docs","description":"Create, edit, and delete AI Gateway instances using the dashboard or API.","url":"https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

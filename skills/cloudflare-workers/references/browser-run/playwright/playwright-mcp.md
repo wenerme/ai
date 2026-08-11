@@ -72,7 +72,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"name": "playwright-mcp-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "BROWSER",
@@ -99,7 +99,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 name = "playwright-mcp-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -149,7 +149,7 @@ The server is now available at `https://[my-mcp-url].workers.dev/sse` and you ca
 
 ## Using Playwright MCP
 
-![Screenshot of the AI Playground](https://developers.cloudflare.com/_astro/playground-ai-screenshot.v44jFMBu_Z1xgc6e.webp)
+![Screenshot of the AI Playground](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1420,height=914,format=webp/_astro/playground-ai-screenshot.v44jFMBu.png)
 
 [Cloudflare AI Playground ↗](https://playground.ai.cloudflare.com/) is a great way to test MCP servers using LLM models available in Workers AI.
 
@@ -183,7 +183,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/#page","headline":"Playwright MCP · Cloudflare Browser Run docs","description":"Deploy a Playwright MCP server that uses Browser Run to provide browser automation capabilities to your agents.","url":"https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}

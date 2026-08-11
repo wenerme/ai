@@ -27,7 +27,7 @@ Example uses of such compositions of AI models can be employed to generation vis
 
 ## Asset generation
 
-![Figure 1:Content-based asset generation](https://developers.cloudflare.com/_astro/ai-asset-generation.BN6tfVXY_ZAHNWj.svg "Figure 1: Content-based asset generation")
+![Figure 1:Content-based asset generation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=600,format=svg/_astro/ai-asset-generation.BN6tfVXY.svg "Figure 1: Content-based asset generation")
 
 Figure 1: Content-based asset generation
 
@@ -49,7 +49,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-asset-creation/#page","headline":"Content-based asset creation · Cloudflare Reference Architecture docs","description":"AI systems combine text-generation and text-to-image models to create visual content from text. They generate prompts, moderate content, and produce images for various applications.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-asset-creation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

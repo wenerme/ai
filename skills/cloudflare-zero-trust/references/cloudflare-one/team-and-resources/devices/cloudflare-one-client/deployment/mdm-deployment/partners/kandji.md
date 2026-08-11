@@ -32,7 +32,7 @@ For the simplest deployment, Kandji has created a downloadable configuration pro
   3. Set **Device Families** to _Mac_.
   4. Upload the `cloudflare_warp.mobileconfig` file you previously downloaded.
   5. Save the custom profile.
-![Configuring custom profile for the Cloudflare One Client in Kandji](https://developers.cloudflare.com/_astro/custom-profile.1_c6pwrU_Z1xGDVV.webp)
+![Configuring custom profile for the Cloudflare One Client in Kandji](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1254,height=1664,format=webp/_astro/custom-profile.1_c6pwrU.png)
 _Note: Labels in this image may reflect a previous product name._
 4. Add a custom app:
 
@@ -238,7 +238,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/#page","headline":"Kandji · Cloudflare One docs","description":"Deploy the Cloudflare One Client with Kandji on macOS using a custom configuration profile.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MacOS"]}

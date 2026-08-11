@@ -40,7 +40,7 @@ On-premises data center 2: 203.0.113.128/25
 
 The reference architecture diagram below illustrates how Cloudflare Magic Transit and Cloudflare Network Firewall can be used to protect the public networks from inbound traffic originating from the Internet.
 
-![Figure 1: Protect the public networks from inbound traffic originating from the Internet.](https://developers.cloudflare.com/_astro/figure-1.ChNCzrbx_QN66x.svg "Figure 1: Protect the public networks from inbound traffic originating from the Internet.")
+![Figure 1: Protect the public networks from inbound traffic originating from the Internet.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1214,height=879,format=svg/_astro/figure-1.ChNCzrbx.svg "Figure 1: Protect the public networks from inbound traffic originating from the Internet.")
 
 Figure 1: Protect the public networks from inbound traffic originating from the Internet.
 
@@ -60,7 +60,7 @@ You can instead advertise less-specific IP prefixes from the border routers to t
 
 The reference architecture diagram below illustrates how Cloudflare services - Magic Transit (Egress), Cloudflare Network Firewall and Cloudflare Gateway, can be used to protect outbound Internet traffic originating from the public networks.
 
-![Figure 2: Protect outbound Internet traffic originating from the public networks.](https://developers.cloudflare.com/_astro/figure-2.wsXd5oJY_QRaie.svg "Figure 2: Protect outbound Internet traffic originating from the public networks.")
+![Figure 2: Protect outbound Internet traffic originating from the public networks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1215,height=879,format=svg/_astro/figure-2.wsXd5oJY.svg "Figure 2: Protect outbound Internet traffic originating from the public networks.")
 
 Figure 2: Protect outbound Internet traffic originating from the public networks.
 
@@ -91,7 +91,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/#page","headline":"Protect public networks with Cloudflare · Cloudflare Reference Architecture docs","description":"This document explains how Cloudflare Magic Transit, Cloudflare Network Firewall, and Gateway work. The products offer in-line, automatic, scalable network protection for all Internet-facing networks. The architecture is designed to protect public networks across multiple clouds and on-premises.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-public-networks-with-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

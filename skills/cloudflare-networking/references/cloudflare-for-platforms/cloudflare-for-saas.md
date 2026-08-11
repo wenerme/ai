@@ -51,19 +51,19 @@ As the SaaS provider, you can extend Cloudflare's products to customer-owned cus
 
 Custom hostnames are routed to a default origin server called fallback origin. This configuration is available on all plans.
 
-![Standard case](https://developers.cloudflare.com/_astro/Standard.DlPYrpsG_Z1aQodp.webp)
+![Standard case](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3840,height=2160,format=webp/_astro/Standard.DlPYrpsG.png)
 
 ### Cloudflare for SaaS with Apex Proxying:
 
 This allows you to support apex domains even if your customers are using a DNS provider that does not allow a CNAME at the apex. This is available as an add-on for Enterprise plans. For more details, refer to [Apex Proxying](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/advanced-settings/apex-proxying/).
 
-![Advanced case](https://developers.cloudflare.com/_astro/Advanced.BaQXgT8v_Z1DP3hz.webp)
+![Advanced case](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3840,height=2160,format=webp/_astro/Advanced.BaQXgT8v.png)
 
 ### Cloudflare for SaaS with BYOIP:
 
 This allows you to support apex domains even if your customers are using a DNS provider that does not allow a CNAME at the apex. Also, you can point to your own IPs if you want to bring an IP range to Cloudflare (instead of Cloudflare provided IPs). This is available as an add-on for Enterprise plans.
 
-![Pro Case](https://developers.cloudflare.com/_astro/Pro.DTAC_nZK_Z23M1FF.webp)
+![Pro Case](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3840,height=2160,format=webp/_astro/Pro.DTAC_nZK.png)
 
 ## Availability
 
@@ -79,7 +79,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/#page","headline":"Cloudflare for SaaS · Cloudflare for Platforms docs","description":"Extend Cloudflare security and performance to your customers' custom hostnames.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

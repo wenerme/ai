@@ -54,7 +54,7 @@ For complete details, refer to the [Cloudflare Logpush to Azure documentation](h
 5. In your **Sentinel workspace**, go to **Data connectors**.
 6. Search for the **Cloudflare connector** (may appear as **Cloudflare (using Azure Blob Storage)**).
 7. Select the connector to configure it.
-![Azure portal](https://developers.cloudflare.com/_astro/azure-portal.DumVF0xP_1Jxd4n.webp)
+![Azure portal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2172,height=1250,format=webp/_astro/azure-portal.DumVF0xP.png)
 
 ## Step 4: Fill out required fields
 
@@ -73,7 +73,7 @@ After entering all information, select **Connect**.
 
 Ensure all fields are correctly filled to enable seamless log ingestion.
 
-![Configuration fields](https://developers.cloudflare.com/_astro/configuration.ypRscF1K_pXKb5.webp)
+![Configuration fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1954,height=1132,format=webp/_astro/configuration.ypRscF1K.png)
 
 ## Step 5: Complete deployment
 
@@ -81,11 +81,11 @@ Ensure all fields are correctly filled to enable seamless log ingestion.
 2. Monitor the Data connectors page in Sentinel to confirm that the Cloudflare connector status is **Connected**.
 3. Verify that Cloudflare logs are appearing in your Sentinel workspace under **Log Analytics** \> **Logs**.
 4. If logs are not appearing, review your Blob Storage permissions, Cloudflare Logpush configuration, and Sentinel connector settings.
-![Data connectors](https://developers.cloudflare.com/_astro/data-connectors.By58rEfp_2e4kQf.webp)
+![Data connectors](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1942,height=1236,format=webp/_astro/data-connectors.By58rEfp.png)
 
 By following these steps, you have successfully integrated Cloudflare logs with Microsoft Sentinel using Azure Blob Storage. This integration enables advanced security analytics and incident response capabilities for your Cloudflare-protected environments. If you encounter issues, review each configuration step, check permissions, and review Microsoft's official documentation.
 
-![Cloudflare traffic overview](https://developers.cloudflare.com/_astro/traffic-overview.C9qSRy0T_iH49l.webp)
+![Cloudflare traffic overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2248,height=1286,format=webp/_astro/traffic-overview.C9qSRy0T.png)
 
 ## Supported Logs
 
@@ -300,7 +300,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/#page","headline":"Sentinel · Cloudflare Analytics docs","description":"Ingest Cloudflare logs into Microsoft Sentinel.","url":"https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

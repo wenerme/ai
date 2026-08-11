@@ -186,6 +186,31 @@ Regional processing (data residency) endpoints are charged a 10% uplift for mode
 
   
 
+Cyber models
+
+
+  
+Our latest Daybreak models.
+
+  
+Prices per 1M tokens.
+
+
+
+
+### Grouped Pricing Table data
+
+| Model | Short context input | Short context cached input | Short context cache writes | Short context output | Long context input | Long context cached input | Long context cache writes | Long context output |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| gpt-5.6-sol | $5.00 | $0.50 | $6.25 | $30.00 | $10.00 | $1.00 | $12.50 | $45.00 |
+| gpt-5.6-cyber | $12.50 | $1.25 | $15.625 | $75.00 | - | - | - | - |
+| gpt-5.5-cyber | $12.50 | $1.25 | - | $75.00 | - | - | - | - |
+| gpt-5.4-cyber | - | - | - | - | - | - | - | - |
+
+
+
+  
+
     
 
 Multimodal models
@@ -221,9 +246,6 @@ Prices per 1M tokens unless noted.
 | gpt-realtime-2 | Audio | $32.00 | $0.40 | $64.00 |
 | gpt-realtime-2 | Text | $4.00 | $0.40 | $24.00 |
 | gpt-realtime-2 | Image | $5.00 | $0.50 | - |
-| gpt-realtime-translate | Audio | - | - | $0.034 / minute |
-| gpt-live-transcribe | Audio | - | - | $0.017 / minute |
-| gpt-realtime-whisper | Audio | - | - | $0.017 / minute |
 | gpt-realtime-1.5 | Audio | $32.00 | $0.40 | $64.00 |
 | gpt-realtime-1.5 | Text | $4.00 | $0.40 | $16.00 |
 | gpt-realtime-1.5 | Image | $5.00 | $0.50 | - |
@@ -377,8 +399,10 @@ Prices per 1M tokens unless noted.
 
 | Model | Use case | Input | Output | Estimated cost |
 | --- | --- | --- | --- | --- |
-| gpt-transcribe | Transcription | - | - | $0.0045 / minute |
+| gpt-realtime-translate | Live translation | - | - | $0.034 / minute |
 | gpt-live-transcribe | Live transcription | - | - | $0.017 / minute |
+| gpt-realtime-whisper | Live transcription | - | - | $0.017 / minute |
+| gpt-transcribe | Transcription | - | - | $0.0045 / minute |
 | gpt-4o-transcribe | Transcription | $2.50 | $10.00 | $0.006 / minute |
 | gpt-4o-mini-transcribe | Transcription | $1.25 | $5.00 | $0.003 / minute |
 | gpt-4o-transcribe-diarize | Transcription + diarization | $2.50 | $10.00 | $0.006 / minute |
@@ -445,8 +469,6 @@ Standard
 | ChatGPT | gpt-5.3-chat-latest | $1.75 | $0.175 | $14.00 |
 | ChatGPT | gpt-5.2-chat-latest | $1.75 | $0.175 | $14.00 |
 | Codex | gpt-5.3-codex | $1.75 | $0.175 | $14.00 |
-| Cyber | gpt-5.4-cyber | - | - | - |
-| Cyber | gpt-5.5-cyber | $12.50 | $1.25 | $75.00 |
 | Search | gpt-5-search-api | $1.25 | $0.125 | $10.00 |
 | Embedding | text-embedding-3-small | $0.02 | - | - |
 | Embedding | text-embedding-3-large | $0.13 | - | - |

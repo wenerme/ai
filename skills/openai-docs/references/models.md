@@ -27,6 +27,8 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [codex-mini-latest](/api/docs/models/codex-mini-latest.md): Fast reasoning model optimized for the Codex CLI
 - [computer-use-preview](/api/docs/models/computer-use-preview.md): Specialized model for computer use tool
 - [davinci-002](/api/docs/models/davinci-002.md): Replacement for the GPT-3 curie and davinci base models
+- [Daybreak Blue](/api/docs/models/daybreak-blue-latest.md): An alias for frontier general-purpose models with safeguards for defensive cybersecurity work.
+- [Daybreak Red](/api/docs/models/daybreak-red-latest.md): An alias for advanced cybersecurity models for authorized vulnerability research and security testing.
 - [GPT Image 1](/api/docs/models/gpt-image-1.md): Our previous image generation model
 - [GPT Image 1.5](/api/docs/models/gpt-image-1.5.md): Our previous image generation model
 - [GPT Image 2](/api/docs/models/gpt-image-2.md): State-of-the-art image generation model
@@ -75,6 +77,7 @@ See [how OpenAI uses your data](/api/docs/guides/your-data.md) and review [depre
 - [GPT-5.4 Pro](/api/docs/models/gpt-5.4-pro.md): Version of GPT-5.4 that produces smarter and more precise responses.
 - [GPT-5.5](/api/docs/models/gpt-5.5.md): A new class of intelligence for coding and professional work.
 - [GPT-5.5 Pro](/api/docs/models/gpt-5.5-pro.md): Version of GPT-5.5 that produces smarter and more precise responses.
+- [GPT-5.6 Cyber](/api/docs/models/gpt-5.6-cyber.md): Our most advanced cybersecurity model for authorized vulnerability research and security testing.
 - [GPT-5.6 Luna](/api/docs/models/gpt-5.6-luna.md): GPT-5.6 model optimized for cost-sensitive workloads
 - [GPT-5.6 Sol](/api/docs/models/gpt-5.6-sol.md): Frontier model for complex professional work
 - [GPT-5.6 Terra](/api/docs/models/gpt-5.6-terra.md): GPT-5.6 model that balances intelligence and cost

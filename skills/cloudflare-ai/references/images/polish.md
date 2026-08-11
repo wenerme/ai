@@ -18,7 +18,7 @@ Cloudflare Polish is a one-click image optimization product that automatically o
 
 When an image is fetched from your origin, our systems automatically optimize it in Cloudflare's cache. Subsequent requests for the same image will get the smaller, faster, optimized version of the image, improving the speed of your website.
 
-![Example of Polish compression's quality.](https://developers.cloudflare.com/_astro/polish.DBlbPZoO_Zd4DDj.webp)
+![Example of Polish compression's quality.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=500,height=207,format=webp/_astro/polish.DBlbPZoO.png)
 
 ## Comparison
 
@@ -37,7 +37,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/polish/#page","headline":"Cloudflare Polish · Cloudflare Images docs","description":"Cloudflare Polish automatically optimizes images by stripping metadata and applying lossy or lossless compression.","url":"https://developers.cloudflare.com/images/polish/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

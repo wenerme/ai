@@ -1,11 +1,11 @@
 ---
 title: "Snowflake Cortex | Models"
-description: "Use Snowflake Cortex models with Mastra. 21 models available."
+description: "Use Snowflake Cortex models with Mastra. 25 models available."
 ---
 
 # [Snowflake Cortex logo]Snowflake Cortex
 
-Access 21 Snowflake Cortex models through Mastra's model router. Authentication is handled automatically using the `SNOWFLAKE_CORTEX_PAT` environment variable. Configure `SNOWFLAKE_ACCOUNT` as well.
+Access 25 Snowflake Cortex models through Mastra's model router. Authentication is handled automatically using the `SNOWFLAKE_CORTEX_PAT` environment variable. Configure `SNOWFLAKE_ACCOUNT` as well.
 
 Learn more in the [Snowflake Cortex documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api).
 
@@ -34,7 +34,7 @@ for await (const chunk of stream) {
 }
 ```
 
-> **info**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Snowflake Cortex documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Snowflake Cortex documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/cortex-rest-api) for details.
 
 ## Models
 
@@ -65,6 +65,30 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
+    "model": "snowflake-cortex/claude-opus-4-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 200000,
+    "maxOutput": 64000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "snowflake-cortex/claude-opus-4-6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "snowflake-cortex/claude-opus-4-7",
     "imageInput": true,
     "audioInput": false,
@@ -78,6 +102,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "snowflake-cortex/claude-opus-4-8",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "snowflake-cortex/claude-opus-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -109,6 +145,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 16384,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "snowflake-cortex/claude-sonnet-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
     "inputCost": null,
     "outputCost": null
   },

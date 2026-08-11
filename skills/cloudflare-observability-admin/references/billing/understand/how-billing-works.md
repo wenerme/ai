@@ -154,13 +154,13 @@ The Cloudflare dashboard organizes billing information across four tabs under **
 
 The billable usage dashboard shows a daily cost breakdown chart and a per-product usage table. Each product row shows total usage, billable usage (above the free tier), and the cumulative cost for the billing period.
 
-![The billable usage dashboard showing a daily cost breakdown chart and per-product usage table](https://developers.cloudflare.com/_astro/billable-usage-dashboard.CQvMdtrp_Z2qynps.webp)
+![The billable usage dashboard showing a daily cost breakdown chart and per-product usage table](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1033,height=757,format=webp/_astro/billable-usage-dashboard.CQvMdtrp.png)
 
 ### Budget alerts
 
 Budget alerts notify you by email when your account-wide usage-based spend crosses a dollar threshold. Set these up under **Manage Account** \> **Billing** \> **Billable Usage**.
 
-![The budget alert creation modal showing threshold and notification configuration](https://developers.cloudflare.com/_astro/budget-alert-modal.BjIzGOLV_Zr8DX5.webp)
+![The budget alert creation modal showing threshold and notification configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=315,height=374,format=webp/_astro/budget-alert-modal.BjIzGOLV.png)
 
 For more detail on monitoring your costs, refer to [Monitor billable usage](https://developers.cloudflare.com/billing/manage/billable-usage/) and [Budget alerts](https://developers.cloudflare.com/billing/manage/budget-alerts/).
 
@@ -193,7 +193,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-billing-works/#page","headline":"How Cloudflare billing works · Cloudflare Billing docs","description":"Billing lifecycle, charge types, and invoice details.","url":"https://developers.cloudflare.com/billing/understand/how-billing-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

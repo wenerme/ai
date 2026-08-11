@@ -84,7 +84,7 @@ Time-based one-time password (TOTP) authentication works by using an authenticat
 3. Under **Mobile App Authentication**, select **Add**.
 4. Scan the QR code with your mobile device and enter the code from your authenticator application.
 5. Enter your Cloudflare password, then select **Next**. If you cannot scan the QR code, select **Can't scan QR code, Follow alternative steps** to configure your authenticator application manually.
-![You can enable 2FA by scanning a QR code with your mobile device.](https://developers.cloudflare.com/_astro/2FA_scan_QR_code.t5BNYUYn_VVv4H.webp)
+![You can enable 2FA by scanning a QR code with your mobile device.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=467,height=856,format=webp/_astro/2FA_scan_QR_code.t5BNYUYn.png)
 1. Enter your Cloudflare password again.
 2. Select **Next** to review your backup codes. You can use backup codes to access your account without your mobile device.
 3. Select **Download**, **Print**, or **Copy** to save your backup codes in a secure location.
@@ -186,7 +186,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#page","headline":"Two-factor authentication · Cloudflare Fundamentals docs","description":"Set up and manage two-factor authentication on your Cloudflare account using security keys, TOTP apps, or email.","url":"https://developers.cloudflare.com/fundamentals/user-profiles/2fa/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

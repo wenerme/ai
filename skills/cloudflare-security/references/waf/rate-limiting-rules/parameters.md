@@ -209,9 +209,9 @@ Other users can throttle requests using a challenge action, or perform the actio
 The action behavior can be one of the following:
 
 * **Perform action during the selected duration**: Applies the configured action to all requests received during the selected duration. To configure this behavior via API, set `mitigation_timeout` to a value greater than zero. Refer to [For duration](#for-duration) for more information.
-![Chart displaying the action of a rate limiting rule configured to apply its action during the entire mitigation period](https://developers.cloudflare.com/_astro/behavior-apply-action-for-duration.ByJmge-b_1Iq3jE.webp)
+![Chart displaying the action of a rate limiting rule configured to apply its action during the entire mitigation period](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=610,height=228,format=webp/_astro/behavior-apply-action-for-duration.ByJmge-b.png)
 * **Throttle requests over the maximum configured rate**: Applies the selected action to incoming requests over the configured limit, allowing other requests. To configure this behavior via API, set `mitigation_timeout` to `0` (zero).
-![Chart displaying the behavior of a rate limiting configured to throttle requests above the configured limit](https://developers.cloudflare.com/_astro/behavior-throttle.D27SXNy0_ZkrW4o.webp)
+![Chart displaying the behavior of a rate limiting configured to throttle requests above the configured limit](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=610,height=228,format=webp/_astro/behavior-throttle.D27SXNy0.png)
 
 ## Notes about rate limiting characteristics
 
@@ -274,7 +274,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#page","headline":"Rate limiting parameters · Cloudflare Web Application Firewall (WAF) docs","description":"Configurable parameters for rate limiting rules, including expressions and characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -76,7 +76,7 @@ Tracing also captures operations made through [remote bindings](https://develope
 
 For example, if a request makes two D1 calls and the second one fails, the trace shows you exactly which call succeeded and which errored without adding `console.log()` or try/catch blocks.
 
-![Trace view for POST /api/todos showing two D1 database spans: the first INSERT succeeded, the second failed with error "no such table: audit_log"](https://developers.cloudflare.com/_astro/local-trace-failed-request.Bf0avznU_1ouk56.webp)
+![Trace view for POST /api/todos showing two D1 database spans: the first INSERT succeeded, the second failed with error "no such table: audit_log"](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2048,height=847,format=webp/_astro/local-trace-failed-request.Bf0avznU.png)
 
 ## API
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/local-explorer/#page","headline":"Local Explorer · Cloudflare Workers docs","description":"Browse and edit local binding data from your browser during development.","url":"https://developers.cloudflare.com/workers/local-development/local-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

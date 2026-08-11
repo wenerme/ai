@@ -26,13 +26,13 @@ Additionally, serverless APIs often integrate seamlessly with other cloud servic
 
 Most cloud serverless implementations have a single region where your code is executed. This means any request, from anywhere in the world, must traverse the Internet to get to this single location. All responses to the API request must also be sent back over the same Internet route to the user.
 
-![Figure 1: Traditional single-region architecture](https://developers.cloudflare.com/_astro/single-region.DcjMitxL_Z1D2c5c.webp "Figure 1:  Traditional single-region architecture")
+![Figure 1: Traditional single-region architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1125,format=webp/_astro/single-region.DcjMitxL.png "Figure 1:  Traditional single-region architecture")
 
 Figure 1: Traditional single-region architecture
 
 Cloudflare follows a different, global-first approach. Globally-deployed architectures enable lower latency and high availability for users accessing the API from different parts of the world. In order to realize performance gains, not only the compute needs to be distributed, but ideally the data as well. Different solutions such as a caching as well as global replication can enable this.
 
-![Figure 2: Region Earth](https://developers.cloudflare.com/_astro/region-earth.DPRpgTD0_Z1dzB4T.webp "Figure 2:  Region Earth")
+![Figure 2: Region Earth](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1126,format=webp/_astro/region-earth.DPRpgTD0.png "Figure 2:  Region Earth")
 
 Figure 2: Region Earth
 
@@ -40,7 +40,7 @@ Overall, serverless globally-deployed APIs offer a cost-effective, scalable, and
 
 ## Serverless global APIs
 
-![Figure 3: Serverless global APIs](https://developers.cloudflare.com/_astro/serverless-global-apis.BnHHhP-u_Z29LwvW.svg "Figure 3: Serverless global APIs")
+![Figure 3: Serverless global APIs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=466,format=svg/_astro/serverless-global-apis.BnHHhP-u.svg "Figure 3: Serverless global APIs")
 
 Figure 3: Serverless global APIs
 
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/#page","headline":"Serverless global APIs · Cloudflare Reference Architecture docs","description":"An example architecture of a serverless API on Cloudflare and aims to illustrate how different compute and data products could interact with each other.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-global-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

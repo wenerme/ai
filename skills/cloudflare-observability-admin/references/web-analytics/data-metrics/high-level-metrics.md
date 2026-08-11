@@ -20,7 +20,7 @@ Understanding the key metrics in web analytics is essential for optimizing your 
 * **Page views** \- A successful HTTP response with a content-type of HTML.
 * **Page load time** \- The total amount of time required to load the page.
 * **[Core Web Vitals ↗](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/)** \- Higher-level metrics designed by Google to capture the user experience more completely.
-![Web Analytics overview page](https://developers.cloudflare.com/_astro/dash-web_analytics-overview.Z0JtJyOL_5dwhM.webp)
+![Web Analytics overview page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1730,height=988,format=webp/_astro/dash-web_analytics-overview.Z0JtJyOL.png)
 
 Was this helpful?
 
@@ -28,7 +28,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/#page","headline":"High-level metrics · Cloudflare Web Analytics docs","description":"Page views, visits, and other high-level metrics in Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

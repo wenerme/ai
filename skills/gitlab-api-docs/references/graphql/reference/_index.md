@@ -2823,9 +2823,6 @@ mutation($id: NoteableID!, $body: String!) {
 
 ### `Mutation.achievementsAward`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
 Input type: `AchievementsAwardInput`
 
 Arguments:
@@ -2846,9 +2843,6 @@ Fields:
 | <a id="mutation-achievementsaward-userachievement"></a>`userAchievement` | [`UserAchievement`](#userachievement) | Achievement award. |
 
 ### `Mutation.achievementsCreate`
-
-- Introduced in GitLab 15.8.
-- Status: Experiment.
 
 Input type: `AchievementsCreateInput`
 
@@ -2872,9 +2866,6 @@ Fields:
 
 ### `Mutation.achievementsDelete`
 
-- Introduced in GitLab 15.11.
-- Status: Experiment.
-
 Input type: `AchievementsDeleteInput`
 
 Arguments:
@@ -2894,9 +2885,6 @@ Fields:
 
 ### `Mutation.achievementsRevoke`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
 Input type: `AchievementsRevokeInput`
 
 Arguments:
@@ -2915,9 +2903,6 @@ Fields:
 | <a id="mutation-achievementsrevoke-userachievement"></a>`userAchievement` | [`UserAchievement`](#userachievement) | Achievement award. |
 
 ### `Mutation.achievementsUpdate`
-
-- Introduced in GitLab 15.11.
-- Status: Experiment.
 
 Input type: `AchievementsUpdateInput`
 
@@ -16385,6 +16370,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="mutation-updateduoworkflowtoolcallapprovals-approvalsource"></a>`approvalSource`  | [`DuoWorkflowToolCallApprovalSource`](#duoworkflowtoolcallapprovalsource) | Introduced in GitLab 19.3. Status: Experiment. Source of the approval decision, for audit purposes. |
 | <a id="mutation-updateduoworkflowtoolcallapprovals-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-updateduoworkflowtoolcallapprovals-pattern"></a>`pattern` | [`String`](#string) | Glob pattern to approve for matching tool call arguments. |
 | <a id="mutation-updateduoworkflowtoolcallapprovals-toolcallargs"></a>`toolCallArgs` | [`JSON`](#json) | Arguments for the tool call. |
@@ -16903,9 +16889,6 @@ Fields:
 
 ### `Mutation.userAchievementPrioritiesUpdate`
 
-- Introduced in GitLab 16.5.
-- Status: Experiment.
-
 Input type: `UserAchievementPrioritiesUpdateInput`
 
 Arguments:
@@ -16925,9 +16908,6 @@ Fields:
 
 ### `Mutation.userAchievementsDelete`
 
-- Introduced in GitLab 16.1.
-- Status: Experiment.
-
 Input type: `UserAchievementsDeleteInput`
 
 Arguments:
@@ -16946,9 +16926,6 @@ Fields:
 | <a id="mutation-userachievementsdelete-userachievement"></a>`userAchievement` | [`UserAchievement`](#userachievement) | Deleted user achievement. |
 
 ### `Mutation.userAchievementsUpdate`
-
-- Introduced in GitLab 17.3.
-- Status: Experiment.
 
 Input type: `UserAchievementsUpdateInput`
 
@@ -30483,9 +30460,9 @@ Fields:
 | <a id="achievement-id"></a>`id` | [`AchievementsAchievementID!`](#achievementsachievementid) | ID of the achievement. |
 | <a id="achievement-name"></a>`name` | [`String!`](#string) | Name of the achievement. |
 | <a id="achievement-namespace"></a>`namespace` | [`Namespace`](#namespace) | Namespace of the achievement. |
-| <a id="achievement-uniqueusers"></a>`uniqueUsers`  | [`UserCoreConnection!`](#usercoreconnection) | Introduced in GitLab 18.6. Status: Experiment. Unique users who have received the achievement. |
+| <a id="achievement-uniqueusers"></a>`uniqueUsers` | [`UserCoreConnection!`](#usercoreconnection) | Unique users who have received the achievement. (see [Connections](#connections)) |
 | <a id="achievement-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp the achievement was last updated. |
-| <a id="achievement-userachievements"></a>`userAchievements`  | [`UserAchievementConnection`](#userachievementconnection) | Introduced in GitLab 15.10. Status: Experiment. Recipients for the achievement. |
+| <a id="achievement-userachievements"></a>`userAchievements` | [`UserAchievementConnection`](#userachievementconnection) | Recipients for the achievement. (see [Connections](#connections)) |
 
 ### `AchievementUploadRegistry`
 
@@ -30998,10 +30975,7 @@ Arguments:
 
 ##### `AddOnUser.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -32982,6 +32956,21 @@ Fields:
 | <a id="auditeventsstreaminginstanceheader-key"></a>`key` | [`String!`](#string) | Key of the header. |
 | <a id="auditeventsstreaminginstanceheader-value"></a>`value` | [`String!`](#string) | Value of the header. |
 
+### `AutoRemediationConfiguration`
+
+Auto-remediation configuration for a dependency scanning post-processing scan profile.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="autoremediationconfiguration-cooldown"></a>`cooldown` | [`Int`](#int) | Minimum number of days after a package is released before it can be used. |
+| <a id="autoremediationconfiguration-enabled"></a>`enabled` | [`Boolean`](#boolean) | Indicates whether auto-remediation is enabled. |
+| <a id="autoremediationconfiguration-openmergerequestslimit"></a>`openMergeRequestsLimit` | [`Int`](#int) | Maximum number of open merge requests the feature may have open at once. |
+| <a id="autoremediationconfiguration-runnertags"></a>`runnerTags` | [`[String!]`](#string) | Runner tags used for auto-remediation jobs. |
+| <a id="autoremediationconfiguration-severitylevel"></a>`severityLevel` | [`VulnerabilitySeverity`](#vulnerabilityseverity) | Minimum vulnerability severity that triggers an automated upgrade. |
+| <a id="autoremediationconfiguration-upgradepolicy"></a>`upgradePolicy` | [`SecurityScanProfileUpgradePolicy`](#securityscanprofileupgradepolicy) | Highest version bump allowed when remediating. |
+
 ### `AutocompletedUser`
 
 Core representation of a GitLab user.
@@ -33430,10 +33419,7 @@ Arguments:
 
 ##### `AutocompletedUser.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -37627,10 +37613,7 @@ Arguments:
 
 ##### `CurrentUser.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -39639,6 +39622,22 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-notelinks-linktype"></a>`linkType` | [`DuoWorkflowNoteLinkType`](#duoworkflownotelinktype) | Filter links by their link type. |
 
+##### `DuoWorkflow.toolCallApprovalMatch`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Approval match details for the specified tool call.
+
+Returns [`DuoWorkflowToolCallApprovalMatch!`](#duoworkflowtoolcallapprovalmatch).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-toolcallapprovalmatch-toolcallargs"></a>`toolCallArgs` | [`String!`](#string) | JSON-serialized arguments for the tool call. |
+| <a id="duoworkflow-toolcallapprovalmatch-toolname"></a>`toolName` | [`String!`](#string) | Name of the tool to check. |
+
 ##### `DuoWorkflow.toolCallApproved`
 
 Whether the specified tool call is approved for the session.
@@ -39790,6 +39789,18 @@ Fields:
 | <a id="duoworkflowsessionartifact-webpath"></a>`webPath` | [`String`](#string) | Path of the session. |
 | <a id="duoworkflowsessionartifact-workflowcreatedat"></a>`workflowCreatedAt` | [`Time!`](#time) | Timestamp of when the session was created. |
 | <a id="duoworkflowsessionartifact-workflowdefinition"></a>`workflowDefinition` | [`String!`](#string) | Workflow definition type of the session. |
+
+### `DuoWorkflowToolCallApprovalMatch`
+
+Approval match details for a Duo Workflow tool call.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowtoolcallapprovalmatch-matchtype"></a>`matchType` | [`DuoWorkflowToolCallApprovalMatchType`](#duoworkflowtoolcallapprovalmatchtype) | Mechanism that produced the match, null when unmatched. |
+| <a id="duoworkflowtoolcallapprovalmatch-matched"></a>`matched` | [`Boolean!`](#boolean) | Indicates the tool call matches a stored approval. |
+| <a id="duoworkflowtoolcallapprovalmatch-matchedpattern"></a>`matchedPattern` | [`String`](#string) | Glob pattern that produced the match, present only for pattern matches. |
 
 ### `DuoWorkflowWorkItemLink`
 
@@ -42163,7 +42174,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="group-achievementspath"></a>`achievementsPath`  | [`String`](#string) | Introduced in GitLab 17.0. Status: Experiment. Path for the namespace's achievements. Returns `null` if the namespace is not a group, or the `achievements` feature flag is disabled. |
+| <a id="group-achievementspath"></a>`achievementsPath` | [`String`](#string) | Path for the namespace's achievements. Returns `null` if the namespace is not a group. |
 | <a id="group-actualrepositorysizelimit"></a>`actualRepositorySizeLimit` | [`Float`](#float) | Size limit for repositories in the namespace in bytes. This limit only applies to namespaces under Project limit enforcement. |
 | <a id="group-actualsizelimit"></a>`actualSizeLimit` | [`Float`](#float) | The actual storage size limit (in bytes) based on the enforcement type of either repository or namespace. This limit is agnostic of enforcement type. |
 | <a id="group-additionalpurchasedstoragesize"></a>`additionalPurchasedStorageSize` | [`Float`](#float) | Additional storage purchased for the root namespace in bytes. |
@@ -42307,10 +42318,7 @@ Fields:
 
 ##### `Group.achievements`
 
-- Introduced in GitLab 15.8.
-- Status: Experiment.
-
-Achievements for the namespace. Returns `null` if the `achievements` feature flag is disabled.
+Achievements for the namespace.
 
 Returns [`AchievementConnection`](#achievementconnection).
 
@@ -47041,10 +47049,7 @@ Arguments:
 
 ##### `MergeRequestAssignee.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -47515,10 +47520,7 @@ Arguments:
 
 ##### `MergeRequestAuthor.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -48065,10 +48067,7 @@ Arguments:
 
 ##### `MergeRequestParticipant.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -48558,10 +48557,7 @@ Arguments:
 
 ##### `MergeRequestReviewer.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -49007,7 +49003,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="namespace-achievementspath"></a>`achievementsPath`  | [`String`](#string) | Introduced in GitLab 17.0. Status: Experiment. Path for the namespace's achievements. Returns `null` if the namespace is not a group, or the `achievements` feature flag is disabled. |
+| <a id="namespace-achievementspath"></a>`achievementsPath` | [`String`](#string) | Path for the namespace's achievements. Returns `null` if the namespace is not a group. |
 | <a id="namespace-actualrepositorysizelimit"></a>`actualRepositorySizeLimit` | [`Float`](#float) | Size limit for repositories in the namespace in bytes. This limit only applies to namespaces under Project limit enforcement. |
 | <a id="namespace-actualsizelimit"></a>`actualSizeLimit` | [`Float`](#float) | The actual storage size limit (in bytes) based on the enforcement type of either repository or namespace. This limit is agnostic of enforcement type. |
 | <a id="namespace-additionalpurchasedstoragesize"></a>`additionalPurchasedStorageSize` | [`Float`](#float) | Additional storage purchased for the root namespace in bytes. |
@@ -49061,10 +49057,7 @@ Fields:
 
 ##### `Namespace.achievements`
 
-- Introduced in GitLab 15.8.
-- Status: Experiment.
-
-Achievements for the namespace. Returns `null` if the `achievements` feature flag is disabled.
+Achievements for the namespace.
 
 Returns [`AchievementConnection`](#achievementconnection).
 
@@ -56492,6 +56485,17 @@ Fields:
 | <a id="scanprofileprojectstatus-scanprofile"></a>`scanProfile` | [`ScanProfileType!`](#scanprofiletype) | Scan profile associated with the status. |
 | <a id="scanprofileprojectstatus-status"></a>`status` | [`ScanProfileStatus!`](#scanprofilestatus) | Computed display status: NOT_CONFIGURED, PENDING, ACTIVE, WARNING, FAILED, or STALE. |
 
+### `ScanProfileTriggerSetting`
+
+A scan profile trigger and its effective configuration.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="scanprofiletriggersetting-configuration"></a>`configuration` | [`ScanProfileConfiguration`](#scanprofileconfiguration) | Effective configuration for the trigger. Null for scan types without a typed configuration. |
+| <a id="scanprofiletriggersetting-triggertype"></a>`triggerType` | [`ScanProfileTriggerType!`](#scanprofiletriggertype) | Type of the trigger. |
+
 ### `ScanProfileType`
 
 A scan profile.
@@ -56507,6 +56511,7 @@ Fields:
 | <a id="scanprofiletype-id"></a>`id` | [`SecurityScanProfileID`](#securityscanprofileid) | Global ID of the security scan profile. |
 | <a id="scanprofiletype-name"></a>`name` | [`String!`](#string) | Name of the security scan profile. |
 | <a id="scanprofiletype-scantype"></a>`scanType` | [`SecurityScanProfileType!`](#securityscanprofiletype) | Scan profile type. |
+| <a id="scanprofiletype-triggersettings"></a>`triggerSettings`  | [`[ScanProfileTriggerSetting!]!`](#scanprofiletriggersetting) | Introduced in GitLab 19.3. Status: Experiment. Trigger settings, including effective configuration, for the scan profile. |
 | <a id="scanprofiletype-triggers"></a>`triggers`  | [`[ScanProfileTriggerType!]!`](#scanprofiletriggertype) | Introduced in GitLab 18.10. Status: Experiment. Trigger types for the scan profile. |
 | <a id="scanprofiletype-updatedat"></a>`updatedAt` | [`ISO8601DateTime!`](#iso8601datetime) | Timestamp of when the scan profile was last updated. |
 
@@ -56600,6 +56605,21 @@ Fields:
 | <a id="secondarysecurityfeature-description"></a>`description` | [`String!`](#string) | Description of what the secondary feature does. |
 | <a id="secondarysecurityfeature-name"></a>`name` | [`String!`](#string) | Name of the secondary feature. |
 | <a id="secondarysecurityfeature-type"></a>`type` | [`String!`](#string) | Type identifier for the secondary feature. |
+
+### `SecretDetectionConfiguration`
+
+Configuration for a secret detection scan profile.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="secretdetectionconfiguration-excludedpaths"></a>`excludedPaths` | [`[String!]`](#string) | Glob paths excluded from the scan. |
+| <a id="secretdetectionconfiguration-historicscan"></a>`historicScan` | [`Boolean`](#boolean) | Indicates whether to scan the full Git history instead of only the current state. |
+| <a id="secretdetectionconfiguration-imagesuffix"></a>`imageSuffix` | [`SecurityScanProfileImageSuffix`](#securityscanprofileimagesuffix) | Suffix appended to the analyzer image name. |
+| <a id="secretdetectionconfiguration-logoptions"></a>`logOptions` | [`String`](#string) | Options passed to git log to control the commit range scanned. |
+| <a id="secretdetectionconfiguration-rulesetgitreference"></a>`rulesetGitReference` | [`String`](#string) | Git reference of the remote ruleset configuration to use. |
+| <a id="secretdetectionconfiguration-secureanalyzersprefix"></a>`secureAnalyzersPrefix` | [`String`](#string) | Prefix for the container registry from which the analyzer image is pulled. |
 
 ### `SecretPermission`
 
@@ -58591,10 +58611,7 @@ Arguments:
 
 ##### `UserCore.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 
@@ -64261,6 +64278,26 @@ The status group of the flow session.
 | <a id="duoworkflowstatusgroup-completed"></a>`COMPLETED` | Flow sessions with a status group of completed. |
 | <a id="duoworkflowstatusgroup-failed"></a>`FAILED` | Flow sessions with a status group of failed. |
 | <a id="duoworkflowstatusgroup-paused"></a>`PAUSED` | Flow sessions with a status group of paused. |
+
+### `DuoWorkflowToolCallApprovalMatchType`
+
+Mechanism that resolved a stored Duo Workflow tool call approval.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoworkflowtoolcallapprovalmatchtype-exact_hash"></a>`EXACT_HASH`  | Introduced in GitLab 19.3. Status: Experiment. Tool call matched a previously approved call by exact argument hash. |
+| <a id="duoworkflowtoolcallapprovalmatchtype-pattern"></a>`PATTERN`  | Introduced in GitLab 19.3. Status: Experiment. Tool call matched a stored glob pattern. |
+
+### `DuoWorkflowToolCallApprovalSource`
+
+Source of a Duo Workflow tool call approval decision, as reported by the client. Identifies the mechanism the client reports as having made the decision, not the policy that was evaluated or its author.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoworkflowtoolcallapprovalsource-auto_mode"></a>`AUTO_MODE`  | Introduced in GitLab 19.3. Status: Experiment. Approval granted automatically by auto-mode. |
+| <a id="duoworkflowtoolcallapprovalsource-preapproved_config"></a>`PREAPPROVED_CONFIG`  | Introduced in GitLab 19.3. Status: Experiment. Approval granted through a pre-approved tool or pattern configuration. |
+| <a id="duoworkflowtoolcallapprovalsource-pretooluse_hook"></a>`PRETOOLUSE_HOOK`  | Introduced in GitLab 19.3. Status: Experiment. Approval granted automatically by a PreToolUse hook. |
+| <a id="duoworkflowtoolcallapprovalsource-user_explicit"></a>`USER_EXPLICIT`  | Introduced in GitLab 19.3. Status: Experiment. Explicit approval by a user action. |
 
 ### `DuoWorkflowWorkItemLinkType`
 
@@ -69940,6 +69977,15 @@ One of:
 - [`VulnerabilityExportUploadRegistry`](#vulnerabilityexportuploadregistry)
 - [`VulnerabilityRemediationUploadRegistry`](#vulnerabilityremediationuploadregistry)
 
+#### `ScanProfileConfiguration`
+
+Effective configuration for a scan profile trigger, resolved by scan type.
+
+One of:
+
+- [`AutoRemediationConfiguration`](#autoremediationconfiguration)
+- [`SecretDetectionConfiguration`](#secretdetectionconfiguration)
+
 #### `SecurityPolicySource`
 
 Represents a policy source. Its fields depend on the source type.
@@ -71547,10 +71593,7 @@ Arguments:
 
 ###### `User.userAchievements`
 
-- Introduced in GitLab 15.10.
-- Status: Experiment.
-
-Achievements for the user. Only returns for namespaces where the `achievements` feature flag is enabled.
+Achievements for the user.
 
 Returns [`UserAchievementConnection`](#userachievementconnection).
 

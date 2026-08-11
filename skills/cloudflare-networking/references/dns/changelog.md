@@ -51,7 +51,7 @@ Internal DNS is included with [Cloudflare Gateway](https://developers.cloudflare
 
 The DNS Firewall page in the Cloudflare dashboard has been refreshed, bringing several settings that were previously API-only into the UI and modernizing how you view and manage your DNS Firewall clusters.
 
-![New DNS Firewall UX](https://developers.cloudflare.com/_astro/dnsfw-new-ux.vHgdhBZD_10POx6.webp)
+![New DNS Firewall UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2694,height=1247,format=webp/_astro/dnsfw-new-ux.vHgdhBZD.png)
 
 #### What is new
 
@@ -89,7 +89,7 @@ For more details, refer to [DNS records quota](https://developers.cloudflare.com
 
 Starting today, everyone can opt in to a refreshed DNS records page in the Cloudflare dashboard. Over the coming weeks, the new experience will become the default for Free plan users first, followed by paid plans.
 
-![New DNS records UX](https://developers.cloudflare.com/_astro/new-dns-ux.Bfs_yXPa_VJoah.webp)
+![New DNS records UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3706,height=2070,format=webp/_astro/new-dns-ux.Bfs_yXPa.png)
 
 #### What is new
 
@@ -97,7 +97,7 @@ Starting today, everyone can opt in to a refreshed DNS records page in the Cloud
 * **First-class mobile experience**: responsive layout with a touch-friendly, card-based UI and compact controls for small screens.
 * **DNS quick reference**: bite-sized explainers for DNS, proxy status, and TTL, available directly in the product to help users configure records without leaving the page.
 * **Modern frontend**: a refactor onto Cloudflare's new UI framework that improves performance and lays the foundation for future improvements.
-![New DNS records UX](https://developers.cloudflare.com/_astro/new-dns-ux.DV6gCbme_2cImvu.webp)
+![New DNS records UX](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=754,height=572,format=webp/_astro/new-dns-ux.DV6gCbme.gif)
 
 #### Rollout plan
 
@@ -196,7 +196,7 @@ For more information, refer to [DNS Analytics](https://developers.cloudflare.com
 
 Access [GraphQL-powered DNS Firewall analytics](https://developers.cloudflare.com/dns/dns-firewall/analytics/) directly in the Cloudflare dashboard.
 
-![DNS Firewall Analytics UI](https://developers.cloudflare.com/_astro/DNSFW_Analytics_UI.CgjmZFOO_Z1tNsEz.webp)
+![DNS Firewall Analytics UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=284,format=webp/_astro/DNSFW_Analytics_UI.CgjmZFOO.png)
 
 #### Explore Four Interactive Panels
 
@@ -275,7 +275,7 @@ Participating beta testers can now fully configure [Internal DNS](https://develo
 #### What’s new in this release:
 
 * Beta participants can now create and manage internal zones and views in the Cloudflare dashboard
-![Internal DNS UI](https://developers.cloudflare.com/_astro/internal-dns-beta-ui.B5uCVZ9o_yVcqC.webp)
+![Internal DNS UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2364,height=1320,format=webp/_astro/internal-dns-beta-ui.B5uCVZ9o.png)
 
 Note
 
@@ -308,7 +308,7 @@ What's new:
 
 * **Automatic enablement** – O2O is available for all mutual Cloudflare and Shopify customers.
 * **Branded record display** – Merchants see a Shopify logo in DNS records, complete with helpful tooltips.
-![Shopify O2O logo](https://developers.cloudflare.com/_astro/shop-dns-icon-o2o.Ca5DAZHL_1weoif.webp)
+![Shopify O2O logo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=848,height=112,format=webp/_astro/shop-dns-icon-o2o.Ca5DAZHL.png)
 * **Checkout protection** – Workers and Snippets are blocked from running on the checkout path to reduce risk and improve security.
 
 For more information, refer to the [provider guide](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/).
@@ -387,7 +387,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/dns/changelog/#page","headline":"Changelog · Cloudflare DNS docs","description":"Track the latest updates and changes to Cloudflare DNS features.","url":"https://developers.cloudflare.com/dns/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -37,7 +37,7 @@ To change the Cloudflare plan for a domain in the dashboard:
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
 3. For Active Subscriptions, select **Change**.
-![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/_astro/change-plan.MkI9crmU_eMjgp.webp)
+![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2352,height=1598,format=webp/_astro/change-plan.MkI9crmU.png)
 4. Choose the appropriate plan type, then select **Continue**.
 5. Select **Confirm**.
 
@@ -56,9 +56,9 @@ To change the duration of your Cloudflare plan in the dashboard:
 1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Overview**.
 3. For Active Subscriptions, select **Change**.
-![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/_astro/change-plan.MkI9crmU_eMjgp.webp)
+![Screenshot of the Overview page with the Plan extension section highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2352,height=1598,format=webp/_astro/change-plan.MkI9crmU.png)
 4. Switch the toggle between **Monthly** or **Annual**.
-![Screenshot of the Plan choice with the annual or monthly toggle highlighted](https://developers.cloudflare.com/_astro/plan-duration.BZ11r_rH_u9VOU.webp)
+![Screenshot of the Plan choice with the annual or monthly toggle highlighted](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1856,height=1092,format=webp/_astro/plan-duration.BZ11r_rH.png)
 5. Choose the appropriate plan type, then select **Continue**.
 6. Select **Confirm**.
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/manage/change-plan/#page","headline":"Change domain plan · Cloudflare Billing docs","description":"Upgrade or downgrade a domain's Cloudflare plan.","url":"https://developers.cloudflare.com/billing/manage/change-plan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

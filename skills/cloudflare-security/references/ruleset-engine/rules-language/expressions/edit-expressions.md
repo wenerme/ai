@@ -32,7 +32,7 @@ If you use advanced expression features or enter unlisted fields in your express
 
 The Expression Builder allows you to visually create rule expressions by using drop-down lists and entering field values to define one or multiple sub-expressions.
 
-![The Expression Builder interface used to visually define expressions](https://developers.cloudflare.com/_astro/expression-builder.Cg2aqK5m_gwrLy.webp)
+![The Expression Builder interface used to visually define expressions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=235,format=webp/_astro/expression-builder.Cg2aqK5m.png)
 
 The **Expression Preview** displays the expression in text:
 
@@ -46,11 +46,11 @@ The Expression Builder will [automatically escape](#escape-special-characters) t
 
 The **Expression Editor** is a text-only interface for defining rule expressions that supports the entire specification of Cloudflare's [Rules language](https://developers.cloudflare.com/ruleset-engine/rules-language/), including parentheses as grouping symbols.
 
-![The Expression Editor used to enter advanced expressions](https://developers.cloudflare.com/_astro/expression-editor.CI-o8RRS_Z2uXj7P.webp)
+![The Expression Editor used to enter advanced expressions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=840,height=160,format=webp/_astro/expression-editor.CI-o8RRS.png)
 
 To access the Expression Editor, select **Edit expression** next to the **Expression Preview**:
 
-![Selecting Edit expression in the Create custom rule page to switch to the Expression Editor](https://developers.cloudflare.com/_astro/expression-builder.Cg2aqK5m_gwrLy.webp)
+![Selecting Edit expression in the Create custom rule page to switch to the Expression Editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=820,height=235,format=webp/_astro/expression-builder.Cg2aqK5m.png)
 
 To switch back from the Expression Editor to the Expression Builder, select **Use expression builder**.
 
@@ -119,7 +119,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/#page","headline":"Edit expressions in the dashboard · Cloudflare Ruleset Engine docs","description":"Edit expressions in the Cloudflare dashboard using the Expression Builder, which allows for a visual approach, or using the Expression Editor, in which you type the expression.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

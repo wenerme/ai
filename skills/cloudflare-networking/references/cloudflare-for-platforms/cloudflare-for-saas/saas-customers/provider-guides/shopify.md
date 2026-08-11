@@ -42,7 +42,7 @@ To enable O2O on your account, [create](https://developers.cloudflare.com/dns/ma
 
 Once you save the new DNS record, the Cloudflare dashboard will show a Shopify icon next to the CNAME record value. For example:
 
-![Cloudflare dashboard showing a CNAME DNS entry for Shopify with a specific Shopify icon](https://developers.cloudflare.com/_astro/shopify-dns-entry.BVBaRuE6_1CQPez.webp)
+![Cloudflare dashboard showing a CNAME DNS entry for Shopify with a specific Shopify icon](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=848,height=112,format=webp/_astro/shopify-dns-entry.BVBaRuE6.png)
 
 Do not use Always Use HTTPS
 
@@ -88,7 +88,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/#page","headline":"Shopify · Cloudflare for Platforms docs","description":"Learn how to configure your zone with Shopify.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

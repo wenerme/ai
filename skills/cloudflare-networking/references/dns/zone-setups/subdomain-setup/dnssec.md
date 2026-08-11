@@ -26,7 +26,7 @@ To use DNSSEC for a subdomain setup, DNSSEC must be enabled on the parent zone. 
 2. Make sure the child zone is [active](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) on Cloudflare and that DNS resolution is working properly for your subdomain.
 3. [Enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/) for the child zone and save the information provided within the DS record output.
 4. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page of the parent zone, [add the DS record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) from the previous step.
-![Screenshot showing how to add a DS record within Cloudflare](https://developers.cloudflare.com/_astro/ds-record-example.eCudbis6_1s6vlD.webp)
+![Screenshot showing how to add a DS record within Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2066,height=1040,format=webp/_astro/ds-record-example.eCudbis6.png)
 5. Add an A record to the child zone to validate DNS resolution.
 6. Wait two to six hours. Then, [test the A record](https://developers.cloudflare.com/dns/dnssec/troubleshooting/#test-dnssec-with-dig) added in the previous step using multiple DNS resolvers with DNSSEC validation (`1.1.1.1`, `8.8.8.8`, and `9.9.9.9`). For example, if the A record is for `test.child.example.com`: `dig test.child.example.com +dnssec @1.1.1.1`.
 
@@ -36,7 +36,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/dnssec/#page","headline":"Enable DNSSEC - subdomain setup · Cloudflare DNS docs","description":"Enable DNSSEC for a subdomain zone.","url":"https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/dnssec/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

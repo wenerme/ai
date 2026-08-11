@@ -60,7 +60,7 @@ https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
 15. Select **Next**. The **Configure Identifiers** step displays.
-![Add relying party trust wizard with callback URL pasted into open form field](https://developers.cloudflare.com/_astro/adfs-7.BHM4h9Ct_Z4U7NI.webp)
+![Add relying party trust wizard with callback URL pasted into open form field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1446,height=1166,format=webp/_astro/adfs-7.BHM4h9Ct.png)
 16. Paste your callback URL in the **Relying party trust identifier** field.
 17. Select **Next**. In the **Configure Multi-factor Authentication Now?** step, you can configure multi-factor authentication.
 18. Select **Next**. The **Choose Issuance Authorization Rules** step displays.
@@ -110,7 +110,7 @@ To export the certificate:
 
 1. Within the AD FS management console, select the **Service** under AD FS and choose the **Certificates** folder which contains the certificate to export.
 2. In the **Certificates** card, right-click on the entry under **Token-signing**, and select **View certificate**. The **Certificates** window displays.
-![Certificates window with token-signing certificate selected](https://developers.cloudflare.com/_astro/adfs-16.Rob0iaqT_dGuuG.webp)
+![Certificates window with token-signing certificate selected](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=690,format=webp/_astro/adfs-16.Rob0iaqT.png)
 3. Select the **Details** tab, and select the **Copy to File** option.
 4. The **Certificate Export Wizard** displays.
 5. Select **Next**. The **Export File Format** window displays.
@@ -189,7 +189,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/#page","headline":"Active Directory (SAML) · Cloudflare One docs","description":"Integrate Active Directory with Cloudflare One for secure identity management.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/adfs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","SSO"]}

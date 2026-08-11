@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Mutual TLS (mTLS) authentication uses client certificates to ensure traffic between client and server is bidirectionally secure and trusted. mTLS also allows requests that do not authenticate via an identity provider — such as Internet-of-things (IoT) devices — to demonstrate they can reach a given resource.
 
-![mTLS sequence diagram](https://developers.cloudflare.com/_astro/api-shield-call-sequence.DjXyNgan_CJbMD.webp)
+![mTLS sequence diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=1256,format=webp/_astro/api-shield-call-sequence.DjXyNgan.png)
 
 Support includes [gRPC ↗](https://grpc.io/docs/what-is-grpc/introduction/)\-based APIs, which use binary formats such as protocol buffers rather than JSON.
 
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/mtls/#page","headline":"Mutual TLS (mTLS) · Cloudflare Learning Paths","description":"Authenticate requests with mutual TLS certificates.","url":"https://developers.cloudflare.com/learning-paths/application-security/default-traffic-security/mtls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

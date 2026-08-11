@@ -40,7 +40,7 @@ On-premise data center 1: 203.0.113.64/26
 On-premise data center 2: 203.0.113.128/25
 ```
 
-![Figure 1: Customer BYOIP for all Cloud and on-premises networks.](https://developers.cloudflare.com/_astro/figure-1.TMcvFAT6_ZMeGq3.svg "Figure 1: Customer BYOIP for all Cloud and on-premises networks.")
+![Figure 1: Customer BYOIP for all Cloud and on-premises networks.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1281,height=892,format=svg/_astro/figure-1.3pIAXxxY.svg "Figure 1: Customer BYOIP for all Cloud and on-premises networks.")
 
 Figure 1: Customer BYOIP for all Cloud and on-premises networks.
 
@@ -76,7 +76,7 @@ On-premise data center 1: 192.0.2.48/28
 On-premise data center 2: 192.0.2.64/28
 ```
 
-![Figure 2: Customer lease IPs from Cloudflare for both on-premise and cloud network deployments.](https://developers.cloudflare.com/_astro/figure-2.DGu8Lrrt_QRaie.svg "Figure 2: Customer lease IPs from Cloudflare for both on-premise and cloud network deployments.")
+![Figure 2: Customer lease IPs from Cloudflare for both on-premise and cloud network deployments.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1215,height=879,format=svg/_astro/figure-2.6xd9nVOR.svg "Figure 2: Customer lease IPs from Cloudflare for both on-premise and cloud network deployments.")
 
 Figure 2: Customer lease IPs from Cloudflare for both on-premise and cloud network deployments.
 
@@ -103,7 +103,7 @@ On-premise data center 1: 198.51.100.0/24
 On-premise data center 2: 203.0.113.0/24
 ```
 
-![Figure 3: Customer BYOIP for on-premise networks and lease IP from Cloudflare for cloud network deployments.](https://developers.cloudflare.com/_astro/figure-3.h9hJOj7g_22nJs0.svg "Figure 3: Customer BYOIP for on-premise networks and lease IP from Cloudflare for cloud network deployments.")
+![Figure 3: Customer BYOIP for on-premise networks and lease IP from Cloudflare for cloud network deployments.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1208,height=865,format=svg/_astro/figure-3.D7m9o8AK.svg "Figure 3: Customer BYOIP for on-premise networks and lease IP from Cloudflare for cloud network deployments.")
 
 Figure 3: Customer BYOIP for on-premise networks and lease IP from Cloudflare for cloud network deployments.
 
@@ -135,7 +135,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/#page","headline":"Protect hybrid cloud networks with Cloudflare Magic Transit · Cloudflare Reference Architecture docs","description":"Cloudflare Magic Transit provides cloud-native, in-line DDoS protection, and traffic acceleration for all Internet-facing networks.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/network/protect-hybrid-cloud-networks-with-cloudflare-magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

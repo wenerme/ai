@@ -1,11 +1,11 @@
 ---
 title: "Privatemode AI | Models"
-description: "Use Privatemode AI models with Mastra. 5 models available."
+description: "Use Privatemode AI models with Mastra. 6 models available."
 ---
 
 # [Privatemode AI logo]Privatemode AI
 
-Access 5 Privatemode AI models through Mastra's model router. Authentication is handled automatically using the `PRIVATEMODE_API_KEY` environment variable.
+Access 6 Privatemode AI models through Mastra's model router. Authentication is handled automatically using the `PRIVATEMODE_API_KEY` environment variable.
 
 Learn more in the [Privatemode AI documentation](https://docs.privatemode.ai).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "privatemode-ai/gpt-oss-120b"
+  model: "privatemode-ai/deepseek-ocr-2"
 });
 
 // Generate a response
@@ -33,12 +33,24 @@ for await (const chunk of stream) {
 }
 ```
 
-> **info**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Privatemode AI documentation](https://docs.privatemode.ai) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [Privatemode AI documentation](https://docs.privatemode.ai) for details.
 
 ## Models
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "privatemode-ai/deepseek-ocr-2",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 8192,
+    "maxOutput": 8192,
+    "inputCost": 0.89,
+    "outputCost": 1.47
+  },
   {
     "model": "privatemode-ai/gpt-oss-120b",
     "imageInput": false,
@@ -112,7 +124,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "http://localhost:8080/v1",
-    id: "privatemode-ai/gpt-oss-120b",
+    id: "privatemode-ai/deepseek-ocr-2",
     apiKey: process.env.PRIVATEMODE_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -131,7 +143,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "privatemode-ai/whisper-large-v3"
-      : "privatemode-ai/gpt-oss-120b";
+      : "privatemode-ai/deepseek-ocr-2";
   }
 });
 ```

@@ -22,7 +22,7 @@ Images is designed to help developers deploy media-rich applications faster.
 
 With Images, you can dynamically resize, optimize, and manipulate images at Cloudflare's edge to serve the optimal version for each user in real time — without manually creating or storing multiple copies of the same image for different use cases, browsers, or device breakpoints.
 
-![Use Images to optimize images for delivery](https://developers.cloudflare.com/_astro/overview.SNb8PIJv_1fDdXN.webp)
+![Use Images to optimize images for delivery](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2560,height=1540,format=webp/_astro/overview.SNb8PIJv.png)
 
 ## Get started
 
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/images/#page","headline":"Overview · Cloudflare Images docs","description":"Images is a platform for creating scalable and reliable image pipelines, designed to help developers deploy media-rich applications faster.","url":"https://developers.cloudflare.com/images/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

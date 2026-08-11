@@ -59,11 +59,11 @@ Then, click the "Take Snapshot" button and view the results.
 
 First, navigate to "Statistics" in the dropdown to get a general sense of what takes up memory.
 
-![Memory Statistics](https://developers.cloudflare.com/_astro/memory-stats.BkZs-j29_IdQLM.webp)
+![Memory Statistics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1608,height=954,format=webp/_astro/memory-stats.BkZs-j29.png)
 
 Looking at these statistics, you can see that a lot of memory is dedicated to strings at 67 kB. This is likely the source of the memory leak. If you make more requests and take another snapshot, you would see this number grow.
 
-![Memory Summary](https://developers.cloudflare.com/_astro/memory-summary.CPf4-TMr_Z16f24m.webp)
+![Memory Summary](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2432,height=842,format=webp/_astro/memory-summary.CPf4-TMr.png)
 
 The memory summary lists data types by the amount of memory they take up. When you click into "(string)", you can see a string that is far larger than the rest. The text shows that you are appending "Requested at" and a date repeatedly, inadvertently overwriting the global variable with an increasingly large string:
 
@@ -85,7 +85,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/#page","headline":"Profiling Memory · Cloudflare Workers docs","description":"Profile memory usage with DevTools snapshots to optimize Workers and avoid OOM errors.","url":"https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

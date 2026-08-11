@@ -79,7 +79,7 @@ The client certificate name should match the **Device ID** in your Cloudflare On
 
   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select the zone for which you enabled client certificates.
   2. Go to **SSL/TLS** \> **Client Certificates**.
-The certificate name is the WARP enrollment **Device ID**. ![Example client certificate in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/device-information-only-cert.CBHcWmIc_Z1MHrng.webp)
+The certificate name is the WARP enrollment **Device ID**. ![Example client certificate in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2066,height=486,format=webp/_astro/device-information-only-cert.CBHcWmIc.png)
 
 ## 4\. Enforce the client certificate
 
@@ -99,7 +99,7 @@ To block traffic from devices that do not have a valid client certificate:
 Posture only mode is now enabled on the device. To start enforcing device posture, set up a [WARP client check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/) and add a _Require_ device posture rule to your [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). When the device connects to the Access application for the first time, the browser will ask to use the client certificate installed by the Cloudflare One Client.
 
 ![Browser prompts for client
-certificate](https://developers.cloudflare.com/_astro/device-information-only-browser.BARL_mBj_qzfAd.webp)
+certificate](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=610,format=webp/_astro/device-information-only-browser.BARL_mBj.png)
 
 ## Limitations
 
@@ -111,7 +111,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/device-information-only/#page","headline":"Enable Posture only mode · Cloudflare One docs","description":"Enable Posture only mode in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/device-information-only/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Posture","mTLS"]}

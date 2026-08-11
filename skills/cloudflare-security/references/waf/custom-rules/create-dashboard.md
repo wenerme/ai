@@ -18,7 +18,7 @@ Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.
 [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** \> **Custom rules**. To duplicate an existing rule, select the three dots next to it > **Duplicate**.
 3. Enter a descriptive name for the rule in **Rule name**.
-![Custom rule creation page in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/firewall-custom-rule-create.tVXiVklq_1Tgdjc.webp)
+![Custom rule creation page in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=870,height=535,format=webp/_astro/firewall-custom-rule-create.tVXiVklq.png)
 4. Under **When incoming requests match**, use the **Field** drop-down list to choose an HTTP property. For each request, the value of the property you choose for **Field** is compared to the value you specify for **Value** using the operator selected in **Operator**.
 5. Under **Then take action**, select the rule action in the **Choose action** dropdown. For example, selecting _Block_ tells Cloudflare to refuse requests that match the conditions you specified.
 6. (Optional) If you selected the _Block_ action, you can [configure a custom response](#configure-a-custom-response-for-blocked-requests).
@@ -51,7 +51,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#page","headline":"Create a custom rule in the dashboard · Cloudflare Web Application Firewall (WAF) docs","description":"Create WAF custom rules in the Cloudflare dashboard.","url":"https://developers.cloudflare.com/waf/custom-rules/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

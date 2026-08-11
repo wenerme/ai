@@ -76,7 +76,7 @@ For more information, refer to [WAF rule management](https://developers.cloudfla
 
 AI Crawl Control metrics have been enhanced with new views, improved filtering, and better data visualization.
 
-![AI Crawl Control path patterns](https://developers.cloudflare.com/_astro/ai-crawl-control-path-patterns.0xT_lucE_1Png6i.webp)
+![AI Crawl Control path patterns](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2256,height=1262,format=webp/_astro/ai-crawl-control-path-patterns.0xT_lucE.png)
 
 **Path pattern grouping**
 
@@ -134,7 +134,7 @@ The **Overview** tab is now the default view in AI Crawl Control. The previous d
 * **Executive summary** — Monitor total requests, volume change, most common status code, most popular path, and high-volume activity
 * **Operator grouping** — Track crawlers by their operating companies (OpenAI, Microsoft, Google, ByteDance, Anthropic, Meta)
 * **Customizable filters** — Filter your snapshot by date range, crawler, operator, hostname, or path
-![AI Crawl Control Overview tab showing executive summary, metrics, and crawler groups](https://developers.cloudflare.com/_astro/ai-crawl-control-overview-tab.Duwqq4bm_ZmNhCs.webp)
+![AI Crawl Control Overview tab showing executive summary, metrics, and crawler groups](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1113,height=839,format=webp/_astro/ai-crawl-control-overview-tab.Duwqq4bm.png)
 
 #### Get started
 
@@ -195,7 +195,7 @@ AI Crawl Control now supports per-crawler drilldowns with an extended actions me
 
 The **Metrics** tab includes a status code distribution chart showing HTTP response codes (2xx, 3xx, 4xx, 5xx) over time. Filter by individual crawler, category, operator, or time range to analyze how specific crawlers interact with your site.
 
-![AI Crawl Control status code distribution chart](https://developers.cloudflare.com/_astro/ai-crawl-control-status-codes.DESJcAiK_TSrPM.webp)
+![AI Crawl Control status code distribution chart](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1712,height=1104,format=webp/_astro/ai-crawl-control-status-codes.DESJcAiK.png)
 
 #### Extended actions menu
 
@@ -206,7 +206,7 @@ Each crawler row includes a three-dot menu with per-crawler actions:
 * **Copy User Agent** — Copy user agent strings for use in WAF custom rules, Redirect Rules, or robots.txt files.
 * **View in Security Analytics** — Filter Security Analytics by detection IDs (Bot Management customers).
 * **Copy Detection ID** — Copy detection IDs for use in WAF custom rules (Bot Management customers).
-![AI Crawl Control crawler actions menu](https://developers.cloudflare.com/_astro/ai-crawl-control-crawler-info.Dwc39LqI_182so6.webp)
+![AI Crawl Control crawler actions menu](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2040,height=762,format=webp/_astro/ai-crawl-control-crawler-info.Dwc39LqI.png)
 
 #### Get started
 
@@ -263,7 +263,7 @@ Visualize crawler activity patterns over time, and group data by different dimen
 * **By Host** — Break down activity across multiple subdomains
 * **By Status Code** — Monitor HTTP response codes to crawlers (200s, 300s, 400s, 500s)
 
-![AI Crawl Control requests over time chart with grouping tabs](https://developers.cloudflare.com/_astro/ai-crawl-control-requests-over-time.BtRyz0OT_ZpotRm.webp "Interactive chart showing crawler requests over time with filterable dimensions")
+![AI Crawl Control requests over time chart with grouping tabs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1293,height=666,format=webp/_astro/ai-crawl-control-requests-over-time.BtRyz0OT.png "Interactive chart showing crawler requests over time with filterable dimensions")
 
 Interactive chart showing crawler requests over time with filterable dimensions
 
@@ -274,7 +274,7 @@ Identify traffic sources with referrer analytics:
 * View top referrers driving traffic to your site
 * Understand discovery patterns and content popularity from AI operators
 
-![AI Crawl Control top referrers breakdown](https://developers.cloudflare.com/_astro/ai-crawl-control-top-referrers.CEUAwpd8_YrhT4.webp "Bar chart showing top referrers and their respective traffic volumes")
+![AI Crawl Control top referrers breakdown](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1291,height=656,format=webp/_astro/ai-crawl-control-top-referrers.CEUAwpd8.png "Bar chart showing top referrers and their respective traffic volumes")
 
 Bar chart showing top referrers and their respective traffic volumes
 
@@ -306,7 +306,7 @@ We improved AI crawler management with detailed analytics and introduced custom 
 
 * View total allowed and blocked requests for each AI crawler
 * Trend charts show crawler activity over your selected time range per crawler
-![Updated AI Crawl Control table showing request counts and trend charts](https://developers.cloudflare.com/_astro/ai-crawl-control-table.BDr0Qd-5_ZKex0W.webp)
+![Updated AI Crawl Control table showing request counts and trend charts](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1335,height=984,format=webp/_astro/ai-crawl-control-table.BDr0Qd-5.png)
 
 **Custom block responses (paid plans):**You can now return HTTP 402 "Payment Required" responses when blocking AI crawlers, enabling direct communication with crawler operators about licensing terms.
 
@@ -314,7 +314,7 @@ For users on paid plans, when blocking AI crawlers you can configure:
 
 * **Response code:** Choose between 403 Forbidden or 402 Payment Required
 * **Response body:** Add a custom message with your licensing contact information
-![AI Crawl Control block response configuration interface](https://developers.cloudflare.com/_astro/ai-crawl-control-block-response.L4duQj7-_Z2mHb4X.webp)
+![AI Crawl Control block response configuration interface](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1327,height=419,format=webp/_astro/ai-crawl-control-block-response.L4duQj7-.png)
 
 Example 402 response:
 
@@ -338,7 +338,7 @@ Cf-Team: 2902f6db750000c3fa1e2ef400000001
 
 We are introducing a new feature of [AI Crawl Control](https://developers.cloudflare.com/ai-crawl-control/) — Pay Per Crawl. [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) enables site owners to require payment from AI crawlers every time the crawlers access their content, thereby fostering a fairer Internet by enabling site owners to control and monetize how their content gets used by AI.
 
-![Pay per crawl](https://developers.cloudflare.com/_astro/pay-per-crawl.B5bv2nwT_1TH6vv.webp)
+![Pay per crawl](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2926,height=1516,format=webp/_astro/pay-per-crawl.B5bv2nwT.png)
 
 **For Site Owners:**
 
@@ -362,7 +362,7 @@ We redesigned the AI Crawl Control dashboard to provide more intuitive and granu
 
 * From the new **AI Crawlers** tab: block specific AI crawlers.
 * From the new **Metrics** tab: view AI Crawl Control metrics.
-![Block AI crawlers](https://developers.cloudflare.com/_astro/manage-ai-crawlers.6UgS8dSG_Z1HRWpI.webp)![Analyze AI crawler activity](https://developers.cloudflare.com/_astro/analyze-metrics.C52pJZVg_1C7hti.webp)
+![Block AI crawlers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1323,height=798,format=webp/_astro/manage-ai-crawlers.6UgS8dSG.png)![Analyze AI crawler activity](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1694,height=834,format=webp/_astro/analyze-metrics.C52pJZVg.png)
 
 To get started, explore:
 
@@ -381,7 +381,7 @@ You can use this data to:
 * Understand how and how often crawlers access your site (and which content is the most popular).
 * Block specific AI bots accessing your site.
 * Use Cloudflare to enforce your `robots.txt` policy via an automatic WAF rule.
-![View AI bot activity with AI Audit](https://developers.cloudflare.com/_astro/ai-crawl-control-overview.Dr_yGKOC_ZRyCQG.webp)
+![View AI bot activity with AI Audit](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1494,height=746,format=webp/_astro/ai-crawl-control-overview.Dr_yGKOC.png)
 
 To get started, explore [AI audit](https://developers.cloudflare.com/ai-crawl-control/).
 
@@ -391,7 +391,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/ai-crawl-control/changelog/#page","headline":"Changelog · Cloudflare AI Crawl Control docs","description":"View recent changes and updates.","url":"https://developers.cloudflare.com/ai-crawl-control/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

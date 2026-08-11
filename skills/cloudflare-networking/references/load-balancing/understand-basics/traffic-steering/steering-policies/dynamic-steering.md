@@ -26,7 +26,7 @@ For TCP health monitors, calculated latency may not reflect the true latency to 
 
 The diagram below shows how Cloudflare would route traffic to the pool with the lowest EWMA among three regions: Eastern North America, Europe, and Australia. In this case, the ENAM pool is selected because it has the lowest RTT.
 
-![Dynamic steering routes traffic to the fastest available pool](https://developers.cloudflare.com/_astro/traffic-steering-2.CEeFHZfg_5RxfF.webp)
+![Dynamic steering routes traffic to the fastest available pool](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=973,format=webp/_astro/traffic-steering-2.CEeFHZfg.png)
 
 Note
 
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/dynamic-steering/#page","headline":"Dynamic steering · Cloudflare Load Balancing docs","description":"Route traffic to the fastest pool based on health check latency.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/dynamic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

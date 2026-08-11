@@ -188,7 +188,7 @@ Then, set up your Squarespace DNS records:
   * The `CNAME` record for `www` should also be **Proxied**.
   * The `CNAME` record for `verify.squarespace.com` should be **DNS-only**.
 3. If set up properly, your Squarespace DNS Settings page will now indicate that your 'Settings contain problems.' **This is the expected behavior**.
-![Screenshot of error warnings in squarespace](https://developers.cloudflare.com/_astro/hc-import-squarespace_dns_settings-test-2.9_-CHey0_1nttwE.webp)
+![Screenshot of error warnings in squarespace](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=737,format=webp/_astro/hc-import-squarespace_dns_settings-test-2.9_-CHey0.png)
 
 #### Pending domain owner verification
 
@@ -241,7 +241,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/#page","headline":"Vendor-specific DNS records · Cloudflare DNS docs","description":"DNS records for common third-party services.","url":"https://developers.cloudflare.com/dns/manage-dns-records/reference/vendor-specific-records/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

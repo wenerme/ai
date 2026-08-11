@@ -67,7 +67,7 @@ While [previous analysis ↗](https://web.dev/articles/defining-core-web-vitals-
 
 This diagram illustrates the request lifecycle, highlighting how Cloudflare's layers/[phases](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/) \- Network, Optimization, Caching, and Origin connectivity - work together to minimize latency.
 
-![Figure 1: Data flow overview showing the request lifecycle across User, Cloudflare Edge, Tiered Edge, and Origin layers.](https://developers.cloudflare.com/_astro/data-flow-overview.DfUAkD8f_Z10Qic0.webp "Figure 1: Data flow overview")
+![Figure 1: Data flow overview showing the request lifecycle across User, Cloudflare Edge, Tiered Edge, and Origin layers.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1635,height=1999,format=webp/_astro/data-flow-overview.DfUAkD8f.jpg "Figure 1: Data flow overview")
 
 Figure 1: Data flow overview
 
@@ -83,7 +83,7 @@ The performance journey begins at the client's device. Device hardware, [browser
 * **Third-Party Offloading:** [Zaraz](https://developers.cloudflare.com/zaraz/) offloads third-party tools (like Google Analytics 4 or Mixpanel) to the cloud. This reduces main thread blocking on the device, significantly improving INP.
 * **Web Analytics (RUM):** Leverage Cloudflare [Web Analytics](https://developers.cloudflare.com/web-analytics/) to collect privacy-first, cookie-less performance data directly from the user's browser. This lightweight JavaScript beacon provides real-world insights into Core Web Vitals (LCP, INP, CLS) without tracking users or storing client-side state.
 
-![Figure 2: Smart Shield Advanced network diagram showing Argo Smart Routing, Tiered Cache, Cache Reserve, Connection Reuse, Dedicated Egress IPs, and Load Balancing across multiple Points of Presence.](https://developers.cloudflare.com/_astro/network-diagram.PeUYDGK__Z2qTCdR.webp "Figure 2: Smart Shield Advanced network diagram")
+![Figure 2: Smart Shield Advanced network diagram showing Argo Smart Routing, Tiered Cache, Cache Reserve, Connection Reuse, Dedicated Egress IPs, and Load Balancing across multiple Points of Presence.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=5596,height=4759,format=webp/_astro/network-diagram.PeUYDGK_.png "Figure 2: Smart Shield Advanced network diagram")
 
 Figure 2: Smart Shield Advanced network diagram
 
@@ -97,7 +97,7 @@ Once the request reaches the network edge, Cloudflare processes and optimizes th
 * **Font & Tag Optimization:** [Cloudflare Fonts](https://developers.cloudflare.com/speed/optimization/content/fonts/) eliminates DNS lookups and TLS connections to Google Fonts by serving them inline from the domain. [Google Tag Gateway](https://developers.cloudflare.com/google-tag-gateway/) improves ad signal measurement and privacy.
 * **Routing, Availability & Protocol Intelligence:** Cloudflare operates one of the most [interconnected networks ↗](https://blog.cloudflare.com/network-performance-update-birthday-week-2025/) in the world, peering with over 13,000 networks, operating a [global backbone ↗](https://blog.cloudflare.com/backbone2024/), and participating in a leading number of [Internet Exchange Points (IXPs) ↗](https://bgp.he.net/report/exchanges#%5Fparticipants) globally. We leverage the [unique intelligence ↗](https://blog.cloudflare.com/how-cloudflare-uses-the-worlds-greatest-collection-of-performance-data/) derived from this massive dataset to dynamically optimize Congestion Control (CC) at the protocol level - automatically selecting the optimal algorithm and tuning adequate parameters for every connection based on real-time network conditions. For dynamic requests that cannot be cached, [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) finds the fastest path through the network to the origin. [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/) provide a consistent brand experience during failures.
 
-![Figure 3: Data flow for network and content optimization showing Traffic Handling, Programmatic Customization, Content Optimization, and Font and Tag Optimization.](https://developers.cloudflare.com/_astro/data-flow-network-content-optimization.BxZ6NPp-_Z1YJT2N.webp "Figure 3: Data flow - network and content optimization")
+![Figure 3: Data flow for network and content optimization showing Traffic Handling, Programmatic Customization, Content Optimization, and Font and Tag Optimization.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1751,height=1999,format=webp/_astro/data-flow-network-content-optimization.BxZ6NPp-.jpg "Figure 3: Data flow - network and content optimization")
 
 Figure 3: Data flow - network and content optimization
 
@@ -112,7 +112,7 @@ Cloudflare can be organized into a specific topology. This layer handles content
 * **Cloud Connectivity:** [Cloud Connector Rules](https://developers.cloudflare.com/rules/cloud-connector/) simplify routing traffic to public cloud providers (AWS, Azure, GCP) for specific object storage or origin requirements. For private infrastructure, [Workers VPC](https://developers.cloudflare.com/workers-vpc/) enables direct connectivity to private storage endpoints or databases on public clouds (for example, AWS, Azure) without exposing them to the public Internet.
 * **Static Asset Hosting:** Entire parts of an application (frontend assets, images, including large media files, software packages) can be stored directly in [R2 Object Storage](https://developers.cloudflare.com/r2/) or [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/), serving them from the edge without ever hitting a traditional origin server. Additional [storage options](https://developers.cloudflare.com/workers/platform/storage-options/) are available.
 
-![Figure 4: Data flow for caching showing Local Edge, Tiered Cache, and Long-Term Cache or Storage layers with cache miss and fill paths.](https://developers.cloudflare.com/_astro/data-flow-caching.BaLZQbF7_Z1BU3fP.webp "Figure 4: Data flow - caching")
+![Figure 4: Data flow for caching showing Local Edge, Tiered Cache, and Long-Term Cache or Storage layers with cache miss and fill paths.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1751,height=1999,format=webp/_astro/data-flow-caching.BaLZQbF7.jpg "Figure 4: Data flow - caching")
 
 Figure 4: Data flow - caching
 
@@ -128,7 +128,7 @@ For requests that must traverse the full path (that is, dynamic content or cache
 * **Private Infrastructure:** [Workers VPC](https://developers.cloudflare.com/workers-vpc/) and [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) enable direct connectivity to private storage endpoints or databases on public clouds without necessarily exposing them to the public Internet.
 * **Load Balancing:** Traffic is distributed across healthy servers using [Cloudflare Load Balancing](https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/). If an origin fails, traffic is instantly rerouted to healthy server pools. Alternatively, [Round-Robin DNS](https://developers.cloudflare.com/dns/manage-dns-records/how-to/round-robin-dns/) can be used for simpler distribution strategies.
 
-![Figure 5: Deployment models comparing Serverful \(DNS, CDN, Images, Zaraz, Waiting Room, Load Balancing, Network Interconnect\) and Serverless \(Workers, Workers KV, AI, Queues, R2, D1, Hyperdrive\) architectures.](https://developers.cloudflare.com/_astro/deployment-models.CfqQk9U__Z5jKVh.webp "Figure 5: Deployment models")
+![Figure 5: Deployment models comparing Serverful \(DNS, CDN, Images, Zaraz, Waiting Room, Load Balancing, Network Interconnect\) and Serverless \(Workers, Workers KV, AI, Queues, R2, D1, Hyperdrive\) architectures.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1552,format=webp/_astro/deployment-models.CfqQk9U_.jpg "Figure 5: Deployment models")
 
 Figure 5: Deployment models
 
@@ -173,7 +173,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/#page","headline":"Designing a distributed web performance architecture · Cloudflare Reference Architecture docs","description":"A prescriptive pattern for building a Cloudflare-based L7 performance architecture that reduces latency, raises cache efficiency, and improves Core Web Vitals.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/content-delivery/distributed-web-performance-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

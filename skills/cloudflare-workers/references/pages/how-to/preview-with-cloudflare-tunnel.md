@@ -63,7 +63,7 @@ cloudflared tunnel --url http://localhost:5173
 
 In this example, the randomly-generated URL `https://seasonal-deck-organisms-sf.trycloudflare.com` has been created and assigned to your tunnel instance. Visiting this URL in a browser will show the application running, with requests being securely forwarded through Cloudflare's global network, through the tunnel running on your machine, to `localhost:5173`:
 
-![Cloudflare Tunnel example rendering a randomly-generated URL](https://developers.cloudflare.com/_astro/tunnel.DK_OjmvC_Z1WC5Wq.webp)
+![Cloudflare Tunnel example rendering a randomly-generated URL](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2078,height=1699,format=webp/_astro/tunnel.DK_OjmvC.png)
 
 ## Next Steps
 
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/#page","headline":"Preview Local Projects with Cloudflare Tunnel · Cloudflare Pages docs","description":"Use Cloudflare Tunnel to share locally running Pages projects over a public URL.","url":"https://developers.cloudflare.com/pages/how-to/preview-with-cloudflare-tunnel/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

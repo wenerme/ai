@@ -130,7 +130,7 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ### Step 3: Done
 
-![Screenshot of a video with Cloudflare watermark at top right](https://developers.cloudflare.com/_astro/cat.fEUyr_sc_kw16.webp)
+![Screenshot of a video with Cloudflare watermark at top right](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2758,height=1780,format=webp/_astro/cat.fEUyr_sc.png)
 
 ## Profiles
 
@@ -751,7 +751,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/#page","headline":"Apply watermarks · Cloudflare Stream docs","description":"Create watermark profiles and apply them to Cloudflare Stream video uploads via the API.","url":"https://developers.cloudflare.com/stream/edit-videos/applying-watermarks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

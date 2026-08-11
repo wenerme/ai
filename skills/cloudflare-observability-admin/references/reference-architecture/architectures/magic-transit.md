@@ -38,7 +38,7 @@ Protecting network infrastructure from DDoS attacks demands a unique combination
 
 Cloudflare Magic Transit provides DDoS protection and traffic acceleration for on-premise, cloud, and hybrid networks. With data centers spanning [hundreds of cities ↗](https://www.cloudflare.com/network/) and offering hundreds of Tbps in mitigation capacity, Magic Transit can detect and mitigate attacks close to their source of origin in under three seconds globally on average — all while routing traffic faster than the public Internet.
 
-![Figure 1: Magic transit overview](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-1.BqSmsUYf_ZgdSYQ.webp "Figure 1: Magic transit overview")
+![Figure 1: Magic transit overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1212,height=644,format=webp/_astro/magic-transit-ref-arch-1.BqSmsUYf.png "Figure 1: Magic transit overview")
 
 Figure 1: Magic transit overview
 
@@ -64,7 +64,7 @@ By default, Magic Transit processes traffic in the ingress direction only (from 
 
 The network diagram in Figure 2 illustrates such a Magic Transit setup, and the end-to-end packet flow of Magic Transit-protected traffic. The tunnel in this setup uses GRE for encapsulation.
 
-![Figure 2: Reference Configuration of Magic Transit anycast Tunnel \(GRE\) With Default DSR Option](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-2.XvKY3pME_2an4s8.webp "Figure 2: Reference Configuration of Magic Transit anycast Tunnel (GRE) With Default DSR Option")
+![Figure 2: Reference Configuration of Magic Transit anycast Tunnel \(GRE\) With Default DSR Option](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=webp/_astro/magic-transit-ref-arch-2.XvKY3pME.png "Figure 2: Reference Configuration of Magic Transit anycast Tunnel (GRE) With Default DSR Option")
 
 Figure 2: Reference Configuration of Magic Transit anycast Tunnel (GRE) With Default DSR Option
 
@@ -84,7 +84,7 @@ When Magic Transit is deployed with the Egress option enabled, egress traffic fr
 
 The following network diagram illustrates the end-to-end packet flow between the end client and customer network when the Magic Transit Egress option is enabled.
 
-![Figure 3: Magic Transit With Egress Option Enabled](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-3._h1mIh77_Z2pXG3o.webp "Figure 3: Magic Transit With Egress Option Enabled")
+![Figure 3: Magic Transit With Egress Option Enabled](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=webp/_astro/magic-transit-ref-arch-3._h1mIh77.png "Figure 3: Magic Transit With Egress Option Enabled")
 
 Figure 3: Magic Transit With Egress Option Enabled
 
@@ -107,13 +107,13 @@ Figure 4 illustrates a reference configuration for Magic Transit over CNI, and i
 
 **Note:** The example demonstrated here is for the default Magic Transit service without the Egress option enabled. As described in earlier sections, in Magic Transit Direct Server Return mode (i.e. Ingress only), the server return traffic will be routed by the customer edge router to the clients via their ISP through the public Internet.
 
-![Figure 4: Reference Configuration of Magic Transit Over CNI \(Default DSR Option\)](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-4.CCh1ixzi_ZlhE2p.webp "Figure 4: Reference Configuration of Magic Transit Over CNI (Default DSR Option)")
+![Figure 4: Reference Configuration of Magic Transit Over CNI \(Default DSR Option\)](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=webp/_astro/magic-transit-ref-arch-4.CCh1ixzi.png "Figure 4: Reference Configuration of Magic Transit Over CNI (Default DSR Option)")
 
 Figure 4: Reference Configuration of Magic Transit Over CNI (Default DSR Option)
 
 When the Magic Transit Egress option is enabled and utilized, the server return traffic can be sent back to the clients through the Cloudflare network, via the IP tunnels that are configured over the CNI connections. Figure 5 illustrates one such example.
 
-![Figure 5: Reference Configuration of Magic Transit Over CNI with Egress Option Enabled](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-5.Dru7wSdW_lR5Sr.webp "Figure 5: Reference Configuration of Magic Transit Over CNI with Egress Option Enabled")
+![Figure 5: Reference Configuration of Magic Transit Over CNI with Egress Option Enabled](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=webp/_astro/magic-transit-ref-arch-5.Dru7wSdW.png "Figure 5: Reference Configuration of Magic Transit Over CNI with Egress Option Enabled")
 
 Figure 5: Reference Configuration of Magic Transit Over CNI with Egress Option Enabled
 
@@ -121,7 +121,7 @@ Figure 5: Reference Configuration of Magic Transit Over CNI with Egress Option E
 
 Magic Transit protects services hosted on-premise and in the cloud. This use case illustrates the configuration for a cloud-hosted deployment.
 
-![Figure 6: Protect Multi-Cloud-Based Services With Magic Transit \(Egress Option Enabled\)](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-6.Cik4bTwC_Z2l472d.webp "Figure 6: Protect Multi-Cloud-Based Services With Magic Transit (Egress Option Enabled)")
+![Figure 6: Protect Multi-Cloud-Based Services With Magic Transit \(Egress Option Enabled\)](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=webp/_astro/magic-transit-ref-arch-6.Cik4bTwC.png "Figure 6: Protect Multi-Cloud-Based Services With Magic Transit (Egress Option Enabled)")
 
 Figure 6: Protect Multi-Cloud-Based Services With Magic Transit (Egress Option Enabled)
 
@@ -142,7 +142,7 @@ Both services can either be deployed in the same service instance, or, for custo
 
 Figure 7 illustrates an example of deploying Magic Transit and Cloudflare WAN services in separate service instances.
 
-![Figure 7: Magic Transit + Cloudflare WAN Provide Network-as-a-Service for the Entire Enterprise](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-7.DESTWgck_Z1mgu04.webp "Figure 7: Magic Transit + Cloudflare WAN Provide Network-as-a-Service for the Entire Enterprise")
+![Figure 7: Magic Transit + Cloudflare WAN Provide Network-as-a-Service for the Entire Enterprise](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=webp/_astro/magic-transit-ref-arch-7.DESTWgck.png "Figure 7: Magic Transit + Cloudflare WAN Provide Network-as-a-Service for the Entire Enterprise")
 
 Figure 7: Magic Transit + Cloudflare WAN Provide Network-as-a-Service for the Entire Enterprise
 
@@ -157,7 +157,7 @@ While Magic Transit protects customers' services from DDoS attacks, many network
 
 Cloudflare Network Firewall is deployed and configured as part of Magic Transit. All ingress traffic flowing through Cloudflare edge data centers, whose destination prefixes are protected by Magic Transit, can be filtered by Cloudflare Network Firewall.
 
-![Figure 8: Cloudflare Network Firewall Blocks Unwanted and Malicious Traffic at the Internet Edge](https://developers.cloudflare.com/_astro/magic-transit-ref-arch-8.BRW-6GQa_22TJ4T.webp "Figure 8: Cloudflare Network Firewall Blocks Unwanted and Malicious Traffic at the Internet Edge")
+![Figure 8: Cloudflare Network Firewall Blocks Unwanted and Malicious Traffic at the Internet Edge](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=webp/_astro/magic-transit-ref-arch-8.BRW-6GQa.png "Figure 8: Cloudflare Network Firewall Blocks Unwanted and Malicious Traffic at the Internet Edge")
 
 Figure 8: Cloudflare Network Firewall Blocks Unwanted and Malicious Traffic at the Internet Edge
 
@@ -199,7 +199,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/#page","headline":"Magic Transit Reference Architecture · Cloudflare Reference Architecture docs","description":"This reference architecture describes the key architecture, functionalities, and network deployment options of Cloudflare Magic Transit.","url":"https://developers.cloudflare.com/reference-architecture/architectures/magic-transit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

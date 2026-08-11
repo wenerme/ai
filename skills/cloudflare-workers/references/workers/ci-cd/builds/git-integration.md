@@ -30,7 +30,7 @@ Workers Builds provides direct integration with GitHub and GitLab accounts, incl
 
 If you do not have a Git account linked to your Cloudflare account, you will be prompted to set up an installation to GitHub or GitLab when [connecting a repository](https://developers.cloudflare.com/workers/ci-cd/builds/#get-started) for the first time, or when adding a new Git account. Follow the prompts and authorize the Cloudflare Git integration.
 
-![Git providers](https://developers.cloudflare.com/_astro/workers-git-provider.aIMoWcJE_Z1X4wCk.webp)
+![Git providers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1522,height=282,format=webp/_astro/workers-git-provider.aIMoWcJE.png)
 
 You can check the following pages to see if your Git integration has been installed:
 
@@ -57,7 +57,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/#page","headline":"Git integration · Cloudflare Workers docs","description":"Learn how to add and manage your Git integration for Workers Builds","url":"https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -37,11 +37,11 @@ In the following sections, you will learn:
 
 Cloudflare's data sampling is similar to how online mapping services like Google Maps render maps at different zoom levels. When viewing satellite imagery of a whole continent, the mapping service provides appropriately sized images based on the user's screen and Internet speed.
 
-![The image on the left shows a satellite view from OpenStreetMap. On the right, the same image is zoomed in. In these two images, each pixel represents the same area; however the image on the right has many fewer pixels.](https://developers.cloudflare.com/_astro/zoom-less-pixels.CTBizcEW_1fmnak.webp)
+![The image on the left shows a satellite view from OpenStreetMap. On the right, the same image is zoomed in. In these two images, each pixel represents the same area; however the image on the right has many fewer pixels.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1180,height=420,format=webp/_astro/zoom-less-pixels.CTBizcEW.png)
 
 Each pixel on the map represents a large area, such as several square kilometers. If a user tries to zoom in using a screenshot, the resulting image would be blurry. Instead, the mapping service selects higher-resolution images when a user zooms in on a specific city. The total number of pixels remains relatively constant, but each pixel now represents a smaller area, like a few square meters.
 
-![Now the image on the right is of a much higher resolution. Each pixel represents a much smaller area; however, the total number of pixels in both images is roughly the same.](https://developers.cloudflare.com/_astro/zoom-more-pixels.CFR4ChGF_ZSBF09.webp)
+![Now the image on the right is of a much higher resolution. Each pixel represents a much smaller area; however, the total number of pixels in both images is roughly the same.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1184,height=414,format=webp/_astro/zoom-more-pixels.CFR4ChGF.png)
 
 The key point is that the map's quality does not solely depend on the resolution or the area represented by each pixel. It is determined by the total number of pixels used to render the final view.
 
@@ -84,11 +84,11 @@ To determine the sample interval for each event, note that most analytics have s
 
 The next observation is that these index values likely have a very different number of events written to them. In fact, the usage of most web services follows a [Pareto distribution ↗](https://en.wikipedia.org/wiki/Pareto%5Fdistribution), meaning that the top few users will account for the vast majority of the usage. Pareto distributions are common and look like this:
 
-![In this graphic, each bar represents a user; the height of the bar is their total usage.](https://developers.cloudflare.com/_astro/total-usage.DT9rN3Uq_Z1FdlV8.webp)
+![In this graphic, each bar represents a user; the height of the bar is their total usage.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1798,height=1092,format=webp/_astro/total-usage.DT9rN3Uq.png)
 
 If we took a [simple random sample ↗](https://en.wikipedia.org/wiki/Simple%5Frandom%5Fsample) of one percent (1%) of this data, and we applied that to the whole population, you may be able to track your largest customers accurately — but you would lose visibility into what your smaller customers are doing:
 
-![The same graphic as above, but now based on a 1% sample of the data.](https://developers.cloudflare.com/_astro/sample-data.Db8bZbVI_1Wqq0E.webp)
+![The same graphic as above, but now based on a 1% sample of the data.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1904,height=1136,format=webp/_astro/sample-data.Db8bZbVI.png)
 
 Notice that the larger bars look more or less unchanged, and yet they are still quite accurate. But as you analyze smaller customers, results get [quantized ↗](https://en.wikipedia.org/wiki/Quantization%5F%28signal%5Fprocessing%29) and may even be rounded to 0 entirely.
 
@@ -98,7 +98,7 @@ We do this through a technique called equitable sampling. This means that we wil
 
 Here is the same distribution, but now with (a simulation of) equitable sampling applied:
 
-![This graphic shows the same population, but with equitable sampling.](https://developers.cloudflare.com/_astro/equitable-sampling.CzViMd9X_283FKf.webp)
+![This graphic shows the same population, but with equitable sampling.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1902,height=1146,format=webp/_astro/equitable-sampling.CzViMd9X.png)
 
 You may notice that this graphic is very similar to the first graph. However, it only requires `<10%` of the data to be stored overall. The sample rate is actually much lower than `10%` for the larger series (that is, we store larger sample intervals), but the sample rate is higher for the smaller series.
 
@@ -148,7 +148,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/analytics-engine/sampling/#page","headline":"Sampling with Workers Analytics Engine · Cloudflare Analytics docs","description":"How data written to Workers Analytics Engine is automatically sampled at scale","url":"https://developers.cloudflare.com/analytics/analytics-engine/sampling/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

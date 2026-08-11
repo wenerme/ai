@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/sfu/example-architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-![Example Architecture](https://developers.cloudflare.com/_astro/video-calling-application.CIYa-lzM_2b10aI.webp)
+![Example Architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=745,height=475,format=webp/_astro/video-calling-application.CIYa-lzM.png)
 
 1. Clients connect to the backend service
 2. Backend service manages the relationship between the clients and the tracks they should subscribe to
@@ -29,7 +29,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/example-architecture/#page","headline":"Example architecture · Cloudflare Realtime docs","description":"Reference architecture for building a video calling application with Realtime SFU.","url":"https://developers.cloudflare.com/realtime/sfu/example-architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

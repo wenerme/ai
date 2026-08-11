@@ -69,13 +69,13 @@ Some browsers either require a browser extension or cannot generate a HAR. When 
 
 1. In a browser page viewed in Incognito Mode, right-click anywhere and select **Inspect Element**.
 2. The Chrome DevTools appear either at the bottom, or left side of the browser. Click the **Network** tab.
-![HAR network tab screenshot from Chrome developer tools](https://developers.cloudflare.com/_astro/gathering_har_file_network.ChkQZzBt_1cX2QN.webp)
+![HAR network tab screenshot from Chrome developer tools](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=146,format=webp/_astro/gathering_har_file_network.ChkQZzBt.png)
 1. Check **Preserve log**. Please also check **Disable cache** if you are reporting a Cloudflare Cache issue.
 2. Click record.
-![HAR record button in chrome dev tools.](https://developers.cloudflare.com/_astro/gathering_har_file_record.BkFUFIPY_Z1rjPkR.webp)
+![HAR record button in chrome dev tools.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=146,format=webp/_astro/gathering_har_file_record.BkFUFIPY.png)
 1. Browse to the URL that causes issues. Once the issue is experienced, click the "Export HAR" option at the top of DevTools.
 
-![export HAR option in Chrome DevTools](https://developers.cloudflare.com/_astro/export_har_chrome.DaDwwlXd_1GDXQU.webp).
+![export HAR option in Chrome DevTools](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1404,height=240,format=webp/_astro/export_har_chrome.DaDwwlXd.png).
 
 1. Attach the HAR file to your support ticket.
 
@@ -109,14 +109,14 @@ As of Chrome 130, this exports a sanitized HAR with redacted cookies and persona
 1. Enable USB Debugging mode on your mobile device.
 2. Go to `chrome://inspect/#devices`.
 3. If debugging mode is enabled, you will see your device listed below “Remote Target” like the example below:
-![Where to find the Inspect Devices when in Debug Mode for Android.](https://developers.cloudflare.com/_astro/step_1.BKH5ksch_d1pFw.webp)
+![Where to find the Inspect Devices when in Debug Mode for Android.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1116,height=572,format=webp/_astro/step_1.BKH5ksch.jpg)
 1. Type in the URL, select **Open** and **inspect** to open Chrome’s DevTools.
 2. Select the **Network** tab in the DevTools window.
 3. Check **Preserve log**. Please also check **_Disable cache_** if you are reporting a Cloudflare Cache issue.
 4. Click **record**.
-![Where to find the record button in Chrome's dev tools.](https://developers.cloudflare.com/_astro/step_2_-_better.CJPZfMsT_ZFcWeB.webp)
+![Where to find the record button in Chrome's dev tools.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=146,format=webp/_astro/step_2_-_better.CJPZfMsT.jpg)
 1. Browse to the URL that causes issues. Once the issue is experienced, right-click on any of the items within the **Network** tab and select **Save all as HAR with Content**.
-![How to save HAR content. ](https://developers.cloudflare.com/_astro/step_3.D5uw6wSa_ZSqeJ0.webp)
+![How to save HAR content. ](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=384,format=webp/_astro/step_3.D5uw6wSa.png)
 1. Attach the HAR file to your support ticket alongside a screen recording from the affected Samsung device. Instructions on how to do this from Samsung devices can be found in [Samsung's documentation here ↗](https://www.samsung.com/au/support/mobile-devices/screen-recorder/).
 
 ---
@@ -140,7 +140,7 @@ In certain situations when request is not issued or cancelled by the browser (fo
 3. Leave the console open and perform the steps that reproduce the issue.
 4. Right-click on any of the items within the **Console** tab and select **Save as** log file.
 5. Attach the log file to your support ticket.
-![How to find the console tab in Chrome's developer tools.](https://developers.cloudflare.com/_astro/console_snapshot.BshJeLnS_1H8z4j.webp)
+![How to find the console tab in Chrome's developer tools.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2478,height=274,format=webp/_astro/console_snapshot.BshJeLnS.png)
 
 #### In Firefox
 
@@ -503,7 +503,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#page","headline":"Gathering information for troubleshooting sites · Cloudflare Support docs","description":"Collect diagnostic data for Cloudflare support tickets.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

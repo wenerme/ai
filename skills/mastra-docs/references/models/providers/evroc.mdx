@@ -1,11 +1,11 @@
 ---
 title: "evroc | Models"
-description: "Use evroc models with Mastra. 16 models available."
+description: "Use evroc models with Mastra. 15 models available."
 ---
 
 # [evroc logo]evroc
 
-Access 16 evroc models through Mastra's model router. Authentication is handled automatically using the `EVROC_API_KEY` environment variable.
+Access 15 evroc models through Mastra's model router. Authentication is handled automatically using the `EVROC_API_KEY` environment variable.
 
 Learn more in the [evroc documentation](https://docs.evroc.com/products/think/overview.html).
 
@@ -33,7 +33,7 @@ for await (const chunk of stream) {
 }
 ```
 
-> **info**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [evroc documentation](https://docs.evroc.com/products/think/overview.html) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [evroc documentation](https://docs.evroc.com/products/think/overview.html) for details.
 
 ## Models
 
@@ -196,18 +196,6 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "evroc/Qwen/Qwen3-VL-30B-A3B-Instruct",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": true,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 100000,
-    "maxOutput": 100000,
-    "inputCost": 0.23,
-    "outputCost": 0.92
-  },
-  {
     "model": "evroc/Qwen/Qwen3.6-35B-A3B-FP8",
     "imageInput": true,
     "audioInput": true,
@@ -226,7 +214,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
+    "contextWindow": 524288,
     "maxOutput": 131072,
     "inputCost": 1.4375,
     "outputCost": 5.75

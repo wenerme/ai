@@ -26,11 +26,11 @@ Stream only supports the SRT caller mode, which is responsible for broadcasting 
 
 **Step 1:** In the Cloudflare dashboard, go to the **Live inputs** page and create a live input.
 
-[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)![Create live input field from dashboard](https://developers.cloudflare.com/_astro/create-live-input-from-stream-dashboard.BPPM6pVj_Pmc3d.webp)
+[Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs)![Create live input field from dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1554,height=862,format=webp/_astro/create-live-input-from-stream-dashboard.BPPM6pVj.png)
 
 **Step 2:** Copy the RTMPS URL and key, and use them with your live streaming application. We recommend using [Open Broadcaster Software (OBS) ↗](https://obsproject.com/) to get started.
 
-![Example of RTMPS URL field](https://developers.cloudflare.com/_astro/copy-rtmps-url-from-stream-dashboard.BV1iePso_Z1ouwlP.webp)
+![Example of RTMPS URL field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1340,height=444,format=webp/_astro/copy-rtmps-url-from-stream-dashboard.BV1iePso.png)
 
 **Step 3:** Go live and preview your live stream in the Stream Dashboard
 
@@ -199,7 +199,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream · Cloudflare Stream docs","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

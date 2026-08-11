@@ -411,7 +411,13 @@ Descriptors may carry an optional `default` and, for numeric types, a `unit`. An
 
 Pricing uses **arrays nested on the modality that owns them**. Each pricing entry has a `type` (the billing kind), a `unit` (the billing basis), and a `cost_usd` string. The `unit` is the base billing unit, not a commitment to a flat price: per-image and per-token prices can scale with parameters declared by the owning modality.
 
-Each pricing scope accepts the units it can bill in. Input entries take `token`, `image`, `second`, or `character`. Output entries take those units plus `request`. Root `request` entries are always per `request` and `web_search` entries per `search`. Other combinations are rejected at validation time.
+Each pricing scope accepts the units it can bill in. Input entries take `token`, `image`, `megapixel`, `second`, or `character`. Output entries take those units plus `request`. Root `request` entries are always per `request` and `web_search` entries per `search`. Other combinations are rejected at validation time.
+
+The `megapixel` unit prices resolution-scaled media: `cost_usd` is the rate per megapixel (1,000,000 pixels) of media area, so cost scales linearly with the pixel dimensions of the input consumed or output generated. An image output billed at \$0.015 per megapixel declares:
+
+```json lines theme={null}
+{ "type": "completion", "unit": "megapixel", "cost_usd": "0.015" }
+```
 
 A document that validates is a valid declaration, not a guarantee that every declared SKU is billed today: OpenRouter bills the SKUs its pipeline supports and records the rest, and billing for newly declared SKU shapes lands as support for them does. Declare what you charge; do not tailor the document to what OpenRouter currently bills.
 
@@ -559,7 +565,7 @@ A capacity entry's identity is its `type`, `unit`, and `per` window together, an
 
 Limits declared in different scopes are independent buckets that all apply simultaneously: a per-modality token limit and a root request limit each constrain traffic on their own dimension, and a request is admitted only when every declared limit it consumes against has headroom. Declaring a limit in one scope does not relax or replace a limit in another.
 
-This reuse distinguishes prompt, cached prompt, and output capacity without adding separate fields for each dimension. Capacity and pricing remain separate sibling arrays because a modality may declare limits without prices, or prices without declared limits. Units are constrained per scope, exactly as pricing units are: an entry accepts any unit its scope (input, output, or root) can bill in, so image capacity is expressed as images per minute, video capacity as output seconds per minute, and a mismatched pairing (such as a `prompt` capacity per `search`) is rejected at validation time. Validation is not narrowed to the owning modality's own billing unit, which is why an image output modality may carry a `concurrency` entry in `request` units.
+This reuse distinguishes prompt, cached prompt, and output capacity without adding separate fields for each dimension. Capacity and pricing remain separate sibling arrays because a modality may declare limits without prices, or prices without declared limits. Units are constrained per scope, exactly as pricing units are: an entry accepts any unit its scope (input, output, or root) can bill in, so image capacity is expressed as images per minute (or megapixels per minute for resolution-scaled throughput), video capacity as output seconds per minute, and a mismatched pairing (such as a `prompt` capacity per `search`) is rejected at validation time. Validation is not narrowed to the owning modality's own billing unit, which is why an image output modality may carry a `concurrency` entry in `request` units.
 
 Here is a capacity declaration covering text input, text output, image output, and request scope:
 

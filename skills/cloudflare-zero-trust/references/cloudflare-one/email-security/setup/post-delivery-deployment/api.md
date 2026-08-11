@@ -18,7 +18,7 @@ When you choose an API deployment, email messages only reach Email security afte
 
 Then, through an integration with your email provider, Email security can [auto-move messages](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/) based on your organization's policies.
 
-![With API deployment, messages travel through Email security's email filter after reaching your users.](https://developers.cloudflare.com/_astro/M365_API_Deployment_Graph.Czbz8tQF_ZWYsK4.webp)
+![With API deployment, messages travel through Email security's email filter after reaching your users.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=585,height=492,format=webp/_astro/M365_API_Deployment_Graph.Czbz8tQF.png)
 
 ## Benefits
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/#page","headline":"API deployment · Cloudflare One docs","description":"How API deployment works in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

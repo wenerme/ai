@@ -60,7 +60,7 @@ If you don’t already have a Resend account, you can sign up for a [free accoun
 
 Next, you’re presented with a list of DNS records to add to your Cloudflare domain. On your Cloudflare dashboard, select the domain you entered earlier and navigate to `DNS` \> `Records`. Copy/paste the DNS records (DKIM, SPF, and DMARC records) from Resend to your Cloudflare domain.
 
-![Image of adding DNS records to a Cloudflare domain](https://developers.cloudflare.com/_astro/add_dns_records.Brij3X2H_3CIvl.webp)
+![Image of adding DNS records to a Cloudflare domain](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2012,height=936,format=webp/_astro/add_dns_records.Brij3X2H.png)
 
 Note
 
@@ -68,7 +68,7 @@ If you need more help adding DNS records in Cloudflare, refer to [Manage DNS rec
 
 When that’s done, head back to Resend and click on the `Verify DNS Records` button. If all records are properly configured, your domain status should be updated to `Verified`.
 
-![Image of domain verification on the Resend dashboard](https://developers.cloudflare.com/_astro/verified_domain.ouYLJaQl_l764f.webp)
+![Image of domain verification on the Resend dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1944,height=1116,format=webp/_astro/verified_domain.ouYLJaQl.png)
 
 Lastly, navigate to `API Keys` with the side menu, to create an API key. Give your key a descriptive name and the appropriate permissions. Click the button to add your key and then copy your API key to a safe location.
 
@@ -160,7 +160,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/#page","headline":"Send Emails With Resend · Cloudflare Workers docs","description":"This tutorial explains how to send emails from Cloudflare Workers using Resend.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

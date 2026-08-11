@@ -18,7 +18,7 @@ Cloudflare's CDN services can help cache your content across our giant global ne
 
 ### Caching Anonymous Page Views
 
-![Creating a cache rule for anonymous page views.](https://developers.cloudflare.com/_astro/hc-import-screen_shot_2017_03_09_at_16_54_36_1_.hRrVrFif_ZM7aKC.webp)
+![Creating a cache rule for anonymous page views.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1674,height=1470,format=webp/_astro/hc-import-screen_shot_2017_03_09_at_16_54_36_1_.hRrVrFif.png)
 
 Cloudflare's "[Bypass Cache on Cookie](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/bypass-cache-on-cookie/)" functionality allows non-logged-in pages to be fully cached by Cloudflare. This means your server can save time and resources by not having to regenerate pages where the HTML is effectively static, whilst not interfering with dynamic behaviour - as soon as a user logs-in to the WordPress dashboard or adds something to their WooCommerce, the Edge cache is bypassed.
 
@@ -34,7 +34,7 @@ After enabling [**Polish**](https://developers.cloudflare.com/images/polish/), y
 
 After **enabling SSL** you must also ensure that users are redirected to the HTTPS version so that it can be loaded over HTTP/2\. You can do this using an _Always use HTTPS_ **Page Rule**:
 
-![Create a page rule to ensure your Wordpress website is correctly loaded over HTTP/2](https://developers.cloudflare.com/_astro/hc-import-screen_shot_2016_09_30_at_15_34_14.DNIz1oVk_1HU8mL.webp)
+![Create a page rule to ensure your Wordpress website is correctly loaded over HTTP/2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1670,height=984,format=webp/_astro/hc-import-screen_shot_2016_09_30_at_15_34_14.DNIz1oVk.png)
 
 Cloudflare's **WordPress plugin** allows you to push necessary assets to your users using HTTP/2 Server Push, dramatically reducing the amount of roundtrips required to load CSS and JavaScript. Refer to [How do I enable HTTP/2 Server Push in WordPress ↗](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/how-do-i-enable-http2-server-push-in-wordpress/) for a tutorial on setting it up.
 
@@ -54,7 +54,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/speed-up-wordpress-and-improve-performance/#page","headline":"Speed Up WordPress and Improve Performance · Cloudflare Support docs","description":"Optimize WordPress performance with Cloudflare CDN.","url":"https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/speed-up-wordpress-and-improve-performance/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -18,7 +18,7 @@ The [Session Guide](https://developers.cloudflare.com/realtime/realtimekit/conce
 
 ### Lifecycle of a Peer in a Session
 
-![Peer Lifecycle In a Session](https://developers.cloudflare.com/_astro/peer-lifecycle.ChUtQdVP_Z2ijmRx.svg)
+![Peer Lifecycle In a Session](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=545,height=326,format=svg/_astro/peer-lifecycle.ChUtQdVP.svg)
 
 Here’s how the peer lifecycle works:
 
@@ -44,7 +44,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/session-lifecycle/#page","headline":"Session Lifecycle · Cloudflare Realtime docs","description":"Understand the lifecycle of a peer in a RealtimeKit session from setup to disconnect.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/session-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -861,8 +861,9 @@ components:
           description: >-
             List of model patterns to filter which models the auto-beta-router
             can route between. Supports wildcards (e.g., "anthropic/*" matches
-            all Anthropic models). When not specified, uses the default
-            supported models list.
+            all Anthropic models). When not specified, every model ranked for
+            the classified task type is a candidate, falling back to a default
+            model set when rankings are unavailable.
           example:
             - anthropic/*
             - openai/gpt-4o
@@ -879,9 +880,9 @@ components:
             candidates by their average cost per generation for that task.
             Higher values favor cheaper models: 10 keeps only models around the
             cheapest 10th percentile, while 0 permits models up to the 90th
-            percentile for cost. Defaults to 9. Numeric cost_quality_tradeoff
-            remains supported, retains ceiling behavior, and takes precedence
-            over cost_tier when both are provided.
+            percentile for cost. Defaults to 9 when no cost setting is provided.
+            It remains supported and retains ceiling behavior, but cost_tier
+            takes precedence when both are provided.
           example: 9
           maximum: 10
           minimum: 0
@@ -890,8 +891,8 @@ components:
           description: >-
             Named cost/quality setting. For auto-beta-router, tiers select
             cost-percentile bands: low = [0, 20), medium = [20, 40), high = [40,
-            60), xhigh = [60, 80), and max = [80, 100]. Numeric
-            cost_quality_tradeoff takes precedence and retains ceiling behavior.
+            60), xhigh = [60, 80), and max = [80, 100]. Takes precedence over
+            the deprecated numeric cost_quality_tradeoff when both are provided.
           enum:
             - low
             - medium
@@ -929,7 +930,7 @@ components:
         allowed_models:
           - anthropic/*
           - openai/*
-        cost_tier: medium
+        cost_tier: low
         enabled: true
         excluded_models:
           - openai/gpt-4o
@@ -940,8 +941,9 @@ components:
           description: >-
             List of model patterns to filter which models the auto-router can
             route between. Supports wildcards (e.g., "anthropic/*" matches all
-            Anthropic models). When not specified, uses the default supported
-            models list.
+            Anthropic models). When not specified, every model ranked for the
+            classified task type is a candidate, falling back to a default model
+            set when rankings are unavailable.
           example:
             - anthropic/*
             - openai/gpt-4o
@@ -952,29 +954,32 @@ components:
         cost_quality_tradeoff:
           deprecated: true
           description: >-
-            Deprecated: Use cost_tier instead. Controls cost vs. quality routing
-            tradeoff (0–10). 0 = pure quality (best model regardless of cost),
-            10 = maximize for cost (cheapest model wins). Intermediate values
-            blend quality and cost signals continuously. Defaults to 7. Numeric
-            cost_quality_tradeoff remains supported and takes precedence over
-            cost_tier when both are provided.
-          example: 7
+            Deprecated: Use cost_tier instead. Balances routing between cost and
+            quality on a 0-10 scale. The auto-router ranks models for the
+            classified task type by community spend share, then filters
+            candidates by their average cost per generation for that task.
+            Higher values favor cheaper models: 10 keeps only models around the
+            cheapest 10th percentile, while 0 permits models up to the 90th
+            percentile for cost. Defaults to 9 when no cost setting is provided.
+            It remains supported and retains ceiling behavior, but cost_tier
+            takes precedence when both are provided.
+          example: 9
           maximum: 10
           minimum: 0
           type: integer
         cost_tier:
           description: >-
-            Shorthand for cost_quality_tradeoff. Higher tiers spend more on
-            better models: low = 9, medium = 7, high = 5, xhigh = 3, and max =
-            1. Numeric cost_quality_tradeoff takes precedence when both are
-            provided.
+            Named cost/quality setting. Tiers select cost-percentile bands: low
+            = [0, 20), medium = [20, 40), high = [40, 60), xhigh = [60, 80), and
+            max = [80, 100]. Takes precedence over the deprecated numeric
+            cost_quality_tradeoff when both are provided.
           enum:
             - low
             - medium
             - high
             - xhigh
             - max
-          example: medium
+          example: low
           type: string
         enabled:
           description: >-
@@ -3138,7 +3143,8 @@ components:
     OutputWebSearchCallItem:
       allOf:
         - $ref: '#/components/schemas/OutputItemWebSearchCall'
-        - properties: {}
+        - additionalProperties: {}
+          properties: {}
           type: object
       example:
         id: ws-abc123
@@ -3174,7 +3180,8 @@ components:
     OutputCodeInterpreterCallItem:
       allOf:
         - $ref: '#/components/schemas/CodeInterpreterCallItem'
-        - properties: {}
+        - additionalProperties: {}
+          properties: {}
           type: object
       description: A code interpreter execution call with outputs
       example:
@@ -3715,9 +3722,10 @@ components:
           description: >-
             Typed failure reason when the fusion run failed. Possible values
             include: all_panels_failed, insufficient_credits, rate_limited,
-            judge_not_valid_json, judge_schema_mismatch, judge_upstream_error,
-            judge_empty_completion. The four analysis-stage codes keep their
-            pre-rename `judge_` spelling so existing consumers keep matching.
+            invalid_model, judge_not_valid_json, judge_schema_mismatch,
+            judge_upstream_error, judge_empty_completion. The four
+            analysis-stage codes keep their pre-rename `judge_` spelling so
+            existing consumers keep matching.
           type: string
         id:
           type: string
@@ -6003,6 +6011,7 @@ components:
         - call_id
       type: object
     OutputItemWebSearchCall:
+      additionalProperties: {}
       example:
         action:
           query: OpenAI API
@@ -6125,6 +6134,11 @@ components:
         - status
       type: object
     CodeInterpreterCallItem:
+      allOf:
+        - $ref: '#/components/schemas/OutputItemCodeInterpreterCall'
+        - additionalProperties: {}
+          properties: {}
+          type: object
       description: A code interpreter execution call with outputs
       example:
         code: print("Hello, World!")
@@ -6135,57 +6149,6 @@ components:
             type: logs
         status: completed
         type: code_interpreter_call
-      properties:
-        code:
-          type:
-            - string
-            - 'null'
-        container_id:
-          type: string
-        id:
-          type: string
-        outputs:
-          items:
-            anyOf:
-              - properties:
-                  type:
-                    enum:
-                      - image
-                    type: string
-                  url:
-                    type: string
-                required:
-                  - type
-                  - url
-                type: object
-              - properties:
-                  logs:
-                    type: string
-                  type:
-                    enum:
-                      - logs
-                    type: string
-                required:
-                  - type
-                  - logs
-                type: object
-          type:
-            - array
-            - 'null'
-        status:
-          $ref: '#/components/schemas/ToolCallStatus'
-        type:
-          enum:
-            - code_interpreter_call
-          type: string
-      required:
-        - type
-        - id
-        - code
-        - outputs
-        - status
-        - container_id
-      type: object
     ToolCallStatus:
       enum:
         - in_progress
@@ -6980,6 +6943,61 @@ components:
         - failed
       example: completed
       type: string
+    OutputItemCodeInterpreterCall:
+      additionalProperties: {}
+      example:
+        code: print("hello")
+        id: ci_abc123
+        outputs:
+          - logs: |
+              hello
+            type: logs
+        status: completed
+        type: code_interpreter_call
+      properties:
+        code:
+          type:
+            - string
+            - 'null'
+        container_id:
+          type: string
+        id:
+          type: string
+        outputs:
+          items:
+            discriminator:
+              mapping:
+                file:
+                  $ref: '#/components/schemas/CodeInterpreterFileOutput'
+                image:
+                  $ref: '#/components/schemas/CodeInterpreterImageOutput'
+                logs:
+                  $ref: '#/components/schemas/CodeInterpreterLogsOutput'
+              propertyName: type
+            oneOf:
+              - $ref: '#/components/schemas/CodeInterpreterLogsOutput'
+              - $ref: '#/components/schemas/CodeInterpreterImageOutput'
+              - $ref: '#/components/schemas/CodeInterpreterFileOutput'
+          type:
+            - array
+            - 'null'
+        status:
+          enum:
+            - in_progress
+            - completed
+            - incomplete
+            - interpreting
+            - failed
+          type: string
+        type:
+          enum:
+            - code_interpreter_call
+          type: string
+      required:
+        - type
+        - id
+        - status
+      type: object
     FormatTextConfig:
       description: Plain text response format
       example:
@@ -7072,6 +7090,85 @@ components:
       required:
         - type
         - container_id
+      type: object
+    CodeInterpreterFileOutput:
+      example:
+        download_url: https://example.com/download/file_abc123
+        filename: summary.txt
+        id: file_abc123
+        type: file
+      properties:
+        download_url:
+          description: >-
+            Provider-issued download URL for the generated file. Typically
+            signed and time-limited (see `expires_at`); fetch promptly rather
+            than persisting the URL.
+          type: string
+        error_code:
+          description: >-
+            Provider error code when generating or persisting the file failed;
+            null or absent on success.
+          type:
+            - string
+            - 'null'
+        expires_at:
+          description: >-
+            When the `download_url` stops working, as an ISO 8601 timestamp.
+            After this time the file must be regenerated.
+          type: string
+        filename:
+          type: string
+        id:
+          type: string
+        media_type:
+          type: string
+        sha256:
+          type: string
+        size_bytes:
+          type: integer
+        status:
+          description: >-
+            Provider-reported readiness of the generated file (e.g. `ready`).
+            Values other than `ready` indicate the artifact may not be
+            downloadable.
+          type: string
+        type:
+          enum:
+            - file
+          type: string
+      required:
+        - type
+      type: object
+    CodeInterpreterImageOutput:
+      example:
+        type: image
+        url: https://example.com/plot.png
+      properties:
+        type:
+          enum:
+            - image
+          type: string
+        url:
+          type: string
+      required:
+        - type
+        - url
+      type: object
+    CodeInterpreterLogsOutput:
+      example:
+        logs: |
+          hello
+        type: logs
+      properties:
+        logs:
+          type: string
+        type:
+          enum:
+            - logs
+          type: string
+      required:
+        - type
+        - logs
       type: object
   securitySchemes:
     apiKey:

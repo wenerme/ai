@@ -30,7 +30,7 @@ Without the configuration in your repository, every build has to run autoconfig 
 
 ### What the PR includes
 
-![Example of an automatic configuration pull request created by Workers Builds](https://developers.cloudflare.com/_astro/automatic-pr.CwJG6Bec_1cC506.webp)
+![Example of an automatic configuration pull request created by Workers Builds](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1918,height=1348,format=webp/_astro/automatic-pr.CwJG6Bec.png)
 
 The configuration PR may contain changes to the following files, depending on your framework:
 
@@ -82,7 +82,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/#page","headline":"Automatic pull requests · Cloudflare Workers docs","description":"Learn about the pull requests Workers Builds creates to configure your project or resolve issues.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

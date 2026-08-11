@@ -28,7 +28,7 @@ Looking for a managed option?
 
 ## Knowledge Seeding
 
-![Figure 1: Knowledge seeding](https://developers.cloudflare.com/_astro/rag-architecture-seeding.BVBY5k5z_ZAHNWj.svg "Figure 1: Knowledge seeding")
+![Figure 1: Knowledge seeding](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=600,format=svg/_astro/rag-architecture-seeding.BVBY5k5z.svg "Figure 1: Knowledge seeding")
 
 Figure 1: Knowledge seeding
 
@@ -42,7 +42,7 @@ Figure 1: Knowledge seeding
 
 ## Knowledge Queries
 
-![Figure 2: Knowledge queries](https://developers.cloudflare.com/_astro/rag-architecture-query.CtBKQkxk_ZAHNWj.svg "Figure 2: Knowledge queries")
+![Figure 2: Knowledge queries](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=600,format=svg/_astro/rag-architecture-query.CtBKQkxk.svg "Figure 2: Knowledge queries")
 
 Figure 2: Knowledge queries
 
@@ -65,7 +65,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/#page","headline":"Retrieval Augmented Generation (RAG) · Cloudflare Reference Architecture docs","description":"RAG combines retrieval with generative models for better text. It uses external knowledge to create factual, relevant responses, improving coherence and accuracy in NLP tasks like chatbots.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}

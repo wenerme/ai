@@ -70,7 +70,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 You may have use cases in which specific groups of your users may need to change the location from which they egress. Cloudflare observes this frequently with quality assurance (QA) teams for applications or sites that need to test resources as if they are accessing from different, predetermined locales. You can manage this when necessary via an egress policy, but most Cloudflare users prefer to manage this without ongoing changes to the administrative panel and existing policies. To accommodate this, you can build virtual networks for use as selectors in egress policies. This will allow your users to change their attached virtual network and subsequently change their egress IP as they choose.
 
-![Users can choose virtual networks to change their egress IP within the Cloudflare One Client](https://developers.cloudflare.com/_astro/change-user-egress-warp.DDcZMPDC_Z4CY3c.webp)
+![Users can choose virtual networks to change their egress IP within the Cloudflare One Client](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=416,height=394,format=webp/_astro/change-user-egress-warp.DDcZMPDC.png)
 
 For more information, refer to our [tutorial for user selectable egress IPs](https://developers.cloudflare.com/cloudflare-one/tutorials/user-selectable-egress-ips/).
 
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/#page","headline":"Egress IP best practices · Cloudflare Learning Paths","description":"Deploy dedicated egress IPs effectively.","url":"https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-egress-policies/deploy-egress-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

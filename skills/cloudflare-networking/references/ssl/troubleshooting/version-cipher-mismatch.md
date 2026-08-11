@@ -80,7 +80,7 @@ Cloudflare Universal and Advanced certificates only cover the domains and subdom
 
 If the **Proxy status** of `A`, `AAAA`, or `CNAME` records for a hostname are **DNS-only**, you will need to change it to **Proxied**.
 
-![Proxy status affects how Cloudflare treats traffic intended for specific DNS records](https://developers.cloudflare.com/_astro/proxy-status-screenshot.uxgurbGi_2igVHO.webp)
+![Proxy status affects how Cloudflare treats traffic intended for specific DNS records](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2254,height=262,format=webp/_astro/proxy-status-screenshot.uxgurbGi.png)
 
 ---
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/#page","headline":"Fix VERSION_OR_CIPHER_MISMATCH · Cloudflare SSL/TLS docs","description":"Learn how to troubleshoot ERR\\_SSL\\_VERSION\\_OR\\_CIPHER\\_MISMATCH when using Cloudflare SSL/TLS.","url":"https://developers.cloudflare.com/ssl/troubleshooting/version-cipher-mismatch/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

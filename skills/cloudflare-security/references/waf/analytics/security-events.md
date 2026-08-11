@@ -57,7 +57,7 @@ Additionally, Enterprise customers have access to the account-level dashboard:
 
 You can apply multiple filters and exclusions to narrow the scope of Security Events and adjust the report duration. Modifying the duration, filters, or exclusions affects the analytics data displayed on the entire page including **Sampled logs** and all graphs.
 
-![Example of adding a new filter in Security Events for the Block action](https://developers.cloudflare.com/_astro/events-add-filter.DDUuZ0g7_ZC975W.webp)
+![Example of adding a new filter in Security Events for the Block action](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=929,height=281,format=webp/_astro/events-add-filter.DDUuZ0g7.png)
 
 ### Add filters
 
@@ -89,7 +89,7 @@ To create a [custom rule](https://developers.cloudflare.com/waf/custom-rules/cre
 
 The **Events summary** section provides the number of security events on traffic during the selected time period, grouped according to the selected dimension (for example, **Action**, **Host**, **Country**, or **ASN**).
 
-![Filter by action by selecting Filter when hovering the desired action in Events summary](https://developers.cloudflare.com/_astro/events-summary.DvNySzEm_1T8SJq.webp)
+![Filter by action by selecting Filter when hovering the desired action in Events summary](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1068,height=598,format=webp/_astro/events-summary.DvNySzEm.png)
 
 You can adjust the displayed data according to one of the values by selecting **Filter** or **Exclude** when hovering the legend.
 
@@ -113,7 +113,7 @@ A deleted custom rule or rate limiting rule will show as `Rule unavailable` unde
 
 **Sampled logs** shows a subset of security events for the selected time period, listed by date with the action taken and the applied Cloudflare security feature. For large volumes of traffic, Cloudflare uses [sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/) to return results faster. This means that not every individual event may appear in the list.
 
-![Example list of events in Sampled logs, with one of the events expanded to show its details](https://developers.cloudflare.com/_astro/events-sampled-logs.BZ-7P-U7_Z1eOiG1.webp)
+![Example list of events in Sampled logs, with one of the events expanded to show its details](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1132,height=1367,format=webp/_astro/events-sampled-logs.BZ-7P-U7.png)
 
 Security events are shown by individual event rather than by request. For example, if a single request triggers three different security features, the security events will show three individual events in **Sampled logs**.
 
@@ -200,7 +200,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-events/#page","headline":"Security Events · Cloudflare Web Application Firewall (WAF) docs","description":"Review individual security events triggered by WAF rules.","url":"https://developers.cloudflare.com/waf/analytics/security-events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging","SIEM"]}

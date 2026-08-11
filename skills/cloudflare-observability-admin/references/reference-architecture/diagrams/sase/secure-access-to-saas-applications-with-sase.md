@@ -37,7 +37,7 @@ The diagram below shows how Cloudflare sits between your users, devices and netw
 * [Zero Trust Network Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/). Allows Cloudflare to become an identity proxy, so that you can easily enable authentication with a wide variety of identity providers to a single SaaS application. This service also incorporates the ability to evaluate access based on device posture and network location.
 * [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/). Once all traffic to access the SaaS application flows through our gateway, HTTPS connections are terminated at Cloudflare and you have the ability to inspect the data flowing to and from the SaaS application. This allows you to block sensitive data from being exported to insecure locations.
 
-![Figure 1: Only traffic that has passed the Cloudflare network and relevant policies is authorized to access the SaaS application.](https://developers.cloudflare.com/_astro/figure1.CyQmr5MZ_7b9Sa.svg "Figure 1: Only traffic that has passed the Cloudflare network and relevant policies is authorized to access the SaaS application.")
+![Figure 1: Only traffic that has passed the Cloudflare network and relevant policies is authorized to access the SaaS application.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1034,height=854,format=svg/_astro/figure1.CyQmr5MZ.svg "Figure 1: Only traffic that has passed the Cloudflare network and relevant policies is authorized to access the SaaS application.")
 
 Figure 1: Only traffic that has passed the Cloudflare network and relevant policies is authorized to access the SaaS application.
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/#page","headline":"Secure access to SaaS applications with SASE · Cloudflare Reference Architecture docs","description":"Cloudflare's SASE platform offers the ability to bring a more Zero Trust orientated approach to securing SaaS applications. Centralized policies, based on device posture, identity attributes and granular network location can be applied across one or many Saas applications.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/secure-access-to-saas-applications-with-sase/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-02-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

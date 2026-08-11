@@ -10,7 +10,9 @@ packages:
 
 **Added in:** `@mastra/core@1.45.0`
 
-> **warning**: Durable agents are currently in **beta**. APIs may change in future releases.
+:::beta
+
+Breaking changes may occur without a major version bump until the API is stable.
 
 A durable agent wraps a regular [`Agent`](/docs/agents/overview) so the agentic loop runs inside a workflow. Events flow through [PubSub](/docs/server/pubsub), which means a client can disconnect and reconnect without missing chunks. The run state is persisted, so it survives process restarts.
 

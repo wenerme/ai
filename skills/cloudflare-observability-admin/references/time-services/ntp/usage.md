@@ -26,7 +26,7 @@ To have your Mac to synchronize time from `time.cloudflare.com`:
 2. Go to **General** \> **Date & Time**.
 3. Enable **Set date and time automatically**.
 4. For **Source**, select **Set...** and enter `time.cloudflare.com` in the text field that appears.
-![Screenshot of updating the Date & Time settings on machine running macOS](https://developers.cloudflare.com/_astro/mactime.DBCp2s9r_Rw5nr.webp)
+![Screenshot of updating the Date & Time settings on machine running macOS](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1311,height=1038,format=webp/_astro/mactime.DBCp2s9r.png)
 
 ## Windows
 
@@ -39,7 +39,7 @@ To have your Windows machine synchronize time from `time.cloudflare.com`:
 5. Click **Change settings..**
 6. For **Server:**, type `time.cloudflare.com` and click **Update now**.
 7. Click **OK**.
-![Screenshot of updating the Date and Time settings on machine running Windows](https://developers.cloudflare.com/_astro/window.g3wVkbhY_Z1SBzSp.webp)
+![Screenshot of updating the Date and Time settings on machine running Windows](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=510,height=346,format=webp/_astro/window.g3wVkbhY.png)
 
 ## Linux
 
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/time-services/ntp/usage/#page","headline":"Using Cloudflare's Time Service · Cloudflare Time Services docs","description":"Guide for consuming randomness from drand.","url":"https://developers.cloudflare.com/time-services/ntp/usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

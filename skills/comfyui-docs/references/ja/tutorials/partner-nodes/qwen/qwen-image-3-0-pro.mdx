@@ -1,0 +1,70 @@
+---
+title: "Qwen Image 3.0 Pro - 高度なAI画像生成"
+description: "ComfyUIでQwen Image 3.0 Proを使用して、指示に正確に従いながら本番品質の画像を生成し、最大3枚の参照画像を編集できます"
+translationSourceHash: aa172639
+translationFrom: tutorials/partner-nodes/qwen/qwen-image-3-0-pro.mdx
+translationBlockHashes:
+  "_intro": ea81a363
+  "Key capabilities": 622f9306
+  "Qwen Image 3.0 Pro text-to-image workflow": f7a3bf9f
+  "Qwen Image 3.0 Pro image edit workflow": bc2c0b5d
+  "Get started": 7c7aec4e
+---
+
+Qwen Image 3.0 Pro は、Alibaba の第 3 世代画像生成モデルであり、純粋な美的表現ではなく、インフォグラフィック、ドキュメント、指示ベースの編集といった実用的な出力を中心に設計されています。密度が高く情報量の多いビジュアルを 1 回のパスで作成するツールとして位置づけられており、「リッチなコンテンツ、本物の詳細、深い知識」というキャッチコピーを掲げています。
+
+このモデルは最大 4,500 トークンのプロンプトを受け付けることができ、これは前世代の入力長の約 4.5 倍に相当します。この余裕を活用して、新聞ページ、マルチパネルのインフォグラフィック、判読可能な数式表記を含む学術論文、その他の高密度レイアウトを、指示内容を数文に圧縮することなく構成します。さらに、12 言語・20 以上のフォントで約 10 ピクセルまでの小さなテキストも判読可能にレンダリングし、天気図やライブ配信インターフェースの再現などのタスクに世界知識を統合します。
+
+## 主な機能
+
+- **超長文プロンプト**: 詳細で情報量の多い構図を作成するための指示を最大4,500トークンまで受け付けます
+- **高密度で実用的なレイアウト**: 新聞のページ全体、複数パネルのインフォグラフィック、数式を含む学術ドキュメントを一度に生成します
+- **小さな文字の描画**: 12言語・20以上のフォントで、約10pxまでの読みやすいテキストを生成します
+- **世界知識の統合**: 指定された都市の天気図など、実世界の情報に基づいたコンテンツを生成します
+- **指示に基づく編集**: オブジェクト、スタイル、または領域を対象とした変更を加えて、最大3枚の参照画像を編集します
+- **バッチ生成**: 1回の実行で1～6枚の画像を生成します
+
+## Qwen Image 3.0 Pro テキストから画像へのワークフロー
+
+テキストプロンプトから詳細な画像を生成します。Qwen Image 3.0 Pro が、レイアウト、タイポグラフィ、構図を処理します。
+
+[Qwen Image 3.0 Pro テキストから画像へのワークフローのプレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSON をダウンロードするか、テンプレートライブラリで「Qwen Image 3.0 Pro」を検索してください
+  
+
+![Qwen Image 3.0 Pro テキストから画像へのプレビュー](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_qwen3_t2i.png)
+
+## Qwen Image 3.0 Pro 画像編集ワークフロー
+
+テキストによる指示で既存の画像を編集します。最大3枚の参照画像を組み合わせ、オブジェクトの変更、スタイルの交換、シーンの再構成を、元の構造を保ったまま行えます。
+
+[Qwen Image 3.0 Pro 画像編集ワークフローのプレビュー]
+
+  
+    Comfy Cloud で開く
+  
+  
+    JSON をダウンロードするか、テンプレートライブラリで「Qwen Image 3.0 Pro」を検索してください
+  
+
+入力素材
+
+このワークフローを試すには、以下のサンプル入力画像をダウンロードしてください:
+
+  
+    サンプル入力画像をダウンロード
+  
+
+![Qwen Image 3.0 Pro 画像編集の入力](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/wasteland_merchant.png)
+
+![Qwen Image 3.0 Pro 画像編集の出力](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_qwen3_image_edit.png)
+
+## はじめる
+
+1. ComfyUI を最新バージョンにアップデートします
+2. テンプレートライブラリに移動し、`Qwen Image 3.0 Pro` を検索します

@@ -299,12 +299,12 @@ Firecrawl supports domain filtering (`allowed_domains` / `excluded_domains`), bu
 
 ### Parallel
 
-[Parallel](https://parallel.ai) supports domain filtering and context size control (`search_context_size`). Set `mode` to choose the provider mode; OpenRouter preserves the existing `turbo` default and sends it explicitly.
+[Parallel](https://parallel.ai) supports domain filtering and context size control (`search_context_size`). Set `mode` to choose the provider mode; OpenRouter uses `basic` by default and sends it explicitly.
 
 | Mode              | Latency     | Request cost           | Language availability  |
 | ----------------- | ----------- | ---------------------- | ---------------------- |
-| `turbo` (default) | \~200 ms    | \$1 per 1,000 requests | English and Japanese   |
-| `basic`           | \~1 second  | \$5 per 1,000 requests | Broad language support |
+| `turbo`           | \~200 ms    | \$1 per 1,000 requests | English and Japanese   |
+| `basic` (default) | \~1 second  | \$5 per 1,000 requests | Broad language support |
 | `advanced`        | \~3 seconds | \$5 per 1,000 requests | Broad language support |
 
 Each mode includes up to 10 results. Additional results cost \$1 per 1,000 results.

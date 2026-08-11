@@ -19,7 +19,7 @@ Honeycomb is an observability platform built for high-cardinality data that help
 * Visualize traces to understand request flows and identify performance bottlenecks
 * Query and analyze logs with unlimited dimensionality across any attribute
 * Create custom queries and dashboards to monitor your Workers
-![Trace view including POST request, fetch operations, durable object subrequest, and queue send, with timing information displayed on a timeline](https://developers.cloudflare.com/_astro/honeycomb-example.cEkEF1c4_Z52f1D.webp)
+![Trace view including POST request, fetch operations, durable object subrequest, and queue send, with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2196,height=704,format=webp/_astro/honeycomb-example.cEkEF1c4.png)
 
 This guide will walk you through configuring your Cloudflare Worker application to export OpenTelemetry-compliant traces and logs to Honeycomb.
 
@@ -127,7 +127,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/#page","headline":"Export to Honeycomb · Cloudflare Workers docs","description":"Send OpenTelemetry traces and logs from Cloudflare Workers to Honeycomb.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

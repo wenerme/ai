@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/gsuite-email-security-mx/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-![A schematic showing where Email security is in the life cycle of an email received](https://developers.cloudflare.com/_astro/Email_Security_Gmail_MX_Inline.BySaw74N_r7mj1.webp)
+![A schematic showing where Email security is in the life cycle of an email received](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1020,height=233,format=webp/_astro/Email_Security_Gmail_MX_Inline.BySaw74N.png)
 
 In this tutorial, you will learn how to configure Google Workspace with Email security as MX record.
 
@@ -140,7 +140,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/gsuite-email-security-mx/#page","headline":"Google Workspace as MX Record · Cloudflare One docs","description":"Integrate Google Workspace as MX Record with Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/gsuite-email-security-mx/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}

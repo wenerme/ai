@@ -16,7 +16,7 @@ Last updated May 4, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 The diagram below shows how requests flow through the Cloudflare network when Smart Shield is active, and where each feature applies along that path.
 
-![Network diagram of requests being processed with all Smart Shield features](https://developers.cloudflare.com/_astro/network-diagram.PeUYDGK__Z2qTCdR.webp)
+![Network diagram of requests being processed with all Smart Shield features](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=5596,height=4759,format=webp/_astro/network-diagram.PeUYDGK_.png)
 
 Requests from visitors first reach a nearby lower-tier data center. For static (cacheable) content, the lower-tier checks its local cache. On a cache miss, the request moves to an upper-tier data center — selected by [Smart Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/smart-tiered-cache/) based on lowest latency to your origin. If [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) is configured, a regional hub is checked before the upper-tier. Persistent storage through [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/) provides a final cache layer before requesting content from your origin.
 
@@ -30,7 +30,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/smart-shield/concepts/network-diagram/#page","headline":"Network diagram · Cloudflare Smart Shield docs","description":"Visual overview of Smart Shield features and their role in origin protection.","url":"https://developers.cloudflare.com/smart-shield/concepts/network-diagram/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -28,7 +28,7 @@ Keyword search matches chunks that contain your query terms exactly using BM25 f
 
 Hybrid search runs vector and keyword search in parallel and merges the results using a fusion method. Vector search understands intent, keyword search matches specific terms. Together, a query like "ERR\_CONNECTION\_REFUSED timeout" finds the exact error page and related troubleshooting content. Refer to [Hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) for setup.
 
-![Hybrid search](https://developers.cloudflare.com/_astro/hybrid-search.CJ9Cuw7h_13NTs.webp)
+![Hybrid search](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1381,height=954,format=webp/_astro/hybrid-search.CJ9Cuw7h.png)
 
 Was this helpful?
 
@@ -36,7 +36,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/search-modes/#page","headline":"Search modes · Cloudflare AI Search docs","description":"Compare AI Search vector, keyword, and hybrid search modes to choose the right retrieval strategy.","url":"https://developers.cloudflare.com/ai-search/concepts/search-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

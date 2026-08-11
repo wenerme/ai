@@ -24,7 +24,7 @@ You can create multiple projects using the same repository, [in the same way tha
 
 When you connect a git repository to Pages, by default a change to any file in the repository will trigger a Pages build.
 
-![Monorepo example diagram](https://developers.cloudflare.com/_astro/pages-path.D3Q_3sei_Z1d0ks6.webp)
+![Monorepo example diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3600,height=828,format=webp/_astro/pages-path.D3Q_3sei.png)
 
 Take for example `my-monorepo` above with two associated Pages projects (`marketing-app` and `ecommerce-app`) and their listed dependencies. By default, if you change a file in the project directory for `marketing-app`, then a build for the `ecommerce-app` project will also be triggered, even though `ecommerce-app` and its dependencies have not changed. To avoid such duplicate builds, you can include and exclude both [build watch paths](https://developers.cloudflare.com/pages/configuration/build-watch-paths) or [branches](https://developers.cloudflare.com/pages/configuration/branch-build-controls) to specify if Pages should skip a build for a given project.
 
@@ -38,7 +38,7 @@ GitHub will display separate comments for each project with the updated project 
 
 If you have multiple projects associated with your repository, your [GitHub check run ↗](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks) or [Gitlab commit status ↗](https://docs.gitlab.com/ee/user/project/merge%5Frequests/status%5Fchecks.html) will appear like the following on your repository:
 
-![GitHub check run](https://developers.cloudflare.com/_astro/ghcheckrun.Cv3SMhfT_xxJai.webp)![GitLab commit status](https://developers.cloudflare.com/_astro/glcommitstatus.BXV17OMM_1I3UIK.webp)
+![GitHub check run](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1020,height=316,format=webp/_astro/ghcheckrun.Cv3SMhfT.png)![GitLab commit status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=584,height=176,format=webp/_astro/glcommitstatus.BXV17OMM.png)
 
 If a build skips for any reason (i.e. CI Skip, build watch paths, or branch deployment controls), the check run/commit status will not appear.
 
@@ -57,7 +57,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/monorepos/#page","headline":"Monorepos · Cloudflare Pages docs","description":"Deploy multiple Cloudflare Pages projects from a single monorepo repository.","url":"https://developers.cloudflare.com/pages/configuration/monorepos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

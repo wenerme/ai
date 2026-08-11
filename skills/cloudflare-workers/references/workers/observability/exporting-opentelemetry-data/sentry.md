@@ -18,7 +18,7 @@ Sentry is a software monitoring tool that helps developers identify and debug pe
 
 * Query logs and traces in Sentry
 * Create custom alerts and dashboards to monitor your Workers
-![Sentry trace view with timing information displayed on a timeline](https://developers.cloudflare.com/_astro/sentry-example.DU-HO2rh_20ehfq.webp)
+![Sentry trace view with timing information displayed on a timeline](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2474,height=862,format=webp/_astro/sentry-example.DU-HO2rh.png)
 
 This guide will walk you through exporting OpenTelemetry-compliant traces and logs to Sentry from your Cloudflare Worker application
 
@@ -124,7 +124,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/#page","headline":"Export to Sentry · Cloudflare Workers docs","description":"Export OpenTelemetry traces and logs from Cloudflare Workers to Sentry for monitoring and debugging.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

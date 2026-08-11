@@ -62,7 +62,7 @@ To enable email sending from other addresses on your domain, navigate to `Sender
 
 Next, you’re presented with a list of DNS records to add to your Cloudflare domain. On your Cloudflare dashboard, select the domain you entered earlier and navigate to `DNS` \> `Records`. Copy/paste the DNS records (DKIM, and Return-Path) from Postmark to your Cloudflare domain.
 
-![Image of adding DNS records to a Cloudflare domain](https://developers.cloudflare.com/_astro/add_dns_records.CuwqhmEV_Z1PK0DA.webp)
+![Image of adding DNS records to a Cloudflare domain](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1922,height=790,format=webp/_astro/add_dns_records.CuwqhmEV.png)
 
 Note
 
@@ -70,7 +70,7 @@ If you need more help adding DNS records in Cloudflare, refer to [Manage DNS rec
 
 When that’s done, head back to Postmark and click on the `Verify` buttons. If all records are properly configured, your domain status should be updated to `Verified`.
 
-![Image of domain verification on the Postmark dashboard](https://developers.cloudflare.com/_astro/verified_domain.CSwUI8xQ_ZJiRKw.webp)
+![Image of domain verification on the Postmark dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2338,height=1222,format=webp/_astro/verified_domain.CSwUI8xQ.png)
 
 To grab your API token, navigate to the `Servers` tab, then `My First Server` \> `API Tokens`, then copy your API key to a safe place.
 
@@ -162,7 +162,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/#page","headline":"Send Emails With Postmark · Cloudflare Workers docs","description":"This tutorial explains how to send transactional emails from Workers using Postmark.","url":"https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

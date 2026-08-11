@@ -4373,7 +4373,7 @@ Retrieves a model response with the given ID.
 
       - `"gpt-3.5-turbo-16k-0613"`
 
-    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 11 more`
+    - `ResponsesOnlyModel = "o1-pro" or "o1-pro-2025-03-19" or "o3-pro" or 14 more`
 
       - `"o1-pro"`
 
@@ -4402,6 +4402,12 @@ Retrieves a model response with the given ID.
       - `"gpt-5-pro-2025-10-06"`
 
       - `"gpt-5.1-codex-max"`
+
+      - `"gpt-daybreak-blue-latest"`
+
+      - `"gpt-daybreak-red-latest"`
+
+      - `"gpt-5.6-cyber"`
 
   - `object: "response"`
 

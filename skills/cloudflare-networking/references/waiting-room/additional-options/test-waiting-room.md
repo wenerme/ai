@@ -42,7 +42,7 @@ This sample plan simulates 200 active users visiting the site, slowly ramping up
 Before running the sample plan, edit the waiting room in the test plan to point to your own waiting room.
 
 1. Select **Waiting Room Simulation** to expand the test plan and then select **Request origin with waiting room** to update the test configuration.
-![Select Request origin with waiting room in the Waiting Room Simulation panel](https://developers.cloudflare.com/_astro/simulation-panel.BOynNfQl_20776m.webp)
+![Select Request origin with waiting room in the Waiting Room Simulation panel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=202,format=webp/_astro/simulation-panel.BOynNfQl.png)
 1. In the **HTTP Request** section update the **Protocol**, **Server Name or IP**, and **Path** fields to point to your test URL with waiting room enabled. For example, if your full URL looks like `https://www.example.com/deals/summer`, then the fields should match as the following:
 
 | Field             | Value                                       |
@@ -51,22 +51,22 @@ Before running the sample plan, edit the waiting room in the test plan to point 
 | Server Name or IP | [www.example.com ↗](http://www.example.com) |
 | Path              | deals/summer                                |
 
-![Update the HTTP Request section](https://developers.cloudflare.com/_astro/http-request-section.DlSKTrFb_Z4WyLu.webp)
+![Update the HTTP Request section](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=165,format=webp/_astro/http-request-section.DlSKTrFb.png)
 
 Then, select the **play** button to get the test started. This should take roughly around 3-4 minutes.
 
-![Select the play button](https://developers.cloudflare.com/_astro/navigation.CqQsxXoC_Z1zxoei.webp)
+![Select the play button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=130,format=webp/_astro/navigation.CqQsxXoC.png)
 * Each simulated user has the following attributes:
   * Contains a Cookie jar for cookies persistence.
   * Repeats for 20 times.
     * Makes a request to the origin site with waiting room enabled.
     * Logs request details.
     * Pauses for 10 seconds before refreshing the page to make another request to the origin site.
-![User attributes](https://developers.cloudflare.com/_astro/user-attributes.CMfB7b6L_6qoKz.webp)
+![User attributes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=259,format=webp/_astro/user-attributes.CMfB7b6L.png)
 
 Per the plan above, each [Thread Group ↗](https://jmeter.apache.org/usermanual/test%5Fplan.html#thread%5Fgroup) performs the above action once. The user traffic ramps up within the first minute and keeps a sustained traffic for the next three minutes before users leave the site. You can send more or less traffic than what is being sent in this example by updating these properties.
 
-![Visualizing number of threads](https://developers.cloudflare.com/_astro/threads.BTLucBgH_fTIip.webp)
+![Visualizing number of threads](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=376,height=194,format=webp/_astro/threads.BTLucBgH.png)
 
 ## 3\. Analyze results
 
@@ -125,7 +125,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/#page","headline":"Test a waiting room · Cloudflare Waiting Room docs","description":"Follow this tutorial to test your waiting room behavior in response to load. To accurately simulate traffic, run your test script or planner for a period of time longer than a minute, ideally more than 2-3 minutes.","url":"https://developers.cloudflare.com/waiting-room/additional-options/test-waiting-room/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

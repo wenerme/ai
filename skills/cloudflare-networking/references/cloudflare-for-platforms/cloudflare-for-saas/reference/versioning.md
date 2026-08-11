@@ -88,7 +88,7 @@ Before your migration, you should:
 3. Review the results of our pre-migration tool (run by your account team) using one of the following methods:
   * Via the API: `https://api.cloudflare.com/client/v4/zones/{zone_tag}/custom_hostnames?hostname_status={status}`
   * Via a CSV file (provided by your account team)
-  * Via the Cloudflare dashboard: ![Review SSL migration status in the dashboard](https://developers.cloudflare.com/_astro/ssl-migration-status.CLPmua84_25MgVb.webp)
+  * Via the Cloudflare dashboard: ![Review SSL migration status in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=630,height=188,format=webp/_astro/ssl-migration-status.CLPmua84.png)
 4. Approve the migration. Your account team will work with you to schedule a migration window for each of your SSL for SaaS zones.
 
 ## During the migration
@@ -115,7 +115,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/#page","headline":"Deprecation notice for SSL for SaaS - Version 1 · Cloudflare for Platforms docs","description":"Deprecation notice and migration guide for SSL for SaaS Version 1.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/versioning/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}

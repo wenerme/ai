@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Cloudflare helps Channel and Alliance partners manage their and their customers' accounts through a Tenant structure.
 
-![Partner accounts contain a tenant, which is a container for customer accounts and zones. For more details, keep reading.](https://developers.cloudflare.com/_astro/tenant-diagram.D0Hfc9bM_Z2lMoX4.webp)
+![Partner accounts contain a tenant, which is a container for customer accounts and zones. For more details, keep reading.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=5582,height=3855,format=webp/_astro/tenant-diagram.D0Hfc9bM.png)
 
 ## Tenants and Tenant admins
 
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tenant/structure/#page","headline":"Tenant structure · Cloudflare Tenant docs","description":"Understand how tenants, accounts, users, and zones relate in the Cloudflare Tenant model.","url":"https://developers.cloudflare.com/tenant/structure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

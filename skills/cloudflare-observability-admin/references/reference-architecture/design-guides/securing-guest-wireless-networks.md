@@ -22,7 +22,7 @@ Offering free wireless Internet access brings several benefits. Businesses use g
 
 However, providing guest Wi-Fi also introduces risks. Malicious users could exploit your network for illegal activities, such as accessing prohibited content, purchasing contraband, or engaging in cybercrime. In some cases, businesses like hotels, cafes, and libraries have faced lawsuits for allegedly enabling illegal downloads through their guest Wi-Fi. These lawsuits, often filed by copyright holders, claim that businesses facilitated piracy by failing to monitor or control the content accessed or downloaded by their guests.
 
-![Figure 1: Guest networks are often directly connected to the Internet with little security.](https://developers.cloudflare.com/_astro/figure1.BV1Def0b_ZKfzoy.svg "Figure 1: Guest networks are often directly connected to the Internet with little security.")
+![Figure 1: Guest networks are often directly connected to the Internet with little security.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=935,height=337,format=svg/_astro/figure1.BV1Def0b.svg "Figure 1: Guest networks are often directly connected to the Internet with little security.")
 
 Figure 1: Guest networks are often directly connected to the Internet with little security.
 
@@ -65,7 +65,7 @@ To route all DNS queries through Cloudflare, update your router's DNS settings i
 
 For enhanced security, prevent wireless guests from accessing other DNS services by creating a firewall rule on the router (if supported). This rule should allow access only to Cloudflare's DNS servers and block all other DNS destinations on UDP/TCP port 53\. Additionally, some advanced wireless routers support content filtering. If available, enable options to block DNS over TLS (DoT) or DNS over HTTPS (DoH) to ensure endpoints cannot bypass your configured DNS security settings in Cloudflare.
 
-![Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations. Guest-Security-Block and Guest-Content-Block refer to the specific DNS policies applied to the wireless guest devices.](https://developers.cloudflare.com/_astro/figure2.DLXV4yIx_ZKfzoy.svg "Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations.  `Guest-Security-Block` and `Guest-Content-Block` refer to the specific DNS policies applied to the wireless guest devices.")
+![Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations. Guest-Security-Block and Guest-Content-Block refer to the specific DNS policies applied to the wireless guest devices.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=935,height=337,format=svg/_astro/figure2.DLXV4yIx.svg "Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations.  `Guest-Security-Block` and `Guest-Content-Block` refer to the specific DNS policies applied to the wireless guest devices.")
 
 Figure 2: When DNS queries are forwarded to Cloudflare, policies can be implemented to prevent access to malicious and high risk destinations. \`Guest-Security-Block\` and \`Guest-Content-Block\` refer to the specific DNS policies applied to the wireless guest devices.
 
@@ -109,7 +109,7 @@ Refer to your firewall manufacturer's documentation for detailed instructions on
 
 Once guest network traffic is assigned a unique public IPv4 address, this address can be used as an attribute in the Cloudflare dashboard to map your DNS location effectively.
 
-![Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.](https://developers.cloudflare.com/_astro/figure3.BJGAREAk_Z1jwXVm.svg "Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.")
+![Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=931,height=564,format=svg/_astro/figure3.BJGAREAk.svg "Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.")
 
 Figure 3: This diagram shows how guest Wi-Fi traffic has different DNS filtering policies versus your use of our Gateway DNS service to secure corporate network traffic.
 
@@ -178,7 +178,7 @@ Up to this point all methods mentioned have revolved around DNS, mainly due to t
 
 For these reasons you should also consider applying security in layers and add network centric enforcement to complement the protections provided via DNS.
 
-![Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.](https://developers.cloudflare.com/_astro/figure4.NuRfhipz_Z1DvM8j.svg "Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.")
+![Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1538,height=607,format=svg/_astro/figure4.NuRfhipz.svg "Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.")
 
 Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.
 
@@ -212,7 +212,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/#page","headline":"Securing guest wireless networks · Cloudflare Reference Architecture docs","description":"This guide is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/securing-guest-wireless-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}

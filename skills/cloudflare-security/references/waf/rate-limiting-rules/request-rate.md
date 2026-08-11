@@ -59,7 +59,7 @@ Consider the following configuration for a rate limiting rule:
 
 The following diagram shows how Cloudflare handles four incoming requests in the context of the above rate limiting rule.
 
-![Rate limiting example with four requests where one of the requests is being rate limited. For details, keep reading.](https://developers.cloudflare.com/_astro/rate-limiting-example.D1wP7M8N_ZSYwuM.webp)
+![Rate limiting example with four requests where one of the requests is being rate limited. For details, keep reading.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=802,height=339,format=webp/_astro/rate-limiting-example.D1wP7M8N.png)
 
 Since request 1 matches the rule expression, the rate limiting rule is evaluated. Cloudflare defines a request counter for the values of the characteristics in the context of the rate limiting rule and sets the counter to `1`. Since the counter value is within the established limits in **Requests**, the request is allowed.
 
@@ -96,7 +96,7 @@ Consider the following configuration for a rate limiting rule. The rule counting
 
 The following diagram shows how Cloudflare handles these four incoming requests received during a 10-second period in the context of the above rate limiting rule.
 
-![Rate limiting example with four requests where the rate limiting rule uses a response field \(the HTTP response code\) in the counting expression. For details, keep reading.](https://developers.cloudflare.com/_astro/rate-limiting-example-response-field.eZyZiT6n_ZPr921.webp)
+![Rate limiting example with four requests where the rate limiting rule uses a response field \(the HTTP response code\) in the counting expression. For details, keep reading.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=838,height=707,format=webp/_astro/rate-limiting-example-response-field.eZyZiT6n.png)
 
 Since request 1 matches the rule expression, the rate limiting rule is evaluated. The request is sent to the origin, skipping any cached content, because the rate limiting rule includes a response field (`http.response.code`) in the counting expression. The origin responds with a `400` status code. Since there is a match for the counting expression, Cloudflare creates a request counter for the values of the characteristics in the context of the rate limiting rule, and sets this counter to `1`.
 
@@ -156,7 +156,7 @@ Consider the following configuration for a rate limiting rule. When there is a r
 
 The following diagram shows how Cloudflare handles four incoming requests received during a one-minute period in the context of the above rate limiting rule.
 
-![Rate limiting example with four requests where the rate limiting rule is configured to take into account the complexity score provided in the "x-score" HTTP header. For details, keep reading.](https://developers.cloudflare.com/_astro/rate-limiting-example-complexity-based.DzBdcLq-_Z2808XH.webp)
+![Rate limiting example with four requests where the rate limiting rule is configured to take into account the complexity score provided in the "x-score" HTTP header. For details, keep reading.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=890,height=705,format=webp/_astro/rate-limiting-example-complexity-based.DzBdcLq-.png)
 
 Since request 1 matches the rule expression, the rate limiting rule is evaluated. The origin responds with a `200` status code and a complexity score of `100` in the `x-score` HTTP response header. Cloudflare creates a request counter for the values of the characteristics in the context of the rate limiting rule, and sets this counter to `100`.
 
@@ -172,7 +172,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/#page","headline":"How Cloudflare determines the request rate · Cloudflare Web Application Firewall (WAF) docs","description":"How Cloudflare tracks and calculates request rates using rule characteristics.","url":"https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

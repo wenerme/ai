@@ -20,7 +20,7 @@ Every enrolled device and node receives a private IP address (Mesh IP) and can r
 
 Mesh nodes are Linux servers running the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) (`warp-cli`) in headless mode. Client devices are laptops and phones running the same client with a UI.
 
-![The Mesh network map in the Cloudflare dashboard showing nodes and devices connected through Cloudflare](https://developers.cloudflare.com/_astro/mesh-network-map.CED6jNHK_ZlOsym.webp)
+![The Mesh network map in the Cloudflare dashboard showing nodes and devices connected through Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2070,height=875,format=webp/_astro/mesh-network-map.CED6jNHK.gif)
 
 Note
 
@@ -116,7 +116,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/#page","headline":"Cloudflare Mesh - Private networking · Cloudflare One docs","description":"How Cloudflare Mesh works in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}

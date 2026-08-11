@@ -109,7 +109,7 @@ On Windows, Cloudflare Tunnel installs itself as a system service using the Regi
 ```txt
 C:\Program Files (x86)\cloudflared\.\cloudflared.exe tunnel --loglevel info --logfile <PATH> run --token <TOKEN VALUE>
 ```
-![Modify cloudflared service in the Registry Editor](https://developers.cloudflare.com/_astro/remote-management-windows.BFUIIr2f_Z1Rbddd.webp)
+![Modify cloudflared service in the Registry Editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1180,height=1050,format=webp/_astro/remote-management-windows.BFUIIr2f.png)
 
 ## Parameters
 
@@ -321,7 +321,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#page","headline":"Tunnel run parameters · Cloudflare One docs","description":"Modify tunnel service parameters to control how cloudflared runs on your system, including logging, connection settings, and protocol options.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}

@@ -56,7 +56,7 @@ Note
 
 You must have pushed at least one branch to your GitHub or GitLab project in order to select a **Production branch** from the dropdown menu.
 
-![Set up builds and deployments page with Project name and Production branch filled in](https://developers.cloudflare.com/_astro/configuration.C_N8MiKW_29FWsj.webp)
+![Set up builds and deployments page with Project name and Production branch filled in](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=984,height=349,format=webp/_astro/configuration.C_N8MiKW.png)
 
 ### Configure your build settings
 
@@ -68,11 +68,11 @@ You do not need a framework to deploy with Cloudflare Pages. You can continue wi
 
 The dashboard provides a number of framework-specific presets. These presets provide the default build command and build output directory values for the selected framework. If you are unsure what the correct values are for this section, refer to [Build configuration](https://developers.cloudflare.com/pages/configuration/build-configuration/). If you do not need a build step, leave the **Build command** field blank.
 
-![Build setting fields that need to be filled in](https://developers.cloudflare.com/_astro/build-settings.BREiHFn0_1Cthdx.webp)
+![Build setting fields that need to be filled in](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=966,height=802,format=webp/_astro/build-settings.BREiHFn0.png)
 
 Cloudflare Pages begins by working from your repository's root directory. The entire build pipeline, including the installation steps, will begin from this location. If you would like to change this, specify a new root directory location through the **Root directory (advanced)** \> **Path** field.
 
-![Root directory field to be filled in](https://developers.cloudflare.com/_astro/root-directory.CKTDgRpM_Z12p3GE.webp)
+![Root directory field to be filled in](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1023,height=322,format=webp/_astro/root-directory.CKTDgRpM.png)
 
 Understanding your build configuration
 
@@ -96,7 +96,7 @@ After you have chosen your _Framework preset_ or left this field blank if you ar
 
 After you have finished setting your build configuration, select **Save and Deploy**. Your project build logs will output as Cloudflare Pages installs your project dependencies, builds the project, and deploys it to Cloudflare's global network.
 
-![Deployment details in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/deploy-log.D8BQ4nzJ_Z100nHP.webp)
+![Deployment details in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1413,height=1689,format=webp/_astro/deploy-log.D8BQ4nzJ.png)
 
 When your project has finished deploying, you will receive a unique URL to view your deployed site.
 
@@ -108,7 +108,7 @@ If you encounter a DNS error after visiting your site after your first deploy, t
 
 After your first deploy, select **Continue to project** to see your project's configuration in the Cloudflare Pages dashboard. On this page, you can see your project's current deployment status, the production URL and associated commit, and all past deployments.
 
-![Site dashboard displaying your environments and deployments](https://developers.cloudflare.com/_astro/site-dashboard.Ct8X8ZRP_jnOJJ.webp)
+![Site dashboard displaying your environments and deployments](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1413,height=1037,format=webp/_astro/site-dashboard.Ct8X8ZRP.png)
 
 ### Delete a project
 
@@ -140,7 +140,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/get-started/git-integration/#page","headline":"Git integration guide · Cloudflare Pages docs","description":"Connect your Git provider to Pages.","url":"https://developers.cloudflare.com/pages/get-started/git-integration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

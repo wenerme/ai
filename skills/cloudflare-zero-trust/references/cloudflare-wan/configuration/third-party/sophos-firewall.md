@@ -67,13 +67,13 @@ The next step involves configuring a site-to-site IPsec VPN connection on your S
 5. In **Gateway settings**, make sure you have the following settings:
   * **Gateway address**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
   * **Local ID type**: Add the [IKE ID](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-ike-id-formats) provided by Cloudflare.
-![Configure an IPsec tunnel.](https://developers.cloudflare.com/_astro/2-ipsec-tunnel.EuRwmMGh_Z2fRf19.webp)
+![Configure an IPsec tunnel.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1628,height=1532,format=webp/_astro/2-ipsec-tunnel.EuRwmMGh.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
 After setting up your IPsec tunnel, it will show up on the IPsec connections list with an **Active** status.
 
-![The IPsec tunnel should show up on the IPsec connections list.](https://developers.cloudflare.com/_astro/2b-ipsec-tunnel.DcLZdCzX_x4Woo.webp)
+![The IPsec tunnel should show up on the IPsec connections list.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=599,format=webp/_astro/2b-ipsec-tunnel.DcLZdCzX.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -84,7 +84,7 @@ You must use an interface address from the `/31` subnet required to [configure t
 1. Go to **Configure** \> **Network**.
 2. In **Interfaces**, select the corresponding interface to the IPsec tunnel you created in [step 2](#2-create-ipsec-connection-tunnel).
 3. Edit the interface to assign an address from the `/31` subnet required to [configure tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/). When you are finished, it should look similar to the following:
-![Configure a XFRM interface.](https://developers.cloudflare.com/_astro/3-xfrm-interface.Dks8X1E8_1qADaA.webp)
+![Configure a XFRM interface.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=254,format=webp/_astro/3-xfrm-interface.Dks8X1E8.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -92,7 +92,7 @@ _Note: Labels in this image may reflect a previous product name._
 
 1. Go to **Protect** \> **Rules and policies**.
 2. In **Firewall rules**, create a firewall rule with the criteria and security policies from your company that allows traffic to flow between Sophos and Cloudflare WAN.
-![Create a firewall rule with the criteria and security policies from your company](https://developers.cloudflare.com/_astro/4-firewall-rule.CfVt6IDY_1LhHzV.webp)
+![Create a firewall rule with the criteria and security policies from your company](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=670,format=webp/_astro/4-firewall-rule.CfVt6IDY.png)
 
 ### 5\. Disable IPsec anti-replay
 
@@ -107,7 +107,7 @@ Below are instructions on how to achieve this on SFOS version 19 and SFOS versio
 ```bash
 set vpn ipsec-performance anti-replay window-size 0
 ```
-![Access the CLI to disable anti-replay](https://developers.cloudflare.com/_astro/5-sfos-19.CmXNwDG8_1ihKU5.webp)
+![Access the CLI to disable anti-replay](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=610,height=148,format=webp/_astro/5-sfos-19.CmXNwDG8.png)
 
 #### Older SFOS versions
 
@@ -124,7 +124,7 @@ Start by configuring a GRE tunnel between SFOS and the Cloudflare anycast IP add
 ```bash
 system gre tunnel add name <NAME_OF_YOUR_GRE_TUNNEL> local-gw <WAN_PORT> remote-gw <REMOTE_GATEWAY_IP_ADDRESS> local-ip <LOCAL_IP_ADDRESS> remote-ip <REMOTE_IP_ADDRESS>
 ```
-![Access the CLI to configure a GRE tunnel](https://developers.cloudflare.com/_astro/1-gre-connection.BwxtP6sM_1eJzNN.webp)
+![Access the CLI to configure a GRE tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1452,height=218,format=webp/_astro/1-gre-connection.BwxtP6sM.png)
 For more details, refer to the [Sophos Firewall knowledge base ↗](https://support.sophos.com/support/s/article/KB-000035813?language=en%5FUS).
 
 ### 2\. Add a GRE or SD-WAN route to redirect traffic through the GRE tunnel
@@ -137,7 +137,7 @@ Create a firewall rule with the criteria and security policies from your company
 
 1. Go to **Protect** \> **Rules and policies**.
 2. In **Firewall rules**, select **IPv4** \> **Add firewall rule**.
-![Create a firewall rule with the criteria and security policies from your company](https://developers.cloudflare.com/_astro/4-firewall-rule.CfVt6IDY_1LhHzV.webp)
+![Create a firewall rule with the criteria and security policies from your company](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=670,format=webp/_astro/4-firewall-rule.CfVt6IDY.png)
 
 ## Traffic redirection mechanism on Sophos Firewall
 
@@ -149,19 +149,19 @@ To redirect traffic, you can add a static or an SD-WAN route.
 
 Go to **Configure** \> **Routing** \> **Static routes** to add an XFRM interface-based route. The interface will be automatically created when you set up a tunnel interface based on IPsec (such as the Cloudflare\_MWAN example from above).
 
-![Go to static routes to add an XFRM interface-based route](https://developers.cloudflare.com/_astro/static-route.Cv8cjbPi_1Hy05J.webp)
+![Go to static routes to add an XFRM interface-based route](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=689,format=webp/_astro/static-route.Cv8cjbPi.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
 #### SD-WAN route
 
 1. Go to **Configure** \> **Routing** \> **Gateways** to create a custom gateway on the XFRM interface. The interface will be automatically created when you set up a tunnel interface based on IPsec (such as the Cloudflare\_MWAN example from above).
-![Go to Gateways to add an XFRM interface-based route](https://developers.cloudflare.com/_astro/1-sd-wan-gateway.B-zYNWQF_ZftI9B.webp)
+![Go to Gateways to add an XFRM interface-based route](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=473,format=webp/_astro/1-sd-wan-gateway.B-zYNWQF.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
 1. In **Configure** \> **Routing** \> **SD-WAN routes**, select **Add** to add the desired networks and services in the route to redirect traffic to Cloudflare. Enter a descriptive name for your connection, and the IP addresses you set up for your IPsec tunnels in **Incoming interface** and **Source networks**. Do not forget to choose the correct **Primary gateway** option.
-![Go to SD-WAN to add the desired networks and services in the route.](https://developers.cloudflare.com/_astro/2-sd-wan-routes.ZK7MHrV6_ZTINg0.webp)
+![Go to SD-WAN to add the desired networks and services in the route.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1738,height=1512,format=webp/_astro/2-sd-wan-routes.ZK7MHrV6.png)
 
 ### GRE
 
@@ -178,14 +178,14 @@ Add the route on the CLI.
 system gre route add net <IP_ADDRESS> tunnelname <TUNNEL_NAME>
 ```
 
-![Add the route on the CLI.](https://developers.cloudflare.com/_astro/gre-route-cli.eRcqLJze_2kJjaG.webp)
+![Add the route on the CLI.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=928,height=222,format=webp/_astro/gre-route-cli.eRcqLJze.png)
 
 #### SD-WAN route
 
 1. Add a custom gateway on GRE with the peer IP address (from the `/31` subnet you chose earlier) as the Gateway IP address, and disable **Health check**.
-![Add a custom gateway on GRE.](https://developers.cloudflare.com/_astro/sd-wan-1-gre.CApTTOXu_ZXAQT2.webp)
+![Add a custom gateway on GRE.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1726,height=588,format=webp/_astro/sd-wan-1-gre.CApTTOXu.png)
 1. Add an SD-WAN route with the desired networks and services in the route to redirect traffic to Cloudflare.
-![Add an SD-WAN route.](https://developers.cloudflare.com/_astro/2-sd-wan-routes.ZK7MHrV6_ZTINg0.webp)
+![Add an SD-WAN route.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1738,height=1512,format=webp/_astro/2-sd-wan-routes.ZK7MHrV6.png)
 
 ## Verify tunnel status on Cloudflare dashboard
 
@@ -212,9 +212,9 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{
 ```
 
 1. Go to **Configure** \> **Network** \> **Interfaces** \> **Add alias**. Add the IP address provided by Cloudflare for the ICMP probe traffic. This is needed to prevent Sophos firewall from dropping them as spoof packets. This is not the same IP used to create VPN. This is the special IP address for probe traffic only.
-![Add the IP address provided by Cloudflare to prevent the probe from being dropped by the firewall.](https://developers.cloudflare.com/_astro/2-icmp-probe-firewall.BD1XaeDb_Z2b9mrl.webp)
+![Add the IP address provided by Cloudflare to prevent the probe from being dropped by the firewall.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=164,format=webp/_astro/2-icmp-probe-firewall.BD1XaeDb.png)
 1. ICMP reply from SFOS should go back via the same tunnel on which the probe packets are received. You will need to create an additional SD-WAN policy route.
-![Configure an SD-WAN route so the ICMP reply goes back to Cloudflare via the same tunnel.](https://developers.cloudflare.com/_astro/3-icmp-probe-reply.CX60fYHN_ZcXTvb.webp)
+![Configure an SD-WAN route so the ICMP reply goes back to Cloudflare via the same tunnel.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1746,height=1380,format=webp/_astro/3-icmp-probe-reply.CX60fYHN.png)
 
 Packet flow will look like the following:
 
@@ -239,13 +239,13 @@ listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 byt
 
 When the tunnel is working, its **Status** will be green.
 
-![If the tunnel is working, it will show up with a green status.](https://developers.cloudflare.com/_astro/2b-ipsec-tunnel.DcLZdCzX_x4Woo.webp)
+![If the tunnel is working, it will show up with a green status.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=599,format=webp/_astro/2b-ipsec-tunnel.DcLZdCzX.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
 The corresponding XFRM interface will also show a **Connected** status.
 
-![The XFRM interface will also show a connected status.](https://developers.cloudflare.com/_astro/1-sd-wan-gateway.B-zYNWQF_ZftI9B.webp)
+![The XFRM interface will also show a connected status.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=473,format=webp/_astro/1-sd-wan-gateway.B-zYNWQF.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -253,7 +253,7 @@ _Note: Labels in this image may reflect a previous product name._
 
 Access the CLI and type `system gre tunnel show` to check the status of a GRE tunnel. When the tunnel is working, its status will show up as **Enabled**.
 
-![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/_astro/gre-status-enabled.CkTEu5BC_1WI6zo.webp)![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/_astro/gre-status-enabled-b.D8-vH0Du_Z2feWHr.webp)
+![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1466,height=122,format=webp/_astro/gre-status-enabled.CkTEu5BC.png)![The GRE tunnel will show a status of Enabled when working.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=262,format=webp/_astro/gre-status-enabled-b.D8-vH0Du.png)
 
 ## Troubleshooting
 
@@ -273,7 +273,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/sophos-firewall/#page","headline":"Sophos Firewall · Cloudflare WAN docs","description":"Connect Sophos Firewall to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/sophos-firewall/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

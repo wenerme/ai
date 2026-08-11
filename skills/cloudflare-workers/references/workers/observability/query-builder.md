@@ -86,7 +86,7 @@ The Query Builder supports many visualization operators, including:
 
 You can add multiple visualizations in a single query. Each visualization renders a graph. A single summary table is also returned, which shows the raw query results.
 
-![Example of showing the Query Builder with multiple visualization](https://developers.cloudflare.com/_astro/wobs_QB_visualization_122.DhDuHs4F_Z2uqhiM.webp)
+![Example of showing the Query Builder with multiple visualization](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2102,height=794,format=webp/_astro/wobs_QB_visualization_122.DhDuHs4F.png)
 
 All methods are aggregate functions. Most methods operate on a specific field in the log event. `Count` is an exception, and is an aggregate function that returns the number of log events matching the filter conditions.
 
@@ -141,19 +141,19 @@ There are three views for queries: Visualizations, Invocations, and Events.
 
 The **Visualizations** tab shows graphs and a summary table for the query.
 
-![Visualization Overview](https://developers.cloudflare.com/_astro/wobs_visualizations_tab_122.dttsF_Ab_1NkPwo.webp)
+![Visualization Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2142,height=1226,format=webp/_astro/wobs_visualizations_tab_122.dttsF_Ab.png)
 
 ### Invocations tab
 
 The **Invocations** tab shows all logs, grouped by by the invocation, and ordered by timestamp. Only invocations matching the query criteria are returned.
 
-![Invocations Overview](https://developers.cloudflare.com/_astro/wobs_invocation_logs_full_list_122.BDOkV-CS_1SqSVt.webp)
+![Invocations Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2112,height=966,format=webp/_astro/wobs_invocation_logs_full_list_122.BDOkV-CS.png)
 
 ### Events tab
 
 The **Events** tab shows all logs, ordered by timestamp. Only events matching the query criteria are returned. The Events tab can be customized to add additional fields in the view.
 
-![Overview](https://developers.cloudflare.com/_astro/wobs_events_dropdown_122.BxN7hYlH_1mkKBy.webp)
+![Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2106,height=764,format=webp/_astro/wobs_events_dropdown_122.BxN7hYlH.png)
 
 ## Save queries
 
@@ -181,19 +181,19 @@ Saved queries are assigned a unique URL and can be shared with any user in the a
 
 In this example, we will construct a query to find and debug all paths that respond with 5xx errors. First, we create a base query. In this base query, we want to visualize by the raw event count. We can add a filter for `$workers.event.response.status` that is greater than 500\. Then, we group by `$workers.event.request.path` and `$workers.event.response.status` to identify the number of requests that were affected by this behavior.
 
-![Constructing a query](https://developers.cloudflare.com/_astro/wobs_QB_visualization_122.DhDuHs4F_Z2uqhiM.webp)
+![Constructing a query](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2102,height=794,format=webp/_astro/wobs_QB_visualization_122.DhDuHs4F.png)
 
 The results show that the `/agents/chat/default` path has been experiencing 404s and 500s. Now, we can apply a filter for this path and investigate.
 
-![Adding an additional field to the query](https://developers.cloudflare.com/_astro/wobs_QB_visualization_filter_122.DRsPzi0e_12UePv.webp)
+![Adding an additional field to the query](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2104,height=924,format=webp/_astro/wobs_QB_visualization_filter_122.DRsPzi0e.png)
 
 Now, we can investigate by selecting the **Invocations** tab. We can see that there were two logged invocations of this error.
 
-![Examining the Invocations tab in the Query Builder](https://developers.cloudflare.com/_astro/wobs_invocation_logs_full_list_122.BDOkV-CS_1SqSVt.webp)
+![Examining the Invocations tab in the Query Builder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2112,height=966,format=webp/_astro/wobs_invocation_logs_full_list_122.BDOkV-CS.png)
 
 We can expand a single invocation to view the relevant logs, and continue to debug.
 
-![Viewing the logs for a single Invocation](https://developers.cloudflare.com/_astro/wobs_invocation_logs_122.Bno9WyO1_9W3QT.webp)
+![Viewing the logs for a single Invocation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2112,height=566,format=webp/_astro/wobs_invocation_logs_122.Bno9WyO1.png)
 
 Was this helpful?
 
@@ -201,7 +201,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/query-builder/#page","headline":"Query Builder · Cloudflare Workers docs","description":"Write structured queries to investigate and visualize your telemetry data.","url":"https://developers.cloudflare.com/workers/observability/query-builder/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

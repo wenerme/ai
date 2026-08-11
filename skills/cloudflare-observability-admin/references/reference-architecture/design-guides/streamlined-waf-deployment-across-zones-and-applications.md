@@ -51,7 +51,7 @@ For example, you could be in the following (or similar) scenario:
 * You also have some legacy web applications that are running on their custom stacks.
 * Finally, you may have dedicated infrastructure (managed by a partner) for a few applications.
 
-The example scenario is visualized in the below diagram: ![Diagram showing the example scenario with multiple domains, subdomains and web applications](https://developers.cloudflare.com/_astro/diagram-1.D8xm98w0_DTyh4.svg "Figure 1: An example scenario with multiple domains, subdomains and web applications.")
+The example scenario is visualized in the below diagram: ![Diagram showing the example scenario with multiple domains, subdomains and web applications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=499,height=401,format=svg/_astro/diagram-1.D8xm98w0.svg "Figure 1: An example scenario with multiple domains, subdomains and web applications.")
 
 ### WAF Requirements
 
@@ -79,7 +79,7 @@ Let's imagine that there are six applications behind six FQDNs across two domain
 
 Let's visualize the scenario below:
 
-![Diagram showing how the example scenario can be modelled in a Cloudflare Account with multiple zones](https://developers.cloudflare.com/_astro/diagram-2.DsX9Y3eo_Z27fUdz.svg "Figure 2: The example scenario now included in a Cloudflare Account with multiple zones.")
+![Diagram showing how the example scenario can be modelled in a Cloudflare Account with multiple zones](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=521,height=420,format=svg/_astro/diagram-2.DsX9Y3eo.svg "Figure 2: The example scenario now included in a Cloudflare Account with multiple zones.")
 
 Figure 2: The example scenario now included in a Cloudflare Account with multiple zones.
 
@@ -104,7 +104,7 @@ In practice, using the [Account Level WAF's Managed rulesets](https://developers
 
 Let's visualize the complete configuration in the below diagram:
 
-![Diagram depicting the implemented WAF configuration at the account level](https://developers.cloudflare.com/_astro/diagram-3.DrnYaql1_7zjjv.svg "Figure 3: The Account WAF implementation to protect multiple applications across different hostnames with repeatable configurations.")
+![Diagram depicting the implemented WAF configuration at the account level](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=888,height=450,format=svg/_astro/diagram-3.DrnYaql1.svg "Figure 3: The Account WAF implementation to protect multiple applications across different hostnames with repeatable configurations.")
 
 Figure 3: The Account WAF implementation to protect multiple applications across different hostnames with repeatable configurations.
 
@@ -167,7 +167,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/#page","headline":"Streamlined WAF deployment across zones and applications · Cloudflare Reference Architecture docs","description":"Learn how to streamline WAF deployment across different zones and applications.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/streamlined-waf-deployment-across-zones-and-applications/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

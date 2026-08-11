@@ -30,7 +30,7 @@ When a client visits your application, Cloudflare directs their request to a hea
 
 Cloudflare performs layer 7 load balancing when traffic to your hostname is **proxied** through Cloudflare. In the **Load Balancing** dashboard, these load balancers are marked with an orange cloud.
 
-![DNS-only load balancers are marked with an orange cloud](https://developers.cloudflare.com/_astro/proxied-load-balancer.BMq3VCyA_1BeaMW.webp)
+![DNS-only load balancers are marked with an orange cloud](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2402,height=434,format=webp/_astro/proxied-load-balancer.BMq3VCyA.png)
 
 Caution
 
@@ -58,7 +58,7 @@ When a client visits your application, Cloudflare provides the address for a hea
 
 Cloudflare performs DNS-only load balancing when traffic to your hostname is **not proxied** through Cloudflare. In the **Load Balancing** dashboard, these load balancers are marked with a gray cloud.
 
-![DNS-only load balancers are marked with a gray cloud](https://developers.cloudflare.com/_astro/dns-only-load-balancer.DI9EgD6m_1nkQpb.webp)
+![DNS-only load balancers are marked with a gray cloud](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2402,height=434,format=webp/_astro/dns-only-load-balancer.DI9EgD6m.png)
 
 Note
 
@@ -99,7 +99,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/#page","headline":"Proxy status · Cloudflare Load Balancing docs","description":"Proxy status options for load balanced traffic.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/proxy-modes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

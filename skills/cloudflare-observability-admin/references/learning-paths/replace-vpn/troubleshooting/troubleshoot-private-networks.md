@@ -20,7 +20,7 @@ Follow this troubleshooting procedure when end users running the Cloudflare One 
 
 The Cloudflare One Client GUI should display `Connected` and `Your Internet is protected`.
 
-![Cloudflare One Client GUI when connected to Cloudflare](https://developers.cloudflare.com/_astro/warp-connected.NWD7Y4NW_1F03OI.webp)
+![Cloudflare One Client GUI when connected to Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=748,height=371,format=webp/_astro/warp-connected.NWD7Y4NW.png)
 
 If the Cloudflare One Client is stuck in the `Disconnected` state or frequently changes between `Connected` and `Disconnected`, refer to [Unable to connect WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/#unable-to-connect-warp).
 
@@ -130,7 +130,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/#page","headline":"Troubleshoot private networks · Cloudflare Learning Paths","description":"Debug private network connectivity issues.","url":"https://developers.cloudflare.com/learning-paths/replace-vpn/troubleshooting/troubleshoot-private-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

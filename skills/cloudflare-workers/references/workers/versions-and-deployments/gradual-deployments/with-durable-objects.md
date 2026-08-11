@@ -18,7 +18,7 @@ To provide [global uniqueness](https://developers.cloudflare.com/durable-objects
 
 When you create a new gradual deployment for a Worker with Durable Objects, each Durable Object is assigned a Worker version based on the percentages you configured in your [deployment](https://developers.cloudflare.com/workers/versions-and-deployments/#deployments). This version will not change until you create a new deployment.
 
-![Gradual Deployments Durable Objects](https://developers.cloudflare.com/_astro/durable-objects.D92CiuSQ_1zYrvV.webp)
+![Gradual Deployments Durable Objects](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1072,height=452,format=webp/_astro/durable-objects.D92CiuSQ.png)
 
 ## Example
 
@@ -79,7 +79,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/#page","headline":"With Durable Objects · Cloudflare Workers docs","description":"How gradual deployments work with Durable Objects, including version assignment, migrations, and guarantees.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/with-durable-objects/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

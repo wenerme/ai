@@ -43,11 +43,11 @@ An enterprise vibe coding platform consists of three systems where existing ente
 
 Observability, discoverability, and cost controls should be embedded across all three components. [Resource tagging](https://developers.cloudflare.com/resource-tagging/) applied across the lifecycle provides visibility, allowing platform administrators to track and manage all applications, users, and resources in one place.
 
-![Enterprise AI Vibe Coding Platform core architecture](https://developers.cloudflare.com/_astro/core-architecture.B8Ki_RgU_ZxxO4n.webp)
+![Enterprise AI Vibe Coding Platform core architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3660,height=1944,format=webp/_astro/core-architecture.B8Ki_RgU.png)
 
 ## Development plane
 
-![Development plane architecture](https://developers.cloudflare.com/_astro/dev-plane.NqZZK6t7_UFjai.webp)
+![Development plane architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3601,height=1453,format=webp/_astro/dev-plane.NqZZK6t7.png)
 
 [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) protects the entrypoint to the platform, whether that is a web-based user interface or authenticated access to a coding harness through the CLI. Access integrates with existing identity providers (Okta, Azure AD, Google Workspace) via SAML and OIDC, allowing organizations to use their existing SSO.
 
@@ -65,7 +65,7 @@ Additional security controls can be layered into the development container throu
 
 ## Deployment pipeline
 
-![Deployment pipeline architecture](https://developers.cloudflare.com/_astro/deploy-pipeline.EzZfQ_4z_Z2jSbac.webp)
+![Deployment pipeline architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3129,height=1092,format=webp/_astro/deploy-pipeline.EzZfQ_4z.png)
 
 Assets generated in the development plane can be stored in existing enterprise code repositories or in [Artifacts](https://developers.cloudflare.com/artifacts/), Cloudflare's git-compatible storage built for agents. Teams can embed vibe-coded output into existing code review flows to ensure best practices and development controls are applied before the application is deployed to a production environment.
 
@@ -73,7 +73,7 @@ The platform integrates with existing enterprise software development workflows.
 
 ## Production plane
 
-![Production plane architecture](https://developers.cloudflare.com/_astro/prod-plane.BTqpSHQ2_Zv41ai.webp)
+![Production plane architecture](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3126,height=1755,format=webp/_astro/prod-plane.BTqpSHQ2.png)
 
 Deployed applications are hosted on [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/). [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/) verifies and secures employee or third-party access for the entire custom domain, controlling access to deployed applications through the [dispatch worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/). Granular access controls can be applied at the dispatch worker level to ensure user access matches role-based access control and assigned permissions.
 
@@ -93,7 +93,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/#page","headline":"Enterprise AI Vibe Coding Platform · Cloudflare Reference Architecture docs","description":"Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

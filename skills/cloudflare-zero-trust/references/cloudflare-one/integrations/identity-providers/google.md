@@ -23,7 +23,7 @@ You do not need to be a Google Cloud Platform user to integrate Google as an ide
 1. Log in to the Google Cloud Platform [console ↗](https://console.cloud.google.com/). Create a new project, name the project, and select **Create**.
 2. On the project home page, go to **APIs & Services** and on the sidebar select **Credentials**.
 3. Select **Configure Consent Screen**.
-![Location to configure a Consent Screen in the Google Cloud Platform console.](https://developers.cloudflare.com/_astro/configure-consent-screen.ChcdZJTT_19gGur.webp)
+![Location to configure a Consent Screen in the Google Cloud Platform console.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3780,height=1158,format=webp/_astro/configure-consent-screen.ChcdZJTT.png)
 4. To configure the consent screen:
 
   1. Select **Get started**.
@@ -33,7 +33,7 @@ You do not need to be a Google Cloud Platform user to integrate Google as an ide
   5. Agree to Google's user data policy and select **Continue**.
   6. Select **Create**.
 5. The OAuth overview page will load. On the OAuth overview screen, select **Create OAuth client**.
-![Location to create an OAuth client in the Google Cloud Platform console.](https://developers.cloudflare.com/_astro/create-oauth-client.BkzE5MZU_Z1EL96B.webp)
+![Location to create an OAuth client in the Google Cloud Platform console.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3776,height=1106,format=webp/_astro/create-oauth-client.BkzE5MZU.png)
 6. Choose _Web application_ as the **Application type** and give your OAuth Client ID a name.
 7. Under **Authorized JavaScript origins**, in the **URIs** field, enter your team domain:
 ```txt
@@ -82,7 +82,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google/#page","headline":"Google · Cloudflare One docs","description":"Google in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}

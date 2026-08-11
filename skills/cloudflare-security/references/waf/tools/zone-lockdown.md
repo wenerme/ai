@@ -140,7 +140,7 @@ A [custom rule](https://developers.cloudflare.com/waf/custom-rules/create-dashbo
 
 A visitor from an unauthorized IP will get the following error when there is a match for a zone lockdown rule:
 
-![Example of Error 1106 \(access denied\) received by a user accessing the zone from an unauthorized IP address](https://developers.cloudflare.com/_astro/zone-lockdown-rule-error-1106-access-denied.BUWE8ETx_pgVLG.webp)
+![Example of Error 1106 \(access denied\) received by a user accessing the zone from an unauthorized IP address](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=353,format=webp/_astro/zone-lockdown-rule-error-1106-access-denied.BUWE8ETx.png)
 
 ---
 
@@ -156,7 +156,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/tools/zone-lockdown/#page","headline":"Zone Lockdown · Cloudflare Web Application Firewall (WAF) docs","description":"Restrict access to specific URLs by allowlisted IP addresses.","url":"https://developers.cloudflare.com/waf/tools/zone-lockdown/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

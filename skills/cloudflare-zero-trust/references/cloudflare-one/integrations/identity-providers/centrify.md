@@ -26,7 +26,7 @@ Centrify secures access to infrastructure, DevOps, cloud, and other modern enter
 4. Select the **Custom** tab, then select **Add OpenID Connect**.
 5. On the **Add Web App** screen, select **Yes** to create an OpenID Connect application.
 6. Enter an **Application ID**.
-![Centrify Settings with Application ID added](https://developers.cloudflare.com/_astro/centrify-4.C0i78_vc_ZkDtB8.webp)
+![Centrify Settings with Application ID added](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1136,format=webp/_astro/centrify-4.C0i78_vc.png)
 7. Select **Save**.
 8. Select **Trust** in the **Settings** menu.
 9. Enter a strong application secret on the **Trust** section.
@@ -37,7 +37,7 @@ Centrify secures access to infrastructure, DevOps, cloud, and other modern enter
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** \> **Team name and domain** \> **Team name**.
-![Centrify Trust Identity Provider Configuration with team domain and callback](https://developers.cloudflare.com/_astro/centrify-6.ChCQ_t69_ZFR8qj.webp)
+![Centrify Trust Identity Provider Configuration with team domain and callback](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1343,format=webp/_astro/centrify-6.ChCQ_t69.png)
 13. Select **Save**.
 14. Copy the following values:
 * **Client ID**
@@ -79,7 +79,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/centrify/#page","headline":"Centrify · Cloudflare One docs","description":"Centrify in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/centrify/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["OIDC","SSO"]}

@@ -18,7 +18,7 @@ Client sessions control how often users must re-authenticate with your identity 
 
 When a user goes to a protected application or website, Cloudflare checks their device client session duration against the configured session timeout. If the session has expired, the user will be prompted to re-authenticate with the identity provider (IdP) used to enroll in the Cloudflare One Client.
 
-![Cloudflare One Client prompts user to re-authenticate session.](https://developers.cloudflare.com/_astro/warp-reauthenticate-session.BjGtdKWz_18URJV.webp)
+![Cloudflare One Client prompts user to re-authenticate session.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=404,height=504,format=webp/_astro/warp-reauthenticate-session.BjGtdKWz.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -124,7 +124,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/#page","headline":"Client sessions · Cloudflare One docs","description":"Client sessions in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/client-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft Entra ID"]}

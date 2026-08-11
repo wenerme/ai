@@ -25,7 +25,7 @@ Deploy to Cloudflare buttons simplify the deployment of a Workers application by
 * **Clone a Git repository**: Cloudflare clones your source repository into the user's GitHub/GitLab account where they can continue development after deploying.
 * **Configure a project**: Your users can customize key details such as repository name, Worker name, and required resource names in a single setup page with customizations reflected in the newly created Git repository.
 * **Build & deploy**: Cloudflare builds the application using [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds) and deploys it to the Cloudflare network. Any required resources are automatically provisioned and bound to the Worker without additional setup.
-![Deploy to Cloudflare Flow](https://developers.cloudflare.com/_astro/dtw-user-flow.zgS3Y8iK_Z1r8gDo.webp)
+![Deploy to Cloudflare Flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=4306,height=1344,format=webp/_astro/dtw-user-flow.zgS3Y8iK.png)
 
 ## How to Set Up Deploy to Cloudflare buttons
 
@@ -45,7 +45,7 @@ https://deploy.workers.cloudflare.com/?url=<YOUR_REPO_URL>
 
 If you have already deployed your application using Workers Builds, you can generate a Deploy to Cloudflare button directly from the Cloudflare dashboard by selecting the share button (located within your Worker details) and copying the provided snippet.
 
-![Share an application](https://developers.cloudflare.com/_astro/dtw-share-project.CTDMrwQu_1LDIEO.webp)
+![Share an application](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=388,height=519,format=webp/_astro/dtw-share-project.CTDMrwQu.png)
 
 Once you have your snippet, you can paste this wherever you would like your button to be displayed.
 
@@ -67,7 +67,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
   "name": "my-worker",
   "main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
   "vars": {
     "API_HOST": "https://example.com",
   },
@@ -78,7 +78,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 
 [vars]
 API_HOST = "https://example.com"
@@ -97,7 +97,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
   "name": "my-worker",
   "main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
 	"secrets_store_secrets": [
 		{
 			"binding": "API_KEY",
@@ -112,7 +112,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 
 [[secrets_store_secrets]]
 binding = "API_KEY"
@@ -174,7 +174,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/deploy-buttons/#page","headline":"Deploy to Cloudflare buttons · Cloudflare Workers docs","description":"Set up a Deploy to Cloudflare button","url":"https://developers.cloudflare.com/workers/platform/deploy-buttons/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

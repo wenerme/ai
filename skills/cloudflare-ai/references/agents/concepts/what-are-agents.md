@@ -34,7 +34,7 @@ A traditional automation system follows a predetermined sequence:
 * Calls predefined API endpoints in a fixed order
 * Returns results based on hardcoded criteria
 * Cannot adapt if unexpected situations arise
-![Traditional workflow automation diagram](https://developers.cloudflare.com/_astro/workflow-automation.D1rsykgR_Z2iYQux.svg)
+![Traditional workflow automation diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=781,height=188,format=svg/_astro/workflow-automation.D1rsykgR.svg)
 
 ### AI Co-pilot
 
@@ -44,7 +44,7 @@ A co-pilot acts as an intelligent assistant that:
 * Can understand and respond to natural language queries
 * Offers guidance and suggestions
 * Requires human decision-making and action for execution
-![A co-pilot diagram](https://developers.cloudflare.com/_astro/co-pilot.BZ_kRuK6_1vWJip.svg)
+![A co-pilot diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=625,height=188,format=svg/_astro/co-pilot.BZ_kRuK6.svg)
 
 ### Agent
 
@@ -54,7 +54,7 @@ An agent combines AI's ability to make judgments and call the relevant tools to 
 * Dynamic prioritization of constraints
 * Ability to recover from failures
 * Adaptive decision-making based on intermediate results
-![An agent diagram](https://developers.cloudflare.com/_astro/agent-workflow.5VDKtHdO_13FaoI.svg)
+![An agent diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=625,height=419,format=svg/_astro/agent-workflow.5VDKtHdO.svg)
 
 An agent can dynamically generate an itinerary and execute on booking reservations, similarly to what you would expect from a travel agent.
 
@@ -105,7 +105,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/concepts/what-are-agents/#page","headline":"What are agents? · Cloudflare Agents docs","description":"Understand what Agents are, how they differ from workflows and co-pilots, and when to use them.","url":"https://developers.cloudflare.com/agents/concepts/what-are-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI","LLM"]}

@@ -168,7 +168,7 @@ By default, Security Analytics uses sampled logs (a subset of your traffic rathe
 
 This section contains detailed log information for individual ([sampled](#sampling)) requests in the selected time frame.
 
-![The Sampled logs section of Security Analytics showing an expanded log entry with additional details.](https://developers.cloudflare.com/_astro/security-analytics-sampled-logs.CwY4DcKL_2aD15N.webp)
+![The Sampled logs section of Security Analytics showing an expanded log entry with additional details.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1015,height=808,format=webp/_astro/security-analytics-sampled-logs.CwY4DcKL.png)
 
 The displayed information includes:
 
@@ -233,7 +233,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics · Cloudflare Web Application Firewall (WAF) docs","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}

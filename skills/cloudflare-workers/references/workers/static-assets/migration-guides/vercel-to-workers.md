@@ -28,7 +28,7 @@ To move your application to Cloudflare Workers, you will need to know your build
 
 In your Vercel Dashboard, find the project you want to migrate to Workers. Go to the **Settings** tab for your specific project and find the **Build & Development settings** panel. You will find the **Build Command** and **Output Directory** fields there. If you are using a framework, these values may not be filled in but will show the defaults used by the framework. Save these for deploying to Cloudflare Workers. In the below image, the **Build Command** is `npm run build`, and the **Output Directory** is `dist`.
 
-![Finding the Build Command and Output Directory fields](https://developers.cloudflare.com/_astro/vercel-deploy-1.DrHD4fam_2hTL0B.webp)
+![Finding the Build Command and Output Directory fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1848,height=1100,format=webp/_astro/vercel-deploy-1.DrHD4fam.png)
 
 ## Create a wrangler file
 
@@ -42,7 +42,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 {
 	"name": "<your-project-name>",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
 	"assets": {
 		"directory": "<your-build-directory>",
 	},
@@ -52,7 +52,7 @@ For a **static site**, you will need to add the following to your wrangler file.
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 
 [assets]
 directory = "<your-build-directory>"
@@ -64,7 +64,7 @@ For a **single page application**, you will need to add the following to your wr
 {
 	"name": "<your-project-name>",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-10",
 	"assets": {
 		"directory": "<your-build-directory>",
 		"not_found_handling": "single-page-application",
@@ -75,7 +75,7 @@ For a **single page application**, you will need to add the following to your wr
 ```toml
 name = "<your-project-name>"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 
 [assets]
 directory = "<your-build-directory>"
@@ -110,7 +110,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/#page","headline":"Migrate from Vercel to Workers · Cloudflare Workers docs","description":"Migrate your Vercel application to Cloudflare Workers. You should already have an existing project deployed on Vercel that you would like to host on Workers.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/vercel-to-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

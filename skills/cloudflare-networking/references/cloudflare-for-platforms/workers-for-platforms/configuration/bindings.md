@@ -28,7 +28,7 @@ With bindings, each User Worker can extend functionality to:
 
 Each User Worker can only access the bindings that are explicitly attached to it. For complete isolation, you can create and attach a unique resource (like a D1 database or KV namespace) to every User Worker.
 
-![Resource Isolation Model](https://developers.cloudflare.com/_astro/programmable-platforms-5.B2yd7IjV_ZFbTas.svg "Resource Isolation Model")
+![Resource Isolation Model](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=585,format=svg/_astro/programmable-platforms-5.B2yd7IjV.svg "Resource Isolation Model")
 
 Resource Isolation Model
 
@@ -95,7 +95,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/#page","headline":"Bindings · Cloudflare for Platforms docs","description":"Attach KV, R2, D1, and other resource bindings to user Workers deployed through Workers for Platforms.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}

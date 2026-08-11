@@ -24,7 +24,7 @@ If **Pseudo IPv4** is set to `Overwrite Headers` \- Cloudflare overwrites the ex
 
 The diagram below illustrates the different ways that IP addresses are handled with and without Cloudflare.
 
-![The diagram illustrates the different ways that IP addresses are handled with and without Cloudflare.](https://developers.cloudflare.com/_astro/Restoring_IPs__1_.D3FkNFbK_1Dz2yl.webp)
+![The diagram illustrates the different ways that IP addresses are handled with and without Cloudflare.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=720,format=webp/_astro/Restoring_IPs__1_.D3FkNFbK.png)
 
 Caution
 
@@ -469,7 +469,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/#page","headline":"Restoring original visitor IPs · Cloudflare Support docs","description":"Configure your server to log original visitor IPs.","url":"https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

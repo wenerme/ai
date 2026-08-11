@@ -1,6 +1,6 @@
 
 
-# Models Timeline
+# Models timeline
 
 The [Models Timeline](https://huggingface.co/spaces/yonigozlan/Transformers-Timeline) is an interactive chart of how architectures in Transformers have changed over time. You can scroll through models in order, spanning text, vision, audio, video, and multimodal use cases.
 

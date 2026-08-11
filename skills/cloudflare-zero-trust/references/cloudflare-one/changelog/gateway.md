@@ -23,7 +23,7 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 You can now set a maximum time-to-live (TTL) for DNS responses returned by Gateway. When an upstream DNS record has a TTL that exceeds the configured maximum, Gateway caps it to your specified value. This ensures that DNS policy changes - such as blocking a newly identified malicious domain - take effect faster across all clients.
 
-![The maximum DNS TTL setting in Traffic policies > Traffic settings, showing a numeric input field that accepts values between 60 and 36,000 seconds](https://developers.cloudflare.com/_astro/gateway-max-ttl-traffic-settings.BRF3NUMp_Z1H1aSr.webp)
+![The maximum DNS TTL setting in Traffic policies > Traffic settings, showing a numeric input field that accepts values between 60 and 36,000 seconds](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2170,height=294,format=webp/_astro/gateway-max-ttl-traffic-settings.BRF3NUMp.png)
 
 The setting is available at two levels:
 
@@ -206,7 +206,7 @@ For configuration options, refer to [VPC Networks](https://developers.cloudflare
 
 [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) policy selectors which support regular expressions can now be authored in the dashboard using natural language. When building a [policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/expression-syntax/) with a regex-based selector (like `matches regex`), you can describe what you want to match in plain English and the Cloudflare Agent will generate and validate a corresponding regular expression.
 
-![Write policy regex using natural language](https://developers.cloudflare.com/_astro/gateway-regex-ai-generation.CtJ0S6FS_Z1WVe4K.webp)
+![Write policy regex using natural language](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=638,format=webp/_astro/gateway-regex-ai-generation.CtJ0S6FS.png)
 
 To get started, select a regex-compatible selector in the [Gateway policy builder](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) and select the icon. You'll see an input field for natural language, such as "any URL starting with /api/v1" or ".com, .net, and .app hosts which contain `gooogle` in the host."
 
@@ -223,7 +223,7 @@ For more information, refer to [Cloudflare One firewall policies](https://develo
 
 Cloudflare Gateway now supports natural language policy creation for [DNS](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/), and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) firewall policies. Administrators can describe the outcome they want in plain language, and Cloudflare will generate a complete policy rule that populates the policy builder form.
 
-![Create with AI button on the Gateway firewall policies page](https://developers.cloudflare.com/_astro/gateway-create-with-ai.BYG07coh_1T38Vz.webp)
+![Create with AI button on the Gateway firewall policies page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2360,height=1088,format=webp/_astro/gateway-create-with-ai.BYG07coh.png)
 
 To create a policy with natural language, select **Create with AI** on any Gateway firewall policy tab. Choose a policy type, describe what the policy should do, and a fully configured rule will appear in the policy builder for review. You can edit any field before saving, or re-generate with a different prompt.
 
@@ -264,7 +264,7 @@ For field definitions, refer to [Zero Trust Network Session Logs](https://develo
 
 The new [Network session analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/network-sessions/) dashboard is now available in Cloudflare One. This dashboard provides visibility into your network traffic patterns, helping you understand how traffic flows through your Cloudflare One infrastructure.
 
-![Cloudflare One Network Session Analytics](https://developers.cloudflare.com/_astro/cf1-network-session-analytics.Gl90hEcp_MuWRb.webp)
+![Cloudflare One Network Session Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2926,height=1574,format=webp/_astro/cf1-network-session-analytics.Gl90hEcp.png)
 
 #### What you can do with Network session analytics
 
@@ -347,7 +347,7 @@ For more info:
 
 Access authentication logs and Gateway activity logs (DNS, Network, and HTTP) now feature a refreshed user interface that gives you more flexibility when viewing and analyzing your logs.
 
-![Screenshot of the new logs UI showing DNS query logs with customizable columns and filtering options](https://developers.cloudflare.com/_astro/cf1-new-logs-ui.DxF4x0l-_mRSyH.webp)
+![Screenshot of the new logs UI showing DNS query logs with customizable columns and filtering options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2984,height=842,format=webp/_astro/cf1-new-logs-ui.DxF4x0l-.png)
 
 The updated UI includes:
 
@@ -437,7 +437,7 @@ Zero Trust has again upgraded its **Shadow IT analytics**, providing you with un
 
 With this update, you can review data transfer metrics at the domain level, rather than just the application level, providing more granular insight into your data transfer patterns.
 
-![New Domain Level Metrics](https://developers.cloudflare.com/_astro/shadow-it-domain.DoZnGAtf_Z1mHw4r.webp)
+![New Domain Level Metrics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1800,height=452,format=webp/_astro/shadow-it-domain.DoZnGAtf.png)
 
 These metrics can be filtered by all available filters on the dashboard, including user, application, or content category.
 
@@ -564,7 +564,7 @@ Admins can now create [scheduled DNS policies](https://developers.cloudflare.com
 
 You can see the flow in the demo GIF:
 
-![Schedule DNS policies demo](https://developers.cloudflare.com/_astro/gateway-dns-scheduled-policies-ui.Cf4l1OTE_Z9szVM.webp)
+![Schedule DNS policies demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1053,height=879,format=webp/_astro/gateway-dns-scheduled-policies-ui.Cf4l1OTE.gif)
 
 This update makes time-based DNS policies accessible to all Gateway customers, removing the technical barrier of the API.
 
@@ -637,7 +637,7 @@ Zero Trust has significantly upgraded its **Shadow IT analytics**, providing you
 
 You can review these metrics against application type, such as Artificial Intelligence or Social Media. You can also mark applications with an approval status, including **Unreviewed**, **In Review**, **Approved**, and **Unapproved** designating how they can be used in your organization.
 
-![Cloudflare One Analytics Dashboards](https://developers.cloudflare.com/_astro/shadow-it-analytics.BLNnG72w_Z1vDznE.webp)
+![Cloudflare One Analytics Dashboards](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2814,height=1486,format=webp/_astro/shadow-it-analytics.BLNnG72w.png)
 
 These application statuses can also be used in Gateway HTTP policies, so you can block, isolate, limit uploads and downloads, and more based on the application status.
 
@@ -654,7 +654,7 @@ Admins can now onboard and use their own IPv4 or IPv6 prefixes to egress traffic
 
 Get started by following the [BYOIP onboarding process](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip). Once your IPs are onboarded, go to **Gateway** \> **Egress policies** and select or create an egress policy. In **Select an egress IP**, choose _Use dedicated egress IPs (Cloudflare or BYOIP)_, then select your BYOIP address from the dropdown menu.
 
-![Screenshot of a dropdown menu adding a BYOIP IPv4 address as a dedicated egress IP in a Gateway egress policy](https://developers.cloudflare.com/_astro/Gateway-byoip-dedicated-egress-ips.D0pzLAbV_8yK6N.webp)
+![Screenshot of a dropdown menu adding a BYOIP IPv4 address as a dedicated egress IP in a Gateway egress policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=933,height=459,format=webp/_astro/Gateway-byoip-dedicated-egress-ips.D0pzLAbV.png)
 
 For more information, refer to [BYOIP for dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/#bring-your-own-ip-address-byoip).
 
@@ -682,7 +682,7 @@ Refer to [Gateway domain categories](https://developers.cloudflare.com/cloudflar
 
 You can turn this [setting](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports) on by going to **Settings** \> **Network** \> **Firewall** and choosing _Inspect on all ports_.
 
-![HTTP Inspection on all ports setting](https://developers.cloudflare.com/_astro/Gateway-Inspection-all-ports.CCmwX6D0_OoDoS.webp)
+![HTTP Inspection on all ports setting](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1096,height=535,format=webp/_astro/Gateway-Inspection-all-ports.CCmwX6D0.png)
 
 To learn more, refer to [Inspect on all ports (Beta)](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/protocol-detection/#inspect-on-all-ports).
 
@@ -756,7 +756,7 @@ You can now visualize and explore:
 * Top Users & Destinations: Quickly pinpoint the most active users, enabling better policy enforcement and resource allocation.
 * Actions Taken: See a clear breakdown of security actions applied by Gateway policies, such as blocks and allows, offering a comprehensive view of your security posture.
 * Geographic Regions: Gain insight into the global distribution of your traffic.
-![Gateway Analytics](https://developers.cloudflare.com/_astro/gateway-analytics.BdSwbIBb_1WTkQL.webp)
+![Gateway Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2740,height=1166,format=webp/_astro/gateway-analytics.BdSwbIBb.png)
 
 To access the new overview, log in to your Cloudflare [Zero Trust dashboard ↗](https://one.dash.cloudflare.com/) and go to Analytics in the side navigation bar.
 
@@ -823,7 +823,7 @@ Cloudflare One administrators can now control which egress IP is used based on a
 * Host, Domain, Content Categories, and Application selectors are now available in the Gateway Egress policy builder in beta.
 * During the beta period, you can use these selectors with traffic on-ramped to Gateway with the WARP client, proxy endpoints (commonly deployed with PAC files), or Cloudflare Browser Isolation.
   * For WARP client support, additional configuration is required. For more information, refer to the [WARP client configuration documentation](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#limitations).
-![Egress by FQDN and Hostname](https://developers.cloudflare.com/_astro/Gateway-Egress-FQDN-Policy-preview.Civon5p8_Z2hcuQE.webp)
+![Egress by FQDN and Hostname](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=841,height=1045,format=webp/_astro/Gateway-Egress-FQDN-Policy-preview.Civon5p8.png)
 
 This will help apply egress IPs to your users' traffic when an upstream application or network requires it, while the rest of their traffic can take the most performant egress path.
 
@@ -949,7 +949,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/#page","headline":"Gateway Changelog · Cloudflare One docs","description":"Review recent changes to Cloudflare Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

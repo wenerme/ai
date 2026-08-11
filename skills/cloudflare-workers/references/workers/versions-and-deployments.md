@@ -16,7 +16,7 @@ Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 Every time you change your Worker's code or configuration, Workers creates a **version**. A **deployment** determines which version(s) are actively serving traffic.
 
-![Versions and Deployments](https://developers.cloudflare.com/_astro/versions-and-deployments.Dnwtp7bX_1XrgKm.webp)
+![Versions and Deployments](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1338,height=878,format=webp/_astro/versions-and-deployments.Dnwtp7bX.png)
 
 ## Versions
 
@@ -67,7 +67,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/#page","headline":"Versions & deployments · Cloudflare Workers docs","description":"Understand how Workers tracks changes with versions and releases them with deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

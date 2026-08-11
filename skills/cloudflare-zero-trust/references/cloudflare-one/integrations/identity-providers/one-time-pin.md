@@ -72,14 +72,14 @@ To grant a user access to an application, simply add their email address to an [
 To log in to Access using the one-time PIN:
 
 1. Go to the application protected by Access.
-2. On the Access login page, enter your email address and select **Send login code**. ![Enter email to sign in with OTP.](https://developers.cloudflare.com/_astro/otp1.CDOVB8yE_2oGUEX.webp)
+2. On the Access login page, enter your email address and select **Send login code**. ![Enter email to sign in with OTP.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=507,height=466,format=webp/_astro/otp1.CDOVB8yE.png)
 3. If the email is allowed by an Access policy, you will receive a PIN in your inbox. This secure PIN expires 10 minutes after the initial request.
 
 Note
 
 By design, blocked users will not receive an email. The login page will always say **A code has been emailed to you**, regardless of whether or not an email was sent.
 
-1. Paste the PIN into the Access login page and select **Sign in**. ![Enter PIN to sign in.](https://developers.cloudflare.com/_astro/otp2.CPS5ZkdL_2pa0u3.webp)
+1. Paste the PIN into the Access login page and select **Sign in**. ![Enter PIN to sign in.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=590,height=552,format=webp/_astro/otp2.CPS5ZkdL.png)
   * If the code was valid, you will be redirected to the application.
   * If the code was invalid, you will see **That account does not have access.**
   * If you see **This One-Time PIN has already been used**, the code was already consumed. This typically occurs when an email security tool on your network automatically scans the email and follows the link before you enter the code. Select **Request new code** and try again.
@@ -105,7 +105,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/#page","headline":"One-time PIN login · Cloudflare One docs","description":"One-time PIN login in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-19","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API"]}

@@ -18,16 +18,16 @@ Using [Chrome DevTools ↗](https://developer.chrome.com/docs/devtools), you can
 
 1. In the Cloudflare dashboard, go to the **Network Analytics** page or any other analytics dashboard you are interested in seeing the GraphQL queries in.
 [Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
-![Analytics tab](https://developers.cloudflare.com/_astro/analytics-tab.sJIMwybT_2gjMTY.webp)
+![Analytics tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2322,height=1090,format=webp/_astro/analytics-tab.sJIMwybT.png)
 1. Open the [Chrome Developer Tools ↗](https://developer.chrome.com/docs/devtools) and select **Inspect**.
-![Chrome developer tools](https://developers.cloudflare.com/_astro/chrome-developer-tools.D4a36rnA_1DYD77.webp)
+![Chrome developer tools](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1470,height=960,format=webp/_astro/chrome-developer-tools.D4a36rnA.png)
 1. Select the **Network** tab in the Developer Tools panel.
 2. In the filter bar, type `graphql` to filter out the GraphQL requests. If no requests appear, try reloading the page. As the page reloads, several network requests will populate the **Network** tab. Look for requests that contain `graphql` in the name.
-![Type graphql in the search field](https://developers.cloudflare.com/_astro/search-field.BxHnt1F0_Z2pAlRo.webp)
+![Type graphql in the search field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1258,height=1032,format=webp/_astro/search-field.BxHnt1F0.png)
 1. Select one of the GraphQL requests to open its details and go to the **Payload** tab. There you will find the GraphQL query. Select the query line and then **Copy value** to capture the query.
-![Copy query value](https://developers.cloudflare.com/_astro/copy-value.BZMZMU5__2lVcIH.webp)
+![Copy query value](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1110,height=740,format=webp/_astro/copy-value.BZMZMU5_.png)
 1. If you want to capture a new query, adjust the filters in the **Network analytics** dashboard and a new query will appear in the GraphQL requests.
-![Create a new query](https://developers.cloudflare.com/_astro/new-query.TN7tG2lX_Z7bye2.webp)
+![Create a new query](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1538,height=866,format=webp/_astro/new-query.TN7tG2lX.png)
 
 You can now use this query as the basis for your API call. Refer to the [Get started](https://developers.cloudflare.com/analytics/graphql-api/getting-started/) section for more information.
 
@@ -37,7 +37,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/#page","headline":"Capture GraphQL queries with Chrome DevTools · Cloudflare Analytics docs","description":"Capture dashboard GraphQL queries using Chrome DevTools.","url":"https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

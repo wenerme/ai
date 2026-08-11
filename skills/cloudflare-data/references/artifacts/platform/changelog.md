@@ -27,15 +27,15 @@ Artifacts is Git-compatible storage that lets you store repos on Cloudflare and 
 
 You can view and create [namespaces](https://developers.cloudflare.com/artifacts/concepts/namespaces/#use-namespaces-as-containers), which are top-level containers for repos:
 
-![Artifacts namespaces dashboard showing namespace search and create namespace controls](https://developers.cloudflare.com/_astro/dashboard-namespaces.0BJelWZh_Z1uJ1iD.webp)
+![Artifacts namespaces dashboard showing namespace search and create namespace controls](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1804,height=598,format=webp/_astro/dashboard-namespaces.0BJelWZh.png)
 
 You can view, create, fork, and search repos within a namespace:
 
-![Artifacts repositories dashboard showing repo source, access, and created columns](https://developers.cloudflare.com/_astro/dashboard-repositories.M9P9JUL__Agf9h.webp)
+![Artifacts repositories dashboard showing repo source, access, and created columns](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1874,height=592,format=webp/_astro/dashboard-repositories.M9P9JUL_.png)
 
 You can open a repo to view its files and copy its Git remote URL.
 
-![Artifacts repository overview showing files, commits, token management, and quick actions](https://developers.cloudflare.com/_astro/dashboard-repo-overview.CSHxrCW2_81obq.webp)
+![Artifacts repository overview showing files, commits, token management, and quick actions](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2194,height=806,format=webp/_astro/dashboard-repo-overview.CSHxrCW2.png)
 
 You can also provision tokens directly from the dashboard to scope Git access to a single repo, with read tokens for clone, fetch, and pull workflows, or write tokens when a client needs to push changes.
 
@@ -107,7 +107,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/artifacts/platform/changelog/#page","headline":"Changelog · Cloudflare Artifacts docs","description":"Review recent changes to Artifacts.","url":"https://developers.cloudflare.com/artifacts/platform/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

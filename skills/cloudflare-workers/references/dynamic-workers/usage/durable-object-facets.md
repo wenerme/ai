@@ -28,7 +28,7 @@ A facet-based setup has three layers:
 
 The supervisor's database and the facet's database are stored together as part of the same overall Durable Object. The dynamic code cannot read the supervisor's database — it only has access to its own.
 
-![Diagram showing the facet architecture: a request flows through the Worker entry point into a Durable Object instance containing a Supervisor with its own SQLite DB, which creates an isolated Facet with a separate SQLite DB via ctx.facets.get\(\) and forwards requests to it via facet.fetch\(\)](https://developers.cloudflare.com/_astro/facet-architecture.cRJeiYDD_13a986.svg)
+![Diagram showing the facet architecture: a request flows through the Worker entry point into a Durable Object instance containing a Supervisor with its own SQLite DB, which creates an isolated Facet with a separate SQLite DB via ctx.facets.get\(\) and forwards requests to it via facet.fetch\(\)](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=920,height=510,format=svg/_astro/facet-architecture.AFTtB6W_.svg)
 
 ## Configure your Worker
 
@@ -38,7 +38,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-07-22",
+  "compatibility_date": "2026-08-10",
   "main": "src/index.ts",
   "migrations": [
     {
@@ -58,7 +58,7 @@ Your Worker needs two things: a Durable Object class with a SQLite storage backe
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 main = "src/index.ts"
 
 [[migrations]]
@@ -286,7 +286,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/#page","headline":"Durable Object Facets · Cloudflare Dynamic Workers docs","description":"Run dynamically-loaded code with isolated persistent storage.","url":"https://developers.cloudflare.com/dynamic-workers/usage/durable-object-facets/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

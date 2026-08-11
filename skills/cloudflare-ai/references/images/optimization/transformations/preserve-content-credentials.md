@@ -24,7 +24,7 @@ You can configure how Content Credentials are handled for each zone where transf
 
 In the Cloudflare dashboard under **Images** \> **Transformations**, navigate to a specific zone and enable the toggle to preserve Content Credentials:
 
-![Enable Preserving Content Credentials in the dashboard](https://developers.cloudflare.com/_astro/preserve-content-credentials.BDptgOn0_ZPwgIT.webp)
+![Enable Preserving Content Credentials in the dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1632,height=350,format=webp/_astro/preserve-content-credentials.BDptgOn0.png)
 
 The behavior of this setting is determined by the [metadata](https://developers.cloudflare.com/images/optimization/features/#metadata) parameter for each transformation.
 
@@ -40,7 +40,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/images/optimization/transformations/preserve-content-credentials/#page","headline":"Preserve Content Credentials · Cloudflare Images docs","description":"Retain C2PA metadata and provenance data when transforming remote images with Cloudflare Images.","url":"https://developers.cloudflare.com/images/optimization/transformations/preserve-content-credentials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

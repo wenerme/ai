@@ -87,7 +87,7 @@ pnpm sanity start
 
 The Sanity studio is where you can create new records for your dataset. By default, running the studio locally makes it available at `localhost:3333`– go there now and create your author record. You can also create blog posts here.
 
-![Creating a blog post in the Sanity Project dashboard](https://developers.cloudflare.com/_astro/sanity-studio.Cg5gfJOU_CxF7v.webp)
+![Creating a blog post in the Sanity Project dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=1171,format=webp/_astro/sanity-studio.Cg5gfJOU.png)
 
 ### Deploying your dataset
 
@@ -116,7 +116,7 @@ Once you have deployed your Sanity studio:
 
 This means that requests that come to your Sanity dataset from your Nuxt application will be allowlisted.
 
-![Your Sanity project's CORS settings](https://developers.cloudflare.com/_astro/cors.B4xMgIh9_17S53u.webp)
+![Your Sanity project's CORS settings](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2268,height=1222,format=webp/_astro/cors.B4xMgIh9.png)
 
 ## Creating a new Nuxt.js project
 
@@ -480,7 +480,7 @@ When your site has been deployed, you will receive a unique URL to view it in pr
 
 In order to automatically deploy your project when your Sanity.io data changes, you can use [Deploy Hooks](https://developers.cloudflare.com/pages/configuration/deploy-hooks/). Create a new Deploy Hook URL in your **Pages project** \> **Settings**. In your Sanity project's Settings page, find the **Webhooks** section, and add the Deploy Hook URL, as seen below:
 
-![Adding a Deploy Hook URL on Sanity's dashboard](https://developers.cloudflare.com/_astro/hooks.CikwC9IO_Zulbfg.webp)
+![Adding a Deploy Hook URL on Sanity's dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1759,height=1176,format=webp/_astro/hooks.CikwC9IO.png)
 
 Now, when you make a change to your Sanity.io dataset, Sanity will make a request to your unique Deploy Hook URL, which will begin a new Cloudflare Pages deploy. By doing this, your Pages application will remain up-to-date as you add new blog posts, or edit existing ones.
 
@@ -499,7 +499,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/#page","headline":"Build a blog using Nuxt.js and Sanity.io on Cloudflare Pages · Cloudflare Pages docs","description":"Build a blog application using Nuxt.js and Sanity.io and deploy it on Cloudflare Pages.","url":"https://developers.cloudflare.com/pages/tutorials/build-a-blog-using-nuxt-and-sanity/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Nuxt","Vue","JavaScript"]}

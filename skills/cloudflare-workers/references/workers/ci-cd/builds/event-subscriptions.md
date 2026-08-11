@@ -29,7 +29,7 @@ The template sends notifications for:
 * Successful builds with preview or live deployment URLs
 * Failed builds with error messages
 * Cancelled builds
-![Example Slack notifications for Workers Builds events](https://developers.cloudflare.com/_astro/builds-notifications-slack.rcRiU95L_169ufw.webp)
+![Example Slack notifications for Workers Builds events](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1700,height=1088,format=webp/_astro/builds-notifications-slack.rcRiU95L.png)
 
 You can customize the Worker to format messages for your webhook provider. For setup instructions, refer to the [template README ↗](https://github.com/cloudflare/templates/tree/main/workers-builds-notifications-template#readme).
 
@@ -217,7 +217,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/event-subscriptions/#page","headline":"Event subscriptions · Cloudflare Workers docs","description":"Subscribe to Workers Builds events and send notifications to Slack, Discord, or webhook endpoints.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/event-subscriptions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

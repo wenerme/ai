@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Cloudflare platform access
@@ -134,23 +134,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
-```
-
-```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
 Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ## Tips

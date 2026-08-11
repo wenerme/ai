@@ -31,7 +31,7 @@ Currently, phases at the account level are only available in Enterprise plans.
 
 The following diagram outlines the request handling process where requests go through the available phases:
 
-![Diagram showing the request handling process. The user request goes through several request phases until it eventually reaches the origin server \(the request can also be blocked\). The origin returns a response, which goes through several response phases until it reaches the user.](https://developers.cloudflare.com/_astro/rulesets-phases.D4jji4ui_ZDPPel.webp)
+![Diagram showing the request handling process. The user request goes through several request phases until it eventually reaches the origin server \(the request can also be blocked\). The origin returns a response, which goes through several response phases until it reaches the user.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1092,height=792,format=webp/_astro/rulesets-phases.D4jji4ui.png)
 
 Cloudflare products are specific to one or more phases, and they add support for different features. Check the documentation for each Cloudflare product for details on the applicable phases.
 
@@ -43,7 +43,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/about/phases/#page","headline":"Phases · Cloudflare Ruleset Engine docs","description":"How phases organize rule execution in the Ruleset Engine request lifecycle.","url":"https://developers.cloudflare.com/ruleset-engine/about/phases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

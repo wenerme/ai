@@ -22,7 +22,7 @@ A "solved" Turnstile challenge does not automatically confirm the visitor is hum
 
 For example, the challenge outcome values in your analytics may look like this:
 
-![Challenge outcome example values](https://developers.cloudflare.com/_astro/challenge-outcomes.Czqs3OEs_1uk0rH.webp "Challenge outcome example")
+![Challenge outcome example values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1020,height=1011,format=webp/_astro/challenge-outcomes.Czqs3OEs.png "Challenge outcome example")
 
 Challenge outcome example
 
@@ -50,7 +50,7 @@ If you are using [managed mode](https://developers.cloudflare.com/turnstile/conc
 
 For example, the solve rate values in your analytics may look like this:
 
-![Solve rate example values](https://developers.cloudflare.com/_astro/solve-rates.YNiFNAbV_p3Ftp.webp "Solve rate example")
+![Solve rate example values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1020,height=996,format=webp/_astro/solve-rates.YNiFNAbV.png "Solve rate example")
 
 Solve rate example
 
@@ -68,7 +68,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge-outcomes/#page","headline":"Challenge outcome · Cloudflare Turnstile docs","description":"View challenge outcome metrics for your Turnstile widgets.","url":"https://developers.cloudflare.com/turnstile/turnstile-analytics/challenge-outcomes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}

@@ -108,7 +108,7 @@ On Windows, Cloudflare Tunnel installs itself as a system service using the Regi
 ```txt
 C:\Program Files (x86)\cloudflared\.\cloudflared.exe tunnel --loglevel info --logfile <PATH> run --token <TOKEN VALUE>
 ```
-![Modify cloudflared service in the Registry Editor](https://developers.cloudflare.com/_astro/remote-management-windows.BFUIIr2f_Z1Rbddd.webp)
+![Modify cloudflared service in the Registry Editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1180,height=1050,format=webp/_astro/remote-management-windows.BFUIIr2f.png)
 
 ## Parameters
 
@@ -320,7 +320,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/#page","headline":"Run parameters · Cloudflare Docs","description":"Command-line flags for running cloudflared tunnel.","url":"https://developers.cloudflare.com/tunnel/advanced/run-parameters/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CLI"]}

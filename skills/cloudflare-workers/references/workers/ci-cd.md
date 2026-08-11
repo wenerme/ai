@@ -38,7 +38,7 @@ We recommend using [external CI/CD providers](https://developers.cloudflare.com/
 
 [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds) is Cloudflare's native CI/CD system that allows you to integrate with GitHub or GitLab to automatically deploy changes with each new push to a selected branch (e.g. `main`).
 
-![Workers Builds Workflow Diagram](https://developers.cloudflare.com/_astro/workers-builds-workflow.Bmy3qIVc_Z1wM0ch.webp)
+![Workers Builds Workflow Diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=923,height=203,format=webp/_astro/workers-builds-workflow.Bmy3qIVc.png)
 
 Ready to streamline your Workers deployments? Get started with [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/#get-started).
 
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/#page","headline":"CI/CD · Cloudflare Workers docs","description":"Set up continuous integration and continuous deployment for your Workers.","url":"https://developers.cloudflare.com/workers/ci-cd/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

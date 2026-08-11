@@ -16,7 +16,7 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Cloudflare Snippets are executed based on rules defined within your zone. Here is how the process works:
 
-![Diagram of the snippets execution workflow](https://developers.cloudflare.com/_astro/snippets-execution.Cb6ZLHBP_Z1QQkWy.webp)
+![Diagram of the snippets execution workflow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1546,height=491,format=webp/_astro/snippets-execution.Cb6ZLHBP.png)
 
 ## 1\. Evaluate snippet rules
 
@@ -42,7 +42,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/snippets/how-it-works/#page","headline":"How Snippets work · Cloudflare Rules docs","description":"How Snippets execute JavaScript at the edge for matching requests.","url":"https://developers.cloudflare.com/rules/snippets/how-it-works/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

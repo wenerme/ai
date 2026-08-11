@@ -84,7 +84,7 @@ You want to find which part of the code causes slow response times. How do you u
 
 First, as mentioned above, you open DevTools by pressing the `D` key after running `wrangler dev`. Then, you navigate to the "Profiler" tab and take a profile by pressing `Start` and sending a request.
 
-![CPU Profile](https://developers.cloudflare.com/_astro/profile.Dz8PUp_K_Z16J4tW.webp)
+![CPU Profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2144,height=1134,format=webp/_astro/profile.Dz8PUp_K.png)
 
 The top chart in this image shows a timeline of the profile, and you can use it to zoom in on a specific request.
 
@@ -96,7 +96,7 @@ Therefore, if you want to make response times faster, you need to optimize `more
 
 You can also change the visualization from ‘Chart’ to ‘Heavy (Bottom Up)’ for an alternative view.
 
-![CPU Profile](https://developers.cloudflare.com/_astro/heavy.17oO4-BN_1suv6n.webp)
+![CPU Profile](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1824,height=842,format=webp/_astro/heavy.17oO4-BN.png)
 
 This shows the relative times allocated to each function. At the top of the list, `moreAdditions` is clearly the slowest portion of your Worker. You can see that garbage collection also represents a large percentage of time, so memory optimization could be useful.
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/#page","headline":"Profiling CPU usage · Cloudflare Workers docs","description":"Learn how to profile CPU usage and ensure CPU-time per request stays under Workers limits","url":"https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

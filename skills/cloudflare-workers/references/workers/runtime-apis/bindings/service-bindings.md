@@ -23,7 +23,7 @@ Service bindings provide the separation of concerns that microservice or service
 * **Service bindings are fast.** When you use Service Bindings, there is zero overhead or added latency. By default, both Workers run on the same thread of the same Cloudflare server. And when you enable [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/), each Worker runs in the optimal location for overall performance.
 * **Service bindings are not just HTTP.** Worker A can expose methods that can be directly called by Worker B. Communicating between services only requires writing JavaScript methods and classes.
 * **Service bindings don't increase costs.** You can split apart functionality into multiple Workers, without incurring additional costs. Learn more about [pricing for Service Bindings](https://developers.cloudflare.com/workers/platform/pricing/#service-bindings).
-![Service bindings are a zero-cost abstraction](https://developers.cloudflare.com/_astro/service-bindings-comparison.CeB5uD1k_3yWPz.webp)
+![Service bindings are a zero-cost abstraction](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1532,height=578,format=webp/_astro/service-bindings-comparison.CeB5uD1k.png)
 
 Service bindings are commonly used to:
 
@@ -179,7 +179,7 @@ When making changes to existing Workers, in most cases you should:
 
 You can use Smart Placement together with Service bindings to split your Worker into two services:
 
-![Smart Placement and Service Bindings](https://developers.cloudflare.com/_astro/smart-placement-service-bindings.Ce58BYeF_ZmD4l8.webp)
+![Smart Placement and Service Bindings](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1444,height=692,format=webp/_astro/smart-placement-service-bindings.Ce58BYeF.png)
 
 Refer to the [docs on Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/#multiple-workers) for more.
 
@@ -197,7 +197,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings - Runtime APIs · Cloudflare Workers docs","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}

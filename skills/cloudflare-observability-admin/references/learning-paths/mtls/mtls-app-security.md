@@ -74,7 +74,7 @@ All Client Certificate details can be found in the [cf.tls\_\*](https://develope
 
 Example WAF Custom Rule with action block:
 
-![Example of a WAF custom rule with an action block in the Cloudflare dashboard during the validate client certificate step](https://developers.cloudflare.com/_astro/waf-custom-rule-action-block.BKAq1FqM_14UKW4.webp)
+![Example of a WAF custom rule with an action block in the Cloudflare dashboard during the validate client certificate step](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=420,format=webp/_astro/waf-custom-rule-action-block.BKAq1FqM.png)
 
 Note
 
@@ -114,7 +114,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/#page","headline":"mTLS with Application Security · Cloudflare Learning Paths","description":"Implement mutual TLS authentication with Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-app-security/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

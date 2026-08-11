@@ -20,7 +20,7 @@ Unlike [rate limiting](https://developers.cloudflare.com/ai-gateway/features/rat
 
 Spend limits apply to both [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/) requests and [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) requests for models with known pricing.
 
-![Spend limits rules configured on a gateway](https://developers.cloudflare.com/_astro/spend-limits-rules.p6zy0Vea_1SihhE.webp)
+![Spend limits rules configured on a gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2364,height=728,format=webp/_astro/spend-limits-rules.p6zy0Vea.png)
 
 ## How it works
 
@@ -57,7 +57,7 @@ Given a request with `model=openai/gpt-5.5` and `metadata.user_id=u_42`:
 
 Spend limits are configured on the gateway via the dashboard or the API. You can define up to 20 rules per gateway.
 
-![Add spend limit rule form](https://developers.cloudflare.com/_astro/spend-limits-add-rule.BnBR5VIn_Z2oJ2T3.webp)
+![Add spend limit rule form](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1350,height=1316,format=webp/_astro/spend-limits-add-rule.BnBR5VIn.png)
 
 To scope spend limits by custom dimensions like user ID or team, attach [custom metadata](https://developers.cloudflare.com/ai-gateway/observability/custom-metadata/) to your requests.
 
@@ -83,7 +83,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/spend-limits/#page","headline":"Spend limits · Cloudflare AI Gateway docs","description":"Set cost-based budgets on your AI Gateway to control spending by model, provider, or custom metadata dimensions like user or team.","url":"https://developers.cloudflare.com/ai-gateway/features/spend-limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-18","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

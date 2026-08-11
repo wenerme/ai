@@ -34,7 +34,7 @@ For Log Explorer customers, you can now turn raw log queries directly into dashb
 * **Unified visibility**: Consolidate signals from different Cloudflare products (for example, HTTP Traffic and R2 Storage) into a single view.
 * **Flexible monitoring**: Create charts that focus on specific status codes, ASN regions, or security actions that matter to your business.
 * **Expanded limits**: Log Explorer customers can create up to **100 dashboards** (up from 25 for standard customers).
-![Custom Dashboards home page showing dashboard list and chart previews](https://developers.cloudflare.com/_astro/customdashboardshome.BIpSvImM_T5dlH.webp)
+![Custom Dashboards home page showing dashboard list and chart previews](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1079,height=793,format=webp/_astro/customdashboardshome.BIpSvImM.jpg)
 
 To get started, refer to the [Custom Dashboards documentation](https://developers.cloudflare.com/analytics/custom-dashboards/).
 
@@ -183,15 +183,15 @@ Directly from [Log Search](https://developers.cloudflare.com/log-explorer/log-se
 
 From the `http_requests` or `fw_events` dataset results, right click on an IP Address or JA3 Fingerprint to pivot to the Investigate portal to lookup the reputation of an IP address or JA3 fingerprint.
 
-![Investigate IP address](https://developers.cloudflare.com/_astro/investigate-ip-address.BMVSMzDi_Z1KASOQ.webp)
+![Investigate IP address](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1038,height=486,format=webp/_astro/investigate-ip-address.BMVSMzDi.png)
 
 Easily learn about error codes by linking directly to our documentation from the **EdgeResponseStatus** or **OriginResponseStatus** fields.
 
-![View documentation](https://developers.cloudflare.com/_astro/view-documentation.Cem5QgeO_Z1vzjwR.webp)
+![View documentation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1186,height=476,format=webp/_astro/view-documentation.Cem5QgeO.png)
 
 From the `gateway_http` dataset, click on a **policyid** to link directly to the Zero Trust dashboard to review or make changes to a specific Gateway policy.
 
-![View policy](https://developers.cloudflare.com/_astro/policyid.CVjEdahj_1GFFHp.webp)
+![View policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1274,height=498,format=webp/_astro/policyid.CVjEdahj.png)
 
 ## 2025-09-11
 
@@ -204,7 +204,7 @@ The results table view of **Log Search** has been updated with additional functi
 * Resize columns.
 * Sort columns.
 * Copy values from any field.
-![New results table view](https://developers.cloudflare.com/_astro/new-table.C2Q8mWJ9_ZFs2Aq.webp)
+![New results table view](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1786,height=342,format=webp/_astro/new-table.C2Q8mWJ9.png)
 
 ## 2025-09-03
 
@@ -215,7 +215,7 @@ The results table view of **Log Search** has been updated with additional functi
 
 Create a custom field to log desired header or cookie values into the `http_requests` dataset and Log Explorer will import these as searchable fields. Once configured, use the custom SQL editor in Log Explorer to view or filter on these requests.
 
-![Edit Custom fields](https://developers.cloudflare.com/_astro/edit-custom-fields.Cy4qXSpL_1ma19s.webp)
+![Edit Custom fields](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1790,height=404,format=webp/_astro/edit-custom-fields.Cy4qXSpL.png)
 
 For more details, refer to [Headers and cookies](https://developers.cloudflare.com/log-explorer/log-search/#headers-and-cookies).
 
@@ -235,7 +235,7 @@ Contract customers can choose to store their logs in Log Explorer for up to two 
 
 [Log Explorer](https://developers.cloudflare.com/log-explorer/) customers can now monitor their data ingestion volume to keep track of their billing. Monthly usage is displayed at the top of the [Log Search](https://developers.cloudflare.com/log-explorer/log-search/) and [Manage Datasets](https://developers.cloudflare.com/log-explorer/manage-datasets/) screens in Log Explorer.
 
-![Ingested data](https://developers.cloudflare.com/_astro/ingested-data.D2flqRIu_Z2v4FHF.webp)
+![Ingested data](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=418,height=157,format=webp/_astro/ingested-data.D2flqRIu.png)
 
 ## 2025-06-18
 
@@ -246,7 +246,7 @@ Contract customers can choose to store their logs in Log Explorer for up to two 
 
 Search and analyze your logs, natively in the Cloudflare dashboard. These logs are also stored in Cloudflare's network, eliminating many of the costs associated with other log providers.
 
-![Log Explorer dashboard](https://developers.cloudflare.com/_astro/log-explorer-dash.CJSVLZ7Y_ZXS1TD.webp)
+![Log Explorer dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=208,format=webp/_astro/log-explorer-dash.CJSVLZ7Y.png)
 
 With Log Explorer, you can now:
 
@@ -263,7 +263,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/log-explorer/changelog/#page","headline":"Changelog · Cloudflare Log Explorer docs","description":"View recent changes to Cloudflare Logs.","url":"https://developers.cloudflare.com/log-explorer/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

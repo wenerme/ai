@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/m365-email-security-mx/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-![A schematic showing where Email security is in the life cycle of an email received](https://developers.cloudflare.com/_astro/Email_security_M365_MX_Inline.BeUQoQiv_Z2khods.webp)
+![A schematic showing where Email security is in the life cycle of an email received](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=740,height=153,format=webp/_astro/Email_security_M365_MX_Inline.BeUQoQiv.png)
 
 In this tutorial, you will learn how to configure Microsoft 365 with Email security as its MX record.
 
@@ -189,7 +189,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/m365-email-security-mx/#page","headline":"Microsoft 365 as MX Record · Cloudflare One docs","description":"Integrate Microsoft 365 as MX Record with Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/prerequisites/m365-email-security-mx/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Microsoft"]}

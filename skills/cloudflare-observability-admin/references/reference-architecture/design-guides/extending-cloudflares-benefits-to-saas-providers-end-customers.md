@@ -69,7 +69,7 @@ The diagrams below begin by illustrating the simplest approach to achieving this
 
 This standard Cloudflare for SaaS setup is the most commonly used and easiest to implement for most providers. Typically, these providers are SaaS companies, which develop and deliver software as a service solutions. This setup requires only a single DNS record to direct requests to Cloudflare, which then proxies the traffic to your application using an A record.
 
-![Figure 1: Standard fallback origin setup.](https://developers.cloudflare.com/_astro/standard-fallback-origin-setup.DrGJNOUB_Z3ED5Y.svg "Figure 1: Standard fallback origin setup.")
+![Figure 1: Standard fallback origin setup.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=830,height=280,format=svg/_astro/standard-fallback-origin-setup.DrGJNOUB.svg "Figure 1: Standard fallback origin setup.")
 
 Figure 1: Standard fallback origin setup.
 
@@ -92,7 +92,7 @@ For implementation details to get started, review the [developer documentation](
 
 This approach introduces using Cloudflare's [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) solution to regionalize TLS termination and HTTP processing to confirm with any compliance regulations that dictate your service process data in specific geographic locations. This ensures that traffic destined for the origin server is handled exclusively within the chosen region.
 
-![Figure 2: Standard fallback origin setup with regional services.](https://developers.cloudflare.com/_astro/standard-fallback-origin-setup-regional-services.DgKfyYv8_Z25N858.svg "Figure 2: Standard fallback origin setup with regional services.")
+![Figure 2: Standard fallback origin setup with regional services.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=280,format=svg/_astro/standard-fallback-origin-setup-regional-services.DgKfyYv8.svg "Figure 2: Standard fallback origin setup with regional services.")
 
 Figure 2: Standard fallback origin setup with regional services.
 
@@ -104,7 +104,7 @@ Figure 2: Standard fallback origin setup with regional services.
 
 For enhanced security, rather than exposing your application servers directly to the Internet via public IPs, SaaS providers can use [Cloudflare Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/). These tunnels connect your network to Cloudflare's nearest data centers, allowing SaaS applications to be accessed through [public hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/routing-to-tunnel/). As a result, Cloudflare becomes the sole entry point for end-customers from the public Internet into your application network.
 
-![Figure 3: Cloudflare Tunnel as Fallback Origin Setup with Regional Services.](https://developers.cloudflare.com/_astro/cloudflare-tunnel-fallback-origin-setup-regional-services.h18fhKDd_Z12H5Vs.svg "Figure 3: Cloudflare Tunnel as Fallback Origin Setup with Regional Services.")
+![Figure 3: Cloudflare Tunnel as Fallback Origin Setup with Regional Services.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1300,height=280,format=svg/_astro/cloudflare-tunnel-fallback-origin-setup-regional-services.h18fhKDd.svg "Figure 3: Cloudflare Tunnel as Fallback Origin Setup with Regional Services.")
 
 Figure 3: Cloudflare Tunnel as Fallback Origin Setup with Regional Services.
 
@@ -118,7 +118,7 @@ This setup is ideal for SaaS providers that do not need granular load balancing,
 
 Cloudflare offers a powerful set of load balancing capabilities. These allow you to reliably steer traffic to different origin servers where your SaaS applications are hosted, whether through public hostnames (as described above) or private IP addresses. This setup helps prevent origin overload by distributing traffic across multiple servers and enhances security by only permitting requests through the Cloudflare Tunnel.
 
-![Figure 4: Global Traffic Management \(GTM\) & Private Network Load Balancing as custom origin setup.](https://developers.cloudflare.com/_astro/gtm-ltm-custom-origin-setup.C_l8lMsz_Z1OzHGx.svg "Figure 4: Global Traffic Management (GTM) & Private Network Load Balancing as custom origin setup.")
+![Figure 4: Global Traffic Management \(GTM\) & Private Network Load Balancing as custom origin setup.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=960,height=500,format=svg/_astro/gtm-ltm-custom-origin-setup.C_l8lMsz.svg "Figure 4: Global Traffic Management (GTM) & Private Network Load Balancing as custom origin setup.")
 
 Figure 4: Global Traffic Management (GTM) & Private Network Load Balancing as custom origin setup.
 
@@ -160,7 +160,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/#page","headline":"Extend Cloudflare's benefits to SaaS providers' end-customers · Cloudflare Reference Architecture docs","description":"Learn how to use Cloudflare to extend performance, security, and data localization to your end users.","url":"https://developers.cloudflare.com/reference-architecture/design-guides/extending-cloudflares-benefits-to-saas-providers-end-customers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

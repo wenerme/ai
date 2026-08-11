@@ -1,6 +1,6 @@
 
 
-# Environment Variables
+# Environment variables
 
 ## HF_ENABLE_PARALLEL_LOADING
 

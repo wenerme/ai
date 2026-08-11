@@ -107,7 +107,7 @@ To visualize and discover potential issues with DNSSEC:
 
 Below is an example of how dnsviz.net will display incorrect delegation when no valid DNSKEY records are provided by the authoritative nameserver to match the DS record published by the TLD nameserver:
 
-![Incorrect delegation when no valid DNSKEY records are provided](https://developers.cloudflare.com/_astro/troubleshoot_dnssec-example_no_rrsig.PZ_zKLVg_19F4j2.webp)
+![Incorrect delegation when no valid DNSKEY records are provided](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1154,height=1134,format=webp/_astro/troubleshoot_dnssec-example_no_rrsig.PZ_zKLVg.png)
 
 ---
 
@@ -227,7 +227,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dnssec/troubleshooting/#page","headline":"Troubleshooting DNSSEC · Cloudflare DNS docs","description":"Learn how to troubleshoot issues with DNSSEC","url":"https://developers.cloudflare.com/dns/dnssec/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

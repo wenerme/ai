@@ -44,7 +44,7 @@ Cloudflare Zero Trust replaces legacy security perimeters with Cloudflare's glob
 * **Augmented [JSON Web Token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/)**: Using Cloudflare's own authentication JWT material, for example, adding posture details as part of an incoming request.
 * **Serverless augmented apps protected with Zero-trust**: Allowing anyone building serverless applications to benefit from native ZTNA features
 
-![Figure 1: Showing a request to a private resource and where  Access can be customized for AuthZ and AuthN](https://developers.cloudflare.com/_astro/diagram1.D2YkG0lA_22mKBH.svg "Figure 1: Showing a request to a private resource and where  Access can be customized for AuthZ and AuthN")
+![Figure 1: Showing a request to a private resource and where  Access can be customized for AuthZ and AuthN](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1330,height=676,format=svg/_astro/diagram1.D2YkG0lA.svg "Figure 1: Showing a request to a private resource and where  Access can be customized for AuthZ and AuthN")
 
 Figure 1: Showing a request to a private resource and where Access can be customized for AuthZ and AuthN
 
@@ -98,7 +98,7 @@ In some situations, it is beneficial to elaborate on this JWT in order to execut
 
 In the following example, we want to make sure the exposed application is aware of the status of the device's firewall and disk encryption (Note that the Cloudflare One Client needs to be installed on the client machine for these signals to be collected).
 
-![Figure 2: Modified origin request including posture details](https://developers.cloudflare.com/_astro/diagram2.DPpYfIXE_Z1IWpSX.svg "Figure 2: Modified origin request including posture details")
+![Figure 2: Modified origin request including posture details](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1008,height=576,format=svg/_astro/diagram2.DPpYfIXE.svg "Figure 2: Modified origin request including posture details")
 
 Figure 2: Modified origin request including posture details
 
@@ -188,7 +188,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/#page","headline":"Extend ZTNA with external authorization and serverless computing · Cloudflare Reference Architecture docs","description":"Cloudflare's ZTNA enhances access policies using external API calls and Workers for robust security. It verifies user authentication and authorization, ensuring only legitimate access to protected resources.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/augment-access-with-serverless/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

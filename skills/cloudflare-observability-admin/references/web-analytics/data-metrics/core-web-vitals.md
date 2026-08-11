@@ -48,7 +48,7 @@ Each table — LCP, INP, and CLS — also shows you the performance of these ele
 
 These numbers refer to how an element performs relatively to others in your page. For example, if an element takes 3,900 ms to load and is in the 75 percentile, this means that it is slower to load than 75% of the elements in your page.
 
-![Debug View page](https://developers.cloudflare.com/_astro/core-web-vitals-debug-view.BXtLIgXn_Z1Tx4a4.webp)
+![Debug View page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1840,height=816,format=webp/_astro/core-web-vitals-debug-view.BXtLIgXn.png)
 
 ## Information collected
 
@@ -96,7 +96,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/#page","headline":"Core Web Vitals · Cloudflare Web Analytics docs","description":"View Core Web Vitals metrics collected by Web Analytics.","url":"https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

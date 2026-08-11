@@ -165,7 +165,7 @@ Add a new IPsec tunnel [Phase 2 entry ↗](https://docs.netgate.com/pfsense/en/l
 
 Apply the changes. Navigate to **Status** \> **IPsec** to verify that both Phase 1 and Phase 2 are connected.
 
-![pfSense IPsec overview](https://developers.cloudflare.com/_astro/ipsec-overview.B7tL0kto_ZxRvza.webp)
+![pfSense IPsec overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=931,format=webp/_astro/ipsec-overview.B7tL0kto.png)
 
 ### Interface assignments
 
@@ -181,25 +181,25 @@ In **Interfaces** \> **Assignments** \> **Add**, create a new interface to assig
 
 Select **Save** to apply the changes.
 
-![Assign a new interface to the first IPsec tunnel](https://developers.cloudflare.com/_astro/interfaces.COkbEEZi_5wRFO.webp)
+![Assign a new interface to the first IPsec tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1317,format=webp/_astro/interfaces.COkbEEZi.png)
 
-![Configuring interface assignments](https://developers.cloudflare.com/_astro/interface-assignments.CblqhRKO_Z2dDz1p.webp)
+![Configuring interface assignments](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=814,format=webp/_astro/interface-assignments.CblqhRKO.png)
 
 ### Gateway
 
 In **System** \> **Routing** \> **Gateways** there should already be a gateway. For this example, it is named `CF1_IPSEC_1_VTIV4`.
 
-![There should already be a gateway configured in the interface](https://developers.cloudflare.com/_astro/gateways.BWYSJrzk_Eidcl.webp)
+![There should already be a gateway configured in the interface](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1013,format=webp/_astro/gateways.BWYSJrzk.png)
 
 ### Firewall Rules IPsec
 
 1. In **Firewall Rules** \> **IPsec interface**, allow any type of traffic.
 
-![Allow all traffic for IPsec](https://developers.cloudflare.com/_astro/firewall-ipsec.CgXaJWLX_2i6XvS.webp)
+![Allow all traffic for IPsec](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=617,format=webp/_astro/firewall-ipsec.CgXaJWLX.png)
 
 1. Navigate to **Status** \> **Gateways**. `CF1_IPSEC_1_VTIV4` should now be online.
 
-![The gateway should now be online](https://developers.cloudflare.com/_astro/status-gateways.CAqgLr_K_Z1yxqp4.webp)
+![The gateway should now be online](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=630,format=webp/_astro/status-gateways.CAqgLr_K.png)
 
 ### Firewall Rules LAN
 
@@ -207,7 +207,7 @@ In **System** \> **Routing** \> **Gateways** there should already be a gateway. 
 2. Expand the **Advanced** section.
 3. Change the Gateway to `CF1_IPSEC_1_VTIV4`.
 
-![Change the gateway in the firewall rules for LAN traffic](https://developers.cloudflare.com/_astro/firewall-lan.DduZnf_o_Z2e3GTA.webp)
+![Change the gateway in the firewall rules for LAN traffic](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=753,format=webp/_astro/firewall-lan.DduZnf_o.png)
 
 Was this helpful?
 
@@ -215,7 +215,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/pfsense/#page","headline":"pfSense · Cloudflare WAN docs","description":"Connect pfSense to Cloudflare WAN.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/pfsense/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

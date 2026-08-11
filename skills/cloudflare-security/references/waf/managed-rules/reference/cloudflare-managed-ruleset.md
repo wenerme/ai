@@ -68,7 +68,7 @@ Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard
 5. (Optional) To execute the Cloudflare Managed Ruleset for a subset of incoming requests, select **Edit scope** and [configure the expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/edit-expressions/) that will determine the scope of the current rule deploying the managed ruleset.
 6. In the ruleset configuration section, define settings for all the rules in the Cloudflare Managed Ruleset by setting one or more fields using the drop-down lists.
 For example, select the action to perform for all the rules in the ruleset.
-![The Configure deployment page displaying the available options to override all the rules in the Cloudflare Managed Ruleset: ruleset action and ruleset status.](https://developers.cloudflare.com/_astro/ruleset-config-cloudflare-managed-ruleset.DHYvPCho_eoe68.webp)
+![The Configure deployment page displaying the available options to override all the rules in the Cloudflare Managed Ruleset: ruleset action and ruleset status.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=768,height=732,format=webp/_astro/ruleset-config-cloudflare-managed-ruleset.DHYvPCho.png)
 7. Select **Save**.
 
 ### Tag-level configuration
@@ -89,11 +89,11 @@ Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard
 2. (Optional) Filter by **Managed rules**.
 3. Search for **Cloudflare Managed Ruleset**. Look for a rule with an _Execute_ action.
 4. Select the rule name (containing the name of the managed ruleset), and then select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/_astro/rules-config-cloudflare-managed-ruleset.B2sNvTdY_ZKKGTd.webp)
+![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1296,height=817,format=webp/_astro/rules-config-cloudflare-managed-ruleset.B2sNvTdY.png)
 
 1. Select one or more tags under the search input to filter the rules with those tags, and then select the checkbox in the top left corner of the table to select all the rules shown in the current page.
 If not all the rules are displayed in the current page, extend your selection to all rules with the selected tags across all pages by selecting **Select all <NUMBER> rules**.
-![The Configure deployment page displaying selected rules with the 'sqli' tag in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi_Z1HEcr9.webp)
+![The Configure deployment page displaying selected rules with the 'sqli' tag in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
 2. Update one or more settings for the selected rules using the buttons displayed in the top right corner of the table (for example, **Set status**).
 3. Select **Next**.
 4. A dialog appears asking you if any new rules with the selected tags should be configured with the field values you selected.
@@ -116,12 +116,12 @@ Once you have [deployed the Cloudflare Managed Ruleset](#deploy-in-the-dashboard
 2. (Optional) Filter by **Managed rules**.
 3. Search for **Cloudflare Managed Ruleset**. Look for a rule with an _Execute_ action.
 4. Select the rule name (containing the name of the managed ruleset), and then select **Browse rules**.
-![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/_astro/rules-config-cloudflare-managed-ruleset.B2sNvTdY_ZKKGTd.webp)
+![The Cloudflare dashboard displaying the list of rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1296,height=817,format=webp/_astro/rules-config-cloudflare-managed-ruleset.B2sNvTdY.png)
 
 1. Search for rules using the available filters.
 2. In the results list, change the values for each rule as desired, using the displayed drop-down lists and toggles. For example, change the status of a rule using the **Status** toggle next to the rule.
 To configure multiple rules with the same value, select the checkboxes for all the rules you want to configure. If not all the rules are displayed in the current page, you can extend your selection to all rules across all pages by selecting **Select all <NUMBER> rules**. Then, use the buttons displayed in the top right corner of the table — for example, **Set status** — to update one or more fields for the selected rules.
-![The Configure deployment page displaying selected rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi_Z1HEcr9.webp)
+![The Configure deployment page displaying selected rules in the Cloudflare Managed Ruleset.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1277,height=612,format=webp/_astro/tags-config-cloudflare-managed-ruleset.Db5oHcxi.png)
 3. Select **Next**, and then select **Save**.
 
 ## Configure via API
@@ -319,7 +319,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/#page","headline":"Cloudflare Managed Ruleset · Cloudflare Web Application Firewall (WAF) docs","description":"Rules and categories in the Cloudflare Managed Ruleset.","url":"https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

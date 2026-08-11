@@ -18,7 +18,7 @@ In this tutorial, you will build an example internationalization and localizatio
 
 This tutorial uses the [HTMLRewriter](https://developers.cloudflare.com/workers/runtime-apis/html-rewriter/) class built into the Cloudflare Workers runtime, which allows for parsing and rewriting of HTML on the Cloudflare global network. This gives developers the ability to efficiently and transparently customize their Workers applications.
 
-![An example site that has been successfully localized in Japanese, German and English](https://developers.cloudflare.com/_astro/i18n.DfrXtRlL_Zc9hGr.webp)
+![An example site that has been successfully localized in Japanese, German and English](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=779,format=webp/_astro/i18n.DfrXtRlL.jpg)
 
 ---
 
@@ -89,7 +89,7 @@ The `HTMLRewriter` class provided in the Workers runtime allows developers to pa
 
 The example website in this tutorial is a basic single-page HTML project that lives in the `public` directory. It includes an `h1` element with the text `Example Site` and a number of `p` elements with different text:
 
-![Demo code shown in Chrome DevTools with the elements described above](https://developers.cloudflare.com/_astro/code-example.Csjrvc1w_250P4I.webp)
+![Demo code shown in Chrome DevTools with the elements described above](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=934,format=webp/_astro/code-example.Csjrvc1w.png)
 
 What is unique about this page is the addition of [data attributes ↗](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use%5Fdata%5Fattributes) in the HTML – custom attributes defined on a number of elements on this page. The `data-i18n-key` on the `h1` tag on this page, as well as many of the `p` tags, indicates that there is a corresponding internationalization key, which should be used to look up a translation for this text:
 
@@ -286,7 +286,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 	"name": "i18n-example",
 	"pages_build_output_dir": "./public",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22"
+	"compatibility_date": "2026-08-10"
 }
 ```
 
@@ -295,7 +295,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-10"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:
@@ -313,7 +313,7 @@ Using `wrangler`, deploy to Cloudflare’s network, using the `deploy` command:
 npm run deploy
 ```
 
-![An example site that has been successfully localized in Japanese, German and English](https://developers.cloudflare.com/_astro/i18n.DfrXtRlL_Zc9hGr.webp)
+![An example site that has been successfully localized in Japanese, German and English](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=779,format=webp/_astro/i18n.DfrXtRlL.jpg)
 
 ## Related resources
 
@@ -327,7 +327,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/#page","headline":"Localize a website with HTMLRewriter · Cloudflare Pages docs","description":"This tutorial uses the HTMLRewriter functionality in the Cloudflare Workers platform to overlay an i18n layer, automatically translating the site based on the user's language.","url":"https://developers.cloudflare.com/pages/tutorials/localize-a-website/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

@@ -48,7 +48,7 @@ You must create an [Account API token](https://developers.cloudflare.com/fundame
 1. Once you have configured an IdP in Cloudflare One, go to the **Members** page to manage SSO connectors.
 [Go to **Members** ↗](https://dash.cloudflare.com/?to=/:account/members)
 1. If step 1 was successful, a button to add a new SSO domain will be present. Select the button to begin the process of adding a new SSO domain.
-![Screenshot of the SSO connector create modal](https://developers.cloudflare.com/_astro/create_modal.UuyGmCgI_ZLWxQJ.webp)
+![Screenshot of the SSO connector create modal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=634,height=305,format=webp/_astro/create_modal.UuyGmCgI.png)
 1. Enter your email domain and select **Create** to move to the verification step.
 
 Note
@@ -86,7 +86,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors"
 
 If you are unable to change your DNS records right away, the option to verify later is available. The verification process can be manually triggered from the actions menu for that connector in the list.
 
-![Screenshot of the SSO connector create modal](https://developers.cloudflare.com/_astro/verify_modal.DVxZpDs__Z27Ilnd.webp)
+![Screenshot of the SSO connector create modal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=636,height=388,format=webp/_astro/verify_modal.DVxZpDs_.png)
 
 Copy the verification code and create a TXT record in your DNS configuration with that value. The record must include all of the text including the `cloudflare_dashboard_sso=` prefix.
 
@@ -128,7 +128,7 @@ Domains that are associated with an already enabled connector belonging to a dif
 
 Enable the connector by selecting **Enable** in the Actions menu for that connector in the list.
 
-![Screenshot of the SSO connector enable button](https://developers.cloudflare.com/_astro/verified_domain.B1SGjH_l_1biz1k.webp)
+![Screenshot of the SSO connector enable button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=203,format=webp/_astro/verified_domain.B1SGjH_l.png)
 
 Enable the connector by running the following — again, replacing the `{account_id}` value with your account ID, and additionally replacing the `{sso_connector_id}` with the value you obtained from the `id` field in the response to the previous call.
 
@@ -369,7 +369,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#page","headline":"Set up dashboard SSO · Cloudflare Fundamentals docs","description":"Configure single sign-on (SSO) for the Cloudflare dashboard using your identity provider to enforce authenticated access for your email domain.","url":"https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}

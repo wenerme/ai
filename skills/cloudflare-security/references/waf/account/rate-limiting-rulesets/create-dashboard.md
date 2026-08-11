@@ -31,7 +31,7 @@ For more information on rule parameters, refer to [Rate limiting parameters](htt
 4. Enter a name for the ruleset and (optionally) a description.
 5. In the ruleset creation page, select **Create rule**.
 6. In the rule creation page, enter a descriptive name for the rule in **Rule name**.
-![Create rate limiting rule at the account level in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/rate-limiting-create-account.DD1IrUhr_VtIHI.webp)
+![Create rate limiting rule at the account level in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1002,height=1340,format=webp/_astro/rate-limiting-create-account.DD1IrUhr.png)
 7. Under **When incoming requests match**, use the **Field** drop-down list to choose an HTTP property. For each request, the value of the property you choose for **Field** is compared to the value you specify for **Value** using the operator selected in **Operator**.
 8. (Optional) Under **Cache status**, disable **Also apply rate limiting to cached assets** to consider only the requests that reach the origin when determining the rate.
 9. Under **With the same characteristics**, configure the characteristics that will define the request counters for rate limiting purposes. Each value combination will have its own counter to determine the rate. Refer to [How Cloudflare determines the request rate](https://developers.cloudflare.com/waf/rate-limiting-rules/request-rate/) for more information.
@@ -84,7 +84,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/#page","headline":"Create a rate limiting ruleset in the dashboard for an account · Cloudflare Web Application Firewall (WAF) docs","description":"Create account-level rate limiting rulesets in the dashboard.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/create-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -20,7 +20,7 @@ Network Error Logging (NEL) is a browser-based reporting system that allows user
 
 The last mile is the path from a user to the first point of ingress to the resource, whether that be a network like Cloudflare or directly to the origin server. The last mile is important because it is in the critical path of the request for a resource: if the last mile has issues, users cannot connect to their resources. When Network Error Logging is enabled, you can receive alerts about issues in the last mile — which are typically difficult to detect — to learn what the problem is and how to fix it.
 
-![The last mile diagram, showing the steps involved in delivering data to a customer](https://developers.cloudflare.com/_astro/last-mile.oZJOfPRC_ZvDDO1.webp)
+![The last mile diagram, showing the steps involved in delivering data to a customer](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1512,height=257,format=webp/_astro/last-mile.oZJOfPRC.png)
 
 ## How NEL affects requests
 
@@ -80,7 +80,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/network-error-logging/#page","headline":"Overview · Cloudflare Network Error Logging docs","description":"Collect reports about network errors affecting your visitors.","url":"https://developers.cloudflare.com/network-error-logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Logging"]}

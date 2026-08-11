@@ -50,7 +50,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
 
 We provide a UI-based editor to create and manage the presets in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit).
 
-![Preset Editor](https://developers.cloudflare.com/_astro/preset-editor.CoEtzs7E_2guRTO.webp)
+![Preset Editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3452,height=1898,format=webp/_astro/preset-editor.CoEtzs7E.png)
 
 The permissions are divided into the following categories:
 
@@ -81,7 +81,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/#page","headline":"Preset · Cloudflare Realtime docs","description":"Configure participant roles, permissions, and meeting experience with RealtimeKit presets.","url":"https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

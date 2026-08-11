@@ -298,6 +298,8 @@ If you wish to downgrade from a Workers Paid plan to a Workers Free plan, you mu
 
 Durable Objects are billed for compute duration (wall-clock time) while the Durable Object is actively running or is idle in memory but unable to [hibernate](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/). Durable Objects that are idle and eligible for hibernation are not billed for duration, even before the runtime has hibernated them. Requests to a Durable Object keep it active or create the object if it was inactive.
 
+For each metered dimension, billable usage is the amount consumed in excess of the included monthly allocation. This billable usage is rounded up to the next billable unit before the corresponding rate is applied. For example, 500,000 GB-s of billable compute duration is rounded up to 1,000,000 GB-s and billed accordingly.
+
 |           | Free plan         | Paid plan                                                                                                            |
 | --------- | ----------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Requests  | 100,000 / day     | 1 million / month, + $0.15/million Includes HTTP requests, RPC sessions1, WebSocket messages2, and alarm invocations |
@@ -469,7 +471,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing · Cloudflare Workers docs","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

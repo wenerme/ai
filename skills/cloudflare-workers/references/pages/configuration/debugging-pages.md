@@ -24,7 +24,7 @@ You can review build errors in your Pages build log. To access your build log:
 [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
 3. Go to **Deployments** \> **View details** \> **Build log**.
-![After logging in to the Cloudflare dashboard, access the build log by following the instructions above](https://developers.cloudflare.com/_astro/pages-build-log.Dc14wrt1_1PKYri.webp)
+![After logging in to the Cloudflare dashboard, access the build log by following the instructions above](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2078,height=1258,format=webp/_astro/pages-build-log.Dc14wrt1.png)
 
 Possible errors in your build log are included in the following sections.
 
@@ -203,7 +203,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/debugging-pages/#page","headline":"Debugging Pages · Cloudflare Pages docs","description":"Troubleshoot common Cloudflare Pages build errors and deployment failures.","url":"https://developers.cloudflare.com/pages/configuration/debugging-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

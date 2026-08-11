@@ -32,7 +32,7 @@ Note
 
 Users may also see `100x` errors which are not reported. These will be displayed as either `403` or `409` (edge) errors.
 
-![Error analytics by Cloudflare data center](https://developers.cloudflare.com/_astro/status-codes.BbTZPg-P_ZDqqiT.webp)
+![Error analytics by Cloudflare data center](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1458,height=940,format=webp/_astro/status-codes.BbTZPg-P.png)
 
 ---
 
@@ -77,7 +77,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/status-codes/#page","headline":"Status codes · Cloudflare Analytics docs","description":"Analyze HTTP status code distribution per data center.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/status-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

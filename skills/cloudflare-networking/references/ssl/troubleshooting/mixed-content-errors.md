@@ -39,11 +39,11 @@ Each web browser uses different methods to warn visitors about mixed content on 
 
 For mixed content warnings, the web browser loads the resources but users do not see the lock icon in the URL. Warning messages appear within the browser’s debug tools:
 
-![Screenshot of mixed content warnings displayed in a browser console.](https://developers.cloudflare.com/_astro/hc-import-mixed_content_warning.WfgcvXqC_Z29obV7.webp)
+![Screenshot of mixed content warnings displayed in a browser console.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1514,height=108,format=webp/_astro/hc-import-mixed_content_warning.WfgcvXqC.png)
 
 For mixed content errors, the browser refuses to load the resources over an insecure connection:
 
-![Screenshot of mixed content errors displayed in a browser console.](https://developers.cloudflare.com/_astro/hc-import-mixed_content_error.C3G5mm9r_129MlR.webp)
+![Screenshot of mixed content errors displayed in a browser console.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1500,height=94,format=webp/_astro/hc-import-mixed_content_error.C3G5mm9r.png)
 
 Information on using the browser’s debug tools to locate these issues are found in the documentation for [Chrome ↗](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content) and [Firefox ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed%5Fcontent). Alternatively, you can view your page source and find specific references of _http://_ for paths to other resources.
 
@@ -76,7 +76,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/#page","headline":"Mixed content errors · Cloudflare SSL/TLS docs","description":"Fix mixed content errors caused by HTTP resources on HTTPS pages.","url":"https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

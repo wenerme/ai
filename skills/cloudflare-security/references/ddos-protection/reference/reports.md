@@ -52,11 +52,11 @@ Notes
 
 The following image shows an example DDoS report:
 
-![Example email sent with a weekly DDoS report](https://developers.cloudflare.com/_astro/ddos-report-email.meVYnmIT_Z5AHUW.webp)
+![Example email sent with a weekly DDoS report](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=689,height=1893,format=webp/_astro/ddos-report-email.meVYnmIT.png)
 
 When Cloudflare does not detect any L3/4 DDoS attacks in the prior week, Cloudflare sends a confirmation report:
 
-![Example report email sent when Cloudflare does not detect any DDoS attack in the previous week](https://developers.cloudflare.com/_astro/ddos-report-no-attacks.DOx1yQA2_ZBJVFd.webp)
+![Example report email sent when Cloudflare does not detect any DDoS attack in the previous week](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=689,height=695,format=webp/_astro/ddos-report-no-attacks.DOx1yQA2.png)
 
 ### Manage reporting subscriptions
 
@@ -70,7 +70,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ddos-protection/reference/reports/#page","headline":"DDoS reports · Cloudflare DDoS Protection docs","description":"View and share DDoS attack reports from the Cloudflare dashboard.","url":"https://developers.cloudflare.com/ddos-protection/reference/reports/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

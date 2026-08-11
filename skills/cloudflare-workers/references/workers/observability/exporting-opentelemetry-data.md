@@ -56,7 +56,7 @@ Protocol
 
 Cloudflare does not support the [Binary format ↗](https://opentelemetry.io/docs/specs/otlp/#binary-protobuf-encoding) for OTLP ingest.
 
-![Observability Destinations dashboard showing configured destinations for Grafana and Honeycomb with their respective endpoints and status](https://developers.cloudflare.com/_astro/destinations.B-CW_OSI_Z1IImW8.webp)
+![Observability Destinations dashboard showing configured destinations for Grafana and Honeycomb with their respective endpoints and status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1794,height=750,format=webp/_astro/destinations.B-CW_OSI.png)
 1. Head to your account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section of the dashboard
 2. Click add destination.
 3. Configure your destination:
@@ -65,7 +65,7 @@ Cloudflare does not support the [Binary format ↗](https://opentelemetry.io/doc
   * **OTLP Endpoint** \- The URL where your observability platform accepts OTLP data.
   * **Custom Headers** (Optional) - Any authentication headers or other provider-required headers
 4. Save your destination
-![Edit Destination dialog showing configuration for Honeycomb tracing with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/_astro/destination-setup.B8cxx8yd_Z127o0L.webp)
+![Edit Destination dialog showing configuration for Honeycomb tracing with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1942,height=974,format=webp/_astro/destination-setup.B8cxx8yd.png)
 
 ## Enabling OpenTelemetry export for your Worker
 
@@ -155,7 +155,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/#page","headline":"Exporting OpenTelemetry Data · Cloudflare Workers docs","description":"Export traces and logs from Cloudflare Workers to any OpenTelemetry-compatible destination.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

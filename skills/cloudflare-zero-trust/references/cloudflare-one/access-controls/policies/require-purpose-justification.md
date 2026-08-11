@@ -30,7 +30,7 @@ Configuring a purpose justification screen is done as part of configuring an Acc
 
 Users who match this policy will see the following screen:
 
-![Finalized purpose justification screen displaying custom message.](https://developers.cloudflare.com/_astro/purpose-justification.Bgv25E7i_nwUeM.webp)
+![Finalized purpose justification screen displaying custom message.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1192,height=652,format=webp/_astro/purpose-justification.Bgv25E7i.png)
 
 Was this helpful?
 
@@ -38,7 +38,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/#page","headline":"Require purpose justification after login · Cloudflare One docs","description":"Require purpose justification in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/require-purpose-justification/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

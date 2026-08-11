@@ -67,6 +67,8 @@ Included products
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/security-center.xml)
 * [Security Overview](https://developers.cloudflare.com/security/overview/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/security-overview.xml)
+* [Turnstile](https://developers.cloudflare.com/turnstile/)
+[Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/turnstile.xml)
 * [WAF](https://developers.cloudflare.com/waf/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
@@ -216,7 +218,7 @@ Included products
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/queues.xml)
 * [R2](https://developers.cloudflare.com/r2/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/r2.xml)
-* [R2 Data Catalog](https://developers.cloudflare.com/r2/data-catalog/)
+* [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/r2-data-catalog.xml)
 * [R2 SQL](https://developers.cloudflare.com/r2-sql/)
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/r2-sql.xml)
@@ -267,7 +269,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/#page","headline":"Available RSS Feeds · Cloudflare Fundamentals docs","description":"Read about the various RSS feeds available for Cloudflare's changelogs.","url":"https://developers.cloudflare.com/fundamentals/new-features/available-rss-feeds/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

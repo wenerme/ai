@@ -28,7 +28,7 @@ Multiple matching cache rules can be combined and applied to the same request. A
 2. In **When incoming requests match**, select **All incoming requests**.
 3. Under **Then**, in the **Cache eligibility** section, select [Bypass cache](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#bypass-cache).
 
-![Create rule to bypass cache](https://developers.cloudflare.com/_astro/first-rule.DCA_9a45_1jNULw.webp)
+![Create rule to bypass cache](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1454,height=858,format=webp/_astro/first-rule.DCA_9a45.png)
 
 ## Rule 2
 
@@ -47,13 +47,13 @@ If you prefer, you can select **Edit expression** and paste the following expres
 
 1. Under **Then**, in the **Cache eligibility** section, select [**Eligible for cache**](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#eligible-for-cache-settings).
 
-![Create an eligible for cache rule](https://developers.cloudflare.com/_astro/second-rule.88NhnPNI_c13b4.webp)
+![Create an eligible for cache rule](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1140,height=1140,format=webp/_astro/second-rule.88NhnPNI.png)
 
 Note
 
 Remember to create the rules in the specified order: first, the `bypass everything` rule, and then the `cache all default cacheable file extensions` rule.
 
-![Rules order](https://developers.cloudflare.com/_astro/rule-order.wNZiF99u_ZOuxf5.webp)
+![Rules order](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1970,height=444,format=webp/_astro/rule-order.wNZiF99u.png)
 
 Was this helpful?
 
@@ -61,7 +61,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/#page","headline":"Migration from Page Rules · Cloudflare Cache (CDN) docs","description":"Migrate caching Page Rules to Cache Rules.","url":"https://developers.cloudflare.com/cache/how-to/cache-rules/page-rules-migration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Migration"]}

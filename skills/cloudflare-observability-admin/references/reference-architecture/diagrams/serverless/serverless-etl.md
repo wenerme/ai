@@ -30,7 +30,7 @@ Cloudflare allows for the deployment of fully serverless ETL pipelines, which ca
 
 ## ETL pipeline with HTTP-based ingest
 
-![Figure 1: Serverless: HTTP-based ingest](https://developers.cloudflare.com/_astro/serverless-etl-http-based.DtreS_ZH_Z1yqSh0.svg "Figure 1: ETL pipeline with HTTP-based ingest")
+![Figure 1: Serverless: HTTP-based ingest](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=380,format=svg/_astro/serverless-etl-http-based.DtreS_ZH.svg "Figure 1: ETL pipeline with HTTP-based ingest")
 
 Figure 1: ETL pipeline with HTTP-based ingest
 
@@ -45,7 +45,7 @@ This architecture shows a fully serverless ETL pipeline with an API endpoint as 
 
 ## ETL pipeline with object storage ingest
 
-![Figure 2: Serverless: Object storage ingest](https://developers.cloudflare.com/_astro/serverless-etl-object-storage.B0XqHlLa_Z1yqSh0.svg "Figure 2: ETL pipeline with object storage ingest")
+![Figure 2: Serverless: Object storage ingest](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1200,height=380,format=svg/_astro/serverless-etl-object-storage.B0XqHlLa.svg "Figure 2: ETL pipeline with object storage ingest")
 
 Figure 2: ETL pipeline with object storage ingest
 
@@ -70,7 +70,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-etl/#page","headline":"Serverless ETL pipelines · Cloudflare Reference Architecture docs","description":"Cloudflare enables fully serverless ETL pipelines, significantly reducing complexity, accelerating time to production, and lowering overall costs.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/serverless/serverless-etl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-10-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

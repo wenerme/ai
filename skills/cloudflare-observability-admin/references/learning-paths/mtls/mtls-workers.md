@@ -83,7 +83,7 @@ addEventListener('fetch', event => {
 
 The response when using the browser with a P12 Certificate to visit the mTLS hostname would look similar to this example:
 
-![Example response after exposing an mTLS header with Cloudflare Workers](https://developers.cloudflare.com/_astro/expose-mtls-workers.CZtg7nI7_2kyLoG.webp)
+![Example response after exposing an mTLS header with Cloudflare Workers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=1191,format=webp/_astro/expose-mtls-workers.CZtg7nI7.png)
 
 ```txt
 {
@@ -110,7 +110,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/#page","headline":"mTLS with Workers · Cloudflare Learning Paths","description":"Implement mutual TLS authentication with Cloudflare.","url":"https://developers.cloudflare.com/learning-paths/mtls/mtls-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

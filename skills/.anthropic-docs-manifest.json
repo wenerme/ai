@@ -2,8 +2,8 @@
   "anthropic-docs/intro.md": {
     "url": "https://platform.claude.com/docs/en/intro",
     "skill": "anthropic-docs",
-    "size": 4989,
-    "updatedAt": "2026-08-04T03:29:33.776Z"
+    "size": 4988,
+    "updatedAt": "2026-08-11T02:16:12.570Z"
   },
   "anthropic-docs/get-api-key.md": {
     "url": "https://platform.claude.com/docs/en/get-api-key",
@@ -74,8 +74,8 @@
   "anthropic-docs/build-with-claude/structured-outputs.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/structured-outputs",
     "skill": "anthropic-docs",
-    "size": 110032,
-    "updatedAt": "2026-08-05T03:22:41.654Z"
+    "size": 109799,
+    "updatedAt": "2026-08-11T02:16:17.015Z"
   },
   "anthropic-docs/build-with-claude/citations.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/citations",
@@ -320,14 +320,14 @@
   "anthropic-docs/build-with-claude/prompt-caching.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
     "skill": "anthropic-docs",
-    "size": 153096,
-    "updatedAt": "2026-08-07T03:13:09.728Z"
+    "size": 153021,
+    "updatedAt": "2026-08-11T02:16:34.079Z"
   },
   "anthropic-docs/build-with-claude/mid-conversation-system-messages.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages",
     "skill": "anthropic-docs",
-    "size": 40076,
-    "updatedAt": "2026-07-25T03:30:16.118Z"
+    "size": 40044,
+    "updatedAt": "2026-08-11T02:16:34.466Z"
   },
   "anthropic-docs/build-with-claude/mid-conversation-effort-example.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/mid-conversation-effort-example",
@@ -344,8 +344,8 @@
   "anthropic-docs/build-with-claude/token-counting.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/token-counting",
     "skill": "anthropic-docs",
-    "size": 41917,
-    "updatedAt": "2026-08-08T02:08:39.376Z"
+    "size": 41838,
+    "updatedAt": "2026-08-11T02:16:35.705Z"
   },
   "anthropic-docs/build-with-claude/files.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/files",
@@ -362,8 +362,8 @@
   "anthropic-docs/build-with-claude/vision.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/vision",
     "skill": "anthropic-docs",
-    "size": 45504,
-    "updatedAt": "2026-08-04T03:29:54.501Z"
+    "size": 45383,
+    "updatedAt": "2026-08-11T02:16:36.803Z"
   },
   "anthropic-docs/build-with-claude/vision-coordinates.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/vision-coordinates",
@@ -506,8 +506,8 @@
   "anthropic-docs/managed-agents/quickstart.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/quickstart",
     "skill": "anthropic-docs",
-    "size": 28072,
-    "updatedAt": "2026-08-07T03:13:20.768Z"
+    "size": 29760,
+    "updatedAt": "2026-08-11T02:16:45.913Z"
   },
   "anthropic-docs/managed-agents/onboarding.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/onboarding",
@@ -746,8 +746,8 @@
   "anthropic-docs/manage-claude/usage-cost-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/usage-cost-api",
     "skill": "anthropic-docs",
-    "size": 14896,
-    "updatedAt": "2026-07-25T03:30:39.715Z"
+    "size": 14895,
+    "updatedAt": "2026-08-11T02:17:02.473Z"
   },
   "anthropic-docs/manage-claude/rate-limits-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/rate-limits-api",
@@ -794,8 +794,8 @@
   "anthropic-docs/manage-claude/cmek.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/cmek",
     "skill": "anthropic-docs",
-    "size": 12496,
-    "updatedAt": "2026-08-06T03:24:56.814Z"
+    "size": 13961,
+    "updatedAt": "2026-08-11T02:17:05.611Z"
   },
   "anthropic-docs/manage-claude/cmek-aws-kms.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/cmek-aws-kms",
@@ -1004,8 +1004,8 @@
   "anthropic-docs/about-claude/models/choosing-a-model.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model",
     "skill": "anthropic-docs",
-    "size": 7568,
-    "updatedAt": "2026-07-25T03:30:53.529Z"
+    "size": 7584,
+    "updatedAt": "2026-08-11T02:17:19.706Z"
   },
   "anthropic-docs/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",
@@ -1022,8 +1022,8 @@
   "anthropic-docs/about-claude/models/whats-new-opus-5.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/whats-new-opus-5",
     "skill": "anthropic-docs",
-    "size": 16380,
-    "updatedAt": "2026-07-25T03:30:54.433Z"
+    "size": 16396,
+    "updatedAt": "2026-08-11T02:17:20.863Z"
   },
   "anthropic-docs/about-claude/models/migration-guide.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/migration-guide",
@@ -1040,8 +1040,8 @@
   "anthropic-docs/resources/overview.md": {
     "url": "https://platform.claude.com/docs/en/resources/overview",
     "skill": "anthropic-docs",
-    "size": 4673,
-    "updatedAt": "2026-07-25T03:30:55.632Z"
+    "size": 4672,
+    "updatedAt": "2026-08-11T02:17:22.452Z"
   },
   "anthropic-docs/release-notes/system-prompts.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/system-prompts",
@@ -1214,8 +1214,8 @@
   "anthropic-docs/release-notes/overview.md": {
     "url": "https://platform.claude.com/docs/en/release-notes/overview",
     "skill": "anthropic-docs",
-    "size": 77247,
-    "updatedAt": "2026-08-08T02:09:26.696Z"
+    "size": 77251,
+    "updatedAt": "2026-08-11T02:17:34.253Z"
   },
   "anthropic-api/api/completions.md": {
     "url": "https://platform.claude.com/docs/en/api/completions",
@@ -3336,7 +3336,7 @@
   "anthropic-docs/claude_api_primer.md": {
     "url": "https://platform.claude.com/docs/en/claude_api_primer",
     "skill": "anthropic-docs",
-    "size": 26935,
-    "updatedAt": "2026-08-04T03:32:34.996Z"
+    "size": 26871,
+    "updatedAt": "2026-08-11T02:19:48.559Z"
   }
 }

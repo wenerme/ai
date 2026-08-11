@@ -36,7 +36,7 @@ In the Cloudflare dashboard, go to **Stream** \> **Transformations** and select 
 
 In **Sources**, you can configure the origins for transformations on your zone.
 
-![Enable allowed origins from the Cloudflare dashboard](https://developers.cloudflare.com/_astro/allowed-origins.4hu5lHws_ZsjEgI.webp)
+![Enable allowed origins from the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1664,height=872,format=webp/_astro/allowed-origins.4hu5lHws.png)
 
 ## Allow source videos only from allowed origins
 
@@ -50,7 +50,7 @@ To define a new origin:
 
 1. From **Sources**, select **Add origin**.
 2. Under **Domain**, specify the domain for the source video. Only valid web URLs will be accepted.
-![Add the origin for source videos in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/add-origin.BtfOyoOS_Z27sFtH.webp)
+![Add the origin for source videos in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2142,height=1104,format=webp/_astro/add-origin.BtfOyoOS.png)
 
 When you add a root domain, subdomains are not accepted. In other words, if you add `b.com`, then source videos from `media.b.com` will be rejected.
 
@@ -83,7 +83,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/transform-videos/sources/#page","headline":"Define source origin · Cloudflare Stream docs","description":"Specify which origins can serve source videos for Cloudflare Media Transformations.","url":"https://developers.cloudflare.com/stream/transform-videos/sources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

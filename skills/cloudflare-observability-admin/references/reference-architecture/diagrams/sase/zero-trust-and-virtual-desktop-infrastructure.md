@@ -36,13 +36,13 @@ This reference architecture is designed for IT or security professionals who are
 
 In today's IT landscape, most applications and services that companies rely on are accessible through a web browser and often delivered by a SaaS provider. In these cases VDI is overkill and an incredibly expensive and burdensome way to provide a secure browser to a remote user. Instead, many organizations are turning to alternatives such as a [Remote Browser Isolation ↗](https://www.cloudflare.com/zero-trust/products/browser-isolation/) (RBI) service. These services lower costs and overhead, provide a better user experience and most importantly offer robust security and logging features.
 
-![Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.](https://developers.cloudflare.com/_astro/figure1.DA3CfHpk_Z15R28G.svg "Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.")
+![Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=924,height=404,format=svg/_astro/figure1.DA3CfHpk.svg "Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.")
 
 Figure 1: Remote browser isolation can provide a secure, controlled browser environment for accessing sensitive company applications.
 
 The diagram above shows the general flow of how user traffic goes from their local browser to Cloudflare's remote browser and then to applications hosted on their infrastructure over a secure tunnel. Figure 2 below shows how users can access applications using remote browser isolation either directly in a browser or, if you require greater privacy and security for the traffic, using our device agent to create a tunnel from the device to Cloudflare. Both methods provide secure access to internal and external resources.
 
-![Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.](https://developers.cloudflare.com/_astro/figure2.BTMnNCIU_Z2mttNf.svg "Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.")
+![Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1378,height=1136,format=svg/_astro/figure2.BTMnNCIU.svg "Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.")
 
 Figure 2: Two different traffic flow options: clientless RBI & RBI using the device agent.
 
@@ -65,7 +65,7 @@ Figure 2: Two different traffic flow options: clientless RBI & RBI using the dev
 
 When replacing your VDI is not an option and a fully virtualized desktop is required for legacy applications, Cloudflare's [SASE platform ↗](https://www.cloudflare.com/zero-trust/) can still help secure these environments by authorizing the access to them using identity based Zero Trust policies, as well as securing the Internet bound traffic from the devices themselves.
 
-![Figure 3: Using Cloudflare Access ZTNA to secure VDI.](https://developers.cloudflare.com/_astro/figure3.CQN_cSLv_4fMTg.svg "Figure 3: Using Cloudflare Access ZTNA to secure VDI.")
+![Figure 3: Using Cloudflare Access ZTNA to secure VDI.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1476,height=932,format=svg/_astro/figure3.CQN_cSLv.svg "Figure 3: Using Cloudflare Access ZTNA to secure VDI.")
 
 Figure 3: Using Cloudflare Access ZTNA to secure VDI.
 
@@ -81,7 +81,7 @@ This model could also benefit from the below options demonstrating how to filter
 
 Cloudflare's SASE platform is capable of much more than replacing VPNs and bolstering policies towards internal services. It is just as important to protect users from accessing high risk sites on the Internet. Policies in Cloudflare's Secure Web Gateway can be tuned to filter DNS requests or become a sophisticated full forward proxy, inspecting both network and HTTP traffic as it heads towards the open Internet.
 
-![Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.](https://developers.cloudflare.com/_astro/figure4.DPa0cH6R_2lYTwp.svg "Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.")
+![Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=880,height=1114,format=svg/_astro/figure4.DPa0cH6R.svg "Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.")
 
 Figure 4: Using Cloudflare's Secure Web Gateway to filter and protect traffic coming from VDI.
 
@@ -112,7 +112,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/#page","headline":"Zero Trust and Virtual Desktop Infrastructure · Cloudflare Reference Architecture docs","description":"This document provides a reference and guidance for using Cloudflare's Zero Trust services. It offers a vast improvement over remote access to web applications with greater security.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/sase/zero-trust-and-virtual-desktop-infrastructure/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-11-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

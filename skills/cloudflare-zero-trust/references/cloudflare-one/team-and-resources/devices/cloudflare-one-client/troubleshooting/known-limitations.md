@@ -270,7 +270,7 @@ To work around this issue, remove the embedded framework bundles from the **Incl
 3. In the **Included apps** list, remove every entry except `com.cloudflare.1dot1dot1dot1.macos`.
 4. Set **Ignore app version** to **Yes** so that detection succeeds regardless of the deployed client version.
 5. Select **Review + save** to apply the change.
-![The Included apps detection list in Intune with only the Cloudflare One Client bundle identifier and Ignore app version set to Yes](https://developers.cloudflare.com/_astro/intune-included-apps-detection.74iUWzuj_1QbFew.webp)
+![The Included apps detection list in Intune with only the Cloudflare One Client bundle identifier and Ignore app version set to Yes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=775,height=367,format=webp/_astro/intune-included-apps-detection.74iUWzuj.png)
 
 Note
 
@@ -290,7 +290,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/#page","headline":"Known limitations - Cloudflare One Client · Cloudflare One docs","description":"Reference information for Known limitations in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/known-limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging","DNS"]}

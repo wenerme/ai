@@ -22,7 +22,7 @@ Cloudflare supports API-based cloud access security broker (CASB) integrations w
 
 Since these integrations are out-of-bound connections to SaaS applications, they do not require inline user traffic to create detections. This means you can immediately gain visibility into how your employees are using sanctioned AI tools without having to install the Cloudflare device client on every user's machine.
 
-![OpenAI API CASB Integration showing riskier features that are toggled on, security posture risks like unused admin credentials, and an uploaded attachment with a DLP profile match.](https://developers.cloudflare.com/_astro/casb-posture-findings-openai.BuSWwM-8_1IPO5K.webp)
+![OpenAI API CASB Integration showing riskier features that are toggled on, security posture risks like unused admin credentials, and an uploaded attachment with a DLP profile match.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=449,format=webp/_astro/casb-posture-findings-openai.BuSWwM-8.png)
 
 ## Manage findings from your CASB integrations
 
@@ -66,7 +66,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/#page","headline":"Secure approved AI models and tools · Cloudflare Learning Paths","description":"Monitor and secure generative AI usage.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/secure-approved-ai-models-tools/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

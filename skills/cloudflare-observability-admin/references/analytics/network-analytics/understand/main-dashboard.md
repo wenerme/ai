@@ -44,7 +44,7 @@ Network Analytics will not show other traffic, such as:
 
 The side panels in the Network Analytics page provide a summary of activity over the period selected in the time frame drop-down list.
 
-![Available high-level metrics in the Network Analytics dashboard](https://developers.cloudflare.com/_astro/high-level-metrics.DFUDKbKH_1CcwDD.webp)
+![Available high-level metrics in the Network Analytics dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1440,height=602,format=webp/_astro/high-level-metrics.DFUDKbKH.png)
 
 _Note: Labels in this image may reflect a previous product name._
 
@@ -52,7 +52,7 @@ Selecting one of the metrics in the sidebar will define the base unit (packets o
 
 ## Executive summary
 
-![Executive summary card in the Network Analytics dashboard.](https://developers.cloudflare.com/_astro/executive-summary-card.Bueo7FPl_Xhlas.webp)
+![Executive summary card in the Network Analytics dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=980,height=232,format=webp/_astro/executive-summary-card.Bueo7FPl.png)
 
 The executive summary provides top insights and trends about DDoS attacks targeting your network, including the amount of attacks, percentage of attacks traffic mitigated relative to your traffic, largest attack rates, total mitigated attack bytes, top source, and estimated duration of the attacks.
 
@@ -162,7 +162,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/#page","headline":"Network Analytics main dashboard · Cloudflare Analytics docs","description":"Navigate the Network Analytics dashboard sections.","url":"https://developers.cloudflare.com/analytics/network-analytics/understand/main-dashboard/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

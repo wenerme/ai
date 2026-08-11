@@ -33,7 +33,7 @@ Egress policies are evaluated at Layer 4 ([https://www.cloudflare.com/learning/d
 
 1. When Gateway receives a DNS query for a hostname that matches one of these selectors, it initially resolves the query to a temporary IP in the `100.80.0.0/16` or `2606:4700:0cf1:4000::/64` range.
 2. When traffic arrives with this temporary destination IP, Gateway can identify which hostname the connection belongs to, apply the correct egress policy, then replace the temporary IP with the real destination IP before forwarding the traffic.
-![Example egress policy flow](https://developers.cloudflare.com/_astro/host-selector-diagram.MWSMsbT4_1rAw7C.webp)
+![Example egress policy flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1940,height=1011,format=webp/_astro/host-selector-diagram.MWSMsbT4.png)
 
 These selectors require additional configuration before they work.
 
@@ -151,7 +151,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/#page","headline":"Host selectors · Cloudflare One docs","description":"Configure Host selectors in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/host-selectors/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["DNS"]}

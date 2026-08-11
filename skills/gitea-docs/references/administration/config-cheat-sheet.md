@@ -897,8 +897,7 @@ In-Reply-To =
 
 ## Picture (`picture`)
 
-- `GRAVATAR_SOURCE`: **gravatar**: Can be `gravatar`, `duoshuo` or anything like
-   `http://cn.gravatar.com/avatar/`.
+- `GRAVATAR_SOURCE`: **gravatar**: Can be `gravatar`, `libravatar` or any other Gravatar-compatible source, like `https://cn.gravatar.com/avatar/`.
 - `DISABLE_GRAVATAR`: **false**: Enable this to use local avatars only. **DEPRECATED [v1.18+]** moved to database. Use admin panel to configure.
 - `ENABLE_FEDERATED_AVATAR`: **false**: Enable support for federated avatars (see
    [http://www.libravatar.org](http://www.libravatar.org)). **DEPRECATED [v1.18+]** moved to database. Use admin panel to configure.

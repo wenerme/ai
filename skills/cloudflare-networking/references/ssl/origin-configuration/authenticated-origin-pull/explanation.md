@@ -42,11 +42,11 @@ For more details, refer to [What is a TLS handshake? ↗](https://www.cloudflare
 
 **Standard TLS handshake**
 
-![Diagram showing the Standard TLS handshake](https://developers.cloudflare.com/_astro/client-auth-tls-standard.DZBqll1L_xiYbX.webp)
+![Diagram showing the Standard TLS handshake](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=1058,format=webp/_astro/client-auth-tls-standard.DZBqll1L.png)
 
 **Client authenticated TLS handshake**
 
-![Diagram showing the client authenticated TLS handshake](https://developers.cloudflare.com/_astro/client-auth-tls-handshake.B9OeA94c_Z2s8D3v.webp)
+![Diagram showing the client authenticated TLS handshake](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=1256,format=webp/_astro/client-auth-tls-handshake.B9OeA94c.png)
 
 ### Comparison diagrams
 
@@ -78,7 +78,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/#page","headline":"How Authenticated Origin Pulls works · Cloudflare SSL/TLS docs","description":"How Authenticated Origin Pulls use mTLS to verify Cloudflare connections.","url":"https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/explanation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["mTLS"]}

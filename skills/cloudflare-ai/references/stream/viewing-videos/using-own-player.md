@@ -79,7 +79,7 @@ https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c5
 
 If you need ultra low latency, and your users view live video in native apps, you can stream live video with [**glass-to-glass latency of less than 1 second** ↗](https://blog.cloudflare.com/magic-hdmi-cable/), by using SRT or RTMPS for playback.
 
-![Diagram showing SRT and RTMPS playback via the Cloudflare Network](https://developers.cloudflare.com/_astro/stream-rtmps-srt-playback-magic-hdmi-cable.D_FiXuDG_1GHCYx.webp)
+![Diagram showing SRT and RTMPS playback via the Cloudflare Network](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1178,height=801,format=webp/_astro/stream-rtmps-srt-playback-magic-hdmi-cable.D_FiXuDG.png)
 
 SRT and RTMPS playback is built into [ffmpeg ↗](https://ffmpeg.org/). You will need to integrate ffmpeg with your own video player — neither [AVPlayer (iOS)](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/ios/) nor [ExoPlayer (Android)](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/android/) natively support SRT or RTMPS playback.
 
@@ -100,7 +100,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/#page","headline":"Use your own player · Cloudflare Stream docs","description":"Play Cloudflare Stream videos with any HLS/DASH-compatible player on web, iOS, or Android.","url":"https://developers.cloudflare.com/stream/viewing-videos/using-own-player/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -64,7 +64,7 @@ This integrated approach enables secure access to various application types:
 * Self-hosted applications (on premises, data center)
 * SaaS applications (protected through identity proxy)
 
-![High level architecture of integration between Cloudflare and CrowdStrike](https://developers.cloudflare.com/_astro/Main_Arch.COvXoOw2_8x27H.svg "Figure 1: High level architecture - Integration")
+![High level architecture of integration between Cloudflare and CrowdStrike](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=svg/_astro/Main_Arch.COvXoOw2.svg "Figure 1: High level architecture - Integration")
 
 Figure 1: High level architecture - Integration
 
@@ -124,7 +124,7 @@ When a user requests access to an application, Cloudflare Access intercepts the 
 
 Cloudflare permits connection only if the ZTA score meets the minimum threshold defined in the zero trust policy; otherwise, the user is presented with a Cloudflare Access Block Page, typically instructing them to remediate the device.
 
-![Zero Trust access flow showing device posture and user risk score evaluation](https://developers.cloudflare.com/_astro/UseCase01.BoX0v3_H_8x27H.svg "Figure 2: Zero Trust access with device posture and user risk score")
+![Zero Trust access flow showing device posture and user risk score evaluation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=svg/_astro/UseCase01.BoX0v3_H.svg "Figure 2: Zero Trust access with device posture and user risk score")
 
 Figure 2: Zero Trust access with device posture and user risk score
 
@@ -144,7 +144,7 @@ Falcon Next-Gen SIEM indexes this data alongside endpoint telemetry, allowing an
 
 An analyst investigating an endpoint alert can instantly pivot to see every network request that device made through Cloudflare, identifying the phishing site or C2 server that caused the infection.
 
-![Unified threat hunting workflow between Cloudflare and CrowdStrike](https://developers.cloudflare.com/_astro/UseCase02.DNAdCPJO_8x27H.svg "Figure 3: Unified threat hunting")
+![Unified threat hunting workflow between Cloudflare and CrowdStrike](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=svg/_astro/UseCase02.DNAdCPJO.svg "Figure 3: Unified threat hunting")
 
 Figure 3: Unified threat hunting
 
@@ -164,7 +164,7 @@ A Falcon Fusion SOAR workflow is triggered by the detection.
 
 The workflow calls the Cloudflare API to add the malicious IP to a blocklist in Cloudflare WAF or Gateway, instantly protecting the entire organization from that threat source.
 
-![Automated edge remediation workflow from threat detection to edge mitigation](https://developers.cloudflare.com/_astro/UseCase03.Cmq89bjl_8x27H.svg "Figure 4: Automated edge remediation")
+![Automated edge remediation workflow from threat detection to edge mitigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=svg/_astro/UseCase03.Cmq89bjl.svg "Figure 4: Automated edge remediation")
 
 Figure 4: Automated edge remediation
 
@@ -184,7 +184,7 @@ Cloudflare Access, checking the ZTA score on the very next request, blocks the u
 
 Falcon Fusion SOAR automates a response playbook: It isolates the endpoint (network containment) and adds the user to a custom list, in Cloudflare, effectively tagging them in the logs for deeper retrospective analysis in Falcon Next-Gen SIEM and enforcing additional policies attached to the custom list.
 
-![Compromised user lifecycle showing detection, access revocation, and remediation](https://developers.cloudflare.com/_astro/UseCase04.BoAr7B_A_8x27H.svg "Figure 5: Compromised user lifecycle - detection and response")
+![Compromised user lifecycle showing detection, access revocation, and remediation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=svg/_astro/UseCase04.BoAr7B_A.svg "Figure 5: Compromised user lifecycle - detection and response")
 
 Figure 5: Compromised user lifecycle - detection and response
 
@@ -204,7 +204,7 @@ Falcon Next-Gen SIEM correlates this DLP event with endpoint activity (e.g., rec
 
 Falcon Fusion SOAR updates the Cloudflare Zero Trust policy to require "step-up authentication" or remote browser isolation (RBI) for this specific user, preventing further data movement even for legitimate tasks until cleared by HR or security.
 
-![Insider threat and data protection workflow with DLP monitoring and adaptive controls](https://developers.cloudflare.com/_astro/UseCase05.BSXF1uGi_8x27H.svg "Figure 6: Insider threat and data protection")
+![Insider threat and data protection workflow with DLP monitoring and adaptive controls](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=svg/_astro/UseCase05.BSXF1uGi.svg "Figure 6: Insider threat and data protection")
 
 Figure 6: Insider threat and data protection
 
@@ -224,7 +224,7 @@ CrowdStrike Threat Intelligence enriches the log data, identifying the subnet as
 
 Falcon Fusion SOAR triggers a workflow to update Cloudflare WAF rules: It increases the "Bot Fight Mode" sensitivity for that region and creates a proactive block rule for the entire autonomous system number (ASN) associated with the attack, hardening the application before the main assault begins.
 
-![Proactive application defense workflow from attack identification to defensive tuning](https://developers.cloudflare.com/_astro/UseCase06.C2xAjdoT_8x27H.svg "Figure 7: Proactive application defense")
+![Proactive application defense workflow from attack identification to defensive tuning](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1920,height=1080,format=svg/_astro/UseCase06.C2xAjdoT.svg "Figure 7: Proactive application defense")
 
 Figure 7: Proactive application defense
 
@@ -316,7 +316,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/#page","headline":"CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection · Cloudflare Reference Architecture docs","description":"This reference architecture outlines how Cloudflare and CrowdStrike solutions integrate to create a unified security ecosystem that combines endpoint protection with zero trust network access, threat intelligence sharing, and automated remediation workflows. Organizations can leverage this integration to implement risk-based access policies, improve threat detection, and orchestrate security responses across both platforms.","url":"https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-03-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

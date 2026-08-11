@@ -196,7 +196,7 @@ sudo tcpdump -i <OUTGOING_INTERFACE> esp and host <TUNNEL_CLOUDFLARE_ENDPOINT_IP
 
 In this example, the outgoing Internet interface shows that the IPsec encrypted packets (ESP) from Cloudflare's health check probes (both the request and response) are going through the IPsec tunnel.
 
-![tcpdump shows the IPsec encrypted packets from Cloudflare's health probes](https://developers.cloudflare.com/_astro/ipsec.CuiOceRh_Z15hfTY.webp)
+![tcpdump shows the IPsec encrypted packets from Cloudflare's health probes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=294,format=webp/_astro/ipsec.CuiOceRh.png)
 
 Run tcpdump on `vti0` to check the decrypted packets.
 
@@ -204,7 +204,7 @@ Run tcpdump on `vti0` to check the decrypted packets.
 sudo tcpdump -i vti0 host 172.64.240.252
 ```
 
-![If you run tcpdump on vti0 you can check for decrypted packets](https://developers.cloudflare.com/_astro/tcpdump.CaDJay4I_ID4bt.webp)
+![If you run tcpdump on vti0 you can check for decrypted packets](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=275,format=webp/_astro/tcpdump.CaDJay4I.png)
 
 Was this helpful?
 
@@ -212,7 +212,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/strongswan/#page","headline":"strongSwan · Cloudflare One docs","description":"Integrate strongSwan with Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/third-party/strongswan/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}

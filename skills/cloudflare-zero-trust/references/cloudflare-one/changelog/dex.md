@@ -25,7 +25,7 @@ Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.
 
 The **Device Monitoring** page now analyzes hardware and network data between a Cloudflare One Client device and Cloudflare's edge, so you can diagnose connectivity and performance issues. Previously, this data was only available in raw DEX Device State Event logs, which required you to build your own analytics to interpret it.
 
-![Device Monitoring summary with connection status, connection mode, Wi-Fi signal strength, traffic performance, and device health](https://developers.cloudflare.com/_astro/dex-device-monitoring-summary.CBxeSd6b_Z18SrWs.webp)
+![Device Monitoring summary with connection status, connection mode, Wi-Fi signal strength, traffic performance, and device health](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1652,height=664,format=webp/_astro/dex-device-monitoring-summary.CBxeSd6b.png)
 
 A summary at the top of the page shows the health of each category at a glance, using **Good**, **Fair**, and **Poor** labels:
 
@@ -33,7 +33,7 @@ A summary at the top of the page shows the health of each category at a glance, 
 * **Wi-Fi signal strength** — signal measured in dBm over time, with thresholds that flag a weak signal
 * **Traffic performance** — upstream and downstream performance, including network throughput on the active interface
 * **Device health** — hardware metrics such as CPU, memory, and disk
-![Wi-Fi signal strength and network throughput charts on the Device Monitoring page](https://developers.cloudflare.com/_astro/dex-device-monitoring-wifi-network.CoEBznAm_2qKt5Q.webp)
+![Wi-Fi signal strength and network throughput charts on the Device Monitoring page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1666,height=732,format=webp/_astro/dex-device-monitoring-wifi-network.CoEBznAm.png)
 
 You can filter by category and adjust the time range to correlate a device's metrics with a user's reported issue.
 
@@ -53,7 +53,7 @@ Digital experience tests also have enhanced configuration options including:
 * New HTTP methods (DELETE, PATCH, POST, PUT)
 * Secret Store headers, custom plain text headers, and custom request bodies
 * Advanced settings: follow redirects, response bodies, response headers, and allow untrusted certificates
-![Digital experience test configuration for Cloudflare Access applications](https://developers.cloudflare.com/_astro/dex_test_auth_config.CD3G3zb__o7m7g.webp)![Digital experience enhanced test configuration](https://developers.cloudflare.com/_astro/dex_test_enhanced_config.Nsv7Vcob_ppxh5.webp)
+![Digital experience test configuration for Cloudflare Access applications](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2840,height=1374,format=webp/_astro/dex_test_auth_config.CD3G3zb_.png)![Digital experience enhanced test configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2840,height=1496,format=webp/_astro/dex_test_enhanced_config.Nsv7Vcob.png)
 
 ## 2026-04-28
 
@@ -64,7 +64,7 @@ Digital experience tests also have enhanced configuration options including:
 
 This Internet outage and traffic anomaly data is pulled from [Cloudflare Radar ↗](https://radar.cloudflare.com/). All Internet outage and traffic anomaly observations can be viewed in the [Radar Outage Center ↗](https://radar.cloudflare.com/outage-center).
 
-![Digital Experience Monitoring dashboard notification for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/_astro/dex_radar_ux_notification.CpdrUVYA_ZSzgIe.webp)![Digital Experience Monitoring dashboard analytics for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/_astro/dex_radar_analytics.GaPxWM6C_2jLyzS.webp)
+![Digital Experience Monitoring dashboard notification for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2076,height=314,format=webp/_astro/dex_radar_ux_notification.CpdrUVYA.png)![Digital Experience Monitoring dashboard analytics for Internet outage impacting Cloudflare One Client devices](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2068,height=909,format=webp/_astro/dex_radar_analytics.GaPxWM6C.png)
 
 ## 2026-04-28
 
@@ -81,7 +81,7 @@ Each speed test includes the following metrics:
 
 In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Insights** \> **Digital experience** \> **Diagnostics** and select **Run diagnostics** to use the feature today.
 
-![Cloudflare One client speed test result](https://developers.cloudflare.com/_astro/dex_speed_test.DukupcRs_gXUVw.webp)
+![Cloudflare One client speed test result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2906,height=1730,format=webp/_astro/dex_speed_test.DukupcRs.png)
 
 ## 2026-04-15
 
@@ -103,7 +103,7 @@ If a Cloudflare One customer using DEX enables CMB 'EU', they will not see any D
 
 If a customer enables CMB in their account, they will see the following message in the Digital Experience dashboard: "DEX data is unavailable because Customer Metadata Boundary configuration is on. Use Cloudflare LogPush to export DEX datasets."
 
-![Digital Experience Monitoring message when Customer Metadata Boundary for the EU is enabled](https://developers.cloudflare.com/_astro/dex_supports_cmb.6YOLXjHN_ZJh3uv.webp)
+![Digital Experience Monitoring message when Customer Metadata Boundary for the EU is enabled](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2143,height=1221,format=webp/_astro/dex_supports_cmb.6YOLXjHN.png)
 
 ## 2025-11-12
 
@@ -121,7 +121,7 @@ We've released four new WARP and DEX device data sets that can be exported via [
 
 To create a new DEX or WARP Logpush job, customers can go to the account level of the Cloudflare dashboard > Analytics & Logs > Logpush to get started.
 
-![DEX logpush job creation dashboard](https://developers.cloudflare.com/_astro/dex_logpush_datasets.CtCk36pX_Z1tuyHu.webp)
+![DEX logpush job creation dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2549,height=1283,format=webp/_astro/dex_logpush_datasets.CtCk36pX.png)
 
 ## 2025-08-29
 
@@ -150,7 +150,7 @@ Device health metrics are now automatically collected, allowing administrators t
 * View the last network a user was connected to
 * Monitor CPU and RAM utilization on devices
 * Identify resource-intensive processes running on endpoints
-![Device endpoint monitoring dashboard](https://developers.cloudflare.com/_astro/cloudflare-one-agent-health-monitoring.XXtiRuOp_Z25TN9Q.webp)
+![Device endpoint monitoring dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1226,height=675,format=webp/_astro/cloudflare-one-agent-health-monitoring.XXtiRuOp.gif)
 
 This feature complements existing DEX features like [synthetic application monitoring](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/) and [network path visualization](https://developers.cloudflare.com/cloudflare-one/insights/dex/tests/traceroute/), creating a comprehensive troubleshooting workflow that connects application performance with device state.
 
@@ -190,7 +190,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/cloudflare-one/changelog/dex/#page","headline":"Digital Experience Monitoring Changelog · Cloudflare One docs","description":"Review recent changes to Digital Experience Monitoring.","url":"https://developers.cloudflare.com/cloudflare-one/changelog/dex/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

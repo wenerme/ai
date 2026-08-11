@@ -244,7 +244,7 @@ Example
 
 For example, Netlify asks customers that host websites with them to add a `CNAME` record pointing `<YOUR-DOMAIN>` to `apex-loadbalancer.netlify.com`, and another `CNAME` record pointing `www` to `<YOUR-DOMAIN>.netlify.app`, depending on which one is the primary domain.
 
-![An example of DNS management in Cloudflare's DNS dashboard](https://developers.cloudflare.com/_astro/dns-management.0LI9Ggoq_Z1jtI5k.webp)
+![An example of DNS management in Cloudflare's DNS dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2106,height=546,format=webp/_astro/dns-management.0LI9Ggoq.png)
 
 You may also want to [enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/#1-activate-dnssec-in-cloudflare).
 
@@ -254,7 +254,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/#page","headline":"Transfer your domain to Cloudflare · Cloudflare Registrar docs","description":"Transfer a domain to Cloudflare Registrar from another registrar.","url":"https://developers.cloudflare.com/registrar/get-started/transfer-domain-to-cloudflare/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -30,19 +30,19 @@ For the condensed version, refer to the [Visual Studio Code quick start](https:/
 
 1. **Confirm your Visual Studio Code version**
 Open Visual Studio Code and select **Help** \> **About**. Confirm you are on a current build. If an **Update** button appears in the title bar, select it and let Visual Studio Code restart before continuing.
-![Visual Studio Code Help menu showing the About dialog used to confirm the installed version](https://developers.cloudflare.com/_astro/vscode-help-about.DZbAxRm2_Z1DNcjb.webp)
+![Visual Studio Code Help menu showing the About dialog used to confirm the installed version](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1476,height=922,format=webp/_astro/vscode-help-about.DZbAxRm2.png)
 2. **Sign in to Copilot**
 Select the Copilot icon in the Status Bar, select **Use AI Features**, then sign in with a GitHub account. Visual Studio Code opens your browser to authorize.
-![Visual Studio Code prompt to enable AI features and sign in with GitHub](https://developers.cloudflare.com/_astro/vscode-pilot-signin.C0VZ3V6j_Z1E0xW7.webp)
+![Visual Studio Code prompt to enable AI features and sign in with GitHub](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1469,height=923,format=webp/_astro/vscode-pilot-signin.C0VZ3V6j.png)
 3. **Authenticate to Copilot**
 Follow the browser pages to authenticate to GitHub.
-![GitHub sign-in page for authorizing GitHub Copilot](https://developers.cloudflare.com/_astro/vscode-copilot-login.BLqMAZ3V_Z1z2n6T.webp)
+![GitHub sign-in page for authorizing GitHub Copilot](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1468,height=925,format=webp/_astro/vscode-copilot-login.BLqMAZ3V.png)
 4. **Create a folder and open it**
 Create an empty folder for this project, then open it in Visual Studio Code with **File** \> **Open Folder**. For example, `~/cloudflare-api-mcp/`.
-![Visual Studio Code Open Folder dialog selecting an empty project folder](https://developers.cloudflare.com/_astro/vscode-open-folder.myi5RNpK_2eXBRz.webp)
+![Visual Studio Code Open Folder dialog selecting an empty project folder](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1538,height=1027,format=webp/_astro/vscode-open-folder.myi5RNpK.png)
 5. **Create the configuration file**
 Inside the folder, create one file: `.vscode/mcp.json`. Typing `.vscode/mcp.json` in the Explorer creates the folder and file together.
-![Visual Studio Code Explorer creating the .vscode/mcp.json configuration file](https://developers.cloudflare.com/_astro/vscode-create-mcp-json.Dfhk6e7P_2dgHwP.webp)
+![Visual Studio Code Explorer creating the .vscode/mcp.json configuration file](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1541,height=1034,format=webp/_astro/vscode-create-mcp-json.Dfhk6e7P.png)
 Paste the following into the file, then save:
 ```json
 {
@@ -58,26 +58,26 @@ Note
 The root key in Visual Studio Code is `servers`. Configurations written for Cursor or Claude Desktop use `mcpServers`, which does nothing here.
 6. **Start the server**
 After you save the file, a **Start** link appears on the `cloudflare-api` server definition. It looks like a comment, but it is a button (a [CodeLens ↗](https://learn.microsoft.com/en-us/visualstudio/ide/find-code-changes-and-other-history-with-codelens)). Select it, then allow the authentication prompt. Your browser opens the Cloudflare authorization page.
-![Visual Studio Code showing the Start CodeLens on the Cloudflare MCP server definition in mcp.json](https://developers.cloudflare.com/_astro/vscode-start-cloudflare-mcp.CFgXmbiP_m7aJF.webp)
+![Visual Studio Code showing the Start CodeLens on the Cloudflare MCP server definition in mcp.json](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1538,height=1030,format=webp/_astro/vscode-start-cloudflare-mcp.CFgXmbiP.png)
 7. **Choose an access template**
 The authorization page is where you decide what the agent can access. This example selects **Full access** to modify DNS records. You can also start with **Read only** or build a **Custom** permission set. Scope the grant to a single account, then review what you are granting.
-![Cloudflare MCP authorization page showing access templates and account scope options](https://developers.cloudflare.com/_astro/cloudflare-mcp-access-template.BuSG8Wod_Z1gsJBf.webp)
+![Cloudflare MCP authorization page showing access templates and account scope options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1551,height=1644,format=webp/_astro/cloudflare-mcp-access-template.BuSG8Wod.png)
 Before you authorize, know two things. **Full access** lets the agent create and delete real resources, which is why this belongs on a demo account. You can revoke the grant at any time from the dashboard under **My Profile** \> **Access Management** \> **Connected Applications**, which is also the page to visit if a re-authorization behaves unexpectedly.
 8. **Verify permissions and authorize**
 Review the list of permissions, then select **Authorize** to let the Cloudflare API interact with your account.
-![Cloudflare MCP authorization page listing the requested permission groups before authorizing](https://developers.cloudflare.com/_astro/cloudflare-mcp-confirm-authorization.BiEdoNbZ_Z2lQVQn.webp)
+![Cloudflare MCP authorization page listing the requested permission groups before authorizing](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1460,height=911,format=webp/_astro/cloudflare-mcp-confirm-authorization.BiEdoNbZ.png)
 Note
 You may see 401 errors in the Visual Studio Code logs. This is expected until you select **Allow in this Session** in the authorization prompt.
-![Visual Studio Code Copilot prompt to allow the Cloudflare MCP server in the current session](https://developers.cloudflare.com/_astro/vscode-chat-allow-in-this-session.B1JRX2iR_Z1HERuj.webp)
+![Visual Studio Code Copilot prompt to allow the Cloudflare MCP server in the current session](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=764,height=968,format=webp/_astro/vscode-chat-allow-in-this-session.B1JRX2iR.png)
 9. **Open Copilot Chat**
 If Copilot is minimized, open it with **View** \> **Chat**.
-![Visual Studio Code View menu opening the Copilot Chat panel](https://developers.cloudflare.com/_astro/vscode-open-copilot-chat.q2eWZZ8B_1m2Dle.webp)
+![Visual Studio Code View menu opening the Copilot Chat panel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1482,height=925,format=webp/_astro/vscode-open-copilot-chat.q2eWZZ8B.png)
 10. **Confirm the server is running**
 The server now shows as running. The CodeLens reads **Running | 3 tools**. Three tools is correct, not a broken install: the server uses a search-and-execute pattern instead of registering thousands of individual endpoints.
-![Visual Studio Code CodeLens showing the Cloudflare MCP server running with three tools](https://developers.cloudflare.com/_astro/vscode-cloudflare-mcp-status.B1n7i2kW_1bom0A.webp)
+![Visual Studio Code CodeLens showing the Cloudflare MCP server running with three tools](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1541,height=1027,format=webp/_astro/vscode-cloudflare-mcp-status.B1n7i2kW.png)
 11. **List your zones**
 In Copilot Chat, set the mode to **Agent**, then ask it to list your zones. The agent requests your approval before running the call and returns a live list of every domain in the account.
-![Copilot Chat returning a list of Cloudflare zones from the account](https://developers.cloudflare.com/_astro/cloudflare-mcp-list-available-zones.By3y10Td_Z1yLo0K.webp)
+![Copilot Chat returning a list of Cloudflare zones from the account](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1479,height=1056,format=webp/_astro/cloudflare-mcp-list-available-zones.By3y10Td.png)
 ```txt
 List zones in my account
 ```
@@ -89,7 +89,7 @@ Ran Cloudflare API Code Executor
 ```
 12. **Create a DNS record**
 Ask the agent to create a DNS AAAA record and turn on the Cloudflare proxy. This example points `test.cloudflaredemo.net` at `100::`, a reserved placeholder address from the IPv6 discard prefix `0100::/64` ([RFC 6666 ↗](https://www.rfc-editor.org/rfc/rfc6666)). Because the record is proxied, Cloudflare intercepts requests before they reach this address. Approve the tool call (**Always Allow**), and the agent reports the record created.
-![Copilot Chat creating a proxied AAAA DNS record through the Cloudflare MCP server](https://developers.cloudflare.com/_astro/cloudflare-mcp-create-aaaa-record.9y7YCmFb_15i0VI.webp)
+![Copilot Chat creating a proxied AAAA DNS record through the Cloudflare MCP server](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1479,height=1054,format=webp/_astro/cloudflare-mcp-create-aaaa-record.9y7YCmFb.png)
 ```txt
 Create a AAAA record for test.cloudflaredemo.net pointing to 100:: and enable the proxy.
 ```
@@ -103,10 +103,10 @@ Ran Cloudflare API Code Executor
 - Record ID: <RECORD_ID>
 ```
 Do not rely on the agent's report alone. Open the dashboard and check the zone.
-![Cloudflare dashboard DNS records page confirming the new AAAA record exists](https://developers.cloudflare.com/_astro/cloudflare-dash-verify-dns-record.fsKq8sUx_2tCq65.webp)
+![Cloudflare dashboard DNS records page confirming the new AAAA record exists](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1807,height=1314,format=webp/_astro/cloudflare-dash-verify-dns-record.fsKq8sUx.png)
 13. **Verify DNS propagation**
 Ask the Cloudflare MCP server to verify that the record propagated.
-![Copilot Chat verifying DNS propagation across public resolvers](https://developers.cloudflare.com/_astro/cloudflare-mcp-verify-dns-propagation.Bj4T6fcx_Z23qGFP.webp)
+![Copilot Chat verifying DNS propagation across public resolvers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1478,height=1054,format=webp/_astro/cloudflare-mcp-verify-dns-propagation.Bj4T6fcx.png)
 ```txt
 Verify DNS propagation for test.cloudflaredemo.net
 ```
@@ -122,7 +122,7 @@ Note
 Because you turned on the proxy, the response returns Cloudflare-owned IP addresses rather than the origin `100::` address.
 14. **Delete the DNS record**
 You can delete the record as easily as you created it.
-![Copilot Chat deleting the test DNS record through the Cloudflare MCP server](https://developers.cloudflare.com/_astro/cloudflare-mcp-delete-dns-record.DahKGny6_f6TDm.webp)
+![Copilot Chat deleting the test DNS record through the Cloudflare MCP server](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1545,height=1030,format=webp/_astro/cloudflare-mcp-delete-dns-record.DahKGny6.png)
 ```txt
 Delete test.cloudflaredemo.net
 ```

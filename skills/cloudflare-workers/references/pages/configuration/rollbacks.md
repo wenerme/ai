@@ -20,7 +20,7 @@ Any production deployment that has been successfully built is a valid rollback t
 
 In order to perform a rollback, go to **Deployments** in your Pages project. Browse the **All deployments** list and select the three dotted actions menu for the desired target. Select **Rollback to this deployment** for a confirmation window to appear. When confirmed, your project's production deployment will change instantly.
 
-![Deployments for your Pages project that can be used for rollbacks](https://developers.cloudflare.com/_astro/rollbacks.DNHeRPOm_ZWbDar.webp)
+![Deployments for your Pages project that can be used for rollbacks](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2144,height=662,format=webp/_astro/rollbacks.DNHeRPOm.png)
 
 ## Related resources
 
@@ -33,7 +33,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/rollbacks/#page","headline":"Rollbacks · Cloudflare Pages docs","description":"Instantly revert your Cloudflare Pages project to a previous production deployment.","url":"https://developers.cloudflare.com/pages/configuration/rollbacks/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

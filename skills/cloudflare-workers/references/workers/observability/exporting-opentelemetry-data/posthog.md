@@ -19,7 +19,7 @@ PostHog is a product analytics platform that helps you understand user behavior 
 * Correlate logs with user sessions, events, and error tracking data
 * Query and filter logs by severity, attributes, and custom properties
 * Connect application logs to session replays for full debugging context
-![PostHog logs view with attributes expanded and a timeline view at the top](https://developers.cloudflare.com/_astro/posthog-example.DhJh65s7_Z1PeQj6.webp)
+![PostHog logs view with attributes expanded and a timeline view at the top](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2580,height=1702,format=webp/_astro/posthog-example.DhJh65s7.png)
 
 This guide will walk you through configuring your Cloudflare Worker application to export OpenTelemetry-compliant logs to PostHog.
 
@@ -69,7 +69,7 @@ Now you'll create a destination in the Cloudflare dashboard that points to PostH
     * Header name: `Authorization`
     * Header value: `Bearer <your-project-api-key>` (e.g., `Bearer phc_xxxxx...`)
 4. Click **Save**
-![Cloudflare destination configuration for PostHog logs with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/_astro/posthog-example-destination-modal.Dkn5CFBP_ZTWDAQ.webp)
+![Cloudflare destination configuration for PostHog logs with destination name, type selection, OTLP endpoint, and custom headers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1194,height=1180,format=webp/_astro/posthog-example-destination-modal.Dkn5CFBP.png)
 
 ## Step 4: Configure your Worker
 
@@ -173,7 +173,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/#page","headline":"Export to PostHog · Cloudflare Workers docs","description":"Send OpenTelemetry logs from Cloudflare Workers to PostHog for analytics.","url":"https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

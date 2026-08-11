@@ -54,16 +54,16 @@ Users can see if a webpage is isolated by using one of the following methods:
 ### Normal browsing
 
 * A non-Cloudflare root certificate indicates that Cloudflare did not proxy this web page. The root certificate is the certificate authority (CA) that your browser trusts to verify the site's identity.
-![Website does not present a Cloudflare root certificate](https://developers.cloudflare.com/_astro/non-cloudflare-root-ca.DUtGDw33_ZFcJnQ.webp)
+![Website does not present a Cloudflare root certificate](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1330,height=760,format=webp/_astro/non-cloudflare-root-ca.DUtGDw33.png)
 * The right-click context menu will have all of the normal options.
-![Normal right-click menu in browser](https://developers.cloudflare.com/_astro/non-isolated-browser.B9h2hRe6_Z19cAm7.webp)
+![Normal right-click menu in browser](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=801,height=521,format=webp/_astro/non-isolated-browser.B9h2hRe6.png)
 
 ### Isolated browsing
 
 * A Cloudflare root certificate indicates traffic was proxied through Cloudflare Gateway.
-![Website presents a Cloudflare root certificate](https://developers.cloudflare.com/_astro/cloudflare-gateway-root-ca.DLxxnVYn_ZdwfJP.webp)
+![Website presents a Cloudflare root certificate](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1330,height=760,format=webp/_astro/cloudflare-gateway-root-ca.DLxxnVYn.png)
 * The right-click context menu will be simplified.
-![Simplified right-click menu in browser](https://developers.cloudflare.com/_astro/isolated-browser.CBtYLGGn_141dVf.webp)
+![Simplified right-click menu in browser](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=860,height=580,format=webp/_astro/isolated-browser.CBtYLGGn.png)
 
 #### Disconnect Browser Isolation
 
@@ -75,7 +75,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/#page","headline":"Set up Browser Isolation · Cloudflare One docs","description":"Set up Browser Isolation in Browser Isolation.","url":"https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

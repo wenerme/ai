@@ -25,7 +25,7 @@ Audit Logs v2 now includes **Resource History**. For any audit log entry, you ca
 
 Resource History uses the audit log entries you already have. There is no additional configuration, no backend recapture, and no changes to how audit logs are generated.
 
-![Resource History in Audit Logs v2](https://developers.cloudflare.com/_astro/Audit_logs_v2_resource_history.tpxHc9ML_wz0Yd.webp)
+![Resource History in Audit Logs v2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1578,height=840,format=webp/_astro/Audit_logs_v2_resource_history.tpxHc9ML.png)
 
 **Dashboard:**
 
@@ -57,11 +57,11 @@ Organization audit logs help you monitor activity across your organization. You 
 
 You can filter and search logs by actor, action, result, resource, request details, and timestamp. Use these logs to troubleshoot changes, investigate unexpected access, and support security or compliance workflows.
 
-![Organization audit logs in the Cloudflare dashboard](https://developers.cloudflare.com/_astro/Audit_logs_v2_organization_dashboard.De-uwPva_Z1QU6mw.webp)
+![Organization audit logs in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3450,height=1738,format=webp/_astro/Audit_logs_v2_organization_dashboard.De-uwPva.png)
 
 If you are viewing account-level audit logs and the account belongs to an organization where you are an Organization Super Administrator, select **View Organization Audit Logs** to open the parent organization's audit logs.
 
-![View Organization Audit Logs button](https://developers.cloudflare.com/_astro/Audit_logs_v2_view_organization_button.Ch7CaBB-_Z10mKrb.webp)
+![View Organization Audit Logs button](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3456,height=510,format=webp/_astro/Audit_logs_v2_view_organization_button.Ch7CaBB-.png)
 
 To get started, go to **Organizations**, select your organization, then go to **Manage Organization** \> **Audit Logs**.
 
@@ -95,7 +95,7 @@ For more information, refer to the [Audit Logs documentation](https://developers
 
 Audit Logs v2 is now generally available to all Cloudflare customers.
 
-![Audit Logs v2 GA](https://developers.cloudflare.com/_astro/auditlogsv2.C3pqAR33_1qYU5j.webp)
+![Audit Logs v2 GA](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=319,format=webp/_astro/auditlogsv2.C3pqAR33.gif)
 
 Audit Logs v2 provides a unified and standardized system for tracking and recording all user and system actions across Cloudflare products. Built on Cloudflare's API Shield / OpenAPI gateway, logs are generated automatically without requiring manual instrumentation from individual product teams, ensuring consistency across \~95% of Cloudflare products.
 
@@ -157,7 +157,7 @@ To try the new user interface, go to **Manage Account > Audit Logs**. The previo
 * **JSON Log View**: Inspect the raw log data in a structured JSON format.
 * **Custom Time Ranges**: Define your own time windows to view historical activity.
 * **Infinite Scroll**: Seamlessly browse logs without clicking through pages.
-![Audit Logs v2 new UI](https://developers.cloudflare.com/_astro/Audit_logs_v2_filters.Bacd1IHg_f0dJz.webp)
+![Audit Logs v2 new UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1300,height=686,format=webp/_astro/Audit_logs_v2_filters.Bacd1IHg.png)
 
 For more details on Audit Logs v2, see the [Audit Logs documentation ↗](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
 
@@ -208,7 +208,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/logs/changelog/audit-logs/#page","headline":"Audit Logs · Cloudflare Logs docs","description":"View changelog entries for Audit Logs.","url":"https://developers.cloudflare.com/logs/changelog/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

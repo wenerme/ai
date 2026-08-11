@@ -20,7 +20,7 @@ The App Launcher is available at a team domain unique to your Cloudflare Zero Tr
 
 Users log in using one of the identity providers configured for the account. Once Access authenticates the user, the App Launcher displays applications they are authorized to use, in the form of application tiles. Selecting an application tile launches the application's hostname, sending the user to that tool as part of their SSO flow.
 
-![App Launcher portal](https://developers.cloudflare.com/_astro/app-launcher.BA8TF5r4_23joar.webp)
+![App Launcher portal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1866,height=1156,format=webp/_astro/app-launcher.BA8TF5r4.png)
 
 ## Enable the App Launcher
 
@@ -64,7 +64,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/#page","headline":"App Launcher · Cloudflare One docs","description":"App Launcher in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSO"]}

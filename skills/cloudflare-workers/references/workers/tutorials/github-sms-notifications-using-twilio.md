@@ -81,7 +81,7 @@ To start, configure a GitHub webhook to post to your Worker when there is an upd
 4. In the **Secret** field, input a secret key of your choice.
 5. In **Which events would you like to trigger this webhook?**, select **Let me select individual events**. Select the events you want to get notifications for (such as **Pull requests**, **Pushes**, and **Branch or tag creation**).
 6. Select **Add webhook** to finish configuration.
-![Following instructions to set up your webhook in the GitHub webhooks settings dashboard](https://developers.cloudflare.com/_astro/github-config-screenshot.BR7flpMR_Z1Yrdgb.webp)
+![Following instructions to set up your webhook in the GitHub webhooks settings dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1259,height=1064,format=webp/_astro/github-config-screenshot.BR7flpMR.png)
 
 ---
 
@@ -271,7 +271,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/#page","headline":"GitHub SMS notifications using Twilio · Cloudflare Workers docs","description":"This tutorial shows you how to build an SMS notification system on Workers to receive updates on a GitHub repository. Your Worker will send you a text update using Twilio when there is new activity on your repository.","url":"https://developers.cloudflare.com/workers/tutorials/github-sms-notifications-using-twilio/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}

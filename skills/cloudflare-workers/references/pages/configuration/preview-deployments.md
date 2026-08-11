@@ -22,11 +22,11 @@ Preview deployments allow you to preview new versions of your project without de
 
 Every time you open a new pull request on your GitHub repository, Cloudflare Pages will create a unique preview URL, which will stay updated as you continue to push new commits to the branch. This is only true when pull requests originate from the repository itself.
 
-![GitHub Preview URLs](https://developers.cloudflare.com/_astro/ghpreviewurls.DuZwczMZ_1BvjOw.webp)
+![GitHub Preview URLs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1838,height=724,format=webp/_astro/ghpreviewurls.DuZwczMZ.png)
 
 For example, if you have a repository called `user-example` connected to Pages, this will give you a `user-example.pages.dev` subdomain. If `main` is your default branch, then any commits to the `main` branch will update your `user-example.pages.dev` content, as well as any [custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/) attached to the project.
 
-![User-example repository's deployment status and preview](https://developers.cloudflare.com/_astro/preview-deployment-mergedone.CyZvkVv1_Z1oyWFm.webp)
+![User-example repository's deployment status and preview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2066,height=234,format=webp/_astro/preview-deployment-mergedone.CyZvkVv1.png)
 
 While developing `user-example`, you may push new changes to a `development` branch, for example.
 
@@ -34,7 +34,7 @@ In this example, after you create the new `development` branch, Pages will autom
 
 Each new branch you create will receive a new, randomly-generated hash in front of your `pages.dev` subdomain.
 
-![User-example repository's newly generated preview deployment link and status](https://developers.cloudflare.com/_astro/preview-deployment-generated.CslHDdSO_2aKeQp.webp)
+![User-example repository's newly generated preview deployment link and status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2132,height=1012,format=webp/_astro/preview-deployment-generated.CslHDdSO.png)
 
 Any additional changes to the `development` branch will continue to update this `373f31e2.user-example.pages.dev` preview address until the `development` branch is merged with the `main` production branch.
 
@@ -109,7 +109,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/preview-deployments/#page","headline":"Preview deployments · Cloudflare Pages docs","description":"Preview new versions of your Cloudflare Pages project with unique URLs before deploying to production.","url":"https://developers.cloudflare.com/pages/configuration/preview-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

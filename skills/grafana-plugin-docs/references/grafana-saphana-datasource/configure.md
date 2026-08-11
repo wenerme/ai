@@ -65,11 +65,12 @@ The following settings control TLS/SSL configuration for secure connections:
 
 Expand table
 
-| Setting             | Description                                                                 |
-|---------------------|-----------------------------------------------------------------------------|
-| **Skip TLS verify** | Enable this option to skip TLS verification. Default: `false`.              |
-| **TLS Client Auth** | Enable this option to provide client certificate and key. Default: `false`. |
-| **With CA Cert**    | Needed for verifying self-signed TLS certificates. Default: `false`.        |
+| Setting             | Description                                                                                                                                          |
+|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **TLS**             | Enable TLS/SSL encryption for the connection to SAP HANA. Enabled by default. Disable only when your SAP HANA instance does not have TLS configured. |
+| **Skip TLS verify** | Enable this option to skip TLS verification. Default: `false`.                                                                                       |
+| **TLS Client Auth** | Enable this option to provide client certificate and key. Default: `false`.                                                                          |
+| **With CA Cert**    | Needed for verifying self-signed TLS certificates. Default: `false`.                                                                                 |
 
 ### Secure Socks Proxy
 
@@ -165,6 +166,7 @@ datasources:
       server: xxxxxx-xxxxxx-xxxxxx-xxxxxx-xxxxxx.hana.trial-us10.hanacloud.ondemand.com
       port: 443
       username: GRAFANA_HANA_USERNAME
+      # tlsDisabled: false  # TLS is enabled by default. Set to true only for plaintext (non-TLS) HANA instances.
       tlsSkipVerify: false
       tlsAuth: false
       tlsAuthWithCACert: false
@@ -212,6 +214,7 @@ resource "grafana_data_source" "sap_hana" {
     defaultSchema = var.sap_hana_default_schema
     databaseName  = var.sap_hana_database_name
     instance      = var.sap_hana_instance
+    # tlsDisabled = false  # TLS is enabled by default. Set to true only for plaintext (non-TLS) HANA instances.
     tlsSkipVerify = false
     tlsAuth       = false
     tlsAuthWithCACert = false

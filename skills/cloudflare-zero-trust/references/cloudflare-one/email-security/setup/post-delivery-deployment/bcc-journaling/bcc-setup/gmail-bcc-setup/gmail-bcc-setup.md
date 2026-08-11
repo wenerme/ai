@@ -22,7 +22,7 @@ Once you set up Google integration, Email security will receive a copy of your e
 
 The following email flow shows how this works:
 
-![Gmail BCC deployment flow](https://developers.cloudflare.com/_astro/Gmail_Deployment_BCC.YSoTUoiz_Z1MxITR.webp)
+![Gmail BCC deployment flow](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=606,height=466,format=webp/_astro/Gmail_Deployment_BCC.YSoTUoiz.png)
 
 Was this helpful?
 
@@ -30,7 +30,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/gmail-bcc-setup/#page","headline":"Overview · Cloudflare One docs","description":"Overview in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/gmail-bcc-setup/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

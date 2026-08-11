@@ -24,7 +24,7 @@ In contrast to our Challenge page offerings, Turnstile allows you to run challen
 
 ## How Turnstile works
 
-![Turnstile Overview](https://developers.cloudflare.com/_astro/turnstile-overview.BlA8uXVD_2tsm0o.webp)
+![Turnstile Overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3757,height=2700,format=webp/_astro/turnstile-overview.BlA8uXVD.png)
 
 Turnstile adapts the challenge outcome to the individual visitor or browser. First, we run a series of small non-interactive JavaScript challenges to gather signals about the visitor or browser environment.
 
@@ -94,7 +94,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/turnstile/#page","headline":"Overview · Cloudflare Turnstile docs","description":"Verify visitors are human with a CAPTCHA-free, privacy-preserving alternative.","url":"https://developers.cloudflare.com/turnstile/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy"]}

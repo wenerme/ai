@@ -25,7 +25,7 @@ To add a custom domain:
 2. Select your Pages project > **Custom domains**.
 3. Select **Set up a domain**.
 4. Provide the domain that you would like to serve your Cloudflare Pages site on and select **Continue**.
-![Adding a custom domain for your Pages project through the Cloudflare dashboard](https://developers.cloudflare.com/_astro/domains.zq4iMU_J_ZYfYyK.webp)
+![Adding a custom domain for your Pages project through the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1401,height=410,format=webp/_astro/domains.zq4iMU_J.png)
 
 ### Add a custom apex domain
 
@@ -120,7 +120,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pages/configuration/custom-domains/#page","headline":"Custom domains · Cloudflare Pages docs","description":"Add custom domains and subdomains to your Cloudflare Pages project.","url":"https://developers.cloudflare.com/pages/configuration/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

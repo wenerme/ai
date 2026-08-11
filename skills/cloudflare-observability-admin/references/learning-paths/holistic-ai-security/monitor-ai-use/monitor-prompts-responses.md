@@ -19,7 +19,7 @@ When you enable [TLS decryption](https://developers.cloudflare.com/cloudflare-on
 * The sanctioned and unsanctioned AI tools your users are engaging with.
 * How they are interacting with them.
 * What information they are sharing.
-![Log entry for a prompt detected using AI prompt protection.](https://developers.cloudflare.com/_astro/gateway-prompt-log.CZ61RAFw_lrWfS.webp)
+![Log entry for a prompt detected using AI prompt protection.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=512,height=395,format=webp/_astro/gateway-prompt-log.CZ61RAFw.png)
 
 You can use this in conjunction with [DLP profiles](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/) to detect sensitive data potentially being used in prompts, with or without explicitly blocking the action. You can use DLP to log AI prompt topics by turning on [Capture generative AI prompt content in logs](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-policies/logging-options/#turn-on-ai-prompt-content-logging-for-a-dlp-policy) for the policy.
 
@@ -29,7 +29,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/monitor-ai-use/monitor-prompts-responses/#page","headline":"Monitor prompts and responses · Cloudflare Learning Paths","description":"Inspect AI prompts using TLS decryption.","url":"https://developers.cloudflare.com/learning-paths/holistic-ai-security/monitor-ai-use/monitor-prompts-responses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

@@ -22,7 +22,7 @@ This page describes how Workers interact with a zone's Cloudflare Cache. You can
 
 The diagram below illustrates a common interaction flow between Workers and Cache.
 
-![Workers and cache flow example flow diagram.](https://developers.cloudflare.com/_astro/workers-cache-flow.DBEQRofC_ZP2BOU.webp)
+![Workers and cache flow example flow diagram.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=15151,height=3234,format=webp/_astro/workers-cache-flow.DBEQRofC.png)
 1. A visitor (a) requests a URL, and this request is directed to a Worker. The Worker can then interact with the request, either requesting the content from the origin server using (b) `fetch()` or sending a (f) response back to the visitor.
 2. If the content is cached, the cache sends a (e) response back to the Worker, which can modify the response before sending a (f) response back to the visitor.
 3. When using [cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) with Workers, the cache rule must match the properties of the URL in the `fetch()` (b) request — such as headers, hostname, or URL path — not the original visitor URL/host (a). Otherwise, the rule will not be applied.
@@ -55,7 +55,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/#page","headline":"Customize cache behavior with Workers · Cloudflare Cache (CDN) docs","description":"Customize cache behavior with the Workers Cache API.","url":"https://developers.cloudflare.com/cache/interaction-cloudflare-products/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

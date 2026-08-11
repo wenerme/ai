@@ -256,8 +256,8 @@
   },
   "grafana-bigquery-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/configure.md",
-    "size": 22839,
-    "updatedAt": "2026-07-08T04:04:28.457Z"
+    "size": 25586,
+    "updatedAt": "2026-08-11T02:45:35.547Z"
   },
   "grafana-bigquery-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest.md",
@@ -276,8 +276,8 @@
   },
   "grafana-bigquery-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting.md",
-    "size": 26766,
-    "updatedAt": "2026-07-08T04:04:29.239Z"
+    "size": 27052,
+    "updatedAt": "2026-08-11T02:45:36.341Z"
   },
   "grafana-catchpoint-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-catchpoint-datasource/latest/alerting.md",
@@ -1436,8 +1436,8 @@
   },
   "grafana-saphana-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/configure.md",
-    "size": 13104,
-    "updatedAt": "2026-06-25T05:43:08.828Z"
+    "size": 13871,
+    "updatedAt": "2026-08-11T02:46:17.093Z"
   },
   "grafana-saphana-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest.md",
@@ -1761,8 +1761,8 @@
   },
   "grafana-splunk-monitoring-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-splunk-monitoring-datasource/latest/troubleshooting.md",
-    "size": 10129,
-    "updatedAt": "2026-06-25T05:43:27.441Z"
+    "size": 10133,
+    "updatedAt": "2026-08-11T02:46:27.862Z"
   },
   "grafana-sumologic-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-sumologic-datasource/latest/alerting.md",

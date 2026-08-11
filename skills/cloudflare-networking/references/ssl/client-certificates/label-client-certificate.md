@@ -48,7 +48,7 @@ The additional information will be included in the **Certificate Subject**, allo
 
 The following image displays an example of how a certificate with with `Country Name`, `Organization Name`, and `Organizational Unit Name` will look like on the Cloudflare dashboard:
 
-![](https://developers.cloudflare.com/_astro/chrome_mQRJVOpkTQ.BiKeZMXO_sl7oA.webp)
+![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=710,height=86,format=webp/_astro/chrome_mQRJVOpkTQ.BiKeZMXO.png)
 
 Was this helpful?
 
@@ -56,7 +56,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/#page","headline":"Label client certificates · Cloudflare SSL/TLS docs","description":"Organize client certificates with labels for easier management.","url":"https://developers.cloudflare.com/ssl/client-certificates/label-client-certificate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

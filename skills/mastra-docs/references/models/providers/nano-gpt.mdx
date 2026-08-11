@@ -1,11 +1,11 @@
 ---
 title: "NanoGPT | Models"
-description: "Use NanoGPT models with Mastra. 620 models available."
+description: "Use NanoGPT models with Mastra. 618 models available."
 ---
 
 # [NanoGPT logo]NanoGPT
 
-Access 620 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 618 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -33,7 +33,7 @@ for await (const chunk of stream) {
 }
 ```
 
-> **info**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [NanoGPT documentation](https://docs.nano-gpt.com) for details.
+> **note**: Mastra uses the OpenAI-compatible `/chat/completions` endpoint. Some provider-specific features may not be available. Check the [NanoGPT documentation](https://docs.nano-gpt.com) for details.
 
 ## Models
 
@@ -6400,30 +6400,6 @@ for await (const chunk of stream) {
     "outputCost": 0.8
   },
   {
-    "model": "nano-gpt/TEE/kimi-k2.5",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 128000,
-    "maxOutput": 65535,
-    "inputCost": 0.6,
-    "outputCost": 3
-  },
-  {
-    "model": "nano-gpt/TEE/kimi-k2.5-thinking",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": true,
-    "contextWindow": 128000,
-    "maxOutput": 65535,
-    "inputCost": 0.6,
-    "outputCost": 3
-  },
-  {
     "model": "nano-gpt/TEE/kimi-k2.6",
     "imageInput": true,
     "audioInput": false,
@@ -6443,7 +6419,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 65535,
+    "maxOutput": 1048576,
     "inputCost": 3,
     "outputCost": 15
   },

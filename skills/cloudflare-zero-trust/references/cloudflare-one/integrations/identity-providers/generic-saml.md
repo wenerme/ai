@@ -197,7 +197,7 @@ Many [Access policies](https://developers.cloudflare.com/cloudflare-one/access-c
 
 Example in Okta:
 
-![Preview the SAML assertion from the Okta dashboard](https://developers.cloudflare.com/_astro/saml-assertion.z-CnJcdz_1Kasu7.webp)![Determine the email attribute name from the SAML assertion](https://developers.cloudflare.com/_astro/saml-attributes.B1LfosVi_Z1e3MCs.webp)
+![Preview the SAML assertion from the Okta dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1818,height=1016,format=webp/_astro/saml-assertion.z-CnJcdz.png)![Determine the email attribute name from the SAML assertion](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2512,height=960,format=webp/_astro/saml-attributes.B1LfosVi.png)
 
 ### SAML headers and attributes
 
@@ -213,11 +213,11 @@ SAML attributes are added to the [Access JWT](https://developers.cloudflare.com/
 
 Example in Okta:
 
-![Configure Okta to send SAML attributes](https://developers.cloudflare.com/_astro/attribute-statements.CXJ3Jtln_1H8fyr.webp)
+![Configure Okta to send SAML attributes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1928,height=1292,format=webp/_astro/attribute-statements.CXJ3Jtln.png)
 
 How to receive these SAML attributes in Cloudflare:
 
-![Configure Cloudflare to receive SAML attributes](https://developers.cloudflare.com/_astro/attributes-cloudflare.Dpoa5y0H_1aqGLK.webp)
+![Configure Cloudflare to receive SAML attributes](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1066,height=886,format=webp/_astro/attributes-cloudflare.Dpoa5y0H.png)
 
 #### SAML headers
 
@@ -235,7 +235,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/#page","headline":"Generic SAML 2.0 · Cloudflare One docs","description":"Generic SAML 2.0 in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-saml/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-04","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML"]}
