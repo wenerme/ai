@@ -1,11 +1,11 @@
 ---
 title: "NanoGPT | Models"
-description: "Use NanoGPT models with Mastra. 618 models available."
+description: "Use NanoGPT models with Mastra. 622 models available."
 ---
 
 # [NanoGPT logo]NanoGPT
 
-Access 618 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 622 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -3172,6 +3172,18 @@ for await (const chunk of stream) {
     "outputCost": 0.46
   },
   {
+    "model": "nano-gpt/meta/muse-glimmer-30b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 131072,
+    "maxOutput": 131072,
+    "inputCost": 0.35,
+    "outputCost": 1.5
+  },
+  {
     "model": "nano-gpt/meta/muse-spark-1.1",
     "imageInput": true,
     "audioInput": false,
@@ -5884,6 +5896,18 @@ for await (const chunk of stream) {
     "outputCost": 31.5
   },
   {
+    "model": "nano-gpt/sakana/sakana-namazu",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.9975,
+    "outputCost": 4.2
+  },
+  {
     "model": "nano-gpt/Salesforce/Llama-xLAM-2-70b-fc-r",
     "imageInput": false,
     "audioInput": false,
@@ -6844,6 +6868,30 @@ for await (const chunk of stream) {
     "outputCost": 0.6
   },
   {
+    "model": "nano-gpt/upstage/solar-pro4",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": false,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.03,
+    "outputCost": 0.12
+  },
+  {
+    "model": "nano-gpt/upstage/solar-pro4:thinking",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 131072,
+    "inputCost": 0.03,
+    "outputCost": 0.12
+  },
+  {
     "model": "nano-gpt/venice-uncensored",
     "imageInput": false,
     "audioInput": false,
@@ -7231,7 +7279,7 @@ for await (const chunk of stream) {
     "model": "nano-gpt/zai-org/glm-4.6v-flash-original",
     "imageInput": true,
     "audioInput": false,
-    "videoInput": true,
+    "videoInput": false,
     "toolUsage": false,
     "reasoning": false,
     "contextWindow": 128000,

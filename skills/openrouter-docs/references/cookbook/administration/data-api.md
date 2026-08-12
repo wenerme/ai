@@ -295,19 +295,25 @@ Authorization: Bearer <YOUR_OPENROUTER_API_KEY>
 
 ### Query parameters
 
-| Parameter     | Type                                  | Required | Default          | Example               |
-| ------------- | ------------------------------------- | -------- | ---------------- | --------------------- |
-| `source`      | `artificial-analysis \| design-arena` | Yes      | None             | `artificial-analysis` |
-| `task_type`   | `coding \| intelligence \| agentic`   | No       | (all tasks)      | `coding`              |
-| `arena`       | `models \| builders \| agents`        | No       | `models`         | `models`              |
-| `category`    | string                                | No       | (all categories) | `codecategories`      |
-| `max_results` | integer (1–100)                       | No       | `50`             | `20`                  |
+| Parameter            | Type                                                                                                                | Required | Default          | Example               |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------- | -------- | ---------------- | --------------------- |
+| `source`             | `artificial-analysis \| design-arena \| openrouter`                                                                 | No       | (all sources)    | `artificial-analysis` |
+| `task_type`          | `coding \| intelligence \| agentic \| search`                                                                       | No       | (all tasks)      | `coding`              |
+| `arena`              | `models \| builders \| agents`                                                                                      | No       | `models`         | `models`              |
+| `category`           | string                                                                                                              | No       | (all categories) | `codecategories`      |
+| `benchmark_type`     | `gpqa_diamond \| tau_bench_verified_airline \| search_browsecomp \| search_hle \| search_dsqa \| search_widesearch` | No       | (all benchmarks) | `search_widesearch`   |
+| `search_engine`      | string                                                                                                              | No       | (all engines)    | `exa`                 |
+| `search_surface`     | `server-tool \| plugin`                                                                                             | No       | (all surfaces)   | `server-tool`         |
+| `include_run_config` | boolean                                                                                                             | No       | `false`          | `true`                |
+| `max_results`        | integer (1–100)                                                                                                     | No       | `50`             | `20`                  |
 
 Notes:
 
 * **`source`** determines the shape of items in the response. Each source has its own set of score fields.
-* **`task_type`** filters cross-source. For Artificial Analysis it returns only models with a non-null score for that task. For Design Arena it maps to the corresponding category (e.g. `coding` → `codecategories`).
+* **`task_type`** filters cross-source. For Artificial Analysis it returns only models with a non-null score for that task. For Design Arena it maps to the corresponding category (e.g. `coding` → `codecategories`). `search` returns OpenRouter search benchmark results only.
 * **`arena`** and **`category`** apply only when `source=design-arena`.
+* **`benchmark_type`**, **`search_engine`**, and **`search_surface`** select among OpenRouter's own benchmarks (`source=openrouter`). `search_engine`, `search_surface`, and a `search_*` `benchmark_type` also narrow the response to search results only. A classic `benchmark_type` narrows the OpenRouter items and leaves items from other sources as they are.
+* **`include_run_config`** affects search items only. When `true`, each search item includes a `run_config` object containing only `max_agent_turns`, `reasoning_effort`, and `temperature`; it defaults to `false`, and classic OpenRouter, Artificial Analysis, and Design Arena items are unchanged. Other harness settings are intentionally not published.
 
 ### Response shape (Artificial Analysis)
 
@@ -382,6 +388,45 @@ When `source=design-arena`, each item carries ELO ratings from head-to-head batt
 }
 ```
 
+### Response shape (OpenRouter search benchmarks)
+
+OpenRouter's own web-search benchmarks (`search_browsecomp`, `search_hle`, `search_dsqa`, `search_widesearch`) are published under `source=openrouter` alongside the classic GPQA and tau-bench items. Runs of the same evaluation configuration are combined by task-weighted mean, and each item is the model's highest-scoring configuration with at least 100 evaluated tasks for that benchmark, with the search engine and request surface it ran on. `primary_score` is the single published score, and its meaning is identified by `primary_metric`: WideSearch reports item-weighted F1 (`f1_by_item`), while the other search benchmarks report strict `accuracy`.
+
+```json expandable lines theme={null}
+{
+  "data": [
+    {
+      "source": "openrouter",
+      "model_permaslug": "openai/gpt-4o",
+      "display_name": "GPT-4o",
+      "benchmark_type": "search_widesearch",
+      "primary_metric": "f1_by_item",
+      "primary_score": 0.7199,
+      "total_tasks": 100,
+      "avg_cost_per_task": 0.031,
+      "avg_latency_per_task_ms": 45210,
+      "search_engine": "exa",
+      "search_surface": "server-tool",
+      "run_config": {
+        "max_agent_turns": 25,
+        "reasoning_effort": "high",
+        "temperature": 0.2
+      },
+      "last_run_timestamp": "2026-07-28T13:38:18Z"
+    }
+  ],
+  "meta": {
+    "as_of": "2026-07-28T13:38:18Z",
+    "version": "v1",
+    "source": "openrouter",
+    "source_url": "https://openrouter.ai/rankings",
+    "citation": "Source: OpenRouter evals (openrouter.ai) via OpenRouter (openrouter.ai/rankings).",
+    "model_count": 1,
+    "task_type": "search"
+  }
+}
+```
+
 ### Examples
 
 <CodeBlocks>
@@ -403,6 +448,13 @@ When `source=design-arena`, each item carries ELO ratings from head-to-head batt
     -H "Authorization: Bearer $OPENROUTER_API_KEY" \
     --data-urlencode "source=design-arena" \
     --data-urlencode "arena=models"
+
+  # OpenRouter search benchmarks — WideSearch, server-tool surface only
+  curl -G https://openrouter.ai/api/v1/benchmarks \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+    --data-urlencode "benchmark_type=search_widesearch" \
+    --data-urlencode "search_surface=server-tool" \
+    --data-urlencode "include_run_config=true"
   ```
 
   ```python title="Python" lines theme={null}

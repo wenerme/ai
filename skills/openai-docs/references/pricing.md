@@ -466,8 +466,6 @@ Standard
 | Category | Model | Input | Cached input | Output |
 | --- | --- | --- | --- | --- |
 | ChatGPT | chat-latest | $5.00 | $0.50 | $30.00 |
-| ChatGPT | gpt-5.3-chat-latest | $1.75 | $0.175 | $14.00 |
-| ChatGPT | gpt-5.2-chat-latest | $1.75 | $0.175 | $14.00 |
 | Codex | gpt-5.3-codex | $1.75 | $0.175 | $14.00 |
 | Search | gpt-5-search-api | $1.25 | $0.125 | $10.00 |
 | Embedding | text-embedding-3-small | $0.02 | - | - |

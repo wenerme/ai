@@ -1,11 +1,11 @@
 ---
 title: "Deep Infra | Models"
-description: "Use Deep Infra models with Mastra. 51 models available."
+description: "Use Deep Infra models with Mastra. 52 models available."
 ---
 
 # [Deep Infra logo]Deep Infra
 
-Access 51 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
+Access 52 Deep Infra models through Mastra's model router. Authentication is handled automatically using the `DEEPINFRA_API_KEY` environment variable.
 
 Learn more in the [Deep Infra documentation](https://deepinfra.com/models).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "deepinfra/MiniMaxAI/MiniMax-M2.5"
+  model: "deepinfra/ByteDance/Seed-2.0-code"
 });
 
 // Generate a response
@@ -37,6 +37,18 @@ for await (const chunk of stream) {
 
 <ProviderModelsTable
   models={[
+  {
+    "model": "deepinfra/ByteDance/Seed-2.0-code",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 256000,
+    "maxOutput": 131072,
+    "inputCost": 0.5,
+    "outputCost": 3
+  },
   {
     "model": "deepinfra/deepseek-ai/DeepSeek-R1-0528",
     "imageInput": false,
@@ -625,7 +637,7 @@ const agent = new Agent({
   id: "custom-agent",
   name: "custom-agent",
   model: {
-    id: "deepinfra/MiniMaxAI/MiniMax-M2.5",
+    id: "deepinfra/ByteDance/Seed-2.0-code",
     apiKey: process.env.DEEPINFRA_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -644,7 +656,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "deepinfra/zai-org/GLM-5.2"
-      : "deepinfra/MiniMaxAI/MiniMax-M2.5";
+      : "deepinfra/ByteDance/Seed-2.0-code";
   }
 });
 ```

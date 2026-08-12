@@ -9,7 +9,7 @@ packages:
 
 Stores files in a Mastra Platform workspace bucket. Each Mastra Platform environment can have one bucket, and `PlatformFilesystem` gives agents `read`, `write`, `list`, `delete`, and `move` operations against it.
 
-Related providers: [`S3Filesystem`](/reference/workspace/s3-filesystem) for direct S3 access, [`LocalFilesystem`](/reference/workspace/local-filesystem) for local directories.
+Related providers: [`S3Filesystem`](/integrations/file-storage/amazon-s3) for direct S3 access, [`LocalFilesystem`](/reference/workspace/local-filesystem) for local directories.
 
 > **note**: For interface details, see [WorkspaceFilesystem interface](/reference/workspace/filesystem).
 
@@ -232,5 +232,5 @@ try {
 ## Related
 
 - [PlatformSandbox reference](/reference/workspace/platform-sandbox)
-- [S3Filesystem reference](/reference/workspace/s3-filesystem)
+- [S3Filesystem reference](/integrations/file-storage/amazon-s3)
 - [WorkspaceFilesystem interface](/reference/workspace/filesystem)

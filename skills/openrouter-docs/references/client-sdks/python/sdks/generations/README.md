@@ -13,7 +13,7 @@ Generation history endpoints
 ### Available Operations
 
 * [get\_generation](#get_generation) - Get request & usage metadata for a generation
-* [list\_generation\_content](#list_generation_content) - Get stored prompt and completion content for a generation
+* [list\_generation\_content](#list_generation_content) - Get stored prompt, completion, and error content for a generation
 * [submit\_feedback](#submit_feedback) - Submit feedback for a generation
 
 ## get\_generation
@@ -71,7 +71,7 @@ with OpenRouter(
 
 ## list\_generation\_content
 
-Get stored prompt and completion content for a generation
+Get stored prompt, completion, and error content for a generation
 
 ### Example Usage
 

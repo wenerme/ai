@@ -13,7 +13,7 @@ Generation history endpoints
 ### Available Operations
 
 * [getGeneration](#getgeneration) - Get request & usage metadata for a generation
-* [listGenerationContent](#listgenerationcontent) - Get stored prompt and completion content for a generation
+* [listGenerationContent](#listgenerationcontent) - Get stored prompt, completion, and error content for a generation
 * [submitFeedback](#submitfeedback) - Submit feedback for a generation
 
 ## getGeneration
@@ -104,7 +104,7 @@ run();
 
 ## listGenerationContent
 
-Get stored prompt and completion content for a generation
+Get stored prompt, completion, and error content for a generation
 
 ### Example Usage
 
