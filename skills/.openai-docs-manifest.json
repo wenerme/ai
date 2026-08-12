@@ -1298,10 +1298,10 @@
   "openai-docs/libraries.md": {
     "url": "https://developers.openai.com/api/docs/libraries.md",
     "skill": "openai-docs",
-    "etag": "W/\"ec4c83b8bf67cc3ef32c5524760aba96\"",
-    "lastModified": "Wed, 05 Aug 2026 23:28:41 GMT",
-    "size": 12210,
-    "updatedAt": "2026-08-06T03:27:43.026Z"
+    "etag": "W/\"b89a0d4707e37a6908a2d8e3e91d2e89\"",
+    "lastModified": "Wed, 12 Aug 2026 05:53:07 GMT",
+    "size": 12212,
+    "updatedAt": "2026-08-12T11:13:41.698Z"
   },
   "openai-docs/libraries/openai-cli.md": {
     "url": "https://developers.openai.com/api/docs/libraries/openai-cli.md",
@@ -1348,10 +1348,10 @@
   "openai-docs/quickstart.md": {
     "url": "https://developers.openai.com/api/docs/quickstart.md",
     "skill": "openai-docs",
-    "etag": "W/\"07f124bb4c5d60dd2792f3c54ba635e3\"",
-    "lastModified": "Wed, 05 Aug 2026 21:13:21 GMT",
-    "size": 43096,
-    "updatedAt": "2026-08-06T03:27:44.693Z"
+    "etag": "W/\"96d63dcb6fad8c6b67972caabb66dd34\"",
+    "lastModified": "Wed, 12 Aug 2026 02:49:43 GMT",
+    "size": 43098,
+    "updatedAt": "2026-08-12T11:13:43.267Z"
   },
   "openai-docs/supported-countries.md": {
     "url": "https://developers.openai.com/api/docs/supported-countries.md",

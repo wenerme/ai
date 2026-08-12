@@ -64,8 +64,12 @@ This requires setting a few environment variables.
 Requirements:
 
 1. Use the full OpenRouter API URL, including the scheme: `https://openrouter.ai/api`
-2. Provide your [OpenRouter API key](https://openrouter.ai/settings/keys) as the API key
-3. **Important:** Explicitly blank out the Anthropic auth token to prevent conflicts
+2. Provide your [OpenRouter API key](https://openrouter.ai/settings/keys) as `ANTHROPIC_AUTH_TOKEN`
+3. **Important:** Explicitly blank out `ANTHROPIC_API_KEY` to prevent conflicts
+
+<Note>
+  **Why `ANTHROPIC_AUTH_TOKEN`:** OpenRouter is an LLM gateway that authenticates requests with a bearer token, and Claude Code sends `ANTHROPIC_AUTH_TOKEN` as `Authorization: Bearer <token>` — the credential variable [Anthropic documents for bearer-authenticated gateways](https://code.claude.com/docs/en/llm-gateway-connect#set-the-credential-variable). `ANTHROPIC_API_KEY` is instead sent as `x-api-key`, is treated as a direct-Anthropic credential, and prompts you once in interactive mode to approve it over a saved login. Setting it to an empty string keeps Claude Code from falling back to authenticating against Anthropic directly.
+</Note>
 
 <Tabs>
   <Tab title="Shell Profile">
@@ -78,11 +82,15 @@ Requirements:
     # Add these lines to the file:
     export OPENROUTER_API_KEY="<your-openrouter-api-key>"
     export ANTHROPIC_BASE_URL="https://openrouter.ai/api"
-    export ANTHROPIC_API_KEY="$OPENROUTER_API_KEY"
-    export ANTHROPIC_AUTH_TOKEN="" # Important: Must be explicitly empty
-    export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
+    export ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"
+    export ANTHROPIC_API_KEY="" # Important: Must be explicitly empty
+    export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1 # Optional: enables the gateway model picker
+    ```
 
-    # After saving, restart your terminal for changes to take effect
+    Then reload your shell so the new values are live — otherwise you will keep testing the old environment and conclude the configuration does not work:
+
+    ```bash lines theme={null}
+    source ~/.zshrc  # or ~/.bashrc, or open a new terminal
     ```
 
     <Note>
@@ -90,7 +98,7 @@ Requirements:
     </Note>
 
     <Warning>
-      **Ordering matters:** `ANTHROPIC_API_KEY="$OPENROUTER_API_KEY"` is expanded when the profile is sourced. If `OPENROUTER_API_KEY` is defined *later* in the file, in a different file, or injected by a secrets manager after your profile runs, the API key expands to an empty string and every request fails with an auth error. Ensure the key is defined **before** it is consumed by `ANTHROPIC_API_KEY`, or put it in a file that loads earlier (e.g. `~/.zshenv` for zsh).
+      **Ordering matters:** `ANTHROPIC_AUTH_TOKEN="$OPENROUTER_API_KEY"` is expanded when the profile is sourced. If `OPENROUTER_API_KEY` is defined *later* in the file, in a different file, or injected by a secrets manager after your profile runs, the auth token expands to an empty string and every request fails with an auth error. Ensure the key is defined **before** it is consumed by `ANTHROPIC_AUTH_TOKEN`, or put it in a file that loads earlier (e.g. `~/.zshenv` for zsh).
     </Warning>
 
     <Note>
@@ -105,8 +113,8 @@ Requirements:
     {
       "env": {
         "ANTHROPIC_BASE_URL": "https://openrouter.ai/api",
-        "ANTHROPIC_API_KEY": "<your-openrouter-api-key>",
-        "ANTHROPIC_AUTH_TOKEN": "",
+        "ANTHROPIC_AUTH_TOKEN": "<your-openrouter-api-key>",
+        "ANTHROPIC_API_KEY": "",
         "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1"
       }
     }
@@ -126,7 +134,7 @@ Requirements:
 
 ### Step 3: Clear any cached Anthropic login
 
-If you were previously logged in to Claude Code with an Anthropic account, you must run `/logout` once to remove the cached session. Claude Code warns about auth conflicts when both a cached login and `ANTHROPIC_API_KEY` are present, and the conflict can cause unexpected behaviour on startup — typically surfacing as confusing model-not-found errors (e.g. for `openrouter/auto`, `openrouter/pareto-code`, or any other OpenRouter-only model).
+If you were previously logged in to Claude Code with an Anthropic account, you must run `/logout` once to remove the cached session. Claude Code warns about auth conflicts when both a cached login and a gateway credential are present, and the conflict can cause unexpected behaviour on startup — typically surfacing as confusing model-not-found errors (e.g. for `openrouter/auto`, `openrouter/pareto-code`, or any other OpenRouter-only model).
 
 ```text lines theme={null}
 > /logout
@@ -165,9 +173,11 @@ You can confirm your connection by running the `/status` command inside Claude C
 
 ```text lines theme={null}
 > /status
-Auth token: ANTHROPIC_API_KEY
+Auth token: ANTHROPIC_AUTH_TOKEN
 Anthropic base URL: https://openrouter.ai/api
 ```
+
+If the `Auth token` line names `ANTHROPIC_API_KEY`, or a `Login method` line names a Claude account instead, the environment did not reach the session — reload your shell and relaunch `claude`.
 
 You can also check the [OpenRouter Activity Dashboard](https://openrouter.ai/activity) to see your requests appearing in real-time.
 
@@ -205,7 +215,7 @@ export CLAUDE_CODE_SUBAGENT_MODEL="~anthropic/claude-opus-latest"
 
 After setting the overrides, open `/model` inside Claude Code to confirm every model class you expect is listed, and check the model column in your [Activity Dashboard](https://openrouter.ai/activity) to confirm requests route to the models you configured.
 
-Add these to the same shell profile or project settings file where you set `ANTHROPIC_BASE_URL` and `ANTHROPIC_API_KEY`.
+Add these to the same shell profile or project settings file where you set `ANTHROPIC_BASE_URL` and `ANTHROPIC_AUTH_TOKEN`.
 
 Claude Code is optimized for Anthropic models and may not work correctly with other providers.
 
@@ -264,7 +274,7 @@ For complete setup instructions and code examples, see our [Anthropic Agent SDK 
 You can use OpenRouter with the official [Claude Code GitHub Action](https://github.com/anthropics/claude-code-action).To adapt the [example workflow](https://github.com/anthropics/claude-code-action/blob/main/examples/claude.yml) for OpenRouter, make two changes to the action step:
 
 1. Pass your OpenRouter API key via `anthropic_api_key` (store it as a GitHub secret named `OPENROUTER_API_KEY`)
-2. Set the `ANTHROPIC_BASE_URL` environment variable to `https://openrouter.ai/api`
+2. Set `ANTHROPIC_BASE_URL` to `https://openrouter.ai/api` and `ANTHROPIC_AUTH_TOKEN` to the same secret in the step's `env` block
 
 ```yaml lines theme={null}
 - name: Run Claude Code
@@ -273,9 +283,10 @@ You can use OpenRouter with the official [Claude Code GitHub Action](https://git
     anthropic_api_key: ${{ secrets.OPENROUTER_API_KEY }}
   env:
     ANTHROPIC_BASE_URL: https://openrouter.ai/api
-    ANTHROPIC_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-    ANTHROPIC_AUTH_TOKEN: ""
+    ANTHROPIC_AUTH_TOKEN: ${{ secrets.OPENROUTER_API_KEY }}
 ```
+
+The action requires the `anthropic_api_key` input before it will launch Claude Code and does not read `ANTHROPIC_AUTH_TOKEN` itself, so the input satisfies that launch check while the environment variable is what puts the key in the `Authorization` header. Unlike the local setup, `ANTHROPIC_API_KEY` is not empty here — the action populates it from the input — which is fine because the run is non-interactive and `ANTHROPIC_BASE_URL` still routes every request to OpenRouter.
 
 ## Cost Tracking Statusline
 
@@ -296,7 +307,7 @@ Download the statusline scripts from the [openrouter-examples repository](https:
 }
 ```
 
-The script uses your `ANTHROPIC_API_KEY` environment variable, which should already be set to your OpenRouter API key if you followed the setup above.
+The script reads `ANTHROPIC_AUTH_TOKEN`, falling back to `ANTHROPIC_API_KEY`, so it picks up the OpenRouter key you set in the setup above.
 
 A few practical notes:
 
@@ -307,7 +318,7 @@ A few practical notes:
 
 ## Troubleshooting
 
-* **Model-not-found errors for OpenRouter models** (e.g. `openrouter/auto`, `openrouter/pareto-code`): Usually caused by a credential conflict that surfaces as auth-conflict warnings on startup. There are two distinct scenarios. (1) If you have a cached Anthropic OAuth login from before switching to OpenRouter, run `/logout` inside Claude Code, then quit and re-launch `claude` to clear the cached session. (2) If your shell profile still has a real `ANTHROPIC_AUTH_TOKEN` set (e.g. an old Anthropic console key), `/logout` will not help — it only clears the cached OAuth session, not shell environment variables. Instead, ensure `ANTHROPIC_AUTH_TOKEN=""` is set in your shell profile per Step 2, then restart your terminal. Verify with `/status` that the auth token is `ANTHROPIC_API_KEY` and the base URL is `https://openrouter.ai/api`.
-* **Auth Errors:** Ensure `ANTHROPIC_AUTH_TOKEN` is set to an empty string (`""`). If it is unset (null), Claude Code might fall back to its default behavior and try to authenticate with Anthropic servers. If you still see auth errors after setting it, run `/logout` (see above).
+* **Model-not-found errors for OpenRouter models** (e.g. `openrouter/auto`, `openrouter/pareto-code`): Usually caused by a credential conflict that surfaces as auth-conflict warnings on startup. There are two distinct scenarios. (1) If you have a cached Anthropic OAuth login from before switching to OpenRouter, run `/logout` inside Claude Code, then quit and re-launch `claude` to clear the cached session. (2) If your shell profile still has a real `ANTHROPIC_API_KEY` set (e.g. an old Anthropic console key), `/logout` will not help — it only clears the cached OAuth session, not shell environment variables. Instead, ensure `ANTHROPIC_API_KEY=""` is set in your shell profile per Step 2, then reload your shell. Verify with `/status` that the auth token is `ANTHROPIC_AUTH_TOKEN` and the base URL is `https://openrouter.ai/api`.
+* **Auth Errors:** Ensure your OpenRouter key is in `ANTHROPIC_AUTH_TOKEN` and that `ANTHROPIC_API_KEY` is an empty string (`""`). If `ANTHROPIC_API_KEY` holds a real Anthropic key, Claude Code sends it as `x-api-key` and may authenticate against Anthropic instead. Reload your shell after editing your profile, and if you still see auth errors, run `/logout` (see above).
 * **Context Length Errors:** If you hit context limits, consider breaking your task into smaller chunks or starting a new session.
 * **Privacy:** OpenRouter does not log your source code prompts unless you explicitly opt-in to prompt logging in your account settings. See our [Privacy Policy](https://openrouter.ai/privacy) for details.

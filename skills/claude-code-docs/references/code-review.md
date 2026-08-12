@@ -292,7 +292,7 @@ The [`/code-review` command](/docs/en/commands) reviews a diff in your terminal 
 
     * `--fix`: applies the findings to your working tree after the review
     * `--comment`: posts the findings as inline PR comments
-    * `--post`: on an `ultra` cloud review of a `github.com` pull request, posts the finished findings to the PR as one comment from your GitHub account; see [Post findings to the pull request](/docs/en/ultrareview#post-findings-to-the-pull-request). Requires Claude Code v2.1.227 or later
+    * `--post`: on an `ultra` cloud review of a `github.com` pull request, preselects posting the finished findings to the PR in the launch dialog; see [Post findings to the pull request](/docs/en/ultrareview#post-findings-to-the-pull-request). Requires Claude Code v2.1.227 or later
   </Step>
 
   <Step title="Keep working">

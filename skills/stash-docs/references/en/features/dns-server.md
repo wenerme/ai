@@ -41,6 +41,21 @@ dns:
 
 Stash uses the LRU algorithm for local caching of DNS queries. When the local cache expires, Stash will continue to use the cached result and silently update the records in the background, effectively reducing the request delay caused by DNS cache expiration.
 
+## Proxy Server Domain Resolution
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+`proxy-server-nameserver` specifies the DNS servers used to resolve proxy server domain names. It uses an independent DNS query path that never follows proxy rules, preventing recursive queries while connecting to a proxy server.
+
+```yaml
+dns:
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - https://dns.alidns.com/dns-query
+```
+
+`proxy-server-nameserver` supports the same DNS protocols as `nameserver`. When multiple servers are configured, Stash queries them in parallel and uses the first successful response.
+
 ## Domain-based Custom DNS Service
 
 `nameserver-policy` allows using specific DNS servers for specified domain names
@@ -95,3 +110,4 @@ By default, Stash sends DNS queries directly without passing through any proxy r
 >
 > - The proxy address for forwarding DNS requests is an IP address, not a domain name
 > - The DNS server address is an IP address, not a domain name
+> - Use `proxy-server-nameserver` to provide independent DNS resolution for proxy server domain names

@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 1. **Download Codex**
@@ -128,11 +128,15 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
@@ -140,11 +144,7 @@ Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Tips

@@ -190,9 +190,10 @@ OpenAI provides an API helper for the Java programming language, currently in be
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.0.0</version>
+  <version>4.50.0</version>
 </dependency>
 ```
+
 
 A simple API request to [Responses API](https://developers.openai.com/api/reference/resources/responses) would look like this:
 

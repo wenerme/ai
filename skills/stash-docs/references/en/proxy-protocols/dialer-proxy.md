@@ -1,5 +1,7 @@
 # Dialer Proxy
 
+<VersionRequirement ios="3.2.5" mac="4.1" />
+
 Dialer proxy (`dialer-proxy`) specifies an upstream proxy in a proxy definition, so the connection to the target proxy server is established through another proxy first. Compared with the `relay` strategy group, `dialer-proxy` can relay both TCP and UDP, and its latency tests run on the real chain for more accurate results. It is suitable for building multi-hop proxy paths.
 
 Latency tests reuse the actual connection chain of the proxy. When a proxy is tested, it connects to its server through the upstream specified by `dialer-proxy`, so the measured latency reflects the full chain.

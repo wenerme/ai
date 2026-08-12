@@ -66,16 +66,19 @@ Set the connection to **Gateway** and enter your OpenRouter credentials:
 | **Gateway base URL**    | `https://openrouter.ai/api`                   |
 | **Gateway API key**     | Your OpenRouter API key (e.g. `sk-or-v1-...`) |
 | **Gateway auth scheme** | `bearer`                                      |
+| **Credential kind**     | `Static API key`                              |
 
 <Frame>
   <img src="https://mintcdn.com/openrouter-d02e98a0/PSwwwiCqAD_BNeni/assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-gateway-credentials.png?fit=max&auto=format&n=PSwwwiCqAD_BNeni&q=85&s=cdec4906d217428012c38a98fee8f18a" alt="Claude Desktop third-party inference configuration panel showing Gateway selected with OpenRouter credentials" width="1897" height="1136" data-path="assets/cookbook/coding-agents/claude-desktop-integration/claude-desktop-gateway-credentials.png" />
 </Frame>
 
+**Credential kind** pins which credential source the gateway uses. Set it to **Static API key** so Claude Desktop always authenticates with the OpenRouter API key you entered above and does not fall back to another source.
+
 <Warning>
   Newer builds of Claude Desktop add optional **Sign-in session lifetime** and **Gateway SSO IdP (OIDC)** fields (Client ID, Issuer URL, Authorization URL) to this panel. OpenRouter authenticates the gateway with a static API key, not an OIDC sign-in flow, so **leave the OIDC IdP fields blank** and authenticate with your OpenRouter API key as shown above. The OIDC option is only for gateways that act as (or sit behind) their own OAuth authorization server.
 </Warning>
 
-Click **Apply locally** to save your settings.
+Click **Apply Changes** (labelled **Apply locally** in older builds) to save your settings.
 
 ### Step 4: Restart and Launch
 
@@ -92,7 +95,23 @@ Claude Code is Anthropic's separate CLI-based coding agent that also works with 
 ## Troubleshooting
 
 * **Connection Errors:** Double-check that your Gateway base URL is exactly `https://openrouter.ai/api` and your API key is valid. Make sure the auth scheme is set to `bearer`.
+
 * **No Models Appearing:** Ensure you have credits in your OpenRouter account. Visit [openrouter.ai/credits](https://openrouter.ai/credits) to check your balance.
+
 * **"Continue with Gateway" Not Showing:** Make sure you applied the settings locally and fully restarted Claude Desktop (quit and reopen, not just close the window).
-* **"Access to this website is blocked by your network egress settings" using WebFetch:** Cowork sandboxes tool traffic by default, which can block the WebFetch tool from reaching sites you haven't allowlisted. This restriction is specific to Cowork — the rest of Claude Desktop is unaffected. Open **Developer > Configure Third-Party Inference…**, switch to the **Sandbox & workspace** tab, and add the required hosts to **Allowed egress hosts**.
+
+* **"Access to this website is blocked by your network egress settings" using WebFetch:** Claude Desktop sandboxes tool traffic by default, which can block the WebFetch tool from reaching sites you haven't allowlisted. This applies to both Cowork and Claude Code. Open **Developer > Configure Third-Party Inference…**, switch to the **Workspace restrictions** tab, and add the required hosts to **Allowed egress hosts**.
+
+* **TLS connection errors using Claude Code inside Claude Desktop:** Claude Code runs in a sandbox whose network isolation can break TLS connections to the gateway. Relax it by adding the following to a Claude settings file, then restart Claude Desktop:
+
+  ```json theme={null}
+  {
+    "sandbox": {
+      "enableWeakerNetworkIsolation": true
+    }
+  }
+  ```
+
+  Pick the settings file that matches how widely you want the change to apply — `~/.claude/settings.json` applies it to every project, while `.claude/settings.json` or `.claude/settings.local.json` inside a project scopes it to that project. In all cases it relaxes sandbox network isolation for all agent-initiated network traffic, not just gateway TLS connections, so prefer the narrowest scope that fixes your problem and remove it once you no longer need it.
+
 * **Privacy:** OpenRouter does not log your prompts unless you explicitly opt-in to prompt logging in your account settings. See our [Privacy Policy](https://openrouter.ai/privacy) for details.
