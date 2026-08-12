@@ -1,5 +1,5 @@
 ---
-description: This release introduces new rules and updates Microsoft SharePoint RCE alongside enhanced SSRF cloud protection rule actions.
+description: This release introduces new protection for a remote code execution vulnerability in vBulletin and improves two existing detections.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,28 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-08-11
+
+
+**WAF Release - 2026-08-11**
+
+This release introduces new protection for a remote code execution vulnerability in vBulletin and improves two existing detections.
+
+**Key Findings**
+
+* A new detection provides protection against vBulletin CVE-2026-61511.
+* Two existing detections have been improved to strengthen coverage.
+
+**Impact**
+
+Successful exploitation of CVE-2026-61511 may lead to remote code execution on affected vBulletin systems, potentially resulting in unauthorized access, data exposure, service disruption, and broader compromise of the hosting environment. Administrators are strongly encouraged to apply vendor updates and recommended mitigations.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                                   | Previous Action | New Action | Comments                                                                                                                              |
+| -------------------------- | ----------- | -------------- | ----------------------------------------------------------------------------- | --------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...94f3006b | N/A            | vBulletin - Remote Code Execution - CVE:CVE-2026-61511                        | Log             | Block      | This is a new detection.                                                                                                              |
+| Cloudflare Managed Ruleset | ...098b749e | N/A            | Version Control - Information Disclosure - Beta                               | Log             | Block      | This rule is merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529)                               |
+| Cloudflare Managed Ruleset | ...d56225d8 | N/A            | vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132 - Beta | Log             | Block      | This rule is merged into the original rule "vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132" (ID: ...8fe9f1c7) |
 
 ## 2026-08-04
 
@@ -638,29 +660,8 @@ This week's release focuses on new improvements to enhance coverage.
 | Cloudflare Managed Ruleset | ...0677175f | N/A            | Command Injection - Generic 9 - Body Vector                                                                               | Log             | Disabled   | This is a new detection.                                                                                                                                                                |
 | Cloudflare Managed Ruleset | ...479da68f | N/A            | PHP, vBulletin, jQuery File Upload - Code Injection, Dangerous File Upload - CVE:CVE-2018-9206, CVE:CVE-2019-17132 (beta) | Log             | Block      | This rule has been merged into the original rule "PHP, vBulletin, jQuery File Upload - Code Injection, Dangerous File Upload - CVE:CVE-2018-9206, CVE:CVE-2019-17132" (ID: ...824b817c) |
 
-## 2026-03-12
-
-
-**WAF Release - 2026-03-12 - Emergency**
-
-This week's release introduces new detections for vulnerabilities in Ivanti Endpoint Manager Mobile (CVE-2026-1281 and CVE-2026-1340), alongside a new generic detection rule designed to identify and block Cross-Site Scripting (XSS) injection attempts within the `Content-Security-Policy` (CSP) HTTP request header.
-
-**Key Findings**
-
-* CVE-2026-1281 & CVE-2026-1340: Ivanti Endpoint Manager Mobile processes HTTP requests through Apache RevwriteMap directives that pass user-controlled input to Bash scripts (`/mi/bin/map-appstore-url` and `/mi/bin/map-aft-store-url`). Bash scripts do not sanitize user input and are vulnerable to shell arithmetic expansion thereby allowing attackers to achieve unauthenticated remote code execution.
-* Generic XSS in CSP Header: This rule identifies malicious payloads embedded within the request's `Content-Security-Policy` header. It specifically targets scenarios where web frameworks or applications trust and extract values directly from the CSP header in the incoming request without sufficient validation. Attackers can provide crafted header values to inject scripts or malicious directives that are subsequently processed by the server.
-
-**Impact**
-
-Successful exploitation of Ivanti EPMM vulnerability allows unauthenticated remote code execution and generic XSS in CSP header allows attackers to inject malicious scripts during page rendering. In environments using server-side caching, this poisoned XSS content can subsequently be cached and automatically served to all visitors.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                        | Previous Action | New Action | Comments                 |
-| -------------------------- | ----------- | -------------- | ------------------------------------------------------------------ | --------------- | ---------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...796ea2f6 | N/A            | Ivanti EPMM - Code Injection - CVE:CVE-2026-1281 CVE:CVE-2026-1340 | Log             | Block      | This is a new detection. |
-| Cloudflare Managed Ruleset | ...ee964a8c | N/A            | Anomaly:Header:Content-Security-Policy                             | N/A             | Block      | This is a new detection. |
-
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new rules and updates Microsoft SharePoint RCE alongside enhanced SSRF cloud protection rule actions.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new protection for a remote code execution vulnerability in vBulletin and improves two existing detections.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

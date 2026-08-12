@@ -348,7 +348,7 @@ promql [Copy code to clipboard] Copy
 # `bool` converts the comparison result into a binary series
 ```
 
-- This query reuses the standard [event-based SLI ratio](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#probe-availability-using-prometheus-summary) to compute the success ratio for each interval.
+- This query reuses the standard [event-based SLI ratio](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/#probe-availability-summary) to compute the success ratio for each interval.
 - `> bool 0.95`
 
   Compares the success ratio for each interval to convert it into a binary result:

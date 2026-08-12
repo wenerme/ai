@@ -216,7 +216,7 @@ Opt-in error responses surface `openrouter_metadata` at the **top level** of the
 {
   "error": {
     "code": 404,
-    "message": "No allowed providers are available for the selected model"
+    "message": "No allowed providers are available for the selected model. Providers serving openai/gpt-4o-mini: openai, but your request's provider.only preference permits only: azure."
   },
   "openrouter_metadata": {
     "requested": "openai/gpt-4o-mini",

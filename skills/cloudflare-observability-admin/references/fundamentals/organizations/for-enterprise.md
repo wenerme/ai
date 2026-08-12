@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Organizations for Enterprise
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -90,7 +90,7 @@ Before you create an Organization:
 
 * Your user must have Super Admin role access to an account with an Enterprise plan.
 * You (the Organization creator) must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled on your Cloudflare user account. This is a per-user requirement — 2FA/SSO is not an account-level setting.
-* You must be a Super Administrator on the accounts you want to assign. You can add accounts of any plan type (Enterprise, PAYGO, or Free).
+* You must be a Super Administrator on the accounts you want to assign. You can add accounts of any plan type (eg Enterprise, or Free).
 * Each Organization supports a maximum of **500 accounts** and **5,000 zones**. Refer to [Limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/) for details.
 * You may only create a single Organization. You, or another member of your company, must not have already created an Organization.
 * Your accounts must not already belong to another Organization.
@@ -107,7 +107,7 @@ The Organization overview page displays after creation.
 
 ### Assign accounts
 
-After creating an Organization, you can assign existing accounts to manage them centrally. You can add accounts of any plan type (Enterprise, PAYGO, or Free) as long as you are a Super Administrator of the account.
+After creating an Organization, you can assign existing accounts to manage them centrally. You can add accounts of any plan type (eg Enterprise, or Free) as long as you are a Super Administrator of the account.
 
 1. From the Organization overview, select **Assign an account**.
 2. Search for an account name. Only accounts where you are a Super Administrator will appear.
@@ -254,8 +254,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise · Cloudflare Fundamentals docs","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

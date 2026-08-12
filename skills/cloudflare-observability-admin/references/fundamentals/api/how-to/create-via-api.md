@@ -12,17 +12,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Create tokens via API
 
-Last updated Apr 20, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Generate new API tokens on the fly via the API. Before you can do this, you must create an API token in the Cloudflare dashboard that can create subsequent tokens.
 
 Note
 
-The API Token Template [**Create additional tokens**](https://developers.cloudflare.com/fundamentals/api/reference/template/) must be used to generate the token. The option for **API Tokens::Edit** is not available in any other template or in the Custom Token builder.
+To create user-owned API tokens, use the [**Create additional tokens**](https://developers.cloudflare.com/fundamentals/api/reference/template/) template. The **User** \> **API Tokens** \> **Edit** permission is not available in any other template or in the Custom Token builder.
 
 ## Generating the initial token
 
-Before you can create tokens via the API, you need to [generate the initial token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) via the Cloudflare dashboard.
+Before you can use the API, you need to [generate an initial token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) via the Cloudflare dashboard. The required permission depends on the API operation. To grant users access to an account as members, create a token with **Account** \> **Account Settings** \> **Edit**. To create account-owned API tokens, create a token with **Account** \> **Account API Tokens** \> **Edit**. To create user-owned API tokens, use the **Create additional tokens** template.
 
 Warning
 
@@ -30,7 +30,7 @@ The token secret is **only shown once**. Do not store the secret in plaintext wh
 
 ### Recommendations
 
-Cloudflare highly recommends that you do not grant other permissions to the token when using this template. Make sure you safeguard the new token because it can create tokens with access to any of a user's resources.
+When using the **Create additional tokens** template, Cloudflare highly recommends that you do not grant other permissions to the token. Make sure you safeguard the new token because it can create tokens with access to any of a user's resources.
 
 Cloudflare also recommends limiting the use of the token via client IP address filtering or TTL to reduce the potential for abuse in the event that the token is compromised. Refer to [Restrict token use](https://developers.cloudflare.com/fundamentals/api/how-to/restrict-tokens/) for more information.
 
@@ -301,8 +301,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/#page","headline":"Create tokens via API · Cloudflare Fundamentals docs","description":"Learn how to create API tokens via Cloudflare's API. Follow steps to define access policies, set restrictions, and generate tokens securely.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/#page","headline":"Create tokens via API · Cloudflare Fundamentals docs","description":"Learn how to create API tokens via Cloudflare's API. Follow steps to define access policies, set restrictions, and generate tokens securely.","url":"https://developers.cloudflare.com/fundamentals/api/how-to/create-via-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

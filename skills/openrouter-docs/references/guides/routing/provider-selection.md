@@ -59,7 +59,7 @@ The `provider` object can contain the following fields:
 | `sort`                     | string \| object  | -       | Sort providers by price, throughput, or latency. Can be a string (e.g. `"price"`) or an object with `by` and `partition` fields. [Learn more](#provider-sorting) |
 | `preferred_min_throughput` | number \| object  | -       | Preferred minimum throughput (tokens/sec). Can be a number or an object with percentile cutoffs (p50, p75, p90, p99). [Learn more](#performance-thresholds)      |
 | `preferred_max_latency`    | number \| object  | -       | Preferred maximum latency (seconds). Can be a number or an object with percentile cutoffs (p50, p75, p90, p99). [Learn more](#performance-thresholds)            |
-| `max_price`                | object            | -       | The maximum pricing you want to pay for this request. [Learn more](#maximum-price)                                                                               |
+| `max_price`                | object            | -       | The maximum pricing you want to pay for this request. [Learn more](#max-price)                                                                                   |
 
 <Note>
   **EU data residency (Enterprise)**
@@ -1088,6 +1088,10 @@ You can restrict requests only to providers that support all parameters in your 
 | `require_parameters` | boolean | `false` | Only use providers that support all parameters in your request. |
 
 With the default routing strategy, providers that don't support all the [LLM parameters](/docs/api_reference/parameters) specified in your request can still receive the request, but will ignore unknown parameters. When you set `require_parameters` to `true`, the request won't even be routed to that provider.
+
+### Default parameter preferences
+
+Even when `require_parameters` is `false`, a small set of parameters is used as a soft preference when choosing between providers of the same model: `tools`, `response_format` (including structured outputs), and `verbosity`. If some of a model's providers support one of these parameters and others don't, the request is only routed to the supporting providers. If none of a model's providers support the parameter, the request is still routed to that model and the parameter is ignored — this preference never removes a model from your request's candidate list (such as the [`models` fallback list](/docs/guides/routing/model-fallbacks)).
 
 ### Example: Excluding providers that don't support JSON formatting
 

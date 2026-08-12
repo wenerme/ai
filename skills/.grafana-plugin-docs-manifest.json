@@ -1626,8 +1626,8 @@
   },
   "grafana-slo-app/sli-examples/time-based.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples/time-based.md",
-    "size": 16191,
-    "updatedAt": "2026-06-25T05:43:21.214Z"
+    "size": 16174,
+    "updatedAt": "2026-08-12T03:03:26.586Z"
   },
   "grafana-slo-app/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/troubleshooting.md",

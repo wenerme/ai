@@ -126,7 +126,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
@@ -134,15 +134,15 @@ Connect my Worker to an existing Postgres database using Hyperdrive for connecti
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Tips

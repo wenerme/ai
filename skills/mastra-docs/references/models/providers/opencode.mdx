@@ -1,11 +1,11 @@
 ---
 title: "OpenCode Zen | Models"
-description: "Use OpenCode Zen models with Mastra. 87 models available."
+description: "Use OpenCode Zen models with Mastra. 88 models available."
 ---
 
 # [OpenCode Zen logo]OpenCode Zen
 
-Access 87 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
+Access 88 OpenCode Zen models through Mastra's model router. Authentication is handled automatically using the `OPENCODE_API_KEY` environment variable.
 
 Learn more in the [OpenCode Zen documentation](https://opencode.ai/docs/zen).
 
@@ -580,6 +580,18 @@ for await (const chunk of stream) {
     "outputCost": 2
   },
   {
+    "model": "opencode/hy3-free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 190000,
+    "maxOutput": 64000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "opencode/kimi-k2.5",
     "imageInput": true,
     "audioInput": false,
@@ -720,6 +732,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "opencode/nemotron-3.5-lightning-free",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
     "inputCost": null,
     "outputCost": null
   },

@@ -142,6 +142,10 @@ If you select a region that supports regional processing, as specifically identi
 
 Data residency does not apply to system data, which may be processed and stored outside the selected region. System data means account data, metadata, and usage data that do not contain Customer Content, which are collected by the services and used to manage and operate the services, such as account information or profiles of end users that directly access the services (for example, your personnel), analytics, usage statistics, billing information, support requests, and structured output schema.
 
+### Sub-processors and regional request processing
+
+OpenAI uses [sub-processors](https://openai.com/policies/sub-processor-list/) to provide its services. For requests sent to `us.api.openai.com` or `eu.api.openai.com`, OpenAI uses [Cloudflare Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) so that TLS termination and HTTPS decryption occur within the selected processing region.
+
 ### Limitations
 
 Data residency does not apply to: (1) any transmission or storage of Customer Content outside of the selected region caused by the location of an End User or Customer’s infrastructure when accessing the services; (2) products, services, or content offered by parties other than OpenAI through the Services; or (3) any data other than Customer Content, such as system data.
