@@ -1041,9 +1041,9 @@ Release attachment has its own config options in `[repository.release]` section.
 
 #### Cron - Repository Health Check (`cron.repo_health_check`)
 
-- `ENABLED`: **true**: Enable running Update mirrors task periodically.
+- `ENABLED`: **true**: Enable running repository health check task periodically.
 - `SCHEDULE`: **@midnight**: Cron syntax for scheduling repository health check.
-- `RUN_AT_START`: **false**: Run Update mirrors task when Gitea starts.
+- `RUN_AT_START`: **false**: Run repository health check task when Gitea starts.
 - `NOTICE_ON_SUCCESS`: **false**: Notice if not success
 - `TIMEOUT`: **60s**: Time duration syntax for health check execution timeout.
 - `ARGS`: **_empty_**: Arguments for command `git fsck`, e.g. `--unreachable --tags`. See more on http://git-scm.com/docs/git-fsck
@@ -1051,8 +1051,8 @@ Release attachment has its own config options in `[repository.release]` section.
 #### Cron - Repository Statistics Check (`cron.check_repo_stats`)
 
 - `SCHEDULE`: **@midnight**: Cron syntax for scheduling repository statistics check.
-- `ENABLED`: **true**: Enable running Update mirrors task periodically.
-- `RUN_AT_START`: **true**: Run Update mirrors task when Gitea starts.
+- `ENABLED`: **true**: Enable running repository statistics check task periodically.
+- `RUN_AT_START`: **true**: Run repository statistics check task when Gitea starts.
 - `NOTICE_ON_SUCCESS`: **false**: Notice if not success
 
 #### Cron - Cleanup hook_task Table (`cron.cleanup_hook_task_table`)

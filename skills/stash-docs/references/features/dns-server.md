@@ -41,6 +41,21 @@ dns:
 
 Stash 会对 DNS 查询使用 LRU 算法进行本地缓存。当本地缓存过期时，Stash 会继续沿用缓存结果，并在后台静默更新记录，这会有效降低 DNS 缓存过期引发的请求延迟。
 
+## 代理服务器域名解析
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+`proxy-server-nameserver` 用于指定解析代理服务器域名的 DNS 服务器。该配置使用独立的 DNS 查询链路，不会跟随代理规则，可避免连接代理服务器时产生递归查询。
+
+```yaml
+dns:
+  proxy-server-nameserver:
+    - 223.5.5.5
+    - https://dns.alidns.com/dns-query
+```
+
+`proxy-server-nameserver` 支持与 `nameserver` 相同的 DNS 协议。配置多个服务器时，Stash 会并发查询并采用最先成功返回的结果。
+
 ## 基于域名的自定义 DNS 服务
 
 `nameserver-policy` 可以对指定域名或域名集合使用特定的 DNS 服务器。它支持精确域名、通配域名，以及 `geosite:<name>` 形式的 geosite 集合。
@@ -89,3 +104,4 @@ hosts:
 >
 > - 转发 DNS 请求的代理地址为 IP 地址，而不是域名
 > - DNS 服务器地址为 IP 地址，而不是域名
+> - 使用 `proxy-server-nameserver` 为代理服务器域名配置独立的 DNS 解析

@@ -381,7 +381,7 @@ server: server
 port: 443
 auth: your-password
 fast-open: true
-obfs: salamander
+obfs: salamander # salamander or gecko
 obfs-password: your-obfs-password
 sni: example.com # Server Name Indication, uses server value if empty
 skip-cert-verify: true
@@ -389,7 +389,19 @@ up-speed: 100 # Upload bandwidth (optional, in Mbps)
 down-speed: 100 # Download bandwidth (optional, in Mbps)
 ```
 
-When salamander obfuscation is enabled, set both `obfs: salamander` and `obfs-password`.
+Hysteria2 supports `salamander` and `gecko` obfuscation. To enable obfuscation, select its type with `obfs` and configure `obfs-password` as well.
+
+### Salamander Obfuscation
+
+<VersionRequirement ios="3.4" mac="4.2" />
+
+To use Salamander obfuscation, set `obfs` to `salamander`.
+
+### Gecko Obfuscation
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+To use Gecko obfuscation, set `obfs` to `gecko`.
 
 ## VLESS
 
@@ -403,24 +415,82 @@ port: 443
 uuid: d0529668-8835-11ec-a8a3-0242ac120002
 # flow: xtls-rprx-direct
 # skip-cert-verify: true
-# network: h2
 # tls: true
 # client-fingerprint: chrome
-# ws-opts:
-#   path: /path
-#   headers:
-#     Host: v2ray.com
-# grpc-opts:
-#   grpc-service-name: "example"
-# h2-opts:
-#   host:
-#     - http.example.com
-#     - http-alt.example.com
-#   path: /
 # reality-opts:
 #   public-key:
 #   short-id:
 ```
+
+VLESS supports the following transports, selected with `network`:
+
+- `tcp`: Carries VLESS directly over TCP and is the default when `network` is omitted.
+- `ws`: Carries VLESS over WebSocket and uses `ws-opts` for the path and request headers.
+- `h2`: Carries VLESS over HTTP/2 and uses `h2-opts` for the path and host names.
+- `http`: Carries VLESS in HTTP requests and uses `http-opts` for the request method, paths, and headers.
+- `grpc`: Carries VLESS over gRPC and uses `grpc-opts` for the service name.
+- `xhttp`: Carries VLESS over XHTTP and uses `xhttp-opts` for the mode, path, host name, and request headers.
+
+### WebSocket
+
+```yaml
+network: ws
+ws-opts:
+  path: /path
+  headers:
+    Host: vless.example.com
+```
+
+### HTTP/2
+
+```yaml
+network: h2
+h2-opts:
+  path: /path
+  host:
+    - vless.example.com
+```
+
+### HTTP
+
+```yaml
+network: http
+http-opts:
+  method: GET
+  path:
+    - /path
+  headers:
+    Host:
+      - vless.example.com
+```
+
+### gRPC
+
+```yaml
+network: grpc
+tls: true
+grpc-opts:
+  grpc-service-name: example
+```
+
+### XHTTP
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+XHTTP supports the `stream-one`, `stream-up`, and `packet-up` modes. With `auto`, Stash selects a mode based on the current configuration.
+
+```yaml
+network: xhttp
+tls: true
+xhttp-opts:
+  mode: auto
+  path: /path
+  host: vless.example.com
+  headers:
+    User-Agent: Mozilla/5.0
+```
+
+XHTTP can also be used with `reality-opts`.
 
 Supported XTLS modes (flow):
 
@@ -547,6 +617,8 @@ dns: [1.0.0.1, 223.6.6.6] # optional
 > WireGuard usually has lower throughput compared to Layer 4 proxy protocols.
 
 ## Tailscale
+
+<VersionRequirement ios="3.4" mac="4.2" />
 
 Tailscale nodes can be added directly to Stash as a `type: tailscale` proxy.
 

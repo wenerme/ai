@@ -381,7 +381,7 @@ server: server
 port: 443
 auth: your-password
 fast-open: true
-obfs: salamander
+obfs: salamander # salamander 或 gecko
 obfs-password: your-obfs-password
 sni: example.com # Server Name Indication，如果空会使用 server 中的值
 skip-cert-verify: true
@@ -389,7 +389,19 @@ up-speed: 100 # 上传带宽（可选，单位：Mbps）
 down-speed: 100 # 下载带宽（可选，单位：Mbps）
 ```
 
-启用 salamander 混淆时，需要同时配置 `obfs: salamander` 和 `obfs-password`。
+Hysteria2 支持 `salamander` 和 `gecko` 混淆。启用混淆时，需要通过 `obfs` 选择类型，并同时配置 `obfs-password`。
+
+### Salamander 混淆
+
+<VersionRequirement ios="3.4" mac="4.2" />
+
+使用 Salamander 混淆时，将 `obfs` 设置为 `salamander`。
+
+### Gecko 混淆
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+使用 Gecko 混淆时，将 `obfs` 设置为 `gecko`。
 
 ## VLESS
 
@@ -403,24 +415,82 @@ port: 443
 uuid: d0529668-8835-11ec-a8a3-0242ac120002
 # flow: xtls-rprx-direct
 # skip-cert-verify: true
-# network: h2
 # tls: true
 # client-fingerprint: chrome
-# ws-opts:
-#   path: /path
-#   headers:
-#     Host: v2ray.com
-# grpc-opts:
-#   grpc-service-name: "example"
-# h2-opts:
-#   host:
-#     - http.example.com
-#     - http-alt.example.com
-#   path: /
 # reality-opts:
 #   public-key:
 #   short-id:
 ```
+
+VLESS 支持以下承载网络，通过 `network` 指定：
+
+- `tcp`：直接通过 TCP 承载，也是未配置 `network` 时的默认值。
+- `ws`：通过 WebSocket 承载，使用 `ws-opts` 配置路径和请求头。
+- `h2`：通过 HTTP/2 承载，使用 `h2-opts` 配置路径和主机名。
+- `http`：通过 HTTP 请求承载，使用 `http-opts` 配置请求方法、路径和请求头。
+- `grpc`：通过 gRPC 承载，使用 `grpc-opts` 配置服务名称。
+- `xhttp`：通过 XHTTP 承载，使用 `xhttp-opts` 配置传输模式、路径、主机名和请求头。
+
+### WebSocket
+
+```yaml
+network: ws
+ws-opts:
+  path: /path
+  headers:
+    Host: vless.example.com
+```
+
+### HTTP/2
+
+```yaml
+network: h2
+h2-opts:
+  path: /path
+  host:
+    - vless.example.com
+```
+
+### HTTP
+
+```yaml
+network: http
+http-opts:
+  method: GET
+  path:
+    - /path
+  headers:
+    Host:
+      - vless.example.com
+```
+
+### gRPC
+
+```yaml
+network: grpc
+tls: true
+grpc-opts:
+  grpc-service-name: example
+```
+
+### XHTTP
+
+<VersionRequirement ios="3.6" mac="4.4" />
+
+XHTTP 支持 `stream-one`、`stream-up` 和 `packet-up` 三种传输模式。使用 `auto` 时，Stash 会根据当前配置自动选择模式。
+
+```yaml
+network: xhttp
+tls: true
+xhttp-opts:
+  mode: auto
+  path: /path
+  host: vless.example.com
+  headers:
+    User-Agent: Mozilla/5.0
+```
+
+XHTTP 也可以与 `reality-opts` 配合使用。
 
 支持的 XTLS 模式（flow）：
 
@@ -546,6 +616,8 @@ dns: [1.0.0.1, 223.6.6.6] # optional
 > 吞吐量一般会比 Layer 4 代理协议低。
 
 ## Tailscale
+
+<VersionRequirement ios="3.4" mac="4.2" />
 
 Tailscale 节点可以直接作为一个 `type: tailscale` 代理加入 Stash。
 
