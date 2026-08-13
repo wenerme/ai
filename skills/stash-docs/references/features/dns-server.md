@@ -43,7 +43,7 @@ Stash 会对 DNS 查询使用 LRU 算法进行本地缓存。当本地缓存过�
 
 ## 代理服务器域名解析
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 `proxy-server-nameserver` 用于指定解析代理服务器域名的 DNS 服务器。该配置使用独立的 DNS 查询链路，不会跟随代理规则，可避免连接代理服务器时产生递归查询。
 

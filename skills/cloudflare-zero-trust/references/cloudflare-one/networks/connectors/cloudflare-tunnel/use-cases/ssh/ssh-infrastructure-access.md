@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # SSH with Access for Infrastructure
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) provides granular control over how users can connect to your SSH servers. Like the [self-managed SSH keys](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-device-client/) method, it uses the Cloudflare One Client on user devices and Cloudflare Tunnel on the server to create a secure, private connection through Cloudflare's network. Access for Infrastructure adds application-level policies with per-target and per-username controls, as well as SSH command logging.
 
@@ -388,20 +388,20 @@ sudo systemctl reload sshd
 
 ## 8\. (Optional) Require independent MFA for SSH
 
-You can require users to authenticate with a [YubiKey PIV key](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps) before connecting to your SSH servers. When MFA is required, users must complete public key authentication with their enrolled PIV key before the connection is established.
+You can require users to authenticate with a PIV key or FIDO2 key before connecting to SSH servers. When configuring custom MFA, select **PIV key**, **FIDO2 key**, or both.
 
 To configure independent MFA for SSH, refer to [Enforce MFA for infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications).
 
-Before users can connect with MFA enabled, they must:
+Before users can connect with MFA turned on, they must enroll their key and configure their SSH client.
 
-1. [Enroll a PIV key](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps) through the App Launcher.
-2. [Configure their SSH client](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#configure-your-ssh-client) to use the enrolled PIV key.
+* For PIV keys, [enroll the key](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps) and [configure the SSH client](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#configure-your-ssh-client).
+* For FIDO2 keys, [enroll the key](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-fido2-key-for-infrastructure-apps) and [configure the SSH client](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#configure-your-ssh-client-for-a-fido2-key).
 
-When the user runs `ssh <username>@<target IP>`, the SSH proxy checks if MFA is required for the matching policy. If required, the user must touch their YubiKey and enter their PIN (depending on the key's PIN policy). The proxy then completes the connection.
+When the user runs `ssh <username>@<target IP>`, the SSH proxy checks if MFA is required for the matching policy. If required, the user authenticates with their hardware key. Whether the key prompts for a touch, a PIN, or both depends on the PIV key policies you configured or on the FIDO2 key's own configuration. The proxy then completes the connection.
 
 ## 9\. Connect as a user
 
-Users can use any SSH client to connect to the target, as long as they are logged into the Cloudflare One Client on their device. If the target is located within a particular virtual network, ensure that the Cloudflare One Client is [connected to that virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#connect-to-a-virtual-network) before initiating the connection. Users do not need to modify any SSH configs on their device. For example, to SSH from a terminal:
+Users can use any SSH client while logged in to the Cloudflare One Client. If the target uses a virtual network, [connect to that virtual network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/#connect-to-a-virtual-network) first.
 
 ```sh
 ssh <username>@<target IP>
@@ -745,6 +745,22 @@ Subsystem    sftp    /usr/lib/openssh/sftp-server
 #    ForceCommand cvs server
 ```
 
+#### Confirm the account authorizes the certificate principal
+
+If your `sshd` logs show that the certificate was accepted as CA-signed but the connection still fails, the account may not authorize the certificate's principal. `sshd` reports this as:
+
+```txt
+Certificate invalid: name is not a listed principal
+```
+
+Check the effective configuration for the account you are connecting as, because these directives are often set within a `Match` block:
+
+```sh
+sudo sshd -T -C user=<USERNAME> | grep -i principals
+```
+
+If `authorizedprincipalsfile` or `authorizedprincipalscommand` is set to any value other than `none`, confirm that the SSH username appears in that file or in the command's output. If it is missing, add it, validate your configuration with `sudo sshd -t`, then [reload](#reload-your-ssh-server) your SSH server.
+
 #### Replace and test with example configuration
 
 The next steps will walk you through a troubleshooting regimen. You will temporarily replace your existing `sshd_config` file with the provided example to rule out configuration issues. Before proceeding, carefully [review and compare both files](#review-your-sshd%5Fconfig-file-for-misconfigurations) to identify any conflicting directives.
@@ -810,8 +826,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure · Cloudflare One docs","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#page","headline":"SSH with Access for Infrastructure · Cloudflare One docs","description":"SSH with Access for Infrastructure in Zero Trust networking.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH"]}
 ```

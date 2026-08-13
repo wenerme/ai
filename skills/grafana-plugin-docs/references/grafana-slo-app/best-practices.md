@@ -50,7 +50,7 @@ Tips for creating effective SLIs:
 - **Start with availability and latency**. These are the most common SLO types for request-driven services. See the [availability examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/availability/) and [latency examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/).
 - **Test from the user’s perspective**. Consider using Synthetic Monitoring probes from one or more geographic locations where your users are.
 - **Decide between aggregated and multidimensional SLIs, or both**. Multidimensional SLIs let you filter consumption and set alerts for each dimension (for example, every `cluster` or `probe`). See the [multidimensional example](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/multidimensional/).
-- **Use event-based SLIs over time-based SLIs**. Event-based SLIs are generally more accurate, and Grafana SLO doesn’t support all dashboard views for time-based SLIs. Learn more on the [SLI calculation types](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/#sli-calculation-types) section.
+- **Use event-based SLIs over time-based SLIs**. Event-based SLIs are generally more accurate, and Grafana SLO doesn’t support all dashboard views for time-based SLIs. Learn more about [SLI calculation types](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/).
 - **Avoid percentiles in SLIs**. SLIs should count all requests meeting the target, not just a percentile (for example, “p95 latency under 2s”). Percentiles from histograms can also be inaccurate. See the [latency examples](/docs/grafana-cloud/alerting-and-irm/slo/sli-examples/latency/).
 
 ## Alerts and labels
@@ -69,11 +69,11 @@ To change your alerting system preferences for SLOs
 
 When you change your alerting system, the alert rules transfer from one alerting system to the other. All SLOs use the alerting system you select. When switching from one alerting system to another, make sure that you have configured Notification Policies and Contact Points in the new system’s Alertmanager to avoid missing alert notifications. Alerts are routed by matching their labels to Notification Polices, which send notifications to Contact Points. Learn more about the [different AlertManagers](/docs/grafana/latest/alerting/set-up/configure-alertmanager/#types-of-alertmanagers-in-grafana) and about [how to configure alert notifications](/docs/grafana/latest/alerting/configure-notifications/).
 
-Note that only the alert rules transfer - the recording rules remain as datasource managed recording rules.
+Note that only the alert rules move between alerting systems. The recording rules are unchanged.
 
 > Note
 >
-> SLO data source-managed alert rules are stored alongside the recording rules in a Grafana Mimir namespace called `grafana_slo_<STACK ID>` where the stack ID refers to the stack in which the SLO plugin is running. This enables you to quickly search for and uniquely identify SLO alert rules.
+> For stacks using data source-managed alerting, the SLO data source-managed alert rules are stored in a Grafana Mimir namespace called `grafana_slo_<STACK ID>` where the stack ID refers to the stack in which the SLO plugin is running. This enables you to quickly search for and uniquely identify SLO alert rules.
 
 ### Prioritize your alerts
 
@@ -95,7 +95,7 @@ To reduce alert fatigue a team may want to set a minimum number of failures (as 
 
 The ideal solution for low-traffic is to supplement your traffic flow with synthetics to ensure you always get a clear signal on whether your failure events represent an issue.
 
-If you are unable to use synthetics, you can choose to change the Minimum Failures [advanced feature](/docs/grafana-cloud/alerting-and-irm/slo/create/#minimum-failures) number. This number is applied to all your alerting time windows for the SLO, the smallest of which is 1 hour. This means that, if your service never gets enough traffic to exceed the Minimum Failures number, it won’t trigger an alert.
+If you are unable to use synthetics, you can choose to change the Minimum Failures [advanced feature](/docs/grafana-cloud/alerting-and-irm/slo/create/#add-slo-alert-rules-and-assistant-investigations) number. This number is applied to all your alerting time windows for the SLO, the smallest of which is 1 hour. This means that, if your service never gets enough traffic to exceed the Minimum Failures number, it won’t trigger an alert.
 
 ## Additional reference materials
 

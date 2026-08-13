@@ -110,7 +110,7 @@ The agent to interact with.
 - `antigravity-preview-05-2026`
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or array (Turn) or string (required) The inputs for the interaction (common to both Model and Agent).
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (required) The inputs for the interaction (common to both Model and Agent).
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with the JSON schema specified in this field.
@@ -429,6 +429,9 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
+- `deferred`
+
+  Deferred service tier.
 webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
 interaction completes.
 Message for configuring webhook events for a request.
@@ -1000,10 +1003,17 @@ created string (optional) Output only. The time at which the response was create
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object specifying remote environment sources or a string referencing an existing environment ID.
 environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
 config is set in the request.
+errors array (Error) (optional) Output only. Diagnostic faults / platform errors recorded on the interaction.
+Error message from an interaction.
+
+#### Fields
+
+code string (optional) A URI that identifies the error type.
+message string (optional) A human-readable error message.
 id string (optional) Required. Output only. A unique identifier for the interaction completion.
 
 *Defaults to:*
-input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or array (Turn) or string (optional) The input for the interaction.
+input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
 labels object (optional) The labels with user-defined metadata for the request.
 model ModelOption (optional) The name of the \`Model\` used for generating the interaction.
 The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.dev/gemini-api/docs/models) for additional details.
@@ -1177,6 +1187,9 @@ values:
 - `video/3gpp`
 
   3GPP video format
+processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
+<br />
+
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -1294,6 +1307,9 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
+- `deferred`
+
+  Deferred service tier.
 status enum (string) (optional) Required. Output only. The status of the interaction.
 
 Possible
@@ -1748,6 +1764,9 @@ values:
 - `video/3gpp`
 
   3GPP video format
+processing MediaProcessing or enum (string) (optional) How the model processes this video for understanding.
+<br />
+
 resolution MediaResolution (optional) The resolution of the media.
 <br />
 
@@ -2109,6 +2128,9 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
+- `deferred`
+
+  Deferred service tier.
 status enum (string) (optional) Required. Output only. The status of the interaction.
 
 Possible
@@ -2304,6 +2326,9 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `priority`
 
   Priority service tier.
+- `deferred`
+
+  Deferred service tier.
 status enum (string) (optional) Required. Output only. The status of the interaction.
 
 Possible
@@ -3955,23 +3980,6 @@ type object (required) No description provided.
 Always set to `"mcp_server_tool_result"`.
 ModelOutputStep Output generated by the model.
 content array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) (optional) No description provided.
-error Status (optional) The error result of the operation in case of failure or cancellation.
-The \`Status\` type defines a logical error model that is suitable for
-different programming environments, including REST APIs and RPC APIs. It is
-used by \[gRPC\](https://github.com/grpc). Each \`Status\` message contains
-three pieces of data: error code, error message, and error details.
-
-You can find out more about this error model and how to work with it in the
-\[API Design Guide\](https://cloud.google.com/apis/design/errors).
-
-#### Fields
-
-code integer (optional) The status code, which should be an enum value of google.rpc.Code.
-details array (object) (optional) A list of messages that carry the error details. There is a common set of
-message types for APIs to use.
-message string (optional) A developer-facing error message, which should be in English. Any
-user-facing error message should be localized and sent in the
-google.rpc.Status.details field, or localized by the client.
 type object (required) No description provided.
 
 Always set to `"model_output"`.

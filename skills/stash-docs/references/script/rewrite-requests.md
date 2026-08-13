@@ -15,7 +15,7 @@
 
 ## 脚本引擎
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 可以为每条请求或响应脚本选择 JavaScript 引擎：
 
