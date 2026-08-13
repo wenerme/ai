@@ -10,16 +10,23 @@ Ori Harness runs the agent CLI you already use on OpenRouter. One command runs t
 
 ## Bring your own agent
 
-Use Claude Code, Codex, Hermes, or OpenCode with the commands you already know:
+Use Claude Code, Codex, Hermes, OpenCode, or Pi with the commands you already know:
 
 ```text theme={null}
 ori claude
 ori codex
 ori hermes
 ori opencode
+ori pi
 ```
 
 These commands launch the real agent CLI on your machine. Ori runs the CLI already on your `PATH`. If it is not installed, Ori tells you how to install it and lets you try again.
+
+For Pi, install it with:
+
+```sh theme={null}
+curl -fsSL https://pi.dev/install.sh | sh
+```
 
 The [install-ori-harness skill](https://openrouter.ai/skills/install-ori-harness) gives a coding agent the same steps:
 
@@ -63,6 +70,7 @@ ori claude --model anthropic/claude-sonnet-4.6
 ori codex --model openai/gpt-5.2
 ori hermes --model openrouter/auto
 ori opencode --model openrouter/auto
+ori pi --model openai/gpt-5.2
 ```
 
 One flag picks the model. Everything after the flags goes to the agent untouched:
@@ -98,4 +106,4 @@ No. Keep the same agent and the same commands and flags. Your workflow does not 
 
 ### Which agents are supported?
 
-Claude Code (`ori claude`), Codex (`ori codex`), Hermes (`ori hermes`), and OpenCode (`ori opencode`) are supported today, with more harnesses on the way.
+Claude Code (`ori claude`), Codex (`ori codex`), Hermes (`ori hermes`), OpenCode (`ori opencode`), and Pi (`ori pi`) are supported today, with more harnesses on the way.

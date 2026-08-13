@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers API
 
-Last updated Jul 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
@@ -160,7 +160,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 
 * `step.sleep(name: string, duration: WorkflowDuration): Promise<void>`
   * `name` \- the name of the step.
-  * `duration` \- the duration to sleep until, in either seconds or as a `WorkflowDuration` compatible string.
+  * `duration` \- the duration to sleep for, as a `number` in milliseconds or as a `WorkflowDuration`\-compatible string.
   * Refer to the [documentation on sleeping and retrying](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/) to learn more about how Workflows are retried.
 * `step.sleepUntil(name: string, timestamp: Date | number): Promise<void>`
   * `name` \- the name of the step.
@@ -392,7 +392,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"name": "workflows-starter",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-12",
 	"workflows": [
 		{
 			// name of your workflow
@@ -411,7 +411,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-12"
 
 [[workflows]]
 name = "workflows-starter"
@@ -437,7 +437,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"name": "web-api-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-12",
 	"workflows": [
 		{
 			// name of your workflow
@@ -459,7 +459,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-12"
 
 [[workflows]]
 name = "billing-workflow"
@@ -884,8 +884,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API · Cloudflare Workflows docs","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

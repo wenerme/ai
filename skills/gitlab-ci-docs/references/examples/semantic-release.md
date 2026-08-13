@@ -88,7 +88,9 @@ As part of publishing a package, semantic-release increases the version number i
 1. In your project, select **Add new token**.
 1. In the **Token name** box, enter a token name.
 
+
 1. Under **Select scopes**, select the **api** checkbox.
+
 
 1. Select **Create project access token**.
 1. Copy the token value.

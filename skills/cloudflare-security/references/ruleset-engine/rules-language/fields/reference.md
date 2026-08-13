@@ -6,9 +6,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 [Skip to content](#main-content)
 
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ruleset-engine/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fields reference
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Categories Body Bots Geolocation Headers JWT validation Raw fields Request Response SSL/TLS URI mTLS
 
@@ -18,8 +22,10 @@ Was this helpful?
 
 YesNo
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/#page","headline":"Fields reference · Cloudflare Ruleset Engine docs","description":"Complete reference of all fields available in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/#page","headline":"Fields reference · Cloudflare Ruleset Engine docs","description":"Complete reference of all fields available in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

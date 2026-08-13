@@ -89,14 +89,16 @@ The full terms of service for each provider are linked from the provider's page,
 
 <ProviderDataRetentionTable />
 
-## Enterprise EU in-region routing
+<a id="enterprise-eu-in-region-routing" />
 
-For enterprise customers, OpenRouter supports EU in-region routing. When enabled for your account, your prompts and completions are processed within the European Union and do not leave the EU. Use the base URL `https://eu.openrouter.ai` for API requests to keep traffic and data within Europe. This feature is only enabled for enterprise customers by request.
+## Enterprise in-region routing
+
+For enterprise customers, OpenRouter supports in-region routing in the EU and US. When enabled for your account, your prompts and completions are processed within the selected region and do not leave it. Use `https://eu.openrouter.ai` for EU requests or `https://us.openrouter.ai` for US requests. This feature is only enabled for enterprise customers by request.
 
 <Info>
-  **EU-only models list**
+  **Regional models list**
 
-  To see which models are available for EU in-region routing, call `/api/v1/models/user` through the EU domain. [Learn more](/docs/api/api-reference/models/list-models-filtered-by-user-provider-preferences-privacy-settings-and-guardrails)
+  To see which models are available for regional routing, call `/api/v1/models/user` through the corresponding regional hostname. [Learn more](/docs/api/api-reference/models/list-models-filtered-by-user-provider-preferences-privacy-settings-and-guardrails)
 </Info>
 
 If you're interested, please contact our enterprise team at [https://openrouter.ai/enterprise/form](https://openrouter.ai/enterprise/form).

@@ -57,13 +57,20 @@ Expand table
 
 The Azure DevOps data source authenticates using a personal access token (PAT).
 
+> Important
+>
+> Microsoft is retiring only *global* PATs in Azure DevOps Services—tokens created with the scope set to **All accessible organizations**. This isn’t a retirement of PATs in general. Organization-scoped PATs aren’t affected and continue to work with this data source. No plugin change or version upgrade is required. This change doesn’t affect Azure DevOps Server (on-prem) instances.
+>
+> Existing global PATs stop working on December 1, 2026. To avoid an interruption, scope your token to a single organization as described in the following steps. If a global PAT stops working, create a new organization-scoped PAT and paste it into the data source configuration. For more information, refer to [Retirement of global personal access tokens in Azure DevOps](https://devblogs.microsoft.com/devops/retirement-of-global-personal-access-tokens-in-azure-devops/).
+
 To create a PAT:
 
 1. In Azure DevOps, click your profile icon in the upper right and select **Personal access tokens**.
 2. Click **New Token**.
 3. Provide a name and set the expiration period.
-4. Select the required scopes listed in the following table.
-5. Click **Create** and copy the generated token.
+4. In the **Organization** drop-down, select the single organization you want the token to access. Don’t select **All accessible organizations**, which creates a global PAT that stops working on December 1, 2026.
+5. Select the required scopes listed in the following table.
+6. Click **Create** and copy the generated token.
 
 For detailed instructions, refer to the [Azure DevOps PAT documentation](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 

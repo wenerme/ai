@@ -396,7 +396,7 @@ components:
             total_requests: 2109
             total_tokens: '9876543'
         meta:
-          as_of: '2026-05-12T02:00:00Z'
+          as_of: '2026-05-12T02:00:00.000Z'
           end_date: '2026-05-11'
           start_date: '2026-04-12'
           version: v1
@@ -542,7 +542,7 @@ components:
       type: object
     RankingsDailyMeta:
       example:
-        as_of: '2026-05-12T02:00:00Z'
+        as_of: '2026-05-12T02:00:00.000Z'
         end_date: '2026-05-11'
         start_date: '2026-04-12'
         version: v1
@@ -552,7 +552,7 @@ components:
             ISO-8601 timestamp of when the response was generated. Reflects
             data-freshness because the underlying materialized view continuously
             ingests upstream events.
-          example: '2026-05-12T02:00:00Z'
+          example: '2026-05-12T02:00:00.000Z'
           type: string
         end_date:
           description: Resolved end of the date window (UTC, inclusive).

@@ -354,17 +354,18 @@ paths:
             example: 'true'
             type: string
         - description: >-
-            Filter to models with endpoints in the given data region. Currently
-            only "eu" is supported.
+            Filter to models with endpoints in the given data region ("eu" or
+            "us").
           in: query
           name: region
           required: false
           schema:
             description: >-
-              Filter to models with endpoints in the given data region.
-              Currently only "eu" is supported.
+              Filter to models with endpoints in the given data region ("eu" or
+              "us").
             enum:
               - eu
+              - us
             example: eu
             type: string
         - description: Minimum completion (output) price in $/M tokens.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Compatibility flags
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/compatibility-flags/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/compatibility-flags/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Compatibility flags enable specific features. They can be useful if you want to help the Workers team test upcoming changes that are not yet enabled by default, or if you need to hold back a change that your code depends on but still want to apply other compatibility changes.
 
@@ -56,29 +56,15 @@ Compatibility flags can be set when uploading a Worker using the [Workers Script
 
 Note
 
-[The nodejs\_compat flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) also enables `nodejs_compat_v2` as long as your compatibility date is 2024-09-23 or later. The v2 flag improves runtime Node.js compatibility by bundling additional polyfills and globals into your Worker. However, this improvement increases bundle size.
+[The nodejs\_compat flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) also enables `nodejs_compat_v2` for compatibility dates from `2024-09-23` through `2026-08-03`. The v2 flag improves Node.js compatibility by bundling additional polyfills and globals into your Worker. However, this improvement increases bundle size.
 
-If your compatibility date is 2024-09-22 or before and you want to enable v2, add the `nodejs_compat_v2` in addition to the `nodejs_compat` flag. If your compatibility date is after 2024-09-23, but you want to disable v2 to avoid increasing your bundle size, add the `no_nodejs_compat_v2` in addition to the `nodejs_compat flag`.
+For compatibility dates through `2024-09-22`, add `nodejs_compat_v2` alongside `nodejs_compat` to turn on v2\. For compatibility dates from `2024-09-23` through `2026-08-03`, add `no_nodejs_compat_v2` alongside `nodejs_compat` to use v1 only.
 
-A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) of Node.js APIs are available directly as [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs), with no need to add polyfills to your own code. To enable these APIs in your Worker, add the `nodejs_compat` compatibility flag to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
+A [growing subset](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) of Node.js APIs are available directly as [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs/), with no need to add polyfills to your own code.
 
-To enable both built-in runtime APIs and polyfills for your Worker or Pages project, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), and set your compatibility date to September 23rd, 2024 or later. This will enable [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) for your Workers project.
+For compatibility dates of `2026-08-04` or later, Workers and Pages projects enable both `nodejs_compat` and `nodejs_compat_v2` by default. Built-in runtime APIs and polyfills are available without additional configuration. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date.
 
-```jsonc
-{
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
-	// Set this to today's date
-	"compatibility_date": "2026-07-22"
-}
-```
-
-```toml
-compatibility_flags = [ "nodejs_compat" ]
-# Set this to today's date
-compatibility_date = "2026-07-22"
-```
+If your compatibility date is before `2026-08-04`, add the [nodejs\_compat](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) [compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag) to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in:
 
 ```jsonc
 {
@@ -92,7 +78,24 @@ compatibility_date = "2026-07-22"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
-As additional Node.js APIs are added, they will be made available under the `nodejs_compat` compatibility flag. Unlike most other compatibility flags, we do not expect the `nodejs_compat` to become active by default at a future date.
+To turn off [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) completely for a compatibility date of `2026-08-04` or later, remove the positive flags if present. Then add both `no_nodejs_compat` and `no_nodejs_compat_v2`. For configuration examples, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
+
+For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates because the compatibility date enables the same behavior. Wrangler, Miniflare, the Cloudflare Vite plugin, and Vitest Pool Workers ignore these redundant flags when starting the runtime. Existing projects do not need to remove them when updating their compatibility date. Omit them from new configurations.
+
+To turn off Node.js compatibility completely for a compatibility date of `2026-08-04` or later, remove `nodejs_compat` and `nodejs_compat_v2` if present. Then add both of the following flags:
+
+```jsonc
+{
+	"compatibility_flags": [
+		"no_nodejs_compat",
+		"no_nodejs_compat_v2"
+	]
+}
+```
+
+```toml
+compatibility_flags = [ "no_nodejs_compat", "no_nodejs_compat_v2" ]
+```
 
 The Node.js `AsyncLocalStorage` API is a particularly useful feature for Workers. To enable only the `AsyncLocalStorage` API, use the `nodejs_als` compatibility flag.
 
@@ -1580,11 +1583,12 @@ let cookieValues = response.headers.getSetCookie();
 
 ### Node.js compatibility
 
-| **Flag to enable**  | nodejs\_compat     |
+| **Default as of**   | 2026-08-04         |
 | ------------------- | ------------------ |
+| **Flag to enable**  | nodejs\_compat     |
 | **Flag to disable** | no\_nodejs\_compat |
 
-Enables [Node.js APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) in the Workers Runtime.
+Enables [Node.js APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) in the Workers Runtime. For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default.
 
 Note that some Node.js APIs are only enabled when your Worker's compatibility date is on or after the following dates:
 
@@ -1619,6 +1623,8 @@ The following stubs are enabled automatically only when `nodejs_compat` is enabl
 | [node:worker\_threads ↗](https://nodejs.org/docs/latest/api/worker%5Fthreads.html) | 2026-03-17                              | enable\_nodejs\_worker\_threads\_module | disable\_nodejs\_worker\_threads\_module |
 
 When enabling `nodejs_compat`, we recommend using the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/), and the latest compatibility date, in order to maximize compatibility. Some older versions of Wrangler inject additional polyfills that are no longer necessary when your Worker uses a more recent compatibility date, because they are provided by the Workers runtime.
+
+For compatibility dates of `2026-08-04` or later, `nodejs_compat` and `nodejs_compat_v2` are not used because the compatibility date enables the same behavior. Existing projects do not need to remove these flags when updating their compatibility date. To turn off Node.js compatibility completely, remove the positive flags if present. Then add both `no_nodejs_compat` and `no_nodejs_compat_v2`.
 
 If you see errors using a particular npm package on Workers, you should first try updating your compatibility date and use the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite Plugin](https://developers.cloudflare.com/workers/vite-plugin/). If you still encounter issues, please report them by [opening a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new?template=bug-template.yaml).
 
@@ -1886,8 +1892,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/#page","headline":"Compatibility flags · Cloudflare Workers docs","description":"Opt into a specific features of the Workers runtime for your Workers project.","url":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/#page","headline":"Compatibility flags · Cloudflare Workers docs","description":"Opt into a specific features of the Workers runtime for your Workers project.","url":"https://developers.cloudflare.com/workers/configuration/compatibility-flags/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -859,14 +859,12 @@ components:
                       $ref: '#/components/schemas/AnthropicSpeed'
                   type: object
               example:
-                cache_creation:
-                  ephemeral_1h_input_tokens: 0
-                  ephemeral_5m_input_tokens: 7381
-                cache_creation_input_tokens: 7381
-                cache_read_input_tokens: 0
+                cache_creation: null
+                cache_creation_input_tokens: null
+                cache_read_input_tokens: null
                 inference_geo: null
                 input_tokens: 100
-                output_tokens: 1
+                output_tokens: 50
                 output_tokens_details: null
                 server_tool_use: null
                 service_tier: standard
@@ -1333,15 +1331,19 @@ components:
           description: >-
             List of model patterns to filter which models the auto-beta-router
             can route between. Supports wildcards (e.g., "anthropic/*" matches
-            all Anthropic models). When not specified, every model ranked for
-            the classified task type is a candidate, falling back to a default
-            model set when rankings are unavailable.
+            all Anthropic models). Up to 1024 patterns, each at most 1024
+            characters, with 65536 total characters across all patterns. When
+            not specified, every model ranked for the classified task type is a
+            candidate, falling back to a default model set when rankings are
+            unavailable.
           example:
             - anthropic/*
             - openai/gpt-4o
             - google/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         cost_quality_tradeoff:
           deprecated: true
@@ -1382,13 +1384,16 @@ components:
           description: >-
             List of model patterns to exclude from auto-beta-router selection.
             Supports wildcards (e.g., "meta-llama/*" excludes all Llama models).
-            Applied after allowed_models, so an excluded pattern always wins
-            over an allowed one.
+            Up to 1024 patterns, each at most 1024 characters, with 65536 total
+            characters across all patterns. Applied after allowed_models, so an
+            excluded pattern always wins over an allowed one.
           example:
             - openai/gpt-4o
             - meta-llama/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         id:
           enum:
@@ -1413,15 +1418,19 @@ components:
           description: >-
             List of model patterns to filter which models the auto-router can
             route between. Supports wildcards (e.g., "anthropic/*" matches all
-            Anthropic models). When not specified, every model ranked for the
-            classified task type is a candidate, falling back to a default model
-            set when rankings are unavailable.
+            Anthropic models). Up to 1024 patterns, each at most 1024
+            characters, with 65536 total characters across all patterns. When
+            not specified, every model ranked for the classified task type is a
+            candidate, falling back to a default model set when rankings are
+            unavailable.
           example:
             - anthropic/*
             - openai/gpt-4o
             - google/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         cost_quality_tradeoff:
           deprecated: true
@@ -1462,13 +1471,16 @@ components:
           description: >-
             List of model patterns to exclude from auto-router selection.
             Supports wildcards (e.g., "meta-llama/*" excludes all Llama models).
-            Applied after allowed_models, so an excluded pattern always wins
-            over an allowed one.
+            Up to 1024 patterns, each at most 1024 characters, with 65536 total
+            characters across all patterns. Applied after allowed_models, so an
+            excluded pattern always wins over an allowed one.
           example:
             - openai/gpt-4o
             - meta-llama/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         id:
           enum:
@@ -2497,6 +2509,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Databricks
         - Decart
         - Deepgram
         - DeepInfra
@@ -3120,8 +3133,8 @@ components:
     WebSearchMode:
       description: >-
         Engine-native search mode. Exa supports instant, fast, auto (default),
-        deep-lite, deep, and deep-reasoning. Parallel supports turbo (default),
-        basic, and advanced. Modes unsupported by the selected engine are
+        deep-lite, deep, and deep-reasoning. Parallel supports turbo, basic
+        (default), and advanced. Modes unsupported by the selected engine are
         ignored.
       enum:
         - instant
@@ -4357,6 +4370,7 @@ components:
                 - Crucible
                 - Crusoe
                 - Darkbloom
+                - Databricks
                 - Decart
                 - Deepgram
                 - DeepInfra
@@ -4457,12 +4471,14 @@ components:
                       $ref: '#/components/schemas/AnthropicSpeed'
                   type: object
               example:
-                cache_creation: null
-                cache_creation_input_tokens: null
-                cache_read_input_tokens: null
+                cache_creation:
+                  ephemeral_1h_input_tokens: 0
+                  ephemeral_5m_input_tokens: 7381
+                cache_creation_input_tokens: 7381
+                cache_read_input_tokens: 0
                 inference_geo: null
                 input_tokens: 100
-                output_tokens: 50
+                output_tokens: 1
                 output_tokens_details: null
                 server_tool_use: null
                 service_tier: standard

@@ -37,9 +37,11 @@ The generation detail view also shows metadata including the model used, provide
 * **Privacy**: OpenRouter does not access or use your prompt and response data logged with this feature for model training, analytics, or any other purpose. The data is stored solely for your own review and use. See the [Privacy Policy](https://openrouter.ai/privacy) for full details.
 * **Organization access**: For organization accounts, only organization admins can view stored prompt and response content. Non-admin members cannot access it.
 
-## EU Routing Limitation
+<a id="eu-routing-limitation" />
 
-At this time, Input & Output Logging does **not** apply to requests routed through `eu.openrouter.ai`. If you have EU routing enabled, requests processed through the EU endpoint will work as normal but input/output logging will be skipped.
+## Regional routing limitation
+
+At this time, Input & Output Logging does **not** apply to requests routed through `eu.openrouter.ai` or `us.openrouter.ai`. If you have in-region routing enabled, requests processed through either regional endpoint will work as normal but input/output logging will be skipped.
 
 ## Comparison with Broadcast
 

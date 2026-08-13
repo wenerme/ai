@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Context (ctx)
 
-Last updated Jun 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/context/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/context/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Context API provides methods to manage the lifecycle of your Worker or Durable Object.
 
@@ -217,6 +217,10 @@ For full API details, refer to [Custom spans](https://developers.cloudflare.com/
 
 `ctx.waitUntil()` extends the lifetime of your Worker, allowing you to perform work without blocking returning a response, and that may continue after a response is returned. It accepts a `Promise`, which the Workers runtime will continue executing, even after a response has been returned by the Worker's [handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/).
 
+Background work needs \`await\` or \`waitUntil()\`
+
+An async call that is neither awaited nor passed to `ctx.waitUntil()` can be canceled when the invocation ends — dropping logs, leaving writes unfinished, or failing silently.
+
 Use `ctx.waitUntil()` for work that can run after the response is sent, such as logging, analytics, or cache writes, as long as the work can finish within the `waitUntil()` time limit. If the client is still receiving the response, including a streamed response body, the Worker invocation remains active without `ctx.waitUntil()`. If your response depends on the work, `await` the work before returning the response or stream the response as the work completes.
 
 `waitUntil` is commonly used to:
@@ -297,8 +301,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx) · Cloudflare Workers docs","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx) · Cloudflare Workers docs","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

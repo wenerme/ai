@@ -82,7 +82,7 @@ Results:
 +---------------------+-------------+-----------------+----------+-------+---------+---------+
 | Model               | Dataset     | Metric          | Subset   |   Num |   Score | Cat.0   |
 +=====================+=============+=================+==========+=======+=========+=========+
-| Qwen2-0.5B-Instruct | general_mcq | AverageAccuracy | example  |    12 |  0.5833 | default |
+| Qwen2-0.5B-Instruct | general_mcq | Accuracy ↑ | example | 12 | 58.3% | default |
 +---------------------+-------------+-----------------+----------+-------+---------+---------+
 ```
 
@@ -208,31 +208,31 @@ Click to view evaluation results
 +----------------+------------+-----------+----------+-------+---------+---------+
 | Model                 | Dataset    | Metric    | Subset   |   Num |   Score | Cat.0   |
 +================+============+===========+==========+=======+=========+=========+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-1-R | example  |   12 | 0.694 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · 1 · Recall    | example | 12 | 69.4% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-1-P | example  |   12 | 0.176  | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · 1 · Precision | example | 12 | 17.6% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-1-F | example  |   12 | 0.2276 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · 1 · F1        | example | 12 | 22.8% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-2-R | example  |   12 | 0.4667 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · 2 · Recall    | example | 12 | 46.7% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-2-P | example  |   12 | 0.0939 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · 2 · Precision | example | 12 | 9.4%  | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-2-F | example  |   12 | 0.1226 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · 2 · F1        | example | 12 | 12.3% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-L-R | example  |   12 | 0.6528 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · L · Recall    | example | 12 | 65.3% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-L-P | example  |   12 | 0.1628 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · L · Precision | example | 12 | 16.3% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | Rouge-L-F | example  |   12 | 0.2063 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | ROUGE ↑ · L · F1        | example | 12 | 20.6% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | bleu-1    | example  |   12 | 0.164 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | BLEU ↑ · 1              | example | 12 | 16.4% | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | bleu-2    | example  |   12 | 0.0935 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | BLEU ↑ · 2              | example | 12 | 9.4%  | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | bleu-3    | example  |   12 | 0.065 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | BLEU ↑ · 3              | example | 12 | 6.6%  | default |
 +----------------+------------+-----------+----------+-------+---------+---------+
-| Qwen2.5-0.5B-Instruct | general_qa | bleu-4    | example  |   12 | 0.0556 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | BLEU ↑ · 4              | example | 12 | 5.6%  | default |
 +----------------+------------+-----------+----------+-------+---------+---------+ 
 ```
 
@@ -287,7 +287,7 @@ Click to view evaluation results
 +----------------+------------+----------------+----------+-------+---------+---------+
 | Model                 | Dataset    | Metric          | Subset   |   Num |   Score | Cat.0   |
 +================+============+================+==========+=======+=========+=========+
-| Qwen2.5-0.5B-Instruct | general_qa | AverageAccuracy | example  |   12 | 0.583 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | Accuracy ↑ | example | 12 | 58.3% | default |
 +----------------+------------+----------------+----------+-------+---------+---------+ 
 ```
 
@@ -343,7 +343,7 @@ Click to view evaluation results
 +----------------+------------+----------------+----------+-------+---------+---------+
 | Model                 | Dataset    | Metric          | Subset   |   Num |   Score | Cat.0   |
 +================+============+================+==========+=======+=========+=========+
-| Qwen2.5-0.5B-Instruct | general_qa | AverageAccuracy | example  |   12 | 0.6375 | default |
+| Qwen2.5-0.5B-Instruct | General-QA | Accuracy ↑ | example | 12 | 63.8% | default |
 +----------------+------------+----------------+----------+-------+---------+---------+
 ```
 

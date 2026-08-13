@@ -248,6 +248,25 @@ Example:
 Show me all comments on merge request 5 in project gitlab-org/gitlab
 ```
 
+## `add_branch`
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/605877) in GitLab 19.3. `create_branch` is also accepted as an alias.
+
+Adds a branch to a GitLab project from a source ref.
+
+| Parameter    | Type   | Required | Description |
+|--------------|--------|----------|-------------|
+| `url`        | string | No       | GitLab URL of the project. Provide this, or `project_id`. |
+| `project_id` | string | No       | ID or path of the project. Required if `url` is not provided. |
+| `branch`     | string | Yes      | Name of the new branch. |
+| `ref`        | string | Yes      | Branch name or commit SHA to create the new branch from. |
+
+Example:
+
+```plaintext
+Create a branch named feature/x from main in project gitlab-org/gitlab
+```
+
 ## `get_pipeline_jobs`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.

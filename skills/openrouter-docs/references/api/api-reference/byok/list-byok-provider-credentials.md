@@ -181,6 +181,7 @@ paths:
               - coreweave
               - crusoe
               - darkbloom
+              - databricks
               - decart
               - deepgram
               - deepinfra
@@ -603,6 +604,7 @@ components:
         - coreweave
         - crusoe
         - darkbloom
+        - databricks
         - decart
         - deepgram
         - deepinfra

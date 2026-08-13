@@ -1,11 +1,11 @@
 ---
 title: "Tinfoil | Models"
-description: "Use Tinfoil models with Mastra. 7 models available."
+description: "Use Tinfoil models with Mastra. 8 models available."
 ---
 
 # [Tinfoil logo]Tinfoil
 
-Access 7 Tinfoil models through Mastra's model router. Authentication is handled automatically using the `TINFOIL_API_KEY` environment variable.
+Access 8 Tinfoil models through Mastra's model router. Authentication is handled automatically using the `TINFOIL_API_KEY` environment variable.
 
 Learn more in the [Tinfoil documentation](https://docs.tinfoil.sh).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "tinfoil/gemma4-31b"
+  model: "tinfoil/deepseek-v4-flash"
 });
 
 // Generate a response
@@ -40,13 +40,25 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
+    "model": "tinfoil/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 384000,
+    "inputCost": 0.7,
+    "outputCost": 1.9
+  },
+  {
     "model": "tinfoil/gemma4-31b",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 256000,
+    "contextWindow": 262144,
     "maxOutput": 32768,
     "inputCost": 0.4,
     "outputCost": 1
@@ -58,7 +70,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 384000,
+    "contextWindow": 393216,
     "maxOutput": 131072,
     "inputCost": 1.5,
     "outputCost": 5.25
@@ -70,7 +82,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131000,
+    "contextWindow": 131072,
     "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 0.6
@@ -82,7 +94,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131000,
+    "contextWindow": 131072,
     "maxOutput": 32768,
     "inputCost": 0.15,
     "outputCost": 0.6
@@ -94,10 +106,10 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 256000,
+    "contextWindow": 262144,
     "maxOutput": 131072,
-    "inputCost": 2,
-    "outputCost": 6
+    "inputCost": 4,
+    "outputCost": 20
   },
   {
     "model": "tinfoil/llama3-3-70b",
@@ -106,7 +118,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 128000,
+    "contextWindow": 131072,
     "maxOutput": 4096,
     "inputCost": 1.75,
     "outputCost": 2.75
@@ -136,7 +148,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://inference.tinfoil.sh/v1",
-    id: "tinfoil/gemma4-31b",
+    id: "tinfoil/deepseek-v4-flash",
     apiKey: process.env.TINFOIL_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -155,7 +167,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "tinfoil/nomic-embed-text"
-      : "tinfoil/gemma4-31b";
+      : "tinfoil/deepseek-v4-flash";
   }
 });
 ```

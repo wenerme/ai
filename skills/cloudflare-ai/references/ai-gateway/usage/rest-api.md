@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The REST API lets you call any model — whether hosted on Cloudflare or by a third-party provider like OpenAI, Anthropic, or Google — through the same Cloudflare API, with all AI Gateway features — logging, caching, rate limiting, and more — applied automatically.
 
@@ -126,6 +126,62 @@ curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_
 ```
 
 To use prepaid AI Gateway credits for Workers AI, use the model-in-path endpoint shown above, set the gateway's [Workers AI billing setting](https://developers.cloudflare.com/ai-gateway/configuration/manage-gateway/#configure-workers-ai-billing) to **Unified billing**, and include its ID in the `cf-aig-gateway-id` header. Requests to frontier models billed with prepaid credits receive [higher rate limits](https://developers.cloudflare.com/workers-ai/platform/limits/#frontier-models).
+
+### Background requests and webhooks
+
+By default, `/ai/run` requests are synchronous — the connection stays open until the model finishes and the result comes back in the response. For long-running models — such as image, video, or audio generation — or when you do not want to hold a connection open, run the request in the background and have AI Gateway notify a webhook when it completes.
+
+Set `background` to `true` and provide a `webhookUrl`. Both are fields of the `options` object in the `/ai/run` body, alongside `model` and `input`.
+
+`webhookUrl` can only be provided when `background` is `true`. Providing a `webhookUrl` without `background: true` returns a `400` error.
+
+```bash
+# Run `wrangler whoami` to get your account ID to replace $CLOUDFLARE_ACCOUNT_ID,
+# and `wrangler auth token` to get an auth token to replace $CLOUDFLARE_API_TOKEN.
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "google/nano-banana",
+    "input": {
+      "prompt": "A cozy coffee shop interior with warm lighting, plants hanging from the ceiling, and a cat sleeping on a velvet armchair by the window",
+      "aspect_ratio": "16:9"
+    },
+    "options": {
+      "background": true,
+      "webhookUrl": "https://example.com/my-webhook"
+    }
+  }'
+```
+
+A background request returns immediately while the model runs. The result is delivered to your webhook when the run completes.
+
+#### Webhook payload
+
+When the run completes, AI Gateway sends a single `POST` request to your `webhookUrl` with the run outcome:
+
+```json
+{
+	"id": "<run-id>",
+	"state": "<run-state>",
+	"result": {},
+	"error": null,
+	"provider": "google",
+	"model": "google/nano-banana",
+	"usage": {}
+}
+```
+
+Webhook delivery is best-effort and is not retried. The destination must be an HTTPS URL that does not resolve to a private network address.
+
+#### Webhook format
+
+Use the optional `webhookFormat` field in the `options` object to control the shape of the webhook body. The default is `raw`. `webhookFormat` can only be provided when `webhookUrl` is present. Otherwise, the request returns a `400` error.
+
+| Format | Description                                                                                                                 |
+| ------ | --------------------------------------------------------------------------------------------------------------------------- |
+| raw    | Sends the payload as-is (default).                                                                                          |
+| chat   | Wraps the payload in { "text": "<prettified JSON>" }, matching the incoming-webhook body accepted by Google Chat and Slack. |
 
 ## `/ai/v1/chat/completions` — OpenAI compatible
 
@@ -300,8 +356,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API · Cloudflare AI Gateway docs","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/#page","headline":"REST API · Cloudflare AI Gateway docs","description":"Call third-party and Workers AI models through the Cloudflare API with AI Gateway features like logging, caching, and rate limiting.","url":"https://developers.cloudflare.com/ai-gateway/usage/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

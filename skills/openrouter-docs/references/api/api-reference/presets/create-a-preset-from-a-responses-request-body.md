@@ -861,15 +861,19 @@ components:
           description: >-
             List of model patterns to filter which models the auto-beta-router
             can route between. Supports wildcards (e.g., "anthropic/*" matches
-            all Anthropic models). When not specified, every model ranked for
-            the classified task type is a candidate, falling back to a default
-            model set when rankings are unavailable.
+            all Anthropic models). Up to 1024 patterns, each at most 1024
+            characters, with 65536 total characters across all patterns. When
+            not specified, every model ranked for the classified task type is a
+            candidate, falling back to a default model set when rankings are
+            unavailable.
           example:
             - anthropic/*
             - openai/gpt-4o
             - google/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         cost_quality_tradeoff:
           deprecated: true
@@ -910,13 +914,16 @@ components:
           description: >-
             List of model patterns to exclude from auto-beta-router selection.
             Supports wildcards (e.g., "meta-llama/*" excludes all Llama models).
-            Applied after allowed_models, so an excluded pattern always wins
-            over an allowed one.
+            Up to 1024 patterns, each at most 1024 characters, with 65536 total
+            characters across all patterns. Applied after allowed_models, so an
+            excluded pattern always wins over an allowed one.
           example:
             - openai/gpt-4o
             - meta-llama/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         id:
           enum:
@@ -941,15 +948,19 @@ components:
           description: >-
             List of model patterns to filter which models the auto-router can
             route between. Supports wildcards (e.g., "anthropic/*" matches all
-            Anthropic models). When not specified, every model ranked for the
-            classified task type is a candidate, falling back to a default model
-            set when rankings are unavailable.
+            Anthropic models). Up to 1024 patterns, each at most 1024
+            characters, with 65536 total characters across all patterns. When
+            not specified, every model ranked for the classified task type is a
+            candidate, falling back to a default model set when rankings are
+            unavailable.
           example:
             - anthropic/*
             - openai/gpt-4o
             - google/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         cost_quality_tradeoff:
           deprecated: true
@@ -990,13 +1001,16 @@ components:
           description: >-
             List of model patterns to exclude from auto-router selection.
             Supports wildcards (e.g., "meta-llama/*" excludes all Llama models).
-            Applied after allowed_models, so an excluded pattern always wins
-            over an allowed one.
+            Up to 1024 patterns, each at most 1024 characters, with 65536 total
+            characters across all patterns. Applied after allowed_models, so an
+            excluded pattern always wins over an allowed one.
           example:
             - openai/gpt-4o
             - meta-llama/*
           items:
+            maxLength: 1024
             type: string
+          maxItems: 1024
           type: array
         id:
           enum:
@@ -4556,8 +4570,8 @@ components:
     WebSearchMode:
       description: >-
         Engine-native search mode. Exa supports instant, fast, auto (default),
-        deep-lite, deep, and deep-reasoning. Parallel supports turbo (default),
-        basic, and advanced. Modes unsupported by the selected engine are
+        deep-lite, deep, and deep-reasoning. Parallel supports turbo, basic
+        (default), and advanced. Modes unsupported by the selected engine are
         ignored.
       enum:
         - instant
@@ -4701,6 +4715,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Databricks
         - Decart
         - Deepgram
         - DeepInfra

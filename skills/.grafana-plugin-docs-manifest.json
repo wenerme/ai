@@ -221,8 +221,8 @@
   },
   "grafana-azuredevops-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/configure.md",
-    "size": 8495,
-    "updatedAt": "2026-06-25T05:41:39.279Z"
+    "size": 9583,
+    "updatedAt": "2026-08-13T02:58:14.697Z"
   },
   "grafana-azuredevops-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest.md",
@@ -241,8 +241,8 @@
   },
   "grafana-azuredevops-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-azuredevops-datasource/latest/troubleshooting.md",
-    "size": 16442,
-    "updatedAt": "2026-06-25T05:41:40.766Z"
+    "size": 18062,
+    "updatedAt": "2026-08-13T02:58:15.377Z"
   },
   "grafana-bigquery-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/alerting.md",
@@ -951,8 +951,8 @@
   },
   "grafana-lokiexplore-app/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting.md",
-    "size": 15583,
-    "updatedAt": "2026-06-25T05:42:25.322Z"
+    "size": 15535,
+    "updatedAt": "2026-08-13T02:58:38.254Z"
   },
   "grafana-lokiexplore-app/view-logs.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs.md",
@@ -1939,20 +1939,40 @@
     "size": 25028,
     "updatedAt": "2026-06-25T05:43:35.945Z"
   },
-  "grafana-yugabyte-datasource/editor.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/editor.md",
-    "size": 1235,
-    "updatedAt": "2026-06-25T05:43:36.297Z"
+  "grafana-yugabyte-datasource/alerting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/alerting.md",
+    "size": 4853,
+    "updatedAt": "2026-08-13T02:59:12.435Z"
+  },
+  "grafana-yugabyte-datasource/annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/annotations.md",
+    "size": 5158,
+    "updatedAt": "2026-08-13T02:59:12.588Z"
+  },
+  "grafana-yugabyte-datasource/configure.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/configure.md",
+    "size": 8574,
+    "updatedAt": "2026-08-13T02:59:12.743Z"
   },
   "grafana-yugabyte-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest.md",
-    "size": 1354,
-    "updatedAt": "2026-06-25T05:43:36.656Z"
+    "size": 4050,
+    "updatedAt": "2026-08-13T02:59:12.897Z"
   },
-  "grafana-yugabyte-datasource/setup.md": {
-    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/setup.md",
-    "size": 2717,
-    "updatedAt": "2026-06-25T05:43:37.043Z"
+  "grafana-yugabyte-datasource/query-editor.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/query-editor.md",
+    "size": 7858,
+    "updatedAt": "2026-08-13T02:59:13.052Z"
+  },
+  "grafana-yugabyte-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/template-variables.md",
+    "size": 5382,
+    "updatedAt": "2026-08-13T02:59:13.204Z"
+  },
+  "grafana-yugabyte-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-yugabyte-datasource/latest/troubleshooting.md",
+    "size": 10121,
+    "updatedAt": "2026-08-13T02:59:13.356Z"
   },
   "grafana-zendesk-datasource/configuration.md": {
     "url": "https://grafana.com/docs/plugins/grafana-zendesk-datasource/latest/configuration.md",

@@ -36,24 +36,24 @@ Test these carefully, as tool output formats can change over time.
 
 ### Python and Ruby
 
-| Tool           | Language | Command        | Regex pattern |
-| -------------- | -------- | -------------- | ------------- |
-| pytest-cov     | Python   | `pytest --cov` | `/TOTAL.*? (100(?:\.0+)?\%\|[1-9]?\d(?:\.\d+)?\%)$/` |
-| Simplecov-html | Ruby     | `rspec spec`   | `/Line\sCoverage:\s\d+\.\d+%/` |
+| Tool       | Language | Command        | Regex pattern |
+| ---------- | -------- | -------------- | ------------- |
+| pytest-cov | Python   | `pytest --cov` | `/TOTAL.*? (100(?:\.0+)?\%\|[1-9]?\d(?:\.\d+)?\%)$/` |
+| SimpleCov  | Ruby     | `rspec spec`   | `/Line\sCoverage:\s\d+\.\d+%/` |
 
 ### C/C++ and Rust
 
 | Tool      | Language | Command           | Regex pattern |
 | --------- | -------- | ----------------- | ------------- |
 | gcovr     | C/C++    | `gcovr`           | `/^TOTAL.*\s+(\d+\%)$/` |
-| tarpaulin | Rust     | `cargo tarpaulin` | `/^\d+.\d+% coverage/` |
+| Tarpaulin | Rust     | `cargo tarpaulin` | `/^\d+.\d+% coverage/` |
 
 ### Java and JVM
 
 | Tool      | Language    | Command                            | Regex pattern |
 | --------- | ----------- | ---------------------------------- | ------------- |
 | JaCoCo    | Java/Kotlin | `./gradlew test jacocoTestReport`  | `/Total.*?([0-9]{1,3})%/` |
-| Scoverage | Scala       | `sbt coverage test coverageReport` | `/(?i)total.*? (100(?:\.0+)?\%\|[1-9]?\d(?:\.\d+)?\%)$/` |
+| scoverage | Scala       | `sbt coverage test coverageReport` | `/(?i)total.*? (100(?:\.0+)?\%\|[1-9]?\d(?:\.\d+)?\%)$/` |
 
 ### Node.js
 
@@ -61,15 +61,15 @@ Test these carefully, as tool output formats can change over time.
 | --------- | ------------------------------------------ | ------------- |
 | tap       | `tap --coverage-report=text-summary`       | `/^Statements\s*:\s*([^%]+)/` |
 | nyc       | `nyc npm test`                             | `/All files[^\x7c]*\x7c[^\x7c]*\s+([\d\.]+)/` |
-| jest      | `jest --ci --coverage`                     | `/All files[^\x7c]*\x7c[^\x7c]*\s+([\d\.]+)/` |
+| Jest      | `jest --ci --coverage`                     | `/All files[^\x7c]*\x7c[^\x7c]*\s+([\d\.]+)/` |
 | node:test | `node --experimental-test-coverage --test` | `/all files[^\x7c]*\x7c[^\x7c]*\s+([\d\.]+)/` |
 
 ### PHP
 
 | Tool    | Command                                  | Regex pattern |
 | ------- | ---------------------------------------- | ------------- |
-| pest    | `pest --coverage --colors=never`         | `/Statement coverage[A-Za-z\.*]\s*:\s*([^%]+)/` |
-| phpunit | `phpunit --coverage-text --colors=never` | `/^\s*Lines:\s*\d+.\d+\%/` |
+| Pest    | `pest --coverage --colors=never`         | `/Statement coverage[A-Za-z\.*]\s*:\s*([^%]+)/` |
+| PHPUnit | `phpunit --coverage-text --colors=never` | `/^\s*Lines:\s*\d+.\d+\%/` |
 
 ### Go
 
@@ -90,8 +90,8 @@ Test these carefully, as tool output formats can change over time.
 
 | Tool        | Command            | Regex pattern |
 | ----------- | ------------------ | ------------- |
-| excoveralls | None               | `/\[TOTAL\]\s+(\d+\.\d+)%/` |
-| mix         | `mix test --cover` | `/\d+.\d+\%\s+\x7c\s+Total/` |
+| ExCoveralls | None               | `/\[TOTAL\]\s+(\d+\.\d+)%/` |
+| Mix         | `mix test --cover` | `/\d+.\d+\%\s+\x7c\s+Total/` |
 
 ## Add a coverage check approval rule
 

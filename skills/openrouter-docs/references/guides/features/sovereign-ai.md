@@ -8,7 +8,7 @@
 
 Sovereign AI refers to a nation's or region's ability to develop, deploy, and control artificial intelligence systems within its own borders, using local infrastructure and under local regulatory frameworks. As AI becomes critical infrastructure, governments and enterprises increasingly require that AI workloads (including the data they process) remain within specific geographic and jurisdictional boundaries.
 
-OpenRouter offers fully in-region routing in the EU for enterprise customers. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
+OpenRouter offers fully in-region routing in the EU and the US for enterprise customers. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
 
 ## Drivers of sovereign AI
 
@@ -26,14 +26,15 @@ Sensitive data (whether personal, financial, or classified) may not legally or e
 
 OpenRouter provides several features that enable sovereign AI deployments today, allowing enterprises to maintain control over where their AI workloads are processed.
 
-### EU In-Region Routing
+### In-Region Routing
 
-For enterprise customers, OpenRouter supports EU in-region routing. When enabled, your requests are guaranteed to only be decrypted within the designated region, and are only routed to providers operating in that region. This means prompts and completions are processed entirely within the European Union. They never leave the EU at any point in the request lifecycle.
+For enterprise customers, OpenRouter supports in-region routing in the EU and the US. When enabled, your requests are guaranteed to only be decrypted within the designated region, and are only routed to providers operating in that region. This means prompts and completions are processed entirely within that region. They never leave it at any point in the request lifecycle.
 
-To use EU in-region routing, send API requests through the EU-specific base URL:
+To use in-region routing, send API requests through the region-specific base URL:
 
 ```lines theme={null}
 https://eu.openrouter.ai
+https://us.openrouter.ai
 ```
 
 <CodeGroup>
@@ -92,15 +93,15 @@ https://eu.openrouter.ai
 </CodeGroup>
 
 <Info>
-  **EU-only models list**
+  **In-region models list**
 
-  To see which models are available for EU in-region routing, you can:
+  To see which models are available for in-region routing, you can:
 
-  * Call [`/api/v1/models`](https://eu.openrouter.ai/api/v1/models) through the EU domain to get the full list programmatically
-  * Browse [EU-eligible models](https://openrouter.ai/models?region=eu) on the models page using the **In-Region Routing** filter
+  * Call [`/api/v1/models`](https://eu.openrouter.ai/api/v1/models) through the EU domain to get the full list programmatically, or pass a `region` query parameter (`eu` or `us`) on the main domain
+  * Browse [EU-eligible models](https://openrouter.ai/models?region=eu) or [US-eligible models](https://openrouter.ai/models?region=us) on the models page with the **In-Region Routing** filter
 </Info>
 
-EU in-region routing is available for enterprise customers by request. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
+In-region routing (EU or US) is available for enterprise customers by request. [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable it for your account.
 
 ### Zero Data Retention (ZDR)
 
@@ -136,7 +137,7 @@ When set to `"deny"`, your requests are only routed to providers that do not col
 
 Combining these features, you can build a fully sovereign AI deployment:
 
-1. **Enable EU in-region routing** to keep all data within the EU
+1. **Enable in-region routing** to keep all data within the EU or the US
 2. **Enforce ZDR** to prevent any data retention by providers
 3. **Deny data collection** to prevent training on your data
 
@@ -144,10 +145,10 @@ This gives you a single API with unified billing while maintaining full control 
 
 ## Getting Started
 
-Sovereign AI features are available to all OpenRouter users, with EU in-region routing available for enterprise customers. To get started:
+Sovereign AI features are available to all OpenRouter users, with in-region routing (EU or US) available for enterprise customers. To get started:
 
 * [Create an API key](https://openrouter.ai/settings/keys) and start using [provider routing](/docs/guides/routing/provider-selection) to control where your requests are processed
 * Enable [ZDR](/docs/guides/features/zdr) and [data collection controls](/docs/guides/privacy/provider-logging) for privacy compliance
-* [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable EU in-region routing and discuss additional sovereign AI requirements
+* [Contact our enterprise team](https://openrouter.ai/enterprise/form) to enable in-region routing and discuss additional sovereign AI requirements
 
 For a complete enterprise setup guide, see the [Enterprise Quickstart](/docs/cookbook/get-started/enterprise-quickstart).
