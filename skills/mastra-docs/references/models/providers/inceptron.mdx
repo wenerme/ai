@@ -1,11 +1,11 @@
 ---
 title: "Inceptron | Models"
-description: "Use Inceptron models with Mastra. 6 models available."
+description: "Use Inceptron models with Mastra. 5 models available."
 ---
 
 # [Inceptron logo]Inceptron
 
-Access 6 Inceptron models through Mastra's model router. Authentication is handled automatically using the `INCEPTRON_API_KEY` environment variable.
+Access 5 Inceptron models through Mastra's model router. Authentication is handled automatically using the `INCEPTRON_API_KEY` environment variable.
 
 Learn more in the [Inceptron documentation](https://docs.inceptron.io).
 
@@ -40,6 +40,18 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
+    "model": "inceptron/deepseek-ai/DeepSeek-V4-Flash-0731",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.13,
+    "outputCost": 0.28
+  },
+  {
     "model": "inceptron/MiniMaxAI/MiniMax-M2.5",
     "imageInput": false,
     "audioInput": false,
@@ -48,7 +60,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 196608,
     "maxOutput": 196608,
-    "inputCost": 0.15,
+    "inputCost": 0.22,
     "outputCost": 0.9
   },
   {
@@ -60,20 +72,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.66,
-    "outputCost": 3.5
-  },
-  {
-    "model": "inceptron/moonshotai/Kimi-K2.6-Fast",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 1.32,
-    "outputCost": 7
+    "inputCost": 0.6,
+    "outputCost": 3.41
   },
   {
     "model": "inceptron/moonshotai/Kimi-K2.7-Code",
@@ -84,20 +84,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 262144,
-    "inputCost": 0.75,
-    "outputCost": 3.5
-  },
-  {
-    "model": "inceptron/zai-org/GLM-5.1-FP8",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 202752,
-    "inputCost": 1.4,
-    "outputCost": 4.4
+    "inputCost": 0.67,
+    "outputCost": 3.4
   },
   {
     "model": "inceptron/zai-org/GLM-5.2",
@@ -106,10 +94,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 131072,
-    "inputCost": 1.2,
-    "outputCost": 4.2
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.75,
+    "outputCost": 2.9
   }
 ]}
 />

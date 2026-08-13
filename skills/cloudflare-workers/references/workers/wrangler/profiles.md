@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Authentication profiles
 
-Last updated Jul 2, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Wrangler authenticates as one user at a time. A profile is a named OAuth login that you scope to a chosen set of accounts can bind to a directory.
+Wrangler authenticates as one user at a time. A profile is a named OAuth login that you scope to a chosen set of accounts and can bind to a directory.
 
 Use profiles to switch between accounts for different projects without re-running [wrangler login](https://developers.cloudflare.com/workers/wrangler/commands/general/#login). Profiles live under [wrangler auth](https://developers.cloudflare.com/workers/wrangler/commands/general/#auth).
 
@@ -165,8 +165,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/profiles/#page","headline":"Authentication profiles · Cloudflare Workers docs","description":"Maintain separate logins and switch accounts per directory.","url":"https://developers.cloudflare.com/workers/wrangler/profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-02","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/profiles/#page","headline":"Authentication profiles · Cloudflare Workers docs","description":"Maintain separate logins and switch accounts per directory.","url":"https://developers.cloudflare.com/workers/wrangler/profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

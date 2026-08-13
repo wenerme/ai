@@ -34,6 +34,27 @@ Successful exploitation of CVE-2026-61511 may lead to remote code execution on a
 | Cloudflare Managed Ruleset | ...098b749e | N/A            | Version Control - Information Disclosure - Beta                               | Log             | Block      | This rule is merged into the original rule "Version Control - Information Disclosure" (ID: ...0550c529)                               |
 | Cloudflare Managed Ruleset | ...d56225d8 | N/A            | vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132 - Beta | Log             | Block      | This rule is merged into the original rule "vBulletin - Code Injection - Invalid image format - CVE:CVE-2019-17132" (ID: ...8fe9f1c7) |
 
+## 2026-08-07
+
+
+**WAF Release - 2026-08-07**
+
+This release updates WordPress XSS rule metadata in the Cloudflare Managed Ruleset and Cloudflare Free Ruleset to identify XSS2Shell (CVE-2026-64638). It also disables the Command Injection - Obfuscation rule.
+
+**Key Findings**
+
+* CVE-2026-64638: A pre-authentication reflected cross-site scripting vulnerability affecting the WordPress login screen. Exploitation requires social engineering and explicit interaction by the target user. Under additional conditions, it may be escalated to remote code execution.
+
+**Impact**
+
+The WordPress changes update rule metadata only; detection behavior and actions remain unchanged.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                          | Previous Action | New Action | Comments                                                |
+| -------------------------- | ----------- | -------------- | ------------------------------------ | --------------- | ---------- | ------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...9c6dff1c | N/A            | Wordpress - XSS - CVE:CVE-2026-64638 | Block           | N/A        | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset    | ...9ab5ed95 | N/A            | Wordpress - XSS - CVE:CVE-2026-64638 | Block           | N/A        | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Managed Ruleset | ...761e7a4c | N/A            | Command Injection - Obfuscation      | Block           | Disabled   | Detection logic has been deprecated                     |
+
 ## 2026-08-04
 
 
@@ -641,24 +662,6 @@ Successful exploitation of the Fortinet and Magento vulnerabilities could allow 
 | Cloudflare Managed Ruleset | ...def262dd | N/A            | Generic Rules - Parameter Pollution - URI                            | Log             | Disabled   | This is a new detection. |
 | Cloudflare Managed Ruleset | ...70a36147 | N/A            | Magento 2 - Unrestricted file upload                                 | Log             | Block      | This is a new detection. |
 | Cloudflare Managed Ruleset | ...2ffcca9f | N/A            | Fortinet FortiCloud SSO - Authentication Bypass - CVE:CVE-2025-59718 | Log             | Block      | This is a new detection. |
-
-## 2026-03-23
-
-
-**WAF Release - 2026-03-23**
-
-This week's release focuses on new improvements to enhance coverage.
-
-**Key Findings**
-
-* Existing rule enhancements have been deployed to improve detection resilience against broad classes of web attacks and strengthen behavioral coverage.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                                                                               | Previous Action | New Action | Comments                                                                                                                                                                                |
-| -------------------------- | ----------- | -------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cloudflare Managed Ruleset | ...97321c6c | N/A            | Command Injection - Generic 9 - URI Vector                                                                                | Log             | Disabled   | This is a new detection.                                                                                                                                                                |
-| Cloudflare Managed Ruleset | ...1eb7a999 | N/A            | Command Injection - Generic 9 - Header Vector                                                                             | Log             | Disabled   | This is a new detection.                                                                                                                                                                |
-| Cloudflare Managed Ruleset | ...0677175f | N/A            | Command Injection - Generic 9 - Body Vector                                                                               | Log             | Disabled   | This is a new detection.                                                                                                                                                                |
-| Cloudflare Managed Ruleset | ...479da68f | N/A            | PHP, vBulletin, jQuery File Upload - Code Injection, Dangerous File Upload - CVE:CVE-2018-9206, CVE:CVE-2019-17132 (beta) | Log             | Block      | This rule has been merged into the original rule "PHP, vBulletin, jQuery File Upload - Code Injection, Dangerous File Upload - CVE:CVE-2018-9206, CVE:CVE-2019-17132" (ID: ...824b817c) |
 
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 

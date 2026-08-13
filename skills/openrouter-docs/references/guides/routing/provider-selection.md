@@ -62,9 +62,9 @@ The `provider` object can contain the following fields:
 | `max_price`                | object            | -       | The maximum pricing you want to pay for this request. [Learn more](#max-price)                                                                                   |
 
 <Note>
-  **EU data residency (Enterprise)**
+  **Regional data residency (Enterprise)**
 
-  OpenRouter supports EU in-region routing for enterprise customers. When enabled, prompts and completions are processed entirely within the EU. Learn more in our [Privacy docs here](/docs/guides/privacy/provider-logging#enterprise-eu-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
+  OpenRouter supports in-region routing in the EU and US for enterprise customers. When enabled, prompts and completions are processed entirely within the selected region. Learn more in our [Privacy docs here](/docs/guides/privacy/provider-logging#enterprise-in-region-routing). To contact our enterprise team, [fill out this form](https://openrouter.ai/enterprise/form).
 </Note>
 
 ## Price-Based Load Balancing (Default Strategy)
@@ -1464,7 +1464,7 @@ You can allow only specific providers for a request by setting the `only` field 
 
   You can allow providers for all account requests in your [privacy settings](https://openrouter.ai/settings/privacy). This configuration applies to all API requests and chatroom messages.
 
-  Note that when you allow providers for a specific request, the list of allowed providers is merged with your account-wide allowed providers.
+  Note that when you allow providers for a specific request, both restrictions apply: your account-wide allowed providers act as the ceiling, and the request's `only` list narrows within it. If no provider satisfies both, the request fails with a 404.
 </Tip>
 
 ### Example: Allowing Azure for a request calling GPT-4 Omni

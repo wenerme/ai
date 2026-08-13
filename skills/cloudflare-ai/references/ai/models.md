@@ -6,13 +6,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 [Skip to content](#main-content)
 
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Models
 
-Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ai/models/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 217 modelsClear filters
+We found 218 modelsClear filters
 
 No models found
 
@@ -276,6 +280,8 @@ Try a different search term, or broaden your search by removing filters.
 
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)grok-4.5xAIText GenerationxAI's Grok 4.5, a frontier model built for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high).Third-party](https://developers.cloudflare.com/ai/models/xai/grok-4.5/)
 
+[![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)grok-4.6xAIText GenerationxAI's Grok 4.6, a flagship reasoning model for coding, agentic tasks, and visual work. Accepts text and image inputs, and supports function calling and structured outputs.Third-party](https://developers.cloudflare.com/ai/models/xai/grok-4.6/)
+
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)grok-imagine-imagexAIText-to-ImagexAI's Grok Imagine image model. Generates and edits images from text and reference-image inputs with configurable aspect ratio and resolution.Third-party](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image/)
 
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)grok-imagine-image-qualityxAIText-to-ImagexAI's higher-fidelity text-to-image model optimized for sharper details, more accurate compositions, and stronger text rendering. Supports image editing via reference images and masks. Trades speed for quality compared to grok-imagine-image. Default output at 2k resolution.Third-party](https://developers.cloudflare.com/ai/models/xai/grok-imagine-image-quality/)
@@ -456,8 +462,10 @@ Was this helpful?
 
 YesNo
 
+## On this page
+
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai/models/#page","headline":"Models · Cloudflare AI docs","description":"Browse AI models available through Cloudflare, including hosted models on Workers AI and external providers via AI Gateway.","url":"https://developers.cloudflare.com/ai/models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai/models/#page","headline":"Models · Cloudflare AI docs","description":"Browse AI models available through Cloudflare, including hosted models on Workers AI and external providers via AI Gateway.","url":"https://developers.cloudflare.com/ai/models/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -14,6 +14,7 @@ Datasets endpoints
 
 * [get\_app\_rankings](#get_app_rankings) - Top apps by token usage
 * [get\_rankings\_daily](#get_rankings_daily) - Daily token totals for top 50 models
+* [get\_session\_cost](#get_session_cost) - Cost per session by harness and model
 
 ## get\_app\_rankings
 
@@ -77,7 +78,7 @@ with OpenRouter(
 | `start_date`               | *Optional\[str]*                                                                             | :heavy\_minus\_sign: | Start of the date window in YYYY-MM-DD (UTC), inclusive. Defaults to 30 days before `end_date`. The dataset begins at 2025-01-01; earlier values are clamped forward to that floor and the resolved value is echoed in `meta.start_date`.                                                            | 2026-04-12 |
 | `end_date`                 | *Optional\[str]*                                                                             | :heavy\_minus\_sign: | End of the date window in YYYY-MM-DD (UTC), inclusive. Defaults to the most recent completed UTC day. Must be on or after 2025-01-01; earlier values are rejected with a 400.                                                                                                                        | 2026-05-11 |
 | `limit`                    | *Optional\[int]*                                                                             | :heavy\_minus\_sign: | Maximum number of apps to return (1-100). Defaults to 50.                                                                                                                                                                                                                                            | 50         |
-| `offset`                   | *Optional\[int]*                                                                             | :heavy\_minus\_sign: | Number of ranked apps to skip before the first returned row (0-100). Defaults to 0. `rank` stays absolute, so the first row of `offset=50` is `rank: 51`.                                                                                                                                            | 0          |
+| `offset`                   | *OptionalNullable\[int]*                                                                     | :heavy\_minus\_sign: | Number of ranked apps to skip before the first returned row (0-100). Defaults to 0. `rank` stays absolute, so the first row of `offset=50` is `rank: 51`.                                                                                                                                            | 0          |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx)                          | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                                                                                                                  |            |
 
 ### Response
@@ -163,6 +164,67 @@ with OpenRouter(
 ### Response
 
 **[components.RankingsDailyResponse](../../components/rankingsdailyresponse.mdx)**
+
+### Errors
+
+| Error Type                          | Status Code | Content Type     |
+| ----------------------------------- | ----------- | ---------------- |
+| errors.BadRequestResponseError      | 400         | application/json |
+| errors.UnauthorizedResponseError    | 401         | application/json |
+| errors.TooManyRequestsResponseError | 429         | application/json |
+| errors.InternalServerResponseError  | 500         | application/json |
+| errors.OpenRouterDefaultError       | 4XX, 5XX    | \*/\*            |
+
+## get\_session\_cost
+
+Returns weekly refreshed, aggregated cost-per-session cells for the published harnesses.
+Sessions are never pooled across apps. Medians are of per-session USD spend, and
+privacy-preserving aggregation never exposes clerk\_user\_id values or per-session rows.
+
+Filter by `app_slug`, `model`, or `turn_range`. Filtering by `model` alone works across apps
+for harness-vs-harness comparison at a fixed model. Results refresh weekly and include the source snapshot
+window in `meta`.
+
+### Example Usage
+
+```python theme={null}
+from openrouter import OpenRouter
+import os
+
+
+with OpenRouter(
+    http_referer="<value>",
+    x_open_router_title="<value>",
+    x_open_router_categories="<value>",
+    api_key=os.getenv("OPENROUTER_API_KEY", ""),
+) as open_router:
+
+    res = open_router.datasets.get_session_cost(limit=100, offset=0)
+
+    while res is not None:
+        # Handle items
+
+        res = res.next()
+
+```
+
+### Parameters
+
+| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                 | Example                   |
+| -------------------------- | ------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------- |
+| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                           |
+| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                           |
+| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                           |
+| `app_slug`                 | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Filter to one published harness slug.                                                                                                                       | hermes-agent              |
+| `model`                    | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Exact model permaslug filter. Works across all harness apps.                                                                                                | anthropic/claude-4.8-opus |
+| `turn_range`               | [Optional\[operations.TurnRange\]](../../operations/turnrange.mdx)  | :heavy\_minus\_sign: | Filter by the inclusive number of turns in a session.                                                                                                       | 10-49-turns               |
+| `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of cells to return (1-500). Defaults to 100.                                                                                                 | 100                       |
+| `offset`                   | *OptionalNullable\[int]*                                            | :heavy\_minus\_sign: | Number of sorted cells to skip (0-5000). Defaults to 0.                                                                                                     | 0                         |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                           |
+
+### Response
+
+**[operations.GetSessionCostResponse](../../operations/getsessioncostresponse.mdx)**
 
 ### Errors
 

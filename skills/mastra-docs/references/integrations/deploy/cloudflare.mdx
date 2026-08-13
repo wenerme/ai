@@ -1,9 +1,9 @@
 ---
-title: "Deploy Mastra to Cloudflare | Deploy"
+title: "Cloudflare | Deploy"
 description: "Learn how to deploy a Mastra application to Cloudflare"
 ---
 
-# Deploy Mastra to Cloudflare
+# Cloudflare
 
 Use `@mastra/deployer-cloudflare` to deploy your Mastra server to Cloudflare Workers. The deployer bundles your code and generates a `wrangler.jsonc` file conforming to Cloudflare's [wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/), ready to deploy with no additional configuration.
 
@@ -11,7 +11,7 @@ Use `@mastra/deployer-cloudflare` to deploy your Mastra server to Cloudflare Wor
 
 ## Before you begin
 
-You'll need a [Mastra application](/guides/getting-started/quickstart) and a [Cloudflare](https://cloudflare.com/) account.
+You'll need a [Mastra application](/docs) and a [Cloudflare](https://cloudflare.com/) account.
 
 > **warning**: Cloudflare Workers use an ephemeral filesystem, so any storage you configure (including observability storage) must be hosted externally. If you're using [LibSQLStore](/integrations/databases/libsql) with a file URL, switch to a remotely hosted database.
 

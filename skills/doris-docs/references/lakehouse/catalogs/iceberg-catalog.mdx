@@ -209,6 +209,7 @@ See the documentation for this system table: [catalog_meta_cache_statistics](../
 * [Tencent COS](../storages/tencent-cos.md)
 * [Huawei OBS](../storages/huawei-obs.md)
 * [MINIO](../storages/minio.md)
+* [SeaweedFS](../storages/seaweedfs.md)
 
 > Note: The service types and parameters supported by different Doris versions are slightly different. Please refer to the [Examples] section.
 
@@ -1385,6 +1386,34 @@ This is an experimental feature, supported since version 4.1.0.
                 's3.endpoint' = 'https://s3.ap-east-1.amazonaws.com',
                 's3.access_key' = '<ak>',
                 's3.secret_key' = '<sk>'
+            );
+            ```
+        
+    
+
+### Alibaba Cloud OSS Tables
+
+    5.0+ Version
+    
+        
+            For complete configuration and usage instructions, see [Alibaba Cloud OSS Tables Integration](../best-practices/doris-aliyun-oss-tables).
+            ```sql
+            CREATE CATALOG oss_tables PROPERTIES (
+                'type' = 'iceberg',
+                'iceberg.catalog.type' = 'rest',
+                'iceberg.rest.uri' = 'https://<region>.oss-tables.aliyuncs.com/iceberg',
+                'warehouse' = 'acs:osstables:<region>:<account_id>:bucket/<table_bucket_name>',
+                'iceberg.rest.sigv4-enabled' = 'true',
+                'iceberg.rest.signing-name' = 'osstables',
+                'iceberg.rest.signing-region' = '<region>',
+                'iceberg.rest.view-enabled' = 'false',
+                'io-impl' = 'org.apache.iceberg.aws.s3.S3FileIO',
+                'oss.endpoint' = 'https://oss-<region>.aliyuncs.com',
+                'oss.region' = '<region>',
+                'oss.access_key' = '<access_key_id>',
+                'oss.secret_key' = '<access_key_secret>',
+                'oss.use_path_style' = 'false',
+                'test_connection' = 'true'
             );
             ```
         

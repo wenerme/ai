@@ -1,3 +1,8 @@
+---
+title: List Effective Spend Limits
+url: https://platform.claude.com/docs/en/api/admin/spend_limits/list_effective
+---
+
 ## List Effective Spend Limits
 
 **get** `/v1/organizations/spend_limits/effective`
@@ -44,11 +49,11 @@ Paginates by member, so a member's periods never split across pages.
 
   - `currency: string`
 
-  - `period: "monthly" or "daily" or "weekly"`
-
-    - `"monthly"`
+  - `period: "daily" or "monthly" or "weekly"`
 
     - `"daily"`
+
+    - `"monthly"`
 
     - `"weekly"`
 

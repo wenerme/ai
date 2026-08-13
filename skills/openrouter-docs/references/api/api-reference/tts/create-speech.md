@@ -621,6 +621,9 @@ components:
         darkbloom:
           additionalProperties: {}
           type: object
+        databricks:
+          additionalProperties: {}
+          type: object
         decart:
           additionalProperties: {}
           type: object

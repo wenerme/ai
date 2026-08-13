@@ -933,6 +933,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Databricks
         - Decart
         - Deepgram
         - DeepInfra

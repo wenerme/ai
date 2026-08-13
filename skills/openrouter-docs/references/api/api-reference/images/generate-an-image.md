@@ -1286,6 +1286,7 @@ components:
         - Crucible
         - Crusoe
         - Darkbloom
+        - Databricks
         - Decart
         - Deepgram
         - DeepInfra
@@ -1466,6 +1467,9 @@ components:
           additionalProperties: {}
           type: object
         darkbloom:
+          additionalProperties: {}
+          type: object
+        databricks:
           additionalProperties: {}
           type: object
         decart:

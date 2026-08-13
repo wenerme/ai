@@ -43,6 +43,36 @@ Expand table
 | Missing PAT scopes     | Verify the PAT has the required scopes (`Code (Read)`, `Build (Read)`, `Release (Read)`). Refer to [Required PAT scopes](/docs/plugins/grafana-azuredevops-datasource/latest/configure/#required-pat-scopes). |
 | Wrong organization URL | Verify the **URL** field matches your Azure DevOps organization (for example, `https://dev.azure.com/<ORGANIZATION>`).                                                                                        |
 
+### Dashboards suddenly return authentication errors after December 1, 2026
+
+> Note
+>
+> This affects only *global* PATs in Azure DevOps Services. Organization-scoped PATs aren’t affected, and the plugin itself isn’t deprecated or changed. If you use an organization-scoped PAT, no action is required.
+
+**Symptoms:**
+
+- Dashboards and queries that previously worked start returning authentication or `401 Unauthorized` errors.
+- No configuration changed on the Grafana side.
+
+**Cause:**
+
+Microsoft decommissioned global PATs (tokens created with the **Access scope** set to **All accessible organizations**) in Azure DevOps Services on December 1, 2026. If the data source was configured with a global PAT, the token stops working on that date. This affects only global PATs. Organization-scoped PATs continue to work.
+
+To check whether your PAT is global:
+
+1. Sign in to your Azure DevOps organization (`https://dev.azure.com/<ORGANIZATION>`).
+2. Click your profile icon in the upper right and select **Personal access tokens**.
+3. Set the **Access scope** filter to **All accessible organizations** and the status filter to **Active**.
+4. If your token appears in this list, it’s a global PAT and must be replaced.
+
+**Solution:**
+
+1. In Azure DevOps, create a new PAT scoped to a single organization. Refer to [Create a personal access token](/docs/plugins/grafana-azuredevops-datasource/latest/configure/#create-a-personal-access-token).
+2. In the data source configuration, click **Reset** on the **PAT** field and paste the new token.
+3. Click **Save &amp; test**.
+
+No plugin update or version upgrade is required.
+
 ### “Health check failed with status code: N”
 
 **Symptoms:**

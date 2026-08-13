@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Predefined profiles
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Zero Trust provides predefined DLP profiles for common types of sensitive data, such as credit card numbers, national identifiers, and credentials. Each predefined profile groups related [detection entries](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/detection-entries/configure-detection-entries/) which can be turned on or off individually.
 
@@ -64,7 +64,7 @@ In the table below, entries use one of three validation methods. [Luhn's algorit
 | American Express Card Number     | Validated using [Luhn's algorithm ↗](https://en.wikipedia.org/wiki/Luhn%5Falgorithm). |
 | American Express Text            | Text matching amex or american express.                                               |
 | Diners Club Card Number          | Validated using Luhn's algorithm.                                                     |
-| Generic CVV Card Number          | Validated with regex.                                                                 |
+| CVV Card Number (labeled)        | Validated with regex.                                                                 |
 | Mastercard Card Number           | Validated using Luhn's algorithm.                                                     |
 | Mastercard Text                  | Text matching mastercard.                                                             |
 | Union Pay Card Number            | Validated using Luhn's algorithm.                                                     |
@@ -101,7 +101,7 @@ This behavior helps reduce false positives from isolated matches.
 
 The profile includes the following detection entries:
 
-* AU Passport Number
+* Australia Passport Number
 * American Express Card Number
 * Diners Club Card Number
 * US Driver's License Number
@@ -166,8 +166,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#page","headline":"Predefined profiles · Cloudflare One docs","description":"Reference information for Predefined profiles in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/#page","headline":"Predefined profiles · Cloudflare One docs","description":"Reference information for Predefined profiles in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

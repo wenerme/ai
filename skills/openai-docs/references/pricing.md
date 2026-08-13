@@ -209,6 +209,15 @@ Prices per 1M tokens.
 
 
 
+  `daybreak-blue-latest` and `daybreak-red-latest` are
+  aliases that currently point to `gpt-5.6-sol` and 
+  `gpt-5.6-cyber`, respectively. As new frontier models are released
+  through the Daybreak program, these aliases will be updated to point to the
+  latest models, with pricing adjusted to match each underlying model.
+
+
+
+
   
 
     

@@ -35,7 +35,7 @@ GAIA (General AI Assistants) is a benchmark of 450+ questions targeting next-gen
 | **Dataset ID** | [gaia-benchmark/GAIA](https://modelscope.cn/datasets/gaia-benchmark/GAIA/summary) |
 | **Paper** | N/A |
 | **Tags** | `Agent`, `MultiTurn`, `Reasoning` |
-| **Metrics** | `acc` |
+| **Metrics** | `accuracy` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `validation` |
 

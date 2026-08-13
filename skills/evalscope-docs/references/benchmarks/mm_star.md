@@ -34,7 +34,7 @@ MMStar is an elite vision-indispensable multimodal benchmark designed to ensure 
 | **Dataset ID** | [evalscope/MMStar](https://modelscope.cn/datasets/evalscope/MMStar/summary) |
 | **Paper** | N/A |
 | **Tags** | `Knowledge`, `MCQ`, `MultiModal` |
-| **Metrics** | `acc` |
+| **Metrics** | `accuracy` |
 | **Default Shots** | 0-shot |
 | **Evaluation Split** | `val` |
 

@@ -5474,6 +5474,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-cancelvulnerabilityworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cancelvulnerabilityworkflow-errorreason"></a>`errorReason` | [`VulnerabilityWorkflowErrorReason`](#vulnerabilityworkflowerrorreason) | Machine-readable reason for the mutation error. |
 | <a id="mutation-cancelvulnerabilityworkflow-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-cancelvulnerabilityworkflow-execution"></a>`execution` | [`VulnerabilityWorkflowExecution`](#vulnerabilityworkflowexecution) | Workflow execution. |
 
@@ -5597,6 +5598,56 @@ Fields:
 | <a id="mutation-cdapplicationlinkcreate-applicationlink"></a>`applicationLink` | [`CdApplicationLink`](#cdapplicationlink) | Link created by the mutation. |
 | <a id="mutation-cdapplicationlinkcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-cdapplicationlinkcreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.cdApplicationLinkDelete`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Deletes a link on a continuous deployment application.
+
+Input type: `CdApplicationLinkDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdapplicationlinkdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdapplicationlinkdelete-id"></a>`id` | [`CdApplicationLinkID!`](#cdapplicationlinkid) | Global ID of the link to delete. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdapplicationlinkdelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdapplicationlinkdelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.cdApplicationLinkUpdate`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Updates a link on a continuous deployment application.
+
+Input type: `CdApplicationLinkUpdateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdapplicationlinkupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdapplicationlinkupdate-id"></a>`id` | [`CdApplicationLinkID!`](#cdapplicationlinkid) | Global ID of the link to update. |
+| <a id="mutation-cdapplicationlinkupdate-linktype"></a>`linkType` | [`CdApplicationLinkType`](#cdapplicationlinktype) | Type of the link. |
+| <a id="mutation-cdapplicationlinkupdate-name"></a>`name` | [`String`](#string) | Name of the link. |
+| <a id="mutation-cdapplicationlinkupdate-url"></a>`url` | [`String`](#string) | URL of the link. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-cdapplicationlinkupdate-applicationlink"></a>`applicationLink` | [`CdApplicationLink`](#cdapplicationlink) | Link updated by the mutation. |
+| <a id="mutation-cdapplicationlinkupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-cdapplicationlinkupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
 ### `Mutation.cdApplicationUpdate`
 
@@ -15032,6 +15083,28 @@ Fields:
 | <a id="mutation-securityscanprofilecreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-securityscanprofilecreate-scanprofile"></a>`scanProfile` | [`ScanProfileType`](#scanprofiletype) | Created scan profile. |
 
+### `Mutation.securityScanProfileDelete`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Input type: `SecurityScanProfileDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-securityscanprofiledelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-securityscanprofiledelete-id"></a>`id` | [`SecurityScanProfileID!`](#securityscanprofileid) | Global ID of the scan profile to delete. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-securityscanprofiledelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-securityscanprofiledelete-deletedscanprofileid"></a>`deletedScanProfileId` | [`SecurityScanProfileID`](#securityscanprofileid) | Global ID of the deleted scan profile. |
+| <a id="mutation-securityscanprofiledelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
 ### `Mutation.securityScanProfileDetach`
 
 - Introduced in GitLab 18.9.
@@ -15445,6 +15518,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-startvulnerabilityworkflow-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-startvulnerabilityworkflow-errorreason"></a>`errorReason` | [`VulnerabilityWorkflowErrorReason`](#vulnerabilityworkflowerrorreason) | Machine-readable reason for the mutation error. |
 | <a id="mutation-startvulnerabilityworkflow-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-startvulnerabilityworkflow-execution"></a>`execution` | [`VulnerabilityWorkflowExecution`](#vulnerabilityworkflowexecution) | Workflow execution. |
 
@@ -31239,6 +31313,7 @@ Fields:
 | <a id="aiauditevent-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the audit event was created. |
 | <a id="aiauditevent-details"></a>`details` | [`JSON`](#json) | Event-specific details payload. |
 | <a id="aiauditevent-eventname"></a>`eventName` | [`String`](#string) | Name of the audit event. |
+| <a id="aiauditevent-humanauthor"></a>`humanAuthor` | [`UserCore`](#usercore) | Human user on whose behalf the audit event was triggered, present only for composite-identity sessions where a service account acts on behalf of a human. |
 | <a id="aiauditevent-id"></a>`id` | [`ID!`](#id) | ID of the audit event. |
 | <a id="aiauditevent-ipaddress"></a>`ipAddress` | [`String`](#string) | IP address recorded for the audit event. |
 | <a id="aiauditevent-workflowid"></a>`workflowId` | [`ID!`](#id) | ID of the Duo Agent Platform session the event belongs to. |
@@ -39423,9 +39498,11 @@ Fields:
 | <a id="duomessage-messageid"></a>`messageId` | [`ID`](#id) | Opaque identifier for the message, assigned by the workflow executor. |
 | <a id="duomessage-messagesubtype"></a>`messageSubType`  | [`String`](#string) | Introduced in GitLab 19.0. Status: Experiment. Sub-type of the message, used to discriminate among messages of the same type. |
 | <a id="duomessage-messagetype"></a>`messageType` | [`String!`](#string) | Type of the message. |
+| <a id="duomessage-parentts"></a>`parentTs`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Identifier of the checkpoint preceding the one that introduced the message, which is the point a client resumes the session from to regenerate it. Returns `null` if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints. |
 | <a id="duomessage-role"></a>`role` | [`String`](#string) | Role of the message. |
 | <a id="duomessage-status"></a>`status` | [`String`](#string) | Status of the message. |
 | <a id="duomessage-subsessionid"></a>`subsessionId`  | [`String`](#string) | Introduced in GitLab 19.0. Status: Experiment. Subsession ID associated with the message. |
+| <a id="duomessage-threadts"></a>`threadTs`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Identifier of the checkpoint that introduced the message. Returns `null` if the `dw_read_blobs_graphql` feature flag is disabled, or if the session does not store incremental checkpoints. |
 | <a id="duomessage-timestamp"></a>`timestamp` | [`String`](#string) | Timestamp of the message. |
 | <a id="duomessage-toolinfo"></a>`toolInfo` | [`String`](#string) | Tool information for the message. |
 
@@ -65440,6 +65517,7 @@ Member role permission.
 | <a id="memberrolepermission-apply_security_scan_profiles"></a>`APPLY_SECURITY_SCAN_PROFILES` | Apply security scan profiles. |
 | <a id="memberrolepermission-archive_project"></a>`ARCHIVE_PROJECT` | Allows archiving of projects. |
 | <a id="memberrolepermission-create_security_scan_profiles"></a>`CREATE_SECURITY_SCAN_PROFILES` | Create security scan profiles. |
+| <a id="memberrolepermission-delete_security_scan_profiles"></a>`DELETE_SECURITY_SCAN_PROFILES` | Delete security scan profiles. |
 | <a id="memberrolepermission-destroy_package"></a>`DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
 | <a id="memberrolepermission-manage_deploy_tokens"></a>`MANAGE_DEPLOY_TOKENS` | Manage deploy tokens at the group or project level. |
 | <a id="memberrolepermission-manage_group_access_tokens"></a>`MANAGE_GROUP_ACCESS_TOKENS` | Create, read, update, and delete group access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
@@ -65491,6 +65569,7 @@ Member role standard permission.
 | <a id="memberrolestandardpermission-apply_security_scan_profiles"></a>`APPLY_SECURITY_SCAN_PROFILES` | Apply security scan profiles. |
 | <a id="memberrolestandardpermission-archive_project"></a>`ARCHIVE_PROJECT` | Allows archiving of projects. |
 | <a id="memberrolestandardpermission-create_security_scan_profiles"></a>`CREATE_SECURITY_SCAN_PROFILES` | Create security scan profiles. |
+| <a id="memberrolestandardpermission-delete_security_scan_profiles"></a>`DELETE_SECURITY_SCAN_PROFILES` | Delete security scan profiles. |
 | <a id="memberrolestandardpermission-destroy_package"></a>`DESTROY_PACKAGE` | Delete packages and package files in the package registry. |
 | <a id="memberrolestandardpermission-manage_deploy_tokens"></a>`MANAGE_DEPLOY_TOKENS` | Manage deploy tokens at the group or project level. |
 | <a id="memberrolestandardpermission-manage_group_access_tokens"></a>`MANAGE_GROUP_ACCESS_TOKENS` | Create, read, update, and delete group access tokens. When creating a token, users with this custom permission must select a role for that token that has the same or fewer permissions as the default role used as the base for the custom role. |
@@ -67724,6 +67803,18 @@ The state of the vulnerability.
 | <a id="vulnerabilitystate-detected"></a>`DETECTED` | For details, see [vulnerability status values](https://docs.gitlab.com/user/application_security/vulnerabilities/#vulnerability-status-values). |
 | <a id="vulnerabilitystate-dismissed"></a>`DISMISSED` | For details, see [vulnerability status values](https://docs.gitlab.com/user/application_security/vulnerabilities/#vulnerability-status-values). |
 | <a id="vulnerabilitystate-resolved"></a>`RESOLVED` | For details, see [vulnerability status values](https://docs.gitlab.com/user/application_security/vulnerabilities/#vulnerability-status-values). |
+
+### `VulnerabilityWorkflowErrorReason`
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="vulnerabilityworkflowerrorreason-already_started"></a>`ALREADY_STARTED` | Workflow execution is already running. |
+| <a id="vulnerabilityworkflowerrorreason-cancel_failed"></a>`CANCEL_FAILED` | Workflow execution could not be cancelled. |
+| <a id="vulnerabilityworkflowerrorreason-forbidden"></a>`FORBIDDEN` | One or more findings cannot be processed for the project. |
+| <a id="vulnerabilityworkflowerrorreason-invalid_state"></a>`INVALID_STATE` | Workflow execution cannot be started from its current state. |
+| <a id="vulnerabilityworkflowerrorreason-not_found"></a>`NOT_FOUND` | No active workflow execution found. |
+| <a id="vulnerabilityworkflowerrorreason-start_failed"></a>`START_FAILED` | Workflow execution could not be started. |
+| <a id="vulnerabilityworkflowerrorreason-terminal_state"></a>`TERMINAL_STATE` | Workflow execution is already in a terminal state. |
 
 ### `VulnerabilityWorkflowItemState`
 

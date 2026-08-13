@@ -3,7 +3,7 @@
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-Use this API to interact with [group-level protected environments](../ci/environments/protected_environments.md#group-level-protected-environments).
+Use this API to interact with [protected environments for groups](../ci/environments/protected_environments.md#protected-environments-for-groups).
 
 > [!note]
 > For protected environments, see [protected environments API](protected_environments.md)

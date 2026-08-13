@@ -22,6 +22,9 @@ All keys other than `extra` and `inputs` are populated automatically.
 Cache key objects for invoked recipes can be printed to standard error with
 `just -vv`.
 
+The environment variables included in `environment` may be controlled with
+`[cache(environment = EXPRESSION])`<sup>master<sup>.
+
 The value of `extra` may be supplied with `[cache(extra = EXPRESSION)]`, where
 `EXPRESSION` is an arbitrary expression evaluated with recipe arguments in
 scope. Changes to the value of `extra` will cause a cache miss.

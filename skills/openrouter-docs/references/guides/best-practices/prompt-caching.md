@@ -46,7 +46,7 @@ To maximize cache hit rates, OpenRouter uses **provider sticky routing** to rout
 * Sticky routing only activates when the provider's cache read pricing is cheaper than regular prompt pricing, ensuring you always benefit from cost savings.
 * If the sticky provider becomes unavailable, OpenRouter automatically falls back to the next-best provider.
 * Sticky routing is not used when you specify a manual [provider order](/docs/guides/routing/provider-selection) via `provider.order` — in that case, your explicit ordering takes priority.
-* Sticky sessions expire after **5 minutes** of inactivity. Each successful request resets the timer. If the sticky provider returns an error, the cache is not updated, allowing the next request to be re-routed.
+* Sticky sessions expire after **10 minutes** of inactivity. Each successful request resets the timer. If the sticky provider returns an error, the cache is not updated, allowing the next request to be re-routed.
 
 **Sticky routing granularity:**
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Astro
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Start from CLI**: Scaffold an Astro project on Workers, and pick your template.
 
@@ -148,7 +148,7 @@ In your project root, create a Wrangler configuration file with the following co
 {
 	"name": "my-astro-app",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-12",
 	"assets": {
 		"directory": "./dist"
 	}
@@ -157,7 +157,7 @@ In your project root, create a Wrangler configuration file with the following co
 ```toml
 name = "my-astro-app"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-12"
 [assets]
 directory = "./dist"
 ```
@@ -217,7 +217,7 @@ In your project root, create a Wrangler configuration file with the following co
 	"main": "./dist/_worker.js/index.js",
 	// Update to today's date
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-12",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"binding": "ASSETS",
@@ -232,7 +232,7 @@ In your project root, create a Wrangler configuration file with the following co
 name = "my-astro-app"
 main = "./dist/_worker.js/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-12"
 compatibility_flags = [ "nodejs_compat" ]
 [assets]
 binding = "ASSETS"
@@ -325,7 +325,7 @@ If you want to use Astro as a static site generator, you do not need the Astro C
 
 ## Node.js requirements
 
-Astro 5.x requires Node.js 18.17.1 or higher. Astro 6 (currently in beta) requires Node.js 22 or higher. If you're using [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), ensure your build environment meets these requirements.
+Astro 5.x supports Node.js 18.20.8, Node.js 20.3.0 and later 20.x releases, or Node.js 22.0.0 or later. Astro 6.x and 7.x require Node.js 22.12.0 or later. If you use [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), its default Node.js version meets these requirements. If you override the default, select a version that meets [Astro's Node.js requirements ↗](https://docs.astro.build/en/install-and-setup/#prerequisites).
 
 Was this helpful?
 
@@ -333,8 +333,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/#page","headline":"Astro · Cloudflare Workers docs","description":"Create an Astro application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["ssg","full-stack","Astro"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/#page","headline":"Astro · Cloudflare Workers docs","description":"Create an Astro application and deploy it to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/astro/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["ssg","full-stack","Astro"]}
 ```

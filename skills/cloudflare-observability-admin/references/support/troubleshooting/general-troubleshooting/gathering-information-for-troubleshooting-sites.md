@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gathering information for troubleshooting sites
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## About this guide
 
@@ -199,7 +199,7 @@ When to use
 
 Use this when you need to **determine which Cloudflare Point of Presence (PoP) is serving your requests**. This is helpful when troubleshooting regional issues or verifying traffic routing.
 
-[A map of our data centers ↗](https://www.cloudflare.com/network-map) is listed on the [Cloudflare status page ↗](https://www.cloudflarestatus.com/), sorted by continent. The three-letter code in the data center name is the [IATA code ↗](http://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: ``` http://``_www.example.com_``/cdn-cgi/trace. ```
+[A map of our data centers ↗](https://www.cloudflare.com/network-map) is listed on the [status page locations view ↗](https://www.cloudflarestatus.com/locations), sorted by continent. The three-letter code in the data center name is the [IATA code ↗](http://en.wikipedia.org/wiki/IATA%5Fairport%5Fcode) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: ``` http://``_www.example.com_``/cdn-cgi/trace. ```
 
 Replace `www.example.com` with your domain and hostname. Note the `colo` field from the output.
 
@@ -506,5 +506,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#page","headline":"Gathering information for troubleshooting sites · Cloudflare Support docs","description":"Collect diagnostic data for Cloudflare support tickets.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#page","headline":"Gathering information for troubleshooting sites · Cloudflare Support docs","description":"Collect diagnostic data for Cloudflare support tickets.","url":"https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
