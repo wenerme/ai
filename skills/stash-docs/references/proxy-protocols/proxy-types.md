@@ -399,7 +399,7 @@ Hysteria2 支持 `salamander` 和 `gecko` 混淆。启用混淆时，需要通�
 
 ### Gecko 混淆
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 使用 Gecko 混淆时，将 `obfs` 设置为 `gecko`。
 
@@ -475,7 +475,7 @@ grpc-opts:
 
 ### XHTTP
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 XHTTP 支持 `stream-one`、`stream-up` 和 `packet-up` 三种传输模式。使用 `auto` 时，Stash 会根据当前配置自动选择模式。
 
@@ -552,9 +552,31 @@ alpn:
   - h3
 ```
 
+## Mieru
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+> [Mieru](https://github.com/enfein/mieru) 是一款安全的、无流量特征、难以主动探测的，基于 TCP 或 UDP 协议的 SOCKS5 / HTTP / HTTPS 网络代理软件。
+
+```yaml
+name: mieru
+type: mieru
+server: mieru.example.com
+port: 2012
+transport: tcp
+username: user
+password: password
+```
+
+也可以使用 `port-range` 配置服务端监听的连续端口范围。Stash 会在每次连接时从范围中随机选择一个端口：
+
+```yaml
+port-range: '2012-2022'
+```
+
 ## MASQUE
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 MASQUE 是一种基于 HTTP 的标准化代理机制。Stash 当前支持 Cloudflare WARP 使用的 CONNECT-IP 模式：客户端会建立一条共享的 IP 隧道，通过 HTTP/3 或 HTTP/2 承载经该代理转发的 TCP 和 UDP 流量。
 

@@ -666,10 +666,10 @@
   "openai-docs/guides/prompt-caching.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-caching.md",
     "skill": "openai-docs",
-    "etag": "W/\"3e397422a2898bc5bffe4d4a74310b94\"",
-    "lastModified": "Sat, 01 Aug 2026 01:24:37 GMT",
-    "size": 17297,
-    "updatedAt": "2026-08-01T03:44:20.624Z"
+    "etag": "W/\"bf8434ddbf443bfedc8e3e267927c41f\"",
+    "lastModified": "Thu, 13 Aug 2026 11:11:16 GMT",
+    "size": 27964,
+    "updatedAt": "2026-08-13T11:11:16.746Z"
   },
   "openai-docs/guides/prompt-engineering.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-engineering.md",

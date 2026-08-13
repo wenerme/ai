@@ -43,7 +43,7 @@ Stash uses the LRU algorithm for local caching of DNS queries. When the local ca
 
 ## Proxy Server Domain Resolution
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 `proxy-server-nameserver` specifies the DNS servers used to resolve proxy server domain names. It uses an independent DNS query path that never follows proxy rules, preventing recursive queries while connecting to a proxy server.
 

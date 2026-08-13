@@ -399,7 +399,7 @@ To use Salamander obfuscation, set `obfs` to `salamander`.
 
 ### Gecko Obfuscation
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 To use Gecko obfuscation, set `obfs` to `gecko`.
 
@@ -475,7 +475,7 @@ grpc-opts:
 
 ### XHTTP
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 XHTTP supports the `stream-one`, `stream-up`, and `packet-up` modes. With `auto`, Stash selects a mode based on the current configuration.
 
@@ -552,9 +552,31 @@ alpn:
   - h3
 ```
 
+## Mieru
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+> [Mieru](https://github.com/enfein/mieru) is a secure SOCKS5 / HTTP / HTTPS network proxy that has no distinctive traffic characteristics, is difficult to actively probe, and operates over TCP or UDP.
+
+```yaml
+name: mieru
+type: mieru
+server: mieru.example.com
+port: 2012
+transport: tcp
+username: user
+password: password
+```
+
+You can also use `port-range` to configure a consecutive range of server listening ports. Stash randomly selects a port from the range for each connection:
+
+```yaml
+port-range: '2012-2022'
+```
+
 ## MASQUE
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 MASQUE is a standardized proxy mechanism built on HTTP. Stash currently supports the CONNECT-IP mode used by Cloudflare WARP: the client establishes a shared IP tunnel that carries TCP and UDP traffic forwarded through the proxy over HTTP/3 or HTTP/2.
 

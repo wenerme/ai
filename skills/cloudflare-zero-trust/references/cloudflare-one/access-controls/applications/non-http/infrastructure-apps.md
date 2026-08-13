@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Add an infrastructure application
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Feature availability
 
@@ -248,7 +248,9 @@ Users must pass the policies in your Access application before they are granted 
 
 ## 4\. (Optional) Require independent MFA
 
-You can require users to authenticate with a [YubiKey PIV key](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps) before connecting with SSH to targets. You can configure MFA at the application level or at the policy level, allowing you to enforce stricter requirements for sensitive usernames.
+You can require independent MFA before users connect with SSH. The application configuration selects the supported infrastructure authenticators: PIV key (`piv_key`), FIDO2 key (`ssh_fido2_key`), or both.
+
+Application-level settings define the default authenticators and session duration. A policy can define custom settings for specific users or usernames.
 
 For setup instructions, refer to [Enforce MFA for infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications).
 
@@ -257,6 +259,8 @@ For setup instructions, refer to [Enforce MFA for infrastructure applications](h
 Certain protocols require configuring the server to trust connections through Access for Infrastructure. For more information, refer to the protocol-specific tutorial:
 
 * [SSH](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#7-configure-ssh-server)
+
+For SSH, this includes trusting the Cloudflare SSH CA and, if your server restricts certificate principals, [authorizing the SSH usernames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#confirm-the-account-authorizes-the-certificate-principal) you configured on the target.
 
 ## 6\. Connect as a user
 
@@ -337,8 +341,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application · Cloudflare One docs","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/#page","headline":"Add an infrastructure application · Cloudflare One docs","description":"Add an infrastructure application in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SSH","Authentication"]}
 ```

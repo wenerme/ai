@@ -16,6 +16,8 @@
 }
 ---
 
+> This feature is supported starting from Doris 4.1.0.
+
 Amazon Managed Streaming for Apache Kafka (AWS MSK) is a fully managed Apache Kafka service provided by AWS. Doris supports importing data from AWS MSK in real time through Routine Load, providing the IAM authentication mechanism for AWS MSK. It supports CSV and JSON formats and offers Exactly-Once semantics, ensuring that data is neither lost nor duplicated. For more information, refer to Routine Load.
 
 ## Prerequisites

@@ -15,7 +15,7 @@ Parameters:
 
 ## Script Engine
 
-<VersionRequirement ios="3.6" mac="4.4" />
+<VersionRequirement ios="3.6" mac="4.3" />
 
 You can select a JavaScript engine for each request or response script:
 
@@ -53,7 +53,8 @@ Keep `auto` for most scripts. Specify `webkit` or `jsc` only when a script depen
 ## `$done(value)`
 
 > [!WARNING]
-> For all scripts, you must call the `$done(value)` method to release resources at the end.
+> For all scripts, you must call the `$done(value)` method to release resources
+> at the end.
 
 For scripts of the request type, calling `$done(object)` can rewrite the HTTP request, `object` can include the following fields:
 

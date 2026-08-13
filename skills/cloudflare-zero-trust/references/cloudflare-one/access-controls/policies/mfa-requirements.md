@@ -12,14 +12,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enforce MFA
 
-Last updated Jul 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access supports two methods of enforcing multi-factor authentication (MFA):
 
 * **[Identity provider-based MFA](#identity-provider-based-mfa)** — Require specific MFA methods reported by your identity provider (IdP).
 * **[Independent MFA](#independent-mfa)** — Prompt users for a second factor directly in Access, without relying on a third-party identity provider.
 
-For SSH connections to [infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/), Access also supports [independent MFA with PIV keys](#infrastructure-applications).
+For SSH connections to [infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/), Access also supports [independent MFA with PIV and FIDO2 keys](#infrastructure-applications).
 
 ## Identity provider-based MFA
 
@@ -71,7 +71,7 @@ You can configure MFA requirements at three levels:
 | [Application](#configure-independent-mfa-for-an-application)                                                      | Require or turn off MFA for a specific application.            |
 | [Policy](#configure-independent-mfa-for-a-policy)                                                                 | Require or turn off MFA for users who match a specific policy. |
 
-Settings at lower levels (policy) override settings at higher levels (organization), giving you granular control over MFA enforcement.
+MFA settings use this precedence: **Policy** \> **Application** \> **Organization**.
 
 ### Prerequisites
 
@@ -186,17 +186,21 @@ In this example:
 
 ## Infrastructure applications
 
-Infrastructure applications that use SSH support independent MFA with [YubiKey PIV keys](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps). When MFA is required, users must complete public key authentication with their enrolled PIV key before the connection is established. Users must [enroll their PIV key](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#enroll-a-piv-key-for-infrastructure-apps) through the App Launcher before they can connect.
+Infrastructure applications that use SSH support two infrastructure-only MFA methods. `piv_key` uses an enrolled Personal Identity Verification (PIV) key. `ssh_fido2_key` uses an enrolled FIDO2 key. Neither method applies to other Access application types or browser WebAuthn authentication.
 
 You can configure MFA for infrastructure apps at the application level or at the policy level.
 
 ### Configure MFA for an infrastructure application
 
-Infrastructure applications use a PIV key authenticator (`piv_key`) that is specific to SSH connections. This authenticator type is not available for other Access application types.
+Select PIV key, FIDO2 key, or both when configuring custom MFA. The corresponding API arrays are `["piv_key"]`, `["ssh_fido2_key"]`, and `["piv_key", "ssh_fido2_key"]`.
 
 Note
 
-The PIV key authenticator is only available for infrastructure applications. If PIV key is the only allowed MFA method in your organization's global settings, users who access non-infrastructure applications will not see any available MFA method and will be unable to log in. Ensure your global settings include at least one other authenticator type (for example, TOTP, security keys, or biometrics), or configure non-infrastructure applications with custom MFA settings. Conversely, if MFA is globally required and PIV key is not one of the allowed authenticators, users will be blocked from accessing infrastructure applications that require MFA. In this case, either add PIV key to your global MFA settings or disable MFA per application or policy to allow access.
+**PIV and FIDO2 key authenticators only work with infrastructure applications.**
+
+Non-infrastructure applications: If PIV and FIDO2 keys are the only allowed MFA methods in your global settings, users cannot log in to non-infrastructure applications. To fix this, add at least one other authenticator type to your global settings (for example, TOTP or biometrics), or configure custom MFA settings for non-infrastructure applications.
+
+Infrastructure applications: If MFA is globally required but your global settings do not include the infrastructure authenticator you want to use, users cannot access infrastructure applications that require MFA. To fix this, add the authenticator to your global MFA settings, or disable MFA for the specific application or policy.
 
 Dashboard
 
@@ -205,7 +209,7 @@ Dashboard
 3. Go to the **Authentication** tab and select **MFA**.
 4. Select one of the following options:
   * **Respect global enforcement setting** — Uses the [organization-level](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/) MFA configuration. This is the default.
-  * **Custom MFA settings** — Override the global setting with a custom MFA session duration for this application.
+  * **Custom MFA settings** — Override the global setting for this application. Select **PIV key**, **FIDO2 key**, or both as the allowed authenticators, then set a custom MFA session duration.
   * **Disable MFA** — Users are not prompted for MFA when accessing this application.
 5. Select **Save**.
 
@@ -222,7 +226,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
   "mfa_config": {
     "mfa_disabled": false,
     "session_duration": "12h",
-    "allowed_authenticators": ["piv_key"]
+    "allowed_authenticators": ["piv_key", "ssh_fido2_key"]
   }
 }'
 ```
@@ -231,7 +235,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/apps/{app_id} 
 | ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------- |
 | mfa\_disabled           | Boolean | If true, MFA is not required for this application, even if global settings enforce MFA.                                               |
 | session\_duration       | String  | Duration before the user must re-authenticate with MFA (for example, 30m, 1h, 24h). Set to 0m to require MFA on every SSH connection. |
-| allowed\_authenticators | Array   | List of allowed authenticator types. For infrastructure applications, piv\_key is the only available modality.                        |
+| allowed\_authenticators | Array   | Use \["piv\_key"\], \["ssh\_fido2\_key"\], or \["piv\_key", "ssh\_fido2\_key"\].                                                      |
 
 ### Configure MFA for an infrastructure policy
 
@@ -244,7 +248,7 @@ Dashboard
 3. Go to **Policies** and select the policy you want to configure.
 4. Under **Multi-factor authentication (MFA)**, select an option:
   * **Respect global enforcement setting** — Inherits the application or organization setting.
-  * **Custom MFA settings** — Set a custom MFA session duration for users who match this policy.
+  * **Custom MFA settings** — Select **PIV key**, **FIDO2 key**, or both as the allowed authenticators and set a custom MFA session duration for users who match this policy.
   * **Disable MFA** — Users who match this policy are not prompted for MFA.
 5. Select **Save**.
 
@@ -270,7 +274,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/policies/{poli
   "mfa_config": {
     "mfa_disabled": false,
     "session_duration": "1h",
-    "allowed_authenticators": ["piv_key"]
+    "allowed_authenticators": ["piv_key", "ssh_fido2_key"]
   },
   "connection_rules": {
     "ssh": {
@@ -283,7 +287,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/access/policies/{poli
 
 ### MFA session duration for SSH
 
-The MFA session duration determines how long after performing MFA a user can open new SSH connections without being prompted again. After the session expires, the user must re-authenticate with their PIV key on their next SSH connection. Existing SSH sessions are not affected by session expiration. Set the session duration to `0` to require MFA on every SSH connection.
+The MFA session duration determines how long users can open new SSH connections without another MFA prompt. Set the duration to `0m` to require MFA for every new connection. Expiration does not terminate an active connection.
 
 MFA sessions are bound to the user's device. If a user switches to a different device, they must re-authenticate regardless of the remaining session duration.
 
@@ -314,8 +318,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA · Cloudflare One docs","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#page","headline":"Enforce MFA · Cloudflare One docs","description":"Enforce MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","JSON web token (JWT)","Authentication"]}
 ```

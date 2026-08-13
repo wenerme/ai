@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Independent MFA
 
-Last updated Jul 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Independent multi-factor authentication (MFA) allows you to enforce MFA requirements directly in Access without relying on your identity provider (IdP). Users authenticate with their IdP as usual, and Access prompts for an additional authentication method before granting access to the application.
 
@@ -26,6 +26,7 @@ Because you can [configure MFA at the application and policy level](https://deve
 | Security key                                                        | Hardware security keys that support the [WebAuthn ↗](https://www.w3.org/TR/webauthn-2/) standard. Users can enroll multiple security keys.                                                                                                                                                                                            |
 | Biometrics                                                          | Built-in device authenticators that use [WebAuthn ↗](https://www.w3.org/TR/webauthn-2/), including Apple Touch ID, Apple Face ID, and Windows Hello. Users can enroll multiple biometrics.                                                                                                                                            |
 | Personal Identity Verification (PIV) key (infrastructure apps only) | YubiKey PIV keys used for public key authentication during SSH connections. Requires YubiKey firmware 4.3 or later. This method is only available for [infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/). Users can enroll multiple PIV keys. |
+| FIDO2 key (infrastructure apps only)                                | YubiKey FIDO2 keys used for public key authentication during SSH connections. This method is only available for [infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/infrastructure-apps/) and is separate from the browser-based WebAuthn security key method.       |
 
 ## Turn on independent MFA
 
@@ -79,6 +80,8 @@ Set `allowed_authenticators` to an array containing one or more of:
   * `biometrics` — Biometrics (Touch ID, Face ID, Windows Hello).
   * `security_key` — Security keys (hardware keys that support WebAuthn).
   * `piv_key` — PIV keys (YubiKeys).
+  * `ssh_fido2_key` — FIDO2 keys for SSH connections to infrastructure applications.
+`piv_key` and `ssh_fido2_key` apply only to SSH connections to infrastructure applications. If allowed at the organization level, these MFA methods will only apply to infrastructure applications. They will not be available for other application types.
 Set `session_duration` to a duration string (for example, `30m`, `1h`, `24h`). To require MFA on every access, use `0m`.
 
 After you turn on independent MFA, users can [enroll authenticators](#enroll-authenticators) through the [App Launcher](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/).
@@ -102,13 +105,23 @@ If you plan to use PIV keys for [MFA for infrastructure applications](https://de
 
 Note
 
-The PIV key authenticator is only available for infrastructure applications. If PIV key is the only allowed MFA method in your organization's global settings, users who access non-infrastructure applications will not see any available MFA method and will be unable to log in. Ensure your global settings include at least one other authenticator type (for example, TOTP, security keys, or biometrics), or configure non-infrastructure applications with custom MFA settings. Conversely, if MFA is globally required and PIV key is not one of the allowed authenticators, users will be blocked from accessing infrastructure applications that require MFA. In this case, either add PIV key to your global MFA settings or disable MFA per application or policy to allow access.
+**PIV and FIDO2 key authenticators only work with infrastructure applications.**
+
+Non-infrastructure applications: If PIV and FIDO2 keys are the only allowed MFA methods in your global settings, users cannot log in to non-infrastructure applications. To fix this, add at least one other authenticator type to your global settings (for example, TOTP or biometrics), or configure custom MFA settings for non-infrastructure applications.
+
+Infrastructure applications: If MFA is globally required but your global settings do not include the infrastructure authenticator you want to use, users cannot access infrastructure applications that require MFA. To fix this, add the authenticator to your global MFA settings, or disable MFA for the specific application or policy.
 
 ## Restrict authenticators by AAGUID
 
 An [AAGUID ↗](https://fidoalliance.org/specs/fido-v2.0-id-20180227/fido-registry-v2.0-id-20180227.html#authenticator-attestation-guid) (Authenticator Attestation GUID) is a 128-bit identifier that indicates the make and model of a [WebAuthn ↗](https://www.w3.org/TR/webauthn-2/) authenticator. By restricting enrollment to a specific set of AAGUIDs, you can require that users only enroll approved hardware, such as FIPS-validated security keys or company-issued devices.
 
-AAGUID restrictions apply at enrollment time only. Access verifies the AAGUID when a user registers an authenticator, not when they authenticate. As a result, AAGUID restrictions are configured at the organization level.
+Access checks the AAGUID when a user registers an authenticator. Because enrollment applies to the entire organization, you configure AAGUID restrictions at the organization level.
+
+For FIDO2 keys, Access also checks the AAGUID each time the user connects to an infrastructure application. If you remove a FIDO2 key from the allowed list, that key stops working even if the user enrolled it earlier.
+
+PIV keys do not present an AAGUID, so these restrictions do not apply to them.
+
+When `required_aaguids` is unset, Access does not enforce AAGUID restrictions.
 
 Caution
 
@@ -161,7 +174,7 @@ You can look up AAGUIDs for common authenticators in the [FIDO Alliance Metadata
 3. Select an existing [AAGUID list](#1-create-an-aaguid-list).
 4. Select **Save**.
 
-After you save, only authenticators whose AAGUIDs appear in the list can be enrolled. Users with previously enrolled authenticators outside the list can continue to use them until they are [deleted by an administrator](#delete-a-user-authenticator).
+After you save, only authenticators whose AAGUIDs appear in the list can be enrolled. Users with previously enrolled security keys or biometrics outside the list can continue to use them until they are [deleted by an administrator](#delete-a-user-authenticator). A previously enrolled FIDO2 key outside the list stops working on the next connection. To remove the restriction, unset the AAGUID list.
 
 1. Get your existing Zero Trust organization configuration:
 Required API token permissions
@@ -354,8 +367,49 @@ Biometrics
   3. After your browser confirms the registration, the platform authenticator is enrolled.
 PIV key (infrastructure applications only)
 PIV key enrollment requires additional client-side setup and is only used for [MFA with infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications). For full instructions, refer to [Enroll a PIV key for infrastructure apps](#enroll-a-piv-key-for-infrastructure-apps).
+FIDO2 key (infrastructure applications only)
+FIDO2 key enrollment requires additional client-side setup and is only used for [MFA with infrastructure applications](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/mfa-requirements/#infrastructure-applications). This method is separate from browser-based security key enrollment. For full instructions, refer to [Enroll a FIDO2 key for infrastructure apps](#enroll-a-fido2-key-for-infrastructure-apps).
 
 You can now use these authenticators to log in to your organization's applications.
+
+### Enroll a FIDO2 key for infrastructure apps
+
+Before users can enroll, turn on the **FIDO2 key** authenticator in your organization's [global MFA settings](#turn-on-independent-mfa).
+
+The App Launcher generates the enrollment command for your account. Do not construct the enrollment command manually.
+
+Note
+
+On macOS, install OpenSSH with Homebrew before you run the command. The `ssh-keygen` included with macOS does not support FIDO2 keys. On Linux, use an OpenSSH build that includes `libfido2` support.
+
+1. Go to your organization's App Launcher at `<your-team-name>.cloudflareaccess.com`.
+2. Log in with your identity provider or a one-time PIN (OTP).
+3. Go to **Account** \> **MFA devices** \> **Add an MFA device** \> **FIDO2 key**.
+4. Select the tab for your operating system.
+5. Copy the enrollment command shown in the App Launcher.
+6. Run the command in a local terminal on the device you use for SSH.
+7. Follow the prompts, then copy the JSON output.
+8. Return to the App Launcher and paste the JSON into the enrollment field.
+9. Complete the enrollment.
+
+#### Configure your SSH client for a FIDO2 key
+
+The command creates the identity at `~/.ssh/id_ed25519_sk_cf`.
+
+Add the following configuration to your `~/.ssh/config` file:
+
+```txt
+Host *
+  IdentityFile ~/.ssh/id_ed25519_sk_cf
+```
+
+Alternatively, supply the identity when you connect:
+
+```sh
+ssh -i ~/.ssh/id_ed25519_sk_cf <username>@<target IP>
+```
+
+For more information on how OpenSSH uses FIDO2 hardware keys, refer to Yubico's [Securing SSH with FIDO2 ↗](https://developers.yubico.com/SSH/Securing%5FSSH%5Fwith%5FFIDO2.html).
 
 ### Enroll a PIV key for infrastructure apps
 
@@ -514,8 +568,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#page","headline":"Independent MFA · Cloudflare One docs","description":"Independent MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/#page","headline":"Independent MFA · Cloudflare One docs","description":"Independent MFA in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/independent-mfa/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Authentication"]}
 ```

@@ -36,7 +36,7 @@ In Cursor, run the following command or install from the [Cursor Marketplace ↗
 3. **Try a prompt**
 For example:
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ## Cloudflare platform access
@@ -114,23 +114,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

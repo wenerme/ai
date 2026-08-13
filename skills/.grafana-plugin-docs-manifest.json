@@ -1531,8 +1531,8 @@
   },
   "grafana-slo-app/best-practices.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/best-practices.md",
-    "size": 8993,
-    "updatedAt": "2026-06-25T05:43:13.242Z"
+    "size": 9004,
+    "updatedAt": "2026-08-13T11:33:44.336Z"
   },
   "grafana-slo-app/create.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/create.md",
