@@ -51,10 +51,10 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 <Note>
   **Beta**
 
-  Server tools are currently in beta. The API and behavior may change. This tool is experimental — when it graduates, the tool type is likely to be renamed (dropping the `experimental__` prefix), which would be a breaking change for requests using the current name.
+  Server tools are currently in beta. The API and behavior may change. This tool is experimental. When it graduates, the tool type is likely to be renamed (dropping the `experimental__` prefix), which would be a breaking change for requests using the current name.
 </Note>
 
-The `openrouter:experimental__search_models` server tool lets a model search and filter the OpenRouter model catalog. The model can look up models by name, capabilities, modalities, and other attributes — useful for agents that pick models dynamically, for example with the [Subagent](/docs/guides/features/server-tools/subagent) tool.
+The `openrouter:experimental__search_models` server tool lets a model search and filter the OpenRouter model catalog. The model can look up models by name, capabilities, modalities, and other attributes, useful for agents that pick models dynamically, for example with the [Subagent](/docs/guides/features/server-tools/subagent) tool.
 
 ## Quick Start
 
@@ -156,7 +156,7 @@ The search models tool accepts an optional `max_results` parameter:
 
 ### Call Arguments
 
-The model generates the search arguments. All fields are optional — an empty call browses the full catalog:
+The model generates the search arguments. All fields are optional; an empty call browses the full catalog:
 
 | Field                | Type      | Description                                                                                                                               |
 | -------------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
@@ -196,6 +196,6 @@ There is currently no separate charge for the search models tool; you pay only f
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Subagent](/docs/guides/features/server-tools/subagent) — Delegate tasks to a worker model
-* [Models](/docs/guides/overview/models) — Learn about the OpenRouter model catalog
+* [Server Tools Overview](/docs/guides/features/server-tools). Learn about server tools
+* [Subagent](/docs/guides/features/server-tools/subagent). Delegate tasks to a worker model
+* [Models](/docs/guides/overview/models). Learn about the OpenRouter model catalog

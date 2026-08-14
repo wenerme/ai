@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Getting started
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests. In this example, each container runs a small webserver written in Go.
 
@@ -62,21 +62,15 @@ yarn wrangler deploy
 pnpm wrangler deploy
 ```
 
-When you run `wrangler deploy`, the following things happen:
-
-* Wrangler builds your container image using Docker.
-* Wrangler pushes your image to a [Container Image Registry](https://developers.cloudflare.com/containers/platform-details/image-management/) that is automatically integrated with your Cloudflare account.
-* Wrangler deploys your Worker, and configures Cloudflare's network to be ready to spawn instances of your container
-
-The build and push usually take the longest on the first deploy. Subsequent deploys are faster, because they [reuse cached image layers ↗](https://docs.docker.com/build/cache/).
+On deploy, Wrangler uploads your Worker, builds and pushes the container image with Docker, and updates container instances on Cloudflare's network. The first build and push usually take the longest. Later deploys [reuse cached image layers ↗](https://docs.docker.com/build/cache/).
 
 Note
 
-After you deploy your Worker for the first time, you will need to wait several minutes until it is ready to receive requests. Unlike Workers, Containers take a few minutes to be provisioned. During this time, requests are sent to the Worker, but calls to the Container will error.
+After you deploy your Worker for the first time, wait several minutes before you expect container requests to succeed. The Worker URL may respond while Cloudflare is still provisioning containers. During that time, calls into the container can error.
 
 ### Check deployment status
 
-After deploying, run the following command to show a list of containers in your Cloudflare account, and their deployment status:
+After deploying, list containers in your account and their status:
 
 npmyarnpnpm
 
@@ -92,7 +86,7 @@ yarn wrangler containers list
 pnpm wrangler containers list
 ```
 
-And see images deployed to the Cloudflare Registry with the following command:
+List images in the Cloudflare Registry:
 
 npmyarnpnpm
 
@@ -110,13 +104,12 @@ pnpm wrangler containers images list
 
 ### Make requests to Containers
 
-Now, open the URL for your Worker. It should look something like `https://hello-containers.<YOUR_WORKERS_SUBDOMAIN>.workers.dev`.
+Open the URL for your Worker. It should look like `https://hello-containers.<YOUR_WORKERS_SUBDOMAIN>.workers.dev`.
 
-If you make requests to the paths `/container/1` or `/container/2`, your Worker routes requests to specific containers. Each different path after "/container/" routes to a unique container.
+* Requests to `/container/1` or `/container/2` route to specific containers. Each path after `/container/` maps to a unique container.
+* Requests to `/lb` load-balance across three containers chosen at random.
 
-If you make requests to `/lb`, you will load balance requests to one of 3 containers chosen at random.
-
-You can confirm this behavior by reading the output of each request.
+Read the response body to confirm which instance handled the request. If the Worker responds but container routes still error, wait for provisioning, then check [Containers ↗](https://dash.cloudflare.com/?to=/:account/workers/containers) logs in the dashboard.
 
 ## Understanding the Code
 
@@ -277,9 +270,10 @@ After launching your Worker, go to the Containers Dashboard by selecting **Worke
 
 To do more:
 
-* Modify the image by changing the Dockerfile and calling `wrangler deploy`
-* Review our [examples](https://developers.cloudflare.com/containers/examples/) for more inspiration
-* Review the [Frequently Asked Questions](https://developers.cloudflare.com/containers/faq/) for current platform behavior and limitations
+* Modify the image by changing the Dockerfile and running `wrangler deploy`
+* Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/) for Workers Builds and rollout behavior
+* Browse [examples](https://developers.cloudflare.com/containers/examples/) for more patterns
+* Check the [Frequently Asked Questions](https://developers.cloudflare.com/containers/faq/) for platform behavior and limitations
 
 Was this helpful?
 
@@ -287,8 +281,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Getting started · Cloudflare Containers docs","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Getting started · Cloudflare Containers docs","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

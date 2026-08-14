@@ -214,7 +214,7 @@ Date window rules are the same as [Rankings Daily](#rankings-daily): the dataset
     }
   ],
   "meta": {
-    "as_of": "2026-05-12T02:00:00Z",
+    "as_of": "2026-05-12T02:00:00.000Z",
     "version": "v1",
     "start_date": "2026-04-12",
     "end_date": "2026-05-11"
@@ -336,7 +336,7 @@ When `source=artificial-analysis`, each item carries composite index scores:
     }
   ],
   "meta": {
-    "as_of": "2026-06-03T12:00:00Z",
+    "as_of": "2026-06-03T12:00:00.000Z",
     "version": "v1",
     "source": "artificial-analysis",
     "source_url": "https://artificialanalysis.ai",
@@ -377,7 +377,7 @@ When `source=design-arena`, each item carries ELO ratings from head-to-head batt
     }
   ],
   "meta": {
-    "as_of": "2026-06-03T12:00:00Z",
+    "as_of": "2026-06-03T12:00:00.000Z",
     "version": "v1",
     "source": "design-arena",
     "source_url": "https://www.designarena.ai",

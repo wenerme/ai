@@ -204,16 +204,28 @@ Use the following resources and reference to complete your integration.
 
 ### Events reference
 
-ChatKit emits `CustomEvent` instances from the Web Component. The payload shapes are:
+ChatKit emits `CustomEvent` instances from the Web Component. Listen for lifecycle events and read payload data from `event.detail`:
 
-```typescript
-type Events = {
-  "chatkit.error": CustomEvent<{ error: Error }>;
-  "chatkit.response.start": CustomEvent<void>;
-  "chatkit.response.end": CustomEvent<void>;
-  "chatkit.thread.change": CustomEvent<{ threadId: string | null }>;
-  "chatkit.log": CustomEvent<{ name: string; data?: Record<string, unknown> }>;
-};
+```javascript
+chatkit.addEventListener("chatkit.error", (event) => {
+  console.error(event.detail.error);
+});
+
+chatkit.addEventListener("chatkit.response.start", () => {
+  console.log("Response started");
+});
+
+chatkit.addEventListener("chatkit.response.end", () => {
+  console.log("Response ended");
+});
+
+chatkit.addEventListener("chatkit.thread.change", (event) => {
+  console.log("Active thread:", event.detail.threadId);
+});
+
+chatkit.addEventListener("chatkit.log", (event) => {
+  console.log(event.detail.name, event.detail.data);
+});
 ```
 
 

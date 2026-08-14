@@ -6,7 +6,7 @@
 
 > Community-curated list of projects built with OpenRouter
 
-Awesome OpenRouter is a community-curated list of projects, tools, and applications built with OpenRouter. It showcases the diverse ecosystem of apps that leverage OpenRouter's unified API for accessing AI models.
+Awesome OpenRouter is a community-curated list of projects, tools, and applications built with OpenRouter. It showcases the diverse ecosystem of apps that use OpenRouter's unified API for accessing AI models.
 
 ## Browse the Collection
 

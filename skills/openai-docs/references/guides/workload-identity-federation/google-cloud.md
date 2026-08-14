@@ -112,9 +112,8 @@ Set `OPENAI_WIF_AUDIENCE` to the custom audience configured as the Workload Iden
 
 Authenticate from a Google metadata server identity token
 
-```typescript
+```javascript
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const metadataEndpoint =
   "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/identity";
@@ -129,9 +128,8 @@ if (!identityProviderId || !serviceAccountId || !audience) {
   );
 }
 
-function googleMetadataIdentityTokenProvider(
-  audience: string
-): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function googleMetadataIdentityTokenProvider(audience) {
   return {
     tokenType: "jwt",
     getToken: async () => {
@@ -675,10 +673,9 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from a GKE projected service account token
 
-```typescript
+```javascript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/secrets/tokens/token";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
@@ -690,9 +687,8 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedGkeServiceAccountTokenProvider(
-  path: string
-): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function mountedGkeServiceAccountTokenProvider(path) {
   return {
     tokenType: "jwt",
     getToken: async () => {

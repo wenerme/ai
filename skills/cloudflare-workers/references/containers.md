@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Containers
 
-Last updated Jun 8, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enhance your Workers with serverless containers
 
@@ -54,7 +54,7 @@ export default {
 	"name": "container-starter",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-13",
 	"containers": [
 		{
 			"class_name": "MyContainer",
@@ -83,7 +83,7 @@ export default {
 name = "container-starter"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-13"
 
 [[containers]]
 class_name = "MyContainer"
@@ -103,43 +103,67 @@ tag = "v1"
 
 ---
 
-## Next Steps
+## Next steps
 
-[Deploy your first Container](https://developers.cloudflare.com/containers/get-started/)
+[Get started](https://developers.cloudflare.com/containers/get-started/)
 
-Build and push an image, call a Container from a Worker, and understand scaling and routing.
+Build and push an image, call a Container from a Worker, and try scaling and routing.
 
 Deploy a Container
 
-[Container Examples](https://developers.cloudflare.com/containers/examples/)
+[Examples](https://developers.cloudflare.com/containers/examples/)
 
-See examples of how to use a Container with a Worker, including stateless and stateful routing, regional placement, Workflow and Queue integrations, AI-generated code execution, and short-lived workloads.
+Stateless and stateful routing, regional placement, Workflow and Queue integrations, AI-generated code execution, and short-lived workloads.
 
 See Examples
+
+[Local development](https://developers.cloudflare.com/containers/local-dev/)
+
+Run your Worker and container together with `wrangler dev` or `vite dev` before you deploy.
+
+Develop locally
+
+[Deploy](https://developers.cloudflare.com/containers/deploy/)
+
+Ship from your machine or Workers Builds, and confirm the deploy.
+
+Deploy Containers
 
 ---
 
 ## More resources
 
-### [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers)
+### [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/)
 
-Learn more about the commands to develop, build and push images, and deploy containers with Wrangler.
+How container instances update after you deploy.
+
+### [Image management](https://developers.cloudflare.com/containers/platform-details/image-management/)
+
+Build, push, and pull images for Containers.
+
+### [Lifecycle of a Container](https://developers.cloudflare.com/containers/platform-details/architecture/)
+
+How a container is scheduled, started, routed, and shut down.
 
 ### [Limits](https://developers.cloudflare.com/containers/platform-details/limits/)
 
-Learn about what limits Containers have and how to work within them.
+Instance counts, image size, and other platform limits.
+
+### [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/containers/#containers)
+
+CLI commands for images and containers.
 
 ### [Durable Object Container API](https://developers.cloudflare.com/durable-objects/api/container/)
 
-Low-level runtime API for starting, stopping, and communicating with the container process directly from a Durable Object.
+Start, stop, and talk to the container process from a Durable Object.
 
 ### [SSH](https://developers.cloudflare.com/containers/ssh/)
 
-Connect to running Container instances with SSH through Wrangler.
+Connect to running container instances with SSH through Wrangler.
 
 ### [Containers Discord](https://discord.cloudflare.com)
 
-Connect with other users of Containers on Discord. Ask questions, show what you are building, and discuss the platform with other developers.
+Ask questions, show what you are building, and talk with other Containers developers.
 
 Was this helpful?
 
@@ -147,8 +171,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Overview · Cloudflare Containers docs","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-08","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Overview · Cloudflare Containers docs","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

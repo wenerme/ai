@@ -199,7 +199,7 @@ working context during the run.
 
 Load skills
 
-```typescript
+```javascript
 import {
   Capabilities,
   SandboxAgent,
@@ -270,7 +270,7 @@ agent's default manifest and clean it up after the run.
 
 Run a Unix-local sandbox agent
 
-```typescript
+```javascript
 import { run } from "@openai/agents";
 import { Manifest, SandboxAgent, file, shell } from "@openai/agents/sandbox";
 import { UnixLocalSandboxClient } from "@openai/agents/sandbox/local";
@@ -385,7 +385,7 @@ the same pattern with their own client classes and options.
 
 Switch to Docker
 
-```typescript
+```javascript
 import { run } from "@openai/agents";
 import { SandboxAgent } from "@openai/agents/sandbox";
 import { DockerSandboxClient } from "@openai/agents/sandbox/local";
@@ -479,7 +479,7 @@ run:
 
 Serialize and resume sandbox state
 
-```typescript
+```javascript
 import { run } from "@openai/agents";
 import { Manifest, SandboxAgent } from "@openai/agents/sandbox";
 import { UnixLocalSandboxClient } from "@openai/agents/sandbox/local";
@@ -495,7 +495,7 @@ const agent = new SandboxAgent({
 });
 
 const session = await client.create({ manifest });
-let conversation: any[] = [];
+let conversation = [];
 let frozenSessionState;
 
 try {
@@ -600,7 +600,7 @@ guidance about work that happened in the workspace.
 
 Enable sandbox memory
 
-```typescript
+```javascript
 import {
   Manifest,
   SandboxAgent,

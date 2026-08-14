@@ -127,12 +127,10 @@ def create_chatkit_session(
 
    See the [chatkit-js repo](https://github.com/openai/chatkit-js) on GitHub.
 
-   chatkit.ts
+   chatkit.js
 
-```typescript
-export default async function getChatKitSessionToken(
-  deviceId: string
-): Promise<string> {
+```javascript
+export default async function getChatKitSessionToken(deviceId) {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("OPENAI_API_KEY is required");
@@ -157,9 +155,8 @@ export default async function getChatKitSessionToken(
     );
   }
 
-  const { client_secret } = (await response.json()) as {
-    client_secret?: string;
-  };
+  const { client_secret } = await response.json();
+
   if (!client_secret) {
     throw new Error("ChatKit session response did not include client_secret");
   }

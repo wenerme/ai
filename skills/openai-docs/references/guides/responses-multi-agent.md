@@ -36,7 +36,7 @@ Note that adding subagents can increase token usage, and may not be as beneficia
 
 ## Quickstart
 
-The Python and TypeScript examples use the beta Responses SDK. For HTTP
+The Python and JavaScript examples use the beta Responses SDK. For HTTP
   requests, use `client.beta.responses` and pass `responses_multi_agent=v1` in
   the `betas` argument. For raw HTTP requests and WebSocket connections, pass
   `OpenAI-Beta: responses_multi_agent=v1` in the request or connection headers.
@@ -45,6 +45,41 @@ The Python and TypeScript examples use the beta Responses SDK. For HTTP
 Enable Multi-agent in your Responses API request with `multi_agent.enabled`. When `multi_agent.enabled` is `true`, the root agent becomes eligible to spawn a tree of subagents. The subagents share the request’s model and available tools, while agents coordinate through collaboration primitives such as spawning, messaging, and waiting (see [How Multi-agent works](#how-multi-agent-works)). The root agent is responsible for synthesizing subagent responses and providing the final response.
 
 Review a pull request with subagents
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+
+async function reviewPullRequest(diff) {
+  const response = await client.beta.responses.create({
+    model: "gpt-5.6-sol",
+    input:
+      "Review the pull-request diff below with three agents: one for " +
+      "correctness, one for security, and one for missing tests. " +
+      "Reconcile duplicate or conflicting findings, then return a " +
+      "prioritized review with file and line references.\n\n" +
+      `<diff>\n${diff}\n</diff>`,
+    multi_agent: {
+      enabled: true,
+      max_concurrent_subagents: 3,
+    },
+    betas: ["responses_multi_agent=v1"],
+  });
+
+  return response.output
+    .flatMap((item) =>
+      item.type === "message" &&
+      item.agent?.agent_name === "/root" &&
+      item.phase === "final_answer"
+        ? item.content
+        : []
+    )
+    .filter((part) => part.type === "output_text")
+    .map((part) => part.text)
+    .join("");
+}
+```
 
 ```python
 from openai import OpenAI
@@ -81,41 +116,6 @@ def review_pull_request(diff: str) -> str:
         for part in item.content
         if part.type == "output_text"
     )
-```
-
-```typescript
-import OpenAI from "openai";
-
-const client = new OpenAI();
-
-async function reviewPullRequest(diff: string): Promise<string> {
-  const response = await client.beta.responses.create({
-    model: "gpt-5.6-sol",
-    input:
-      "Review the pull-request diff below with three agents: one for " +
-      "correctness, one for security, and one for missing tests. " +
-      "Reconcile duplicate or conflicting findings, then return a " +
-      "prioritized review with file and line references.\n\n" +
-      `<diff>\n${diff}\n</diff>`,
-    multi_agent: {
-      enabled: true,
-      max_concurrent_subagents: 3,
-    },
-    betas: ["responses_multi_agent=v1"],
-  });
-
-  return response.output
-    .flatMap((item) =>
-      item.type === "message" &&
-      item.agent?.agent_name === "/root" &&
-      item.phase === "final_answer"
-        ? item.content
-        : []
-    )
-    .filter((part) => part.type === "output_text")
-    .map((part) => part.text)
-    .join("");
-}
 ```
 
 
@@ -185,6 +185,123 @@ These examples require beta SDK builds that expose the beta Responses API. For H
 Example client-side code:
 
 Handle HTTP streaming tool calls
+
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI();
+const ROOT = "/root";
+const proposals = {
+  alpha: { estimated_weeks: 6, risk: "medium" },
+  beta: { estimated_weeks: 8, risk: "low" },
+};
+/** @type {import("openai/resources/beta/responses").BetaTool[]} */
+const tools = [
+  {
+    type: "function",
+    name: "get_proposal",
+    description:
+      "Return details for a proposal that the agents should compare.",
+    parameters: {
+      type: "object",
+      properties: {
+        proposal: {
+          type: "string",
+          enum: ["alpha", "beta"],
+        },
+      },
+      required: ["proposal"],
+      additionalProperties: false,
+    },
+    strict: true,
+  },
+];
+/**
+ * @type {Array<
+ *   import("openai/resources/beta/responses").BetaResponseInputItem |
+ *   import("openai/resources/beta/responses").BetaResponseOutputItem
+ * >}
+ */
+const history = [
+  {
+    role: "user",
+    content: "Compare proposal alpha and proposal beta.",
+  },
+];
+
+function agentName(item) {
+  return item.agent?.agent_name ?? ROOT;
+}
+
+function processToolCall(name, argumentsJson) {
+  if (name !== "get_proposal") {
+    throw new Error(`Unknown tool: ${name}`);
+  }
+  const { proposal } = JSON.parse(argumentsJson);
+
+  return JSON.stringify(proposals[proposal]);
+}
+
+while (true) {
+  const outputItems = [];
+  const pendingCalls = [];
+  const itemAgents = new Map();
+
+  const stream = await client.beta.responses.create({
+    model: "gpt-5.6-sol",
+    // Beta output items can be replayed as input on the next request.
+    input:
+      /** @type {import("openai/resources/beta/responses").BetaResponseInput} */ (
+        history
+      ),
+    tools,
+    store: false,
+    multi_agent: {
+      enabled: true,
+      max_concurrent_subagents: 3,
+    },
+    stream: true,
+    betas: ["responses_multi_agent=v1"],
+  });
+
+  for await (const event of stream) {
+    if (event.type === "response.output_item.added") {
+      itemAgents.set(event.output_index, agentName(event.item));
+    } else if (event.type === "response.output_text.delta") {
+      const agent = itemAgents.get(event.output_index) ?? ROOT;
+      const destination = agent === ROOT ? process.stdout : process.stderr;
+      destination.write(
+        agent === ROOT ? event.delta : `[${agent}] ${event.delta}`
+      );
+    } else if (event.type === "response.output_item.done") {
+      outputItems.push(event.item);
+      if (event.item.type === "function_call") {
+        pendingCalls.push(event.item);
+      }
+    } else if (event.type === "response.completed") {
+      console.error("\nUsage:", event.response.usage);
+      break;
+    } else if (
+      event.type === "error" ||
+      event.type === "response.failed" ||
+      event.type === "response.incomplete"
+    ) {
+      throw new Error(JSON.stringify(event));
+    }
+  }
+
+  history.push(...outputItems);
+  for (const call of pendingCalls) {
+    history.push({
+      type: "function_call_output",
+      call_id: call.call_id,
+      output: processToolCall(call.name, call.arguments),
+    });
+  }
+
+  if (pendingCalls.length === 0) break;
+}
+```
 
 ```python
 from __future__ import annotations
@@ -303,123 +420,6 @@ while True:
         break
 ```
 
-```typescript
-import OpenAI from "openai";
-import type {
-  BetaResponseInput,
-  BetaResponseInputItem,
-  BetaResponseOutputItem,
-  BetaTool,
-} from "openai/resources/beta/responses/responses";
-
-const client = new OpenAI();
-const ROOT = "/root";
-const proposals = {
-  alpha: { estimated_weeks: 6, risk: "medium" },
-  beta: { estimated_weeks: 8, risk: "low" },
-};
-const tools: BetaTool[] = [
-  {
-    type: "function",
-    name: "get_proposal",
-    description:
-      "Return details for a proposal that the agents should compare.",
-    parameters: {
-      type: "object",
-      properties: {
-        proposal: {
-          type: "string",
-          enum: ["alpha", "beta"],
-        },
-      },
-      required: ["proposal"],
-      additionalProperties: false,
-    },
-    strict: true,
-  },
-];
-const history: Array<BetaResponseInputItem | BetaResponseOutputItem> = [
-  {
-    role: "user",
-    content: "Compare proposal alpha and proposal beta.",
-  },
-];
-
-function agentName(item: BetaResponseOutputItem): string {
-  return item.agent?.agent_name ?? ROOT;
-}
-
-function processToolCall(name: string, argumentsJson: string): string {
-  if (name !== "get_proposal") {
-    throw new Error(`Unknown tool: ${name}`);
-  }
-  const { proposal } = JSON.parse(argumentsJson) as {
-    proposal: keyof typeof proposals;
-  };
-  return JSON.stringify(proposals[proposal]);
-}
-
-while (true) {
-  const outputItems: BetaResponseOutputItem[] = [];
-  const pendingCalls: Extract<
-    BetaResponseOutputItem,
-    { type: "function_call" }
-  >[] = [];
-  const itemAgents = new Map<number, string>();
-
-  const stream = await client.beta.responses.create({
-    model: "gpt-5.6-sol",
-    // Beta output items can be replayed as input on the next request.
-    input: history as BetaResponseInput,
-    tools,
-    store: false,
-    multi_agent: {
-      enabled: true,
-      max_concurrent_subagents: 3,
-    },
-    stream: true,
-    betas: ["responses_multi_agent=v1"],
-  });
-
-  for await (const event of stream) {
-    if (event.type === "response.output_item.added") {
-      itemAgents.set(event.output_index, agentName(event.item));
-    } else if (event.type === "response.output_text.delta") {
-      const agent = itemAgents.get(event.output_index) ?? ROOT;
-      const destination = agent === ROOT ? process.stdout : process.stderr;
-      destination.write(
-        agent === ROOT ? event.delta : `[${agent}] ${event.delta}`
-      );
-    } else if (event.type === "response.output_item.done") {
-      outputItems.push(event.item);
-      if (event.item.type === "function_call") {
-        pendingCalls.push(event.item);
-      }
-    } else if (event.type === "response.completed") {
-      console.error("\nUsage:", event.response.usage);
-      break;
-    } else if (
-      event.type === "error" ||
-      event.type === "response.failed" ||
-      event.type === "response.incomplete"
-    ) {
-      throw new Error(JSON.stringify(event));
-    }
-  }
-
-  history.push(...outputItems);
-  for (const call of pendingCalls) {
-    history.push({
-      type: "function_call_output",
-      call_id: call.call_id,
-      output: processToolCall(call.name, call.arguments),
-    });
-  }
-
-  if (pendingCalls.length === 0) break;
-}
-```
-
 
 If one or more agents call developer-defined functions, execute every pending call and create a continuation request containing their outputs.
 
@@ -480,6 +480,139 @@ The Python beta SDK exposes WebSocket mode through `client.beta.responses.connec
 Save the response ID from the `response.created` event and include it in every `response.inject` event you send for that response. After sending an injection item, continue reading from the WebSocket until the response has completed and every injection has produced either a `response.inject.created` or `response.inject.failed` event.
 
 Inject tool outputs over WebSocket
+
+```javascript
+import OpenAI from "openai";
+
+import { ResponsesWS } from "openai/resources/beta/responses/ws";
+
+const client = new OpenAI();
+const proposals = {
+  alpha: { estimated_weeks: 6, risk: "medium" },
+  beta: { estimated_weeks: 8, risk: "low" },
+};
+const tools = [
+  {
+    type: "function",
+    name: "get_proposal",
+    description:
+      "Return details for a proposal that the agents should compare.",
+    parameters: {
+      type: "object",
+      properties: {
+        proposal: {
+          type: "string",
+          enum: ["alpha", "beta"],
+        },
+      },
+      required: ["proposal"],
+      additionalProperties: false,
+    },
+    strict: true,
+  },
+];
+
+function processToolCall(name, argumentsJson) {
+  if (name !== "get_proposal") {
+    throw new Error(`Unknown tool: ${name}`);
+  }
+  const { proposal } = JSON.parse(argumentsJson);
+
+  return JSON.stringify(proposals[proposal]);
+}
+
+async function runMultiAgent(ws) {
+  let previousResponseId;
+  let pendingInput = [
+    { role: "user", content: process.argv.slice(2).join(" ") },
+  ];
+
+  while (pendingInput.length > 0) {
+    ws.send({
+      type: "response.create",
+      model: "gpt-5.6-sol",
+      store: true,
+      multi_agent: {
+        enabled: true,
+        max_concurrent_subagents: 3,
+      },
+      tools,
+      input: pendingInput,
+      previous_response_id: previousResponseId,
+    });
+
+    const nextInput = [];
+    let completedResponseId;
+    let responseId;
+    let pendingInjections = 0;
+
+    for await (const message of ws) {
+      if (message.type === "error") throw message.error;
+      if (message.type !== "message") continue;
+
+      const event = message.message;
+      if (event.type === "response.created") {
+        responseId = event.response.id;
+      } else if (
+        event.type === "response.output_item.done" &&
+        event.item.type === "function_call"
+      ) {
+        if (!responseId) {
+          throw new Error("Received a function call before response.created");
+        }
+        pendingInjections += 1;
+        ws.send({
+          type: "response.inject",
+          response_id: responseId,
+          input: [
+            {
+              type: "function_call_output",
+              call_id: event.item.call_id,
+              output: processToolCall(event.item.name, event.item.arguments),
+            },
+          ],
+        });
+      } else if (event.type === "response.inject.created") {
+        pendingInjections -= 1;
+      } else if (event.type === "response.inject.failed") {
+        pendingInjections -= 1;
+        if (event.error.code !== "response_already_completed") {
+          throw new Error(JSON.stringify(event.error));
+        }
+        nextInput.push(...event.input);
+      } else if (event.type === "response.completed") {
+        completedResponseId = event.response.id;
+      } else if (
+        event.type === "error" ||
+        event.type === "response.failed" ||
+        event.type === "response.incomplete"
+      ) {
+        throw new Error(JSON.stringify(event));
+      }
+
+      if (completedResponseId && pendingInjections === 0) break;
+    }
+
+    if (!completedResponseId) {
+      throw new Error("Connection ended before response.completed");
+    }
+    if (nextInput.length === 0) return;
+
+    previousResponseId = completedResponseId;
+    pendingInput = nextInput;
+  }
+}
+
+const ws = new ResponsesWS(client, {
+  headers: { "OpenAI-Beta": "responses_multi_agent=v1" },
+});
+
+try {
+  await runMultiAgent(ws);
+} finally {
+  ws.close();
+}
+```
 
 ```python
 from __future__ import annotations
@@ -612,140 +745,6 @@ with client.beta.responses.connect(
     extra_headers={"OpenAI-Beta": "responses_multi_agent=v1"},
 ) as connection:
     run_multi_agent(connection)
-```
-
-```typescript
-import OpenAI from "openai";
-import type { BetaResponseInput } from "openai/resources/beta/responses/responses";
-import { ResponsesWS } from "openai/resources/beta/responses/ws";
-
-const client = new OpenAI();
-const proposals = {
-  alpha: { estimated_weeks: 6, risk: "medium" },
-  beta: { estimated_weeks: 8, risk: "low" },
-};
-const tools = [
-  {
-    type: "function" as const,
-    name: "get_proposal",
-    description:
-      "Return details for a proposal that the agents should compare.",
-    parameters: {
-      type: "object",
-      properties: {
-        proposal: {
-          type: "string",
-          enum: ["alpha", "beta"],
-        },
-      },
-      required: ["proposal"],
-      additionalProperties: false,
-    },
-    strict: true,
-  },
-];
-
-function processToolCall(name: string, argumentsJson: string): string {
-  if (name !== "get_proposal") {
-    throw new Error(`Unknown tool: ${name}`);
-  }
-  const { proposal } = JSON.parse(argumentsJson) as {
-    proposal: keyof typeof proposals;
-  };
-  return JSON.stringify(proposals[proposal]);
-}
-
-async function runMultiAgent(ws: ResponsesWS) {
-  let previousResponseId: string | undefined;
-  let pendingInput: BetaResponseInput = [
-    { role: "user", content: process.argv.slice(2).join(" ") },
-  ];
-
-  while (pendingInput.length > 0) {
-    ws.send({
-      type: "response.create",
-      model: "gpt-5.6-sol",
-      store: true,
-      multi_agent: {
-        enabled: true,
-        max_concurrent_subagents: 3,
-      },
-      tools,
-      input: pendingInput,
-      previous_response_id: previousResponseId,
-    });
-
-    const nextInput: BetaResponseInput = [];
-    let completedResponseId: string | undefined;
-    let responseId: string | undefined;
-    let pendingInjections = 0;
-
-    for await (const message of ws) {
-      if (message.type === "error") throw message.error;
-      if (message.type !== "message") continue;
-
-      const event = message.message;
-      if (event.type === "response.created") {
-        responseId = event.response.id;
-      } else if (
-        event.type === "response.output_item.done" &&
-        event.item.type === "function_call"
-      ) {
-        if (!responseId) {
-          throw new Error("Received a function call before response.created");
-        }
-        pendingInjections += 1;
-        ws.send({
-          type: "response.inject",
-          response_id: responseId,
-          input: [
-            {
-              type: "function_call_output",
-              call_id: event.item.call_id,
-              output: processToolCall(event.item.name, event.item.arguments),
-            },
-          ],
-        });
-      } else if (event.type === "response.inject.created") {
-        pendingInjections -= 1;
-      } else if (event.type === "response.inject.failed") {
-        pendingInjections -= 1;
-        if (event.error.code !== "response_already_completed") {
-          throw new Error(JSON.stringify(event.error));
-        }
-        nextInput.push(...event.input);
-      } else if (event.type === "response.completed") {
-        completedResponseId = event.response.id;
-      } else if (
-        event.type === "error" ||
-        event.type === "response.failed" ||
-        event.type === "response.incomplete"
-      ) {
-        throw new Error(JSON.stringify(event));
-      }
-
-      if (completedResponseId && pendingInjections === 0) break;
-    }
-
-    if (!completedResponseId) {
-      throw new Error("Connection ended before response.completed");
-    }
-    if (nextInput.length === 0) return;
-
-    previousResponseId = completedResponseId;
-    pendingInput = nextInput;
-  }
-}
-
-const ws = new ResponsesWS(client, {
-  headers: { "OpenAI-Beta": "responses_multi_agent=v1" },
-});
-
-try {
-  await runMultiAgent(ws);
-} finally {
-  ws.close();
-}
 ```
 
 

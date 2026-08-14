@@ -47,11 +47,11 @@ For build-path guidance, see the [Realtime and audio overview](https://developer
 
 Models such as [`gpt-realtime-2.1`](https://developers.openai.com/api/docs/models/gpt-realtime-2.1) and [`gpt-audio-1.5`](https://developers.openai.com/api/docs/models/gpt-audio-1.5) are natively multimodal, meaning they can understand and generate audio and text as input and output.
 
-For live browser speech-to-speech interactions, start with a realtime session in the TypeScript Agents SDK:
+For live browser speech-to-speech interactions, start with a realtime session in the Agents SDK for JavaScript:
 
 Start a realtime voice session
 
-```typescript
+```javascript
 import { RealtimeAgent, RealtimeSession } from "@openai/agents/realtime";
 
 const agent = new RealtimeAgent({
@@ -69,7 +69,7 @@ await session.connect({
 ```
 
 
-This TypeScript example uses the Agents SDK to connect browser voice agents with WebRTC from the client. For Python voice workflows, use the [Voice agents guide](https://developers.openai.com/api/docs/guides/voice-agents), which covers chained voice pipelines.
+This JavaScript example uses the Agents SDK to connect browser voice agents with WebRTC from the client. For Python voice workflows, use the [Voice agents guide](https://developers.openai.com/api/docs/guides/voice-agents), which covers chained voice pipelines.
 
 If you already have a text-based LLM application with the [Chat Completions endpoint](https://developers.openai.com/api/reference/resources/chat), you may want to add audio capabilities. For example, if your chat application supports text input, you can add audio input and output: include `audio` in the `modalities` array and use an audio model, like [`gpt-audio-1.5`](https://developers.openai.com/api/docs/models/gpt-audio-1.5).
 

@@ -10,7 +10,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 ## Using Arize AX
 
-[Arize AX](https://arize.com/) provides observability and tracing for LLM applications. Since OpenRouter uses the OpenAI API schema, you can utilize Arize's OpenInference auto-instrumentation with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
+[Arize AX](https://arize.com/) provides observability and tracing for LLM applications. Since OpenRouter uses the OpenAI API schema, you can use Arize's OpenInference auto-instrumentation with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
 
 ### Installation
 

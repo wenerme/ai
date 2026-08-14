@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Frequently Asked Questions
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## How do Container logs work?
 
@@ -56,7 +56,11 @@ An Example:
 
 ## How do container updates and rollouts work?
 
-See [rollout documentation](https://developers.cloudflare.com/containers/platform-details/rollouts/) for details.
+On `wrangler deploy`, the Worker goes live first. Container instances update with a gradual rollout by default. Refer to [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/) for steps, grace periods, and modes. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/) to run a deploy.
+
+## How do Workers Builds work with Containers?
+
+On the production branch, Workers Builds should run `wrangler deploy` so images and container instances can update. Non-production Workers Builds defaults to `wrangler versions upload`, which does not update images. Containers Workers implement Durable Objects, so preview URLs are not generated for them. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/#before-production).
 
 ## How does scaling work?
 
@@ -82,7 +86,7 @@ Container cold starts can often be in the 1-3 second range, but this is dependen
 
 ## How do I use an existing container image?
 
-See [image management documentation](https://developers.cloudflare.com/containers/platform-details/image-management/#use-pre-built-container-images) for details.
+Refer to [image management](https://developers.cloudflare.com/containers/platform-details/image-management/#use-pre-built-container-images).
 
 ## Is disk persistent? What happens to my disk when my container sleeps?
 
@@ -100,9 +104,17 @@ Containers do not use swap memory.
 
 ## How long can instances run for? What happens when a host server is shut down?
 
-Cloudflare will not actively shut off a container instance after a specific amount of time. If you do not set `sleepAfter` on your Container class, or stop the instance manually, it will continue to run unless its host server is restarted. This happens on an irregular cadence, but frequently enough where Cloudflare does not guarantee that any instance will run for any set period of time.
+Cloudflare does not stop a container instance after a fixed maximum runtime. The Container class sets [sleepAfter](https://developers.cloudflare.com/containers/container-class/#sleepafter) to 10 minutes by default, and its default [onActivityExpired()](https://developers.cloudflare.com/containers/container-class/#onactivityexpired) implementation signals the container to stop after that period without activity. You can change the duration or override the hook. Even if your hook keeps the instance running, another platform event can stop it. One of those cases is a host server restart, which happens on an irregular cadence. Cloudflare does not guarantee that any container instance will run for any set period of time.
 
-When a container instance is going to be shut down, it is sent a `SIGTERM` signal, and then a `SIGKILL` signal after 15 minutes. You should perform any necessary cleanup to ensure a graceful shutdown in this time. The container instance will be rebooted elsewhere shortly after this.
+When the platform is about to stop a container instance (including before a host moves work off a server), it:
+
+1. Sends `SIGTERM` to the main process in the container.
+2. Waits up to 15 minutes for that process to exit.
+3. Sends `SIGKILL` if the process is still running.
+
+Handle `SIGTERM` in your image if you need cleanup before exit. After a host stop, a new container instance may start on a different server when traffic needs it again.
+
+Image updates during a deploy use the same stop sequence. Refer to [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/).
 
 ## How can I pass secrets to my container?
 
@@ -157,8 +169,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions · Cloudflare Containers docs","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions · Cloudflare Containers docs","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

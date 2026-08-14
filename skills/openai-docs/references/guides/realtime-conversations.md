@@ -484,7 +484,7 @@ function base64EncodeAudio(float32Array) {
   const chunkSize = 0x8000; // 32KB chunk size
   for (let i = 0; i < bytes.length; i += chunkSize) {
     let chunk = bytes.subarray(i, i + chunkSize);
-    binary += String.fromCharCode.apply(null, chunk);
+    binary += String.fromCharCode(...chunk);
   }
   return btoa(binary);
 }

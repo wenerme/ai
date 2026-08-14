@@ -545,6 +545,7 @@ const callFunction = async (name, args) => {
   if (name === "send_email") {
     return sendEmail(args.to, args.body);
   }
+  throw new Error(`Unknown function: ${name}`);
 };
 ```
 
@@ -942,7 +943,10 @@ Accumulating tool_call deltas
 const finalToolCalls = {};
 
 for await (const event of stream) {
-  if (event.type === "response.output_item.added") {
+  if (
+    event.type === "response.output_item.added" &&
+    event.item.type === "function_call"
+  ) {
     finalToolCalls[event.output_index] = event.item;
   } else if (event.type === "response.function_call_arguments.delta") {
     const index = event.output_index;

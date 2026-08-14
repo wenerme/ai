@@ -1352,19 +1352,12 @@ If you are using the [Agents SDK](https://developers.openai.com/api/docs/guides/
 
 Use local shell with Agents SDK
 
-```typescript
-import {
-  Agent,
-  run,
-  withTrace,
-  Shell,
-  ShellAction,
-  ShellResult,
-  shellTool,
-} from "@openai/agents";
+```javascript
+import { Agent, run, withTrace, shellTool } from "@openai/agents";
 
-class LocalShell implements Shell {
-  async run(action: ShellAction): Promise<ShellResult> {
+class LocalShell {
+  /** @returns {Promise<import("@openai/agents").ShellResult>} */
+  async run(action) {
     return {
       output: [
         {

@@ -118,9 +118,8 @@ Set `OPENAI_WIF_AUDIENCE` to the Microsoft Entra Application ID URI configured a
 
 Authenticate from an Azure managed identity token
 
-```typescript
+```javascript
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const imdsEndpoint = "http://169.254.169.254/metadata/identity/oauth2/token";
 
@@ -134,9 +133,8 @@ if (!identityProviderId || !serviceAccountId || !audience) {
   );
 }
 
-function azureManagedIdentityTokenProvider(
-  resource: string
-): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function azureManagedIdentityTokenProvider(resource) {
   return {
     tokenType: "jwt",
     getToken: async () => {
@@ -159,7 +157,7 @@ function azureManagedIdentityTokenProvider(
         );
       }
 
-      const body = (await response.json()) as { access_token?: string };
+      const body = await response.json();
       if (!body.access_token) {
         throw new Error("Azure IMDS did not return an access token.");
       }
@@ -709,10 +707,9 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from an AKS projected service account token
 
-```typescript
+```javascript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/secrets/tokens/token";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
@@ -724,9 +721,8 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedAksServiceAccountTokenProvider(
-  path: string
-): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function mountedAksServiceAccountTokenProvider(path) {
   return {
     tokenType: "jwt",
     getToken: async () => {

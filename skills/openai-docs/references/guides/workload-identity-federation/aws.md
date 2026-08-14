@@ -157,10 +157,9 @@ Set `OPENAI_WIF_AUDIENCE` to the same audience configured on the OpenAI Workload
 
 Authenticate from an AWS-issued OIDC token
 
-```typescript
+```javascript
 import { GetWebIdentityTokenCommand, STSClient } from "@aws-sdk/client-sts";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
@@ -176,7 +175,8 @@ const wifAudience = audience;
 
 const sts = new STSClient({ region: awsRegion });
 
-function awsOutboundWebIdentityTokenProvider(): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function awsOutboundWebIdentityTokenProvider() {
   return {
     tokenType: "jwt",
     getToken: async () => {
@@ -648,10 +648,9 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from an EKS projected service account token
 
-```typescript
+```javascript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/secrets/tokens/token";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
@@ -663,9 +662,8 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedEksServiceAccountTokenProvider(
-  path: string
-): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function mountedEksServiceAccountTokenProvider(path) {
   return {
     tokenType: "jwt",
     getToken: async () => {

@@ -140,10 +140,9 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from a Kubernetes projected service account token
 
-```typescript
+```javascript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/secrets/tokens/token";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
@@ -155,9 +154,8 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function mountedServiceAccountTokenProvider(
-  path: string
-): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function mountedServiceAccountTokenProvider(path) {
   return {
     tokenType: "jwt",
     getToken: async () => {

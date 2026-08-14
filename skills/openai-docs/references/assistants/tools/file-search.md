@@ -217,7 +217,7 @@ Now, create a Run and observe that the model uses the File Search tool to provid
 
 With streaming
 
-```typescript
+```javascript
 const stream = openai.beta.threads.runs
   .stream(thread.id, {
     assistant_id: assistant.id,
@@ -228,7 +228,7 @@ const stream = openai.beta.threads.runs
     if (event.content[0].type === "text") {
       const { text } = event.content[0];
       const { annotations } = text;
-      const citations: string[] = [];
+      const citations = [];
 
       let index = 0;
       for (const annotation of annotations) {
@@ -302,7 +302,7 @@ with client.beta.threads.runs.stream(
     
 Without streaming
 
-```typescript
+```javascript
 const run = await openai.beta.threads.runs.createAndPoll(thread.id, {
   assistant_id: assistant.id,
 });
@@ -311,11 +311,11 @@ const messages = await openai.beta.threads.messages.list(thread.id, {
   run_id: run.id,
 });
 
-const message = messages.data.pop()!;
+const message = messages.data.pop();
 if (message.content[0].type === "text") {
   const { text } = message.content[0];
   const { annotations } = text;
-  const citations: string[] = [];
+  const citations = [];
 
   let index = 0;
   for (const annotation of annotations) {

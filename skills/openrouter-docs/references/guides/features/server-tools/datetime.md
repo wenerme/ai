@@ -54,7 +54,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
   Server tools are currently in beta. The API and behavior may change.
 </Note>
 
-The `openrouter:datetime` server tool gives any model access to the current date and time. This is useful for prompts that require temporal awareness — scheduling, time-sensitive questions, or any task where the model needs to know "right now."
+The `openrouter:datetime` server tool gives any model access to the current date and time. This is useful for prompts that require temporal awareness: scheduling, time-sensitive questions, or any task where the model needs to know "right now."
 
 ## Quick Start
 
@@ -171,6 +171,6 @@ The datetime tool has no additional cost beyond standard token usage.
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools). Learn about server tools
+* [Web Search](/docs/guides/features/server-tools/web-search). Search the web for real-time information
+* [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined tool calling

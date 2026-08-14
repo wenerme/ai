@@ -1441,7 +1441,7 @@ Sample result formatting function
 function formatResults(results) {
   let formattedResults = "";
   for (const result of results.data) {
-    let formattedResult = `<result file_id='${result.file_id}' file_name='${result.file_name}'>`;
+    let formattedResult = `<result file_id='${result.file_id}' file_name='${result.filename}'>`;
     for (const part of result.content) {
       formattedResult += `<content>${part.text}</content>`;
     }

@@ -1406,7 +1406,7 @@ Create a conversation.
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -1418,6 +1418,10 @@ Create a conversation.
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -2441,7 +2445,7 @@ Create a conversation.
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -2453,6 +2457,10 @@ Create a conversation.
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -3169,6 +3177,12 @@ Create a conversation.
       for reasoning items returned by `POST /v1/responses` and WebSocket
       `response.create` requests.
 
+      When streaming, use the completed reasoning item and its
+      `encrypted_content` from the `response.output_item.done` event in
+      subsequent requests. The `encrypted_content` in
+      `response.output_item.added` may be incomplete. This is especially
+      important when `store` is `false` or when using Zero Data Retention.
+
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
@@ -3838,9 +3852,41 @@ Create a conversation.
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or null`
+    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
       The error from the tool call, if any.
+
+      - `string`
+
+        The error from the tool call, if any.
+
+      - `McpProtocolError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "mcp_protocol_error"`
+
+          - `"mcp_protocol_error"`
+
+      - `McpToolExecutionError object { content, type }`
+
+        - `content: unknown`
+
+        - `type: "mcp_tool_execution_error"`
+
+          - `"mcp_tool_execution_error"`
+
+      - `HTTPError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "http_error"`
+
+          - `"http_error"`
 
     - `output: optional string or null`
 
@@ -6293,7 +6339,7 @@ Create items in a conversation with the given ID.
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -6305,6 +6351,10 @@ Create items in a conversation with the given ID.
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -7328,7 +7378,7 @@ Create items in a conversation with the given ID.
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -7340,6 +7390,10 @@ Create items in a conversation with the given ID.
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -8056,6 +8110,12 @@ Create items in a conversation with the given ID.
       for reasoning items returned by `POST /v1/responses` and WebSocket
       `response.create` requests.
 
+      When streaming, use the completed reasoning item and its
+      `encrypted_content` from the `response.output_item.done` event in
+      subsequent requests. The `encrypted_content` in
+      `response.output_item.added` may be incomplete. This is especially
+      important when `store` is `false` or when using Zero Data Retention.
+
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
@@ -8725,9 +8785,41 @@ Create items in a conversation with the given ID.
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or null`
+    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
       The error from the tool call, if any.
+
+      - `string`
+
+        The error from the tool call, if any.
+
+      - `McpProtocolError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "mcp_protocol_error"`
+
+          - `"mcp_protocol_error"`
+
+      - `McpToolExecutionError object { content, type }`
+
+        - `content: unknown`
+
+        - `type: "mcp_tool_execution_error"`
+
+          - `"mcp_tool_execution_error"`
+
+      - `HTTPError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "http_error"`
+
+          - `"http_error"`
 
     - `output: optional string or null`
 
@@ -10317,7 +10409,7 @@ Create items in a conversation with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -10329,6 +10421,10 @@ Create items in a conversation with the given ID.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -11348,7 +11444,7 @@ Create items in a conversation with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -11360,6 +11456,10 @@ Create items in a conversation with the given ID.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -12069,6 +12169,12 @@ Create items in a conversation with the given ID.
         The encrypted content of the reasoning item. This is populated by default
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
+
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -12785,9 +12891,41 @@ Create items in a conversation with the given ID.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -14554,7 +14692,7 @@ List all items for a conversation with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -14566,6 +14704,10 @@ List all items for a conversation with the given ID.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -15585,7 +15727,7 @@ List all items for a conversation with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -15597,6 +15739,10 @@ List all items for a conversation with the given ID.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -16306,6 +16452,12 @@ List all items for a conversation with the given ID.
         The encrypted content of the reasoning item. This is populated by default
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
+
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -17022,9 +17174,41 @@ List all items for a conversation with the given ID.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -18652,7 +18836,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -18664,6 +18848,10 @@ Get a single item from a conversation with the given IDs.
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -19683,7 +19871,7 @@ Get a single item from a conversation with the given IDs.
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -19695,6 +19883,10 @@ Get a single item from a conversation with the given IDs.
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -20404,6 +20596,12 @@ Get a single item from a conversation with the given IDs.
       The encrypted content of the reasoning item. This is populated by default
       for reasoning items returned by `POST /v1/responses` and WebSocket
       `response.create` requests.
+
+      When streaming, use the completed reasoning item and its
+      `encrypted_content` from the `response.output_item.done` event in
+      subsequent requests. The `encrypted_content` in
+      `response.output_item.added` may be incomplete. This is especially
+      important when `store` is `false` or when using Zero Data Retention.
 
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -21120,9 +21318,41 @@ Get a single item from a conversation with the given IDs.
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or null`
+    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
       The error from the tool call, if any.
+
+      - `string`
+
+        The error from the tool call, if any.
+
+      - `McpProtocolError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "mcp_protocol_error"`
+
+          - `"mcp_protocol_error"`
+
+      - `McpToolExecutionError object { content, type }`
+
+        - `content: unknown`
+
+        - `type: "mcp_tool_execution_error"`
+
+          - `"mcp_tool_execution_error"`
+
+      - `HTTPError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "http_error"`
+
+          - `"http_error"`
 
     - `output: optional string or null`
 
@@ -22683,7 +22913,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -22695,6 +22925,10 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -23714,7 +23948,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -23726,6 +23960,10 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -24435,6 +24673,12 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       The encrypted content of the reasoning item. This is populated by default
       for reasoning items returned by `POST /v1/responses` and WebSocket
       `response.create` requests.
+
+      When streaming, use the completed reasoning item and its
+      `encrypted_content` from the `response.output_item.done` event in
+      subsequent requests. The `encrypted_content` in
+      `response.output_item.added` may be incomplete. This is especially
+      important when `store` is `false` or when using Zero Data Retention.
 
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -25151,9 +25395,41 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or null`
+    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
       The error from the tool call, if any.
+
+      - `string`
+
+        The error from the tool call, if any.
+
+      - `McpProtocolError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "mcp_protocol_error"`
+
+          - `"mcp_protocol_error"`
+
+      - `McpToolExecutionError object { content, type }`
+
+        - `content: unknown`
+
+        - `type: "mcp_tool_execution_error"`
+
+          - `"mcp_tool_execution_error"`
+
+      - `HTTPError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "http_error"`
+
+          - `"http_error"`
 
     - `output: optional string or null`
 
@@ -26667,7 +26943,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -26679,6 +26955,10 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -27698,7 +27978,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -27710,6 +27990,10 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -28419,6 +28703,12 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         The encrypted content of the reasoning item. This is populated by default
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
+
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -29135,9 +29425,41 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 

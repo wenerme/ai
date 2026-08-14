@@ -10166,7 +10166,7 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -10178,6 +10178,10 @@ the `background` parameter set to `true` can be cancelled.
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -11357,7 +11361,7 @@ the `background` parameter set to `true` can be cancelled.
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -11369,6 +11373,10 @@ the `background` parameter set to `true` can be cancelled.
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -12165,6 +12173,12 @@ the `background` parameter set to `true` can be cancelled.
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -12938,9 +12952,41 @@ the `background` parameter set to `true` can be cancelled.
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -13210,14 +13256,14 @@ the `background` parameter set to `true` can be cancelled.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -13231,6 +13277,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-5.6-luna"`
 
       - `"gpt-5.5"`
+
+      - `"gpt-5.5-2026-04-23"`
 
       - `"gpt-5.4"`
 
@@ -13407,6 +13455,10 @@ the `background` parameter set to `true` can be cancelled.
       - `"computer-use-preview"`
 
       - `"computer-use-preview-2025-03-11"`
+
+      - `"gpt-5.5-pro"`
+
+      - `"gpt-5.5-pro-2026-04-23"`
 
       - `"gpt-5-codex"`
 
@@ -14221,6 +14273,12 @@ the `background` parameter set to `true` can be cancelled.
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -14640,7 +14698,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -14652,6 +14710,10 @@ the `background` parameter set to `true` can be cancelled.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -15677,7 +15739,7 @@ the `background` parameter set to `true` can be cancelled.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -15689,6 +15751,10 @@ the `background` parameter set to `true` can be cancelled.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -17090,9 +17156,41 @@ the `background` parameter set to `true` can be cancelled.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -17833,7 +17931,7 @@ the `background` parameter set to `true` can be cancelled.
 
         - `"computer_use_preview"`
 
-    - `WebSearch object { type, filters, search_context_size, user_location }`
+    - `WebSearch object { type, external_web_access, filters, 2 more }`
 
       Search the Internet for sources related to the prompt. Learn more about the
       [web search tool](/docs/guides/tools-web-search).
@@ -17845,6 +17943,10 @@ the `background` parameter set to `true` can be cancelled.
         - `"web_search"`
 
         - `"web_search_2025_08_26"`
+
+      - `external_web_access: optional boolean`
+
+        Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
       - `filters: optional object { allowed_domains }  or null`
 
@@ -18899,7 +19001,7 @@ the `background` parameter set to `true` can be cancelled.
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
     Specifies the processing type used for serving the request.
 
@@ -18907,6 +19009,7 @@ the `background` parameter set to `true` can be cancelled.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
     - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
     - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+    - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -18922,6 +19025,8 @@ the `background` parameter set to `true` can be cancelled.
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `status: optional BetaResponseStatus`
 
@@ -19359,11 +19464,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
-- `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string or null`
+- `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string or null`
 
   Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
-  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
     Model ID used to generate the response, like `gpt-5` or `o3`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/docs/models) to browse and compare available models.
 
@@ -19374,6 +19479,8 @@ Learn when and how to compact long-running conversations in the [conversation st
     - `"gpt-5.6-luna"`
 
     - `"gpt-5.5"`
+
+    - `"gpt-5.5-2026-04-23"`
 
     - `"gpt-5.4"`
 
@@ -19550,6 +19657,10 @@ Learn when and how to compact long-running conversations in the [conversation st
     - `"computer-use-preview"`
 
     - `"computer-use-preview-2025-03-11"`
+
+    - `"gpt-5.5-pro"`
+
+    - `"gpt-5.5-pro-2026-04-23"`
 
     - `"gpt-5-codex"`
 
@@ -21324,7 +21435,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -21336,6 +21447,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -22515,7 +22630,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -22527,6 +22642,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -23323,6 +23442,12 @@ Learn when and how to compact long-running conversations in the [conversation st
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -24096,9 +24221,41 @@ Learn when and how to compact long-running conversations in the [conversation st
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -25425,7 +25582,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -25437,6 +25594,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -26612,7 +26773,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -26624,6 +26785,10 @@ Learn when and how to compact long-running conversations in the [conversation st
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -28240,6 +28405,12 @@ Learn when and how to compact long-running conversations in the [conversation st
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -28999,9 +29170,41 @@ Learn when and how to compact long-running conversations in the [conversation st
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -31167,7 +31370,7 @@ as input for the model's response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -31179,6 +31382,10 @@ as input for the model's response.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -32358,7 +32565,7 @@ as input for the model's response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -32370,6 +32577,10 @@ as input for the model's response.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -33166,6 +33377,12 @@ as input for the model's response.
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -33939,9 +34156,41 @@ as input for the model's response.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -34227,14 +34476,14 @@ as input for the model's response.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+- `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
   Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/docs/models)
   to browse and compare available models.
 
-  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+  - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -34248,6 +34497,8 @@ as input for the model's response.
     - `"gpt-5.6-luna"`
 
     - `"gpt-5.5"`
+
+    - `"gpt-5.5-2026-04-23"`
 
     - `"gpt-5.4"`
 
@@ -34424,6 +34675,10 @@ as input for the model's response.
     - `"computer-use-preview"`
 
     - `"computer-use-preview-2025-03-11"`
+
+    - `"gpt-5.5-pro"`
+
+    - `"gpt-5.5-pro-2026-04-23"`
 
     - `"gpt-5-codex"`
 
@@ -34668,7 +34923,7 @@ as input for the model's response.
   A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
   The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
   Specifies the processing type used for serving the request.
 
@@ -34676,6 +34931,7 @@ as input for the model's response.
   - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
   - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
   - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+  - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
   - When not set, the default behavior is 'auto'.
 
   When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -34691,6 +34947,8 @@ as input for the model's response.
   - `"priority"`
 
   - `"fast"`
+
+  - `"ultrafast"`
 
 - `store: optional boolean or null`
 
@@ -35265,7 +35523,7 @@ as input for the model's response.
 
       - `"computer_use_preview"`
 
-  - `WebSearch object { type, filters, search_context_size, user_location }`
+  - `WebSearch object { type, external_web_access, filters, 2 more }`
 
     Search the Internet for sources related to the prompt. Learn more about the
     [web search tool](/docs/guides/tools-web-search).
@@ -35277,6 +35535,10 @@ as input for the model's response.
       - `"web_search"`
 
       - `"web_search_2025_08_26"`
+
+    - `external_web_access: optional boolean`
+
+      Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
     - `filters: optional object { allowed_domains }  or null`
 
@@ -37871,7 +38133,7 @@ as input for the model's response.
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -37883,6 +38145,10 @@ as input for the model's response.
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -39062,7 +39328,7 @@ as input for the model's response.
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -39074,6 +39340,10 @@ as input for the model's response.
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -39870,6 +40140,12 @@ as input for the model's response.
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -40643,9 +40919,41 @@ as input for the model's response.
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -40915,14 +41223,14 @@ as input for the model's response.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -40936,6 +41244,8 @@ as input for the model's response.
       - `"gpt-5.6-luna"`
 
       - `"gpt-5.5"`
+
+      - `"gpt-5.5-2026-04-23"`
 
       - `"gpt-5.4"`
 
@@ -41112,6 +41422,10 @@ as input for the model's response.
       - `"computer-use-preview"`
 
       - `"computer-use-preview-2025-03-11"`
+
+      - `"gpt-5.5-pro"`
+
+      - `"gpt-5.5-pro-2026-04-23"`
 
       - `"gpt-5-codex"`
 
@@ -41926,6 +42240,12 @@ as input for the model's response.
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -42345,7 +42665,7 @@ as input for the model's response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -42357,6 +42677,10 @@ as input for the model's response.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -43382,7 +43706,7 @@ as input for the model's response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -43394,6 +43718,10 @@ as input for the model's response.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -44795,9 +45123,41 @@ as input for the model's response.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -45538,7 +45898,7 @@ as input for the model's response.
 
         - `"computer_use_preview"`
 
-    - `WebSearch object { type, filters, search_context_size, user_location }`
+    - `WebSearch object { type, external_web_access, filters, 2 more }`
 
       Search the Internet for sources related to the prompt. Learn more about the
       [web search tool](/docs/guides/tools-web-search).
@@ -45550,6 +45910,10 @@ as input for the model's response.
         - `"web_search"`
 
         - `"web_search_2025_08_26"`
+
+      - `external_web_access: optional boolean`
+
+        Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
       - `filters: optional object { allowed_domains }  or null`
 
@@ -46604,7 +46968,7 @@ as input for the model's response.
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
     Specifies the processing type used for serving the request.
 
@@ -46612,6 +46976,7 @@ as input for the model's response.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
     - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
     - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+    - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -46627,6 +46992,8 @@ as input for the model's response.
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `status: optional BetaResponseStatus`
 
@@ -49698,7 +50065,7 @@ Retrieves a model response with the given ID.
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -49710,6 +50077,10 @@ Retrieves a model response with the given ID.
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -50889,7 +51260,7 @@ Retrieves a model response with the given ID.
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -50901,6 +51272,10 @@ Retrieves a model response with the given ID.
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -51697,6 +52072,12 @@ Retrieves a model response with the given ID.
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -52470,9 +52851,41 @@ Retrieves a model response with the given ID.
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -52742,14 +53155,14 @@ Retrieves a model response with the given ID.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -52763,6 +53176,8 @@ Retrieves a model response with the given ID.
       - `"gpt-5.6-luna"`
 
       - `"gpt-5.5"`
+
+      - `"gpt-5.5-2026-04-23"`
 
       - `"gpt-5.4"`
 
@@ -52939,6 +53354,10 @@ Retrieves a model response with the given ID.
       - `"computer-use-preview"`
 
       - `"computer-use-preview-2025-03-11"`
+
+      - `"gpt-5.5-pro"`
+
+      - `"gpt-5.5-pro-2026-04-23"`
 
       - `"gpt-5-codex"`
 
@@ -53753,6 +54172,12 @@ Retrieves a model response with the given ID.
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -54172,7 +54597,7 @@ Retrieves a model response with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -54184,6 +54609,10 @@ Retrieves a model response with the given ID.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -55209,7 +55638,7 @@ Retrieves a model response with the given ID.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -55221,6 +55650,10 @@ Retrieves a model response with the given ID.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -56622,9 +57055,41 @@ Retrieves a model response with the given ID.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -57365,7 +57830,7 @@ Retrieves a model response with the given ID.
 
         - `"computer_use_preview"`
 
-    - `WebSearch object { type, filters, search_context_size, user_location }`
+    - `WebSearch object { type, external_web_access, filters, 2 more }`
 
       Search the Internet for sources related to the prompt. Learn more about the
       [web search tool](/docs/guides/tools-web-search).
@@ -57377,6 +57842,10 @@ Retrieves a model response with the given ID.
         - `"web_search"`
 
         - `"web_search_2025_08_26"`
+
+      - `external_web_access: optional boolean`
+
+        Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
       - `filters: optional object { allowed_domains }  or null`
 
@@ -58431,7 +58900,7 @@ Retrieves a model response with the given ID.
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
     Specifies the processing type used for serving the request.
 
@@ -58439,6 +58908,7 @@ Retrieves a model response with the given ID.
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
     - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
     - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+    - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -58454,6 +58924,8 @@ Retrieves a model response with the given ID.
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `status: optional BetaResponseStatus`
 
@@ -59898,7 +60370,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -59910,6 +60382,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -61085,7 +61561,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -61097,6 +61573,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -62713,6 +63193,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -63472,9 +63958,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -66355,7 +66873,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -66367,6 +66885,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -67546,7 +68068,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -67558,6 +68080,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -68354,6 +68880,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -69127,9 +69659,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -69399,14 +69963,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+  - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
     Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/docs/models)
     to browse and compare available models.
 
-    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+    - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -69420,6 +69984,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"gpt-5.6-luna"`
 
       - `"gpt-5.5"`
+
+      - `"gpt-5.5-2026-04-23"`
 
       - `"gpt-5.4"`
 
@@ -69596,6 +70162,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"computer-use-preview"`
 
       - `"computer-use-preview-2025-03-11"`
+
+      - `"gpt-5.5-pro"`
+
+      - `"gpt-5.5-pro-2026-04-23"`
 
       - `"gpt-5-codex"`
 
@@ -70410,6 +70980,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -70829,7 +71405,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -70841,6 +71417,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -71866,7 +72446,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -71878,6 +72458,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -73279,9 +73863,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -74022,7 +74638,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `"computer_use_preview"`
 
-    - `WebSearch object { type, filters, search_context_size, user_location }`
+    - `WebSearch object { type, external_web_access, filters, 2 more }`
 
       Search the Internet for sources related to the prompt. Learn more about the
       [web search tool](/docs/guides/tools-web-search).
@@ -74034,6 +74650,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"web_search"`
 
         - `"web_search_2025_08_26"`
+
+      - `external_web_access: optional boolean`
+
+        Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
       - `filters: optional object { allowed_domains }  or null`
 
@@ -75088,7 +75708,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
     Specifies the processing type used for serving the request.
 
@@ -75096,6 +75716,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
     - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
     - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+    - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
     - When not set, the default behavior is 'auto'.
 
     When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -75111,6 +75732,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `status: optional BetaResponseStatus`
 
@@ -77405,7 +78028,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -77417,6 +78040,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -78596,7 +79223,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -78608,6 +79235,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -79404,6 +80035,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -80177,9 +80814,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -80449,14 +81118,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -80470,6 +81139,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-luna"`
 
         - `"gpt-5.5"`
+
+        - `"gpt-5.5-2026-04-23"`
 
         - `"gpt-5.4"`
 
@@ -80646,6 +81317,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"computer-use-preview"`
 
         - `"computer-use-preview-2025-03-11"`
+
+        - `"gpt-5.5-pro"`
+
+        - `"gpt-5.5-pro-2026-04-23"`
 
         - `"gpt-5-codex"`
 
@@ -81460,6 +82135,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -81879,7 +82560,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -81891,6 +82572,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -82916,7 +83601,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -82928,6 +83613,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -84329,9 +85018,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -85072,7 +85793,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -85084,6 +85805,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -86138,7 +86863,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
       Specifies the processing type used for serving the request.
 
@@ -86146,6 +86871,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
       - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
       - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+      - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
       - When not set, the default behavior is 'auto'.
 
       When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -86161,6 +86887,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `status: optional BetaResponseStatus`
 
@@ -88916,7 +89644,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -88928,6 +89656,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -90107,7 +90839,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -90119,6 +90851,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -90915,6 +91651,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -91688,9 +92430,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -91960,14 +92734,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -91981,6 +92755,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-luna"`
 
         - `"gpt-5.5"`
+
+        - `"gpt-5.5-2026-04-23"`
 
         - `"gpt-5.4"`
 
@@ -92157,6 +92933,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"computer-use-preview"`
 
         - `"computer-use-preview-2025-03-11"`
+
+        - `"gpt-5.5-pro"`
+
+        - `"gpt-5.5-pro-2026-04-23"`
 
         - `"gpt-5-codex"`
 
@@ -92971,6 +93751,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -93390,7 +94176,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -93402,6 +94188,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -94427,7 +95217,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -94439,6 +95229,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -95840,9 +96634,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -96583,7 +97409,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -96595,6 +97421,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -97649,7 +98479,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
       Specifies the processing type used for serving the request.
 
@@ -97657,6 +98487,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
       - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
       - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+      - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
       - When not set, the default behavior is 'auto'.
 
       When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -97672,6 +98503,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `status: optional BetaResponseStatus`
 
@@ -99874,7 +100707,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -99886,6 +100719,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -101065,7 +101902,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -101077,6 +101914,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -101873,6 +102714,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -102646,9 +103493,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -102918,14 +103797,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -102939,6 +103818,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-luna"`
 
         - `"gpt-5.5"`
+
+        - `"gpt-5.5-2026-04-23"`
 
         - `"gpt-5.4"`
 
@@ -103115,6 +103996,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"computer-use-preview"`
 
         - `"computer-use-preview-2025-03-11"`
+
+        - `"gpt-5.5-pro"`
+
+        - `"gpt-5.5-pro-2026-04-23"`
 
         - `"gpt-5-codex"`
 
@@ -103929,6 +104814,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -104348,7 +105239,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -104360,6 +105251,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -105385,7 +106280,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -105397,6 +106292,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -106798,9 +107697,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -107541,7 +108472,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -107553,6 +108484,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -108607,7 +109542,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
       Specifies the processing type used for serving the request.
 
@@ -108615,6 +109550,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
       - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
       - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+      - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
       - When not set, the default behavior is 'auto'.
 
       When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -108630,6 +109566,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `status: optional BetaResponseStatus`
 
@@ -111129,7 +112067,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -111141,6 +112079,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -112320,7 +113262,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -112332,6 +113274,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -113128,6 +114074,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -113901,9 +114853,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -114173,14 +115157,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -114194,6 +115178,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-luna"`
 
         - `"gpt-5.5"`
+
+        - `"gpt-5.5-2026-04-23"`
 
         - `"gpt-5.4"`
 
@@ -114370,6 +115356,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"computer-use-preview"`
 
         - `"computer-use-preview-2025-03-11"`
+
+        - `"gpt-5.5-pro"`
+
+        - `"gpt-5.5-pro-2026-04-23"`
 
         - `"gpt-5-codex"`
 
@@ -115184,6 +116174,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -115603,7 +116599,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -115615,6 +116611,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -116640,7 +117640,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -116652,6 +117652,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -118053,9 +119057,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -118796,7 +119832,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -118808,6 +119844,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -119862,7 +120902,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
       Specifies the processing type used for serving the request.
 
@@ -119870,6 +120910,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
       - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
       - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+      - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
       - When not set, the default behavior is 'auto'.
 
       When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -119885,6 +120926,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `status: optional BetaResponseStatus`
 
@@ -121956,7 +122999,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -121968,6 +123011,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -123147,7 +124194,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -123159,6 +124206,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -123955,6 +125006,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -124728,9 +125785,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -125000,14 +126089,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -125021,6 +126110,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-luna"`
 
         - `"gpt-5.5"`
+
+        - `"gpt-5.5-2026-04-23"`
 
         - `"gpt-5.4"`
 
@@ -125197,6 +126288,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"computer-use-preview"`
 
         - `"computer-use-preview-2025-03-11"`
+
+        - `"gpt-5.5-pro"`
+
+        - `"gpt-5.5-pro-2026-04-23"`
 
         - `"gpt-5-codex"`
 
@@ -126011,6 +127106,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -126430,7 +127531,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -126442,6 +127543,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -127467,7 +128572,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -127479,6 +128584,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -128880,9 +129989,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -129623,7 +130764,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -129635,6 +130776,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -130689,7 +131834,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
       Specifies the processing type used for serving the request.
 
@@ -130697,6 +131842,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
       - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
       - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+      - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
       - When not set, the default behavior is 'auto'.
 
       When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -130712,6 +131858,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `status: optional BetaResponseStatus`
 
@@ -132690,7 +133838,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -132702,6 +133850,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -133881,7 +135033,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -133893,6 +135045,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -134689,6 +135845,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -135462,9 +136624,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -137508,7 +138702,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -137520,6 +138714,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -138699,7 +139897,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -138711,6 +139909,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -139507,6 +140709,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -140280,9 +141488,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -142827,6 +144067,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
       for reasoning items returned by `POST /v1/responses` and WebSocket
       `response.create` requests.
 
+      When streaming, use the completed reasoning item and its
+      `encrypted_content` from the `response.output_item.done` event in
+      subsequent requests. The `encrypted_content` in
+      `response.output_item.added` may be incomplete. This is especially
+      important when `store` is `false` or when using Zero Data Retention.
+
     - `status: optional "in_progress" or "completed" or "incomplete"`
 
       The status of the item. One of `in_progress`, `completed`, or
@@ -143246,7 +144492,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -143258,6 +144504,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -144433,7 +145683,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -144445,6 +145695,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -145846,9 +147100,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or null`
+    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
       The error from the tool call, if any.
+
+      - `string`
+
+        The error from the tool call, if any.
+
+      - `McpProtocolError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "mcp_protocol_error"`
+
+          - `"mcp_protocol_error"`
+
+      - `McpToolExecutionError object { content, type }`
+
+        - `content: unknown`
+
+        - `type: "mcp_tool_execution_error"`
+
+          - `"mcp_tool_execution_error"`
+
+      - `HTTPError object { code, message, type }`
+
+        - `code: number`
+
+        - `message: string`
+
+        - `type: "http_error"`
+
+          - `"http_error"`
 
     - `output: optional string or null`
 
@@ -146140,7 +147426,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   - `item: BetaResponseOutputItem`
 
-    The output item that was added.
+    The output item that was added. For reasoning items, `encrypted_content`
+    may be incomplete while the item is in progress. Use the reasoning item
+    from the corresponding `response.output_item.done` event when passing it
+    as input to a subsequent request.
 
     - `BetaResponseOutputMessage object { id, content, role, 4 more }`
 
@@ -147455,6 +148744,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -147874,7 +149169,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -147886,6 +149181,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -149061,7 +150360,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -149073,6 +150372,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -150474,9 +151777,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -152105,6 +153440,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -152524,7 +153865,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -152536,6 +153877,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -153711,7 +155056,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -153723,6 +155068,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -155124,9 +156473,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -155785,9 +157166,105 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   Emitted when an annotation is added to output text content.
 
-  - `annotation: unknown`
+  - `annotation: object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }  or null`
 
-    The annotation object being added. (See annotation schema for details.)
+    An annotation that applies to a span of output text.
+
+    - `FileCitation object { file_id, filename, index, type }`
+
+      A citation to a file.
+
+      - `file_id: string`
+
+        The ID of the file.
+
+      - `filename: string`
+
+        The filename of the file cited.
+
+      - `index: number`
+
+        The index of the file in the list of files.
+
+      - `type: "file_citation"`
+
+        The type of the file citation. Always `file_citation`.
+
+        - `"file_citation"`
+
+    - `URLCitation object { end_index, start_index, title, 2 more }`
+
+      A citation for a web resource used to generate a model response.
+
+      - `end_index: number`
+
+        The index of the last character of the URL citation in the message.
+
+      - `start_index: number`
+
+        The index of the first character of the URL citation in the message.
+
+      - `title: string`
+
+        The title of the web resource.
+
+      - `type: "url_citation"`
+
+        The type of the URL citation. Always `url_citation`.
+
+        - `"url_citation"`
+
+      - `url: string`
+
+        The URL of the web resource.
+
+    - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
+
+      A citation for a container file used to generate a model response.
+
+      - `container_id: string`
+
+        The ID of the container file.
+
+      - `end_index: number`
+
+        The index of the last character of the container file citation in the message.
+
+      - `file_id: string`
+
+        The ID of the file.
+
+      - `filename: string`
+
+        The filename of the container file cited.
+
+      - `start_index: number`
+
+        The index of the first character of the container file citation in the message.
+
+      - `type: "container_file_citation"`
+
+        The type of the container file citation. Always `container_file_citation`.
+
+        - `"container_file_citation"`
+
+    - `FilePath object { file_id, index, type }`
+
+      A path to a file.
+
+      - `file_id: string`
+
+        The ID of the file.
+
+      - `index: number`
+
+        The index of the file in the list of files.
+
+      - `type: "file_path"`
+
+        The type of the file path. Always `file_path`.
+
+        - `"file_path"`
 
   - `annotation_index: number`
 
@@ -157801,7 +159278,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -157813,6 +159290,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -158992,7 +160473,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -159004,6 +160485,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -159800,6 +161285,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -160573,9 +162064,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -160845,14 +162368,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+    - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -160866,6 +162389,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-luna"`
 
         - `"gpt-5.5"`
+
+        - `"gpt-5.5-2026-04-23"`
 
         - `"gpt-5.4"`
 
@@ -161042,6 +162567,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"computer-use-preview"`
 
         - `"computer-use-preview-2025-03-11"`
+
+        - `"gpt-5.5-pro"`
+
+        - `"gpt-5.5-pro-2026-04-23"`
 
         - `"gpt-5-codex"`
 
@@ -161856,6 +163385,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -162275,7 +163810,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -162287,6 +163822,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -163312,7 +164851,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -163324,6 +164863,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -164725,9 +166268,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -165468,7 +167043,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -165480,6 +167055,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -166534,7 +168113,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
       Specifies the processing type used for serving the request.
 
@@ -166542,6 +168121,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
       - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
       - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+      - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
       - When not set, the default behavior is 'auto'.
 
       When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -166557,6 +168137,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `status: optional BetaResponseStatus`
 
@@ -167122,7 +168704,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 - `BetaResponseStreamEvent = BetaResponseAudioDeltaEvent or BetaResponseAudioDoneEvent or BetaResponseAudioTranscriptDeltaEvent or 50 more`
 
-  Emitted when there is a partial audio response.
+  Event emitted while a response is streamed.
 
   - `BetaResponseAudioDeltaEvent object { delta, sequence_number, type, agent }`
 
@@ -169221,7 +170803,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"computer_use_preview"`
 
-              - `WebSearch object { type, filters, search_context_size, user_location }`
+              - `WebSearch object { type, external_web_access, filters, 2 more }`
 
                 Search the Internet for sources related to the prompt. Learn more about the
                 [web search tool](/docs/guides/tools-web-search).
@@ -169233,6 +170815,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"web_search"`
 
                   - `"web_search_2025_08_26"`
+
+                - `external_web_access: optional boolean`
+
+                  Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
                 - `filters: optional object { allowed_domains }  or null`
 
@@ -170412,7 +171998,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"computer_use_preview"`
 
-              - `WebSearch object { type, filters, search_context_size, user_location }`
+              - `WebSearch object { type, external_web_access, filters, 2 more }`
 
                 Search the Internet for sources related to the prompt. Learn more about the
                 [web search tool](/docs/guides/tools-web-search).
@@ -170424,6 +172010,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                   - `"web_search"`
 
                   - `"web_search_2025_08_26"`
+
+                - `external_web_access: optional boolean`
+
+                  Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
                 - `filters: optional object { allowed_domains }  or null`
 
@@ -171220,6 +172810,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
               for reasoning items returned by `POST /v1/responses` and WebSocket
               `response.create` requests.
 
+              When streaming, use the completed reasoning item and its
+              `encrypted_content` from the `response.output_item.done` event in
+              subsequent requests. The `encrypted_content` in
+              `response.output_item.added` may be incomplete. This is especially
+              important when `store` is `false` or when using Zero Data Retention.
+
             - `status: optional "in_progress" or "completed" or "incomplete"`
 
               The status of the item. One of `in_progress`, `completed`, or
@@ -171993,9 +173589,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
               Unique identifier for the MCP tool call approval request.
               Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-            - `error: optional string or null`
+            - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
               The error from the tool call, if any.
+
+              - `string`
+
+                The error from the tool call, if any.
+
+              - `McpProtocolError object { code, message, type }`
+
+                - `code: number`
+
+                - `message: string`
+
+                - `type: "mcp_protocol_error"`
+
+                  - `"mcp_protocol_error"`
+
+              - `McpToolExecutionError object { content, type }`
+
+                - `content: unknown`
+
+                - `type: "mcp_tool_execution_error"`
+
+                  - `"mcp_tool_execution_error"`
+
+              - `HTTPError object { code, message, type }`
+
+                - `code: number`
+
+                - `message: string`
+
+                - `type: "http_error"`
+
+                  - `"http_error"`
 
             - `output: optional string or null`
 
@@ -172265,14 +173893,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
 
-      - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+      - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/docs/models)
         to browse and compare available models.
 
-        - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+        - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
           Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
           offers a wide range of models with different capabilities, performance
@@ -172286,6 +173914,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-5.6-luna"`
 
           - `"gpt-5.5"`
+
+          - `"gpt-5.5-2026-04-23"`
 
           - `"gpt-5.4"`
 
@@ -172462,6 +174092,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"computer-use-preview"`
 
           - `"computer-use-preview-2025-03-11"`
+
+          - `"gpt-5.5-pro"`
+
+          - `"gpt-5.5-pro-2026-04-23"`
 
           - `"gpt-5-codex"`
 
@@ -173276,6 +174910,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -173695,7 +175335,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -173707,6 +175347,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -174732,7 +176376,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -174744,6 +176388,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -176145,9 +177793,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -176888,7 +178568,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -176900,6 +178580,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -177954,7 +179638,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
         The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-      - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+      - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
         Specifies the processing type used for serving the request.
 
@@ -177962,6 +179646,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
         - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
         - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+        - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
         - When not set, the default behavior is 'auto'.
 
         When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -177977,6 +179662,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"priority"`
 
         - `"fast"`
+
+        - `"ultrafast"`
 
       - `status: optional BetaResponseStatus`
 
@@ -178596,7 +180283,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `item: BetaResponseOutputItem`
 
-      The output item that was added.
+      The output item that was added. For reasoning items, `encrypted_content`
+      may be incomplete while the item is in progress. Use the reasoning item
+      from the corresponding `response.output_item.done` event when passing it
+      as input to a subsequent request.
 
       - `BetaResponseOutputMessage object { id, content, role, 4 more }`
 
@@ -179684,9 +181374,105 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     Emitted when an annotation is added to output text content.
 
-    - `annotation: unknown`
+    - `annotation: object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }  or null`
 
-      The annotation object being added. (See annotation schema for details.)
+      An annotation that applies to a span of output text.
+
+      - `FileCitation object { file_id, filename, index, type }`
+
+        A citation to a file.
+
+        - `file_id: string`
+
+          The ID of the file.
+
+        - `filename: string`
+
+          The filename of the file cited.
+
+        - `index: number`
+
+          The index of the file in the list of files.
+
+        - `type: "file_citation"`
+
+          The type of the file citation. Always `file_citation`.
+
+          - `"file_citation"`
+
+      - `URLCitation object { end_index, start_index, title, 2 more }`
+
+        A citation for a web resource used to generate a model response.
+
+        - `end_index: number`
+
+          The index of the last character of the URL citation in the message.
+
+        - `start_index: number`
+
+          The index of the first character of the URL citation in the message.
+
+        - `title: string`
+
+          The title of the web resource.
+
+        - `type: "url_citation"`
+
+          The type of the URL citation. Always `url_citation`.
+
+          - `"url_citation"`
+
+        - `url: string`
+
+          The URL of the web resource.
+
+      - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
+
+        A citation for a container file used to generate a model response.
+
+        - `container_id: string`
+
+          The ID of the container file.
+
+        - `end_index: number`
+
+          The index of the last character of the container file citation in the message.
+
+        - `file_id: string`
+
+          The ID of the file.
+
+        - `filename: string`
+
+          The filename of the container file cited.
+
+        - `start_index: number`
+
+          The index of the first character of the container file citation in the message.
+
+        - `type: "container_file_citation"`
+
+          The type of the container file citation. Always `container_file_citation`.
+
+          - `"container_file_citation"`
+
+      - `FilePath object { file_id, index, type }`
+
+        A path to a file.
+
+        - `file_id: string`
+
+          The ID of the file.
+
+        - `index: number`
+
+          The index of the file in the list of files.
+
+        - `type: "file_path"`
+
+          The type of the file path. Always `file_path`.
+
+          - `"file_path"`
 
     - `annotation_index: number`
 
@@ -180178,19 +181964,21 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
 ### Beta Responses Client Event
 
-- `BetaResponsesClientEvent = object { type, background, context_management, 30 more }  or BetaResponseInjectEvent`
+- `BetaResponsesClientEvent = object { type, background, context_management, 31 more }  or BetaResponseInjectEvent`
 
   Client events accepted by the Responses WebSocket server.
 
-  - `ResponseCreate object { type, background, context_management, 30 more }`
+  - `ResponseCreate object { type, background, context_management, 31 more }`
 
     Client event for creating a response over a persistent WebSocket connection.
-    This payload uses the same top-level fields as `POST /v1/responses`.
+    This payload uses the same top-level fields as `POST /v1/responses`, plus
+    WebSocket-only envelope metadata.
 
     Notes:
 
     - `stream` is implicit over WebSocket and should not be sent.
     - `background` is not supported over WebSocket.
+    - `stream_id` is WebSocket-only and is not part of `POST /v1/responses`.
 
     - `type: "response.create"`
 
@@ -182027,7 +183815,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -182039,6 +183827,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -183218,7 +185010,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"computer_use_preview"`
 
-            - `WebSearch object { type, filters, search_context_size, user_location }`
+            - `WebSearch object { type, external_web_access, filters, 2 more }`
 
               Search the Internet for sources related to the prompt. Learn more about the
               [web search tool](/docs/guides/tools-web-search).
@@ -183230,6 +185022,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
                 - `"web_search"`
 
                 - `"web_search_2025_08_26"`
+
+              - `external_web_access: optional boolean`
+
+                Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
               - `filters: optional object { allowed_domains }  or null`
 
@@ -184026,6 +185822,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
             for reasoning items returned by `POST /v1/responses` and WebSocket
             `response.create` requests.
 
+            When streaming, use the completed reasoning item and its
+            `encrypted_content` from the `response.output_item.done` event in
+            subsequent requests. The `encrypted_content` in
+            `response.output_item.added` may be incomplete. This is especially
+            important when `store` is `false` or when using Zero Data Retention.
+
           - `status: optional "in_progress" or "completed" or "incomplete"`
 
             The status of the item. One of `in_progress`, `completed`, or
@@ -184799,9 +186601,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
             Unique identifier for the MCP tool call approval request.
             Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-          - `error: optional string or null`
+          - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
             The error from the tool call, if any.
+
+            - `string`
+
+              The error from the tool call, if any.
+
+            - `McpProtocolError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "mcp_protocol_error"`
+
+                - `"mcp_protocol_error"`
+
+            - `McpToolExecutionError object { content, type }`
+
+              - `content: unknown`
+
+              - `type: "mcp_tool_execution_error"`
+
+                - `"mcp_tool_execution_error"`
+
+            - `HTTPError object { code, message, type }`
+
+              - `code: number`
+
+              - `message: string`
+
+              - `type: "http_error"`
+
+                - `"http_error"`
 
           - `output: optional string or null`
 
@@ -185087,14 +186921,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
+    - `model: optional "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more or string`
 
       Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/docs/models)
       to browse and compare available models.
 
-      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
+      - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 99 more`
 
         Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -185108,6 +186942,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.6-luna"`
 
         - `"gpt-5.5"`
+
+        - `"gpt-5.5-2026-04-23"`
 
         - `"gpt-5.4"`
 
@@ -185284,6 +187120,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"computer-use-preview"`
 
         - `"computer-use-preview-2025-03-11"`
+
+        - `"gpt-5.5-pro"`
+
+        - `"gpt-5.5-pro-2026-04-23"`
 
         - `"gpt-5-codex"`
 
@@ -185528,7 +187368,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
 
       Specifies the processing type used for serving the request.
 
@@ -185536,6 +187376,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
       - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
       - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+      - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
       - When not set, the default behavior is 'auto'.
 
       When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
@@ -185552,6 +187393,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `"fast"`
 
+      - `"ultrafast"`
+
     - `store: optional boolean or null`
 
       Whether to store the generated model response for later retrieval via
@@ -185563,6 +187406,16 @@ curl https://api.openai.com/v1/responses/resp_123 \
       as it is generated using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format).
       See the [Streaming section below](/docs/api-reference/responses-streaming)
       for more information.
+
+    - `stream_id: optional string`
+
+      The WebSocket lane for this response. Requests with the same
+      `stream_id` are processed FIFO, and events for the response echo the
+      same `stream_id`.
+
+      `stream_id` controls routing; `previous_response_id` controls
+      conversation lineage, so a new lane can fork from a response created
+      on another lane.
 
     - `stream_options: optional object { include_obfuscation }  or null`
 
@@ -186125,7 +187978,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `"computer_use_preview"`
 
-      - `WebSearch object { type, filters, search_context_size, user_location }`
+      - `WebSearch object { type, external_web_access, filters, 2 more }`
 
         Search the Internet for sources related to the prompt. Learn more about the
         [web search tool](/docs/guides/tools-web-search).
@@ -186137,6 +187990,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"web_search"`
 
           - `"web_search_2025_08_26"`
+
+        - `external_web_access: optional boolean`
+
+          Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
         - `filters: optional object { allowed_domains }  or null`
 
@@ -187961,7 +189818,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -187973,6 +189830,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -189002,7 +190863,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -189014,6 +190875,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -189810,6 +191675,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -190559,9 +192430,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -190838,12697 +192741,535 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   Server events emitted by the Responses WebSocket server.
 
-  - `BetaResponseAudioDeltaEvent object { delta, sequence_number, type, agent }`
+  - `BetaResponseAudioWsDelta = BetaResponseAudioDeltaEvent`
 
     Emitted when there is a partial audio response.
 
-    - `delta: string`
+    - `stream_id: optional string`
 
-      A chunk of Base64 encoded response audio bytes.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `sequence_number: number`
-
-      A sequence number for this chunk of the stream response.
-
-    - `type: "response.audio.delta"`
-
-      The type of the event. Always `response.audio.delta`.
-
-      - `"response.audio.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseAudioDoneEvent object { sequence_number, type, agent }`
+  - `BetaResponseAudioWsDone = BetaResponseAudioDoneEvent`
 
     Emitted when the audio response is complete.
 
-    - `sequence_number: number`
+    - `stream_id: optional string`
 
-      The sequence number of the delta.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `type: "response.audio.done"`
-
-      The type of the event. Always `response.audio.done`.
-
-      - `"response.audio.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseAudioTranscriptDeltaEvent object { delta, sequence_number, type, agent }`
+  - `BetaResponseAudioTranscriptWsDelta = BetaResponseAudioTranscriptDeltaEvent`
 
     Emitted when there is a partial transcript of audio.
 
-    - `delta: string`
+    - `stream_id: optional string`
 
-      The partial transcript of the audio response.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.audio.transcript.delta"`
-
-      The type of the event. Always `response.audio.transcript.delta`.
-
-      - `"response.audio.transcript.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseAudioTranscriptDoneEvent object { sequence_number, type, agent }`
+  - `BetaResponseAudioTranscriptWsDone = BetaResponseAudioTranscriptDoneEvent`
 
     Emitted when the full audio transcript is completed.
 
-    - `sequence_number: number`
+    - `stream_id: optional string`
 
-      The sequence number of this event.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `type: "response.audio.transcript.done"`
-
-      The type of the event. Always `response.audio.transcript.done`.
-
-      - `"response.audio.transcript.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCodeInterpreterCallCodeDeltaEvent object { delta, item_id, output_index, 3 more }`
+  - `BetaResponseCodeInterpreterCallCodeWsDelta = BetaResponseCodeInterpreterCallCodeDeltaEvent`
 
     Emitted when a partial code snippet is streamed by the code interpreter.
 
-    - `delta: string`
+    - `stream_id: optional string`
 
-      The partial code snippet being streamed by the code interpreter.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The unique identifier of the code interpreter tool call item.
-
-    - `output_index: number`
-
-      The index of the output item in the response for which the code is being streamed.
-
-    - `sequence_number: number`
-
-      The sequence number of this event, used to order streaming events.
-
-    - `type: "response.code_interpreter_call_code.delta"`
-
-      The type of the event. Always `response.code_interpreter_call_code.delta`.
-
-      - `"response.code_interpreter_call_code.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCodeInterpreterCallCodeDoneEvent object { code, item_id, output_index, 3 more }`
+  - `BetaResponseCodeInterpreterCallCodeWsDone = BetaResponseCodeInterpreterCallCodeDoneEvent`
 
     Emitted when the code snippet is finalized by the code interpreter.
 
-    - `code: string`
+    - `stream_id: optional string`
 
-      The final code snippet output by the code interpreter.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The unique identifier of the code interpreter tool call item.
-
-    - `output_index: number`
-
-      The index of the output item in the response for which the code is finalized.
-
-    - `sequence_number: number`
-
-      The sequence number of this event, used to order streaming events.
-
-    - `type: "response.code_interpreter_call_code.done"`
-
-      The type of the event. Always `response.code_interpreter_call_code.done`.
-
-      - `"response.code_interpreter_call_code.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCodeInterpreterCallCompletedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseCodeInterpreterCallWsCompleted = BetaResponseCodeInterpreterCallCompletedEvent`
 
     Emitted when the code interpreter call is completed.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the code interpreter tool call item.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response for which the code interpreter call is completed.
-
-    - `sequence_number: number`
-
-      The sequence number of this event, used to order streaming events.
-
-    - `type: "response.code_interpreter_call.completed"`
-
-      The type of the event. Always `response.code_interpreter_call.completed`.
-
-      - `"response.code_interpreter_call.completed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCodeInterpreterCallInProgressEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseCodeInterpreterCallInWsProgress = BetaResponseCodeInterpreterCallInProgressEvent`
 
     Emitted when a code interpreter call is in progress.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the code interpreter tool call item.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response for which the code interpreter call is in progress.
-
-    - `sequence_number: number`
-
-      The sequence number of this event, used to order streaming events.
-
-    - `type: "response.code_interpreter_call.in_progress"`
-
-      The type of the event. Always `response.code_interpreter_call.in_progress`.
-
-      - `"response.code_interpreter_call.in_progress"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCodeInterpreterCallInterpretingEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseCodeInterpreterCallWsInterpreting = BetaResponseCodeInterpreterCallInterpretingEvent`
 
     Emitted when the code interpreter is actively interpreting the code snippet.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the code interpreter tool call item.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response for which the code interpreter is interpreting code.
-
-    - `sequence_number: number`
-
-      The sequence number of this event, used to order streaming events.
-
-    - `type: "response.code_interpreter_call.interpreting"`
-
-      The type of the event. Always `response.code_interpreter_call.interpreting`.
-
-      - `"response.code_interpreter_call.interpreting"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCompletedEvent object { response, sequence_number, type, agent }`
+  - `BetaResponseWsCompleted = BetaResponseCompletedEvent`
 
     Emitted when the model response is complete.
 
-    - `response: BetaResponse`
+    - `stream_id: optional string`
 
-      Properties of the completed response.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-      - `id: string`
-
-        Unique identifier for this Response.
-
-      - `created_at: number`
-
-        Unix timestamp (in seconds) of when this Response was created.
-
-      - `error: BetaResponseError or null`
-
-        An error object returned when the model fails to generate a Response.
-
-        - `code: "server_error" or "rate_limit_exceeded" or "invalid_prompt" or 17 more`
-
-          The error code for the response.
-
-          - `"server_error"`
-
-          - `"rate_limit_exceeded"`
-
-          - `"invalid_prompt"`
-
-          - `"data_residency_mismatch"`
-
-          - `"bio_policy"`
-
-          - `"vector_store_timeout"`
-
-          - `"invalid_image"`
-
-          - `"invalid_image_format"`
-
-          - `"invalid_base64_image"`
-
-          - `"invalid_image_url"`
-
-          - `"image_too_large"`
-
-          - `"image_too_small"`
-
-          - `"image_parse_error"`
-
-          - `"image_content_policy_violation"`
-
-          - `"invalid_image_mode"`
-
-          - `"image_file_too_large"`
-
-          - `"unsupported_image_media_type"`
-
-          - `"empty_image_file"`
-
-          - `"failed_to_download_image"`
-
-          - `"image_file_not_found"`
-
-        - `message: string`
-
-          A human-readable description of the error.
-
-      - `incomplete_details: object { reason }  or null`
-
-        Details about why the response is incomplete.
-
-        - `reason: optional "max_output_tokens" or "content_filter"`
-
-          The reason why the response is incomplete.
-
-          - `"max_output_tokens"`
-
-          - `"content_filter"`
-
-      - `instructions: string or array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 32 more or null`
-
-        A system (or developer) message inserted into the model's context.
-
-        When using along with `previous_response_id`, the instructions from a previous
-        response will not be carried over to the next response. This makes it simple
-        to swap out system (or developer) messages in new responses.
-
-        - `string`
-
-          A text input to the model, equivalent to a text input with the
-          `developer` role.
-
-        - `InputItemList = array of BetaEasyInputMessage or object { content, role, agent, 2 more }  or BetaResponseOutputMessage or 32 more`
-
-          A list of one or many input items to the model, containing
-          different content types.
-
-          - `BetaEasyInputMessage object { content, role, phase, type }`
-
-            A message input to the model with a role indicating instruction following
-            hierarchy. Instructions given with the `developer` or `system` role take
-            precedence over instructions given with the `user` role. Messages with the
-            `assistant` role are presumed to have been generated by the model in previous
-            interactions.
-
-            - `content: string or BetaResponseInputMessageContentList`
-
-              Text, image, or audio input to the model, used to generate a response.
-              Can also contain previous assistant responses.
-
-              - `TextInput = string`
-
-                A text input to the model.
-
-              - `BetaResponseInputMessageContentList = array of BetaResponseInputContent`
-
-                A list of one or many input items to the model, containing different content
-                types.
-
-                - `BetaResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                  A text input to the model.
-
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                  - `prompt_cache_breakpoint: optional object { mode }`
-
-                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                    - `mode: "explicit"`
-
-                      The breakpoint mode. Always `explicit`.
-
-                      - `"explicit"`
-
-                - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
-
-                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-                  - `detail: "low" or "high" or "auto" or "original"`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                    - `"low"`
-
-                    - `"high"`
-
-                    - `"auto"`
-
-                    - `"original"`
-
-                  - `type: "input_image"`
-
-                    The type of the input item. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `file_id: optional string or null`
-
-                    The ID of the file to be sent to the model.
-
-                  - `image_url: optional string or null`
-
-                    The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-                  - `prompt_cache_breakpoint: optional object { mode }`
-
-                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                    - `mode: "explicit"`
-
-                      The breakpoint mode. Always `explicit`.
-
-                      - `"explicit"`
-
-                - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
-
-                  A file input to the model.
-
-                  - `type: "input_file"`
-
-                    The type of the input item. Always `input_file`.
-
-                    - `"input_file"`
-
-                  - `detail: optional "auto" or "low" or "high"`
-
-                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
-
-                    - `"auto"`
-
-                    - `"low"`
-
-                    - `"high"`
-
-                  - `file_data: optional string`
-
-                    The content of the file to be sent to the model.
-
-                  - `file_id: optional string or null`
-
-                    The ID of the file to be sent to the model.
-
-                  - `file_url: optional string`
-
-                    The URL of the file to be sent to the model.
-
-                  - `filename: optional string`
-
-                    The name of the file to be sent to the model.
-
-                  - `prompt_cache_breakpoint: optional object { mode }`
-
-                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                    - `mode: "explicit"`
-
-                      The breakpoint mode. Always `explicit`.
-
-                      - `"explicit"`
-
-            - `role: "user" or "assistant" or "system" or "developer"`
-
-              The role of the message input. One of `user`, `assistant`, `system`, or
-              `developer`.
-
-              - `"user"`
-
-              - `"assistant"`
-
-              - `"system"`
-
-              - `"developer"`
-
-            - `phase: optional "commentary" or "final_answer" or null`
-
-              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
-              For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
-              phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-              - `"commentary"`
-
-              - `"final_answer"`
-
-            - `type: optional "message"`
-
-              The type of the message input. Always `message`.
-
-              - `"message"`
-
-          - `Message object { content, role, agent, 2 more }`
-
-            A message input to the model with a role indicating instruction following
-            hierarchy. Instructions given with the `developer` or `system` role take
-            precedence over instructions given with the `user` role.
-
-            - `content: BetaResponseInputMessageContentList`
-
-              A list of one or many input items to the model, containing different content
-              types.
-
-            - `role: "user" or "system" or "developer"`
-
-              The role of the message input. One of `user`, `system`, or `developer`.
-
-              - `"user"`
-
-              - `"system"`
-
-              - `"developer"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `status: optional "in_progress" or "completed" or "incomplete"`
-
-              The status of item. One of `in_progress`, `completed`, or
-              `incomplete`. Populated when items are returned via API.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-            - `type: optional "message"`
-
-              The type of the message input. Always set to `message`.
-
-              - `"message"`
-
-          - `BetaResponseOutputMessage object { id, content, role, 4 more }`
-
-            An output message from the model.
-
-            - `id: string`
-
-              The unique ID of the output message.
-
-            - `content: array of BetaResponseOutputText or BetaResponseOutputRefusal`
-
-              The content of the output message.
-
-              - `BetaResponseOutputText object { annotations, logprobs, text, type }`
-
-                A text output from the model.
-
-                - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
-
-                  The annotations of the text output.
-
-                  - `FileCitation object { file_id, filename, index, type }`
-
-                    A citation to a file.
-
-                    - `file_id: string`
-
-                      The ID of the file.
-
-                    - `filename: string`
-
-                      The filename of the file cited.
-
-                    - `index: number`
-
-                      The index of the file in the list of files.
-
-                    - `type: "file_citation"`
-
-                      The type of the file citation. Always `file_citation`.
-
-                      - `"file_citation"`
-
-                  - `URLCitation object { end_index, start_index, title, 2 more }`
-
-                    A citation for a web resource used to generate a model response.
-
-                    - `end_index: number`
-
-                      The index of the last character of the URL citation in the message.
-
-                    - `start_index: number`
-
-                      The index of the first character of the URL citation in the message.
-
-                    - `title: string`
-
-                      The title of the web resource.
-
-                    - `type: "url_citation"`
-
-                      The type of the URL citation. Always `url_citation`.
-
-                      - `"url_citation"`
-
-                    - `url: string`
-
-                      The URL of the web resource.
-
-                  - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
-
-                    A citation for a container file used to generate a model response.
-
-                    - `container_id: string`
-
-                      The ID of the container file.
-
-                    - `end_index: number`
-
-                      The index of the last character of the container file citation in the message.
-
-                    - `file_id: string`
-
-                      The ID of the file.
-
-                    - `filename: string`
-
-                      The filename of the container file cited.
-
-                    - `start_index: number`
-
-                      The index of the first character of the container file citation in the message.
-
-                    - `type: "container_file_citation"`
-
-                      The type of the container file citation. Always `container_file_citation`.
-
-                      - `"container_file_citation"`
-
-                  - `FilePath object { file_id, index, type }`
-
-                    A path to a file.
-
-                    - `file_id: string`
-
-                      The ID of the file.
-
-                    - `index: number`
-
-                      The index of the file in the list of files.
-
-                    - `type: "file_path"`
-
-                      The type of the file path. Always `file_path`.
-
-                      - `"file_path"`
-
-                - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
-
-                  - `token: string`
-
-                  - `bytes: array of number`
-
-                  - `logprob: number`
-
-                  - `top_logprobs: array of object { token, bytes, logprob }`
-
-                    - `token: string`
-
-                    - `bytes: array of number`
-
-                    - `logprob: number`
-
-                - `text: string`
-
-                  The text output from the model.
-
-                - `type: "output_text"`
-
-                  The type of the output text. Always `output_text`.
-
-                  - `"output_text"`
-
-              - `BetaResponseOutputRefusal object { refusal, type }`
-
-                A refusal from the model.
-
-                - `refusal: string`
-
-                  The refusal explanation from the model.
-
-                - `type: "refusal"`
-
-                  The type of the refusal. Always `refusal`.
-
-                  - `"refusal"`
-
-            - `role: "assistant"`
-
-              The role of the output message. Always `assistant`.
-
-              - `"assistant"`
-
-            - `status: "in_progress" or "completed" or "incomplete"`
-
-              The status of the message input. One of `in_progress`, `completed`, or
-              `incomplete`. Populated when input items are returned via API.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-            - `type: "message"`
-
-              The type of the output message. Always `message`.
-
-              - `"message"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `phase: optional "commentary" or "final_answer" or null`
-
-              Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
-              For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
-              phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
-
-              - `"commentary"`
-
-              - `"final_answer"`
-
-          - `FileSearchCall object { id, queries, status, 3 more }`
-
-            The results of a file search tool call. See the
-            [file search guide](/docs/guides/tools-file-search) for more information.
-
-            - `id: string`
-
-              The unique ID of the file search tool call.
-
-            - `queries: array of string`
-
-              The queries used to search for files.
-
-            - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-              The status of the file search tool call. One of `in_progress`,
-              `searching`, `incomplete` or `failed`,
-
-              - `"in_progress"`
-
-              - `"searching"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-              - `"failed"`
-
-            - `type: "file_search_call"`
-
-              The type of the file search tool call. Always `file_search_call`.
-
-              - `"file_search_call"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `results: optional array of object { attributes, file_id, filename, 2 more }  or null`
-
-              The results of the file search tool call.
-
-              - `attributes: optional map[string or number or boolean] or null`
-
-                Set of 16 key-value pairs that can be attached to an object. This can be
-                useful for storing additional information about the object in a structured
-                format, and querying for objects via API or the dashboard. Keys are strings
-                with a maximum length of 64 characters. Values are strings with a maximum
-                length of 512 characters, booleans, or numbers.
-
-                - `string`
-
-                - `number`
-
-                - `boolean`
-
-              - `file_id: optional string`
-
-                The unique ID of the file.
-
-              - `filename: optional string`
-
-                The name of the file.
-
-              - `score: optional number`
-
-                The relevance score of the file - a value between 0 and 1.
-
-              - `text: optional string`
-
-                The text that was retrieved from the file.
-
-          - `ComputerCall object { id, call_id, pending_safety_checks, 5 more }`
-
-            A tool call to a computer use tool. See the
-            [computer use guide](/docs/guides/tools-computer-use) for more information.
-
-            - `id: string`
-
-              The unique ID of the computer call.
-
-            - `call_id: string`
-
-              An identifier used when responding to the tool call with output.
-
-            - `pending_safety_checks: array of object { id, code, message }`
-
-              The pending safety checks for the computer call.
-
-              - `id: string`
-
-                The ID of the pending safety check.
-
-              - `code: optional string or null`
-
-                The type of the pending safety check.
-
-              - `message: optional string or null`
-
-                Details about the pending safety check.
-
-            - `status: "in_progress" or "completed" or "incomplete"`
-
-              The status of the item. One of `in_progress`, `completed`, or
-              `incomplete`. Populated when items are returned via API.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-            - `type: "computer_call"`
-
-              The type of the computer call. Always `computer_call`.
-
-              - `"computer_call"`
-
-            - `action: optional BetaComputerAction`
-
-              A click action.
-
-              - `Click object { button, type, x, 2 more }`
-
-                A click action.
-
-                - `button: "left" or "right" or "wheel" or 2 more`
-
-                  Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
-
-                  - `"left"`
-
-                  - `"right"`
-
-                  - `"wheel"`
-
-                  - `"back"`
-
-                  - `"forward"`
-
-                - `type: "click"`
-
-                  Specifies the event type. For a click action, this property is always `click`.
-
-                  - `"click"`
-
-                - `x: number`
-
-                  The x-coordinate where the click occurred.
-
-                - `y: number`
-
-                  The y-coordinate where the click occurred.
-
-                - `keys: optional array of string or null`
-
-                  The keys being held while clicking.
-
-              - `DoubleClick object { keys, type, x, y }`
-
-                A double click action.
-
-                - `keys: array of string or null`
-
-                  The keys being held while double-clicking.
-
-                - `type: "double_click"`
-
-                  Specifies the event type. For a double click action, this property is always set to `double_click`.
-
-                  - `"double_click"`
-
-                - `x: number`
-
-                  The x-coordinate where the double click occurred.
-
-                - `y: number`
-
-                  The y-coordinate where the double click occurred.
-
-              - `Drag object { path, type, keys }`
-
-                A drag action.
-
-                - `path: array of object { x, y }`
-
-                  An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
-
-                  ```
-                  [
-                    { x: 100, y: 200 },
-                    { x: 200, y: 300 }
-                  ]
-                  ```
-
-                  - `x: number`
-
-                    The x-coordinate.
-
-                  - `y: number`
-
-                    The y-coordinate.
-
-                - `type: "drag"`
-
-                  Specifies the event type. For a drag action, this property is always set to `drag`.
-
-                  - `"drag"`
-
-                - `keys: optional array of string or null`
-
-                  The keys being held while dragging the mouse.
-
-              - `Keypress object { keys, type }`
-
-                A collection of keypresses the model would like to perform.
-
-                - `keys: array of string`
-
-                  The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
-
-                - `type: "keypress"`
-
-                  Specifies the event type. For a keypress action, this property is always set to `keypress`.
-
-                  - `"keypress"`
-
-              - `Move object { type, x, y, keys }`
-
-                A mouse move action.
-
-                - `type: "move"`
-
-                  Specifies the event type. For a move action, this property is always set to `move`.
-
-                  - `"move"`
-
-                - `x: number`
-
-                  The x-coordinate to move to.
-
-                - `y: number`
-
-                  The y-coordinate to move to.
-
-                - `keys: optional array of string or null`
-
-                  The keys being held while moving the mouse.
-
-              - `Screenshot object { type }`
-
-                A screenshot action.
-
-                - `type: "screenshot"`
-
-                  Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
-
-                  - `"screenshot"`
-
-              - `Scroll object { scroll_x, scroll_y, type, 3 more }`
-
-                A scroll action.
-
-                - `scroll_x: number`
-
-                  The horizontal scroll distance.
-
-                - `scroll_y: number`
-
-                  The vertical scroll distance.
-
-                - `type: "scroll"`
-
-                  Specifies the event type. For a scroll action, this property is always set to `scroll`.
-
-                  - `"scroll"`
-
-                - `x: number`
-
-                  The x-coordinate where the scroll occurred.
-
-                - `y: number`
-
-                  The y-coordinate where the scroll occurred.
-
-                - `keys: optional array of string or null`
-
-                  The keys being held while scrolling.
-
-              - `Type object { text, type }`
-
-                An action to type in text.
-
-                - `text: string`
-
-                  The text to type.
-
-                - `type: "type"`
-
-                  Specifies the event type. For a type action, this property is always set to `type`.
-
-                  - `"type"`
-
-              - `Wait object { type }`
-
-                A wait action.
-
-                - `type: "wait"`
-
-                  Specifies the event type. For a wait action, this property is always set to `wait`.
-
-                  - `"wait"`
-
-            - `actions: optional BetaComputerActionList`
-
-              Flattened batched actions for `computer_use`. Each action includes an
-              `type` discriminator and action-specific fields.
-
-              - `Click object { button, type, x, 2 more }`
-
-                A click action.
-
-              - `DoubleClick object { keys, type, x, y }`
-
-                A double click action.
-
-              - `Drag object { path, type, keys }`
-
-                A drag action.
-
-              - `Keypress object { keys, type }`
-
-                A collection of keypresses the model would like to perform.
-
-              - `Move object { type, x, y, keys }`
-
-                A mouse move action.
-
-              - `Screenshot object { type }`
-
-                A screenshot action.
-
-              - `Scroll object { scroll_x, scroll_y, type, 3 more }`
-
-                A scroll action.
-
-              - `Type object { text, type }`
-
-                An action to type in text.
-
-              - `Wait object { type }`
-
-                A wait action.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `ComputerCallOutput object { call_id, output, type, 4 more }`
-
-            The output of a computer tool call.
-
-            - `call_id: string`
-
-              The ID of the computer tool call that produced the output.
-
-            - `output: BetaResponseComputerToolCallOutputScreenshot`
-
-              A computer screenshot image used with the computer use tool.
-
-              - `type: "computer_screenshot"`
-
-                Specifies the event type. For a computer screenshot, this property is
-                always set to `computer_screenshot`.
-
-                - `"computer_screenshot"`
-
-              - `file_id: optional string`
-
-                The identifier of an uploaded file that contains the screenshot.
-
-              - `image_url: optional string`
-
-                The URL of the screenshot image.
-
-            - `type: "computer_call_output"`
-
-              The type of the computer tool call output. Always `computer_call_output`.
-
-              - `"computer_call_output"`
-
-            - `id: optional string or null`
-
-              The ID of the computer tool call output.
-
-            - `acknowledged_safety_checks: optional array of object { id, code, message }  or null`
-
-              The safety checks reported by the API that have been acknowledged by the developer.
-
-              - `id: string`
-
-                The ID of the pending safety check.
-
-              - `code: optional string or null`
-
-                The type of the pending safety check.
-
-              - `message: optional string or null`
-
-                Details about the pending safety check.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-              The status of the message input. One of `in_progress`, `completed`, or `incomplete`. Populated when input items are returned via API.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `WebSearchCall object { id, action, status, 2 more }`
-
-            The results of a web search tool call. See the
-            [web search guide](/docs/guides/tools-web-search) for more information.
-
-            - `id: string`
-
-              The unique ID of the web search tool call.
-
-            - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
-
-              An object describing the specific action taken in this web search call.
-              Includes details on how the model used the web (search, open_page, find_in_page).
-
-              - `Search object { type, queries, query, sources }`
-
-                Action type "search" - Performs a web search query.
-
-                - `type: "search"`
-
-                  The action type.
-
-                  - `"search"`
-
-                - `queries: optional array of string`
-
-                  The search queries.
-
-                - `query: optional string`
-
-                  The search query.
-
-                - `sources: optional array of object { type, url }`
-
-                  The sources used in the search.
-
-                  - `type: "url"`
-
-                    The type of source. Always `url`.
-
-                    - `"url"`
-
-                  - `url: string`
-
-                    The URL of the source.
-
-              - `OpenPage object { type, url }`
-
-                Action type "open_page" - Opens a specific URL from search results.
-
-                - `type: "open_page"`
-
-                  The action type.
-
-                  - `"open_page"`
-
-                - `url: optional string or null`
-
-                  The URL opened by the model.
-
-              - `FindInPage object { pattern, type, url }`
-
-                Action type "find_in_page": Searches for a pattern within a loaded page.
-
-                - `pattern: string`
-
-                  The pattern or text to search for within the page.
-
-                - `type: "find_in_page"`
-
-                  The action type.
-
-                  - `"find_in_page"`
-
-                - `url: string`
-
-                  The URL of the page searched for the pattern.
-
-            - `status: "in_progress" or "searching" or "completed" or "failed"`
-
-              The status of the web search tool call.
-
-              - `"in_progress"`
-
-              - `"searching"`
-
-              - `"completed"`
-
-              - `"failed"`
-
-            - `type: "web_search_call"`
-
-              The type of the web search tool call. Always `web_search_call`.
-
-              - `"web_search_call"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `FunctionCall object { arguments, call_id, name, 6 more }`
-
-            A tool call to run a function. See the
-            [function calling guide](/docs/guides/function-calling) for more information.
-
-            - `arguments: string`
-
-              A JSON string of the arguments to pass to the function.
-
-            - `call_id: string`
-
-              The unique ID of the function tool call generated by the model.
-
-            - `name: string`
-
-              The name of the function to run.
-
-            - `type: "function_call"`
-
-              The type of the function tool call. Always `function_call`.
-
-              - `"function_call"`
-
-            - `id: optional string`
-
-              The unique ID of the function tool call.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  - `"program"`
-
-            - `namespace: optional string`
-
-              The namespace of the function to run.
-
-            - `status: optional "in_progress" or "completed" or "incomplete"`
-
-              The status of the item. One of `in_progress`, `completed`, or
-              `incomplete`. Populated when items are returned via API.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `FunctionCallOutput object { output, type, id, 6 more }`
-
-            The output of a function tool call.
-
-            - `output: string or array of BetaResponseInputTextContent or BetaResponseInputImageContent or BetaResponseInputFileContent`
-
-              Text, image, or file output of the function tool call.
-
-              - `string`
-
-                A JSON string of the output of the function tool call.
-
-              - `array of BetaResponseInputTextContent or BetaResponseInputImageContent or BetaResponseInputFileContent`
-
-                An array of content outputs (text, image, file) for the function tool call.
-
-                - `BetaResponseInputTextContent object { text, type, prompt_cache_breakpoint }`
-
-                  A text input to the model.
-
-                  - `text: string`
-
-                    The text input to the model.
-
-                  - `type: "input_text"`
-
-                    The type of the input item. Always `input_text`.
-
-                    - `"input_text"`
-
-                  - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                    - `mode: "explicit"`
-
-                      The breakpoint mode. Always `explicit`.
-
-                      - `"explicit"`
-
-                - `BetaResponseInputImageContent object { type, detail, file_id, 2 more }`
-
-                  An image input to the model. Learn about [image inputs](/docs/guides/vision)
-
-                  - `type: "input_image"`
-
-                    The type of the input item. Always `input_image`.
-
-                    - `"input_image"`
-
-                  - `detail: optional "low" or "high" or "auto" or "original" or null`
-
-                    The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                    - `"low"`
-
-                    - `"high"`
-
-                    - `"auto"`
-
-                    - `"original"`
-
-                  - `file_id: optional string or null`
-
-                    The ID of the file to be sent to the model.
-
-                  - `image_url: optional string or null`
-
-                    The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
-
-                  - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                    - `mode: "explicit"`
-
-                      The breakpoint mode. Always `explicit`.
-
-                      - `"explicit"`
-
-                - `BetaResponseInputFileContent object { type, detail, file_data, 4 more }`
-
-                  A file input to the model.
-
-                  - `type: "input_file"`
-
-                    The type of the input item. Always `input_file`.
-
-                    - `"input_file"`
-
-                  - `detail: optional "auto" or "low" or "high"`
-
-                    The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
-
-                    - `"auto"`
-
-                    - `"low"`
-
-                    - `"high"`
-
-                  - `file_data: optional string or null`
-
-                    The base64-encoded data of the file to be sent to the model.
-
-                  - `file_id: optional string or null`
-
-                    The ID of the file to be sent to the model.
-
-                  - `file_url: optional string or null`
-
-                    The URL of the file to be sent to the model.
-
-                  - `filename: optional string or null`
-
-                    The name of the file to be sent to the model.
-
-                  - `prompt_cache_breakpoint: optional object { mode }  or null`
-
-                    Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                    - `mode: "explicit"`
-
-                      The breakpoint mode. Always `explicit`.
-
-                      - `"explicit"`
-
-            - `type: "function_call_output"`
-
-              The type of the function tool call output. Always `function_call_output`.
-
-              - `"function_call_output"`
-
-            - `id: optional string or null`
-
-              The unique ID of the function tool call output. Populated when this item is returned via API.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `call_id: optional string or null`
-
-              The unique ID of the function tool call generated by the model.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  The caller type. Always `direct`.
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  The caller type. Always `program`.
-
-                  - `"program"`
-
-            - `name: optional string or null`
-
-              The name of the tool that produced the output.
-
-            - `namespace: optional string or null`
-
-              The namespace of the tool that produced the output.
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-              The status of the item. One of `in_progress`, `completed`, or `incomplete`. Populated when items are returned via API.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `AgentMessage object { author, content, recipient, 3 more }`
-
-            A message routed between agents.
-
-            - `author: string`
-
-              The sending agent identity.
-
-            - `content: array of BetaResponseInputTextContent or BetaResponseInputImageContent or object { encrypted_content, type }`
-
-              Plaintext, image, or encrypted content sent between agents.
-
-              - `BetaResponseInputTextContent object { text, type, prompt_cache_breakpoint }`
-
-                A text input to the model.
-
-              - `BetaResponseInputImageContent object { type, detail, file_id, 2 more }`
-
-                An image input to the model. Learn about [image inputs](/docs/guides/vision)
-
-              - `EncryptedContent object { encrypted_content, type }`
-
-                Opaque encrypted content that Responses API decrypts inside trusted model execution.
-
-                - `encrypted_content: string`
-
-                  Opaque encrypted content.
-
-                - `type: "encrypted_content"`
-
-                  The type of the input item. Always `encrypted_content`.
-
-                  - `"encrypted_content"`
-
-            - `recipient: string`
-
-              The destination agent identity.
-
-            - `type: "agent_message"`
-
-              The item type. Always `agent_message`.
-
-              - `"agent_message"`
-
-            - `id: optional string or null`
-
-              The unique ID of this agent message item.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `MultiAgentCall object { action, arguments, call_id, 3 more }`
-
-            - `action: "spawn_agent" or "interrupt_agent" or "list_agents" or 3 more`
-
-              The multi-agent action that was executed.
-
-              - `"spawn_agent"`
-
-              - `"interrupt_agent"`
-
-              - `"list_agents"`
-
-              - `"send_message"`
-
-              - `"followup_task"`
-
-              - `"wait_agent"`
-
-            - `arguments: string`
-
-              The action arguments as a JSON string.
-
-            - `call_id: string`
-
-              The unique ID linking this call to its output.
-
-            - `type: "multi_agent_call"`
-
-              The item type. Always `multi_agent_call`.
-
-              - `"multi_agent_call"`
-
-            - `id: optional string or null`
-
-              The unique ID of this multi-agent call.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `MultiAgentCallOutput object { action, call_id, output, 3 more }`
-
-            - `action: "spawn_agent" or "interrupt_agent" or "list_agents" or 3 more`
-
-              The multi-agent action that produced this result.
-
-              - `"spawn_agent"`
-
-              - `"interrupt_agent"`
-
-              - `"list_agents"`
-
-              - `"send_message"`
-
-              - `"followup_task"`
-
-              - `"wait_agent"`
-
-            - `call_id: string`
-
-              The unique ID of the multi-agent call.
-
-            - `output: array of object { text, type, annotations }`
-
-              Text output returned by the multi-agent action.
-
-              - `text: string`
-
-                The text content.
-
-              - `type: "output_text"`
-
-                The content type. Always `output_text`.
-
-                - `"output_text"`
-
-              - `annotations: optional array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }`
-
-                Citations associated with the text content.
-
-                - `FileCitation object { file_id, filename, index, type }`
-
-                  - `file_id: string`
-
-                    The ID of the file.
-
-                  - `filename: string`
-
-                    The filename of the file cited.
-
-                  - `index: number`
-
-                    The index of the file in the list of files.
-
-                  - `type: "file_citation"`
-
-                    The citation type. Always `file_citation`.
-
-                    - `"file_citation"`
-
-                - `URLCitation object { end_index, start_index, title, 2 more }`
-
-                  - `end_index: number`
-
-                    The index of the last character of the citation in the message.
-
-                  - `start_index: number`
-
-                    The index of the first character of the citation in the message.
-
-                  - `title: string`
-
-                    The title of the cited resource.
-
-                  - `type: "url_citation"`
-
-                    The citation type. Always `url_citation`.
-
-                    - `"url_citation"`
-
-                  - `url: string`
-
-                    The URL of the cited resource.
-
-                - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
-
-                  - `container_id: string`
-
-                    The ID of the container.
-
-                  - `end_index: number`
-
-                    The index of the last character of the citation in the message.
-
-                  - `file_id: string`
-
-                    The ID of the container file.
-
-                  - `filename: string`
-
-                    The filename of the container file cited.
-
-                  - `start_index: number`
-
-                    The index of the first character of the citation in the message.
-
-                  - `type: "container_file_citation"`
-
-                    The citation type. Always `container_file_citation`.
-
-                    - `"container_file_citation"`
-
-            - `type: "multi_agent_call_output"`
-
-              The item type. Always `multi_agent_call_output`.
-
-              - `"multi_agent_call_output"`
-
-            - `id: optional string or null`
-
-              The unique ID of this multi-agent call output.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `ToolSearchCall object { arguments, type, id, 4 more }`
-
-            - `arguments: unknown`
-
-              The arguments supplied to the tool search call.
-
-            - `type: "tool_search_call"`
-
-              The item type. Always `tool_search_call`.
-
-              - `"tool_search_call"`
-
-            - `id: optional string or null`
-
-              The unique ID of this tool search call.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `call_id: optional string or null`
-
-              The unique ID of the tool search call generated by the model.
-
-            - `execution: optional "server" or "client"`
-
-              Whether tool search was executed by the server or by the client.
-
-              - `"server"`
-
-              - `"client"`
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-              The status of the tool search call.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `ToolSearchOutput object { tools, type, id, 4 more }`
-
-            - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
-
-              The loaded tool definitions returned by the tool search output.
-
-              - `Function object { name, parameters, strict, 5 more }`
-
-                Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
-
-                - `name: string`
-
-                  The name of the function to call.
-
-                - `parameters: map[unknown] or null`
-
-                  A JSON schema object describing the parameters of the function.
-
-                - `strict: boolean or null`
-
-                  Whether strict parameter validation is enforced for this function tool.
-
-                - `type: "function"`
-
-                  The type of the function tool. Always `function`.
-
-                  - `"function"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `defer_loading: optional boolean`
-
-                  Whether this function is deferred and loaded via tool search.
-
-                - `description: optional string or null`
-
-                  A description of the function. Used by the model to determine whether or not to call the function.
-
-                - `output_schema: optional map[unknown] or null`
-
-                  A JSON schema object describing the JSON value encoded in string outputs for this function.
-
-              - `FileSearch object { type, vector_store_ids, filters, 2 more }`
-
-                A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
-
-                - `type: "file_search"`
-
-                  The type of the file search tool. Always `file_search`.
-
-                  - `"file_search"`
-
-                - `vector_store_ids: array of string`
-
-                  The IDs of the vector stores to search.
-
-                - `filters: optional object { key, type, value }  or object { filters, type }  or null`
-
-                  A filter to apply.
-
-                  - `ComparisonFilter object { key, type, value }`
-
-                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: string`
-
-                      The key to compare against the value.
-
-                    - `type: "eq" or "ne" or "gt" or 5 more`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: string or number or boolean or array of string or number`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `string`
-
-                      - `number`
-
-                      - `boolean`
-
-                      - `array of string or number`
-
-                        - `string`
-
-                        - `number`
-
-                  - `CompoundFilter object { filters, type }`
-
-                    Combine multiple filters using `and` or `or`.
-
-                    - `filters: array of object { key, type, value }  or unknown`
-
-                      Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                      - `ComparisonFilter object { key, type, value }`
-
-                        A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                        - `key: string`
-
-                          The key to compare against the value.
-
-                        - `type: "eq" or "ne" or "gt" or 5 more`
-
-                          Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                          - `eq`: equals
-                          - `ne`: not equal
-                          - `gt`: greater than
-                          - `gte`: greater than or equal
-                          - `lt`: less than
-                          - `lte`: less than or equal
-                          - `in`: in
-                          - `nin`: not in
-
-                          - `"eq"`
-
-                          - `"ne"`
-
-                          - `"gt"`
-
-                          - `"gte"`
-
-                          - `"lt"`
-
-                          - `"lte"`
-
-                          - `"in"`
-
-                          - `"nin"`
-
-                        - `value: string or number or boolean or array of string or number`
-
-                          The value to compare against the attribute key; supports string, number, or boolean types.
-
-                          - `string`
-
-                          - `number`
-
-                          - `boolean`
-
-                          - `array of string or number`
-
-                            - `string`
-
-                            - `number`
-
-                      - `unknown`
-
-                    - `type: "and" or "or"`
-
-                      Type of operation: `and` or `or`.
-
-                      - `"and"`
-
-                      - `"or"`
-
-                - `max_num_results: optional number`
-
-                  The maximum number of results to return. This number should be between 1 and 50 inclusive.
-
-                - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
-
-                  Ranking options for search.
-
-                  - `hybrid_search: optional object { embedding_weight, text_weight }`
-
-                    Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
-
-                    - `embedding_weight: number`
-
-                      The weight of the embedding in the reciprocal ranking fusion.
-
-                    - `text_weight: number`
-
-                      The weight of the text in the reciprocal ranking fusion.
-
-                  - `ranker: optional "auto" or "default-2024-11-15"`
-
-                    The ranker to use for the file search.
-
-                    - `"auto"`
-
-                    - `"default-2024-11-15"`
-
-                  - `score_threshold: optional number`
-
-                    The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
-
-              - `Computer object { type }`
-
-                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-                - `type: "computer"`
-
-                  The type of the computer tool. Always `computer`.
-
-                  - `"computer"`
-
-              - `ComputerUsePreview object { display_height, display_width, environment, type }`
-
-                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-                - `display_height: number`
-
-                  The height of the computer display.
-
-                - `display_width: number`
-
-                  The width of the computer display.
-
-                - `environment: "windows" or "mac" or "linux" or 2 more`
-
-                  The type of computer environment to control.
-
-                  - `"windows"`
-
-                  - `"mac"`
-
-                  - `"linux"`
-
-                  - `"ubuntu"`
-
-                  - `"browser"`
-
-                - `type: "computer_use_preview"`
-
-                  The type of the computer use tool. Always `computer_use_preview`.
-
-                  - `"computer_use_preview"`
-
-              - `WebSearch object { type, filters, search_context_size, user_location }`
-
-                Search the Internet for sources related to the prompt. Learn more about the
-                [web search tool](/docs/guides/tools-web-search).
-
-                - `type: "web_search" or "web_search_2025_08_26"`
-
-                  The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
-
-                  - `"web_search"`
-
-                  - `"web_search_2025_08_26"`
-
-                - `filters: optional object { allowed_domains }  or null`
-
-                  Filters for the search.
-
-                  - `allowed_domains: optional array of string or null`
-
-                    Allowed domains for the search. If not provided, all domains are allowed.
-                    Subdomains of the provided domains are allowed as well.
-
-                    Example: `["pubmed.ncbi.nlm.nih.gov"]`
-
-                - `search_context_size: optional "low" or "medium" or "high"`
-
-                  High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                  - `"low"`
-
-                  - `"medium"`
-
-                  - `"high"`
-
-                - `user_location: optional object { city, country, region, 2 more }  or null`
-
-                  The approximate location of the user.
-
-                  - `city: optional string or null`
-
-                    Free text input for the city of the user, e.g. `San Francisco`.
-
-                  - `country: optional string or null`
-
-                    The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                  - `region: optional string or null`
-
-                    Free text input for the region of the user, e.g. `California`.
-
-                  - `timezone: optional string or null`
-
-                    The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-                  - `type: optional "approximate"`
-
-                    The type of location approximation. Always `approximate`.
-
-                    - `"approximate"`
-
-              - `Mcp object { server_label, type, allowed_callers, 9 more }`
-
-                Give the model access to additional tools via remote Model Context Protocol
-                (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
-
-                - `server_label: string`
-
-                  A label for this MCP server, used to identify it in tool calls.
-
-                - `type: "mcp"`
-
-                  The type of the MCP tool. Always `mcp`.
-
-                  - `"mcp"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
-
-                  List of allowed tool names or a filter object.
-
-                  - `McpAllowedTools = array of string`
-
-                    A string array of allowed tool names
-
-                  - `McpToolFilter object { read_only, tool_names }`
-
-                    A filter object to specify which tools are allowed.
-
-                    - `read_only: optional boolean`
-
-                      Indicates whether or not a tool modifies data or is read-only. If an
-                      MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                      it will match this filter.
-
-                    - `tool_names: optional array of string`
-
-                      List of allowed tool names.
-
-                - `authorization: optional string`
-
-                  An OAuth access token that can be used with a remote MCP server, either
-                  with a custom MCP server URL or a service connector. Your application
-                  must handle the OAuth authorization flow and provide the token here.
-
-                - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
-
-                  Identifier for service connectors, like those available in ChatGPT. One of
-                  `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-                  about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
-
-                  Currently supported `connector_id` values are:
-
-                  - Dropbox: `connector_dropbox`
-                  - Gmail: `connector_gmail`
-                  - Google Calendar: `connector_googlecalendar`
-                  - Google Drive: `connector_googledrive`
-                  - Microsoft Teams: `connector_microsoftteams`
-                  - Outlook Calendar: `connector_outlookcalendar`
-                  - Outlook Email: `connector_outlookemail`
-                  - SharePoint: `connector_sharepoint`
-
-                  - `"connector_dropbox"`
-
-                  - `"connector_gmail"`
-
-                  - `"connector_googlecalendar"`
-
-                  - `"connector_googledrive"`
-
-                  - `"connector_microsoftteams"`
-
-                  - `"connector_outlookcalendar"`
-
-                  - `"connector_outlookemail"`
-
-                  - `"connector_sharepoint"`
-
-                - `defer_loading: optional boolean`
-
-                  Whether this MCP tool is deferred and discovered via tool search.
-
-                - `headers: optional map[string] or null`
-
-                  Optional HTTP headers to send to the MCP server. Use for authentication
-                  or other purposes.
-
-                - `require_approval: optional object { always, never }  or "always" or "never" or null`
-
-                  Specify which of the MCP server's tools require approval.
-
-                  - `McpToolApprovalFilter object { always, never }`
-
-                    Specify which of the MCP server's tools require approval. Can be
-                    `always`, `never`, or a filter object associated with tools
-                    that require approval.
-
-                    - `always: optional object { read_only, tool_names }`
-
-                      A filter object to specify which tools are allowed.
-
-                      - `read_only: optional boolean`
-
-                        Indicates whether or not a tool modifies data or is read-only. If an
-                        MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                        it will match this filter.
-
-                      - `tool_names: optional array of string`
-
-                        List of allowed tool names.
-
-                    - `never: optional object { read_only, tool_names }`
-
-                      A filter object to specify which tools are allowed.
-
-                      - `read_only: optional boolean`
-
-                        Indicates whether or not a tool modifies data or is read-only. If an
-                        MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                        it will match this filter.
-
-                      - `tool_names: optional array of string`
-
-                        List of allowed tool names.
-
-                  - `McpToolApprovalSetting = "always" or "never"`
-
-                    Specify a single approval policy for all tools. One of `always` or
-                    `never`. When set to `always`, all tools will require approval. When
-                    set to `never`, all tools will not require approval.
-
-                    - `"always"`
-
-                    - `"never"`
-
-                - `server_description: optional string`
-
-                  Optional description of the MCP server, used to provide more context.
-
-                - `server_url: optional string`
-
-                  The URL for the MCP server. One of `server_url`, `connector_id`, or
-                  `tunnel_id` must be provided.
-
-                - `tunnel_id: optional string`
-
-                  The Secure MCP Tunnel ID to use instead of a direct server URL. One of
-                  `server_url`, `connector_id`, or `tunnel_id` must be provided.
-
-              - `CodeInterpreter object { container, type, allowed_callers }`
-
-                A tool that runs Python code to help generate a response to a prompt.
-
-                - `container: string or object { type, file_ids, memory_limit, network_policy }`
-
-                  The code interpreter container. Can be a container ID or an object that
-                  specifies uploaded file IDs to make available to your code, along with an
-                  optional `memory_limit` setting.
-
-                  - `string`
-
-                    The container ID.
-
-                  - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
-
-                    Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
-
-                    - `type: "auto"`
-
-                      Always `auto`.
-
-                      - `"auto"`
-
-                    - `file_ids: optional array of string`
-
-                      An optional list of uploaded files to make available to your code.
-
-                    - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
-
-                      The memory limit for the code interpreter container.
-
-                      - `"1g"`
-
-                      - `"4g"`
-
-                      - `"16g"`
-
-                      - `"64g"`
-
-                    - `network_policy: optional BetaContainerNetworkPolicyDisabled or BetaContainerNetworkPolicyAllowlist`
-
-                      Network access policy for the container.
-
-                      - `BetaContainerNetworkPolicyDisabled object { type }`
-
-                        - `type: "disabled"`
-
-                          Disable outbound network access. Always `disabled`.
-
-                          - `"disabled"`
-
-                      - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
-
-                        - `allowed_domains: array of string`
-
-                          A list of allowed domains when type is `allowlist`.
-
-                        - `type: "allowlist"`
-
-                          Allow outbound network access only to specified domains. Always `allowlist`.
-
-                          - `"allowlist"`
-
-                        - `domain_secrets: optional array of BetaContainerNetworkPolicyDomainSecret`
-
-                          Optional domain-scoped secrets for allowlisted domains.
-
-                          - `domain: string`
-
-                            The domain associated with the secret.
-
-                          - `name: string`
-
-                            The name of the secret to inject for the domain.
-
-                          - `value: string`
-
-                            The secret value to inject for the domain.
-
-                - `type: "code_interpreter"`
-
-                  The type of the code interpreter tool. Always `code_interpreter`.
-
-                  - `"code_interpreter"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-              - `ProgrammaticToolCalling object { type }`
-
-                - `type: "programmatic_tool_calling"`
-
-                  The type of the tool. Always `programmatic_tool_calling`.
-
-                  - `"programmatic_tool_calling"`
-
-              - `ImageGeneration object { type, action, background, 9 more }`
-
-                A tool that generates images using the GPT image models.
-
-                - `type: "image_generation"`
-
-                  The type of the image generation tool. Always `image_generation`.
-
-                  - `"image_generation"`
-
-                - `action: optional "generate" or "edit" or "auto"`
-
-                  Whether to generate a new image or edit an existing image. Default: `auto`.
-
-                  - `"generate"`
-
-                  - `"edit"`
-
-                  - `"auto"`
-
-                - `background: optional "transparent" or "opaque" or "auto"`
-
-                  Background type for the generated image. One of `transparent`,
-                  `opaque`, or `auto`. Default: `auto`.
-
-                  - `"transparent"`
-
-                  - `"opaque"`
-
-                  - `"auto"`
-
-                - `input_fidelity: optional "high" or "low" or null`
-
-                  Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
-
-                  - `"high"`
-
-                  - `"low"`
-
-                - `input_image_mask: optional object { file_id, image_url }`
-
-                  Optional mask for inpainting. Contains `image_url`
-                  (string, optional) and `file_id` (string, optional).
-
-                  - `file_id: optional string`
-
-                    File ID for the mask image.
-
-                  - `image_url: optional string`
-
-                    Base64-encoded mask image.
-
-                - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                  The image generation model to use. Default: `gpt-image-1`.
-
-                  - `string`
-
-                  - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                    The image generation model to use. Default: `gpt-image-1`.
-
-                    - `"gpt-image-1"`
-
-                    - `"gpt-image-1-mini"`
-
-                    - `"gpt-image-1.5"`
-
-                - `moderation: optional "auto" or "low"`
-
-                  Moderation level for the generated image. Default: `auto`.
-
-                  - `"auto"`
-
-                  - `"low"`
-
-                - `output_compression: optional number`
-
-                  Compression level for the output image. Default: 100.
-
-                - `output_format: optional "png" or "webp" or "jpeg"`
-
-                  The output format of the generated image. One of `png`, `webp`, or
-                  `jpeg`. Default: `png`.
-
-                  - `"png"`
-
-                  - `"webp"`
-
-                  - `"jpeg"`
-
-                - `partial_images: optional number`
-
-                  Number of partial images to generate in streaming mode, from 0 (default value) to 3.
-
-                - `quality: optional "low" or "medium" or "high" or "auto"`
-
-                  The quality of the generated image. One of `low`, `medium`, `high`,
-                  or `auto`. Default: `auto`.
-
-                  - `"low"`
-
-                  - `"medium"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                  - `string`
-
-                  - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                    The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                    - `"1024x1024"`
-
-                    - `"1024x1536"`
-
-                    - `"1536x1024"`
-
-                    - `"auto"`
-
-              - `LocalShell object { type }`
-
-                A tool that allows the model to execute shell commands in a local environment.
-
-                - `type: "local_shell"`
-
-                  The type of the local shell tool. Always `local_shell`.
-
-                  - `"local_shell"`
-
-              - `Shell object { type, allowed_callers, environment }`
-
-                A tool that allows the model to execute shell commands.
-
-                - `type: "shell"`
-
-                  The type of the shell tool. Always `shell`.
-
-                  - `"shell"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference or null`
-
-                  - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
-
-                    - `type: "container_auto"`
-
-                      Automatically creates a container for this request
-
-                      - `"container_auto"`
-
-                    - `file_ids: optional array of string`
-
-                      An optional list of uploaded files to make available to your code.
-
-                    - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
-
-                      The memory limit for the container.
-
-                      - `"1g"`
-
-                      - `"4g"`
-
-                      - `"16g"`
-
-                      - `"64g"`
-
-                    - `network_policy: optional BetaContainerNetworkPolicyDisabled or BetaContainerNetworkPolicyAllowlist`
-
-                      Network access policy for the container.
-
-                      - `BetaContainerNetworkPolicyDisabled object { type }`
-
-                      - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
-
-                    - `skills: optional array of BetaSkillReference or BetaInlineSkill`
-
-                      An optional list of skills referenced by id or inline data.
-
-                      - `BetaSkillReference object { skill_id, type, version }`
-
-                        - `skill_id: string`
-
-                          The ID of the referenced skill.
-
-                        - `type: "skill_reference"`
-
-                          References a skill created with the /v1/skills endpoint.
-
-                          - `"skill_reference"`
-
-                        - `version: optional string`
-
-                          Optional skill version. Use a positive integer or 'latest'. Omit for default.
-
-                      - `BetaInlineSkill object { description, name, source, type }`
-
-                        - `description: string`
-
-                          The description of the skill.
-
-                        - `name: string`
-
-                          The name of the skill.
-
-                        - `source: BetaInlineSkillSource`
-
-                          Inline skill payload
-
-                          - `data: string`
-
-                            Base64-encoded skill zip bundle.
-
-                          - `media_type: "application/zip"`
-
-                            The media type of the inline skill payload. Must be `application/zip`.
-
-                            - `"application/zip"`
-
-                          - `type: "base64"`
-
-                            The type of the inline skill source. Must be `base64`.
-
-                            - `"base64"`
-
-                        - `type: "inline"`
-
-                          Defines an inline skill for this request.
-
-                          - `"inline"`
-
-                  - `BetaLocalEnvironment object { type, skills }`
-
-                    - `type: "local"`
-
-                      Use a local computer environment.
-
-                      - `"local"`
-
-                    - `skills: optional array of BetaLocalSkill`
-
-                      An optional list of skills.
-
-                      - `description: string`
-
-                        The description of the skill.
-
-                      - `name: string`
-
-                        The name of the skill.
-
-                      - `path: string`
-
-                        The path to the directory containing the skill.
-
-                  - `BetaContainerReference object { container_id, type }`
-
-                    - `container_id: string`
-
-                      The ID of the referenced container.
-
-                    - `type: "container_reference"`
-
-                      References a container created with the /v1/containers endpoint
-
-                      - `"container_reference"`
-
-              - `Custom object { name, type, allowed_callers, 3 more }`
-
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-                - `name: string`
-
-                  The name of the custom tool, used to identify it in tool calls.
-
-                - `type: "custom"`
-
-                  The type of the custom tool. Always `custom`.
-
-                  - `"custom"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `defer_loading: optional boolean`
-
-                  Whether this tool should be deferred and discovered via tool search.
-
-                - `description: optional string`
-
-                  Optional description of the custom tool, used to provide more context.
-
-                - `format: optional object { type }  or object { definition, syntax, type }`
-
-                  The input format for the custom tool. Default is unconstrained text.
-
-                  - `Text object { type }`
-
-                    Unconstrained free-form text.
-
-                    - `type: "text"`
-
-                      Unconstrained text format. Always `text`.
-
-                      - `"text"`
-
-                  - `Grammar object { definition, syntax, type }`
-
-                    A grammar defined by the user.
-
-                    - `definition: string`
-
-                      The grammar definition.
-
-                    - `syntax: "lark" or "regex"`
-
-                      The syntax of the grammar definition. One of `lark` or `regex`.
-
-                      - `"lark"`
-
-                      - `"regex"`
-
-                    - `type: "grammar"`
-
-                      Grammar format. Always `grammar`.
-
-                      - `"grammar"`
-
-              - `Namespace object { description, name, tools, type }`
-
-                Groups function/custom tools under a shared namespace.
-
-                - `description: string`
-
-                  A description of the namespace shown to the model.
-
-                - `name: string`
-
-                  The namespace name used in tool calls (for example, `crm`).
-
-                - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
-
-                  The function/custom tools available inside this namespace.
-
-                  - `Function object { name, type, allowed_callers, 5 more }`
-
-                    - `name: string`
-
-                    - `type: "function"`
-
-                      - `"function"`
-
-                    - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                      The tool invocation context(s).
-
-                      - `"direct"`
-
-                      - `"programmatic"`
-
-                    - `defer_loading: optional boolean`
-
-                      Whether this function should be deferred and discovered via tool search.
-
-                    - `description: optional string or null`
-
-                    - `output_schema: optional map[unknown] or null`
-
-                      A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
-
-                    - `parameters: optional unknown or null`
-
-                    - `strict: optional boolean or null`
-
-                      Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
-
-                  - `Custom object { name, type, allowed_callers, 3 more }`
-
-                    A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-                    - `name: string`
-
-                      The name of the custom tool, used to identify it in tool calls.
-
-                    - `type: "custom"`
-
-                      The type of the custom tool. Always `custom`.
-
-                      - `"custom"`
-
-                    - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                      The tool invocation context(s).
-
-                      - `"direct"`
-
-                      - `"programmatic"`
-
-                    - `defer_loading: optional boolean`
-
-                      Whether this tool should be deferred and discovered via tool search.
-
-                    - `description: optional string`
-
-                      Optional description of the custom tool, used to provide more context.
-
-                    - `format: optional object { type }  or object { definition, syntax, type }`
-
-                      The input format for the custom tool. Default is unconstrained text.
-
-                      - `Text object { type }`
-
-                        Unconstrained free-form text.
-
-                        - `type: "text"`
-
-                          Unconstrained text format. Always `text`.
-
-                          - `"text"`
-
-                      - `Grammar object { definition, syntax, type }`
-
-                        A grammar defined by the user.
-
-                        - `definition: string`
-
-                          The grammar definition.
-
-                        - `syntax: "lark" or "regex"`
-
-                          The syntax of the grammar definition. One of `lark` or `regex`.
-
-                          - `"lark"`
-
-                          - `"regex"`
-
-                        - `type: "grammar"`
-
-                          Grammar format. Always `grammar`.
-
-                          - `"grammar"`
-
-                - `type: "namespace"`
-
-                  The type of the tool. Always `namespace`.
-
-                  - `"namespace"`
-
-              - `ToolSearch object { type, description, execution, parameters }`
-
-                Hosted or BYOT tool search configuration for deferred tools.
-
-                - `type: "tool_search"`
-
-                  The type of the tool. Always `tool_search`.
-
-                  - `"tool_search"`
-
-                - `description: optional string or null`
-
-                  Description shown to the model for a client-executed tool search tool.
-
-                - `execution: optional "server" or "client"`
-
-                  Whether tool search is executed by the server or by the client.
-
-                  - `"server"`
-
-                  - `"client"`
-
-                - `parameters: optional unknown or null`
-
-                  Parameter schema for a client-executed tool search tool.
-
-              - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
-
-                This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
-
-                - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
-
-                  The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
-
-                  - `"web_search_preview"`
-
-                  - `"web_search_preview_2025_03_11"`
-
-                - `search_content_types: optional array of "text" or "image"`
-
-                  - `"text"`
-
-                  - `"image"`
-
-                - `search_context_size: optional "low" or "medium" or "high"`
-
-                  High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                  - `"low"`
-
-                  - `"medium"`
-
-                  - `"high"`
-
-                - `user_location: optional object { type, city, country, 2 more }  or null`
-
-                  The user's location.
-
-                  - `type: "approximate"`
-
-                    The type of location approximation. Always `approximate`.
-
-                    - `"approximate"`
-
-                  - `city: optional string or null`
-
-                    Free text input for the city of the user, e.g. `San Francisco`.
-
-                  - `country: optional string or null`
-
-                    The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                  - `region: optional string or null`
-
-                    Free text input for the region of the user, e.g. `California`.
-
-                  - `timezone: optional string or null`
-
-                    The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-              - `ApplyPatch object { type, allowed_callers }`
-
-                Allows the assistant to create, delete, or update files using unified diffs.
-
-                - `type: "apply_patch"`
-
-                  The type of the tool. Always `apply_patch`.
-
-                  - `"apply_patch"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-            - `type: "tool_search_output"`
-
-              The item type. Always `tool_search_output`.
-
-              - `"tool_search_output"`
-
-            - `id: optional string or null`
-
-              The unique ID of this tool search output.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `call_id: optional string or null`
-
-              The unique ID of the tool search call generated by the model.
-
-            - `execution: optional "server" or "client"`
-
-              Whether tool search was executed by the server or by the client.
-
-              - `"server"`
-
-              - `"client"`
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-              The status of the tool search output.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `AdditionalTools object { role, tools, type, 2 more }`
-
-            - `role: "developer"`
-
-              The role that provided the additional tools. Only `developer` is supported.
-
-              - `"developer"`
-
-            - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
-
-              A list of additional tools made available at this item.
-
-              - `Function object { name, parameters, strict, 5 more }`
-
-                Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
-
-                - `name: string`
-
-                  The name of the function to call.
-
-                - `parameters: map[unknown] or null`
-
-                  A JSON schema object describing the parameters of the function.
-
-                - `strict: boolean or null`
-
-                  Whether strict parameter validation is enforced for this function tool.
-
-                - `type: "function"`
-
-                  The type of the function tool. Always `function`.
-
-                  - `"function"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `defer_loading: optional boolean`
-
-                  Whether this function is deferred and loaded via tool search.
-
-                - `description: optional string or null`
-
-                  A description of the function. Used by the model to determine whether or not to call the function.
-
-                - `output_schema: optional map[unknown] or null`
-
-                  A JSON schema object describing the JSON value encoded in string outputs for this function.
-
-              - `FileSearch object { type, vector_store_ids, filters, 2 more }`
-
-                A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
-
-                - `type: "file_search"`
-
-                  The type of the file search tool. Always `file_search`.
-
-                  - `"file_search"`
-
-                - `vector_store_ids: array of string`
-
-                  The IDs of the vector stores to search.
-
-                - `filters: optional object { key, type, value }  or object { filters, type }  or null`
-
-                  A filter to apply.
-
-                  - `ComparisonFilter object { key, type, value }`
-
-                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: string`
-
-                      The key to compare against the value.
-
-                    - `type: "eq" or "ne" or "gt" or 5 more`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: string or number or boolean or array of string or number`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `string`
-
-                      - `number`
-
-                      - `boolean`
-
-                      - `array of string or number`
-
-                        - `string`
-
-                        - `number`
-
-                  - `CompoundFilter object { filters, type }`
-
-                    Combine multiple filters using `and` or `or`.
-
-                    - `filters: array of object { key, type, value }  or unknown`
-
-                      Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                      - `ComparisonFilter object { key, type, value }`
-
-                        A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                        - `key: string`
-
-                          The key to compare against the value.
-
-                        - `type: "eq" or "ne" or "gt" or 5 more`
-
-                          Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                          - `eq`: equals
-                          - `ne`: not equal
-                          - `gt`: greater than
-                          - `gte`: greater than or equal
-                          - `lt`: less than
-                          - `lte`: less than or equal
-                          - `in`: in
-                          - `nin`: not in
-
-                          - `"eq"`
-
-                          - `"ne"`
-
-                          - `"gt"`
-
-                          - `"gte"`
-
-                          - `"lt"`
-
-                          - `"lte"`
-
-                          - `"in"`
-
-                          - `"nin"`
-
-                        - `value: string or number or boolean or array of string or number`
-
-                          The value to compare against the attribute key; supports string, number, or boolean types.
-
-                          - `string`
-
-                          - `number`
-
-                          - `boolean`
-
-                          - `array of string or number`
-
-                            - `string`
-
-                            - `number`
-
-                      - `unknown`
-
-                    - `type: "and" or "or"`
-
-                      Type of operation: `and` or `or`.
-
-                      - `"and"`
-
-                      - `"or"`
-
-                - `max_num_results: optional number`
-
-                  The maximum number of results to return. This number should be between 1 and 50 inclusive.
-
-                - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
-
-                  Ranking options for search.
-
-                  - `hybrid_search: optional object { embedding_weight, text_weight }`
-
-                    Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
-
-                    - `embedding_weight: number`
-
-                      The weight of the embedding in the reciprocal ranking fusion.
-
-                    - `text_weight: number`
-
-                      The weight of the text in the reciprocal ranking fusion.
-
-                  - `ranker: optional "auto" or "default-2024-11-15"`
-
-                    The ranker to use for the file search.
-
-                    - `"auto"`
-
-                    - `"default-2024-11-15"`
-
-                  - `score_threshold: optional number`
-
-                    The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
-
-              - `Computer object { type }`
-
-                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-                - `type: "computer"`
-
-                  The type of the computer tool. Always `computer`.
-
-                  - `"computer"`
-
-              - `ComputerUsePreview object { display_height, display_width, environment, type }`
-
-                A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-                - `display_height: number`
-
-                  The height of the computer display.
-
-                - `display_width: number`
-
-                  The width of the computer display.
-
-                - `environment: "windows" or "mac" or "linux" or 2 more`
-
-                  The type of computer environment to control.
-
-                  - `"windows"`
-
-                  - `"mac"`
-
-                  - `"linux"`
-
-                  - `"ubuntu"`
-
-                  - `"browser"`
-
-                - `type: "computer_use_preview"`
-
-                  The type of the computer use tool. Always `computer_use_preview`.
-
-                  - `"computer_use_preview"`
-
-              - `WebSearch object { type, filters, search_context_size, user_location }`
-
-                Search the Internet for sources related to the prompt. Learn more about the
-                [web search tool](/docs/guides/tools-web-search).
-
-                - `type: "web_search" or "web_search_2025_08_26"`
-
-                  The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
-
-                  - `"web_search"`
-
-                  - `"web_search_2025_08_26"`
-
-                - `filters: optional object { allowed_domains }  or null`
-
-                  Filters for the search.
-
-                  - `allowed_domains: optional array of string or null`
-
-                    Allowed domains for the search. If not provided, all domains are allowed.
-                    Subdomains of the provided domains are allowed as well.
-
-                    Example: `["pubmed.ncbi.nlm.nih.gov"]`
-
-                - `search_context_size: optional "low" or "medium" or "high"`
-
-                  High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                  - `"low"`
-
-                  - `"medium"`
-
-                  - `"high"`
-
-                - `user_location: optional object { city, country, region, 2 more }  or null`
-
-                  The approximate location of the user.
-
-                  - `city: optional string or null`
-
-                    Free text input for the city of the user, e.g. `San Francisco`.
-
-                  - `country: optional string or null`
-
-                    The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                  - `region: optional string or null`
-
-                    Free text input for the region of the user, e.g. `California`.
-
-                  - `timezone: optional string or null`
-
-                    The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-                  - `type: optional "approximate"`
-
-                    The type of location approximation. Always `approximate`.
-
-                    - `"approximate"`
-
-              - `Mcp object { server_label, type, allowed_callers, 9 more }`
-
-                Give the model access to additional tools via remote Model Context Protocol
-                (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
-
-                - `server_label: string`
-
-                  A label for this MCP server, used to identify it in tool calls.
-
-                - `type: "mcp"`
-
-                  The type of the MCP tool. Always `mcp`.
-
-                  - `"mcp"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
-
-                  List of allowed tool names or a filter object.
-
-                  - `McpAllowedTools = array of string`
-
-                    A string array of allowed tool names
-
-                  - `McpToolFilter object { read_only, tool_names }`
-
-                    A filter object to specify which tools are allowed.
-
-                    - `read_only: optional boolean`
-
-                      Indicates whether or not a tool modifies data or is read-only. If an
-                      MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                      it will match this filter.
-
-                    - `tool_names: optional array of string`
-
-                      List of allowed tool names.
-
-                - `authorization: optional string`
-
-                  An OAuth access token that can be used with a remote MCP server, either
-                  with a custom MCP server URL or a service connector. Your application
-                  must handle the OAuth authorization flow and provide the token here.
-
-                - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
-
-                  Identifier for service connectors, like those available in ChatGPT. One of
-                  `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-                  about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
-
-                  Currently supported `connector_id` values are:
-
-                  - Dropbox: `connector_dropbox`
-                  - Gmail: `connector_gmail`
-                  - Google Calendar: `connector_googlecalendar`
-                  - Google Drive: `connector_googledrive`
-                  - Microsoft Teams: `connector_microsoftteams`
-                  - Outlook Calendar: `connector_outlookcalendar`
-                  - Outlook Email: `connector_outlookemail`
-                  - SharePoint: `connector_sharepoint`
-
-                  - `"connector_dropbox"`
-
-                  - `"connector_gmail"`
-
-                  - `"connector_googlecalendar"`
-
-                  - `"connector_googledrive"`
-
-                  - `"connector_microsoftteams"`
-
-                  - `"connector_outlookcalendar"`
-
-                  - `"connector_outlookemail"`
-
-                  - `"connector_sharepoint"`
-
-                - `defer_loading: optional boolean`
-
-                  Whether this MCP tool is deferred and discovered via tool search.
-
-                - `headers: optional map[string] or null`
-
-                  Optional HTTP headers to send to the MCP server. Use for authentication
-                  or other purposes.
-
-                - `require_approval: optional object { always, never }  or "always" or "never" or null`
-
-                  Specify which of the MCP server's tools require approval.
-
-                  - `McpToolApprovalFilter object { always, never }`
-
-                    Specify which of the MCP server's tools require approval. Can be
-                    `always`, `never`, or a filter object associated with tools
-                    that require approval.
-
-                    - `always: optional object { read_only, tool_names }`
-
-                      A filter object to specify which tools are allowed.
-
-                      - `read_only: optional boolean`
-
-                        Indicates whether or not a tool modifies data or is read-only. If an
-                        MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                        it will match this filter.
-
-                      - `tool_names: optional array of string`
-
-                        List of allowed tool names.
-
-                    - `never: optional object { read_only, tool_names }`
-
-                      A filter object to specify which tools are allowed.
-
-                      - `read_only: optional boolean`
-
-                        Indicates whether or not a tool modifies data or is read-only. If an
-                        MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                        it will match this filter.
-
-                      - `tool_names: optional array of string`
-
-                        List of allowed tool names.
-
-                  - `McpToolApprovalSetting = "always" or "never"`
-
-                    Specify a single approval policy for all tools. One of `always` or
-                    `never`. When set to `always`, all tools will require approval. When
-                    set to `never`, all tools will not require approval.
-
-                    - `"always"`
-
-                    - `"never"`
-
-                - `server_description: optional string`
-
-                  Optional description of the MCP server, used to provide more context.
-
-                - `server_url: optional string`
-
-                  The URL for the MCP server. One of `server_url`, `connector_id`, or
-                  `tunnel_id` must be provided.
-
-                - `tunnel_id: optional string`
-
-                  The Secure MCP Tunnel ID to use instead of a direct server URL. One of
-                  `server_url`, `connector_id`, or `tunnel_id` must be provided.
-
-              - `CodeInterpreter object { container, type, allowed_callers }`
-
-                A tool that runs Python code to help generate a response to a prompt.
-
-                - `container: string or object { type, file_ids, memory_limit, network_policy }`
-
-                  The code interpreter container. Can be a container ID or an object that
-                  specifies uploaded file IDs to make available to your code, along with an
-                  optional `memory_limit` setting.
-
-                  - `string`
-
-                    The container ID.
-
-                  - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
-
-                    Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
-
-                    - `type: "auto"`
-
-                      Always `auto`.
-
-                      - `"auto"`
-
-                    - `file_ids: optional array of string`
-
-                      An optional list of uploaded files to make available to your code.
-
-                    - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
-
-                      The memory limit for the code interpreter container.
-
-                      - `"1g"`
-
-                      - `"4g"`
-
-                      - `"16g"`
-
-                      - `"64g"`
-
-                    - `network_policy: optional BetaContainerNetworkPolicyDisabled or BetaContainerNetworkPolicyAllowlist`
-
-                      Network access policy for the container.
-
-                      - `BetaContainerNetworkPolicyDisabled object { type }`
-
-                      - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
-
-                - `type: "code_interpreter"`
-
-                  The type of the code interpreter tool. Always `code_interpreter`.
-
-                  - `"code_interpreter"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-              - `ProgrammaticToolCalling object { type }`
-
-                - `type: "programmatic_tool_calling"`
-
-                  The type of the tool. Always `programmatic_tool_calling`.
-
-                  - `"programmatic_tool_calling"`
-
-              - `ImageGeneration object { type, action, background, 9 more }`
-
-                A tool that generates images using the GPT image models.
-
-                - `type: "image_generation"`
-
-                  The type of the image generation tool. Always `image_generation`.
-
-                  - `"image_generation"`
-
-                - `action: optional "generate" or "edit" or "auto"`
-
-                  Whether to generate a new image or edit an existing image. Default: `auto`.
-
-                  - `"generate"`
-
-                  - `"edit"`
-
-                  - `"auto"`
-
-                - `background: optional "transparent" or "opaque" or "auto"`
-
-                  Background type for the generated image. One of `transparent`,
-                  `opaque`, or `auto`. Default: `auto`.
-
-                  - `"transparent"`
-
-                  - `"opaque"`
-
-                  - `"auto"`
-
-                - `input_fidelity: optional "high" or "low" or null`
-
-                  Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
-
-                  - `"high"`
-
-                  - `"low"`
-
-                - `input_image_mask: optional object { file_id, image_url }`
-
-                  Optional mask for inpainting. Contains `image_url`
-                  (string, optional) and `file_id` (string, optional).
-
-                  - `file_id: optional string`
-
-                    File ID for the mask image.
-
-                  - `image_url: optional string`
-
-                    Base64-encoded mask image.
-
-                - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                  The image generation model to use. Default: `gpt-image-1`.
-
-                  - `string`
-
-                  - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                    The image generation model to use. Default: `gpt-image-1`.
-
-                    - `"gpt-image-1"`
-
-                    - `"gpt-image-1-mini"`
-
-                    - `"gpt-image-1.5"`
-
-                - `moderation: optional "auto" or "low"`
-
-                  Moderation level for the generated image. Default: `auto`.
-
-                  - `"auto"`
-
-                  - `"low"`
-
-                - `output_compression: optional number`
-
-                  Compression level for the output image. Default: 100.
-
-                - `output_format: optional "png" or "webp" or "jpeg"`
-
-                  The output format of the generated image. One of `png`, `webp`, or
-                  `jpeg`. Default: `png`.
-
-                  - `"png"`
-
-                  - `"webp"`
-
-                  - `"jpeg"`
-
-                - `partial_images: optional number`
-
-                  Number of partial images to generate in streaming mode, from 0 (default value) to 3.
-
-                - `quality: optional "low" or "medium" or "high" or "auto"`
-
-                  The quality of the generated image. One of `low`, `medium`, `high`,
-                  or `auto`. Default: `auto`.
-
-                  - `"low"`
-
-                  - `"medium"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                  - `string`
-
-                  - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                    The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                    - `"1024x1024"`
-
-                    - `"1024x1536"`
-
-                    - `"1536x1024"`
-
-                    - `"auto"`
-
-              - `LocalShell object { type }`
-
-                A tool that allows the model to execute shell commands in a local environment.
-
-                - `type: "local_shell"`
-
-                  The type of the local shell tool. Always `local_shell`.
-
-                  - `"local_shell"`
-
-              - `Shell object { type, allowed_callers, environment }`
-
-                A tool that allows the model to execute shell commands.
-
-                - `type: "shell"`
-
-                  The type of the shell tool. Always `shell`.
-
-                  - `"shell"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference or null`
-
-                  - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
-
-                  - `BetaLocalEnvironment object { type, skills }`
-
-                  - `BetaContainerReference object { container_id, type }`
-
-              - `Custom object { name, type, allowed_callers, 3 more }`
-
-                A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-                - `name: string`
-
-                  The name of the custom tool, used to identify it in tool calls.
-
-                - `type: "custom"`
-
-                  The type of the custom tool. Always `custom`.
-
-                  - `"custom"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-                - `defer_loading: optional boolean`
-
-                  Whether this tool should be deferred and discovered via tool search.
-
-                - `description: optional string`
-
-                  Optional description of the custom tool, used to provide more context.
-
-                - `format: optional object { type }  or object { definition, syntax, type }`
-
-                  The input format for the custom tool. Default is unconstrained text.
-
-                  - `Text object { type }`
-
-                    Unconstrained free-form text.
-
-                    - `type: "text"`
-
-                      Unconstrained text format. Always `text`.
-
-                      - `"text"`
-
-                  - `Grammar object { definition, syntax, type }`
-
-                    A grammar defined by the user.
-
-                    - `definition: string`
-
-                      The grammar definition.
-
-                    - `syntax: "lark" or "regex"`
-
-                      The syntax of the grammar definition. One of `lark` or `regex`.
-
-                      - `"lark"`
-
-                      - `"regex"`
-
-                    - `type: "grammar"`
-
-                      Grammar format. Always `grammar`.
-
-                      - `"grammar"`
-
-              - `Namespace object { description, name, tools, type }`
-
-                Groups function/custom tools under a shared namespace.
-
-                - `description: string`
-
-                  A description of the namespace shown to the model.
-
-                - `name: string`
-
-                  The namespace name used in tool calls (for example, `crm`).
-
-                - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
-
-                  The function/custom tools available inside this namespace.
-
-                  - `Function object { name, type, allowed_callers, 5 more }`
-
-                    - `name: string`
-
-                    - `type: "function"`
-
-                      - `"function"`
-
-                    - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                      The tool invocation context(s).
-
-                      - `"direct"`
-
-                      - `"programmatic"`
-
-                    - `defer_loading: optional boolean`
-
-                      Whether this function should be deferred and discovered via tool search.
-
-                    - `description: optional string or null`
-
-                    - `output_schema: optional map[unknown] or null`
-
-                      A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
-
-                    - `parameters: optional unknown or null`
-
-                    - `strict: optional boolean or null`
-
-                      Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
-
-                  - `Custom object { name, type, allowed_callers, 3 more }`
-
-                    A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-                    - `name: string`
-
-                      The name of the custom tool, used to identify it in tool calls.
-
-                    - `type: "custom"`
-
-                      The type of the custom tool. Always `custom`.
-
-                      - `"custom"`
-
-                    - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                      The tool invocation context(s).
-
-                      - `"direct"`
-
-                      - `"programmatic"`
-
-                    - `defer_loading: optional boolean`
-
-                      Whether this tool should be deferred and discovered via tool search.
-
-                    - `description: optional string`
-
-                      Optional description of the custom tool, used to provide more context.
-
-                    - `format: optional object { type }  or object { definition, syntax, type }`
-
-                      The input format for the custom tool. Default is unconstrained text.
-
-                      - `Text object { type }`
-
-                        Unconstrained free-form text.
-
-                        - `type: "text"`
-
-                          Unconstrained text format. Always `text`.
-
-                          - `"text"`
-
-                      - `Grammar object { definition, syntax, type }`
-
-                        A grammar defined by the user.
-
-                        - `definition: string`
-
-                          The grammar definition.
-
-                        - `syntax: "lark" or "regex"`
-
-                          The syntax of the grammar definition. One of `lark` or `regex`.
-
-                          - `"lark"`
-
-                          - `"regex"`
-
-                        - `type: "grammar"`
-
-                          Grammar format. Always `grammar`.
-
-                          - `"grammar"`
-
-                - `type: "namespace"`
-
-                  The type of the tool. Always `namespace`.
-
-                  - `"namespace"`
-
-              - `ToolSearch object { type, description, execution, parameters }`
-
-                Hosted or BYOT tool search configuration for deferred tools.
-
-                - `type: "tool_search"`
-
-                  The type of the tool. Always `tool_search`.
-
-                  - `"tool_search"`
-
-                - `description: optional string or null`
-
-                  Description shown to the model for a client-executed tool search tool.
-
-                - `execution: optional "server" or "client"`
-
-                  Whether tool search is executed by the server or by the client.
-
-                  - `"server"`
-
-                  - `"client"`
-
-                - `parameters: optional unknown or null`
-
-                  Parameter schema for a client-executed tool search tool.
-
-              - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
-
-                This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
-
-                - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
-
-                  The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
-
-                  - `"web_search_preview"`
-
-                  - `"web_search_preview_2025_03_11"`
-
-                - `search_content_types: optional array of "text" or "image"`
-
-                  - `"text"`
-
-                  - `"image"`
-
-                - `search_context_size: optional "low" or "medium" or "high"`
-
-                  High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                  - `"low"`
-
-                  - `"medium"`
-
-                  - `"high"`
-
-                - `user_location: optional object { type, city, country, 2 more }  or null`
-
-                  The user's location.
-
-                  - `type: "approximate"`
-
-                    The type of location approximation. Always `approximate`.
-
-                    - `"approximate"`
-
-                  - `city: optional string or null`
-
-                    Free text input for the city of the user, e.g. `San Francisco`.
-
-                  - `country: optional string or null`
-
-                    The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                  - `region: optional string or null`
-
-                    Free text input for the region of the user, e.g. `California`.
-
-                  - `timezone: optional string or null`
-
-                    The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-              - `ApplyPatch object { type, allowed_callers }`
-
-                Allows the assistant to create, delete, or update files using unified diffs.
-
-                - `type: "apply_patch"`
-
-                  The type of the tool. Always `apply_patch`.
-
-                  - `"apply_patch"`
-
-                - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                  The tool invocation context(s).
-
-                  - `"direct"`
-
-                  - `"programmatic"`
-
-            - `type: "additional_tools"`
-
-              The item type. Always `additional_tools`.
-
-              - `"additional_tools"`
-
-            - `id: optional string or null`
-
-              The unique ID of this additional tools item.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `Reasoning object { id, summary, type, 4 more }`
-
-            A description of the chain of thought used by a reasoning model while generating
-            a response. Be sure to include these items in your `input` to the Responses API
-            for subsequent turns of a conversation if you are manually
-            [managing context](/docs/guides/conversation-state).
-
-            - `id: string`
-
-              The unique identifier of the reasoning content.
-
-            - `summary: array of object { text, type }`
-
-              Reasoning summary content.
-
-              - `text: string`
-
-                A summary of the reasoning output from the model so far.
-
-              - `type: "summary_text"`
-
-                The type of the object. Always `summary_text`.
-
-                - `"summary_text"`
-
-            - `type: "reasoning"`
-
-              The type of the object. Always `reasoning`.
-
-              - `"reasoning"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `content: optional array of object { text, type }`
-
-              Reasoning text content.
-
-              - `text: string`
-
-                The reasoning text from the model.
-
-              - `type: "reasoning_text"`
-
-                The type of the reasoning text. Always `reasoning_text`.
-
-                - `"reasoning_text"`
-
-            - `encrypted_content: optional string or null`
-
-              The encrypted content of the reasoning item. This is populated by default
-              for reasoning items returned by `POST /v1/responses` and WebSocket
-              `response.create` requests.
-
-            - `status: optional "in_progress" or "completed" or "incomplete"`
-
-              The status of the item. One of `in_progress`, `completed`, or
-              `incomplete`. Populated when items are returned via API.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `Compaction object { encrypted_content, type, id, agent }`
-
-            A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
-
-            - `encrypted_content: string`
-
-              The encrypted content of the compaction summary.
-
-            - `type: "compaction"`
-
-              The type of the item. Always `compaction`.
-
-              - `"compaction"`
-
-            - `id: optional string or null`
-
-              The ID of the compaction item.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `ImageGenerationCall object { id, result, status, 2 more }`
-
-            An image generation request made by the model.
-
-            - `id: string`
-
-              The unique ID of the image generation call.
-
-            - `result: string or null`
-
-              The generated image encoded in base64.
-
-            - `status: "in_progress" or "completed" or "generating" or "failed"`
-
-              The status of the image generation call.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"generating"`
-
-              - `"failed"`
-
-            - `type: "image_generation_call"`
-
-              The type of the image generation call. Always `image_generation_call`.
-
-              - `"image_generation_call"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `CodeInterpreterCall object { id, code, container_id, 4 more }`
-
-            A tool call to run code.
-
-            - `id: string`
-
-              The unique ID of the code interpreter tool call.
-
-            - `code: string or null`
-
-              The code to run, or null if not available.
-
-            - `container_id: string`
-
-              The ID of the container used to run the code.
-
-            - `outputs: array of object { logs, type }  or object { type, url }  or null`
-
-              The outputs generated by the code interpreter, such as logs or images.
-              Can be null if no outputs are available.
-
-              - `Logs object { logs, type }`
-
-                The logs output from the code interpreter.
-
-                - `logs: string`
-
-                  The logs output from the code interpreter.
-
-                - `type: "logs"`
-
-                  The type of the output. Always `logs`.
-
-                  - `"logs"`
-
-              - `Image object { type, url }`
-
-                The image output from the code interpreter.
-
-                - `type: "image"`
-
-                  The type of the output. Always `image`.
-
-                  - `"image"`
-
-                - `url: string`
-
-                  The URL of the image output from the code interpreter.
-
-            - `status: "in_progress" or "completed" or "incomplete" or 2 more`
-
-              The status of the code interpreter tool call. Valid values are `in_progress`, `completed`, `incomplete`, `interpreting`, and `failed`.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-              - `"interpreting"`
-
-              - `"failed"`
-
-            - `type: "code_interpreter_call"`
-
-              The type of the code interpreter tool call. Always `code_interpreter_call`.
-
-              - `"code_interpreter_call"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `LocalShellCall object { id, action, call_id, 3 more }`
-
-            A tool call to run a command on the local shell.
-
-            - `id: string`
-
-              The unique ID of the local shell call.
-
-            - `action: object { command, env, type, 3 more }`
-
-              Execute a shell command on the server.
-
-              - `command: array of string`
-
-                The command to run.
-
-              - `env: map[string]`
-
-                Environment variables to set for the command.
-
-              - `type: "exec"`
-
-                The type of the local shell action. Always `exec`.
-
-                - `"exec"`
-
-              - `timeout_ms: optional number or null`
-
-                Optional timeout in milliseconds for the command.
-
-              - `user: optional string or null`
-
-                Optional user to run the command as.
-
-              - `working_directory: optional string or null`
-
-                Optional working directory to run the command in.
-
-            - `call_id: string`
-
-              The unique ID of the local shell tool call generated by the model.
-
-            - `status: "in_progress" or "completed" or "incomplete"`
-
-              The status of the local shell call.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-            - `type: "local_shell_call"`
-
-              The type of the local shell call. Always `local_shell_call`.
-
-              - `"local_shell_call"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `LocalShellCallOutput object { id, output, type, 2 more }`
-
-            The output of a local shell tool call.
-
-            - `id: string`
-
-              The unique ID of the local shell tool call generated by the model.
-
-            - `output: string`
-
-              A JSON string of the output of the local shell tool call.
-
-            - `type: "local_shell_call_output"`
-
-              The type of the local shell tool call output. Always `local_shell_call_output`.
-
-              - `"local_shell_call_output"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-              The status of the item. One of `in_progress`, `completed`, or `incomplete`.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `ShellCall object { action, call_id, type, 5 more }`
-
-            A tool representing a request to execute one or more shell commands.
-
-            - `action: object { commands, max_output_length, timeout_ms }`
-
-              The shell commands and limits that describe how to run the tool call.
-
-              - `commands: array of string`
-
-                Ordered shell commands for the execution environment to run.
-
-              - `max_output_length: optional number or null`
-
-                Maximum number of UTF-8 characters to capture from combined stdout and stderr output.
-
-              - `timeout_ms: optional number or null`
-
-                Maximum wall-clock time in milliseconds to allow the shell commands to run.
-
-            - `call_id: string`
-
-              The unique ID of the shell tool call generated by the model.
-
-            - `type: "shell_call"`
-
-              The type of the item. Always `shell_call`.
-
-              - `"shell_call"`
-
-            - `id: optional string or null`
-
-              The unique ID of the shell tool call. Populated when this item is returned via API.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  The caller type. Always `direct`.
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  The caller type. Always `program`.
-
-                  - `"program"`
-
-            - `environment: optional BetaLocalEnvironment or BetaContainerReference or null`
-
-              The environment to execute the shell commands in.
-
-              - `BetaLocalEnvironment object { type, skills }`
-
-              - `BetaContainerReference object { container_id, type }`
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-              The status of the shell call. One of `in_progress`, `completed`, or `incomplete`.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `ShellCallOutput object { call_id, output, type, 5 more }`
-
-            The streamed output items emitted by a shell tool call.
-
-            - `call_id: string`
-
-              The unique ID of the shell tool call generated by the model.
-
-            - `output: array of BetaResponseFunctionShellCallOutputContent`
-
-              Captured chunks of stdout and stderr output, along with their associated outcomes.
-
-              - `outcome: object { type }  or object { exit_code, type }`
-
-                The exit or timeout outcome associated with this shell call.
-
-                - `Timeout object { type }`
-
-                  Indicates that the shell call exceeded its configured time limit.
-
-                  - `type: "timeout"`
-
-                    The outcome type. Always `timeout`.
-
-                    - `"timeout"`
-
-                - `Exit object { exit_code, type }`
-
-                  Indicates that the shell commands finished and returned an exit code.
-
-                  - `exit_code: number`
-
-                    The exit code returned by the shell process.
-
-                  - `type: "exit"`
-
-                    The outcome type. Always `exit`.
-
-                    - `"exit"`
-
-              - `stderr: string`
-
-                Captured stderr output for the shell call.
-
-              - `stdout: string`
-
-                Captured stdout output for the shell call.
-
-            - `type: "shell_call_output"`
-
-              The type of the item. Always `shell_call_output`.
-
-              - `"shell_call_output"`
-
-            - `id: optional string or null`
-
-              The unique ID of the shell tool call output. Populated when this item is returned via API.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  The caller type. Always `direct`.
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  The caller type. Always `program`.
-
-                  - `"program"`
-
-            - `max_output_length: optional number or null`
-
-              The maximum number of UTF-8 characters captured for this shell call's combined output.
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-              The status of the shell call output.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-          - `ApplyPatchCall object { call_id, operation, status, 4 more }`
-
-            A tool call representing a request to create, delete, or update files using diff patches.
-
-            - `call_id: string`
-
-              The unique ID of the apply patch tool call generated by the model.
-
-            - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
-
-              The specific create, delete, or update instruction for the apply_patch tool call.
-
-              - `CreateFile object { diff, path, type }`
-
-                Instruction for creating a new file via the apply_patch tool.
-
-                - `diff: string`
-
-                  Unified diff content to apply when creating the file.
-
-                - `path: string`
-
-                  Path of the file to create relative to the workspace root.
-
-                - `type: "create_file"`
-
-                  The operation type. Always `create_file`.
-
-                  - `"create_file"`
-
-              - `DeleteFile object { path, type }`
-
-                Instruction for deleting an existing file via the apply_patch tool.
-
-                - `path: string`
-
-                  Path of the file to delete relative to the workspace root.
-
-                - `type: "delete_file"`
-
-                  The operation type. Always `delete_file`.
-
-                  - `"delete_file"`
-
-              - `UpdateFile object { diff, path, type }`
-
-                Instruction for updating an existing file via the apply_patch tool.
-
-                - `diff: string`
-
-                  Unified diff content to apply to the existing file.
-
-                - `path: string`
-
-                  Path of the file to update relative to the workspace root.
-
-                - `type: "update_file"`
-
-                  The operation type. Always `update_file`.
-
-                  - `"update_file"`
-
-            - `status: "in_progress" or "completed"`
-
-              The status of the apply patch tool call. One of `in_progress` or `completed`.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-            - `type: "apply_patch_call"`
-
-              The type of the item. Always `apply_patch_call`.
-
-              - `"apply_patch_call"`
-
-            - `id: optional string or null`
-
-              The unique ID of the apply patch tool call. Populated when this item is returned via API.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  The caller type. Always `direct`.
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  The caller type. Always `program`.
-
-                  - `"program"`
-
-          - `ApplyPatchCallOutput object { call_id, status, type, 4 more }`
-
-            The streamed output emitted by an apply patch tool call.
-
-            - `call_id: string`
-
-              The unique ID of the apply patch tool call generated by the model.
-
-            - `status: "completed" or "failed"`
-
-              The status of the apply patch tool call output. One of `completed` or `failed`.
-
-              - `"completed"`
-
-              - `"failed"`
-
-            - `type: "apply_patch_call_output"`
-
-              The type of the item. Always `apply_patch_call_output`.
-
-              - `"apply_patch_call_output"`
-
-            - `id: optional string or null`
-
-              The unique ID of the apply patch tool call output. Populated when this item is returned via API.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  The caller type. Always `direct`.
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  The caller type. Always `program`.
-
-                  - `"program"`
-
-            - `output: optional string or null`
-
-              Optional human-readable log text from the apply patch tool (e.g., patch results or errors).
-
-          - `McpListTools object { id, server_label, tools, 3 more }`
-
-            A list of tools available on an MCP server.
-
-            - `id: string`
-
-              The unique ID of the list.
-
-            - `server_label: string`
-
-              The label of the MCP server.
-
-            - `tools: array of object { input_schema, name, annotations, description }`
-
-              The tools available on the server.
-
-              - `input_schema: unknown`
-
-                The JSON schema describing the tool's input.
-
-              - `name: string`
-
-                The name of the tool.
-
-              - `annotations: optional unknown or null`
-
-                Additional annotations about the tool.
-
-              - `description: optional string or null`
-
-                The description of the tool.
-
-            - `type: "mcp_list_tools"`
-
-              The type of the item. Always `mcp_list_tools`.
-
-              - `"mcp_list_tools"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `error: optional string or null`
-
-              Error message if the server could not list tools.
-
-          - `McpApprovalRequest object { id, arguments, name, 3 more }`
-
-            A request for human approval of a tool invocation.
-
-            - `id: string`
-
-              The unique ID of the approval request.
-
-            - `arguments: string`
-
-              A JSON string of arguments for the tool.
-
-            - `name: string`
-
-              The name of the tool to run.
-
-            - `server_label: string`
-
-              The label of the MCP server making the request.
-
-            - `type: "mcp_approval_request"`
-
-              The type of the item. Always `mcp_approval_request`.
-
-              - `"mcp_approval_request"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `McpApprovalResponse object { approval_request_id, approve, type, 3 more }`
-
-            A response to an MCP approval request.
-
-            - `approval_request_id: string`
-
-              The ID of the approval request being answered.
-
-            - `approve: boolean`
-
-              Whether the request was approved.
-
-            - `type: "mcp_approval_response"`
-
-              The type of the item. Always `mcp_approval_response`.
-
-              - `"mcp_approval_response"`
-
-            - `id: optional string or null`
-
-              The unique ID of the approval response
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `reason: optional string or null`
-
-              Optional reason for the decision.
-
-          - `McpCall object { id, arguments, name, 7 more }`
-
-            An invocation of a tool on an MCP server.
-
-            - `id: string`
-
-              The unique ID of the tool call.
-
-            - `arguments: string`
-
-              A JSON string of the arguments passed to the tool.
-
-            - `name: string`
-
-              The name of the tool that was run.
-
-            - `server_label: string`
-
-              The label of the MCP server running the tool.
-
-            - `type: "mcp_call"`
-
-              The type of the item. Always `mcp_call`.
-
-              - `"mcp_call"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `approval_request_id: optional string or null`
-
-              Unique identifier for the MCP tool call approval request.
-              Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
-
-            - `error: optional string or null`
-
-              The error from the tool call, if any.
-
-            - `output: optional string or null`
-
-              The output from the tool call.
-
-            - `status: optional "in_progress" or "completed" or "incomplete" or 2 more`
-
-              The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
-
-              - `"in_progress"`
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-              - `"calling"`
-
-              - `"failed"`
-
-          - `CustomToolCallOutput object { call_id, output, type, 3 more }`
-
-            The output of a custom tool call from your code, being sent back to the model.
-
-            - `call_id: string`
-
-              The call ID, used to map this custom tool call output to a custom tool call.
-
-            - `output: string or array of BetaResponseInputText or BetaResponseInputImage or BetaResponseInputFile`
-
-              The output from the custom tool call generated by your code.
-              Can be a string or an list of output content.
-
-              - `StringOutput = string`
-
-                A string of the output of the custom tool call.
-
-              - `OutputContentList = array of BetaResponseInputText or BetaResponseInputImage or BetaResponseInputFile`
-
-                Text, image, or file output of the custom tool call.
-
-                - `BetaResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                  A text input to the model.
-
-                - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
-
-                  An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-                - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
-
-                  A file input to the model.
-
-            - `type: "custom_tool_call_output"`
-
-              The type of the custom tool call output. Always `custom_tool_call_output`.
-
-              - `"custom_tool_call_output"`
-
-            - `id: optional string`
-
-              The unique ID of the custom tool call output in the OpenAI platform.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  The caller type. Always `direct`.
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  The caller type. Always `program`.
-
-                  - `"program"`
-
-          - `CustomToolCall object { call_id, input, name, 5 more }`
-
-            A call to a custom tool created by the model.
-
-            - `call_id: string`
-
-              An identifier used to map this custom tool call to a tool call output.
-
-            - `input: string`
-
-              The input for the custom tool call generated by the model.
-
-            - `name: string`
-
-              The name of the custom tool being called.
-
-            - `type: "custom_tool_call"`
-
-              The type of the custom tool call. Always `custom_tool_call`.
-
-              - `"custom_tool_call"`
-
-            - `id: optional string`
-
-              The unique ID of the custom tool call in the OpenAI platform.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-              The execution context that produced this tool call.
-
-              - `Direct object { type }`
-
-                - `type: "direct"`
-
-                  - `"direct"`
-
-              - `Program object { caller_id, type }`
-
-                - `caller_id: string`
-
-                  The call ID of the program item that produced this tool call.
-
-                - `type: "program"`
-
-                  - `"program"`
-
-            - `namespace: optional string`
-
-              The namespace of the custom tool being called.
-
-          - `CompactionTrigger object { type, agent }`
-
-            Compacts the current context. Must be the final input item.
-
-            - `type: "compaction_trigger"`
-
-              The type of the item. Always `compaction_trigger`.
-
-              - `"compaction_trigger"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `ItemReference object { id, agent, type }`
-
-            An internal identifier for an item to reference.
-
-            - `id: string`
-
-              The ID of the item to reference.
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-            - `type: optional "item_reference" or null`
-
-              The type of item to reference. Always `item_reference`.
-
-              - `"item_reference"`
-
-          - `Program object { id, call_id, code, 3 more }`
-
-            - `id: string`
-
-              The unique ID of this program item.
-
-            - `call_id: string`
-
-              The stable call ID of the program item.
-
-            - `code: string`
-
-              The JavaScript source executed by programmatic tool calling.
-
-            - `fingerprint: string`
-
-              Opaque program replay fingerprint that must be round-tripped.
-
-            - `type: "program"`
-
-              The item type. Always `program`.
-
-              - `"program"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-          - `ProgramOutput object { id, call_id, result, 3 more }`
-
-            - `id: string`
-
-              The unique ID of this program output item.
-
-            - `call_id: string`
-
-              The call ID of the program item.
-
-            - `result: string`
-
-              The result produced by the program item.
-
-            - `status: "completed" or "incomplete"`
-
-              The terminal status of the program output.
-
-              - `"completed"`
-
-              - `"incomplete"`
-
-            - `type: "program_output"`
-
-              The item type. Always `program_output`.
-
-              - `"program_output"`
-
-            - `agent: optional object { agent_name }  or null`
-
-              The agent that produced this item.
-
-              - `agent_name: string`
-
-                The canonical name of the agent that produced this item.
-
-      - `metadata: map[string] or null`
-
-        Set of 16 key-value pairs that can be attached to an object. This can be
-        useful for storing additional information about the object in a structured
-        format, and querying for objects via API or the dashboard.
-
-        Keys are strings with a maximum length of 64 characters. Values are strings
-        with a maximum length of 512 characters.
-
-      - `model: "gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more or string`
-
-        Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
-        offers a wide range of models with different capabilities, performance
-        characteristics, and price points. Refer to the [model guide](/docs/models)
-        to browse and compare available models.
-
-        - `"gpt-5.6-sol" or "gpt-5.6-terra" or "gpt-5.6-luna" or 96 more`
-
-          Model ID used to generate the response, like `gpt-4o` or `o3`. OpenAI
-          offers a wide range of models with different capabilities, performance
-          characteristics, and price points. Refer to the [model guide](/docs/models)
-          to browse and compare available models.
-
-          - `"gpt-5.6-sol"`
-
-          - `"gpt-5.6-terra"`
-
-          - `"gpt-5.6-luna"`
-
-          - `"gpt-5.5"`
-
-          - `"gpt-5.4"`
-
-          - `"gpt-5.4-mini"`
-
-          - `"gpt-5.4-nano"`
-
-          - `"gpt-5.4-mini-2026-03-17"`
-
-          - `"gpt-5.4-nano-2026-03-17"`
-
-          - `"gpt-5.3-chat-latest"`
-
-          - `"gpt-5.2"`
-
-          - `"gpt-5.2-2025-12-11"`
-
-          - `"gpt-5.2-chat-latest"`
-
-          - `"gpt-5.2-pro"`
-
-          - `"gpt-5.2-pro-2025-12-11"`
-
-          - `"gpt-5.1"`
-
-          - `"gpt-5.1-2025-11-13"`
-
-          - `"gpt-5.1-codex"`
-
-          - `"gpt-5.1-mini"`
-
-          - `"gpt-5.1-chat-latest"`
-
-          - `"gpt-5"`
-
-          - `"gpt-5-mini"`
-
-          - `"gpt-5-nano"`
-
-          - `"gpt-5-2025-08-07"`
-
-          - `"gpt-5-mini-2025-08-07"`
-
-          - `"gpt-5-nano-2025-08-07"`
-
-          - `"gpt-5-chat-latest"`
-
-          - `"gpt-4.1"`
-
-          - `"gpt-4.1-mini"`
-
-          - `"gpt-4.1-nano"`
-
-          - `"gpt-4.1-2025-04-14"`
-
-          - `"gpt-4.1-mini-2025-04-14"`
-
-          - `"gpt-4.1-nano-2025-04-14"`
-
-          - `"o4-mini"`
-
-          - `"o4-mini-2025-04-16"`
-
-          - `"o3"`
-
-          - `"o3-2025-04-16"`
-
-          - `"o3-mini"`
-
-          - `"o3-mini-2025-01-31"`
-
-          - `"o1"`
-
-          - `"o1-2024-12-17"`
-
-          - `"o1-preview"`
-
-          - `"o1-preview-2024-09-12"`
-
-          - `"o1-mini"`
-
-          - `"o1-mini-2024-09-12"`
-
-          - `"gpt-4o"`
-
-          - `"gpt-4o-2024-11-20"`
-
-          - `"gpt-4o-2024-08-06"`
-
-          - `"gpt-4o-2024-05-13"`
-
-          - `"gpt-4o-audio-preview"`
-
-          - `"gpt-4o-audio-preview-2024-10-01"`
-
-          - `"gpt-4o-audio-preview-2024-12-17"`
-
-          - `"gpt-4o-audio-preview-2025-06-03"`
-
-          - `"gpt-4o-mini-audio-preview"`
-
-          - `"gpt-4o-mini-audio-preview-2024-12-17"`
-
-          - `"gpt-4o-search-preview"`
-
-          - `"gpt-4o-mini-search-preview"`
-
-          - `"gpt-4o-search-preview-2025-03-11"`
-
-          - `"gpt-4o-mini-search-preview-2025-03-11"`
-
-          - `"chatgpt-4o-latest"`
-
-          - `"codex-mini-latest"`
-
-          - `"gpt-4o-mini"`
-
-          - `"gpt-4o-mini-2024-07-18"`
-
-          - `"gpt-4-turbo"`
-
-          - `"gpt-4-turbo-2024-04-09"`
-
-          - `"gpt-4-0125-preview"`
-
-          - `"gpt-4-turbo-preview"`
-
-          - `"gpt-4-1106-preview"`
-
-          - `"gpt-4-vision-preview"`
-
-          - `"gpt-4"`
-
-          - `"gpt-4-0314"`
-
-          - `"gpt-4-0613"`
-
-          - `"gpt-4-32k"`
-
-          - `"gpt-4-32k-0314"`
-
-          - `"gpt-4-32k-0613"`
-
-          - `"gpt-3.5-turbo"`
-
-          - `"gpt-3.5-turbo-16k"`
-
-          - `"gpt-3.5-turbo-0301"`
-
-          - `"gpt-3.5-turbo-0613"`
-
-          - `"gpt-3.5-turbo-1106"`
-
-          - `"gpt-3.5-turbo-0125"`
-
-          - `"gpt-3.5-turbo-16k-0613"`
-
-          - `"o1-pro"`
-
-          - `"o1-pro-2025-03-19"`
-
-          - `"o3-pro"`
-
-          - `"o3-pro-2025-06-10"`
-
-          - `"o3-deep-research"`
-
-          - `"o3-deep-research-2025-06-26"`
-
-          - `"o4-mini-deep-research"`
-
-          - `"o4-mini-deep-research-2025-06-26"`
-
-          - `"computer-use-preview"`
-
-          - `"computer-use-preview-2025-03-11"`
-
-          - `"gpt-5-codex"`
-
-          - `"gpt-5-pro"`
-
-          - `"gpt-5-pro-2025-10-06"`
-
-          - `"gpt-5.1-codex-max"`
-
-          - `"gpt-daybreak-blue-latest"`
-
-          - `"gpt-daybreak-red-latest"`
-
-          - `"gpt-5.6-cyber"`
-
-        - `string`
-
-      - `object: "response"`
-
-        The object type of this resource - always set to `response`.
-
-        - `"response"`
-
-      - `output: array of BetaResponseOutputItem`
-
-        An array of content items generated by the model.
-
-        - The length and order of items in the `output` array is dependent
-          on the model's response.
-        - Rather than accessing the first item in the `output` array and
-          assuming it's an `assistant` message with the content generated by
-          the model, you might consider using the `output_text` property where
-          supported in SDKs.
-
-        - `BetaResponseOutputMessage object { id, content, role, 4 more }`
-
-          An output message from the model.
-
-        - `FileSearchCall object { id, queries, status, 3 more }`
-
-          The results of a file search tool call. See the
-          [file search guide](/docs/guides/tools-file-search) for more information.
-
-          - `id: string`
-
-            The unique ID of the file search tool call.
-
-          - `queries: array of string`
-
-            The queries used to search for files.
-
-          - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-            The status of the file search tool call. One of `in_progress`,
-            `searching`, `incomplete` or `failed`,
-
-            - `"in_progress"`
-
-            - `"searching"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-            - `"failed"`
-
-          - `type: "file_search_call"`
-
-            The type of the file search tool call. Always `file_search_call`.
-
-            - `"file_search_call"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `results: optional array of object { attributes, file_id, filename, 2 more }  or null`
-
-            The results of the file search tool call.
-
-            - `attributes: optional map[string or number or boolean] or null`
-
-              Set of 16 key-value pairs that can be attached to an object. This can be
-              useful for storing additional information about the object in a structured
-              format, and querying for objects via API or the dashboard. Keys are strings
-              with a maximum length of 64 characters. Values are strings with a maximum
-              length of 512 characters, booleans, or numbers.
-
-              - `string`
-
-              - `number`
-
-              - `boolean`
-
-            - `file_id: optional string`
-
-              The unique ID of the file.
-
-            - `filename: optional string`
-
-              The name of the file.
-
-            - `score: optional number`
-
-              The relevance score of the file - a value between 0 and 1.
-
-            - `text: optional string`
-
-              The text that was retrieved from the file.
-
-        - `FunctionCall object { arguments, call_id, name, 6 more }`
-
-          A tool call to run a function. See the
-          [function calling guide](/docs/guides/function-calling) for more information.
-
-          - `arguments: string`
-
-            A JSON string of the arguments to pass to the function.
-
-          - `call_id: string`
-
-            The unique ID of the function tool call generated by the model.
-
-          - `name: string`
-
-            The name of the function to run.
-
-          - `type: "function_call"`
-
-            The type of the function tool call. Always `function_call`.
-
-            - `"function_call"`
-
-          - `id: optional string`
-
-            The unique ID of the function tool call.
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                - `"program"`
-
-          - `namespace: optional string`
-
-            The namespace of the function to run.
-
-          - `status: optional "in_progress" or "completed" or "incomplete"`
-
-            The status of the item. One of `in_progress`, `completed`, or
-            `incomplete`. Populated when items are returned via API.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-        - `FunctionCallOutput object { id, output, status, 7 more }`
-
-          - `id: string`
-
-            The unique ID of the function call tool output.
-
-          - `output: string or array of BetaResponseInputText or BetaResponseInputImage or BetaResponseInputFile`
-
-            The output from the function call generated by your code.
-            Can be a string or an list of output content.
-
-            - `StringOutput = string`
-
-              A string of the output of the function call.
-
-            - `OutputContentList = array of BetaResponseInputText or BetaResponseInputImage or BetaResponseInputFile`
-
-              Text, image, or file output of the function call.
-
-              - `BetaResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                A text input to the model.
-
-              - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
-
-                An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-              - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
-
-                A file input to the model.
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the item. One of `in_progress`, `completed`, or
-            `incomplete`. Populated when items are returned via API.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "function_call_output"`
-
-            The type of the function tool call output. Always `function_call_output`.
-
-            - `"function_call_output"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `call_id: optional string`
-
-            The unique ID of the function tool call generated by the model.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                The caller type. Always `direct`.
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                The caller type. Always `program`.
-
-                - `"program"`
-
-          - `created_by: optional string`
-
-            The identifier of the actor that created the item.
-
-          - `name: optional string`
-
-            The name of the tool that produced the output.
-
-          - `namespace: optional string`
-
-            The namespace of the tool that produced the output.
-
-        - `AgentMessage object { id, author, content, 3 more }`
-
-          - `id: string`
-
-            The unique ID of the agent message.
-
-          - `author: string`
-
-            The sending agent identity.
-
-          - `content: array of BetaResponseInputText or BetaResponseOutputText or object { text, type }  or 7 more`
-
-            Encrypted content sent between agents.
-
-            - `BetaResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-              A text input to the model.
-
-            - `BetaResponseOutputText object { annotations, logprobs, text, type }`
-
-              A text output from the model.
-
-            - `Text object { text, type }`
-
-              A text content.
-
-              - `text: string`
-
-              - `type: "text"`
-
-                - `"text"`
-
-            - `SummaryText object { text, type }`
-
-              A summary text from the model.
-
-              - `text: string`
-
-                A summary of the reasoning output from the model so far.
-
-              - `type: "summary_text"`
-
-                The type of the object. Always `summary_text`.
-
-                - `"summary_text"`
-
-            - `ReasoningText object { text, type }`
-
-              Reasoning text from the model.
-
-              - `text: string`
-
-                The reasoning text from the model.
-
-              - `type: "reasoning_text"`
-
-                The type of the reasoning text. Always `reasoning_text`.
-
-                - `"reasoning_text"`
-
-            - `BetaResponseOutputRefusal object { refusal, type }`
-
-              A refusal from the model.
-
-            - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
-
-              An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-            - `ComputerScreenshot object { detail, file_id, image_url, 2 more }`
-
-              A screenshot of a computer.
-
-              - `detail: "low" or "high" or "auto" or "original"`
-
-                The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
-
-              - `file_id: string or null`
-
-                The identifier of an uploaded file that contains the screenshot.
-
-              - `image_url: string or null`
-
-                The URL of the screenshot image.
-
-              - `type: "computer_screenshot"`
-
-                Specifies the event type. For a computer screenshot, this property is always set to `computer_screenshot`.
-
-                - `"computer_screenshot"`
-
-              - `prompt_cache_breakpoint: optional object { mode }`
-
-                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-                - `mode: "explicit"`
-
-                  The breakpoint mode. Always `explicit`.
-
-                  - `"explicit"`
-
-            - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
-
-              A file input to the model.
-
-            - `EncryptedContent object { encrypted_content, type }`
-
-              Opaque encrypted content that Responses API decrypts inside trusted model execution.
-
-              - `encrypted_content: string`
-
-                Opaque encrypted content.
-
-              - `type: "encrypted_content"`
-
-                The type of the input item. Always `encrypted_content`.
-
-                - `"encrypted_content"`
-
-          - `recipient: string`
-
-            The destination agent identity.
-
-          - `type: "agent_message"`
-
-            The type of the item. Always `agent_message`.
-
-            - `"agent_message"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `MultiAgentCall object { id, action, arguments, 3 more }`
-
-          - `id: string`
-
-            The unique ID of the multi-agent call item.
-
-          - `action: "spawn_agent" or "interrupt_agent" or "list_agents" or 3 more`
-
-            The multi-agent action to execute.
-
-            - `"spawn_agent"`
-
-            - `"interrupt_agent"`
-
-            - `"list_agents"`
-
-            - `"send_message"`
-
-            - `"followup_task"`
-
-            - `"wait_agent"`
-
-          - `arguments: string`
-
-            The JSON string of arguments generated for the action.
-
-          - `call_id: string`
-
-            The unique ID linking this call to its output.
-
-          - `type: "multi_agent_call"`
-
-            The type of the multi-agent call. Always `multi_agent_call`.
-
-            - `"multi_agent_call"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `MultiAgentCallOutput object { id, action, call_id, 3 more }`
-
-          - `id: string`
-
-            The unique ID of the multi-agent call output item.
-
-          - `action: "spawn_agent" or "interrupt_agent" or "list_agents" or 3 more`
-
-            The multi-agent action that produced this result.
-
-            - `"spawn_agent"`
-
-            - `"interrupt_agent"`
-
-            - `"list_agents"`
-
-            - `"send_message"`
-
-            - `"followup_task"`
-
-            - `"wait_agent"`
-
-          - `call_id: string`
-
-            The unique ID of the multi-agent call.
-
-          - `output: array of BetaResponseOutputText`
-
-            Text output returned by the multi-agent action.
-
-            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
-
-              The annotations of the text output.
-
-            - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
-
-            - `text: string`
-
-              The text output from the model.
-
-            - `type: "output_text"`
-
-              The type of the output text. Always `output_text`.
-
-          - `type: "multi_agent_call_output"`
-
-            The type of the multi-agent result. Always `multi_agent_call_output`.
-
-            - `"multi_agent_call_output"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `WebSearchCall object { id, action, status, 2 more }`
-
-          The results of a web search tool call. See the
-          [web search guide](/docs/guides/tools-web-search) for more information.
-
-          - `id: string`
-
-            The unique ID of the web search tool call.
-
-          - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
-
-            An object describing the specific action taken in this web search call.
-            Includes details on how the model used the web (search, open_page, find_in_page).
-
-            - `Search object { type, queries, query, sources }`
-
-              Action type "search" - Performs a web search query.
-
-              - `type: "search"`
-
-                The action type.
-
-                - `"search"`
-
-              - `queries: optional array of string`
-
-                The search queries.
-
-              - `query: optional string`
-
-                The search query.
-
-              - `sources: optional array of object { type, url }`
-
-                The sources used in the search.
-
-                - `type: "url"`
-
-                  The type of source. Always `url`.
-
-                  - `"url"`
-
-                - `url: string`
-
-                  The URL of the source.
-
-            - `OpenPage object { type, url }`
-
-              Action type "open_page" - Opens a specific URL from search results.
-
-              - `type: "open_page"`
-
-                The action type.
-
-                - `"open_page"`
-
-              - `url: optional string or null`
-
-                The URL opened by the model.
-
-            - `FindInPage object { pattern, type, url }`
-
-              Action type "find_in_page": Searches for a pattern within a loaded page.
-
-              - `pattern: string`
-
-                The pattern or text to search for within the page.
-
-              - `type: "find_in_page"`
-
-                The action type.
-
-                - `"find_in_page"`
-
-              - `url: string`
-
-                The URL of the page searched for the pattern.
-
-          - `status: "in_progress" or "searching" or "completed" or "failed"`
-
-            The status of the web search tool call.
-
-            - `"in_progress"`
-
-            - `"searching"`
-
-            - `"completed"`
-
-            - `"failed"`
-
-          - `type: "web_search_call"`
-
-            The type of the web search tool call. Always `web_search_call`.
-
-            - `"web_search_call"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `ComputerCall object { id, call_id, pending_safety_checks, 5 more }`
-
-          A tool call to a computer use tool. See the
-          [computer use guide](/docs/guides/tools-computer-use) for more information.
-
-          - `id: string`
-
-            The unique ID of the computer call.
-
-          - `call_id: string`
-
-            An identifier used when responding to the tool call with output.
-
-          - `pending_safety_checks: array of object { id, code, message }`
-
-            The pending safety checks for the computer call.
-
-            - `id: string`
-
-              The ID of the pending safety check.
-
-            - `code: optional string or null`
-
-              The type of the pending safety check.
-
-            - `message: optional string or null`
-
-              Details about the pending safety check.
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the item. One of `in_progress`, `completed`, or
-            `incomplete`. Populated when items are returned via API.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "computer_call"`
-
-            The type of the computer call. Always `computer_call`.
-
-            - `"computer_call"`
-
-          - `action: optional BetaComputerAction`
-
-            A click action.
-
-          - `actions: optional BetaComputerActionList`
-
-            Flattened batched actions for `computer_use`. Each action includes an
-            `type` discriminator and action-specific fields.
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `ComputerCallOutput object { id, call_id, output, 5 more }`
-
-          - `id: string`
-
-            The unique ID of the computer call tool output.
-
-          - `call_id: string`
-
-            The ID of the computer tool call that produced the output.
-
-          - `output: BetaResponseComputerToolCallOutputScreenshot`
-
-            A computer screenshot image used with the computer use tool.
-
-          - `status: "completed" or "incomplete" or "failed" or "in_progress"`
-
-            The status of the message input. One of `in_progress`, `completed`, or
-            `incomplete`. Populated when input items are returned via API.
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-            - `"failed"`
-
-            - `"in_progress"`
-
-          - `type: "computer_call_output"`
-
-            The type of the computer tool call output. Always `computer_call_output`.
-
-            - `"computer_call_output"`
-
-          - `acknowledged_safety_checks: optional array of object { id, code, message }`
-
-            The safety checks reported by the API that have been acknowledged by the
-            developer.
-
-            - `id: string`
-
-              The ID of the pending safety check.
-
-            - `code: optional string or null`
-
-              The type of the pending safety check.
-
-            - `message: optional string or null`
-
-              Details about the pending safety check.
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `created_by: optional string`
-
-            The identifier of the actor that created the item.
-
-        - `Reasoning object { id, summary, type, 4 more }`
-
-          A description of the chain of thought used by a reasoning model while generating
-          a response. Be sure to include these items in your `input` to the Responses API
-          for subsequent turns of a conversation if you are manually
-          [managing context](/docs/guides/conversation-state).
-
-          - `id: string`
-
-            The unique identifier of the reasoning content.
-
-          - `summary: array of object { text, type }`
-
-            Reasoning summary content.
-
-            - `text: string`
-
-              A summary of the reasoning output from the model so far.
-
-            - `type: "summary_text"`
-
-              The type of the object. Always `summary_text`.
-
-              - `"summary_text"`
-
-          - `type: "reasoning"`
-
-            The type of the object. Always `reasoning`.
-
-            - `"reasoning"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `content: optional array of object { text, type }`
-
-            Reasoning text content.
-
-            - `text: string`
-
-              The reasoning text from the model.
-
-            - `type: "reasoning_text"`
-
-              The type of the reasoning text. Always `reasoning_text`.
-
-              - `"reasoning_text"`
-
-          - `encrypted_content: optional string or null`
-
-            The encrypted content of the reasoning item. This is populated by default
-            for reasoning items returned by `POST /v1/responses` and WebSocket
-            `response.create` requests.
-
-          - `status: optional "in_progress" or "completed" or "incomplete"`
-
-            The status of the item. One of `in_progress`, `completed`, or
-            `incomplete`. Populated when items are returned via API.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-        - `Program object { id, call_id, code, 3 more }`
-
-          - `id: string`
-
-            The unique ID of the program item.
-
-          - `call_id: string`
-
-            The stable call ID of the program item.
-
-          - `code: string`
-
-            The JavaScript source executed by programmatic tool calling.
-
-          - `fingerprint: string`
-
-            Opaque program replay fingerprint that must be round-tripped.
-
-          - `type: "program"`
-
-            The type of the item. Always `program`.
-
-            - `"program"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `ProgramOutput object { id, call_id, result, 3 more }`
-
-          - `id: string`
-
-            The unique ID of the program output item.
-
-          - `call_id: string`
-
-            The call ID of the program item.
-
-          - `result: string`
-
-            The result produced by the program item.
-
-          - `status: "completed" or "incomplete"`
-
-            The terminal status of the program output item.
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "program_output"`
-
-            The type of the item. Always `program_output`.
-
-            - `"program_output"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `ToolSearchCall object { id, arguments, call_id, 5 more }`
-
-          - `id: string`
-
-            The unique ID of the tool search call item.
-
-          - `arguments: unknown`
-
-            Arguments used for the tool search call.
-
-          - `call_id: string or null`
-
-            The unique ID of the tool search call generated by the model.
-
-          - `execution: "server" or "client"`
-
-            Whether tool search was executed by the server or by the client.
-
-            - `"server"`
-
-            - `"client"`
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the tool search call item that was recorded.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "tool_search_call"`
-
-            The type of the item. Always `tool_search_call`.
-
-            - `"tool_search_call"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `created_by: optional string`
-
-            The identifier of the actor that created the item.
-
-        - `ToolSearchOutput object { id, call_id, execution, 5 more }`
-
-          - `id: string`
-
-            The unique ID of the tool search output item.
-
-          - `call_id: string or null`
-
-            The unique ID of the tool search call generated by the model.
-
-          - `execution: "server" or "client"`
-
-            Whether tool search was executed by the server or by the client.
-
-            - `"server"`
-
-            - `"client"`
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the tool search output item that was recorded.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
-
-            The loaded tool definitions returned by tool search.
-
-            - `Function object { name, parameters, strict, 5 more }`
-
-              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
-
-              - `name: string`
-
-                The name of the function to call.
-
-              - `parameters: map[unknown] or null`
-
-                A JSON schema object describing the parameters of the function.
-
-              - `strict: boolean or null`
-
-                Whether strict parameter validation is enforced for this function tool.
-
-              - `type: "function"`
-
-                The type of the function tool. Always `function`.
-
-                - `"function"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this function is deferred and loaded via tool search.
-
-              - `description: optional string or null`
-
-                A description of the function. Used by the model to determine whether or not to call the function.
-
-              - `output_schema: optional map[unknown] or null`
-
-                A JSON schema object describing the JSON value encoded in string outputs for this function.
-
-            - `FileSearch object { type, vector_store_ids, filters, 2 more }`
-
-              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
-
-              - `type: "file_search"`
-
-                The type of the file search tool. Always `file_search`.
-
-                - `"file_search"`
-
-              - `vector_store_ids: array of string`
-
-                The IDs of the vector stores to search.
-
-              - `filters: optional object { key, type, value }  or object { filters, type }  or null`
-
-                A filter to apply.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `CompoundFilter object { filters, type }`
-
-                  Combine multiple filters using `and` or `or`.
-
-                  - `filters: array of object { key, type, value }  or unknown`
-
-                    Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                    - `ComparisonFilter object { key, type, value }`
-
-                      A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                      - `key: string`
-
-                        The key to compare against the value.
-
-                      - `type: "eq" or "ne" or "gt" or 5 more`
-
-                        Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                        - `eq`: equals
-                        - `ne`: not equal
-                        - `gt`: greater than
-                        - `gte`: greater than or equal
-                        - `lt`: less than
-                        - `lte`: less than or equal
-                        - `in`: in
-                        - `nin`: not in
-
-                        - `"eq"`
-
-                        - `"ne"`
-
-                        - `"gt"`
-
-                        - `"gte"`
-
-                        - `"lt"`
-
-                        - `"lte"`
-
-                        - `"in"`
-
-                        - `"nin"`
-
-                      - `value: string or number or boolean or array of string or number`
-
-                        The value to compare against the attribute key; supports string, number, or boolean types.
-
-                        - `string`
-
-                        - `number`
-
-                        - `boolean`
-
-                        - `array of string or number`
-
-                          - `string`
-
-                          - `number`
-
-                    - `unknown`
-
-                  - `type: "and" or "or"`
-
-                    Type of operation: `and` or `or`.
-
-                    - `"and"`
-
-                    - `"or"`
-
-              - `max_num_results: optional number`
-
-                The maximum number of results to return. This number should be between 1 and 50 inclusive.
-
-              - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
-
-                Ranking options for search.
-
-                - `hybrid_search: optional object { embedding_weight, text_weight }`
-
-                  Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
-
-                  - `embedding_weight: number`
-
-                    The weight of the embedding in the reciprocal ranking fusion.
-
-                  - `text_weight: number`
-
-                    The weight of the text in the reciprocal ranking fusion.
-
-                - `ranker: optional "auto" or "default-2024-11-15"`
-
-                  The ranker to use for the file search.
-
-                  - `"auto"`
-
-                  - `"default-2024-11-15"`
-
-                - `score_threshold: optional number`
-
-                  The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
-
-            - `Computer object { type }`
-
-              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-              - `type: "computer"`
-
-                The type of the computer tool. Always `computer`.
-
-                - `"computer"`
-
-            - `ComputerUsePreview object { display_height, display_width, environment, type }`
-
-              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-              - `display_height: number`
-
-                The height of the computer display.
-
-              - `display_width: number`
-
-                The width of the computer display.
-
-              - `environment: "windows" or "mac" or "linux" or 2 more`
-
-                The type of computer environment to control.
-
-                - `"windows"`
-
-                - `"mac"`
-
-                - `"linux"`
-
-                - `"ubuntu"`
-
-                - `"browser"`
-
-              - `type: "computer_use_preview"`
-
-                The type of the computer use tool. Always `computer_use_preview`.
-
-                - `"computer_use_preview"`
-
-            - `WebSearch object { type, filters, search_context_size, user_location }`
-
-              Search the Internet for sources related to the prompt. Learn more about the
-              [web search tool](/docs/guides/tools-web-search).
-
-              - `type: "web_search" or "web_search_2025_08_26"`
-
-                The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
-
-                - `"web_search"`
-
-                - `"web_search_2025_08_26"`
-
-              - `filters: optional object { allowed_domains }  or null`
-
-                Filters for the search.
-
-                - `allowed_domains: optional array of string or null`
-
-                  Allowed domains for the search. If not provided, all domains are allowed.
-                  Subdomains of the provided domains are allowed as well.
-
-                  Example: `["pubmed.ncbi.nlm.nih.gov"]`
-
-              - `search_context_size: optional "low" or "medium" or "high"`
-
-                High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-              - `user_location: optional object { city, country, region, 2 more }  or null`
-
-                The approximate location of the user.
-
-                - `city: optional string or null`
-
-                  Free text input for the city of the user, e.g. `San Francisco`.
-
-                - `country: optional string or null`
-
-                  The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                - `region: optional string or null`
-
-                  Free text input for the region of the user, e.g. `California`.
-
-                - `timezone: optional string or null`
-
-                  The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-                - `type: optional "approximate"`
-
-                  The type of location approximation. Always `approximate`.
-
-                  - `"approximate"`
-
-            - `Mcp object { server_label, type, allowed_callers, 9 more }`
-
-              Give the model access to additional tools via remote Model Context Protocol
-              (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
-
-              - `server_label: string`
-
-                A label for this MCP server, used to identify it in tool calls.
-
-              - `type: "mcp"`
-
-                The type of the MCP tool. Always `mcp`.
-
-                - `"mcp"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
-
-                List of allowed tool names or a filter object.
-
-                - `McpAllowedTools = array of string`
-
-                  A string array of allowed tool names
-
-                - `McpToolFilter object { read_only, tool_names }`
-
-                  A filter object to specify which tools are allowed.
-
-                  - `read_only: optional boolean`
-
-                    Indicates whether or not a tool modifies data or is read-only. If an
-                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                    it will match this filter.
-
-                  - `tool_names: optional array of string`
-
-                    List of allowed tool names.
-
-              - `authorization: optional string`
-
-                An OAuth access token that can be used with a remote MCP server, either
-                with a custom MCP server URL or a service connector. Your application
-                must handle the OAuth authorization flow and provide the token here.
-
-              - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
-
-                Identifier for service connectors, like those available in ChatGPT. One of
-                `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-                about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
-
-                Currently supported `connector_id` values are:
-
-                - Dropbox: `connector_dropbox`
-                - Gmail: `connector_gmail`
-                - Google Calendar: `connector_googlecalendar`
-                - Google Drive: `connector_googledrive`
-                - Microsoft Teams: `connector_microsoftteams`
-                - Outlook Calendar: `connector_outlookcalendar`
-                - Outlook Email: `connector_outlookemail`
-                - SharePoint: `connector_sharepoint`
-
-                - `"connector_dropbox"`
-
-                - `"connector_gmail"`
-
-                - `"connector_googlecalendar"`
-
-                - `"connector_googledrive"`
-
-                - `"connector_microsoftteams"`
-
-                - `"connector_outlookcalendar"`
-
-                - `"connector_outlookemail"`
-
-                - `"connector_sharepoint"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this MCP tool is deferred and discovered via tool search.
-
-              - `headers: optional map[string] or null`
-
-                Optional HTTP headers to send to the MCP server. Use for authentication
-                or other purposes.
-
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
-
-                Specify which of the MCP server's tools require approval.
-
-                - `McpToolApprovalFilter object { always, never }`
-
-                  Specify which of the MCP server's tools require approval. Can be
-                  `always`, `never`, or a filter object associated with tools
-                  that require approval.
-
-                  - `always: optional object { read_only, tool_names }`
-
-                    A filter object to specify which tools are allowed.
-
-                    - `read_only: optional boolean`
-
-                      Indicates whether or not a tool modifies data or is read-only. If an
-                      MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                      it will match this filter.
-
-                    - `tool_names: optional array of string`
-
-                      List of allowed tool names.
-
-                  - `never: optional object { read_only, tool_names }`
-
-                    A filter object to specify which tools are allowed.
-
-                    - `read_only: optional boolean`
-
-                      Indicates whether or not a tool modifies data or is read-only. If an
-                      MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                      it will match this filter.
-
-                    - `tool_names: optional array of string`
-
-                      List of allowed tool names.
-
-                - `McpToolApprovalSetting = "always" or "never"`
-
-                  Specify a single approval policy for all tools. One of `always` or
-                  `never`. When set to `always`, all tools will require approval. When
-                  set to `never`, all tools will not require approval.
-
-                  - `"always"`
-
-                  - `"never"`
-
-              - `server_description: optional string`
-
-                Optional description of the MCP server, used to provide more context.
-
-              - `server_url: optional string`
-
-                The URL for the MCP server. One of `server_url`, `connector_id`, or
-                `tunnel_id` must be provided.
-
-              - `tunnel_id: optional string`
-
-                The Secure MCP Tunnel ID to use instead of a direct server URL. One of
-                `server_url`, `connector_id`, or `tunnel_id` must be provided.
-
-            - `CodeInterpreter object { container, type, allowed_callers }`
-
-              A tool that runs Python code to help generate a response to a prompt.
-
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
-
-                The code interpreter container. Can be a container ID or an object that
-                specifies uploaded file IDs to make available to your code, along with an
-                optional `memory_limit` setting.
-
-                - `string`
-
-                  The container ID.
-
-                - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
-
-                  Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
-
-                  - `type: "auto"`
-
-                    Always `auto`.
-
-                    - `"auto"`
-
-                  - `file_ids: optional array of string`
-
-                    An optional list of uploaded files to make available to your code.
-
-                  - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
-
-                    The memory limit for the code interpreter container.
-
-                    - `"1g"`
-
-                    - `"4g"`
-
-                    - `"16g"`
-
-                    - `"64g"`
-
-                  - `network_policy: optional BetaContainerNetworkPolicyDisabled or BetaContainerNetworkPolicyAllowlist`
-
-                    Network access policy for the container.
-
-                    - `BetaContainerNetworkPolicyDisabled object { type }`
-
-                    - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
-
-              - `type: "code_interpreter"`
-
-                The type of the code interpreter tool. Always `code_interpreter`.
-
-                - `"code_interpreter"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-            - `ProgrammaticToolCalling object { type }`
-
-              - `type: "programmatic_tool_calling"`
-
-                The type of the tool. Always `programmatic_tool_calling`.
-
-                - `"programmatic_tool_calling"`
-
-            - `ImageGeneration object { type, action, background, 9 more }`
-
-              A tool that generates images using the GPT image models.
-
-              - `type: "image_generation"`
-
-                The type of the image generation tool. Always `image_generation`.
-
-                - `"image_generation"`
-
-              - `action: optional "generate" or "edit" or "auto"`
-
-                Whether to generate a new image or edit an existing image. Default: `auto`.
-
-                - `"generate"`
-
-                - `"edit"`
-
-                - `"auto"`
-
-              - `background: optional "transparent" or "opaque" or "auto"`
-
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
-
-                - `"transparent"`
-
-                - `"opaque"`
-
-                - `"auto"`
-
-              - `input_fidelity: optional "high" or "low" or null`
-
-                Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
-
-                - `"high"`
-
-                - `"low"`
-
-              - `input_image_mask: optional object { file_id, image_url }`
-
-                Optional mask for inpainting. Contains `image_url`
-                (string, optional) and `file_id` (string, optional).
-
-                - `file_id: optional string`
-
-                  File ID for the mask image.
-
-                - `image_url: optional string`
-
-                  Base64-encoded mask image.
-
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                The image generation model to use. Default: `gpt-image-1`.
-
-                - `string`
-
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                  The image generation model to use. Default: `gpt-image-1`.
-
-                  - `"gpt-image-1"`
-
-                  - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
-
-              - `moderation: optional "auto" or "low"`
-
-                Moderation level for the generated image. Default: `auto`.
-
-                - `"auto"`
-
-                - `"low"`
-
-              - `output_compression: optional number`
-
-                Compression level for the output image. Default: 100.
-
-              - `output_format: optional "png" or "webp" or "jpeg"`
-
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
-
-                - `"png"`
-
-                - `"webp"`
-
-                - `"jpeg"`
-
-              - `partial_images: optional number`
-
-                Number of partial images to generate in streaming mode, from 0 (default value) to 3.
-
-              - `quality: optional "low" or "medium" or "high" or "auto"`
-
-                The quality of the generated image. One of `low`, `medium`, `high`,
-                or `auto`. Default: `auto`.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-                - `"auto"`
-
-              - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                - `string`
-
-                - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                  - `"1024x1024"`
-
-                  - `"1024x1536"`
-
-                  - `"1536x1024"`
-
-                  - `"auto"`
-
-            - `LocalShell object { type }`
-
-              A tool that allows the model to execute shell commands in a local environment.
-
-              - `type: "local_shell"`
-
-                The type of the local shell tool. Always `local_shell`.
-
-                - `"local_shell"`
-
-            - `Shell object { type, allowed_callers, environment }`
-
-              A tool that allows the model to execute shell commands.
-
-              - `type: "shell"`
-
-                The type of the shell tool. Always `shell`.
-
-                - `"shell"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference or null`
-
-                - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
-
-                - `BetaLocalEnvironment object { type, skills }`
-
-                - `BetaContainerReference object { container_id, type }`
-
-            - `Custom object { name, type, allowed_callers, 3 more }`
-
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-              - `name: string`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: "custom"`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description: optional string`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format: optional object { type }  or object { definition, syntax, type }`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `Text object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
-            - `Namespace object { description, name, tools, type }`
-
-              Groups function/custom tools under a shared namespace.
-
-              - `description: string`
-
-                A description of the namespace shown to the model.
-
-              - `name: string`
-
-                The namespace name used in tool calls (for example, `crm`).
-
-              - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
-
-                The function/custom tools available inside this namespace.
-
-                - `Function object { name, type, allowed_callers, 5 more }`
-
-                  - `name: string`
-
-                  - `type: "function"`
-
-                    - `"function"`
-
-                  - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                    The tool invocation context(s).
-
-                    - `"direct"`
-
-                    - `"programmatic"`
-
-                  - `defer_loading: optional boolean`
-
-                    Whether this function should be deferred and discovered via tool search.
-
-                  - `description: optional string or null`
-
-                  - `output_schema: optional map[unknown] or null`
-
-                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
-
-                  - `parameters: optional unknown or null`
-
-                  - `strict: optional boolean or null`
-
-                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
-
-                - `Custom object { name, type, allowed_callers, 3 more }`
-
-                  A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-                  - `name: string`
-
-                    The name of the custom tool, used to identify it in tool calls.
-
-                  - `type: "custom"`
-
-                    The type of the custom tool. Always `custom`.
-
-                    - `"custom"`
-
-                  - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                    The tool invocation context(s).
-
-                    - `"direct"`
-
-                    - `"programmatic"`
-
-                  - `defer_loading: optional boolean`
-
-                    Whether this tool should be deferred and discovered via tool search.
-
-                  - `description: optional string`
-
-                    Optional description of the custom tool, used to provide more context.
-
-                  - `format: optional object { type }  or object { definition, syntax, type }`
-
-                    The input format for the custom tool. Default is unconstrained text.
-
-                    - `Text object { type }`
-
-                      Unconstrained free-form text.
-
-                      - `type: "text"`
-
-                        Unconstrained text format. Always `text`.
-
-                        - `"text"`
-
-                    - `Grammar object { definition, syntax, type }`
-
-                      A grammar defined by the user.
-
-                      - `definition: string`
-
-                        The grammar definition.
-
-                      - `syntax: "lark" or "regex"`
-
-                        The syntax of the grammar definition. One of `lark` or `regex`.
-
-                        - `"lark"`
-
-                        - `"regex"`
-
-                      - `type: "grammar"`
-
-                        Grammar format. Always `grammar`.
-
-                        - `"grammar"`
-
-              - `type: "namespace"`
-
-                The type of the tool. Always `namespace`.
-
-                - `"namespace"`
-
-            - `ToolSearch object { type, description, execution, parameters }`
-
-              Hosted or BYOT tool search configuration for deferred tools.
-
-              - `type: "tool_search"`
-
-                The type of the tool. Always `tool_search`.
-
-                - `"tool_search"`
-
-              - `description: optional string or null`
-
-                Description shown to the model for a client-executed tool search tool.
-
-              - `execution: optional "server" or "client"`
-
-                Whether tool search is executed by the server or by the client.
-
-                - `"server"`
-
-                - `"client"`
-
-              - `parameters: optional unknown or null`
-
-                Parameter schema for a client-executed tool search tool.
-
-            - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
-
-              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
-
-              - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
-
-                The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
-
-                - `"web_search_preview"`
-
-                - `"web_search_preview_2025_03_11"`
-
-              - `search_content_types: optional array of "text" or "image"`
-
-                - `"text"`
-
-                - `"image"`
-
-              - `search_context_size: optional "low" or "medium" or "high"`
-
-                High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-              - `user_location: optional object { type, city, country, 2 more }  or null`
-
-                The user's location.
-
-                - `type: "approximate"`
-
-                  The type of location approximation. Always `approximate`.
-
-                  - `"approximate"`
-
-                - `city: optional string or null`
-
-                  Free text input for the city of the user, e.g. `San Francisco`.
-
-                - `country: optional string or null`
-
-                  The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                - `region: optional string or null`
-
-                  Free text input for the region of the user, e.g. `California`.
-
-                - `timezone: optional string or null`
-
-                  The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-            - `ApplyPatch object { type, allowed_callers }`
-
-              Allows the assistant to create, delete, or update files using unified diffs.
-
-              - `type: "apply_patch"`
-
-                The type of the tool. Always `apply_patch`.
-
-                - `"apply_patch"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-          - `type: "tool_search_output"`
-
-            The type of the item. Always `tool_search_output`.
-
-            - `"tool_search_output"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `created_by: optional string`
-
-            The identifier of the actor that created the item.
-
-        - `AdditionalTools object { id, role, tools, 2 more }`
-
-          - `id: string`
-
-            The unique ID of the additional tools item.
-
-          - `role: "unknown" or "user" or "assistant" or 5 more`
-
-            The role that provided the additional tools.
-
-            - `"unknown"`
-
-            - `"user"`
-
-            - `"assistant"`
-
-            - `"system"`
-
-            - `"critic"`
-
-            - `"discriminator"`
-
-            - `"developer"`
-
-            - `"tool"`
-
-          - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
-
-            The additional tool definitions made available at this item.
-
-            - `Function object { name, parameters, strict, 5 more }`
-
-              Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
-
-              - `name: string`
-
-                The name of the function to call.
-
-              - `parameters: map[unknown] or null`
-
-                A JSON schema object describing the parameters of the function.
-
-              - `strict: boolean or null`
-
-                Whether strict parameter validation is enforced for this function tool.
-
-              - `type: "function"`
-
-                The type of the function tool. Always `function`.
-
-                - `"function"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this function is deferred and loaded via tool search.
-
-              - `description: optional string or null`
-
-                A description of the function. Used by the model to determine whether or not to call the function.
-
-              - `output_schema: optional map[unknown] or null`
-
-                A JSON schema object describing the JSON value encoded in string outputs for this function.
-
-            - `FileSearch object { type, vector_store_ids, filters, 2 more }`
-
-              A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
-
-              - `type: "file_search"`
-
-                The type of the file search tool. Always `file_search`.
-
-                - `"file_search"`
-
-              - `vector_store_ids: array of string`
-
-                The IDs of the vector stores to search.
-
-              - `filters: optional object { key, type, value }  or object { filters, type }  or null`
-
-                A filter to apply.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `CompoundFilter object { filters, type }`
-
-                  Combine multiple filters using `and` or `or`.
-
-                  - `filters: array of object { key, type, value }  or unknown`
-
-                    Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                    - `ComparisonFilter object { key, type, value }`
-
-                      A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                      - `key: string`
-
-                        The key to compare against the value.
-
-                      - `type: "eq" or "ne" or "gt" or 5 more`
-
-                        Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                        - `eq`: equals
-                        - `ne`: not equal
-                        - `gt`: greater than
-                        - `gte`: greater than or equal
-                        - `lt`: less than
-                        - `lte`: less than or equal
-                        - `in`: in
-                        - `nin`: not in
-
-                        - `"eq"`
-
-                        - `"ne"`
-
-                        - `"gt"`
-
-                        - `"gte"`
-
-                        - `"lt"`
-
-                        - `"lte"`
-
-                        - `"in"`
-
-                        - `"nin"`
-
-                      - `value: string or number or boolean or array of string or number`
-
-                        The value to compare against the attribute key; supports string, number, or boolean types.
-
-                        - `string`
-
-                        - `number`
-
-                        - `boolean`
-
-                        - `array of string or number`
-
-                          - `string`
-
-                          - `number`
-
-                    - `unknown`
-
-                  - `type: "and" or "or"`
-
-                    Type of operation: `and` or `or`.
-
-                    - `"and"`
-
-                    - `"or"`
-
-              - `max_num_results: optional number`
-
-                The maximum number of results to return. This number should be between 1 and 50 inclusive.
-
-              - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
-
-                Ranking options for search.
-
-                - `hybrid_search: optional object { embedding_weight, text_weight }`
-
-                  Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
-
-                  - `embedding_weight: number`
-
-                    The weight of the embedding in the reciprocal ranking fusion.
-
-                  - `text_weight: number`
-
-                    The weight of the text in the reciprocal ranking fusion.
-
-                - `ranker: optional "auto" or "default-2024-11-15"`
-
-                  The ranker to use for the file search.
-
-                  - `"auto"`
-
-                  - `"default-2024-11-15"`
-
-                - `score_threshold: optional number`
-
-                  The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
-
-            - `Computer object { type }`
-
-              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-              - `type: "computer"`
-
-                The type of the computer tool. Always `computer`.
-
-                - `"computer"`
-
-            - `ComputerUsePreview object { display_height, display_width, environment, type }`
-
-              A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-              - `display_height: number`
-
-                The height of the computer display.
-
-              - `display_width: number`
-
-                The width of the computer display.
-
-              - `environment: "windows" or "mac" or "linux" or 2 more`
-
-                The type of computer environment to control.
-
-                - `"windows"`
-
-                - `"mac"`
-
-                - `"linux"`
-
-                - `"ubuntu"`
-
-                - `"browser"`
-
-              - `type: "computer_use_preview"`
-
-                The type of the computer use tool. Always `computer_use_preview`.
-
-                - `"computer_use_preview"`
-
-            - `WebSearch object { type, filters, search_context_size, user_location }`
-
-              Search the Internet for sources related to the prompt. Learn more about the
-              [web search tool](/docs/guides/tools-web-search).
-
-              - `type: "web_search" or "web_search_2025_08_26"`
-
-                The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
-
-                - `"web_search"`
-
-                - `"web_search_2025_08_26"`
-
-              - `filters: optional object { allowed_domains }  or null`
-
-                Filters for the search.
-
-                - `allowed_domains: optional array of string or null`
-
-                  Allowed domains for the search. If not provided, all domains are allowed.
-                  Subdomains of the provided domains are allowed as well.
-
-                  Example: `["pubmed.ncbi.nlm.nih.gov"]`
-
-              - `search_context_size: optional "low" or "medium" or "high"`
-
-                High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-              - `user_location: optional object { city, country, region, 2 more }  or null`
-
-                The approximate location of the user.
-
-                - `city: optional string or null`
-
-                  Free text input for the city of the user, e.g. `San Francisco`.
-
-                - `country: optional string or null`
-
-                  The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                - `region: optional string or null`
-
-                  Free text input for the region of the user, e.g. `California`.
-
-                - `timezone: optional string or null`
-
-                  The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-                - `type: optional "approximate"`
-
-                  The type of location approximation. Always `approximate`.
-
-                  - `"approximate"`
-
-            - `Mcp object { server_label, type, allowed_callers, 9 more }`
-
-              Give the model access to additional tools via remote Model Context Protocol
-              (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
-
-              - `server_label: string`
-
-                A label for this MCP server, used to identify it in tool calls.
-
-              - `type: "mcp"`
-
-                The type of the MCP tool. Always `mcp`.
-
-                - `"mcp"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
-
-                List of allowed tool names or a filter object.
-
-                - `McpAllowedTools = array of string`
-
-                  A string array of allowed tool names
-
-                - `McpToolFilter object { read_only, tool_names }`
-
-                  A filter object to specify which tools are allowed.
-
-                  - `read_only: optional boolean`
-
-                    Indicates whether or not a tool modifies data or is read-only. If an
-                    MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                    it will match this filter.
-
-                  - `tool_names: optional array of string`
-
-                    List of allowed tool names.
-
-              - `authorization: optional string`
-
-                An OAuth access token that can be used with a remote MCP server, either
-                with a custom MCP server URL or a service connector. Your application
-                must handle the OAuth authorization flow and provide the token here.
-
-              - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
-
-                Identifier for service connectors, like those available in ChatGPT. One of
-                `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-                about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
-
-                Currently supported `connector_id` values are:
-
-                - Dropbox: `connector_dropbox`
-                - Gmail: `connector_gmail`
-                - Google Calendar: `connector_googlecalendar`
-                - Google Drive: `connector_googledrive`
-                - Microsoft Teams: `connector_microsoftteams`
-                - Outlook Calendar: `connector_outlookcalendar`
-                - Outlook Email: `connector_outlookemail`
-                - SharePoint: `connector_sharepoint`
-
-                - `"connector_dropbox"`
-
-                - `"connector_gmail"`
-
-                - `"connector_googlecalendar"`
-
-                - `"connector_googledrive"`
-
-                - `"connector_microsoftteams"`
-
-                - `"connector_outlookcalendar"`
-
-                - `"connector_outlookemail"`
-
-                - `"connector_sharepoint"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this MCP tool is deferred and discovered via tool search.
-
-              - `headers: optional map[string] or null`
-
-                Optional HTTP headers to send to the MCP server. Use for authentication
-                or other purposes.
-
-              - `require_approval: optional object { always, never }  or "always" or "never" or null`
-
-                Specify which of the MCP server's tools require approval.
-
-                - `McpToolApprovalFilter object { always, never }`
-
-                  Specify which of the MCP server's tools require approval. Can be
-                  `always`, `never`, or a filter object associated with tools
-                  that require approval.
-
-                  - `always: optional object { read_only, tool_names }`
-
-                    A filter object to specify which tools are allowed.
-
-                    - `read_only: optional boolean`
-
-                      Indicates whether or not a tool modifies data or is read-only. If an
-                      MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                      it will match this filter.
-
-                    - `tool_names: optional array of string`
-
-                      List of allowed tool names.
-
-                  - `never: optional object { read_only, tool_names }`
-
-                    A filter object to specify which tools are allowed.
-
-                    - `read_only: optional boolean`
-
-                      Indicates whether or not a tool modifies data or is read-only. If an
-                      MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                      it will match this filter.
-
-                    - `tool_names: optional array of string`
-
-                      List of allowed tool names.
-
-                - `McpToolApprovalSetting = "always" or "never"`
-
-                  Specify a single approval policy for all tools. One of `always` or
-                  `never`. When set to `always`, all tools will require approval. When
-                  set to `never`, all tools will not require approval.
-
-                  - `"always"`
-
-                  - `"never"`
-
-              - `server_description: optional string`
-
-                Optional description of the MCP server, used to provide more context.
-
-              - `server_url: optional string`
-
-                The URL for the MCP server. One of `server_url`, `connector_id`, or
-                `tunnel_id` must be provided.
-
-              - `tunnel_id: optional string`
-
-                The Secure MCP Tunnel ID to use instead of a direct server URL. One of
-                `server_url`, `connector_id`, or `tunnel_id` must be provided.
-
-            - `CodeInterpreter object { container, type, allowed_callers }`
-
-              A tool that runs Python code to help generate a response to a prompt.
-
-              - `container: string or object { type, file_ids, memory_limit, network_policy }`
-
-                The code interpreter container. Can be a container ID or an object that
-                specifies uploaded file IDs to make available to your code, along with an
-                optional `memory_limit` setting.
-
-                - `string`
-
-                  The container ID.
-
-                - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
-
-                  Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
-
-                  - `type: "auto"`
-
-                    Always `auto`.
-
-                    - `"auto"`
-
-                  - `file_ids: optional array of string`
-
-                    An optional list of uploaded files to make available to your code.
-
-                  - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
-
-                    The memory limit for the code interpreter container.
-
-                    - `"1g"`
-
-                    - `"4g"`
-
-                    - `"16g"`
-
-                    - `"64g"`
-
-                  - `network_policy: optional BetaContainerNetworkPolicyDisabled or BetaContainerNetworkPolicyAllowlist`
-
-                    Network access policy for the container.
-
-                    - `BetaContainerNetworkPolicyDisabled object { type }`
-
-                    - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
-
-              - `type: "code_interpreter"`
-
-                The type of the code interpreter tool. Always `code_interpreter`.
-
-                - `"code_interpreter"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-            - `ProgrammaticToolCalling object { type }`
-
-              - `type: "programmatic_tool_calling"`
-
-                The type of the tool. Always `programmatic_tool_calling`.
-
-                - `"programmatic_tool_calling"`
-
-            - `ImageGeneration object { type, action, background, 9 more }`
-
-              A tool that generates images using the GPT image models.
-
-              - `type: "image_generation"`
-
-                The type of the image generation tool. Always `image_generation`.
-
-                - `"image_generation"`
-
-              - `action: optional "generate" or "edit" or "auto"`
-
-                Whether to generate a new image or edit an existing image. Default: `auto`.
-
-                - `"generate"`
-
-                - `"edit"`
-
-                - `"auto"`
-
-              - `background: optional "transparent" or "opaque" or "auto"`
-
-                Background type for the generated image. One of `transparent`,
-                `opaque`, or `auto`. Default: `auto`.
-
-                - `"transparent"`
-
-                - `"opaque"`
-
-                - `"auto"`
-
-              - `input_fidelity: optional "high" or "low" or null`
-
-                Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
-
-                - `"high"`
-
-                - `"low"`
-
-              - `input_image_mask: optional object { file_id, image_url }`
-
-                Optional mask for inpainting. Contains `image_url`
-                (string, optional) and `file_id` (string, optional).
-
-                - `file_id: optional string`
-
-                  File ID for the mask image.
-
-                - `image_url: optional string`
-
-                  Base64-encoded mask image.
-
-              - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                The image generation model to use. Default: `gpt-image-1`.
-
-                - `string`
-
-                - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-                  The image generation model to use. Default: `gpt-image-1`.
-
-                  - `"gpt-image-1"`
-
-                  - `"gpt-image-1-mini"`
-
-                  - `"gpt-image-1.5"`
-
-              - `moderation: optional "auto" or "low"`
-
-                Moderation level for the generated image. Default: `auto`.
-
-                - `"auto"`
-
-                - `"low"`
-
-              - `output_compression: optional number`
-
-                Compression level for the output image. Default: 100.
-
-              - `output_format: optional "png" or "webp" or "jpeg"`
-
-                The output format of the generated image. One of `png`, `webp`, or
-                `jpeg`. Default: `png`.
-
-                - `"png"`
-
-                - `"webp"`
-
-                - `"jpeg"`
-
-              - `partial_images: optional number`
-
-                Number of partial images to generate in streaming mode, from 0 (default value) to 3.
-
-              - `quality: optional "low" or "medium" or "high" or "auto"`
-
-                The quality of the generated image. One of `low`, `medium`, `high`,
-                or `auto`. Default: `auto`.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-                - `"auto"`
-
-              - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                - `string`
-
-                - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-                  The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-                  - `"1024x1024"`
-
-                  - `"1024x1536"`
-
-                  - `"1536x1024"`
-
-                  - `"auto"`
-
-            - `LocalShell object { type }`
-
-              A tool that allows the model to execute shell commands in a local environment.
-
-              - `type: "local_shell"`
-
-                The type of the local shell tool. Always `local_shell`.
-
-                - `"local_shell"`
-
-            - `Shell object { type, allowed_callers, environment }`
-
-              A tool that allows the model to execute shell commands.
-
-              - `type: "shell"`
-
-                The type of the shell tool. Always `shell`.
-
-                - `"shell"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference or null`
-
-                - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
-
-                - `BetaLocalEnvironment object { type, skills }`
-
-                - `BetaContainerReference object { container_id, type }`
-
-            - `Custom object { name, type, allowed_callers, 3 more }`
-
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-              - `name: string`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: "custom"`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description: optional string`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format: optional object { type }  or object { definition, syntax, type }`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `Text object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
-            - `Namespace object { description, name, tools, type }`
-
-              Groups function/custom tools under a shared namespace.
-
-              - `description: string`
-
-                A description of the namespace shown to the model.
-
-              - `name: string`
-
-                The namespace name used in tool calls (for example, `crm`).
-
-              - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
-
-                The function/custom tools available inside this namespace.
-
-                - `Function object { name, type, allowed_callers, 5 more }`
-
-                  - `name: string`
-
-                  - `type: "function"`
-
-                    - `"function"`
-
-                  - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                    The tool invocation context(s).
-
-                    - `"direct"`
-
-                    - `"programmatic"`
-
-                  - `defer_loading: optional boolean`
-
-                    Whether this function should be deferred and discovered via tool search.
-
-                  - `description: optional string or null`
-
-                  - `output_schema: optional map[unknown] or null`
-
-                    A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
-
-                  - `parameters: optional unknown or null`
-
-                  - `strict: optional boolean or null`
-
-                    Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
-
-                - `Custom object { name, type, allowed_callers, 3 more }`
-
-                  A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-                  - `name: string`
-
-                    The name of the custom tool, used to identify it in tool calls.
-
-                  - `type: "custom"`
-
-                    The type of the custom tool. Always `custom`.
-
-                    - `"custom"`
-
-                  - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                    The tool invocation context(s).
-
-                    - `"direct"`
-
-                    - `"programmatic"`
-
-                  - `defer_loading: optional boolean`
-
-                    Whether this tool should be deferred and discovered via tool search.
-
-                  - `description: optional string`
-
-                    Optional description of the custom tool, used to provide more context.
-
-                  - `format: optional object { type }  or object { definition, syntax, type }`
-
-                    The input format for the custom tool. Default is unconstrained text.
-
-                    - `Text object { type }`
-
-                      Unconstrained free-form text.
-
-                      - `type: "text"`
-
-                        Unconstrained text format. Always `text`.
-
-                        - `"text"`
-
-                    - `Grammar object { definition, syntax, type }`
-
-                      A grammar defined by the user.
-
-                      - `definition: string`
-
-                        The grammar definition.
-
-                      - `syntax: "lark" or "regex"`
-
-                        The syntax of the grammar definition. One of `lark` or `regex`.
-
-                        - `"lark"`
-
-                        - `"regex"`
-
-                      - `type: "grammar"`
-
-                        Grammar format. Always `grammar`.
-
-                        - `"grammar"`
-
-              - `type: "namespace"`
-
-                The type of the tool. Always `namespace`.
-
-                - `"namespace"`
-
-            - `ToolSearch object { type, description, execution, parameters }`
-
-              Hosted or BYOT tool search configuration for deferred tools.
-
-              - `type: "tool_search"`
-
-                The type of the tool. Always `tool_search`.
-
-                - `"tool_search"`
-
-              - `description: optional string or null`
-
-                Description shown to the model for a client-executed tool search tool.
-
-              - `execution: optional "server" or "client"`
-
-                Whether tool search is executed by the server or by the client.
-
-                - `"server"`
-
-                - `"client"`
-
-              - `parameters: optional unknown or null`
-
-                Parameter schema for a client-executed tool search tool.
-
-            - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
-
-              This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
-
-              - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
-
-                The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
-
-                - `"web_search_preview"`
-
-                - `"web_search_preview_2025_03_11"`
-
-              - `search_content_types: optional array of "text" or "image"`
-
-                - `"text"`
-
-                - `"image"`
-
-              - `search_context_size: optional "low" or "medium" or "high"`
-
-                High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-                - `"low"`
-
-                - `"medium"`
-
-                - `"high"`
-
-              - `user_location: optional object { type, city, country, 2 more }  or null`
-
-                The user's location.
-
-                - `type: "approximate"`
-
-                  The type of location approximation. Always `approximate`.
-
-                  - `"approximate"`
-
-                - `city: optional string or null`
-
-                  Free text input for the city of the user, e.g. `San Francisco`.
-
-                - `country: optional string or null`
-
-                  The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-                - `region: optional string or null`
-
-                  Free text input for the region of the user, e.g. `California`.
-
-                - `timezone: optional string or null`
-
-                  The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-            - `ApplyPatch object { type, allowed_callers }`
-
-              Allows the assistant to create, delete, or update files using unified diffs.
-
-              - `type: "apply_patch"`
-
-                The type of the tool. Always `apply_patch`.
-
-                - `"apply_patch"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-          - `type: "additional_tools"`
-
-            The type of the item. Always `additional_tools`.
-
-            - `"additional_tools"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `Compaction object { id, encrypted_content, type, 2 more }`
-
-          A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
-
-          - `id: string`
-
-            The unique ID of the compaction item.
-
-          - `encrypted_content: string`
-
-            The encrypted content that was produced by compaction.
-
-          - `type: "compaction"`
-
-            The type of the item. Always `compaction`.
-
-            - `"compaction"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `created_by: optional string`
-
-            The identifier of the actor that created the item.
-
-        - `ImageGenerationCall object { id, result, status, 2 more }`
-
-          An image generation request made by the model.
-
-          - `id: string`
-
-            The unique ID of the image generation call.
-
-          - `result: string or null`
-
-            The generated image encoded in base64.
-
-          - `status: "in_progress" or "completed" or "generating" or "failed"`
-
-            The status of the image generation call.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"generating"`
-
-            - `"failed"`
-
-          - `type: "image_generation_call"`
-
-            The type of the image generation call. Always `image_generation_call`.
-
-            - `"image_generation_call"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `CodeInterpreterCall object { id, code, container_id, 4 more }`
-
-          A tool call to run code.
-
-          - `id: string`
-
-            The unique ID of the code interpreter tool call.
-
-          - `code: string or null`
-
-            The code to run, or null if not available.
-
-          - `container_id: string`
-
-            The ID of the container used to run the code.
-
-          - `outputs: array of object { logs, type }  or object { type, url }  or null`
-
-            The outputs generated by the code interpreter, such as logs or images.
-            Can be null if no outputs are available.
-
-            - `Logs object { logs, type }`
-
-              The logs output from the code interpreter.
-
-              - `logs: string`
-
-                The logs output from the code interpreter.
-
-              - `type: "logs"`
-
-                The type of the output. Always `logs`.
-
-                - `"logs"`
-
-            - `Image object { type, url }`
-
-              The image output from the code interpreter.
-
-              - `type: "image"`
-
-                The type of the output. Always `image`.
-
-                - `"image"`
-
-              - `url: string`
-
-                The URL of the image output from the code interpreter.
-
-          - `status: "in_progress" or "completed" or "incomplete" or 2 more`
-
-            The status of the code interpreter tool call. Valid values are `in_progress`, `completed`, `incomplete`, `interpreting`, and `failed`.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-            - `"interpreting"`
-
-            - `"failed"`
-
-          - `type: "code_interpreter_call"`
-
-            The type of the code interpreter tool call. Always `code_interpreter_call`.
-
-            - `"code_interpreter_call"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `LocalShellCall object { id, action, call_id, 3 more }`
-
-          A tool call to run a command on the local shell.
-
-          - `id: string`
-
-            The unique ID of the local shell call.
-
-          - `action: object { command, env, type, 3 more }`
-
-            Execute a shell command on the server.
-
-            - `command: array of string`
-
-              The command to run.
-
-            - `env: map[string]`
-
-              Environment variables to set for the command.
-
-            - `type: "exec"`
-
-              The type of the local shell action. Always `exec`.
-
-              - `"exec"`
-
-            - `timeout_ms: optional number or null`
-
-              Optional timeout in milliseconds for the command.
-
-            - `user: optional string or null`
-
-              Optional user to run the command as.
-
-            - `working_directory: optional string or null`
-
-              Optional working directory to run the command in.
-
-          - `call_id: string`
-
-            The unique ID of the local shell tool call generated by the model.
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the local shell call.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "local_shell_call"`
-
-            The type of the local shell call. Always `local_shell_call`.
-
-            - `"local_shell_call"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `LocalShellCallOutput object { id, output, type, 2 more }`
-
-          The output of a local shell tool call.
-
-          - `id: string`
-
-            The unique ID of the local shell tool call generated by the model.
-
-          - `output: string`
-
-            A JSON string of the output of the local shell tool call.
-
-          - `type: "local_shell_call_output"`
-
-            The type of the local shell tool call output. Always `local_shell_call_output`.
-
-            - `"local_shell_call_output"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `status: optional "in_progress" or "completed" or "incomplete" or null`
-
-            The status of the item. One of `in_progress`, `completed`, or `incomplete`.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-        - `ShellCall object { id, action, call_id, 6 more }`
-
-          A tool call that executes one or more shell commands in a managed environment.
-
-          - `id: string`
-
-            The unique ID of the shell tool call. Populated when this item is returned via API.
-
-          - `action: object { commands, max_output_length, timeout_ms }`
-
-            The shell commands and limits that describe how to run the tool call.
-
-            - `commands: array of string`
-
-            - `max_output_length: number or null`
-
-              Optional maximum number of characters to return from each command.
-
-            - `timeout_ms: number or null`
-
-              Optional timeout in milliseconds for the commands.
-
-          - `call_id: string`
-
-            The unique ID of the shell tool call generated by the model.
-
-          - `environment: BetaResponseLocalEnvironment or BetaResponseContainerReference or null`
-
-            Represents the use of a local environment to perform shell actions.
-
-            - `BetaResponseLocalEnvironment object { type }`
-
-              Represents the use of a local environment to perform shell actions.
-
-              - `type: "local"`
-
-                The environment type. Always `local`.
-
-                - `"local"`
-
-            - `BetaResponseContainerReference object { container_id, type }`
-
-              Represents a container created with /v1/containers.
-
-              - `container_id: string`
-
-              - `type: "container_reference"`
-
-                The environment type. Always `container_reference`.
-
-                - `"container_reference"`
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the shell call. One of `in_progress`, `completed`, or `incomplete`.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "shell_call"`
-
-            The type of the item. Always `shell_call`.
-
-            - `"shell_call"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                - `"program"`
-
-          - `created_by: optional string`
-
-            The ID of the entity that created this tool call.
-
-        - `ShellCallOutput object { id, call_id, max_output_length, 6 more }`
-
-          The output of a shell tool call that was emitted.
-
-          - `id: string`
-
-            The unique ID of the shell call output. Populated when this item is returned via API.
-
-          - `call_id: string`
-
-            The unique ID of the shell tool call generated by the model.
-
-          - `max_output_length: number or null`
-
-            The maximum length of the shell command output. This is generated by the model and should be passed back with the raw output.
-
-          - `output: array of object { outcome, stderr, stdout, created_by }`
-
-            An array of shell call output contents
-
-            - `outcome: object { type }  or object { exit_code, type }`
-
-              Represents either an exit outcome (with an exit code) or a timeout outcome for a shell call output chunk.
-
-              - `Timeout object { type }`
-
-                Indicates that the shell call exceeded its configured time limit.
-
-                - `type: "timeout"`
-
-                  The outcome type. Always `timeout`.
-
-                  - `"timeout"`
-
-              - `Exit object { exit_code, type }`
-
-                Indicates that the shell commands finished and returned an exit code.
-
-                - `exit_code: number`
-
-                  Exit code from the shell process.
-
-                - `type: "exit"`
-
-                  The outcome type. Always `exit`.
-
-                  - `"exit"`
-
-            - `stderr: string`
-
-              The standard error output that was captured.
-
-            - `stdout: string`
-
-              The standard output that was captured.
-
-            - `created_by: optional string`
-
-              The identifier of the actor that created the item.
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the shell call output. One of `in_progress`, `completed`, or `incomplete`.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "shell_call_output"`
-
-            The type of the shell call output. Always `shell_call_output`.
-
-            - `"shell_call_output"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                - `"program"`
-
-          - `created_by: optional string`
-
-            The identifier of the actor that created the item.
-
-        - `ApplyPatchCall object { id, call_id, operation, 5 more }`
-
-          A tool call that applies file diffs by creating, deleting, or updating files.
-
-          - `id: string`
-
-            The unique ID of the apply patch tool call. Populated when this item is returned via API.
-
-          - `call_id: string`
-
-            The unique ID of the apply patch tool call generated by the model.
-
-          - `operation: object { diff, path, type }  or object { path, type }  or object { diff, path, type }`
-
-            One of the create_file, delete_file, or update_file operations applied via apply_patch.
-
-            - `CreateFile object { diff, path, type }`
-
-              Instruction describing how to create a file via the apply_patch tool.
-
-              - `diff: string`
-
-                Diff to apply.
-
-              - `path: string`
-
-                Path of the file to create.
-
-              - `type: "create_file"`
-
-                Create a new file with the provided diff.
-
-                - `"create_file"`
-
-            - `DeleteFile object { path, type }`
-
-              Instruction describing how to delete a file via the apply_patch tool.
-
-              - `path: string`
-
-                Path of the file to delete.
-
-              - `type: "delete_file"`
-
-                Delete the specified file.
-
-                - `"delete_file"`
-
-            - `UpdateFile object { diff, path, type }`
-
-              Instruction describing how to update a file via the apply_patch tool.
-
-              - `diff: string`
-
-                Diff to apply.
-
-              - `path: string`
-
-                Path of the file to update.
-
-              - `type: "update_file"`
-
-                Update an existing file with the provided diff.
-
-                - `"update_file"`
-
-          - `status: "in_progress" or "completed"`
-
-            The status of the apply patch tool call. One of `in_progress` or `completed`.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-          - `type: "apply_patch_call"`
-
-            The type of the item. Always `apply_patch_call`.
-
-            - `"apply_patch_call"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                - `"program"`
-
-          - `created_by: optional string`
-
-            The ID of the entity that created this tool call.
-
-        - `ApplyPatchCallOutput object { id, call_id, status, 5 more }`
-
-          The output emitted by an apply patch tool call.
-
-          - `id: string`
-
-            The unique ID of the apply patch tool call output. Populated when this item is returned via API.
-
-          - `call_id: string`
-
-            The unique ID of the apply patch tool call generated by the model.
-
-          - `status: "completed" or "failed"`
-
-            The status of the apply patch tool call output. One of `completed` or `failed`.
-
-            - `"completed"`
-
-            - `"failed"`
-
-          - `type: "apply_patch_call_output"`
-
-            The type of the item. Always `apply_patch_call_output`.
-
-            - `"apply_patch_call_output"`
-
-          - `agent: optional object { agent_name }`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                - `"program"`
-
-          - `created_by: optional string`
-
-            The ID of the entity that created this tool call output.
-
-          - `output: optional string or null`
-
-            Optional textual output returned by the apply patch tool.
-
-        - `McpCall object { id, arguments, name, 7 more }`
-
-          An invocation of a tool on an MCP server.
-
-          - `id: string`
-
-            The unique ID of the tool call.
-
-          - `arguments: string`
-
-            A JSON string of the arguments passed to the tool.
-
-          - `name: string`
-
-            The name of the tool that was run.
-
-          - `server_label: string`
-
-            The label of the MCP server running the tool.
-
-          - `type: "mcp_call"`
-
-            The type of the item. Always `mcp_call`.
-
-            - `"mcp_call"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `approval_request_id: optional string or null`
-
-            Unique identifier for the MCP tool call approval request.
-            Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
-
-          - `error: optional string or null`
-
-            The error from the tool call, if any.
-
-          - `output: optional string or null`
-
-            The output from the tool call.
-
-          - `status: optional "in_progress" or "completed" or "incomplete" or 2 more`
-
-            The status of the tool call. One of `in_progress`, `completed`, `incomplete`, `calling`, or `failed`.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-            - `"calling"`
-
-            - `"failed"`
-
-        - `McpListTools object { id, server_label, tools, 3 more }`
-
-          A list of tools available on an MCP server.
-
-          - `id: string`
-
-            The unique ID of the list.
-
-          - `server_label: string`
-
-            The label of the MCP server.
-
-          - `tools: array of object { input_schema, name, annotations, description }`
-
-            The tools available on the server.
-
-            - `input_schema: unknown`
-
-              The JSON schema describing the tool's input.
-
-            - `name: string`
-
-              The name of the tool.
-
-            - `annotations: optional unknown or null`
-
-              Additional annotations about the tool.
-
-            - `description: optional string or null`
-
-              The description of the tool.
-
-          - `type: "mcp_list_tools"`
-
-            The type of the item. Always `mcp_list_tools`.
-
-            - `"mcp_list_tools"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `error: optional string or null`
-
-            Error message if the server could not list tools.
-
-        - `McpApprovalRequest object { id, arguments, name, 3 more }`
-
-          A request for human approval of a tool invocation.
-
-          - `id: string`
-
-            The unique ID of the approval request.
-
-          - `arguments: string`
-
-            A JSON string of arguments for the tool.
-
-          - `name: string`
-
-            The name of the tool to run.
-
-          - `server_label: string`
-
-            The label of the MCP server making the request.
-
-          - `type: "mcp_approval_request"`
-
-            The type of the item. Always `mcp_approval_request`.
-
-            - `"mcp_approval_request"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-        - `McpApprovalResponse object { id, approval_request_id, approve, 3 more }`
-
-          A response to an MCP approval request.
-
-          - `id: string`
-
-            The unique ID of the approval response
-
-          - `approval_request_id: string`
-
-            The ID of the approval request being answered.
-
-          - `approve: boolean`
-
-            Whether the request was approved.
-
-          - `type: "mcp_approval_response"`
-
-            The type of the item. Always `mcp_approval_response`.
-
-            - `"mcp_approval_response"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `reason: optional string or null`
-
-            Optional reason for the decision.
-
-        - `CustomToolCall object { call_id, input, name, 5 more }`
-
-          A call to a custom tool created by the model.
-
-          - `call_id: string`
-
-            An identifier used to map this custom tool call to a tool call output.
-
-          - `input: string`
-
-            The input for the custom tool call generated by the model.
-
-          - `name: string`
-
-            The name of the custom tool being called.
-
-          - `type: "custom_tool_call"`
-
-            The type of the custom tool call. Always `custom_tool_call`.
-
-            - `"custom_tool_call"`
-
-          - `id: optional string`
-
-            The unique ID of the custom tool call in the OpenAI platform.
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                - `"program"`
-
-          - `namespace: optional string`
-
-            The namespace of the custom tool being called.
-
-        - `CustomToolCallOutput object { id, call_id, output, 5 more }`
-
-          - `id: string`
-
-            The unique ID of the custom tool call output item.
-
-          - `call_id: string`
-
-            The call ID, used to map this custom tool call output to a custom tool call.
-
-          - `output: string or array of BetaResponseInputText or BetaResponseInputImage or BetaResponseInputFile`
-
-            The output from the custom tool call generated by your code.
-            Can be a string or an list of output content.
-
-            - `StringOutput = string`
-
-              A string of the output of the custom tool call.
-
-            - `OutputContentList = array of BetaResponseInputText or BetaResponseInputImage or BetaResponseInputFile`
-
-              Text, image, or file output of the custom tool call.
-
-              - `BetaResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-                A text input to the model.
-
-              - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
-
-                An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-              - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
-
-                A file input to the model.
-
-          - `status: "in_progress" or "completed" or "incomplete"`
-
-            The status of the item. One of `in_progress`, `completed`, or
-            `incomplete`. Populated when items are returned via API.
-
-            - `"in_progress"`
-
-            - `"completed"`
-
-            - `"incomplete"`
-
-          - `type: "custom_tool_call_output"`
-
-            The type of the custom tool call output. Always `custom_tool_call_output`.
-
-            - `"custom_tool_call_output"`
-
-          - `agent: optional object { agent_name }  or null`
-
-            The agent that produced this item.
-
-            - `agent_name: string`
-
-              The canonical name of the agent that produced this item.
-
-          - `caller: optional object { type }  or object { caller_id, type }  or null`
-
-            The execution context that produced this tool call.
-
-            - `Direct object { type }`
-
-              - `type: "direct"`
-
-                The caller type. Always `direct`.
-
-                - `"direct"`
-
-            - `Program object { caller_id, type }`
-
-              - `caller_id: string`
-
-                The call ID of the program item that produced this tool call.
-
-              - `type: "program"`
-
-                The caller type. Always `program`.
-
-                - `"program"`
-
-          - `created_by: optional string`
-
-            The identifier of the actor that created the item.
-
-      - `parallel_tool_calls: boolean`
-
-        Whether to allow the model to run tool calls in parallel.
-
-      - `temperature: number or null`
-
-        What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
-        We generally recommend altering this or `top_p` but not both.
-
-      - `tool_choice: BetaToolChoiceOptions or BetaToolChoiceAllowed or BetaToolChoiceTypes or 6 more`
-
-        How the model should select which tool (or tools) to use when generating
-        a response. See the `tools` parameter to see how to specify which tools
-        the model can call.
-
-        - `BetaToolChoiceOptions = "none" or "auto" or "required"`
-
-          Controls which (if any) tool is called by the model.
-
-          `none` means the model will not call any tool and instead generates a message.
-
-          `auto` means the model can pick between generating a message or calling one or
-          more tools.
-
-          `required` means the model must call one or more tools.
-
-          - `"none"`
-
-          - `"auto"`
-
-          - `"required"`
-
-        - `BetaToolChoiceAllowed object { mode, tools, type }`
-
-          Constrains the tools available to the model to a pre-defined set.
-
-          - `mode: "auto" or "required"`
-
-            Constrains the tools available to the model to a pre-defined set.
-
-            `auto` allows the model to pick from among the allowed tools and generate a
-            message.
-
-            `required` requires the model to call one or more of the allowed tools.
-
-            - `"auto"`
-
-            - `"required"`
-
-          - `tools: array of map[unknown]`
-
-            A list of tool definitions that the model should be allowed to call.
-
-            For the Responses API, the list of tool definitions might look like:
-
-            ```json
-            [
-              { "type": "function", "name": "get_weather" },
-              { "type": "mcp", "server_label": "deepwiki" },
-              { "type": "image_generation" }
-            ]
-            ```
-
-          - `type: "allowed_tools"`
-
-            Allowed tool configuration type. Always `allowed_tools`.
-
-            - `"allowed_tools"`
-
-        - `BetaToolChoiceTypes object { type }`
-
-          Indicates that the model should use a built-in tool to generate a response.
-          [Learn more about built-in tools](/docs/guides/tools).
-
-          - `type: "file_search" or "web_search_preview" or "computer" or 5 more`
-
-            The type of hosted tool the model should to use. Learn more about
-            [built-in tools](/docs/guides/tools).
-
-            Allowed values are:
-
-            - `file_search`
-            - `web_search_preview`
-            - `computer`
-            - `computer_use_preview`
-            - `computer_use`
-            - `code_interpreter`
-            - `image_generation`
-
-            - `"file_search"`
-
-            - `"web_search_preview"`
-
-            - `"computer"`
-
-            - `"computer_use_preview"`
-
-            - `"computer_use"`
-
-            - `"web_search_preview_2025_03_11"`
-
-            - `"image_generation"`
-
-            - `"code_interpreter"`
-
-        - `BetaToolChoiceFunction object { name, type }`
-
-          Use this option to force the model to call a specific function.
-
-          - `name: string`
-
-            The name of the function to call.
-
-          - `type: "function"`
-
-            For function calling, the type is always `function`.
-
-            - `"function"`
-
-        - `BetaToolChoiceMcp object { server_label, type, name }`
-
-          Use this option to force the model to call a specific tool on a remote MCP server.
-
-          - `server_label: string`
-
-            The label of the MCP server to use.
-
-          - `type: "mcp"`
-
-            For MCP tools, the type is always `mcp`.
-
-            - `"mcp"`
-
-          - `name: optional string or null`
-
-            The name of the tool to call on the server.
-
-        - `BetaToolChoiceCustom object { name, type }`
-
-          Use this option to force the model to call a specific custom tool.
-
-          - `name: string`
-
-            The name of the custom tool to call.
-
-          - `type: "custom"`
-
-            For custom tool calling, the type is always `custom`.
-
-            - `"custom"`
-
-        - `BetaSpecificProgrammaticToolCallingParam object { type }`
-
-          - `type: "programmatic_tool_calling"`
-
-            The tool to call. Always `programmatic_tool_calling`.
-
-            - `"programmatic_tool_calling"`
-
-        - `BetaToolChoiceApplyPatch object { type }`
-
-          Forces the model to call the apply_patch tool when executing a tool call.
-
-          - `type: "apply_patch"`
-
-            The tool to call. Always `apply_patch`.
-
-            - `"apply_patch"`
-
-        - `BetaToolChoiceShell object { type }`
-
-          Forces the model to call the shell tool when a tool call is required.
-
-          - `type: "shell"`
-
-            The tool to call. Always `shell`.
-
-            - `"shell"`
-
-      - `tools: array of object { name, parameters, strict, 5 more }  or object { type, vector_store_ids, filters, 2 more }  or object { type }  or 13 more`
-
-        An array of tools the model may call while generating a response. You
-        can specify which tool to use by setting the `tool_choice` parameter.
-
-        We support the following categories of tools:
-
-        - **Built-in tools**: Tools that are provided by OpenAI that extend the
-          model's capabilities, like [web search](/docs/guides/tools-web-search)
-          or [file search](/docs/guides/tools-file-search). Learn more about
-          [built-in tools](/docs/guides/tools).
-        - **MCP Tools**: Integrations with third-party systems via custom MCP servers
-          or predefined connectors such as Google Drive and SharePoint. Learn more about
-          [MCP Tools](/docs/guides/tools-connectors-mcp).
-        - **Function calls (custom tools)**: Functions that are defined by you,
-          enabling the model to call your own code with strongly typed arguments
-          and outputs. Learn more about
-          [function calling](/docs/guides/function-calling). You can also use
-          custom tools to call your own code.
-
-        - `Function object { name, parameters, strict, 5 more }`
-
-          Defines a function in your own code the model can choose to call. Learn more about [function calling](https://platform.openai.com/docs/guides/function-calling).
-
-          - `name: string`
-
-            The name of the function to call.
-
-          - `parameters: map[unknown] or null`
-
-            A JSON schema object describing the parameters of the function.
-
-          - `strict: boolean or null`
-
-            Whether strict parameter validation is enforced for this function tool.
-
-          - `type: "function"`
-
-            The type of the function tool. Always `function`.
-
-            - `"function"`
-
-          - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-            The tool invocation context(s).
-
-            - `"direct"`
-
-            - `"programmatic"`
-
-          - `defer_loading: optional boolean`
-
-            Whether this function is deferred and loaded via tool search.
-
-          - `description: optional string or null`
-
-            A description of the function. Used by the model to determine whether or not to call the function.
-
-          - `output_schema: optional map[unknown] or null`
-
-            A JSON schema object describing the JSON value encoded in string outputs for this function.
-
-        - `FileSearch object { type, vector_store_ids, filters, 2 more }`
-
-          A tool that searches for relevant content from uploaded files. Learn more about the [file search tool](https://platform.openai.com/docs/guides/tools-file-search).
-
-          - `type: "file_search"`
-
-            The type of the file search tool. Always `file_search`.
-
-            - `"file_search"`
-
-          - `vector_store_ids: array of string`
-
-            The IDs of the vector stores to search.
-
-          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
-
-            A filter to apply.
-
-            - `ComparisonFilter object { key, type, value }`
-
-              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-              - `key: string`
-
-                The key to compare against the value.
-
-              - `type: "eq" or "ne" or "gt" or 5 more`
-
-                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                - `eq`: equals
-                - `ne`: not equal
-                - `gt`: greater than
-                - `gte`: greater than or equal
-                - `lt`: less than
-                - `lte`: less than or equal
-                - `in`: in
-                - `nin`: not in
-
-                - `"eq"`
-
-                - `"ne"`
-
-                - `"gt"`
-
-                - `"gte"`
-
-                - `"lt"`
-
-                - `"lte"`
-
-                - `"in"`
-
-                - `"nin"`
-
-              - `value: string or number or boolean or array of string or number`
-
-                The value to compare against the attribute key; supports string, number, or boolean types.
-
-                - `string`
-
-                - `number`
-
-                - `boolean`
-
-                - `array of string or number`
-
-                  - `string`
-
-                  - `number`
-
-            - `CompoundFilter object { filters, type }`
-
-              Combine multiple filters using `and` or `or`.
-
-              - `filters: array of object { key, type, value }  or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
-
-          - `max_num_results: optional number`
-
-            The maximum number of results to return. This number should be between 1 and 50 inclusive.
-
-          - `ranking_options: optional object { hybrid_search, ranker, score_threshold }`
-
-            Ranking options for search.
-
-            - `hybrid_search: optional object { embedding_weight, text_weight }`
-
-              Weights that control how reciprocal rank fusion balances semantic embedding matches versus sparse keyword matches when hybrid search is enabled.
-
-              - `embedding_weight: number`
-
-                The weight of the embedding in the reciprocal ranking fusion.
-
-              - `text_weight: number`
-
-                The weight of the text in the reciprocal ranking fusion.
-
-            - `ranker: optional "auto" or "default-2024-11-15"`
-
-              The ranker to use for the file search.
-
-              - `"auto"`
-
-              - `"default-2024-11-15"`
-
-            - `score_threshold: optional number`
-
-              The score threshold for the file search, a number between 0 and 1. Numbers closer to 1 will attempt to return only the most relevant results, but may return fewer results.
-
-        - `Computer object { type }`
-
-          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-          - `type: "computer"`
-
-            The type of the computer tool. Always `computer`.
-
-            - `"computer"`
-
-        - `ComputerUsePreview object { display_height, display_width, environment, type }`
-
-          A tool that controls a virtual computer. Learn more about the [computer tool](https://platform.openai.com/docs/guides/tools-computer-use).
-
-          - `display_height: number`
-
-            The height of the computer display.
-
-          - `display_width: number`
-
-            The width of the computer display.
-
-          - `environment: "windows" or "mac" or "linux" or 2 more`
-
-            The type of computer environment to control.
-
-            - `"windows"`
-
-            - `"mac"`
-
-            - `"linux"`
-
-            - `"ubuntu"`
-
-            - `"browser"`
-
-          - `type: "computer_use_preview"`
-
-            The type of the computer use tool. Always `computer_use_preview`.
-
-            - `"computer_use_preview"`
-
-        - `WebSearch object { type, filters, search_context_size, user_location }`
-
-          Search the Internet for sources related to the prompt. Learn more about the
-          [web search tool](/docs/guides/tools-web-search).
-
-          - `type: "web_search" or "web_search_2025_08_26"`
-
-            The type of the web search tool. One of `web_search` or `web_search_2025_08_26`.
-
-            - `"web_search"`
-
-            - `"web_search_2025_08_26"`
-
-          - `filters: optional object { allowed_domains }  or null`
-
-            Filters for the search.
-
-            - `allowed_domains: optional array of string or null`
-
-              Allowed domains for the search. If not provided, all domains are allowed.
-              Subdomains of the provided domains are allowed as well.
-
-              Example: `["pubmed.ncbi.nlm.nih.gov"]`
-
-          - `search_context_size: optional "low" or "medium" or "high"`
-
-            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-            - `"low"`
-
-            - `"medium"`
-
-            - `"high"`
-
-          - `user_location: optional object { city, country, region, 2 more }  or null`
-
-            The approximate location of the user.
-
-            - `city: optional string or null`
-
-              Free text input for the city of the user, e.g. `San Francisco`.
-
-            - `country: optional string or null`
-
-              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-            - `region: optional string or null`
-
-              Free text input for the region of the user, e.g. `California`.
-
-            - `timezone: optional string or null`
-
-              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-            - `type: optional "approximate"`
-
-              The type of location approximation. Always `approximate`.
-
-              - `"approximate"`
-
-        - `Mcp object { server_label, type, allowed_callers, 9 more }`
-
-          Give the model access to additional tools via remote Model Context Protocol
-          (MCP) servers. [Learn more about MCP](/docs/guides/tools-remote-mcp).
-
-          - `server_label: string`
-
-            A label for this MCP server, used to identify it in tool calls.
-
-          - `type: "mcp"`
-
-            The type of the MCP tool. Always `mcp`.
-
-            - `"mcp"`
-
-          - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-            The tool invocation context(s).
-
-            - `"direct"`
-
-            - `"programmatic"`
-
-          - `allowed_tools: optional array of string or object { read_only, tool_names }  or null`
-
-            List of allowed tool names or a filter object.
-
-            - `McpAllowedTools = array of string`
-
-              A string array of allowed tool names
-
-            - `McpToolFilter object { read_only, tool_names }`
-
-              A filter object to specify which tools are allowed.
-
-              - `read_only: optional boolean`
-
-                Indicates whether or not a tool modifies data or is read-only. If an
-                MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                it will match this filter.
-
-              - `tool_names: optional array of string`
-
-                List of allowed tool names.
-
-          - `authorization: optional string`
-
-            An OAuth access token that can be used with a remote MCP server, either
-            with a custom MCP server URL or a service connector. Your application
-            must handle the OAuth authorization flow and provide the token here.
-
-          - `connector_id: optional "connector_dropbox" or "connector_gmail" or "connector_googlecalendar" or 5 more`
-
-            Identifier for service connectors, like those available in ChatGPT. One of
-            `server_url`, `connector_id`, or `tunnel_id` must be provided. Learn more
-            about service connectors [here](/docs/guides/tools-remote-mcp#connectors).
-
-            Currently supported `connector_id` values are:
-
-            - Dropbox: `connector_dropbox`
-            - Gmail: `connector_gmail`
-            - Google Calendar: `connector_googlecalendar`
-            - Google Drive: `connector_googledrive`
-            - Microsoft Teams: `connector_microsoftteams`
-            - Outlook Calendar: `connector_outlookcalendar`
-            - Outlook Email: `connector_outlookemail`
-            - SharePoint: `connector_sharepoint`
-
-            - `"connector_dropbox"`
-
-            - `"connector_gmail"`
-
-            - `"connector_googlecalendar"`
-
-            - `"connector_googledrive"`
-
-            - `"connector_microsoftteams"`
-
-            - `"connector_outlookcalendar"`
-
-            - `"connector_outlookemail"`
-
-            - `"connector_sharepoint"`
-
-          - `defer_loading: optional boolean`
-
-            Whether this MCP tool is deferred and discovered via tool search.
-
-          - `headers: optional map[string] or null`
-
-            Optional HTTP headers to send to the MCP server. Use for authentication
-            or other purposes.
-
-          - `require_approval: optional object { always, never }  or "always" or "never" or null`
-
-            Specify which of the MCP server's tools require approval.
-
-            - `McpToolApprovalFilter object { always, never }`
-
-              Specify which of the MCP server's tools require approval. Can be
-              `always`, `never`, or a filter object associated with tools
-              that require approval.
-
-              - `always: optional object { read_only, tool_names }`
-
-                A filter object to specify which tools are allowed.
-
-                - `read_only: optional boolean`
-
-                  Indicates whether or not a tool modifies data or is read-only. If an
-                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                  it will match this filter.
-
-                - `tool_names: optional array of string`
-
-                  List of allowed tool names.
-
-              - `never: optional object { read_only, tool_names }`
-
-                A filter object to specify which tools are allowed.
-
-                - `read_only: optional boolean`
-
-                  Indicates whether or not a tool modifies data or is read-only. If an
-                  MCP server is [annotated with `readOnlyHint`](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations-readonlyhint),
-                  it will match this filter.
-
-                - `tool_names: optional array of string`
-
-                  List of allowed tool names.
-
-            - `McpToolApprovalSetting = "always" or "never"`
-
-              Specify a single approval policy for all tools. One of `always` or
-              `never`. When set to `always`, all tools will require approval. When
-              set to `never`, all tools will not require approval.
-
-              - `"always"`
-
-              - `"never"`
-
-          - `server_description: optional string`
-
-            Optional description of the MCP server, used to provide more context.
-
-          - `server_url: optional string`
-
-            The URL for the MCP server. One of `server_url`, `connector_id`, or
-            `tunnel_id` must be provided.
-
-          - `tunnel_id: optional string`
-
-            The Secure MCP Tunnel ID to use instead of a direct server URL. One of
-            `server_url`, `connector_id`, or `tunnel_id` must be provided.
-
-        - `CodeInterpreter object { container, type, allowed_callers }`
-
-          A tool that runs Python code to help generate a response to a prompt.
-
-          - `container: string or object { type, file_ids, memory_limit, network_policy }`
-
-            The code interpreter container. Can be a container ID or an object that
-            specifies uploaded file IDs to make available to your code, along with an
-            optional `memory_limit` setting.
-
-            - `string`
-
-              The container ID.
-
-            - `CodeInterpreterToolAuto object { type, file_ids, memory_limit, network_policy }`
-
-              Configuration for a code interpreter container. Optionally specify the IDs of the files to run the code on.
-
-              - `type: "auto"`
-
-                Always `auto`.
-
-                - `"auto"`
-
-              - `file_ids: optional array of string`
-
-                An optional list of uploaded files to make available to your code.
-
-              - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
-
-                The memory limit for the code interpreter container.
-
-                - `"1g"`
-
-                - `"4g"`
-
-                - `"16g"`
-
-                - `"64g"`
-
-              - `network_policy: optional BetaContainerNetworkPolicyDisabled or BetaContainerNetworkPolicyAllowlist`
-
-                Network access policy for the container.
-
-                - `BetaContainerNetworkPolicyDisabled object { type }`
-
-                - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
-
-          - `type: "code_interpreter"`
-
-            The type of the code interpreter tool. Always `code_interpreter`.
-
-            - `"code_interpreter"`
-
-          - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-            The tool invocation context(s).
-
-            - `"direct"`
-
-            - `"programmatic"`
-
-        - `ProgrammaticToolCalling object { type }`
-
-          - `type: "programmatic_tool_calling"`
-
-            The type of the tool. Always `programmatic_tool_calling`.
-
-            - `"programmatic_tool_calling"`
-
-        - `ImageGeneration object { type, action, background, 9 more }`
-
-          A tool that generates images using the GPT image models.
-
-          - `type: "image_generation"`
-
-            The type of the image generation tool. Always `image_generation`.
-
-            - `"image_generation"`
-
-          - `action: optional "generate" or "edit" or "auto"`
-
-            Whether to generate a new image or edit an existing image. Default: `auto`.
-
-            - `"generate"`
-
-            - `"edit"`
-
-            - `"auto"`
-
-          - `background: optional "transparent" or "opaque" or "auto"`
-
-            Background type for the generated image. One of `transparent`,
-            `opaque`, or `auto`. Default: `auto`.
-
-            - `"transparent"`
-
-            - `"opaque"`
-
-            - `"auto"`
-
-          - `input_fidelity: optional "high" or "low" or null`
-
-            Control how much effort the model will exert to match the style and features, especially facial features, of input images. This parameter is only supported for `gpt-image-1` and `gpt-image-1.5` and later models, unsupported for `gpt-image-1-mini`. Supports `high` and `low`. Defaults to `low`.
-
-            - `"high"`
-
-            - `"low"`
-
-          - `input_image_mask: optional object { file_id, image_url }`
-
-            Optional mask for inpainting. Contains `image_url`
-            (string, optional) and `file_id` (string, optional).
-
-            - `file_id: optional string`
-
-              File ID for the mask image.
-
-            - `image_url: optional string`
-
-              Base64-encoded mask image.
-
-          - `model: optional string or "gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-            The image generation model to use. Default: `gpt-image-1`.
-
-            - `string`
-
-            - `"gpt-image-1" or "gpt-image-1-mini" or "gpt-image-1.5"`
-
-              The image generation model to use. Default: `gpt-image-1`.
-
-              - `"gpt-image-1"`
-
-              - `"gpt-image-1-mini"`
-
-              - `"gpt-image-1.5"`
-
-          - `moderation: optional "auto" or "low"`
-
-            Moderation level for the generated image. Default: `auto`.
-
-            - `"auto"`
-
-            - `"low"`
-
-          - `output_compression: optional number`
-
-            Compression level for the output image. Default: 100.
-
-          - `output_format: optional "png" or "webp" or "jpeg"`
-
-            The output format of the generated image. One of `png`, `webp`, or
-            `jpeg`. Default: `png`.
-
-            - `"png"`
-
-            - `"webp"`
-
-            - `"jpeg"`
-
-          - `partial_images: optional number`
-
-            Number of partial images to generate in streaming mode, from 0 (default value) to 3.
-
-          - `quality: optional "low" or "medium" or "high" or "auto"`
-
-            The quality of the generated image. One of `low`, `medium`, `high`,
-            or `auto`. Default: `auto`.
-
-            - `"low"`
-
-            - `"medium"`
-
-            - `"high"`
-
-            - `"auto"`
-
-          - `size: optional string or "1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-            The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-            - `string`
-
-            - `"1024x1024" or "1024x1536" or "1536x1024" or "auto"`
-
-              The size of the generated images. For `gpt-image-2` and `gpt-image-2-2026-04-21`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing. For `dall-e-2`, use one of `256x256`, `512x512`, or `1024x1024`. For `dall-e-3`, use one of `1024x1024`, `1792x1024`, or `1024x1792`.
-
-              - `"1024x1024"`
-
-              - `"1024x1536"`
-
-              - `"1536x1024"`
-
-              - `"auto"`
-
-        - `LocalShell object { type }`
-
-          A tool that allows the model to execute shell commands in a local environment.
-
-          - `type: "local_shell"`
-
-            The type of the local shell tool. Always `local_shell`.
-
-            - `"local_shell"`
-
-        - `Shell object { type, allowed_callers, environment }`
-
-          A tool that allows the model to execute shell commands.
-
-          - `type: "shell"`
-
-            The type of the shell tool. Always `shell`.
-
-            - `"shell"`
-
-          - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-            The tool invocation context(s).
-
-            - `"direct"`
-
-            - `"programmatic"`
-
-          - `environment: optional BetaContainerAuto or BetaLocalEnvironment or BetaContainerReference or null`
-
-            - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
-
-            - `BetaLocalEnvironment object { type, skills }`
-
-            - `BetaContainerReference object { container_id, type }`
-
-        - `Custom object { name, type, allowed_callers, 3 more }`
-
-          A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-          - `name: string`
-
-            The name of the custom tool, used to identify it in tool calls.
-
-          - `type: "custom"`
-
-            The type of the custom tool. Always `custom`.
-
-            - `"custom"`
-
-          - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-            The tool invocation context(s).
-
-            - `"direct"`
-
-            - `"programmatic"`
-
-          - `defer_loading: optional boolean`
-
-            Whether this tool should be deferred and discovered via tool search.
-
-          - `description: optional string`
-
-            Optional description of the custom tool, used to provide more context.
-
-          - `format: optional object { type }  or object { definition, syntax, type }`
-
-            The input format for the custom tool. Default is unconstrained text.
-
-            - `Text object { type }`
-
-              Unconstrained free-form text.
-
-              - `type: "text"`
-
-                Unconstrained text format. Always `text`.
-
-                - `"text"`
-
-            - `Grammar object { definition, syntax, type }`
-
-              A grammar defined by the user.
-
-              - `definition: string`
-
-                The grammar definition.
-
-              - `syntax: "lark" or "regex"`
-
-                The syntax of the grammar definition. One of `lark` or `regex`.
-
-                - `"lark"`
-
-                - `"regex"`
-
-              - `type: "grammar"`
-
-                Grammar format. Always `grammar`.
-
-                - `"grammar"`
-
-        - `Namespace object { description, name, tools, type }`
-
-          Groups function/custom tools under a shared namespace.
-
-          - `description: string`
-
-            A description of the namespace shown to the model.
-
-          - `name: string`
-
-            The namespace name used in tool calls (for example, `crm`).
-
-          - `tools: array of object { name, type, allowed_callers, 5 more }  or object { name, type, allowed_callers, 3 more }`
-
-            The function/custom tools available inside this namespace.
-
-            - `Function object { name, type, allowed_callers, 5 more }`
-
-              - `name: string`
-
-              - `type: "function"`
-
-                - `"function"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this function should be deferred and discovered via tool search.
-
-              - `description: optional string or null`
-
-              - `output_schema: optional map[unknown] or null`
-
-                A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
-
-              - `parameters: optional unknown or null`
-
-              - `strict: optional boolean or null`
-
-                Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
-
-            - `Custom object { name, type, allowed_callers, 3 more }`
-
-              A custom tool that processes input using a specified format. Learn more about   [custom tools](/docs/guides/function-calling#custom-tools)
-
-              - `name: string`
-
-                The name of the custom tool, used to identify it in tool calls.
-
-              - `type: "custom"`
-
-                The type of the custom tool. Always `custom`.
-
-                - `"custom"`
-
-              - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-                The tool invocation context(s).
-
-                - `"direct"`
-
-                - `"programmatic"`
-
-              - `defer_loading: optional boolean`
-
-                Whether this tool should be deferred and discovered via tool search.
-
-              - `description: optional string`
-
-                Optional description of the custom tool, used to provide more context.
-
-              - `format: optional object { type }  or object { definition, syntax, type }`
-
-                The input format for the custom tool. Default is unconstrained text.
-
-                - `Text object { type }`
-
-                  Unconstrained free-form text.
-
-                  - `type: "text"`
-
-                    Unconstrained text format. Always `text`.
-
-                    - `"text"`
-
-                - `Grammar object { definition, syntax, type }`
-
-                  A grammar defined by the user.
-
-                  - `definition: string`
-
-                    The grammar definition.
-
-                  - `syntax: "lark" or "regex"`
-
-                    The syntax of the grammar definition. One of `lark` or `regex`.
-
-                    - `"lark"`
-
-                    - `"regex"`
-
-                  - `type: "grammar"`
-
-                    Grammar format. Always `grammar`.
-
-                    - `"grammar"`
-
-          - `type: "namespace"`
-
-            The type of the tool. Always `namespace`.
-
-            - `"namespace"`
-
-        - `ToolSearch object { type, description, execution, parameters }`
-
-          Hosted or BYOT tool search configuration for deferred tools.
-
-          - `type: "tool_search"`
-
-            The type of the tool. Always `tool_search`.
-
-            - `"tool_search"`
-
-          - `description: optional string or null`
-
-            Description shown to the model for a client-executed tool search tool.
-
-          - `execution: optional "server" or "client"`
-
-            Whether tool search is executed by the server or by the client.
-
-            - `"server"`
-
-            - `"client"`
-
-          - `parameters: optional unknown or null`
-
-            Parameter schema for a client-executed tool search tool.
-
-        - `WebSearchPreview object { type, search_content_types, search_context_size, user_location }`
-
-          This tool searches the web for relevant results to use in a response. Learn more about the [web search tool](https://platform.openai.com/docs/guides/tools-web-search).
-
-          - `type: "web_search_preview" or "web_search_preview_2025_03_11"`
-
-            The type of the web search tool. One of `web_search_preview` or `web_search_preview_2025_03_11`.
-
-            - `"web_search_preview"`
-
-            - `"web_search_preview_2025_03_11"`
-
-          - `search_content_types: optional array of "text" or "image"`
-
-            - `"text"`
-
-            - `"image"`
-
-          - `search_context_size: optional "low" or "medium" or "high"`
-
-            High level guidance for the amount of context window space to use for the search. One of `low`, `medium`, or `high`. `medium` is the default.
-
-            - `"low"`
-
-            - `"medium"`
-
-            - `"high"`
-
-          - `user_location: optional object { type, city, country, 2 more }  or null`
-
-            The user's location.
-
-            - `type: "approximate"`
-
-              The type of location approximation. Always `approximate`.
-
-              - `"approximate"`
-
-            - `city: optional string or null`
-
-              Free text input for the city of the user, e.g. `San Francisco`.
-
-            - `country: optional string or null`
-
-              The two-letter [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1) of the user, e.g. `US`.
-
-            - `region: optional string or null`
-
-              Free text input for the region of the user, e.g. `California`.
-
-            - `timezone: optional string or null`
-
-              The [IANA timezone](https://timeapi.io/documentation/iana-timezones) of the user, e.g. `America/Los_Angeles`.
-
-        - `ApplyPatch object { type, allowed_callers }`
-
-          Allows the assistant to create, delete, or update files using unified diffs.
-
-          - `type: "apply_patch"`
-
-            The type of the tool. Always `apply_patch`.
-
-            - `"apply_patch"`
-
-          - `allowed_callers: optional array of "direct" or "programmatic" or null`
-
-            The tool invocation context(s).
-
-            - `"direct"`
-
-            - `"programmatic"`
-
-      - `top_p: number or null`
-
-        An alternative to sampling with temperature, called nucleus sampling,
-        where the model considers the results of the tokens with top_p probability
-        mass. So 0.1 means only the tokens comprising the top 10% probability mass
-        are considered.
-
-        We generally recommend altering this or `temperature` but not both.
-
-      - `background: optional boolean or null`
-
-        Whether to run the model response in the background.
-        [Learn more](/docs/guides/background).
-
-      - `completed_at: optional number or null`
-
-        Unix timestamp (in seconds) of when this Response was completed.
-        Only present when the status is `completed`.
-
-      - `conversation: optional object { id }  or null`
-
-        The conversation that this response belonged to. Input items and output items from this response were automatically added to this conversation.
-
-        - `id: string`
-
-          The unique ID of the conversation that this response was associated with.
-
-      - `max_output_tokens: optional number or null`
-
-        An upper bound for the number of tokens that can be generated for a response, including visible output tokens and [reasoning tokens](/docs/guides/reasoning).
-
-      - `max_tool_calls: optional number or null`
-
-        The maximum number of total calls to built-in tools that can be processed in a response. This maximum number applies across all built-in tool calls, not per individual tool. Any further attempts to call a tool by the model will be ignored.
-
-      - `moderation: optional object { input, output }  or null`
-
-        Moderation results for the response input and output, if moderated completions were requested.
-
-        - `input: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
-
-          Moderation for the response input.
-
-          - `ModerationResult object { categories, category_applied_input_types, category_scores, 3 more }`
-
-            A moderation result produced for the response input or output.
-
-            - `categories: map[boolean]`
-
-              A dictionary of moderation categories to booleans, True if the input is flagged under this category.
-
-            - `category_applied_input_types: map[array of "text" or "image"]`
-
-              Which modalities of input are reflected by the score for each category.
-
-              - `"text"`
-
-              - `"image"`
-
-            - `category_scores: map[number]`
-
-              A dictionary of moderation categories to scores.
-
-            - `flagged: boolean`
-
-              A boolean indicating whether the content was flagged by any category.
-
-            - `model: string`
-
-              The moderation model that produced this result.
-
-            - `type: "moderation_result"`
-
-              The object type, which was always `moderation_result` for successful moderation results.
-
-              - `"moderation_result"`
-
-          - `Error object { code, message, type }`
-
-            An error produced while attempting moderation for the response input or output.
-
-            - `code: string`
-
-              The error code.
-
-            - `message: string`
-
-              The error message.
-
-            - `type: "error"`
-
-              The object type, which was always `error` for moderation failures.
-
-              - `"error"`
-
-        - `output: object { categories, category_applied_input_types, category_scores, 3 more }  or object { code, message, type }`
-
-          Moderation for the response output.
-
-          - `ModerationResult object { categories, category_applied_input_types, category_scores, 3 more }`
-
-            A moderation result produced for the response input or output.
-
-            - `categories: map[boolean]`
-
-              A dictionary of moderation categories to booleans, True if the input is flagged under this category.
-
-            - `category_applied_input_types: map[array of "text" or "image"]`
-
-              Which modalities of input are reflected by the score for each category.
-
-              - `"text"`
-
-              - `"image"`
-
-            - `category_scores: map[number]`
-
-              A dictionary of moderation categories to scores.
-
-            - `flagged: boolean`
-
-              A boolean indicating whether the content was flagged by any category.
-
-            - `model: string`
-
-              The moderation model that produced this result.
-
-            - `type: "moderation_result"`
-
-              The object type, which was always `moderation_result` for successful moderation results.
-
-              - `"moderation_result"`
-
-          - `Error object { code, message, type }`
-
-            An error produced while attempting moderation for the response input or output.
-
-            - `code: string`
-
-              The error code.
-
-            - `message: string`
-
-              The error message.
-
-            - `type: "error"`
-
-              The object type, which was always `error` for moderation failures.
-
-              - `"error"`
-
-      - `output_text: optional string or null`
-
-        SDK-only convenience property that contains the aggregated text output
-        from all `output_text` items in the `output` array, if any are present.
-        Supported in the Python and JavaScript SDKs.
-
-      - `previous_response_id: optional string or null`
-
-        The unique ID of the previous response to the model. Use this to
-        create multi-turn conversations. Learn more about
-        [conversation state](/docs/guides/conversation-state). Cannot be used in conjunction with `conversation`.
-
-      - `prompt: optional BetaResponsePrompt or null`
-
-        Reference to a prompt template and its variables.
-        [Learn more](/docs/guides/text?api-mode=responses#reusable-prompts).
-
-        - `id: string`
-
-          The unique identifier of the prompt template to use.
-
-        - `variables: optional map[string or BetaResponseInputText or BetaResponseInputImage or BetaResponseInputFile] or null`
-
-          Optional map of values to substitute in for variables in your
-          prompt. The substitution values can either be strings, or other
-          Response input types like images or files.
-
-          - `string`
-
-          - `BetaResponseInputText object { text, type, prompt_cache_breakpoint }`
-
-            A text input to the model.
-
-          - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
-
-            An image input to the model. Learn about [image inputs](/docs/guides/vision).
-
-          - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
-
-            A file input to the model.
-
-        - `version: optional string or null`
-
-          Optional version of the prompt template.
-
-      - `prompt_cache_key: optional string or null`
-
-        Used by OpenAI to cache responses for similar requests to optimize your cache hit rates. Replaces the `user` field. [Learn more](/docs/guides/prompt-caching).
-
-      - `prompt_cache_options: optional object { mode, ttl }`
-
-        The prompt-caching options that were applied to the response. Supported for `gpt-5.6` and later models.
-
-        - `mode: "implicit" or "explicit"`
-
-          Whether implicit prompt-cache breakpoints were enabled.
-
-          - `"implicit"`
-
-          - `"explicit"`
-
-        - `ttl: "30m"`
-
-          The minimum lifetime applied to each cache breakpoint.
-
-          - `"30m"`
-
-      - `prompt_cache_retention: optional "in_memory" or "24h" or null`
-
-        Deprecated. Use `prompt_cache_options.ttl` instead.
-
-        The retention policy for the prompt cache. Set to `24h` to enable extended prompt caching, which keeps cached prefixes active for longer, up to a maximum of 24 hours. [Learn more](/docs/guides/prompt-caching#prompt-cache-retention).
-        This field expresses a maximum retention policy, while
-        `prompt_cache_options.ttl` expresses a minimum cache lifetime. The two
-        fields are independent and do not interact.
-        For `gpt-5.5`, `gpt-5.5-pro`, and future models, only `24h` is supported.
-
-        For older models that support both `in_memory` and `24h`, the default depends on your organization's data retention policy:
-
-        - Organizations without ZDR enabled default to `24h`.
-        - Organizations with ZDR enabled default to `in_memory` when `prompt_cache_retention` is not specified.
-
-        - `"in_memory"`
-
-        - `"24h"`
-
-      - `reasoning: optional object { context, effort, generate_summary, 2 more }  or null`
-
-        **gpt-5 and o-series models only**
-
-        Configuration options for
-        [reasoning models](https://platform.openai.com/docs/guides/reasoning).
-
-        - `context: optional "auto" or "current_turn" or "all_turns" or null`
-
-          Controls which reasoning items are rendered back to the model on later turns.
-          If omitted or set to `auto`, the model determines the context mode. The
-          `gpt-5.6` model family defaults to `all_turns`; earlier models default to
-          `current_turn`.
-
-          When returned on a response, this is the effective reasoning context mode
-          used for the response.
-
-          - `"auto"`
-
-          - `"current_turn"`
-
-          - `"all_turns"`
-
-        - `effort: optional "none" or "minimal" or "low" or 4 more or null`
-
-          Constrains effort on reasoning for reasoning models. Currently supported
-          values are `none`, `minimal`, `low`, `medium`, `high`, `xhigh`, and `max`.
-          Reducing reasoning effort can result in faster responses and fewer tokens
-          used on reasoning in a response. Not all reasoning models support every
-          value. See the
-          [reasoning guide](https://platform.openai.com/docs/guides/reasoning)
-          for model-specific support.
-
-          - `"none"`
-
-          - `"minimal"`
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-          - `"xhigh"`
-
-          - `"max"`
-
-        - `generate_summary: optional "auto" or "concise" or "detailed" or null`
-
-          **Deprecated:** use `summary` instead.
-
-          A summary of the reasoning performed by the model. This can be
-          useful for debugging and understanding the model's reasoning process.
-          One of `auto`, `concise`, or `detailed`.
-
-          - `"auto"`
-
-          - `"concise"`
-
-          - `"detailed"`
-
-        - `mode: optional string or "standard" or "pro"`
-
-          Controls the reasoning execution mode for the request.
-
-          When returned on a response, this is the effective execution mode.
-
-          - `string`
-
-          - `"standard" or "pro"`
-
-            Controls the reasoning execution mode for the request.
-
-            When returned on a response, this is the effective execution mode.
-
-            - `"standard"`
-
-            - `"pro"`
-
-        - `summary: optional "auto" or "concise" or "detailed" or null`
-
-          A summary of the reasoning performed by the model. This can be
-          useful for debugging and understanding the model's reasoning process.
-          One of `auto`, `concise`, or `detailed`.
-
-          `concise` is supported for `computer-use-preview` models and all reasoning models after `gpt-5`.
-
-          - `"auto"`
-
-          - `"concise"`
-
-          - `"detailed"`
-
-      - `safety_identifier: optional string or null`
-
-        A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-        The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
-
-      - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
-
-        Specifies the processing type used for serving the request.
-
-        - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
-        - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
-        - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
-        - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
-        - When not set, the default behavior is 'auto'.
-
-        When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
-
-        - `"auto"`
-
-        - `"default"`
-
-        - `"flex"`
-
-        - `"scale"`
-
-        - `"priority"`
-
-        - `"fast"`
-
-      - `status: optional BetaResponseStatus`
-
-        The status of the response generation. One of `completed`, `failed`,
-        `in_progress`, `cancelled`, `queued`, or `incomplete`.
-
-        - `"completed"`
-
-        - `"failed"`
-
-        - `"in_progress"`
-
-        - `"cancelled"`
-
-        - `"queued"`
-
-        - `"incomplete"`
-
-      - `text: optional BetaResponseTextConfig`
-
-        Configuration options for a text response from the model. Can be plain
-        text or structured JSON data. Learn more:
-
-        - [Text inputs and outputs](/docs/guides/text)
-        - [Structured Outputs](/docs/guides/structured-outputs)
-
-        - `format: optional BetaResponseFormatTextConfig`
-
-          An object specifying the format that the model must output.
-
-          Configuring `{ "type": "json_schema" }` enables Structured Outputs,
-          which ensures the model will match your supplied JSON schema. Learn more in the
-          [Structured Outputs guide](/docs/guides/structured-outputs).
-
-          The default format is `{ "type": "text" }` with no additional options.
-
-          **Not recommended for gpt-4o and newer models:**
-
-          Setting to `{ "type": "json_object" }` enables the older JSON mode, which
-          ensures the message the model generates is valid JSON. Using `json_schema`
-          is preferred for models that support it.
-
-          - `Text object { type }`
-
-            Default response format. Used to generate text responses.
-
-            - `type: "text"`
-
-              The type of response format being defined. Always `text`.
-
-              - `"text"`
-
-          - `BetaResponseFormatTextJSONSchemaConfig object { name, schema, type, 2 more }`
-
-            JSON Schema response format. Used to generate structured JSON responses.
-            Learn more about [Structured Outputs](/docs/guides/structured-outputs).
-
-            - `name: string`
-
-              The name of the response format. Must be a-z, A-Z, 0-9, or contain
-              underscores and dashes, with a maximum length of 64.
-
-            - `schema: map[unknown]`
-
-              The schema for the response format, described as a JSON Schema object.
-              Learn how to build JSON schemas [here](https://json-schema.org/).
-
-            - `type: "json_schema"`
-
-              The type of response format being defined. Always `json_schema`.
-
-              - `"json_schema"`
-
-            - `description: optional string`
-
-              A description of what the response format is for, used by the model to
-              determine how to respond in the format.
-
-            - `strict: optional boolean or null`
-
-              Whether to enable strict schema adherence when generating the output.
-              If set to true, the model will always follow the exact schema defined
-              in the `schema` field. Only a subset of JSON Schema is supported when
-              `strict` is `true`. To learn more, read the [Structured Outputs
-              guide](/docs/guides/structured-outputs).
-
-          - `JSONObject object { type }`
-
-            JSON object response format. An older method of generating JSON responses.
-            Using `json_schema` is recommended for models that support it. Note that the
-            model will not generate JSON without a system or user message instructing it
-            to do so.
-
-            - `type: "json_object"`
-
-              The type of response format being defined. Always `json_object`.
-
-              - `"json_object"`
-
-        - `verbosity: optional "low" or "medium" or "high" or null`
-
-          Constrains the verbosity of the model's response. Lower values will result in
-          more concise responses, while higher values will result in more verbose responses.
-          Currently supported values are `low`, `medium`, and `high`. The default is
-          `medium`.
-
-          - `"low"`
-
-          - `"medium"`
-
-          - `"high"`
-
-      - `top_logprobs: optional number or null`
-
-        An integer between 0 and 20 specifying the maximum number of most likely
-        tokens to return at each token position, each with an associated log
-        probability. In some cases, the number of returned tokens may be fewer than
-        requested.
-
-      - `truncation: optional "auto" or "disabled" or null`
-
-        The truncation strategy to use for the model response.
-
-        - `auto`: If the input to this Response exceeds
-          the model's context window size, the model will truncate the
-          response to fit the context window by dropping items from the beginning of the conversation.
-        - `disabled` (default): If the input size will exceed the context window
-          size for a model, the request will fail with a 400 error.
-
-        - `"auto"`
-
-        - `"disabled"`
-
-      - `usage: optional BetaResponseUsage`
-
-        Represents token usage details including input tokens, output tokens,
-        a breakdown of output tokens, and the total tokens used.
-
-        - `input_tokens: number`
-
-          The number of input tokens.
-
-        - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
-
-          A detailed breakdown of the input tokens.
-
-          - `cache_write_tokens: number`
-
-            The number of input tokens that were written to the cache.
-
-          - `cached_tokens: number`
-
-            The number of tokens that were retrieved from the cache.
-            [More on prompt caching](/docs/guides/prompt-caching).
-
-        - `output_tokens: number`
-
-          The number of output tokens.
-
-        - `output_tokens_details: object { reasoning_tokens }`
-
-          A detailed breakdown of the output tokens.
-
-          - `reasoning_tokens: number`
-
-            The number of reasoning tokens.
-
-        - `total_tokens: number`
-
-          The total number of tokens used.
-
-      - `user: optional string`
-
-        This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
-        A stable identifier for your end-users.
-        Used to boost cache hit rates by better bucketing similar requests and  to help OpenAI detect and prevent abuse. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
-
-    - `sequence_number: number`
-
-      The sequence number for this event.
-
-    - `type: "response.completed"`
-
-      The type of the event. Always `response.completed`.
-
-      - `"response.completed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseContentPartAddedEvent object { content_index, item_id, output_index, 4 more }`
+  - `BetaResponseContentPartWsAdded = BetaResponseContentPartAddedEvent`
 
     Emitted when a new content part is added.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the content part that was added.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the output item that the content part was added to.
-
-    - `output_index: number`
-
-      The index of the output item that the content part was added to.
-
-    - `part: BetaResponseOutputText or BetaResponseOutputRefusal or object { text, type }`
-
-      The content part that was added.
-
-      - `BetaResponseOutputText object { annotations, logprobs, text, type }`
-
-        A text output from the model.
-
-      - `BetaResponseOutputRefusal object { refusal, type }`
-
-        A refusal from the model.
-
-      - `ReasoningText object { text, type }`
-
-        Reasoning text from the model.
-
-        - `text: string`
-
-          The reasoning text from the model.
-
-        - `type: "reasoning_text"`
-
-          The type of the reasoning text. Always `reasoning_text`.
-
-          - `"reasoning_text"`
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.content_part.added"`
-
-      The type of the event. Always `response.content_part.added`.
-
-      - `"response.content_part.added"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseContentPartDoneEvent object { content_index, item_id, output_index, 4 more }`
+  - `BetaResponseContentPartWsDone = BetaResponseContentPartDoneEvent`
 
     Emitted when a content part is done.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the content part that is done.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the output item that the content part was added to.
-
-    - `output_index: number`
-
-      The index of the output item that the content part was added to.
-
-    - `part: BetaResponseOutputText or BetaResponseOutputRefusal or object { text, type }`
-
-      The content part that is done.
-
-      - `BetaResponseOutputText object { annotations, logprobs, text, type }`
-
-        A text output from the model.
-
-      - `BetaResponseOutputRefusal object { refusal, type }`
-
-        A refusal from the model.
-
-      - `ReasoningText object { text, type }`
-
-        Reasoning text from the model.
-
-        - `text: string`
-
-          The reasoning text from the model.
-
-        - `type: "reasoning_text"`
-
-          The type of the reasoning text. Always `reasoning_text`.
-
-          - `"reasoning_text"`
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.content_part.done"`
-
-      The type of the event. Always `response.content_part.done`.
-
-      - `"response.content_part.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCreatedEvent object { response, sequence_number, type, agent }`
+  - `BetaResponseWsCreated = BetaResponseCreatedEvent`
 
     An event that is emitted when a response is created.
 
-    - `response: BetaResponse`
+    - `stream_id: optional string`
 
-      The response that was created.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `sequence_number: number`
-
-      The sequence number for this event.
-
-    - `type: "response.created"`
-
-      The type of the event. Always `response.created`.
-
-      - `"response.created"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseErrorEvent object { code, message, param, 3 more }`
+  - `BetaResponseWsError = BetaResponseErrorEvent`
 
     Emitted when an error occurs.
 
-    - `code: string or null`
+    - `stream_id: optional string`
 
-      The error code.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `message: string`
-
-      The error message.
-
-    - `param: string or null`
-
-      The error parameter.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "error"`
-
-      The type of the event. Always `error`.
-
-      - `"error"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseFileSearchCallCompletedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseFileSearchCallWsCompleted = BetaResponseFileSearchCallCompletedEvent`
 
     Emitted when a file search call is completed (results found).
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the output item that the file search call is initiated.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that the file search call is initiated.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.file_search_call.completed"`
-
-      The type of the event. Always `response.file_search_call.completed`.
-
-      - `"response.file_search_call.completed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseFileSearchCallInProgressEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseFileSearchCallInWsProgress = BetaResponseFileSearchCallInProgressEvent`
 
     Emitted when a file search call is initiated.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the output item that the file search call is initiated.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that the file search call is initiated.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.file_search_call.in_progress"`
-
-      The type of the event. Always `response.file_search_call.in_progress`.
-
-      - `"response.file_search_call.in_progress"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseFileSearchCallSearchingEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseFileSearchCallWsSearching = BetaResponseFileSearchCallSearchingEvent`
 
     Emitted when a file search is currently searching.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the output item that the file search call is initiated.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that the file search call is searching.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.file_search_call.searching"`
-
-      The type of the event. Always `response.file_search_call.searching`.
-
-      - `"response.file_search_call.searching"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseFunctionCallArgumentsDeltaEvent object { delta, item_id, output_index, 3 more }`
+  - `BetaResponseFunctionCallArgumentsWsDelta = BetaResponseFunctionCallArgumentsDeltaEvent`
 
     Emitted when there is a partial function-call arguments delta.
 
-    - `delta: string`
+    - `stream_id: optional string`
 
-      The function-call arguments delta that is added.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the output item that the function-call arguments delta is added to.
-
-    - `output_index: number`
-
-      The index of the output item that the function-call arguments delta is added to.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.function_call_arguments.delta"`
-
-      The type of the event. Always `response.function_call_arguments.delta`.
-
-      - `"response.function_call_arguments.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseFunctionCallArgumentsDoneEvent object { arguments, item_id, name, 4 more }`
+  - `BetaResponseFunctionCallArgumentsWsDone = BetaResponseFunctionCallArgumentsDoneEvent`
 
     Emitted when function-call arguments are finalized.
 
-    - `arguments: string`
+    - `stream_id: optional string`
 
-      The function-call arguments.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the item.
-
-    - `name: string`
-
-      The name of the function that was called.
-
-    - `output_index: number`
-
-      The index of the output item.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.function_call_arguments.done"`
-
-      - `"response.function_call_arguments.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseInProgressEvent object { response, sequence_number, type, agent }`
+  - `BetaResponseInWsProgress = BetaResponseInProgressEvent`
 
     Emitted when the response is in progress.
 
-    - `response: BetaResponse`
+    - `stream_id: optional string`
 
-      The response that is in progress.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.in_progress"`
-
-      The type of the event. Always `response.in_progress`.
-
-      - `"response.in_progress"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseFailedEvent object { response, sequence_number, type, agent }`
+  - `BetaResponseWsFailed = BetaResponseFailedEvent`
 
     An event that is emitted when a response fails.
 
-    - `response: BetaResponse`
+    - `stream_id: optional string`
 
-      The response that failed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.failed"`
-
-      The type of the event. Always `response.failed`.
-
-      - `"response.failed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseIncompleteEvent object { response, sequence_number, type, agent }`
+  - `BetaResponseWsIncomplete = BetaResponseIncompleteEvent`
 
     An event that is emitted when a response finishes as incomplete.
 
-    - `response: BetaResponse`
+    - `stream_id: optional string`
 
-      The response that was incomplete.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.incomplete"`
-
-      The type of the event. Always `response.incomplete`.
-
-      - `"response.incomplete"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseOutputItemAddedEvent object { item, output_index, sequence_number, 2 more }`
+  - `BetaResponseOutputItemWsAdded = BetaResponseOutputItemAddedEvent`
 
     Emitted when a new output item is added.
 
-    - `item: BetaResponseOutputItem`
+    - `stream_id: optional string`
 
-      The output item that was added.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-      - `BetaResponseOutputMessage object { id, content, role, 4 more }`
-
-        An output message from the model.
-
-      - `FileSearchCall object { id, queries, status, 3 more }`
-
-        The results of a file search tool call. See the
-        [file search guide](/docs/guides/tools-file-search) for more information.
-
-      - `FunctionCall object { arguments, call_id, name, 6 more }`
-
-        A tool call to run a function. See the
-        [function calling guide](/docs/guides/function-calling) for more information.
-
-      - `FunctionCallOutput object { id, output, status, 7 more }`
-
-      - `AgentMessage object { id, author, content, 3 more }`
-
-      - `MultiAgentCall object { id, action, arguments, 3 more }`
-
-      - `MultiAgentCallOutput object { id, action, call_id, 3 more }`
-
-      - `WebSearchCall object { id, action, status, 2 more }`
-
-        The results of a web search tool call. See the
-        [web search guide](/docs/guides/tools-web-search) for more information.
-
-      - `ComputerCall object { id, call_id, pending_safety_checks, 5 more }`
-
-        A tool call to a computer use tool. See the
-        [computer use guide](/docs/guides/tools-computer-use) for more information.
-
-      - `ComputerCallOutput object { id, call_id, output, 5 more }`
-
-      - `Reasoning object { id, summary, type, 4 more }`
-
-        A description of the chain of thought used by a reasoning model while generating
-        a response. Be sure to include these items in your `input` to the Responses API
-        for subsequent turns of a conversation if you are manually
-        [managing context](/docs/guides/conversation-state).
-
-      - `Program object { id, call_id, code, 3 more }`
-
-      - `ProgramOutput object { id, call_id, result, 3 more }`
-
-      - `ToolSearchCall object { id, arguments, call_id, 5 more }`
-
-      - `ToolSearchOutput object { id, call_id, execution, 5 more }`
-
-      - `AdditionalTools object { id, role, tools, 2 more }`
-
-      - `Compaction object { id, encrypted_content, type, 2 more }`
-
-        A compaction item generated by the [`v1/responses/compact` API](/docs/api-reference/responses/compact).
-
-      - `ImageGenerationCall object { id, result, status, 2 more }`
-
-        An image generation request made by the model.
-
-      - `CodeInterpreterCall object { id, code, container_id, 4 more }`
-
-        A tool call to run code.
-
-      - `LocalShellCall object { id, action, call_id, 3 more }`
-
-        A tool call to run a command on the local shell.
-
-      - `LocalShellCallOutput object { id, output, type, 2 more }`
-
-        The output of a local shell tool call.
-
-      - `ShellCall object { id, action, call_id, 6 more }`
-
-        A tool call that executes one or more shell commands in a managed environment.
-
-      - `ShellCallOutput object { id, call_id, max_output_length, 6 more }`
-
-        The output of a shell tool call that was emitted.
-
-      - `ApplyPatchCall object { id, call_id, operation, 5 more }`
-
-        A tool call that applies file diffs by creating, deleting, or updating files.
-
-      - `ApplyPatchCallOutput object { id, call_id, status, 5 more }`
-
-        The output emitted by an apply patch tool call.
-
-      - `McpCall object { id, arguments, name, 7 more }`
-
-        An invocation of a tool on an MCP server.
-
-      - `McpListTools object { id, server_label, tools, 3 more }`
-
-        A list of tools available on an MCP server.
-
-      - `McpApprovalRequest object { id, arguments, name, 3 more }`
-
-        A request for human approval of a tool invocation.
-
-      - `McpApprovalResponse object { id, approval_request_id, approve, 3 more }`
-
-        A response to an MCP approval request.
-
-      - `CustomToolCall object { call_id, input, name, 5 more }`
-
-        A call to a custom tool created by the model.
-
-      - `CustomToolCallOutput object { id, call_id, output, 5 more }`
-
-    - `output_index: number`
-
-      The index of the output item that was added.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.output_item.added"`
-
-      The type of the event. Always `response.output_item.added`.
-
-      - `"response.output_item.added"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseOutputItemDoneEvent object { item, output_index, sequence_number, 2 more }`
+  - `BetaResponseOutputItemWsDone = BetaResponseOutputItemDoneEvent`
 
     Emitted when an output item is marked done.
 
-    - `item: BetaResponseOutputItem`
+    - `stream_id: optional string`
 
-      The output item that was marked done.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that was marked done.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.output_item.done"`
-
-      The type of the event. Always `response.output_item.done`.
-
-      - `"response.output_item.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseReasoningSummaryPartAddedEvent object { item_id, output_index, part, 4 more }`
+  - `BetaResponseReasoningSummaryPartWsAdded = BetaResponseReasoningSummaryPartAddedEvent`
 
     Emitted when a new reasoning summary part is added.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the item this summary part is associated with.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item this summary part is associated with.
-
-    - `part: object { text, type }`
-
-      The summary part that was added.
-
-      - `text: string`
-
-        The text of the summary part.
-
-      - `type: "summary_text"`
-
-        The type of the summary part. Always `summary_text`.
-
-        - `"summary_text"`
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `summary_index: number`
-
-      The index of the summary part within the reasoning summary.
-
-    - `type: "response.reasoning_summary_part.added"`
-
-      The type of the event. Always `response.reasoning_summary_part.added`.
-
-      - `"response.reasoning_summary_part.added"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseReasoningSummaryPartDoneEvent object { item_id, output_index, part, 5 more }`
+  - `BetaResponseReasoningSummaryPartWsDone = BetaResponseReasoningSummaryPartDoneEvent`
 
     Emitted when a reasoning summary part is completed.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the item this summary part is associated with.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item this summary part is associated with.
-
-    - `part: object { text, type }`
-
-      The completed summary part.
-
-      - `text: string`
-
-        The text of the summary part.
-
-      - `type: "summary_text"`
-
-        The type of the summary part. Always `summary_text`.
-
-        - `"summary_text"`
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `summary_index: number`
-
-      The index of the summary part within the reasoning summary.
-
-    - `type: "response.reasoning_summary_part.done"`
-
-      The type of the event. Always `response.reasoning_summary_part.done`.
-
-      - `"response.reasoning_summary_part.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-    - `status: optional "incomplete"`
-
-      The completion status of the summary part. Omitted when the part completed
-      normally and set to `incomplete` when generation was interrupted.
-
-      - `"incomplete"`
-
-  - `BetaResponseReasoningSummaryTextDeltaEvent object { delta, item_id, output_index, 4 more }`
+  - `BetaResponseReasoningSummaryTextWsDelta = BetaResponseReasoningSummaryTextDeltaEvent`
 
     Emitted when a delta is added to a reasoning summary text.
 
-    - `delta: string`
+    - `stream_id: optional string`
 
-      The text delta that was added to the summary.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the item this summary text delta is associated with.
-
-    - `output_index: number`
-
-      The index of the output item this summary text delta is associated with.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `summary_index: number`
-
-      The index of the summary part within the reasoning summary.
-
-    - `type: "response.reasoning_summary_text.delta"`
-
-      The type of the event. Always `response.reasoning_summary_text.delta`.
-
-      - `"response.reasoning_summary_text.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseReasoningSummaryTextDoneEvent object { item_id, output_index, sequence_number, 4 more }`
+  - `BetaResponseReasoningSummaryTextWsDone = BetaResponseReasoningSummaryTextDoneEvent`
 
     Emitted when a reasoning summary text is completed.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the item this summary text is associated with.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item this summary text is associated with.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `summary_index: number`
-
-      The index of the summary part within the reasoning summary.
-
-    - `text: string`
-
-      The full text of the completed reasoning summary.
-
-    - `type: "response.reasoning_summary_text.done"`
-
-      The type of the event. Always `response.reasoning_summary_text.done`.
-
-      - `"response.reasoning_summary_text.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseReasoningTextDeltaEvent object { content_index, delta, item_id, 4 more }`
+  - `BetaResponseReasoningTextWsDelta = BetaResponseReasoningTextDeltaEvent`
 
     Emitted when a delta is added to a reasoning text.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the reasoning content part this delta is associated with.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `delta: string`
-
-      The text delta that was added to the reasoning content.
-
-    - `item_id: string`
-
-      The ID of the item this reasoning text delta is associated with.
-
-    - `output_index: number`
-
-      The index of the output item this reasoning text delta is associated with.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.reasoning_text.delta"`
-
-      The type of the event. Always `response.reasoning_text.delta`.
-
-      - `"response.reasoning_text.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseReasoningTextDoneEvent object { content_index, item_id, output_index, 4 more }`
+  - `BetaResponseReasoningTextWsDone = BetaResponseReasoningTextDoneEvent`
 
     Emitted when a reasoning text is completed.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the reasoning content part.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the item this reasoning text is associated with.
-
-    - `output_index: number`
-
-      The index of the output item this reasoning text is associated with.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `text: string`
-
-      The full text of the completed reasoning content.
-
-    - `type: "response.reasoning_text.done"`
-
-      The type of the event. Always `response.reasoning_text.done`.
-
-      - `"response.reasoning_text.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseRefusalDeltaEvent object { content_index, delta, item_id, 4 more }`
+  - `BetaResponseRefusalWsDelta = BetaResponseRefusalDeltaEvent`
 
     Emitted when there is a partial refusal text.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the content part that the refusal text is added to.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `delta: string`
-
-      The refusal text that is added.
-
-    - `item_id: string`
-
-      The ID of the output item that the refusal text is added to.
-
-    - `output_index: number`
-
-      The index of the output item that the refusal text is added to.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.refusal.delta"`
-
-      The type of the event. Always `response.refusal.delta`.
-
-      - `"response.refusal.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseRefusalDoneEvent object { content_index, item_id, output_index, 4 more }`
+  - `BetaResponseRefusalWsDone = BetaResponseRefusalDoneEvent`
 
     Emitted when refusal text is finalized.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the content part that the refusal text is finalized.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the output item that the refusal text is finalized.
-
-    - `output_index: number`
-
-      The index of the output item that the refusal text is finalized.
-
-    - `refusal: string`
-
-      The refusal text that is finalized.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.refusal.done"`
-
-      The type of the event. Always `response.refusal.done`.
-
-      - `"response.refusal.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseTextDeltaEvent object { content_index, delta, item_id, 5 more }`
+  - `BetaResponseTextWsDelta = BetaResponseTextDeltaEvent`
 
     Emitted when there is an additional text delta.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the content part that the text delta was added to.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `delta: string`
-
-      The text delta that was added.
-
-    - `item_id: string`
-
-      The ID of the output item that the text delta was added to.
-
-    - `logprobs: array of object { token, logprob, top_logprobs }`
-
-      The log probabilities of the tokens in the delta.
-
-      - `token: string`
-
-        A possible text token.
-
-      - `logprob: number`
-
-        The log probability of this token.
-
-      - `top_logprobs: optional array of object { token, logprob }`
-
-        The log probabilities of up to 20 of the most likely tokens.
-
-        - `token: optional string`
-
-          A possible text token.
-
-        - `logprob: optional number`
-
-          The log probability of this token.
-
-    - `output_index: number`
-
-      The index of the output item that the text delta was added to.
-
-    - `sequence_number: number`
-
-      The sequence number for this event.
-
-    - `type: "response.output_text.delta"`
-
-      The type of the event. Always `response.output_text.delta`.
-
-      - `"response.output_text.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseTextDoneEvent object { content_index, item_id, logprobs, 5 more }`
+  - `BetaResponseTextWsDone = BetaResponseTextDoneEvent`
 
     Emitted when text content is finalized.
 
-    - `content_index: number`
+    - `stream_id: optional string`
 
-      The index of the content part that the text content is finalized.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The ID of the output item that the text content is finalized.
-
-    - `logprobs: array of object { token, logprob, top_logprobs }`
-
-      The log probabilities of the tokens in the delta.
-
-      - `token: string`
-
-        A possible text token.
-
-      - `logprob: number`
-
-        The log probability of this token.
-
-      - `top_logprobs: optional array of object { token, logprob }`
-
-        The log probabilities of up to 20 of the most likely tokens.
-
-        - `token: optional string`
-
-          A possible text token.
-
-        - `logprob: optional number`
-
-          The log probability of this token.
-
-    - `output_index: number`
-
-      The index of the output item that the text content is finalized.
-
-    - `sequence_number: number`
-
-      The sequence number for this event.
-
-    - `text: string`
-
-      The text content that is finalized.
-
-    - `type: "response.output_text.done"`
-
-      The type of the event. Always `response.output_text.done`.
-
-      - `"response.output_text.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseWebSearchCallCompletedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseWebSearchCallWsCompleted = BetaResponseWebSearchCallCompletedEvent`
 
     Emitted when a web search call is completed.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      Unique ID for the output item associated with the web search call.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that the web search call is associated with.
-
-    - `sequence_number: number`
-
-      The sequence number of the web search call being processed.
-
-    - `type: "response.web_search_call.completed"`
-
-      The type of the event. Always `response.web_search_call.completed`.
-
-      - `"response.web_search_call.completed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseWebSearchCallInProgressEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseWebSearchCallInWsProgress = BetaResponseWebSearchCallInProgressEvent`
 
     Emitted when a web search call is initiated.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      Unique ID for the output item associated with the web search call.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that the web search call is associated with.
-
-    - `sequence_number: number`
-
-      The sequence number of the web search call being processed.
-
-    - `type: "response.web_search_call.in_progress"`
-
-      The type of the event. Always `response.web_search_call.in_progress`.
-
-      - `"response.web_search_call.in_progress"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseWebSearchCallSearchingEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseWebSearchCallWsSearching = BetaResponseWebSearchCallSearchingEvent`
 
     Emitted when a web search call is executing.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      Unique ID for the output item associated with the web search call.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that the web search call is associated with.
-
-    - `sequence_number: number`
-
-      The sequence number of the web search call being processed.
-
-    - `type: "response.web_search_call.searching"`
-
-      The type of the event. Always `response.web_search_call.searching`.
-
-      - `"response.web_search_call.searching"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseImageGenCallCompletedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseImageGenCallWsCompleted = BetaResponseImageGenCallCompletedEvent`
 
     Emitted when an image generation tool call has completed and the final image is available.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the image generation item being processed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.image_generation_call.completed"`
-
-      The type of the event. Always 'response.image_generation_call.completed'.
-
-      - `"response.image_generation_call.completed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseImageGenCallGeneratingEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseImageGenCallWsGenerating = BetaResponseImageGenCallGeneratingEvent`
 
     Emitted when an image generation tool call is actively generating an image (intermediate state).
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the image generation item being processed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `sequence_number: number`
-
-      The sequence number of the image generation item being processed.
-
-    - `type: "response.image_generation_call.generating"`
-
-      The type of the event. Always 'response.image_generation_call.generating'.
-
-      - `"response.image_generation_call.generating"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseImageGenCallInProgressEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseImageGenCallInWsProgress = BetaResponseImageGenCallInProgressEvent`
 
     Emitted when an image generation tool call is in progress.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the image generation item being processed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `sequence_number: number`
-
-      The sequence number of the image generation item being processed.
-
-    - `type: "response.image_generation_call.in_progress"`
-
-      The type of the event. Always 'response.image_generation_call.in_progress'.
-
-      - `"response.image_generation_call.in_progress"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseImageGenCallPartialImageEvent object { item_id, output_index, partial_image_b64, 4 more }`
+  - `BetaResponseImageGenCallPartialWsImage = BetaResponseImageGenCallPartialImageEvent`
 
     Emitted when a partial image is available during image generation streaming.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the image generation item being processed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `partial_image_b64: string`
-
-      Base64-encoded partial image data, suitable for rendering as an image.
-
-    - `partial_image_index: number`
-
-      0-based index for the partial image (backend is 1-based, but this is 0-based for the user).
-
-    - `sequence_number: number`
-
-      The sequence number of the image generation item being processed.
-
-    - `type: "response.image_generation_call.partial_image"`
-
-      The type of the event. Always 'response.image_generation_call.partial_image'.
-
-      - `"response.image_generation_call.partial_image"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpCallArgumentsDeltaEvent object { delta, item_id, output_index, 3 more }`
+  - `BetaResponseMcpCallArgumentsWsDelta = BetaResponseMcpCallArgumentsDeltaEvent`
 
     Emitted when there is a delta (partial update) to the arguments of an MCP tool call.
 
-    - `delta: string`
+    - `stream_id: optional string`
 
-      A JSON string containing the partial update to the arguments for the MCP tool call.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The unique identifier of the MCP tool call item being processed.
-
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_call_arguments.delta"`
-
-      The type of the event. Always 'response.mcp_call_arguments.delta'.
-
-      - `"response.mcp_call_arguments.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpCallArgumentsDoneEvent object { arguments, item_id, output_index, 3 more }`
+  - `BetaResponseMcpCallArgumentsWsDone = BetaResponseMcpCallArgumentsDoneEvent`
 
     Emitted when the arguments for an MCP tool call are finalized.
 
-    - `arguments: string`
+    - `stream_id: optional string`
 
-      A JSON string containing the finalized arguments for the MCP tool call.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      The unique identifier of the MCP tool call item being processed.
-
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_call_arguments.done"`
-
-      The type of the event. Always 'response.mcp_call_arguments.done'.
-
-      - `"response.mcp_call_arguments.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpCallCompletedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseMcpCallWsCompleted = BetaResponseMcpCallCompletedEvent`
 
     Emitted when an MCP  tool call has completed successfully.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the MCP tool call item that completed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that completed.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_call.completed"`
-
-      The type of the event. Always 'response.mcp_call.completed'.
-
-      - `"response.mcp_call.completed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpCallFailedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseMcpCallWsFailed = BetaResponseMcpCallFailedEvent`
 
     Emitted when an MCP  tool call has failed.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the MCP tool call item that failed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that failed.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_call.failed"`
-
-      The type of the event. Always 'response.mcp_call.failed'.
-
-      - `"response.mcp_call.failed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpCallInProgressEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseMcpCallInWsProgress = BetaResponseMcpCallInProgressEvent`
 
     Emitted when an MCP  tool call is in progress.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The unique identifier of the MCP tool call item being processed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_call.in_progress"`
-
-      The type of the event. Always 'response.mcp_call.in_progress'.
-
-      - `"response.mcp_call.in_progress"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpListToolsCompletedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseMcpListToolsWsCompleted = BetaResponseMcpListToolsCompletedEvent`
 
     Emitted when the list of available MCP tools has been successfully retrieved.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the MCP tool call item that produced this output.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that was processed.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_list_tools.completed"`
-
-      The type of the event. Always 'response.mcp_list_tools.completed'.
-
-      - `"response.mcp_list_tools.completed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpListToolsFailedEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseMcpListToolsWsFailed = BetaResponseMcpListToolsFailedEvent`
 
     Emitted when the attempt to list available MCP tools has failed.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the MCP tool call item that failed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that failed.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_list_tools.failed"`
-
-      The type of the event. Always 'response.mcp_list_tools.failed'.
-
-      - `"response.mcp_list_tools.failed"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseMcpListToolsInProgressEvent object { item_id, output_index, sequence_number, 2 more }`
+  - `BetaResponseMcpListToolsInWsProgress = BetaResponseMcpListToolsInProgressEvent`
 
     Emitted when the system is in the process of retrieving the list of available MCP tools.
 
-    - `item_id: string`
+    - `stream_id: optional string`
 
-      The ID of the MCP tool call item that is being processed.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `output_index: number`
-
-      The index of the output item that is being processed.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.mcp_list_tools.in_progress"`
-
-      The type of the event. Always 'response.mcp_list_tools.in_progress'.
-
-      - `"response.mcp_list_tools.in_progress"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseOutputTextAnnotationAddedEvent object { annotation, annotation_index, content_index, 5 more }`
+  - `BetaResponseOutputTextAnnotationWsAdded = BetaResponseOutputTextAnnotationAddedEvent`
 
     Emitted when an annotation is added to output text content.
 
-    - `annotation: unknown`
+    - `stream_id: optional string`
 
-      The annotation object being added. (See annotation schema for details.)
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `annotation_index: number`
-
-      The index of the annotation within the content part.
-
-    - `content_index: number`
-
-      The index of the content part within the output item.
-
-    - `item_id: string`
-
-      The unique identifier of the item to which the annotation is being added.
-
-    - `output_index: number`
-
-      The index of the output item in the response's output array.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.output_text.annotation.added"`
-
-      The type of the event. Always 'response.output_text.annotation.added'.
-
-      - `"response.output_text.annotation.added"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseQueuedEvent object { response, sequence_number, type, agent }`
+  - `BetaResponseWsQueued = BetaResponseQueuedEvent`
 
     Emitted when a response is queued and waiting to be processed.
 
-    - `response: BetaResponse`
+    - `stream_id: optional string`
 
-      The full response object that is queued.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `sequence_number: number`
-
-      The sequence number for this event.
-
-    - `type: "response.queued"`
-
-      The type of the event. Always 'response.queued'.
-
-      - `"response.queued"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCustomToolCallInputDeltaEvent object { delta, item_id, output_index, 3 more }`
+  - `BetaResponseCustomToolCallInputWsDelta = BetaResponseCustomToolCallInputDeltaEvent`
 
     Event representing a delta (partial update) to the input of a custom tool call.
 
-    - `delta: string`
+    - `stream_id: optional string`
 
-      The incremental input data (delta) for the custom tool call.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
-    - `item_id: string`
-
-      Unique identifier for the API item associated with this event.
-
-    - `output_index: number`
-
-      The index of the output this delta applies to.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.custom_tool_call_input.delta"`
-
-      The event type identifier.
-
-      - `"response.custom_tool_call_input.delta"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
-
-  - `BetaResponseCustomToolCallInputDoneEvent object { input, item_id, output_index, 3 more }`
+  - `BetaResponseCustomToolCallInputWsDone = BetaResponseCustomToolCallInputDoneEvent`
 
     Event indicating that input for a custom tool call is complete.
 
-    - `input: string`
+    - `stream_id: optional string`
 
-      The complete input data for the custom tool call.
-
-    - `item_id: string`
-
-      Unique identifier for the API item associated with this event.
-
-    - `output_index: number`
-
-      The index of the output this event applies to.
-
-    - `sequence_number: number`
-
-      The sequence number of this event.
-
-    - `type: "response.custom_tool_call_input.done"`
-
-      The event type identifier.
-
-      - `"response.custom_tool_call_input.done"`
-
-    - `agent: optional object { agent_name }  or null`
-
-      The agent that owns this multi-agent streaming event.
-
-      - `agent_name: string`
-
-        The canonical name of the agent that produced this item.
+      The WebSocket lane that emitted this event. This field is present
+      when the originating `response.create` event supplied a
+      `stream_id`.
 
   - `BetaResponseInjectCreatedEvent object { response_id, sequence_number, type, stream_id }`
 
@@ -203588,6 +193329,159 @@ curl https://api.openai.com/v1/responses/resp_123 \
         `assistant` role are presumed to have been generated by the model in previous
         interactions.
 
+        - `content: string or BetaResponseInputMessageContentList`
+
+          Text, image, or audio input to the model, used to generate a response.
+          Can also contain previous assistant responses.
+
+          - `TextInput = string`
+
+            A text input to the model.
+
+          - `BetaResponseInputMessageContentList = array of BetaResponseInputContent`
+
+            A list of one or many input items to the model, containing different content
+            types.
+
+            - `BetaResponseInputText object { text, type, prompt_cache_breakpoint }`
+
+              A text input to the model.
+
+              - `text: string`
+
+                The text input to the model.
+
+              - `type: "input_text"`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+              - `prompt_cache_breakpoint: optional object { mode }`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
+            - `BetaResponseInputImage object { detail, type, file_id, 2 more }`
+
+              An image input to the model. Learn about [image inputs](/docs/guides/vision).
+
+              - `detail: "low" or "high" or "auto" or "original"`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+              - `type: "input_image"`
+
+                The type of the input item. Always `input_image`.
+
+                - `"input_image"`
+
+              - `file_id: optional string or null`
+
+                The ID of the file to be sent to the model.
+
+              - `image_url: optional string or null`
+
+                The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+              - `prompt_cache_breakpoint: optional object { mode }`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
+            - `BetaResponseInputFile object { type, detail, file_data, 4 more }`
+
+              A file input to the model.
+
+              - `type: "input_file"`
+
+                The type of the input item. Always `input_file`.
+
+                - `"input_file"`
+
+              - `detail: optional "auto" or "low" or "high"`
+
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
+
+                - `"low"`
+
+                - `"high"`
+
+              - `file_data: optional string`
+
+                The content of the file to be sent to the model.
+
+              - `file_id: optional string or null`
+
+                The ID of the file to be sent to the model.
+
+              - `file_url: optional string`
+
+                The URL of the file to be sent to the model.
+
+              - `filename: optional string`
+
+                The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint: optional object { mode }`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
+        - `role: "user" or "assistant" or "system" or "developer"`
+
+          The role of the message input. One of `user`, `assistant`, `system`, or
+          `developer`.
+
+          - `"user"`
+
+          - `"assistant"`
+
+          - `"system"`
+
+          - `"developer"`
+
+        - `phase: optional "commentary" or "final_answer" or null`
+
+          Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+          For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+          phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+          - `"commentary"`
+
+          - `"final_answer"`
+
+        - `type: optional "message"`
+
+          The type of the message input. Always `message`.
+
+          - `"message"`
+
       - `Message object { content, role, agent, 2 more }`
 
         A message input to the model with a role indicating instruction following
@@ -203637,6 +193531,199 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `BetaResponseOutputMessage object { id, content, role, 4 more }`
 
         An output message from the model.
+
+        - `id: string`
+
+          The unique ID of the output message.
+
+        - `content: array of BetaResponseOutputText or BetaResponseOutputRefusal`
+
+          The content of the output message.
+
+          - `BetaResponseOutputText object { annotations, logprobs, text, type }`
+
+            A text output from the model.
+
+            - `annotations: array of object { file_id, filename, index, type }  or object { end_index, start_index, title, 2 more }  or object { container_id, end_index, file_id, 3 more }  or object { file_id, index, type }`
+
+              The annotations of the text output.
+
+              - `FileCitation object { file_id, filename, index, type }`
+
+                A citation to a file.
+
+                - `file_id: string`
+
+                  The ID of the file.
+
+                - `filename: string`
+
+                  The filename of the file cited.
+
+                - `index: number`
+
+                  The index of the file in the list of files.
+
+                - `type: "file_citation"`
+
+                  The type of the file citation. Always `file_citation`.
+
+                  - `"file_citation"`
+
+              - `URLCitation object { end_index, start_index, title, 2 more }`
+
+                A citation for a web resource used to generate a model response.
+
+                - `end_index: number`
+
+                  The index of the last character of the URL citation in the message.
+
+                - `start_index: number`
+
+                  The index of the first character of the URL citation in the message.
+
+                - `title: string`
+
+                  The title of the web resource.
+
+                - `type: "url_citation"`
+
+                  The type of the URL citation. Always `url_citation`.
+
+                  - `"url_citation"`
+
+                - `url: string`
+
+                  The URL of the web resource.
+
+              - `ContainerFileCitation object { container_id, end_index, file_id, 3 more }`
+
+                A citation for a container file used to generate a model response.
+
+                - `container_id: string`
+
+                  The ID of the container file.
+
+                - `end_index: number`
+
+                  The index of the last character of the container file citation in the message.
+
+                - `file_id: string`
+
+                  The ID of the file.
+
+                - `filename: string`
+
+                  The filename of the container file cited.
+
+                - `start_index: number`
+
+                  The index of the first character of the container file citation in the message.
+
+                - `type: "container_file_citation"`
+
+                  The type of the container file citation. Always `container_file_citation`.
+
+                  - `"container_file_citation"`
+
+              - `FilePath object { file_id, index, type }`
+
+                A path to a file.
+
+                - `file_id: string`
+
+                  The ID of the file.
+
+                - `index: number`
+
+                  The index of the file in the list of files.
+
+                - `type: "file_path"`
+
+                  The type of the file path. Always `file_path`.
+
+                  - `"file_path"`
+
+            - `logprobs: array of object { token, bytes, logprob, top_logprobs }`
+
+              - `token: string`
+
+              - `bytes: array of number`
+
+              - `logprob: number`
+
+              - `top_logprobs: array of object { token, bytes, logprob }`
+
+                - `token: string`
+
+                - `bytes: array of number`
+
+                - `logprob: number`
+
+            - `text: string`
+
+              The text output from the model.
+
+            - `type: "output_text"`
+
+              The type of the output text. Always `output_text`.
+
+              - `"output_text"`
+
+          - `BetaResponseOutputRefusal object { refusal, type }`
+
+            A refusal from the model.
+
+            - `refusal: string`
+
+              The refusal explanation from the model.
+
+            - `type: "refusal"`
+
+              The type of the refusal. Always `refusal`.
+
+              - `"refusal"`
+
+        - `role: "assistant"`
+
+          The role of the output message. Always `assistant`.
+
+          - `"assistant"`
+
+        - `status: "in_progress" or "completed" or "incomplete"`
+
+          The status of the message input. One of `in_progress`, `completed`, or
+          `incomplete`. Populated when input items are returned via API.
+
+          - `"in_progress"`
+
+          - `"completed"`
+
+          - `"incomplete"`
+
+        - `type: "message"`
+
+          The type of the output message. Always `message`.
+
+          - `"message"`
+
+        - `agent: optional object { agent_name }  or null`
+
+          The agent that produced this item.
+
+          - `agent_name: string`
+
+            The canonical name of the agent that produced this item.
+
+        - `phase: optional "commentary" or "final_answer" or null`
+
+          Labels an `assistant` message as intermediate commentary (`commentary`) or the final answer (`final_answer`).
+          For models like `gpt-5.3-codex` and beyond, when sending follow-up requests, preserve and resend
+          phase on all assistant messages — dropping it can degrade performance. Not used for user messages.
+
+          - `"commentary"`
+
+          - `"final_answer"`
 
       - `FileSearchCall object { id, queries, status, 3 more }`
 
@@ -203764,10 +193851,237 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A click action.
 
+          - `Click object { button, type, x, 2 more }`
+
+            A click action.
+
+            - `button: "left" or "right" or "wheel" or 2 more`
+
+              Indicates which mouse button was pressed during the click. One of `left`, `right`, `wheel`, `back`, or `forward`.
+
+              - `"left"`
+
+              - `"right"`
+
+              - `"wheel"`
+
+              - `"back"`
+
+              - `"forward"`
+
+            - `type: "click"`
+
+              Specifies the event type. For a click action, this property is always `click`.
+
+              - `"click"`
+
+            - `x: number`
+
+              The x-coordinate where the click occurred.
+
+            - `y: number`
+
+              The y-coordinate where the click occurred.
+
+            - `keys: optional array of string or null`
+
+              The keys being held while clicking.
+
+          - `DoubleClick object { keys, type, x, y }`
+
+            A double click action.
+
+            - `keys: array of string or null`
+
+              The keys being held while double-clicking.
+
+            - `type: "double_click"`
+
+              Specifies the event type. For a double click action, this property is always set to `double_click`.
+
+              - `"double_click"`
+
+            - `x: number`
+
+              The x-coordinate where the double click occurred.
+
+            - `y: number`
+
+              The y-coordinate where the double click occurred.
+
+          - `Drag object { path, type, keys }`
+
+            A drag action.
+
+            - `path: array of object { x, y }`
+
+              An array of coordinates representing the path of the drag action. Coordinates will appear as an array of objects, eg
+
+              ```
+              [
+                { x: 100, y: 200 },
+                { x: 200, y: 300 }
+              ]
+              ```
+
+              - `x: number`
+
+                The x-coordinate.
+
+              - `y: number`
+
+                The y-coordinate.
+
+            - `type: "drag"`
+
+              Specifies the event type. For a drag action, this property is always set to `drag`.
+
+              - `"drag"`
+
+            - `keys: optional array of string or null`
+
+              The keys being held while dragging the mouse.
+
+          - `Keypress object { keys, type }`
+
+            A collection of keypresses the model would like to perform.
+
+            - `keys: array of string`
+
+              The combination of keys the model is requesting to be pressed. This is an array of strings, each representing a key.
+
+            - `type: "keypress"`
+
+              Specifies the event type. For a keypress action, this property is always set to `keypress`.
+
+              - `"keypress"`
+
+          - `Move object { type, x, y, keys }`
+
+            A mouse move action.
+
+            - `type: "move"`
+
+              Specifies the event type. For a move action, this property is always set to `move`.
+
+              - `"move"`
+
+            - `x: number`
+
+              The x-coordinate to move to.
+
+            - `y: number`
+
+              The y-coordinate to move to.
+
+            - `keys: optional array of string or null`
+
+              The keys being held while moving the mouse.
+
+          - `Screenshot object { type }`
+
+            A screenshot action.
+
+            - `type: "screenshot"`
+
+              Specifies the event type. For a screenshot action, this property is always set to `screenshot`.
+
+              - `"screenshot"`
+
+          - `Scroll object { scroll_x, scroll_y, type, 3 more }`
+
+            A scroll action.
+
+            - `scroll_x: number`
+
+              The horizontal scroll distance.
+
+            - `scroll_y: number`
+
+              The vertical scroll distance.
+
+            - `type: "scroll"`
+
+              Specifies the event type. For a scroll action, this property is always set to `scroll`.
+
+              - `"scroll"`
+
+            - `x: number`
+
+              The x-coordinate where the scroll occurred.
+
+            - `y: number`
+
+              The y-coordinate where the scroll occurred.
+
+            - `keys: optional array of string or null`
+
+              The keys being held while scrolling.
+
+          - `Type object { text, type }`
+
+            An action to type in text.
+
+            - `text: string`
+
+              The text to type.
+
+            - `type: "type"`
+
+              Specifies the event type. For a type action, this property is always set to `type`.
+
+              - `"type"`
+
+          - `Wait object { type }`
+
+            A wait action.
+
+            - `type: "wait"`
+
+              Specifies the event type. For a wait action, this property is always set to `wait`.
+
+              - `"wait"`
+
         - `actions: optional BetaComputerActionList`
 
           Flattened batched actions for `computer_use`. Each action includes an
           `type` discriminator and action-specific fields.
+
+          - `Click object { button, type, x, 2 more }`
+
+            A click action.
+
+          - `DoubleClick object { keys, type, x, y }`
+
+            A double click action.
+
+          - `Drag object { path, type, keys }`
+
+            A drag action.
+
+          - `Keypress object { keys, type }`
+
+            A collection of keypresses the model would like to perform.
+
+          - `Move object { type, x, y, keys }`
+
+            A mouse move action.
+
+          - `Screenshot object { type }`
+
+            A screenshot action.
+
+          - `Scroll object { scroll_x, scroll_y, type, 3 more }`
+
+            A scroll action.
+
+          - `Type object { text, type }`
+
+            An action to type in text.
+
+          - `Wait object { type }`
+
+            A wait action.
 
         - `agent: optional object { agent_name }  or null`
 
@@ -203788,6 +194102,21 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `output: BetaResponseComputerToolCallOutputScreenshot`
 
           A computer screenshot image used with the computer use tool.
+
+          - `type: "computer_screenshot"`
+
+            Specifies the event type. For a computer screenshot, this property is
+            always set to `computer_screenshot`.
+
+            - `"computer_screenshot"`
+
+          - `file_id: optional string`
+
+            The identifier of an uploaded file that contains the screenshot.
+
+          - `image_url: optional string`
+
+            The URL of the screenshot image.
 
         - `type: "computer_call_output"`
 
@@ -204027,13 +194356,111 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A text input to the model.
 
+              - `text: string`
+
+                The text input to the model.
+
+              - `type: "input_text"`
+
+                The type of the input item. Always `input_text`.
+
+                - `"input_text"`
+
+              - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `BetaResponseInputImageContent object { type, detail, file_id, 2 more }`
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision)
 
+              - `type: "input_image"`
+
+                The type of the input item. Always `input_image`.
+
+                - `"input_image"`
+
+              - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+                The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
+
+                - `"low"`
+
+                - `"high"`
+
+                - `"auto"`
+
+                - `"original"`
+
+              - `file_id: optional string or null`
+
+                The ID of the file to be sent to the model.
+
+              - `image_url: optional string or null`
+
+                The URL of the image to be sent to the model. A fully qualified URL or base64 encoded image in a data URL.
+
+              - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
+
             - `BetaResponseInputFileContent object { type, detail, file_data, 4 more }`
 
               A file input to the model.
+
+              - `type: "input_file"`
+
+                The type of the input item. Always `input_file`.
+
+                - `"input_file"`
+
+              - `detail: optional "auto" or "low" or "high"`
+
+                The detail level of the file to be sent to the model. Use `auto` to let the system select the detail level; for GPT-5.6 and later models, `auto` uses high-quality rendering, which may increase input token usage. Use `low` for lower-cost rendering, or `high` to render the file at higher quality. Defaults to `auto`.
+
+                - `"auto"`
+
+                - `"low"`
+
+                - `"high"`
+
+              - `file_data: optional string or null`
+
+                The base64-encoded data of the file to be sent to the model.
+
+              - `file_id: optional string or null`
+
+                The ID of the file to be sent to the model.
+
+              - `file_url: optional string or null`
+
+                The URL of the file to be sent to the model.
+
+              - `filename: optional string or null`
+
+                The name of the file to be sent to the model.
+
+              - `prompt_cache_breakpoint: optional object { mode }  or null`
+
+                Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+
+                - `mode: "explicit"`
+
+                  The breakpoint mode. Always `explicit`.
+
+                  - `"explicit"`
 
         - `type: "function_call_output"`
 
@@ -204639,7 +195066,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -204651,6 +195078,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -204900,7 +195331,39 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `BetaContainerNetworkPolicyDisabled object { type }`
 
+                    - `type: "disabled"`
+
+                      Disable outbound network access. Always `disabled`.
+
+                      - `"disabled"`
+
                   - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                    - `allowed_domains: array of string`
+
+                      A list of allowed domains when type is `allowlist`.
+
+                    - `type: "allowlist"`
+
+                      Allow outbound network access only to specified domains. Always `allowlist`.
+
+                      - `"allowlist"`
+
+                    - `domain_secrets: optional array of BetaContainerNetworkPolicyDomainSecret`
+
+                      Optional domain-scoped secrets for allowlisted domains.
+
+                      - `domain: string`
+
+                        The domain associated with the secret.
+
+                      - `name: string`
+
+                        The name of the secret to inject for the domain.
+
+                      - `value: string`
+
+                        The secret value to inject for the domain.
 
             - `type: "code_interpreter"`
 
@@ -205082,9 +195545,127 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `BetaContainerAuto object { type, file_ids, memory_limit, 2 more }`
 
+                - `type: "container_auto"`
+
+                  Automatically creates a container for this request
+
+                  - `"container_auto"`
+
+                - `file_ids: optional array of string`
+
+                  An optional list of uploaded files to make available to your code.
+
+                - `memory_limit: optional "1g" or "4g" or "16g" or "64g" or null`
+
+                  The memory limit for the container.
+
+                  - `"1g"`
+
+                  - `"4g"`
+
+                  - `"16g"`
+
+                  - `"64g"`
+
+                - `network_policy: optional BetaContainerNetworkPolicyDisabled or BetaContainerNetworkPolicyAllowlist`
+
+                  Network access policy for the container.
+
+                  - `BetaContainerNetworkPolicyDisabled object { type }`
+
+                  - `BetaContainerNetworkPolicyAllowlist object { allowed_domains, type, domain_secrets }`
+
+                - `skills: optional array of BetaSkillReference or BetaInlineSkill`
+
+                  An optional list of skills referenced by id or inline data.
+
+                  - `BetaSkillReference object { skill_id, type, version }`
+
+                    - `skill_id: string`
+
+                      The ID of the referenced skill.
+
+                    - `type: "skill_reference"`
+
+                      References a skill created with the /v1/skills endpoint.
+
+                      - `"skill_reference"`
+
+                    - `version: optional string`
+
+                      Optional skill version. Use a positive integer or 'latest'. Omit for default.
+
+                  - `BetaInlineSkill object { description, name, source, type }`
+
+                    - `description: string`
+
+                      The description of the skill.
+
+                    - `name: string`
+
+                      The name of the skill.
+
+                    - `source: BetaInlineSkillSource`
+
+                      Inline skill payload
+
+                      - `data: string`
+
+                        Base64-encoded skill zip bundle.
+
+                      - `media_type: "application/zip"`
+
+                        The media type of the inline skill payload. Must be `application/zip`.
+
+                        - `"application/zip"`
+
+                      - `type: "base64"`
+
+                        The type of the inline skill source. Must be `base64`.
+
+                        - `"base64"`
+
+                    - `type: "inline"`
+
+                      Defines an inline skill for this request.
+
+                      - `"inline"`
+
               - `BetaLocalEnvironment object { type, skills }`
 
+                - `type: "local"`
+
+                  Use a local computer environment.
+
+                  - `"local"`
+
+                - `skills: optional array of BetaLocalSkill`
+
+                  An optional list of skills.
+
+                  - `description: string`
+
+                    The description of the skill.
+
+                  - `name: string`
+
+                    The name of the skill.
+
+                  - `path: string`
+
+                    The path to the directory containing the skill.
+
               - `BetaContainerReference object { container_id, type }`
+
+                - `container_id: string`
+
+                  The ID of the referenced container.
+
+                - `type: "container_reference"`
+
+                  References a container created with the /v1/containers endpoint
+
+                  - `"container_reference"`
 
           - `Custom object { name, type, allowed_callers, 3 more }`
 
@@ -205680,7 +196261,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"computer_use_preview"`
 
-          - `WebSearch object { type, filters, search_context_size, user_location }`
+          - `WebSearch object { type, external_web_access, filters, 2 more }`
 
             Search the Internet for sources related to the prompt. Learn more about the
             [web search tool](/docs/guides/tools-web-search).
@@ -205692,6 +196273,10 @@ curl https://api.openai.com/v1/responses/resp_123 \
               - `"web_search"`
 
               - `"web_search_2025_08_26"`
+
+            - `external_web_access: optional boolean`
+
+              Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
             - `filters: optional object { allowed_domains }  or null`
 
@@ -206488,6 +197073,12 @@ curl https://api.openai.com/v1/responses/resp_123 \
           for reasoning items returned by `POST /v1/responses` and WebSocket
           `response.create` requests.
 
+          When streaming, use the completed reasoning item and its
+          `encrypted_content` from the `response.output_item.done` event in
+          subsequent requests. The `encrypted_content` in
+          `response.output_item.added` may be incomplete. This is especially
+          important when `store` is `false` or when using Zero Data Retention.
+
         - `status: optional "in_progress" or "completed" or "incomplete"`
 
           The status of the item. One of `in_progress`, `completed`, or
@@ -206841,6 +197432,30 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `outcome: object { type }  or object { exit_code, type }`
 
             The exit or timeout outcome associated with this shell call.
+
+            - `Timeout object { type }`
+
+              Indicates that the shell call exceeded its configured time limit.
+
+              - `type: "timeout"`
+
+                The outcome type. Always `timeout`.
+
+                - `"timeout"`
+
+            - `Exit object { exit_code, type }`
+
+              Indicates that the shell commands finished and returned an exit code.
+
+              - `exit_code: number`
+
+                The exit code returned by the shell process.
+
+              - `type: "exit"`
+
+                The outcome type. Always `exit`.
+
+                - `"exit"`
 
           - `stderr: string`
 
@@ -207237,9 +197852,41 @@ curl https://api.openai.com/v1/responses/resp_123 \
           Unique identifier for the MCP tool call approval request.
           Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-        - `error: optional string or null`
+        - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
           The error from the tool call, if any.
+
+          - `string`
+
+            The error from the tool call, if any.
+
+          - `McpProtocolError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "mcp_protocol_error"`
+
+              - `"mcp_protocol_error"`
+
+          - `McpToolExecutionError object { content, type }`
+
+            - `content: unknown`
+
+            - `type: "mcp_tool_execution_error"`
+
+              - `"mcp_tool_execution_error"`
+
+          - `HTTPError object { code, message, type }`
+
+            - `code: number`
+
+            - `message: string`
+
+            - `type: "http_error"`
+
+              - `"http_error"`
 
         - `output: optional string or null`
 
@@ -209433,7 +200080,7 @@ Returns a list of input items for a given response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -209445,6 +200092,10 @@ Returns a list of input items for a given response.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -210620,7 +201271,7 @@ Returns a list of input items for a given response.
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -210632,6 +201283,10 @@ Returns a list of input items for a given response.
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -211423,6 +202078,12 @@ Returns a list of input items for a given response.
         The encrypted content of the reasoning item. This is populated by default
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
+
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -212289,9 +202950,41 @@ Returns a list of input items for a given response.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -214223,7 +204916,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -214235,6 +204928,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -215410,7 +206107,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -215422,6 +206119,10 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -216213,6 +206914,12 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         The encrypted content of the reasoning item. This is populated by default
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
+
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
 
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
@@ -217079,9 +207786,41 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -219070,7 +209809,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -219082,6 +209821,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -220261,7 +211004,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             - `"computer_use_preview"`
 
-        - `WebSearch object { type, filters, search_context_size, user_location }`
+        - `WebSearch object { type, external_web_access, filters, 2 more }`
 
           Search the Internet for sources related to the prompt. Learn more about the
           [web search tool](/docs/guides/tools-web-search).
@@ -220273,6 +211016,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
             - `"web_search"`
 
             - `"web_search_2025_08_26"`
+
+          - `external_web_access: optional boolean`
+
+            Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
           - `filters: optional object { allowed_domains }  or null`
 
@@ -221069,6 +211816,12 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         for reasoning items returned by `POST /v1/responses` and WebSocket
         `response.create` requests.
 
+        When streaming, use the completed reasoning item and its
+        `encrypted_content` from the `response.output_item.done` event in
+        subsequent requests. The `encrypted_content` in
+        `response.output_item.added` may be incomplete. This is especially
+        important when `store` is `false` or when using Zero Data Retention.
+
       - `status: optional "in_progress" or "completed" or "incomplete"`
 
         The status of the item. One of `in_progress`, `completed`, or
@@ -221842,9 +212595,41 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or null`
+      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
 
         The error from the tool call, if any.
+
+        - `string`
+
+          The error from the tool call, if any.
+
+        - `McpProtocolError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "mcp_protocol_error"`
+
+            - `"mcp_protocol_error"`
+
+        - `McpToolExecutionError object { content, type }`
+
+          - `content: unknown`
+
+          - `type: "mcp_tool_execution_error"`
+
+            - `"mcp_tool_execution_error"`
+
+        - `HTTPError object { code, message, type }`
+
+          - `code: number`
+
+          - `message: string`
+
+          - `type: "http_error"`
+
+            - `"http_error"`
 
       - `output: optional string or null`
 
@@ -222750,7 +213535,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
       - `"computer_use_preview"`
 
-  - `WebSearch object { type, filters, search_context_size, user_location }`
+  - `WebSearch object { type, external_web_access, filters, 2 more }`
 
     Search the Internet for sources related to the prompt. Learn more about the
     [web search tool](/docs/guides/tools-web-search).
@@ -222762,6 +213547,10 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
       - `"web_search"`
 
       - `"web_search_2025_08_26"`
+
+    - `external_web_access: optional boolean`
+
+      Allow live internet access for web search. Defaults to true when omitted. When false, the web search tool runs in offline/cache-only mode and will not fetch new external content.
 
     - `filters: optional object { allowed_domains }  or null`
 

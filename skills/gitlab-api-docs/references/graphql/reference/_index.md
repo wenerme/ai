@@ -1117,6 +1117,22 @@ Get GitLab Duo settings.
 
 Returns [`DuoSettings`](#duosettings).
 
+### `Query.duoWorkflowBranches`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Other attempts at a turn in a Duo Agent Platform session, created when the user retried it. Always empty until branch reconstruction is released.
+
+Returns [`[DuoWorkflowBranch!]`](#duoworkflowbranch).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="query-duoworkflowbranches-threadts"></a>`threadTs` | [`String!`](#string) | Identifier of the checkpoint that introduced a user message, from `DuoMessage.threadTs`. Returns the other attempts at the same turn, so the branch that message belongs to is excluded. |
+| <a id="query-duoworkflowbranches-workflowid"></a>`workflowId` | [`AiDuoWorkflowsWorkflowID!`](#aiduoworkflowsworkflowid) | Global ID of the session. |
+
 ### `Query.duoWorkflowEvents`
 
 - Introduced in GitLab 17.2.
@@ -1458,7 +1474,7 @@ four standard [pagination arguments](#pagination-arguments):
 
 Check if Secrets Manager is enrolled at the instance level.
 
-Returns [`Boolean`](#boolean).
+Returns [`SecretsManagerInstanceEnrollment`](#secretsmanagerinstanceenrollment).
 
 ### `Query.instanceSecurityDashboard`
 
@@ -4125,6 +4141,83 @@ Fields:
 | <a id="mutation-artifactdestroy-artifact"></a>`artifact` | [`CiJobArtifact`](#cijobartifact) | Deleted artifact. |
 | <a id="mutation-artifactdestroy-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactdestroy-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.artifactRegistryRepositoryCreate`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Creates a repository in Artifact Registry.
+
+Input type: `ArtifactRegistryRepositoryCreateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositorycreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositorycreate-description"></a>`description` | [`String`](#string) | Human-readable description of the repository. |
+| <a id="mutation-artifactregistryrepositorycreate-format"></a>`format` | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Package format the repository holds. Cannot be changed after creation. |
+| <a id="mutation-artifactregistryrepositorycreate-kind"></a>`kind` | [`ArtifactRegistryRepositoryKind`](#artifactregistryrepositorykind) | How the repository sources its artifacts. Defaults to hosted in Artifact Registry. |
+| <a id="mutation-artifactregistryrepositorycreate-name"></a>`name` | [`String!`](#string) | Name of the repository, unique within the organization. |
+| <a id="mutation-artifactregistryrepositorycreate-visibility"></a>`visibility` | [`ArtifactRegistryRepositoryVisibility`](#artifactregistryrepositoryvisibility) | Who can read the repository. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositorycreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositorycreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryrepositorycreate-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository created. Null when the creation was not applied. |
+
+### `Mutation.artifactRegistryRepositoryDelete`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Deletes a repository in Artifact Registry.
+
+Input type: `ArtifactRegistryRepositoryDeleteInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositorydelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositorydelete-name"></a>`name` | [`String!`](#string) | Name of the repository to delete, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositorydelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositorydelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.artifactRegistryRepositoryUpdate`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Updates a repository in Artifact Registry.
+
+Input type: `ArtifactRegistryRepositoryUpdateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositoryupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositoryupdate-description"></a>`description` | [`String`](#string) | Human-readable description of the repository. |
+| <a id="mutation-artifactregistryrepositoryupdate-name"></a>`name` | [`String!`](#string) | Name of the repository to update, unique within the organization. Cannot be changed. |
+| <a id="mutation-artifactregistryrepositoryupdate-visibility"></a>`visibility` | [`ArtifactRegistryRepositoryVisibility`](#artifactregistryrepositoryvisibility) | Who can read the repository. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryrepositoryupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryrepositoryupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryrepositoryupdate-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository updated. Null when the update was not applied. |
 
 ### `Mutation.artifactRegistryRoleBulkGrant`
 
@@ -39801,6 +39894,17 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-workitemlinks-linktype"></a>`linkType` | [`DuoWorkflowWorkItemLinkType`](#duoworkflowworkitemlinktype) | Filter links by their link type. |
 
+### `DuoWorkflowBranch`
+
+Alternative branch of a Duo Agent Platform session, created by retrying a message.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowbranch-forkthreadts"></a>`forkThreadTs` | [`String`](#string) | Identifier of the checkpoint to resume the session from to switch to the branch. |
+| <a id="duoworkflowbranch-messages"></a>`messages` | [`[DuoMessage!]!`](#duomessage) | Messages the branch added after the point it diverged, oldest first. |
+
 ### `DuoWorkflowCheckpointWrite`
 
 A pending write associated with a Duo Workflow checkpoint.
@@ -52127,7 +52231,9 @@ Fields:
 | <a id="project-duocontextexclusionsettings"></a>`duoContextExclusionSettings`  | [`DuoContextExclusionSettings`](#duocontextexclusionsettings) | Introduced in GitLab 18.2. Status: Experiment. Settings for excluding files from Duo context. |
 | <a id="project-duodependencybumpbreakingchangesavailable"></a>`duoDependencyBumpBreakingChangesAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether the GitLab Duo resolve dependency bump breaking changes flow can be triggered for the project. |
 | <a id="project-duofeaturesenabled"></a>`duoFeaturesEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 16.9. Status: Experiment. Indicates whether GitLab Duo features are enabled for the project. |
+| <a id="project-duoworkflowrunneravailable"></a>`duoWorkflowRunnerAvailable`  | [`Boolean`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates whether the project has a runner that can pick up GitLab Duo Agent Platform workloads. Resolved on request only, because it queries the project's runners and their managers. |
 | <a id="project-duoworkflowstatuscheck"></a>`duoWorkflowStatusCheck`  | [`DuoWorkflowEnablement`](#duoworkflowenablement) | Introduced in GitLab 17.7. Status: Experiment. Indicates whether Duo Agent Platform is enabled for the project. |
+| <a id="project-duoworkflowusablerunnertype"></a>`duoWorkflowUsableRunnerType`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Runner type (instance_type, group_type, or project_type) of the runner that can pick up GitLab Duo Agent Platform workloads, or null when none can. Shares its runner scan with duoWorkflowRunnerAvailable when both are requested. |
 | <a id="project-editpath"></a>`editPath` | [`String!`](#string) | Path for editing project. |
 | <a id="project-explorecatalogpath"></a>`exploreCatalogPath`  | [`String`](#string) | Introduced in GitLab 17.6. Status: Experiment. Path to the project catalog resource. |
 | <a id="project-flowmetrics"></a>`flowMetrics`  | [`ProjectValueStreamAnalyticsFlowMetrics`](#projectvaluestreamanalyticsflowmetrics) | Introduced in GitLab 15.10. Status: Experiment. Flow metrics for value stream analytics. |
@@ -54721,7 +54827,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="project-vulnerabilityworkflowexecution-executionid"></a>`executionId` | [`String`](#string) | Execution identifier. When omitted, returns the active execution. |
+| <a id="project-vulnerabilityworkflowexecution-executionid"></a>`executionId` | [`String`](#string) | Execution identifier. When omitted, returns the latest execution. |
 | <a id="project-vulnerabilityworkflowexecution-workflow"></a>`workflow` | [`VulnerabilityDuoWorkflow!`](#vulnerabilityduoworkflow) | Duo workflow associated with the execution. |
 
 ##### `Project.webhook`
@@ -56813,6 +56919,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="secretsmanagerenrollment-beta"></a>`beta`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates the enrollment is part of the free beta cohort. |
 | <a id="secretsmanagerenrollment-namespace"></a>`namespace` | [`Namespace!`](#namespace) | Namespace the enrollment belongs to. |
 
 ### `SecretsManagerEntitlement`
@@ -56830,6 +56937,17 @@ Fields:
 | <a id="secretsmanagerentitlement-state"></a>`state`  | [`SecretsManagerEntitlementState!`](#secretsmanagerentitlementstate) | Introduced in GitLab 19.2. Status: Experiment. Resolved entitlement state. |
 | <a id="secretsmanagerentitlement-trialexpiresat"></a>`trialExpiresAt`  | [`Time`](#time) | Introduced in GitLab 19.2. Status: Experiment. Timestamp when the Secrets Manager trial expires. |
 | <a id="secretsmanagerentitlement-trialstartedat"></a>`trialStartedAt`  | [`Time`](#time) | Introduced in GitLab 19.2. Status: Experiment. Timestamp when the Secrets Manager trial started. |
+
+### `SecretsManagerInstanceEnrollment`
+
+Representation of a Secrets Manager instance enrollment.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="secretsmanagerinstanceenrollment-beta"></a>`beta`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates the instance enrollment is part of the free beta cohort. |
+| <a id="secretsmanagerinstanceenrollment-enrolled"></a>`enrolled`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates Secrets Manager is enrolled at the instance level. |
 
 ### `SecurityAttribute`
 

@@ -271,11 +271,12 @@ Once set up, Firecrawl searches use your Firecrawl credits directly — there is
 
 [Parallel](https://parallel.ai) is a search engine that supports domain filtering. Set `mode` when `engine` is `parallel`. OpenRouter uses `basic` by default and sends the resolved mode explicitly.
 
-| Mode              | Latency     | Request cost           | Language availability  |
-| ----------------- | ----------- | ---------------------- | ---------------------- |
-| `turbo`           | \~200 ms    | \$1 per 1,000 requests | English and Japanese   |
-| `basic` (default) | \~1 second  | \$5 per 1,000 requests | Broad language support |
-| `advanced`        | \~3 seconds | \$5 per 1,000 requests | Broad language support |
+| Mode              | Latency     | Request cost           | Language availability      |
+| ----------------- | ----------- | ---------------------- | -------------------------- |
+| `turbo`           | \~200 ms    | \$1 per 1,000 requests | English and Japanese       |
+| `fast`            | \~550 ms    | \$1 per 1,000 requests | Not documented by Parallel |
+| `basic` (default) | \~1 second  | \$5 per 1,000 requests | Broad language support     |
+| `advanced`        | \~3 seconds | \$5 per 1,000 requests | Broad language support     |
 
 Each mode includes up to 10 results. Additional results cost \$1 per 1,000 results.
 
@@ -327,7 +328,7 @@ Each mode includes up to 10 results. Additional results cost \$1 per 1,000 resul
 
 * **Native search**: Pricing is passed through directly from the provider (see provider-specific pricing info below)
 * **Exa search**: Instant, Fast, and Auto cost \$0.007 per request; Deep Lite and Deep cost \$0.012; Deep Reasoning costs \$0.015. Includes up to 10 results, then \$0.001 per additional result
-* **Parallel search**: Turbo uses OpenRouter credits at \$0.001 per request; Basic and Advanced use \$0.005 per request. Each includes up to 10 results, then \$0.001 per additional result
+* **Parallel search**: Turbo and Fast use OpenRouter credits at \$0.001 per request; Basic and Advanced use \$0.005 per request. Each includes up to 10 results, then \$0.001 per additional result
 * **Perplexity search**: Uses OpenRouter credits at \$0.005 per request
 * **Firecrawl search**: Uses your Firecrawl credits directly (2 credits per 10 results + 5 per result scraped with highlights). Refill at [Firecrawl.dev](https://www.firecrawl.dev)
 

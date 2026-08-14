@@ -163,9 +163,8 @@ The following examples initialize an OpenAI client with a custom subject token p
 
 Authenticate from a GitHub Actions OIDC token
 
-```typescript
+```javascript
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
 const serviceAccountId = process.env.OPENAI_SERVICE_ACCOUNT_ID;
@@ -185,11 +184,8 @@ if (
   );
 }
 
-function githubActionsOIDCTokenProvider(
-  requestURL: string,
-  requestToken: string,
-  audience: string
-): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function githubActionsOIDCTokenProvider(requestURL, requestToken, audience) {
   return {
     tokenType: "jwt",
     getToken: async () => {
@@ -206,7 +202,7 @@ function githubActionsOIDCTokenProvider(
         );
       }
 
-      const body = (await response.json()) as { value?: string };
+      const body = await response.json();
       if (!body.value) {
         throw new Error("GitHub OIDC token response did not include a value.");
       }

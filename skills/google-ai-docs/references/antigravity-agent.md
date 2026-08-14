@@ -1,8 +1,6 @@
-<br />
-
 The Antigravity agent is a general-purpose managed agent on the Gemini API. A single API call gives you an agent that reasons, executes code, manages files, and browses the web inside your own secure Linux sandbox, hosted by Google.
 
-It is powered by Gemini 3.6 Flash and uses the same harness as the Antigravity IDE. You can configure the underlying Gemini model using `agent_config`. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
+It is powered by Gemini 3.7 Flash and uses the same harness as the Antigravity IDE. You can configure the underlying Gemini model using `agent_config`. Available through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) and [Google AI Studio](https://aistudio.google.com).
 
 ### Python
 
@@ -475,7 +473,7 @@ When registering an MCP server, you must specify the following fields in the `to
 
 ## Model selection
 
-For `antigravity-preview-05-2026`, the default model is **Gemini 3.6 Flash** (`gemini-3.6-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.6-flash`.
+For `antigravity-preview-05-2026`, the default model is **Gemini 3.7 Flash** (`gemini-3.7-flash`). If you omit `agent_config`, the agent defaults to `gemini-3.7-flash`.
 
 You can configure the underlying Gemini model using `agent_config` to optimize for speed, cost, or reasoning capability.
 
@@ -534,8 +532,9 @@ The supported values for `agent_config.model` are:
 
 | Model | Value in `agent_config.model` | Description |
 |---|---|---|
-| **Gemini 3.6 Flash** (default) | `gemini-3.6-flash` | Default balanced model for reasoning, coding, and tool use. |
-| **Gemini 3.5 Flash** | `gemini-3.5-flash` | Previous generation Flash model for general agentic workflows. |
+| **Gemini 3.7 Flash** (default) | `gemini-3.7-flash` | Default balanced model for reasoning, coding, and tool use. |
+| **Gemini 3.6 Flash** | `gemini-3.6-flash` | Previous generation Flash model for general agentic workflows. |
+| **Gemini 3.5 Flash** | `gemini-3.5-flash` | Lightweight model for general workflows. |
 | **Gemini 3.5 Flash-Lite** | `gemini-3.5-flash-lite` | Lightweight model optimized for low latency and cost-sensitive tasks. |
 
 When creating a managed agent with `agents.create`, you configure the model in the exact same way by passing `base_agent` and `agent_config`. Notice that you cannot override the model at interaction time for a managed agent created with `agents.create`. The model is locked to what was set when the agent was created. This ensures predictable tool calling behavior, consistent debugging, and adherence to security boundaries.
@@ -1030,15 +1029,30 @@ View the execution history for a trigger. Each execution includes a `status`, ti
 
 ## Availability and pricing
 
-Antigravity agent is available in preview through the [Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) in Google AI Studio and the Gemini API for both free tier and paid tier projects.
+Antigravity agent is available in preview through the
+[Interactions API](https://ai.google.dev/gemini-api/docs/interactions-overview) in Google AI Studio
+and the Gemini API for both free tier and paid tier projects.
 
-Pricing follows a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents) based on the underlying Gemini model tokens and the tools the agent uses. Unlike a standard chat request that produces a single output, an Antigravity interaction is an agentic workflow. A single request triggers an autonomous loop of reasoning, tool execution, code running, and file management. Free tier projects include a free rate limit and usage quota.
+Pricing follows a [pay-as-you-go model](https://ai.google.dev/gemini-api/docs/pricing#pricing-for-agents)
+based on the underlying Gemini model tokens and the tools the agent uses. Unlike a
+standard chat request that produces a single output, an Antigravity interaction is an
+agentic workflow. A single request triggers an autonomous loop of reasoning, tool
+execution, code running, and file management. Free tier projects include a free rate limit
+and usage quota.
 
-Antigravity interactions run multi-turn autonomous loops and can consume significant tokens. Set [budget controls](https://ai.google.dev/gemini-api/docs/antigravity-agent#budget-controls) on your request to limit token usage. You can also monitor progress in real time with [SSE streaming](https://ai.google.dev/gemini-api/docs/streaming), or cancel running requests.
+Antigravity interactions run multi-turn autonomous loops and can consume
+significant tokens. Set [budget controls](https://ai.google.dev/gemini-api/docs/antigravity-agent#budget-controls) on your request to
+limit token usage. You can also monitor progress in real time with
+[SSE streaming](https://ai.google.dev/gemini-api/docs/streaming), or cancel running requests.
 
 ### Budget controls
 
-In addition to [model selection](https://ai.google.dev/gemini-api/docs/antigravity-agent#model-selection), set `max_total_tokens` inside `agent_config` (with `"type": "antigravity"`) to limit the total number of tokens (input + output + thinking) an interaction can consume. Cached tokens do not count toward this limit. When the agent reaches the limit, the interaction stops and returns with `status: "incomplete"`. The limit is best-effort: actual usage may slightly exceed it depending on when the agent checks the budget between steps.
+In addition to [model selection](https://ai.google.dev/gemini-api/docs/antigravity-agent#model-selection), set `max_total_tokens` inside `agent_config` (with `"type": "antigravity"`) to limit
+the total number of tokens (input + output + thinking) an interaction can consume.
+Cached tokens do not count toward this limit. When the agent reaches the limit, the
+interaction stops and returns with `status: "incomplete"`. The limit is best-effort:
+actual usage may slightly exceed it depending on when the agent checks the budget
+between steps.
 
 Set the budget on the interaction request in `agent_config` alongside `agent` and `input`.
 
@@ -1122,7 +1136,10 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
 
 #### Continuing an incomplete interaction
 
-When an interaction returns `status: "incomplete"`, the agent's work and context are preserved. Send a new interaction referencing the original interaction `id` and `environment_id` to pick up where it left off. The new interaction gets its own `max_total_tokens` budget.
+When an interaction returns `status: "incomplete"`, the agent's work and context
+are preserved. Send a new interaction referencing the original interaction `id` and
+`environment_id` to pick up where it left off. The new interaction gets its own
+`max_total_tokens` budget.
 
 ### Python
 

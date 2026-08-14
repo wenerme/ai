@@ -172,10 +172,10 @@ The web fetch tool accepts optional `parameters` to customize behavior:
 | Parameter            | Type      | Default | Description                                                                            |
 | -------------------- | --------- | ------- | -------------------------------------------------------------------------------------- |
 | `engine`             | string    | `auto`  | Fetch engine to use: `auto`, `native`, `exa`, `openrouter`, `firecrawl`, or `parallel` |
-| `max_uses`           | integer   | —       | Maximum fetches per request. Once exceeded, the tool returns an error                  |
-| `max_content_tokens` | integer   | —       | Maximum content length in approximate tokens. Content exceeding this is truncated      |
-| `allowed_domains`    | string\[] | —       | Only fetch from these domains                                                          |
-| `blocked_domains`    | string\[] | —       | Never fetch from these domains                                                         |
+| `max_uses`           | integer   | N/A     | Maximum fetches per request. Once exceeded, the tool returns an error                  |
+| `max_content_tokens` | integer   | N/A     | Maximum content length in approximate tokens. Content exceeding this is truncated      |
+| `allowed_domains`    | string\[] | N/A     | Only fetch from these domains                                                          |
+| `blocked_domains`    | string\[] | N/A     | Never fetch from these domains                                                         |
 
 ## Engine Selection
 
@@ -188,7 +188,7 @@ The web fetch server tool supports multiple fetch engines:
   (supports BYOK)
 * **`openrouter`**: Uses direct HTTP fetch with content extraction
 * **`firecrawl`**: Uses [Firecrawl](https://firecrawl.dev)'s scrape API
-  (BYOK — bring your own key)
+  (BYOK, bring your own key)
 * **`parallel`**: Uses [Parallel](https://parallel.ai)'s extract API for
   high-quality content extraction
 
@@ -337,7 +337,7 @@ If the fetch fails, the response includes an error:
 | -------------- | ----------------------------------------------------------- |
 | **Exa**        | \$1 per 1,000 fetches                                       |
 | **Parallel**   | \$1 per 1,000 fetches                                       |
-| **Firecrawl**  | Uses your Firecrawl credits directly — no OpenRouter charge |
+| **Firecrawl**  | Uses your Firecrawl credits directly (no OpenRouter charge) |
 | **OpenRouter** | Free                                                        |
 | **Native**     | Passed through from the provider                            |
 
@@ -346,11 +346,11 @@ fetched content.
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about
+* [Server Tools Overview](/docs/guides/features/server-tools). Learn about
   server tools
-* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web
+* [Web Search](/docs/guides/features/server-tools/web-search). Search the web
   for real-time information
-* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current
+* [Datetime](/docs/guides/features/server-tools/datetime). Get the current
   date and time
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined
+* [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined
   tool calling

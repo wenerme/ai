@@ -22,7 +22,7 @@ In this example, we'll use [Anthropic's MCP client SDK](https://github.com/model
   example below uses the MCP client SDK, but is still somewhat complex.
 </Warning>
 
-First, some setup. In order to run this you will need to pip install the packages, and create a `.env` file with OPENAI\_API\_KEY set. This example also assumes the directory `/Applications` exists.
+First, some setup. To run this you'll need to pip install the packages, and create a `.env` file with OPENAI\_API\_KEY set. This example also assumes the directory `/Applications` exists.
 
 ```python expandable lines theme={null}
 import asyncio

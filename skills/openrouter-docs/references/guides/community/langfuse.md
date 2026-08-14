@@ -16,7 +16,7 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
 ## Using Langfuse
 
-[Langfuse](https://langfuse.com/) provides observability and analytics for LLM applications. Since OpenRouter uses the OpenAI API schema, you can utilize Langfuse's native integration with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
+[Langfuse](https://langfuse.com/) provides observability and analytics for LLM applications. Since OpenRouter uses the OpenAI API schema, you can use Langfuse's native integration with the OpenAI SDK to automatically trace and monitor your OpenRouter API calls.
 
 ### Installation
 

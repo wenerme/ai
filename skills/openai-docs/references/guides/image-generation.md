@@ -2161,7 +2161,7 @@ try {
     throw error;
   }
 
-  const moderationDetails = error?.moderation_details;
+  const moderationDetails = error.error?.moderation_details;
   const categories = moderationDetails?.categories ?? [];
   const stage = moderationDetails?.moderation_stage;
 
@@ -2180,7 +2180,7 @@ try {
   }
 
   console.error("Image generation blocked", {
-    request_id: error?.request_id,
+    request_id: error?.requestID,
     code: error?.code,
     moderation_details: moderationDetails,
   });

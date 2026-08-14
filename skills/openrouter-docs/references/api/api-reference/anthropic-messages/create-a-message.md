@@ -178,9 +178,10 @@ paths:
                 error:
                   message: 'Invalid request: messages is required'
                   type: invalid_request_error
+                request_id: null
                 type: error
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
           description: Invalid request error
         '401':
           content:
@@ -189,9 +190,10 @@ paths:
                 error:
                   message: Invalid API key
                   type: authentication_error
+                request_id: null
                 type: error
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
           description: Authentication error
         '403':
           content:
@@ -201,53 +203,28 @@ paths:
                   summary: Guardrail blocked the request
                   value:
                     error:
-                      code: 403
                       message: 'Request blocked: prompt injection patterns detected'
-                      metadata:
-                        patterns:
-                          - ignore all previous instructions
+                      type: permission_error
                     openrouter_metadata:
-                      attempt: 1
-                      endpoints:
-                        available:
-                          - model: openai/gpt-4o
-                            provider: OpenAI
-                            selected: false
-                        total: 1
-                      is_byok: false
                       pipeline:
-                        - data:
-                            action: blocked
-                            detected: true
-                            engines:
-                              - regex
-                            patterns:
-                              - ignore all previous instructions
-                          guardrail_id: grd_abc123
-                          guardrail_scope: api-key
-                          name: regex_pi_detection
+                        - name: regex_pi_detection
                           summary: >-
                             Blocked: prompt injection detected (1 pattern
                             matched)
                           type: guardrail
-                      region: iad
-                      requested: openai/gpt-4o
-                      strategy: direct
-                      summary: available=1
+                    request_id: null
+                    type: error
                 insufficient-permissions:
                   summary: Insufficient permissions
                   value:
                     error:
-                      code: 403
                       message: Only management keys can perform this operation
+                      type: permission_error
+                    request_id: null
+                    type: error
               schema:
-                $ref: '#/components/schemas/ForbiddenResponse'
-          description: >-
-            Forbidden - Authentication successful but insufficient permissions,
-            or a guardrail blocked the request. When guardrails block and the
-            `X-OpenRouter-Metadata: enabled` header is present, the response
-            includes `openrouter_metadata` with full routing context and a
-            `pipeline` array containing guardrail stage details.
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
+          description: Forbidden error
         '404':
           content:
             application/json:
@@ -255,9 +232,10 @@ paths:
                 error:
                   message: Model not found
                   type: not_found_error
+                request_id: gen-xxxxxxxxxxxxxxxxxxxxxxxx
                 type: error
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
           description: Not found error
         '429':
           content:
@@ -266,9 +244,10 @@ paths:
                 error:
                   message: Rate limit exceeded
                   type: rate_limit_error
+                request_id: gen-xxxxxxxxxxxxxxxxxxxxxxxx
                 type: error
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
           description: Rate limit error
         '500':
           content:
@@ -277,9 +256,10 @@ paths:
                 error:
                   message: Internal server error
                   type: api_error
+                request_id: gen-xxxxxxxxxxxxxxxxxxxxxxxx
                 type: error
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
           description: API error
         '503':
           content:
@@ -288,9 +268,10 @@ paths:
                 error:
                   message: Service temporarily overloaded
                   type: overloaded_error
+                request_id: gen-xxxxxxxxxxxxxxxxxxxxxxxx
                 type: error
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
           description: Overloaded error
         '529':
           content:
@@ -299,9 +280,10 @@ paths:
                 error:
                   message: Provider is temporarily overloaded
                   type: overloaded_error
+                request_id: gen-xxxxxxxxxxxxxxxxxxxxxxxx
                 type: error
               schema:
-                $ref: '#/components/schemas/MessagesErrorResponse'
+                $ref: '#/components/schemas/AnthropicMessagesErrorResponse'
           description: Overloaded error
 components:
   schemas:
@@ -913,15 +895,50 @@ components:
         - event
         - data
       type: object
-    MessagesErrorResponse:
+    AnthropicMessagesErrorResponse:
+      description: Error response from the Anthropic Messages API
       example:
         error:
-          message: Invalid request parameters
+          error_type: invalid_request
+          message: 'Invalid request: messages field is required'
           type: invalid_request_error
+        request_id: null
         type: error
       properties:
         error:
-          $ref: '#/components/schemas/MessagesErrorDetail'
+          properties:
+            error_type:
+              $ref: '#/components/schemas/ApiErrorType'
+            message:
+              type: string
+            type:
+              enum:
+                - invalid_request_error
+                - authentication_error
+                - permission_error
+                - not_found_error
+                - rate_limit_error
+                - api_error
+                - overloaded_error
+                - billing_error
+                - timeout_error
+              type: string
+          required:
+            - type
+            - message
+          type: object
+        metadata:
+          additionalProperties: {}
+          type: object
+        openrouter_metadata:
+          additionalProperties: {}
+          type:
+            - object
+            - 'null'
+        request_id:
+          type:
+            - string
+            - 'null'
         type:
           enum:
             - error
@@ -929,27 +946,7 @@ components:
       required:
         - type
         - error
-      type: object
-    ForbiddenResponse:
-      description: Forbidden - Authentication successful but insufficient permissions
-      example:
-        error:
-          code: 403
-          message: Only management keys can perform this operation
-      properties:
-        error:
-          $ref: '#/components/schemas/ForbiddenResponseErrorData'
-        openrouter_metadata:
-          additionalProperties: {}
-          type:
-            - object
-            - 'null'
-        user_id:
-          type:
-            - string
-            - 'null'
-      required:
-        - error
+        - request_id
       type: object
     AnthropicCacheControlDirective:
       description: >-
@@ -2707,41 +2704,38 @@ components:
         - $ref: '#/components/schemas/MessagesContentBlockStopEvent'
         - $ref: '#/components/schemas/MessagesPingEvent'
         - $ref: '#/components/schemas/MessagesErrorEvent'
-    MessagesErrorDetail:
-      example:
-        error_type: invalid_request
-        message: Invalid request parameters
-        type: invalid_request_error
-      properties:
-        error_type:
-          $ref: '#/components/schemas/ApiErrorType'
-        message:
-          type: string
-        type:
-          type: string
-      required:
-        - type
-        - message
-      type: object
-    ForbiddenResponseErrorData:
-      description: Error data for ForbiddenResponse
-      example:
-        code: 403
-        message: Only management keys can perform this operation
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        metadata:
-          additionalProperties: {}
-          type:
-            - object
-            - 'null'
-      required:
-        - code
-        - message
-      type: object
+    ApiErrorType:
+      description: Canonical OpenRouter error type, stable across all API formats
+      enum:
+        - context_length_exceeded
+        - max_tokens_exceeded
+        - token_limit_exceeded
+        - string_too_long
+        - authentication
+        - permission_denied
+        - payment_required
+        - rate_limit_exceeded
+        - provider_overloaded
+        - provider_unavailable
+        - invalid_request
+        - invalid_prompt
+        - not_found
+        - precondition_failed
+        - payload_too_large
+        - unprocessable
+        - content_policy_violation
+        - refusal
+        - invalid_image
+        - image_too_large
+        - image_too_small
+        - unsupported_image_format
+        - image_not_found
+        - image_download_failed
+        - server
+        - timeout
+        - unmapped
+      example: rate_limit_exceeded
+      type: string
     AnthropicCacheControlTtl:
       enum:
         - 5m
@@ -3133,9 +3127,9 @@ components:
     WebSearchMode:
       description: >-
         Engine-native search mode. Exa supports instant, fast, auto (default),
-        deep-lite, deep, and deep-reasoning. Parallel supports turbo, basic
-        (default), and advanced. Modes unsupported by the selected engine are
-        ignored.
+        deep-lite, deep, and deep-reasoning. Parallel supports turbo, fast,
+        basic (default), and advanced. Modes unsupported by the selected engine
+        are ignored.
       enum:
         - instant
         - fast
@@ -4528,38 +4522,6 @@ components:
       required:
         - type
       type: object
-    ApiErrorType:
-      description: Canonical OpenRouter error type, stable across all API formats
-      enum:
-        - context_length_exceeded
-        - max_tokens_exceeded
-        - token_limit_exceeded
-        - string_too_long
-        - authentication
-        - permission_denied
-        - payment_required
-        - rate_limit_exceeded
-        - provider_overloaded
-        - provider_unavailable
-        - invalid_request
-        - invalid_prompt
-        - not_found
-        - precondition_failed
-        - payload_too_large
-        - unprocessable
-        - content_policy_violation
-        - refusal
-        - invalid_image
-        - image_too_large
-        - image_too_small
-        - unsupported_image_format
-        - image_not_found
-        - image_download_failed
-        - server
-        - timeout
-        - unmapped
-      example: rate_limit_exceeded
-      type: string
     AnthropicBase64ImageSource:
       example:
         data: /9j/4AAQ...

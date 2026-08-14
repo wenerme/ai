@@ -76,9 +76,9 @@ Try a different search term, or broaden your search by removing filters.
 
 [agemma-sea-lion-v4-27b-itaisingaporeText GenerationSEA-LION stands for Southeast Asian Languages In One Network, which is a collection of Large Language Models (LLMs) which have been pretrained and instruct-tuned for the Southeast Asia (SEA) region.Cloudflare-hosted](https://developers.cloudflare.com/workers-ai/models/gemma-sea-lion-v4-27b-it/)
 
-[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
+[Pinned![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-4.7-flashZhipu AIText GenerationGLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-4.7-flash/)
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)glm-5.2Zhipu AIText GenerationZ.ai's flagship agentic coding modelCloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/glm-5.2/)
 
 [Pinned![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)gpt-oss-120bOpenAIText GenerationOpenAI's open-weight models designed for powerful reasoning, agentic tasks, and versatile developer use cases – gpt-oss-120b is for production, general purpose, high reasoning use-cases.Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/)
 

@@ -110,6 +110,7 @@ limits, separate from the non-batch API calls.
 |---|---|---|---|---|
 | Gemini 3.1 Pro Preview | 5,000,000 |
 | Gemini 3.5 Flash-Lite | 10,000,000 |
+| Gemini 3.7 Flash | 3,000,000 |
 | Gemini 3.1 Flash Lite | 10,000,000 |
 | Gemini 3.1 Flash Lite Preview | 10,000,000 |
 | Gemini 3.6 Flash | 3,000,000 |

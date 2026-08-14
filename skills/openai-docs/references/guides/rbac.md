@@ -59,6 +59,15 @@ The table below shows the available permissions, which preset roles include them
 
 
 
+#### Batch permission implications
+
+Batch permissions include access required to prepare batch input files, execute requests, and retrieve results. This effective access is separate from the endpoints that can be submitted inside a batch, which are listed in the [Batch API guide](https://developers.openai.com/api/docs/guides/batch#1-prepare-your-batch-file).
+
+| Batch permission          | Additional access granted                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Read (`api.batch.read`)   | Files Read (`api.files.read`) for `/v1/files`                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| Write (`api.batch.write`) | Batch Read<br />List models (`api.model.read` and `model.read`) for `/v1/models`<br />Files Read and Write (`api.files.read` and `api.files.write`) for `/v1/files`<br />Model capabilities Request (`api.model.request` and `model.request`) for `/v1/audio`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/images`, `/v1/moderations`, `/v1/realtime`, and `/v1/responses`<br />Videos Read and Write (`api.videos.read` and `api.videos.write`) for `/v1/videos` |
+
 ## Setting up RBAC
 
 Allow up to **30 minutes** for role changes and group sync to propagate.

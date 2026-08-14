@@ -59,16 +59,16 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
 
   The shell server tool is available through the [Responses API](/docs/api_reference/responses/overview) and the [Messages API](/docs/api_reference/messages/overview). Requesting it on the Chat Completions API returns a `400` error.
 
-  The two APIs surface a shell run differently. On the Responses API the call becomes an `openrouter:shell` output item (or a native `shell_call` when you send OpenAI's tool shape). On the Messages API it becomes a `server_tool_use` content block named `openrouter:shell`, paired with an `openrouter_shell_tool_result` block carrying each command's output — Anthropic defines no native shell result block, so this OpenRouter-namespaced one is where the output arrives.
+  The two APIs surface a shell run differently. On the Responses API the call becomes an `openrouter:shell` output item (or a native `shell_call` when you send OpenAI's tool shape). On the Messages API it becomes a `server_tool_use` content block named `openrouter:shell`, paired with an `openrouter_shell_tool_result` block carrying each command's output. Anthropic defines no native shell result block, so this OpenRouter-namespaced one is where the output arrives.
 </Warning>
 
-The `openrouter:shell` server tool gives a model a hosted shell — a sandbox-backed clone of OpenAI's hosted `shell` tool that works with any model. When the model needs to run commands, it emits a shell call; OpenRouter executes the commands server-side in an isolated Linux container and returns each command's `stdout`, `stderr`, and exit or timeout outcome.
+The `openrouter:shell` server tool gives a model a hosted shell: a sandbox-backed clone of OpenAI's hosted `shell` tool that works with any model. When the model needs to run commands, it emits a shell call; OpenRouter executes the commands server-side in an isolated Linux container and returns each command's `stdout`, `stderr`, and exit or timeout outcome.
 
 Unlike the [Bash](/docs/guides/features/server-tools/bash) tool, the shell tool has no client-side execution mode: commands always run in a hosted environment, either OpenAI's native shell or OpenRouter's sandbox.
 
 ## How It Works
 
-1. You include `{ "type": "openrouter:shell" }` in your `tools` array on a Responses or Messages API request. On the Responses API you can also send OpenAI's native `shell` tool shape — on non-OpenAI models it is routed to the OpenRouter sandbox automatically.
+1. You include `{ "type": "openrouter:shell" }` in your `tools` array on a Responses or Messages API request. On the Responses API you can also send OpenAI's native `shell` tool shape; on non-OpenAI models it is routed to the OpenRouter sandbox automatically.
 2. Based on the prompt, the model decides to run one or more shell commands and emits a shell call.
 3. OpenRouter executes the commands in order, each in its own invocation, inside a sandboxed container.
 4. Each command's `stdout`, `stderr`, and outcome (exit code or timeout) are returned to the model.
@@ -166,11 +166,11 @@ Defaults and caps reflect current server-enforced limits and may change while th
 
 The model generates the call arguments, mirroring OpenAI's hosted shell `shell_call.action`:
 
-| Field               | Type      | Description                                                                                               |
-| ------------------- | --------- | --------------------------------------------------------------------------------------------------------- |
-| `commands`          | string\[] | Shell commands to run, each in its own invocation, in order                                               |
-| `timeout_ms`        | integer   | Maximum execution time in milliseconds applied to each command                                            |
-| `max_output_length` | integer   | Maximum characters returned per stream — `stdout` and `stderr` are each capped to this value, per command |
+| Field               | Type      | Description                                                                                              |
+| ------------------- | --------- | -------------------------------------------------------------------------------------------------------- |
+| `commands`          | string\[] | Shell commands to run, each in its own invocation, in order                                              |
+| `timeout_ms`        | integer   | Maximum execution time in milliseconds applied to each command                                           |
+| `max_output_length` | integer   | Maximum characters returned per stream. `stdout` and `stderr` are each capped to this value, per command |
 
 ## OpenAI native shell tool
 
@@ -198,13 +198,13 @@ Each command's `outcome` is either `{ "type": "exit", "exit_code": <int> }` or `
 
 Shell execution is sandboxed by design:
 
-* Commands execute in an isolated container — not on OpenRouter infrastructure or your machine. With `container_auto` the container is ephemeral; with `container_reference` it persists across requests.
+* Commands execute in an isolated container, not on OpenRouter infrastructure or your machine. With `container_auto` the container is ephemeral; with `container_reference` it persists across requests.
 * Containers are scoped per account and workspace, so they are never shared across tenants.
 * Execution time is bounded by `timeout_ms` (clamped to a server-side maximum).
 * `stdout` and `stderr` are each truncated to `max_output_length` (a per-stream cap, itself clamped to a server-side maximum).
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Bash](/docs/guides/features/server-tools/bash) — Sandboxed shell for the Anthropic Messages API
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools). Learn about server tools
+* [Bash](/docs/guides/features/server-tools/bash). Sandboxed shell for the Anthropic Messages API
+* [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined tool calling

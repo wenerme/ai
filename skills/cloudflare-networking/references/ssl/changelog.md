@@ -16,6 +16,17 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ssl.xml)
 
+## 2026-08-13
+
+
+**Certificate Transparency Monitoring is now Generally Available**
+
+Certificate Transparency Monitoring is now [generally available ↗](https://blog.cloudflare.com/certificate-transparency-monitoring-ga) across all Cloudflare plans.
+
+Alerts for certificates Cloudflare issues on your behalf (Universal SSL renewals, backup certificates, Advanced Certificate Manager, Total TLS) are now automatically filtered out. Alert emails are also clearer and more actionable, with structured certificate details and a direct link to manage CT Monitoring in the Cloudflare dashboard.
+
+Learn more in the [launch blog post ↗](https://blog.cloudflare.com/certificate-transparency-monitoring-ga) or the [CT Monitoring docs](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/).
+
 ## 2026-07-21
 
 

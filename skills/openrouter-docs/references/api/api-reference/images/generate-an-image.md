@@ -308,7 +308,8 @@ components:
           type: string
         'n':
           description: >-
-            Number of images to generate (1-10). Providers that only support
+            Upper bound on the number of images to generate (1-10). Providers
+            may return fewer images, and providers that only support
             single-image generation reject n > 1.
           example: 1
           type: integer
