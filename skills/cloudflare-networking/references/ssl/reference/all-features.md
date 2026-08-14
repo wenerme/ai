@@ -93,22 +93,6 @@ Enterprise-only
 * **Business:** Yes
 * **Enterprise:** Yes
 
-### Certificate Transparency Monitoring
-
-**Link:** [Certificate Transparency Monitoring](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/)
-
-**Feature availability**
-* **Free:** Yes
-* **Pro:** Yes
-* **Business:** Yes
-* **Enterprise:** Yes
-
-**Email Recipients**
-* **Free:** All account members
-* **Pro:** All account members
-* **Business:** Specified email addresses
-* **Enterprise:** Specified email addresses
-
 ### Opportunistic Encryption
 
 **Link:** [Opportunistic Encryption](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/opportunistic-encryption/)
@@ -405,7 +389,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/reference/all-features/#page","headline":"Features and plans · Cloudflare SSL/TLS docs","description":"Review information on all Cloudflare SSL/TLS features and their availability.","url":"https://developers.cloudflare.com/ssl/reference/all-features/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

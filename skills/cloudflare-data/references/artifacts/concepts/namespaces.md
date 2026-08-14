@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Namespaces
 
-Last updated May 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/concepts/namespaces/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/concepts/namespaces/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Artifacts uses namespaces as top-level containers for repositories. Use them to separate repositories by environment, such as `prod`, `staging`, and `dev`, by tenant, or shard.
 
-Namespaces are created implicitly — there is no separate step to create one. You choose a namespace name, then reference it in your Wrangler config or REST API path. The first time you create a repository under that name, Artifacts creates the namespace for you automatically.
+You can create a namespace explicitly or let Artifacts create one automatically. If you create a repo under a namespace name that does not exist, Artifacts creates the namespace automatically.
 
 ## Use namespaces as containers
 
@@ -37,6 +37,12 @@ Namespace names follow the same public naming rules as repo names:
 * keep the name stable across your Workers, API clients, and Git workflows
 
 If you have not chosen a namespace strategy yet, use `default` in the examples throughout this docset.
+
+## Choose a data location
+
+Select a jurisdiction when you create a namespace to restrict where Artifacts stores and processes repo data. Every repo in that namespace uses the selected jurisdiction.
+
+You cannot change a namespace jurisdiction after creation. For supported jurisdictions and creation instructions, refer to [Data localization](https://developers.cloudflare.com/artifacts/guides/data-localization/).
 
 ## Use the same namespace everywhere
 
@@ -80,8 +86,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/namespaces/#page","headline":"Namespaces · Cloudflare Artifacts docs","description":"Organize repositories by environment or tenant.","url":"https://developers.cloudflare.com/artifacts/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/concepts/namespaces/#page","headline":"Namespaces · Cloudflare Artifacts docs","description":"Organize repositories by environment or tenant.","url":"https://developers.cloudflare.com/artifacts/concepts/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

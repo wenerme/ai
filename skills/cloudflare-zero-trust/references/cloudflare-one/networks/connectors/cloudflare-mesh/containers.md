@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Run Mesh in Docker / Kubernetes
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [cloudflare/mesh ↗](https://hub.docker.com/r/cloudflare/mesh) Docker image packages a Cloudflare Mesh node for Linux containers. It runs the Cloudflare One Client's `warp-svc` daemon headlessly in a minimal [Wolfi ↗](https://wolfi.dev/)\-based runtime.
 
@@ -354,6 +354,10 @@ Set `SRCNAT_ENABLED=false` only if the attached networks already have return rou
 
 ## High availability on Kubernetes
 
+MASQUE required
+
+This feature requires that the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) of the Mesh node is configured to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol), the default protocol for the Cloudflare One Client. It does not work if the device profile uses WireGuard instead.
+
 For [high availability](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/high-availability/) with CIDR routes:
 
 1. Use the same Mesh node token across multiple replicas.
@@ -364,6 +368,10 @@ Cloudflare operates replicas in active-passive mode. If the active replica goes 
 ## Hostname routes
 
 Containers support [hostname routing](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/routes/#hostname-routes). To resolve Kubernetes Services through a hostname route, make sure the hostname matches the cluster's actual DNS suffix. The default is `cluster.local`, producing Service names like `service.namespace.svc.cluster.local`.
+
+MASQUE required
+
+This feature requires that the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) of the Mesh node is configured to use [MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol), the default protocol for the Cloudflare One Client. It does not work if the device profile uses WireGuard instead.
 
 ## Site-to-site networking
 
@@ -416,8 +424,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/#page","headline":"Run Cloudflare Mesh in containers · Cloudflare One docs","description":"Run a Cloudflare Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD environments.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Containers","Docker","Kubernetes"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/#page","headline":"Run Cloudflare Mesh in containers · Cloudflare One docs","description":"Run a Cloudflare Mesh node as a Docker container for Docker Compose, Kubernetes, and CI/CD environments.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks","Containers","Docker","Kubernetes"]}
 ```

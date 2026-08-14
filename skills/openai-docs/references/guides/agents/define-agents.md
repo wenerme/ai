@@ -27,7 +27,7 @@ Define the smallest agent that can own a clear task. Add more agents only when y
 
 Define a single agent
 
-```typescript
+```javascript
 import { Agent, tool } from "@openai/agents";
 import { z } from "zod";
 
@@ -77,7 +77,7 @@ Three configuration choices deserve extra care:
 
 Return structured output
 
-```typescript
+```javascript
 import { Agent, run } from "@openai/agents";
 import { z } from "zod";
 
@@ -140,25 +140,21 @@ The SDK lets you pass application state and dependencies into a run without send
 
 Pass local context to tools
 
-```typescript
-import { Agent, RunContext, run, tool } from "@openai/agents";
+```javascript
+import { Agent, run, tool } from "@openai/agents";
 import { z } from "zod";
-
-interface UserInfo {
-  name: string;
-  uid: number;
-}
 
 const fetchUserAge = tool({
   name: "fetch_user_age",
   description: "Return the age of the current user.",
   parameters: z.object({}),
-  async execute(_args, runContext?: RunContext<UserInfo>) {
+  // TypeScript users can type this as RunContext<{ name: string; uid: number }>.
+  async execute(_args, runContext) {
     return `User ${runContext?.context.name} is 47 years old`;
   },
 });
 
-const agent = new Agent<UserInfo>({
+const agent = new Agent({
   name: "Assistant",
   tools: [fetchUserAge],
 });

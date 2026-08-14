@@ -1,11 +1,11 @@
 ---
 title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 49 models available."
+description: "Use CrossModel models with Mastra. 50 models available."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 49 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 50 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -521,6 +521,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "crossmodel/x-ai/grok-4.5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
+    "model": "crossmodel/x-ai/grok-4.6",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

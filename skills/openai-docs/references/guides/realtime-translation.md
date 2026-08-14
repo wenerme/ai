@@ -228,7 +228,7 @@ Listen for translated audio and transcripts
 
 ```javascript
 ws.on("message", (data) => {
-  const event = JSON.parse(data);
+  const event = JSON.parse(data.toString());
 
   if (event.type === "session.output_audio.delta") {
     playPcm16(event.delta);
@@ -284,7 +284,7 @@ function closeTranslationSession() {
 }
 
 ws.on("message", (data) => {
-  const event = JSON.parse(data);
+  const event = JSON.parse(data.toString());
 
   if (event.type === "session.output_audio.delta") {
     playPcm16(event.delta);

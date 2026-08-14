@@ -7,7 +7,7 @@ description: "Learn how to view JSON formatted logs in Logs Drilldown."
 
 # Logs Drilldown JSON viewer
 
-You can easily view and interact with your JSON formatted logs using the Logs Drilldown JSON viewer. This view will help you read your JSON style logs, and filter through them to make your related visualizations more relevant and focused.
+You can easily view and interact with your JSON formatted logs using the Grafana Logs Drilldown JSON viewer. This view will help you read your JSON style logs, and filter through them to make your related visualizations more relevant and focused.
 
 > Note
 >

@@ -1,5 +1,7 @@
 # Use kaniko to build Docker images (removed)
 
+Build container images in GitLab CI/CD with Docker, Buildah, or Podman as alternatives to kaniko.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

@@ -26,6 +26,8 @@ These guides show you how to solve specific problems and implement features with
 
 [**Use code interpreter**Execute Python and JavaScript code with rich outputs.](https://developers.cloudflare.com/sandbox/guides/code-execution/)
 
+[**Deploy a Sandbox application**Deploy a Sandbox Worker and keep the npm package and container image on the same release line.](https://developers.cloudflare.com/sandbox/guides/deploy/)
+
 [**Run Docker-in-Docker**Run Docker commands inside a sandbox container.](https://developers.cloudflare.com/sandbox/guides/docker-in-docker/)
 
 [**Execute commands**Run commands with streaming output, error handling, and shell access.](https://developers.cloudflare.com/sandbox/guides/execute-commands/)
@@ -42,7 +44,7 @@ These guides show you how to solve specific problems and implement features with
 
 [**Handle outbound traffic**Intercept and handle outbound HTTP from sandboxes using Workers.](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/)
 
-[**Deploy to production**Set up custom domains for preview URLs in production.](https://developers.cloudflare.com/sandbox/guides/production-deployment/)
+[**Configure preview URLs on a custom domain**Set up wildcard DNS, routes, and TLS so exposePort preview URLs work on your domain.](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/)
 
 [**Stream output**Handle real-time output from commands and processes.](https://developers.cloudflare.com/sandbox/guides/streaming-output/)
 
@@ -61,7 +63,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/guides/#page","headline":"How-to guides · Cloudflare Sandbox SDK docs","description":"Practical guides for solving specific tasks with the Sandbox SDK.","url":"https://developers.cloudflare.com/sandbox/guides/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

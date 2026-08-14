@@ -57,8 +57,8 @@ Match the look and feel of your product by specifying colors, typography, and mo
 
 For all theming options, see the [API reference](https://openai.github.io/chatkit-js/api/openai/chatkit/type-aliases/themeoption/).
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   theme: {
     colorScheme: "dark",
     color: {
@@ -79,8 +79,8 @@ const options: Partial<ChatKitOptions> = {
 
 Let users know what to ask or guide their first input by changing the composer’s placeholder text.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   composer: {
     placeholder: "Ask anything about your data…",
   },
@@ -95,8 +95,8 @@ const options: Partial<ChatKitOptions> = {
 
 Guide users on what to ask or do by suggesting prompt ideas when starting a conversation.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   startScreen: {
     greeting: "What can I help you build today?",
     prompts: [
@@ -120,8 +120,8 @@ const options: Partial<ChatKitOptions> = {
 
 Custom header buttons help you add navigation, context, or actions relevant to your integration.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   header: {
     customButtonLeft: {
       icon: "settings-cog",
@@ -144,8 +144,8 @@ See the Python SDK docs for more information on other upload strategies work wit
 
 You can also control the number, size, and types of files that users can attach to messages.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   composer: {
     attachments: {
       uploadStrategy: { type: "hosted" },
@@ -165,10 +165,10 @@ Let users tag custom “entities” with @-mentions. This enables richer convers
 - Use `onTagSearch` to return a list of entities based on the input query.
 - Use `onClick` to handle the click event of an entity.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   entities: {
-    async onTagSearch(query: string) {
+    async onTagSearch(query) {
       void query;
       return [
         {
@@ -185,7 +185,7 @@ const options: Partial<ChatKitOptions> = {
         },
       ];
     },
-    onClick: (entity: { id: string }) => {
+    onClick: (entity) => {
       navigateToEntity(entity.id);
     },
   },
@@ -203,13 +203,13 @@ You can customize the appearance of entity tags on mouseover using widgets. Show
 
       Browse available widgets.](https://widgets.chatkit.studio)
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   entities: {
     async onTagSearch() {
       return [];
     },
-    onRequestPreview: async (entity: { title: string }) => ({
+    onRequestPreview: async (entity) => ({
       preview: {
         type: "Card",
         children: [
@@ -228,8 +228,8 @@ const options: Partial<ChatKitOptions> = {
 Enhance productivity by letting users trigger app-specific actions from the composer bar. The selected tool
 will be sent to the model as a tool preference.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   composer: {
     tools: [
       {
@@ -248,8 +248,8 @@ const options: Partial<ChatKitOptions> = {
 
 Disable major UI regions and features if you need more customization over the options available in the header and want to implement your own instead. Disabling history can be useful when the concept of threads and history doesn't make sense for your use case—e.g., in a support chatbot.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   history: { enabled: false },
   header: { enabled: false },
 };
@@ -260,8 +260,8 @@ const options: Partial<ChatKitOptions> = {
 
 Override the default locale if you have an app-wide language setting. By default, the locale is set to the browser's locale.
 
-```typescript
-const options: Partial<ChatKitOptions> = {
+```javascript
+const options = {
   locale: "de-DE",
 };
 ```

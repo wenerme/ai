@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-08-12",
+	"compatibility_date": "2026-08-13",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-08-12"
+compatibility_date = "2026-08-13"
 workers_dev = false
 
 [route]
@@ -145,17 +145,13 @@ If you deploy a worker with resources and no resource IDs from the dashboard (fo
 Top-level keys apply to the Worker as a whole (and therefore all environments). They cannot be defined within named environments.
 
 * `keep_vars` `boolean`optional
-
   * Whether Wrangler should keep variables configured in the dashboard on deploy. Refer to [source of truth](#source-of-truth).
 * `send_metrics` `boolean`optional
-
   * Whether Wrangler should send usage data to Cloudflare for this project. Defaults to `true`. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 * `dependencies_instrumentation` `object`optional
-
   * Configures npm package dependency instrumentation when deploying or uploading a Worker version. Defaults to enabled.
   * `enabled` `boolean` — Whether Wrangler should collect and send npm package dependency metadata (package names and versions). Defaults to `true`.
 * `site` `object`optional deprecated
-
   * See the [Workers Sites](#workers-sites) section below for more information. Cloudflare Pages and Workers Assets is preferred over this approach.
   * This is not supported by the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
@@ -170,90 +166,64 @@ At a minimum, the `name`, `main` and `compatibility_date` keys are required to d
 The `main` key is optional for assets-only Workers.
 
 * `name` `string`required
-
   * The name of your Worker. Alphanumeric characters (`a`,`b`,`c`, etc.) and dashes (`-`) only. Do not use underscores (`_`). Worker names can be up to 255 characters. If you plan to use a [workers.dev subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/), the name must be 63 characters or less and cannot start or end with a dash.
 * `main` `string`required
-
   * The path to the entrypoint of your Worker that will be executed. For example: `./src/index.ts`.
 * `compatibility_date` `string`required
-
   * A date in the form `yyyy-mm-dd`, which will be used to determine which version of the Workers runtime is used. Refer to [Compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
 * `account_id` `string`optional
-
   * This is the ID of the account associated with your zone. You might have more than one account, so make sure to use the ID of the account associated with the zone/route you provide, if you provide one. It can also be specified through the `CLOUDFLARE_ACCOUNT_ID` environment variable.
 * `compatibility_flags` `string[]`optional
-
   * A list of flags that enable features from upcoming features of the Workers runtime, usually used together with `compatibility_date`. Refer to [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
 * `workers_dev` `boolean`optional
-
   * Enables use of `*.workers.dev` subdomain to deploy your Worker. If you have a Worker that is only for `scheduled` events, you can set this to `false`. Defaults to `true`. Refer to [types of routes](#types-of-routes).
 * `preview_urls` `boolean`optional
-
   * Enables use of Preview URLs to test your Worker. Defaults to value of `workers_dev`. Refer to [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/).
 * `route` `Route`optional
-
   * A route that your Worker should be deployed to. Only one of `routes` or `route` is required. Refer to [types of routes](#types-of-routes).
 * `routes` `Route[]`optional
-
   * An array of routes that your Worker should be deployed to. Only one of `routes` or `route` is required. Refer to [types of routes](#types-of-routes).
 * `tsconfig` `string`optional
-
   * Path to a custom `tsconfig`.
   * Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 * `triggers` `object`optional
-
   * Cron definitions to trigger a Worker's `scheduled` function. Refer to [triggers](#triggers).
 * `rules` `Rule`optional
-
   * An ordered list of rules that define which modules to import, and what type to import them as. You will need to specify rules to use `Text`, `Data` and `CompiledWasm` modules, or when you wish to have a `.js` file be treated as an `ESModule` instead of `CommonJS`.
   * Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 * `build` `Build`optional
-
   * Configures a custom build step to be run by Wrangler when building your Worker. Refer to [Custom builds](#custom-builds).
   * Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 * `no_bundle` `boolean`optional
-
   * Skip internal build steps and directly deploy your Worker script. You must have a plain JavaScript Worker with no dependencies.
   * Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 * `find_additional_modules` `boolean`optional
-
   * If true then Wrangler will traverse the file tree below `base_dir`. Any files that match `rules` will be included in the deployed Worker. Defaults to true if `no_bundle` is true, otherwise false. Can only be used with Module format Workers (not Service Worker format).
   * Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 * `base_dir` `string`optional
-
   * The directory in which module "rules" should be evaluated when including additional files (via `find_additional_modules`) into a Worker deployment. Defaults to the directory containing the `main` entry point of the Worker if not specified.
   * Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 * `preserve_file_names` `boolean`optional
-
   * Determines whether Wrangler will preserve the file names of additional modules bundled with the Worker. The default is to prepend filenames with a content hash. For example, `34de60b44167af5c5a709e62a4e20c4f18c9e3b6-favicon.ico`.
   * Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 * `minify` `boolean`optional
-
   * Minify the Worker script before uploading.
   * If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `minify` is replaced by Vite's [build.minify ↗](https://vite.dev/config/build-options.html#build-minify).
 * `keep_names` `boolean`optional
-
   * Wrangler uses esbuild to process the Worker code for development and deployment. This option allows you to specify whether esbuild should apply its [keepNames ↗](https://esbuild.github.io/api/#keep-names) logic to the code or not. Defaults to `true`.
 * `logpush` `boolean`optional
-
   * Enables Workers Trace Events Logpush for a Worker. Any scripts with this property will automatically get picked up by the Workers Logpush job configured for your account. Defaults to `false`. Refer to [Workers Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/).
 * `limits` `Limits`optional
-
   * Configures limits to be imposed on execution at runtime. Refer to [Limits](#limits).
 * `observability` `object`optional
-
   * Configures automatic observability settings for telemetry data emitted from your Worker. Refer to [Observability](#observability).
 * `assets` `Assets`optional
-
   * Configures static assets that will be served. Refer to [Assets](https://developers.cloudflare.com/workers/static-assets/binding/) for more details.
 * `exports` `object`optional
-
   * Declares the Durable Object classes this Worker exports and their lifecycle state (`created`, `deleted`, `renamed`, `transferred`, `expecting-transfer`). Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Mutually exclusive with `migrations`.
 * `migrations` `object`optional
-
   * Legacy imperative configuration that maps a Durable Object from a class name to a runtime state. For new Workers, prefer [exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 * `placement` `object`optional
-
   * Configures where your Worker runs to minimize latency to back-end services. Refer to [Placement](https://developers.cloudflare.com/workers/configuration/placement/).
   * `mode` `string` — Set to `"smart"` to automatically place your Worker near back-end services based on observed latency.
   * `region` `string` — Specify a cloud region (for example, `"aws:us-east-1"`, `"gcp:europe-west1"`, or `"azure:westeurope"`) to place your Worker near infrastructure in that region.
@@ -265,48 +235,34 @@ The `main` key is optional for assets-only Workers.
 Non-inheritable keys are configurable at the top-level, but cannot be inherited by environments and must be specified for each environment.
 
 * `define` `Record<string, string>`optional
-
   * A map of values to substitute when deploying your Worker.
   * If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `define` is replaced by Vite's [define ↗](https://vite.dev/config/shared-options.html#define).
 * `vars` `object`optional
-
   * A map of environment variables to set when deploying your Worker. Refer to [Environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/).
 * `durable_objects` `object`optional
-
   * A list of Durable Objects that your Worker should be bound to. Refer to [Durable Objects](#durable-objects).
 * `kv_namespaces` `object`optional
-
   * A list of KV namespaces that your Worker should be bound to. Refer to [KV namespaces](#kv-namespaces).
 * `r2_buckets` `object`optional
-
   * A list of R2 buckets that your Worker should be bound to. Refer to [R2 buckets](#r2-buckets).
 * `ai_search_namespaces` `object`optional
-
   * A list of AI Search namespaces that your Worker should be bound to. Refer to [AI Search namespaces](#ai-search-namespaces).
 * `ai_search` `object`optional
-
   * A list of AI Search instance bindings bound directly to pre-existing instances in the default namespace. Refer to [AI Search instances](#ai-search-instances).
 * `vectorize` `object`optional
-
   * A list of Vectorize indexes that your Worker should be bound to. Refer to [Vectorize indexes](#vectorize-indexes).
 * `services` `object`optional
-
   * A list of service bindings that your Worker should be bound to. Refer to [service bindings](#service-bindings).
 * `queues` `object`optional
-
   * A list of Queue producers and consumers that your Worker should be bound to. Refer to [Queues](#queues).
 * `workflows` `object`optional
-
   * A list of Workflows that your Worker should be bound to. Refer to [Workflows](#workflows).
 * `tail_consumers` `object`optional
-
   * A list of the Tail Workers your Worker sends data to. Refer to [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/).
 * `secrets` `object`optional
-
   * Declares the secret names your Worker requires. Used for validation during local development and deploy, and as the source of truth for type generation. Refer to [Secrets](#secrets).
   * `required` `string[]`optional — A list of secret names that must be set to deploy your Worker.
 * `secrets_store_secrets` `object`optional
-
   * A list of Secrets Store bindings that your worker should be bound to. Refer to [Secrets Store](https://developers.cloudflare.com/secrets-store/).
 
 ## Types of routes
@@ -318,10 +274,8 @@ There are three types of [routes](https://developers.cloudflare.com/workers/conf
 [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) allow you to connect your Worker to a domain or subdomain, without having to make changes to your DNS settings or perform any certificate management.
 
 * `pattern` `string`required
-
   * The pattern that your Worker should be run on, for example, `"example.com"`.
 * `custom_domain` `boolean`optional
-
   * Whether the Worker should be on a Custom Domain as opposed to a route. Defaults to `false`.
 
 Example:
@@ -350,10 +304,8 @@ custom_domain = true
 #### Zone ID route
 
 * `pattern` `string`required
-
   * The pattern that your Worker can be run on, for example,`"example.com/*"`.
 * `zone_id` `string`required
-
   * The ID of the zone that your `pattern` is associated with. Refer to [Find zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 Example:
@@ -378,10 +330,8 @@ zone_id = "<YOUR_ZONE_ID>"
 #### Zone name route
 
 * `pattern` `string`required
-
   * The pattern that your Worker should be run on, for example, `"example.com/*"`.
 * `zone_name` `string`required
-
   * The name of the zone that your `pattern` is associated with. If you are using API tokens, this will require the `Account` scope.
 
 Example:
@@ -464,10 +414,8 @@ crons = [ "* * * * *" ]
 The [Observability](https://developers.cloudflare.com/workers/observability/logs/workers-logs) setting allows you to automatically ingest, store, filter, and analyze logging data emitted from Cloudflare Workers directly from your Cloudflare Worker's dashboard.
 
 * `enabled` `boolean`required
-
   * When set to `true` on a Worker, logs for the Worker are persisted. Defaults to `true` for all new Workers.
 * `head_sampling_rate` `number`optional
-
   * A number between 0 and 1, where 0 indicates zero out of one hundred requests are logged, and 1 indicates every request is logged. If `head_sampling_rate` is unspecified, it is configured to a default value of 1 (100%). Read more about [head-based sampling](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#head-based-sampling).
 
 Example:
@@ -496,13 +444,10 @@ Not applicable if you're using the [Cloudflare Vite plugin](https://developers.c
 You can configure a custom build step that will be run before your Worker is deployed. Refer to [Custom builds](https://developers.cloudflare.com/workers/wrangler/custom-builds/).
 
 * `command` `string`optional
-
   * The command used to build your Worker. On Linux and macOS, the command is executed in the `sh` shell and the `cmd` shell for Windows. The `&&` and `||` shell operators may be used.
 * `cwd` `string`optional
-
   * The directory in which the command is executed.
 * `watch_dir` `string | string[]`optional
-
   * The directory to watch for changes while using `wrangler dev`. Defaults to the current working directory.
 
 Example:
@@ -532,10 +477,8 @@ Each [isolate](https://developers.cloudflare.com/workers/reference/how-workers-w
 
 
 * `cpu_ms` `number`optional
-
   * The maximum CPU time allowed per invocation, in milliseconds.
 * `subrequests` `number`optional
-
   * The maximum number of subrequests allowed per invocation. This value defaults to 50 for free accounts and 10,000 for paid accounts. The free account maximum is 50 and the paid account maximum is 10,000,000\. Refer to [subrequest limits](https://developers.cloudflare.com/workers/platform/limits/#subrequests) for more information.
 
 Example:
@@ -639,13 +582,10 @@ database_id = "<DATABASE_ID>"
 Dispatch namespace bindings allow for communication between a [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) and a [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace). Dispatch namespace bindings are used in [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/). Workers for Platforms helps you deploy serverless functions programmatically on behalf of your customers.
 
 * `binding` `string`required
-
   * The binding name. The value (string) you set will be used to reference this database in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes#variables). For example, `binding = "MY_NAMESPACE"` or `binding = "productionNamespace"` would both be valid names for the binding.
 * `namespace` `string`required
-
   * The name of the [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace).
 * `outbound` `object`optional
-
   * `service` `string`required The name of the [outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/) to bind to.
   * `parameters` array optional A list of parameters to pass data from your [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) to the [outbound Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/outbound-workers/).
 
@@ -681,16 +621,12 @@ namespace = "<NAMESPACE_NAME>"
 To bind Durable Objects to your Worker, assign an array of the below object to the `durable_objects.bindings` key.
 
 * `name` `string`required
-
   * The name of the binding used to refer to the Durable Object.
 * `class_name` `string`required
-
   * The exported class name of the Durable Object.
 * `script_name` `string`optional
-
   * The name of the Worker where the Durable Object is defined, if it is external to this Worker. This option can be used both in local and remote development. In local development, you must run the external Worker in a separate process (via `wrangler dev`). In remote development, the appropriate remote binding must be used.
 * `environment` `string`optional
-
   * The environment of the `script_name` to bind to.
 
 Example:
@@ -721,22 +657,16 @@ The `exports` field declares the Durable Object classes this Worker exports and 
 Each entry in `exports` is keyed by Durable Object class name. The fields on each entry are:
 
 * `type` `string`required
-
   * For Durable Object class entries, set this to `"durable-object"`.
 * `state` `string`optional
-
   * The lifecycle state. One of `"created"` (the default — a live class), `"deleted"`, `"renamed"`, `"transferred"`, or `"expecting-transfer"`.
 * `storage` `string`conditional
-
   * Required when `state` is `"created"` or `"expecting-transfer"`. One of `"sqlite"` (recommended; required for new namespaces) or `"legacy-kv"` (only for existing key-value-backed namespaces).
 * `renamed_to` `string`conditional
-
   * Required when `state` is `"renamed"`. The destination class name, which must also appear as a live entry in the same `exports` map.
 * `transferred_to` `string`conditional
-
   * Required when `state` is `"transferred"`. The name of the target Worker that will receive the namespace.
 * `transfer_from` `string`conditional
-
   * Required when `state` is `"expecting-transfer"`. The name of the source Worker the namespace is being transferred from.
 
 Example:
@@ -793,22 +723,16 @@ Note
 When making changes to your Durable Object classes on a Worker that uses the legacy `migrations` array, you must perform a migration. Refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 
 * `tag` `string`required
-
   * A unique identifier for this migration.
 * `new_sqlite_classes` `string[]`optional
-
   * New Durable Object classes being defined with the SQLite storage backend.
 * `new_classes` `string[]`optional
-
   * New Durable Object classes being defined with the legacy key-value storage backend.
 * `renamed_classes` `{from: string, to: string}[]`optional
-
   * The Durable Object classes being renamed.
 * `deleted_classes` `string[]`optional
-
   * The Durable Object classes being removed.
 * `transferred_classes` `{from: string, from_script: string, to: string}[]`optional
-
   * The Durable Object classes being transferred from another Worker.
 
 Example:
@@ -862,13 +786,10 @@ You can send an email about your Worker's activity from your Worker to an email 
 Before you can bind an email address to your Worker, you need to [enable Email Routing](https://developers.cloudflare.com/email-service/get-started/) and have at least one [verified email address](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#destination-addresses). Then, assign an array to the object (send\_email) with the type of email binding you need.
 
 * `name` `string`required
-
   * The binding name.
 * `destination_address` `string`optional
-
   * The [chosen email address](https://developers.cloudflare.com/email-service/configuration/send-bindings/#binding-types) you send emails to.
 * `allowed_destination_addresses` `string[]`optional
-
   * The [allowlist of email addresses](https://developers.cloudflare.com/email-service/configuration/send-bindings/#binding-types) you send emails to.
 
 You can add one or more types of bindings to your Wrangler file. However, each attribute must be on its own line:
@@ -946,10 +867,8 @@ API_ACCOUNT_ID = "example_user"
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) bindings allow you to interact with and query any Postgres database from within a Worker.
 
 * `binding` `string`required
-
   * The binding name.
 * `id` `string`required
-
   * The ID of the Hyperdrive configuration.
 
 Example:
@@ -1003,13 +922,10 @@ binding = "IMAGES"
 To bind KV namespaces to your Worker, assign an array of the below object to the `kv_namespaces` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the KV namespace.
 * `id` `string`required
-
   * The ID of the KV namespace.
 * `preview_id` `string`optional
-
   * The preview ID of this KV namespace. This option is **required** when using `wrangler dev --remote` to develop against remote resources (but is not required with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings)). If developing locally, this is an optional field. `wrangler dev` will use this ID for the KV namespace. Otherwise, `wrangler dev` will use `id`.
 
 Note
@@ -1050,10 +966,8 @@ id = "<NAMESPACE_ID2>"
 To bind AI Search namespaces to your Worker, assign an array of the below object to the `ai_search_namespaces` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the AI Search namespace.
 * `namespace` `string`required
-
   * The name of the AI Search namespace. A `default` namespace is created automatically for every account. If the namespace does not exist, Wrangler creates it on deploy.
 
 Example:
@@ -1080,10 +994,8 @@ namespace = "default"
 To bind directly to a pre-existing [AI Search](https://developers.cloudflare.com/ai-search/) instance in the [default namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/#default-namespace), assign an array of the below object to the `ai_search` key. This binding does not support namespace-level operations like `list()`, `create()`, or `delete()`.
 
 * `binding` `string`required
-
   * The binding name used to refer to the AI Search instance.
 * `instance_name` `string`required
-
   * The name of the AI Search instance. Must exist in the default namespace at deploy time.
 
 Example:
@@ -1112,13 +1024,10 @@ instance_name = "<INSTANCE_NAME>"
 To bind Queues to your producer Worker, assign an array of the below object to the `[[queues.producers]]` key.
 
 * `queue` `string`required
-
   * The name of the queue, used on the Cloudflare dashboard.
 * `binding` `string`required
-
   * The binding name used to refer to the queue in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes#variables). For example, `binding = "MY_QUEUE"` or `binding = "productionQueue"` would both be valid names for the binding.
 * `delivery_delay` `number`optional
-
   * The number of seconds to [delay messages sent to a queue](https://developers.cloudflare.com/queues/configuration/batching-retries/#delay-messages) for by default. This can be overridden on a per-message or per-batch basis.
 
 Example:
@@ -1147,28 +1056,21 @@ delivery_delay = 60
 To bind Queues to your consumer Worker, assign an array of the below object to the `[[queues.consumers]]` key.
 
 * `queue` `string`required
-
   * The name of the queue, used on the Cloudflare dashboard.
 * `max_batch_size` `number`optional
-
   * The maximum number of messages allowed in each batch.
 * `max_batch_timeout` `number`optional
-
   * The maximum number of seconds to wait for messages to fill a batch before the batch is sent to the consumer Worker.
 * `max_retries` `number`optional
-
   * The maximum number of retries for a message, if it fails or [retryAll()](https://developers.cloudflare.com/queues/configuration/javascript-apis/#messagebatch) is invoked.
 * `dead_letter_queue` `string`optional
-
   * The name of another queue to send a message if it fails processing at least `max_retries` times.
   * If a `dead_letter_queue` is not defined, messages that repeatedly fail processing will be discarded.
   * If there is no queue with the specified name, it will be created automatically.
 * `max_concurrency` `number`optional
-
   * The maximum number of concurrent consumers allowed to run at once. Leaving this unset will mean that the number of invocations will scale to the [currently supported maximum](https://developers.cloudflare.com/queues/platform/limits/).
   * Refer to [Consumer concurrency](https://developers.cloudflare.com/queues/configuration/consumer-concurrency/) for more information on how consumers autoscale, particularly when messages are retried.
 * `retry_delay` `number`optional
-
   * The number of seconds to [delay retried messages](https://developers.cloudflare.com/queues/configuration/batching-retries/#delay-messages) for by default, before they are re-delivered to the consumer. This can be overridden on a per-message or per-batch basis [when retrying messages](https://developers.cloudflare.com/queues/configuration/batching-retries/#explicit-acknowledgement-and-retries).
 
 Example:
@@ -1209,16 +1111,12 @@ retry_delay = 120
 To bind R2 buckets to your Worker, assign an array of the below object to the `r2_buckets` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the R2 bucket.
 * `bucket_name` `string`required
-
   * The name of this R2 bucket.
 * `jurisdiction` `string`optional
-
   * The jurisdiction where this R2 bucket is located, if a jurisdiction has been specified. Refer to [Jurisdictional Restrictions](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions).
 * `preview_bucket_name` `string`optional
-
   * The preview name of this R2 bucket. If provided, `wrangler dev` will use this name for the R2 bucket. Otherwise, it will use `bucket_name`. This option is required when using `wrangler dev --remote` (but is not required with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings)).
 
 Note
@@ -1259,10 +1157,8 @@ A [Vectorize index](https://developers.cloudflare.com/vectorize/) allows you to 
 To bind Vectorize indexes to your Worker, assign an array of the below object to the `vectorize` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the bound index from your Worker code.
 * `index_name` `string`required
-
   * The name of the index to bind.
 
 Example:
@@ -1291,14 +1187,11 @@ A service binding allows you to send HTTP requests to another Worker without tho
 To bind other Workers to your Worker, assign an array of the below object to the `services` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the bound Worker.
 * `service` `string`required
-
   * The name of the Worker.
   * To bind to a Worker in a specific [environment](https://developers.cloudflare.com/workers/wrangler/environments), you need to append the environment name to the Worker name. This should be in the format `<worker-name>-<environment-name>`. For example, to bind to a Worker called `worker-name` in its `staging` environment, `service` should be set to `worker-name-staging`.
 * `entrypoint` `string`optional
-
   * The name of the [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) to bind to. If you do not specify an entrypoint, the default export of the Worker will be used.
 
 Example:
@@ -1333,10 +1226,8 @@ Refer to [Assets](#assets).
 To bind Analytics Engine datasets to your Worker, assign an array of the below object to the `analytics_engine_datasets` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the dataset.
 * `dataset` `string`optional
-
   * The dataset name to write to. This will default to the same name as the binding if it is not supplied.
 
 Example:
@@ -1365,10 +1256,8 @@ To communicate with origins that require client authentication, a Worker can pre
 To create a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to an mTLS certificate for your Worker, assign an array of objects with the following shape to the `mtls_certificates` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the certificate.
 * `certificate_id` `string`required
-
   * The ID of the certificate. Wrangler displays this via the `mtls-certificate upload` and `mtls-certificate list` commands.
 
 Example of a Wrangler configuration file that includes an mTLS certificate binding:
@@ -1435,19 +1324,14 @@ binding = "AI"
 To bind Workflows to your Worker, assign an array of the below object to the `workflows` key.
 
 * `binding` `string`required
-
   * The binding name used to refer to the Workflow in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar%5Fand%5Ftypes#variables). For example, `binding = "MY_WORKFLOW"` would be a valid name for the binding.
 * `name` `string`required
-
   * The name of the Workflow.
 * `class_name` `string`required
-
   * The name of the exported Workflow class. The `class_name` must match the name of the Workflow class exported from your Worker code.
 * `script_name` `string`optional
-
   * The name of the Worker script where the Workflow class is defined. Only required if the Workflow is defined in a different Worker than the one the binding is configured on.
 * `schedules` `string[]`optional
-
   * A list of cron schedules that create new instances of this Workflow automatically.
   * Use this when you want to run a Workflow on a recurring interval without defining top-level `triggers.crons` and a separate `scheduled` handler.
   * Use a Wrangler release that supports Workflow schedules. If your local schema does not recognize `schedules`, update Wrangler first.
@@ -1482,20 +1366,15 @@ You can only configure one collection of assets per Worker.
 The following options are available under the `assets` key.
 
 * `directory` `string`optional
-
   * Folder of static assets to be served.
   * Not required if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), which will automatically point to the client build output.
 * `binding` `string`optional
-
   * The binding name used to refer to the assets. Optional, and only useful when a Worker script is set with `main`.
 * `run_worker_first` `boolean | string[]`optional, defaults to false
-
   * Controls whether static assets are fetched directly, or a Worker script is invoked. Can be a boolean (`true`/`false`) or an array of route pattern strings with support for glob patterns (`*`) and exception patterns (`!` prefix). Patterns must begin with `/` or `!/`. Learn more about fetching assets when using [run\_worker\_first](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/#run-your-worker-script-first).
 * `html_handling`: `"auto-trailing-slash" | "force-trailing-slash" | "drop-trailing-slash" | "none"`optional, defaults to "auto-trailing-slash"
-
   * Determines the redirects and rewrites of requests for HTML content. Learn more about the various options in [assets routing](https://developers.cloudflare.com/workers/static-assets/routing/advanced/html-handling/).
 * `not_found_handling`: `"single-page-application" | "404-page" | "none"`optional, defaults to "none"
-
   * Determines the handling of requests that do not map to an asset. Learn more about the various options for [routing behavior](https://developers.cloudflare.com/workers/static-assets/#routing-behavior).
 
 Example:
@@ -1552,57 +1431,37 @@ You must also define a Durable Object to communicate with your Container via Wor
 The following options are available:
 
 * `image` `string`required
-
   * The image to use for the container. This can either be a local path to a `Dockerfile`, in which case `wrangler deploy` will build and push the image, or it can be an image reference. Supported registries are the Cloudflare Registry, Docker Hub, Amazon ECR, and Google Artifact Registry. For more information, refer to [Image Management](https://developers.cloudflare.com/containers/platform-details/image-management/).
 * `class_name` `string`required
-
   * The corresponding Durable Object class name. This will make this Durable Object a container-enabled Durable Object and allow each instance to control a container. See [Durable Object Container Methods](https://developers.cloudflare.com/durable-objects/api/container/) for details.
 * `instance_type` `string`optional
-
   * The instance type of the container. This determines the amount of memory, CPU, and disk given to the container instance. The current options are `"lite"`, `"basic"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, and `"standard-4"`. The default is `"lite"`. For more information, the see [instance types documentation](https://developers.cloudflare.com/containers/platform-details#instance-types).
   * To specify a custom instance type, see [here](#custom-instance-types).
 * `max_instances` `string`optional
-
   * The maximum number of concurrent container instances you want to run at any given moment. Stopped containers do not count towards this - you may have more container instances than this number overall, but only this many actively running containers at once. If a request to start a container will exceed this limit, that request will error.
   * Defaults to 20.
   * This value is only enforced when running in production on Cloudflare's network. This limit does not apply during local development, so you may run more instances than specified.
 * `name` `string`optional
-
   * The name of your container. Used as an identifier. This will default to a combination of your Worker name, the class name, and your environment.
 * `image_build_context` `string`optional
-
   * The build context of the application, by default it is the directory of `image`.
 * `image_vars` `Record<string, string>`optional
-
   * Build-time variables, equivalent to using `--build-arg` with `docker build`. If you want to provide environment variables to your container at _runtime_, you should [use secret bindings or envVars on the Container class](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/).
 * `rollout_active_grace_period` `number`optional
-
-  * The minimum number of seconds to wait before an active container instance becomes eligible for updating during a [rollout](https://developers.cloudflare.com/containers/platform-details/rollouts/). At that point, the container will be sent a `SIGTERM` signal and still has 15 minutes to shut down before it is forcibly killed and updated.
-  * Defaults to `0`.
+  * During a [rollout](https://developers.cloudflare.com/containers/platform-details/rollouts/), minimum seconds a container instance must already have been connected to its Durable Object before it may be replaced. Defaults to `0`. Still applies with `--containers-rollout=immediate`.
 * `rollout_step_percentage` `number | number[]`optional
-
-  * Configures what percentage of instances should be updated at each step of a [rollout](https://developers.cloudflare.com/containers/faq#how-do-container-updates-and-rollouts-work).
-  * If this is set to a single number, each step will rollout to that percentage of instances. The options are `5`, `10`, `20`, `25`, `50` or `100`.
-  * If this is an array of numbers, each step specifies the cumulative rollout progress, so the final step must be `100`.
-  * Defaults to `[10, 100]`.
-  * This can be overridden ad hoc by deploying with the `--containers-rollout=immediate` flag, which will roll out to 100% of instances in one step. Note that flag will not override `rollout_active_grace_period`, if configured.
+  * Percentage of container instances to update at each [rollout](https://developers.cloudflare.com/containers/platform-details/rollouts/) step. A single number uses that step size (`5`, `10`, `20`, `25`, `50`, or `100`). An array must contain ascending integer values from `10` through `100`, end in `100`, contain at most 10 entries, and contain no more entries than `max_instances`; its values are cumulative. Defaults to `100` if `max_instances` is omitted or less than `2`; otherwise defaults to `[10, 100]`. Override for one deploy with `--containers-rollout=immediate` (single 100% step; does not override grace period).
 * `ssh` `object`optional
-
   * Configuration for SSH through Wrangler. Refer to [SSH](#ssh).
 * `wrangler_ssh` `object`optional deprecated, use \`ssh\`
-
   * Deprecated alias for `ssh`. Still supported for backward compatibility.
 * `authorized_keys` `object[]`optional
-
   * Public keys that should be added to the Container's `authorized_keys` file.
 * `constraints` `object`optional
-
   * Placement constraints for the container. Refer to [Containers placement](https://developers.cloudflare.com/containers/platform-details/placement/) for details.
 * `constraints.regions` `string[]`optional
-
   * Limit container placement to specific geographic regions. Valid values: `"ENAM"`, `"WNAM"`, `"EEUR"`, `"WEUR"`, `"APAC"`, `"SAM"`, `"ME"`, `"OC"`, `"AFR"`.
 * `constraints.jurisdiction` `string`optional
-
   * Restrict containers to compliance boundaries. Valid values: `"eu"`, `"fedramp"`.
 
 ```jsonc
@@ -1669,13 +1528,10 @@ In place of the [named instance types](https://developers.cloudflare.com/contain
 The following options are available:
 
 * `vcpu` `number`optional
-
   * The vCPU to be used by your container. Defaults to `0.0625` (1/16 vCPU).
 * `memory_mib` `number`optional
-
   * The memory to be used by your container, in MiB. Defaults to `256`.
 * `disk_mb` `number`optional
-
   * The disk to be used by your container, in MB. Defaults to `2000` (2GB).
 
 ```jsonc
@@ -1710,10 +1566,8 @@ Configuration for SSH access to a Container instance through Wrangler. For a gui
 The following options are available:
 
 * `enabled` `boolean`optional
-
   * Whether SSH through Wrangler is enabled. Defaults to `true`. Set to `false` to disable SSH access.
 * `port` `number`optional
-
   * The port for the SSH service to run on. Defaults to `22`.
 
 ### Authorized keys
@@ -1723,10 +1577,8 @@ An authorized key is a public key that can be used to SSH into a Container.
 The following are properties of a key:
 
 * `name` `string`required
-
   * The display name of the key.
 * `public_key` `string`required
-
   * The public key itself.
   * Currently only the `ssh-ed25519` key type is supported.
 
@@ -1741,13 +1593,10 @@ Wrangler can operate in two modes: the default bundling mode and `--no-bundle` m
 It is also possible to include additional modules into your Worker, which are uploaded alongside the entry-point. You specify which additional modules should be included into your Worker using the `rules` key, making these modules available to be imported when your Worker is invoked. The `rules` key will be an array of the below object.
 
 * `type` `string`required
-
   * The type of module. Must be one of: `ESModule`, `CommonJS`, `CompiledWasm`, `Text` or `Data`.
 * `globs` `string[]`required
-
   * An array of glob rules (for example, `["**/*.md"]`). Refer to [glob ↗](https://man7.org/linux/man-pages/man7/glob.7.html).
 * `fallthrough` `boolean`optional
-
   * When set to `true` on a rule, this allows you to have multiple rules for the same `Type`.
 
 Example:
@@ -1827,22 +1676,16 @@ You can configure various aspects of local development, such as the local protoc
 * `port` `number`optional
 * Port for the local dev server to listen on. Defaults to `8787`.
 * `local_protocol` `string`optional
-
   * Protocol that local dev server listens to requests on. Defaults to `http`.
 * `upstream_protocol` `string`optional
-
   * Protocol that the local dev server forwards requests on. Defaults to `https`.
 * `host` `string`optional
-
   * Host to forward requests to, defaults to the host of the first `route` of the Worker.
 * `enable_containers` `boolean`optional
-
   * Determines whether to enable containers during a local dev session, if they have been configured. Defaults to `true`. If set to `false`, you can develop the rest of your application without requiring Docker or other container tool, as long as you do not invoke any code that interacts with containers.
 * `container_engine` `string`optional
-
   * Used for local development of [Containers](https://developers.cloudflare.com/containers/local-dev). Wrangler will attempt to automatically find the correct socket to use to communicate with your container engine. If that does not work (usually surfacing as an `internal error` when attempting to connect to your Container), you can try setting the socket path using this option. You can also set this via the environment variable `DOCKER_HOST`.
 * `generate_types` `boolean`optional
-
   * Generate types from your Worker configuration. Defaults to `false`.
 
 ```jsonc
@@ -2065,13 +1908,10 @@ You should use [Workers Static Assets](https://developers.cloudflare.com/workers
 [Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/) allows you to host static websites, or dynamic websites using frameworks like Vue or React, on Workers.
 
 * `bucket` `string`required
-
   * The directory containing your static assets. It must be a path relative to your Wrangler configuration file.
 * `include` `string[]`optional
-
   * An exclusive list of `.gitignore`\-style patterns that match file or directory names from your bucket location. Only matched items will be uploaded.
 * `exclude` `string[]`optional
-
   * A list of `.gitignore`\-style patterns that match files or directories in your bucket that should be excluded from uploads.
 
 Example:
@@ -2233,5 +2073,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler · Cloudflare Workers docs","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler · Cloudflare Workers docs","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

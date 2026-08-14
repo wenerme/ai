@@ -12,9 +12,9 @@
 model** rather than the messages-based model used by OpenAI Chat or Vercel AI
 SDK.
 
-The key insight: **items are emitted multiple times with the same ID but
-progressively updated content**. You replace the entire item by ID rather than
-accumulating stream chunks.
+Items are emitted multiple times with the same ID but progressively updated
+content. You replace the entire item by ID rather than accumulating stream
+chunks.
 
 ## Messages vs Items
 
@@ -179,8 +179,8 @@ outputs simultaneously (e.g., thinking + tool calls + text).
 
 ## Migrating from getNewMessagesStream()
 
-`getNewMessagesStream()` is deprecated in favor of `getItemsStream()`. The
-migration is straightforward:
+`getNewMessagesStream()` is deprecated in favor of `getItemsStream()`. To
+migrate:
 
 ```typescript lines theme={null}
 // Before (deprecated)
@@ -198,8 +198,8 @@ for await (const item of result.getItemsStream()) {
 }
 ```
 
-The key difference: `getItemsStream()` includes all item types (reasoning,
-function calls, etc.), not just messages.
+`getItemsStream()` includes all item types (reasoning, function calls, etc.),
+not just messages, whereas `getNewMessagesStream()` only surfaced messages.
 
 ## Next Steps
 

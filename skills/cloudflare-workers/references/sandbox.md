@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sandbox SDK
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build secure, isolated code execution environments
 
@@ -185,6 +185,12 @@ Connect to WebSocket servers running in sandboxes. Learn more: [WebSocket Connec
 
 ## Features
 
+[Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
+
+Deploy your Worker and keep the npm package and container image on the same release line.
+
+Deploy a Sandbox app
+
 [Execute commands securely](https://developers.cloudflare.com/sandbox/guides/execute-commands/)
 
 Run shell commands, Python scripts, Node.js applications, and more with streaming output support and automatic timeout handling.
@@ -283,6 +289,10 @@ Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your a
 
 Explore complete examples including AI code execution, data analysis, and interactive environments.
 
+### [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
+
+Deploy and keep package and image aligned.
+
 ### [How-to Guides](https://developers.cloudflare.com/sandbox/guides/)
 
 Learn how to solve specific problems and implement features with the Sandbox SDK.
@@ -325,8 +335,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Overview · Cloudflare Sandbox SDK docs","description":"Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Overview · Cloudflare Sandbox SDK docs","description":"Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

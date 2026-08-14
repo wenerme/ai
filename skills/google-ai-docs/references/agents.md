@@ -10,7 +10,7 @@ Visual playground for prototyping agents without writing code.](https://ai.googl
 
 ## Available Managed agents
 
-- **[Antigravity agent](https://ai.google.dev/gemini-api/docs/antigravity-agent)** : General-purpose managed agent powered by Gemini 3.6 Flash. Runs code, manages files, and searches the web inside a secure Linux sandbox hosted by Google. You can configure the underlying model (such as Gemini 3.6 Flash, Gemini 3.5 Flash, or Gemini 3.5 Flash-Lite) using `agent_config`, and extend it with your own instructions, skills, and data to [build a custom agent](https://ai.google.dev/gemini-api/docs/custom-agents).
+- **[Antigravity agent](https://ai.google.dev/gemini-api/docs/antigravity-agent)** : General-purpose managed agent powered by Gemini 3.7 Flash. Runs code, manages files, and searches the web inside a secure Linux sandbox hosted by Google. You can configure the underlying model (such as Gemini 3.7 Flash, Gemini 3.6 Flash, or Gemini 3.5 Flash) using `agent_config`, and extend it with your own instructions, skills, and data to [build a custom agent](https://ai.google.dev/gemini-api/docs/custom-agents).
 - **[Deep Research](https://ai.google.dev/gemini-api/docs/deep-research)**: Autonomous research agent that plans, executes, and synthesizes multi-step research tasks for use cases like market analysis, due diligence, and literature reviews.
 
 ## Security and best practices

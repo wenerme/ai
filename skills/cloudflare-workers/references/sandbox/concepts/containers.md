@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Container runtime
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/containers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Coming soon: Sandbox SDK 1.0
 
@@ -131,6 +131,8 @@ const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
 
 ## Related resources
 
+* [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) \- Deploy and keep package and image aligned
+* [Deploy Containers](https://developers.cloudflare.com/containers/deploy/) \- Containers deploy path
 * [Architecture](https://developers.cloudflare.com/sandbox/concepts/architecture/) \- How containers fit in the system
 * [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) \- Container isolation details
 * [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/concepts/sandboxes/) \- Container lifecycle management
@@ -142,8 +144,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/containers/#page","headline":"Container runtime · Cloudflare Sandbox SDK docs","description":"Sandbox SDK containers run isolated Linux environments with Python, Node.js, and common dev tools.","url":"https://developers.cloudflare.com/sandbox/concepts/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/containers/#page","headline":"Container runtime · Cloudflare Sandbox SDK docs","description":"Sandbox SDK containers run isolated Linux environments with Python, Node.js, and common dev tools.","url":"https://developers.cloudflare.com/sandbox/concepts/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

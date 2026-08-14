@@ -109,7 +109,7 @@ console.error(response.error?.code); // Will be an error code
 console.error(response.error?.message);
 ```
 
-## Error Codes
+## Error codes
 
 * **{HTTPStatus.S400_Bad_Request}**: Bad Request (invalid or missing params, CORS)
 * **{HTTPStatus.S401_Unauthorized}**: Invalid credentials (OAuth session expired, disabled/invalid API key)
@@ -120,7 +120,7 @@ console.error(response.error?.message);
 * **{HTTPStatus.S502_Bad_Gateway}**: Your chosen model is down or we received an invalid response from it
 * **{HTTPStatus.S503_Service_Unavailable}**: There is no available model provider that meets your routing requirements
 
-## Retry-After Header
+## Retry-After header
 
 On <code>{HTTPStatus.S429_Too_Many_Requests}</code> and <code>{HTTPStatus.S503_Service_Unavailable}</code> responses, OpenRouter may include a standard HTTP `Retry-After` response header indicating how many seconds to wait before retrying.
 
@@ -142,7 +142,7 @@ if (res.status === 429 || res.status === 503) {
 }
 ```
 
-## Moderation Errors
+## Moderation errors
 
 If your input was flagged, the `error.metadata` will contain information about the issue. The shape of the metadata is as follows:
 
@@ -155,9 +155,9 @@ type ModerationErrorMetadata = {
 };
 ```
 
-## Guardrail Errors
+## Guardrail errors
 
-On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a request can be blocked before it reaches a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails). When this happens, the response is a `403` with a message describing the block reason:
+On inference endpoints (`/chat/completions`, `/responses`, `/messages`), a request can be blocked before it reaches a provider — for example by a content filter or prompt-injection detector configured via [guardrails](/docs/guides/features/guardrails). When this happens, the response is a `403` with a message describing the block reason. The OpenRouter-shaped body below applies to `/chat/completions` and `/responses`; on `/messages` the block is returned as an Anthropic `permission_error` envelope (see [Anthropic Messages](#anthropic-messages-apiv1messages) below), with `openrouter_metadata` still carried at the top level when opted in:
 
 ```json lines theme={null}
 {
@@ -216,7 +216,7 @@ When you opt in to [router metadata](/docs/guides/features/router-metadata) via 
 
 The `openrouter_metadata` object follows the same shape as on successful responses — see [Pipeline Stages](/docs/guides/features/router-metadata#pipeline-stages) for the full stage type and field reference.
 
-## Provider Errors
+## Provider errors
 
 OpenRouter normalizes every upstream provider error into the stable, typed
 `error_type` vocabulary documented under [Typed Error Codes](#typed-error-codes).
@@ -260,7 +260,7 @@ provider was selected, fallback attempts, etc.) is carried in the
 fields only; see
 [Pipeline Stages](/docs/guides/features/router-metadata#pipeline-stages)).
 
-## When No Content is Generated
+## When no content is generated
 
 Occasionally, the model may not generate any content. This typically occurs when:
 
@@ -271,13 +271,13 @@ Warm-up times usually range from a few seconds to a few minutes, depending on th
 
 If you encounter persistent no-content issues, consider implementing a simple retry mechanism or trying again with a different provider or model that has more recent activity.
 
-Additionally, be aware that in some cases, you may still be charged for the prompt processing cost by the upstream provider, even if no content is generated.
+In some cases, you may still be charged for the prompt processing cost by the upstream provider, even if no content is generated.
 
-## Streaming Error Formats
+## Streaming error formats
 
 When using streaming mode (`stream: true`), errors are handled differently depending on when they occur:
 
-### Pre-Stream Errors
+### Pre-stream errors
 
 Errors that occur before any tokens are sent follow the standard error format above, with appropriate HTTP status codes. At this stage the HTTP response hasn't been committed yet, so OpenRouter can:
 
@@ -287,7 +287,7 @@ Errors that occur before any tokens are sent follow the standard error format ab
 
 You'll see pre-stream errors for issues like invalid API keys, malformed requests, or when every available provider endpoint is exhausted before streaming starts.
 
-### Mid-Stream Errors
+### Mid-stream errors
 
 Once the first token has been written to the client, the HTTP `200 OK` status and headers are already committed — they can't be changed. If the provider fails at this point, OpenRouter **cannot** silently fail over to another provider because partial content has already been delivered to your application. The error must arrive in-band as an SSE event.
 
@@ -344,7 +344,7 @@ Key characteristics:
 * The stream is terminated after this event
 * On 500-class errors, `error.message` is replaced with a generic string and `provider_code` is omitted to prevent leaking upstream details
 
-## Typed Error Codes
+## Typed error codes
 
 When a provider error reaches your application, OpenRouter tags it with a
 canonical `error_type` string — both on the non-streaming response body and
@@ -364,7 +364,7 @@ Where `error_type` appears depends on the skin and path:
 
 The HTTP status each `error_type` maps to is listed in the tables below.
 
-### Token and Length Limits
+### Token and length limits
 
 | `error_type`              | HTTP Status                   | Description                                                                                                                 |
 | ------------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -373,7 +373,7 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 | `token_limit_exceeded`    | {HTTPStatus.S400_Bad_Request} | A token budget enforced by OpenRouter (e.g. credit-based cap) was exceeded.                                                 |
 | `string_too_long`         | {HTTPStatus.S400_Bad_Request} | A single string field in the request (system prompt, user message, etc.) exceeded the provider's per-field character limit. |
 
-### Authentication and Authorization
+### Authentication and authorization
 
 | `error_type`        | HTTP Status                        | Description                                                                                                                  |
 | ------------------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -381,7 +381,7 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 | `permission_denied` | {HTTPStatus.S403_Forbidden}        | The key is valid but lacks the required permission or the request was blocked by a [guardrail](/docs/guides/features/guardrails). |
 | `payment_required`  | {HTTPStatus.S402_Payment_Required} | The account or API key has insufficient credits. [Add credits](https://openrouter.ai/credits) and retry.                     |
 
-### Rate Limiting and Availability
+### Rate limiting and availability
 
 | `error_type`           | HTTP Status                           | Description                                                                                                                                  |
 | ---------------------- | ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -389,7 +389,7 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 | `provider_overloaded`  | {HTTPStatus.S503_Service_Unavailable} | The upstream provider is temporarily overloaded. Retry after a short delay.                                                                  |
 | `provider_unavailable` | {HTTPStatus.S502_Bad_Gateway}         | The upstream provider returned an invalid or empty response. OpenRouter may auto-retry with another provider if fallback routing is enabled. |
 
-### Request Validation
+### Request validation
 
 | `error_type`          | HTTP Status                            | Description                                                                                   |
 | --------------------- | -------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -400,14 +400,14 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 | `payload_too_large`   | {HTTPStatus.S413_Payload_Too_Large}    | The request body exceeds the maximum allowed size.                                            |
 | `unprocessable`       | {HTTPStatus.S422_Unprocessable_Entity} | The request is syntactically valid but semantically unprocessable.                            |
 
-### Content Policy
+### Content policy
 
 | `error_type`               | HTTP Status                   | Description                                                                          |
 | -------------------------- | ----------------------------- | ------------------------------------------------------------------------------------ |
 | `content_policy_violation` | {HTTPStatus.S400_Bad_Request} | The input or output was flagged by a content filter (provider- or OpenRouter-level). |
 | `refusal`                  | {HTTPStatus.S400_Bad_Request} | The model explicitly refused to comply with the request (e.g. safety refusal).       |
 
-### Image Errors
+### Image errors
 
 | `error_type`               | HTTP Status                   | Description                                                                                                   |
 | -------------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -426,7 +426,7 @@ The HTTP status each `error_type` maps to is listed in the tables below.
 | `timeout`    | {HTTPStatus.S504_Gateway_Timeout}       | The provider did not respond within the allowed time.                                                                   |
 | `unmapped`   | {HTTPStatus.S500_Internal_Server_Error} | An upstream error that doesn't map to any known category. `error.metadata.provider_code` may contain the original code. |
 
-## Skin-Specific Error Formats
+## Skin-specific error formats
 
 OpenRouter exposes three API skins. Each translates the same internal provider error types into its own wire format, for non-streaming responses and in-stream errors alike. In every case `error_type` is the stable field; the wire location differs per skin.
 
@@ -504,7 +504,7 @@ Streaming errors surface as one of three SSE event types, each wrapping the same
    }
    ```
 
-#### Error Code Transformations
+#### Error code transformations
 
 Certain token/length errors are transformed into successful completions instead of failures:
 
@@ -521,18 +521,21 @@ This allows graceful handling of limit-based errors without treating them as fai
 
 The Anthropic Messages skin maps internal types to Anthropic-native error type strings:
 
-| Internal `error_type`                                                    | Anthropic `error.type`  |
-| ------------------------------------------------------------------------ | ----------------------- |
-| `authentication`                                                         | `authentication_error`  |
-| `rate_limit_exceeded`                                                    | `rate_limit_error`      |
-| `context_length_exceeded`, `content_policy_violation`, `invalid_request` | `invalid_request_error` |
-| `provider_overloaded`                                                    | `overloaded_error`      |
-| `provider_unavailable`, `timeout`, `server`                              | `api_error`             |
-| All others                                                               | `api_error`             |
+| Internal `error_type`                                                         | Anthropic `error.type`  |
+| ----------------------------------------------------------------------------- | ----------------------- |
+| `authentication`                                                              | `authentication_error`  |
+| `permission_denied`                                                           | `permission_error`      |
+| `payment_required`                                                            | `billing_error`         |
+| `not_found`, `image_not_found`                                                | `not_found_error`       |
+| `rate_limit_exceeded`                                                         | `rate_limit_error`      |
+| `provider_overloaded`                                                         | `overloaded_error`      |
+| `timeout`                                                                     | `timeout_error`         |
+| `context_length_exceeded`, `content_policy_violation`, `invalid_request`, ... | `invalid_request_error` |
+| `provider_unavailable`, `server`, `unmapped`, ...                             | `api_error`             |
 
 Because the native `error.type` is lossy (many internal types collapse to `api_error`), the canonical `error_type` is added inside the `error` object alongside it. This holds for both the non-streaming error envelope and mid-stream SSE `error` events.
 
-Non-streaming error envelope:
+Non-streaming error envelope (pre-Router errors such as authentication failures carry a `null` `request_id`; post-Router errors carry the `gen-` generation ID):
 
 ```json lines theme={null}
 {
@@ -541,7 +544,8 @@ Non-streaming error envelope:
     "type": "authentication_error",
     "message": "Invalid credentials",
     "error_type": "authentication"
-  }
+  },
+  "request_id": null
 }
 ```
 
@@ -562,7 +566,7 @@ Mid-stream errors are emitted as an SSE `error` event with the same shape:
 
 OpenRouter provides a `debug` option that allows you to inspect the exact request body that was sent to the upstream provider. This works with both the Chat Completions API (`/api/v1/chat/completions`) and the Responses API (`/api/v1/responses`). Useful for understanding how OpenRouter transforms your request parameters for different providers.
 
-### Debug Option Shape
+### Debug option shape
 
 The debug option is an object with the following shape:
 
@@ -714,7 +718,7 @@ To enable debug output, include the `debug` parameter in your request:
   ```
 </CodeGroup>
 
-### Debug Response Format
+### Debug response format
 
 #### Chat Completions
 
@@ -767,7 +771,7 @@ On the Responses API, debug data arrives as a `response.debug` SSE event:
 }
 ```
 
-### Important Notes
+### Important notes
 
 <Warning>
   **Streaming Only**
@@ -781,7 +785,7 @@ On the Responses API, debug data arrives as a `response.debug` SSE event:
   The debug flag should **not be used in production environments**. It is intended for development and debugging purposes only, as it may potentially return sensitive information included in the request that was not intended to be visible elsewhere.
 </Warning>
 
-### Use Cases
+### Use cases
 
 The debug output is particularly useful for:
 
@@ -793,6 +797,6 @@ The debug output is particularly useful for:
 
 4. **Debugging Provider Fallbacks**: When using provider fallbacks, a debug chunk will be sent for **each attempted provider**, allowing you to see which providers were tried and what parameters were sent to each.
 
-### Privacy and Redaction
+### Privacy and redaction
 
 OpenRouter will make a best effort to automatically redact potentially sensitive or noisy data from debug output. Remember that the debug option is not intended for production.

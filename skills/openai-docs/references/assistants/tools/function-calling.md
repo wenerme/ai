@@ -297,26 +297,18 @@ class EventHandler extends EventEmitter {
   }
 
   async handleRequiresAction(data, runId, threadId) {
-    try {
-      const toolOutputs =
-        data.required_action.submit_tool_outputs.tool_calls.map((toolCall) => {
-          if (toolCall.function.name === "getCurrentTemperature") {
-            return {
-              tool_call_id: toolCall.id,
-              output: "57",
-            };
-          } else if (toolCall.function.name === "getRainProbability") {
-            return {
-              tool_call_id: toolCall.id,
-              output: "0.06",
-            };
-          }
-        });
-      // Submit all the tool outputs at the same time
-      await this.submitToolOutputs(toolOutputs, runId, threadId);
-    } catch (error) {
-      console.error("Error processing required action:", error);
-    }
+    const toolOutputs = data.required_action.submit_tool_outputs.tool_calls.map(
+      (toolCall) => {
+        if (toolCall.function.name === "getCurrentTemperature") {
+          return { tool_call_id: toolCall.id, output: "57" };
+        } else if (toolCall.function.name === "getRainProbability") {
+          return { tool_call_id: toolCall.id, output: "0.06" };
+        }
+        throw new Error(`Unknown tool: ${toolCall.function.name}`);
+      }
+    );
+    // Submit all the tool outputs at the same time
+    await this.submitToolOutputs(toolOutputs, runId, threadId);
   }
 
   async submitToolOutputs(toolOutputs, runId, threadId) {
@@ -409,7 +401,7 @@ Messages added to the Thread by the Assistant. Finally, you would retrieve all t
 `required_action` and submit them at the same time to the 'submit tool outputs and poll' helper.
 
 ```javascript
-const handleRequiresAction = async (run) => {
+async function handleRequiresAction(run) {
   // Check if there are tools that require outputs
   if (
     run.required_action &&
@@ -420,16 +412,11 @@ const handleRequiresAction = async (run) => {
     const toolOutputs = run.required_action.submit_tool_outputs.tool_calls.map(
       (tool) => {
         if (tool.function.name === "getCurrentTemperature") {
-          return {
-            tool_call_id: tool.id,
-            output: "57",
-          };
+          return { tool_call_id: tool.id, output: "57" };
         } else if (tool.function.name === "getRainProbability") {
-          return {
-            tool_call_id: tool.id,
-            output: "0.06",
-          };
+          return { tool_call_id: tool.id, output: "0.06" };
         }
+        throw new Error(`Unknown tool: ${tool.function.name}`);
       }
     );
 
@@ -447,9 +434,9 @@ const handleRequiresAction = async (run) => {
     // Check status after submitting tool outputs
     return handleRunStatus(run);
   }
-};
+}
 
-const handleRunStatus = async (run) => {
+async function handleRunStatus(run) {
   // Check if the run is completed
   if (run.status === "completed") {
     let messages = await client.beta.threads.messages.list(thread.id);
@@ -461,7 +448,7 @@ const handleRunStatus = async (run) => {
   } else {
     console.error("Run did not complete:", run);
   }
-};
+}
 
 // Create and poll run
 let run = await client.beta.threads.runs.createAndPoll(thread.id, {

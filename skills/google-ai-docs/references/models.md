@@ -6,10 +6,12 @@ This guide introduces all the models available through the Gemini API.
 
 ### Stable
 
-[### Gemini 3.6 Flash
-Our latest model that balances speed with intelligence to deliver strong performance in agentic and multimodal tasks.
+[### Gemini 3.7 Flash
+Our latest and most capable Flash model, built for complex coding, agentic workflows, and reliable multi-step execution.
+New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.7-flash) [### Gemini 3.6 Flash
+Our previous-generation Flash model, balancing speed and multimodal capabilities across general agentic and everyday tasks.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.6-flash) [### Gemini 3.5 Flash
-Most intelligent model for sustained frontier performance on agentic and coding tasks.
+Our legacy Flash model, providing baseline speed and foundational performance for routine, high-throughput workloads.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemini 3.5 Flash-Lite
 Our fastest, most cost-effective 3.5 model for high-throughput execution.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) [### Gemini 3.1 Flash-Lite

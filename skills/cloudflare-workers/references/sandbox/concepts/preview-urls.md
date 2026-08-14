@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preview URLs
 
-Last updated May 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/preview-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/concepts/preview-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 # Quick deployment
 
@@ -44,9 +44,9 @@ See the [tunnels API reference](https://developers.cloudflare.com/sandbox/api/tu
 
 For production use we recommend using the `exposePort()` API and routing traffic through your worker.
 
-Production requires custom domain
+Custom domain for exposePort production URLs
 
-Preview URLs work in local development without configuration. For production, you need a custom domain with wildcard DNS routing. See [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/).
+Local development does not need a custom domain or wildcard DNS for `exposePort()` preview URLs. For production, you need a custom domain with wildcard DNS routing. Refer to [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/).
 
 Preview URLs provide public HTTPS access to services running inside sandboxes. When you expose a port, you get a unique URL that proxies requests to your service.
 
@@ -232,7 +232,7 @@ Preview URLs are publicly accessible by default, but require a valid access toke
 **Built-in security**:
 
 * **Token-based access** \- Each exposed port gets a unique token in the URL (for example, `https://8080-sandbox-abc123token456.yourdomain.com`)
-* **HTTPS in production** \- All traffic is encrypted with TLS. Certificates are provisioned automatically for first-level wildcards (`*.yourdomain.com`). If your worker runs on a subdomain, see the [TLS note in Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/).
+* **HTTPS in production** \- All traffic is encrypted with TLS. Certificates are provisioned automatically for first-level wildcards (`*.yourdomain.com`). If your Worker runs on a subdomain, refer to the [TLS note for custom domains](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/#subdomain-depth-matters-for-tls).
 * **Unpredictable URLs** \- Auto-generated tokens are randomly generated and difficult to guess
 * **Token collision prevention** \- Custom tokens are validated to ensure uniqueness within each sandbox
 
@@ -279,7 +279,7 @@ app.run((host = "127.0.0.1"), (port = 3000));
 
 ### Production Errors
 
-For custom domain issues, see [Production Deployment troubleshooting](https://developers.cloudflare.com/sandbox/guides/production-deployment/#troubleshooting).
+For custom domain issues, refer to [preview URL custom domain troubleshooting](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/#troubleshooting).
 
 ### Local Development
 
@@ -301,7 +301,8 @@ This is **only required for local development**. In production, all container po
 
 ## Related Resources
 
-* [Production Deployment](https://developers.cloudflare.com/sandbox/guides/production-deployment/) \- Set up custom domains for production
+* [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/) \- Wildcard DNS and TLS for `exposePort()`
+* [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) \- Worker and container image deploys
 * [Expose Services](https://developers.cloudflare.com/sandbox/guides/expose-services/) \- Practical patterns for exposing ports
 * [Ports API](https://developers.cloudflare.com/sandbox/api/ports/) \- Complete API reference
 * [Tunnels API](https://developers.cloudflare.com/sandbox/api/tunnels/) \- Zero-config `*.trycloudflare.com` URLs as an alternative for development
@@ -313,8 +314,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/#page","headline":"Preview URLs · Cloudflare Sandbox SDK docs","description":"Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.","url":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/#page","headline":"Preview URLs · Cloudflare Sandbox SDK docs","description":"Sandbox SDK preview URLs provide public HTTPS access to services running inside sandboxes.","url":"https://developers.cloudflare.com/sandbox/concepts/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

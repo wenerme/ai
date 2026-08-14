@@ -66,14 +66,14 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
   Only OpenAI models stream apply patch results incrementally via `response.apply_patch_call_operation_diff.delta` events. All other models return the complete patch as a single tool output.
 </Note>
 
-The `openrouter:apply_patch` server tool enables models to propose file changes using [V4A diff](https://github.com/openai/codex/blob/main/codex-rs/core/src/patch/v4a.md) patches. This is the building block for coding agents — the model generates a patch describing file creates, updates, or deletes, OpenRouter validates the diff syntax, and your application applies it.
+The `openrouter:apply_patch` server tool enables models to propose file changes using [V4A diff](https://github.com/openai/codex/blob/main/codex-rs/core/src/patch/v4a.md) patches. This is the building block for coding agents: the model generates a patch describing file creates, updates, or deletes, OpenRouter validates the diff syntax, and your application applies it.
 
 ## How It Works
 
 1. You include `{ "type": "openrouter:apply_patch" }` in your `tools` array when calling the Responses API.
 2. Based on the conversation, the model decides a file needs to be created, updated, or deleted, and generates a V4A diff patch.
 3. OpenRouter validates the patch syntax (correct line prefixes, valid markers, non-empty paths).
-4. If validation passes, the tool call is returned to your application as an `apply_patch_call` output item — your application applies the patch to the filesystem and echoes the result back as `apply_patch_call_output` on the next turn.
+4. If validation passes, the tool call is returned to your application as an `apply_patch_call` output item. Your application applies the patch to the filesystem and echoes the result back as `apply_patch_call_output` on the next turn.
 5. If validation fails, the error is returned to the model so it can self-correct.
 
 This is a **human-in-the-loop** tool: OpenRouter validates the diff but never applies it. Your application is responsible for executing the file operation.
@@ -188,7 +188,7 @@ Updates an existing file using a V4A diff with context lines (` ` prefix), addit
 
 ### `delete_file`
 
-Deletes a file. No diff is needed — only the file path:
+Deletes a file. No diff is needed, only the file path:
 
 ```json lines theme={null}
 {
@@ -242,9 +242,9 @@ The apply patch tool accepts an optional `engine` parameter:
 }
 ```
 
-| Parameter | Type   | Default | Description                                                                                                                                                                                                                                                                                                  |
-| --------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `engine`  | string | `auto`  | `auto` — uses native passthrough when the endpoint supports incremental diff streaming, otherwise falls back to OpenRouter's HITL validator. `native` — forces native passthrough (falls back to HITL if unsupported). `openrouter` — always uses the HITL validator, even on endpoints with native support. |
+| Parameter | Type   | Default | Description                                                                                                                                                                                                                                                                                               |
+| --------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `engine`  | string | `auto`  | `auto`: uses native passthrough when the endpoint supports incremental diff streaming, otherwise falls back to OpenRouter's HITL validator. `native`: forces native passthrough (falls back to HITL if unsupported). `openrouter`: always uses the HITL validator, even on endpoints with native support. |
 
 ### Engine behavior
 
@@ -257,7 +257,7 @@ The apply patch tool has no additional cost beyond standard token usage.
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools). Learn about server tools
+* [Web Search](/docs/guides/features/server-tools/web-search). Search the web for real-time information
+* [Datetime](/docs/guides/features/server-tools/datetime). Get the current date and time
+* [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined tool calling

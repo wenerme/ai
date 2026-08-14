@@ -9,6 +9,24 @@ description: "Learn about the logs visualization and controls in Grafana Logs Dr
 
 The logs visualization in Grafana Logs Drilldown displays log lines from your Loki data source with filtering options and controls to customize how data is displayed.
 
+A line filter search field appears at the top of the page. Enter text to filter your logs to lines that contain, or exclude, that text.
+
+## Visualization types
+
+On the **Logs** tab, use the radio buttons in the panel header to switch how your logs are displayed:
+
+- **Logs**: The default log line list, with the [log controls](#log-controls) and [log details](#log-details).
+- **Table**: Displays logs in a table with a column for each displayed field. You can add or remove columns, sort by a column, resize columns, and wrap text. Your column selection and sizes are remembered.
+- **JSON**: Opens the dedicated JSON viewer for logs formatted as JSON. For more information, refer to [Logs Drilldown JSON viewer](../viewing-json-logs/).
+
+> Note
+>
+> the native logs table is currently in [public preview](/docs/release-life-cycle/). Grafana Labs offers limited support, and breaking changes might occur prior to the feature being made generally available.
+>
+> To use this feature, enable the logsTablePanelNG feature toggle in your Grafana configuration file or contact Support.
+
+When the `logsTablePanelNG` feature flag is enabled, the **Table** view renders your logs using Grafana’s native logs table panel.
+
 ## Log controls
 
 The controls component provides options to interact with and customize the log list. You can jump to the top or bottom, change sort order, filter by string or level, use deduplication, and choose display options such as timestamp format or color highlighting.
@@ -42,7 +60,19 @@ From top to bottom, the log controls include:
 >
 > When you are in [JSON view](../viewing-json-logs/), these controls are not available: client-side string search, deduplication, filter by log level, timestamp format, font size control, and download logs. JSON view includes additional toggles for showing structured metadata and labels.
 
-## Log Details
+## Panel menu
+
+Most panels in Logs Drilldown have a menu that you open by clicking the menu icon (three vertical dots) in the panel header. The available options depend on the panel and your Grafana configuration:
+
+- **Explore**: Opens Grafana Explore with a query based on your current selections.
+- **Add to Dashboard**: Adds the panel to a new or existing dashboard.
+- **Create alert**: Creates an alert rule from the panel’s query.
+- **Expand logs view** or **Condense logs view**: On the logs panel, toggles the logs list between fitting the available height and expanding to fill the screen.
+- **Explain in Assistant**: Sends the panel’s query to Grafana Assistant for an explanation.
+
+Some options, such as **Add to Dashboard**, **Create alert**, and **Explain in Assistant**, appear only when the corresponding Grafana feature is available.
+
+## Log details
 
 The **Log details** component is displayed when you click a log line. It shows additional information from that log line in collapsible sections, including fields (usually key-value pairs) and links (derived fields, correlations, and more).
 
@@ -79,6 +109,8 @@ No matter which display mode you are currently viewing, you can change it by cli
 ## Highlighting
 
 The logs visualization implements a predefined set of rules to apply subtle colors to the log lines, to help with readability and help with identifying important information faster. This is an optional feature that can be disabled in the controls or in the panel options.
+
+Log levels are also color-coded to help you scan for errors and warnings. For example, `debug` lines use a neutral gray and `info` lines use a neutral blue.
 
 ## Log Context
 

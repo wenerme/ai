@@ -14,11 +14,11 @@ export const API_KEY_REF = '<OPENROUTER_API_KEY>';
   Server tools are currently in beta. The API and behavior may change.
 </Note>
 
-The `openrouter:advisor` server tool lets a model consult a higher-intelligence **advisor model** mid-generation. When your model hits a decision point — before committing to an approach, when it's stuck, or before declaring a task done — it invokes the tool with a `prompt`. The advisor model thinks, returns its guidance as the tool result, and your model continues, informed by the advice.
+The `openrouter:advisor` server tool lets a model consult a higher-intelligence **advisor model** mid-generation. When your model hits a decision point (before committing to an approach, when it's stuck, or before declaring a task done), it invokes the tool with a `prompt`. The advisor model thinks, returns its guidance as the tool result, and your model continues, informed by the advice.
 
-Unlike a fixed model pairing, the advisor can be **any OpenRouter model**, and it can optionally run as a **sub-agent with its own tools** (for example `openrouter:web_search`). The tool returns the advisor model's response directly as the tool result — your model writes the final answer.
+Unlike a fixed model pairing, the advisor can be **any OpenRouter model**, and it can optionally run as a **sub-agent with its own tools** (for example `openrouter:web_search`). The tool returns the advisor model's response directly as the tool result. Your model writes the final answer.
 
-You can offer the model a choice of **several named advisors** by including multiple `openrouter:advisor` entries in the `tools` array — one per advisor (see [Multiple advisors](#multiple-advisors)). At most one entry may omit `name` to act as the default advisor.
+You can offer the model a choice of **several named advisors** by including multiple `openrouter:advisor` entries in the `tools` array, one per advisor (see [Multiple advisors](#multiple-advisors)). At most one entry may omit `name` to act as the default advisor.
 
 Each advisor also **remembers its own prior consultations across requests** when you replay the conversation transcript (see [Cross-request memory](#cross-request-memory)), and the tool is available on the Chat Completions, Responses, and Anthropic Messages APIs (see [Anthropic Messages API](#anthropic-messages-api)).
 
@@ -102,7 +102,7 @@ This lets you either pin the advisor model up front (`parameters.model`) or let 
 
 ## When does the model invoke it?
 
-The tool's description steers the model to consult the advisor before substantive work, when it's stuck, or before declaring a task done — not for trivial steps a single model can resolve directly. To **force** a consultation on every request, set `tool_choice: "required"` (with multiple advisors this forces the first entry — see [Multiple advisors](#multiple-advisors)).
+The tool's description steers the model to consult the advisor before substantive work, when it's stuck, or before declaring a task done, not for trivial steps a single model can resolve directly. To **force** a consultation on every request, set `tool_choice: "required"` (with multiple advisors this forces the first entry; see [Multiple advisors](#multiple-advisors)).
 
 ## Parameters
 
@@ -134,7 +134,7 @@ Pass an optional `parameters` object on the tool entry:
 | `stream`                | `false`                | When `true`, the advice streams incrementally as it is produced (Responses API only). See [Streaming advice](#streaming-advice).                                                                                                                                                   |
 | `max_tool_calls`        | Provider default       | Max tool-calling steps the advisor sub-agent may take. Only relevant when the advisor has tools. Range 1–25.                                                                                                                                                                       |
 | `max_completion_tokens` | Provider default       | Max output tokens (including reasoning) for the advisor call.                                                                                                                                                                                                                      |
-| `reasoning`             | Provider default       | Reasoning config forwarded to the advisor call — an object with optional `effort` and `max_tokens`.                                                                                                                                                                                |
+| `reasoning`             | Provider default       | Reasoning config forwarded to the advisor call, an object with optional `effort` and `max_tokens`.                                                                                                                                                                                 |
 | `temperature`           | Provider default       | Sampling temperature (`0`–`2`) forwarded to the advisor call.                                                                                                                                                                                                                      |
 
 ### Tool-call arguments
@@ -148,7 +148,7 @@ When invoking the tool, the model passes:
 
 ## Multiple advisors
 
-To offer the model a choice of advisors, include **multiple `openrouter:advisor` entries** in the `tools` array — one per advisor. Give each its own `name` (plus its own `model`, `instructions`, and the other advisor fields); the model sees one distinct tool per named advisor and calls whichever fits the task:
+To offer the model a choice of advisors, include **multiple `openrouter:advisor` entries** in the `tools` array, one per advisor. Give each its own `name` (plus its own `model`, `instructions`, and the other advisor fields); the model sees one distinct tool per named advisor and calls whichever fits the task:
 
 ```json lines theme={null}
 {
@@ -175,11 +175,11 @@ To offer the model a choice of advisors, include **multiple `openrouter:advisor`
 
 Rules for advisor entries:
 
-* **At most one entry may omit `name`** — it becomes the default advisor. Two or more unnamed advisor entries fail the request with a `400`: *"Only one advisor tool can serve as the default. All other advisor tools must have a name defined."*
+* **At most one entry may omit `name`**. It becomes the default advisor. Two or more unnamed advisor entries fail the request with a `400`: *"Only one advisor tool can serve as the default. All other advisor tools must have a name defined."*
 * **Names must be unique** across entries (compared after trimming whitespace). A duplicate name fails the request with a `400`.
 * Names allow **letters, digits, spaces, underscores, and dashes** (e.g. `"Lead Architect"`), are trimmed, and must be 1–64 characters.
 
-A single advisor is just one entry — name it, or leave `name` off to keep it as the default. Each advisor's result reports the model it consulted, so you can tell the advisors apart in the response.
+A single advisor is just one entry: name it, or leave `name` off to keep it as the default. Each advisor's result reports the model it consulted, so you can tell the advisors apart in the response.
 
 <Note>
   **tool\_choice and named advisors**
@@ -189,7 +189,7 @@ A single advisor is just one entry — name it, or leave `name` off to keep it a
 
 ## Cross-request memory
 
-Each advisor remembers its own prior `prompt → advice` exchanges **across API requests** in a conversation. When you send a follow-up request that replays the prior transcript — assistant messages with their advisor tool calls and results included, as returned by the API — the advisor sees its earlier consultations replayed into its context before the new prompt. Tell the advisor a fact in one request, and it can recall it in the next without the executor restating it.
+Each advisor remembers its own prior `prompt → advice` exchanges **across API requests** in a conversation. When you send a follow-up request that replays the prior transcript (assistant messages with their advisor tool calls and results included, as returned by the API), the advisor sees its earlier consultations replayed into its context before the new prompt. Tell the advisor a fact in one request, and it can recall it in the next without the executor restating it.
 
 This works on all three APIs; the only requirement is that you **replay the advisor exchanges you received**:
 
@@ -197,19 +197,19 @@ This works on all three APIs; the only requirement is that you **replay the advi
 * **Responses API**: include the `openrouter:advisor` output items from prior responses in `input`, unchanged.
 * **Anthropic Messages API**: include the assistant message's advisor `server_tool_use` and `advisor_tool_result` content blocks from prior turns.
 
-Memory is **per advisor**: in a multi-advisor setup, each advisor recalls only its own prior exchanges — a "reviewer" advisor never sees what the "architect" was told. There is no fixed limit on the number of replayed exchanges; if the history exceeds the advisor model's context window, it is compressed with the [middle-out transform](/docs/guides/features/message-transforms), which trims the middle of the conversation and keeps the oldest and newest exchanges.
+Memory is **per advisor**: in a multi-advisor setup, each advisor recalls only its own prior exchanges. A "reviewer" advisor never sees what the "architect" was told. There is no fixed limit on the number of replayed exchanges; if the history exceeds the advisor model's context window, it is compressed with the [middle-out transform](/docs/guides/features/message-transforms), which trims the middle of the conversation and keeps the oldest and newest exchanges.
 
 Memory applies to prompt-mode consultations. With `forward_transcript: true` the advisor already sees the full parent conversation, so prior exchanges are not separately replayed.
 
 <Note>
   **Keep advisor entry order stable**
 
-  Advisor identity is positional — derived from the entry's index in the request `tools` array. Keep the order of advisor entries stable across the requests of a conversation (and echo the `instance_name` field on replayed Responses items unchanged). Reordering or inserting advisor entries between requests shifts identities, and each advisor reconstructs another's memory.
+  Advisor identity is positional, derived from the entry's index in the request `tools` array. Keep the order of advisor entries stable across the requests of a conversation (and echo the `instance_name` field on replayed Responses items unchanged). Reordering or inserting advisor entries between requests shifts identities, and each advisor reconstructs another's memory.
 </Note>
 
 ## Streaming advice
 
-By default the advice arrives only once the advisor has finished — as a single tool result. Set `parameters.stream` to `true` to have the advice stream out incrementally as the advisor model produces it:
+By default the advice arrives only once the advisor has finished, as a single tool result. Set `parameters.stream` to `true` to have the advice stream out incrementally as the advisor model produces it:
 
 ```json lines theme={null}
 {
@@ -227,7 +227,7 @@ By default the advice arrives only once the advisor has finished — as a single
 
 In the **Responses API**, the advisor's output item then emits `response.output_text.delta` events as the advice is generated, followed by a `response.output_text.done` and the completed item. The completed item still carries the full `advice` string, so consumers that don't read the deltas are unaffected. `stream` can be set per advisor entry, so you can stream some advisors and not others.
 
-The streamed deltas mirror how a normal assistant message streams text — the `item_id` on each delta is the advisor output item's id.
+The streamed deltas mirror how a normal assistant message streams text. The `item_id` on each delta is the advisor output item's id.
 
 Streaming has **no effect on the Chat Completions API** (the advice arrives only as the final tool result regardless of `stream`). Streaming the advice in the **Anthropic Messages API** is a planned fast-follow; today a Messages request behaves as if `stream` were `false`.
 
@@ -254,7 +254,7 @@ On failure the result has `status: "error"` with a message; the calling model co
 
 ## Anthropic Messages API
 
-On `/api/v1/messages`, request the advisor with the native Anthropic tool shape — and it works with **any executor model**, not just Anthropic ones:
+On `/api/v1/messages`, request the advisor with the native Anthropic tool shape, and it works with **any executor model**, not just Anthropic ones:
 
 ```json lines theme={null}
 {
@@ -273,7 +273,7 @@ On `/api/v1/messages`, request the advisor with the native Anthropic tool shape 
 }
 ```
 
-The response carries the advisor consultation as the official Anthropic block shapes — a `server_tool_use` block with `name: "advisor"` for the call, followed by an `advisor_tool_result` block with the advice:
+The response carries the advisor consultation as the official Anthropic block shapes: a `server_tool_use` block with `name: "advisor"` for the call, followed by an `advisor_tool_result` block with the advice:
 
 ```json lines theme={null}
 {
@@ -304,7 +304,7 @@ Notes on the native shape:
 
 ## Sub-agent tools
 
-When you pass `tools`, the advisor runs as an agentic sub-agent over them before producing its advice — for example, giving the advisor `openrouter:web_search` lets it ground its guidance in fresh sources. The advisor's tool use happens inside the tool call; only its final text is returned to your model.
+When you pass `tools`, the advisor runs as an agentic sub-agent over them before producing its advice. For example, giving the advisor `openrouter:web_search` lets it ground its guidance in fresh sources. The advisor's tool use happens inside the tool call; only its final text is returned to your model.
 
 Nested tools must be OpenRouter server tools (for example `openrouter:web_search` or `openrouter:web_fetch`). Function tools (`{ "type": "function" }`) are rejected with a `400`: the advisor call has no client-side executor, so a function tool call could never be fulfilled.
 
@@ -319,6 +319,6 @@ Consultations are also capped per request to bound cost and latency.
 
 ## Related
 
-* [Fusion server tool](/docs/guides/features/server-tools/fusion) — multi-model deliberation
+* [Fusion server tool](/docs/guides/features/server-tools/fusion). Multi-model deliberation
 * [Web Search server tool](/docs/guides/features/server-tools/web-search)
 * [Web Fetch server tool](/docs/guides/features/server-tools/web-fetch)

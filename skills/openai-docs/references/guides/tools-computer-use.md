@@ -1836,7 +1836,7 @@ If you want visual interaction in this setup, make sure your harness can capture
 
 ### Code-execution harness examples
 
-These minimal TypeScript and Python implementations demonstrate a code-execution harness. They give the model a code-execution tool, keep Playwright objects available to the runtime, return text and screenshots back to the model, and let the model ask the user clarifying questions when it gets blocked.
+These minimal JavaScript and Python implementations demonstrate a code-execution harness. They give the model a code-execution tool, keep Playwright objects available to the runtime, return text and screenshots back to the model, and let the model ask the user clarifying questions when it gets blocked.
 
 Run model-generated code only inside a disposable, least-privilege container or VM with resource and network limits. Language-level sandboxes such as Node.js `vm` and restricted Python global variables are not security boundaries. Keep the sandbox in a separate process and security boundary from the API client, with no shared credentials or host mounts. Enforce time and resource limits inside the sandbox, and terminate the runtime when it exceeds them.
 
@@ -1844,15 +1844,15 @@ The examples below do not run generated code in the API client. They send each a
 
 
 
-TypeScript
+JavaScript
 
     Code-execution harness
 
-```typescript
+```javascript
 // Run with:
-//   pnpm example -- tools/cua/015-code-execution-harness-example.ts
+//   pnpm example -- tools/cua/015-code-execution-harness-example.mjs
 // Override the user prompt with:
-//   pnpm example -- tools/cua/015-code-execution-harness-example.ts --prompt "Go to example.com and summarize the page."
+//   pnpm example -- tools/cua/015-code-execution-harness-example.mjs --prompt "Go to example.com and summarize the page."
 //
 // Requires OPENAI_EXAMPLE_CODE_EXECUTION_URL to point to a separately isolated
 // sandbox service. The service keeps a browser, context, and page alive for each
@@ -1866,15 +1866,7 @@ import OpenAI from "openai";
 
 const EXECUTION_TIMEOUT_MS = 30_000;
 
-type ExecutionOutput =
-  | { type: "input_text"; text: string }
-  | {
-      type: "input_image";
-      image_url: string;
-      detail: "original";
-    };
-
-function isExecutionOutput(value: unknown): value is ExecutionOutput {
+function isExecutionOutput(value) {
   if (typeof value !== "object" || value === null || !("type" in value)) {
     return false;
   }
@@ -1894,10 +1886,7 @@ function isExecutionOutput(value: unknown): value is ExecutionOutput {
   );
 }
 
-async function executeInSandbox(
-  code: string,
-  sessionId: string
-): Promise<ExecutionOutput[]> {
+async function executeInSandbox(code, sessionId) {
   const endpoint = process.env.OPENAI_EXAMPLE_CODE_EXECUTION_URL;
   if (!endpoint) {
     return [
@@ -1908,11 +1897,11 @@ async function executeInSandbox(
     ];
   }
 
-  const headers: Record<string, string> = {
+  const headers = new Headers({
     "content-type": "application/json",
-  };
+  });
   const token = process.env.OPENAI_EXAMPLE_CODE_EXECUTION_TOKEN;
-  if (token) headers.authorization = `Bearer ${token}`;
+  if (token) headers.set("authorization", `Bearer ${token}`);
 
   const response = await fetch(endpoint, {
     method: "POST",
@@ -1930,7 +1919,7 @@ async function executeInSandbox(
     );
   }
 
-  const payload: unknown = await response.json();
+  const payload = await response.json();
   if (
     typeof payload !== "object" ||
     payload === null ||
@@ -1944,18 +1933,17 @@ async function executeInSandbox(
 }
 
 async function main(
-  prompt: string = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
-  maxSteps: number = 50,
-  model: string = "gpt-5.6"
+  prompt = "Go to Hacker News, click on the most interesting link (be prepared to justify your choice), take a screenshot, and give me a critique of the visual layout.",
+  maxSteps = 50,
+  model = "gpt-5.6"
 ) {
-  type Phase = null | "commentary" | "final_answer";
   const client = new OpenAI();
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
   const sessionId = randomUUID();
-  const conversation: any[] = [{ role: "user", content: prompt }];
+  const conversation = [{ role: "user", content: prompt }];
 
   try {
     for (let i = 0; i < maxSteps; i++) {
@@ -1963,7 +1951,7 @@ async function main(
         model,
         tools: [
           {
-            type: "function" as const,
+            type: "function",
             name: "exec_js",
             description:
               "Execute provided interactive JavaScript in a persistent, isolated browser runtime.",
@@ -1989,7 +1977,7 @@ Keep screenshots and image data in memory and pass them directly to display(). D
             strict: true,
           },
           {
-            type: "function" as const,
+            type: "function",
             name: "ask_user",
             description:
               "Ask the user a clarification question and wait for their response.",
@@ -2016,19 +2004,18 @@ Keep screenshots and image data in memory and pass them directly to display(). D
 
       conversation.push(...response.output);
       let hadToolCall = false;
-      let latestPhase: Phase = null;
+      let latestPhase = null;
 
       for (const item of response.output) {
         if (item.type === "function_call" && item.name === "exec_js") {
           hadToolCall = true;
-          const parsed = JSON.parse(item.arguments ?? "{}") as {
-            code?: string;
-          };
+          const parsed = JSON.parse(item.arguments ?? "{}");
+
           const code = parsed.code ?? "";
           console.log(code);
           console.log("----");
 
-          let executionOutput: ExecutionOutput[];
+          let executionOutput;
           const endpoint = process.env.OPENAI_EXAMPLE_CODE_EXECUTION_URL;
           if (!endpoint) {
             executionOutput = await executeInSandbox(code, sessionId);
@@ -2074,9 +2061,8 @@ Keep screenshots and image data in memory and pass them directly to display(). D
           console.log("=====");
         } else if (item.type === "function_call" && item.name === "ask_user") {
           hadToolCall = true;
-          const parsed = JSON.parse(item.arguments ?? "{}") as {
-            question?: string;
-          };
+          const parsed = JSON.parse(item.arguments ?? "{}");
+
           const question =
             parsed.question ?? "Please provide more information.";
           console.log(`MODEL QUESTION: ${question}`);
@@ -2090,7 +2076,7 @@ Keep screenshots and image data in memory and pass them directly to display(). D
           const text = item.content.find((part) => part.type === "output_text");
           console.log(text?.text ?? item.content);
           if ("phase" in item) {
-            latestPhase = (item.phase as Phase) ?? null;
+            latestPhase = item.phase ?? null;
           }
         }
       }
@@ -2102,7 +2088,7 @@ Keep screenshots and image data in memory and pass them directly to display(). D
   }
 }
 
-function getCliPrompt(): string | undefined {
+function getCliPrompt() {
   const args = process.argv.slice(2);
   for (let i = 0; i < args.length; i++) {
     if (args[i] === "--prompt") return args[i + 1];

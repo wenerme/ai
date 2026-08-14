@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Path to Sandbox SDK 1.0
 
@@ -279,7 +279,7 @@ Before production:
 4. Treat process and terminal IDs from before the deploy as invalid. Start that work again and keep the new IDs.
 5. Run the checks in [Verify](#verify).
 
-Background on container rollouts: [Containers rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/).
+For routine deploys after migration, refer to [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/). For rollout options, refer to [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/).
 
 ## Verify
 
@@ -312,7 +312,9 @@ Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your a
 * [Code interpreter](https://developers.cloudflare.com/sandbox/1-0-preview/interpreter/)
 * [Extensions](https://developers.cloudflare.com/sandbox/1-0-preview/extensions/)
 * [Troubleshooting](https://developers.cloudflare.com/sandbox/1-0-preview/troubleshooting/)
-* [Containers rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/)
+* [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
+* [Deploy Containers](https://developers.cloudflare.com/containers/deploy/)
+* [Rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/)
 
 Was this helpful?
 
@@ -320,8 +322,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#page","headline":"Migrate · Cloudflare Sandbox SDK docs","description":"Update an existing Sandbox SDK application from the stable package to @cloudflare/sandbox@next.","url":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/#page","headline":"Migrate · Cloudflare Sandbox SDK docs","description":"Update an existing Sandbox SDK application from the stable package to @cloudflare/sandbox@next.","url":"https://developers.cloudflare.com/sandbox/1-0-preview/migrate/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

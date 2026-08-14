@@ -168,10 +168,9 @@ Set `OPENAI_IDENTITY_PROVIDER_ID` and `OPENAI_SERVICE_ACCOUNT_ID` in the workloa
 
 Authenticate from a SPIFFE JWT-SVID
 
-```typescript
+```javascript
 import { readFile } from "node:fs/promises";
 import OpenAI from "openai";
-import type { SubjectTokenProvider } from "openai/auth/index";
 
 const tokenPath = "/var/run/spiffe/openai.jwt";
 const identityProviderId = process.env.OPENAI_IDENTITY_PROVIDER_ID;
@@ -183,7 +182,8 @@ if (!identityProviderId || !serviceAccountId) {
   );
 }
 
-function spiffeJwtSvidProvider(path: string): SubjectTokenProvider {
+/** @returns {import("openai/auth/index").SubjectTokenProvider} */
+function spiffeJwtSvidProvider(path) {
   return {
     tokenType: "jwt",
     getToken: async () => {

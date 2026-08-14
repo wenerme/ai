@@ -1,5 +1,3 @@
-<br />
-
 When creating an Interaction, you can set `stream: true` to incrementally stream the response using [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) (SSE).
 
 ### Python
@@ -50,7 +48,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
       }'
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.6-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
 
     event: interaction.status_update
     data: {"interaction_id":"v1_...","status":"in_progress","event_type":"interaction.status_update"}
@@ -79,7 +77,7 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
     data: {"index":1,"event_type":"step.stop"}
 
     event: interaction.completed
-    data: {"interaction":{"id":"v1_...","status":"completed","usage":{"total_tokens":346,"total_input_tokens":11,"input_tokens_by_modality":[{"modality":"text","tokens":11}],"total_cached_tokens":0,"total_output_tokens":90,"total_tool_use_tokens":0,"total_thought_tokens":245},"created":"2026-05-12T18:44:51Z","updated":"2026-05-12T18:44:51Z","service_tier":"standard","object":"interaction","model":"gemini-3.6-flash"},"event_type":"interaction.completed"}
+    data: {"interaction":{"id":"v1_...","status":"completed","usage":{"total_tokens":346,"total_input_tokens":11,"input_tokens_by_modality":[{"modality":"text","tokens":11}],"total_cached_tokens":0,"total_output_tokens":90,"total_tool_use_tokens":0,"total_thought_tokens":245},"created":"2026-05-12T18:44:51Z","updated":"2026-05-12T18:44:51Z","service_tier":"standard","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.completed"}
 
     event: done
     data: [DONE]
@@ -104,7 +102,7 @@ When you set `stream: false`, the API returns a single `interaction` object with
 Sent when the interaction is first created. Contains the interaction ID, model, and initial status.
 
     event: interaction.created
-    data: {"interaction": {"id": "...", "model": "gemini-3.6-flash", "status": "in_progress", "object": "interaction"}, "event_type": "interaction.created"}
+    data: {"interaction": {"id": "...", "model": "gemini-3.7-flash", "status": "in_progress", "object": "interaction"}, "event_type": "interaction.created"}
 
 ### `interaction.status_update`
 
@@ -172,7 +170,8 @@ Marks the end of a step. Contains the step `index`.
     event: step.stop
     data: {"index": 0, "event_type": "step.stop"}
 
-When using the [Antigravity Agent](https://ai.google.dev/gemini-api/docs/antigravity-agent), the `step.stop` event may also include usage statistics:
+When using the [Antigravity Agent](https://ai.google.dev/gemini-api/docs/antigravity-agent), the
+`step.stop` event may also include usage statistics:
 
 - **`usage`**: The accumulated usage (running total) since the start of the interaction.
 - **`step_usage`**: The usage of this specific step.
@@ -196,11 +195,19 @@ Sent when an error occurs during the interaction. Contains an error object with 
 
 ## Streaming with tools
 
-The Interactions API supports streaming with both client-side tools (function calling) and server-side tools (Google Search, Code Execution, etc.) in a single request. During streaming, tool invocations appear as typed steps in the event stream. For function calls, the `step.start` event delivers the function name, and `step.delta` events stream the arguments as JSON strings (`arguments_delta`). You must accumulate these deltas to get the full arguments. Server-side tools like Google Search are executed automatically by the API, producing `google_search_call` and `google_search_result` steps.
+The Interactions API supports streaming with both client-side tools (function
+calling) and server-side tools (Google Search, Code Execution, etc.) in a single
+request. During streaming, tool invocations appear as typed steps in the event
+stream. For function calls, the `step.start` event delivers the function name,
+and `step.delta` events stream the arguments as JSON strings
+(`arguments_delta`). You must accumulate these deltas to get the full arguments.
+Server-side tools like Google Search are executed automatically by the API,
+producing `google_search_call` and `google_search_result` steps.
 
 ### Streaming with function calling
 
-To perform function calling with streaming, the client must handle a multi-turn conversation:
+To perform function calling with streaming, the client must handle a multi-turn
+conversation:
 
 1. **Turn 1 (Function Request):** Call `interactions.create` with `stream: true` and your defined `tools`. The API will stream a `function_call` step. You must accumulate the incremental argument JSON strings (`arguments_delta`) from `step.delta` events until the interaction completes with the status `requires_action`.
 2. **Turn 2 (Sending Result):** Call `interactions.create` again, passing the `previous_interaction_id` (matching the ID of the first interaction) and sending a `function_result` block within the `input` array. This resumes the stream, allowing the model to generate its final response.
@@ -560,7 +567,7 @@ The following example uses both a `function` tool and `google_search` in one req
       }'
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.6-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
 
     event: interaction.status_update
     data: {"interaction_id":"v1_...","status":"in_progress","event_type":"interaction.status_update"}
@@ -602,7 +609,7 @@ The following example uses both a `function` tool and `google_search` in one req
     data: {"index":3,"event_type":"step.stop"}
 
     event: interaction.completed
-    data: {"interaction":{"id":"v1_...","status":"requires_action","usage":{"total_tokens":299,"total_input_tokens":138,"input_tokens_by_modality":[{"modality":"text","tokens":138}],"total_cached_tokens":0,"total_output_tokens":20,"total_tool_use_tokens":0,"total_thought_tokens":141},"created":"2026-05-12T17:24:26Z","updated":"2026-05-12T17:24:26Z","service_tier":"standard","object":"interaction","model":"gemini-3.6-flash"},"event_type":"interaction.completed"}
+    data: {"interaction":{"id":"v1_...","status":"requires_action","usage":{"total_tokens":299,"total_input_tokens":138,"input_tokens_by_modality":[{"modality":"text","tokens":138}],"total_cached_tokens":0,"total_output_tokens":20,"total_tool_use_tokens":0,"total_thought_tokens":141},"created":"2026-05-12T17:24:26Z","updated":"2026-05-12T17:24:26Z","service_tier":"standard","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.completed"}
 
     event: done
     data: [DONE]
@@ -679,7 +686,7 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
       }'
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.6-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_...","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
 
     event: interaction.status_update
     data: {"interaction_id":"v1_...","status":"in_progress","event_type":"interaction.status_update"}

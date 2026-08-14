@@ -252,7 +252,7 @@ The streaming response uses Server-Sent Events (SSE) and is composed of steps
 and events, for example:
 
     event: interaction.created
-    data: {"interaction":{"id":"v1_xxx","status":"in_progress","object":"interaction","model":"gemini-3.6-flash"},"event_type":"interaction.created"}
+    data: {"interaction":{"id":"v1_xxx","status":"in_progress","object":"interaction","model":"gemini-3.7-flash"},"event_type":"interaction.created"}
 
     event: step.start
     data: {"index":0,"step":{"signature":"","summary":[{"text":"**Evaluating the clues**\n\nI'm considering...","type":"text"}],"type":"thought"},"event_type":"step.start"}
@@ -285,6 +285,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
 
 | Model | Default Thinking | Levels Supported |
 |---|---|---|
+| gemini-3.7-flash | On (medium) | low, medium, high |
 | gemini-3.6-flash | On (medium) | minimal, low, medium, high |
 | gemini-3.5-flash-lite | On (minimal) | minimal, low, medium, high |
 | gemini-3.1-pro-preview | On (high) | low, medium, high |

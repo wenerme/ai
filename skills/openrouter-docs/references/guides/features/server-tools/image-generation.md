@@ -166,13 +166,13 @@ The image generation tool accepts optional `parameters` to customize the output:
 | Parameter            | Type   | Default              | Description                                                                                                              |
 | -------------------- | ------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | `model`              | string | `openai/gpt-5-image` | Which image generation model to use. See [available image models](https://openrouter.ai/models?output_modalities=image). |
-| `quality`            | string | —                    | Image quality level (model-dependent, e.g. `"low"`, `"medium"`, `"high"`)                                                |
-| `size`               | string | —                    | Image dimensions (e.g. `"1024x1024"`, `"512x512"`)                                                                       |
-| `aspect_ratio`       | string | —                    | Aspect ratio (e.g. `"16:9"`, `"1:1"`, `"4:3"`)                                                                           |
-| `background`         | string | —                    | Background style (e.g. `"transparent"`, `"opaque"`)                                                                      |
-| `output_format`      | string | —                    | Output format (e.g. `"png"`, `"jpeg"`, `"webp"`)                                                                         |
-| `output_compression` | number | —                    | Compression level (0-100) for lossy formats                                                                              |
-| `moderation`         | string | —                    | Content moderation level (e.g. `"auto"`, `"low"`)                                                                        |
+| `quality`            | string | N/A                  | Image quality level (model-dependent, e.g. `"low"`, `"medium"`, `"high"`)                                                |
+| `size`               | string | N/A                  | Image dimensions (e.g. `"1024x1024"`, `"512x512"`)                                                                       |
+| `aspect_ratio`       | string | N/A                  | Aspect ratio (e.g. `"16:9"`, `"1:1"`, `"4:3"`)                                                                           |
+| `background`         | string | N/A                  | Background style (e.g. `"transparent"`, `"opaque"`)                                                                      |
+| `output_format`      | string | N/A                  | Output format (e.g. `"png"`, `"jpeg"`, `"webp"`)                                                                         |
+| `output_compression` | number | N/A                  | Compression level (0-100) for lossy formats                                                                              |
+| `moderation`         | string | N/A                  | Content moderation level (e.g. `"auto"`, `"low"`)                                                                        |
 
 All parameters except `model` are passed directly to the underlying image generation API. Available options depend on the specific model being used.
 
@@ -270,7 +270,7 @@ The cost is in addition to standard LLM token costs for processing the request a
 
 ## Next Steps
 
-* [Server Tools Overview](/docs/guides/features/server-tools) — Learn about server tools
-* [Web Search](/docs/guides/features/server-tools/web-search) — Search the web for real-time information
-* [Datetime](/docs/guides/features/server-tools/datetime) — Get the current date and time
-* [Tool Calling](/docs/guides/features/tool-calling) — Learn about user-defined tool calling
+* [Server Tools Overview](/docs/guides/features/server-tools). Learn about server tools
+* [Web Search](/docs/guides/features/server-tools/web-search). Search the web for real-time information
+* [Datetime](/docs/guides/features/server-tools/datetime). Get the current date and time
+* [Tool Calling](/docs/guides/features/tool-calling). Learn about user-defined tool calling

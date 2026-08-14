@@ -16,6 +16,18 @@ Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/sfu/changelog/index.xml)
 
+## 2026-08-13
+
+**DataChannels reliability and ordering (ordered, maxRetransmits, maxPacketLifeTime)**
+
+DataChannels now accept reliability settings on both publisher (`location: "local"`) and subscriber (`location: "remote"`) channels, so unreliable and unordered delivery is honored end to end.
+
+* `ordered` (default `true`) controls in-order delivery. When `false`, a delayed message does not block later messages.
+* Set `ordered: false` and omit both retry fields for reliable, unordered delivery.
+* `maxRetransmits` or `maxPacketLifeTime` enable partial reliability; set `maxRetransmits: 0` for fully unreliable delivery.
+* Set the same fields on local and remote `/datachannels/new` calls, and mirror them on `createDataChannel()` for negotiated channels.
+* Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Connection API](https://developers.cloudflare.com/realtime/sfu/https-api/)
+
 ## 2026-07-23
 
 **DataChannels return-to-publisher (canReply)**
@@ -36,7 +48,7 @@ DataChannels now support an opt-in subscriber acknowledgment gate. When a subscr
 
 * Opt-in per subscriber; defaults to `false`, so existing behavior is unchanged.
 * The acknowledgment is consumed by the SFU and is not forwarded, so the channel stays unidirectional.
-* Send the acknowledgment within 15 seconds of creating the remote DataChannel.
+* Send the acknowledgment within 30 seconds of creating the remote DataChannel.
 * Docs: [DataChannels](https://developers.cloudflare.com/realtime/sfu/datachannels/), [Limits, timeouts and quotas](https://developers.cloudflare.com/realtime/sfu/limits/)
 
 ## 2025-11-21
@@ -91,7 +103,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/realtime/sfu/changelog/#page","headline":"Changelog · Cloudflare Realtime docs","description":"Changelog and release notes for the Cloudflare Realtime SFU platform.","url":"https://developers.cloudflare.com/realtime/sfu/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

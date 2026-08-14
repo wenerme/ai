@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Lifecycle of a Container
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/platform-details/architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/containers/platform-details/architecture/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Deployment
 
 After you deploy an application with a Container, your image is uploaded to [Cloudflare's Registry](https://developers.cloudflare.com/containers/platform-details/image-management/) and distributed globally to Cloudflare's Network. Cloudflare will pre-schedule instances and pre-fetch images across the globe to ensure quick start times when scaling up the number of concurrent container instances.
 
-Unlike Workers, which are updated immediately on deploy, container instances are updated using a rolling deploy strategy. This allows you to gracefully shut down any running instances during a rollout. Refer to [rollouts](https://developers.cloudflare.com/containers/platform-details/rollouts/) for more details.
+Worker code goes live on deploy. Container instances update with a [rollout](https://developers.cloudflare.com/containers/platform-details/rollouts/). Refer to [Deploy Containers](https://developers.cloudflare.com/containers/deploy/).
 
 ## Lifecycle of a Request
 
@@ -64,11 +64,17 @@ Each container instance runs inside its own VM, which provides strong isolation 
 
 ### Container shutdown
 
-If you do not set [sleepAfter](https://developers.cloudflare.com/containers/container-class/#sleepafter)on your Container class, or stop the instance manually, the container will shut down soon after the container stops receiving requests. By setting `sleepAfter`, the container will stay alive for approximately the specified duration.
+The Container class sets [sleepAfter](https://developers.cloudflare.com/containers/container-class/#sleepafter) to 10 minutes by default. Its default [onActivityExpired()](https://developers.cloudflare.com/containers/container-class/#onactivityexpired) implementation signals the container to stop after that period without activity. You can change the duration or override the hook.
 
-You can manually shut down a container instance by calling [stop()](https://developers.cloudflare.com/containers/container-class/#stop) or [destroy()](https://developers.cloudflare.com/containers/container-class/#destroy) on it.
+You can stop a container instance yourself with [stop()](https://developers.cloudflare.com/containers/container-class/#stop) or [destroy()](https://developers.cloudflare.com/containers/container-class/#destroy).
 
-When a container instance is going to be shut down, it is sent a `SIGTERM` signal, and then a `SIGKILL` signal after 15 minutes. You should perform any necessary cleanup to ensure a graceful shutdown in this time.
+When the platform is about to stop a container instance, it:
+
+1. Sends `SIGTERM` to the main process in the container.
+2. Waits up to 15 minutes for that process to exit.
+3. Sends `SIGKILL` if the process is still running.
+
+Handle `SIGTERM` in your image if you need cleanup before exit. The same sequence runs when a [rollout](https://developers.cloudflare.com/containers/platform-details/rollouts/) replaces a container instance with a new image.
 
 ### Lifecycle hooks
 
@@ -105,8 +111,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/architecture/#page","headline":"Lifecycle of a Container · Cloudflare Containers docs","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/platform-details/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform-details/architecture/#page","headline":"Lifecycle of a Container · Cloudflare Containers docs","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/platform-details/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

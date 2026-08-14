@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # REST API
 
-Last updated Jun 11, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/api/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/artifacts/api/rest-api/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Artifacts REST API to manage repos, remotes, forks, imports, and tokens from external systems.
 
@@ -82,6 +82,7 @@ Returned repo tokens are secrets. Do not log them or store them in long-lived re
 
 ```ts
 export type NamespaceName = string;
+export type Jurisdiction = "eu" | "us";
 export type RepoName = string;
 export type BranchName = string;
 export type Scope = "read" | "write";
@@ -154,6 +155,31 @@ export interface TokenInfo {
 ```
 
 ## Namespaces
+
+### Create a namespace
+
+Route: `POST /artifacts/namespaces`
+
+Use the account-level base URL.
+
+Request body:
+
+* `namespace` `NamespaceName`required
+* `jurisdiction` `"eu" | "us"`optional (default: unrestricted)
+
+```bash
+curl --request POST "$ARTIFACTS_ACCOUNT_BASE_URL/namespaces" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "namespace": "my-eu-namespace",
+    "jurisdiction": "eu"
+  }'
+```
+
+The jurisdiction applies to every repo in the namespace and cannot be changed after creation. If you omit `jurisdiction`, Artifacts creates an unrestricted namespace.
+
+For more information, refer to [Data localization](https://developers.cloudflare.com/artifacts/guides/data-localization/).
 
 ### List namespaces
 
@@ -711,8 +737,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/rest-api/#page","headline":"REST API · Artifacts · Cloudflare Artifacts docs","description":"Manage Artifacts repos and tokens over HTTP.","url":"https://developers.cloudflare.com/artifacts/api/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-11","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/api/rest-api/#page","headline":"REST API · Artifacts · Cloudflare Artifacts docs","description":"Manage Artifacts repos and tokens over HTTP.","url":"https://developers.cloudflare.com/artifacts/api/rest-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
