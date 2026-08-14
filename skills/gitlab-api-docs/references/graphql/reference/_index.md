@@ -18115,6 +18115,30 @@ Fields:
 | <a id="mutation-workitemdelete-namespace"></a>`namespace` | [`Namespace`](#namespace) | Namespace the deleted work item belonged to. |
 | <a id="mutation-workitemdelete-project"></a>`project`  | [`Project`](#project) | Deprecated in GitLab 16.9. Use `namespace`. |
 
+### `Mutation.workItemEnableAiPlanning`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Enables AI planning for a work item. Once enabled, AI planning cannot be disabled.
+
+Input type: `WorkItemEnableAiPlanningInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemenableaiplanning-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemenableaiplanning-id"></a>`id` | [`WorkItemID!`](#workitemid) | Global ID of the work item. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-workitemenableaiplanning-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-workitemenableaiplanning-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-workitemenableaiplanning-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Work item after mutation. |
+
 ### `Mutation.workItemExport`
 
 - Deprecated in GitLab 18.0.
@@ -61094,6 +61118,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="workitemwidgetagentplan-aiplanningenabled"></a>`aiPlanningEnabled` | [`Boolean!`](#boolean) | Indicates whether AI planning is enabled for the work item. |
 | <a id="workitemwidgetagentplan-content"></a>`content` | [`String`](#string) | Content of the agent plan. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-contenthtml"></a>`contentHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `content`. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-type"></a>`type` | [`WorkItemWidgetType`](#workitemwidgettype) | Widget type. |

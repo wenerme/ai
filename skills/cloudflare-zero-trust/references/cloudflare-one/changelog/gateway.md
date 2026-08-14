@@ -16,6 +16,113 @@ Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
+## 2026-08-13
+
+
+**Detect and control software package downloads with package registry security**
+
+Cloudflare Gateway can now detect software package downloads and give you policy control over supply chain traffic. When a developer or CI/CD pipeline downloads a package through Gateway, the proxy identifies the registry protocol from the request URL and extracts the package ecosystem, name, version, and namespace. You can then write [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using `pkg.*` selectors to allow or block package downloads.
+
+#### Supported ecosystems
+
+Gateway detects package downloads for the following ecosystems:
+
+| Ecosystem | Namespace                   |
+| --------- | --------------------------- |
+| npm       | Scope (for example, @babel) |
+| PyPI      | \--                         |
+| RubyGems  | \--                         |
+| Cargo     | \--                         |
+| Go        | Module path                 |
+| Maven     | Group ID                    |
+| NuGet     | \--                         |
+
+#### Selectors
+
+In the dashboard, select **Package Ecosystem** to access the package registry selectors. After selecting a single ecosystem, nested fields for package name, version, and namespace become available. Five `pkg.*` selectors are available for HTTP policies with the Allow and Block actions:
+
+| Selector      | Description                                                                                                                            |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| pkg.ecosystem | The package ecosystem detected from the request URL.                                                                                   |
+| pkg.name      | The package name extracted from the download URL.                                                                                      |
+| pkg.version   | The package version, with support for ecosystem-aware comparison operators.                                                            |
+| pkg.namespace | The package namespace, when the ecosystem supports one.                                                                                |
+| pkg.purl      | The [Package URL (PURL) ↗](https://github.com/package-url/purl-spec) derived from the detected coordinates. Available in the API only. |
+
+Detection is based on the registry protocol rather than the hostname, so it works the same way whether traffic goes to a public registry, a corporate proxy such as Artifactory or Nexus, or a self-hosted mirror.
+
+Package registry security requires [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) to be turned on.
+
+For more information, refer to [Package registry security](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/).
+
+## 2026-08-12
+
+
+**MCP protocol detection and AI Security dashboard**
+
+Cloudflare Gateway now automatically detects [Model Context Protocol (MCP) ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) traffic flowing through your network. MCP is the standard protocol used by AI agents to connect to external tools and data sources. Gateway identifies MCP requests by inspecting protocol-specific headers and payload characteristics.
+
+#### MCP policy selector
+
+A new **Is MCP** selector (`experimental.is_mcp`) is available in [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#is-mcp). Use this selector to build Gateway rules that allow, block, or isolate MCP traffic.
+
+This selector is currently in beta and may change before general availability.
+
+For example, the following policy blocks MCP traffic that does not arrive through an approved [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/):
+
+| Selector       | Operator | Value        | Logic | Action |
+| -------------- | -------- | ------------ | ----- | ------ |
+| Is MCP         | is       | _True_       | And   | Block  |
+| Traffic Source | is not   | _MCP portal_ |       |        |
+
+![Example Gateway policy that blocks MCP traffic not arriving through an MCP portal](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1104,height=664,format=webp/_astro/gateway-block-unknown-mcp.B2Ainj8x.png)
+
+#### AI security report
+
+A new **AI security report** dashboard under **Insights & Logs > Dashboards** provides visibility into MCP usage across your organization. The dashboard includes:
+
+* Total MCP request volume, unique users, and unique MCP servers
+* A timeseries chart of unique MCP servers observed over time
+* A summary of Gateway policies that target MCP traffic
+![AI security report dashboard showing MCP detection data including total MCP requests, users, servers, and Gateway policies for MCP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2406,height=928,format=webp/_astro/gateway-mcp-dashboard.C9jPahkp.png)
+
+For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
+
+## 2026-08-12
+
+
+**Traffic Source selector in Gateway policies**
+
+Gateway [HTTP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) and [Network](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) policies now include a **Traffic Source** selector that identifies how traffic reaches Cloudflare. This allows administrators to write policies that target specific on-ramp methods - for example, applying different rules to traffic arriving via the Cloudflare One Client compared to traffic routed through an MCP portal or a proxy endpoint.
+
+#### Available traffic source values
+
+| UI name                      | API value       | Description                                                                                                                                         |
+| ---------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Device client                | device\_client  | Traffic from the [Cloudflare One Client (WARP)](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) |
+| Mesh                         | mesh            | Traffic from a [Cloudflare Mesh](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/) connector                   |
+| Cloudflare WAN               | cloudflare\_wan | Traffic from [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-gateway/) (Magic WAN)                          |
+| Clientless RDP               | clientless\_rdp | Traffic from a clientless RDP session                                                                                                               |
+| Proxy endpoint               | proxy\_endpoint | Traffic from a [proxy endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) (PAC file)        |
+| Clientless Browser Isolation | agentless\_biso | Traffic from [clientless Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/)                             |
+| MCP portal                   | mcp\_portal     | Traffic from an [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/)                             |
+
+The selector uses the `net.onramp.type` API field in both HTTP and Network policies.
+
+| UI name        | API example                         |
+| -------------- | ----------------------------------- |
+| Traffic Source | net.onramp.type == "device\_client" |
+
+#### Browser Isolation selector
+
+A **Browser Isolation** selector is also available in Network and HTTP policies. This selector identifies whether the current session is running inside [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), allowing administrators to apply different policy behavior to isolated traffic.
+
+| UI name           | API example              |
+| ----------------- | ------------------------ |
+| Browser Isolation | net.is\_isolated == true |
+
+For more information, refer to [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) and [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/).
+
 ## 2026-08-11
 
 

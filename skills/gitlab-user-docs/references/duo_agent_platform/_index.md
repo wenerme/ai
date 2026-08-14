@@ -71,6 +71,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)  Access GitLab resources and tools from any MCP-compatible AI client or IDE extension. <sup>1</sup> | Yes | Yes | Yes |
 | [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |
 | [Resolve merge conflicts](../project/merge_requests/conflicts.md#resolve-conflicts-with-gitlab-duo)  Autonomously analyze merge conflicts, edit conflicting files, and push a resolution commit. | No | Yes | Yes |
+| [Flow Creator Agent](agents/foundational_agents/flow_creator.md)  Create custom flows for the AI Catalog. | No | Yes  | Yes |
 | [Resolve review discussions](../project/merge_requests/duo_in_merge_requests.md#resolve-a-discussion-with-gitlab-duo)  Autonomously analyze a review discussion, push the requested changes, and resolve the thread. | No | Yes | Yes |
 | [SAST False Positive Detection Flow](flows/foundational_flows/sast_false_positive_detection.md)  Automatically identify and filter out false positives in SAST security scans. | No | No  | Yes |
 | [SAST Vulnerability Resolution Flow](flows/foundational_flows/agentic_sast_vulnerability_resolution.md)  Automatically generate fixes and remediation steps for SAST vulnerabilities. | No | No  | Yes |
