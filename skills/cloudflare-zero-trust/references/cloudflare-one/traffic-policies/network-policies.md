@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Network policies
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -53,6 +53,7 @@ Available selectors
 * [Access Infrastructure Target](#access-infrastructure-target)
 * [Access Private App](#access-private-app)
 * [Application](#application)
+* [Browser Isolation](#browser-isolation)
 * [Content Categories](#content-categories)
 * [Destination Continent IP Geolocation](#destination-continent)
 * [Destination Country IP Geolocation](#destination-country)
@@ -69,6 +70,7 @@ Available selectors
 * [Source Internal IP](#source-internal-ip)
 * [Source IP](#source-ip)
 * [Source Port](#source-port)
+* [Traffic Source](#traffic-source)
 * [Virtual Network](#virtual-network)
 
 **Identity**
@@ -148,6 +150,7 @@ Available selectors
 * [Access Infrastructure Target](#access-infrastructure-target)
 * [Access Private App](#access-private-app)
 * [Application](#application)
+* [Browser Isolation](#browser-isolation)
 * [Content Categories](#content-categories)
 * [Destination Continent IP Geolocation](#destination-continent)
 * [Destination Country IP Geolocation](#destination-country)
@@ -164,6 +167,7 @@ Available selectors
 * [Source Internal IP](#source-internal-ip)
 * [Source IP](#source-ip)
 * [Source Port](#source-port)
+* [Traffic Source](#traffic-source)
 * [Virtual Network](#virtual-network)
 
 **Identity**
@@ -304,6 +308,14 @@ You can apply network policies to a growing list of popular web applications. Re
 | UI name     | API example                 |
 | ----------- | --------------------------- |
 | Application | any(app.ids\[\*\] in {505}) |
+
+### Browser Isolation Beta
+
+Whether the current session is running inside [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/). Use this selector to apply different policy behavior to isolated and non-isolated traffic.
+
+| UI name           | API example              |
+| ----------------- | ------------------------ |
+| Browser Isolation | net.is\_isolated == true |
 
 ### Content Categories
 
@@ -475,6 +487,16 @@ The originating port of a device proxied by Gateway.
 | ----------- | ---------------------- |
 | Source Port | net.src.port == "2222" |
 
+### Traffic Source Beta
+
+The method used to on-ramp traffic to Cloudflare. Use this selector to apply policies based on how traffic reaches Gateway.
+
+| UI name        | API example                         |
+| -------------- | ----------------------------------- |
+| Traffic Source | net.onramp.type == "device\_client" |
+
+Available values: `device_client` (Device client), `mesh` (Mesh), `cloudflare_wan` (Cloudflare WAN), `clientless_rdp` (Clientless RDP), `proxy_endpoint` (Proxy endpoint), `agentless_biso` (Clientless Browser Isolation), `mcp_portal` (MCP portal).
+
 ### Users
 
 Use these selectors to match against identity attributes.
@@ -552,8 +574,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#page","headline":"Network policies · Cloudflare One docs","description":"Configure Network policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#page","headline":"Network policies · Cloudflare One docs","description":"Configure Network policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Geolocation"]}
 ```

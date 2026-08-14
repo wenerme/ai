@@ -1,13 +1,14 @@
 ---
 title: "Mage-Flow: ComfyUI Workflow Example"
 description: "Mage-Flowは、Microsoftが開発したコンパクトな4Bパラメータ生成スタックで、テキストから画像への生成と指示ベースの画像編集を実現します。Mage-VAEと、整流フローマッチングを用いたNative-Resolution Multimodal Diffusion Transformer（NR-MMDiT）を採用しています。"
-translationSourceHash: 8d11bd72
+translationSourceHash: e9e74016
 translationFrom: tutorials/image/mage-flow/mage-flow.mdx
 translationBlockHashes:
   "_intro": e97822e8
-  "Mage-Flow text-to-image workflow": 87cc0e0d
-  "Mage-Flow Turbo text-to-image workflow": 31b79a95
-  "Mage-Flow-Edit image edit workflow": 709ca298
+  "Mage-Flow text-to-image workflow": 3c28ff07
+  "Mage-Flow Turbo text-to-image workflow": e7182b3d
+  "Mage-Flow-Edit image edit workflow": cedd5e1d
+  "Mage-Flow-Edit Turbo image edit workflow": e09ae756
 ---
 
 **Mage-Flow** は、効率的なテキストから画像への生成と指示ベースの画像編集のためにMicrosoft Researchが開発した、コンパクトな4Bスケールの生成スタックです。このスタックは、共同設計された2つのコンポーネント、すなわち軽量で高忠実度の潜在トークナイザーである [Mage-VAE](https://huggingface.co/microsoft/Mage-VAE) と、整流フロー・マッチングでトレーニングされたネイティブ解像度のマルチモーダルDiffusion Transformer (NR-MMDiT) で構成されています。この共有スタックは、ネイティブ解像度パッキングとともに、テキストから画像への生成用のMage-Flowと、指示ベースの画像編集用のMage-Flow-Editという2つのモデル実装を実現します。各モデルは、Base、RLアライメント済み、4ステップTurboの各バリアントで提供されます。

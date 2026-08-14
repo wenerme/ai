@@ -1,12 +1,14 @@
 ---
 title: "Mage-Flow：ComfyUI 工作流示例"
 description: "Mage-Flow 是微软推出的紧凑型 4B 参数生成式模型栈，用于文生图和基于指令的图像编辑。它使用 Mage-VAE 和原生分辨率多模态扩散 Transformer（NR-MMDiT），并结合了整流流匹配（rectified flow matching）。"
-translationSourceHash: 856c5c53
+translationSourceHash: e9e74016
 translationFrom: tutorials/image/mage-flow/mage-flow.mdx
 translationBlockHashes:
   "_intro": e97822e8
-  "Mage-Flow text-to-image workflow": 87cc0e0d
-  "Mage-Flow Turbo text-to-image workflow": 31b79a95
+  "Mage-Flow text-to-image workflow": 3c28ff07
+  "Mage-Flow Turbo text-to-image workflow": e7182b3d
+  "Mage-Flow-Edit image edit workflow": cedd5e1d
+  "Mage-Flow-Edit Turbo image edit workflow": e09ae756
 ---
 
 **Mage-Flow** 是微软研究院推出的紧凑型 4B 规模生成式技术栈，用于高效的文生图和基于指令的图像编辑。该技术栈由两个协同设计的组件构成：[Mage-VAE](https://huggingface.co/microsoft/Mage-VAE)（一个轻量级高保真度 Latent tokenizer）和采用整流流匹配（rectified flow matching）训练的原生分辨率多模态扩散 Transformer（NR-MMDiT）。结合原生分辨率打包，该共享技术栈为两个模型实例提供支持：用于文生图的 Mage-Flow 和用于基于指令的图像编辑的 Mage-Flow-Edit。每个实例提供 Base、RL 对齐和 4 步 Turbo 三种变体。

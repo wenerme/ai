@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP policies
 
-Last updated Jul 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -53,6 +53,7 @@ Available selectors
 * [Access Infrastructure Target](#access-infrastructure-target)
 * [Access Private App](#access-private-app)
 * [Application](#application)
+* [Browser Isolation](#browser-isolation)
 * [Content Categories](#content-categories)
 * [Destination Continent IP Geolocation](#destination-continent)
 * [Destination Country IP Geolocation](#destination-country)
@@ -61,15 +62,22 @@ Available selectors
 * [Domain](#domain)
 * [Download File Types](#download-and-upload-file-types)
 * [Download Mime Type](#download-and-upload-mime-type)
+* [Is MCP](#is-mcp)
 * [Host](#host)
 * [HTTP Method](#http-method)
 * [HTTP Response](#http-response)
+* [Package Ecosystem](#package-ecosystem)
+* [Package Name](#package-name)
+* [Package Namespace](#package-namespace)
+* [Package URL (PURL)](#package-url-purl)
+* [Package Version](#package-version)
 * [Proxy Endpoint](#proxy-endpoint)
 * [Security Categories](#security-risks)
 * [Source Continent IP Geolocation](#source-continent)
 * [Source Country IP Geolocation](#source-country)
 * [Source Internal IP](#source-internal-ip)
 * [Source IP](#source-ip)
+* [Traffic Source](#traffic-source)
 * [Upload File Types](#download-and-upload-file-types)
 * [Upload Mime Type](#download-and-upload-mime-type)
 * [URL](#url)
@@ -124,6 +132,7 @@ Available selectors
 * [Access Infrastructure Target](#access-infrastructure-target)
 * [Access Private App](#access-private-app)
 * [Application](#application)
+* [Browser Isolation](#browser-isolation)
 * [Content Categories](#content-categories)
 * [Destination Continent IP Geolocation](#destination-continent)
 * [Destination Country IP Geolocation](#destination-country)
@@ -132,15 +141,22 @@ Available selectors
 * [Domain](#domain)
 * [Download File Types](#download-and-upload-file-types)
 * [Download Mime Type](#download-and-upload-mime-type)
+* [Is MCP](#is-mcp)
 * [Host](#host)
 * [HTTP Method](#http-method)
 * [HTTP Response](#http-response)
+* [Package Ecosystem](#package-ecosystem)
+* [Package Name](#package-name)
+* [Package Namespace](#package-namespace)
+* [Package URL (PURL)](#package-url-purl)
+* [Package Version](#package-version)
 * [Proxy Endpoint](#proxy-endpoint)
 * [Security Categories](#security-risks)
 * [Source Continent IP Geolocation](#source-continent)
 * [Source Country IP Geolocation](#source-country)
 * [Source Internal IP](#source-internal-ip)
 * [Source IP](#source-ip)
+* [Traffic Source](#traffic-source)
 * [Upload File Types](#download-and-upload-file-types)
 * [Upload Mime Type](#download-and-upload-mime-type)
 * [URL](#url)
@@ -596,6 +612,14 @@ Body phase mismatch
 
 When combining this selector with the [Download and Upload File Types selectors](#download-and-upload-file-types), ensure you use the matching phase together. For example, use the `download` body phase with the Download File Types selector. If body phase and file type selector logic do not match, the policy may not filter traffic as intended.
 
+### Browser Isolation Beta
+
+Whether the current session is running inside [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/). Use this selector to apply different policy behavior to isolated and non-isolated traffic.
+
+| UI name           | API example              |
+| ----------------- | ------------------------ |
+| Browser Isolation | net.is\_isolated == true |
+
 ### Content Categories
 
 Applications within a specific [security category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#content-categories) as categorized by [Cloudflare Radar](https://developers.cloudflare.com/radar/glossary/#content-categories).
@@ -778,6 +802,21 @@ Use [Cloudflare Data Loss Prevention (DLP)](https://developers.cloudflare.com/cl
 | ----------- | ----------------------------------------------------------------------- |
 | DLP Profile | any(dlp.profiles\[\*\] in {\\"a0cabf16-7491-4c9a-ac02-f64cabc66394\\"}) |
 
+### Is MCP Beta
+
+Whether the HTTP request was identified as [Model Context Protocol (MCP) ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) traffic. Gateway detects MCP traffic by inspecting protocol-specific headers and payload characteristics. Use this selector to build policies that allow, block, or isolate MCP traffic across your network.
+
+| UI name | API example                  |
+| ------- | ---------------------------- |
+| Is MCP  | experimental.is\_mcp == true |
+
+For example, the following policy blocks MCP traffic that does not arrive through an [MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/):
+
+| Selector       | Operator | Value        | Logic | Action |
+| -------------- | -------- | ------------ | ----- | ------ |
+| Is MCP         | is       | _True_       | And   | Block  |
+| Traffic Source | is not   | _MCP portal_ |       |        |
+
 ### Host
 
 Use this selector to match against only the hostname specified. For example, you can match `test.example.com` but not `example.com` or `www.test.example.com`.
@@ -807,6 +846,46 @@ The HTTP response status code received by the traffic.
 | UI name | API example                         |
 | ------- | ----------------------------------- |
 | URL     | http.response.status\_code == "200" |
+
+### Package Ecosystem
+
+The package registry ecosystem detected from the HTTP request URL. For more information, refer to [Package registry security](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/).
+
+| UI name           | API example            |
+| ----------------- | ---------------------- |
+| Package Ecosystem | pkg.ecosystem == "npm" |
+
+### Package Name
+
+The name of the package detected from the HTTP request URL.
+
+| UI name      | API example          |
+| ------------ | -------------------- |
+| Package Name | pkg.name == "lodash" |
+
+### Package Namespace
+
+The namespace of the package, when the ecosystem supports one. For npm, this is the scope. For Maven, this is the group ID. For Go, this is the module path.
+
+| UI name           | API example               |
+| ----------------- | ------------------------- |
+| Package Namespace | pkg.namespace == "@babel" |
+
+### Package URL (PURL)
+
+The [Package URL ↗](https://github.com/package-url/purl-spec) derived from the detected package coordinates.
+
+| UI name     | API example                          |
+| ----------- | ------------------------------------ |
+| Package URL | pkg.purl == "pkg:npm/lodash@4.17.21" |
+
+### Package Version
+
+The version of the package detected from the HTTP request URL. Supports exact match and ecosystem-aware version comparison operators. For more information on version comparison semantics, refer to [Package registry security](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/package-registry-security/#version-comparison-operators).
+
+| UI name         | API example              |
+| --------------- | ------------------------ |
+| Package Version | pkg.version == "4.17.21" |
 
 ### Proxy Endpoint
 
@@ -869,6 +948,16 @@ The originating IP address or addresses of a device proxied by Gateway.
 | UI name   | API example                             |
 | --------- | --------------------------------------- |
 | Source IP | http.conn.src\_ip\[\*\] in {10.0.0.0/8} |
+
+### Traffic Source Beta
+
+The method used to on-ramp traffic to Cloudflare. Use this selector to apply policies based on how traffic reaches Gateway.
+
+| UI name        | API example                         |
+| -------------- | ----------------------------------- |
+| Traffic Source | net.onramp.type == "device\_client" |
+
+Available values: `device_client` (Device client), `mesh` (Mesh), `cloudflare_wan` (Cloudflare WAN), `clientless_rdp` (Clientless RDP), `proxy_endpoint` (Proxy endpoint), `agentless_biso` (Clientless Browser Isolation), `mcp_portal` (MCP portal).
 
 ### URL
 
@@ -977,8 +1066,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#page","headline":"HTTP policies · Cloudflare One docs","description":"Configure HTTP policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","SAML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#page","headline":"HTTP policies · Cloudflare One docs","description":"Configure HTTP policies in Gateway.","url":"https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS","SAML"]}
 ```
