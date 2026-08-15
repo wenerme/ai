@@ -26,8 +26,8 @@
   "google-ai-api/files.md": {
     "url": "https://ai.google.dev/api/files",
     "skill": "google-ai-api",
-    "size": 35337,
-    "updatedAt": "2026-07-22T03:56:28.994Z"
+    "size": 35351,
+    "updatedAt": "2026-08-15T10:59:24.590Z"
   },
   "google-ai-api/live.md": {
     "url": "https://ai.google.dev/api/live",
@@ -38,8 +38,8 @@
   "google-ai-api/models.md": {
     "url": "https://ai.google.dev/api/models",
     "skill": "google-ai-api",
-    "size": 11683,
-    "updatedAt": "2026-07-22T03:56:30.285Z"
+    "size": 11697,
+    "updatedAt": "2026-08-15T10:59:25.679Z"
   },
   "google-ai-api/tokens.md": {
     "url": "https://ai.google.dev/api/tokens",

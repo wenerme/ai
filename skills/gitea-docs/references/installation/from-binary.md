@@ -156,6 +156,11 @@ Supported values for `<shell>` are `bash`, `fish`, `pwsh` and `zsh`. Details on 
 
 After you complete the above steps, you can run Gitea two ways:
 
+> **note**: On a distribution with SELinux in enforcing mode (Fedora, RHEL, CentOS Stream,
+Rocky Linux, AlmaLinux and others), the binary and the data directory need
+labels the default policy does not give them, and binding to a port below 1024
+takes an extra step. See [running Gitea with SELinux](selinux.md).
+
 ### 1. Creating a service file to start Gitea automatically (recommended)
 
 See how to create [Linux service](installation/run-as-service-in-ubuntu.md)

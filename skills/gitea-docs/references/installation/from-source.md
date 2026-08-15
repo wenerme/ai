@@ -123,6 +123,10 @@ launched manually from command line, it can be killed by pressing `Ctrl + C`.
 ./gitea web
 ```
 
+> **note**: A binary built this way carries no SELinux label of its own. On a distribution
+with SELinux in enforcing mode, see
+[running Gitea with SELinux](selinux.md) before installing it as a service.
+
 ## Changing default paths
 
 Gitea will search for a number of things from the _`CustomPath`_. By default this is

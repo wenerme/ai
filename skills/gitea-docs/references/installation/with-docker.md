@@ -142,6 +142,10 @@ services:
 To start Gitea in combination with a PostgreSQL database, apply these changes to
 the `docker-compose.yml` file created above.
 
+> **note**: The example pins a major version on purpose: PostgreSQL does not upgrade its data
+directory on its own, moving to a newer major version later requires `pg_upgrade`
+or a dump and restore. Start a new instance on the newest version Gitea supports,
+see [database preparation](database-preparation.md) for the supported versions.
 ```diff
 networks:
   gitea:
@@ -173,7 +177,7 @@ services:
 +      - db
 +
 +  db:
-+    image: docker.io/library/postgres:14
++    image: docker.io/library/postgres:18
 +    restart: always
 +    environment:
 +      - POSTGRES_USER=gitea

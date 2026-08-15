@@ -54,11 +54,11 @@ Response caching is **model-agnostic** and works with every model available on O
 
 Both streaming and non-streaming requests are eligible for caching. Only successful (`200 OK`) responses are cached. Error responses, rate limit responses, and partial results are never cached. Responses containing tool calls are cached normally since they are part of a successful completion. For streaming requests, the cached response is replayed through the same streaming pipeline, so the client receives the same content chunks on a cache hit. The `id` field, `created` timestamp, and `X-Generation-Id` response header in each chunk reflect the new cache-hit generation record, not the original.
 
-## Enabling Caching
+## Enabling caching
 
 There are two ways to enable response caching:
 
-### 1. Per-Request via Headers
+### 1. Per-request via headers
 
 Add the `X-OpenRouter-Cache` header to enable caching for individual requests:
 
@@ -204,6 +204,7 @@ X-OpenRouter-Cache-Status: HIT
 X-OpenRouter-Cache-Age: 12
 X-OpenRouter-Cache-TTL: 288
 X-Generation-Id: gen-def456
+X-OpenRouter-Cache-Source-Id: gen-abc123
 ```
 
 ```json title="Response Body (HIT)" lines theme={null}
@@ -220,7 +221,7 @@ X-Generation-Id: gen-def456
 }
 ```
 
-### 2. Via Presets
+### 2. Via presets
 
 You can enable caching for all requests that use a specific [preset](/docs/guides/features/presets) by configuring these fields in the preset:
 
@@ -241,7 +242,7 @@ Example preset configuration:
 }
 ```
 
-## How It Works
+## How it works
 
 Two requests are considered identical when they share the same API key, model, endpoint type, streaming mode, and request body (including all parameters). When caching is enabled, OpenRouter generates a cache key from these inputs. If an identical request has been made before and the cached response has not expired, the cached response is returned immediately. Changing any of these–including the model, endpoint, or switching between streaming and non-streaming–produces a different cache key and a cache miss.
 
@@ -253,7 +254,7 @@ Cache is **scoped to your API key**. Different API keys, even under the same acc
   **Non-determinism**: Cached responses are returned verbatim regardless of stochastic parameters like `temperature`. If you need fresh responses, use `X-OpenRouter-Cache-Clear: true` or a short TTL.
 </Note>
 
-### Cache Key Details
+### Cache key details
 
 The cache key is derived from your **API key**, **model**, **endpoint type**, **streaming mode**, and a **SHA-256 hash of the request body**. Streaming and non-streaming requests are cached separately, so a `stream: true` request will not return a cached non-streaming response and vice versa. The request body is normalized before hashing, so extra whitespace does not affect the cache key. However, the property order of the JSON body is significant:
 
@@ -272,11 +273,11 @@ Request headers and [preset](/docs/guides/features/presets) configuration intera
 4. `X-OpenRouter-Cache-TTL` header **overrides** the preset `cache_ttl_seconds` (default: 300 seconds)
 5. If neither header nor preset is set, caching is **off**
 
-### Concurrent Requests
+### Concurrent requests
 
 If two identical requests arrive simultaneously before the first response is written to cache, both result in a cache `MISS` and are billed independently. There is no request coalescing.
 
-### Supported Endpoints
+### Supported endpoints
 
 | Endpoint                                                                          | API Format              |
 | --------------------------------------------------------------------------------- | ----------------------- |
@@ -291,7 +292,7 @@ Cache keys include an endpoint type discriminator, so requests to different endp
   **Provider caching**: Some providers offer their own prompt caching (e.g. [Anthropic prompt caching](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching), [OpenAI cached context](https://platform.openai.com/docs/guides/prompt-caching)). Provider caching is separate from OpenRouter response caching and the two can be used together. OpenRouter caching operates at the request level before the call reaches the provider, while provider caching operates within the provider's infrastructure.
 </Note>
 
-## Request Headers
+## Request headers
 
 | Header                     | Value       | Description                                         |
 | -------------------------- | ----------- | --------------------------------------------------- |
@@ -302,13 +303,14 @@ Cache keys include an endpoint type discriminator, so requests to different endp
 
 TTL values that cannot be parsed as an integer (i.e., do not begin with digits) are ignored and fall through to the preset or default TTL. Values beginning with digits are accepted even if they contain trailing non-numeric characters (e.g., `60abc` is treated as `60`); decimal values are truncated (e.g., `1.5` is treated as `1`). Numeric values outside the valid range are clamped to `[1, 86400]`.
 
-## Response Headers
+## Response headers
 
-| Header                      | Value           | Description                                           |
-| --------------------------- | --------------- | ----------------------------------------------------- |
-| `X-OpenRouter-Cache-Status` | `HIT` or `MISS` | Whether the response was served from cache            |
-| `X-OpenRouter-Cache-Age`    | `<seconds>`     | How long the response has been cached (on `HIT` only) |
-| `X-OpenRouter-Cache-TTL`    | `<seconds>`     | Remaining TTL on `HIT`; full TTL on `MISS`            |
+| Header                         | Value             | Description                                                                              |
+| ------------------------------ | ----------------- | ---------------------------------------------------------------------------------------- |
+| `X-OpenRouter-Cache-Status`    | `HIT` or `MISS`   | Whether the response was served from cache                                               |
+| `X-OpenRouter-Cache-Age`       | `<seconds>`       | How long the response has been cached (on `HIT` only)                                    |
+| `X-OpenRouter-Cache-TTL`       | `<seconds>`       | Remaining TTL on `HIT`; full TTL on `MISS`                                               |
+| `X-OpenRouter-Cache-Source-Id` | `<generation-id>` | The generation ID of the original request that populated the cache entry (on `HIT` only) |
 
 The `X-Generation-Id` header is also present on every response (cached or not) and is not specific to caching. On a cache hit, the generation ID is unique to that hit–it is not reused from the original response.
 
@@ -321,7 +323,7 @@ The TTL controls how long a cached response remains valid.
 
 You can customize the TTL per-request using the `X-OpenRouter-Cache-TTL` header, or set a default TTL in your [preset](/docs/guides/features/presets) configuration.
 
-## Cache Clearing
+## Cache clearing
 
 To force a fresh response for a specific request, send the `X-OpenRouter-Cache-Clear: true` header alongside `X-OpenRouter-Cache: true` (or with a preset that has `cache_enabled: true`). This deletes the existing cached entry for that cache key, makes a new request to the provider, and stores the new response. `X-OpenRouter-Cache-Clear` has no effect unless caching is enabled for the request. This does not clear all cached entries–only the one matching the current request.
 
@@ -339,24 +341,24 @@ Cache hits do not count toward provider rate limits since the request never reac
 * **Concurrent identical requests**: If two identical requests arrive before the first response is cached, both result in a `MISS`. See [Concurrent Requests](#concurrent-requests).
 * **Cache eviction**: Cached responses may be evicted before TTL expiry under memory pressure. There is no limit on the number of entries you can cache, but eviction under pressure means entries are not guaranteed to survive their full TTL.
 
-## Data Retention
+## Data retention
 
 Cached responses are stored in edge infrastructure, retained only for the TTL duration, and automatically evicted upon expiry. Cached data is accessible only via the API key that triggered the caching–no other key, account, or organization can retrieve it. Cached data is not used for training or shared with third parties.
 
-## Use Cases
+## Use cases
 
-### Agent Workflows
+### Agent workflows
 
 When an agent workflow fails partway through, you can resume from the point of failure without re-running and re-paying for identical earlier requests. Enable caching at the start of the workflow and all prior steps return immediately from cache on retry.
 
-### Unit Testing
+### Unit testing
 
 Get repeatable responses for your test suite. After the initial run populates the cache, subsequent identical requests return the same cached response every time at zero cost. For deterministic first-run results, use `temperature: 0` or a fixed `seed`.
 
-### Repeated Identical Requests
+### Repeated identical requests
 
 If your application makes the same request multiple times (same model, same messages, same parameters), caching ensures only the first call hits the provider. Subsequent identical calls return immediately from cache at zero cost.
 
-### Monitoring Cache Effectiveness
+### Monitoring cache effectiveness
 
 Cache hit and miss status is visible in your [Activity log](https://openrouter.ai/logs). Each cached request appears as a separate entry with a cache indicator, and you can filter the log to show only cached or non-cached requests. Every cache hit receives its own unique generation ID, so you can track individual cached responses independently.

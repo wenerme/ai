@@ -43,6 +43,9 @@ Starts the server:
   - Gitea should not be run as root. To bind to a port below 1024, you can use setcap on
     Linux: `sudo setcap 'cap_net_bind_service=+ep' /path/to/gitea`. This will need to be
     redone every time you update Gitea.
+    A systemd unit can grant the capability to the process instead, which survives an
+    upgrade and works with SELinux in enforcing mode, see
+    [running Gitea with SELinux](../installation/selinux.md).
 
 ### admin
 
