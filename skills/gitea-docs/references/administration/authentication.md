@@ -345,3 +345,84 @@ ENABLE_REVERSE_PROXY_AUTHENTICATION_API = true
 ```
 
 > **note**: When this method is enabled for the API, the reverse proxy is responsible for handling CSRF protection.
+
+## OAuth2 and OpenID Connect
+
+Gitea can delegate the login to an external OAuth2 or OpenID Connect provider,
+which is what "Sign in with ..." on the login page uses. This is the client side
+of the protocol; for the other direction, using a Gitea instance as the provider
+for another application, see
+[Gitea as an OAuth2 provider](../development/oauth2-provider.md).
+
+A source is added under `Site Administration -> Identity & Access ->
+Authentication Sources -> Add Authentication Source`, with `OAuth2` as the
+authentication type, or on the command line with
+`gitea admin auth add-oauth`. The fields are:
+
+- **Authentication Name (required)**
+
+  - The name of the source. It is part of the callback URL, so it cannot be
+    changed later without registering a new callback URL at the provider.
+
+- **OAuth2 Provider (required)**
+
+  - `OpenID Connect` for any provider that implements OpenID Connect discovery
+    (Keycloak, Authentik, Authelia, Entra ID, Okta, Zitadel and others), or one
+    of the providers Gitea knows about directly: Gitea, GitHub, GitLab, Google,
+    Discord, Bitbucket, Dropbox, Facebook, Mastodon, Nextcloud, Twitter, Yandex
+    and Azure AD v2.
+
+- **Client ID (Key)** and **Client Secret (required)**
+
+  - The credentials of the application registered at the provider.
+
+- **OpenID Connect Auto Discovery URL**
+
+  - Only for the `OpenID Connect` provider: the discovery document of the
+    provider, usually `https://provider.example.com/.well-known/openid-configuration`.
+    Gitea reads the endpoints from it.
+
+- **Additional Scopes**
+
+  - Scopes to request on top of the ones the provider needs by default. For
+    OpenID Connect, `openid` is always added, and the scopes are taken from
+    `OPENID_CONNECT_SCOPES` in `app.ini` when it is set.
+
+- **Required Claim Name** and **Required Claim Value**
+
+  - Restrict the login to accounts whose token carries this claim, optionally
+    with this exact value.
+
+- **Claim name providing group names**, **Group Claim value for administrator
+  users**, **Group Claim value for restricted users** and **Map claimed groups
+  to Organization teams**
+
+  - Grant the administrator or the restricted flag, and organization team
+    membership, from the groups the provider reports. They all need the claim
+    name to be set.
+
+- **Icon URL**
+
+  - Image shown next to the button on the login page.
+
+Register `{ROOT_URL}/user/oauth2/{Authentication Name}/callback` as the
+redirect URI at the provider, for example
+`https://gitea.example.com/user/oauth2/keycloak/callback` for a source named
+`keycloak`. A wrong redirect URI is the most common reason for the login to
+fail at the provider.
+
+What happens to accounts that log in this way is configured in `app.ini`, see
+[OAuth2 Client](config-cheat-sheet.md#oauth2-client-oauth2_client):
+
+```ini title="app.ini"
+[oauth2_client]
+; create an account for a user who logs in for the first time
+ENABLE_AUTO_REGISTRATION = true
+; where the username of a new account comes from
+USERNAME = nickname
+; what to do when the username or email is already taken
+ACCOUNT_LINKING = login
+```
+
+> **note**: This is unrelated to `ENABLE_OPENID_SIGNIN` and the `[openid]` section, which
+configure the older OpenID 2.0 sign-in.

@@ -35,7 +35,7 @@ The request body must be empty.
     from google import genai
 
     client = genai.Client()
-    model_info = client.models.get(model="gemini-3.5-flash")
+    model_info = client.models.get(model="gemini-3.7-flash")
     print(model_info)
 
 ### Go
@@ -49,7 +49,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
 
-    modelInfo, err := client.Models.Get(ctx, "gemini-3.5-flash", nil)
+    modelInfo, err := client.Models.Get(ctx, "gemini-3.7-flash", nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -58,7 +58,7 @@ The request body must be empty.
 
 ### Shell
 
-    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash?key=$GEMINI_API_KEY
+    curl https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash?key=$GEMINI_API_KEYpan>.sh
 
 ### Response body
 
@@ -156,7 +156,7 @@ The request body must be empty.
 
 ### Shell
 
-    curl https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEY
+    curl https://generativelanguage.googleapis.com/v1beta/models?key=$GEMINI_API_KEYpan>.sh
 
 ### Response body
 

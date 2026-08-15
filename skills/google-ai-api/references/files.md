@@ -160,7 +160,7 @@ The request body must be empty.
     name=$(jq ".file.name" file_info.json)
     echo name=$name
     file_uri=$(jq ".file.uri" file_info.json)
-    echo file_uri=$file_uri
+    echo file_uri=$file_uripan>.sh
 
 ### Response body
 
@@ -296,7 +296,7 @@ The request body must be empty.
 
     try:
         result = client.models.generate_content(
-            model="gemini-3.5-flash", contents=[myfile, "Describe this file."]
+            model="gemini-3.7-flash", contents=[myfile, "Describe this file."]
         )
         print(result)
     except genai.errors.ClientError:
@@ -342,7 +342,7 @@ The request body must be empty.
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    _, err = client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    _, err = client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     // Expect an error when using a deleted file.
     if err != nil {
     	return nil
@@ -351,7 +351,7 @@ The request body must be empty.
 
 ### Shell
 
-    curl --request "DELETE" https://generativelanguage.googleapis.com/v1beta/files/$name?key=$GEMINI_API_KEY
+    curl --request "DELETE" https://generativelanguage.googleapis.com/v1beta/files/$name?key=$GEMINI_API_KEYpan>.sh
 
 ### Response body
 
@@ -430,7 +430,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     print(f"{myfile=}")
 
     result = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=[
             myfile,
             "\n\n",
@@ -451,7 +451,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     console.log("Uploaded file:", myfile);
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
         "\n\n",
@@ -492,7 +492,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -562,7 +562,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     print(f"{myfile=}")
 
     result = client.models.generate_content(
-        model="gemini-3.5-flash", contents=[myfile, "Describe this audio clip"]
+        model="gemini-3.7-flash", contents=[myfile, "Describe this audio clip"]
     )
     print(f"{result.text=}")
 
@@ -578,7 +578,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     console.log("Uploaded file:", myfile);
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
         "Describe this audio clip",
@@ -617,7 +617,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -684,7 +684,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     print(f"{myfile=}")
 
     result = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=[myfile, "\n\n", "Can you add a few more lines to this poem?"],
     )
     print(f"{result.text=}")
@@ -700,7 +700,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     console.log("Uploaded file:", myfile);
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
         "\n\n",
@@ -742,7 +742,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -829,7 +829,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
         myfile = client.files.get(name=myfile.name)
 
     result = client.models.generate_content(
-        model="gemini-3.5-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.7-flash", contents=[myfile, "Describe this video clip"]
     )
     print(f"{result.text=}")
 
@@ -853,7 +853,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     }
 
     const result = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.7-flash",
       contents: createUserContent([
         createPartFromUri(myfile.uri, myfile.mimeType),
         "Describe this video clip",
@@ -904,7 +904,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -980,7 +980,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content(
-        model="gemini-3.5-flash",
+        model="gemini-3.7-flash",
         contents=["Give me a summary of this pdf file.", sample_pdf],
     )
     print(response.text)
@@ -1015,7 +1015,7 @@ Fields `file` ``object (`https://ai.google.dev/api/files#File`)`` Optional. Meta
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.5-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }

@@ -297,6 +297,7 @@ If you wish to run Gitea with IIS. You will need to setup IIS with URL Rewrite a
 - In the Inbound Rules section, set the server name to be the host that Gitea is running on with its port. e.g. if you are running Gitea on the localhost with port 3000, the following should work: `127.0.0.1:3000`
 - Enable SSL Offloading
 - In the Outbound Rules, ensure `Rewrite the domain names of the links in HTTP response` is set and set the `From:` field as above and the `To:` to your external hostname, say: `git.example.com`
+- Turn `Reverse rewrite host in response headers` off, in the `Server Proxy Settings` of Application Request Routing (select the server node in the IIS Manager, open `Application Request Routing Cache`, then `Server Proxy Settings` in the right pane). While it is on, ARR rewrites the host of the `Location` header back to the internal one, so the redirects Gitea sends after a sign-in or a form submission send the browser to `127.0.0.1:3000` instead of `git.example.com`.
 - Now edit the `web.config` for your website to match the following: (changing `127.0.0.1:3000` and `git.example.com` as appropriate)
 
 ```xml

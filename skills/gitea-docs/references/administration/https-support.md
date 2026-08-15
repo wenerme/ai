@@ -76,6 +76,26 @@ ACME_EMAIL=email@example.com
 
 To learn more about the config values, please checkout the [Config Cheat Sheet](./config-cheat-sheet.md#server-server).
 
+> **warning**: `ACME_DIRECTORY` is where the account key and the issued certificates are
+cached, and the default `https` is a relative path, resolved against the working
+directory of the Gitea process. In the official Docker image that working
+directory is `/app/gitea`, which is part of the container and not of the `/data`
+volume, so every recreated container starts without an account and without
+certificates and asks the CA for new ones. Let's Encrypt allows
+[5 certificates per week](https://letsencrypt.org/docs/rate-limits/) for the
+same set of domains, after which the instance is left without a working
+certificate until the limit expires.
+
+Point the setting at a path inside the volume when running in a container:
+
+```ini title="app.ini"
+[server]
+ACME_DIRECTORY=/data/gitea/https
+```
+
+The rootless image keeps its working directory (`/var/lib/gitea`) in a volume,
+so it is only affected when that volume is not persisted.
+
 ## Using a reverse proxy
 
 Setup up your reverse proxy as shown in the [reverse proxy guide](../administration/reverse-proxies.md).
