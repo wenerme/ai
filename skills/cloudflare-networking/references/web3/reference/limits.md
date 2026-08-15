@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limits
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/reference/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/reference/limits/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following limits apply to users of the Cloudflare Web3 Gateways.
 
@@ -36,11 +36,11 @@ The following limits apply to Cloudflare's [IPFS Gateway](https://developers.clo
 
 The following limits apply to Cloudflare's [Ethereum Gateway](https://developers.cloudflare.com/web3/ethereum-gateway/).
 
-|                                               | Free                      | Pro                       | Business                  | Enterprise                |
-| --------------------------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| Availability                                  | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) |
-| Total gateways                                | 15                        | 15                        | 15                        | Unlimited                 |
-| Included bandwidth  (without additional cost) | 500,000 HTTP requests     | 500,000 HTTP requests     | 500,000 HTTP requests     | 1,000,000 HTTP requests   |
+|                                              | Free                      | Pro                       | Business                  | Enterprise                |
+| -------------------------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| Availability                                 | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) |
+| Total gateways                               | 15                        | 15                        | 15                        | Unlimited                 |
+| Included bandwidth (without additional cost) | 500,000 HTTP requests     | 500,000 HTTP requests     | 500,000 HTTP requests     | 1,000,000 HTTP requests   |
 
 Was this helpful?
 
@@ -48,8 +48,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/reference/limits/#page","headline":"Limits · Cloudflare Web3 docs","description":"Rate limits and size limits for Web3 gateways.","url":"https://developers.cloudflare.com/web3/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/reference/limits/#page","headline":"Limits · Cloudflare Web3 docs","description":"Rate limits and size limits for Web3 gateways.","url":"https://developers.cloudflare.com/web3/reference/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

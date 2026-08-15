@@ -170,6 +170,46 @@ func weatherTools(strict bool) []openai.AssistantToolUnionParam {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant = client.beta.assistants.create(
+  model: "gpt-4o",
+  instructions: "Use the provided functions to answer weather questions.",
+  tools: [
+    {
+      type: :function,
+      function: {
+        name: "get_current_temperature",
+        description: "Get the current temperature for a location",
+        parameters: {
+          type: :object,
+          properties: {
+            location: {type: :string},
+            unit: {type: :string, enum: ["Celsius", "Fahrenheit"]}
+          },
+          required: ["location", "unit"]
+        }
+      }
+    },
+    {
+      type: :function,
+      function: {
+        name: "get_rain_probability",
+        description: "Get the probability of rain for a location",
+        parameters: {
+          type: :object,
+          properties: {location: {type: :string}},
+          required: ["location"]
+        }
+      }
+    }
+  ]
+)
+puts(assistant.id)
+```
+
 
 ### Step 2: Create a Thread and add Messages
 
@@ -207,6 +247,19 @@ _, err = client.Beta.Threads.Messages.New(context.Background(), thread.ID, opena
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+thread = client.beta.threads.create
+message = client.beta.threads.messages.create(
+  thread.id,
+  role: :user,
+  content: "What's the weather in San Francisco today, and will it rain?"
+)
+puts(message.id)
 ```
 
 
@@ -556,6 +609,54 @@ func pollRun(client openai.Client, threadID string, run *openai.Run) *openai.Run
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+thread_id = ENV.fetch("OPENAI_THREAD_ID")
+assistant_id = ENV.fetch("OPENAI_ASSISTANT_ID")
+
+poll_run = lambda do |run|
+  while [
+    OpenAI::Beta::Threads::RunStatus::QUEUED,
+    OpenAI::Beta::Threads::RunStatus::IN_PROGRESS
+  ].include?(run.status)
+    sleep(2)
+    run = client.beta.threads.runs.retrieve(run.id, thread_id: thread_id)
+  end
+  run
+end
+
+run = client.beta.threads.runs.create(thread_id, assistant_id: assistant_id)
+run = poll_run.call(run)
+
+if run.status == OpenAI::Beta::Threads::RunStatus::REQUIRES_ACTION
+  required_action = run.required_action or raise "Run has no required action"
+  tool_outputs = required_action.submit_tool_outputs.tool_calls.filter_map do |tool_call|
+    output = case tool_call.function.name
+    when "get_current_temperature" then "57"
+    when "get_rain_probability" then "0.06"
+    end
+    {tool_call_id: tool_call.id, output: output} if output
+  end
+  raise "No supported tool calls were requested" if tool_outputs.empty?
+
+  run = client.beta.threads.runs.submit_tool_outputs(
+    run.id,
+    thread_id: thread_id,
+    tool_outputs: tool_outputs
+  )
+  run = poll_run.call(run)
+end
+
+if run.status == OpenAI::Beta::Threads::RunStatus::COMPLETED
+  messages = client.beta.threads.messages.list(thread_id)
+  messages.auto_paging_each { |message| puts(message.content) }
+else
+  warn("Run ended with status: #{run.status}")
+end
+```
+
 
 
 ### Using Structured Outputs
@@ -729,4 +830,16 @@ func weatherTools() []openai.AssistantToolUnionParam {
 		}),
 	}
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant = client.beta.assistants.create(
+  model: "gpt-4o",
+  name: "Weather assistant",
+  tools: [{type: :function, function: {name: "get_weather", description: "Get weather", parameters: {type: :object, properties: {city: {type: :string}}, required: ["city"], additionalProperties: false}, strict: true}}]
+)
+puts(assistant.id)
 ```

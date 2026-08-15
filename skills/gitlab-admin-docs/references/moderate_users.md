@@ -302,6 +302,8 @@ This job only runs when the `email_confirmation_setting` is set to `soft` or `ha
 
 A maximum of 240,000 users can be deleted per day.
 
+This job also deletes users with unconfirmed email addresses provisioned through SAML or SCIM.
+
 ### Reactivate a user
 
 - Filter users by state [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/238183) in GitLab 17.0.

@@ -82,6 +82,21 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new(timeout: 900.0)
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  service_tier: :flex,
+  instructions: "List and describe all the metaphors used in this book.",
+  input: "<very long text of book here>"
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \

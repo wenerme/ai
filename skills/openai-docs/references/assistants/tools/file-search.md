@@ -58,6 +58,19 @@ if err != nil {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant = client.beta.assistants.create(
+  model: "gpt-4o",
+  name: "Financial Analyst Assistant",
+  instructions: "Use the knowledge base to answer questions about audited financial statements.",
+  tools: [{type: :file_search}]
+)
+puts(assistant.id)
+```
+
 ```bash
 curl https://api.openai.com/v1/assistants \
 -H "Content-Type: application/json" \
@@ -149,6 +162,19 @@ _, err := client.Beta.Assistants.Update(context.Background(), "asst_abc123", ope
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant = client.beta.assistants.update(
+  "asst_abc123",
+  tool_resources: {
+    file_search: {vector_store_ids: ["vs_abc123"]}
+  }
+)
+puts(assistant.id)
 ```
 
 
@@ -441,6 +467,23 @@ if err != nil {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+store = client.vector_stores.create(
+  name: "Product Documentation",
+  file_ids: [
+    "file_1",
+    "file_2",
+    "file_3",
+    "file_4",
+    "file_5"
+  ]
+)
+puts(store.id)
+```
+
 
 Adding files to vector stores is an async operation. To ensure the operation is complete, we recommend that you use the 'create and poll' helpers in our official SDKs. If you're not using the SDKs, you can retrieve the `vector_store` object and monitor its [`file_counts`](https://developers.openai.com/api/reference/resources/vector_stores#vector-stores/object-file_counts) property to see the result of the file ingestion operation.
 
@@ -470,6 +513,24 @@ _, err := client.VectorStores.Files.NewAndPoll(context.Background(), "vs_abc123"
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+file = client.vector_stores.files.create(
+  "vs_abc123",
+  file_id: "file-abc123"
+)
+until [:completed, :failed, :cancelled].include?(file.status)
+  sleep(1)
+  file = client.vector_stores.files.retrieve(
+    file.id,
+    vector_store_id: "vs_abc123"
+  )
+end
+puts(file.status)
 ```
 
 
@@ -540,6 +601,34 @@ _, err := client.VectorStores.FileBatches.NewAndPoll(context.Background(), "vs_a
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+batch = client.vector_stores.file_batches.create(
+  "vs_abc123",
+  files: [
+    {file_id: "file_1", attributes: {category: "finance"}},
+    {
+      file_id: "file_2",
+      chunking_strategy: {
+        type: :static,
+        max_chunk_size_tokens: 1_000,
+        chunk_overlap_tokens: 200
+      }
+    }
+  ]
+)
+until [:completed, :failed, :cancelled].include?(batch.status)
+  sleep(1)
+  batch = client.vector_stores.file_batches.retrieve(
+    batch.id,
+    vector_store_id: "vs_abc123"
+  )
+end
+puts(batch.status)
 ```
 
 
@@ -617,6 +706,27 @@ thread, err := client.Beta.Threads.New(context.Background(), openai.BetaThreadNe
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant = client.beta.assistants.create(
+  instructions: "Answer product support questions using the provided files.",
+  model: "gpt-4o",
+  tools: [{type: :file_search}],
+  tool_resources: {
+    file_search: {vector_store_ids: ["vs_1"]}
+  }
+)
+thread = client.beta.threads.create(
+  messages: [{role: :user, content: "How do I cancel my subscription?"}],
+  tool_resources: {
+    file_search: {vector_store_ids: ["vs_2"]}
+  }
+)
+puts([assistant.id, thread.id])
 ```
 
 
@@ -708,6 +818,19 @@ if err != nil {
 fmt.Println(runStep)
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+step = client.beta.threads.runs.steps.retrieve(
+  "step_abc123",
+  thread_id: "thread_abc123",
+  run_id: "run_abc123",
+  include: ["step_details.tool_calls[*].file_search.results[*].content"]
+)
+puts(step)
+```
+
 ```bash
 curl -g https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/steps/step_abc123?include[]=step_details.tool_calls[*].file_search.results[*].content \
 -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -779,6 +902,24 @@ vectorStore, err := client.VectorStores.New(context.Background(), openai.VectorS
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+store = client.vector_stores.create(
+  name: "Product Documentation",
+  file_ids: [
+    "file_1",
+    "file_2",
+    "file_3",
+    "file_4",
+    "file_5"
+  ],
+  expires_after: {anchor: :last_active_at, days: 7}
+)
+puts(store.id)
 ```
 
 
@@ -857,6 +998,34 @@ for start := 0; start < len(fileIDs); start += 100 {
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+files = client.vector_stores.files.list("vs_expired")
+store = client.vector_stores.create(name: "rag-store")
+client.beta.threads.update(
+  "thread_abc123",
+  tool_resources: {file_search: {vector_store_ids: [store.id]}}
+)
+file_ids = []
+files.auto_paging_each { |file| file_ids << file.id }
+file_ids.each_slice(100) do |batch_ids|
+  batch = client.vector_stores.file_batches.create(store.id, file_ids: batch_ids)
+  while batch.status == OpenAI::VectorStores::VectorStoreFileBatch::Status::IN_PROGRESS
+    sleep(2)
+    batch = client.vector_stores.file_batches.retrieve(
+      batch.id,
+      vector_store_id: store.id
+    )
+  end
+  unless batch.status == OpenAI::VectorStores::VectorStoreFileBatch::Status::COMPLETED
+    raise "File batch ended with status: #{batch.status}"
+  end
+end
+puts(store.id)
 ```
 
 

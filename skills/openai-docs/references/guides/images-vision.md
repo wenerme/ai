@@ -132,6 +132,30 @@ func main() {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation}]
+)
+
+image_call = response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+File.binwrite(
+  "cat_and_otter.png",
+  Base64.strict_decode64(image_call.result)
+)
+```
+
 ```bash
 openai responses create \
   --model gpt-5.6 \
@@ -292,6 +316,31 @@ ResponseResult response = await client.CreateResponseAsync(
 );
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :user,
+      content: [
+        {type: :input_text, text: "What's in this image?"},
+        {
+          type: :input_image,
+          detail: :auto,
+          image_url: "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg"
+        }
+      ]
+    }
+  ]
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -503,6 +552,33 @@ ResponseResult response2 = await client.CreateResponseAsync(
 Console.WriteLine($"From byte array: {response2.GetOutputText()}");
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+image = Base64.strict_encode64(File.binread("image.png"))
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :user,
+      content: [
+        {type: :input_text, text: "What's in this image?"},
+        {
+          type: :input_image,
+          detail: :auto,
+          image_url: "data:image/png;base64,#{image}"
+        }
+      ]
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
   
 
   
@@ -681,6 +757,32 @@ ResponseResult response = await client.CreateResponseAsync(
 );
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+uploaded = client.files.create(
+  file: Pathname("image.png"),
+  purpose: :vision
+)
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :user,
+      content: [
+        {type: :input_text, text: "What's in this image?"},
+        {type: :input_image, detail: :auto, file_id: uploaded.id}
+      ]
+    }
+  ]
+)
+
+puts(response.output_text)
 ```
 
 

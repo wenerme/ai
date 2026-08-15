@@ -70,6 +70,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6-terra",
+  input: "Help me plan a study schedule.",
+  safety_identifier: "user_1234"
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
 -H "Content-Type: application/json" \
@@ -124,6 +137,19 @@ func main() {
 	}
 	fmt.Println(response.Choices[0].Message.Content)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+completion = client.chat.completions.create(
+  model: "gpt-5.6-terra",
+  messages: [{role: :user, content: "Help me plan a study schedule."}],
+  safety_identifier: "user_1234"
+)
+
+puts(completion.choices.fetch(0).message.content)
 ```
 
 ```bash

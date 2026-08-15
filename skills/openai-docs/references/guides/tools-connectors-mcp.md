@@ -312,6 +312,25 @@ ResponseResult response = await client.CreateResponseAsync(options);
 Console.WriteLine(response.GetOutputText());
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Summarize the Q2 earnings report.",
+  tools: [{
+    type: :mcp,
+    server_label: "Dropbox",
+    connector_id: "connector_dropbox",
+    authorization: "<oauth access token>",
+    require_approval: :never
+  }]
+)
+
+puts(response.output_text)
+```
+
 
 
 The API will return new items in the `output` array of the model response. If the model decides to use a Connector or MCP server, it will first make a request to list available tools from the server, which will create a `mcp_list_tools` output item. From the simple remote MCP server example above, it contains only one tool definition:
@@ -529,6 +548,29 @@ ResponseResult response = await client.CreateResponseAsync(options);
 Console.WriteLine(response.GetOutputText());
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Roll 2d4+1",
+  tools: [
+    {
+      type: :mcp,
+      server_label: "dmcp",
+      server_description: "A Dungeons and Dragons MCP server to assist with dice rolling.",
+      server_url: "https://dmcp-server.deno.dev/mcp",
+      require_approval: :never,
+      allowed_tools: ["roll"]
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
 
 ### Step 2: Calling tools
 
@@ -719,6 +761,30 @@ ResponseResult response2 = await client.CreateResponseAsync(options);
 Console.WriteLine(response2.GetOutputText());
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: "resp_682d498bdefc81918b4a6aa477bfafd904ad1e533afccbfa",
+  input: [{
+    type: :mcp_approval_response,
+    approval_request_id: "mcpr_682d498e3bd4819196a0ce1664f8e77b04ad1e533afccbfa",
+    approve: true
+  }],
+  tools: [{
+    type: :mcp,
+    server_label: "dmcp",
+    server_url: "https://dmcp-server.deno.dev/mcp",
+    server_description: "A Dungeons and Dragons MCP server.",
+    require_approval: :always
+  }]
+)
+
+puts(response.output_text)
+```
+
 
 Here we're using the `previous_response_id` parameter to chain this new Response, with the previous Response that generated the approval request. But you can also pass back the [outputs from one response, as inputs into another](https://developers.openai.com/api/docs/guides/conversation-state#manually-manage-conversation-state) for maximum control over what enter's the model's context.
 
@@ -863,6 +929,29 @@ ResponseResult response = await client.CreateResponseAsync(options);
 Console.WriteLine(response.GetOutputText());
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What transport protocols does the 2025-03-26 version of the MCP spec support?",
+  tools: [
+    {
+      type: :mcp,
+      server_label: "deepwiki",
+      server_url: "https://mcp.deepwiki.com/mcp",
+      require_approval: {
+        never: {tool_names: ["ask_question", "read_wiki_structure"]}
+      }
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
 
 ## Authentication
 
@@ -989,6 +1078,24 @@ options.InputItems.Add(
 ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Create a payment link for $20.",
+  tools: [{
+    type: :mcp,
+    server_label: "stripe",
+    server_url: "https://mcp.stripe.com",
+    authorization: ENV.fetch("STRIPE_OAUTH_ACCESS_TOKEN")
+  }]
+)
+
+puts(response.output_text)
 ```
 
 
@@ -1150,6 +1257,25 @@ options.InputItems.Add(
 ResponseResult response = await client.CreateResponseAsync(options);
 
 Console.WriteLine(response.GetOutputText());
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What's on my Google Calendar for today?",
+  tools: [{
+    type: :mcp,
+    server_label: "google_calendar",
+    connector_id: "connector_googlecalendar",
+    authorization: "<oauth access token>",
+    require_approval: :never
+  }]
+)
+
+puts(response.output_text)
 ```
 
 

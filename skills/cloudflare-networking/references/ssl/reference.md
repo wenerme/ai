@@ -25,7 +25,6 @@ For more on Cloudflare SSL/TLS, refer to these articles:
 * [Certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/)
 * [Certificate statuses](https://developers.cloudflare.com/ssl/reference/certificate-statuses/)
 * [Validity periods and renewal](https://developers.cloudflare.com/ssl/reference/certificate-validity-periods/)
-* [Features and plans](https://developers.cloudflare.com/ssl/reference/all-features/)
 * [Cloudflare and CVE-2019-1559](https://developers.cloudflare.com/ssl/reference/cloudflare-and-cve-2019-1559/)
 * [PCI compliance and vulnerabilities mitigation](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/)
 
@@ -35,7 +34,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ssl/reference/#page","headline":"Reference · Cloudflare SSL/TLS docs","description":"Reference information for SSL/TLS certificates, protocols, and features.","url":"https://developers.cloudflare.com/ssl/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

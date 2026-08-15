@@ -220,6 +220,28 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+messages = [
+  {role: :system, content: "You are a helpful assistant."},
+  {role: :user, content: "Hello!"}
+]
+
+completion = client.chat.completions.create(
+  model: "gpt-5.6",
+  messages: messages
+)
+puts(completion.choices.fetch(0).message.content)
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: messages
+)
+puts(response.output_text)
+```
+
 ```bash
 INPUT='[
   { "role": "system", "content": "You are a helpful assistant." },
@@ -308,6 +330,22 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+completion = client.chat.completions.create(
+  model: "gpt-5.6",
+  messages: [
+    {role: :system, content: "You are a helpful assistant."},
+    {role: :user, content: "Hello!"}
+  ]
+)
+
+puts(completion.choices.fetch(0).message.content)
+```
+
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -381,6 +419,20 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  instructions: "You are a helpful assistant.",
+  input: "Hello!"
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -492,6 +544,30 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+messages = [
+  {role: :system, content: "You are a helpful assistant."},
+  {role: :user, content: "What is the capital of France?"}
+]
+
+first = client.chat.completions.create(
+  model: "gpt-5.6",
+  messages: messages
+)
+messages << {role: :assistant, content: first.choices.fetch(0).message.content}
+messages << {role: :user, content: "And its population?"}
+
+second = client.chat.completions.create(
+  model: "gpt-5.6",
+  messages: messages
+)
+
+puts(second.choices.fetch(0).message.content)
+```
+
 
   
 
@@ -593,6 +669,27 @@ func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.Respo
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+context = [{role: :user, content: "What is the capital of France?"}]
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: context
+)
+context.concat(first.output.map(&:to_h))
+context << {role: :user, content: "And its population?"}
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  input: context
+)
+
+puts(second.output_text)
+```
+
     You can also use `previous_response_id` to reference the previous response
     and create response chains or forks.
     Multi-turn conversation
@@ -659,6 +756,27 @@ func main() {
 	}
 	fmt.Println(second.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "What is the capital of France?",
+  store: true
+)
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: first.id,
+  input: "And its population?",
+  store: true
+)
+
+puts(second.output_text)
 ```
 
 
@@ -865,6 +983,33 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+schema = {
+  type: "object",
+  properties: {
+    name: {type: "string", minLength: 1},
+    age: {type: "number", minimum: 0, maximum: 130}
+  },
+  required: ["name", "age"],
+  additionalProperties: false
+}
+
+completion = client.chat.completions.create(
+  model: "gpt-5.6",
+  reasoning_effort: :medium,
+  messages: [{role: :user, content: "Jane, 54 years old"}],
+  response_format: {
+    type: :json_schema,
+    json_schema: {name: "person", strict: true, schema: schema}
+  }
+)
+
+puts(completion.choices.fetch(0).message.content)
+```
+
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -1004,6 +1149,36 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+schema = {
+  type: "object",
+  properties: {
+    name: {type: "string", minLength: 1},
+    age: {type: "number", minimum: 0, maximum: 130}
+  },
+  required: ["name", "age"],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Jane, 54 years old",
+  text: {
+    format: {
+      type: :json_schema,
+      name: "person",
+      strict: true,
+      schema: schema
+    }
+  }
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -1162,6 +1337,34 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+completion = client.chat.completions.create(
+  model: "gpt-5.6",
+  reasoning_effort: :none,
+  messages: [
+    {role: :system, content: "You are a helpful assistant."},
+    {role: :user, content: "Who is the current president of France?"}
+  ],
+  functions: [
+    {
+      name: "web_search",
+      description: "Search the web for information",
+      parameters: {
+        type: "object",
+        properties: {query: {type: "string"}},
+        required: ["query"]
+      }
+    }
+  ]
+)
+
+puts(completion.choices.fetch(0).message)
+```
+
 ```bash
 curl https://api.example.com/search \
   -G \
@@ -1224,6 +1427,20 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Who is the current president of France?",
+  tools: [{type: :web_search}]
+)
+
+puts(response.output_text)
 ```
 
 ```bash

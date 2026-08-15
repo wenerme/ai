@@ -88,6 +88,8 @@ tags:
   description: Operations related to cluster agents.
 - name: Clusters
   description: Operations related to clusters.
+- name: Code Suggestions
+  description: Operations related to Code Suggestions.
 - name: Code review analytics
   description: Operations related to code review analytics.
 - name: Code search
@@ -738,7 +740,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_a6c22cd9956c"
+              "$ref": "#/components/schemas/RequestBody_70f8c0578b6a"
   "/api/v4/jobs/{id}/sbom_scans/authorize":
     post:
       operationId: postApiV4JobsIdSbomScansAuthorize
@@ -1028,6 +1030,8 @@ paths:
       summary: Generate code completions
       description: Generates code completions. Uses the AI abstraction layer to generate
         code completions. Requests to this endpoint are proxied to the AI Gateway.
+      tags:
+      - Code Suggestions
       responses:
         '200':
           description: OK
@@ -1046,6 +1050,8 @@ paths:
       description: Retrieves user-specific connection details which can be used by
         IDEs or clients to send `completion` requests to Code Suggestions directly
         through the AI Gateway.
+      tags:
+      - Code Suggestions
       responses:
         '201':
           description: Created
@@ -1070,6 +1076,8 @@ paths:
       description: Validates the status Code Suggestions for a specified project.
         This checks if the project has `code_suggestions` enabled or if an ancestor
         group has the Code Suggestions add-on enabled.
+      tags:
+      - Code Suggestions
       responses:
         '200':
           description: OK
@@ -1094,6 +1102,8 @@ paths:
       description: Retrieves user-specific connection details which can be used by
         IDEs or clients for telemetry, including an instance-specific application
         ID, application access token, and clickhouse data plane URL.
+      tags:
+      - Code Suggestions
       responses:
         '201':
           description: Created
@@ -55372,6 +55382,20 @@ paths:
           application/json:
             schema:
               "$ref": "#/components/schemas/RequestBody_c81863da3e12"
+  "/api/v4/glql/schema":
+    get:
+      operationId: getApiV4GlqlSchema
+      summary: Retrieve the GLQL schema
+      description: 'Retrieves the GLQL schema: data sources with their filter, display
+        and sort fields, the operator, value kind and reference type vocabularies,
+        the available functions, and the display types a query can be rendered as.'
+      tags:
+      - GLQL
+      responses:
+        '200':
+          description: OK
+        '500':
+          description: Internal server error
   "/api/v4/groups/{id}/variables":
     get:
       operationId: getApiV4GroupsIdVariables
@@ -94637,7 +94661,7 @@ components:
       required:
       - started_on
       - expires_on
-    RequestBody_a6c22cd9956c:
+    RequestBody_70f8c0578b6a:
       type: object
       properties:
         topic:
@@ -94659,7 +94683,8 @@ components:
               type: array
               items:
                 type: integer
-              description: Zero-based path to the stage/step in the flow definition
+              description: Zero-based path to the stage/step in the flow definition;
+                required for every event except com.gitlab.cd.rollout_succeeded
               nullable: true
             stage_name:
               type: string
@@ -94684,8 +94709,6 @@ components:
               description: Failure detail, present on step_failed
               nullable: true
               maxLength: 2000
-          required:
-          - position
           nullable: true
       required:
       - topic

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Ethereum Gateway
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/ethereum-gateway/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Ethereum Gateway gives you read and write access to the [Ethereum network](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/) without installing any software on your computer.
 
@@ -22,11 +22,11 @@ These interactions take place through the official [Ethereum JSON-RPC API ↗](h
 
 ## Availability
 
-|                                               | Free                      | Pro                       | Business                  | Enterprise                |
-| --------------------------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| Availability                                  | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) |
-| Total gateways                                | 15                        | 15                        | 15                        | Unlimited                 |
-| Included bandwidth  (without additional cost) | 500,000 HTTP requests     | 500,000 HTTP requests     | 500,000 HTTP requests     | 1,000,000 HTTP requests   |
+|                                              | Free                      | Pro                       | Business                  | Enterprise                |
+| -------------------------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| Availability                                 | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) | Yes (Usage-based billing) |
+| Total gateways                               | 15                        | 15                        | 15                        | Unlimited                 |
+| Included bandwidth (without additional cost) | 500,000 HTTP requests     | 500,000 HTTP requests     | 500,000 HTTP requests     | 1,000,000 HTTP requests   |
 
 Note
 
@@ -38,8 +38,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/#page","headline":"Ethereum Gateway · Cloudflare Web3 docs","description":"Access the Ethereum network through Cloudflare without running a node.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/web3/ethereum-gateway/#page","headline":"Ethereum Gateway · Cloudflare Web3 docs","description":"Access the Ethereum network through Cloudflare without running a node.","url":"https://developers.cloudflare.com/web3/ethereum-gateway/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

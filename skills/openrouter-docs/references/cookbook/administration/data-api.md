@@ -8,6 +8,28 @@ The Data API exposes the same datasets that power the public [rankings page](htt
 
 All Data API endpoints are gated by any valid OpenRouter API key (the same key you use for inference) and share the same rate limits: 30 requests/minute per key, 500 requests/day per account.
 
+## License and citation
+
+Data returned by the Data API is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). You may copy, redistribute, and build on it, including commercially, with attribution to OpenRouter.
+
+The license covers the aggregated data these endpoints return. It does not cover per-user data, per-customer volumes, or anything not published through these endpoints.
+
+Attribution satisfies CC BY 4.0 when you carry the citation line the endpoint specifies. `rankings-daily` and `app-rankings` each name one in their description, in this form:
+
+```text theme={null}
+Source: OpenRouter (openrouter.ai/rankings), as of <meta.as_of>.
+```
+
+Use the source URL named in that endpoint's own description and take the timestamp from `meta.as_of` in the response. For `session-cost`, which does not name one, cite:
+
+```text theme={null}
+Source: OpenRouter Data API (openrouter.ai/docs/cookbook/administration/data-api), as of <meta.as_of>.
+```
+
+Add `Licensed under CC BY 4.0.` to the citation when you republish the data itself rather than quoting a figure from it.
+
+Figures may be restated as snapshots refresh, so record the `meta` block alongside any number you publish.
+
 ## Rankings Daily
 
 The first endpoint, `/api/v1/datasets/rankings-daily`, returns the top 50 public models per day by total token usage, plus a single aggregated `other` row per day summing every model outside that top 50. Each real model row is keyed on `(date, model_permaslug)`. Numbers are token counts (`prompt_tokens + completion_tokens`), matching what is shown on the rankings page.

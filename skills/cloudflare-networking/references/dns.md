@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cloudflare DNS
 
-Last updated Jul 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/dns/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Leverage Cloudflare's global network to deliver excellent performance and reliability to your domain.
 
@@ -46,9 +46,6 @@ CNAME flattening delivers better performance and allows you to add a CNAME recor
 
 Use CNAME flattening
 
-
-Refer to [DNS features and availability](https://developers.cloudflare.com/dns/reference/all-features/) for a complete list of features and their availability according to different Cloudflare plans.
-
 ---
 
 ## Related products
@@ -67,8 +64,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/#page","headline":"Cloudflare DNS · Cloudflare DNS docs","description":"Manage DNS records, nameservers, and DNSSEC with Cloudflare DNS.","url":"https://developers.cloudflare.com/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/#page","headline":"Cloudflare DNS · Cloudflare DNS docs","description":"Manage DNS records, nameservers, and DNSSEC with Cloudflare DNS.","url":"https://developers.cloudflare.com/dns/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

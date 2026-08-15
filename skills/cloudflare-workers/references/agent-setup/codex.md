@@ -44,7 +44,7 @@ Inside Codex, run `/plugins`, then search for and install **Cloudflare**. This i
 4. **Try a prompt**
 For example:
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 1. **Download Codex**
@@ -128,23 +128,23 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
 Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

@@ -80,6 +80,23 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+store = client.vector_stores.create(name: "Support FAQ")
+source = Pathname("customer_policies.txt")
+uploaded = client.files.create(file: source, purpose: :assistants)
+file = client.vector_stores.files.create(store.id, file_id: uploaded.id)
+until [:completed, :failed, :cancelled].include?(file.status)
+  sleep(1)
+  file = client.vector_stores.files.retrieve(file.id, vector_store_id: store.id)
+end
+
+puts(store.id)
+```
+
 
 <li className={s.StandaloneLi} data-number={2}>
   **Send search query** to get relevant results.
@@ -124,6 +141,14 @@ func main() {
 	}
 	fmt.Println(results.Data)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+results = client.vector_stores.search("vs_123", query: "What is the return policy?")
+puts(results.data&.first&.content)
 ```
 
 
@@ -187,6 +212,17 @@ func main() {
 	}
 	fmt.Println(results.Data)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+results = client.vector_stores.search(
+  "vs_123",
+  query: "How many woodchucks are allowed per passenger?"
+)
+puts(results.data&.first&.content)
 ```
 
 
@@ -477,6 +513,17 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+store = client.vector_stores.create(
+  name: "Support FAQ",
+  file_ids: ["file_123"]
+)
+puts(store.id)
+```
+
   
 
   
@@ -514,6 +561,14 @@ func main() {
 	}
 	fmt.Println(vectorStore.ID)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+store = client.vector_stores.retrieve("vs_123")
+puts(store.id)
 ```
 
   
@@ -560,6 +615,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+store = client.vector_stores.update("vs_123", name: "Updated knowledge base")
+puts(store.name)
+```
+
   
 
   
@@ -599,6 +662,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+deleted = client.vector_stores.delete("vs_123")
+puts(deleted.deleted)
+```
+
   
 
   
@@ -634,6 +705,14 @@ func main() {
 	}
 	fmt.Println(vectorStores.Data)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+stores = client.vector_stores.list(limit: 10)
+puts((stores.data || []).length)
 ```
 
 
@@ -683,6 +762,14 @@ func main() {
 	}
 	fmt.Println(file.ID)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+file = client.vector_stores.files.create("vs_123", file_id: "file_123")
+puts(file.id)
 ```
 
   
@@ -737,6 +824,27 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = Pathname("customer_policies.txt")
+uploaded = client.files.create(file: file, purpose: :assistants)
+vector_store_file = client.vector_stores.files.create(
+  "vs_123",
+  file_id: uploaded.id
+)
+until [:completed, :failed, :cancelled].include?(vector_store_file.status)
+  sleep(1)
+  vector_store_file = client.vector_stores.files.retrieve(
+    vector_store_file.id,
+    vector_store_id: "vs_123"
+  )
+end
+puts(vector_store_file.id)
+```
+
   
 
   
@@ -777,6 +885,14 @@ func main() {
 	}
 	fmt.Println(file.ID)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+file = client.vector_stores.files.retrieve("file_123", vector_store_id: "vs_123")
+puts(file.id)
 ```
 
   
@@ -827,6 +943,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+file = client.vector_stores.files.update("file_123", vector_store_id: "vs_123", attributes: {category: "policy"})
+puts(file.id)
+```
+
   
 
   
@@ -869,6 +993,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+deleted = client.vector_stores.files.delete("file_123", vector_store_id: "vs_123")
+puts(deleted.deleted)
+```
+
   
 
   
@@ -906,6 +1038,14 @@ func main() {
 	}
 	fmt.Println(files.Data)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+files = client.vector_stores.files.list("vs_123")
+puts((files.data || []).length)
 ```
 
 
@@ -994,6 +1134,34 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+batch = client.vector_stores.file_batches.create(
+  "vs_123",
+  files: [
+    {file_id: "file_123", attributes: {department: "finance"}},
+    {
+      file_id: "file_456",
+      chunking_strategy: {
+        type: :static,
+        max_chunk_size_tokens: 1_200,
+        chunk_overlap_tokens: 200
+      }
+    }
+  ]
+)
+until [:completed, :failed, :cancelled].include?(batch.status)
+  sleep(1)
+  batch = client.vector_stores.file_batches.retrieve(
+    batch.id,
+    vector_store_id: "vs_123"
+  )
+end
+puts(batch.status)
+```
+
   
 
   
@@ -1034,6 +1202,17 @@ func main() {
 	}
 	fmt.Println(batch.ID)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+batch = client.vector_stores.file_batches.retrieve(
+  "vsfb_123",
+  vector_store_id: "vs_123"
+)
+puts(batch.status)
 ```
 
   
@@ -1078,6 +1257,17 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+batch = client.vector_stores.file_batches.cancel(
+  "vsfb_123",
+  vector_store_id: "vs_123"
+)
+puts(batch.status)
+```
+
   
 
   
@@ -1118,6 +1308,17 @@ func main() {
 	}
 	fmt.Println(files.Data)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+files = client.vector_stores.file_batches.list_files(
+  "vsfb_123",
+  vector_store_id: "vs_123"
+)
+puts((files.data || []).length)
 ```
 
 
@@ -1182,6 +1383,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+file = client.vector_stores.files.create("<vector_store_id>", file_id: "file_123", attributes: {category: "policy"})
+puts(file.id)
+```
+
 
 ### Expiration policies
 
@@ -1228,6 +1437,17 @@ func main() {
 	}
 	fmt.Println(vectorStore.ExpiresAfter)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+store = client.vector_stores.update(
+  "vs_123",
+  expires_after: {anchor: :last_active_at, days: 7}
+)
+puts(store.expires_after)
 ```
 
 
@@ -1326,6 +1546,17 @@ func main() {
 	}
 	fmt.Println(results.Data)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+results = client.vector_stores.search(
+  "vs_123",
+  query: "What is the return policy?"
+)
+puts(results.data)
 ```
 
 
@@ -1427,6 +1658,30 @@ func formatResults(results []openai.VectorStoreSearchResponse) string {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+query = "What is the return policy?"
+results = client.vector_stores.search("vs_123", query: query)
+sources = (results.data || []).map do |result|
+  content = result.content.map { |part| "<content>#{part.text}</content>" }.join
+  "<result file_id='#{result.file_id}' file_name='#{result.filename}'>#{content}</result>"
+end.join
+
+completion = client.chat.completions.create(
+  model: "gpt-5.6",
+  messages: [
+    {
+      role: :developer,
+      content: "Answer the query concisely using only the provided sources."
+    },
+    {role: :user, content: "Sources: <sources>#{sources}</sources>\n\nQuery: #{query}"}
+  ]
+)
+puts(completion.choices.fetch(0).message.content)
+```
+
 
 ```json
 "Our return policy allows returns within 30 days of purchase."
@@ -1496,4 +1751,21 @@ func formatResults(results []openai.VectorStoreSearchResponse) string {
 	sources.WriteString("</sources>")
 	return sources.String()
 }
+```
+
+```ruby
+results = [
+  {
+    file_id: "file-12345",
+    filename: "woodchuck_policy.txt",
+    content: [{text: "Each passenger may carry up to two woodchucks."}]
+  }
+]
+
+sources = results.map do |result|
+  content = result.fetch(:content).map { |part| "<content>#{part.fetch(:text)}</content>" }.join
+  "<result file_id=\"#{result.fetch(:file_id)}\" file_name=\"#{result.fetch(:filename)}\">#{content}</result>"
+end
+
+puts("<sources>#{sources.join}</sources>")
 ```

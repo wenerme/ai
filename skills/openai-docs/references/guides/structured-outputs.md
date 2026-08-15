@@ -124,6 +124,40 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+event_schema = {
+  type: :object,
+  properties: {
+    name: {type: :string},
+    date: {type: :string},
+    participants: {type: :array, items: {type: :string}}
+  },
+  required: %w[name date participants],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {role: :system, content: "Extract the event information."},
+    {role: :user, content: "Alice and Bob are going to a science fair on Friday."}
+  ],
+  text: {
+    format: {
+      type: :json_schema,
+      name: "event",
+      strict: true,
+      schema: event_schema
+    }
+  }
+)
+
+puts(response.output_text)
+```
+
 
 
 ### Supported models
@@ -333,6 +367,51 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+step_schema = {
+  type: :object,
+  properties: {
+    explanation: {type: :string},
+    output: {type: :string}
+  },
+  required: %w[explanation output],
+  additionalProperties: false
+}
+math_schema = {
+  type: :object,
+  properties: {
+    steps: {type: :array, items: step_schema},
+    final_answer: {type: :string}
+  },
+  required: %w[steps final_answer],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :system,
+      content: "You are a helpful math tutor. Guide the user through the solution step by step."
+    },
+    {role: :user, content: "How can I solve 8x + 7 = -23?"}
+  ],
+  text: {
+    format: {
+      type: :json_schema,
+      name: "math_reasoning",
+      strict: true,
+      schema: math_schema
+    }
+  }
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -555,6 +634,51 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+research_paper = <<~TEXT
+  Attention Is All You Need by Ashish Vaswani, Noam Shazeer, Niki Parmar,
+  Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia
+  Polosukhin. We propose the Transformer, a sequence transduction architecture
+  based entirely on attention. Keywords: transformers, attention, sequence
+  transduction.
+TEXT
+paper_schema = {
+  type: :object,
+  properties: {
+    title: {type: :string},
+    authors: {type: :array, items: {type: :string}},
+    abstract: {type: :string},
+    keywords: {type: :array, items: {type: :string}}
+  },
+  required: %w[title authors abstract keywords],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :system,
+      content: "Extract structured data from the supplied research paper text."
+    },
+    {role: :user, content: research_paper}
+  ],
+  text: {
+    format: {
+      type: :json_schema,
+      name: "research_paper_extraction",
+      strict: true,
+      schema: paper_schema
+    }
+  }
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -780,6 +904,56 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+ui_schema = {
+  type: :object,
+  properties: {
+    type: {
+      type: :string,
+      enum: %w[div button header section field form]
+    },
+    label: {type: :string},
+    children: {type: :array, items: {"$ref" => "#"}},
+    attributes: {
+      type: :array,
+      items: {
+        type: :object,
+        properties: {
+          name: {type: :string},
+          value: {type: :string}
+        },
+        required: %w[name value],
+        additionalProperties: false
+      }
+    }
+  },
+  required: %w[type label children attributes],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {role: :system, content: "Convert the user request into a UI definition."},
+    {role: :user, content: "Make a user profile form."}
+  ],
+  text: {
+    format: {
+      type: :json_schema,
+      name: "ui",
+      description: "A dynamically generated UI",
+      strict: true,
+      schema: ui_schema
+    }
+  }
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -1064,6 +1238,54 @@ func contentComplianceSchema() map[string]any {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+compliance_schema = {
+  type: :object,
+  properties: {
+    is_violating: {
+      type: :boolean,
+      description: "Whether the content violates the guidelines"
+    },
+    category: {
+      type: %i[string null],
+      enum: ["violence", "sexual", "self_harm", nil],
+      description: "The violation category, or null when the content is allowed"
+    },
+    explanation_if_violating: {
+      type: %i[string null],
+      description: "Why the content violates the guidelines, or null"
+    }
+  },
+  required: %w[is_violating category explanation_if_violating],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :system,
+      content: "Determine whether the user input violates the guidelines and explain any violation."
+    },
+    {role: :user, content: "How do I prepare for a job interview?"}
+  ],
+  text: {
+    format: {
+      type: :json_schema,
+      name: "content_compliance",
+      description: "Determines whether content violates moderation rules",
+      strict: true,
+      schema: compliance_schema
+    }
+  }
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -1298,6 +1520,53 @@ func mathSchema() map[string]any {
 		"additionalProperties": false,
 	}
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+math_schema = {
+  type: :object,
+  properties: {
+    steps: {
+      type: :array,
+      items: {
+        type: :object,
+        properties: {
+          explanation: {type: :string},
+          output: {type: :string}
+        },
+        required: %w[explanation output],
+        additionalProperties: false
+      }
+    },
+    final_answer: {type: :string}
+  },
+  required: %w[steps final_answer],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :system,
+      content: "You are a helpful math tutor. Guide the user through the solution step by step."
+    },
+    {role: :user, content: "How can I solve 8x + 7 = -23?"}
+  ],
+  text: {
+    format: {
+      type: :json_schema,
+      name: "math_response",
+      strict: true,
+      schema: math_schema
+    }
+  }
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -1572,6 +1841,68 @@ func mathSchema() map[string]any {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+step_schema = {
+  type: :object,
+  properties: {
+    explanation: {type: :string},
+    output: {type: :string}
+  },
+  required: %w[explanation output],
+  additionalProperties: false
+}
+math_schema = {
+  type: :object,
+  properties: {
+    steps: {type: :array, items: step_schema},
+    final_answer: {type: :string}
+  },
+  required: %w[steps final_answer],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :system,
+      content: "You are a helpful math tutor. Guide the user through the solution step by step."
+    },
+    {role: :user, content: "How can I solve 8x + 7 = -23?"}
+  ],
+  max_output_tokens: 1_024,
+  text: {
+    format: {
+      type: :json_schema,
+      name: "math_response",
+      strict: true,
+      schema: math_schema
+    }
+  }
+)
+
+if response.status == OpenAI::Responses::ResponseStatus::INCOMPLETE
+  raise "Incomplete response"
+end
+
+message = response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputMessage)
+end
+unless message.is_a?(OpenAI::Models::Responses::ResponseOutputMessage)
+  raise "No response message"
+end
+
+content = message.content.fetch(0)
+if content.is_a?(OpenAI::Models::Responses::ResponseOutputRefusal)
+  puts(content.refusal)
+else
+  puts(content.text)
+end
+```
+
 
 
 
@@ -1733,6 +2064,64 @@ func mathSchema() map[string]any {
 		"additionalProperties": false,
 	}
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+math_schema = {
+  type: :object,
+  properties: {
+    steps: {
+      type: :array,
+      items: {
+        type: :object,
+        properties: {
+          explanation: {type: :string},
+          output: {type: :string}
+        },
+        required: %w[explanation output],
+        additionalProperties: false
+      }
+    },
+    final_answer: {type: :string}
+  },
+  required: %w[steps final_answer],
+  additionalProperties: false
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :system,
+      content: "You are a helpful math tutor. Guide the user through the solution step by step."
+    },
+    {role: :user, content: "How can I solve 8x + 7 = -23?"}
+  ],
+  text: {
+    format: {
+      type: :json_schema,
+      name: "math_response",
+      strict: true,
+      schema: math_schema
+    }
+  }
+)
+
+response.output.each do |item|
+  next unless item.is_a?(OpenAI::Models::Responses::ResponseOutputMessage)
+
+  item.content.each do |content|
+    case content
+    when OpenAI::Models::Responses::ResponseOutputRefusal
+      puts(content.refusal)
+    when OpenAI::Models::Responses::ResponseOutputText
+      puts(content.text)
+    end
+  end
+end
 ```
 
 
@@ -2594,6 +2983,39 @@ func main() {
 		fmt.Println(value)
 	}
 }
+```
+
+```ruby
+require "json"
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {role: :system, content: "You are a helpful assistant designed to output JSON."},
+    {
+      role: :user,
+      content: "Who won the World Series in 2020? Respond in the format {winner: ...}."
+    }
+  ],
+  text: {format: {type: :json_object}}
+)
+
+if response.status == OpenAI::Responses::ResponseStatus::INCOMPLETE
+  warn("The JSON response is incomplete.")
+else
+  refusal = response.output
+    .grep(OpenAI::Models::Responses::ResponseOutputMessage)
+    .flat_map(&:content)
+    .find { |content| content.is_a?(OpenAI::Models::Responses::ResponseOutputRefusal) }
+
+  if refusal.is_a?(OpenAI::Models::Responses::ResponseOutputRefusal)
+    puts(refusal.refusal)
+  elsif response.status == OpenAI::Responses::ResponseStatus::COMPLETED
+    puts(JSON.pretty_generate(JSON.parse(response.output_text)))
+  end
+end
 ```
 
 ## Resources

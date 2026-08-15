@@ -1,11 +1,11 @@
 ---
 title: "Abacus | Models"
-description: "Use Abacus models with Mastra. 95 models available."
+description: "Use Abacus models with Mastra. 108 models available."
 ---
 
 # [Abacus logo]Abacus
 
-Access 95 Abacus models through Mastra's model router. Authentication is handled automatically using the `ABACUS_API_KEY` environment variable.
+Access 108 Abacus models through Mastra's model router. Authentication is handled automatically using the `ABACUS_API_KEY` environment variable.
 
 Learn more in the [Abacus documentation](https://abacus.ai).
 
@@ -137,6 +137,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "abacus/claude-opus-4-8",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 5,
+    "outputCost": 25
+  },
+  {
+    "model": "abacus/claude-opus-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -316,6 +328,18 @@ for await (const chunk of stream) {
     "outputCost": 3
   },
   {
+    "model": "abacus/gemini-3-pro-image",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 65536,
+    "maxOutput": 32768,
+    "inputCost": 2,
+    "outputCost": 12
+  },
+  {
     "model": "abacus/gemini-3-pro-image-preview",
     "imageInput": true,
     "audioInput": false,
@@ -326,6 +350,18 @@ for await (const chunk of stream) {
     "maxOutput": 32768,
     "inputCost": 2,
     "outputCost": 12
+  },
+  {
+    "model": "abacus/gemini-3.1-flash-image",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 32768,
+    "inputCost": 0.5,
+    "outputCost": 3
   },
   {
     "model": "abacus/gemini-3.1-flash-image-preview",
@@ -386,6 +422,42 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 1.5,
     "outputCost": 9
+  },
+  {
+    "model": "abacus/gemini-3.5-flash-lite",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.3,
+    "outputCost": 2.5
+  },
+  {
+    "model": "abacus/gemini-3.6-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.5,
+    "outputCost": 7.5
+  },
+  {
+    "model": "abacus/gemini-3.7-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.75,
+    "outputCost": 3.75
   },
   {
     "model": "abacus/google/gemma-4-31b-it",
@@ -784,6 +856,18 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
+    "model": "abacus/grok-4.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 32768,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
     "model": "abacus/grok-code-fast-1",
     "imageInput": true,
     "audioInput": false,
@@ -928,6 +1012,30 @@ for await (const chunk of stream) {
     "outputCost": 4
   },
   {
+    "model": "abacus/moonshotai/Kimi-K2.7-Code",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.95,
+    "outputCost": 4
+  },
+  {
+    "model": "abacus/moonshotai/Kimi-K3",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 3,
+    "outputCost": 15
+  },
+  {
     "model": "abacus/muse-spark-1.1",
     "imageInput": true,
     "audioInput": false,
@@ -936,6 +1044,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 32000,
+    "inputCost": 1.25,
+    "outputCost": 4.25
+  },
+  {
+    "model": "abacus/muse-spark-1.2",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
     "inputCost": 1.25,
     "outputCost": 4.25
   },
@@ -1096,6 +1216,30 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
+    "model": "abacus/qwen3.7-max",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 64000,
+    "inputCost": 2.5,
+    "outputCost": 7.5
+  },
+  {
+    "model": "abacus/qwen3.8-max",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 131072,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
     "model": "abacus/route-llm",
     "imageInput": true,
     "audioInput": false,
@@ -1106,6 +1250,18 @@ for await (const chunk of stream) {
     "maxOutput": 64000,
     "inputCost": 3,
     "outputCost": 15
+  },
+  {
+    "model": "abacus/thinkingmachines/Inkling",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 131072,
+    "inputCost": 3.74,
+    "outputCost": 9.36
   },
   {
     "model": "abacus/zai-org/GLM-4.5",

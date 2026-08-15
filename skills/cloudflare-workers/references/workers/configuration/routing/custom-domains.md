@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom Domains
 
-Last updated Jun 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -53,6 +53,12 @@ To set up a Custom Domain in the dashboard:
 5. Select **Add Custom Domain**.
 
 After you have added the domain or subdomain, Cloudflare will create a new DNS record for you. You can add multiple Custom Domains.
+
+### Require sign-in for a Custom Domain
+
+To require visitors to sign in before they can access a Custom Domain, use [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/#protect-a-specific-hostname-custom-domain-or-path).
+
+You can protect a Custom Domain with hostname-based Access, or protect the Worker itself across its routes, Custom Domains, `workers.dev` hostname, and previews. For more information, refer to [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/).
 
 ### Set up a Custom Domain in your Wrangler configuration file
 
@@ -119,9 +125,9 @@ If `worker-a` sends a fetch request to `worker-b`, the request will fail, becaus
 export default {
 	fetch(request) {
 		// This will fail
-		return fetch("https://shop.example.com")
-	}
-}
+		return fetch("https://shop.example.com");
+	},
+};
 ```
 
 However, if `worker-b` was instead set up to run on the Custom Domain `shop.example.com`, the fetch request would succeed.
@@ -146,15 +152,15 @@ For example, consider the following workflow:
 ```js
 export default {
 	fetch(request) {
-		const url = new URL(request.url)
-		if(url.searchParams.get("auth") !== "SECRET_TOKEN") {
-			return new Response(null, { status: 401 })
+		const url = new URL(request.url);
+		if (url.searchParams.get("auth") !== "SECRET_TOKEN") {
+			return new Response(null, { status: 401 });
 		} else {
 			// This will invoke `api-worker`
-			return fetch(request)
+			return fetch(request);
 		}
-	}
-}
+	},
+};
 ```
 
 ## Certificates
@@ -233,5 +239,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains · Cloudflare Workers docs","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains · Cloudflare Workers docs","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

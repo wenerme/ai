@@ -156,6 +156,14 @@ StreamingEvent = (
 type StreamingEvent = responses.ResponseStreamEventUnion
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+stream = client.responses.stream(model: "gpt-5.5", input: "Say hello.")
+stream.each { |event| puts(event) }
+```
+
 
 
 

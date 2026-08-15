@@ -58,20 +58,20 @@ func main() {
 }
 ```
 
-```ruby
-require "openai"
-
-openai = OpenAI::Client.new(
-  admin_api_key: ENV.fetch("OPENAI_ADMIN_KEY")
-)
-```
-
 ```java
 import com.openai.client.OpenAIClient;
 import com.openai.client.okhttp.OpenAIOkHttpClient;
 
 OpenAIClient client =
     OpenAIOkHttpClient.builder().adminApiKey(System.getenv("OPENAI_ADMIN_KEY")).build();
+```
+
+```ruby
+require "openai"
+
+openai = OpenAI::Client.new(
+  admin_api_key: ENV.fetch("OPENAI_ADMIN_KEY")
+)
 ```
 
 
@@ -119,16 +119,6 @@ if err != nil {
 println(modelPermissions.Mode)
 ```
 
-```ruby
-model_permissions = openai.admin.organization.projects.model_permissions.update(
-  "proj_abc",
-  mode: :allow_list,
-  model_ids: ["gpt-4.1", "o3"]
-)
-
-puts(model_permissions.mode)
-```
-
 ```java
 import com.openai.models.admin.organization.projects.modelpermissions.ModelPermissionUpdateParams;
 import com.openai.models.admin.organization.projects.modelpermissions.ProjectModelPermissions;
@@ -148,6 +138,16 @@ ProjectModelPermissions modelPermissions =
                 .build());
 
 System.out.println(modelPermissions.mode());
+```
+
+```ruby
+model_permissions = openai.admin.organization.projects.model_permissions.update(
+  "proj_abc",
+  mode: :allow_list,
+  model_ids: ["gpt-4.1", "o3"]
+)
+
+puts(model_permissions.mode)
 ```
 
 
@@ -232,22 +232,6 @@ if err != nil {
 println(spendAlert.ID)
 ```
 
-```ruby
-spend_alert = openai.admin.organization.projects.spend_alerts.create(
-  "proj_abc",
-  currency: :USD,
-  interval: :month,
-  notification_channel: {
-    recipients: ["billing@example.com"],
-    type: :email,
-    subject_prefix: "[OpenAI spend]"
-  },
-  threshold_amount: 50_000
-)
-
-puts(spend_alert.id)
-```
-
 ```java
 import com.openai.models.admin.organization.projects.spendalerts.ProjectSpendAlert;
 import com.openai.models.admin.organization.projects.spendalerts.SpendAlertCreateParams;
@@ -272,6 +256,22 @@ ProjectSpendAlert spendAlert =
                 .build());
 
 System.out.println(spendAlert.id());
+```
+
+```ruby
+spend_alert = openai.admin.organization.projects.spend_alerts.create(
+  "proj_abc",
+  currency: :USD,
+  interval: :month,
+  notification_channel: {
+    recipients: ["billing@example.com"],
+    type: :email,
+    subject_prefix: "[OpenAI spend]"
+  },
+  threshold_amount: 50_000
+)
+
+puts(spend_alert.id)
 ```
 
 
@@ -316,15 +316,6 @@ if err != nil {
 println(dataRetention.Type)
 ```
 
-```ruby
-data_retention = openai.admin.organization.projects.data_retention.update(
-  "proj_abc",
-  retention_type: :organization_default
-)
-
-puts(data_retention.type)
-```
-
 ```java
 import com.openai.models.admin.organization.projects.dataretention.DataRetentionUpdateParams;
 import com.openai.models.admin.organization.projects.dataretention.ProjectDataRetention;
@@ -342,6 +333,15 @@ ProjectDataRetention dataRetention =
                 .build());
 
 System.out.println(dataRetention.type());
+```
+
+```ruby
+data_retention = openai.admin.organization.projects.data_retention.update(
+  "proj_abc",
+  retention_type: :organization_default
+)
+
+puts(data_retention.type)
 ```
 
 
@@ -383,15 +383,6 @@ if err != nil {
 println(invite.ID)
 ```
 
-```ruby
-invite = openai.admin.organization.invites.create(
-  email: "user@example.com",
-  role: :reader
-)
-
-puts(invite.id)
-```
-
 ```java
 import com.openai.models.admin.organization.invites.Invite;
 import com.openai.models.admin.organization.invites.InviteCreateParams;
@@ -408,6 +399,15 @@ Invite invite =
                 .build());
 
 System.out.println(invite.id());
+```
+
+```ruby
+invite = openai.admin.organization.invites.create(
+  email: "user@example.com",
+  role: :reader
+)
+
+puts(invite.id)
 ```
 
 
@@ -447,14 +447,6 @@ for _, auditLog := range auditLogs.Data {
 }
 ```
 
-```ruby
-audit_logs = openai.admin.organization.audit_logs.list(limit: 10)
-
-audit_logs.data.each do |audit_log|
-  puts(audit_log.id)
-end
-```
-
 ```java
 import com.openai.models.admin.organization.auditlogs.AuditLogListParams;
 
@@ -466,4 +458,12 @@ var page =
         .list(AuditLogListParams.builder().limit(10L).build());
 
 page.data().forEach(auditLog -> System.out.println(auditLog.id()));
+```
+
+```ruby
+audit_logs = openai.admin.organization.audit_logs.list(limit: 10)
+
+(audit_logs.data || []).each do |audit_log|
+  puts(audit_log.id)
+end
 ```

@@ -39,7 +39,7 @@ For more details on Cloudflare One Client support timelines and end-of-life (EOL
 
 Latest release
 
-**Version:** Windows2026.6.905.0**Date:** 2026-08-10**Size:** 59.1 MB
+**Version:** Windows 2026.6.905.0**Date:** 2026-08-10**Size:** 59.1 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.905.0)
 
@@ -51,7 +51,7 @@ Previous version history (13)
 
 Windows 2026.6.880.0
 
-**Version:** Windows2026.6.880.0**Date:** 2026-07-21**Size:** 59 MB
+**Version:** Windows 2026.6.880.0**Date:** 2026-07-21**Size:** 59 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.880.0)
 
@@ -61,7 +61,7 @@ This hotfix resolves a regression that caused a large increase in DNS-over-TCP q
 
 Windows 2026.6.850.0
 
-**Version:** Windows2026.6.850.0**Date:** 2026-07-07**Size:** 59 MB
+**Version:** Windows 2026.6.850.0**Date:** 2026-07-07**Size:** 59 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.850.0)
 
@@ -71,7 +71,7 @@ This hotfix addresses a Windows authentication issue in the embedded WebView2 br
 
 Windows 2026.6.822.0
 
-**Version:** Windows2026.6.822.0**Date:** 2026-06-29**Size:** 59 MB
+**Version:** Windows 2026.6.822.0**Date:** 2026-06-29**Size:** 59 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.6.822.0)
 
@@ -118,7 +118,7 @@ This release introduces multiple features from our previous beta release into st
 
 Windows 2026.4.1390.0
 
-**Version:** Windows2026.4.1390.0**Date:** 2026-05-26**Size:** 52.3 MB
+**Version:** Windows 2026.4.1390.0**Date:** 2026-05-26**Size:** 52.3 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1390.0)
 
@@ -149,7 +149,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 Windows 2026.4.1350.0
 
-**Version:** Windows2026.4.1350.0**Date:** 2026-05-11**Size:** 52.3 MB
+**Version:** Windows 2026.4.1350.0**Date:** 2026-05-11**Size:** 52.3 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.4.1350.0)
 
@@ -179,7 +179,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 Windows 2026.3.851.0
 
-**Version:** Windows2026.3.851.0**Date:** 2026-04-07**Size:** 136 MB
+**Version:** Windows 2026.3.851.0**Date:** 2026-04-07**Size:** 136 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.3.851.0)
 
@@ -219,7 +219,7 @@ To work around this issue, reconnect the client by selecting **Disconnect** and 
 
 Windows 2026.1.150.0
 
-**Version:** Windows2026.1.150.0**Date:** 2026-02-24**Size:** 137 MB
+**Version:** Windows 2026.1.150.0**Date:** 2026-02-24**Size:** 137 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.1.150.0)
 
@@ -251,7 +251,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.10.186.0
 
-**Version:** Windows2025.10.186.0**Date:** 2026-01-13**Size:** 135 MB
+**Version:** Windows 2025.10.186.0**Date:** 2026-01-13**Size:** 135 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.10.186.0)
 
@@ -281,7 +281,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.9.558.0
 
-**Version:** Windows2025.9.558.0**Date:** 2025-11-11**Size:** 136 MB
+**Version:** Windows 2025.9.558.0**Date:** 2025-11-11**Size:** 136 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.9.558.0)
 
@@ -312,7 +312,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.8.779.0
 
-**Version:** Windows2025.8.779.0**Date:** 2025-10-07**Size:** 135 MB
+**Version:** Windows 2025.8.779.0**Date:** 2025-10-07**Size:** 135 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.8.779.0)
 
@@ -339,7 +339,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.7.176.0
 
-**Version:** Windows2025.7.176.0**Date:** 2025-09-30**Size:** 134 MB
+**Version:** Windows 2025.7.176.0**Date:** 2025-09-30**Size:** 134 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.7.176.0)
 
@@ -369,7 +369,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.6.1400.0
 
-**Version:** Windows2025.6.1400.0**Date:** 2025-08-21**Size:** 134 MB
+**Version:** Windows 2025.6.1400.0**Date:** 2025-08-21**Size:** 134 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.1400.0)
 
@@ -395,7 +395,7 @@ To work around this issue, please reconnect the WARP client by toggling off and 
 
 Windows 2025.6.1335.0
 
-**Version:** Windows2025.6.1335.0**Date:** 2025-08-19**Size:** 134 MB
+**Version:** Windows 2025.6.1335.0**Date:** 2025-08-19**Size:** 134 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.6.1335.0)
 
@@ -441,7 +441,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Latest release
 
-**Version:** macOS2026.6.880.0**Date:** 2026-07-21**Size:** 152 MB
+**Version:** macOS 2026.6.880.0**Date:** 2026-07-21**Size:** 152 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.880.0)
 
@@ -453,7 +453,7 @@ Previous version history (10)
 
 macOS 2026.6.822.0
 
-**Version:** macOS2026.6.822.0**Date:** 2026-06-29**Size:** 152 MB
+**Version:** macOS 2026.6.822.0**Date:** 2026-06-29**Size:** 152 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.822.0)
 
@@ -495,7 +495,7 @@ This release introduces multiple features from our previous beta release into st
 
 macOS 2026.4.1390.0
 
-**Version:** macOS2026.4.1390.0**Date:** 2026-05-26**Size:** 133 MB
+**Version:** macOS 2026.4.1390.0**Date:** 2026-05-26**Size:** 133 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1390.0)
 
@@ -518,7 +518,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 macOS 2026.4.1350.0
 
-**Version:** macOS2026.4.1350.0**Date:** 2026-05-11**Size:** 133 MB
+**Version:** macOS 2026.4.1350.0**Date:** 2026-05-11**Size:** 133 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.4.1350.0)
 
@@ -540,7 +540,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 macOS 2026.3.846.0
 
-**Version:** macOS2026.3.846.0**Date:** 2026-04-02**Size:** 113 MB
+**Version:** macOS 2026.3.846.0**Date:** 2026-04-02**Size:** 113 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.3.846.0)
 
@@ -563,7 +563,7 @@ The next stable release for macOS will introduce the new Cloudflare One Client U
 
 macOS 2026.1.150.0
 
-**Version:** macOS2026.1.150.0**Date:** 2026-02-24**Size:** 115 MB
+**Version:** macOS 2026.1.150.0**Date:** 2026-02-24**Size:** 115 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.1.150.0)
 
@@ -581,7 +581,7 @@ This release contains minor fixes and improvements.
 
 macOS 2025.10.186.0
 
-**Version:** macOS2025.10.186.0**Date:** 2026-01-13**Size:** 111 MB
+**Version:** macOS 2025.10.186.0**Date:** 2026-01-13**Size:** 111 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.10.186.0)
 
@@ -597,7 +597,7 @@ This release contains minor fixes, improvements, and new features, including the
 
 macOS 2025.9.558.0
 
-**Version:** macOS2025.9.558.0**Date:** 2025-11-11**Size:** 111 MB
+**Version:** macOS 2025.9.558.0**Date:** 2025-11-11**Size:** 111 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.9.558.0)
 
@@ -617,7 +617,7 @@ This release contains minor fixes, improvements, and new features including [Pat
 
 macOS 2025.8.779.0
 
-**Version:** macOS2025.8.779.0**Date:** 2025-10-07**Size:** 108 MB
+**Version:** macOS 2025.8.779.0**Date:** 2025-10-07**Size:** 108 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.8.779.0)
 
@@ -637,7 +637,7 @@ This release contains significant fixes and improvements.
 
 macOS 2025.7.176.0
 
-**Version:** macOS2025.7.176.0**Date:** 2025-09-30**Size:** 109 MB
+**Version:** macOS 2025.7.176.0**Date:** 2025-09-30**Size:** 109 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.7.176.0)
 
@@ -661,7 +661,7 @@ This release contains minor fixes and improvements.
 
 macOS 2025.6.1335.0
 
-**Version:** macOS2025.6.1335.0**Date:** 2025-08-19**Size:** 108 MB
+**Version:** macOS 2025.6.1335.0**Date:** 2025-08-19**Size:** 108 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.6.1335.0)
 
@@ -700,7 +700,7 @@ This release contains minor fixes and improvements.
 
 Latest release
 
-**Version:** Linux2026.6.880.0**Date:** 2026-07-21**Size:** 74.4 MB
+**Version:** Linux 2026.6.880.0**Date:** 2026-07-21**Size:** 74.4 MB
 
 AlmaLinux / RHEL 10 (arm64)AlmaLinux / RHEL 10 (x86-64)AlmaLinux / RHEL 9 (arm64)AlmaLinux / RHEL 9 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
 
@@ -714,7 +714,7 @@ Previous version history (11)
 
 Linux 2026.6.836.0
 
-**Version:** Linux2026.6.836.0**Date:** 2026-07-01**Size:** 74.4 MB
+**Version:** Linux 2026.6.836.0**Date:** 2026-07-01**Size:** 74.4 MB
 
 Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (arm64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
 
@@ -735,7 +735,7 @@ sudo dnf install cloudflare-warp
 
 Linux 2026.6.822.0
 
-**Version:** Linux2026.6.822.0**Date:** 2026-06-29**Size:** 76 MB
+**Version:** Linux 2026.6.822.0**Date:** 2026-06-29**Size:** 76 MB
 
 Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 43 (arm64)Fedora 43 (x86-64)Fedora 44 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)Ubuntu 26.04 (arm64)Ubuntu 26.04 (x86-64)
 
@@ -782,7 +782,7 @@ For RHEL deployments, this release introduces a dependency on the [Extra Package
 
 Linux 2026.4.1390.0
 
-**Version:** Linux2026.4.1390.0**Date:** 2026-05-26**Size:** 79.9 MB
+**Version:** Linux 2026.4.1390.0**Date:** 2026-05-26**Size:** 79.9 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -808,7 +808,7 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 
 Linux 2026.4.1350.0
 
-**Version:** Linux2026.4.1350.0**Date:** 2026-05-11**Size:** 79.9 MB
+**Version:** Linux 2026.4.1350.0**Date:** 2026-05-11**Size:** 79.9 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -833,7 +833,7 @@ This release introduces the new Cloudflare One Client UI for Linux! You can expe
 
 Linux 2026.3.846.0
 
-**Version:** Linux2026.3.846.0**Date:** 2026-04-02**Size:** 57.2 MB
+**Version:** Linux 2026.3.846.0**Date:** 2026-04-02**Size:** 57.2 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -858,7 +858,7 @@ The next stable release for Linux will introduce the new Cloudflare One Client U
 
 Linux 2026.1.150.0
 
-**Version:** Linux2026.1.150.0**Date:** 2026-02-24**Size:** 55.1 MB
+**Version:** Linux 2026.1.150.0**Date:** 2026-02-24**Size:** 55.1 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -879,7 +879,7 @@ WARP client version 2025.8.779.0 introduced an updated public key for Linux pack
 
 Linux 2025.10.186.0
 
-**Version:** Linux2025.10.186.0**Date:** 2026-01-13**Size:** 52 MB
+**Version:** Linux 2025.10.186.0**Date:** 2026-01-13**Size:** 52 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -901,7 +901,7 @@ WARP client version 2025.8.779.0 introduced an updated public key for Linux pack
 
 Linux 2025.9.558.0
 
-**Version:** Linux2025.9.558.0**Date:** 2025-11-11**Size:** 54.7 MB
+**Version:** Linux 2025.9.558.0**Date:** 2025-11-11**Size:** 54.7 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -921,7 +921,7 @@ WARP client version 2025.8.779.0 introduced an updated public key for Linux pack
 
 Linux 2025.8.779.0
 
-**Version:** Linux2025.8.779.0**Date:** 2025-10-07**Size:** 51.4 MB
+**Version:** Linux 2025.8.779.0**Date:** 2025-10-07**Size:** 51.4 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -942,7 +942,7 @@ This release contains significant fixes and improvements including an updated pu
 
 Linux 2025.7.176.0
 
-**Version:** Linux2025.7.176.0**Date:** 2025-09-30**Size:** 52.7 MB
+**Version:** Linux 2025.7.176.0**Date:** 2025-09-30**Size:** 52.7 MB
 
 CentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Debian 13 (arm64)Debian 13 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 
@@ -965,7 +965,7 @@ This release contains minor fixes and improvements including an updated public k
 
 Linux 2025.6.1335.0
 
-**Version:** Linux2025.6.1335.0**Date:** 2025-08-19**Size:** 50.6 MB
+**Version:** Linux 2025.6.1335.0**Date:** 2025-08-19**Size:** 50.6 MB
 
 buster-armbuster-intelCentOS / RHEL 8 (arm64)CentOS / RHEL 8 (x86-64)Debian 11 (arm64)Debian 11 (x86-64)Debian 12 (arm64)Debian 12 (x86-64)Fedora 34 (arm64)Fedora 34 (x86-64)Fedora 35 (arm64)Fedora 35 (x86-64)Ubuntu 20.04 (arm64)Ubuntu 20.04 (x86-64)Ubuntu 22.04 (arm64)Ubuntu 22.04 (x86-64)Ubuntu 24.04 (arm64)Ubuntu 24.04 (x86-64)
 

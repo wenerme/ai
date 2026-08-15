@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Preview URLs
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Preview URLs allow you to preview new versions of your Worker without deploying it to production.
 
@@ -92,17 +92,11 @@ The resulting alias would be associated with this version, and immediately avail
 
 ## Manage access to Preview URLs
 
-When enabled, all preview URLs are available publicly. You can use [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to require visitors to authenticate before accessing preview URLs. You can limit access to yourself, your teammates, your organization, or anyone else you specify in your [access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
+When enabled, Preview URLs are available publicly. To require visitors to sign in before they can access Preview URLs, use [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/).
 
-To limit your preview URLs to authorized emails only:
+Access can protect previews for one Worker or every Worker in an account. You can also protect both production and preview deployments.
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. In **Overview**, select your Worker.
-3. Go to **Settings** \> **Domains & Routes**.
-4. For Preview URLs, click **Enable Cloudflare Access**.
-5. Optionally, to configure the Access application, click **Manage Cloudflare Access**. There, you can change the email addresses you want to authorize. View [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#selectors) to learn about configuring alternate rules.
-6. [Validate the Access JWT ↗](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/#cloudflare-workers-example) in your Worker script using the audience (`aud`) tag and JWKs URL provided.
+To use details about the signed-in user in your Worker, read the [user's identity](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity) from the validated JWT or the `/cdn-cgi/access/get-identity` endpoint.
 
 ## Toggle Preview URLs (Enable or Disable)
 
@@ -177,5 +171,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#page","headline":"Preview URLs · Cloudflare Workers docs","description":"Preview URLs allow you to preview new versions of your project without deploying it to production.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#page","headline":"Preview URLs · Cloudflare Workers docs","description":"Preview URLs allow you to preview new versions of your project without deploying it to production.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

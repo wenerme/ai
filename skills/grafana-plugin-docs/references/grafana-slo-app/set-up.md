@@ -13,4 +13,4 @@ The following topics provide you with additional configuration options for Grafa
 - [Configure RBAC permissions](/docs/plugins/grafana-slo-app/latest/set-up/rbac/)
 - [Provision SLO resources using Terraform](/docs/plugins/grafana-slo-app/latest/set-up/terraform/)
 - [Provision SLO resources using the HTTP API](/docs/plugins/grafana-slo-app/latest/set-up/api/)
-- [Configure an additional Grafana Mimir Data Source](/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources/)
+- [Configure additional data sources for SLOs](/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources/)

@@ -44,7 +44,7 @@ List user actions and configuration changes within this organization.
 
     Return only events whose `effective_at` (Unix seconds) is less than or equal to this value.
 
-- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 141 more`
+- `event_types: optional array of "api_key.created" or "api_key.updated" or "api_key.deleted" or 142 more`
 
   Return only events with a `type` in one of these values. For example, `project.created`. For all options, see the documentation for the [audit log object](/docs/api-reference/audit-logs/object).
 
@@ -302,6 +302,8 @@ List user actions and configuration changes within this organization.
 
   - `"tenant.resource_access.deleted"`
 
+  - `"tenant.ads_account.onboarding.redemption"`
+
   - `"tenant.session_policy.created"`
 
   - `"tenant.session_policy.updated"`
@@ -364,7 +366,7 @@ List user actions and configuration changes within this organization.
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 141 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 142 more`
 
     The event type.
 
@@ -621,6 +623,8 @@ List user actions and configuration changes within this organization.
     - `"tenant.resource_access.updated"`
 
     - `"tenant.resource_access.deleted"`
+
+    - `"tenant.ads_account.onboarding.redemption"`
 
     - `"tenant.session_policy.created"`
 
@@ -2090,7 +2094,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
     The Unix timestamp (in seconds) of the event.
 
-  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 141 more`
+  - `type: "api_key.created" or "api_key.updated" or "api_key.deleted" or 142 more`
 
     The event type.
 
@@ -2347,6 +2351,8 @@ curl https://api.openai.com/v1/organization/audit_logs \
     - `"tenant.resource_access.updated"`
 
     - `"tenant.resource_access.deleted"`
+
+    - `"tenant.ads_account.onboarding.redemption"`
 
     - `"tenant.session_policy.created"`
 

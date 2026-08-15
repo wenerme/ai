@@ -118,6 +118,21 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+job = client.fine_tuning.jobs.create(
+  model: "gpt-4.1-mini-2025-04-14",
+  training_file: "file-abc123",
+  method_: {
+    type: :supervised,
+    supervised: {hyperparameters: {n_epochs: 2}}
+  }
+)
+puts(job.id)
+```
+
 
 ## Adjust your dataset
 

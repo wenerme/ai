@@ -6,69 +6,60 @@
 
 > Run your existing agent CLI on OpenRouter with any model, organization guardrails, and one bill
 
-Ori Harness runs the agent CLI you already use on OpenRouter. One command runs the agent CLI you already have, with OpenRouter credentials, models, and environment set up for you. Your workflow does not change.
+Ori Harness runs the agent CLI you already use on OpenRouter. You run one command, and your agent starts with OpenRouter credentials, models, and settings in place. You don't change how you work.
+
+## Install Ori
+
+```sh theme={null}
+curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
+```
+
+That's the only install command you need. If you run an agent that isn't on your machine, Ori asks to install it, then starts it.
+
+To have a coding agent do this for you, use the [install-ori-harness skill](https://openrouter.ai/skills/install-ori-harness):
+
+```text theme={null}
+run curl -fsSL https://openrouter.ai/skills/install-ori-harness and follow the instructions in its output to get started
+```
+
+To update Ori, run:
+
+```sh theme={null}
+ori update
+```
 
 ## Bring your own agent
 
-Use Claude Code, Codex, Hermes, OpenCode, Pi, Prime Agent, or DeepSeek Harness with the commands you already know:
+Run Claude Code, Codex, Grok Build, Hermes, OpenCode, Pi, Prime Agent, or DeepSeek Harness with commands you already know:
 
 ```text theme={null}
 ori claude
 ori codex
 ori dsh
+ori grok
 ori hermes
 ori opencode
 ori pi
 ori prime-agent
 ```
 
-These commands launch the real agent CLI on your machine. Ori runs the CLI already on your `PATH`. If it is not installed, Ori tells you how to install it and lets you try again. The exception is `ori dsh`, which configures DeepSeek Harness instead of launching it (see [DeepSeek Harness](#deepseek-harness) below).
-
-For Pi, install it with:
-
-```sh theme={null}
-curl -fsSL https://pi.dev/install.sh | sh
-```
-
-For Prime Agent, install it with:
-
-```sh theme={null}
-curl -fsSL https://app.primeintellect.ai/prime-agent/install.sh | sh
-```
+Each command starts the real agent CLI on your machine. Ori uses the CLI on your `PATH`, and asks to install it if it's missing. `ori dsh` is the one exception: it sets up DeepSeek Harness instead of starting it. See [DeepSeek Harness](#deepseek-harness).
 
 ### DeepSeek Harness
 
-DeepSeek Harness (dsh) is not an on/off TUI like the other CLIs, so Ori configures it instead of launching it:
+DeepSeek Harness (dsh) doesn't start and stop like the other CLIs, so Ori sets it up instead of starting it:
 
 ```sh theme={null}
 ori dsh
 ```
 
-This one command configures your global DeepSeek Harness to use OpenRouter. Afterwards, run `dsh` yourself as usual.
-
-If dsh is not installed:
-
-```sh theme={null}
-npm install -g --prefix ~/.local @deepseek-ai/dsh
-```
-
-The [install-ori-harness skill](https://openrouter.ai/skills/install-ori-harness) gives a coding agent the same steps:
-
-```text theme={null}
-run curl -fsSL https://openrouter.ai/skills/install-ori-harness and follow the instructions in its output to get started
-```
+This points your global DeepSeek Harness config at OpenRouter. After that, run `dsh` the way you always do.
 
 ## Sign in instead of managing keys
 
-Install Ori:
+Run an agent and Ori opens a browser so you can sign in with your OpenRouter account. It uses OAuth PKCE, so there's no new account and no key to create or paste.
 
-```sh theme={null}
-curl -fsSL https://openrouter.ai/labs/ori/install.sh | bash
-```
-
-Then run an agent. Ori uses OAuth PKCE with your existing OpenRouter login. A browser opens for sign-in. There is no new account and no key to create or paste.
-
-You can also sign in before your first run:
+You can also sign in first:
 
 ```sh theme={null}
 ori login
@@ -76,22 +67,17 @@ ori login
 
 <Note>
   Your models, credits, and organization settings come with your OpenRouter
-  login. You do not need to manage a separate provider key for each agent.
+  login. You don't need a separate provider key for each agent.
 </Note>
-
-Upgrade Ori with:
-
-```sh theme={null}
-ori update
-```
 
 ## Any agent, any model
 
-Pass `--model` with any OpenRouter model ID:
+Pass `--model` and any OpenRouter model ID:
 
 ```sh theme={null}
 ori claude --model anthropic/claude-sonnet-4.6
 ori codex --model openai/gpt-5.2
+ori grok --model x-ai/grok-4.5
 ori hermes --model openrouter/auto
 ori opencode --model openrouter/auto
 ori pi --model openai/gpt-5.2
@@ -99,47 +85,49 @@ ori prime-agent --model openai/gpt-5.2
 ori dsh --model openrouter/auto
 ```
 
-For `ori dsh`, the `--model` flag sets the default model in your dsh settings rather than launching anything.
+For `ori dsh`, `--model` sets the default model in your dsh settings and starts nothing. For `ori grok`, `--model` is Grok Build's own flag; it already takes OpenRouter model IDs, and Ori passes it straight through.
 
-One flag picks the model. Everything after the flags goes to the agent untouched:
+You set the model with a single flag, and Ori sends anything after its own flags to the agent unchanged:
 
 ```sh theme={null}
 ori codex --model google/gemini-3.6-flash --full-auto
 ```
 
-Your usual agent flags still work. The model can come from any provider in the OpenRouter catalog.
+You keep your usual agent flags, and you can pick a model from any provider in the OpenRouter catalog.
 
 <Tip>
-  Use your agent's normal flags after Ori's flags. Ori keeps them unchanged and
-  passes them to the agent.
+  Put your agent's normal flags after Ori's flags. Ori passes them to the agent
+  unchanged.
 </Tip>
 
 ## Live model catalog and routing toggles
 
-For Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`), Ori connects the agent to your personal OpenRouter model catalog:
+For Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`), Ori hooks the agent up to your own OpenRouter model catalog:
 
-* The `/model` list comes from your catalog, so it is always up to date and hides models that are guardrailed or unavailable under your organization's policies.
-* `/fast` toggles fast routing: Anthropic fast mode for Claude models, priority service tier for OpenAI models, and throughput-sorted (`:nitro`) routing for everything else. On Prime Agent the toggle is `/speed`, because Prime Agent ships its own built-in `/fast` command.
-* `/zdr` toggles ZDR-only mode, so requests only go to providers with zero data retention.
+* The `/model` list comes from your catalog, so it stays current and leaves out models your organization's policies block.
+* You turn on fast routing with `/fast`: Anthropic fast mode for Claude models, the priority service tier for OpenAI models, and throughput-sorted (`:nitro`) routing for the rest. On Prime Agent, use `/speed` instead, because Prime Agent has its own `/fast` command.
+* You turn on ZDR-only mode with `/zdr`, so your requests go only to providers that keep no data.
+
+Grok Build (`ori grok`) loads the same catalog into its own model picker, so you don't need to run `grok login`, and its model IDs are OpenRouter model IDs. It doesn't have the `/fast` and `/zdr` toggles.
 
 ## Guardrails, on every agent
 
-Configure [guardrails](/docs/guides/features/guardrails), allowlists, and per-workspace permissions on your OpenRouter organization. Set [workspace budgets](/docs/guides/features/workspaces/workspace-budgets) there too. OpenRouter enforces these controls on every request, whatever client makes it—including an agent running through Ori.
+Set [guardrails](/docs/guides/features/guardrails), allowlists, and per-workspace permissions on your OpenRouter organization, and set [workspace budgets](/docs/guides/features/workspaces/workspace-budgets) there too. OpenRouter applies them to every request, no matter which client sends it, including an agent running through Ori.
 
 ## One bill across agents
 
-Ori traffic uses OpenRouter's normal billing and activity reporting. It appears alongside your other OpenRouter traffic in [Usage Accounting](/docs/cookbook/administration/usage-accounting) and [Activity Export](/docs/cookbook/administration/activity-export). There is no separate Ori bill.
+You pay for Ori traffic through OpenRouter's normal billing and activity reporting. You see it next to your other traffic in [Usage Accounting](/docs/cookbook/administration/usage-accounting) and [Activity Export](/docs/cookbook/administration/activity-export). There's no separate Ori bill.
 
 ## Frequently asked questions
 
 ### Do I need an OpenRouter API key?
 
-No. Ori signs you in with OAuth PKCE through your existing OpenRouter login. There is no key to copy or paste.
+No. Ori signs you in with OAuth PKCE through your OpenRouter login. There's no key to copy or paste.
 
 ### Do I need to change my agent workflow?
 
-No. Keep the same agent and the same commands and flags. Your workflow does not change.
+No. Keep the same agent, commands, and flags.
 
 ### Which agents are supported?
 
-Claude Code (`ori claude`), Codex (`ori codex`), Hermes (`ori hermes`), OpenCode (`ori opencode`), Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`) are supported today, with more harnesses on the way.
+Claude Code (`ori claude`), Codex (`ori codex`), Grok Build (`ori grok`), Hermes (`ori hermes`), OpenCode (`ori opencode`), Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`) work today, and more harnesses are coming.

@@ -717,7 +717,8 @@ Behavior:
 
 * `is_free: true` marks the endpoint as a free endpoint (`:free` suffix).
 * Any pricing sent alongside `is_free: true` is ignored. Free endpoints always have zero cost.
-* `is_free: false` or an omitted field preserves the default behavior (standard paid variant).
+* An omitted field preserves the default behavior (standard paid variant).
+* `is_free: false` explicitly marks the entry as paid. If OpenRouter currently serves that model id only as a free endpoint (because you previously sent `is_free: true`), the free endpoint is hidden and a new standard (paid) endpoint is staged in its place. Use this to convert a free model to paid.
 
 You can list both a free and a paid version of the same model. Just always set `is_free: true` on the free one.
 

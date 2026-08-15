@@ -150,6 +150,28 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+prompt = <<~PROMPT
+  Our CI job started failing after a dependency bump.
+
+  Error:
+  TypeError: Timeout.__init__() got an unexpected keyword argument 'connect'
+
+  Identify the likeliest root cause and the smallest safe fix.
+PROMPT
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  reasoning: {effort: :xhigh, mode: :pro},
+  input: prompt
+)
+
+puts(response.output_text)
+```
+
 
 ## Set up `text.verbosity`
 
@@ -243,6 +265,27 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+incident = <<~INCIDENT
+  Summarize this incident for the next on-call engineer.
+  - checkout latency spiked from 220 ms to 4.8 s
+  - only us-east-1 was affected
+  - rollback is complete
+  - likely trigger: cache stampede after deploy
+INCIDENT
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  text: {verbosity: :low},
+  input: incident
+)
+
+puts(response.output_text)
 ```
 
 
@@ -510,6 +553,57 @@ func namespaceTool(namespace, namespaceDescription, name, description, argument 
 }
 ```
 
+```ruby
+require "openai"
+
+def namespace_tool(name, description, function_name, function_description, argument)
+  {
+    type: :namespace,
+    name: name,
+    description: description,
+    tools: [
+      {
+        type: :function,
+        name: function_name,
+        description: function_description,
+        defer_loading: true,
+        strict: true,
+        parameters: {
+          type: "object",
+          properties: {argument => {type: "string"}},
+          required: [argument],
+          additionalProperties: false
+        }
+      }
+    ]
+  }
+end
+
+client = OpenAI::Client.new
+billing = namespace_tool(
+  "billing",
+  "Billing tools for invoices, payments, taxes, and credits.",
+  "lookup_invoice",
+  "Look up invoice state, taxes, credits, and payment attempts.",
+  "invoice_id"
+)
+crm = namespace_tool(
+  "crm",
+  "CRM tools for account ownership, plans, health, and payment history.",
+  "get_account",
+  "Fetch account owner, plan, health, and payment history.",
+  "account_id"
+)
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Find the right billing tool and explain why invoice INV-1043 still shows overdue after a payment yesterday.",
+  tools: [billing, crm, {type: :tool_search}]
+)
+
+puts(response.output)
+```
+
 
 ## Use Programmatic Tool Calling
 
@@ -740,6 +834,36 @@ func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.Respo
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+long_window = [
+  {
+    role: :user,
+    content: "Find the cache invalidation bug in this debugging session."
+  }
+]
+
+compacted = client.responses.compact(
+  model: "gpt-5.6",
+  input: long_window
+)
+input = compacted.output.map(&:to_h)
+input << {
+  role: :user,
+  content: "We found the bad cache invalidation path. Write the fix plan and the verification checklist."
+}
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  store: false,
+  input: input
+)
+
+puts(response.output_text)
+```
+
 
 ## Use `prompt_cache_key`
 
@@ -844,6 +968,26 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+instructions = <<~INSTRUCTIONS
+  You are the support agent for Acme.
+  Follow the Acme support policy and escalation rubric.
+  Use the same tone, safety rules, and tool plan for each ticket.
+INSTRUCTIONS
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  prompt_cache_key: "tenant-acme-support-agent",
+  instructions: instructions,
+  input: "Summarize the current escalation for the on-call lead."
+)
+
+puts(response.output_text)
 ```
 
 
@@ -1003,6 +1147,40 @@ func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.Respo
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+history = [
+  {
+    role: :user,
+    content: "Investigate why invoice INV-1043 has mismatched tax totals."
+  }
+]
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  store: false,
+  reasoning: {effort: :medium, context: :current_turn},
+  include: ["reasoning.encrypted_content"],
+  input: history
+)
+history.concat(first.output.map(&:to_h))
+history << {
+  role: :user,
+  content: "Now write the customer-facing explanation in plain English."
+}
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  store: false,
+  reasoning: {effort: :medium, context: :all_turns},
+  input: history
+)
+
+puts(second.output_text)
+```
+
 
 ## Set image detail intentionally
 
@@ -1134,6 +1312,32 @@ func main() {
 	}
 	fmt.Println(job.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+job = client.responses.create(
+  model: "gpt-5.6",
+  background: true,
+  store: false,
+  input: "Analyze this large log bundle and cluster the primary failure modes.",
+  tools: [
+    {
+      type: :code_interpreter,
+      container: {type: :auto, file_ids: ["file_abc123"]}
+    }
+  ]
+)
+
+while [:queued, :in_progress].include?(job.status)
+  sleep(2)
+  job = client.responses.retrieve(job.id)
+end
+
+puts(job.output_text)
 ```
 
 

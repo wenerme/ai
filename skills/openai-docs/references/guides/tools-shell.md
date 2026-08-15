@@ -125,6 +125,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Run ls -lah /mnt/data, then show the Python and Node.js versions.",
+  tools: [{type: :shell, environment: {type: :container_auto}}]
+)
+
+puts(response.output_text)
+```
+
 
 ## Hosted runtime details
 
@@ -218,6 +231,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+container = client.containers.create(name: "analysis", expires_after: {anchor: :last_active_at, minutes: 20})
+puts(container.id)
+```
+
 
 ### 2. Reference the container in Responses
 
@@ -308,6 +329,22 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "List files in the container and show disk usage.",
+  tools: [{
+    type: :shell,
+    environment: {type: :container_reference, container_id: "cntr_08f3d96c87a585390069118b594f7481a088b16cda7d9415fe"}
+  }]
+)
+
+puts(response.output_text)
 ```
 
 
@@ -405,6 +442,25 @@ func main() {
 	}
 	fmt.Println(container.ID)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+container = client.containers.create(
+  name: "skill-container",
+  skills: [
+    {type: :skill_reference, skill_id: "skill_4db6f1a2c9e73508b41f9da06e2c7b5f"},
+    {
+      type: :skill_reference,
+      skill_id: "openai-spreadsheets",
+      version: "latest"
+    }
+  ]
+)
+
+puts(container.id)
 ```
 
 
@@ -545,6 +601,29 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Fetch release pages and write /mnt/data/release_digest.md.",
+  tool_choice: :required,
+  tools: [{
+    type: :shell,
+    environment: {
+      type: :container_auto,
+      network_policy: {
+        type: :allowlist,
+        allowed_domains: ["pypi.org", "files.pythonhosted.org", "github.com"]
+      }
+    }
+  }]
+)
+
+puts(response.output_text)
 ```
 
 
@@ -809,6 +888,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+client.containers.delete("container_id")
+puts("Deleted container_id")
+```
+
 
 ## Domain secrets
 
@@ -980,6 +1067,35 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Use curl to call https://httpbin.org/headers with an " \
+    '"Authorization: Bearer $API_KEY" header.',
+  tool_choice: :required,
+  tools: [{
+    type: :shell,
+    environment: {
+      type: :container_auto,
+      network_policy: {
+        type: :allowlist,
+        allowed_domains: ["httpbin.org"],
+        domain_secrets: [{
+          domain: "httpbin.org",
+          name: "API_KEY",
+          value: "debug-secret-123"
+        }]
+      }
+    }
+  }]
+)
+
+puts(response.output_text)
+```
+
 
 ## Multi-turn workflows
 
@@ -1083,6 +1199,23 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Read /mnt/data/top5.csv and report the top candidate.",
+  previous_response_id: "resp_2a8e5c9174d63b0f18a4c572de9f64a1b3c76d508e12f9ab47",
+  tools: [{
+    type: :shell,
+    environment: {type: :container_reference, container_id: "cntr_f19c2b51e4a06793d82d54a7be0fc9154d3361ab28ce7f6041"}
+  }]
+)
+
+puts(response.output_text)
+```
+
 
 ## Shell output in Responses
 
@@ -1184,6 +1317,20 @@ func main() {
 	}
 	fmt.Println(response.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  instructions: "The local shell environment is macOS.",
+  input: "Find the largest PDF in ~/Documents.",
+  tools: [{type: :shell, environment: {type: :local}}]
+)
+
+puts(response.output)
 ```
 
 
@@ -1313,6 +1460,49 @@ func main() {
 	executor := shellExecutor{DefaultTimeout: time.Minute}
 	fmt.Println(executor.run("printf shell-executor-ready", 0))
 }
+```
+
+```ruby
+require "open3"
+
+class ShellExecutor
+  Result = Data.define(:stdout, :stderr, :exit_code, :timed_out)
+
+  def initialize(default_timeout: 60)
+    @default_timeout = default_timeout
+  end
+
+  def run(command, timeout: @default_timeout)
+    Open3.popen3("sh", "-c", command, pgroup: true) do |stdin, stdout, stderr, wait_thread|
+      stdin.close
+      stdout_reader = Thread.new { stdout.read }
+      stderr_reader = Thread.new { stderr.read }
+      finished = wait_thread.join(timeout)
+      terminate_process_group(wait_thread) unless finished
+
+      Result.new(
+        stdout: stdout_reader.value,
+        stderr: stderr_reader.value,
+        exit_code: wait_thread.value.exitstatus || -1,
+        timed_out: finished.nil?
+      )
+    end
+  end
+
+  private
+
+  def terminate_process_group(wait_thread)
+    Process.kill("TERM", -wait_thread.pid)
+    wait_thread.join(1)
+    Process.kill("KILL", -wait_thread.pid)
+  rescue Errno::ESRCH
+    nil
+  ensure
+    wait_thread.join
+  end
+end
+
+puts(ShellExecutor.new.run("printf shell-executor-ready"))
 ```
 
 

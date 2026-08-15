@@ -26,6 +26,10 @@ Lists the currently available models, and provides basic information about each 
 
     The organization that owns the model.
 
+  - `shutdown_date: optional string or null`
+
+    The date when the model will shut down, or null if not announced.
+
 - `object: "list"`
 
   - `"list"`
@@ -46,7 +50,8 @@ curl https://api.openai.com/v1/models \
       "id": "id",
       "created": 0,
       "object": "model",
-      "owned_by": "owned_by"
+      "owned_by": "owned_by",
+      "shutdown_date": "2019-12-27"
     }
   ],
   "object": "list"
@@ -70,19 +75,22 @@ curl https://api.openai.com/v1/models \
       "id": "model-id-0",
       "object": "model",
       "created": 1686935002,
-      "owned_by": "organization-owner"
+      "owned_by": "organization-owner",
+      "shutdown_date": null
     },
     {
       "id": "model-id-1",
       "object": "model",
       "created": 1686935002,
       "owned_by": "organization-owner",
+      "shutdown_date": null
     },
     {
       "id": "model-id-2",
       "object": "model",
       "created": 1686935002,
-      "owned_by": "openai"
+      "owned_by": "openai",
+      "shutdown_date": "2026-10-23"
     },
   ]
 }

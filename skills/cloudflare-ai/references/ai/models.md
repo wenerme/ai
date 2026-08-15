@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 218 modelsClear filters
+We found 220 modelsClear filters
 
 No models found
 
@@ -315,6 +315,10 @@ Try a different search term, or broaden your search by removing filters.
 [![BAAI logo](https://developers.cloudflare.com/_astro/baai.BooZR_xF.svg)bge-small-en-v1.5BAAIText EmbeddingsBAAI general embedding (Small) model that transforms any given text into a 384-dimensional vectorCloudflare-hostedBatch](https://developers.cloudflare.com/ai/models/@cf/baai/bge-small-en-v1.5/)
 
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)deepseek-r1-distill-qwen-32bDeepSeekText GenerationDeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5\. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.Cloudflare-hostedReasoning](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-r1-distill-qwen-32b/)
+
+[![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)deepseek-v4-flash-0731DeepSeekText GenerationDeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4-flash-0731/)
+
+[![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)deepseek-v4-pro-0813DeepSeekText Generationdeepseek-ai/deepseek-v4-pro-0813Cloudflare-hostedFunction callingReasoning](https://developers.cloudflare.com/ai/models/@cf/deepseek-ai/deepseek-v4-pro-0813/)
 
 [![Meta logo](https://developers.cloudflare.com/_astro/meta.CTzB_ysm.svg)detr-resnet-50BetaMetaObject DetectionDEtection TRansformer (DETR) model trained end-to-end on COCO 2017 object detection (118k annotated images).Cloudflare-hosted](https://developers.cloudflare.com/ai/models/@cf/facebook/detr-resnet-50/)
 

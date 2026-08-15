@@ -109,6 +109,25 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+instructions = <<~INSTRUCTIONS
+  You are an expert in categorizing IT support tickets. Given the support
+  ticket below, categorize the request as Hardware, Software, or Other.
+  Respond with only one of those words.
+INSTRUCTIONS
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {role: :developer, content: instructions},
+    {role: :user, content: "My monitor won't turn on - help!"}
+  ]
+)
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -202,6 +221,18 @@ eval_obj = client.evals.create(
 )
 
 print(eval_obj)
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+evaluation = client.evals.create(
+  name: "Support answer quality",
+  data_source_config: {type: :custom, item_schema: {type: :object, properties: {input: {type: :string}}, required: ["input"]}},
+  testing_criteria: [{type: :string_check, name: "mentions_refund", input: "{{sample.output_text}}", operation: :contains, reference: "refund"}]
+)
+puts(evaluation.id)
 ```
 
 ```bash
@@ -379,6 +410,16 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = Pathname("tickets.jsonl")
+uploaded = client.files.create(file: file, purpose: :evals)
+puts(uploaded.id)
+```
+
 ```bash
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -465,6 +506,32 @@ run = client.evals.runs.create(
 )
 
 print(run)
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+run = client.evals.runs.create(
+  "YOUR_EVAL_ID",
+  name: "Categorization text run",
+  data_source: {
+    type: :responses,
+    source: {type: :file_id, id: "YOUR_FILE_ID"},
+    input_messages: {
+      type: :template,
+      template: [
+        {
+          role: :developer,
+          content: "Categorize the ticket as Hardware, Software, or Other."
+        },
+        {role: :user, content: "{{ item.ticket_text }}"}
+      ]
+    },
+    model: "gpt-5.6"
+  }
+)
+puts(run.id)
 ```
 
 ```bash
@@ -574,6 +641,14 @@ client = OpenAI()
 
 run = client.evals.runs.retrieve("YOUR_RUN_ID", eval_id="YOUR_EVAL_ID")
 print(run)
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+run = client.evals.runs.retrieve("YOUR_RUN_ID", eval_id: "YOUR_EVAL_ID")
+puts(run.id)
 ```
 
 ```bash

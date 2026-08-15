@@ -160,6 +160,21 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+job = client.fine_tuning.jobs.create(
+  model: "gpt-4.1-mini-2025-04-14",
+  training_file: "file-all-about-the-weather",
+  method_: {
+    type: :dpo,
+    dpo: {hyperparameters: {beta: 0.1}}
+  }
+)
+puts(job.id)
+```
+
 
 ## Use SFT and DPO together
 

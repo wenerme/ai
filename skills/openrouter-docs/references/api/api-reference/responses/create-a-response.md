@@ -46,7 +46,11 @@ tags:
     name: Classifications
   - description: Credit management endpoints
     name: Credits
-  - description: Datasets endpoints
+  - description: >-
+      Public OpenRouter usage datasets. Data returned by these endpoints is
+      licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/):
+      reuse and republish it, including commercially, with attribution to
+      OpenRouter.
     name: Datasets
   - description: Text embedding endpoints
     name: Embeddings
@@ -4852,7 +4856,8 @@ components:
             invalid_model, judge_not_valid_json, judge_schema_mismatch,
             judge_upstream_error, judge_empty_completion. The four
             analysis-stage codes keep their pre-rename `judge_` spelling so
-            existing consumers keep matching.
+            existing consumers keep matching. The consumer-cancellation code is
+            `cancelled`.
           type: string
         id:
           type: string

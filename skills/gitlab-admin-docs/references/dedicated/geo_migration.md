@@ -5,6 +5,11 @@ Migrate from GitLab Self-Managed to GitLab Dedicated with Geo.
 - Tier: Ultimate
 - Offering: GitLab Dedicated
 
+> [!note]
+> GitLab Dedicated for Government does not support ongoing Geo replication or Geo-based
+> failover. Geo migration for onboarding new tenants is supported, but requires a VPN
+> connection. Contact your GitLab Dedicated for Government onboarding team to set this up.
+
 Geo migration requires secrets from your GitLab Self-Managed primary instance so that GitLab
 Dedicated can decrypt your data after migration. These secrets include database encryption keys,
 CI/CD variables, and other sensitive configuration details.

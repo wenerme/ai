@@ -141,6 +141,22 @@ func main() {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+result = client.images.generate(
+  model: "gpt-image-2",
+  prompt: "A watercolor robot reading in a library"
+)
+generated_image = result.data&.first or raise "No image returned"
+File.binwrite(
+  "generated-image.png",
+  Base64.strict_decode64(generated_image.b64_json)
+)
+```
+
 ```bash
 curl -X POST "https://api.openai.com/v1/images/generations" \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -261,6 +277,28 @@ func saveFirstGeneratedImage(response *responses.Response, filename string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation}]
+)
+
+image_call = response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+encoded_image = image_call.result or raise "No image returned"
+File.binwrite("otter.png", Base64.strict_decode64(encoded_image))
+```
+
 
 
 ### Multi-turn image generation
@@ -359,6 +397,30 @@ func main() {
 	}
 	panic("response did not include an image generation call")
 }
+```
+
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation, action: :generate}]
+)
+
+image_call = response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+encoded_image = image_call.result or raise "No image returned"
+output_path = ENV.fetch("OPENAI_EXAMPLE_OUTPUT_PATH", "otter.png")
+File.binwrite(output_path, Base64.decode64(encoded_image))
+puts(output_path)
 ```
 
 
@@ -516,6 +578,45 @@ func saveFirstGeneratedImage(response *responses.Response, filename string) {
 	}
 	panic("response did not include an image generation call")
 }
+```
+
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation}]
+)
+
+first_image = first.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless first_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+encoded_image = first_image.result or raise "No image returned"
+File.binwrite("cat_and_otter.png", Base64.strict_decode64(encoded_image))
+
+follow_up = client.responses.create(
+  model: "gpt-5.6",
+  input: "Now make it look realistic.",
+  previous_response_id: first.id,
+  tools: [{type: :image_generation}]
+)
+
+follow_up_image = follow_up.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless follow_up_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No follow-up image generation call returned"
+end
+
+encoded_image = follow_up_image.result or raise "No follow-up image returned"
+File.binwrite("cat_and_otter_realistic.png", Base64.strict_decode64(encoded_image))
 ```
 
   
@@ -709,6 +810,50 @@ func saveImage(filename, encoded string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation}]
+)
+
+first_image = first.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless first_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+encoded_image = first_image.result or raise "No image returned"
+File.binwrite("cat_and_otter.png", Base64.strict_decode64(encoded_image))
+
+follow_up = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :user,
+      content: [{type: :input_text, text: "Now make it look realistic."}]
+    },
+    {type: :image_generation_call, id: first_image.id}
+  ],
+  tools: [{type: :image_generation}]
+)
+
+follow_up_image = follow_up.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless follow_up_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No follow-up image generation call returned"
+end
+
+encoded_image = follow_up_image.result or raise "No follow-up image returned"
+File.binwrite("cat_and_otter_realistic.png", Base64.strict_decode64(encoded_image))
+```
+
 
 
 #### Result
@@ -887,6 +1032,36 @@ func saveImage(filename, encoded string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+stream = client.responses.stream(
+  model: "gpt-5.6",
+  input: "Generate an image of a river made of white owl feathers.",
+  tools: [{type: :image_generation, partial_images: 2}]
+)
+
+stream.each do |event|
+  case event
+  when OpenAI::Models::Responses::ResponseImageGenCallPartialImageEvent
+    image = Base64.strict_decode64(event.partial_image_b64)
+    File.binwrite("river-partial-#{event.partial_image_index}.png", image)
+  when OpenAI::Models::Responses::ResponseCompletedEvent
+    image_call = event.response.output.find do |item|
+      item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+    end
+    next unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+
+    File.binwrite(
+      "river-final.png",
+      Base64.strict_decode64(image_call.result)
+    )
+  end
+end
+```
+
   
 
   
@@ -984,6 +1159,25 @@ func saveImage(filename, encoded string) {
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+stream = client.images.generate_stream_raw(
+  model: "gpt-image-2",
+  prompt: "A river made of white owl feathers in a winter landscape",
+  partial_images: 2
+)
+
+stream.each do |event|
+  next unless event.is_a?(OpenAI::Models::ImageGenPartialImageEvent)
+
+  image = Base64.strict_decode64(event.b64_json)
+  File.binwrite("river#{event.partial_image_index}.png", image)
+end
 ```
 
 
@@ -1115,6 +1309,18 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = client.files.create(
+  file: Pathname("image.png"),
+  purpose: OpenAI::Models::FilePurpose::VISION
+)
+puts(file.id)
+```
+
 
 #### Create a base64 encoded image
 
@@ -1155,6 +1361,13 @@ func main() {
 	}
 	fmt.Println(base64.StdEncoding.EncodeToString(image))
 }
+```
+
+```ruby
+require "base64"
+
+image = File.binread("image.png")
+puts(Base64.strict_encode64(image))
 ```
 
 
@@ -1380,6 +1593,51 @@ func saveFirstGeneratedImage(response *responses.Response, filename string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+base64_images = ["body-lotion.png", "soap.png"].map do |path|
+  Base64.strict_encode64(File.binread(path))
+end
+file_ids = [
+  client.files.create(file: Pathname("bath-bomb.png"), purpose: :vision).id,
+  client.files.create(file: Pathname("incense-kit.png"), purpose: :vision).id
+]
+prompt = <<~PROMPT
+  Generate a photorealistic image of a gift basket on a white background
+  labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+  containing all the items in the reference pictures.
+PROMPT
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [{
+    role: :user,
+    content: [
+      {type: :input_text, text: prompt},
+      *base64_images.map do |image|
+        {type: :input_image, image_url: "data:image/png;base64,#{image}"}
+      end,
+      *file_ids.map do |file_id|
+        {type: :input_image, file_id: file_id}
+      end
+    ]
+  }],
+  tools: [{type: :image_generation}]
+)
+
+image_call = response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+File.binwrite("gift-basket.png", Base64.strict_decode64(image_call.result))
+```
+
 
   
 
@@ -1527,6 +1785,28 @@ func saveImage(filename, encoded string) {
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "base64"
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+images = %w[body-lotion.png bath-bomb.png incense-kit.png soap.png].map do |path|
+  Pathname(path)
+end
+result = client.images.edit(
+  image: images,
+  model: "gpt-image-2",
+  prompt: <<~PROMPT
+    Generate a photorealistic image of a gift basket on a white background
+    labeled 'Relax & Unwind' with a ribbon and handwriting-like font,
+    containing all the items in the reference pictures.
+  PROMPT
+)
+generated_image = result.data&.first or raise "No image returned"
+File.binwrite("gift-basket.png", Base64.strict_decode64(generated_image.b64_json))
 ```
 
 ```bash
@@ -1754,6 +2034,39 @@ func saveFirstGeneratedImage(response *responses.Response, filename string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+image = client.files.create(file: Pathname("sunlit_lounge.png"), purpose: :vision)
+mask = client.files.create(file: Pathname("mask.png"), purpose: :vision)
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [{
+    role: :user,
+    content: [
+      {type: :input_text, text: "Add a flamingo to the pool."},
+      {type: :input_image, file_id: image.id}
+    ]
+  }],
+  tools: [{
+    type: :image_generation,
+    input_image_mask: {file_id: mask.id}
+  }]
+)
+
+image_call = response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+File.binwrite("lounge.png", Base64.strict_decode64(image_call.result))
+```
+
   
 
   
@@ -1848,6 +2161,24 @@ func main() {
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "openai"
+require "pathname"
+require "base64"
+
+client = OpenAI::Client.new
+image = Pathname("sunlit_lounge.png")
+mask = Pathname("mask.png")
+result = client.images.edit(
+  image: image,
+  mask: mask,
+  model: "gpt-image-2",
+  prompt: "A sunlit indoor lounge area with a pool containing a flamingo"
+)
+generated_image = result.data&.first or raise "No image returned"
+File.binwrite("lounge.png", Base64.strict_decode64(generated_image.b64_json))
 ```
 
 ```bash
@@ -2281,6 +2612,36 @@ func main() {
 
 	fmt.Printf("Image generation blocked (%s): %s\n", apiError.Code, hint)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+begin
+  client.images.generate(
+    model: "gpt-image-2",
+    prompt: "Create a poster humiliating my coworker with insulting captions"
+  )
+rescue OpenAI::Errors::BadRequestError => error
+  raise unless error.code == "moderation_blocked"
+
+  body = Hash.try_convert(error.body) || {}
+  moderation_details = body[:moderation_details] || body["moderation_details"] || {}
+  categories = moderation_details[:categories] || moderation_details["categories"] || []
+  stage = moderation_details[:moderation_stage] || moderation_details["moderation_stage"]
+
+  hint = "This request did not meet safety requirements."
+  if categories.include?("harassment")
+    hint = "Remove abusive or targeting language and focus on neutral visual details."
+  elsif stage == "input"
+    hint = "Revise the prompt or input images, then submit the request again."
+  elsif stage == "output"
+    hint = "Change the prompt and generate again; the generated result was blocked."
+  end
+
+  warn("Image generation blocked (#{error.code}): #{hint}")
+end
 ```
 
 

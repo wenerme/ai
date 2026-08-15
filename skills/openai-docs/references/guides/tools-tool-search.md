@@ -233,6 +233,48 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+parameters = {
+  type: :object,
+  properties: {customer_id: {type: :string}},
+  required: ["customer_id"],
+  additionalProperties: false
+}
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "List open orders for customer CUST-12345.",
+  parallel_tool_calls: false,
+  tools: [
+    {
+      type: :namespace,
+      name: "crm",
+      description: "CRM tools for customer lookup and order management.",
+      tools: [
+        {
+          type: :function,
+          name: "get_customer_profile",
+          description: "Fetch a customer profile by customer ID.",
+          parameters: parameters
+        },
+        {
+          type: :function,
+          name: "list_open_orders",
+          description: "List open orders for a customer ID.",
+          defer_loading: true,
+          parameters: parameters
+        }
+      ]
+    },
+    {type: :tool_search}
+  ]
+)
+
+puts(response.output)
+```
+
 
 If the model decides it needs a deferred tool, the response includes two additional output items before the eventual function call:
 
@@ -522,6 +564,67 @@ func main() {
 	}
 	fmt.Println(second.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+search = client.responses.create(
+  model: "gpt-5.6",
+  input: "Find the shipping ETA tool, then use it for order_42.",
+  parallel_tool_calls: false,
+  tools: [{
+    type: :tool_search,
+    execution: :client,
+    description: "Find the project tools needed to continue the task.",
+    parameters: {
+      type: :object,
+      properties: {goal: {type: :string}},
+      required: ["goal"],
+      additionalProperties: false
+    }
+  }]
+)
+call = search.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseToolSearchCall)
+end
+unless call.is_a?(OpenAI::Models::Responses::ResponseToolSearchCall)
+  raise "No tool search call returned"
+end
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: search.id,
+  input: [{
+    type: :tool_search_output,
+    call_id: call.call_id,
+    execution: :client,
+    status: :completed,
+    tools: [{
+      type: :function,
+      name: "get_shipping_eta",
+      description: "Look up shipping details for an order.",
+      defer_loading: true,
+      strict: true,
+      parameters: {
+        type: :object,
+        properties: {order_id: {type: :string}},
+        required: ["order_id"],
+        additionalProperties: false
+      }
+    }]
+  }]
+)
+
+function_calls = response.output.grep(
+  OpenAI::Models::Responses::ResponseFunctionToolCall
+)
+raise "No loaded function call returned" if function_calls.empty?
+
+function_calls.each do |function_call|
+  puts("#{function_call.name}(#{function_call.arguments})")
+end
 ```
 
 

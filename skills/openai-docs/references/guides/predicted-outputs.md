@@ -149,6 +149,36 @@ with code, and with no markdown formatting.
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+code = <<~CODE
+  class User {
+    firstName: string = "";
+    lastName: string = "";
+    username: string = "";
+  }
+
+  export default User;
+CODE
+refactor_prompt = <<~PROMPT
+  Replace the "username" property with an "email" property. Respond only
+  with code, and with no markdown formatting.
+PROMPT
+completion = client.chat.completions.create(
+  model: "gpt-4.1",
+  messages: [
+    {role: :user, content: refactor_prompt},
+    {role: :user, content: code}
+  ],
+  prediction: {type: :content, content: code},
+  store: true
+)
+
+puts(completion.choices.fetch(0).message.content)
+```
+
 ```bash
 curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
@@ -337,6 +367,36 @@ with code, and with no markdown formatting.
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+code = <<~CODE
+  class User {
+    firstName: string = "";
+    lastName: string = "";
+    username: string = "";
+  }
+
+  export default User;
+CODE
+refactor_prompt = <<~PROMPT
+  Replace the "username" property with an "email" property. Respond only
+  with code, and with no markdown formatting.
+PROMPT
+stream = client.chat.completions.stream(
+  model: "gpt-4.1",
+  messages: [
+    {role: :user, content: refactor_prompt},
+    {role: :user, content: code}
+  ],
+  prediction: {type: :content, content: code},
+  store: true
+)
+
+stream.text.each { |text| print(text) }
 ```
 
 

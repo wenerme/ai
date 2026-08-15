@@ -1,11 +1,11 @@
 ---
 title: "Cortecs | Models"
-description: "Use Cortecs models with Mastra. 104 models available."
+description: "Use Cortecs models with Mastra. 107 models available."
 ---
 
 # [Cortecs logo]Cortecs
 
-Access 104 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
+Access 107 Cortecs models through Mastra's model router. Authentication is handled automatically using the `CORTECS_API_KEY` environment variable.
 
 Learn more in the [Cortecs documentation](https://cortecs.ai).
 
@@ -300,8 +300,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 1048576,
-    "inputCost": 1.483,
-    "outputCost": 8.898
+    "inputCost": 1.649,
+    "outputCost": 9.899
   },
   {
     "model": "cortecs/gemini-3.5-flash-lite",
@@ -314,6 +314,30 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 0.33,
     "outputCost": 2.749
+  },
+  {
+    "model": "cortecs/gemini-3.6-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.75,
+    "outputCost": 3.75
+  },
+  {
+    "model": "cortecs/gemini-3.7-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 0.75,
+    "outputCost": 3.75
   },
   {
     "model": "cortecs/gemma-3-27b-it",
@@ -1250,6 +1274,18 @@ for await (const chunk of stream) {
     "maxOutput": 262000,
     "inputCost": 0.167,
     "outputCost": 0.557
+  },
+  {
+    "model": "cortecs/qwen3.8-2.4t-a95b",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 2.5,
+    "outputCost": 6
   },
   {
     "model": "cortecs/qwen3guard-gen-0.6b",

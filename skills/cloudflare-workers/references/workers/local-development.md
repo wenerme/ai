@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local development
 
-Last updated Jun 25, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [workerd ↗](https://github.com/cloudflare/workerd).
 
@@ -96,7 +96,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-14",
 
 	"r2_buckets": [
 		{
@@ -111,7 +111,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-14"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -131,7 +131,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-14",
 
 	"env": {
 		"production": {
@@ -158,7 +158,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-14"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -348,14 +348,14 @@ To interact with remote Durable Object or Workflow instances, deploy a Worker th
 
 ### Important Considerations
 
-* **Cloudflare Access**: If your Worker is protected by [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/), Wrangler must authenticate with Access when connecting to remote bindings. Refer to [Connect to Access-protected Workers](#connect-to-access-protected-workers).
+* [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/): If your Worker is protected by Cloudflare Access, Wrangler must authenticate with Access when connecting to remote bindings. Refer to [Connect to Access-protected Workers](#connect-to-access-protected-workers).
 * **Data modification**: Operations (writes, deletes, updates) on bindings connected remotely will affect your actual data in the targeted Cloudflare resource (be it preview or production).
 * **Billing**: Interactions with remote Cloudflare services through these connections will incur standard operational costs for those services (such as KV operations, R2 storage/operations, AI requests, D1 usage).
 * **Network latency**: Expect network latency for operations on these remotely connected bindings, as they involve communication over the internet.
 
 ### Connect to Access-protected Workers
 
-If your Worker is deployed behind a [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/) application — for example, if the `*.workers.dev` subdomain on your account is protected by Access, or if you have placed an Access policy on the custom route of the Worker — Wrangler must authenticate with Access when connecting to your remote bindings.
+If your Worker is protected by [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/), Wrangler must authenticate with Access when connecting to your remote bindings. This applies whether Access protects the Worker itself, all Workers in the account, a `workers.dev` hostname, a Custom Domain, or another hostname or path that routes to the Worker.
 
 There are two ways you can authenticate against Access:
 
@@ -367,12 +367,12 @@ To set up service token authentication:
 1. **Create a service token.**
 In the Cloudflare dashboard, go to **Zero Trust** \> **Access** \> **Service Auth** \> **Service Tokens** and create a new token. Refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/) for the full reference. You will be shown a Client ID and a Client Secret — save them somewhere safe, as the secret is not shown again.
 2. **Add a Service Auth policy to the Access application that protects your Worker.**
-Open the _existing_ Access application that already covers the hostname of the Worker — typically the wildcard application for `*.<account>.workers.dev`, or the application that protects your custom domain — and attach a new policy with:
+Open the _existing_ Access application that already protects the Worker or the hostname you use for remote bindings, and attach a new policy with:
 
   * **Action**: Service Auth
   * **Include**: The service token you created, or "Any Access Service Token" if you want to allow any service token to access the Worker.
 Caution
-Do not create a _separate_ Access application scoped only to the Worker's hostname. Doing so has been observed to block requests even when the existing wildcard application is left in place — refer to [opennextjs-cloudflare#1171 ↗](https://github.com/opennextjs/opennextjs-cloudflare/issues/1171). Attach the Service Auth policy to the existing application that already protects the hostname.
+Do not create a separate Access application for the same Worker or hostname only to add service token authentication. Doing so can conflict with the Access application that already protects the Worker. Attach the Service Auth policy to the existing application instead.
 3. **Expose the credentials to Wrangler.**
 Set the `CLOUDFLARE_ACCESS_CLIENT_ID` and `CLOUDFLARE_ACCESS_CLIENT_SECRET` [system environment variables](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/) in the environment that runs Wrangler:
 ```sh
@@ -569,8 +569,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-25","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/local-development/#page","headline":"Local development · Cloudflare Workers docs","description":"Develop and test your Workers locally.","url":"https://developers.cloudflare.com/workers/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

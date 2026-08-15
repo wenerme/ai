@@ -1,6 +1,6 @@
 ---
 title: "Mage-Flow: ComfyUI Workflow Example"
-description: "Mage-Flow is a compact 4B-parameter generative stack from Microsoft for text-to-image generation and instruction-based image editing. It uses Mage-VAE and a Native-Resolution Multimodal Diffusion Transformer (NR-MMDiT) with rectified flow matching."
+description: "Mage-Flow is Microsoft's compact 4B model for text-to-image generation and instruction-based image editing in ComfyUI, with native resolutions up to 2K."
 ---
 
 **Mage-Flow** is a compact 4B-scale generative stack from Microsoft Research for efficient text-to-image generation and instruction-based image editing. The stack is built from two co-designed components: [Mage-VAE](https://huggingface.co/microsoft/Mage-VAE), a lightweight high-fidelity latent tokenizer, and a Native-Resolution Multimodal Diffusion Transformer (NR-MMDiT) trained with rectified flow matching. Together with native-resolution packing, this shared stack powers two model instantiations: Mage-Flow for text-to-image generation and Mage-Flow-Edit for instruction-based image editing. Each ships in Base, RL-aligned, and 4-step Turbo variants.

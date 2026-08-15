@@ -93,6 +93,24 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.`
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+prompt = <<~PROMPT
+  Write a bash script that takes a matrix represented as a string with format
+  '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
+PROMPT
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  reasoning: {effort: :low},
+  input: prompt
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -308,6 +326,28 @@ format '[1,2],[3,4],[5,6]' and prints the transpose in the same format.`
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+prompt = <<~PROMPT
+  Write a bash script that takes a matrix represented as a string with format
+  '[1,2],[3,4],[5,6]' and prints the transpose in the same format.
+PROMPT
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  max_output_tokens: 300,
+  reasoning: {effort: :medium},
+  input: prompt
+)
+
+if response.status == OpenAI::Responses::ResponseStatus::INCOMPLETE
+  puts("Ran out of tokens")
+  puts("Partial output: #{response.output_text}") unless response.output_text.empty?
+end
+```
+
 
 ### Keeping reasoning items in context
 
@@ -433,6 +473,27 @@ func main() {
 
 	fmt.Println(second.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "Inspect this repository and identify the likely bug.",
+  reasoning: {context: :current_turn}
+)
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: first.id,
+  input: "Now patch the bug and explain the change.",
+  reasoning: {context: :all_turns}
+)
+
+puts(second.output_text)
 ```
 
 
@@ -597,6 +658,33 @@ func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.Respo
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+history = [
+  {role: :user, content: "Inspect this repository and identify the likely bug."}
+]
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  store: false,
+  input: history,
+  reasoning: {context: :current_turn}
+)
+history.concat(first.output.map(&:to_h))
+history << {role: :user, content: "Now patch the bug and explain the change."}
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  store: false,
+  input: history,
+  reasoning: {context: :all_turns}
+)
+
+puts(second.output_text)
+```
+
 
 ## Reasoning summaries
 
@@ -670,6 +758,20 @@ func main() {
 
 	fmt.Println(response.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What is the capital of France?",
+  reasoning: {effort: :low, summary: :auto}
+)
+
+puts(response.output)
 ```
 
 ```bash
@@ -829,6 +931,34 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :assistant,
+      phase: :commentary,
+      content: "I'll inspect the logs and then summarize root cause and remediation."
+    },
+    {
+      role: :assistant,
+      phase: :final_answer,
+      content: "Root cause: cache invalidation race."
+    },
+    {
+      role: :user,
+      content: "Great—now give me a rollout-safe fix plan."
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
 
 ## Advice on prompting
 
@@ -985,6 +1115,31 @@ const books = [
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+prompt = <<~PROMPT
+  Instructions:
+  - Given the React component below, change it so that nonfiction books have red text.
+  - Return only the code in your reply.
+  - Do not include any additional formatting, such as markdown code blocks.
+
+  const books = [
+    { title: 'Dune', category: 'fiction', id: 1 },
+    { title: 'Frankenstein', category: 'fiction', id: 2 },
+    { title: 'Moneyball', category: 'nonfiction', id: 3 },
+  ];
+PROMPT
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: prompt
+)
+
+puts(response.output_text)
+```
+
 
   
 
@@ -1091,6 +1246,25 @@ directory structure you will need, then return each file in full.`
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+prompt = <<~PROMPT
+  I want to build a Python app that looks up user questions in a database where
+  they are mapped to answers. If there is a close match, it retrieves the answer.
+  Otherwise, it asks the user for an answer and stores the question and answer.
+  Plan the directory structure, then return each file in full.
+PROMPT
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: prompt
+)
+
+puts(response.output_text)
+```
+
 
   
 
@@ -1178,6 +1352,23 @@ research into new antibiotics? Why should we consider them?`
 
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+prompt = <<~PROMPT
+  What are three compounds we should consider investigating to advance research
+  into new antibiotics? Why should we consider them?
+PROMPT
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: prompt
+)
+
+puts(response.output_text)
 ```
 
 

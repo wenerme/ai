@@ -81,6 +81,25 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  prompt: {
+    id: "pmpt_123",
+    version: "1",
+    variables: {
+      customer_name: "Acme",
+      issue: "billing question"
+    }
+  }
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \
@@ -173,6 +192,28 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :system,
+      content: "You are a helpful support assistant. Be concise, accurate, and friendly."
+    },
+    {
+      role: :user,
+      content: "Customer name: Acme. Issue: billing question. Write a response to the customer."
+    }
+  ]
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -303,6 +344,32 @@ func buildSupportPrompt(customerName string, issue string) responses.ResponseInp
 		responses.ResponseInputItemParamOfMessage(fmt.Sprintf("Customer name: %s. Issue: %s. Write a response to the customer.", customerName, issue), responses.EasyInputMessageRoleUser),
 	}
 }
+```
+
+```ruby
+require "openai"
+
+def build_support_prompt(customer_name, issue)
+  [
+    {
+      role: :system,
+      content: "You are a helpful support assistant. Be concise, accurate, and friendly. Do not invent policy details."
+    },
+    {
+      role: :user,
+      content: "Customer name: #{customer_name}. Issue: #{issue}. Write a response to the customer."
+    }
+  ]
+end
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: build_support_prompt("Acme", "billing question")
+)
+
+puts(response.output_text)
 ```
 
 

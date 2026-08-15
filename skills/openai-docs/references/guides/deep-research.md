@@ -130,6 +130,36 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+vector_store_id = ENV.fetch("OPENAI_VECTOR_STORE_ID")
+response = client.responses.create(
+  model: "o3-deep-research",
+  input: "Research the economic impact of semaglutide on global healthcare systems. Include measurable outcomes and cite primary sources.",
+  tools: [
+    {type: :web_search_preview},
+    {type: :file_search, vector_store_ids: [vector_store_id]},
+    {type: :code_interpreter, container: {type: :auto}}
+  ],
+  background: true
+)
+
+while [
+  OpenAI::Responses::ResponseStatus::QUEUED,
+  OpenAI::Responses::ResponseStatus::IN_PROGRESS
+].include?(response.status)
+  sleep(2)
+  response = client.responses.retrieve(response.id)
+end
+unless response.status == OpenAI::Responses::ResponseStatus::COMPLETED
+  raise "Research ended with status: #{response.status}"
+end
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -317,6 +347,19 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  instructions: "Ask concise questions to gather all missing requirements. Do not conduct the research yet.",
+  input: "Research surfboards for me. I'm interested in ..."
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -587,6 +630,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  instructions: "Rewrite the user's request as detailed research instructions. Preserve all stated preferences, identify open-ended dimensions, request primary sources, and specify a clear report format. Do not perform the research.",
+  input: "Research surfboards for me. I'm interested in ..."
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -739,6 +795,39 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+mcp_server_url = ENV.fetch("OPENAI_MCP_SERVER_URL")
+response = client.responses.create(
+  model: "o3-deep-research",
+  input: "What patterns appear in our closed-lost Salesforce opportunities?",
+  instructions: "Produce a source-backed deep research report.",
+  reasoning: {summary: :auto},
+  tools: [{
+    type: :mcp,
+    server_label: "mycompany_mcp_server",
+    server_url: mcp_server_url,
+    require_approval: :never
+  }],
+  background: true
+)
+
+while [
+  OpenAI::Responses::ResponseStatus::QUEUED,
+  OpenAI::Responses::ResponseStatus::IN_PROGRESS
+].include?(response.status)
+  sleep(2)
+  response = client.responses.retrieve(response.id)
+end
+unless response.status == OpenAI::Responses::ResponseStatus::COMPLETED
+  raise "Research ended with status: #{response.status}"
+end
+
+puts(response.output_text)
 ```
 
 

@@ -242,6 +242,20 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  instructions: "Talk like a pirate.",
+  reasoning: {effort: :low},
+  input: "Are semicolons optional in JavaScript?"
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -336,6 +350,22 @@ func main() {
 
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  reasoning: {effort: :low},
+  input: [
+    {role: :developer, content: "Talk like a pirate."},
+    {role: :user, content: "Are semicolons optional in JavaScript?"}
+  ]
+)
+
+puts(response.output_text)
 ```
 
 ```bash

@@ -1,6 +1,6 @@
 ---
 title: "LumaRay32VideoEditNode - ComfyUI Built-in Node Documentation"
-description: "Complete documentation for the LumaRay32VideoEditNode node in ComfyUI. Learn its inputs, outputs, parameters and usage."
+description: "このノードは、Luma Ray 3.2 を使用して既存の動画を新しいプロンプトで再レンダリングし、元の動きを保持しながらスタイルの変更、照明の調整、要素の追加または削除を可能にします。"
 mode: wide
 ---
 
@@ -16,7 +16,7 @@ mode: wide
 | `強度` | ソースを保持するか再解釈するかの強度。"auto" は Ray 3.2 が自動選択します。adhere_* は最も保持し、flex_* はバランスが取れており、reimagine_* は最も変化します。（デフォルト: "auto"） | COMBO | はい | `"auto"``"adhere_1"``"adhere_2"``"adhere_3"``"flex_1"``"flex_2"``"flex_3"``"reimagine_1"``"reimagine_2"``"reimagine_3"` |
 | `シード` | 再現性のためのシード値。 | INT | はい | - |
 
-**注記:** `prompt` は1文字以上6000文字以下である必要があります。ソース動画の長さは18秒を超えてはいけません。
+| `解像度` | 編集後の動画の出力解像度。（デフォルト："720p"） | COMBO | はい | `"360p"``"540p"``"720p"``"1080p"` |
 
 ## 出力
 

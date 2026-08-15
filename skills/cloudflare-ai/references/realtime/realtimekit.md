@@ -1,5 +1,5 @@
 ---
-description: Add live video and voice to web or mobile apps with RealtimeKit SDKs and APIs.
+description: Build in-app audio and video with RealtimeKit SDKs and customizable UI components.
 title: RealtimeKit
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,43 +12,113 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # RealtimeKit
 
-Last updated Jun 12, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Add live video and voice to your web or mobile apps in minutes — customizable SDKs, Integrate in just a few lines of code.
+Cloudflare RealtimeKit lets you build your own audio and video experiences inside web and mobile apps. It routes media on [Cloudflare's global WebRTC infrastructure](https://developers.cloudflare.com/realtime/sfu/calls-vs-sfus/), so you can deliver low-latency experiences to a global audience without scaling media servers or choosing regions.
 
-With RealtimeKit, you can expect:
+Your application controls who can join and what they can do. RealtimeKit provides the SDKs and infrastructure that connect participants inside your web or mobile app.
 
-* **Fast, simple integration:** Add live video and voice calling to any platform using our SDKs in minutes.
-* **Customizable:**Tailor the experience to your needs.
-* **Powered by WebRTC:**Built on top of modern, battle-tested WebRTC technology. RealtimeKit sits on top of [Realtime SFU](https://developers.cloudflare.com/realtime/sfu/) handling media track management, peer management, and other complicated tasks for you.
+[Get started](https://developers.cloudflare.com/realtime/realtimekit/quickstart/)[Try a demo meeting](https://examples.realtime.cloudflare.com/meeting?demo=Default)[View code examples](https://github.com/cloudflare/realtimekit-web-examples)
 
-Experience the product:
+## What you can build
 
-[Try A Demo Meeting](https://examples.realtime.cloudflare.com/)[Build using Examples](https://github.com/cloudflare/realtimekit-web-examples)[RealtimeKit Dashboard](https://dash.cloudflare.com/?to=/:account/realtime/kit)
+### [Group video calls](https://developers.cloudflare.com/realtime/realtimekit/quickstart/)
 
-## Build with RealtimeKit
+Add multiparty calls to collaboration tools, customer portals, and online communities.
 
-RealtimeKit powers a wide range of usecases — here are the most common ones
+### [Virtual classrooms](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/breakout-rooms/)
 
-#### Group Calls
+Split a class into smaller discussion rooms and assign participants automatically or manually.
 
-Experience team meetings, virtual classrooms with interactive plugins, and seamless private or group video chats — all within your platform.
+### [Webinars and live events](https://developers.cloudflare.com/realtime/realtimekit/core/stage-management/)
 
-#### Webinars
+Keep attendees view-only until a host grants them access to the stage.
 
-Host large, interactive one-to-many events with virtual stage management, and engagement tools like plugins, chat, and polls — ideal for product demos, company all-hands, and live workshops
+### [Audio rooms and support calls](https://developers.cloudflare.com/realtime/realtimekit/audio-calls/)
 
-#### Audio Only Calls
+Build voice-only sessions for support lines and community discussions.
 
-Host audio-only calls — perfect for team discussions, support lines, and community hangouts— low bandwidth usage and features like mute controls, hand-raise, and role management.
+## How RealtimeKit fits into your app
 
-## Product Suite
+Your applicationRealtimeKit
 
-* [**UI Kit**](https://developers.cloudflare.com/realtime/realtimekit/ui-kit) Recommended UI library of pre-built, customizable components for rapid development — sits on top of the Core SDK.
-* [**Core SDK**](https://developers.cloudflare.com/realtime/realtimekit/core) Client SDK built on top of Realtime SFU that provides a full set of APIs for managing video calls, from joining and leaving sessions to muting, unmuting, and toggling audio and video.
-* [**Realtime SFU**](https://developers.cloudflare.com/realtime/sfu) efficiently routes media with low latency—all running on Cloudflare’s global network for reliability and scale.
+Your applicationRealtimeKit managed layer
 
-The **Backend Infrastructure** Powering the SDKs is a robust layer that includes REST APIs for managing meetings, participants, recordings and more, along with webhooks for server-side events. A dedicated signalling server coordinates real-time updates.
+Your backend**Application backend**Users, scheduling, and business logic
+
+REST API and webhooks
+
+Control plane**Meeting services**Meetings, participants, presets, and recordings
+
+Your frontend**Web or mobile interface**Product workflow, layout, branding, and plugins
+
+UI Kit or Core SDK
+
+Client session layer**Live session services**Authentication, signaling, participant state, and media controls
+
+Participant device**Camera, microphone, and screen**Media captured inside your application
+
+WebRTC media
+
+Media infrastructure**Realtime SFU**Audio and video routing between participants
+
+Your Cloudflare resources**Workers and R2**Backend workflows, recording apps, and storage
+
+Events and outputs
+
+Managed extensions**Recording, transcription, and webhooks**Recordings, transcripts, summaries, and lifecycle events
+
+Identity handoff**A participant auth token connects your user to a meeting and preset.**
+
+Your application controls the product experience. RealtimeKit manages meeting coordination and WebRTC media infrastructure.
+
+## Key features
+
+[Participant roles and permissions](https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/)
+
+Give hosts, speakers, and attendees different permissions for media, moderation, and in-meeting features. Reuse the same presets across meetings.
+
+Configure presets
+
+[Recording and custom layouts](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/)
+
+Capture composite video or separate participant audio tracks. Store recordings in [your own Cloudflare R2 bucket](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/custom-cloud-storage/#cloudflare-r2), or deploy a [custom recording app](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/) on [Cloudflare Workers](https://developers.cloudflare.com/workers/) when you need a different layout.
+
+Explore recording
+
+[Transcription and summaries](https://developers.cloudflare.com/realtime/realtimekit/ai/)
+
+RealtimeKit uses [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/) for real-time and post-meeting transcription. Generate an AI summary when a meeting ends.
+
+Add meeting AI
+
+[In-meeting apps](https://developers.cloudflare.com/realtime/realtimekit/custom-plugins/)
+
+Add your own browser-based, interactive apps such as whiteboard, document viewer into the meeting layout. Use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) to synchronize plugin state across participants.
+
+Build a plugin
+
+[Backend automation](https://developers.cloudflare.com/realtime/realtimekit/webhooks/)
+
+Receive signed meeting, participant, and recording events in your backend. A [Cloudflare Worker](https://developers.cloudflare.com/workers/) can verify each callback and start post-meeting processing.
+
+Handle lifecycle events
+
+## Choose how to build
+
+RealtimeKit gives you two ways to build the client experience. Choose based on how much of the interface you want to build yourself.
+
+### RealtimeKit UI Kit
+
+Use [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) when you want prebuilt screens and controls for joining and running a call. It includes the setup screen, participant grid, media controls, chat, and polls. Use the default layout or customize individual components and branding.
+
+RealtimeKit UI Kit includes RealtimeKit Core SDK, so you can use its APIs when prebuilt components don't cover your workflow.
+
+### RealtimeKit Core SDK
+
+Use [RealtimeKit Core SDK](https://developers.cloudflare.com/realtime/realtimekit/core/) to build every screen and interaction yourself. It provides direct access to session, participant, and media state while RealtimeKit manages signaling and media routing.
+
+Compare supported platforms and packages in [SDK selection](https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/).
 
 Was this helpful?
 
@@ -56,8 +126,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"Overview · Cloudflare Realtime docs","description":"Add live video and voice to web or mobile apps with RealtimeKit SDKs and APIs.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-12","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/#page","headline":"Overview · Cloudflare Realtime docs","description":"Build in-app audio and video with RealtimeKit SDKs and customizable UI components.","url":"https://developers.cloudflare.com/realtime/realtimekit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

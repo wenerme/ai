@@ -108,6 +108,28 @@ func saveFirstGeneratedImage(response *responses.Response, filename string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation}]
+)
+
+image_call = response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+encoded_image = image_call.result or raise "No image returned"
+File.binwrite("otter.png", Base64.strict_decode64(encoded_image))
+```
+
 
 You can [provide input images](https://developers.openai.com/api/docs/guides/image-generation?image-generation-model=gpt-image#edit-images) using file IDs or base64 data.
 
@@ -312,6 +334,45 @@ func saveFirstGeneratedImage(response *responses.Response, filename string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation}]
+)
+
+first_image = first.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless first_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+encoded_image = first_image.result or raise "No image returned"
+File.binwrite("cat_and_otter.png", Base64.strict_decode64(encoded_image))
+
+follow_up = client.responses.create(
+  model: "gpt-5.6",
+  input: "Now make it look realistic.",
+  previous_response_id: first.id,
+  tools: [{type: :image_generation}]
+)
+
+follow_up_image = follow_up.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless follow_up_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No follow-up image generation call returned"
+end
+
+encoded_image = follow_up_image.result or raise "No follow-up image returned"
+File.binwrite("cat_and_otter_realistic.png", Base64.strict_decode64(encoded_image))
+```
+
   
 
   
@@ -503,6 +564,50 @@ func saveImage(filename, encoded string) {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "Generate an image of a gray tabby cat hugging an otter with an orange scarf.",
+  tools: [{type: :image_generation}]
+)
+
+first_image = first.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless first_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No image generation call returned"
+end
+
+encoded_image = first_image.result or raise "No image returned"
+File.binwrite("cat_and_otter.png", Base64.strict_decode64(encoded_image))
+
+follow_up = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :user,
+      content: [{type: :input_text, text: "Now make it look realistic."}]
+    },
+    {type: :image_generation_call, id: first_image.id}
+  ],
+  tools: [{type: :image_generation}]
+)
+
+follow_up_image = follow_up.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+end
+unless follow_up_image.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+  raise "No follow-up image generation call returned"
+end
+
+encoded_image = follow_up_image.result or raise "No follow-up image returned"
+File.binwrite("cat_and_otter_realistic.png", Base64.strict_decode64(encoded_image))
+```
+
 
 
 ## Streaming
@@ -632,6 +737,36 @@ func saveImage(filename, encoded string) {
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+stream = client.responses.stream(
+  model: "gpt-5.6",
+  input: "Generate an image of a river made of white owl feathers.",
+  tools: [{type: :image_generation, partial_images: 2}]
+)
+
+stream.each do |event|
+  case event
+  when OpenAI::Models::Responses::ResponseImageGenCallPartialImageEvent
+    image = Base64.strict_decode64(event.partial_image_b64)
+    File.binwrite("river-partial-#{event.partial_image_index}.png", image)
+  when OpenAI::Models::Responses::ResponseCompletedEvent
+    image_call = event.response.output.find do |item|
+      item.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+    end
+    next unless image_call.is_a?(OpenAI::Models::Responses::ResponseOutputItem::ImageGenerationCall)
+
+    File.binwrite(
+      "river-final.png",
+      Base64.strict_decode64(image_call.result)
+    )
+  end
+end
 ```
 
 

@@ -22,63 +22,68 @@ To use the SLO API, complete the following steps.
    - PUT to update an SLO.
 3. For a full definition of the API, download [this OpenAPIv3 specification.](./slo-api.yaml)
 
-Here is an example request body to create an SLO:
+Here is an example request body to create an SLO. It runs the SLI query against the `prod-prometheus` data source and stores the generated recording rules in `grafanacloud-prom`.
+
+`sourceDatasourceUid` is optional and is set inside the query block. It is supported on the `ratio` and `freeform` query types. When it is omitted, the SLI query runs against `destinationDatasource.uid`.
+
+On stacks using legacy data source-managed recording rules, `sourceDatasourceUid` must be omitted or match `destinationDatasource.uid`.
 
 JSON [Copy code to clipboard] Copy
 
 ```json
 {
-    "name":"HTTP Requests Kubelet Success Indicator",
-    "description":"99.5% of  Kubelet HTTP Requests are not 5xx errors",
-    "destinationDatasource": {
-                "uid": "grafanacloud-prom"
-            },
-    "objectives":[
-      {
-        "value":0.995,
-        "window":"28d"
-      }
-    ],
-    "query":{
-      "type":"ratio",
-      "ratio":{
-         "successMetric":{
-            "prometheusMetric":"kubelet_http_requests_total{status!~\"5..\"}"
-         },
-         "totalMetric":{
-            "prometheusMetric":"kubelet_http_requests_total"
-         },
-         "groupByLabels":[
-            "instance",
-            "job"
-         ]
-      }
-   },
-   "alerting":{
-      "fastBurn":{
-         "annotations":[
-            {
-               "key":"name",
-               "value":"SLO Burn Rate Very High"
-            },
-            {
-               "key":"description",
-               "value":"Error budget is burning too fast."
-            }
-         ]
+  "name": "HTTP Requests Kubelet Success Indicator",
+  "description": "99.5% of Kubelet HTTP Requests are not 5xx errors",
+  "destinationDatasource": {
+    "uid": "grafanacloud-prom"
+  },
+  "objectives": [
+    {
+      "value": 0.995,
+      "window": "28d"
+    }
+  ],
+  "query": {
+    "type": "ratio",
+    "ratio": {
+      "sourceDatasourceUid": "prod-prometheus",
+      "successMetric": {
+        "prometheusMetric": "kubelet_http_requests_total{status!~\"5..\"}"
       },
-      "slowBurn":{
-         "annotations":[
-            {
-               "key":"name",
-               "value":"SLO Burn Rate High"
-            },
-            {
-               "key":"description",
-               "value":"Error budget is burning too fast."
-            }
-         ]
-      }
+      "totalMetric": {
+        "prometheusMetric": "kubelet_http_requests_total"
+      },
+      "groupByLabels": [
+        "instance",
+        "job"
+      ]
+    }
+  },
+  "alerting": {
+    "fastBurn": {
+      "annotations": [
+        {
+          "key": "name",
+          "value": "SLO Burn Rate Very High"
+        },
+        {
+          "key": "description",
+          "value": "Error budget is burning too fast."
+        }
+      ]
+    },
+    "slowBurn": {
+      "annotations": [
+        {
+          "key": "name",
+          "value": "SLO Burn Rate High"
+        },
+        {
+          "key": "description",
+          "value": "Error budget is burning too fast."
+        }
+      ]
     }
   }
+}
 ```

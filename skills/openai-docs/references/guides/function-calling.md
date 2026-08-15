@@ -304,6 +304,53 @@ func getHoroscope(sign string) string {
 }
 ```
 
+```ruby
+require "json"
+require "openai"
+
+client = OpenAI::Client.new
+tools = [{
+  type: :function,
+  name: "get_horoscope",
+  description: "Get today's horoscope for an astrological sign.",
+  parameters: {
+    type: :object,
+    properties: {sign: {type: :string}},
+    required: ["sign"],
+    additionalProperties: false
+  },
+  strict: true
+}]
+
+first_response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What is my horoscope? I am an Aquarius.",
+  tools: tools
+)
+function_call = first_response.output.find do |item|
+  item.is_a?(OpenAI::Models::Responses::ResponseFunctionToolCall) &&
+    item.name == "get_horoscope"
+end
+unless function_call.is_a?(OpenAI::Models::Responses::ResponseFunctionToolCall)
+  raise "The model did not call get_horoscope"
+end
+
+arguments = JSON.parse(function_call.arguments, symbolize_names: true)
+sign = arguments.fetch(:sign)
+response = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: first_response.id,
+  input: [{
+    type: :function_call_output,
+    call_id: function_call.call_id,
+    output: "#{sign}: Embrace an unexpected opportunity today."
+  }],
+  tools: tools
+)
+
+puts(response.output_text)
+```
+
 
 
 Note that for reasoning models like GPT-5 or o4-mini, any reasoning items
@@ -531,6 +578,23 @@ for _, output := range response.Output {
 }
 ```
 
+```ruby
+input.concat(response.output)
+
+response.output.each do |tool_call|
+  next unless tool_call.is_a?(OpenAI::Models::Responses::ResponseFunctionToolCall)
+
+  arguments = JSON.parse(tool_call.arguments)
+  result = call_function(tool_call.name, arguments)
+
+  input << {
+    type: :function_call_output,
+    call_id: tool_call.call_id,
+    output: JSON.generate(result)
+  }
+end
+```
+
 
 
 In the example above, we have a hypothetical `call_function` to route each call. Here’s a possible implementation:
@@ -569,6 +633,25 @@ func callFunction(name string, arguments functionArguments) (string, error) {
 		return "", fmt.Errorf("unknown function: %s", name)
 	}
 }
+```
+
+```ruby
+def call_function(name, arguments)
+  case name
+  when "get_weather"
+    FunctionCallingExample.get_weather(
+      arguments.fetch("latitude"),
+      arguments.fetch("longitude")
+    )
+  when "send_email"
+    FunctionCallingExample.send_email(
+      arguments.fetch("to"),
+      arguments.fetch("body")
+    )
+  else
+    raise ArgumentError, "Unknown function: #{name}"
+  end
+end
 ```
 
 
@@ -615,6 +698,45 @@ response, err = client.Responses.New(context.Background(), responses.ResponseNew
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+input = [
+  {role: :user, content: "What is the weather like in Paris?"},
+  {
+    type: :function_call,
+    call_id: "call_weather",
+    name: "get_weather",
+    arguments: '{"city":"Paris"}'
+  },
+  {
+    type: :function_call_output,
+    call_id: "call_weather",
+    output: '{"city":"Paris","temperature_c":18}'
+  }
+]
+tools = [{
+  type: :function,
+  name: "get_weather",
+  description: "Get the weather for a city",
+  parameters: {
+    type: :object,
+    properties: {city: {type: :string}},
+    required: ["city"],
+    additionalProperties: false
+  },
+  strict: true
+}]
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: input,
+  tools: tools
+)
+
+puts(response.output_text)
 ```
 
 
@@ -899,6 +1021,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+stream = client.responses.stream(
+  model: "gpt-5.6",
+  input: "What is the weather in Paris?",
+  tools: [{type: :function, name: "get_weather", description: "Get the weather for a city", parameters: {type: :object, properties: {city: {type: :string}}, required: ["city"], additionalProperties: false}, strict: true}]
+)
+
+stream.each { |event| puts(event.type) }
+```
+
 
 Output events
 
@@ -1023,6 +1158,49 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+stream = client.responses.stream(
+  model: "gpt-5.6",
+  input: "What is the weather in Paris?",
+  tools: [{
+    type: :function,
+    name: "get_weather",
+    parameters: {
+      type: :object,
+      properties: {location: {type: :string}},
+      required: ["location"],
+      additionalProperties: false
+    },
+    strict: true
+  }]
+)
+
+final_tool_calls = {}
+stream.each do |event|
+  case event
+  when OpenAI::Models::Responses::ResponseOutputItemAddedEvent
+    item = event.item
+    next unless item.is_a?(OpenAI::Models::Responses::ResponseFunctionToolCall)
+
+    final_tool_calls[event.output_index] = {
+      id: item.id,
+      call_id: item.call_id,
+      name: item.name,
+      type: item.type,
+      arguments: item.arguments.dup
+    }
+  when OpenAI::Models::Responses::ResponseFunctionCallArgumentsDeltaEvent
+    tool_call = final_tool_calls[event.output_index]
+    tool_call[:arguments] << event.delta if tool_call
+  end
+end
+
+puts(final_tool_calls.sort.to_h.values)
+```
+
 
 Accumulated final_tool_calls[0]
 
@@ -1119,6 +1297,23 @@ func main() {
 	}
 	fmt.Println(response.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Use code_exec to print hello world.",
+  tools: [{
+    type: :custom,
+    name: "code_exec",
+    description: "Executes arbitrary Python code."
+  }]
+)
+
+puts(response.output)
 ```
 
 
@@ -1265,6 +1460,32 @@ MUL: "*"
 	}
 	fmt.Println(response.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+grammar = <<~LARK
+  start: expr
+  expr: term (SP ADD SP term)*
+  term: INT
+  SP: " "
+  ADD: "+"
+  %import common.INT
+LARK
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Use math_exp to add four plus four.",
+  tools: [{
+    type: :custom,
+    name: "math_exp",
+    description: "Creates valid mathematical expressions.",
+    format: {type: :grammar, syntax: :lark, definition: grammar}
+  }]
+)
+
+puts(response.output)
 ```
 
 
@@ -1461,6 +1682,25 @@ func main() {
 	}
 	fmt.Println(response.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+grammar = "^(January|February|March|April|May|June|July|August|September|October|November|December) \\d{1,2}(st|nd|rd|th)? \\d{4} at (0?[1-9]|1[0-2])(AM|PM)$"
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Use timestamp to save August 7th 2025 at 10AM.",
+  tools: [{
+    type: :custom,
+    name: "timestamp",
+    description: "Saves a timestamp in date and time format.",
+    format: {type: :grammar, syntax: :regex, definition: grammar}
+  }]
+)
+
+puts(response.output)
 ```
 
 

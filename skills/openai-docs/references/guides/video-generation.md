@@ -103,6 +103,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+video = client.videos.create(model: "sora-2", prompt: "A paper airplane flying over a forest")
+puts(video.id)
+```
+
 ```bash
 curl -X POST "https://api.openai.com/v1/videos" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -249,6 +257,24 @@ func main() {
 	}
 	fmt.Println("Video creation failed. Status:", video.Status)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+video = client.videos.create(model: "sora-2", prompt: "A paper airplane flying over a forest")
+
+while [:queued, :in_progress].include?(video.status)
+  sleep(2)
+  video = client.videos.retrieve(video.id)
+end
+
+unless video.status == OpenAI::Models::Video::Status::COMPLETED
+  raise "Video creation failed. Status: #{video.status}"
+end
+
+puts("Video successfully completed: #{video.id}")
 ```
 
 
@@ -438,6 +464,29 @@ func main() {
 	}
 	fmt.Println("Wrote video.mp4")
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+video = client.videos.create(
+  model: "sora-2",
+  prompt: "A video of the words 'Thank you' in sparkling letters"
+)
+pending_statuses = [
+  OpenAI::Models::Video::Status::QUEUED,
+  OpenAI::Models::Video::Status::IN_PROGRESS
+]
+while pending_statuses.include?(video.status)
+  sleep(2)
+  video = client.videos.retrieve(video.id)
+end
+raise "Video generation failed" if video.status == OpenAI::Models::Video::Status::FAILED
+
+content = client.videos.download_content(video.id)
+File.binwrite("video.mp4", content.read)
+puts("Wrote video.mp4")
 ```
 
 ```bash

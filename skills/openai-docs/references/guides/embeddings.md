@@ -75,6 +75,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.embeddings.create(
+  model: "text-embedding-3-small",
+  input: "The food was delicious and the waiter..."
+)
+
+puts(response.data.fetch(0).embedding)
+```
+
 ```bash
 curl https://api.openai.com/v1/embeddings \
   -H "Content-Type: application/json" \

@@ -19,6 +19,7 @@ Worker configuration is managed through a [Wrangler configuration file](https://
 For more information on Wrangler, refer to [Wrangler](https://developers.cloudflare.com/workers/wrangler/).
 
 * [Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/)
+* [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/)
 * [Compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/)
 * [Compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/)
 * [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/)
@@ -37,7 +38,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Manage Cloudflare Workers project settings, bindings, and deployment options.","url":"https://developers.cloudflare.com/workers/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
