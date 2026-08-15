@@ -51,6 +51,16 @@ if err != nil {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = Pathname("revenue-forecast.csv")
+uploaded = client.files.create(file: file, purpose: :assistants)
+puts(uploaded.id)
+```
+
 ```bash
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -99,6 +109,22 @@ assistant, err := client.Beta.Assistants.New(context.Background(), openai.BetaAs
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant = client.beta.assistants.create(
+  name: "Data visualizer",
+  model: "gpt-4o",
+  instructions: "Analyze CSV data, create relevant visualizations, and summarize the trends.",
+  tools: [{type: :code_interpreter}],
+  tool_resources: {
+    code_interpreter: {file_ids: ["file-BK7bzQj3FfZFXr7DbL6xJwfo"]}
+  }
+)
+puts(assistant.id)
 ```
 
 ```bash
@@ -177,6 +203,23 @@ thread, err := client.Beta.Threads.New(context.Background(), openai.BetaThreadNe
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+thread = client.beta.threads.create(
+  messages: [{
+    role: :user,
+    content: "Create 3 data visualizations based on the trends in this file.",
+    attachments: [{
+      file_id: "file-ACq8OjcLQm2eIG0BvRM4z5qX",
+      tools: [{type: :code_interpreter}]
+    }]
+  }]
+)
+puts(thread.id)
 ```
 
 ```bash
@@ -293,6 +336,31 @@ if err != nil {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = client.files.create(
+  file: Pathname("myimage.png"),
+  purpose: :vision
+)
+thread = client.beta.threads.create(
+  messages: [{
+    role: :user,
+    content: [
+      {type: :text, text: "What is the difference between these images?"},
+      {
+        type: :image_url,
+        image_url: {url: "https://openai-documentation.vercel.app/images/cat_and_otter.png"}
+      },
+      {type: :image_file, image_file: {file_id: file.id}}
+    ]
+  }]
+)
+puts(thread.id)
+```
+
 ```bash
 # Upload a file with an "vision" purpose
 curl https://api.openai.com/v1/files \
@@ -396,6 +464,28 @@ thread, err := client.Beta.Threads.New(context.Background(), openai.BetaThreadNe
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+thread = client.beta.threads.create(
+  messages: [{
+    role: :user,
+    content: [
+      {type: :text, text: "What is this an image of?"},
+      {
+        type: :image_url,
+        image_url: {
+          url: "https://openai-documentation.vercel.app/images/cat_and_otter.png",
+          detail: :high
+        }
+      }
+    ]
+  }]
+)
+puts(thread.id)
 ```
 
 ```bash
@@ -557,6 +647,43 @@ messageContent.Value += "\n" + strings.Join(citations, "\n")
 fmt.Println(messageContent.Value)
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+message = client.beta.threads.messages.retrieve(
+  "msg_abc123",
+  thread_id: "thread_abc123"
+)
+text_block = message.content.find do |content|
+  content.is_a?(OpenAI::Models::Beta::Threads::TextContentBlock)
+end
+unless text_block.is_a?(OpenAI::Models::Beta::Threads::TextContentBlock)
+  raise "No text content returned"
+end
+text = text_block.text
+downloads = Pathname("downloads")
+references = text.annotations.each_with_index.filter_map do |annotation, index|
+  text.value = text.value.sub(annotation.text, " [#{index}]")
+
+  case annotation
+  when OpenAI::Models::Beta::Threads::FileCitationAnnotation
+    file = client.files.retrieve(annotation.file_citation.file_id)
+    "[#{index}] #{file.filename}"
+  when OpenAI::Models::Beta::Threads::FilePathAnnotation
+    file_id = annotation.file_path.file_id
+    file = client.files.retrieve(file_id)
+    downloads.mkpath
+    output_path = downloads.join(Pathname(file.filename).basename)
+    output_path.binwrite(client.files.content(file_id).read)
+    "[#{index}] Downloaded #{output_path}"
+  end
+end
+
+puts(([text.value] + references).join("\n"))
+```
+
 
 ## Runs and Run Steps
 
@@ -582,6 +709,14 @@ _, err := client.Beta.Threads.Runs.New(context.Background(), "thread_abc123", op
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+run = client.beta.threads.runs.create("thread_abc123", assistant_id: "asst_ToSF7Gb04YMj8AMMm50ZLLtY")
+puts(run.id)
 ```
 
 ```bash
@@ -629,6 +764,20 @@ _, err := client.Beta.Threads.Runs.New(context.Background(), "thread_abc123", op
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+run = client.beta.threads.runs.create(
+  "thread_abc123",
+  assistant_id: "asst_ToSF7Gb04YMj8AMMm50ZLLtY",
+  model: "gpt-4o",
+  instructions: "New instructions that override the Assistant instructions",
+  tools: [{type: :code_interpreter}, {type: :file_search}]
+)
+puts(run.id)
 ```
 
 ```bash

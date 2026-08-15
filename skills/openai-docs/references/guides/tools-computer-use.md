@@ -275,6 +275,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Open the Filters panel if needed, then search for penguin. Use the computer tool for UI interaction.",
+  tools: [{type: :computer}]
+)
+
+puts(response.output)
+```
+
 
 The first turn often asks for a screenshot before the model commits to UI actions. That's normal.
 
@@ -1698,6 +1711,28 @@ func sendComputerScreenshot(client openai.Client, responseID string, callID stri
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: "resp_abc123",
+  input: [{
+    type: :computer_call_output,
+    call_id: "call_abc123",
+    output: {
+      type: :computer_screenshot,
+      image_url: "data:image/png;base64,<base64 bytes here>",
+      detail: :original
+    }
+  }],
+  tools: [{type: :computer}]
+)
+
+puts(response.output)
+```
+
 
 ### 5. Repeat until the tool stops calling
 
@@ -2592,6 +2627,25 @@ func main() {
 	}
 	fmt.Println(response.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "computer-use-preview",
+  input: "Check whether the Filters panel is open.",
+  truncation: :auto,
+  tools: [{
+    type: :computer_use_preview,
+    display_width: 1024,
+    display_height: 768,
+    environment: :browser
+  }]
+)
+
+puts(response.output)
 ```
 
 

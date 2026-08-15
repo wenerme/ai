@@ -46,6 +46,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+completion = client.completions.create(model: "gpt-3.5-turbo-instruct", prompt: "Write a tagline for a bakery.", max_tokens: 24)
+puts(completion.choices.fetch(0).text)
+```
+
 
 See the full [API reference documentation](https://platform.openai.com/docs/api-reference/completions) to learn more.
 

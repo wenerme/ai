@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Managed deployment
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Organizations can deploy and manage the Cloudflare One Client (formerly WARP) across their fleet of devices in two complementary ways:
 
@@ -67,13 +67,13 @@ To uninstall the Cloudflare One Client:
 1. First, locate the `.msi` package with the following PowerShell command:
 
 ```powershell
-Get-WmiObject Win32_Product | Where-Object { $_.Name -match "WARP" } | Sort-Object -Property Name | Format-Table IdentifyingNumber, Name, LocalPackage -AutoSize
+Get-WmiObject Win32_Product | Where-Object { $_.Name -match "Cloudflare One Client" } | Sort-Object -Property Name | Format-Table IdentifyingNumber, Name, LocalPackage -AutoSize
 ```
 
 ```txt
-IdentifyingNumber                      Name            LocalPackage
------------------                      ----            ------------
-{5RA4DJWK-13D8-2NSX-QRF8-UANLODWD6D90} Cloudflare WARP C:\WINDOWS\Installer\3f476db.msi
+IdentifyingNumber                      Name                  LocalPackage
+-----------------                      ----                  ------------
+{9949770E-B807-4610-9A96-8CD4997A736A} Cloudflare One Client C:\WINDOWS\Installer\cd8edd0.msi
 ```
 
 1. You can then use the LocalPackage output in the uninstall command. For example,
@@ -238,8 +238,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#page","headline":"Managed deployment · Cloudflare One docs","description":"Managed deployment in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#page","headline":"Managed deployment · Cloudflare One docs","description":"Managed deployment in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["XML"]}
 ```

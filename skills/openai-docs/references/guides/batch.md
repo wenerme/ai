@@ -160,6 +160,16 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = Pathname("batchinput.jsonl")
+uploaded = client.files.create(file: file, purpose: :batch)
+puts(uploaded.id)
+```
+
 ```bash
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -225,6 +235,14 @@ func main() {
 	}
 	fmt.Println(batch.ID)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+batch = client.batches.create(input_file_id: "file-abc123", endpoint: "/v1/responses", completion_window: "24h")
+puts(batch.id)
 ```
 
 ```bash
@@ -313,6 +331,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+batch = client.batches.retrieve("batch_abc123")
+puts(batch.status)
+```
+
 ```bash
 curl https://api.openai.com/v1/batches/batch_abc123 \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -392,6 +418,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+content = client.files.content("file-xyz123")
+puts(content.read)
+```
+
 ```bash
 curl https://api.openai.com/v1/files/file-xyz123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" > batch_output.jsonl
@@ -465,6 +499,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+batch = client.batches.cancel("batch_abc123")
+puts(batch.status)
+```
+
 ```bash
 curl https://api.openai.com/v1/batches/batch_abc123/cancel \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -523,6 +565,15 @@ func main() {
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+client.batches.list(limit: 10).auto_paging_each do |batch|
+  puts(batch.id)
+end
 ```
 
 ```bash

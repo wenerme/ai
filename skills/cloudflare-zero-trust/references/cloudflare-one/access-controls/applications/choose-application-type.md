@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Choose an application type
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Access sits in front of your applications and checks every request against your Access policies before letting users through. It supports several application types, each designed for a different use case. Your choice depends on where your application is hosted, how users connect to it, and what level of control you need over sessions and authorization.
 
@@ -62,6 +62,8 @@ For setup instructions, refer to [Add a self-hosted private application](https:/
 Self-hosted applications can also protect a Cloudflare Worker directly by name, rather than by hostname or IP. When you select a Worker as the destination, you can cover the Worker together with all of its preview deployments, or cover the preview deployments only.
 
 This is the safest and most straightforward way to put authentication in front of a Worker. Instead of configuring individual routes on the Worker and managing authentication at the route level, you link the entire Worker (and optionally its preview deployments) to an Access application. Any request to the Worker on any route passes through Access first.
+
+For Workers-specific setup instructions, refer to [Cloudflare Access for Workers](https://developers.cloudflare.com/workers/configuration/cloudflare-access/).
 
 ### CLI access with cloudflared
 
@@ -135,8 +137,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/#page","headline":"Choose an application type · Cloudflare One docs","description":"Learn which Cloudflare Access application type fits your deployment.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/#page","headline":"Choose an application type · Cloudflare One docs","description":"Learn which Cloudflare Access application type fits your deployment.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/choose-application-type/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

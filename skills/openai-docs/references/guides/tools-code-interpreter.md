@@ -104,6 +104,26 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  instructions: "You are a personal math tutor. Write and run Python code to answer each math question.",
+  input: "I need to solve the equation 3x + 11 = 14. Can you help me?",
+  tools: [
+    {
+      type: :code_interpreter,
+      container: {type: :auto, memory_limit: "4g"}
+    }
+  ]
+)
+
+puts(response.output)
+```
+
 
 While we call this tool Code Interpreter, the model knows it as the "python
   tool". Models usually understand prompts that refer to the code interpreter
@@ -224,6 +244,20 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+container = client.containers.create(name: "analysis", memory_limit: "4g")
+response = client.responses.create(
+  model: "gpt-5.6",
+  tools: [{type: :code_interpreter, container: container.id}],
+  tool_choice: :required,
+  input: "Calculate 4 * 3.82, then take the square root twice."
+)
+puts(response.output_text)
 ```
 
 

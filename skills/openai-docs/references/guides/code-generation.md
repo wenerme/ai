@@ -99,6 +99,26 @@ print(display_name(None))`)},
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+code = <<~PYTHON
+  def display_name(user):
+      return user.profile.name
+
+  print(display_name(None))
+PYTHON
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Find the null pointer exception in this code:\n\n#{code}",
+  reasoning: {effort: :high}
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses \
   -H "Content-Type: application/json" \

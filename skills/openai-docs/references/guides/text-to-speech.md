@@ -98,6 +98,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+audio = client.audio.speech.create(
+  model: "gpt-4o-mini-tts",
+  voice: "coral",
+  input: "Today is a wonderful day to build something people love!",
+  instructions: "Speak in a cheerful and positive tone."
+)
+File.binwrite("speech.mp3", audio.read)
+```
+
 ```bash
 curl https://api.openai.com/v1/audio/speech \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -236,6 +249,22 @@ func main() {
 		panic(err)
 	}
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+audio = client.audio.speech.create(
+  model: "gpt-4o-mini-tts",
+  voice: "alloy",
+  input: "Welcome to the OpenAI API.",
+  response_format: :pcm,
+  stream_format: :audio
+)
+while (chunk = audio.read(1_024))
+  puts(chunk.bytesize)
+end
 ```
 
 ```bash

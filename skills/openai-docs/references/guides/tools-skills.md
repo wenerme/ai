@@ -169,6 +169,28 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Use the skills to add 144 and 377, then compute a triangle area with base 9 and height 13.",
+  tools: [{
+    type: :shell,
+    environment: {
+      type: :container_auto,
+      skills: [
+        {type: :skill_reference, skill_id: "<skill_id>"},
+        {type: :skill_reference, skill_id: "<skill_id>", version: "2"}
+      ]
+    }
+  }]
+)
+
+puts(response.output_text)
+```
+
 
 ### Prompting behavior
 
@@ -295,6 +317,29 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Use the csv-insights skill to summarize today's CSV reports.",
+  tools: [{
+    type: :shell,
+    environment: {
+      type: :local,
+      skills: [{
+        name: "csv-insights",
+        description: "Summarize CSV files and produce a Markdown report.",
+        path: "<path-to-skill-folder>"
+      }]
+    }
+  }]
+)
+
+puts(response.output_text)
 ```
 
 

@@ -386,6 +386,48 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+parameters = {
+  type: :object,
+  properties: {customer_id: {type: :string}},
+  required: ["customer_id"],
+  additionalProperties: false
+}
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "List open orders for customer CUST-12345.",
+  parallel_tool_calls: false,
+  tools: [
+    {
+      type: :namespace,
+      name: "crm",
+      description: "CRM tools for customer lookup and order management.",
+      tools: [
+        {
+          type: :function,
+          name: "get_customer_profile",
+          description: "Fetch a customer profile by customer ID.",
+          parameters: parameters
+        },
+        {
+          type: :function,
+          name: "list_open_orders",
+          description: "List open orders for a customer ID.",
+          defer_loading: true,
+          parameters: parameters
+        }
+      ]
+    },
+    {type: :tool_search}
+  ]
+)
+
+puts(response.output)
+```
+
   
 
   
@@ -590,7 +632,7 @@ response = openai.responses.create(
   tools: tools
 )
 
-puts(response.output.first.to_json)
+puts(response.output.fetch(0).to_json)
 ```
 
 ```bash
@@ -861,7 +903,7 @@ In the Agents SDK, the tool semantics stay the same, but the wiring moves into t
 
 Wrap local logic as a function tool
 
-```typescript
+```javascript
 import { tool } from "@openai/agents";
 import { z } from "zod";
 
@@ -888,7 +930,7 @@ def get_weather(city: str) -> str:
 
 Expose a specialist as a tool
 
-```typescript
+```javascript
 import { Agent } from "@openai/agents";
 
 const summarizer = new Agent({

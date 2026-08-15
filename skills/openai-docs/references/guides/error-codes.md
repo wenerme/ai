@@ -290,3 +290,15 @@ func main() {
 	fmt.Println(response.OutputText())
 }
 ```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+begin
+  response = client.responses.create(model: "gpt-5.6", input: "Say hello.")
+  puts(response.output_text)
+rescue OpenAI::Errors::APIError => error
+  warn(error.message)
+end
+```

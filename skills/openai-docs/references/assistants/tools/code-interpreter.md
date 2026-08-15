@@ -46,6 +46,17 @@ if err != nil {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant = client.beta.assistants.create(
+  model: "gpt-4o",
+  tools: [{type: :code_interpreter}]
+)
+puts(assistant.id)
+```
+
 ```bash
 curl https://api.openai.com/v1/assistants \
   -u :$OPENAI_API_KEY \
@@ -127,6 +138,26 @@ if err != nil {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = client.files.create(
+  file: Pathname("revenue-forecast.csv"),
+  purpose: :assistants
+)
+assistant = client.beta.assistants.create(
+  model: "gpt-4o",
+  instructions: "When asked a math question, write and run code to answer it.",
+  tools: [{type: :code_interpreter}],
+  tool_resources: {
+    code_interpreter: {file_ids: [file.id]}
+  }
+)
+puts(assistant.id)
+```
+
 ```bash
 # Upload a file with an "assistants" purpose
 curl https://api.openai.com/v1/files \
@@ -199,6 +230,23 @@ thread, err := client.Beta.Threads.New(context.Background(), openai.BetaThreadNe
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+thread = client.beta.threads.create(
+  messages: [{
+    role: :user,
+    content: "I need to solve the equation `3x + 11 = 14`. Can you help me?",
+    attachments: [{
+      file_id: "file-ACq8OjcLQm2eIG0BvRM4z5qX",
+      tools: [{type: :code_interpreter}]
+    }]
+  }]
+)
+puts(thread.id)
 ```
 
 ```bash
@@ -307,6 +355,14 @@ if err := output.Close(); err != nil {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+image = client.files.content("file-abc123")
+File.binwrite("my-image.png", image.read)
+```
+
 ```bash
 curl https://api.openai.com/v1/files/file-abc123/content \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -369,6 +425,17 @@ if err != nil {
 	panic(err)
 }
 fmt.Println(runSteps.Data)
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+steps = client.beta.threads.runs.steps.list(
+  "run_abc123",
+  thread_id: "thread_abc123"
+)
+puts(steps.data)
 ```
 
 ```bash

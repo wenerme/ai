@@ -224,14 +224,14 @@
   "anthropic-docs/agents-and-tools/tool-use/code-execution-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/code-execution-tool",
     "skill": "anthropic-docs",
-    "size": 59717,
-    "updatedAt": "2026-08-13T02:34:58.155Z"
+    "size": 61066,
+    "updatedAt": "2026-08-15T01:44:26.266Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/advisor-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/advisor-tool",
     "skill": "anthropic-docs",
-    "size": 94670,
-    "updatedAt": "2026-08-13T02:34:58.504Z"
+    "size": 94923,
+    "updatedAt": "2026-08-15T01:44:26.681Z"
   },
   "anthropic-docs/agents-and-tools/tool-use/tool-search-tool.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-search-tool",
@@ -380,8 +380,8 @@
   "anthropic-docs/agents-and-tools/agent-skills/overview.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview",
     "skill": "anthropic-docs",
-    "size": 21147,
-    "updatedAt": "2026-08-13T02:35:06.852Z"
+    "size": 21148,
+    "updatedAt": "2026-08-15T01:44:35.411Z"
   },
   "anthropic-docs/agents-and-tools/agent-skills/quickstart.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/quickstart",
@@ -392,8 +392,8 @@
   "anthropic-docs/agents-and-tools/agent-skills/best-practices.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
     "skill": "anthropic-docs",
-    "size": 42002,
-    "updatedAt": "2026-08-13T02:35:07.549Z"
+    "size": 41943,
+    "updatedAt": "2026-08-15T01:44:36.117Z"
   },
   "anthropic-docs/agents-and-tools/agent-skills/enterprise.md": {
     "url": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise",
@@ -554,8 +554,8 @@
   "anthropic-docs/managed-agents/skills.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/skills",
     "skill": "anthropic-docs",
-    "size": 22754,
-    "updatedAt": "2026-08-14T02:34:54.538Z"
+    "size": 22729,
+    "updatedAt": "2026-08-15T01:44:45.411Z"
   },
   "anthropic-docs/managed-agents/environments.md": {
     "url": "https://platform.claude.com/docs/en/managed-agents/environments",
@@ -806,8 +806,8 @@
   "anthropic-docs/manage-claude/cmek.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/cmek",
     "skill": "anthropic-docs",
-    "size": 15040,
-    "updatedAt": "2026-08-14T02:35:09.707Z"
+    "size": 14176,
+    "updatedAt": "2026-08-15T01:44:59.276Z"
   },
   "anthropic-docs/manage-claude/cmek-aws-kms.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/cmek-aws-kms",
@@ -836,14 +836,14 @@
   "anthropic-docs/manage-claude/inference-hooks-configuration.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-configuration",
     "skill": "anthropic-docs",
-    "size": 15713,
-    "updatedAt": "2026-08-13T02:35:30.933Z"
+    "size": 15900,
+    "updatedAt": "2026-08-15T01:45:00.968Z"
   },
   "anthropic-docs/manage-claude/inference-hooks-endpoint.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-endpoint",
     "skill": "anthropic-docs",
-    "size": 40773,
-    "updatedAt": "2026-08-13T02:35:31.264Z"
+    "size": 41090,
+    "updatedAt": "2026-08-15T01:45:01.312Z"
   },
   "anthropic-docs/manage-claude/compliance-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api",
@@ -950,8 +950,8 @@
   "anthropic-docs/build-with-claude/prompt-engineering/prompting-claude-opus-5.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-5",
     "skill": "anthropic-docs",
-    "size": 11740,
-    "updatedAt": "2026-08-13T02:35:36.693Z"
+    "size": 12483,
+    "updatedAt": "2026-08-15T01:45:07.280Z"
   },
   "anthropic-docs/build-with-claude/prompt-engineering/prompting-claude-opus-4-8.md": {
     "url": "https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-opus-4-8",
@@ -1022,8 +1022,14 @@
   "anthropic-docs/about-claude/models/choosing-a-model.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/choosing-a-model",
     "skill": "anthropic-docs",
-    "size": 8008,
-    "updatedAt": "2026-08-13T02:35:40.263Z"
+    "size": 8505,
+    "updatedAt": "2026-08-15T01:45:11.170Z"
+  },
+  "anthropic-docs/about-claude/models/optimizing-for-cost-and-intelligence.md": {
+    "url": "https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence",
+    "skill": "anthropic-docs",
+    "size": 77107,
+    "updatedAt": "2026-08-15T01:45:11.537Z"
   },
   "anthropic-docs/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5.md": {
     "url": "https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5",

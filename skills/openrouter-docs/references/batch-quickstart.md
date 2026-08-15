@@ -34,6 +34,14 @@ Batch requests are typically billed at 50% of the model's standard per-token pri
 
 ***
 
+## BYOK
+
+If you have a [provider key](/docs/guides/overview/auth/byok) configured, batches route through it automatically, the same as sync requests: the provider bills you directly for inference and OpenRouter charges only the BYOK fee (see Pricing above). Completed batches report `usage.is_byok: true`.
+
+Google Vertex needs a `bucket` on the key and extra IAM. See [Google Vertex API keys](/docs/guides/overview/auth/byok#google-vertex-api-keys).
+
+***
+
 ## Submit a batch
 
 Submit a batch with:

@@ -23,7 +23,7 @@ Before you begin, make sure you have a Grafana instance with the Grafana SLO app
 
 ## Create a service account token and configure the Terraform provider
 
-Create a [service account token](/docs/grafana-cloud/account-management/authentication-and-permissions/service-accounts/) to authenticate Terraform with Grafana. To generate a token for provisioning SLO resources, complete the following steps:
+Create a [service account token](/docs/grafana-cloud/security-and-account-management/authentication-and-permissions/service-accounts/) to authenticate Terraform with Grafana. To generate a token for provisioning SLO resources, complete the following steps:
 
 1. Create a new service account.
 2. Assign a role with permissions to manage SLO resources.
@@ -91,7 +91,7 @@ You can copy or download the generated `resource` block schema for use in your T
 
 You can also make an HTTP GET call to the SLO API with the query parameter `?format=hcl` to retrieve HCL for an individual SLO or the full list of SLOs.
 
-For details, refer to the [SLO API documentation](/docs/grafana-cloud/alerting-and-irm/slo/api/)
+For details, refer to the [SLO API documentation](/docs/grafana-cloud/alerting-and-irm/slo/set-up/api/).
 
 ### Use the SLO Wizard to generate HCL without creating an SLO
 

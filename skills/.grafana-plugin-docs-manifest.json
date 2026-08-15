@@ -1536,8 +1536,8 @@
   },
   "grafana-slo-app/create.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/create.md",
-    "size": 9773,
-    "updatedAt": "2026-07-22T12:28:39.129Z"
+    "size": 11671,
+    "updatedAt": "2026-08-15T02:11:13.818Z"
   },
   "grafana-slo-app/dashboard.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/dashboard.md",
@@ -1546,13 +1546,13 @@
   },
   "grafana-slo-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest.md",
-    "size": 1794,
-    "updatedAt": "2026-07-30T03:27:17.392Z"
+    "size": 1787,
+    "updatedAt": "2026-08-15T02:11:14.159Z"
   },
   "grafana-slo-app/introduction.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/introduction.md",
-    "size": 6352,
-    "updatedAt": "2026-07-25T04:03:48.823Z"
+    "size": 7125,
+    "updatedAt": "2026-08-15T02:11:14.331Z"
   },
   "grafana-slo-app/maintenance-windows.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/maintenance-windows.md",
@@ -1576,18 +1576,18 @@
   },
   "grafana-slo-app/set-up.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up.md",
-    "size": 891,
-    "updatedAt": "2026-06-25T05:43:17.570Z"
+    "size": 884,
+    "updatedAt": "2026-08-15T02:11:15.200Z"
   },
   "grafana-slo-app/set-up/additionaldatasources.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/additionaldatasources.md",
-    "size": 3137,
-    "updatedAt": "2026-06-25T05:43:17.925Z"
+    "size": 5293,
+    "updatedAt": "2026-08-15T02:11:15.375Z"
   },
   "grafana-slo-app/set-up/api.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/api.md",
-    "size": 2598,
-    "updatedAt": "2026-06-25T05:43:18.285Z"
+    "size": 2962,
+    "updatedAt": "2026-08-15T02:11:15.555Z"
   },
   "grafana-slo-app/set-up/configure-burn-rate-notifications.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/configure-burn-rate-notifications.md",
@@ -1601,8 +1601,8 @@
   },
   "grafana-slo-app/set-up/terraform.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/set-up/terraform.md",
-    "size": 11356,
-    "updatedAt": "2026-06-25T05:43:19.361Z"
+    "size": 11377,
+    "updatedAt": "2026-08-15T02:11:16.085Z"
   },
   "grafana-slo-app/sli-examples.md": {
     "url": "https://grafana.com/docs/plugins/grafana-slo-app/latest/sli-examples.md",

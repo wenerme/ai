@@ -28,6 +28,8 @@ Token counts come from each upstream provider's own tokenizer, so a token attrib
 to one app is not directly comparable to a token attributed to another app whose
 traffic flows through a different provider.
 
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter.
+
 
 
 ## OpenAPI
@@ -68,7 +70,11 @@ tags:
     name: Classifications
   - description: Credit management endpoints
     name: Credits
-  - description: Datasets endpoints
+  - description: >-
+      Public OpenRouter usage datasets. Data returned by these endpoints is
+      licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/):
+      reuse and republish it, including commercially, with attribution to
+      OpenRouter.
     name: Datasets
   - description: Text embedding endpoints
     name: Embeddings
@@ -175,6 +181,11 @@ paths:
         app whose
 
         traffic flows through a different provider.
+
+
+        Licensed under [CC BY
+        4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish
+        with attribution to OpenRouter.
       operationId: getAppRankings
       parameters:
         - description: >-

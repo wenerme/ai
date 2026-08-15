@@ -12,6 +12,8 @@ Filter by `app_slug`, `model`, or `turn_range`. Filtering by `model` alone works
 for harness-vs-harness comparison at a fixed model. Results refresh weekly and include the source snapshot
 window in `meta`.
 
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter.
+
 
 
 ## OpenAPI
@@ -52,7 +54,11 @@ tags:
     name: Classifications
   - description: Credit management endpoints
     name: Credits
-  - description: Datasets endpoints
+  - description: >-
+      Public OpenRouter usage datasets. Data returned by these endpoints is
+      licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/):
+      reuse and republish it, including commercially, with attribution to
+      OpenRouter.
     name: Datasets
   - description: Text embedding endpoints
     name: Embeddings
@@ -123,6 +129,11 @@ paths:
         weekly and include the source snapshot
 
         window in `meta`.
+
+
+        Licensed under [CC BY
+        4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish
+        with attribution to OpenRouter.
       operationId: getSessionCost
       parameters:
         - description: Filter to one published harness slug.

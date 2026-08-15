@@ -31,6 +31,8 @@ are as reported by Anthropic, OpenAI counts are as reported by OpenAI, etc.), so
 a token in one row is not directly comparable to a token in another row from a
 different provider.
 
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter.
+
 
 
 ## OpenAPI
@@ -71,7 +73,11 @@ tags:
     name: Classifications
   - description: Credit management endpoints
     name: Credits
-  - description: Datasets endpoints
+  - description: >-
+      Public OpenRouter usage datasets. Data returned by these endpoints is
+      licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/):
+      reuse and republish it, including commercially, with attribution to
+      OpenRouter.
     name: Datasets
   - description: Text embedding endpoints
     name: Embeddings
@@ -187,6 +193,11 @@ paths:
         from a
 
         different provider.
+
+
+        Licensed under [CC BY
+        4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish
+        with attribution to OpenRouter.
       operationId: getRankingsDaily
       parameters:
         - description: >-

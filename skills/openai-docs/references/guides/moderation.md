@@ -134,6 +134,20 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "A user asks for instructions to make a harmful weapon. Draft a brief refusal and offer a safer alternative.",
+  moderation: {model: "omni-moderation-latest"}
+)
+
+puts(response.moderation)
+```
+
 
 The Responses API returns an input `moderation_result` object at `response.moderation.input` and an output `moderation_result` object at `response.moderation.output`.
 
@@ -211,6 +225,19 @@ func main() {
 
 	fmt.Println(moderation.Results[0].Flagged)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+moderation = client.moderations.create(
+  model: OpenAI::Models::ModerationModel::OMNI_MODERATION_LATEST,
+  input: "Text to classify goes here."
+)
+
+puts(moderation.results.fetch(0).flagged)
 ```
 
 ```bash
@@ -311,6 +338,27 @@ func main() {
 
 	fmt.Println(moderation.Results[0].Flagged)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+moderation = client.moderations.create(
+  model: OpenAI::Models::ModerationModel::OMNI_MODERATION_LATEST,
+  input: [
+    {type: :text, text: "Text to classify goes here."},
+    {
+      type: :image_url,
+      image_url: {
+        url: "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg"
+      }
+    }
+  ]
+)
+
+puts(moderation.results.fetch(0).flagged)
 ```
 
 ```bash

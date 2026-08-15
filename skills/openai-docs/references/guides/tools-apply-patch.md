@@ -106,6 +106,20 @@ for _, item := range response.Output {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Rename fib() to fibonacci() in lib/fib.py and update run.py to use the new name.",
+  tools: [{type: :apply_patch}]
+)
+
+patch_calls = response.output.select { |item| item.type == :apply_patch_call }
+puts(patch_calls)
+```
+
 
 **Example `apply_patch_call` object**
 
@@ -183,6 +197,27 @@ _, err = client.Responses.New(context.Background(), responses.ResponseNewParams{
 if err != nil {
 	panic(err)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response_id = ENV.fetch("OPENAI_RESPONSE_ID")
+patch_call_id = ENV.fetch("OPENAI_APPLY_PATCH_CALL_ID")
+response = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: response_id,
+  input: [{
+    type: :apply_patch_call_output,
+    call_id: patch_call_id,
+    status: :completed,
+    output: "Patch applied successfully."
+  }],
+  tools: [{type: :apply_patch}]
+)
+
+puts(response.output_text)
 ```
 
 

@@ -324,7 +324,7 @@ Learn more in the [AWS Bedrock Getting Started with the API](https://docs.aws.am
 
 ### Google Vertex API Keys
 
-To use Google Vertex AI with OpenRouter, you'll need to provide your Google Cloud service account key in JSON format. The service account key should include all standard Google Cloud service account fields, with an optional `region` field for specifying the deployment region.
+To use Google Vertex AI with OpenRouter, you'll need to provide your Google Cloud service account key in JSON format. The service account key should include all standard Google Cloud service account fields, with an optional `region` field for specifying the deployment region. For [Batch API](/docs/batch-quickstart) Vertex BYOK, a `bucket` field is also required.
 
 ```json lines theme={null}
 {
@@ -339,7 +339,8 @@ To use Google Vertex AI with OpenRouter, you'll need to provide your Google Clou
   "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
   "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/your-service-account@your-project.iam.gserviceaccount.com",
   "universe_domain": "googleapis.com",
-  "region": "global"
+  "region": "global",
+  "bucket": "your-batch-bucket"
 }
 ```
 
@@ -348,6 +349,8 @@ You can find these values in your Google Cloud Console:
 1. **Service Account Key**: Navigate to the Google Cloud Console, go to "IAM & Admin" > "Service Accounts", select your service account, and create/download a JSON key.
 
 2. **region** (optional): Specify the region for your Vertex AI deployment. Use `"global"` to allow requests to run in any available region, or specify a specific region like `"us-central1"` or `"europe-west1"`.
+
+3. **bucket** (required for [Batch API](/docs/batch-quickstart) Vertex BYOK): A Cloud Storage bucket in your project used for batch job artifacts. Accepts a bucket name (`"my-batch-bucket"`) or a bucket URI (`"gs://my-batch-bucket"`, optional trailing slash). Do not include an object path (`"gs://my-batch-bucket/prefix"` is rejected). Synchronous requests ignore this field. A key without `bucket` is rejected when you submit a Vertex batch.
 
 Make sure your service account has the necessary permissions to access Vertex AI services:
 
@@ -366,6 +369,12 @@ Example IAM policy:
     }
   ]
 }
+```
+
+For Batch, also grant `roles/storage.objectUser` on that bucket to the key SA and to Vertex's service agent (`service-<PROJECT_NUMBER>@gcp-sa-aiplatform.iam.gserviceaccount.com`). Create the agent first if it does not exist:
+
+```bash lines theme={null}
+gcloud beta services identity create --service=aiplatform.googleapis.com --project=YOUR_PROJECT
 ```
 
 Learn more in the [Google Cloud Vertex AI documentation](https://cloud.google.com/vertex-ai/docs/start/introduction-unified-platform) and [Service Account setup guide](https://cloud.google.com/iam/docs/service-accounts-create).

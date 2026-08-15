@@ -36,7 +36,7 @@ ComfyUI をインストールした後、ComfyUI にはすでに多くのノー�
 
 現在、ComfyUI は複数の方法でカスタムノードをインストールすることをサポートしています。以下を含みます：
 
-- [ComfyUI Manager 経由でインストール（推奨）](#install-via-comfyui-manager)
+- [ComfyUI Manager 経由でインストール（推奨）](#comfyui-manager-経由でインストール)
 - Git 経由でインストール
 - 手動インストール
 
@@ -92,7 +92,7 @@ git clone https://github.com/Comfy-Org/ComfyUI-Manager
 
 これは、カスタムノードコードを正常にクローンしたことを意味します。次に、対応する依存関係をインストールする必要があります。
 
-依存関係のインストールについては、[ノード依存関係のインストール](#installing-node-dependencies) セクションの説明を参照してください。
+依存関係のインストールについては、[ノード依存関係のインストール](#2-ノード依存関係のインストール) セクションの説明を参照してください。
 
 手動インストールは推奨されるインストール方法ではありませんが、git を使用してスムーズにインストールできない場合のバックアップオプションとして機能します。
 
@@ -109,7 +109,7 @@ git clone https://github.com/Comfy-Org/ComfyUI-Manager
 
 上記の手順で解凍したコードを ComfyUI カスタムノードディレクトリにコピーします。ComfyUI ポータブルバージョンを例として、フォルダの場所が `D:\ComfyUI_windows_portable` の場合、`D:\ComfyUI_windows_portable\ComfyUI\custom_nodes` にカスタムノードフォルダが見つかるはずです。上記の手順で解凍したコードを対応するディレクトリにコピーします。
 
-依存関係のインストールについては、[ノード依存関係のインストール](#installing-node-dependencies) セクションの説明を参照してください。
+依存関係のインストールについては、[ノード依存関係のインストール](#2-ノード依存関係のインストール) セクションの説明を参照してください。
 
 ### 2. ノード依存関係のインストール
 
@@ -200,7 +200,7 @@ git checkout <commit_hash>
 ```
 `<commit_hash>` を切り替えたい特定のコミットハッシュに置き換えます。
 
-バージョン切り替え後、対応するカスタムノードパッケージの依存関係が変更される可能性があるため、対応するノードの依存関係を再インストールする必要があります。[ノード依存関係のインストール](#2-installing-node-dependencies) セクションの説明を参照して、対応する環境に入りインストールしてください。
+バージョン切り替え後、対応するカスタムノードパッケージの依存関係が変更される可能性があるため、対応するノードの依存関係を再インストールする必要があります。[ノード依存関係のインストール](#2-ノード依存関係のインストール) セクションの説明を参照して、対応する環境に入りインストールしてください。
 
 ### カスタムノードのアンインストール
 
@@ -218,7 +218,7 @@ git checkout <commit_hash>
 
 [ComfyUI Manager インターフェース]
 
-このツールは現在 [Desktop バージョン](/ja/installation/desktop/windows) にデフォルトで含まれており、[Portable バージョン](/ja/installation/comfyui_portable_windows) では、このドキュメントの [Manager のインストール](#installing-custom-nodes) セクションのインストール手順を参照する必要があります。
+このツールは現在 [Desktop バージョン](/ja/installation/desktop/windows) にデフォルトで含まれており、[Portable バージョン](/ja/installation/comfyui_portable_windows) では、このドキュメントの [Manager のインストール](#1-カスタムノードのインストール) セクションのインストール手順を参照する必要があります。
 
 ComfyUI の開発に伴い、ComfyUI Manager は ComfyUI においてますます重要な役割を果たしています。現在、ComfyUI-Manager は正式に Comfy Org 組織に参加し、ComfyUI のコア依存関係の一部となり、元の作者 [Dr.Lt.Data](https://github.com/ltdrdata) によって引き続きメンテナンスされています。詳細については [このブログ投稿](https://blog.comfy.org/p/comfyui-manager-joins-comfy-org) を読むことができます。
 将来の反復では、ComfyUI Manager の使用を大幅に最適化するため、このドキュメントに表示されるインターフェースは最新バージョンの ComfyUI Manager と異なる可能性があります。

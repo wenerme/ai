@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Web3
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 14, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/web3/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Develop Web3 applications without having to worry about running infrastructure
 
@@ -30,7 +30,7 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 [IPFS Gateway](https://developers.cloudflare.com/web3/ipfs-gateway/)
 
-Paid add-on
+Add-on feature
 
 Provides a read-only, HTTP-accessible interface to the [Interplanetary File System (IPFS)](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/).
 
@@ -38,7 +38,7 @@ Use IPFS Gateway
 
 [Ethereum Gateway](https://developers.cloudflare.com/web3/ethereum-gateway/)
 
-Paid add-on
+Add-on feature
 
 Gives you read and write access to the [Ethereum network](https://developers.cloudflare.com/web3/ethereum-gateway/concepts/ethereum/) without installing any software on your computer.
 
@@ -74,8 +74,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web3/#page","headline":"Overview · Cloudflare Web3 docs","description":"Cloudflare offers gateways to various networks to help Web3 developers do what they do best, develop applications without having to worry about running infrastructure.","url":"https://developers.cloudflare.com/web3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/web3/#page","headline":"Overview · Cloudflare Web3 docs","description":"Cloudflare offers gateways to various networks to help Web3 developers do what they do best, develop applications without having to worry about running infrastructure.","url":"https://developers.cloudflare.com/web3/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1396,7 +1396,7 @@ chunk objects if the request is streamed.
 
 ### Returns
 
-- `ChatCompletion object { id, choices, created, 6 more }`
+- `ChatCompletion object { id, choices, created, 7 more }`
 
   Represents a chat completion response returned by model, based on the provided input.
 
@@ -1640,6 +1640,15 @@ chunk objects if the request is streamed.
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `metadata: optional Metadata or null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
 
   - `moderation: optional object { input, output }  or null`
 
@@ -1996,6 +2005,9 @@ curl https://api.openai.com/v1/chat/completions \
   "created": 0,
   "model": "model",
   "object": "chat.completion",
+  "metadata": {
+    "foo": "string"
+  },
   "moderation": {
     "input": {
       "model": "model",
@@ -2873,6 +2885,15 @@ with the `store` parameter set to `true` will be returned.
 
     - `"chat.completion"`
 
+  - `metadata: optional Metadata or null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
+
   - `moderation: optional object { input, output }  or null`
 
     Moderation results for the request input and generated output, if moderated
@@ -3232,6 +3253,9 @@ curl https://api.openai.com/v1/chat/completions \
       "created": 0,
       "model": "model",
       "object": "chat.completion",
+      "metadata": {
+        "foo": "string"
+      },
       "moderation": {
         "input": {
           "model": "model",
@@ -3379,7 +3403,7 @@ with the `store` parameter set to `true` will be returned.
 
 ### Returns
 
-- `ChatCompletion object { id, choices, created, 6 more }`
+- `ChatCompletion object { id, choices, created, 7 more }`
 
   Represents a chat completion response returned by model, based on the provided input.
 
@@ -3623,6 +3647,15 @@ with the `store` parameter set to `true` will be returned.
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `metadata: optional Metadata or null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
 
   - `moderation: optional object { input, output }  or null`
 
@@ -3963,6 +3996,9 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
   "created": 0,
   "model": "model",
   "object": "chat.completion",
+  "metadata": {
+    "foo": "string"
+  },
   "moderation": {
     "input": {
       "model": "model",
@@ -4108,7 +4144,7 @@ the only supported modification is to update the `metadata` field.
 
 ### Returns
 
-- `ChatCompletion object { id, choices, created, 6 more }`
+- `ChatCompletion object { id, choices, created, 7 more }`
 
   Represents a chat completion response returned by model, based on the provided input.
 
@@ -4352,6 +4388,15 @@ the only supported modification is to update the `metadata` field.
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `metadata: optional Metadata or null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
 
   - `moderation: optional object { input, output }  or null`
 
@@ -4698,6 +4743,9 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID \
   "created": 0,
   "model": "model",
   "object": "chat.completion",
+  "metadata": {
+    "foo": "string"
+  },
   "moderation": {
     "input": {
       "model": "model",
@@ -4857,7 +4905,7 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
 
 ### Chat Completion
 
-- `ChatCompletion object { id, choices, created, 6 more }`
+- `ChatCompletion object { id, choices, created, 7 more }`
 
   Represents a chat completion response returned by model, based on the provided input.
 
@@ -5101,6 +5149,15 @@ curl -X POST https://api.openai.com/v1/chat/completions/chat_abc123 \
     The object type, which is always `chat.completion`.
 
     - `"chat.completion"`
+
+  - `metadata: optional Metadata or null`
+
+    Set of 16 key-value pairs that can be attached to an object. This can be
+    useful for storing additional information about the object in a structured
+    format, and querying for objects via API or the dashboard.
+
+    Keys are strings with a maximum length of 64 characters. Values are strings
+    with a maximum length of 512 characters.
 
   - `moderation: optional object { input, output }  or null`
 

@@ -139,6 +139,37 @@ func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.Respo
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+conversation = [{
+  type: :message,
+  role: :user,
+  content: "Let's begin a long coding task."
+}]
+
+response = client.responses.create(
+  model: "gpt-5.3-codex",
+  input: conversation,
+  store: false,
+  context_management: [{type: :compaction, compact_threshold: 200_000}]
+)
+conversation.concat(response.output)
+conversation << {
+  type: :message,
+  role: :user,
+  content: "Now implement the next step."
+}
+next_response = client.responses.create(
+  model: "gpt-5.3-codex",
+  input: conversation,
+  store: false,
+  context_management: [{type: :compaction, compact_threshold: 200_000}]
+)
+puts(next_response.output_text)
+```
+
 
 ## Standalone compact endpoint
 
@@ -259,4 +290,25 @@ func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.Respo
 	}
 	return input
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+long_input = [{role: :user, content: "Plan a trip to Kyoto."}]
+compaction = client.responses.compact(
+  model: "gpt-5.6",
+  input: long_input
+)
+next_input = [
+  *compaction.output,
+  {type: :message, role: :user, content: "Add restaurant recommendations."}
+]
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: next_input,
+  store: false
+)
+puts(response.output_text)
 ```

@@ -171,6 +171,23 @@ func main() {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+completion = client.chat.completions.create(
+  model: "gpt-audio-1.5",
+  messages: [{role: :user, content: "Is a golden retriever a good family dog?"}],
+  modalities: [:text, :audio],
+  audio: {voice: :alloy, format: :wav},
+  store: true
+)
+
+audio = completion.choices.fetch(0).message.audio or raise "No audio returned"
+File.binwrite("dog.wav", Base64.strict_decode64(audio.data))
+```
+
 ```bash
 curl "https://api.openai.com/v1/chat/completions" \
     -H "Content-Type: application/json" \
@@ -302,6 +319,29 @@ func main() {
 	}
 	fmt.Println(response.Choices[0])
 }
+```
+
+```ruby
+require "base64"
+require "openai"
+
+client = OpenAI::Client.new
+audio = Base64.strict_encode64(File.binread("audio.wav"))
+completion = client.chat.completions.create(
+  model: "gpt-audio-1.5",
+  messages: [{
+    role: :user,
+    content: [
+      {type: :text, text: "What is in this recording?"},
+      {type: :input_audio, input_audio: {data: audio, format: :wav}}
+    ]
+  }],
+  modalities: [:text, :audio],
+  audio: {voice: :alloy, format: :wav},
+  store: true
+)
+
+puts(completion.choices.fetch(0).message.content)
 ```
 
 ```bash

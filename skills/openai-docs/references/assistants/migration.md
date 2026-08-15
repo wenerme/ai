@@ -323,6 +323,39 @@ for m in messages:
 conversation = openai.conversations.create(items=items)
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+thread_id = ENV.fetch("OPENAI_THREAD_ID")
+messages = client.beta.threads.messages.list(thread_id, order: :asc)
+items = []
+messages.auto_paging_each do |message|
+  content = message.content.filter_map do |part|
+    case part
+    when OpenAI::Models::Beta::Threads::TextContentBlock
+      type = if message.role == OpenAI::Models::Beta::Threads::Message::Role::USER
+        :input_text
+      else
+        :output_text
+      end
+      {type: type, text: part.text.value}
+    when OpenAI::Models::Beta::Threads::ImageURLContentBlock
+      {
+        type: :input_image,
+        image_url: part.image_url.url,
+        detail: part.image_url.detail
+      }
+    end
+  end
+  items << {role: message.role, content: content}
+end
+conversation = client.conversations.create(
+  items: items
+)
+puts(conversation.id)
+```
+
 
 ## Comparing full examples
 
@@ -371,6 +404,48 @@ async def message(message: Message):
     return {"content": messages.data[0].content}
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+assistant_id = ENV.fetch("OPENAI_ASSISTANT_ID")
+threads_by_session = {}
+
+handle_message = lambda do |session_id:, content:|
+  thread_id = threads_by_session[session_id]
+  unless thread_id
+    thread_id = client.beta.threads.create.id
+    threads_by_session[session_id] = thread_id
+  end
+
+  client.beta.threads.messages.create(
+    thread_id,
+    role: :user,
+    content: content
+  )
+  run = client.beta.threads.runs.create(
+    thread_id,
+    assistant_id: assistant_id
+  )
+  while [:queued, :in_progress].include?(run.status)
+    sleep(1)
+    run = client.beta.threads.runs.retrieve(run.id, thread_id: thread_id)
+  end
+
+  messages = client.beta.threads.messages.list(
+    thread_id,
+    order: :desc,
+    limit: 1
+  )
+  {content: messages.data&.first&.content}
+end
+
+puts(handle_message.call(
+  session_id: "example-session",
+  content: "What are the five Ds of dodgeball?"
+))
+```
+
 
   
 
@@ -397,4 +472,31 @@ async def message(message: Message):
     )
 
     return {"content": response.output_text}
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+conversations_by_session = {}
+
+handle_message = lambda do |session_id:, content:|
+  conversation_id = conversations_by_session[session_id]
+  unless conversation_id
+    conversation_id = client.conversations.create.id
+    conversations_by_session[session_id] = conversation_id
+  end
+
+  response = client.responses.create(
+    prompt: {id: ENV.fetch("OPENAI_PROMPT_ID")},
+    input: [{role: :user, content: content}],
+    conversation: conversation_id
+  )
+  {content: response.output_text}
+end
+
+puts(handle_message.call(
+  session_id: "example-session",
+  content: "What are the five Ds of dodgeball?"
+))
 ```

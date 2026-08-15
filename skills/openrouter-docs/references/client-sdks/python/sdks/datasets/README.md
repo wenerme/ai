@@ -4,11 +4,11 @@
 
 # Datasets
 
-> Datasets endpoints
+> Public OpenRouter usage datasets. Data returned by these endpoints is licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/): reuse and republish it, including commercially, with attribution to OpenRouter.
 
 ## Overview
 
-Datasets endpoints
+Public OpenRouter usage datasets. Data returned by these endpoints is licensed under CC BY 4.0 ([https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)): reuse and republish it, including commercially, with attribution to OpenRouter.
 
 ### Available Operations
 
@@ -41,6 +41,8 @@ When republishing or quoting this dataset, OpenRouter must be cited as:
 Token counts come from each upstream provider's own tokenizer, so a token attributed
 to one app is not directly comparable to a token attributed to another app whose
 traffic flows through a different provider.
+
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter.
 
 ### Example Usage
 
@@ -124,6 +126,8 @@ are as reported by Anthropic, OpenAI counts are as reported by OpenAI, etc.), so
 a token in one row is not directly comparable to a token in another row from a
 different provider.
 
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter.
+
 ### Example Usage
 
 ```python theme={null}
@@ -184,6 +188,8 @@ privacy-preserving aggregation never exposes clerk\_user\_id values or per-sessi
 Filter by `app_slug`, `model`, or `turn_range`. Filtering by `model` alone works across apps
 for harness-vs-harness comparison at a fixed model. Results refresh weekly and include the source snapshot
 window in `meta`.
+
+Licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): reuse and republish with attribution to OpenRouter.
 
 ### Example Usage
 

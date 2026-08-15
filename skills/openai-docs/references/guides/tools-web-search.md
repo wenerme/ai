@@ -291,6 +291,20 @@ ResponseResult response = await client.CreateResponseAsync(options);
 Console.WriteLine(response.GetOutputText());
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What movie won best picture in 2025?",
+  tools: [{type: :web_search, search_context_size: :low}]
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -418,6 +432,20 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Research the economic impact of semaglutide on global healthcare systems. Include current figures and citations.",
+  reasoning: {effort: :xhigh},
+  tools: [{type: :web_search, return_token_budget: :unlimited}]
+)
+
+puts(response.output_text)
 ```
 
 ```bash
@@ -550,6 +578,46 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  reasoning: {effort: :low},
+  input: "Search for how semaglutide is used in the treatment of diabetes.",
+  include: ["web_search_call.action.sources"],
+  tools: [
+    {
+      type: :web_search,
+      filters: {
+        allowed_domains: [
+          "pubmed.ncbi.nlm.nih.gov",
+          "clinicaltrials.gov",
+          "www.who.int",
+          "www.cdc.gov",
+          "www.fda.gov"
+        ],
+        blocked_domains: ["reddit.com", "quora.com", "wikipedia.org"]
+      }
+    }
+  ]
+)
+
+puts(response.output_text)
+response.output
+  .grep(OpenAI::Models::Responses::ResponseFunctionWebSearch)
+  .each do |search_call|
+    action = search_call.action
+    next unless action.is_a?(
+      OpenAI::Models::Responses::ResponseFunctionWebSearch::Action::Search
+    )
+
+    Array(action.sources).each { |source| puts(source.url) }
+  end
 ```
 
 ```bash
@@ -685,6 +753,28 @@ func main() {
 	}
 	fmt.Println(response.Output)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  reasoning: {effort: :low},
+  input: "Search for recent images and supporting text sources about the Golden Gate Bridge at sunset.",
+  include: ["web_search_call.results"],
+  tools: [
+    {
+      type: :web_search,
+      search_content_types: ["image", "text"],
+      image_settings: {max_results: 3, caption: true}
+    }
+  ]
+)
+
+puts(response.output)
 ```
 
 ```bash
@@ -858,6 +948,30 @@ ResponseResult response = await client.CreateResponseAsync(options);
 Console.WriteLine(response.GetOutputText());
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What are the best restaurants near me?",
+  tools: [
+    {
+      type: :web_search,
+      user_location: {
+        type: :approximate,
+        country: "GB",
+        city: "London",
+        region: "London"
+      }
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
 ```bash
 curl "https://api.openai.com/v1/responses" \
     -H "Content-Type: application/json" \
@@ -961,6 +1075,20 @@ func main() {
 	}
 	fmt.Println(response.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "Find when the Eiffel Tower opened to the public and cite the source.",
+  tools: [{type: :web_search, external_web_access: false}]
+)
+
+puts(response.output_text)
 ```
 
 

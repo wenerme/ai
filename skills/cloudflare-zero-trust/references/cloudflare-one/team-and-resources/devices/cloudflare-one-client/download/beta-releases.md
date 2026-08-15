@@ -35,7 +35,7 @@ Cloudflare tests new Cloudflare One Client features and improvements in an unsta
 
 Latest release
 
-**Version:** Windows2026.7.1210.1**Date:** 2026-07-31**Size:** 59.5 MB
+**Version:** Windows 2026.7.1210.1**Date:** 2026-07-31**Size:** 59.5 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.7.1210.1)
 
@@ -63,7 +63,7 @@ Previous version history (6)
 
 Windows 2026.5.1155.1
 
-**Version:** Windows2026.5.1155.1**Date:** 2026-05-29**Size:** 56 MB
+**Version:** Windows 2026.5.1155.1**Date:** 2026-05-29**Size:** 56 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.5.1155.1)
 
@@ -102,7 +102,7 @@ This release introduces the new Cloudflare One Client UI for Windows! You can ex
 
 Windows 2026.3.566.1
 
-**Version:** Windows2026.3.566.1**Date:** 2026-03-10**Size:** 51.4 MB
+**Version:** Windows 2026.3.566.1**Date:** 2026-03-10**Size:** 51.4 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.3.566.1)
 
@@ -141,7 +141,7 @@ This release contains minor fixes and introduces a brand new visual style for th
 
 Windows 2026.1.89.1
 
-**Version:** Windows2026.1.89.1**Date:** 2026-01-27**Size:** 137 MB
+**Version:** Windows 2026.1.89.1**Date:** 2026-01-27**Size:** 137 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2026.1.89.1)
 
@@ -170,7 +170,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.10.118.1
 
-**Version:** Windows2025.10.118.1**Date:** 2025-12-09**Size:** 136 MB
+**Version:** Windows 2025.10.118.1**Date:** 2025-12-09**Size:** 136 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.10.118.1)
 
@@ -197,7 +197,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.9.173.1
 
-**Version:** Windows2025.9.173.1**Date:** 2025-10-16**Size:** 135 MB
+**Version:** Windows 2025.9.173.1**Date:** 2025-10-16**Size:** 135 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.9.173.1)
 
@@ -226,7 +226,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Windows 2025.7.106.1
 
-**Version:** Windows2025.7.106.1**Date:** 2025-09-10**Size:** 135 MB
+**Version:** Windows 2025.7.106.1**Date:** 2025-09-10**Size:** 135 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/windows/version/2025.7.106.1)
 
@@ -272,7 +272,7 @@ To work around this issue, reconnect the WARP client by toggling off and back on
 
 Latest release
 
-**Version:** macOS2026.7.1210.1**Date:** 2026-07-31**Size:** 153 MB
+**Version:** macOS 2026.7.1210.1**Date:** 2026-07-31**Size:** 153 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.7.1210.1)
 
@@ -298,7 +298,7 @@ Previous version history (7)
 
 macOS 2026.6.782.1
 
-**Version:** macOS2026.6.782.1**Date:** 2026-06-24**Size:** 152 MB
+**Version:** macOS 2026.6.782.1**Date:** 2026-06-24**Size:** 152 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.6.782.1)
 
@@ -329,7 +329,7 @@ This release also introduces multiple fixes and improvements including:
 
 macOS 2026.5.1155.1
 
-**Version:** macOS2026.5.1155.1**Date:** 2026-05-29**Size:** 143 MB
+**Version:** macOS 2026.5.1155.1**Date:** 2026-05-29**Size:** 143 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.5.1155.1)
 
@@ -359,7 +359,7 @@ This release introduces the new Cloudflare One Client UI for macOS! You can expe
 
 macOS 2026.3.566.1
 
-**Version:** macOS2026.3.566.1**Date:** 2026-03-10**Size:** 128 MB
+**Version:** macOS 2026.3.566.1**Date:** 2026-03-10**Size:** 128 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.3.566.1)
 
@@ -386,7 +386,7 @@ This release contains minor fixes and introduces a brand new visual style for th
 
 macOS 2026.1.89.1
 
-**Version:** macOS2026.1.89.1**Date:** 2026-01-27**Size:** 115 MB
+**Version:** macOS 2026.1.89.1**Date:** 2026-01-27**Size:** 115 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2026.1.89.1)
 
@@ -401,7 +401,7 @@ This release contains minor fixes and improvements.
 
 macOS 2025.10.118.1
 
-**Version:** macOS2025.10.118.1**Date:** 2025-12-09**Size:** 111 MB
+**Version:** macOS 2025.10.118.1**Date:** 2025-12-09**Size:** 111 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.10.118.1)
 
@@ -416,7 +416,7 @@ This release contains minor fixes and improvements.
 
 macOS 2025.9.173.1
 
-**Version:** macOS2025.9.173.1**Date:** 2025-10-16**Size:** 111 MB
+**Version:** macOS 2025.9.173.1**Date:** 2025-10-16**Size:** 111 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.9.173.1)
 
@@ -437,7 +437,7 @@ This release contains minor fixes, improvements, and new features including Path
 
 macOS 2025.7.106.1
 
-**Version:** macOS2025.7.106.1**Date:** 2025-09-10**Size:** 108 MB
+**Version:** macOS 2025.7.106.1**Date:** 2025-09-10**Size:** 108 MB
 
 [Download](https://downloads.cloudflareclient.com/v1/download/macos/version/2025.7.106.1)
 
@@ -464,7 +464,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/#page","headline":"Download Cloudflare One Client beta releases · Cloudflare One docs","description":"Reference information for Download Cloudflare One Client beta releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

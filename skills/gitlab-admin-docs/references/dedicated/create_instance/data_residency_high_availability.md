@@ -175,4 +175,4 @@ Grades help you make sustainable deployment decisions but don't reflect real-tim
 ## Related topics
 
 - [Create your GitLab Dedicated instance](_index.md)
-- [Disaster recovery for GitLab Dedicated](../disaster_recovery.md)
+- [Disaster recovery](../disaster_recovery.md)

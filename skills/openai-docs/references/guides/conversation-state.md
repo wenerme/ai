@@ -85,6 +85,23 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {role: :user, content: "Knock knock."},
+    {role: :assistant, content: "Who's there?"},
+    {role: :user, content: "Orange."}
+  ]
+)
+
+puts(response.output_text)
+```
+
 
 
 By using alternating `user` and `assistant` messages, you capture the previous state of a conversation in one request to the model.
@@ -220,6 +237,30 @@ func outputAsInput(output []responses.ResponseOutputItemUnion) []responses.Respo
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+history = [{role: :user, content: "Tell me a joke."}]
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: history,
+  store: false
+)
+puts(first.output_text)
+
+history.concat(first.output.map(&:to_h))
+history << {role: :user, content: "Tell me another."}
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  input: history,
+  store: false
+)
+puts(second.output_text)
+```
+
 
 
 ## OpenAI APIs for conversation state
@@ -249,6 +290,10 @@ if err != nil {
 }
 ```
 
+```ruby
+conversation = client.conversations.create
+```
+
 
 In a multi-turn interaction, you can pass the `conversation` into subsequent responses to persist state and share context across subsequent responses, rather than having to chain multiple response items together.
 
@@ -276,6 +321,16 @@ if err != nil {
 	panic(err)
 }
 fmt.Println(response.OutputText())
+```
+
+```ruby
+response = client.responses.create(
+  model: "gpt-5.6",
+  conversation: conversation.id,
+  input: "What are the five Ds of dodgeball?"
+)
+
+puts(response.output_text)
 ```
 
 
@@ -366,6 +421,25 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "Tell me a joke."
+)
+puts(first.output_text)
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: first.id,
+  input: "Explain why this is funny."
+)
+puts(second.output_text)
+```
+
 
 In the following example, we ask the model to tell a joke. Separately, we ask the model to explain why it's funny, and the model has all necessary context to deliver a good response.
 
@@ -451,6 +525,25 @@ func main() {
 	}
 	fmt.Println(second.OutputText())
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+first = client.responses.create(
+  model: "gpt-5.6",
+  input: "Tell me a joke."
+)
+puts(first.output_text)
+
+second = client.responses.create(
+  model: "gpt-5.6",
+  previous_response_id: first.id,
+  input: "Explain why this is funny."
+)
+puts(second.output_text)
 ```
 
 

@@ -4,7 +4,7 @@
 
 # Delete a workspace
 
-> Delete an existing workspace. Workspaces with active API keys cannot be deleted; remove the keys first. Deleting the default workspace is currently limited to internal OpenRouter administrators while the capability rolls out; other callers receive a 403. When permitted, it requires `confirm_default_settings_deletion=true` and additionally disables the account’s unscoped inference API keys; management (provisioning) keys are retained. Deleting any workspace permanently deletes its budgets and guardrails and disables its classifiers and broadcast destinations. [Management key](/docs/guides/overview/auth/management-api-keys) required.
+> Delete an existing workspace. Workspaces with active API keys cannot be deleted; remove the keys first. Deleting the default workspace is not yet generally available; callers not enabled for it receive a 403 while the capability rolls out. When permitted, it requires `confirm_default_settings_deletion=true` and additionally disables the account’s unscoped inference API keys; management (provisioning) keys are retained. Deleting any workspace permanently deletes its budgets and guardrails and disables its classifiers and broadcast destinations. [Management key](/docs/guides/overview/auth/management-api-keys) required.
 
 
 
@@ -46,7 +46,11 @@ tags:
     name: Classifications
   - description: Credit management endpoints
     name: Credits
-  - description: Datasets endpoints
+  - description: >-
+      Public OpenRouter usage datasets. Data returned by these endpoints is
+      licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/):
+      reuse and republish it, including commercially, with attribution to
+      OpenRouter.
     name: Datasets
   - description: Text embedding endpoints
     name: Embeddings
@@ -101,15 +105,15 @@ paths:
       summary: Delete a workspace
       description: >-
         Delete an existing workspace. Workspaces with active API keys cannot be
-        deleted; remove the keys first. Deleting the default workspace is
-        currently limited to internal OpenRouter administrators while the
-        capability rolls out; other callers receive a 403. When permitted, it
-        requires `confirm_default_settings_deletion=true` and additionally
-        disables the account’s unscoped inference API keys; management
-        (provisioning) keys are retained. Deleting any workspace permanently
-        deletes its budgets and guardrails and disables its classifiers and
-        broadcast destinations. [Management
-        key](/docs/guides/overview/auth/management-api-keys) required.
+        deleted; remove the keys first. Deleting the default workspace is not
+        yet generally available; callers not enabled for it receive a 403 while
+        the capability rolls out. When permitted, it requires
+        `confirm_default_settings_deletion=true` and additionally disables the
+        account’s unscoped inference API keys; management (provisioning) keys
+        are retained. Deleting any workspace permanently deletes its budgets and
+        guardrails and disables its classifiers and broadcast destinations.
+        [Management key](/docs/guides/overview/auth/management-api-keys)
+        required.
       operationId: deleteWorkspace
       parameters:
         - description: The workspace ID (UUID) or slug
@@ -122,23 +126,23 @@ paths:
             minLength: 1
             type: string
         - description: >-
-            Required to delete the default workspace (currently limited to
-            internal OpenRouter administrators while the capability rolls out).
-            Deleting it permanently disables the account’s unscoped inference
-            API keys (management/provisioning keys are retained) and its
-            budgets, guardrails, classifiers, and broadcast destinations.
-            Ignored for non-default workspaces.
+            Required to delete the default workspace (not yet generally
+            available; callers not enabled for it receive a 403 while the
+            capability rolls out). Deleting it permanently disables the
+            account’s unscoped inference API keys (management/provisioning keys
+            are retained) and its budgets, guardrails, classifiers, and
+            broadcast destinations. Ignored for non-default workspaces.
           in: query
           name: confirm_default_settings_deletion
           required: false
           schema:
             description: >-
-              Required to delete the default workspace (currently limited to
-              internal OpenRouter administrators while the capability rolls
-              out). Deleting it permanently disables the account’s unscoped
-              inference API keys (management/provisioning keys are retained) and
-              its budgets, guardrails, classifiers, and broadcast destinations.
-              Ignored for non-default workspaces.
+              Required to delete the default workspace (not yet generally
+              available; callers not enabled for it receive a 403 while the
+              capability rolls out). Deleting it permanently disables the
+              account’s unscoped inference API keys (management/provisioning
+              keys are retained) and its budgets, guardrails, classifiers, and
+              broadcast destinations. Ignored for non-default workspaces.
             enum:
               - 'true'
               - 'false'

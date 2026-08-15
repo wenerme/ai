@@ -29,7 +29,7 @@ Read up on basic SLO best practices and how to approach SLOs, from team alignmen
 
 [Create an SLO
 \
-Run through the SLO’s’ five-step process to create a new SLO and configure alert rules for the SLO.](/docs/grafana-cloud/alerting-and-irm/slo/create/)
+Run through the five-step process to create a new SLO and configure alert rules for the SLO.](/docs/grafana-cloud/alerting-and-irm/slo/create/)
 
 [SLO dashboard
 \

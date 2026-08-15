@@ -16,7 +16,6 @@ Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers
 
 * [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/)
 * [Recommended third-party tools](https://developers.cloudflare.com/dns/reference/recommended-third-party-tools/)
-* [Features and plans](https://developers.cloudflare.com/dns/reference/all-features/)
 * [Migrate DNS from BIND](https://developers.cloudflare.com/learning-paths/dns-best-practices/concepts/)
 * [Domain Connect](https://developers.cloudflare.com/dns/reference/domain-connect/)
 * [Analytics MCP server](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/dns-analytics)
@@ -27,7 +26,7 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
 {"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/dns/reference/#page","headline":"Reference · Cloudflare DNS docs","description":"Reference information for Cloudflare DNS features and plans.","url":"https://developers.cloudflare.com/dns/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}

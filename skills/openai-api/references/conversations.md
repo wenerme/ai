@@ -3852,13 +3852,9 @@ Create a conversation.
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
+    - `error: optional McpToolCallError or null`
 
       The error from the tool call, if any.
-
-      - `string`
-
-        The error from the tool call, if any.
 
       - `McpProtocolError object { code, message, type }`
 
@@ -8785,13 +8781,9 @@ Create items in a conversation with the given ID.
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
+    - `error: optional McpToolCallError or null`
 
       The error from the tool call, if any.
-
-      - `string`
-
-        The error from the tool call, if any.
 
       - `McpProtocolError object { code, message, type }`
 
@@ -12891,13 +12883,9 @@ Create items in a conversation with the given ID.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
+      - `error: optional McpToolCallError or null`
 
         The error from the tool call, if any.
-
-        - `string`
-
-          The error from the tool call, if any.
 
         - `McpProtocolError object { code, message, type }`
 
@@ -17174,13 +17162,9 @@ List all items for a conversation with the given ID.
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
+      - `error: optional McpToolCallError or null`
 
         The error from the tool call, if any.
-
-        - `string`
-
-          The error from the tool call, if any.
 
         - `McpProtocolError object { code, message, type }`
 
@@ -21318,13 +21302,9 @@ Get a single item from a conversation with the given IDs.
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
+    - `error: optional McpToolCallError or null`
 
       The error from the tool call, if any.
-
-      - `string`
-
-        The error from the tool call, if any.
 
       - `McpProtocolError object { code, message, type }`
 
@@ -25395,13 +25375,9 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
       Unique identifier for the MCP tool call approval request.
       Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-    - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
+    - `error: optional McpToolCallError or null`
 
       The error from the tool call, if any.
-
-      - `string`
-
-        The error from the tool call, if any.
 
       - `McpProtocolError object { code, message, type }`
 
@@ -29425,13 +29401,9 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
         Unique identifier for the MCP tool call approval request.
         Include this value in a subsequent `mcp_approval_response` input to approve or reject the corresponding tool call.
 
-      - `error: optional string or object { code, message, type }  or object { content, type }  or object { code, message, type }  or null`
+      - `error: optional McpToolCallError or null`
 
         The error from the tool call, if any.
-
-        - `string`
-
-          The error from the tool call, if any.
 
         - `McpProtocolError object { code, message, type }`
 

@@ -190,7 +190,7 @@ OpenAI provides an API helper for the Java programming language, currently in be
 <dependency>
   <groupId>com.openai</groupId>
   <artifactId>openai-java</artifactId>
-  <version>4.50.0</version>
+  <version>4.51.0</version>
 </dependency>
 ```
 
@@ -923,11 +923,12 @@ Console.WriteLine(response.GetOutputText());
 
 ```ruby
 require "openai"
+require "pathname"
 
 openai = OpenAI::Client.new
 
 file = openai.files.create(
-  file: File.open("draconomicon.pdf", "rb"),
+  file: Pathname("draconomicon.pdf"),
   purpose: "user_data"
 )
 
@@ -1524,7 +1525,7 @@ response = openai.responses.create(
   tools: tools
 )
 
-puts(response.output.first.to_json)
+puts(response.output.fetch(0).to_json)
 ```
 
 ```bash

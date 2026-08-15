@@ -92,30 +92,6 @@ You can provide file inputs by linking external URLs.
 
 Use an external file URL
 
-```bash
-curl "https://api.openai.com/v1/responses" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-        "model": "gpt-5.6",
-        "input": [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "input_text",
-                        "text": "Analyze the letter and provide a summary of the key points."
-                    },
-                    {
-                        "type": "input_file",
-                        "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
-                    }
-                ]
-            }
-        ]
-    }'
-```
-
 ```javascript
 import OpenAI from "openai";
 const client = new OpenAI();
@@ -140,6 +116,33 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_text",
+                    "text": "Analyze the letter and provide a summary of the key points.",
+                },
+                {
+                    "type": "input_file",
+                    "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
+                },
+            ],
+        },
+    ],
+)
+
+print(response.output_text)
 ```
 
 ```go
@@ -186,31 +189,32 @@ func main() {
 }
 ```
 
-```python
-from openai import OpenAI
+```csharp
+using OpenAI.Responses;
+#pragma warning disable OPENAI001
 
-client = OpenAI()
+string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
+ResponsesClient client = new(key);
 
-response = client.responses.create(
-    model="gpt-5.6",
-    input=[
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_text",
-                    "text": "Analyze the letter and provide a summary of the key points.",
-                },
-                {
-                    "type": "input_file",
-                    "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf",
-                },
-            ],
-        },
-    ],
-)
+Uri fileUrl = new(
+    "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+);
 
-print(response.output_text)
+ResponseResult response = await client.CreateResponseAsync(
+    "gpt-5.6",
+    [
+        ResponseItem.CreateUserMessageItem(
+            [
+                ResponseContentPart.CreateInputTextPart(
+                    "Analyze the letter and provide a summary of the key points."
+                ),
+                ResponseContentPart.CreateInputFilePart(fileUrl),
+            ]
+        ),
+    ]
+);
+
+Console.WriteLine(response.GetOutputText());
 ```
 
 ```ruby
@@ -240,32 +244,28 @@ response = openai.responses.create(
 puts(response.output_text)
 ```
 
-```csharp
-using OpenAI.Responses;
-#pragma warning disable OPENAI001
-
-string key = Environment.GetEnvironmentVariable("OPENAI_API_KEY")!;
-ResponsesClient client = new(key);
-
-Uri fileUrl = new(
-    "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
-);
-
-ResponseResult response = await client.CreateResponseAsync(
-    "gpt-5.6",
-    [
-        ResponseItem.CreateUserMessageItem(
-            [
-                ResponseContentPart.CreateInputTextPart(
-                    "Analyze the letter and provide a summary of the key points."
-                ),
-                ResponseContentPart.CreateInputFilePart(fileUrl),
-            ]
-        ),
-    ]
-);
-
-Console.WriteLine(response.GetOutputText());
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "input": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "input_text",
+                        "text": "Analyze the letter and provide a summary of the key points."
+                    },
+                    {
+                        "type": "input_file",
+                        "file_url": "https://www.berkshirehathaway.com/letters/2024ltr.pdf"
+                    }
+                ]
+            }
+        ]
+    }'
 ```
 
 
@@ -280,35 +280,6 @@ The following example uploads a file with the [Files API](https://developers.ope
 
 
 Upload a file
-
-```bash
-curl https://api.openai.com/v1/files \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -F purpose="user_data" \
-    -F file="@draconomicon.pdf"
-
-curl "https://api.openai.com/v1/responses" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-        "model": "gpt-5.6",
-        "input": [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "input_file",
-                        "file_id": "file-6F2ksmvXxt4VdoqmHRw6kL"
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "What is the first dragon in the book?"
-                    }
-                ]
-            }
-        ]
-    }'
-```
 
 ```javascript
 import fs from "fs";
@@ -340,6 +311,35 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
+```
+
+```python
+from openai import OpenAI
+
+client = OpenAI()
+
+file = client.files.create(file=open("draconomicon.pdf", "rb"), purpose="user_data")
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_file",
+                    "file_id": file.id,
+                },
+                {
+                    "type": "input_text",
+                    "text": "What is the first dragon in the book?",
+                },
+            ],
+        }
+    ],
+)
+
+print(response.output_text)
 ```
 
 ```go
@@ -399,61 +399,6 @@ func main() {
 }
 ```
 
-```python
-from openai import OpenAI
-
-client = OpenAI()
-
-file = client.files.create(file=open("draconomicon.pdf", "rb"), purpose="user_data")
-
-response = client.responses.create(
-    model="gpt-5.6",
-    input=[
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_file",
-                    "file_id": file.id,
-                },
-                {
-                    "type": "input_text",
-                    "text": "What is the first dragon in the book?",
-                },
-            ],
-        }
-    ],
-)
-
-print(response.output_text)
-```
-
-```ruby
-require "openai"
-
-openai = OpenAI::Client.new
-
-file = openai.files.create(
-  file: File.open("draconomicon.pdf", "rb"),
-  purpose: "user_data"
-)
-
-response = openai.responses.create(
-  model: "gpt-5.6",
-  input: [
-    {
-      role: "user",
-      content: [
-        {type: "input_file", file_id: file.id},
-        {type: "input_text", text: "What is the first dragon in the book?"}
-      ]
-    }
-  ]
-)
-
-puts(response.output_text)
-```
-
 ```csharp
 using OpenAI.Files;
 using OpenAI.Responses;
@@ -486,6 +431,62 @@ ResponseResult response = await client.CreateResponseAsync(
 Console.WriteLine(response.GetOutputText());
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+openai = OpenAI::Client.new
+
+file = openai.files.create(
+  file: Pathname("draconomicon.pdf"),
+  purpose: "user_data"
+)
+
+response = openai.responses.create(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: "user",
+      content: [
+        {type: "input_file", file_id: file.id},
+        {type: "input_text", text: "What is the first dragon in the book?"}
+      ]
+    }
+  ]
+)
+
+puts(response.output_text)
+```
+
+```bash
+curl https://api.openai.com/v1/files \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -F purpose="user_data" \
+    -F file="@draconomicon.pdf"
+
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "input": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "input_file",
+                        "file_id": "file-6F2ksmvXxt4VdoqmHRw6kL"
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "What is the first dragon in the book?"
+                    }
+                ]
+            }
+        ]
+    }'
+```
+
 
 
 
@@ -498,31 +499,6 @@ You can also send file inputs as Base64-encoded file data.
 
 
 Send a Base64-encoded file
-
-```bash
-curl "https://api.openai.com/v1/responses" \
-    -H "Content-Type: application/json" \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-        "model": "gpt-5.6",
-        "input": [
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "input_file",
-                        "filename": "draconomicon.pdf",
-                        "file_data": "...base64 encoded PDF bytes here..."
-                    },
-                    {
-                        "type": "input_text",
-                        "text": "What is the first dragon in the book?"
-                    }
-                ]
-            }
-        ]
-    }'
-```
 
 ```javascript
 import fs from "fs";
@@ -553,6 +529,40 @@ const response = await client.responses.create({
 });
 
 console.log(response.output_text);
+```
+
+```python
+import base64
+from openai import OpenAI
+
+client = OpenAI()
+
+with open("draconomicon.pdf", "rb") as f:
+    data = f.read()
+
+base64_string = base64.b64encode(data).decode("utf-8")
+
+response = client.responses.create(
+    model="gpt-5.6",
+    input=[
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "input_file",
+                    "filename": "draconomicon.pdf",
+                    "file_data": f"data:application/pdf;base64,{base64_string}",
+                },
+                {
+                    "type": "input_text",
+                    "text": "What is the first dragon in the book?",
+                },
+            ],
+        },
+    ],
+)
+
+print(response.output_text)
 ```
 
 ```go
@@ -606,38 +616,53 @@ func main() {
 }
 ```
 
-```python
-import base64
-from openai import OpenAI
+```ruby
+require "base64"
+require "openai"
 
-client = OpenAI()
-
-with open("draconomicon.pdf", "rb") as f:
-    data = f.read()
-
-base64_string = base64.b64encode(data).decode("utf-8")
-
+client = OpenAI::Client.new
+pdf_data = Base64.strict_encode64(File.binread("draconomicon.pdf"))
 response = client.responses.create(
-    model="gpt-5.6",
-    input=[
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "input_file",
-                    "filename": "draconomicon.pdf",
-                    "file_data": f"data:application/pdf;base64,{base64_string}",
-                },
-                {
-                    "type": "input_text",
-                    "text": "What is the first dragon in the book?",
-                },
-            ],
-        },
-    ],
+  model: "gpt-5.6",
+  input: [{
+    role: :user,
+    content: [
+      {
+        type: :input_file,
+        filename: "document.pdf",
+        file_data: "data:application/pdf;base64,#{pdf_data}"
+      },
+      {type: :input_text, text: "Summarize this document."}
+    ]
+  }]
 )
 
-print(response.output_text)
+puts(response.output_text)
+```
+
+```bash
+curl "https://api.openai.com/v1/responses" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+        "model": "gpt-5.6",
+        "input": [
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "input_file",
+                        "filename": "draconomicon.pdf",
+                        "file_data": "...base64 encoded PDF bytes here..."
+                    },
+                    {
+                        "type": "input_text",
+                        "text": "What is the first dragon in the book?"
+                    }
+                ]
+            }
+        ]
+    }'
 ```
 
 

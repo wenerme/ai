@@ -126,6 +126,16 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+file = Pathname("customer_policies.txt")
+uploaded = client.files.create(file: file, purpose: :user_data)
+puts(uploaded.id)
+```
+
 
 #### Create a vector store
 
@@ -163,6 +173,14 @@ func main() {
 	}
 	fmt.Println(vectorStore.ID)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+store = client.vector_stores.create(name: "Product docs")
+puts(store.id)
 ```
 
 
@@ -206,6 +224,14 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+file = client.vector_stores.files.create("<vector_store_id>", file_id: "file_abc123")
+puts(file.id)
+```
+
 
 #### Check status
 
@@ -241,6 +267,14 @@ func main() {
 	}
 	fmt.Println(files.Data)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+files = client.vector_stores.files.list("<vector_store_id>")
+puts(files.data&.map(&:status))
 ```
 
 
@@ -471,6 +505,26 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: :file_search,
+      vector_store_ids: ["<vector_store_id>"],
+      max_num_results: 2
+    }
+  ]
+)
+
+puts(response)
+```
+
 
 ### Include search results in the response
 
@@ -538,6 +592,23 @@ func main() {
 	}
 	fmt.Println(response)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  include: ["file_search_call.results"],
+  tools: [
+    {type: :file_search, vector_store_ids: ["<vector_store_id>"]}
+  ]
+)
+
+puts(response)
 ```
 
 
@@ -627,6 +698,30 @@ func main() {
 	}
 	fmt.Println(response)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+response = client.responses.create(
+  model: "gpt-5.6",
+  input: "What is deep research by OpenAI?",
+  tools: [
+    {
+      type: :file_search,
+      vector_store_ids: ["<vector_store_id>"],
+      filters: {
+        type: :in,
+        key: "category",
+        value: ["blog", "announcement"]
+      }
+    }
+  ]
+)
+
+puts(response)
 ```
 
 

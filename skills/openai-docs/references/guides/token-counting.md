@@ -75,6 +75,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+count = client.responses.input_tokens.count(
+  model: "gpt-5.6",
+  input: "Tell me a joke."
+)
+
+puts(count.input_tokens)
+```
+
 ```bash
 curl https://api.openai.com/v1/responses/input_tokens \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
@@ -158,6 +171,24 @@ func main() {
 	}
 	fmt.Println(count.InputTokens)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+conversation = [
+  {role: :user, content: "What is 2 + 2?"},
+  {role: :assistant, content: "2 + 2 equals 4."},
+  {role: :user, content: "What about 3 + 3?"}
+]
+
+count = client.responses.input_tokens.count(
+  model: "gpt-5.6",
+  input: conversation
+)
+
+puts(count.input_tokens)
 ```
 
 ```bash
@@ -244,6 +275,20 @@ func main() {
 	}
 	fmt.Println(count.InputTokens)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+count = client.responses.input_tokens.count(
+  model: "gpt-5.6",
+  instructions: "You are a helpful assistant that explains concepts simply.",
+  input: "Explain quantum computing in one sentence."
+)
+
+puts(count.input_tokens)
 ```
 
 ```bash
@@ -354,6 +399,31 @@ func main() {
 	}
 	fmt.Println(count.InputTokens)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+count = client.responses.input_tokens.count(
+  model: "gpt-5.6",
+  input: [
+    {
+      role: :user,
+      content: [
+        {
+          type: :input_image,
+          image_url: "https://api.nga.gov/iiif/a2e6da57-3cd1-4235-b20e-95dcaefed6c8/full/!800,800/0/default.jpg",
+          detail: :auto
+        },
+        {type: :input_text, text: "Summarize this chart."}
+      ]
+    }
+  ]
+)
+
+puts(count.input_tokens)
 ```
 
 ```bash
@@ -480,6 +550,33 @@ func main() {
 	}
 	fmt.Println(count.InputTokens)
 }
+```
+
+```ruby
+require "openai"
+
+client = OpenAI::Client.new
+
+count = client.responses.input_tokens.count(
+  model: "gpt-5.6",
+  input: "What is the weather in San Francisco?",
+  tools: [
+    {
+      type: :function,
+      name: "get_weather",
+      description: "Get the current weather in a location",
+      strict: true,
+      parameters: {
+        type: "object",
+        properties: {location: {type: "string"}},
+        required: ["location"],
+        additionalProperties: false
+      }
+    }
+  ]
+)
+
+puts(count.input_tokens)
 ```
 
 ```bash

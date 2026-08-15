@@ -46,7 +46,11 @@ tags:
     name: Classifications
   - description: Credit management endpoints
     name: Credits
-  - description: Datasets endpoints
+  - description: >-
+      Public OpenRouter usage datasets. Data returned by these endpoints is
+      licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/):
+      reuse and republish it, including commercially, with attribution to
+      OpenRouter.
     name: Datasets
   - description: Text embedding endpoints
     name: Embeddings
@@ -3702,6 +3706,9 @@ components:
           enum:
             - cyber
             - bio
+            - frontier_llm
+            - reasoning_extraction
+            - general_harms
             - null
           type:
             - string

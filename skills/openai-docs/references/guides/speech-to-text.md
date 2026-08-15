@@ -76,6 +76,19 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+audio = Pathname("audio.wav")
+transcript = client.audio.transcriptions.create(
+  file: audio,
+  model: "gpt-transcribe"
+)
+puts(transcript.text)
+```
+
 ```bash
 openai audio:transcriptions create \
   --model gpt-transcribe \
@@ -187,6 +200,20 @@ func main() {
 	}
 	fmt.Println(transcription.Text)
 }
+```
+
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+audio = Pathname("audio.wav")
+transcript = client.audio.transcriptions.create(
+  file: audio,
+  model: "gpt-transcribe",
+  keywords: ["OpenAI", "Responses API", "Codex"]
+)
+puts(transcript.text)
 ```
 
 ```bash
@@ -338,6 +365,34 @@ func main() {
 }
 ```
 
+```ruby
+require "base64"
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+audio = Pathname("meeting.wav")
+speaker_reference = Base64.strict_encode64(File.binread("agent.wav"))
+transcript = client.audio.transcriptions.create(
+  file: audio,
+  model: "gpt-4o-transcribe-diarize",
+  response_format: :diarized_json,
+  chunking_strategy: :auto,
+  known_speaker_names: ["agent"],
+  known_speaker_references: ["data:audio/wav;base64,#{speaker_reference}"]
+)
+segments = Array(transcript.to_h.fetch(:segments) do
+  raise "The transcription did not include speaker segments"
+end)
+segments.each do |segment|
+  segment = Hash.try_convert(segment) or raise "Invalid speaker segment"
+  puts(
+    "#{segment.fetch(:speaker)}: #{segment.fetch(:text)} " \
+      "(#{segment.fetch(:start)}-#{segment.fetch(:end)})"
+  )
+end
+```
+
 ```bash
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -419,6 +474,16 @@ func main() {
 	}
 	fmt.Println(translation.Text)
 }
+```
+
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+audio = Pathname("german.wav")
+translation = client.audio.translations.create(file: audio, model: "whisper-1")
+puts(translation.text)
 ```
 
 ```bash
@@ -519,6 +584,22 @@ func main() {
 	}
 	fmt.Println(transcription.Words)
 }
+```
+
+```ruby
+require "openai"
+require "pathname"
+require "pp"
+
+client = OpenAI::Client.new
+audio = Pathname("audio.wav")
+transcript = client.audio.transcriptions.create(
+  file: audio,
+  model: "whisper-1",
+  response_format: :verbose_json,
+  timestamp_granularities: [:word]
+)
+pp(transcript[:words])
 ```
 
 ```bash
@@ -658,6 +739,20 @@ func main() {
 }
 ```
 
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+audio = Pathname("speech.wav")
+stream = client.audio.transcriptions.create_streaming(
+  file: audio,
+  model: "gpt-transcribe"
+)
+
+stream.each { |event| puts(event.type) }
+```
+
 ```bash
 curl --request POST \
   --url https://api.openai.com/v1/audio/transcriptions \
@@ -766,6 +861,20 @@ func main() {
 	}
 	fmt.Println(string(transcription))
 }
+```
+
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+audio = Pathname("speech.wav")
+transcript = client.audio.transcriptions.create(
+  file: audio,
+  model: "whisper-1",
+  prompt: "The speaker says OpenAI and Responses API"
+)
+puts(transcript.text)
 ```
 
 ```bash
@@ -897,6 +1006,24 @@ func main() {
 	}
 	fmt.Println(completion.Choices[0].Message.Content)
 }
+```
+
+```ruby
+require "openai"
+require "pathname"
+
+client = OpenAI::Client.new
+audio = Pathname("speech.wav")
+transcript = client.audio.transcriptions.create(
+  file: audio,
+  model: "gpt-4o-mini-transcribe"
+)
+
+response = client.responses.create(
+  model: "gpt-4.1",
+  input: "Add punctuation and paragraph breaks without changing the words:\n#{transcript.text}"
+)
+puts(response.output_text)
 ```
 
 

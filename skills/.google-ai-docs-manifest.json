@@ -356,8 +356,8 @@
   "google-ai-docs/models.md": {
     "url": "https://ai.google.dev/gemini-api/docs/models",
     "skill": "google-ai-docs",
-    "size": 16379,
-    "updatedAt": "2026-08-14T03:07:05.082Z"
+    "size": 16492,
+    "updatedAt": "2026-08-15T02:09:14.312Z"
   },
   "google-ai-docs/priority-inference.md": {
     "url": "https://ai.google.dev/gemini-api/docs/priority-inference",
