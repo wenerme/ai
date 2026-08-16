@@ -94,10 +94,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1024000,
-    "maxOutput": 384000,
-    "inputCost": 0.07826,
-    "outputCost": 0.15652
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.0675,
+    "outputCost": 0.135
   },
   {
     "model": "kilo/~google/gemini-flash-latest",
@@ -3180,8 +3180,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 32768,
-    "inputCost": 0.4,
-    "outputCost": 1.2
+    "inputCost": 0.26,
+    "outputCost": 0.78
   },
   {
     "model": "kilo/qwen/qwen2.5-vl-72b-instruct",
@@ -3704,7 +3704,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": true,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 131072,
@@ -4200,8 +4200,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.4,
-    "outputCost": 1.5
+    "inputCost": 0.435,
+    "outputCost": 0.87
   },
   {
     "model": "kilo/z-ai/glm-4.5",
