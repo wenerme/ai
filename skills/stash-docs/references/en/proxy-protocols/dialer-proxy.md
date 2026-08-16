@@ -66,6 +66,32 @@ proxy-groups:
 
 When you switch nodes in `upstream-select`, the upstream for `vless-hk` changes accordingly.
 
+## Dialer Proxies in Remote Proxy Sets
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+Proxy nodes returned by a remote proxy set can also contain `dialer-proxy`. Add the field to a proxy under `proxies` in the provider payload.
+
+```yaml
+proxies:
+  - name: ss-upstream
+    type: ss
+    server: upstream.example.com
+    port: 8388
+    cipher: aes-128-gcm
+    password: example
+
+  - name: vless-via-ss
+    type: vless
+    server: target.example.com
+    port: 443
+    uuid: <uuid>
+    tls: true
+    dialer-proxy: ss-upstream
+```
+
+For a provider node, `dialer-proxy` can reference another node in the same remote proxy set, a proxy from the main configuration, or a strategy group containing only proxies from the main configuration. To prevent recursion across providers, it cannot reference a strategy group that contains a remote proxy set.
+
 ## Multi-Hop Chains
 
 You can build multi-hop chains by assigning `dialer-proxy` layer by layer.
@@ -98,7 +124,7 @@ proxies:
 ## Notes
 
 - `dialer-proxy` and `interface-name` are mutually exclusive.
-- `dialer-proxy` applies only to real proxies under `proxies` and cannot be set inside `proxy-groups`.
+- `dialer-proxy` applies to real proxies in the main configuration or a remote proxy set and cannot be set inside `proxy-groups`.
 - If `dialer-proxy` points to a non-existent proxy or strategy group, the connection is rejected and the proxy becomes unavailable.
 - Loops are not allowed. If `dialer-proxy` points to a strategy group that includes itself, a loop error is raised.
 - UDP availability depends on whether the upstream supports UDP or UDP over TCP.

@@ -97,6 +97,25 @@ Supported encryption methods (cipher):
 - `2022-blake3-aes-128-gcm`
 - `2022-blake3-aes-256-gcm`
 
+### UDP over TCP
+
+<VersionRequirement ios="3.1.1" mac="3.1" />
+
+Shadowsocks and Shadowsocks 2022 can carry UDP traffic over TCP connections. Set `udp-over-tcp` to `true` to enable it, and use `udp-over-tcp-version` to select the protocol version. Version 2 is used by default when the version is omitted.
+
+```yaml
+name: ss-uot
+type: ss
+server: server
+port: 443
+cipher: chacha20-ietf-poly1305
+password: 'password'
+udp-over-tcp: true
+udp-over-tcp-version: 2 # Supports 1 or 2; defaults to 2
+```
+
+When using the `obfs`, `v2ray-plugin`, or `shadow-tls` plugin, UDP traffic is carried over the same plugin transport chain.
+
 ### Shadowsocks Plugins
 
 Supported plugins (plugin):
@@ -473,6 +492,22 @@ grpc-opts:
   grpc-service-name: example
 ```
 
+#### Using Reality
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+gRPC can be used with Reality:
+
+```yaml
+network: grpc
+tls: true
+grpc-opts:
+  grpc-service-name: example
+reality-opts:
+  public-key: <public-key>
+  short-id: <short-id>
+```
+
 ### XHTTP
 
 <VersionRequirement ios="3.6" mac="4.3" />
@@ -491,6 +526,28 @@ xhttp-opts:
 ```
 
 XHTTP can also be used with `reality-opts`.
+
+#### Separate Download Connection
+
+`download-settings` can specify a separate server and connection parameters for XHTTP downlink traffic. Fields that are not configured inherit the settings of the primary connection.
+
+```yaml
+network: xhttp
+tls: true
+xhttp-opts:
+  mode: packet-up
+  path: /upload
+  host: upload.example.com
+  download-settings:
+    server: download.example.com
+    port: 443
+    path: /download
+    host: download.example.com
+    headers:
+      User-Agent: Mozilla/5.0
+```
+
+`download-settings` can override `server`, `port`, `path`, `host`, `headers`, `tls`, `sni`, `alpn`, `skip-cert-verify`, `server-cert-fingerprint`, `client-fingerprint`, and `reality-opts`. The `stream-one` mode carries uplink and downlink traffic over the same connection and cannot be used with `download-settings`.
 
 Supported XTLS modes (flow):
 

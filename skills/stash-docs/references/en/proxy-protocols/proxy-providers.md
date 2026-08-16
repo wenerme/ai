@@ -105,6 +105,8 @@ proxies:
     password: 'password'
 ```
 
+Proxy nodes in a remote proxy set can use [`dialer-proxy`](/en/proxy-protocols/dialer-proxy#dialer-proxies-in-remote-proxy-sets) to specify an upstream proxy.
+
 Remote proxy sets support filtering proxy names using regular expressions through the `filter` field. When the remote proxy set is empty, it defaults to `DIRECT`.
 
 ### Shortcut for Using Remote Proxy Sets

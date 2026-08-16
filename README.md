@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33497 files, 402 MiB total
+> 123 skills, 33500 files, 402 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1450,8 +1450,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 22 | 172 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 831 | 6.9 MiB |
-| [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 181 | 533 KiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 832 | 6.9 MiB |
+| [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
 | [model-reference](./skills/model-reference/SKILL.md) | 17 | 67 KiB |
@@ -1475,7 +1475,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [skill-writer](./skills/skill-writer/SKILL.md) | 4 | 23 KiB |
 | [sling-cli](./skills/sling-cli/SKILL.md) | 3 | 14 KiB |
 | [slopus-happy-docs](./skills/slopus-happy-docs/SKILL.md) | 75 | 716 KiB |
-| [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 381 KiB |
+| [stash-docs](./skills/stash-docs/SKILL.md) | 83 | 386 KiB |
 | [storybook-docs](./skills/storybook-docs/SKILL.md) | 868 | 3.7 MiB |
 | [swift-ms-docs](./skills/swift-ms-docs/SKILL.md) | 67 | 1.2 MiB |
 | [tea-cli](./skills/tea-cli/SKILL.md) | 26 | 82 KiB |
