@@ -93,6 +93,8 @@ proxies:
     password: 'password'
 ```
 
+远程代理集中的实际代理节点可以使用 [`dialer-proxy`](/proxy-protocols/dialer-proxy#远程代理集中的代理链) 指定上游代理。
+
 远程代理集支持通过 `filter` 字段，使用正则表达式过滤代理名。远程代理集为空时候，会以 `DIRECT` 替代。
 
 ### 快捷引用远程代理集

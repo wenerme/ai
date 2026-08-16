@@ -66,6 +66,32 @@ proxy-groups:
 
 当你在 `upstream-select` 中切换节点时，`vless-hk` 的上游也会随之变化。
 
+## 远程代理集中的代理链
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+远程代理集返回的实际代理节点也可以包含 `dialer-proxy`。该字段应写在 Provider 内容的 `proxies` 节点中。
+
+```yaml
+proxies:
+  - name: ss-upstream
+    type: ss
+    server: upstream.example.com
+    port: 8388
+    cipher: aes-128-gcm
+    password: example
+
+  - name: vless-via-ss
+    type: vless
+    server: target.example.com
+    port: 443
+    uuid: <uuid>
+    tls: true
+    dialer-proxy: ss-upstream
+```
+
+Provider 节点的 `dialer-proxy` 可以指向同一远程代理集中的其他节点，也可以指向主配置中的代理或只包含主配置代理的策略组。为避免跨 Provider 递归，不能指向包含远程代理集的策略组。
+
 ## 代理链组合
 
 可以通过层层指定实现多跳代理链：
@@ -98,7 +124,7 @@ proxies:
 ## 注意事项
 
 - `dialer-proxy` 与 `interface-name` 互斥，不能同时配置。
-- `dialer-proxy` 只能用于 `proxies` 中的真实代理，不能配置在 `proxy-groups` 内部。
+- `dialer-proxy` 可以用于主配置或远程代理集中的真实代理，不能配置在 `proxy-groups` 内部。
 - 如果 `dialer-proxy` 指向不存在的代理或策略组，连接会被拒绝，表现为该代理不可用。
 - 不允许形成环路：如果 `dialer-proxy` 指向包含自身的策略组会触发环路错误。
 - UDP 是否可用取决于上游代理是否支持 UDP 或 UDP over TCP，必要时请在实际环境中验证。

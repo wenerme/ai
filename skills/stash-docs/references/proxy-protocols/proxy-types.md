@@ -97,6 +97,25 @@ plugin-opts:
 - `2022-blake3-aes-128-gcm`
 - `2022-blake3-aes-256-gcm`
 
+### UDP over TCP
+
+<VersionRequirement ios="3.1.1" mac="3.1" />
+
+Shadowsocks 和 Shadowsocks 2022 可以通过 TCP 连接承载 UDP 流量。启用时将 `udp-over-tcp` 设置为 `true`，并通过 `udp-over-tcp-version` 选择协议版本。未配置版本时默认使用 v2。
+
+```yaml
+name: ss-uot
+type: ss
+server: server
+port: 443
+cipher: chacha20-ietf-poly1305
+password: 'password'
+udp-over-tcp: true
+udp-over-tcp-version: 2 # 支持 1 或 2，默认为 2
+```
+
+使用 `obfs`、`v2ray-plugin` 或 `shadow-tls` 插件时，UDP 流量也会通过同一条插件传输链路承载。
+
 ### Shadowsocks 插件
 
 支持以下插件（plugin）：
@@ -473,6 +492,22 @@ grpc-opts:
   grpc-service-name: example
 ```
 
+#### 配合 Reality 使用
+
+<VersionRequirement ios="3.6" mac="4.3" />
+
+gRPC 可以与 Reality 配合使用：
+
+```yaml
+network: grpc
+tls: true
+grpc-opts:
+  grpc-service-name: example
+reality-opts:
+  public-key: <public-key>
+  short-id: <short-id>
+```
+
 ### XHTTP
 
 <VersionRequirement ios="3.6" mac="4.3" />
@@ -491,6 +526,28 @@ xhttp-opts:
 ```
 
 XHTTP 也可以与 `reality-opts` 配合使用。
+
+#### 独立下行连接
+
+`download-settings` 可以为 XHTTP 下行流量指定独立的服务器和连接参数。未配置的字段会沿用主连接的设置。
+
+```yaml
+network: xhttp
+tls: true
+xhttp-opts:
+  mode: packet-up
+  path: /upload
+  host: upload.example.com
+  download-settings:
+    server: download.example.com
+    port: 443
+    path: /download
+    host: download.example.com
+    headers:
+      User-Agent: Mozilla/5.0
+```
+
+`download-settings` 支持覆盖 `server`、`port`、`path`、`host`、`headers`、`tls`、`sni`、`alpn`、`skip-cert-verify`、`server-cert-fingerprint`、`client-fingerprint` 和 `reality-opts`。`stream-one` 模式使用同一条连接传输上下行流量，不能与 `download-settings` 同时使用。
 
 支持的 XTLS 模式（flow）：
 

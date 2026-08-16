@@ -94,10 +94,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 262144,
-    "inputCost": 0.0675,
-    "outputCost": 0.135
+    "contextWindow": 1024000,
+    "maxOutput": 384000,
+    "inputCost": 0.06706,
+    "outputCost": 0.13412
   },
   {
     "model": "kilo/~google/gemini-flash-latest",
@@ -3250,8 +3250,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 40960,
-    "maxOutput": 16384,
+    "contextWindow": 131072,
+    "maxOutput": 8192,
     "inputCost": 0.13,
     "outputCost": 0.52
   },
@@ -3599,7 +3599,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 262144,
+    "maxOutput": 65536,
     "inputCost": 0.45,
     "outputCost": 2.7
   },
@@ -4330,8 +4330,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 131072,
+    "contextWindow": 1024000,
+    "maxOutput": 128000,
     "inputCost": 1.4,
     "outputCost": 4.4
   },
