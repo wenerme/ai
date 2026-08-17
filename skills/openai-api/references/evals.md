@@ -4137,7 +4137,7 @@ Cancel an ongoing evaluation run.
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto" or "original"`
+                  - `detail: ImageDetail`
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -6490,7 +6490,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto" or "original"`
+                  - `detail: ImageDetail`
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -8514,7 +8514,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto" or "original"`
+                  - `detail: ImageDetail`
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -10900,7 +10900,7 @@ Get a list of runs for an evaluation.
 
                     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                    - `detail: "low" or "high" or "auto" or "original"`
+                    - `detail: ImageDetail`
 
                       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -13220,7 +13220,7 @@ Get an evaluation run by ID.
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto" or "original"`
+                  - `detail: ImageDetail`
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -15517,7 +15517,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: ImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -16196,7 +16196,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                    - `detail: "low" or "high" or "auto" or "original"`
+                    - `detail: ImageDetail`
 
                       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -18322,7 +18322,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                    - `detail: "low" or "high" or "auto" or "original"`
+                    - `detail: ImageDetail`
 
                       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -20458,7 +20458,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                    - `detail: "low" or "high" or "auto" or "original"`
+                    - `detail: ImageDetail`
 
                       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -22584,7 +22584,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                    - `detail: "low" or "high" or "auto" or "original"`
+                    - `detail: ImageDetail`
 
                       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 

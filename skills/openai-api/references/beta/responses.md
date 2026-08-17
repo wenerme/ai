@@ -162,7 +162,7 @@ the `background` parameter set to `true` can be cancelled.
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto" or "original"`
+              - `detail: BetaImageDetail`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -1177,17 +1177,9 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"input_image"`
 
-              - `detail: optional "low" or "high" or "auto" or "original" or null`
+              - `detail: optional BetaImageDetail or null`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
 
               - `file_id: optional string or null`
 
@@ -5498,17 +5490,9 @@ the `background` parameter set to `true` can be cancelled.
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -10656,7 +10640,7 @@ the `background` parameter set to `true` can be cancelled.
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+  - `service_tier: optional BetaServiceTier or null`
 
     Specifies the processing type used for serving the request.
 
@@ -11395,7 +11379,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -12410,17 +12394,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `"input_image"`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+            - `detail: optional BetaImageDetail or null`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: optional string or null`
 
@@ -16465,7 +16441,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -16505,17 +16481,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -19245,17 +19213,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -21322,7 +21282,7 @@ as input for the model's response.
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -22337,17 +22297,9 @@ as input for the model's response.
 
               - `"input_image"`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+            - `detail: optional BetaImageDetail or null`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: optional string or null`
 
@@ -26566,7 +26518,7 @@ as input for the model's response.
   A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
   The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-- `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+- `service_tier: optional BetaServiceTier or null`
 
   Specifies the processing type used for serving the request.
 
@@ -28081,7 +28033,7 @@ as input for the model's response.
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto" or "original"`
+              - `detail: BetaImageDetail`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -29096,17 +29048,9 @@ as input for the model's response.
 
                 - `"input_image"`
 
-              - `detail: optional "low" or "high" or "auto" or "original" or null`
+              - `detail: optional BetaImageDetail or null`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
 
               - `file_id: optional string or null`
 
@@ -33417,17 +33361,9 @@ as input for the model's response.
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -38575,7 +38511,7 @@ as input for the model's response.
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+  - `service_tier: optional BetaServiceTier or null`
 
     Specifies the processing type used for serving the request.
 
@@ -39977,7 +39913,7 @@ Retrieves a model response with the given ID.
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto" or "original"`
+              - `detail: BetaImageDetail`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -40992,17 +40928,9 @@ Retrieves a model response with the given ID.
 
                 - `"input_image"`
 
-              - `detail: optional "low" or "high" or "auto" or "original" or null`
+              - `detail: optional BetaImageDetail or null`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
 
               - `file_id: optional string or null`
 
@@ -45313,17 +45241,9 @@ Retrieves a model response with the given ID.
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -50471,7 +50391,7 @@ Retrieves a model response with the given ID.
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+  - `service_tier: optional BetaServiceTier or null`
 
     Specifies the processing type used for serving the request.
 
@@ -51173,7 +51093,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -51213,17 +51133,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -53953,17 +53865,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -56388,7 +56292,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-        - `detail: "low" or "high" or "auto" or "original"`
+        - `detail: BetaImageDetail`
 
           The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -56498,6 +56402,18 @@ curl https://api.openai.com/v1/responses/resp_123 \
     The type of the message input. Always `message`.
 
     - `"message"`
+
+### Beta Image Detail
+
+- `BetaImageDetail = "low" or "high" or "auto" or "original"`
+
+  - `"low"`
+
+  - `"high"`
+
+  - `"auto"`
+
+  - `"original"`
 
 ### Beta Inline Skill
 
@@ -56777,7 +56693,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto" or "original"`
+              - `detail: BetaImageDetail`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -57792,17 +57708,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"input_image"`
 
-              - `detail: optional "low" or "high" or "auto" or "original" or null`
+              - `detail: optional BetaImageDetail or null`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
 
               - `file_id: optional string or null`
 
@@ -62113,17 +62021,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -67271,7 +67171,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+  - `service_tier: optional BetaServiceTier or null`
 
     Specifies the processing type used for serving the request.
 
@@ -67896,7 +67796,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: BetaImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -68911,17 +68811,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"input_image"`
 
-                - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `detail: optional BetaImageDetail or null`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                  - `"low"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                  - `"original"`
 
                 - `file_id: optional string or null`
 
@@ -73232,17 +73124,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A screenshot of a computer.
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: string or null`
 
@@ -78390,7 +78274,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+    - `service_tier: optional BetaServiceTier or null`
 
       Specifies the processing type used for serving the request.
 
@@ -78680,7 +78564,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-    - `detail: "low" or "high" or "auto" or "original"`
+    - `detail: BetaImageDetail`
 
       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -79476,7 +79360,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: BetaImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -80491,17 +80375,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"input_image"`
 
-                - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `detail: optional BetaImageDetail or null`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                  - `"low"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                  - `"original"`
 
                 - `file_id: optional string or null`
 
@@ -84812,17 +84688,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A screenshot of a computer.
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: string or null`
 
@@ -89970,7 +89838,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+    - `service_tier: optional BetaServiceTier or null`
 
       Specifies the processing type used for serving the request.
 
@@ -90503,7 +90371,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: BetaImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -91518,17 +91386,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"input_image"`
 
-                - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `detail: optional BetaImageDetail or null`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                  - `"low"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                  - `"original"`
 
                 - `file_id: optional string or null`
 
@@ -95839,17 +95699,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A screenshot of a computer.
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: string or null`
 
@@ -100997,7 +100849,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+    - `service_tier: optional BetaServiceTier or null`
 
       Specifies the processing type used for serving the request.
 
@@ -101843,7 +101695,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: BetaImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -102858,17 +102710,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"input_image"`
 
-                - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `detail: optional BetaImageDetail or null`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                  - `"low"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                  - `"original"`
 
                 - `file_id: optional string or null`
 
@@ -107179,17 +107023,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A screenshot of a computer.
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: string or null`
 
@@ -112337,7 +112173,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+    - `service_tier: optional BetaServiceTier or null`
 
       Specifies the processing type used for serving the request.
 
@@ -112739,7 +112575,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: BetaImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -113754,17 +113590,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"input_image"`
 
-                - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `detail: optional BetaImageDetail or null`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                  - `"low"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                  - `"original"`
 
                 - `file_id: optional string or null`
 
@@ -118075,17 +117903,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A screenshot of a computer.
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: string or null`
 
@@ -123233,7 +123053,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+    - `service_tier: optional BetaServiceTier or null`
 
       Specifies the processing type used for serving the request.
 
@@ -123542,7 +123362,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -124557,17 +124377,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"input_image"`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+            - `detail: optional BetaImageDetail or null`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: optional string or null`
 
@@ -128402,7 +128214,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -129417,17 +129229,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `"input_image"`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+            - `detail: optional BetaImageDetail or null`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: optional string or null`
 
@@ -133254,7 +133058,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-    - `detail: "low" or "high" or "auto" or "original"`
+    - `detail: BetaImageDetail`
 
       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -133438,7 +133242,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-  - `detail: "low" or "high" or "auto" or "original"`
+  - `detail: BetaImageDetail`
 
     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -133486,7 +133290,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `"input_image"`
 
-  - `detail: optional "low" or "high" or "auto" or "original" or null`
+  - `detail: optional BetaImageDetail or null`
 
     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -133551,7 +133355,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-    - `detail: "low" or "high" or "auto" or "original"`
+    - `detail: BetaImageDetail`
 
       The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -133674,7 +133478,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-      - `detail: "low" or "high" or "auto" or "original"`
+      - `detail: BetaImageDetail`
 
         The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -134535,7 +134339,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -134754,17 +134558,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         A screenshot of a computer.
 
-        - `detail: "low" or "high" or "auto" or "original"`
+        - `detail: BetaImageDetail`
 
           The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-          - `"low"`
-
-          - `"high"`
-
-          - `"auto"`
-
-          - `"original"`
 
         - `file_id: string or null`
 
@@ -139208,7 +139004,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -139427,17 +139223,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -143900,7 +143688,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -144119,17 +143907,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -148726,7 +148506,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-      - `detail: "low" or "high" or "auto" or "original"`
+      - `detail: BetaImageDetail`
 
         The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -148962,7 +148742,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: BetaImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -149977,17 +149757,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"input_image"`
 
-                - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `detail: optional BetaImageDetail or null`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                  - `"low"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                  - `"original"`
 
                 - `file_id: optional string or null`
 
@@ -154298,17 +154070,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             A screenshot of a computer.
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: string or null`
 
@@ -159456,7 +159220,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+    - `service_tier: optional BetaServiceTier or null`
 
       Specifies the processing type used for serving the request.
 
@@ -160691,7 +160455,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                  - `detail: "low" or "high" or "auto" or "original"`
+                  - `detail: BetaImageDetail`
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -161706,17 +161470,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"input_image"`
 
-                  - `detail: optional "low" or "high" or "auto" or "original" or null`
+                  - `detail: optional BetaImageDetail or null`
 
                     The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                    - `"low"`
-
-                    - `"high"`
-
-                    - `"auto"`
-
-                    - `"original"`
 
                   - `file_id: optional string or null`
 
@@ -166027,17 +165783,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               A screenshot of a computer.
 
-              - `detail: "low" or "high" or "auto" or "original"`
+              - `detail: BetaImageDetail`
 
                 The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
 
               - `file_id: string or null`
 
@@ -171185,7 +170933,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
         A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
         The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-      - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+      - `service_tier: optional BetaServiceTier or null`
 
         Specifies the processing type used for serving the request.
 
@@ -173913,7 +173661,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-                - `detail: "low" or "high" or "auto" or "original"`
+                - `detail: BetaImageDetail`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -174928,17 +174676,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"input_image"`
 
-                - `detail: optional "low" or "high" or "auto" or "original" or null`
+                - `detail: optional BetaImageDetail or null`
 
                   The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                  - `"low"`
-
-                  - `"high"`
-
-                  - `"auto"`
-
-                  - `"original"`
 
                 - `file_id: optional string or null`
 
@@ -179157,7 +178897,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
       The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-    - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+    - `service_tier: optional BetaServiceTier or null`
 
       Specifies the processing type used for serving the request.
 
@@ -185223,7 +184963,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto" or "original"`
+              - `detail: BetaImageDetail`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -186238,17 +185978,9 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `"input_image"`
 
-              - `detail: optional "low" or "high" or "auto" or "original" or null`
+              - `detail: optional BetaImageDetail or null`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
 
               - `file_id: optional string or null`
 
@@ -190014,6 +189746,35 @@ curl https://api.openai.com/v1/responses/resp_123 \
       The multiplexed WebSocket stream that emitted the event. This field is
       present only when WebSocket multiplexing is enabled separately.
 
+### Beta Service Tier
+
+- `BetaServiceTier = "auto" or "default" or "flex" or 4 more`
+
+  Specifies the processing type used for serving the request.
+
+  - If set to 'auto', then the request will be processed with the service tier configured in the Project settings. Unless otherwise configured, the Project will use 'default'.
+  - If set to 'default', then the request will be processed with the standard pricing and performance for the selected model.
+  - If set to '[flex](/docs/guides/flex-processing)', then the request will be processed with the Flex Processing service tier.
+  - To opt-in to [Fast mode](/api/docs/guides/fast-mode) at the request level, include the `service_tier=fast` or `service_tier=priority` parameter for Responses or Chat Completions. The response will show `service_tier=priority` regardless of if you specify `service_tier=fast` or `priority` in your request.
+  - If set to 'ultrafast', then the request will be processed with the access-controlled Ultrafast Processing service tier. This tier is currently available for `gpt-5.6-sol`; a response served through it will show `service_tier=ultrafast`.
+  - When not set, the default behavior is 'auto'.
+
+  When the `service_tier` parameter is set, the response body will include the `service_tier` value based on the processing mode actually used to serve the request. This response value may be different from the value set in the parameter.
+
+  - `"auto"`
+
+  - `"default"`
+
+  - `"flex"`
+
+  - `"scale"`
+
+  - `"priority"`
+
+  - `"fast"`
+
+  - `"ultrafast"`
+
 ### Beta Skill Reference
 
 - `BetaSkillReference object { skill_id, type, version }`
@@ -190314,7 +190075,7 @@ Returns a list of input items for a given response.
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -191414,17 +191175,9 @@ Returns a list of input items for a given response.
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -195146,7 +194899,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -196246,17 +195999,9 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -199954,7 +199699,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -200969,17 +200714,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_image"`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+            - `detail: optional BetaImageDetail or null`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: optional string or null`
 

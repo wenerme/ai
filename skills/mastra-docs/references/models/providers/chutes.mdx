@@ -1,11 +1,11 @@
 ---
 title: "Chutes | Models"
-description: "Use Chutes models with Mastra. 13 models available."
+description: "Use Chutes models with Mastra. 14 models available."
 ---
 
 # [Chutes logo]Chutes
 
-Access 13 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
+Access 14 Chutes models through Mastra's model router. Authentication is handled automatically using the `CHUTES_API_KEY` environment variable.
 
 Learn more in the [Chutes documentation](https://llm.chutes.ai).
 
@@ -158,6 +158,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.3,
     "outputCost": 2
+  },
+  {
+    "model": "chutes/Qwen/Qwen3.8-27B-TEE",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 65536,
+    "inputCost": 0.4,
+    "outputCost": 3
   },
   {
     "model": "chutes/unsloth/Mistral-Nemo-Instruct-2407-TEE",
