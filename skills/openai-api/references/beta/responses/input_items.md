@@ -108,7 +108,7 @@ Returns a list of input items for a given response.
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -1208,17 +1208,9 @@ Returns a list of input items for a given response.
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -4940,7 +4932,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -6040,17 +6032,9 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 

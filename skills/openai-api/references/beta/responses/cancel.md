@@ -160,7 +160,7 @@ the `background` parameter set to `true` can be cancelled.
 
               An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-              - `detail: "low" or "high" or "auto" or "original"`
+              - `detail: BetaImageDetail`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -1175,17 +1175,9 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `"input_image"`
 
-              - `detail: optional "low" or "high" or "auto" or "original" or null`
+              - `detail: optional BetaImageDetail or null`
 
                 The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-                - `"low"`
-
-                - `"high"`
-
-                - `"auto"`
-
-                - `"original"`
 
               - `file_id: optional string or null`
 
@@ -5496,17 +5488,9 @@ the `background` parameter set to `true` can be cancelled.
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: BetaImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 
@@ -10654,7 +10638,7 @@ the `background` parameter set to `true` can be cancelled.
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
     The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/docs/guides/safety-best-practices#safety-identifiers).
 
-  - `service_tier: optional "auto" or "default" or "flex" or 4 more or null`
+  - `service_tier: optional BetaServiceTier or null`
 
     Specifies the processing type used for serving the request.
 

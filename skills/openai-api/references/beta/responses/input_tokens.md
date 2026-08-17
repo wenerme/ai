@@ -95,7 +95,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
             An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-            - `detail: "low" or "high" or "auto" or "original"`
+            - `detail: BetaImageDetail`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -1110,17 +1110,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `"input_image"`
 
-            - `detail: optional "low" or "high" or "auto" or "original" or null`
+            - `detail: optional BetaImageDetail or null`
 
               The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-              - `"low"`
-
-              - `"high"`
-
-              - `"auto"`
-
-              - `"original"`
 
             - `file_id: optional string or null`
 

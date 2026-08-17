@@ -1,11 +1,11 @@
 ---
 title: "CrossModel | Models"
-description: "Use CrossModel models with Mastra. 50 models available."
+description: "Use CrossModel models with Mastra. 51 models available."
 ---
 
 # [CrossModel logo]CrossModel
 
-Access 50 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 51 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -242,6 +242,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 1.5,
     "outputCost": 7.5
+  },
+  {
+    "model": "crossmodel/gemini/gemini-3.7-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.75,
+    "outputCost": 3.75
   },
   {
     "model": "crossmodel/minimax/minimax-m2.7",

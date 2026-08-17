@@ -290,7 +290,7 @@ List all items for a conversation with the given ID.
 
           An image input to the model. Learn about [image inputs](/docs/guides/vision).
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: ImageDetail`
 
             The detail level of the image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
 
@@ -330,17 +330,9 @@ List all items for a conversation with the given ID.
 
           A screenshot of a computer.
 
-          - `detail: "low" or "high" or "auto" or "original"`
+          - `detail: ImageDetail`
 
             The detail level of the screenshot image to be sent to the model. One of `high`, `low`, `auto`, or `original`. Defaults to `auto`.
-
-            - `"low"`
-
-            - `"high"`
-
-            - `"auto"`
-
-            - `"original"`
 
           - `file_id: string or null`
 

@@ -1371,7 +1371,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 123 skills, 33500 files, 402 MiB total
+> 123 skills, 33502 files, 402 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1390,7 +1390,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [anthropic-sdk-ruby](./skills/anthropic-sdk-ruby/SKILL.md) | 159 | 8.5 MiB |
 | [anthropic-sdk-typescript](./skills/anthropic-sdk-typescript/SKILL.md) | 159 | 8.6 MiB |
 | [argocd-cli-guide](./skills/argocd-cli-guide/SKILL.md) | 2 | 7.5 KiB |
-| [biome-docs](./skills/biome-docs/SKILL.md) | 618 | 7.9 MiB |
+| [biome-docs](./skills/biome-docs/SKILL.md) | 617 | 7.8 MiB |
 | [biome-lint](./skills/biome-lint/SKILL.md) | 4 | 13 KiB |
 | [brainstorming](./skills/brainstorming/SKILL.md) | 1 | 4.6 KiB |
 | [bun-docs](./skills/bun-docs/SKILL.md) | 321 | 1.7 MiB |
@@ -1450,7 +1450,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [llamafactory-docs](./skills/llamafactory-docs/SKILL.md) | 22 | 172 KiB |
 | [luanti-docs](./skills/luanti-docs/SKILL.md) | 176 | 1.7 MiB |
 | [mastra](./skills/mastra/SKILL.md) | 11 | 64 KiB |
-| [mastra-docs](./skills/mastra-docs/SKILL.md) | 832 | 6.9 MiB |
+| [mastra-docs](./skills/mastra-docs/SKILL.md) | 834 | 7.0 MiB |
 | [mihomo-docs](./skills/mihomo-docs/SKILL.md) | 183 | 549 KiB |
 | [mikro-orm-v6-to-v7](./skills/mikro-orm-v6-to-v7/SKILL.md) | 5 | 37 KiB |
 | [mikroorm-docs](./skills/mikroorm-docs/SKILL.md) | 84 | 1.3 MiB |
@@ -1460,8 +1460,8 @@ Use when implementing React state management with Zustand, including context-sco
 | [openai-docs](./skills/openai-docs/SKILL.md) | 180 | 3.2 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
-| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 466 KiB |
-| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 476 | 2.7 MiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 467 KiB |
+| [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 477 | 2.7 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2382 | 15 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |
 | [orpc-implementation-sops](./skills/orpc-implementation-sops/SKILL.md) | 2 | 7.4 KiB |

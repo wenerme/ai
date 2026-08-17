@@ -1,11 +1,11 @@
 ---
 title: "NanoGPT | Models"
-description: "Use NanoGPT models with Mastra. 599 models available."
+description: "Use NanoGPT models with Mastra. 601 models available."
 ---
 
 # [NanoGPT logo]NanoGPT
 
-Access 599 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 601 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -1408,30 +1408,6 @@ for await (const chunk of stream) {
     "outputCost": 0.28
   },
   {
-    "model": "nano-gpt/deepseek/deepseek-v4-flash-0731-cheaper",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.14,
-    "outputCost": 0.28
-  },
-  {
-    "model": "nano-gpt/deepseek/deepseek-v4-flash-0731-cheaper:thinking",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.14,
-    "outputCost": 0.28
-  },
-  {
     "model": "nano-gpt/deepseek/deepseek-v4-flash-0731:thinking",
     "imageInput": false,
     "audioInput": false,
@@ -1504,30 +1480,6 @@ for await (const chunk of stream) {
     "outputCost": 2.5
   },
   {
-    "model": "nano-gpt/deepseek/deepseek-v4-pro-cheaper",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.435,
-    "outputCost": 0.87
-  },
-  {
-    "model": "nano-gpt/deepseek/deepseek-v4-pro-cheaper:thinking",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 384000,
-    "inputCost": 0.435,
-    "outputCost": 0.87
-  },
-  {
     "model": "nano-gpt/deepseek/deepseek-v4-pro:thinking",
     "imageInput": false,
     "audioInput": false,
@@ -1564,7 +1516,7 @@ for await (const chunk of stream) {
     "outputCost": 0.493
   },
   {
-    "model": "nano-gpt/dots-studio/dots-3-note-preview:free",
+    "model": "nano-gpt/dots-studio/dots-3-note-preview",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -1572,8 +1524,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 393216,
     "maxOutput": 393216,
-    "inputCost": null,
-    "outputCost": null
+    "inputCost": 0.1,
+    "outputCost": 0.2
   },
   {
     "model": "nano-gpt/doubao-1.5-pro-256k",
@@ -5296,6 +5248,18 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
+    "model": "nano-gpt/qwen3.5-0.8b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.06,
+    "outputCost": 0.12
+  },
+  {
     "model": "nano-gpt/qwen3.5-122b-a10b",
     "imageInput": false,
     "audioInput": false,
@@ -5368,6 +5332,18 @@ for await (const chunk of stream) {
     "outputCost": 2.16
   },
   {
+    "model": "nano-gpt/qwen3.5-2b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.08,
+    "outputCost": 0.16
+  },
+  {
     "model": "nano-gpt/qwen3.5-35b-a3b",
     "imageInput": true,
     "audioInput": false,
@@ -5390,6 +5366,18 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.225,
     "outputCost": 1.8
+  },
+  {
+    "model": "nano-gpt/qwen3.5-4b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.1,
+    "outputCost": 0.2
   },
   {
     "model": "nano-gpt/qwen3.5-flash",
@@ -5522,6 +5510,30 @@ for await (const chunk of stream) {
     "maxOutput": 65536,
     "inputCost": 0.4,
     "outputCost": 1.6
+  },
+  {
+    "model": "nano-gpt/qwen3.8-27b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.4,
+    "outputCost": 3
+  },
+  {
+    "model": "nano-gpt/qwen3.8-27b:thinking",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.4,
+    "outputCost": 3
   },
   {
     "model": "nano-gpt/qwen3.8-max",
@@ -5920,18 +5932,6 @@ for await (const chunk of stream) {
     "outputCost": 1.15
   },
   {
-    "model": "nano-gpt/TEE/deepseek-v3.1",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": false,
-    "contextWindow": 164000,
-    "maxOutput": 8192,
-    "inputCost": 1,
-    "outputCost": 2.5
-  },
-  {
     "model": "nano-gpt/TEE/deepseek-v3.2",
     "imageInput": false,
     "audioInput": false,
@@ -5954,6 +5954,30 @@ for await (const chunk of stream) {
     "maxOutput": 1048576,
     "inputCost": 0.2,
     "outputCost": 0.4
+  },
+  {
+    "model": "nano-gpt/TEE/deepseek-v4-pro-0813",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 1.32,
+    "outputCost": 3.96
+  },
+  {
+    "model": "nano-gpt/TEE/deepseek-v4-pro-0813:thinking",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 1048576,
+    "inputCost": 1.32,
+    "outputCost": 3.96
   },
   {
     "model": "nano-gpt/TEE/gemma-3-27b-it",
