@@ -95,7 +95,7 @@ https://your-app.example.com/api/agents/imessage-agent/channels/imessage/webhook
 
 Register this URL in the [Photon dashboard](https://app.photon.codes), then set the signing secret it returns as `IMESSAGE_WEBHOOK_SECRET`. The secret is shown once at registration. The adapter verifies the signature on every delivery and rejects requests that don't match. Webhooks are available in hosted mode only.
 
-> **note**: Photon delivers to public HTTPS endpoints only. It won't deliver to `http://`, to private addresses like `localhost`, or through a redirect. For local development, use a tunnel as described in the [Channels overview](/docs/capabilities/channels#webhook-routes).
+> **note**: Photon delivers to public HTTPS endpoints only. It won't deliver to `http://`, to private addresses like `localhost`, or through a redirect. For local development, use a tunnel as described in the [Channels overview](/docs/channels#webhook-routes).
 
 ## Duplicate deliveries
 
@@ -146,9 +146,9 @@ imessage: {
 },
 ```
 
-On serverless platforms, prefer webhooks. A gateway listener needs a process that stays alive. See [Serverless deployment](/docs/capabilities/channels#serverless-deployment).
+On serverless platforms, prefer webhooks. A gateway listener needs a process that stays alive. See [Serverless deployment](/docs/channels#serverless-deployment).
 
 ## Related
 
-- [Channels overview](/docs/capabilities/channels)
-- [More](/docs/capabilities/channels#other-adapters)
+- [Channels overview](/docs/channels)
+- [More](/docs/channels#other-adapters)

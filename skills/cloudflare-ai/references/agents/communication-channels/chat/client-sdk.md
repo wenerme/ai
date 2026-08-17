@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Client SDK
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Connect to agents from any JavaScript runtime — browsers, Node.js, Deno, Bun, or edge functions — using WebSockets or HTTP. The SDK provides real-time state synchronization, RPC method calls, and streaming responses.
 
@@ -425,20 +425,23 @@ const result = await agent.stub.processData({ input: "test" });
 
 ### Streaming responses
 
-For methods that return `StreamingResponse`, handle chunks as they arrive:
+Mark a callable method as streaming. The framework passes a `StreamingResponse` as its first argument:
 
 ```js
-// Agent-side:
+// Agent-side
+import { Agent, callable } from "agents";
+
 class MyAgent extends Agent {
 	@callable({ streaming: true })
 	async generateText(stream, prompt) {
 		for await (const chunk of llm.stream(prompt)) {
-			await stream.write(chunk);
+			stream.send(chunk);
 		}
+		stream.end();
 	}
 }
 
-// Client-side:
+// Client-side
 await agent.call("generateText", [prompt], {
 	onChunk: (chunk) => {
 		// Called for each chunk
@@ -456,17 +459,20 @@ await agent.call("generateText", [prompt], {
 ```
 
 ```ts
-// Agent-side:
+// Agent-side
+import { Agent, callable, type StreamingResponse } from "agents";
+
 class MyAgent extends Agent {
 	@callable({ streaming: true })
 	async generateText(stream: StreamingResponse, prompt: string) {
 		for await (const chunk of llm.stream(prompt)) {
-			await stream.write(chunk);
+			stream.send(chunk);
 		}
+		stream.end();
 	}
 }
 
-// Client-side:
+// Client-side
 await agent.call("generateText", [prompt], {
 	onChunk: (chunk) => {
 		// Called for each chunk
@@ -854,8 +860,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#page","headline":"Client SDK · Cloudflare Agents docs","description":"Connect to Cloudflare Agents from browsers or server runtimes using useAgent, AgentClient, and agentFetch.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/#page","headline":"Client SDK · Cloudflare Agents docs","description":"Connect to Cloudflare Agents from browsers or server runtimes using useAgent, AgentClient, and agentFetch.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/client-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -39,7 +39,7 @@ https://mcp.cloudflare.com/mcp
 Ask Bionic to investigate a task, make changes, and run relevant tests. Review its diffs and command output before keeping changes.
 For example:
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Cloudflare platform access
@@ -117,11 +117,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
@@ -129,11 +125,15 @@ Create a RAG pipeline using Vectorize and Workers AI to answer questions over my
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Set up a KV namespace for edge-cached session storage in my Worker.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

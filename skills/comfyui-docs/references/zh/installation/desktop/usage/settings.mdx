@@ -1,14 +1,15 @@
 ---
 title: "设置"
 description: "全局设置、主题、代理/镜像配置和数据位置"
-translationSourceHash: 92ab498d
+translationSourceHash: 3c7fcc26
 translationFrom: installation/desktop/usage/settings.mdx
 translationBlockHashes:
-  "_intro": ef300510
+  "_intro": 21793e96
   "Preferences": e123ee00
   "Updates": b6db1add
-  "Storage": 42e92ca2
-  "Advanced": d14918fe
+  "Storage": 4bb5eadb
+  "Advanced": 448c3a49
+  "Logs": f8e4484f
   "Data Locations": 12e5d644
   "Keyboard Shortcuts": d36c977e
   "Feedback and Issues": 9304f358
@@ -18,7 +19,7 @@ translationBlockHashes:
 
 [打开桌面设置]
 
-设置面板分为四个标签页，点击侧边栏标签即可切换。
+设置面板分为五个标签页，点击侧边栏标签即可切换。
 
 ## 偏好设置
 
@@ -52,9 +53,9 @@ translationBlockHashes:
 
   - 点击文件夹图标可在文件管理器中打开目录。
   - 点击目录上的 **...** 菜单（1），然后选择 **Make primary**（2）可更改新模型的默认保存目录。
-  - 点击 **+ 添加目录** 可添加更多模型目录。
-- **输入目录**：所有实例查找输入文件（图像、视频等）的共享路径。
-- **输出目录**：所有实例保存已生成输出的共享路径。自定义此路径可将所有结果集中存放在一处。
+  - 点击 **+ 添加共享目录** 可添加更多模型目录。
+- **共享输入**：所有实例查找输入文件（图像、视频等）的共享路径。
+- **共享输出**：所有实例保存已生成输出的共享路径。自定义此路径可将所有结果集中存放在一处。
 - 点击文件夹图标可浏览并选择新路径。**?** 工具提示提供更多详情。
 
 每个实例的覆盖设置（包含共享目录、拆分输入/输出、额外模型文件夹）位于实例 [管理](/zh/installation/desktop/usage/manage#存储标签页) 页面中的存储标签页内。
@@ -64,9 +65,13 @@ translationBlockHashes:
 [高级选项卡]
 
 - **默认安装位置**：新独立实例的创建位置。点击文件夹图标更改。
+- **使用硬件加速**：使用 GPU 渲染 Comfy Desktop。更改将在重启 Comfy Desktop 后生效。
 - **PyPI 镜像 URL**：自定义 pip 镜像地址（如 `https://mirrors.aliyun.com/pypi/simple/`）。
 - **使用中国镜像（Git & PyPI）**：对 Git 和 PyPI 使用中国镜像服务器。在中国大陆使用时很有帮助。
 - **缓存目录**：Comfy 桌面版存储临时和缓存数据的目录。点击文件夹图标更改。
+
+## 日志
+
 - **诊断**：**打开日志文件夹** 会打开 Comfy 桌面版应用的日志目录（`app.log`）。参见[如何查看 Comfy 桌面版启动日志？](/zh/installation/desktop/faq#如何查看-comfy-desktop-启动日志)。
 
 ## 数据存储位置

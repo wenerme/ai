@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Cross-domain authentication
 
-Last updated Jun 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When your Agents are deployed, to keep things secure, send a token from the client, then verify it on the server. This guide covers authentication patterns for WebSocket connections to agents.
 
@@ -40,7 +40,7 @@ If the client and server share the origin, the browser will send cookies during 
 
 ### Cross origin
 
-Cookies do not help across origins. Pass credentials in the URL query, then verify on the server.
+Cross-origin cookie behavior depends on the cookie's domain and `SameSite` attributes, whether the two origins are same-site, and browser third-party cookie policy. If you cannot rely on a cookie, pass a short-lived credential in the URL query and verify it on the server.
 
 ## Usage examples
 
@@ -146,53 +146,21 @@ function App() {
 
 ### JWT refresh pattern
 
-Refresh the token when the connection fails due to authentication error.
+`useAgent` resolves an async query before connecting and reevaluates it when reconnecting. Return a fresh, short-lived application token each time:
 
 ```js
 import { useAgent } from "agents/react";
 import { useCallback } from "react";
 
-const validateToken = async (token) => {
-	// An example of how you might implement this
-	const res = await fetch(`${API_HOST}/api/users/me`, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
-
-	return res.ok;
-};
-
-const refreshToken = async () => {
-	// Depends on implementation:
-	// - You could use a longer-lived token to refresh the expired token
-	// - De-auth the app and prompt the user to log in manually
-	// - ...
-};
-
 function useJWTAgent(agentName) {
 	const asyncQuery = useCallback(async () => {
-		let token = localStorage.getItem("jwt");
-
-		// If no token OR the token is no longer valid
-		// request a fresh token
-		if (!token || !(await validateToken(token))) {
-			token = await refreshToken();
-			localStorage.setItem("jwt", token);
-		}
-
-		return {
-			token,
-		};
+		return { token: await getShortLivedAccessToken() };
 	}, []);
 
-	const agent = useAgent({
+	return useAgent({
 		agent: agentName,
 		query: asyncQuery,
-		queryDeps: [], // Run on mount
 	});
-
-	return agent;
 }
 ```
 
@@ -200,47 +168,17 @@ function useJWTAgent(agentName) {
 import { useAgent } from "agents/react";
 import { useCallback } from "react";
 
-const validateToken = async (token: string) => {
-	// An example of how you might implement this
-	const res = await fetch(`${API_HOST}/api/users/me`, {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
-
-	return res.ok;
-};
-
-const refreshToken = async () => {
-	// Depends on implementation:
-	// - You could use a longer-lived token to refresh the expired token
-	// - De-auth the app and prompt the user to log in manually
-	// - ...
-};
+declare function getShortLivedAccessToken(): Promise<string>;
 
 function useJWTAgent(agentName: string) {
 	const asyncQuery = useCallback(async () => {
-		let token = localStorage.getItem("jwt");
-
-		// If no token OR the token is no longer valid
-		// request a fresh token
-		if (!token || !(await validateToken(token))) {
-			token = await refreshToken();
-			localStorage.setItem("jwt", token);
-		}
-
-		return {
-			token,
-		};
+		return { token: await getShortLivedAccessToken() };
 	}, []);
 
-	const agent = useAgent({
+	return useAgent({
 		agent: agentName,
 		query: asyncQuery,
-		queryDeps: [], // Run on mount
 	});
-
-	return agent;
 }
 ```
 
@@ -459,8 +397,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-03","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/#page","headline":"Cross-domain authentication · Cloudflare Agents docs","description":"Authenticate WebSocket connections to Cloudflare Agents across domains using signed tokens.","url":"https://developers.cloudflare.com/agents/runtime/operations/cross-domain-authentication/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

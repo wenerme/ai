@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chat agents
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Build AI-powered chat interfaces with `AIChatAgent` and `useAgentChat`. Messages are automatically persisted to SQLite, streams resume on disconnect, and tool calls work across server and client.
 
@@ -40,8 +40,22 @@ Built on the [AI SDK ↗](https://ai-sdk.dev) and Cloudflare Durable Objects, yo
 
 ### Install
 
-```sh
-npm install @cloudflare/ai-chat agents ai workers-ai-provider
+npmyarnpnpmbun
+
+```
+npm i @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
+```
+
+```
+yarn add @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
+```
+
+```
+pnpm add @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
+```
+
+```
+bun add @cloudflare/ai-chat agents ai @ai-sdk/react workers-ai-provider
 ```
 
 ### Server
@@ -2359,8 +2373,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/#page","headline":"Chat agents · Cloudflare Agents docs","description":"Build AI chat interfaces with AIChatAgent and useAgentChat, including message persistence, streaming, and tool support.","url":"https://developers.cloudflare.com/agents/communication-channels/chat/chat-agents/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

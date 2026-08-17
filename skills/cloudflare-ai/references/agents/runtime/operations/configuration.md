@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Jul 15, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/configuration/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers everything you need to configure agents for local development and production deployment, including Wrangler configuration file setup, type generation, environment variables, and the Cloudflare dashboard.
 
@@ -42,7 +42,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 	"name": "my-agent-app",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-17",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// Static assets (optional)
@@ -94,7 +94,7 @@ The `wrangler.jsonc` file configures your Cloudflare Worker and its bindings. He
 name = "my-agent-app"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-17"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -782,7 +782,7 @@ Define environments in the Wrangler configuration file:
 
 	// Base configuration (shared)
 	// Set this to today's date
-	"compatibility_date": "2026-07-22",
+	"compatibility_date": "2026-08-17",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
@@ -795,12 +795,18 @@ Define environments in the Wrangler configuration file:
 	"env": {
 		"staging": {
 			"name": "my-agent-staging",
+			"durable_objects": {
+				"bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
+			},
 			"vars": {
 				"ENVIRONMENT": "staging",
 			},
 		},
 		"production": {
 			"name": "my-agent-production",
+			"durable_objects": {
+				"bindings": [{ "name": "MyAgent", "class_name": "MyAgent" }],
+			},
 			"vars": {
 				"ENVIRONMENT": "production",
 			},
@@ -813,7 +819,7 @@ Define environments in the Wrangler configuration file:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-07-22"
+compatibility_date = "2026-08-17"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -827,11 +833,19 @@ storage = "sqlite"
 [env.staging]
 name = "my-agent-staging"
 
+[[env.staging.durable_objects.bindings]]
+name = "MyAgent"
+class_name = "MyAgent"
+
   [env.staging.vars]
   ENVIRONMENT = "staging"
 
 [env.production]
 name = "my-agent-production"
+
+[[env.production.durable_objects.bindings]]
+name = "MyAgent"
+class_name = "MyAgent"
 
   [env.production.vars]
   ENVIRONMENT = "production"
@@ -853,7 +867,7 @@ npx wrangler secret put OPENAI_API_KEY --env production
 
 ### Separate Durable Objects
 
-Each environment gets its own Durable Objects. Staging agents do not share state with production agents.
+Named environments do not inherit Durable Object bindings. Repeat the bindings for each environment, as in the [multi-environment setup](#multi-environment-setup). Each environment gets its own Durable Objects. Staging agents do not share state with production agents.
 
 To explicitly separate:
 
@@ -1077,8 +1091,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/configuration/#page","headline":"Configuration · Cloudflare Agents docs","description":"Configure Wrangler bindings, environment variables, and type generation for a project using the Agents SDK.","url":"https://developers.cloudflare.com/agents/runtime/operations/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

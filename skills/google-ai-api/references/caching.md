@@ -20,7 +20,7 @@ post `https://generativelanguage.googleapis.com/v1beta/cachedContents`
 ### Request body
 
 The request body contains an instance of `https://ai.google.dev/api/caching#CachedContent`.
-Fields `contents[]` ``object (`Content`)`` Optional. Input only. Immutable. The content to cache.
+Fields `contents[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Input only. Immutable. The content to cache.
 `tools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Tool`)`` Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
 `expiration` `Union type` Specifies when this resource will expire. `expiration` can be only one of the following: `expireTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Timestamp in UTC of when this resource is considered expired. This is *always* provided on output, regardless of what was sent on input.
 
@@ -30,7 +30,7 @@ Uses RFC 3339, where generated output will always be Z-normalized and use 0, 3, 
 A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
 `displayName` `string` Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
 `model` `string` Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-`systemInstruction` ``object (`Content`)`` Optional. Input only. Immutable. Developer set system instruction. Currently text only.
+`systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Input only. Immutable. Developer set system instruction. Currently text only.
 `toolConfig` ``object (`https://ai.google.dev/api/caching#ToolConfig`)`` Optional. Input only. Immutable. Tool config. This config is shared for all tools.
 
 ### Example request
@@ -44,7 +44,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.7-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -73,7 +73,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.5-flash";
+    const modelName = "gemini-3.7-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -106,7 +106,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -207,7 +207,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.7-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -238,7 +238,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.5-flash";
+    const modelName = "gemini-3.7-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -273,7 +273,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -329,7 +329,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     from google.genai import types
 
     client = genai.Client()
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.7-flash"
     system_instruction = "You are an expert analyzing transcripts."
 
     # Create a chat session with the given system instruction.
@@ -371,7 +371,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     // Make sure to include the following import:
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const modelName = "gemini-3.5-flash";
+    const modelName = "gemini-3.7-flash";
     const systemInstruction = "You are an expert analyzing transcripts.";
 
     // Create a chat session with the system instruction.
@@ -431,7 +431,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
     systemInstruction := "You are an expert analyzing transcripts."
 
     // Create initial chat with a system instruction.
@@ -583,7 +583,7 @@ The request body must be empty.
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.7-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -605,7 +605,7 @@ The request body must be empty.
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.5-flash";
+    const modelName = "gemini-3.7-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -632,7 +632,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -723,7 +723,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.7-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -766,7 +766,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.5-flash";
+    const modelName = "gemini-3.7-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -809,7 +809,7 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -885,7 +885,7 @@ The request body must be empty.
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.5-flash"
+    model_name = "gemini-3.7-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -907,7 +907,7 @@ The request body must be empty.
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.5-flash";
+    const modelName = "gemini-3.7-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -934,7 +934,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.5-flash"
+    modelName := "gemini-3.7-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -998,7 +998,7 @@ If successful, the response body is an empty JSON object.
 Content that has been preprocessed and can be used in subsequent request to GenerativeService.
 
 Cached content can be only used with model it was created for.
-Fields `contents[]` ``object (`Content`)`` Optional. Input only. Immutable. The content to cache.
+Fields `contents[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Input only. Immutable. The content to cache.
 `tools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Tool`)`` Optional. Input only. Immutable. A list of `Tools` the model may use to generate the next response
 `createTime` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#timestamp` format)`` Output only. Creation time of the cache entry.
 
@@ -1016,12 +1016,12 @@ A duration in seconds with up to nine fractional digits, ending with '`s`'. Exam
 `name` `string` Output only. Identifier. The resource name referring to the cached content. Format: `cachedContents/{id}`
 `displayName` `string` Optional. Immutable. The user-generated meaningful display name of the cached content. Maximum 128 Unicode characters.
 `model` `string` Required. Immutable. The name of the `Model` to use for cached content Format: `models/{model}`
-`systemInstruction` ``object (`Content`)`` Optional. Input only. Immutable. Developer set system instruction. Currently text only.
+`systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Input only. Immutable. Developer set system instruction. Currently text only.
 `toolConfig` ``object (`https://ai.google.dev/api/caching#ToolConfig`)`` Optional. Input only. Immutable. Tool config. This config is shared for all tools.
 
 | JSON representation |
 |---|
-| ``` { "contents": [ { object (`Content`) } ], "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "createTime": string, "updateTime": string, "usageMetadata": { object (`https://ai.google.dev/api/caching#UsageMetadata`) }, // expiration "expireTime": string, "ttl": string // Union type "name": string, "displayName": string, "model": string, "systemInstruction": { object (`Content`) }, "toolConfig": { object (`https://ai.google.dev/api/caching#ToolConfig`) } } ``` |
+| ``` { "contents": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ], "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "createTime": string, "updateTime": string, "usageMetadata": { object (`https://ai.google.dev/api/caching#UsageMetadata`) }, // expiration "expireTime": string, "ttl": string // Union type "name": string, "displayName": string, "model": string, "systemInstruction": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "toolConfig": { object (`https://ai.google.dev/api/caching#ToolConfig`) } } ``` |
 
 ## ToolConfig
 

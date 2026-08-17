@@ -56,7 +56,7 @@ opencode
 5. **Try a prompt**
 For example:
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Cloudflare platform access
@@ -134,15 +134,7 @@ For a full overview of how these docs are structured for agents, refer to the [D
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
@@ -150,7 +142,15 @@ Add a D1 database to my Worker and create a users table with full CRUD endpoints
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

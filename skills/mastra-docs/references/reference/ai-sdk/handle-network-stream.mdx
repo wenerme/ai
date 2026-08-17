@@ -9,7 +9,7 @@ packages:
 
 :::warning[Deprecated]
 
-Agent networks are deprecated and will be removed in a future release. Use [supervisor agents](/docs/capabilities/subagents) with `agent.stream()` or `agent.generate()` instead. See the [migration guide](/reference/migrations/network-to-supervisor) to upgrade.
+Agent networks are deprecated and will be removed in a future release. Use [supervisor agents](/docs/subagents) with `agent.stream()` or `agent.generate()` instead. See the [migration guide](/reference/migrations/network-to-supervisor) to upgrade.
 
 Framework-agnostic handler for streaming network execution in AI SDK-compatible format. Use this function directly when you need to handle network streaming outside Hono or Mastra's own [apiRoutes](/docs/server/custom-api-routes) feature.
 
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
     name: 'agentVersion',
     type: "{ versionId: string } | { status?: 'draft' | 'published' }",
     description:
-      "Selects a specific agent version. Pass `{ versionId: '<id>' }` to target an exact version, or `{ status: 'draft' }` / `{ status: 'published' }` to resolve by status. Requires the [Editor](/docs/editor/overview) to be configured.",
+      "Selects a specific agent version. Pass `{ versionId: '<id>' }` to target an exact version, or `{ status: 'draft' }` / `{ status: 'published' }` to resolve by status. Requires the [Editor](/docs/studio/editor) to be configured.",
     isOptional: true,
   },
   {
