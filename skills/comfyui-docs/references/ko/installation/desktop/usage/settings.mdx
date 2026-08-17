@@ -1,14 +1,15 @@
 ---
 title: "설정"
 description: "전역 설정, 테마, 프록시/미러 구성 및 데이터 위치"
-translationSourceHash: 92ab498d
+translationSourceHash: 3c7fcc26
 translationFrom: installation/desktop/usage/settings.mdx
 translationBlockHashes:
-  "_intro": ef300510
+  "_intro": 21793e96
   "Preferences": e123ee00
   "Updates": b6db1add
-  "Storage": 42e92ca2
-  "Advanced": d14918fe
+  "Storage": 4bb5eadb
+  "Advanced": 448c3a49
+  "Logs": f8e4484f
   "Data Locations": 12e5d644
   "Keyboard Shortcuts": d36c977e
   "Feedback and Issues": 9304f358
@@ -18,7 +19,7 @@ translationBlockHashes:
 
 [Access Desktop Settings]
 
-설정 패널은 네 개의 탭으로 구성되어 있습니다. 사이드바에서 탭을 클릭하여 뷰를 전환하세요.
+설정 패널은 다섯 개의 탭으로 구성되어 있습니다. 사이드바에서 탭을 클릭하여 뷰를 전환하세요.
 
 ## 환경설정
 
@@ -52,9 +53,9 @@ translationBlockHashes:
 
   - 폴더 아이콘을 클릭하면 파일 관리자에서 디렉토리를 엽니다.
   - 디렉토리의 **...** 메뉴(1)를 클릭한 다음, **주로 설정**(2)을 선택하여 새 모델을 저장할 디렉토리를 변경합니다.
-  - **+ 디렉토리 추가**를 클릭하여 모델 디렉토리를 더 추가합니다.
-- **입력 디렉토리**: 모든 인스턴스가 입력 파일(이미지, 비디오 등)을 찾는 공유 경로입니다.
-- **출력 디렉토리**: 모든 인스턴스가 생성된 결과물을 저장하는 공유 경로입니다. 이 경로를 사용자 지정하면 모든 결과를 한 곳에 보관할 수 있습니다.
+  - **+ 공유 디렉토리 추가**를 클릭하여 모델 디렉토리를 더 추가합니다.
+- **공유 입력**: 모든 인스턴스가 입력 파일(이미지, 비디오 등)을 찾는 공유 경로입니다.
+- **공유 출력**: 모든 인스턴스가 생성된 결과물을 저장하는 공유 경로입니다. 이 경로를 사용자 지정하면 모든 결과를 한 곳에 보관할 수 있습니다.
 - 폴더 아이콘을 클릭하여 새 경로를 찾아 선택합니다. **?** 도구 설명에 추가 정보가 표시됩니다.
 
 인스턴스별 재정의(공유 디렉토리 포함, 입력/출력 분할, 추가 모델 폴더)는 인스턴스의 [관리](/ko/installation/desktop/usage/manage#저장소-탭) 저장소 탭에 있습니다.
@@ -64,9 +65,13 @@ translationBlockHashes:
 [Advanced tab]
 
 - **기본 설치 위치**: 새 독립형 인스턴스가 생성되는 위치입니다. 폴더 아이콘을 클릭하여 변경합니다.
+- **하드웨어 가속 사용**: GPU를 사용하여 Comfy Desktop을 렌더링합니다. 변경 사항을 적용하려면 Comfy Desktop을 다시 시작하세요.
 - **PyPI 미러 URL**: 사용자 지정 pip 미러 (예: `https://mirrors.aliyun.com/pypi/simple/`).
 - **중국 미러 사용 (Git & PyPI)**: Git 및 PyPI에 중국 미러 서버를 사용합니다. 중국 본토에서 유용합니다.
 - **캐시 디렉토리**: Comfy Desktop이 임시 및 캐시 데이터를 저장하는 위치입니다. 폴더 아이콘을 클릭하여 변경합니다.
+
+## 로그
+
 - **Diagnostics**: **로그 폴더 열기**는 Desktop 앱 로그 디렉터리(`app.log`)를 엽니다. [Comfy Desktop 시작 로그는 어떻게 확인하나요?](/ko/installation/desktop/faq#comfy-desktop-시작-로그는-어떻게-확인하나요)를 참조하세요.
 
 ## 데이터 위치

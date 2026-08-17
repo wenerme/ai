@@ -204,7 +204,7 @@ vllm bench serve --port 9001 --save-result --save-detailed \
   --endpoint /v1/completions \
   --dataset-name custom \
   --dataset-path <path-to-your-data-jsonl> \
-  --custom-skip-chat-template \
+  --skip-chat-template \
   --num-prompts 80 \
   --max-concurrency 1 \
   --temperature=0.3 \
@@ -212,7 +212,7 @@ vllm bench serve --port 9001 --save-result --save-detailed \
   --result-dir "./log/"
 ```
 
-You can skip applying chat template if your data already has it by using `--custom-skip-chat-template`.
+You can skip applying chat template if your data already has it by using `--skip-chat-template`.
 
 #### Custom Audio Dataset
 

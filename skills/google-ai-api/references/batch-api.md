@@ -174,7 +174,7 @@ If successful, the response body contains an instance of `ListOperationsResponse
 - [Response body](https://ai.google.dev/api/batch-api#body.response_body)
 - [Authorization scopes](https://ai.google.dev/api/batch-api#body.aspect)
 
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use `Operations.GetOperation` or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an `https://ai.google.dev/api/batch-api#Operation.FIELDS.error` value with a `google.rpc.Status.code` of `1`, corresponding to `Code.CANCELLED`.
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use `Operations.GetOperation` or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an `https://ai.google.dev/api/batch-api#Operation.FIELDS.error` value with a `https://ai.google.dev/api/files#FIELDS.code` of `1`, corresponding to `Code.CANCELLED`.
 
 ### Endpoint
 
@@ -268,7 +268,7 @@ Request to generate a completion from the model.
 Fields `model` `string` Required. The name of the `Model` to use for generating the completion.
 
 Format: `models/{model}`.
-`contents[]` ``object (`Content`)`` Required. The content of the current conversation with the model.
+`contents[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Required. The content of the current conversation with the model.
 
 For single-turn queries, this is a single instance. For multi-turn queries like [chat](https://ai.google.dev/gemini-api/docs/text-generation#chat), this is a repeated field that contains the conversation history and the latest request.
 `tools[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.Tool`)`` Optional. A list of `Tools` the `Model` may use to generate the next response.
@@ -278,15 +278,15 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
-`systemInstruction` ``object (`Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
+`systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
-`serviceTier` ``enum (`ServiceTier`)`` Optional. The service tier of the request.
+`serviceTier` ``enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`)`` Optional. The service tier of the request.
 `store` `boolean` Optional. Configures the logging behavior for a given request. If set, it takes precedence over the project-level logging config.
 
 | JSON representation |
 |---|
-| ``` { "model": string, "contents": [ { object (`Content`) } ], "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "toolConfig": { object (`https://ai.google.dev/api/caching#ToolConfig`) }, "safetySettings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`) } ], "systemInstruction": { object (`Content`) }, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "cachedContent": string, "serviceTier": enum (`ServiceTier`), "store": boolean } ``` |
+| ``` { "model": string, "contents": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ], "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "toolConfig": { object (`https://ai.google.dev/api/caching#ToolConfig`) }, "safetySettings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`) } ], "systemInstruction": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "cachedContent": string, "serviceTier": enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`), "store": boolean } ``` |
 
 ## Method: batches.updateEmbedContentBatch
 
@@ -340,7 +340,7 @@ Fields `model` `string` Required. The model's resource name. This serves as an I
 This name should match a model name returned by the `ListModels` method.
 
 Format: `models/{model}`
-`content` ``object (`Content`)`` Required. The content to embed. Only the `parts.text` fields will be counted.
+`content` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Required. The content to embed. Only the `parts.text` fields will be counted.
 `taskType
 (deprecated)` ``enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`)``
 
@@ -368,7 +368,7 @@ Optional. Deprecated: Please use EmbedContentConfig.output_dimensionality instea
 
 | JSON representation |
 |---|
-| ``` { "model": string, "content": { object (`Content`) }, "taskType": enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`), "title": string, "outputDimensionality": integer, "embedContentConfig": { object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentConfig`) } } ``` |
+| ``` { "model": string, "content": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "taskType": enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`), "title": string, "outputDimensionality": integer, "embedContentConfig": { object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentConfig`) } } ``` |
 
 ## REST Resource: batches
 
@@ -384,14 +384,14 @@ Fields `name` `string` The server-assigned name, which is only unique within the
 
 An object containing fields of an arbitrary type. An additional field `"@type"` contains a URI identifying the type. Example: `{ "id": 1234, "@type": "types.example.com/standard/id" }`.
 `done` `boolean` If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-`result` `Union type` The operation result, which can be either an `error` or a valid `response`. If `done` == `false`, neither `error` nor `response` is set. If `done` == `true`, exactly one of `error` or `response` can be set. Some services might not provide the result. `result` can be only one of the following: `error` ``object (`google.rpc.Status`)`` The error result of the operation in case of failure or cancellation.
+`result` `Union type` The operation result, which can be either an `error` or a valid `response`. If `done` == `false`, neither `error` nor `response` is set. If `done` == `true`, exactly one of `error` or `response` can be set. Some services might not provide the result. `result` can be only one of the following: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` The error result of the operation in case of failure or cancellation.
 `response` `object` The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
 
 An object containing fields of an arbitrary type. An additional field `"@type"` contains a URI identifying the type. Example: `{ "id": 1234, "@type": "types.example.com/standard/id" }`.
 
 | JSON representation |
 |---|
-| ``` { "name": string, "metadata": { "@type": string, field1: ..., ... }, "done": boolean, // result "error": { object (`google.rpc.Status`) }, "response": { "@type": string, field1: ..., ... } // Union type } ``` |
+| ``` { "name": string, "metadata": { "@type": string, field1: ..., ... }, "done": boolean, // result "error": { object (`https://ai.google.dev/api/files#v1beta.Status`) }, "response": { "@type": string, field1: ..., ... } // Union type } ``` |
 
 ## GenerateContentBatch
 
@@ -490,12 +490,12 @@ Fields `inlinedResponses[]` ``object (`https://ai.google.dev/api/batch-api#Inlin
 
 The response to a single request in the batch.
 Fields `metadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Output only. The metadata associated with the request.
-`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`google.rpc.Status`)`` Output only. The error encountered while processing the request.
+`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. The error encountered while processing the request.
 `response` ``object (`https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse`)`` Output only. The response to the request.
 
 | JSON representation |
 |---|
-| ``` { "metadata": { object }, // output "error": { object (`google.rpc.Status`) }, "response": { object (`https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse`) } // Union type } ``` |
+| ``` { "metadata": { object }, // output "error": { object (`https://ai.google.dev/api/files#v1beta.Status`) }, "response": { object (`https://ai.google.dev/api/generate-content#v1beta.GenerateContentResponse`) } // Union type } ``` |
 
 ## BatchStats
 
@@ -525,11 +525,11 @@ The state of the batch.
 
 ## ServiceTier
 
-The service tier of the interaction.
+Service tier of the request.
 
 | Enums ||
 |---|---|
-| `SERVICE_TIER_UNSPECIFIED` | Default service tier, which is standard. |
-| `SERVICE_TIER_FLEX` | Flex service tier. |
-| `SERVICE_TIER_STANDARD` | Standard service tier. |
-| `SERVICE_TIER_PRIORITY` | Priority service tier. |
+| `unspecified` | Default service tier, which is standard. |
+| `standard` | Standard service tier. |
+| `flex` | Flex service tier. |
+| `priority` | Priority service tier. |

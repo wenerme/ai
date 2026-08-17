@@ -30,7 +30,7 @@ Format: `models/{model}` It takes the form `models/{model}`.
 ### Request body
 
 The request body contains data with the following structure:
-Fields `content` ``object (`Content`)`` Required. The content to embed. Only the `parts.text` fields will be counted.
+Fields `content` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Required. The content to embed. Only the `parts.text` fields will be counted.
 `taskType
 (deprecated)` ``enum (`https://ai.google.dev/api/embeddings#v1beta.TaskType`)`` Optional. Deprecated: Please use EmbedContentConfig.task_type instead. Optional task type for which the embeddings will be used. Not supported on earlier models (`models/embedding-001`).
 `title
@@ -435,12 +435,12 @@ Fields `inlinedResponses[]` ``object (`https://ai.google.dev/api/embeddings#Inli
 
 The response to a single request in the batch.
 Fields `metadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Output only. The metadata associated with the request.
-`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`google.rpc.Status`)`` Output only. The error encountered while processing the request.
+`output` `Union type` The output of the request. `output` can be only one of the following: `error` ``object (`https://ai.google.dev/api/files#v1beta.Status`)`` Output only. The error encountered while processing the request.
 `response` ``object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentResponse`)`` Output only. The response to the request.
 
 | JSON representation |
 |---|
-| ``` { "metadata": { object }, // output "error": { object (`google.rpc.Status`) }, "response": { object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentResponse`) } // Union type } ``` |
+| ``` { "metadata": { object }, // output "error": { object (`https://ai.google.dev/api/files#v1beta.Status`) }, "response": { object (`https://ai.google.dev/api/embeddings#v1beta.EmbedContentResponse`) } // Union type } ``` |
 
 ## EmbedContentBatchStats
 

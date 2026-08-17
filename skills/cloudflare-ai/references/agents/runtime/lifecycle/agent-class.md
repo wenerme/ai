@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Agent class internals
 
-Last updated Jun 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The core of the `agents` library is the `Agent` class. You extend it, override a few methods, and get state management, WebSockets, scheduling, RPC, and more for free. This page explains how `Agent` is built, layer by layer, so you understand what is happening under the hood.
 
@@ -246,7 +246,7 @@ class MyAgent extends Agent {
 
 ### RPC and Callable Methods
 
-`agents` takes Durable Objects RPC one step further by implementing RPC through WebSockets, so clients can call methods on the Agent directly. To make a method callable through WebSocket, use the `@callable()` decorator. Methods can return a serializable value or a stream (when using `@callable({ stream: true })`).
+`agents` takes Durable Objects RPC one step further by implementing RPC through WebSockets, so clients can call methods on the Agent directly. To make a method callable through WebSocket, use the `@callable()` decorator. Methods can return a serializable value or a stream (when using `@callable({ streaming: true })`).
 
 ```ts
 class MyAgent extends Agent {
@@ -541,8 +541,8 @@ YesNo
 
 ## On this page
 
-[![](https://developers.cloudflare.com/_astro/logo.DMYpXs3t.svg)Docs](https://developers.cloudflare.com/)
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/#page","headline":"Agent class internals · Cloudflare Agents docs","description":"Explore how the Agent class extends Durable Objects to provide state, WebSockets, scheduling, and RPC.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/#page","headline":"Agent class internals · Cloudflare Agents docs","description":"Explore how the Agent class extends Durable Objects to provide state, WebSockets, scheduling, and RPC.","url":"https://developers.cloudflare.com/agents/runtime/lifecycle/agent-class/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-17","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
