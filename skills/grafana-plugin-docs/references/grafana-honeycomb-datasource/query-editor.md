@@ -1,34 +1,45 @@
 ---
-title: "Query editor | Grafana Enterprise Plugins documentation"
-description: "Learn how to use the Honeycomb query editor in Grafana"
+title: "Honeycomb query editor | Grafana Enterprise Plugins documentation"
+description: "Use the Honeycomb query editor in Grafana to build Metrics, SLO, and Raw queries."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# Query editor
+# Honeycomb query editor
 
-The query editor allows you to query Honeycomb data and link to traces. You can choose from three query types: Metrics, SLO, and Raw Query.
+The query editor lets you query Honeycomb data and open related queries in the Honeycomb UI. You can choose from three query types: Metrics, SLO, and Raw Query.
+
+[Honeycomb query editor showing a Metrics query](/media/docs/honeycomb/honeycomb-query-editor-v12.3.png)
 
 > Tip
 >
-> Use the **Grafana Assistant** button above the query type selector for AI-powered help building and refining queries. For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
+> Use the **Query with Assistant** button above the query type selector for AI-powered help building and refining queries. For more information, refer to [Grafana Assistant](/docs/grafana/latest/ai/assistant/).
 
-Use the **Returned data** drop-down to select your query output. The default is **Time series**.
+## Before you begin
 
-- **Time series** – Data for graph visualizations.
-- **Results** – Tabular data equivalent to the Overview in the Honeycomb UI.
-- **Both** – Time series and results together.
+- Ensure you have [configured the Honeycomb data source](/docs/plugins/grafana-honeycomb-datasource/latest/configure/).
+- Verify your Honeycomb API key has **Manage Queries and Columns** and **Run Queries** permissions.
 
-## Datasets
+## Returned data
 
-Select a dataset from the **Dataset** drop-down. The list is populated from your Honeycomb environment.
+Use the **Returned data** drop-down to select your query output. The UI options are:
 
-- To query across all datasets, select **\_\_all\_\_**. This option appears automatically when your environment contains more than one dataset.
+- **series (default):** Time-series data for graph visualizations. This is the default.
+- **result:** Tabular data equivalent to the Overview in the Honeycomb UI.
+- **both:** Series and result frames together.
+
+[Returned data frame options in the Honeycomb query editor](/media/docs/plugins/honeycomb_dataframes.png)
+
+## Select dataset
+
+Select a dataset from the **Select dataset** drop-down. The list is populated from your Honeycomb environment.
+
+- To query across all datasets, select **`__all__`** . This option appears automatically when your environment contains more than one dataset.
 - You can also type a custom dataset slug directly into the selector if the dataset you need doesn’t appear in the list.
 
 > Note
 >
-> The `__all__` cross-dataset option is not supported for Honeycomb Classic environments, per Honeycomb documentation.
+> The `__all__` cross-dataset option isn’t supported for Honeycomb Classic environments, per Honeycomb documentation.
 
 ## Metrics query
 
@@ -37,7 +48,7 @@ Query metrics by entering values into the editor fields:
 1. Select a dataset.
 2. The default query is a `COUNT` over the selected dataset. For [Honeycomb Metrics datasets](https://docs.honeycomb.io/send-data/metrics/), the default calculation is automatically set to `COUNT_DATAPOINTS` instead.
 3. To refine the query, select values for any of the remaining fields: **Visualization**, **Where**, **Constraint**, **Group by**, **Having**, **Order by**, or **Limit**.
-4. Enable **Usage Mode** to return aggregates without correcting for sample rates.
+4. Enable **Usage Mode** to return aggregates without correcting for sample rates. When disabled (the default), the query returns sample-rate-corrected aggregates.
 
 ### Visualization (calculations)
 
@@ -45,17 +56,17 @@ The **Visualization** field defines the calculations applied to your data. The f
 
 Expand table
 
-| Function          | Description                                                           |
-|-------------------|-----------------------------------------------------------------------|
-| COUNT             | Count of events                                                       |
-| SUM               | Sum of a numeric column                                               |
-| AVG               | Average of a numeric column                                           |
-| COUNT\_DISTINCT   | Count of distinct values in a column                                  |
-| MAX               | Maximum value of a numeric column                                     |
-| MIN               | Minimum value of a numeric column                                     |
-| P001 – P999       | Percentiles (P001, P01, P05, P10, P25, P50, P75, P90, P95, P99, P999) |
-| HEATMAP           | Heatmap distribution of a numeric column                              |
-| COUNT\_DATAPOINTS | Count of datapoints (for Honeycomb Metrics datasets)                  |
+| Function           | Description                                                           |
+|--------------------|-----------------------------------------------------------------------|
+| COUNT              | Count of events                                                       |
+| SUM                | Sum of a numeric column                                               |
+| AVG                | Average of a numeric column                                           |
+| COUNT\_DISTINCT    | Count of distinct values in a column                                  |
+| MAX                | Maximum value of a numeric column                                     |
+| MIN                | Minimum value of a numeric column                                     |
+| P001 to P999       | Percentiles (P001, P01, P05, P10, P25, P50, P75, P90, P95, P99, P999) |
+| HEATMAP            | Heatmap distribution of a numeric column                              |
+| `COUNT_DATAPOINTS` | Count of data points (for Honeycomb Metrics datasets)                 |
 
 You can add multiple calculations to a single query.
 
@@ -79,8 +90,8 @@ Expand table
 | `does-not-start-with` | Does not start with a string prefix |
 | `exists`              | Column exists (has a value)         |
 | `does-not-exist`      | Column does not exist               |
-| `contains`            | Contains a substring                |
-| `does-not-contain`    | Does not contain a substring        |
+| `contains`            | Contains a string                   |
+| `does-not-contain`    | Does not contain a string           |
 | `in`                  | Matches any value in a set          |
 | `not-in`              | Does not match any value in a set   |
 
@@ -94,7 +105,11 @@ Use the **Having** field to filter results after aggregation, based on calculate
 
 > Note
 >
-> Having clauses are not available for HEATMAP calculations.
+> Having clauses aren’t available for HEATMAP calculations. Each Having clause must be unique.
+
+### Order by
+
+Use the **Order by** field to sort result groups by a calculation or breakdown column. For each order entry, choose ascending (**ASC**) or descending (**DESC**). You can order by calculations from **Visualization** or by columns from **Group by**.
 
 ### Limit
 
@@ -102,7 +117,7 @@ The **Limit** field restricts the number of result groups returned. Valid values
 
 ## SLO query
 
-Query Honeycomb SLOs by choosing **SLO** as the query type. Select a dataset, then choose a result type:
+Query Honeycomb SLOs by choosing **SLO** as the query type. Select a dataset, then choose a result type.
 
 ### SLO List
 
@@ -112,13 +127,13 @@ Expand table
 
 | Column               | Description                      |
 |----------------------|----------------------------------|
-| id                   | SLO identifier                   |
-| name                 | SLO display name                 |
-| description          | SLO description                  |
-| sli\_alias           | SLI alias                        |
-| sli\_expression      | SLI expression definition        |
-| time\_period\_days   | SLO time period in days          |
-| target\_per\_million | SLO target expressed per million |
+| `id`                 | SLO identifier                   |
+| `name`               | SLO display name                 |
+| `description`        | SLO description                  |
+| `sli_alias`          | SLI alias                        |
+| `sli_expression`     | SLI expression definition        |
+| `time_period_days`   | SLO time period in days          |
+| `target_per_million` | SLO target expressed per million |
 
 ### Single SLO
 
@@ -128,10 +143,10 @@ In addition to the columns returned by the SLO List query, the Single SLO query 
 
 Expand table
 
-| Column            | Description                           |
-|-------------------|---------------------------------------|
-| budget\_remaining | Remaining error budget (percentage)   |
-| compliance        | Current compliance level (percentage) |
+| Column             | Description                           |
+|--------------------|---------------------------------------|
+| `budget_remaining` | Remaining error budget (percentage)   |
+| `compliance`       | Current compliance level (percentage) |
 
 > Note
 >
@@ -148,11 +163,13 @@ The Honeycomb data source supports raw queries through a JSON-based interface. T
 To use the raw query functionality:
 
 1. Select **Raw Query** from the query type drop-down in the Honeycomb query builder.
-2. Enter your query in the JSON text area using the same format accepted by the Honeycomb API.
+2. Select a dataset.
+3. Enter your query in the JSON text area using the same format accepted by the Honeycomb API.
+4. Click **Run query** to execute the query.
 
 The feature supports all operations available in the Honeycomb API, including filters, columns, aggregations, transformations, breakdowns, calculations, granularity settings, ordering, and result set filtering with AND/OR logic combinations.
 
-By default, queries use the time range specified in the Grafana panel. You can override this by including explicit `start_time` and `end_time` parameters in your JSON query. Similarly, specifying a granularity value in the query overrides Grafana’s automatic granularity calculation based on the selected time range.
+By default, queries use the time range specified in the Grafana panel. You can override this by including explicit `start_time` and `end_time` parameters in your JSON query. Similarly, specifying a granularity value in the query overrides the automatic Grafana granularity calculation based on the selected time range.
 
 ### Raw query example
 
@@ -195,7 +212,7 @@ JSON [Copy code to clipboard] Copy
 
 #### Multi-value variables
 
-Raw queries automatically handle multi-value variables when used with `in` and `not-in` operators. This makes it easy to filter by multiple selected values from a dashboard variable.
+Raw queries automatically handle multi-value variables when used with `in` and `not-in` operators. You can filter by multiple selected values from a dashboard variable.
 
 For example, if you have a multi-value variable called `status_codes` with values `200`, `201`, and `204` selected:
 
@@ -212,11 +229,11 @@ JSON [Copy code to clipboard] Copy
 
 The data source automatically expands the variable into an array for the Honeycomb API.
 
-## Alerting and annotations
+## Alerts and annotations
 
-You can use any Honeycomb query type (Metrics, SLO, or Raw) as the condition for a [Grafana alert rule](/docs/grafana/latest/alerting/alerting-rules/) or as an [annotation source](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/). No additional configuration is required beyond building your query in the editor.
+You can use any Honeycomb query type (Metrics, SLO, or Raw) as the condition for a Grafana alert rule or as an annotation source. No additional configuration is required beyond building your query in the editor. For alert details and examples, refer to [Honeycomb alerting](/docs/plugins/grafana-honeycomb-datasource/latest/alerting/). For annotation details and examples, refer to [Honeycomb annotations](/docs/plugins/grafana-honeycomb-datasource/latest/annotations/).
 
-## View queries in the Honeycomb UI
+## Open queries in the Honeycomb UI
 
 You can open your Grafana queries directly in the Honeycomb UI for further exploration.
 
@@ -230,3 +247,10 @@ Each time-series result includes a data link to the corresponding query result i
 ### From the query editor
 
 To view a query in Honeycomb from the query editor, click the **Open in Honeycomb** button.
+
+## Next steps
+
+- [Use template variables](/docs/plugins/grafana-honeycomb-datasource/latest/template-variables/)
+- [Set up alerting](/docs/plugins/grafana-honeycomb-datasource/latest/alerting/)
+- [Add annotations](/docs/plugins/grafana-honeycomb-datasource/latest/annotations/)
+- [Troubleshoot Honeycomb data source issues](/docs/plugins/grafana-honeycomb-datasource/latest/troubleshooting/)

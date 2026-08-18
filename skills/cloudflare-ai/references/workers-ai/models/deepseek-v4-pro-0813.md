@@ -1,5 +1,5 @@
 ---
-description: deepseek-ai/deepseek-v4-pro-0813
+description: DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solving
 title: deepseek-v4-pro-0813
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -24,7 +24,7 @@ Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers-ai
 * Function calling
 * Reasoning
 
-deepseek-ai/deepseek-v4-pro-0813
+DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solving
 
 Paid access required
 
@@ -36,7 +36,6 @@ This model is not available through standard Workers Free billing. To use it, up
 | Function calling [ ↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes                                                                                   |
 | Reasoning                                                                             | Yes                                                                                   |
 | Vision                                                                                | Yes                                                                                   |
-| Beta                                                                                  | Yes                                                                                   |
 | Unit Pricing                                                                          | $1.32 per M input tokens, $3.96 per M output tokens, $0.044 per M cached input tokens |
 
 ## Playground
@@ -521,5 +520,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/deepseek-v4-pro-0813/#page","headline":"deepseek-v4-pro-0813 (DeepSeek) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"deepseek-ai/deepseek-v4-pro-0813","url":"https://developers.cloudflare.com/workers-ai/models/deepseek-v4-pro-0813/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-ai/models/deepseek-v4-pro-0813/#page","headline":"deepseek-v4-pro-0813 (DeepSeek) · Cloudflare AI docs · Cloudflare Workers AI docs","description":"DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek with a one million token context window, built for long-horizon agentic workflows and complex, multi-step problem-solving","url":"https://developers.cloudflare.com/workers-ai/models/deepseek-v4-pro-0813/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

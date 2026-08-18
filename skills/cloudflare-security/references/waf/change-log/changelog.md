@@ -1,5 +1,5 @@
 ---
-description: This release introduces new protection for a remote code execution vulnerability in vBulletin and improves two existing detections.
+description: This release updates WordPress remote code execution rule metadata in the Cloudflare Managed Ruleset and Cloudflare Free Ruleset to identify CVE-2026-65640.
 title: Changelog
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -11,6 +11,26 @@ image: https://developers.cloudflare.com/og-docs.png
 Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/change-log/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
+
+## 2026-08-17
+
+
+**WAF Release - 2026-08-17**
+
+This release updates WordPress remote code execution rule metadata in the Cloudflare Managed Ruleset and Cloudflare Free Ruleset to identify CVE-2026-65640.
+
+**Key Findings**
+
+* CVE-2026-65640: A remote code execution vulnerability affecting WordPress core and plugin components. Remote, unauthenticated attackers can execute arbitrary system commands to gain unauthorized access or establish backdoors on host servers.
+
+**Impact**
+
+The WordPress changes update rule metadata only; detection behavior and actions remain unchanged.
+
+| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                            | Previous Action | New Action | Comments                                                |
+| -------------------------- | ----------- | -------------- | ------------------------------------------------------ | --------------- | ---------- | ------------------------------------------------------- |
+| Cloudflare Managed Ruleset | ...3590a4ad | N/A            | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block           | N/A        | Rule metadata description refined. Detection unchanged. |
+| Cloudflare Free Ruleset    | ...cfe1a93c | N/A            | Wordpress - Remote Code Execution - CVE:CVE-2026-65640 | Block           | N/A        | Rule metadata description refined. Detection unchanged. |
 
 ## 2026-08-11
 
@@ -639,32 +659,8 @@ Successful exploitation of the MCP Server and SolarWinds vulnerabilities could a
 | Cloudflare Managed Ruleset | ...61c439c9 | N/A            | SQLi - UNION - 2 - URI                                  | Log             | Disabled   | This is a new detection. |
 | Cloudflare Managed Ruleset | ...cf33ea10 | N/A            | SolarWinds - Auth Bypass - CVE:CVE-2025-40552           | Log             | Block      | This is a new detection. |
 
-## 2026-03-30
-
-
-**WAF Release - 2026-03-30**
-
-This week's release introduces new detections for a critical authentication bypass vulnerability in Fortinet products (CVE-2025-59718), alongside three new generic detection rules designed to identify and block HTTP Parameter Pollution attempts. Additionally, this release includes targeted protection for a high-impact unrestricted file upload vulnerability in Magento and Adobe Commerce.
-
-**Key Findings**
-
-* CVE-2025-59718: An improper cryptographic signature verification vulnerability in Fortinet FortiOS, FortiProxy, and FortiSwitchManager. This may allow an unauthenticated attacker to bypass the FortiCloud SSO login authentication using a maliciously crafted SAML message, if that feature is enabled on the device.
-* Magento 2 - Unrestricted File Upload: A critical flaw in Magento and Adobe Commerce allows unauthenticated attackers to bypass security checks and upload malicious files to the server, potentially leading to Remote Code Execution (RCE).
-
-**Impact**
-
-Successful exploitation of the Fortinet and Magento vulnerabilities could allow unauthenticated attackers to gain administrative control or deploy webshells, leading to complete server compromise and data theft.
-
-| Ruleset                    | Rule ID     | Legacy Rule ID | Description                                                          | Previous Action | New Action | Comments                 |
-| -------------------------- | ----------- | -------------- | -------------------------------------------------------------------- | --------------- | ---------- | ------------------------ |
-| Cloudflare Managed Ruleset | ...2f7f95e9 | N/A            | Generic Rules - Parameter Pollution - Body                           | Log             | Disabled   | This is a new detection. |
-| Cloudflare Managed Ruleset | ...319731a4 | N/A            | Generic Rules - Parameter Pollution - Header - Form                  | Log             | Disabled   | This is a new detection. |
-| Cloudflare Managed Ruleset | ...def262dd | N/A            | Generic Rules - Parameter Pollution - URI                            | Log             | Disabled   | This is a new detection. |
-| Cloudflare Managed Ruleset | ...70a36147 | N/A            | Magento 2 - Unrestricted file upload                                 | Log             | Block      | This is a new detection. |
-| Cloudflare Managed Ruleset | ...2ffcca9f | N/A            | Fortinet FortiCloud SSO - Authentication Bypass - CVE:CVE-2025-59718 | Log             | Block      | This is a new detection. |
-
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release introduces new protection for a remote code execution vulnerability in vBulletin and improves two existing detections.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/change-log/changelog/#page","headline":"Changelog · Cloudflare Web Application Firewall (WAF) docs","description":"This release updates WordPress remote code execution rule metadata in the Cloudflare Managed Ruleset and Cloudflare Free Ruleset to identify CVE-2026-65640.","url":"https://developers.cloudflare.com/waf/change-log/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","publisher":{"@type":"Organization","name":"Cloudflare","url":"https://www.cloudflare.com/"},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

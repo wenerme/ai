@@ -1179,6 +1179,7 @@ components:
               - $ref: '#/components/schemas/OutputAdvisorServerToolItem'
               - $ref: '#/components/schemas/OutputSubagentServerToolItem'
               - $ref: '#/components/schemas/OutputFilesServerToolItem'
+              - $ref: '#/components/schemas/OutputShellServerToolItem'
               - $ref: '#/components/schemas/LocalShellCallItem'
               - $ref: '#/components/schemas/LocalShellCallOutputItem'
               - $ref: '#/components/schemas/ShellCallItem'
@@ -3274,6 +3275,8 @@ components:
             $ref: '#/components/schemas/OutputMcpServerToolItem'
           openrouter:memory:
             $ref: '#/components/schemas/OutputMemoryServerToolItem'
+          openrouter:shell:
+            $ref: '#/components/schemas/OutputShellServerToolItem'
           openrouter:subagent:
             $ref: '#/components/schemas/OutputSubagentServerToolItem'
           openrouter:text_editor:
@@ -3322,6 +3325,7 @@ components:
         - $ref: '#/components/schemas/OutputApplyPatchCallItem'
         - $ref: '#/components/schemas/OutputShellCallItem'
         - $ref: '#/components/schemas/OutputShellCallOutputItem'
+        - $ref: '#/components/schemas/OutputShellServerToolItem'
         - $ref: '#/components/schemas/OutputWebFetchServerToolItem'
         - $ref: '#/components/schemas/OutputToolSearchServerToolItem'
         - $ref: '#/components/schemas/OutputMemoryServerToolItem'
@@ -4225,7 +4229,34 @@ components:
     OutputFunctionCallItem:
       allOf:
         - $ref: '#/components/schemas/OutputItemFunctionCall'
-        - properties: {}
+        - properties:
+            subagent_id:
+              description: >-
+                EXPERIMENTAL — subject to change without notice. String id that
+                matches the `call_id` of the `openrouter:subagent` server tool
+                call that spawned the subagent. Present on every `function_call`
+                item the subagent projects; absent on ordinary function calls.
+              type: string
+            subagent_items:
+              description: >-
+                EXPERIMENTAL — subject to change without notice. The subagent's
+                output items produced on this turn. Treat this as an opaque
+                object; you must replay it in the request so that the subagent
+                can continue execution of the tool with the same context. If a
+                subagent created multiple parallel tool calls, only the first
+                tool call will have this field. The other tool calls will only
+                have `subagent_id`. Present only if the tool call originates
+                from a subagent spawned by the `openrouter:subagent` server
+                tool.
+              items:
+                additionalProperties: {}
+                properties:
+                  type:
+                    type: string
+                required:
+                  - type
+                type: object
+              type: array
           type: object
       example:
         arguments: '{"location":"San Francisco"}'
@@ -4584,10 +4615,14 @@ components:
       properties:
         arguments:
           description: The raw tool-call arguments string as emitted by the model.
-          type: string
+          type:
+            - string
+            - 'null'
         call_id:
           description: The model-generated tool call id from the originating turn.
-          type: string
+          type:
+            - string
+            - 'null'
         command:
           type: string
         exitCode:
@@ -4948,6 +4983,17 @@ components:
         status: completed
         type: openrouter:subagent
       properties:
+        call_id:
+          description: >-
+            EXPERIMENTAL — subject to change without notice. The `call_id` of
+            the tool call that spawned this subagent. This id will also be
+            included as the `subagent_id` on any `function_call` items created
+            by the subagent. This must be returned in the request so the
+            `function_call` can be matched with the correct subagent. A
+            suspended `in_progress` item is announced once and never re-emitted
+            or terminally closed — completion arrives as a new item with the
+            same `call_id`.
+          type: string
         error:
           description: Error message when the subagent task did not produce an outcome.
           type: string
@@ -5008,6 +5054,16 @@ components:
         status: completed
         type: openrouter:files
       properties:
+        arguments:
+          description: The raw tool-call arguments string as emitted by the model.
+          type:
+            - string
+            - 'null'
+        call_id:
+          description: The model-generated tool call id from the originating turn.
+          type:
+            - string
+            - 'null'
         error:
           description: Error message when the file operation failed.
           type: string
@@ -5030,6 +5086,69 @@ components:
         type:
           enum:
             - openrouter:files
+          type: string
+      required:
+        - status
+        - type
+      type: object
+    OutputShellServerToolItem:
+      description: An openrouter:shell server tool output item
+      example:
+        action:
+          commands:
+            - echo hello
+          max_output_length: null
+          timeout_ms: null
+        call_id: call_abc123
+        id: st_tmp_abc123
+        output:
+          - outcome:
+              exit_code: 0
+              type: exit
+            stderr: ''
+            stdout: |
+              hello
+        status: completed
+        type: openrouter:shell
+      properties:
+        action:
+          properties:
+            commands:
+              items:
+                type: string
+              type: array
+            max_output_length:
+              type:
+                - integer
+                - 'null'
+            timeout_ms:
+              type:
+                - integer
+                - 'null'
+          required:
+            - commands
+          type: object
+        arguments:
+          description: The raw tool-call arguments string as emitted by the model.
+          type:
+            - string
+            - 'null'
+        call_id:
+          description: The model-generated tool call id from the originating turn.
+          type:
+            - string
+            - 'null'
+        id:
+          type: string
+        output:
+          items:
+            $ref: '#/components/schemas/ShellCallOutputContent'
+          type: array
+        status:
+          $ref: '#/components/schemas/ToolCallStatus'
+        type:
+          enum:
+            - openrouter:shell
           type: string
       required:
         - status
@@ -5155,6 +5274,14 @@ components:
           required:
             - commands
           type: object
+        arguments:
+          description: >-
+            The raw tool-call arguments string as emitted by the model. Echo
+            back unchanged when replaying history; used verbatim to preserve
+            provider prompt-cache prefixes.
+          type:
+            - string
+            - 'null'
         call_id:
           type: string
         environment: {}
@@ -5180,9 +5307,12 @@ components:
       example:
         call_id: call-abc123
         output:
-          - content: |
+          - outcome:
+              exit_code: 0
+              type: exit
+            stderr: ''
+            stdout: |
               total 0
-            type: stdout
         status: completed
         type: shell_call_output
       properties:
@@ -5198,21 +5328,7 @@ components:
             - 'null'
         output:
           items:
-            additionalProperties: {}
-            properties:
-              content:
-                type:
-                  - string
-                  - 'null'
-              exit_code:
-                type:
-                  - integer
-                  - 'null'
-              type:
-                type: string
-            required:
-              - type
-            type: object
+            $ref: '#/components/schemas/ShellCallOutputContent'
           type: array
         status:
           anyOf:
@@ -6332,6 +6448,30 @@ components:
         model: ~anthropic/claude-haiku-latest
         name: summarizer
       properties:
+        inherit_functions:
+          description: >-
+            EXPERIMENTAL — subject to change without notice. When true, the
+            subagent inherits every client function defined in the request's
+            top-level `tools` list. Supported on the Responses API
+            (`/api/v1/responses`) only; other APIs reject it with a `400`.
+          example: true
+          type: boolean
+        inherited_function_names:
+          description: >-
+            EXPERIMENTAL — subject to change without notice. Names of the
+            top-level function tools that the subagent will inherit. Any tool
+            that matches by name will be copied fully into the tools array of
+            the subagent. When `inherit_functions` is `true`, this list does
+            nothing, because every client function will be inherited by default.
+            Names are trimmed before validation, so a whitespace-only name is
+            rejected with a `400`. Supported on the Responses API
+            (`/api/v1/responses`) only; other APIs reject it with a `400`.
+          example:
+            - lookup_order
+          items:
+            minLength: 1
+            type: string
+          type: array
         instructions:
           description: >-
             System instructions for the subagent. When omitted, the subagent
@@ -6350,8 +6490,7 @@ components:
           description: >-
             Maximum number of tool-calling steps the subagent may take during
             its agentic loop. Capped at 25. Only relevant when the subagent is
-            given tools. Accepted and validated but not yet enforced on the
-            subagent call.
+            given tools. Forwarded to the subagent call as `max_tool_calls`.
           example: 5
           maximum: 25
           minimum: 1
@@ -7464,6 +7603,14 @@ components:
             - max_output_length
             - timeout_ms
           type: object
+        arguments:
+          description: >-
+            The raw tool-call arguments string as emitted by the model. Echo
+            back unchanged when replaying history; used verbatim to preserve
+            provider prompt-cache prefixes.
+          type:
+            - string
+            - 'null'
         call_id:
           type: string
         id:
@@ -7507,37 +7654,7 @@ components:
             - 'null'
         output:
           items:
-            properties:
-              outcome:
-                oneOf:
-                  - properties:
-                      exit_code:
-                        type: integer
-                      type:
-                        enum:
-                          - exit
-                        type: string
-                    required:
-                      - type
-                      - exit_code
-                    type: object
-                  - properties:
-                      type:
-                        enum:
-                          - timeout
-                        type: string
-                    required:
-                      - type
-                    type: object
-              stderr:
-                type: string
-              stdout:
-                type: string
-            required:
-              - stdout
-              - stderr
-              - outcome
-            type: object
+            $ref: '#/components/schemas/ShellCallOutputContent'
           type: array
         status:
           $ref: '#/components/schemas/ShellCallStatus'
@@ -8681,6 +8798,32 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/ToolCallStatus'
+        subagent_id:
+          description: >-
+            EXPERIMENTAL — subject to change without notice. String id that
+            matches the `call_id` of the `openrouter:subagent` server tool call
+            that spawned the subagent. Present on every `function_call` item the
+            subagent projects; absent on ordinary function calls.
+          type: string
+        subagent_items:
+          description: >-
+            EXPERIMENTAL — subject to change without notice. The subagent's
+            output items produced on this turn. Treat this as an opaque object;
+            you must replay it in the request so that the subagent can continue
+            execution of the tool with the same context. If a subagent created
+            multiple parallel tool calls, only the first tool call will have
+            this field. The other tool calls will only have `subagent_id`.
+            Present only if the tool call originates from a subagent spawned by
+            the `openrouter:subagent` server tool.
+          items:
+            additionalProperties: {}
+            properties:
+              type:
+                type: string
+            required:
+              - type
+            type: object
+          type: array
         type:
           enum:
             - function_call
@@ -8900,6 +9043,51 @@ components:
       required:
         - url
         - title
+      type: object
+    ShellCallOutputContent:
+      additionalProperties: {}
+      description: >-
+        Captured stdout and stderr for one command of a shell call, with its
+        exit or timeout outcome.
+      example:
+        outcome:
+          exit_code: 0
+          type: exit
+        stderr: ''
+        stdout: |
+          total 0
+      properties:
+        outcome:
+          oneOf:
+            - additionalProperties: {}
+              properties:
+                exit_code:
+                  type: integer
+                type:
+                  enum:
+                    - exit
+                  type: string
+              required:
+                - type
+                - exit_code
+              type: object
+            - additionalProperties: {}
+              properties:
+                type:
+                  enum:
+                    - timeout
+                  type: string
+              required:
+                - type
+              type: object
+        stderr:
+          type: string
+        stdout:
+          type: string
+      required:
+        - stdout
+        - stderr
+        - outcome
       type: object
     OpenAIResponseCustomToolCallOutput:
       example:
@@ -9243,8 +9431,8 @@ components:
           type: string
         max_tokens:
           description: >-
-            Maximum number of reasoning tokens the subagent may use. Accepted
-            and validated but not yet forwarded to the subagent call.
+            Maximum number of reasoning tokens the subagent may use. Forwarded
+            to the subagent call as `reasoning.max_tokens`.
           type: integer
       type: object
     SubagentNestedTool:

@@ -7,6 +7,10 @@ Project and group items included or excluded when using direct transfer.
 
 Many items are migrated when using the direct transfer method, and some are excluded.
 
+> [!note]
+> Emoji reactions that use custom emoji are migrated only if a custom emoji with the same name exists on the
+> destination. Reactions that reference a custom emoji missing from the destination are skipped.
+
 ## Migrated group items
 
 The group items that are migrated depend on the version of GitLab you use on the destination. To determine if a
